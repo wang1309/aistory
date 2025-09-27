@@ -1,0 +1,2 @@
+# aistory
+ai story generator
