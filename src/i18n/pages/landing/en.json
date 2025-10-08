@@ -3,10 +3,10 @@
   "theme": "light",
   "header": {
     "brand": {
-      "title": "ShipAny",
+      "title": "Story Generator",
       "logo": {
         "src": "/logo.png",
-        "alt": "ShipAny"
+        "alt": "Story Generator"
       },
       "url": "/"
     },
