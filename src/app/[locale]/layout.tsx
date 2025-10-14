@@ -19,13 +19,65 @@ export async function generateMetadata({
 
   const t = await getTranslations();
 
+  const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "storiesgenerator.org";
+  const title = t("metadata.title") || "";
+  const description = t("metadata.description") || "";
+  const siteName = t("metadata.siteName") || "AI Story Generator";
+
   return {
     title: {
       template: `%s`,
-      default: t("metadata.title") || "",
+      default: title,
     },
-    description: t("metadata.description") || "",
+    description: description,
     keywords: t("metadata.keywords") || "",
+
+    // Open Graph metadata
+    openGraph: {
+      title: title,
+      description: description,
+      url: `${webUrl}/${locale === "en" ? "" : locale}`,
+      siteName: siteName,
+      locale: locale,
+      type: "website",
+      images: [
+        {
+          url: `${webUrl}/story.png`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+
+    // Twitter Card metadata
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+      images: [`${webUrl}/story.png`],
+      creator: "@wangrui69490224",
+      site: "@wangrui69490224",
+    },
+
+    // Additional metadata
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+
+    // Verification (if you have these)
+    verification: {
+      // google: "your-google-verification-code",
+      // yandex: "your-yandex-verification-code",
+    },
   };
 }
 

@@ -1,4 +1,27 @@
+# robots.txt for AI Story Generator
+
 User-agent: *
+Allow: /
+
+# Disallow query parameters and private areas
 Disallow: /*?*q=
-Disallow: /privacy-policy
-Disallow: /terms-of-service
+Disallow: /admin/
+Disallow: /api/
+Disallow: /console/
+Disallow: /_next/
+
+# Allow legal pages for SEO
+Allow: /privacy-policy
+Allow: /terms-of-service
+
+# Allow public assets
+Allow: /imgs/
+Allow: /favicon.ico
+Allow: /logo.png
+Allow: /story.png
+
+# Sitemaps (update with your actual domain)
+Sitemap: https://aistory.example.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 0
