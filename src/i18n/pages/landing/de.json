@@ -233,7 +233,7 @@
     "items": [
       {
         "title": "Was ist ein KI-Geschichtengenerator und wie funktioniert er?",
-        "description": "Unser KI-Geschichtengenerator ist eine fortschrittliche Plattform, die einzigartige, maßgeschneiderte Geschichten basierend auf Ihren Eingaben erstellt. Geben Sie einfach Ihre Geschichtenidee ein, wählen Sie aus drei leistungsstarken KI-Modellen (Gemini 2.5 Flash Lite für Geschwindigkeit, Gemini 2.5 Flash für Eloquenz oder Gemini 2.5 Flash Think für Kreativität) und passen Sie Parameter wie Format, Länge, Genre, Erzählperspektive, Zielgruppe und Ton an. Die KI generiert Ihre Geschichte in Sekunden mit Echtzeit-Streaming."
+        "description": "Unser KI-Geschichtengenerator ist eine fortschrittliche Plattform, die einzigartige, maßgeschneiderte Geschichten basierend auf Ihren Eingaben erstellt. Geben Sie einfach Ihre Geschichtenidee ein, wählen Sie aus drei leistungsstarken KI-Modellen und passen Sie Parameter wie Format, Länge, Genre, Erzählperspektive, Zielgruppe und Ton an. Die KI generiert Ihre Geschichte in Sekunden mit Echtzeit-Streaming."
       },
       {
         "title": "Welche Anpassungsoptionen für Geschichten sind verfügbar?",
@@ -241,7 +241,7 @@
       },
       {
         "title": "Wie lange dauert es, eine Geschichte zu generieren?",
-        "description": "Die Geschichtengenerierungszeit variiert je nach Modell: Gemini 2.5 Flash Lite generiert Geschichten in etwa 3 Sekunden, Gemini 2.5 Flash in etwa 5 Sekunden und Gemini 2.5 Flash Think in etwa 10 Sekunden. Die tatsächliche Zeit kann je nach Geschichtenlänge und Komplexität leicht variieren. Alle Geschichten werden in Echtzeit gestreamt, sodass Sie sie beim Schreiben sehen können."
+        "description": "Die Geschichtengenerierungszeit variiert je nach Modell: schnellstes Modell in etwa 3 Sekunden, Premium-Qualität in etwa 5 Sekunden und tiefes Denken in etwa 10 Sekunden. Die tatsächliche Zeit kann je nach Geschichtenlänge und Komplexität leicht variieren. Alle Geschichten werden in Echtzeit gestreamt, sodass Sie sie beim Schreiben sehen können."
       },
       {
         "title": "Kann ich Geschichten kopieren, speichern oder neu generieren?",

@@ -233,7 +233,7 @@
     "items": [
       {
         "title": "What is an AI Story Generator and how does it work?",
-        "description": "Our AI Story Generator is an advanced platform that creates unique, customized stories based on your prompts. Simply enter your story idea, choose from three powerful AI models (Gemini 2.5 Flash Lite for speed, Gemini 2.5 Flash for eloquence, or Gemini 2.5 Flash Think for creativity), and customize parameters like format, length, genre, narrative perspective, target audience, and tone. The AI generates your story in seconds with real-time streaming."
+        "description": "Our AI Story Generator is an advanced platform that creates unique, customized stories based on your prompts. Simply enter your story idea, choose from three powerful AI models, and customize parameters like format, length, genre, narrative perspective, target audience, and tone. The AI generates your story in seconds with real-time streaming."
       },
       {
         "title": "What story customization options are available?",
@@ -241,7 +241,7 @@
       },
       {
         "title": "How long does it take to generate a story?",
-        "description": "Story generation time varies by model: Gemini 2.5 Flash Lite generates stories in approximately 3 seconds, Gemini 2.5 Flash in about 5 seconds, and Gemini 2.5 Flash Think in around 10 seconds. The actual time may vary slightly based on story length and complexity. All stories stream in real-time so you can see them being written."
+        "description": "Story generation time varies by model: fastest model in approximately 3 seconds, premium quality in about 5 seconds, and deep thinking in around 10 seconds. The actual time may vary slightly based on story length and complexity. All stories stream in real-time so you can see them being written."
       },
       {
         "title": "Can I copy, save, or regenerate stories?",
