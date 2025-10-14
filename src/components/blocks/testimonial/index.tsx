@@ -27,8 +27,14 @@ export default function Testimonial({ section }: { section: SectionType }) {
   );
 
   return (
-    <section id={section.name} className="container py-16">
-      <div className="flex flex-col items-center gap-4">
+    <section id={section.name} className="relative py-20 sm:py-24 overflow-hidden">
+      {/* Ambient background glows */}
+      <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-primary/5 pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl opacity-25 pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl opacity-20 pointer-events-none" />
+
+      <div className="container relative">
+        <div className="flex flex-col items-center gap-4">
         {section.label && (
           <div className="flex items-center gap-1 text-sm font-semibold text-primary">
             {section.icon && (
@@ -91,6 +97,7 @@ export default function Testimonial({ section }: { section: SectionType }) {
             </CarouselContent>
           </Carousel>
         </div>
+      </div>
       </div>
     </section>
   );

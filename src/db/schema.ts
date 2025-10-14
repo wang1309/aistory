@@ -134,7 +134,7 @@ export const affiliates = pgTable("affiliates", {
 });
 
 // Feedbacks table
-export const feedbacks = pgTable("feedbacks", {
+export const feedbacks = pgTable("sg_feedbacks", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   created_at: timestamp({ withTimezone: true }),
   status: varchar({ length: 50 }),

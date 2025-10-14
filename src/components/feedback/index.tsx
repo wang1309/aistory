@@ -35,18 +35,20 @@ export default function Feedback({
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async () => {
-    if (!user) {
-      setShowSignModal(true);
-      return;
-    }
+    console.log("handleSubmit called", { user, feedback, rating });
+
+    // 允许未登录用户提交反馈，后端会自动处理
+    console.log("User status:", user ? "Logged in" : "Anonymous");
 
     if (!feedback.trim()) {
+      console.log("Feedback is empty");
       toast.error("Please enter your feedback");
       return;
     }
 
     try {
       setLoading(true);
+      console.log("Submitting feedback...");
 
       const req = {
         content: feedback,
@@ -55,14 +57,22 @@ export default function Feedback({
 
       const resp = await fetch("/api/add-feedback", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(req),
       });
+
+      console.log("Response status:", resp.status);
+
       if (!resp.ok) {
         toast.error("Submit failed with status " + resp.status);
         return;
       }
 
       const { code, message } = await resp.json();
+      console.log("Response data:", { code, message });
+
       if (code !== 0) {
         toast.error(message);
         return;
@@ -74,6 +84,7 @@ export default function Feedback({
       setRating(null);
       setShowFeedback(false);
     } catch (error) {
+      console.error("Submit error:", error);
       toast.error("Failed to submit, please try again later");
     } finally {
       setLoading(false);
@@ -160,7 +171,7 @@ export default function Feedback({
             )}
             <div className="flex-1"></div>
             <div className="flex gap-3">
-              <Button onClick={handleSubmit} disabled={loading}>
+              <Button type="button" onClick={handleSubmit} disabled={loading}>
                 {loading ? t("feedback.loading") : t("feedback.submit")}
               </Button>
             </div>

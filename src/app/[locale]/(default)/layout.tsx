@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import { getLandingPage } from "@/services/page";
 import Feedback from "@/components/feedback";
 
+
 export default async function DefaultLayout({
   children,
   params,
@@ -19,7 +20,7 @@ export default async function DefaultLayout({
       {page.header && <Header header={page.header} />}
       <main className="overflow-x-hidden">{children}</main>
       {page.footer && <Footer footer={page.footer} />}
-      {/* <Feedback socialLinks={page.footer?.social?.items} /> */}
+      <Feedback socialLinks={page.footer?.social?.items} />
     </>
   );
 }
