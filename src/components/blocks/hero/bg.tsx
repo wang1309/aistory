@@ -4,10 +4,10 @@ export default function Bg() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1920 1080"
       fill="none"
-      className="-z-50 absolute left-0 top-0 hidden opacity-25 [mask-image:linear-gradient(to_right,white,transparent,transparent,white)] lg:block"
+      className="-z-50 absolute left-0 top-0 hidden opacity-15 mix-blend-luminosity [mask-image:linear-gradient(to_right,white,transparent,transparent,white)] lg:block"
     >
       <g clipPath="url(#clip0_4_5)">
-        <rect width="1920" height="1080" />
+        <rect width="1920" height="1080" className="fill-transparent" />
         <line
           y1="49.5"
           x2="1920"
@@ -140,266 +140,266 @@ export default function Bg() {
             y1="3.99995"
             x2="49.7268"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="99.7275"
             y1="3.99995"
             x2="99.8411"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="149.841"
             y1="3.99995"
             x2="149.954"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="199.954"
             y1="3.99995"
             x2="200.068"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="250.067"
             y1="3.99995"
             x2="250.181"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="300.182"
             y1="3.99995"
             x2="300.295"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="350.295"
             y1="3.99995"
             x2="350.408"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="400.408"
             y1="3.99995"
             x2="400.522"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="450.521"
             y1="3.99995"
             x2="450.635"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="500.636"
             y1="3.99995"
             x2="500.749"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="550.749"
             y1="3.99995"
             x2="550.863"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="600.862"
             y1="3.99995"
             x2="600.976"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="650.976"
             y1="3.99995"
             x2="651.089"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="701.09"
             y1="3.99995"
             x2="701.203"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="751.203"
             y1="3.99995"
             x2="751.317"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="801.316"
             y1="3.99995"
             x2="801.43"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="851.43"
             y1="3.99995"
             x2="851.543"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="901.544"
             y1="3.99995"
             x2="901.657"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="951.657"
             y1="3.99995"
             x2="951.771"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1001.77"
             y1="3.99995"
             x2="1001.88"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1051.88"
             y1="3.99995"
             x2="1052"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1102"
             y1="3.99995"
             x2="1102.11"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1152.11"
             y1="3.99995"
             x2="1152.22"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1202.22"
             y1="3.99995"
             x2="1202.34"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1252.34"
             y1="3.99995"
             x2="1252.45"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1302.45"
             y1="3.99995"
             x2="1302.57"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1352.57"
             y1="3.99995"
             x2="1352.68"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1402.68"
             y1="3.99995"
             x2="1402.79"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1452.79"
             y1="3.99995"
             x2="1452.91"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1502.91"
             y1="3.99995"
             x2="1503.02"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1553.02"
             y1="3.99995"
             x2="1553.13"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1603.13"
             y1="3.99995"
             x2="1603.25"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1653.25"
             y1="3.99995"
             x2="1653.36"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1703.36"
             y1="3.99995"
             x2="1703.47"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1753.47"
             y1="3.99995"
             x2="1753.59"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1803.59"
             y1="3.99995"
             x2="1803.7"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1853.7"
             y1="3.99995"
             x2="1853.81"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
           <line
             x1="1903.81"
             y1="3.99995"
             x2="1903.93"
             y2="1084"
-            className="stroke-muted-foreground"
+            className="stroke-muted-foreground/50"
           />
         </g>
       </g>

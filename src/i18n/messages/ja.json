@@ -1,0 +1,136 @@
+{
+  "metadata": {
+    "title": "AIストーリージェネレーター：無料、登録不要、無制限の創造性",
+    "description": "AIストーリージェネレーターで創造的な可能性を解き放ちましょう。フィルターなしのオプションから無料アクセスまで、今すぐ無限のストーリーテリングの可能性を探求しましょう！",
+    "keywords": "AIストーリージェネレーター, 無料ストーリージェネレーター, 無制限ストーリー, 創作AI, ストーリーアイデア, プロット生成, キャラクター開発, 執筆プロンプト, ストーリーテリングAI, 小説生成"
+  },
+  "user": {
+    "sign_in": "ログイン",
+    "sign_out": "ログアウト",
+    "credits": "クレジット",
+    "api_keys": "APIキー",
+    "my_orders": "注文履歴",
+    "user_center": "ユーザーセンター",
+    "admin_system": "管理システム"
+  },
+  "sign_modal": {
+    "sign_in_title": "ログイン",
+    "sign_in_description": "アカウントにログイン",
+    "sign_up_title": "新規登録",
+    "sign_up_description": "アカウントを作成",
+    "email_title": "メールアドレス",
+    "email_placeholder": "メールアドレスを入力してください",
+    "password_title": "パスワード",
+    "password_placeholder": "パスワードを入力してください",
+    "forgot_password": "パスワードをお忘れですか？",
+    "or": "または",
+    "continue": "続ける",
+    "no_account": "アカウントをお持ちでないですか？",
+    "email_sign_in": "メールでログイン",
+    "google_sign_in": "Googleでログイン",
+    "github_sign_in": "GitHubでログイン",
+    "close_title": "閉じる",
+    "cancel_title": "キャンセル"
+  },
+  "my_orders": {
+    "title": "注文履歴",
+    "description": "ShipAnyで購入した注文。",
+    "no_orders": "注文が見つかりません",
+    "tip": "",
+    "activate_order": "注文を有効化",
+    "actived": "有効化済み",
+    "join_discord": "Discordに参加",
+    "read_docs": "ドキュメントを読む",
+    "table": {
+      "order_no": "注文番号",
+      "email": "メールアドレス",
+      "product_name": "商品名",
+      "amount": "金額",
+      "paid_at": "支払日",
+      "github_username": "GitHubユーザー名",
+      "status": "ステータス",
+      "manage_billing": "請求管理",
+      "interval": "期間",
+      "interval_month": "月次",
+      "interval_year": "年次",
+      "interval_one_time": "1回限り"
+    }
+  },
+  "my_credits": {
+    "title": "クレジット残高",
+    "left_tip": "残りクレジット: {left_credits}",
+    "no_credits": "クレジット履歴がありません",
+    "recharge": "チャージ",
+    "table": {
+      "trans_no": "取引番号",
+      "trans_type": "取引タイプ",
+      "credits": "クレジット",
+      "updated_at": "更新日",
+      "status": "ステータス",
+      "expired_at": "有効期限",
+      "created_at": "作成日"
+    }
+  },
+  "api_keys": {
+    "title": "APIキー",
+    "tip": "APIキーを安全に保管し、漏洩を防いでください",
+    "no_api_keys": "APIキーがありません",
+    "create_api_key": "APIキーを作成",
+    "table": {
+      "name": "名前",
+      "key": "キー",
+      "created_at": "作成日"
+    },
+    "form": {
+      "name": "名前",
+      "name_placeholder": "APIキー名",
+      "submit": "送信"
+    }
+  },
+  "blog": {
+    "title": "ブログ",
+    "description": "ShipAnyに関するニュース、リソース、アップデート",
+    "read_more_text": "続きを読む",
+    "no_content": "コンテンツがありません",
+    "all": "すべて",
+    "category": "カテゴリー",
+    "author": "著者"
+  },
+  "my_invites": {
+    "title": "招待履歴",
+    "description": "招待記録を表示",
+    "no_invites": "招待記録が見つかりません",
+    "my_invite_link": "招待リンク",
+    "edit_invite_link": "招待リンクを編集",
+    "copy_invite_link": "招待リンクをコピー",
+    "invite_code": "招待コード",
+    "invite_tip": "友達1人を招待してShipAnyを購入すると、$50の報酬。",
+    "invite_balance": "招待報酬残高",
+    "total_invite_count": "総招待数",
+    "total_paid_count": "総支払数",
+    "total_award_amount": "総報酬額",
+    "update_invite_code": "招待コードを設定",
+    "update_invite_code_tip": "カスタム招待コードを入力してください",
+    "update_invite_button": "保存",
+    "no_orders": "ShipAnyを購入する前に他の人を招待することはできません",
+    "no_affiliates": "他の人を招待する権限がありません。許可を申請するには、お問い合わせください。",
+    "table": {
+      "invite_time": "招待日時",
+      "invite_user": "招待ユーザー",
+      "status": "ステータス",
+      "reward_percent": "報酬率",
+      "reward_amount": "報酬額",
+      "pending": "保留中",
+      "completed": "完了"
+    }
+  },
+  "feedback": {
+    "title": "フィードバック",
+    "description": "製品体験で良かった点や改善できる点についてお聞かせください。",
+    "submit": "送信",
+    "loading": "送信中...",
+    "contact_tip": "その他のお問い合わせ方法",
+    "rating_tip": "ShipAnyについてどう思いますか？",
+    "placeholder": "ここにご意見をお書きください..."
+  }
+}

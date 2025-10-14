@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3000
-@apiKey = sk-xxx
+@apiKey = 
 
 ### ping api
 POST {{baseUrl}}/api/ping
@@ -52,4 +52,15 @@ Authorization: Bearer {{apiKey}}
   "emails": ["test@mail.shipany.ai"],
   "subject": "Hello from ShipAny, with Resend",
   "content": "<p style='color: red;'>Hello from <a href='https://shipany.ai'>Shipany</a></p>"
+}
+
+### story-generate
+POST {{baseUrl}}/api/story-generate
+Content-Type: application/json
+Authorization: Bearer {{apiKey}}
+
+{
+  "prompt": "Write a story about a young boy named Tom Sawyer who embarks on an adventure along the Mississippi River with his friends.",
+  "model": "gpt-4o-mini",
+  "format": "prose",
 }

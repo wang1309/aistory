@@ -3,6 +3,24 @@
 
 @plugin "tailwindcss-animate";
 
+@layer utilities {
+  .anim-medium {
+    animation-duration: 3s;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

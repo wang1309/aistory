@@ -1,0 +1,136 @@
+{
+  "metadata": {
+    "title": "AI 스토리 생성기: 무료, 가입 불필요, 무제한 창의성",
+    "description": "AI 스토리 생성기로 창의적 잠재력을 발휘하세요. 필터 없는 옵션부터 무료 액세스까지, 오늘 바로 무한한 스토리텔링 가능성을 탐험하세요!",
+    "keywords": "AI 스토리 생성기, 무료 스토리 생성기, 무제한 스토리, 창의적 글쓰기 AI, 스토리 아이디어, 플롯 생성기, 캐릭터 개발, 글쓰기 프롬프트, 스토리텔링 AI, 소설 생성기"
+  },
+  "user": {
+    "sign_in": "로그인",
+    "sign_out": "로그아웃",
+    "credits": "크레딧",
+    "api_keys": "API 키",
+    "my_orders": "내 주문",
+    "user_center": "사용자 센터",
+    "admin_system": "관리자 시스템"
+  },
+  "sign_modal": {
+    "sign_in_title": "로그인",
+    "sign_in_description": "계정에 로그인",
+    "sign_up_title": "회원가입",
+    "sign_up_description": "계정 만들기",
+    "email_title": "이메일",
+    "email_placeholder": "이메일을 입력하세요",
+    "password_title": "비밀번호",
+    "password_placeholder": "비밀번호를 입력하세요",
+    "forgot_password": "비밀번호를 잊으셨나요?",
+    "or": "또는",
+    "continue": "계속",
+    "no_account": "계정이 없으신가요?",
+    "email_sign_in": "이메일로 로그인",
+    "google_sign_in": "Google로 로그인",
+    "github_sign_in": "GitHub로 로그인",
+    "close_title": "닫기",
+    "cancel_title": "취소"
+  },
+  "my_orders": {
+    "title": "내 주문",
+    "description": "ShipAny로 결제한 주문.",
+    "no_orders": "주문을 찾을 수 없습니다",
+    "tip": "",
+    "activate_order": "주문 활성화",
+    "actived": "활성화됨",
+    "join_discord": "Discord 참여",
+    "read_docs": "문서 읽기",
+    "table": {
+      "order_no": "주문 번호",
+      "email": "이메일",
+      "product_name": "제품명",
+      "amount": "금액",
+      "paid_at": "결제일",
+      "github_username": "GitHub 사용자명",
+      "status": "상태",
+      "manage_billing": "결제 관리",
+      "interval": "주기",
+      "interval_month": "월간",
+      "interval_year": "연간",
+      "interval_one_time": "1회"
+    }
+  },
+  "my_credits": {
+    "title": "내 크레딧",
+    "left_tip": "남은 크레딧: {left_credits}",
+    "no_credits": "크레딧 기록이 없습니다",
+    "recharge": "충전",
+    "table": {
+      "trans_no": "거래 번호",
+      "trans_type": "거래 유형",
+      "credits": "크레딧",
+      "updated_at": "업데이트일",
+      "status": "상태",
+      "expired_at": "만료일",
+      "created_at": "생성일"
+    }
+  },
+  "api_keys": {
+    "title": "API 키",
+    "tip": "유출을 방지하기 위해 API 키를 안전하게 보관하세요",
+    "no_api_keys": "API 키가 없습니다",
+    "create_api_key": "API 키 생성",
+    "table": {
+      "name": "이름",
+      "key": "키",
+      "created_at": "생성일"
+    },
+    "form": {
+      "name": "이름",
+      "name_placeholder": "API 키 이름",
+      "submit": "제출"
+    }
+  },
+  "blog": {
+    "title": "블로그",
+    "description": "ShipAny에 대한 뉴스, 리소스 및 업데이트",
+    "read_more_text": "더 읽기",
+    "no_content": "콘텐츠 없음",
+    "all": "전체",
+    "category": "카테고리",
+    "author": "작성자"
+  },
+  "my_invites": {
+    "title": "내 초대",
+    "description": "초대 기록 보기",
+    "no_invites": "초대 기록을 찾을 수 없습니다",
+    "my_invite_link": "내 초대 링크",
+    "edit_invite_link": "초대 링크 편집",
+    "copy_invite_link": "초대 링크 복사",
+    "invite_code": "초대 코드",
+    "invite_tip": "친구 1명을 초대하여 ShipAny를 구매하면 $50 보상.",
+    "invite_balance": "초대 보상 잔액",
+    "total_invite_count": "총 초대 수",
+    "total_paid_count": "총 결제 수",
+    "total_award_amount": "총 보상 금액",
+    "update_invite_code": "초대 코드 설정",
+    "update_invite_code_tip": "맞춤 초대 코드를 입력하세요",
+    "update_invite_button": "저장",
+    "no_orders": "ShipAny를 구매하기 전에는 다른 사람을 초대할 수 없습니다",
+    "no_affiliates": "다른 사람을 초대할 수 있는 권한이 없습니다. 권한을 신청하려면 저희에게 연락하세요.",
+    "table": {
+      "invite_time": "초대 시간",
+      "invite_user": "초대 사용자",
+      "status": "상태",
+      "reward_percent": "보상 비율",
+      "reward_amount": "보상 금액",
+      "pending": "대기 중",
+      "completed": "완료됨"
+    }
+  },
+  "feedback": {
+    "title": "피드백",
+    "description": "제품 경험에서 좋았던 점이나 개선할 수 있는 점을 알려주세요.",
+    "submit": "제출",
+    "loading": "제출 중...",
+    "contact_tip": "다른 연락 방법",
+    "rating_tip": "ShipAny에 대해 어떻게 생각하시나요?",
+    "placeholder": "여기에 의견을 남겨주세요..."
+  }
+}

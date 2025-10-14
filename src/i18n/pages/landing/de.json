@@ -1,0 +1,559 @@
+{
+  "template": "story generate",
+  "theme": "light",
+  "header": {
+    "brand": {
+      "title": "Geschichtengenerator",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Geschichtengenerator"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Funktionen",
+          "url": "/#feature",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "buttons": [
+
+    ],
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "title": "KI-Geschichtengenerator - Kostenlos & Unbegrenzt",
+    "highlight_text": "Geschichtengenerator",
+    "description": "Erstellen Sie in Sekunden fesselnde Geschichten mit unserem KI-gestützten Geschichtengenerator. Perfekt für Autoren, Vermarkter und Kreative.",
+    "announcement": {
+      "show": false,
+      "label": "2025",
+      "title": "🎉 Frohes Neues Jahr",
+      "url": "/pricing"
+    },
+    "buttons": [
+      {
+        "title": "Loslegen",
+        "icon": "RiFlashlightFill",
+        "url": "/#craft_story",
+        "target": "_self",
+        "variant": "default"
+      }
+    ],
+    "show_happy_users": true,
+    "show_badge": false,
+    "image":{
+      "src": "",
+      "alt": "Illustration"
+    },
+    "prism_background": {
+      "enabled": false,
+      "animationType": "rotate",
+      "timeScale": 0.5,
+      "height": 3.5,
+      "baseWidth": 5.5,
+      "scale": 3.6,
+      "hueShift": 0,
+      "colorFrequency": 1,
+      "noise": 0.5,
+      "glow": 1,
+      "bloom": 1
+    }
+  },
+  "branding": {
+  },
+  "introduce": {
+    "name": "introduce",
+    "title": "Was ist ein KI-Geschichtengenerator",
+    "label": "Einführung",
+    "description": "Die Welt des Geschichtenerzählens wurde durch Technologie revolutioniert, und KI-Geschichtengeneratoren stehen an der Spitze dieser Transformation. Diese innovativen Tools nutzen künstliche Intelligenz, um Erzählungen zu erstellen und bieten eine kreative Lösung für Autoren, Vermarkter und Content-Ersteller. Aber was genau ist ein KI-Geschichtengenerator und wie kann er Ihnen nützen? Ein KI-Geschichtengenerator ist eine Softwareanwendung, die Algorithmen und maschinelles Lernen verwendet, um Geschichten zu erstellen. Diese Geschichten können von einfachen Erzählungen bis zu komplexen Handlungen mit komplizierter Charakterentwicklung reichen. Durch die Verarbeitung riesiger Datenmengen, einschließlich Sprachmustern und Erzählstrukturen, können diese Generatoren einzigartige Inhalte basierend auf Benutzereingaben oder Aufforderungen erstellen.",
+    "image": {
+      "src": "/imgs/features/1.png"
+    },
+    "items": [
+
+    ]
+  },
+  "benefit": {
+    "name": "benefit",
+    "title": "Warum Geschichtengenerator wählen",
+    "label": "Vorteile",
+    "description": "KI-Geschichtengeneratoren verfügen über zahlreiche Funktionen zur Steigerung von Kreativität und Produktivität",
+    "items": [
+      {
+        "title": "Ohne Filter und ohne Limit-Optionen",
+        "description": "Viele KI-Geschichtengeneratoren bieten Optionen ohne Filter und ohne Limits, die es Benutzern ermöglichen, ein breites Spektrum an Ideen ohne Einschränkungen zu erkunden. Diese Flexibilität fördert die Kreativität und ermöglicht es Autoren, mit verschiedenen Genres, Themen und Stilen zu experimentieren.",
+        "icon": "RiNextjsFill",
+        "image": {
+          "src": "/imgs/features/2.png"
+        }
+      },
+      {
+        "title": "Kostenloser Zugang",
+        "description": "Mehrere KI-Geschichtengeneratoren sind kostenlos verfügbar und machen sie für jeden zugänglich, der sein kreatives Potenzial erkunden möchte. Kostenlose Versionen bieten oft grundlegende Funktionen, mit Premium-Optionen für erweiterte Features.",
+        "icon": "RiClapperboardAiLine",
+        "image": {
+          "src": "/imgs/features/3.png"
+        }
+      },
+      {
+        "title": "Benutzerfreundliche Oberfläche",
+        "description": "Die meisten KI-Geschichtengeneratoren verfügen über eine intuitive Benutzeroberfläche, die selbst für Anfänger leicht zu navigieren ist. Benutzer können Eingaben eingeben, Genres auswählen und Einstellungen anpassen, um Geschichten zu generieren, die mit ihrer Vision übereinstimmen.",
+        "icon": "RiCodeFill",
+        "image": {
+          "src": "/imgs/features/4.png"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "name": "usage",
+    "title": "Wie KI-Geschichtengeneratoren funktionieren",
+    "description": "KI-Geschichtengeneratoren basieren auf der natürlichen Sprachverarbeitung (NLP), um Text zu verstehen und zu erzeugen. Sie analysieren Eingabedaten, um linguistische Muster zu identifizieren, und verwenden diese Informationen, um kohärente Erzählungen zu erstellen. Algorithmen des maschinellen Lernens ermöglichen es diesen Tools, sich im Laufe der Zeit zu verbessern und aus jeder Interaktion zu lernen, um zunehmend anspruchsvolle Inhalte zu produzieren.",
+    "image": {
+      "src": "/imgs/features/1.png"
+    },
+    "image_position": "left",
+    "text_align": "center",
+    "items": [
+      {
+        "title": "Eingabe-Aufforderungen",
+        "description": "Benutzer geben erste Aufforderungen oder Schlüsselwörter an, um den Geschichtengenerierungsprozess zu leiten. Diese Aufforderungen können so einfach oder detailliert sein, wie gewünscht, und beeinflussen die Richtung und den Ton der resultierenden Erzählung.",
+        "icon": "RiInputMethodFill"
+      },
+      {
+        "title": "Algorithmusverarbeitung",
+        "description": "Die KI verarbeitet die Eingabe mithilfe komplexer Algorithmen, die Sprachstruktur, Grammatik und Kontext analysieren. Dieser Schritt ist entscheidend, um sicherzustellen, dass die generierte Geschichte kohärent und fesselnd ist.",
+        "icon": "RiAlgorithmFill"
+      },
+      {
+        "title": "Geschichtengenerierung",
+        "description": "Basierend auf den verarbeiteten Daten generiert die KI eine Geschichte, die mit der Benutzereingabe übereinstimmt. Die Ausgabe kann in Länge und Komplexität variieren, abhängig von den vom Benutzer festgelegten Parametern.",
+        "icon": "RiFileTextFill"
+      }
+    ]
+  },
+  "feature": {
+    "name": "feature",
+    "title": "Anwendungen von KI-Geschichtengeneratoren",
+    "description": "KI-Geschichtengeneratoren haben vielfältige Anwendungen in verschiedenen Bereichen",
+    "items": [
+      {
+        "title": "Kreatives Schreiben",
+        "description": "Autoren können KI-Geschichtengeneratoren verwenden, um Schreibblockaden zu überwinden oder neue Geschichtenideen zu erkunden. Diese Tools können als Inspirationsquelle dienen und neue Perspektiven und Handlungswendungen bieten.",
+        "icon": "RiNextjsFill"
+      },
+      {
+        "title": "Marketing und Content-Erstellung",
+        "description": "Vermarkter und Content-Ersteller können KI-Geschichtengeneratoren nutzen, um ansprechende Inhalte für Blogs, soziale Medien und Werbekampagnen zu produzieren. Die Fähigkeit, schnell einzigartige Geschichten zu generieren, kann Zeit sparen und die Produktivität steigern.",
+        "icon": "RiKey2Fill"
+      },
+      {
+        "title": "Dateninfrastruktur",
+        "description": "Integrierte Supabase-Integration für zuverlässige und skalierbare Datenspeicherung.",
+        "icon": "RiDatabase2Line"
+      },
+      {
+        "title": "Bildung",
+        "description": "In Bildungsumgebungen können KI-Geschichtengeneratoren beim Unterrichten von kreativem Schreiben und Geschichtenerzählen helfen. Studenten können diese Tools verwenden, um Schreibfähigkeiten zu üben und verschiedene Erzähltechniken zu erkunden.",
+        "icon": "RiCloudy2Fill"
+      }
+    ]
+  },
+  "stats": {
+
+  },
+  "testimonial": {
+    "name": "testimonial",
+    "label": "Testimonials",
+    "title": "Was Autoren über unseren KI-Geschichtengenerator sagen",
+    "description": "Entdecken Sie, wie unser Geschichtengenerator Autoren, Content-Erstellern und Pädagogen hilft, mühelos kreative Geschichten zu generieren.",
+    "icon": "GoThumbsup",
+    "items": [
+      {
+        "title": "Sarah Mitchell",
+        "label": "Kreative Autorin & Romanautorin",
+        "description": "Dieser KI-Geschichtengenerator hat meinen Schreibprozess völlig verändert. Ich verwende ihn, um Geschichtenideen zu generieren, wenn ich eine Schreibblockade habe, und die Qualität ist unglaublich. Es ist, als hätte ich einen kreativen Schreibpartner, der 24/7 verfügbar ist!",
+        "image": {
+          "src": "/imgs/users/1.png"
+        }
+      },
+      {
+        "title": "David Park",
+        "label": "Content-Marketing-Manager",
+        "description": "Unser Team verwendet diesen Geschichtengenerator täglich, um fesselnde Erzählungen für unsere Markenkampagnen zu erstellen. Die KI-generierten Geschichten sind so gut gestaltet, dass wir nur minimale Bearbeitung benötigen. Es hat uns unzählige Stunden kreativer Schreibzeit gespart.",
+        "image": {
+          "src": "/imgs/users/2.png"
+        }
+      },
+      {
+        "title": "Emily Rodriguez",
+        "label": "Gymnasiallehrerin für Englisch",
+        "description": "Ich empfehle diesen KI-Geschichtengenerator allen meinen Schülern zur Inspiration für kreatives Schreiben. Das Tool hilft ihnen, Geschichtenstruktur zu verstehen und einzigartige Geschichtenideen zu generieren. Es ist eine erstaunliche Bildungsressource für den Unterricht im narrativen Schreiben!",
+        "image": {
+          "src": "/imgs/users/3.png"
+        }
+      },
+      {
+        "title": "Michael Chen",
+        "label": "Belletristikautor & Blogger",
+        "description": "Als professioneller Autor war ich zunächst skeptisch gegenüber KI-Geschichtengeneratoren. Aber dieses Tool hat mich eines Besseren belehrt! Die Geschichten, die es generiert, sind kreativ, kohärent und tatsächlich inspirierend. Ich verwende es, um verschiedene Erzählperspektiven und Handlungsmöglichkeiten zu erkunden.",
+        "image": {
+          "src": "/imgs/users/4.png"
+        }
+      },
+      {
+        "title": "Jessica Williams",
+        "label": "Content-Erstellerin & Geschichtenerzählerin",
+        "description": "Der kostenlose KI-Geschichtengenerator war ein Game-Changer für meinen YouTube-Kanal. Ich generiere wöchentlich Geschichtenkonzepte, passe sie an und verwandle sie in fesselnde Videoskripte. Die unbegrenzten kreativen Möglichkeiten halten meinen Content frisch und aufregend!",
+        "image": {
+          "src": "/imgs/users/5.png"
+        }
+      },
+      {
+        "title": "Alex Thompson",
+        "label": "Universitätsstudent",
+        "description": "Dieser Geschichtengenerator hat mir geholfen, meine kreativen Schreibaufgaben zu meistern. Ich verwende ihn, um erste Geschichtenentwürfe zu generieren und entwickle sie dann zu ausgefeilten Stücken. Die KI versteht verschiedene Genres perfekt - von Sci-Fi über Romantik bis Mystery!",
+        "image": {
+          "src": "/imgs/users/6.png"
+        }
+      }
+    ]
+  },
+  "faq": {
+    "name": "faq",
+    "label": "FAQ",
+    "title": "Häufig gestellte Fragen zum KI-Geschichtengenerator",
+    "description": "Finden Sie Antworten auf häufige Fragen zu unserem KI-Geschichtengenerator",
+    "items": [
+      {
+        "title": "Was ist ein KI-Geschichtengenerator und wie funktioniert er?",
+        "description": "Unser KI-Geschichtengenerator ist eine fortschrittliche Plattform, die einzigartige, maßgeschneiderte Geschichten basierend auf Ihren Eingaben erstellt. Geben Sie einfach Ihre Geschichtenidee ein, wählen Sie aus drei leistungsstarken KI-Modellen (Gemini 2.5 Flash Lite für Geschwindigkeit, Gemini 2.5 Flash für Eloquenz oder Gemini 2.5 Flash Think für Kreativität) und passen Sie Parameter wie Format, Länge, Genre, Erzählperspektive, Zielgruppe und Ton an. Die KI generiert Ihre Geschichte in Sekunden mit Echtzeit-Streaming."
+      },
+      {
+        "title": "Welche Anpassungsoptionen für Geschichten sind verfügbar?",
+        "description": "Sie können mehrere Parameter anpassen: Format (Prosa, Drehbuch, Kurzgeschichte, Brief, Tagebuch, Märchen, Mythos, Fabel, Gedicht), Länge (300-3000 Wörter in 6 Optionen), Genre (Fantasy, Sci-Fi, Romantik, Thriller, Horror, Abenteuer, historisch und mehr), Erzählperspektive (Ich-Perspektive, Du-Perspektive, Er/Sie-Perspektive begrenzt/allwissend), Zielgruppe (Kinder bis reife Erwachsene) und Ton/Stimmung (hoffnungsvoll, dunkel, romantisch, spannend, inspirierend, lustig, dramatisch, skurril, tragisch)."
+      },
+      {
+        "title": "Wie lange dauert es, eine Geschichte zu generieren?",
+        "description": "Die Geschichtengenerierungszeit variiert je nach Modell: Gemini 2.5 Flash Lite generiert Geschichten in etwa 3 Sekunden, Gemini 2.5 Flash in etwa 5 Sekunden und Gemini 2.5 Flash Think in etwa 10 Sekunden. Die tatsächliche Zeit kann je nach Geschichtenlänge und Komplexität leicht variieren. Alle Geschichten werden in Echtzeit gestreamt, sodass Sie sie beim Schreiben sehen können."
+      },
+      {
+        "title": "Kann ich Geschichten kopieren, speichern oder neu generieren?",
+        "description": "Absolut! Nach der Generierung können Sie Ihre Geschichte mit einem Klick in die Zwischenablage kopieren, sie mit verschiedenen Parametern oder für Variationen neu generieren, und alle Geschichten werden mit genauen Wortzählungen angezeigt. Die Benutzeroberfläche bietet benutzerfreundliche Schaltflächen zum Kopieren und Neugenerieren für nahtloses Geschichtenmanagement."
+      },
+      {
+        "title": "Wie funktioniert das Guthabensystem?",
+        "description": "Unsere Plattform verwendet ein kostenloses Guthabensystem, bei dem die Geschichtengenerierung Guthaben von Ihrem Konto verbraucht."
+      },
+      {
+        "title": "Was macht diesen KI-Geschichtengenerator anders als andere?",
+        "description": "Unsere Plattform bietet: (1) Drei spezialisierte Gemini-Modelle für unterschiedliche Bedürfnisse, (2) Umfassende Anpassung mit 50+ Optionskombinationen, (3) Echtzeit-Streaming-Ausgabe, (4) Mehrsprachige Unterstützung mit muttersprachlicher Schreibqualität, (5) Professionelle Schreibrichtlinien, die in KI-Eingaben integriert sind, (6) Geschichtenvorlagen und Inspirationstools, (7) Wortzählung für Englisch und CJK-Sprachen"
+      }
+    ]
+  },
+  "story_generate": {
+    "header": {
+      "title": "Gestalten Sie Ihre Geschichte",
+      "subtitle": "Verwandeln Sie Ihre Ideen mit KI in fesselnde Erzählungen"
+    },
+    "prompt": {
+      "label": "Ihre Geschichten-Eingabe",
+      "required": "(Erforderlich)",
+      "placeholder": "Beginnen Sie Ihre Geschichte... (z.B. 'Ein junger Zauberer entdeckt eine versteckte Bibliothek mit Büchern aus Paralleluniversen')",
+      "random_button": "Zufällige Eingabe",
+      "quick_adds_label": "Schnell hinzufügen:",
+      "quick_add_chips": {
+        "plot_twist": "Handlungswendung hinzufügen",
+        "dialogue": "Dialog einschließen",
+        "setting": "Schauplatz beschreiben"
+      },
+      "character_counter": "{count} / 2000"
+    },
+    "random_prompts": [
+      "Ein Zeitreisender ändert versehentlich ein kleines Detail in der Vergangenheit, was zu unerwarteten Konsequenzen in der Gegenwart führt.",
+      "In einer Welt, in der Erinnerungen gekauft und verkauft werden können, entdeckt ein Erinnerungsdieb eine Wahrheit, die alles verändern könnte.",
+      "Ein mysteriöser Brief kommt an Ihre Tür, der eine Karte zu einem Ort enthält, der in keinen offiziellen Aufzeichnungen existiert.",
+      "Der letzte Bibliothekar der Erde bewacht die letzte Sammlung physischer Bücher in einer Welt, die vollständig digital geworden ist.",
+      "Ein junger Künstler entdeckt, dass alles, was er malt, um Mitternacht zum Leben erwacht.",
+      "In einer Zukunft, in der Emotionen von der Regierung reguliert werden, erlebt jemand zum ersten Mal ein verbotenes Gefühl."
+    ],
+    "presets": {
+      "title": "Geschichtenideen",
+      "items": {
+        "fantasy_quest": {
+          "title": "Fantasy-Abenteuer",
+          "desc": "Episches Abenteuer",
+          "template": "Schreiben Sie ein episches Fantasy-Abenteuer über einen Helden, der sich auf eine gefährliche Quest begeben muss, um sein Königreich vor einem uralten Bösen zu retten."
+        },
+        "scifi_thriller": {
+          "title": "Sci-Fi-Thriller",
+          "desc": "Weltraum-Mystery",
+          "template": "Erstellen Sie eine spannende Science-Fiction-Geschichte im Weltraum, in der eine Crew etwas entdeckt, das die Menschheit bedroht."
+        },
+        "love_story": {
+          "title": "Liebesgeschichte",
+          "desc": "Romantische Geschichte",
+          "template": "Erzählen Sie eine herzerwärmende romantische Geschichte über zwei Menschen aus verschiedenen Welten, die unerwartet Liebe finden."
+        },
+        "crime_mystery": {
+          "title": "Krimi-Mystery",
+          "desc": "Detektivgeschichte",
+          "template": "Gestalten Sie eine fesselnde Detektivgeschichte, in der ein brillanter Ermittler ein rätselhaftes Verbrechen mit unerwarteten Wendungen lösen muss."
+        }
+      }
+    },
+    "ai_models": {
+      "title": "Wählen Sie Ihren KI-Geschichtenerzähler",
+      "hint": "Alle Modelle produzieren hochwertige Geschichten. Wählen Sie basierend auf Ihrer Priorität.",
+      "models": {
+        "fastest": {
+          "name": "Am schnellsten",
+          "badge": "Blitzschnell",
+          "description": "Am besten für schnelle Iterationen",
+          "speed": "~3s"
+        },
+        "eloquent": {
+          "name": "Am eloquentesten",
+          "badge": "Premium-Qualität",
+          "description": "Am besten für elegantes Schreiben",
+          "speed": "~5s"
+        },
+        "creative": {
+          "name": "Am kreativsten",
+          "badge": "Tiefes Denken",
+          "description": "Am besten für kreative Geschichten",
+          "speed": "~10s"
+        }
+      },
+      "selected": "✓ Ausgewählt",
+      "select": "Auswählen →"
+    },
+    "advanced_options": {
+      "title": "Erweiterte Optionen",
+      "subtitle": "Feinabstimmung Ihrer Geschichtengenerierung",
+      "optional_badge": "Optional",
+      "format": {
+        "label": "Format (Optional)",
+        "placeholder": "Format auswählen",
+        "options": {
+          "none": "Keine",
+          "prose": "Prosa",
+          "screenplay": "Drehbuch",
+          "short_story": "Kurzgeschichte",
+          "letter": "Brief",
+          "diary": "Tagebuch",
+          "fairy_tale": "Märchen",
+          "myth": "Mythos",
+          "fable": "Fabel",
+          "poem": "Gedicht"
+        }
+      },
+      "length": {
+        "label": "Geschichtenlänge (Optional)",
+        "placeholder": "Länge auswählen",
+        "options": {
+          "none": "Keine",
+          "short": "Kurz (300-600 Wörter)",
+          "medium": "Mittel (600-900 Wörter)",
+          "long": "Lang (900-1200 Wörter)",
+          "extend": "Erweitert (1200-1500 Wörter)",
+          "epic_short": "Episch Kurz (1500-2000 Wörter)",
+          "novella_lite": "Novelle-Lite (2000-3000 Wörter)"
+        }
+      },
+      "genre": {
+        "label": "Genre (Optional)",
+        "placeholder": "Genre auswählen",
+        "options": {
+          "none": "Keine",
+          "fantasy": "Fantasy",
+          "science_fiction": "Science-Fiction",
+          "romance": "Romantik",
+          "thriller": "Thriller",
+          "drama": "Drama",
+          "comedy": "Komödie",
+          "action": "Action",
+          "western": "Western",
+          "crime": "Krimi",
+          "science": "Wissenschaft",
+          "fiction": "Fiktion",
+          "non_fiction": "Sachbuch",
+          "mystery": "Mystery",
+          "biography": "Biografie",
+          "self_help": "Selbsthilfe",
+          "horror": "Horror",
+          "adventure": "Abenteuer",
+          "historical": "Historisch"
+        }
+      },
+      "perspective": {
+        "label": "Erzählperspektive (Optional)",
+        "placeholder": "Perspektive auswählen",
+        "options": {
+          "first_person": "Ich-Perspektive",
+          "second_person": "Du-Perspektive",
+          "third_person_limited": "Er/Sie-Perspektive begrenzt",
+          "third_person_omniscient": "Er/Sie-Perspektive allwissend"
+        }
+      },
+      "audience": {
+        "label": "Zielgruppe (Optional)",
+        "placeholder": "Zielgruppe auswählen",
+        "options": {
+          "none": "Keine",
+          "kids": "Kinder (5-8 Jahre)",
+          "pre_teen": "Vorjugendliche (9-12 Jahre)",
+          "teens": "Teenager (13-17 Jahre)",
+          "young_adults": "Junge Erwachsene (18-25 Jahre)",
+          "adults": "Erwachsene (26-40 Jahre)",
+          "mature_audience": "Reife Zielgruppe (40+ Jahre)",
+          "general": "Allgemeine Leser",
+          "families": "Familien",
+          "educators": "Pädagogen",
+          "writers_author": "Autoren/Schriftsteller"
+        }
+      },
+      "tone": {
+        "label": "Ton / Stimmung (Optional)",
+        "placeholder": "Ton/Stimmung auswählen",
+        "options": {
+          "none": "Keine",
+          "hopeful": "Hoffnungsvoll",
+          "dark": "Dunkel",
+          "romantic": "Romantisch",
+          "suspenseful": "Spannend",
+          "inspirational": "Inspirierend",
+          "funny": "Lustig",
+          "dramatic": "Dramatisch",
+          "whimsical": "Skurril",
+          "tragic": "Tragisch"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "Geschichte generieren",
+      "generating": "Wird generiert...",
+      "info": {
+        "credit": "Kostenloses Guthaben",
+        "credit_text": "pro Geschichte",
+        "time": "Geschätzt: ~10 Sekunden",
+        "quality": "Premium-Qualität"
+      },
+      "tip": "Tipp: Seien Sie in Ihrer Eingabe spezifisch für bessere Ergebnisse. Sie können jederzeit verfeinern und neu generieren!"
+    },
+    "output": {
+      "title": "Ihre generierte Geschichte",
+      "status_writing": "Ihre Geschichte wird geschrieben...",
+      "status_complete": "Geschichte vollständig",
+      "word_count": "{count} Wörter",
+      "button_copy": "Kopieren",
+      "button_regenerate": "Neu generieren",
+      "loading": "KI erstellt Ihre Geschichte..."
+    },
+    "toasts": {
+      "error_no_prompt": "Bitte geben Sie eine Geschichten-Eingabe ein",
+      "error_no_model": "Bitte wählen Sie ein KI-Modell aus",
+      "error_generate_failed": "Geschichte konnte nicht generiert werden. Bitte versuchen Sie es erneut.",
+      "error_no_stream": "Antwort-Stream konnte nicht gelesen werden",
+      "error_no_content": "Kein Geschichteninhalt wurde generiert",
+      "success_generated": "Geschichte erfolgreich generiert!",
+      "success_copied": "Geschichte in die Zwischenablage kopiert!"
+    }
+  },
+  "cta": {
+    "name": "cta",
+    "title": "KI-Geschichtengenerator-Startup",
+    "description": "Beginnen Sie hier mit dem Geschichtengenerator.",
+    "buttons": [
+      {
+        "title": "Start",
+        "url": "/#craft_story",
+        "target": "",
+        "icon": "GoArrowUpRight"
+      }
+    ]
+  },
+  "footer": {
+    "name": "footer",
+    "brand": {
+      "title": "Geschichtengenerator",
+      "description": "Entfalten Sie kreatives Potenzial mit einem KI-Geschichtengenerator. Von ungefilterten Optionen bis zu kostenlosem Zugang – erkunden Sie noch heute grenzenlose Erzählmöglichkeiten!",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Geschichtengenerator"
+      },
+      "url": "/"
+    },
+    "copyright": "© 2025 • Geschichtengenerator Alle Rechte vorbehalten.",
+    "nav": {
+      "items": [
+        {
+          "title": "Über",
+          "children": [
+            {
+              "title": "Funktionen",
+              "url": "/#feature",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "KI-Tools",
+         "children": [
+            {
+              "title": "Geschichtengenerator",
+              "url": "/",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "X",
+          "icon": "RiTwitterXFill",
+          "url": "https://x.com/wangrui69490224",
+          "target": "_blank"
+        },
+        {
+          "title": "Github",
+          "icon": "RiGithubFill",
+          "url": "https://github.com/wang1309",
+          "target": "_blank"
+        },
+        {
+          "title": "Discord",
+          "icon": "RiDiscordFill",
+          "url": "https://discord.gg/D3q6Ck5H",
+          "target": "_blank"
+        },
+        {
+          "title": "E-Mail",
+          "icon": "RiMailLine",
+          "url": "mailto:wangrui171309@gmail.com",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Datenschutzrichtlinie",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Nutzungsbedingungen",
+          "url": "/terms-of-service"
+        }
+      ]
+    }
+  }
+}

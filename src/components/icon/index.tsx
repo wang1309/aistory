@@ -8,7 +8,7 @@
 // import * as Pi from "react-icons/pi"; // Phosphor Icons
 import * as Ri from "react-icons/ri"; // Remix icons
 
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 
 // import * as Cg from "react-icons/cg"; // Circum icons
 // import * as Ci from "react-icons/ci"; // css.gg
@@ -72,7 +72,23 @@ const iconPackages: { [key: string]: any } = {
   // Wi,
 };
 
-export default function Icon({
+// Helper function moved outside component for better performance
+function getIcon(name: string): ReactNode {
+  // Extract prefix (first two characters)
+  const prefix = name.slice(0, 2);
+
+  // Get the corresponding icon package
+  const iconPackage = iconPackages[prefix];
+  if (iconPackage) {
+    const iconName = name as keyof typeof iconPackage;
+    return iconPackage[iconName] || null;
+  }
+
+  return null;
+}
+
+// Memoized Icon component for performance optimization
+const Icon = memo(function Icon({
   name,
   className,
   onClick,
@@ -81,20 +97,6 @@ export default function Icon({
   className?: string;
   onClick?: () => void;
 }) {
-  function getIcon(name: string): ReactNode {
-    // Extract prefix (first two characters)
-    const prefix = name.slice(0, 2);
-
-    // Get the corresponding icon package
-    const iconPackage = iconPackages[prefix];
-    if (iconPackage) {
-      const iconName = name as keyof typeof iconPackage;
-      return iconPackage[iconName] || null;
-    }
-
-    return null;
-  }
-
   const IconComponent = getIcon(name) as React.ElementType;
 
   // Return null if no icon is found
@@ -108,4 +110,6 @@ export default function Icon({
       style={{ cursor: onClick ? "pointer" : "default" }}
     />
   );
-}
+});
+
+export default Icon;

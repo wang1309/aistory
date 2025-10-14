@@ -1,12 +1,12 @@
 {
-  "template": "shipany-template-one",
+  "template": "story generate",
   "theme": "light",
   "header": {
     "brand": {
-      "title": "ShipAny",
+      "title": "故事生成器",
       "logo": {
         "src": "/logo.png",
-        "alt": "ShipAny"
+        "alt": "故事生成器"
       },
       "url": "/"
     },
@@ -16,162 +16,94 @@
           "title": "功能特点",
           "url": "/#feature",
           "icon": "RiSparkling2Line"
-        },
-        {
-          "title": "定价",
-          "url": "/pricing",
-          "icon": "RiMoneyDollarCircleLine"
-        },
-        {
-          "title": "案例展示",
-          "url": "/showcase",
-          "icon": "RiApps2Line"
-        },
-        {
-          "title": "博客",
-          "url": "/posts",
-          "icon": "RiArticleLine"
-        },
-        {
-          "title": "文档",
-          "url": "/docs",
-          "icon": "RiBookOpenLine"
         }
       ]
     },
     "buttons": [
-      {
-        "title": "获取 ShipAny",
-        "url": "https://shipany.ai",
-        "target": "_blank",
-        "variant": "link",
-        "icon": "RiArrowRightUpLine"
-      }
+
     ],
     "show_sign": true,
     "show_theme": true,
     "show_locale": true
   },
   "hero": {
-    "title": "几小时内快速构建 AI 创业项目，而不是几天",
-    "highlight_text": "快速构建",
-    "description": "ShipAny 是一个用于构建 AI SaaS 创业项目的 NextJS 模板。<br/>通过丰富的模板和组件快速启动。",
+    "title": "AI 故事生成器 - 免费且无限制",
+    "highlight_text": "故事生成器",
+    "description": "使用我们的 AI 驱动的故事生成器，在几秒钟内创建引人入胜的故事。非常适合作家、营销人员和创意人士。",
     "announcement": {
+      "show": false,
       "label": "2025",
       "title": "🎉 新年快乐",
       "url": "/pricing"
     },
-    "tip": "🎁 2025年前五折优惠",
     "buttons": [
       {
-        "title": "立即开始",
+        "title": "开始创作",
         "icon": "RiFlashlightFill",
-        "url": "/pricing",
+        "url": "/#craft_story",
         "target": "_self",
         "variant": "default"
-      },
-      {
-        "title": "阅读文档",
-        "icon": "RiBookOpenLine",
-        "url": "https://docs.shipany.ai",
-        "target": "_blank",
-        "variant": "outline"
       }
     ],
     "show_happy_users": true,
-    "show_badge": false
+    "show_badge": false,
+    "image":{
+      "src": "",
+      "alt": "插图"
+    },
+    "prism_background": {
+      "enabled": false,
+      "animationType": "rotate",
+      "timeScale": 0.5,
+      "height": 3.5,
+      "baseWidth": 5.5,
+      "scale": 3.6,
+      "hueShift": 0,
+      "colorFrequency": 1,
+      "noise": 0.5,
+      "glow": 1,
+      "bloom": 1
+    }
   },
   "branding": {
-    "title": "ShipAny 建立在巨人的肩膀上",
-    "items": [
-      {
-        "title": "Next.js",
-        "image": {
-          "src": "/imgs/logos/nextjs.svg",
-          "alt": "Next.js"
-        }
-      },
-      {
-        "title": "React",
-        "image": {
-          "src": "/imgs/logos/react.svg",
-          "alt": "React"
-        }
-      },
-      {
-        "title": "TailwindCSS",
-        "image": {
-          "src": "/imgs/logos/tailwindcss.svg",
-          "alt": "TailwindCSS"
-        }
-      },
-      {
-        "title": "Shadcn/UI",
-        "image": {
-          "src": "/imgs/logos/shadcn.svg",
-          "alt": "Shadcn/UI"
-        }
-      },
-      {
-        "title": "Vercel",
-        "image": {
-          "src": "/imgs/logos/vercel.svg",
-          "alt": "Vercel"
-        }
-      }
-    ]
   },
   "introduce": {
     "name": "introduce",
-    "title": "什么是 ShipAny",
+    "title": "什么是 AI 故事生成器",
     "label": "介绍",
-    "description": "ShipAny 是一个用于构建 AI SaaS 创业项目的 NextJS 模板，内置多种模板和组件。",
+    "description": "讲故事的世界已经被技术彻底改变，AI 故事生成器处于这一变革的最前沿。这些创新工具使用人工智能来创作叙事，为作家、营销人员和内容创作者提供创意解决方案。但 AI 故事生成器究竟是什么，它如何使您受益？AI 故事生成器是一种使用算法和机器学习来生成故事的软件应用程序。这些故事可以从简单的叙述到具有复杂角色发展的复杂情节。通过处理大量数据，包括语言模式和叙事结构，这些生成器可以根据用户输入或提示创建独特的内容。",
     "image": {
       "src": "/imgs/features/1.png"
     },
     "items": [
-      {
-        "title": "即用型模板",
-        "description": "从数十个生产就绪的 AI SaaS 模板中选择，快速启动您的项目。",
-        "icon": "RiNextjsFill"
-      },
-      {
-        "title": "基础设施配置",
-        "description": "立即获取内置最佳实践的可扩展基础设施。",
-        "icon": "RiDatabase2Line"
-      },
-      {
-        "title": "快速部署",
-        "description": "在几小时内将您的 AI SaaS 应用部署到生产环境，而不是几天。",
-        "icon": "RiCloudyFill"
-      }
+
     ]
   },
   "benefit": {
     "name": "benefit",
-    "title": "为什么选择 ShipAny",
+    "title": "为什么选择故事生成器",
     "label": "优势",
-    "description": "获取启动 AI 创业所需的一切 - 从即用型模板到技术支持。",
+    "description": "AI 故事生成器拥有众多旨在增强创造力和生产力的功能",
     "items": [
       {
-        "title": "完整框架",
-        "description": "基于 Next.js 构建，集成身份验证、支付和 AI 功能 - 一切开箱即用。",
+        "title": "无过滤和无限制选项",
+        "description": "许多 AI 故事生成器提供无过滤和无限制选项，允许用户在没有限制的情况下探索广泛的想法。这种灵活性鼓励创造力，使作家能够尝试不同的类型、主题和风格。",
         "icon": "RiNextjsFill",
         "image": {
           "src": "/imgs/features/2.png"
         }
       },
       {
-        "title": "丰富的模板库",
-        "description": "选择各种 AI SaaS 模板来启动您的项目 - 聊天机器人、图像生成等。",
+        "title": "免费访问",
+        "description": "有几个 AI 故事生成器可以免费使用，让任何有兴趣探索创意潜力的人都能使用。免费版本通常提供基本功能，高级选项可用于更高级的功能。",
         "icon": "RiClapperboardAiLine",
         "image": {
           "src": "/imgs/features/3.png"
         }
       },
       {
-        "title": "技术指导",
-        "description": "获得专门支持并加入我们的开发者社区，确保您成功启动。",
+        "title": "用户友好界面",
+        "description": "大多数 AI 故事生成器都拥有直观的界面，即使对于初学者也很容易操作。用户可以输入提示、选择类型并自定义设置，以生成与他们的愿景一致的故事。",
         "icon": "RiCodeFill",
         "image": {
           "src": "/imgs/features/4.png"
@@ -181,8 +113,8 @@
   },
   "usage": {
     "name": "usage",
-    "title": "如何使用 ShipAny 启动项目",
-    "description": "通过三个简单步骤启动您的 AI SaaS 创业项目：",
+    "title": "AI 故事生成器的工作原理",
+    "description": "AI 故事生成器依赖自然语言处理（NLP）来理解和生成文本。它们分析输入数据以识别语言模式，并使用这些信息创建连贯的叙述。机器学习算法使这些工具能够随着时间的推移而改进，从每次交互中学习，以产生越来越复杂的内容。",
     "image": {
       "src": "/imgs/features/1.png"
     },
@@ -190,48 +122,35 @@
     "text_align": "center",
     "items": [
       {
-        "title": "获取 ShipAny",
-        "description": "一次性付款购买 ShipAny。查收邮件获取代码和文档。",
-        "image": {
-          "src": "/imgs/features/5.png"
-        }
+        "title": "输入提示",
+        "description": "用户提供初始提示或关键词来指导故事生成过程。这些提示可以根据需要简单或详细，影响结果叙述的方向和基调。",
+        "icon": "RiInputMethodFill"
       },
       {
-        "title": "开始您的项目",
-        "description": "阅读文档并克隆 ShipAny 代码。开始构建您的 AI SaaS 创业项目。",
-        "image": {
-          "src": "/imgs/features/6.png"
-        }
+        "title": "算法处理",
+        "description": "AI 使用复杂的算法处理输入，分析语言结构、语法和上下文。此步骤对于确保生成的故事连贯且引人入胜至关重要。",
+        "icon": "RiAlgorithmFill"
       },
       {
-        "title": "定制您的项目",
-        "description": "使用您的数据和内容修改模板。满足特定的 AI 功能需求。",
-        "image": {
-          "src": "/imgs/features/7.png"
-        }
-      },
-      {
-        "title": "部署到生产环境",
-        "description": "通过几个步骤将项目部署到生产环境，立即开始服务客户。",
-        "image": {
-          "src": "/imgs/features/8.png"
-        }
+        "title": "故事生成",
+        "description": "基于处理的数据，AI 生成与用户输入一致的故事。输出的长度和复杂性可能会有所不同，具体取决于用户设置的参数。",
+        "icon": "RiFileTextFill"
       }
     ]
   },
   "feature": {
     "name": "feature",
-    "title": "ShipAny 核心功能",
-    "description": "快速高效启动 AI SaaS 创业所需的一切。",
+    "title": "AI 故事生成器的应用",
+    "description": "AI 故事生成器在各个领域都有多样化的应用",
     "items": [
       {
-        "title": "Next.js 模板",
-        "description": "生产就绪的 Next.js 模板，支持 SEO 友好结构和国际化。",
+        "title": "创意写作",
+        "description": "作家可以使用 AI 故事生成器来克服写作障碍或探索新的故事想法。这些工具可以作为灵感来源，提供新鲜的视角和情节转折。",
         "icon": "RiNextjsFill"
       },
       {
-        "title": "身份验证和支付",
-        "description": "集成 Google OAuth、一键登录和 Stripe 支付处理。",
+        "title": "营销和内容创作",
+        "description": "营销人员和内容创作者可以利用 AI 故事生成器为博客、社交媒体和广告活动制作引人入胜的内容。快速生成独特故事的能力可以节省时间并提高生产力。",
         "icon": "RiKey2Fill"
       },
       {
@@ -240,97 +159,66 @@
         "icon": "RiDatabase2Line"
       },
       {
-        "title": "一键部署",
-        "description": "无缝部署到 Vercel 或 Cloudflare，自动化设置。",
+        "title": "教育",
+        "description": "在教育环境中，AI 故事生成器可以帮助教授创意写作和讲故事。学生可以使用这些工具来练习写作技能并探索不同的叙事技巧。",
         "icon": "RiCloudy2Fill"
-      },
-      {
-        "title": "业务分析",
-        "description": "集成 Google Analytics 和 Search Console 追踪增长。",
-        "icon": "RiBarChart2Line"
-      },
-      {
-        "title": "AI 就绪基础设施",
-        "description": "预配置 AI 集成，内置积分系统和 API 销售。",
-        "icon": "RiRobot2Line"
       }
     ]
   },
   "stats": {
-    "name": "stats",
-    "label": "统计",
-    "title": "用户喜爱 ShipAny",
-    "description": "因为它易于使用且快速发布。",
-    "icon": "FaRegHeart",
-    "items": [
-      {
-        "title": "信任",
-        "label": "99+",
-        "description": "客户"
-      },
-      {
-        "title": "内置",
-        "label": "20+",
-        "description": "组件"
-      },
-      {
-        "title": "快速发布",
-        "label": "5",
-        "description": "分钟"
-      }
-    ]
+
   },
   "testimonial": {
     "name": "testimonial",
     "label": "用户评价",
-    "title": "用户如何评价 ShipAny",
-    "description": "听听使用 ShipAny 启动 AI 创业项目的开发者和创始人怎么说。",
+    "title": "作家如何评价我们的 AI 故事生成器",
+    "description": "了解我们的故事生成器如何帮助作家、内容创作者和教育工作者轻松生成创意故事。",
     "icon": "GoThumbsup",
     "items": [
       {
-        "title": "陈大卫",
-        "label": "AIWallpaper.shop 创始人",
-        "description": "ShipAny 为我们节省了数月的开发时间。我们仅用 2 天就启动了 AI 壁纸业务，一周内就获得了第一个付费客户！",
+        "title": "莎拉·米切尔",
+        "label": "创意作家兼小说家",
+        "description": "这个 AI 故事生成器彻底改变了我的写作过程。当我遇到写作障碍时，我用它来生成故事创意，质量令人难以置信。就像有一个全天候可用的创意写作伙伴！",
         "image": {
           "src": "/imgs/users/1.png"
         }
       },
       {
-        "title": "金瑞秋",
-        "label": "HeyBeauty.ai 技术总监",
-        "description": "预构建的 AI 基础设施是一个游戏规则改变者。我们无需担心架构 - 只需专注于 AI 美容技术并快速上线。",
+        "title": "大卫·帕克",
+        "label": "内容营销经理",
+        "description": "我们的团队每天都使用这个故事生成器为我们的品牌活动创建引人入胜的叙述。AI 生成的故事如此精心制作，我们只需要进行最少的编辑。它为我们节省了无数小时的创意写作时间。",
         "image": {
           "src": "/imgs/users/2.png"
         }
       },
       {
-        "title": "马库斯",
-        "label": "独立开发者",
-        "description": "作为独立开发者，ShipAny 给了我所需的一切 - 身份验证、支付、AI 集成和漂亮的 UI。一个周末就启动了我的 SaaS！",
+        "title": "艾米莉·罗德里格斯",
+        "label": "高中英语教师",
+        "description": "我向所有学生推荐这个 AI 故事生成器，用于创意写作灵感。这个工具帮助他们理解故事结构并生成独特的故事创意。这是教授叙事写作的绝佳教育资源！",
         "image": {
           "src": "/imgs/users/3.png"
         }
       },
       {
-        "title": "索菲亚",
-        "label": "Melodisco CEO",
-        "description": "这些模板可直接用于生产且高度可定制。我们用几小时而不是几个月就建立了 AI 音乐平台。上市时间令人难以置信！",
+        "title": "迈克尔·陈",
+        "label": "小说作家兼博主",
+        "description": "作为一名专业作家，我最初对 AI 故事生成器持怀疑态度。但这个工具证明我错了！它生成的故事富有创意、连贯且真正鼓舞人心。我用它来探索不同的叙事视角和情节可能性。",
         "image": {
           "src": "/imgs/users/4.png"
         }
       },
       {
-        "title": "詹姆斯",
-        "label": "GPTs.works 技术主管",
-        "description": "ShipAny 的基础设施非常稳固。我们从 0 扩展到 1 万用户都没碰后端。这是我们 AI 创业最好的投资。",
+        "title": "杰西卡·威廉姆斯",
+        "label": "内容创作者兼讲故事者",
+        "description": "免费的 AI 故事生成器改变了我的 YouTube 频道。我每周生成故事概念，自定义它们，然后将它们变成引人入胜的视频脚本。无限的创意可能性让我的内容保持新鲜和令人兴奋！",
         "image": {
           "src": "/imgs/users/5.png"
         }
       },
       {
-        "title": "张安娜",
-        "label": "创业者",
-        "description": "从想法到上线只用了 3 天！ShipAny 的模板和部署工具让我们能够以令人难以置信的速度测试 AI 业务概念。",
+        "title": "亚历克斯·汤普森",
+        "label": "大学生",
+        "description": "这个故事生成器帮助我在创意写作作业中取得了好成绩。我用它生成初始故事草稿，然后将它们发展成精美的作品。AI 完美地理解不同的类型 - 从科幻到言情再到悬疑！",
         "image": {
           "src": "/imgs/users/6.png"
         }
@@ -340,66 +228,269 @@
   "faq": {
     "name": "faq",
     "label": "常见问题",
-    "title": "关于 ShipAny 的常见问题",
-    "description": "还有其他问题？通过 Discord 或电子邮件联系我们。",
+    "title": "关于 AI 故事生成器的常见问题",
+    "description": "查找有关我们 AI 故事生成器的常见问题的答案",
     "items": [
       {
-        "title": "ShipAny 究竟是什么，它是如何工作的？",
-        "description": "ShipAny 是一个专门为构建 AI SaaS 创业项目设计的综合性 NextJS 模板。它提供即用型模板、基础设施设置和部署工具，帮助您在几小时内而不是几天内启动 AI 业务。"
+        "title": "什么是 AI 故事生成器，它是如何工作的？",
+        "description": "我们的 AI 故事生成器是一个先进的平台，根据您的提示创建独特、定制的故事。只需输入您的故事想法，从三个强大的 AI 模型中选择（Gemini 2.5 Flash Lite 速度最快，Gemini 2.5 Flash 最流畅，或 Gemini 2.5 Flash Think 最有创意），并自定义格式、长度、类型、叙事视角、目标受众和基调等参数。AI 会在几秒钟内通过实时流式传输生成您的故事。"
       },
       {
-        "title": "使用 ShipAny 需要高级技术技能吗？",
-        "description": "虽然基本的编程知识会有帮助，但 ShipAny 设计得非常开发者友好。我们的模板和文档使您即使不是 AI 或云基础设施专家也能轻松入门。"
+        "title": "有哪些故事自定义选项？",
+        "description": "您可以自定义多个参数：格式（散文、剧本、短篇小说、书信、日记、童话、神话、寓言、诗歌）、长度（300-3000字，6个选项）、类型（奇幻、科幻、言情、惊悚、恐怖、冒险、历史等）、叙事视角（第一人称、第二人称、第三人称有限/全知）、目标受众（儿童到成熟成人）和基调/氛围（充满希望、黑暗、浪漫、悬疑、励志、有趣、戏剧性、异想天开、悲剧）。"
       },
       {
-        "title": "我可以用 ShipAny 构建什么类型的 AI SaaS？",
-        "description": "ShipAny 支持广泛的 AI 应用，从内容生成到数据分析工具。我们的模板涵盖流行用例，如 AI 聊天机器人、内容生成器、图像处理应用等。"
+        "title": "生成一个故事需要多长时间？",
+        "description": "故事生成时间因模型而异：Gemini 2.5 Flash Lite 大约3秒生成故事，Gemini 2.5 Flash 大约5秒，Gemini 2.5 Flash Think 大约10秒。实际时间可能会根据故事长度和复杂性略有不同。所有故事都是实时流式传输的，因此您可以看到它们被创作的过程。"
       },
       {
-        "title": "使用 ShipAny 通常需要多长时间才能启动？",
-        "description": "使用 ShipAny，您可以在几小时内完成工作原型，并在几小时内完成生产就绪的应用。我们的一键部署和预配置基础设施显著缩短了传统的数月开发周期。"
+        "title": "我可以复制、保存或重新生成故事吗？",
+        "description": "当然可以！生成后，您可以一键将故事复制到剪贴板，使用不同的参数重新生成或进行变体，所有故事都显示准确的字数。界面提供易于使用的复制和重新生成按钮，实现无缝的故事管理。"
       },
       {
-        "title": "ShipAny 的基础设施包括什么？",
-        "description": "ShipAny 提供完整的基础设施栈，包括身份验证、数据库设置、API 集成、支付处理和可扩展的云部署。一切都按照行业最佳实践预先配置。"
+        "title": "积分系统是如何工作的？",
+        "description": "我们的平台使用免费积分系统"
       },
       {
-        "title": "我可以自定义模板以匹配我的品牌吗？",
-        "description": "当然可以！所有 ShipAny 模板都完全可定制。您可以修改设计、功能和功能性以匹配您的品牌标识和特定业务需求，同时保持强大的底层基础设施。"
+        "title": "这个 AI 故事生成器与其他的有什么不同？",
+        "description": "我们的平台提供：（1）三个针对不同需求的专业 Gemini 模型，（2）超过50种选项组合的全面自定义，（3）实时流式输出，（4）多语言支持，具有母语级别的写作质量，（5）内置专业写作指南的 AI 提示，（6）故事预设和灵感工具，（7）英语和中日韩语言的字数跟踪"
       }
     ]
   },
+  "story_generate": {
+    "header": {
+      "title": "创作您的故事",
+      "subtitle": "用 AI 将您的想法变成引人入胜的叙事"
+    },
+    "prompt": {
+      "label": "您的故事提示",
+      "required": "(必填)",
+      "placeholder": "开始您的故事... (例如：'一个年轻的巫师发现了一座隐藏的图书馆，里面藏有来自平行宇宙的书籍')",
+      "random_button": "随机提示",
+      "quick_adds_label": "快速添加：",
+      "quick_add_chips": {
+        "plot_twist": "添加情节转折",
+        "dialogue": "包含对话",
+        "setting": "描述环境"
+      },
+      "character_counter": "{count} / 2000"
+    },
+    "random_prompts": [
+      "一个时间旅行者不小心改变了过去的一个小细节，导致现在出现意想不到的后果。",
+      "在一个可以买卖记忆的世界里，一个记忆小偷发现了一个可能改变一切的真相。",
+      "一封神秘的信件送到您的门口，里面有一张通往官方记录中不存在的地方的地图。",
+      "地球上最后一位图书管理员守护着这个完全数字化世界中最后一批实体书籍。",
+      "一位年轻的艺术家发现，他们画的所有东西都会在午夜时分活过来。",
+      "在一个情绪由政府管控的未来，有人第一次体验到了被禁止的情感。"
+    ],
+    "presets": {
+      "title": "故事创意",
+      "items": {
+        "fantasy_quest": {
+          "title": "奇幻探险",
+          "desc": "史诗冒险",
+          "template": "写一个史诗般的奇幻冒险故事，讲述一个英雄必须踏上危险的旅程，从古老的邪恶中拯救他们的王国。"
+        },
+        "scifi_thriller": {
+          "title": "科幻惊悚",
+          "desc": "太空悬疑",
+          "template": "创作一个悬疑的科幻故事，故事发生在深空中，一个船员发现了威胁人类的东西。"
+        },
+        "love_story": {
+          "title": "爱情故事",
+          "desc": "浪漫传奇",
+          "template": "讲述一个温馨的浪漫故事，关于两个来自不同世界的人如何找到意想不到的爱情。"
+        },
+        "crime_mystery": {
+          "title": "犯罪悬疑",
+          "desc": "侦探故事",
+          "template": "创作一个引人入胜的侦探故事，一个杰出的调查员必须解决一起令人费解的案件，其中充满意想不到的转折。"
+        }
+      }
+    },
+    "ai_models": {
+      "title": "选择您的 AI 讲故事者",
+      "hint": "所有模型都能生成高质量的故事。根据您的优先级选择。",
+      "models": {
+        "fastest": {
+          "name": "最快速",
+          "badge": "闪电般快速",
+          "description": "最适合快速迭代",
+          "speed": "约3秒"
+        },
+        "eloquent": {
+          "name": "最流畅",
+          "badge": "高级品质",
+          "description": "最适合优雅写作",
+          "speed": "约5秒"
+        },
+        "creative": {
+          "name": "最有创意",
+          "badge": "深度思考",
+          "description": "最适合创意故事",
+          "speed": "约10秒"
+        }
+      },
+      "selected": "✓ 已选中",
+      "select": "选择 →"
+    },
+    "advanced_options": {
+      "title": "高级选项",
+      "subtitle": "微调您的故事生成",
+      "optional_badge": "可选",
+      "format": {
+        "label": "格式(可选)",
+        "placeholder": "选择格式",
+        "options": {
+          "none": "无",
+          "prose": "散文",
+          "screenplay": "剧本",
+          "short_story": "短篇小说",
+          "letter": "书信",
+          "diary": "日记",
+          "fairy_tale": "童话",
+          "myth": "神话",
+          "fable": "寓言",
+          "poem": "诗歌"
+        }
+      },
+      "length": {
+        "label": "故事长度(可选)",
+        "placeholder": "选择长度",
+        "options": {
+          "none": "无",
+          "short": "短篇(300-600字)",
+          "medium": "中篇(600-900字)",
+          "long": "长篇(900-1200字)",
+          "extend": "加长(1200-1500字)",
+          "epic_short": "史诗短篇(1500-2000字)",
+          "novella_lite": "中篇小说精简版(2000-3000字)"
+        }
+      },
+      "genre": {
+        "label": "类型(可选)",
+        "placeholder": "选择类型",
+        "options": {
+          "none": "无",
+          "fantasy": "奇幻",
+          "science_fiction": "科幻",
+          "romance": "言情",
+          "thriller": "惊悚",
+          "drama": "戏剧",
+          "comedy": "喜剧",
+          "action": "动作",
+          "western": "西部",
+          "crime": "犯罪",
+          "science": "科学",
+          "fiction": "虚构",
+          "non_fiction": "非虚构",
+          "mystery": "悬疑",
+          "biography": "传记",
+          "self_help": "自助",
+          "horror": "恐怖",
+          "adventure": "冒险",
+          "historical": "历史"
+        }
+      },
+      "perspective": {
+        "label": "叙事视角(可选)",
+        "placeholder": "选择视角",
+        "options": {
+          "first_person": "第一人称",
+          "second_person": "第二人称",
+          "third_person_limited": "第三人称有限",
+          "third_person_omniscient": "第三人称全知"
+        }
+      },
+      "audience": {
+        "label": "目标受众(可选)",
+        "placeholder": "选择受众",
+        "options": {
+          "none": "无",
+          "kids": "儿童(5-8岁)",
+          "pre_teen": "少年前期(9-12岁)",
+          "teens": "青少年(13-17岁)",
+          "young_adults": "青年(18-25岁)",
+          "adults": "成年人(26-40岁)",
+          "mature_audience": "成熟受众(40岁以上)",
+          "general": "普通读者",
+          "families": "家庭",
+          "educators": "教育工作者",
+          "writers_author": "作家/作者"
+        }
+      },
+      "tone": {
+        "label": "基调/氛围(可选)",
+        "placeholder": "选择基调/氛围",
+        "options": {
+          "none": "无",
+          "hopeful": "充满希望",
+          "dark": "黑暗",
+          "romantic": "浪漫",
+          "suspenseful": "悬疑",
+          "inspirational": "励志",
+          "funny": "有趣",
+          "dramatic": "戏剧性",
+          "whimsical": "异想天开",
+          "tragic": "悲剧"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "生成故事",
+      "generating": "生成中...",
+      "info": {
+        "credit": "免费积分",
+        "credit_text": "每个故事",
+        "time": "预计：约10秒",
+        "quality": "高级品质"
+      },
+      "tip": "提示：在提示中尽量具体，以获得更好的结果。您随时可以优化并重新生成！"
+    },
+    "output": {
+      "title": "您生成的故事",
+      "status_writing": "正在创作您的故事...",
+      "status_complete": "故事完成",
+      "word_count": "{count} 字",
+      "button_copy": "复制",
+      "button_regenerate": "重新生成",
+      "loading": "AI 正在创作您的故事..."
+    },
+    "toasts": {
+      "error_no_prompt": "请输入故事提示",
+      "error_no_model": "请选择一个 AI 模型",
+      "error_generate_failed": "生成故事失败，请重试。",
+      "error_no_stream": "读取响应流失败",
+      "error_no_content": "没有生成故事内容",
+      "success_generated": "故事生成成功！",
+      "success_copied": "故事已复制到剪贴板！"
+    }
+  },
   "cta": {
     "name": "cta",
-    "title": "启动您的第一个 AI SaaS 创业项目",
-    "description": "从这里开始，使用 ShipAny 启动。",
+    "title": "AI 故事生成器创业",
+    "description": "从这里开始，使用故事生成器。",
     "buttons": [
       {
-        "title": "获取 ShipAny",
-        "url": "https://shipany.ai",
-        "target": "_blank",
+        "title": "开始",
+        "url": "/#craft_story",
+        "target": "",
         "icon": "GoArrowUpRight"
-      },
-      {
-        "title": "阅读文档",
-        "url": "https://docs.shipany.ai",
-        "target": "_blank",
-        "variant": "outline"
       }
     ]
   },
   "footer": {
     "name": "footer",
     "brand": {
-      "title": "ShipAny",
-      "description": "ShipAny 是一个用于构建 AI SaaS 创业项目的 NextJS 模板。通过丰富的模板和组件快速启动。",
+      "title": "故事生成器",
+      "description": "使用 AI 故事生成器释放创意潜力。从无过滤选项到免费访问，立即探索无限的讲故事可能性！",
       "logo": {
         "src": "/logo.png",
-        "alt": "ShipAny"
+        "alt": "故事生成器"
       },
       "url": "/"
     },
-    "copyright": "© 2025 • ShipAny 保留所有权利。",
+    "copyright": "© 2025 • 故事生成器 保留所有权利。",
     "nav": {
       "items": [
         {
@@ -409,56 +500,16 @@
               "title": "功能特点",
               "url": "/#feature",
               "target": "_self"
-            },
-            {
-              "title": "案例展示",
-              "url": "/#showcase",
-              "target": "_self"
-            },
-            {
-              "title": "定价",
-              "url": "/#pricing",
-              "target": "_self"
             }
           ]
         },
         {
-          "title": "资源",
-          "children": [
+          "title": "AI 工具",
+         "children": [
             {
-              "title": "文档",
-              "url": "https://docs.shipany.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "组件",
-              "url": "https://shipany.ai/components",
-              "target": "_blank"
-            },
-            {
-              "title": "模板",
-              "url": "https://shipany.ai/templates",
-              "target": "_blank"
-            }
-          ]
-        },
-        {
-          "title": "友情链接",
-          "children": [
-            {
-              "title": "ThinkAny",
-              "url": "https://thinkany.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "HeyBeauty",
-              "url": "https://heybeauty.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "Pagen",
-              "url": "https://pagen.so",
-              "target": "_blank"
+              "title": "故事生成器",
+              "url": "/",
+              "target": "_self"
             }
           ]
         }
@@ -469,25 +520,25 @@
         {
           "title": "X",
           "icon": "RiTwitterXFill",
-          "url": "https://x.com/shipanyai",
+          "url": "https://x.com/wangrui69490224",
           "target": "_blank"
         },
         {
           "title": "Github",
           "icon": "RiGithubFill",
-          "url": "https://github.com/shipanyai",
+          "url": "https://github.com/wang1309",
           "target": "_blank"
         },
         {
           "title": "Discord",
           "icon": "RiDiscordFill",
-          "url": "https://discord.gg/HQNnrzjZQS",
+          "url": "https://discord.gg/D3q6Ck5H",
           "target": "_blank"
         },
         {
           "title": "邮箱",
           "icon": "RiMailLine",
-          "url": "mailto:support@shipany.codes",
+          "url": "mailto:wangrui171309@gmail.com",
           "target": "_self"
         }
       ]

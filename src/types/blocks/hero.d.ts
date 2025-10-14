@@ -6,6 +6,21 @@ export interface Announcement {
   label?: string;
   url?: string;
   target?: string;
+  show?: boolean;
+}
+
+export interface PrismBackground {
+  enabled?: boolean;
+  height?: number;
+  baseWidth?: number;
+  animationType?: 'rotate' | 'hover' | '3drotate';
+  glow?: number;
+  noise?: number;
+  scale?: number;
+  hueShift?: number;
+  colorFrequency?: number;
+  timeScale?: number;
+  bloom?: number;
 }
 
 export interface Hero {
@@ -20,4 +35,5 @@ export interface Hero {
   tip?: string;
   show_happy_users?: boolean;
   show_badge?: boolean;
+  prism_background?: PrismBackground;
 }

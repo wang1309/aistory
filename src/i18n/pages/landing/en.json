@@ -1,5 +1,5 @@
 {
-  "template": "shipany-template-one",
+  "template": "story generate",
   "theme": "light",
   "header": {
     "brand": {
@@ -16,173 +16,105 @@
           "title": "Features",
           "url": "/#feature",
           "icon": "RiSparkling2Line"
-        },
-        {
-          "title": "Pricing",
-          "url": "/pricing",
-          "icon": "RiMoneyDollarCircleLine"
-        },
-        {
-          "title": "Showcase",
-          "url": "/showcase",
-          "icon": "RiApps2Line"
-        },
-        {
-          "title": "Blog",
-          "url": "/posts",
-          "icon": "RiArticleLine"
-        },
-        {
-          "title": "Docs",
-          "url": "/docs",
-          "icon": "RiBookOpenLine"
         }
       ]
     },
     "buttons": [
-      {
-        "title": "Get ShipAny",
-        "url": "https://shipany.ai",
-        "target": "_blank",
-        "variant": "link",
-        "icon": "RiArrowRightUpLine"
-      }
+      
     ],
     "show_sign": true,
     "show_theme": true,
     "show_locale": true
   },
   "hero": {
-    "title": "Ship Any AI Startups in hours, not days",
-    "highlight_text": "Ship Any",
-    "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups.<br/>Ship Fast with a variety of templates and components.",
+    "title": "AI Story Generator - Free&Unlimited",
+    "highlight_text": "Story Generator",
+    "description": "Create engaging stories in seconds with our AI-powered story generator. Perfect for writers, marketers, and creatives.",
     "announcement": {
+      "show": false,
       "label": "2025",
       "title": "🎉 Happy New Year",
       "url": "/pricing"
     },
-    "tip": "🎁 50% off before 2025",
     "buttons": [
       {
         "title": "Get Started",
         "icon": "RiFlashlightFill",
-        "url": "/pricing",
+        "url": "/#craft_story",
         "target": "_self",
         "variant": "default"
-      },
-      {
-        "title": "Read Document",
-        "icon": "RiBookOpenLine",
-        "url": "https://docs.shipany.ai",
-        "target": "_blank",
-        "variant": "outline"
       }
     ],
     "show_happy_users": true,
-    "show_badge": false
+    "show_badge": false,
+    "image":{
+      "src": "",
+      "alt": "illustration"
+    },
+    "prism_background": {
+      "enabled": false,
+      "animationType": "rotate",
+      "timeScale": 0.5,
+      "height": 3.5,
+      "baseWidth": 5.5,
+      "scale": 3.6,
+      "hueShift": 0,
+      "colorFrequency": 1,
+      "noise": 0.5,
+      "glow": 1,
+      "bloom": 1
+    }
   },
   "branding": {
-    "title": "ShipAny is built on the shoulders of giants",
-    "items": [
-      {
-        "title": "Next.js",
-        "image": {
-          "src": "/imgs/logos/nextjs.svg",
-          "alt": "Next.js"
-        }
-      },
-      {
-        "title": "React",
-        "image": {
-          "src": "/imgs/logos/react.svg",
-          "alt": "React"
-        }
-      },
-      {
-        "title": "TailwindCSS",
-        "image": {
-          "src": "/imgs/logos/tailwindcss.svg",
-          "alt": "TailwindCSS"
-        }
-      },
-      {
-        "title": "Shadcn/UI",
-        "image": {
-          "src": "/imgs/logos/shadcn.svg",
-          "alt": "Shadcn/UI"
-        }
-      },
-      {
-        "title": "Vercel",
-        "image": {
-          "src": "/imgs/logos/vercel.svg",
-          "alt": "Vercel"
-        }
-      }
-    ]
   },
   "introduce": {
     "name": "introduce",
-    "title": "What is ShipAny",
+    "title": "What is An AI Stoty Generator",
     "label": "Introduce",
-    "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups. Built in a variety of templates and components.",
+    "description": "The world of storytelling has been revolutionized by technology, and AI story generators are at the forefront of this transformation. These innovative tools use artificial intelligence to craft narratives, offering a creative solution for writers, marketers, and content creators. But what exactly is an AI story generator, and how can it benefit you? An AI story generator is a software application that uses algorithms and machine learning to produce stories. These stories can range from simple narratives to complex plots with intricate character development. By processing a vast array of data, including language patterns and narrative structures, these generators can create unique content based on user inputs or prompts.",
     "image": {
-      "src": "/imgs/features/1.png"
+      "src": "/imgs/features/story2.png"
     },
     "items": [
-      {
-        "title": "Ready-to-use Templates",
-        "description": "Choose from dozens of production-ready AI SaaS templates to quickly start your project.",
-        "icon": "RiNextjsFill"
-      },
-      {
-        "title": "Infrastructure Setup",
-        "description": "Get instant access to scalable infrastructure with best practices built-in.",
-        "icon": "RiDatabase2Line"
-      },
-      {
-        "title": "Quick Deployment",
-        "description": "Deploy your AI SaaS application to production in hours, not days.",
-        "icon": "RiCloudyFill"
-      }
+     
     ]
   },
   "benefit": {
     "name": "benefit",
-    "title": "Why Choose ShipAny",
+    "title": "Why Choose Story Generator",
     "label": "Benefits",
-    "description": "Get everything you need to launch your AI startup - from ready-to-use templates to technical support.",
+    "description": "AI story generators come with numerous features designed to enhance creativity and productivity",
     "items": [
       {
-        "title": "Complete Framework",
-        "description": "Built on Next.js with authentication, payments, and AI integration - everything works out of the box.",
+        "title": "No Filter and No Limit Options",
+        "description": "Many AI story generators offer no filter and no limit options, allowing users to explore a wide range of ideas without restrictions. This flexibility encourages creativity, enabling writers to experiment with different genres, themes, and styles.",
         "icon": "RiNextjsFill",
         "image": {
-          "src": "/imgs/features/2.png"
+          "src": "/imgs/features/story3.png"
         }
       },
       {
-        "title": "Rich Templates Library",
-        "description": "Choose from various AI SaaS templates to kickstart your project - chatbots, image generation, and more.",
+        "title": "Free Access",
+        "description": "Several AI story generators are available for free, making them accessible to anyone interested in exploring their creative potential. Free versions often provide basic functionalities, with premium options available for more advanced features.",
         "icon": "RiClapperboardAiLine",
         "image": {
-          "src": "/imgs/features/3.png"
+          "src": "/imgs/features/story4.png"
         }
       },
       {
-        "title": "Technical Guidance",
-        "description": "Get dedicated support and join our developer community to ensure your successful launch.",
+        "title": "User-Friendly Interface",
+        "description": "Most AI story generators boast an intuitive interface, making them easy to navigate even for beginners. Users can input prompts, choose genres, and customize settings to generate stories that align with their vision.",
         "icon": "RiCodeFill",
         "image": {
-          "src": "/imgs/features/4.png"
+          "src": "/imgs/features/story5.png"
         }
       }
     ]
   },
   "usage": {
     "name": "usage",
-    "title": "How to Launch with ShipAny",
-    "description": "Get your AI SaaS startup running in three simple steps:",
+    "title": "How AI Story Generators Work",
+    "description": "AI story generators rely on natural language processing (NLP) to understand and produce text. They analyze input data to identify linguistic patterns and use this information to create coherent narratives. Machine learning algorithms enable these tools to improve over time, learning from each interaction to produce increasingly sophisticated content.",
     "image": {
       "src": "/imgs/features/1.png"
     },
@@ -190,48 +122,35 @@
     "text_align": "center",
     "items": [
       {
-        "title": "Get ShipAny",
-        "description": "Buy ShipAny with a one-time payment. Check your email for the code and documentation.",
-        "image": {
-          "src": "/imgs/features/5.png"
-        }
+        "title": "Input Prompts",
+        "description": "Users provide initial prompts or keywords to guide the story generation process. These prompts can be as simple or detailed as desired, influencing the direction and tone of the resulting narrative.",
+        "icon": "RiInputMethodFill"
       },
       {
-        "title": "Start Your Project",
-        "description": "Read the documentation and clone the code of ShipAny. Start building your AI SaaS startup.",
-        "image": {
-          "src": "/imgs/features/6.png"
-        }
+        "title": "Algorithm Processing",
+        "description": "The AI processes the input using complex algorithms that analyze language structure, grammar, and context. This step is crucial for ensuring that the generated story is coherent and engaging.",
+        "icon": "RiAlgorithmFill"
       },
       {
-        "title": "Customize Your Project",
-        "description": "Modify the template with your data and contents. Specific AI functionality needs.",
-        "image": {
-          "src": "/imgs/features/7.png"
-        }
-      },
-      {
-        "title": "Deploy to Production",
-        "description": "Deploy your project to production with a few steps and start serving customers immediately.",
-        "image": {
-          "src": "/imgs/features/8.png"
-        }
+        "title": "Story Generation",
+        "description": "Based on the processed data, the AI generates a story that aligns with the user's input. The output can vary in length and complexity, depending on the parameters set by the user.",
+        "icon": "RiFileTextFill"
       }
     ]
   },
   "feature": {
     "name": "feature",
-    "title": "Key Features of ShipAny",
-    "description": "Everything you need to launch your AI SaaS startup quickly and efficiently.",
+    "title": "Applications of AI Story Generators",
+    "description": "AI story generators have diverse applications across various fields",
     "items": [
       {
-        "title": "Next.js Boilerplate",
-        "description": "Production-ready Next.js templates with SEO-friendly structure and i18n support.",
+        "title": "Creative Writing",
+        "description": "Writers can use AI story generators to overcome writer's block or explore new story ideas. These tools can serve as a source of inspiration, providing fresh perspectives and plot twists.",
         "icon": "RiNextjsFill"
       },
       {
-        "title": "Authentication & Payments",
-        "description": "Integrated Google OAuth, one-tap login, and Stripe payment processing.",
+        "title": "Marketing and Content Creation",
+        "description": "Marketers and content creators can leverage AI story generators to produce engaging content for blogs, social media, and advertising campaigns. The ability to quickly generate unique stories can save time and enhance productivity.",
         "icon": "RiKey2Fill"
       },
       {
@@ -240,97 +159,66 @@
         "icon": "RiDatabase2Line"
       },
       {
-        "title": "One-Click Deployment",
-        "description": "Seamless deployment to Vercel or Cloudflare with automated setup.",
+        "title": "Education",
+        "description": "In educational settings, AI story generators can aid in teaching creative writing and storytelling. Students can use these tools to practice writing skills and explore different narrative techniques.",
         "icon": "RiCloudy2Fill"
-      },
-      {
-        "title": "Business Analytics",
-        "description": "Integrated Google Analytics and Search Console for tracking growth.",
-        "icon": "RiBarChart2Line"
-      },
-      {
-        "title": "AI-Ready Infrastructure",
-        "description": "Pre-configured AI integration with built-in credits system and API sales.",
-        "icon": "RiRobot2Line"
       }
     ]
   },
   "stats": {
-    "name": "stats",
-    "label": "Stats",
-    "title": "People Love ShipAny",
-    "description": "for it's easy to use and fast to ship.",
-    "icon": "FaRegHeart",
-    "items": [
-      {
-        "title": "Trusted by",
-        "label": "99+",
-        "description": "Customers"
-      },
-      {
-        "title": "Built in",
-        "label": "20+",
-        "description": "Components"
-      },
-      {
-        "title": "Ship Fast in",
-        "label": "5",
-        "description": "Minutes"
-      }
-    ]
+    
   },
   "testimonial": {
     "name": "testimonial",
     "label": "Testimonial",
-    "title": "What Users Say About ShipAny",
-    "description": "Hear from developers and founders who launched their AI startups with ShipAny.",
+    "title": "What Writers Say About Our AI Story Generator",
+    "description": "Discover how our story generator helps writers, content creators, and educators generate creative stories effortlessly.",
     "icon": "GoThumbsup",
     "items": [
       {
-        "title": "David Chen",
-        "label": "Founder of AIWallpaper.shop",
-        "description": "ShipAny saved us months of development time. We launched our AI wallpaper business in just 2 days and got our first paying customer within a week!",
+        "title": "Sarah Mitchell",
+        "label": "Creative Writer & Novelist",
+        "description": "This AI story generator completely transformed my writing process. I use it to generate story ideas when I hit writer's block, and the quality is incredible. It's like having a creative writing partner available 24/7!",
         "image": {
           "src": "/imgs/users/1.png"
         }
       },
       {
-        "title": "Rachel Kim",
-        "label": "CTO at HeyBeauty.ai",
-        "description": "The pre-built AI infrastructure is a game-changer. We didn't have to worry about architecture - just focused on our AI beauty tech and went live fast.",
+        "title": "David Park",
+        "label": "Content Marketing Manager",
+        "description": "Our team uses this story generator daily to create engaging narratives for our brand campaigns. The AI-generated stories are so well-crafted that we only need minimal editing. It's saved us countless hours of creative writing time.",
         "image": {
           "src": "/imgs/users/2.png"
         }
       },
       {
-        "title": "Marcus Thompson",
-        "label": "Solo Developer",
-        "description": "As a solo developer, ShipAny gave me everything I needed - auth, payments, AI integration, and beautiful UI. Launched my SaaS in a weekend!",
+        "title": "Emily Rodriguez",
+        "label": "High School English Teacher",
+        "description": "I recommend this AI story generator to all my students for creative writing inspiration. The tool helps them understand story structure and generate unique story ideas. It's an amazing educational resource for teaching narrative writing!",
         "image": {
           "src": "/imgs/users/3.png"
         }
       },
       {
-        "title": "Sofia Garcia",
-        "label": "CEO of Melodisco",
-        "description": "The templates are production-ready and highly customizable. We built our AI music platform in hours instead of months. Incredible time-to-market!",
+        "title": "Michael Chen",
+        "label": "Fiction Author & Blogger",
+        "description": "As a professional author, I was skeptical about AI story generators at first. But this tool proved me wrong! The stories it generates are creative, coherent, and actually inspiring. I use it to explore different narrative perspectives and plot possibilities.",
         "image": {
           "src": "/imgs/users/4.png"
         }
       },
       {
-        "title": "James Wilson",
-        "label": "Tech Lead at GPTs.works",
-        "description": "ShipAny's infrastructure is rock-solid. We scaled from 0 to 10k users without touching the backend. Best investment for our AI startup.",
+        "title": "Jessica Williams",
+        "label": "Content Creator & Storyteller",
+        "description": "The free AI story generator has been a game-changer for my YouTube channel. I generate story concepts weekly, customize them, and turn them into engaging video scripts. The unlimited creative possibilities keep my content fresh and exciting!",
         "image": {
           "src": "/imgs/users/5.png"
         }
       },
       {
-        "title": "Anna Zhang",
-        "label": "Startup Founder",
-        "description": "From idea to launch in 3 days! ShipAny's templates and deployment tools made it possible to test our AI business concept incredibly fast.",
+        "title": "Alex Thompson",
+        "label": "University Student",
+        "description": "This story generator helped me ace my creative writing assignments. I use it to generate initial story drafts, then develop them into polished pieces. The AI understands different genres perfectly - from sci-fi to romance to mystery!",
         "image": {
           "src": "/imgs/users/6.png"
         }
@@ -340,66 +228,269 @@
   "faq": {
     "name": "faq",
     "label": "FAQ",
-    "title": "Frequently Asked Questions About ShipAny",
-    "description": "Have another question? Contact us on Discord or by email.",
+    "title": "Frequently Asked Questions About AI Story Generator",
+    "description": "Find answers to common questions about our AI Story Generator",
     "items": [
       {
-        "title": "What exactly is ShipAny and how does it work?",
-        "description": "ShipAny is a comprehensive NextJS boilerplate designed specifically for building AI SaaS startups. It provides ready-to-use templates, infrastructure setup, and deployment tools that help you launch your AI business in hours instead of days."
+        "title": "What is an AI Story Generator and how does it work?",
+        "description": "Our AI Story Generator is an advanced platform that creates unique, customized stories based on your prompts. Simply enter your story idea, choose from three powerful AI models (Gemini 2.5 Flash Lite for speed, Gemini 2.5 Flash for eloquence, or Gemini 2.5 Flash Think for creativity), and customize parameters like format, length, genre, narrative perspective, target audience, and tone. The AI generates your story in seconds with real-time streaming."
       },
       {
-        "title": "Do I need advanced technical skills to use ShipAny?",
-        "description": "While basic programming knowledge is helpful, ShipAny is designed to be developer-friendly. Our templates and documentation make it easy to get started, even if you're not an expert in AI or cloud infrastructure."
+        "title": "What story customization options are available?",
+        "description": "You can customize multiple parameters: Format (prose, screenplay, short story, letter, diary, fairy tale, myth, fable, poem), Length (300-3000 words across 6 options), Genre (fantasy, sci-fi, romance, thriller, horror, adventure,historical, and more), Narrative Perspective (first-person, second-person, third-person limited/omniscient), Target Audience (kids to mature adults), and Tone/Mood (hopeful, dark, romantic, suspenseful, inspirational, funny, dramatic, whimsical, tragic)."
       },
       {
-        "title": "What types of AI SaaS can I build with ShipAny?",
-        "description": "ShipAny supports a wide range of AI applications, from content generation to data analysis tools. Our templates cover popular use cases like AI chatbots, content generators, image processing apps, and more."
+        "title": "How long does it take to generate a story?",
+        "description": "Story generation time varies by model: Gemini 2.5 Flash Lite generates stories in approximately 3 seconds, Gemini 2.5 Flash in about 5 seconds, and Gemini 2.5 Flash Think in around 10 seconds. The actual time may vary slightly based on story length and complexity. All stories stream in real-time so you can see them being written."
       },
       {
-        "title": "How long does it typically take to launch with ShipAny?",
-        "description": "With ShipAny, you can have a working prototype in hours and a production-ready application in hours. Our one-click deployment and pre-configured infrastructure significantly reduce the traditional months-long development cycle."
+        "title": "Can I copy, save, or regenerate stories?",
+        "description": "Absolutely! Once generated, you can copy your story to clipboard with one click, regenerate it with different parameters or for variations, and all stories are displayed with accurate word counts. The interface provides easy-to-use Copy and Regenerate buttons for seamless story management."
       },
       {
-        "title": "What's included in the ShipAny infrastructure?",
-        "description": "ShipAny provides a complete infrastructure stack including authentication, database setup, API integration, payment processing, and scalable cloud deployment. Everything is pre-configured following industry best practices."
+        "title": "How does the credit system work?",
+        "description": "Our platform uses a free credit system where story generation consumes credits from your account. "
       },
       {
-        "title": "Can I customize the templates to match my brand?",
-        "description": "Absolutely! All ShipAny templates are fully customizable. You can modify the design, features, and functionality to match your brand identity and specific business requirements while maintaining the robust underlying infrastructure."
+        "title": "What makes this AI Story Generator different from others?",
+        "description": "Our platform offers: (1) Three specialized Gemini models for different needs, (2) Comprehensive customization with 50+ option combinations, (3) Real-time streaming output, (4) Multi-language support with native-quality writing, (5)Professional writing guidelines built into AI prompts, (6) Story presets and inspiration tools, (7) Word count tracking for both English and CJK languages"
       }
     ]
   },
+  "story_generate": {
+    "header": {
+      "title": "Craft Your Story",
+      "subtitle": "Turn your ideas into captivating narratives with AI"
+    },
+    "prompt": {
+      "label": "Your Story Prompt",
+      "required": "(Required)",
+      "placeholder": "Begin your story... (e.g., 'A young wizard discovers a hidden library that contains books from parallel universes')",
+      "random_button": "Random Prompt",
+      "quick_adds_label": "Quick adds:",
+      "quick_add_chips": {
+        "plot_twist": "Add plot twist",
+        "dialogue": "Include dialogue",
+        "setting": "Describe setting"
+      },
+      "character_counter": "{count} / 2000"
+    },
+    "random_prompts": [
+      "A time traveler accidentally changes one small detail in the past, leading to unexpected consequences in the present.",
+      "In a world where memories can be bought and sold, a memory thief discovers a truth that could change everything.",
+      "A mysterious letter arrives at your door, containing a map to a place that doesn't exist on any official records.",
+      "The last librarian on Earth guards the final collection of physical books in a world that has gone completely digital.",
+      "A young artist discovers that everything they paint comes to life at midnight.",
+      "In a future where emotions are regulated by the government, someone experiences a forbidden feeling for the first time."
+    ],
+    "presets": {
+      "title": "Story Ideas",
+      "items": {
+        "fantasy_quest": {
+          "title": "Fantasy Quest",
+          "desc": "Epic adventure",
+          "template": "Write an epic fantasy adventure about a hero who must embark on a dangerous quest to save their kingdom from an ancient evil."
+        },
+        "scifi_thriller": {
+          "title": "Sci-Fi Thriller",
+          "desc": "Space mystery",
+          "template": "Create a suspenseful science fiction story set in deep space, where a crew discovers something that threatens humanity."
+        },
+        "love_story": {
+          "title": "Love Story",
+          "desc": "Romantic tale",
+          "template": "Tell a heartwarming romantic tale about two people from different worlds who find unexpected love."
+        },
+        "crime_mystery": {
+          "title": "Crime Mystery",
+          "desc": "Detective story",
+          "template": "Craft a gripping detective story where a brilliant investigator must solve a puzzling crime with unexpected twists."
+        }
+      }
+    },
+    "ai_models": {
+      "title": "Choose Your AI Storyteller",
+      "hint": "All models produce high-quality stories. Choose based on your priority.",
+      "models": {
+        "fastest": {
+          "name": "Fastest",
+          "badge": "Lightning Fast",
+          "description": "Best for quick iterations",
+          "speed": "~3s"
+        },
+        "eloquent": {
+          "name": "Most Eloquent",
+          "badge": "Premium Quality",
+          "description": "Best for elegant writing",
+          "speed": "~5s"
+        },
+        "creative": {
+          "name": "Most Creative",
+          "badge": "Deep Thinking",
+          "description": "Best for creative stories",
+          "speed": "~10s"
+        }
+      },
+      "selected": "✓ Selected",
+      "select": "Select →"
+    },
+    "advanced_options": {
+      "title": "Advanced Options",
+      "subtitle": "Fine-tune your story generation",
+      "optional_badge": "Optional",
+      "format": {
+        "label": "Format(Optional)",
+        "placeholder": "Select format",
+        "options": {
+          "none": "None",
+          "prose": "Prose",
+          "screenplay": "Screenplay",
+          "short_story": "Short Story",
+          "letter": "Letter",
+          "diary": "Diary",
+          "fairy_tale": "Fairy Tale",
+          "myth": "Myth",
+          "fable": "Fable",
+          "poem": "Poem"
+        }
+      },
+      "length": {
+        "label": "Story Length(Optional)",
+        "placeholder": "Select length",
+        "options": {
+          "none": "None",
+          "short": "Short(300-600 words)",
+          "medium": "Medium(600-900 words)",
+          "long": "Long(900-1200 words)",
+          "extend": "Extend(1200-1500 words)",
+          "epic_short": "Epic Short(1500-2000 words)",
+          "novella_lite": "Novella-Lite(2000-3000 words)"
+        }
+      },
+      "genre": {
+        "label": "Genre(Optional)",
+        "placeholder": "Select genre",
+        "options": {
+          "none": "None",
+          "fantasy": "Fantasy",
+          "science_fiction": "Science Fiction",
+          "romance": "Romance",
+          "thriller": "Thriller",
+          "drama": "Drama",
+          "comedy": "Comedy",
+          "action": "Action",
+          "western": "Western",
+          "crime": "Crime",
+          "science": "Science",
+          "fiction": "Fiction",
+          "non_fiction": "Non-Fiction",
+          "mystery": "Mystery",
+          "biography": "Biography",
+          "self_help": "Self-Help",
+          "horror": "Horror",
+          "adventure": "Adventure",
+          "historical": "Historical"
+        }
+      },
+      "perspective": {
+        "label": "Narrative Perspective(Optional)",
+        "placeholder": "Select perspective",
+        "options": {
+          "first_person": "First Person",
+          "second_person": "Second Person",
+          "third_person_limited": "Third Person Limited",
+          "third_person_omniscient": "Third Person Omniscient"
+        }
+      },
+      "audience": {
+        "label": "Target Audience(Optional)",
+        "placeholder": "Select audience",
+        "options": {
+          "none": "None",
+          "kids": "Kids(Ages 5-8)",
+          "pre_teen": "Pre-teens(9-12)",
+          "teens": "Teens(13-17)",
+          "young_adults": "Young Adults(18-25)",
+          "adults": "Adults(26-40)",
+          "mature_audience": "Mature Audience(40+)",
+          "general": "General Readers",
+          "families": "Families",
+          "educators": "Educators",
+          "writers_author": "Writers/Authors"
+        }
+      },
+      "tone": {
+        "label": "Tone / Mood(Optional)",
+        "placeholder": "Select tone/mood",
+        "options": {
+          "none": "None",
+          "hopeful": "Hopeful",
+          "dark": "Dark",
+          "romantic": "Romantic",
+          "suspenseful": "Suspenseful",
+          "inspirational": "Inspirational",
+          "funny": "Funny",
+          "dramatic": "Dramatic",
+          "whimsical": "Whimsical",
+          "tragic": "Tragic"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "Generate Story",
+      "generating": "Generating...",
+      "info": {
+        "credit": "Free Credit",
+        "credit_text": "per story",
+        "time": "Estimated: ~10 seconds",
+        "quality": "Premium Quality"
+      },
+      "tip": "Tip: Be specific in your prompt for better results. You can always refine and regenerate!"
+    },
+    "output": {
+      "title": "Your Generated Story",
+      "status_writing": "Writing your story...",
+      "status_complete": "Story complete",
+      "word_count": "{count} words",
+      "button_copy": "Copy",
+      "button_regenerate": "Regenerate",
+      "loading": "AI is crafting your story..."
+    },
+    "toasts": {
+      "error_no_prompt": "Please enter a story prompt",
+      "error_no_model": "Please select an AI model",
+      "error_generate_failed": "Failed to generate story. Please try again.",
+      "error_no_stream": "Failed to read response stream",
+      "error_no_content": "No story content was generated",
+      "success_generated": "Story generated successfully!",
+      "success_copied": "Story copied to clipboard!"
+    }
+  },
   "cta": {
     "name": "cta",
-    "title": "Ship your first AI SaaS Startup",
-    "description": "Start from here, ship with ShipAny.",
+    "title": "AI Story Generator Startup",
+    "description": "Start from here, with Story Generator.",
     "buttons": [
       {
-        "title": "Get ShipAny",
-        "url": "https://shipany.ai",
-        "target": "_blank",
+        "title": "Start",
+        "url": "/#craft_story",
+        "target": "",
         "icon": "GoArrowUpRight"
-      },
-      {
-        "title": "Read Document",
-        "url": "https://docs.shipany.ai",
-        "target": "_blank",
-        "variant": "outline"
       }
     ]
   },
   "footer": {
     "name": "footer",
     "brand": {
-      "title": "ShipAny",
-      "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
+      "title": "Story Generator",
+      "description": "Unlock creative potential with an AI story generator. From no filter options to free access, explore limitless storytelling possibilities today!",
       "logo": {
         "src": "/logo.png",
-        "alt": "ShipAny"
+        "alt": "Story Generator"
       },
       "url": "/"
     },
-    "copyright": "© 2025 • ShipAny All rights reserved.",
+    "copyright": "© 2025 • Story Generator All rights reserved.",
     "nav": {
       "items": [
         {
@@ -409,56 +500,16 @@
               "title": "Features",
               "url": "/#feature",
               "target": "_self"
-            },
-            {
-              "title": "Showcases",
-              "url": "/#showcase",
-              "target": "_self"
-            },
-            {
-              "title": "Pricing",
-              "url": "/#pricing",
-              "target": "_self"
             }
           ]
         },
         {
-          "title": "Resources",
-          "children": [
+          "title": "AI Tools",
+         "children": [
             {
-              "title": "Documents",
-              "url": "https://docs.shipany.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "Components",
-              "url": "https://shipany.ai/components",
-              "target": "_blank"
-            },
-            {
-              "title": "Templates",
-              "url": "https://shipany.ai/templates",
-              "target": "_blank"
-            }
-          ]
-        },
-        {
-          "title": "Friends",
-          "children": [
-            {
-              "title": "ThinkAny",
-              "url": "https://thinkany.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "HeyBeauty",
-              "url": "https://heybeauty.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "Pagen",
-              "url": "https://pagen.so",
-              "target": "_blank"
+              "title": "Story Generator",
+              "url": "/",
+              "target": "_self"
             }
           ]
         }
@@ -469,25 +520,25 @@
         {
           "title": "X",
           "icon": "RiTwitterXFill",
-          "url": "https://x.com/shipanyai",
+          "url": "https://x.com/wangrui69490224",
           "target": "_blank"
         },
         {
           "title": "Github",
           "icon": "RiGithubFill",
-          "url": "https://github.com/shipanyai",
+          "url": "https://github.com/wang1309",
           "target": "_blank"
         },
         {
           "title": "Discord",
           "icon": "RiDiscordFill",
-          "url": "https://discord.gg/HQNnrzjZQS",
+          "url": "https://discord.gg/D3q6Ck5H",
           "target": "_blank"
         },
         {
           "title": "Email",
           "icon": "RiMailLine",
-          "url": "mailto:support@shipany.codes",
+          "url": "mailto:wangrui171309@gmail.com",
           "target": "_self"
         }
       ]
