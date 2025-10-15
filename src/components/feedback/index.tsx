@@ -19,6 +19,7 @@ import { useAppContext } from "@/contexts/app";
 import { useState } from "react";
 import { SocialItem } from "@/types/blocks/base";
 import { useTranslations } from "next-intl";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 export default function Feedback({
   socialLinks,
@@ -33,9 +34,15 @@ export default function Feedback({
   const [feedback, setFeedback] = useState("");
   const [rating, setRating] = useState<number | null>(10);
   const [loading, setLoading] = useState<boolean>(false);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
+
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   const handleSubmit = async () => {
     console.log("handleSubmit called", { user, feedback, rating });
+    console.log("=== Frontend Turnstile Debug ===");
+    console.log("Turnstile Token:", turnstileToken ? `Present (length: ${turnstileToken.length})` : "MISSING");
+    console.log("Site Key:", siteKey ? "Configured" : "MISSING");
 
     // 允许未登录用户提交反馈，后端会自动处理
     console.log("User status:", user ? "Logged in" : "Anonymous");
@@ -46,6 +53,14 @@ export default function Feedback({
       return;
     }
 
+    if (!turnstileToken) {
+      console.error("❌ Turnstile token is missing - user may not have completed verification");
+      toast.error("Please complete the verification");
+      return;
+    }
+
+    console.log("✓ All validations passed, sending request...");
+
     try {
       setLoading(true);
       console.log("Submitting feedback...");
@@ -53,6 +68,7 @@ export default function Feedback({
       const req = {
         content: feedback,
         rating: rating,
+        turnstileToken: turnstileToken,
       };
 
       const resp = await fetch("/api/add-feedback", {
@@ -82,6 +98,7 @@ export default function Feedback({
 
       setFeedback("");
       setRating(null);
+      setTurnstileToken("");
       setShowFeedback(false);
     } catch (error) {
       console.error("Submit error:", error);
@@ -146,6 +163,32 @@ export default function Feedback({
               ))}
             </div>
           </div>
+
+          {siteKey && (
+            <div className="mt-4">
+              <Turnstile
+                siteKey={siteKey}
+                onSuccess={(token) => {
+                  console.log("✓ Turnstile verification successful, token received");
+                  setTurnstileToken(token);
+                }}
+                onError={() => {
+                  console.error("❌ Turnstile error occurred");
+                  setTurnstileToken("");
+                }}
+                onExpire={() => {
+                  console.warn("⚠️ Turnstile token expired");
+                  setTurnstileToken("");
+                }}
+              />
+            </div>
+          )}
+
+          {!siteKey && (
+            <div className="mt-4 p-3 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 rounded-md text-sm">
+              ⚠️ Turnstile not configured - NEXT_PUBLIC_TURNSTILE_SITE_KEY missing
+            </div>
+          )}
 
           <div className="mt-6 flex justify-start items-center gap-4">
             {socialLinks && socialLinks.length > 0 && (
