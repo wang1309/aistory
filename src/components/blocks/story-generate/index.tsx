@@ -8,6 +8,7 @@ import Icon from "@/components/icon";
 import { toast } from "sonner";
 import { StoryGenerate as StoryGenerateType } from "@/types/blocks/story-generate";
 import { Turnstile } from "@marsidev/react-turnstile";
+import { useLocale } from "next-intl";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -38,6 +39,7 @@ function calculateWordCount(text: string): number {
 // ========== COMPONENT ==========
 
 export default function StoryGenerate({ section }: { section: StoryGenerateType }) {
+   const locale = useLocale(); // 获取当前语言
   // Get translated constants (memoized for performance)
   const RANDOM_PROMPTS = useMemo(() => section.random_prompts, [section]);
 
@@ -175,6 +177,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       const requestBody = {
         prompt: prompt.trim(),
         model: selectedModel,
+        locale: locale,
         format: selectedFormat,
         length: selectedLength,
         genre: selectedGenre,
