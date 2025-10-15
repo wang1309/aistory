@@ -173,7 +173,7 @@ export default function Feedback({
                   setTurnstileToken(token);
                 }}
                 onError={() => {
-                  console.error("❌ Turnstile error occurred");
+                  console.log("❌ Turnstile error occurred");
                   setTurnstileToken("");
                 }}
                 onExpire={() => {

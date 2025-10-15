@@ -453,6 +453,8 @@
       "status_complete": "Story complete",
       "word_count": "{count} words",
       "button_copy": "Copy",
+      "button_export_pdf": "Export PDF",
+      "button_exporting_pdf": "Exporting...",
       "button_regenerate": "Regenerate",
       "loading": "AI is crafting your story..."
     },
@@ -462,8 +464,10 @@
       "error_generate_failed": "Failed to generate story. Please try again.",
       "error_no_stream": "Failed to read response stream",
       "error_no_content": "No story content was generated",
+      "error_pdf_export_failed": "PDF export failed. Please try again.",
       "success_generated": "Story generated successfully!",
-      "success_copied": "Story copied to clipboard!"
+      "success_copied": "Story copied to clipboard!",
+      "success_pdf_exported": "PDF exported successfully!"
     }
   },
   "cta": {

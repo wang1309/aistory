@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { StoryGenerate as StoryGenerateType } from "@/types/blocks/story-generate";
 import { Turnstile } from "@marsidev/react-turnstile";
 import { useLocale } from "next-intl";
+import { exportStoryToPdf, StoryMetadata } from "@/lib/pdf-export";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -106,6 +107,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const [generatedStory, setGeneratedStory] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+
+  // PDF export state
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
 
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
@@ -281,6 +285,46 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       setIsGenerating(false);
     }
   }, [prompt, selectedModel, selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone, turnstileToken, section]);
+
+  // PDF export handler
+  const handleExportPdf = useCallback(async () => {
+    if (!generatedStory.trim()) {
+      toast.error(section.toasts.error_no_content);
+      return;
+    }
+
+    try {
+      setIsExportingPdf(true);
+
+      // 获取选中模型的名称
+      const selectedModelName = AI_MODELS.find(model => model.id === selectedModel)?.name || '';
+
+      // 准备PDF元数据
+      const metadata: StoryMetadata = {
+        title: section.output.title || 'AI生成故事',
+        prompt: prompt.substring(0, 200) + (prompt.length > 200 ? '...' : ''),
+        wordCount: wordCount,
+        generatedAt: new Date(),
+        model: selectedModelName,
+        format: selectedFormat !== 'none' ? selectedFormat : undefined,
+        genre: selectedGenre !== 'none' ? selectedGenre : undefined,
+        tone: selectedTone !== 'none' ? selectedTone : undefined,
+      };
+
+      // 导出PDF
+      await exportStoryToPdf(generatedStory, metadata, (progress) => {
+        console.log(`PDF导出进度: ${progress}%`);
+      });
+
+      toast.success(section.toasts.success_pdf_exported);
+
+    } catch (error) {
+      console.error('PDF导出失败:', error);
+      toast.error(section.toasts.error_pdf_export_failed);
+    } finally {
+      setIsExportingPdf(false);
+    }
+  }, [generatedStory, prompt, wordCount, selectedModel, selectedFormat, selectedGenre, selectedTone, section]);
 
   return (
     <section className="relative py-16 sm:py-20 overflow-hidden">
@@ -760,6 +804,16 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                         >
                           <Icon name="RiFileCopyLine" className="size-4 mr-1" />
                           {section.output.button_copy}
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={handleExportPdf}
+                          disabled={isExportingPdf}
+                          className="text-xs"
+                        >
+                          <Icon name={isExportingPdf ? "RiLoader4Line" : "RiDownloadLine"} className={`size-4 mr-1 ${isExportingPdf ? "animate-spin" : ""}`} />
+                          {isExportingPdf ? section.output.button_exporting_pdf : section.output.button_export_pdf}
                         </Button>
                         <Button
                           variant="outline"

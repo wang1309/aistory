@@ -454,6 +454,8 @@
       "word_count": "{count}단어",
       "button_copy": "복사",
       "button_regenerate": "재생성",
+      "button_export_pdf": "PDF 내보내기",
+      "button_exporting_pdf": "내보내는 중...",
       "loading": "AI가 스토리를 만들고 있습니다..."
     },
     "toasts": {
@@ -462,8 +464,10 @@
       "error_generate_failed": "스토리 생성에 실패했습니다. 다시 시도하세요.",
       "error_no_stream": "응답 스트림을 읽지 못했습니다",
       "error_no_content": "스토리 콘텐츠가 생성되지 않았습니다",
+      "error_pdf_export_failed": "PDF 내보내기 실패. 다시 시도해주세요.",
       "success_generated": "스토리가 성공적으로 생성되었습니다!",
-      "success_copied": "스토리가 클립보드에 복사되었습니다!"
+      "success_copied": "스토리가 클립보드에 복사되었습니다!",
+      "success_pdf_exported": "PDF가 성공적으로 내보내졌습니다!"
     }
   },
   "cta": {

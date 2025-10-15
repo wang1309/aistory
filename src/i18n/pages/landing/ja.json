@@ -454,6 +454,8 @@
       "word_count": "{count}語",
       "button_copy": "コピー",
       "button_regenerate": "再生成",
+      "button_export_pdf": "PDF出力",
+      "button_exporting_pdf": "出力中...",
       "loading": "AIがストーリーを作成しています..."
     },
     "toasts": {
@@ -462,8 +464,10 @@
       "error_generate_failed": "ストーリー生成に失敗しました。もう一度お試しください。",
       "error_no_stream": "レスポンスストリームの読み取りに失敗しました",
       "error_no_content": "ストーリーコンテンツが生成されませんでした",
+      "error_pdf_export_failed": "PDFのエクスポートに失敗しました。もう一度お試しください。",
       "success_generated": "ストーリーが正常に生成されました！",
-      "success_copied": "ストーリーがクリップボードにコピーされました！"
+      "success_copied": "ストーリーがクリップボードにコピーされました！",
+      "success_pdf_exported": "PDFが正常にエクスポートされました！"
     }
   },
   "cta": {

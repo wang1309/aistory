@@ -187,6 +187,8 @@ export interface StoryGenerate {
     status_complete: string;
     word_count: string;
     button_copy: string;
+    button_export_pdf: string;
+    button_exporting_pdf: string;
     button_regenerate: string;
     loading: string;
   };
@@ -196,7 +198,9 @@ export interface StoryGenerate {
     error_generate_failed: string;
     error_no_stream: string;
     error_no_content: string;
+    error_pdf_export_failed: string;
     success_generated: string;
     success_copied: string;
+    success_pdf_exported: string;
   };
 }

@@ -453,6 +453,8 @@
       "status_complete": "故事完成",
       "word_count": "{count} 字",
       "button_copy": "复制",
+      "button_export_pdf": "导出PDF",
+      "button_exporting_pdf": "导出中...",
       "button_regenerate": "重新生成",
       "loading": "AI 正在创作您的故事..."
     },
@@ -462,8 +464,10 @@
       "error_generate_failed": "生成故事失败，请重试。",
       "error_no_stream": "读取响应流失败",
       "error_no_content": "没有生成故事内容",
+      "error_pdf_export_failed": "PDF导出失败，请重试。",
       "success_generated": "故事生成成功！",
-      "success_copied": "故事已复制到剪贴板！"
+      "success_copied": "故事已复制到剪贴板！",
+      "success_pdf_exported": "PDF导出成功！"
     }
   },
   "cta": {

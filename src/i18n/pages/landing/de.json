@@ -454,6 +454,8 @@
       "word_count": "{count} Wörter",
       "button_copy": "Kopieren",
       "button_regenerate": "Neu generieren",
+      "button_export_pdf": "PDF exportieren",
+      "button_exporting_pdf": "Exportiere...",
       "loading": "KI erstellt Ihre Geschichte..."
     },
     "toasts": {
@@ -462,8 +464,10 @@
       "error_generate_failed": "Geschichte konnte nicht generiert werden. Bitte versuchen Sie es erneut.",
       "error_no_stream": "Antwort-Stream konnte nicht gelesen werden",
       "error_no_content": "Kein Geschichteninhalt wurde generiert",
+      "error_pdf_export_failed": "PDF-Export fehlgeschlagen. Bitte versuchen Sie es erneut.",
       "success_generated": "Geschichte erfolgreich generiert!",
-      "success_copied": "Geschichte in die Zwischenablage kopiert!"
+      "success_copied": "Geschichte in die Zwischenablage kopiert!",
+      "success_pdf_exported": "PDF erfolgreich exportiert!"
     }
   },
   "cta": {
