@@ -683,7 +683,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                       setTurnstileToken(token);
                     }}
                     onError={() => {
-                      console.error("❌ Turnstile error occurred");
+                      console.log("❌ Turnstile error occurred");
                       setTurnstileToken("");
                     }}
                     onExpire={() => {
