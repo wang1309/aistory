@@ -7,6 +7,8 @@ import { getAllPosts } from "@/models/post";
 import moment from "moment";
 import { getCategories } from "@/models/category";
 
+export const runtime = "edge";
+
 export default async function () {
   const posts = await getAllPosts();
   const categories = await getCategories({});

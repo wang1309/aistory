@@ -1,6 +1,8 @@
 import Showcase from "@/components/blocks/showcase";
 import { getShowcasePage } from "@/services/page";
 
+export const runtime = "edge";
+
 export default async function ShowcasePage({
   params,
 }: {

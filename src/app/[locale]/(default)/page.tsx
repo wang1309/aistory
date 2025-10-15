@@ -14,6 +14,8 @@ import { getLandingPage } from "@/services/page";
 import { setRequestLocale } from "next-intl/server";
 import StoryGenerate from "@/components/blocks/story-generate";
 
+export const runtime = "edge";
+
 export const revalidate = 60;
 export const dynamic = "force-static";
 export const dynamicParams = true;

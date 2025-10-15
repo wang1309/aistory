@@ -7,6 +7,8 @@ import { getUserUuid } from "@/services/user";
 import moment from "moment";
 import { Badge } from "@/components/ui/badge";
 
+export const runtime = "edge";
+
 export default async function () {
   const t = await getTranslations();
 

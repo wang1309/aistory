@@ -11,6 +11,8 @@ import { newStripeClient } from "@/integrations/stripe";
 import { Order } from "@/types/order";
 import { newCreemClient } from "@/integrations/creem";
 
+export const runtime = "edge";
+
 export async function POST(req: Request) {
   try {
     let { product_id, currency, locale } = await req.json();

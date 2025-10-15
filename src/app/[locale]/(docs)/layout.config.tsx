@@ -2,6 +2,8 @@ import { i18n } from "@/lib/source";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import Image from "next/image";
 
+export const runtime = "edge";
+
 export function baseOptions(locale: string): BaseLayoutProps {
   return {
     links: [],

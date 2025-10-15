@@ -13,6 +13,8 @@ import { respData, respErr } from "@/lib/resp";
 import { getIsoTimestr } from "@/lib/time";
 import { insertAffiliate } from "@/models/affiliate";
 
+export const runtime = "edge";
+
 export async function POST(req: Request) {
   try {
     const { invite_code, user_uuid } = await req.json();

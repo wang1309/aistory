@@ -73,7 +73,7 @@
     "label": "Einführung",
     "description": "Die Welt des Geschichtenerzählens wurde durch Technologie revolutioniert, und KI-Geschichtengeneratoren stehen an der Spitze dieser Transformation. Diese innovativen Tools nutzen künstliche Intelligenz, um Erzählungen zu erstellen und bieten eine kreative Lösung für Autoren, Vermarkter und Content-Ersteller. Aber was genau ist ein KI-Geschichtengenerator und wie kann er Ihnen nützen? Ein KI-Geschichtengenerator ist eine Softwareanwendung, die Algorithmen und maschinelles Lernen verwendet, um Geschichten zu erstellen. Diese Geschichten können von einfachen Erzählungen bis zu komplexen Handlungen mit komplizierter Charakterentwicklung reichen. Durch die Verarbeitung riesiger Datenmengen, einschließlich Sprachmustern und Erzählstrukturen, können diese Generatoren einzigartige Inhalte basierend auf Benutzereingaben oder Aufforderungen erstellen.",
     "image": {
-      "src": "/imgs/features/1.png"
+      "src": "/imgs/features/story2.png"
     },
     "items": [
 
@@ -90,7 +90,7 @@
         "description": "Viele KI-Geschichtengeneratoren bieten Optionen ohne Filter und ohne Limits, die es Benutzern ermöglichen, ein breites Spektrum an Ideen ohne Einschränkungen zu erkunden. Diese Flexibilität fördert die Kreativität und ermöglicht es Autoren, mit verschiedenen Genres, Themen und Stilen zu experimentieren.",
         "icon": "RiNextjsFill",
         "image": {
-          "src": "/imgs/features/2.png"
+          "src": "/imgs/features/story3.png"
         }
       },
       {
@@ -98,7 +98,7 @@
         "description": "Mehrere KI-Geschichtengeneratoren sind kostenlos verfügbar und machen sie für jeden zugänglich, der sein kreatives Potenzial erkunden möchte. Kostenlose Versionen bieten oft grundlegende Funktionen, mit Premium-Optionen für erweiterte Features.",
         "icon": "RiClapperboardAiLine",
         "image": {
-          "src": "/imgs/features/3.png"
+          "src": "/imgs/features/story4.png"
         }
       },
       {
@@ -106,7 +106,7 @@
         "description": "Die meisten KI-Geschichtengeneratoren verfügen über eine intuitive Benutzeroberfläche, die selbst für Anfänger leicht zu navigieren ist. Benutzer können Eingaben eingeben, Genres auswählen und Einstellungen anpassen, um Geschichten zu generieren, die mit ihrer Vision übereinstimmen.",
         "icon": "RiCodeFill",
         "image": {
-          "src": "/imgs/features/4.png"
+          "src": "/imgs/features/story5.png"
         }
       }
     ]

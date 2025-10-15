@@ -2,6 +2,8 @@ import { respErr, respData } from "@/lib/resp";
 import { getUserCredits } from "@/services/credit";
 import { getUserUuid } from "@/services/user";
 
+export const runtime = "edge";
+
 export async function POST(req: Request) {
   try {
     const user_uuid = await getUserUuid();

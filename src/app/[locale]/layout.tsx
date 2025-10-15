@@ -42,7 +42,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${webUrl}/story.png`,
+          url: `${webUrl}/share.png`,
           width: 1200,
           height: 630,
           alt: title,
@@ -55,7 +55,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: title,
       description: description,
-      images: [`${webUrl}/story.png`],
+      images: [`${webUrl}/share.png`],
       creator: "@wangrui69490224",
       site: "@wangrui69490224",
     },

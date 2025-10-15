@@ -7,6 +7,8 @@ import { getFeedbacksTotal } from "@/models/feedback";
 import { getPostsTotal } from "@/models/post";
 import { DataCard } from "@/types/blocks/base";
 
+export const runtime = "edge";
+
 export default async function () {
   const totalPaidOrders = await getPaidOrdersTotal();
   const totalUsers = await getUsersTotal();

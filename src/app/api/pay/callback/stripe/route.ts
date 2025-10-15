@@ -2,6 +2,8 @@ import { redirect } from "@/i18n/navigation";
 import { newStripeClient } from "@/integrations/stripe";
 import { handleCheckoutSession } from "@/services/stripe";
 
+export const runtime = "edge";
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const session_id = searchParams.get("session_id");

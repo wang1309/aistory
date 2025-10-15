@@ -21,7 +21,7 @@ Allow: /logo.png
 Allow: /story.png
 
 # Sitemaps (update with your actual domain)
-Sitemap: https://aistory.example.com/sitemap.xml
+Sitemap: https://storiesgenerator.org/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 0

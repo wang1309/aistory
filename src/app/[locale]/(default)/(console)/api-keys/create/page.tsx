@@ -7,6 +7,8 @@ import { getNonceStr } from "@/lib/hash";
 import { getTranslations } from "next-intl/server";
 import { getUserUuid } from "@/services/user";
 
+export const runtime = "edge";
+
 export default async function () {
   const t = await getTranslations();
 

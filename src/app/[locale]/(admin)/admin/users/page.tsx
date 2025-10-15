@@ -4,6 +4,8 @@ import { Table as TableSlotType } from "@/types/slots/table";
 import { getUsers } from "@/models/user";
 import moment from "moment";
 
+export const runtime = "edge";
+
 export default async function () {
   const users = await getUsers(1, 50);
 

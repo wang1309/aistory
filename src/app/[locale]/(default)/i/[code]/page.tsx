@@ -6,6 +6,8 @@ import { getTimestamp } from "@/lib/time";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
 
+export const runtime = "edge";
+
 export default function () {
   const params = useParams();
   const code = params.code as string;

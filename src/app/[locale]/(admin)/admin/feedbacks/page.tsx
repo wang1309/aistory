@@ -4,6 +4,8 @@ import { Table as TableSlotType } from "@/types/slots/table";
 import { getFeedbacks } from "@/models/feedback";
 import moment from "moment";
 
+export const runtime = "edge";
+
 export default async function () {
   const feedbacks = await getFeedbacks(1, 50);
 

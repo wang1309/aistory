@@ -17,13 +17,62 @@ interface UserInput {
   options: StoryOptions;
 }
 
+// Verify Cloudflare Turnstile token
+async function verifyTurnstileToken(token: string): Promise<boolean> {
+  const secretKey = process.env.TURNSTILE_SECRET_KEY;
+
+  console.log("=== Turnstile Verification Debug (Story Gen) ===");
+  console.log("Token received:", token ? `Present (${token.length} chars)` : "Missing");
+  console.log("Secret key configured:", secretKey ? "Yes" : "No");
+
+  if (!secretKey) {
+    console.error("TURNSTILE_SECRET_KEY is not configured");
+    return false;
+  }
+
+  try {
+    const requestBody = {
+      secret: secretKey,
+      response: token,
+    };
+
+    console.log("Sending verification request to Cloudflare...");
+
+    const response = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      }
+    );
+
+    const data = await response.json();
+    console.log("Cloudflare response:", JSON.stringify(data, null, 2));
+
+    if (data.success) {
+      console.log("✓ Verification successful");
+    } else {
+      console.log("✗ Verification failed");
+      console.log("Error codes:", data["error-codes"]);
+    }
+
+    return data.success === true;
+  } catch (error) {
+    console.error("Turnstile verification error:", error);
+    return false;
+  }
+}
+
 export async function POST(req: Request) {
   try {
     const requestData = await req.json();
     console.log("=== Received request data ===", JSON.stringify(requestData, null, 2));
 
-    const { prompt, model, locale, format, length, genre, perspective, audience, tone } = requestData || {};
-    console.log("=== Extracted params ===", { prompt, model, locale, format, length, genre, perspective, audience, tone });
+    const { prompt, model, locale, format, length, genre, perspective, audience, tone, turnstileToken } = requestData || {};
+    console.log("=== Extracted params ===", { prompt, model, locale, format, length, genre, perspective, audience, tone, turnstileToken: turnstileToken ? "Present" : "Missing" });
 
     if (!prompt) {
       console.error("Validation failed: prompt is empty");
@@ -34,6 +83,20 @@ export async function POST(req: Request) {
       console.error("Validation failed: model is empty");
       return respErr("please select an AI model");
     }
+
+    // Verify Turnstile token
+    if (!turnstileToken) {
+      console.error("No turnstile token provided");
+      return respErr("verification required");
+    }
+
+    const isValidToken = await verifyTurnstileToken(turnstileToken);
+    if (!isValidToken) {
+      console.error("Turnstile token validation failed");
+      return respErr("verification failed");
+    }
+
+    console.log("✓ Turnstile verification passed, proceeding with story generation");
 
     const apiKey = process.env.GRSAI_API_KEY;
     if (!apiKey) {

@@ -16,6 +16,8 @@ import { getTranslations } from "next-intl/server";
 import moment from "moment";
 import { redirect } from "next/navigation";
 
+export const runtime = "edge";
+
 export default async function () {
   const t = await getTranslations();
 

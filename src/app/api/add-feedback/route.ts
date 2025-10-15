@@ -4,6 +4,8 @@ import { getUserUuid } from "@/services/user";
 import { insertFeedback } from "@/models/feedback";
 import { getUuid } from "@/lib/hash";
 
+export const runtime = "edge";
+
 // Verify Cloudflare Turnstile token
 async function verifyTurnstileToken(token: string): Promise<boolean> {
   const secretKey = process.env.TURNSTILE_SECRET_KEY;

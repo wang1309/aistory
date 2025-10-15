@@ -5,6 +5,8 @@ import BlogDetail from "@/components/blocks/blog-detail";
 import Empty from "@/components/blocks/empty";
 import { Post } from "@/types/post";
 
+export const runtime = "edge";
+
 export async function generateMetadata({
   params,
 }: {

@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import { getLandingPage } from "@/services/page";
 import Feedback from "@/components/feedback";
 
+export const runtime = "edge";
 
 export default async function DefaultLayout({
   children,

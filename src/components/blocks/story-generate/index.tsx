@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/icon";
 import { toast } from "sonner";
 import { StoryGenerate as StoryGenerateType } from "@/types/blocks/story-generate";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -102,6 +103,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   // Story generation state
   const [generatedStory, setGeneratedStory] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
+
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   // Calculate word count (memoized for performance)
   const wordCount = useMemo(() => calculateWordCount(generatedStory), [generatedStory]);
@@ -119,16 +123,21 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   // Story preset handler - replaces entire prompt with template
   const handlePresetClick = useCallback((preset: typeof STORY_PRESETS[number]) => {
     setPrompt(PRESET_TEMPLATES[preset.title as keyof typeof PRESET_TEMPLATES] || preset.desc);
-  }, []);
+  }, [PRESET_TEMPLATES]);
 
   // Random prompt generator
   const handleRandomPrompt = useCallback(() => {
     const randomIndex = Math.floor(Math.random() * RANDOM_PROMPTS.length);
     setPrompt(RANDOM_PROMPTS[randomIndex]);
-  }, []);
+  }, [RANDOM_PROMPTS]);
 
   // Story generation handler with streaming
   const handleGenerateStory = useCallback(async () => {
+    console.log("=== handleGenerateStory called ===");
+    console.log("turnstileToken value:", turnstileToken);
+    console.log("turnstileToken type:", typeof turnstileToken);
+    console.log("turnstileToken empty?", !turnstileToken);
+
     // Validation
     if (!prompt.trim()) {
       toast.error(section.toasts.error_no_prompt);
@@ -137,6 +146,12 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
     if (!selectedModel) {
       toast.error(section.toasts.error_no_model);
+      return;
+    }
+
+    if (!turnstileToken) {
+      console.error("❌ Turnstile validation failed - token is:", turnstileToken);
+      toast.error("Please complete the verification");
       return;
     }
 
@@ -149,7 +164,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       selectedGenre,
       selectedPerspective,
       selectedAudience,
-      selectedTone
+      selectedTone,
+      turnstileToken: turnstileToken ? `Present (${turnstileToken.length} chars)` : "Missing"
     });
 
     try {
@@ -165,6 +181,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         perspective: selectedPerspective,
         audience: selectedAudience,
         tone: selectedTone,
+        turnstileToken: turnstileToken,
       };
 
       console.log("=== Request body to API ===", JSON.stringify(requestBody, null, 2));
@@ -260,7 +277,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     } finally {
       setIsGenerating(false);
     }
-  }, [prompt, selectedModel, selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone, section]);
+  }, [prompt, selectedModel, selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone, turnstileToken, section]);
 
   return (
     <section className="relative py-16 sm:py-20 overflow-hidden">
@@ -609,6 +626,27 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           {/* Premium Generate Button */}
           <div>
             <div className="flex flex-col items-center gap-4">
+              {/* Turnstile Verification */}
+              {siteKey && (
+                <div className="w-full flex justify-center mb-2">
+                  <Turnstile
+                    siteKey={siteKey}
+                    onSuccess={(token) => {
+                      console.log("✓ Turnstile verification successful for story generation");
+                      setTurnstileToken(token);
+                    }}
+                    onError={() => {
+                      console.error("❌ Turnstile error occurred");
+                      setTurnstileToken("");
+                    }}
+                    onExpire={() => {
+                      console.warn("⚠️ Turnstile token expired");
+                      setTurnstileToken("");
+                    }}
+                  />
+                </div>
+              )}
+
               {/* Main generate button with glow effect */}
               <div className="relative group">
                 {/* Animated glow */}
