@@ -1,8 +1,13 @@
+"use client";
+
 import Icon from "@/components/icon";
 import { Section as SectionType } from "@/types/blocks/section";
-import OptimizedImage from "@/components/seo/optimized-image";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Feature1({ section }: { section: SectionType }) {
+  const [imageError, setImageError] = useState(false);
+
   if (section.disabled) {
     return null;
   }
@@ -22,13 +27,28 @@ export default function Feature1({ section }: { section: SectionType }) {
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
 
               {/* Image container */}
-              <div className="relative rounded-2xl overflow-hidden border-2 border-border/50 shadow-2xl ring-1 ring-white/10 group-hover:border-primary/50 transition-all duration-500 group-hover:shadow-primary/20 group-hover:scale-[1.02]">
-                <OptimizedImage
-                  src={section.image?.src || ""}
-                  alt={section.title || "AI Story Generator feature illustration"}
-                  fill
-                  className="object-cover"
-                />
+              <div className="relative aspect-video w-full rounded-2xl overflow-hidden border-2 border-border/50 shadow-2xl ring-1 ring-white/10 group-hover:border-primary/50 transition-all duration-500 group-hover:shadow-primary/20 group-hover:scale-[1.02]">
+                {imageError ? (
+                  /* Fallback placeholder for broken images */
+                  <div className="w-full h-full flex items-center justify-center bg-muted/20 border-2 border-dashed border-muted/50">
+                    <div className="text-center p-8">
+                      <Icon name="image" className="size-12 text-muted-foreground/50 mx-auto mb-4" />
+                      <p className="text-sm text-muted-foreground/70">Image not available</p>
+                    </div>
+                  </div>
+                ) : (
+                  <Image
+                    src={section.image?.src || ""}
+                    alt={section.title || "AI Story Generator feature illustration"}
+                    width={800}
+                    height={450}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    priority={true}
+                    quality={90}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                    onError={() => setImageError(true)}
+                  />
+                )}
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
