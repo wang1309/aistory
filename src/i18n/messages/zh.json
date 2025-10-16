@@ -133,5 +133,14 @@
     "contact_tip": "其他联系方式",
     "rating_tip": "您对 ShipAny 的看法如何？",
     "placeholder": "在这里留下您的反馈..."
+  },
+  "verification": {
+    "title": "安全验证",
+    "description": "请在下方完成安全验证以继续",
+    "cancel": "取消",
+    "confirm": "确认",
+    "verifying": "验证中...",
+    "not_configured": "验证服务未配置",
+    "footer_text": "此验证帮助我们保护系统免受自动化滥用"
   }
 }

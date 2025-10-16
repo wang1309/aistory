@@ -7,9 +7,9 @@ import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/icon";
 import { toast } from "sonner";
 import { StoryGenerate as StoryGenerateType } from "@/types/blocks/story-generate";
-import { Turnstile } from "@marsidev/react-turnstile";
 import { useLocale } from "next-intl";
 import { exportStoryToPdf, StoryMetadata } from "@/lib/pdf-export";
+import { useAppContext } from "@/contexts/app";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -41,6 +41,7 @@ function calculateWordCount(text: string): number {
 
 export default function StoryGenerate({ section }: { section: StoryGenerateType }) {
    const locale = useLocale(); // 获取当前语言
+  const { setShowVerificationModal, setVerificationCallback } = useAppContext();
   // Get translated constants (memoized for performance)
   const RANDOM_PROMPTS = useMemo(() => section.random_prompts, [section]);
 
@@ -106,12 +107,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   // Story generation state
   const [generatedStory, setGeneratedStory] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   // PDF export state
   const [isExportingPdf, setIsExportingPdf] = useState(false);
-
-  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   // Calculate word count (memoized for performance)
   const wordCount = useMemo(() => calculateWordCount(generatedStory), [generatedStory]);
@@ -137,13 +135,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     setPrompt(RANDOM_PROMPTS[randomIndex]);
   }, [RANDOM_PROMPTS]);
 
-  // Story generation handler with streaming
-  const handleGenerateStory = useCallback(async () => {
-    console.log("=== handleGenerateStory called ===");
-    console.log("turnstileToken value:", turnstileToken);
-    console.log("turnstileToken type:", typeof turnstileToken);
-    console.log("turnstileToken empty?", !turnstileToken);
-
+  // Handle clicking the generate button - show verification modal first
+  const handleGenerateClick = useCallback(() => {
     // Validation
     if (!prompt.trim()) {
       toast.error(section.toasts.error_no_prompt);
@@ -155,13 +148,14 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       return;
     }
 
-    if (!turnstileToken) {
-      console.log("❌ Turnstile validation failed - token is:", turnstileToken);
-      toast.error("Please complete the verification");
-      return;
-    }
+    // Set verification callback and show modal
+    setVerificationCallback(() => handleVerificationSuccess);
+    setShowVerificationModal(true);
+  }, [prompt, selectedModel, section, setShowVerificationModal, setVerificationCallback]);
 
-    console.log("=== Starting story generation ===");
+  // Handle verification success - start story generation
+  const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
+    console.log("=== Starting story generation after verification ===");
     console.log("Current state:", {
       prompt: prompt.substring(0, 100),
       selectedModel,
@@ -171,7 +165,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       selectedPerspective,
       selectedAudience,
       selectedTone,
-      turnstileToken: turnstileToken ? `Present (${turnstileToken.length} chars)` : "Missing"
+      turnstileToken: `Present (${turnstileToken.length} chars)`
     });
 
     try {
@@ -284,7 +278,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     } finally {
       setIsGenerating(false);
     }
-  }, [prompt, selectedModel, selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone, turnstileToken, section]);
+  }, [prompt, selectedModel, selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone, locale, section]);
 
   // PDF export handler
   const handleExportPdf = useCallback(async () => {
@@ -673,34 +667,13 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           {/* Premium Generate Button */}
           <div>
             <div className="flex flex-col items-center gap-4">
-              {/* Turnstile Verification */}
-              {siteKey && (
-                <div className="w-full flex justify-center mb-2">
-                  <Turnstile
-                    siteKey={siteKey}
-                    onSuccess={(token) => {
-                      console.log("✓ Turnstile verification successful for story generation");
-                      setTurnstileToken(token);
-                    }}
-                    onError={() => {
-                      console.log("❌ Turnstile error occurred");
-                      setTurnstileToken("");
-                    }}
-                    onExpire={() => {
-                      console.warn("⚠️ Turnstile token expired");
-                      setTurnstileToken("");
-                    }}
-                  />
-                </div>
-              )}
-
               {/* Main generate button with glow effect */}
               <div className="relative group">
                 {/* Animated glow */}
                 <div className="absolute -inset-2 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-xl transition-opacity duration-500 group-hover:opacity-100 animate-pulse anim-medium rounded-full will-change-opacity" />
 
                 <Button
-                  onClick={handleGenerateStory}
+                  onClick={handleGenerateClick}
                   disabled={isGenerating || !prompt.trim() || !selectedModel}
                   className="relative w-full sm:w-auto min-w-[280px] h-14 rounded-full bg-gradient-to-r from-primary via-primary/90 to-primary text-primary-foreground text-base font-bold shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
@@ -818,7 +791,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                         <Button
                           variant="outline"
                           size="sm"
-                          onClick={handleGenerateStory}
+                          onClick={handleGenerateClick}
                           className="text-xs"
                         >
                           <Icon name="RiRefreshLine" className="size-4 mr-1" />

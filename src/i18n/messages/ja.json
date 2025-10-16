@@ -133,5 +133,14 @@
     "contact_tip": "その他のお問い合わせ方法",
     "rating_tip": "ShipAnyについてどう思いますか？",
     "placeholder": "ここにご意見をお書きください..."
+  },
+  "verification": {
+    "title": "セキュリティ認証",
+    "description": "続行するには、下のセキュリティ認証を完了してください",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "verifying": "認証中...",
+    "not_configured": "認証サービスが設定されていません",
+    "footer_text": "この認証は、自動化された悪用からシステムを保護するのに役立ちます"
   }
 }

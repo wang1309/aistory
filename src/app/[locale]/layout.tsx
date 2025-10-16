@@ -9,6 +9,7 @@ import { NextAuthSessionProvider } from "@/auth/session";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/providers/theme";
 import StructuredData from "@/components/seo/structured-data";
+import VerificationModal from "@/components/verification-modal";
 
 export async function generateMetadata({
   params,
@@ -108,7 +109,10 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <NextAuthSessionProvider>
             <AppContextProvider>
-              <ThemeProvider>{children}</ThemeProvider>
+              <ThemeProvider>
+                {children}
+                <VerificationModal />
+              </ThemeProvider>
             </AppContextProvider>
           </NextAuthSessionProvider>
         </NextIntlClientProvider>

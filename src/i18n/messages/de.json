@@ -133,5 +133,14 @@
     "contact_tip": "Andere Möglichkeiten, uns zu kontaktieren",
     "rating_tip": "Wie fühlen Sie sich über ShipAny?",
     "placeholder": "Hinterlassen Sie hier Ihre Worte..."
+  },
+  "verification": {
+    "title": "Sicherheitsüberprüfung",
+    "description": "Bitte schließen Sie die Sicherheitsüberprüfung unten ab, um fortzufahren",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "verifying": "Überprüfung läuft...",
+    "not_configured": "Überprüfungsdienst nicht konfiguriert",
+    "footer_text": "Diese Überprüfung hilft uns, das System vor automatisiertem Missbrauch zu schützen"
   }
 }

@@ -133,5 +133,14 @@
     "contact_tip": "Other ways to contact us",
     "rating_tip": "How do you feel about ShipAny?",
     "placeholder": "Leave your words here..."
+  },
+  "verification": {
+    "title": "Security Verification",
+    "description": "Please complete the security verification below to continue",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "verifying": "Verifying...",
+    "not_configured": "Verification service not configured",
+    "footer_text": "This verification helps us protect against automated abuse"
   }
 }

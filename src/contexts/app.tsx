@@ -32,6 +32,15 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
   const [showFeedback, setShowFeedback] = useState<boolean>(false);
+  const [showVerificationModal, setShowVerificationModal] = useState<boolean>(false);
+  const [verificationCallback, setVerificationCallback] = useState<((token: string) => void) | null>(null);
+
+  // 当验证模态框关闭时，重置回调
+  useEffect(() => {
+    if (!showVerificationModal && verificationCallback) {
+      setVerificationCallback(null);
+    }
+  }, [showVerificationModal, verificationCallback]);
 
   const fetchUserInfo = async function () {
     try {
@@ -123,6 +132,10 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         setUser,
         showFeedback,
         setShowFeedback,
+        showVerificationModal,
+        setShowVerificationModal,
+        verificationCallback,
+        setVerificationCallback,
       }}
     >
       {children}
