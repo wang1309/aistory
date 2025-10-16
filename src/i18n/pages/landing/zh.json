@@ -73,7 +73,7 @@
     "label": "介绍",
     "description": "讲故事的世界已经被技术彻底改变，AI 故事生成器处于这一变革的最前沿。这些创新工具使用人工智能来创作叙事，为作家、营销人员和内容创作者提供创意解决方案。但 AI 故事生成器究竟是什么，它如何使您受益？AI 故事生成器是一种使用算法和机器学习来生成故事的软件应用程序。这些故事可以从简单的叙述到具有复杂角色发展的复杂情节。通过处理大量数据，包括语言模式和叙事结构，这些生成器可以根据用户输入或提示创建独特的内容。",
     "image": {
-      "src": "/imgs/features/1.png"
+      "src": "/imgs/features/story2.png"
     },
     "items": [
 
@@ -90,7 +90,7 @@
         "description": "许多 AI 故事生成器提供无过滤和无限制选项，允许用户在没有限制的情况下探索广泛的想法。这种灵活性鼓励创造力，使作家能够尝试不同的类型、主题和风格。",
         "icon": "RiNextjsFill",
         "image": {
-          "src": "/imgs/features/2.png"
+          "src": "/imgs/features/story3.png"
         }
       },
       {
@@ -98,7 +98,7 @@
         "description": "有几个 AI 故事生成器可以免费使用，让任何有兴趣探索创意潜力的人都能使用。免费版本通常提供基本功能，高级选项可用于更高级的功能。",
         "icon": "RiClapperboardAiLine",
         "image": {
-          "src": "/imgs/features/3.png"
+          "src": "/imgs/features/story4.png"
         }
       },
       {
@@ -106,7 +106,7 @@
         "description": "大多数 AI 故事生成器都拥有直观的界面，即使对于初学者也很容易操作。用户可以输入提示、选择类型并自定义设置，以生成与他们的愿景一致的故事。",
         "icon": "RiCodeFill",
         "image": {
-          "src": "/imgs/features/4.png"
+          "src": "/imgs/features/story5.png"
         }
       }
     ]
