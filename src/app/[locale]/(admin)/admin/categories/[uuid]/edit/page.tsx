@@ -10,7 +10,6 @@ import FormSlot from "@/components/dashboard/slots/form";
 import { Form as FormSlotType } from "@/types/slots/form";
 import { getUserInfo } from "@/services/user";
 
-export const runtime = "edge";
 
 export default async function EditCategoryPage({
   params,

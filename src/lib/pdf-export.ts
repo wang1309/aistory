@@ -213,7 +213,7 @@ export async function exportStoryToPdf(
     onProgress?.(100);
 
   } catch (error) {
-    console.error('PDF导出失败:', error);
+    console.log('PDF导出失败:', error);
     throw new Error('PDF导出失败，请重试');
   }
 }
@@ -284,7 +284,7 @@ export async function exportElementToPdf(
     onProgress?.(100);
 
   } catch (error) {
-    console.error('元素PDF导出失败:', error);
+    console.log('元素PDF导出失败:', error);
     throw new Error('PDF导出失败，请重试');
   }
 }

@@ -59,7 +59,7 @@ class Client {
 
       return await response.json();
     } catch (error) {
-      console.error("Image Generation API call failed:", error);
+      console.log("Image Generation API call failed:", error);
       throw error;
     }
   }
@@ -80,7 +80,7 @@ class Client {
 
       return await response.json();
     } catch (e) {
-      console.error("Image Generation Query Task API call failed:", e);
+      console.log("Image Generation Query Task API call failed:", e);
       throw e;
     }
   }
@@ -114,7 +114,7 @@ class Client {
 
       return await response.json();
     } catch (e) {
-      console.error("Image Generation Query Tasks API call failed:", e);
+      console.log("Image Generation Query Tasks API call failed:", e);
       throw e;
     }
   }

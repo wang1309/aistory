@@ -8,8 +8,6 @@ import { newStorage } from "@/lib/storage";
 import { openai } from "@ai-sdk/openai";
 import { replicate } from "@ai-sdk/replicate";
 
-export const runtime = "edge";
-
 export async function POST(req: Request) {
   try {
     const { prompt, provider, model } = await req.json();

@@ -10,7 +10,6 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getStripeBilling } from "@/services/order";
 
-export const runtime = "edge";
 
 export default async function () {
   const t = await getTranslations();

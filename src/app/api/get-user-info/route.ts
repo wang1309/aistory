@@ -5,7 +5,6 @@ import { getUserUuid } from "@/services/user";
 import { getUserCredits } from "@/services/credit";
 import { User } from "@/types/user";
 
-export const runtime = "edge";
 
 export async function POST(req: Request) {
   try {

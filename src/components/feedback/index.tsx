@@ -54,7 +54,7 @@ export default function Feedback({
     }
 
     if (!turnstileToken) {
-      console.error("❌ Turnstile token is missing - user may not have completed verification");
+      console.log("❌ Turnstile token is missing - user may not have completed verification");
       toast.error("Please complete the verification");
       return;
     }
@@ -101,7 +101,7 @@ export default function Feedback({
       setTurnstileToken("");
       setShowFeedback(false);
     } catch (error) {
-      console.error("Submit error:", error);
+      console.log("Submit error:", error);
       toast.error("Failed to submit, please try again later");
     } finally {
       setLoading(false);

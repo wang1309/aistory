@@ -10,7 +10,6 @@ import { getUserInfo } from "@/services/user";
 import { getUuid } from "@/lib/hash";
 import { CategoryStatus, getCategories } from "@/models/category";
 
-export const runtime = "edge";
 
 export default async function () {
   const user = await getUserInfo();

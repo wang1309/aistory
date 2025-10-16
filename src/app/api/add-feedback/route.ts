@@ -4,7 +4,6 @@ import { getUserUuid } from "@/services/user";
 import { insertFeedback } from "@/models/feedback";
 import { getUuid } from "@/lib/hash";
 
-export const runtime = "edge";
 
 // Verify Cloudflare Turnstile token
 async function verifyTurnstileToken(token: string): Promise<boolean> {
@@ -15,7 +14,7 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
   console.log("Secret key configured:", secretKey ? "Yes" : "No");
 
   if (!secretKey) {
-    console.error("TURNSTILE_SECRET_KEY is not configured");
+    console.log("TURNSTILE_SECRET_KEY is not configured");
     return false;
   }
 
@@ -50,7 +49,7 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
 
     return data.success === true;
   } catch (error) {
-    console.error("Turnstile verification error:", error);
+    console.log("Turnstile verification error:", error);
     return false;
   }
 }
@@ -70,13 +69,13 @@ export async function POST(req: Request) {
 
     // Verify Turnstile token
     if (!turnstileToken) {
-      console.error("No turnstile token provided");
+      console.log("No turnstile token provided");
       return respErr("verification required");
     }
 
     const isValidToken = await verifyTurnstileToken(turnstileToken);
     if (!isValidToken) {
-      console.error("Turnstile token validation failed");
+      console.log("Turnstile token validation failed");
       return respErr("verification failed");
     }
 

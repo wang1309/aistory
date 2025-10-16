@@ -10,7 +10,6 @@ import { Form as FormSlotType } from "@/types/slots/form";
 import { getUserInfo } from "@/services/user";
 import { getUuid } from "@/lib/hash";
 
-export const runtime = "edge";
 
 export default async function AddCategoryPage() {
   const user = await getUserInfo();

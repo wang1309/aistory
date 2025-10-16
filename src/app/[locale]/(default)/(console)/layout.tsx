@@ -5,7 +5,6 @@ import { getTranslations } from "next-intl/server";
 import { getUserInfo } from "@/services/user";
 import { redirect } from "next/navigation";
 
-export const runtime = "edge";
 
 export default async function ({ children }: { children: ReactNode }) {
   const userInfo = await getUserInfo();

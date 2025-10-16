@@ -127,7 +127,7 @@ export class KlingVideoModel implements VideoModelV1 {
         });
       }
     } catch (error: any) {
-      console.error("Kling generate video failed:", error);
+      console.log("Kling generate video failed:", error);
       warnings.push({
         type: "other",
         message: error.message,

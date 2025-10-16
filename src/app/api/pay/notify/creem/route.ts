@@ -1,8 +1,6 @@
 import { updateOrder } from "@/services/order";
 import { respOk } from "@/lib/resp";
 
-export const runtime = "edge";
-
 export async function POST(req: Request) {
   try {
     const creemWebhookSecret = process.env.CREEM_WEBHOOK_SECRET;

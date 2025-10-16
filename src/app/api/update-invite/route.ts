@@ -13,7 +13,6 @@ import { respData, respErr } from "@/lib/resp";
 import { getIsoTimestr } from "@/lib/time";
 import { insertAffiliate } from "@/models/affiliate";
 
-export const runtime = "edge";
 
 export async function POST(req: Request) {
   try {
@@ -60,7 +59,7 @@ export async function POST(req: Request) {
 
     return respData(user);
   } catch (e) {
-    console.error("update invited by failed: ", e);
+    console.log("update invited by failed: ", e);
     return respErr("update invited by failed");
   }
 }

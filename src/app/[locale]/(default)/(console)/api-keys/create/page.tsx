@@ -7,7 +7,6 @@ import { getNonceStr } from "@/lib/hash";
 import { getTranslations } from "next-intl/server";
 import { getUserUuid } from "@/services/user";
 
-export const runtime = "edge";
 
 export default async function () {
   const t = await getTranslations();
@@ -82,7 +81,7 @@ export default async function () {
             redirect_url: "/api-keys",
           };
         } catch (e: any) {
-          console.error(e);
+          console.log(e);
           throw new Error("create api key failed: " + e.message);
         }
       },

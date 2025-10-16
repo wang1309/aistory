@@ -11,8 +11,6 @@ import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { deepseek } from "@ai-sdk/deepseek";
 import { openai } from "@ai-sdk/openai";
 
-export const runtime = "edge";
-
 export async function POST(req: Request) {
   try {
     const { prompt, provider, model } = await req.json();

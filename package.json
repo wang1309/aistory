@@ -1,11 +1,11 @@
 {
-  "name": "AI Story Generator",
+  "name": "ai-story-generator",
   "version": "2.6.0",
   "private": true,
   "author": "idoubi",
-  "homepage": "https://shipany.ai",
+  "homepage": "https://storiesgenerator.org",
   "scripts": {
-    "dev": "cross-env NODE_NO_WARNINGS=1 next dev --turbopack",
+    "dev": "cross-env NODE_NO_WARNINGS=1 next dev",
     "build": "next build",
     "start": "NODE_NO_WARNINGS=1 next start",
     "lint": "next lint",

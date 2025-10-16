@@ -65,7 +65,7 @@ class Client {
 
       return await response.json();
     } catch (error) {
-      console.error("Text2Video API call failed:", error);
+      console.log("Text2Video API call failed:", error);
       throw error;
     }
   }
@@ -87,7 +87,7 @@ class Client {
 
       return await response.json();
     } catch (e) {
-      console.error("Text2Video API call failed:", e);
+      console.log("Text2Video API call failed:", e);
       throw e;
     }
   }

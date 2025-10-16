@@ -3,8 +3,6 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { isAuthEnabled } from "@/lib/auth";
 
-export const runtime = "edge";
-
 export default async function SignInPage({
   searchParams,
 }: {

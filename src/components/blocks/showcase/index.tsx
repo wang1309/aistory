@@ -1,8 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Section as SectionType } from "@/types/blocks/section";
+import OptimizedImage from "@/components/seo/optimized-image";
 
 export default function Showcase({ section }: { section: SectionType }) {
   if (section.disabled) {
@@ -26,9 +26,9 @@ export default function Showcase({ section }: { section: SectionType }) {
             <Card className="overflow-hidden transition-all hover:shadow-lg dark:hover:shadow-primary/10 p-0">
               <CardContent className="p-0">
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
-                  <Image
+                  <OptimizedImage
                     src={item.image?.src || ""}
-                    alt={item.image?.alt || item.title || ""}
+                    alt={item.image?.alt || item.title || "AI Story Generator showcase example"}
                     fill
                     className="object-cover rounded-t-lg transition-transform duration-300 hover:scale-110"
                   />

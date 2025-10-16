@@ -1,7 +1,5 @@
 import { respErr } from "@/lib/resp";
 
-export const runtime = "edge";
-
 interface StoryOptions {
   format: string | null;
   storyLength: string | null;
@@ -26,7 +24,7 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
   console.log("Secret key configured:", secretKey ? "Yes" : "No");
 
   if (!secretKey) {
-    console.error("TURNSTILE_SECRET_KEY is not configured");
+    console.log("TURNSTILE_SECRET_KEY is not configured");
     return false;
   }
 
@@ -61,7 +59,7 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
 
     return data.success === true;
   } catch (error) {
-    console.error("Turnstile verification error:", error);
+    console.log("Turnstile verification error:", error);
     return false;
   }
 }
@@ -75,24 +73,24 @@ export async function POST(req: Request) {
     console.log("=== Extracted params ===", { prompt, model, locale, format, length, genre, perspective, audience, tone, turnstileToken: turnstileToken ? "Present" : "Missing" });
 
     if (!prompt) {
-      console.error("Validation failed: prompt is empty");
+      console.log("Validation failed: prompt is empty");
       return respErr("invalid params");
     }
 
     if (!model) {
-      console.error("Validation failed: model is empty");
+      console.log("Validation failed: model is empty");
       return respErr("please select an AI model");
     }
 
     // Verify Turnstile token
     if (!turnstileToken) {
-      console.error("No turnstile token provided");
+      console.log("No turnstile token provided");
       return respErr("verification required");
     }
 
     const isValidToken = await verifyTurnstileToken(turnstileToken);
     if (!isValidToken) {
-      console.error("Turnstile token validation failed");
+      console.log("Turnstile token validation failed");
       return respErr("verification failed");
     }
 
@@ -213,7 +211,7 @@ export async function POST(req: Request) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("API Error:", response.status, errorText);
+      console.log("API Error:", response.status, errorText);
       return respErr(`API Error: ${response.status} - ${errorText}`);
     }
 
@@ -227,7 +225,7 @@ export async function POST(req: Request) {
       async start(controller) {
         const reader = response.body?.getReader();
         if (!reader) {
-          console.error("No reader available from response");
+          console.log("No reader available from response");
           controller.close();
           return;
         }
@@ -311,13 +309,13 @@ export async function POST(req: Request) {
                     console.log("=== No content in delta ===", JSON.stringify(parsed.choices?.[0]));
                   }
                 } catch (e) {
-                  console.error("Parse error:", e, "Line:", data.substring(0, 100));
+                  console.log("Parse error:", e, "Line:", data.substring(0, 100));
                 }
               }
             }
           }
         } catch (error) {
-          console.error("Stream error:", error);
+          console.log("Stream error:", error);
           controller.error(error);
         } finally {
           console.log("=== Closing stream ===");
@@ -333,7 +331,7 @@ export async function POST(req: Request) {
       },
     });
   } catch (e) {
-    console.error("Story generation failed:", e);
+    console.log("Story generation failed:", e);
     return respErr("bad request: " + e);
   }
 }

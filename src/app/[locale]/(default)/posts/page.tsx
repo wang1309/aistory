@@ -9,8 +9,6 @@ import {
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
-export const runtime = "edge";
-
 export async function generateMetadata({
   params,
 }: {

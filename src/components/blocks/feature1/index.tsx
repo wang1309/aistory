@@ -1,5 +1,6 @@
 import Icon from "@/components/icon";
 import { Section as SectionType } from "@/types/blocks/section";
+import OptimizedImage from "@/components/seo/optimized-image";
 
 export default function Feature1({ section }: { section: SectionType }) {
   if (section.disabled) {
@@ -22,10 +23,11 @@ export default function Feature1({ section }: { section: SectionType }) {
 
               {/* Image container */}
               <div className="relative rounded-2xl overflow-hidden border-2 border-border/50 shadow-2xl ring-1 ring-white/10 group-hover:border-primary/50 transition-all duration-500 group-hover:shadow-primary/20 group-hover:scale-[1.02]">
-                <img
-                  src={section.image?.src}
-                  alt={section.title || "Feature illustration"}
-                  className="w-full h-full object-cover"
+                <OptimizedImage
+                  src={section.image?.src || ""}
+                  alt={section.title || "AI Story Generator feature illustration"}
+                  fill
+                  className="object-cover"
                 />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

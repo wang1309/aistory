@@ -12,7 +12,6 @@ import { Form as FormSlotType } from "@/types/slots/form";
 import { getUserInfo } from "@/services/user";
 import { CategoryStatus, getCategories } from "@/models/category";
 
-export const runtime = "edge";
 
 export default async function ({
   params,

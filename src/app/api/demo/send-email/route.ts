@@ -1,8 +1,6 @@
 import { respData, respErr } from "@/lib/resp";
 import { Resend } from "resend";
 
-export const runtime = "edge";
-
 export async function POST(req: Request) {
   try {
     const { emails, subject, content } = await req.json();

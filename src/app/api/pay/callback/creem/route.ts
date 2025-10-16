@@ -2,8 +2,6 @@ import { redirect } from "@/i18n/navigation";
 import { newCreemClient } from "@/integrations/creem";
 import { updateOrder } from "@/services/order";
 
-export const runtime = "edge";
-
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const checkoutId = searchParams.get("checkout_id");

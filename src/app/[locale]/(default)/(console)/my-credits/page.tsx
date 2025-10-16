@@ -7,7 +7,6 @@ import { getUserCredits } from "@/services/credit";
 import { getUserUuid } from "@/services/user";
 import moment from "moment";
 
-export const runtime = "edge";
 
 export default async function () {
   const t = await getTranslations();

@@ -6,7 +6,6 @@ import moment from "moment";
 import Dropdown from "@/components/blocks/table/dropdown";
 import { NavItem } from "@/types/blocks/base";
 
-export const runtime = "edge";
 
 export default async function CategoriesPage() {
   const categories = await getCategories({

@@ -167,7 +167,7 @@ export const authOptions: NextAuthConfig = {
 
         return token;
       } catch (e) {
-        console.error("jwt callback error:", e);
+        console.log("jwt callback error:", e);
         return token;
       }
     },

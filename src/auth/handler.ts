@@ -34,7 +34,7 @@ export async function handleSignInUser(
 
     return savedUser;
   } catch (e) {
-    console.error("handle signin user failed:", e);
+    console.log("handle signin user failed:", e);
     throw e;
   }
 }

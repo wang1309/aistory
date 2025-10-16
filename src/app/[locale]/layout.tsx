@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import { NextAuthSessionProvider } from "@/auth/session";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/providers/theme";
+import StructuredData from "@/components/seo/structured-data";
 
 export async function generateMetadata({
   params,
@@ -23,6 +24,7 @@ export async function generateMetadata({
   const title = t("metadata.title") || "";
   const description = t("metadata.description") || "";
   const siteName = t("metadata.siteName") || "AI Story Generator";
+  const canonicalUrl = `${webUrl}${locale === "en" ? "" : `/${locale}`}`;
 
   return {
     title: {
@@ -31,6 +33,9 @@ export async function generateMetadata({
     },
     description: description,
     keywords: t("metadata.keywords") || "",
+    alternates: {
+      canonical: canonicalUrl,
+    },
 
     // Open Graph metadata
     openGraph: {
@@ -94,12 +99,20 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      <NextAuthSessionProvider>
-        <AppContextProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-        </AppContextProvider>
-      </NextAuthSessionProvider>
-    </NextIntlClientProvider>
+    <html>
+      <head>
+        <StructuredData locale={locale} type="WebApplication" />
+        <StructuredData locale={locale} type="FAQPage" />
+      </head>
+      <body>
+        <NextIntlClientProvider messages={messages}>
+          <NextAuthSessionProvider>
+            <AppContextProvider>
+              <ThemeProvider>{children}</ThemeProvider>
+            </AppContextProvider>
+          </NextAuthSessionProvider>
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

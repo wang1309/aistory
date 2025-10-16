@@ -5,8 +5,6 @@ import { Sidebar } from "@/types/blocks/sidebar";
 import { getUserInfo } from "@/services/user";
 import { redirect } from "next/navigation";
 
-export const runtime = "edge";
-
 export default async function AdminLayout({
   children,
 }: {

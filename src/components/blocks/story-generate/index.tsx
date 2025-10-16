@@ -156,7 +156,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     }
 
     if (!turnstileToken) {
-      console.error("❌ Turnstile validation failed - token is:", turnstileToken);
+      console.log("❌ Turnstile validation failed - token is:", turnstileToken);
       toast.error("Please complete the verification");
       return;
     }
@@ -205,7 +205,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       console.log("=== Response headers ===", Object.fromEntries(response.headers.entries()));
 
       if (!response.ok) {
-        console.error("=== Response not OK ===");
+        console.log("=== Response not OK ===");
         const errorData = await response.json();
         console.error("Error data:", errorData);
         toast.error(errorData.message || section.toasts.error_generate_failed);
