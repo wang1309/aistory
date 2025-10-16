@@ -86,24 +86,24 @@
     "description": "KI-Geschichtengeneratoren verfügen über zahlreiche Funktionen zur Steigerung von Kreativität und Produktivität",
     "items": [
       {
-        "title": "Ohne Filter und ohne Limit-Optionen",
-        "description": "Viele KI-Geschichtengeneratoren bieten Optionen ohne Filter und ohne Limits, die es Benutzern ermöglichen, ein breites Spektrum an Ideen ohne Einschränkungen zu erkunden. Diese Flexibilität fördert die Kreativität und ermöglicht es Autoren, mit verschiedenen Genres, Themen und Stilen zu experimentieren.",
+        "title": "Schreibblockaden durchbrechen, unbegrenzte Inspiration entfesseln",
+        "description": "Wenn Sie auf eine Schreibblockade stoßen, liefert der KI-Geschichtengenerator den kreativen Funken, den Sie brauchen. Lassen Sie KI Ihr 24/7 kreativer Partner sein, der Ihnen hilft, gedankliche Blockaden zu überwinden und unerwartete Geschichtsrichtungen zu erkunden.",
         "icon": "RiNextjsFill",
         "image": {
           "src": "/imgs/features/story3.png"
         }
       },
       {
-        "title": "Kostenloser Zugang",
-        "description": "Mehrere KI-Geschichtengeneratoren sind kostenlos verfügbar und machen sie für jeden zugänglich, der sein kreatives Potenzial erkunden möchte. Kostenlose Versionen bieten oft grundlegende Funktionen, mit Premium-Optionen für erweiterte Features.",
+        "title": "Effizienter Erstellungsrahmen, sparen Sie 70% Ihrer Zeit",
+        "description": "Unser KI-Generator liefert Ihnen vollständige Geschichtrahmen, die etwa 70% Ihrer Schreibbedürfnisse abdecken, sodass Sie sich auf die wichtigste kreative Verfeinerung konzentrieren können und Ihre Schreibeffizienz dramatisch verbessern.",
         "icon": "RiClapperboardAiLine",
         "image": {
           "src": "/imgs/features/story4.png"
         }
       },
       {
-        "title": "Benutzerfreundliche Oberfläche",
-        "description": "Die meisten KI-Geschichtengeneratoren verfügen über eine intuitive Benutzeroberfläche, die selbst für Anfänger leicht zu navigieren ist. Benutzer können Eingaben eingeben, Genres auswählen und Einstellungen anpassen, um Geschichten zu generieren, die mit ihrer Vision übereinstimmen.",
+        "title": "Intelligenter Charakter- & Weltbau-Assistent",
+        "description": "Unsere KI generiert nicht nur Geschichten – sie hilft Ihnen auch, reiche Charakterhintergründe und Weltelemente zu entwickeln und gewährleistet narrative Konsistenz und Tiefe in Ihrer kreativen Arbeit. Von Charakterpersönlichkeiten bis zu Weltregeln – machen Sie Ihre Geschichten vollständiger und professioneller.",
         "icon": "RiCodeFill",
         "image": {
           "src": "/imgs/features/story5.png"
@@ -152,11 +152,6 @@
         "title": "Marketing und Content-Erstellung",
         "description": "Vermarkter und Content-Ersteller können KI-Geschichtengeneratoren nutzen, um ansprechende Inhalte für Blogs, soziale Medien und Werbekampagnen zu produzieren. Die Fähigkeit, schnell einzigartige Geschichten zu generieren, kann Zeit sparen und die Produktivität steigern.",
         "icon": "RiKey2Fill"
-      },
-      {
-        "title": "Dateninfrastruktur",
-        "description": "Integrierte Supabase-Integration für zuverlässige und skalierbare Datenspeicherung.",
-        "icon": "RiDatabase2Line"
       },
       {
         "title": "Bildung",

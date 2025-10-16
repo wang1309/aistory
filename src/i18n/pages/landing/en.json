@@ -86,24 +86,24 @@
     "description": "AI story generators come with numerous features designed to enhance creativity and productivity",
     "items": [
       {
-        "title": "No Filter and No Limit Options",
-        "description": "Many AI story generators offer no filter and no limit options, allowing users to explore a wide range of ideas without restrictions. This flexibility encourages creativity, enabling writers to experiment with different genres, themes, and styles.",
+        "title": "Break Through Writer's Block, Spark Unlimited Inspiration",
+        "description": "When you hit writer's block, AI story generators provide that creative spark you need. Let AI be your 24/7 creative partner, helping you break through mental blocks and explore unexpected story directions.",
         "icon": "RiNextjsFill",
         "image": {
           "src": "/imgs/features/story3.png"
         }
       },
       {
-        "title": "Free Access",
-        "description": "Several AI story generators are available for free, making them accessible to anyone interested in exploring their creative potential. Free versions often provide basic functionalities, with premium options available for more advanced features.",
+        "title": "Efficient Creation Framework, Save 70% of Your Time",
+        "description": "Our AI generator provides you with complete story frameworks, covering 70% of your writing needs, allowing you to focus on the most important creative polishing while dramatically improving your writing efficiency.",
         "icon": "RiClapperboardAiLine",
         "image": {
           "src": "/imgs/features/story4.png"
         }
       },
       {
-        "title": "User-Friendly Interface",
-        "description": "Most AI story generators boast an intuitive interface, making them easy to navigate even for beginners. Users can input prompts, choose genres, and customize settings to generate stories that align with their vision.",
+        "title": "Smart Character & World-Building Assistant",
+        "description": "Our AI doesn't just generate stories – it helps you build rich character backgrounds and world-building elements, ensuring narrative consistency and depth throughout your creative work. From character personalities to world rules, make your stories more complete and professional.",
         "icon": "RiCodeFill",
         "image": {
           "src": "/imgs/features/story5.png"
@@ -152,11 +152,6 @@
         "title": "Marketing and Content Creation",
         "description": "Marketers and content creators can leverage AI story generators to produce engaging content for blogs, social media, and advertising campaigns. The ability to quickly generate unique stories can save time and enhance productivity.",
         "icon": "RiKey2Fill"
-      },
-      {
-        "title": "Data Infrastructure",
-        "description": "Built-in Supabase integration for reliable and scalable data storage.",
-        "icon": "RiDatabase2Line"
       },
       {
         "title": "Education",
