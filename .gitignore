@@ -45,3 +45,5 @@ supabase
 .*next
 .dev.vars*
 .source
+
+.claude
