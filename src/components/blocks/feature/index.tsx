@@ -69,7 +69,7 @@ export default function Feature({ section }: { section: SectionType }) {
                 )}
 
                 {/* Content */}
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col text-center items-center">
                   <h3 className="mb-3 text-lg font-bold text-foreground/90 transition-colors duration-300 group-hover:text-primary leading-[1.3]">
                     {item.title}
                   </h3>

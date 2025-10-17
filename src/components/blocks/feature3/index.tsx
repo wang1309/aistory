@@ -52,7 +52,7 @@ export default function Feature3({ section }: { section: SectionType }) {
         <div className="motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-8 motion-safe:duration-700 motion-safe:delay-200">
           <Tabs defaultValue="tab-1" value={activeTab} onValueChange={setActiveTab}>
             {/* Tab List with Steps */}
-            <TabsList className="relative grid gap-4 mb-12 lg:grid-cols-4 lg:gap-6">
+            <TabsList className="relative grid gap-4 mb-12 lg:grid-cols-3 lg:gap-6 justify-items-center">
               {/* Desktop Connector Line */}
               <div className="absolute left-[calc(12.5%)] right-[calc(12.5%)] top-[38px] -z-10 hidden h-0.5 lg:block">
                 <div className="h-full bg-gradient-to-r from-muted via-border to-muted rounded-full" />
@@ -117,7 +117,7 @@ export default function Feature3({ section }: { section: SectionType }) {
                             }`}>
                               {item.title}
                             </h3>
-                            <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                            <p className="text-sm text-muted-foreground/80 leading-relaxed text-center">
                               {item.description}
                             </p>
                           </div>
@@ -172,7 +172,7 @@ export default function Feature3({ section }: { section: SectionType }) {
                             }`}>
                               {item.title}
                             </h3>
-                            <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                            <p className="text-sm text-muted-foreground/80 leading-relaxed text-center">
                               {item.description}
                             </p>
                           </div>
