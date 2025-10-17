@@ -1,40 +1,499 @@
+/* Markdown 内容样式系统 - 中文优化版 */
 .markdown {
-  background-color: var(--background-secondary);
   color: var(--foreground);
-  li {
-    list-style-type: square;
-    word-break: break-word;
-  }
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  word-wrap: break-word;
 }
 
-.markdown pre,
-.markdown code,
+/* 标题层级系统 */
+.markdown h1 {
+  font-size: clamp(1.875rem, 5vw, 2.25rem); /* 30px - 36px */
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--foreground);
+  scroll-margin-top: 4rem;
+}
+
+.markdown h1:first-child {
+  margin-top: 0;
+}
+
+.markdown h2 {
+  font-size: clamp(1.5rem, 4vw, 1.875rem); /* 24px - 30px */
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-top: 2rem;
+  margin-bottom: 0.875rem;
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--foreground);
+  scroll-margin-top: 4rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.markdown h3 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem); /* 20px - 24px */
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--foreground);
+  scroll-margin-top: 4rem;
+}
+
+.markdown h4 {
+  font-size: var(--font-size-lg); /* 18px */
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  margin-top: 1.5rem;
+  margin-bottom: 0.625rem;
+  color: var(--foreground);
+  scroll-margin-top: 4rem;
+}
+
+.markdown h5 {
+  font-size: var(--font-size-base); /* 16px */
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--muted-foreground);
+  scroll-margin-top: 4rem;
+}
+
+.markdown h6 {
+  font-size: var(--font-size-sm); /* 14px */
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  scroll-margin-top: 4rem;
+}
+
+/* 段落和文本 */
+.markdown p {
+  margin-top: 0;
+  margin-bottom: var(--paragraph-spacing);
+  line-height: var(--line-height-relaxed);
+}
+
+.markdown p:last-child {
+  margin-bottom: 0;
+}
+
+/* 强调和内联样式 */
+.markdown strong {
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.markdown em {
+  font-style: italic;
+}
+
+.markdown small {
+  font-size: var(--font-size-sm);
+  color: var(--muted-foreground);
+}
+
+/* 链接样式 */
+.markdown a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+  font-weight: var(--font-weight-medium);
+}
+
+.markdown a:hover {
+  color: var(--primary);
+  text-decoration-color: var(--primary);
+}
+
+.markdown a:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 列表样式 */
+.markdown ul,
+.markdown ol {
+  margin-top: 0;
+  margin-bottom: var(--paragraph-spacing);
+  padding-left: 1.75rem;
+  line-height: var(--line-height-relaxed);
+}
+
+.markdown ul {
+  list-style-type: disc;
+}
+
+.markdown ul ul {
+  list-style-type: circle;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown ul ul ul {
+  list-style-type: square;
+}
+
+.markdown ol {
+  list-style-type: decimal;
+}
+
+.markdown ol ol {
+  list-style-type: lower-alpha;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown ol ol ol {
+  list-style-type: lower-roman;
+}
+
+.markdown li {
+  margin-bottom: 0.375rem;
+  word-break: break-word;
+  padding-left: 0.375rem;
+}
+
+.markdown li::marker {
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.markdown li > p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 任务列表 */
+.markdown input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: var(--primary);
+}
+
+/* 引用块 */
 .markdown blockquote {
-  background-color: var(--background-secondary);
+  margin: var(--paragraph-spacing-lg) 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 4px solid var(--primary);
+  background-color: var(--muted);
+  border-radius: 0 0.375rem 0.375rem 0;
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+
+.markdown blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+.markdown blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown blockquote cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: var(--font-size-sm);
+  font-style: normal;
+  color: var(--muted-foreground);
+}
+
+.markdown blockquote cite::before {
+  content: "— ";
+}
+
+/* 代码块和内联代码 */
+.markdown code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.125rem 0.375rem;
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  color: var(--foreground);
+  font-weight: var(--font-weight-medium);
+  word-break: break-word;
+}
+
+.markdown pre {
+  margin: var(--paragraph-spacing-lg) 0;
+  padding: 1.25rem;
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  line-height: var(--line-height-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.markdown pre code {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  font-size: var(--font-size-sm);
+  color: var(--foreground);
+  white-space: pre;
+  word-break: normal;
+}
+
+/* 代码块滚动条美化 */
+.markdown pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.markdown pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.markdown pre::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.markdown pre::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* 分割线 */
+.markdown hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 2px solid var(--border);
+  opacity: 0.5;
+}
+
+/* 表格样式 */
+.markdown table {
+  width: 100%;
+  margin: var(--paragraph-spacing-lg) 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow-x: auto;
+  display: block;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.markdown thead {
+  background-color: var(--muted);
+}
+
+.markdown th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  border-bottom: 2px solid var(--border);
+}
+
+.markdown td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
   color: var(--foreground);
 }
 
-/* Responsive media and tables */
+.markdown tbody tr:hover {
+  background-color: var(--accent);
+}
+
+.markdown tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 表格响应式包装 */
+.markdown-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: var(--paragraph-spacing-lg) 0;
+}
+
+/* 图片样式 */
 .markdown img {
   max-width: 100%;
   height: auto;
   display: block;
+  margin: var(--paragraph-spacing-lg) auto;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-md);
 }
 
-.markdown table {
-  width: 100%;
-  display: block;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+.markdown figure {
+  margin: var(--paragraph-spacing-lg) 0;
 }
 
-.markdown pre {
-  overflow-x: auto;
+.markdown figcaption {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+
+/* 键盘按键样式 */
+.markdown kbd {
+  display: inline-block;
+  padding: 0.125rem 0.375rem;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  color: var(--foreground);
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  box-shadow: inset 0 -1px 0 var(--border);
+}
+
+/* 删除线和下划线 */
+.markdown del {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.markdown ins {
+  text-decoration: underline;
+  text-decoration-color: var(--primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+/* 标记/高亮文本 */
+.markdown mark {
+  background-color: hsl(48 100% 77% / 0.5);
+  color: var(--foreground);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.125rem;
+}
+
+.dark .markdown mark {
+  background-color: hsl(48 100% 47% / 0.3);
+}
+
+/* 脚注 */
+.markdown sup {
+  font-size: var(--font-size-xs);
+  line-height: 0;
+  vertical-align: super;
+}
+
+.markdown sub {
+  font-size: var(--font-size-xs);
+  line-height: 0;
+  vertical-align: sub;
+}
+
+/* 详细信息/折叠块 */
+.markdown details {
+  margin: var(--paragraph-spacing) 0;
   padding: 1rem;
+  background-color: var(--muted);
+  border: 1px solid var(--border);
   border-radius: 0.5rem;
 }
 
-.markdown code {
-  word-break: break-word;
-  white-space: pre-wrap;
+.markdown summary {
+  cursor: pointer;
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  user-select: none;
+}
+
+.markdown summary:hover {
+  color: var(--primary);
+}
+
+.markdown details[open] summary {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* 定义列表 */
+.markdown dl {
+  margin: var(--paragraph-spacing) 0;
+}
+
+.markdown dt {
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+  margin-top: 0.75rem;
+}
+
+.markdown dt:first-child {
+  margin-top: 0;
+}
+
+.markdown dd {
+  margin-left: 1.5rem;
+  margin-top: 0.375rem;
+  color: var(--muted-foreground);
+}
+
+/* 响应式优化 */
+@media (max-width: 640px) {
+  .markdown {
+    font-size: var(--font-size-sm);
+  }
+
+  .markdown pre {
+    padding: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .markdown table {
+    font-size: var(--font-size-xs);
+  }
+
+  .markdown th,
+  .markdown td {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .markdown ul,
+  .markdown ol {
+    padding-left: 1.25rem;
+  }
+}
+
+/* 打印样式优化 */
+@media print {
+  .markdown {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+  }
+
+  .markdown a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .markdown pre,
+  .markdown blockquote {
+    page-break-inside: avoid;
+    border: 1px solid #000;
+  }
+
+  .markdown img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
 }

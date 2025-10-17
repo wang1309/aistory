@@ -26,10 +26,10 @@ export default function Blog({
           <p className="mb-6 text-xs font-medium uppercase tracking-wider">
             {blog.label}
           </p>
-          <h2 className="mb-3 text-pretty text-3xl font-semibold md:mb-4 md:text-4xl lg:mb-6 lg:max-w-3xl lg:text-5xl">
+          <h2 className="mb-3 text-pretty text-2xl font-semibold md:mb-4 md:text-3xl lg:mb-6 lg:max-w-3xl lg:text-4xl leading-[1.25]">
             {blog.title}
           </h2>
-          <p className="mb-2 text-muted-foreground md:text-base lg:max-w-2xl lg:text-lg">
+          <p className="mb-2 text-muted-foreground md:text-base lg:max-w-2xl lg:text-lg leading-[1.65]">
             {blog.description}
           </p>
         </div>
@@ -82,10 +82,10 @@ export default function Blog({
                     </div>
                   )}
                   <div className="px-4 py-4 md:px-4 md:py-4 lg:px-4 lg:py-4">
-                    <h3 className="mb-3 text-lg font-semibold md:mb-4 md:text-xl lg:mb-6">
+                    <h3 className="mb-3 text-base font-semibold md:mb-4 md:text-lg lg:mb-6 leading-[1.3]">
                       {item.title}
                     </h3>
-                    <p className="mb-3 text-muted-foreground md:mb-4 lg:mb-6">
+                    <p className="mb-3 text-sm text-muted-foreground md:mb-4 lg:mb-6 leading-[1.65]">
                       {item.description}
                     </p>
                     {blog.read_more_text && (

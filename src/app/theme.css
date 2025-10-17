@@ -31,9 +31,53 @@
   --sidebar-accent-foreground: oklch(0.67 0.16 245);
   --sidebar-border: oklch(0.93 0.01 238.52);
   --sidebar-ring: oklch(0.68 0.16 243.35);
-  --font-sans: Open Sans, sans-serif;
-  --font-serif: Georgia, serif;
-  --font-mono: Menlo, monospace;
+
+  /* 字体家族 - 优先使用变量字体，回退到系统字体 */
+  --font-sans: var(--font-open-sans), var(--font-noto-sans-sc), 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: Georgia, 'Noto Serif SC', 'SimSun', serif;
+  --font-mono: 'Fira Code', 'JetBrains Mono', 'Noto Sans Mono', Menlo, Monaco, 'Courier New', monospace;
+
+  /* 字号比例系统 - 使用 1.25 倍递增 */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  --font-size-4xl: 2.25rem;     /* 36px */
+  --font-size-5xl: 3rem;        /* 48px */
+  --font-size-6xl: 3.75rem;     /* 60px */
+  --font-size-7xl: 4.5rem;      /* 72px */
+
+  /* 行高系统 - 针对中文优化 */
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;  /* 中文优化 */
+  --line-height-loose: 1.8;
+
+  /* 字间距系统 */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+
+  /* 段落间距 */
+  --paragraph-spacing: 1rem;
+  --paragraph-spacing-lg: 1.5rem;
+
+  /* 标题字重 */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
   --radius: 1.3rem;
   --shadow-2xs: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
   --shadow-xs: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
@@ -83,9 +127,12 @@
   --sidebar-accent-foreground: oklch(0.67 0.16 245.01);
   --sidebar-border: oklch(0.38 0.02 240.59);
   --sidebar-ring: oklch(0.68 0.16 243.35);
-  --font-sans: Open Sans, sans-serif;
-  --font-serif: Georgia, serif;
-  --font-mono: Menlo, monospace;
+
+  /* 字体家族保持一致 */
+  --font-sans: var(--font-open-sans), var(--font-noto-sans-sc), 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: Georgia, 'Noto Serif SC', 'SimSun', serif;
+  --font-mono: 'Fira Code', 'JetBrains Mono', 'Noto Sans Mono', Menlo, Monaco, 'Courier New', monospace;
+
   --radius: 1.3rem;
   --shadow-2xs: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
   --shadow-xs: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);

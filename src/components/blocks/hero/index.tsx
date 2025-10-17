@@ -158,7 +158,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
 
             {texts && texts.length > 1 ? (
               <h1 className="mx-auto mb-8 mt-6 max-w-6xl relative motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-700 motion-safe:delay-200">
-                <span className="block text-balance text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black leading-[1.08] tracking-tight">
+                <span className="block text-balance text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] tracking-tight">
                   {texts[0]}
                   <span className="relative inline-block">
                     {/* Enhanced gradient text with multiple layers */}
@@ -173,14 +173,14 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                 </span>
               </h1>
             ) : (
-              <h1 className="mx-auto mb-8 mt-6 max-w-6xl text-balance text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black leading-[1.08] tracking-tight motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-700 motion-safe:delay-200">
+              <h1 className="mx-auto mb-8 mt-6 max-w-6xl text-balance text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] tracking-tight motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-700 motion-safe:delay-200">
                 {hero.title}
               </h1>
             )}
 
             <div className="mx-auto mt-8 max-w-3xl motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-700 motion-safe:delay-300">
               <p
-                className="text-xl sm:text-2xl lg:text-2xl text-muted-foreground leading-relaxed font-normal text-balance px-4"
+                className="text-lg sm:text-xl lg:text-2xl text-muted-foreground leading-[1.65] font-normal text-balance px-4"
                 dangerouslySetInnerHTML={descriptionHtml}
               />
             </div>

@@ -25,14 +25,14 @@ export default function Feature({ section }: { section: SectionType }) {
           )}
 
           {/* Title with Gradient */}
-          <h2 className="mb-4 text-3xl font-extrabold tracking-tight lg:text-4xl xl:text-5xl">
+          <h2 className="mb-4 text-2xl font-extrabold tracking-tight lg:text-3xl xl:text-4xl leading-[1.2]">
             <span className="bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text text-transparent">
               {section.title}
             </span>
           </h2>
 
           {/* Description */}
-          <p className="max-w-2xl text-base lg:text-lg text-muted-foreground/90 leading-relaxed">
+          <p className="max-w-2xl text-base lg:text-lg text-muted-foreground/90 leading-[1.65]">
             {section.description}
           </p>
         </div>
@@ -70,10 +70,10 @@ export default function Feature({ section }: { section: SectionType }) {
 
                 {/* Content */}
                 <div className="flex-1 flex flex-col">
-                  <h3 className="mb-3 text-xl font-bold text-foreground/90 transition-colors duration-300 group-hover:text-primary">
+                  <h3 className="mb-3 text-lg font-bold text-foreground/90 transition-colors duration-300 group-hover:text-primary leading-[1.3]">
                     {item.title}
                   </h3>
-                  <p className="text-sm lg:text-base text-muted-foreground/80 leading-relaxed">
+                  <p className="text-sm lg:text-base text-muted-foreground/80 leading-[1.65]">
                     {item.description}
                   </p>
                 </div>

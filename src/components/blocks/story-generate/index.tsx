@@ -388,7 +388,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                         value={prompt}
                         onChange={(e) => setPrompt(e.target.value.slice(0, 2000))}
                         placeholder={section.prompt.placeholder}
-                        className="min-h-[200px] resize-y rounded-xl bg-background/90 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/50 text-base leading-relaxed transition-colors duration-300"
+                        className="min-h-[200px] resize-y rounded-xl bg-background/90 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/50 text-base sm:text-lg leading-[1.65] tracking-normal transition-colors duration-300"
                       />
 
                       {/* Character counter */}
@@ -815,7 +815,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                       </div>
                     ) : (
                       <div className="prose prose-slate dark:prose-invert max-w-none">
-                        <div className="text-base leading-relaxed whitespace-pre-wrap text-foreground/90">
+                        <div className="text-base sm:text-lg leading-[1.65] whitespace-pre-wrap text-foreground/90 tracking-normal">
                           {generatedStory}
                           {isGenerating && (
                             <span className="inline-block w-2 h-5 ml-1 bg-primary animate-pulse" />

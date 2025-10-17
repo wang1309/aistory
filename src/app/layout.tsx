@@ -3,6 +3,23 @@ import "@/app/globals.css";
 import { getLocale, setRequestLocale } from "next-intl/server";
 import { locales } from "@/i18n/locale";
 import { cn } from "@/lib/utils";
+import { Open_Sans, Noto_Sans_SC } from "next/font/google";
+
+// 配置 Open Sans 字体（英文）
+const openSans = Open_Sans({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-open-sans",
+  display: "swap",
+});
+
+// 配置 Noto Sans SC 字体（简体中文）
+const notoSansSC = Noto_Sans_SC({
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "900"],
+  variable: "--font-noto-sans-sc",
+  display: "swap",
+});
 
 export default async function RootLayout({
   children,
@@ -36,7 +53,9 @@ export default async function RootLayout({
           ))}
         <link rel="alternate" hrefLang="x-default" href={webUrl} />
       </head>
-      <body>{children}</body>
+      <body className={cn(openSans.variable, notoSansSC.variable, "font-sans antialiased")}>
+        {children}
+      </body>
     </html>
   );
 }
