@@ -10,6 +10,7 @@ import { StoryGenerate as StoryGenerateType } from "@/types/blocks/story-generat
 import { useLocale } from "next-intl";
 import { exportStoryToPdf, StoryMetadata } from "@/lib/pdf-export";
 import { useAppContext } from "@/contexts/app";
+import confetti from "canvas-confetti";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -134,6 +135,33 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     const randomIndex = Math.floor(Math.random() * RANDOM_PROMPTS.length);
     setPrompt(RANDOM_PROMPTS[randomIndex]);
   }, [RANDOM_PROMPTS]);
+
+  // Confetti celebration for first-time story generation
+  const triggerFirstTimeConfetti = useCallback(() => {
+    // Check if user has generated a story before
+    const hasGeneratedBefore = localStorage.getItem('hasGeneratedStory');
+
+    if (!hasGeneratedBefore) {
+      // Trigger confetti animation
+      confetti({
+        particleCount: 200,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8'],
+        startVelocity: 30,
+        gravity: 1,
+        scalar: 1.2,
+        ticks: 300
+      });
+
+      // Mark as generated
+      localStorage.setItem('hasGeneratedStory', 'true');
+
+      return true; // Return whether this is first time
+    }
+
+    return false;
+  }, []);
 
   // Handle clicking the generate button - show verification modal first
   const handleGenerateClick = useCallback(() => {
@@ -267,7 +295,23 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       console.log("=== Final accumulated text length ===", accumulatedText.length);
 
       if (accumulatedText.trim()) {
-        toast.success(section.toasts.success_generated);
+        // Check if this is first time and trigger confetti
+        const isFirstTime = triggerFirstTimeConfetti();
+
+        if (isFirstTime) {
+          // Special celebration message for first-time success
+          toast.success('🎉 ' + section.toasts.success_generated, {
+            duration: 5000,
+            description: locale === 'zh' ? '你的第一个AI故事诞生了!' :
+                        locale === 'ja' ? '最初のAIストーリーが誕生しました!' :
+                        locale === 'ko' ? '첫 번째 AI 스토리가 탄생했습니다!' :
+                        locale === 'de' ? 'Ihre erste KI-Geschichte wurde erstellt!' :
+                        'Your first AI story is born!'
+          });
+        } else {
+          // Regular success message
+          toast.success(section.toasts.success_generated);
+        }
       } else {
         console.log("=== No story content was generated ===");
         toast.error(section.toasts.error_no_content);
