@@ -453,6 +453,17 @@
       "button_regenerate": "重新生成",
       "loading": "AI 正在创作您的故事..."
     },
+    "pdf": {
+      "generated_at": "生成时间",
+      "word_count_label": "字数统计",
+      "ai_model": "AI模型",
+      "story_format": "故事格式",
+      "story_genre": "故事类型",
+      "story_tone": "故事风格",
+      "prompt": "创作提示",
+      "footer_text": "由 AI 故事生成器创建",
+      "page_indicator": "第 {current} 页 / 共 {total} 页"
+    },
     "toasts": {
       "error_no_prompt": "请输入故事提示",
       "error_no_model": "请选择一个 AI 模型",

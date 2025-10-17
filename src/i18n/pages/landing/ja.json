@@ -453,6 +453,17 @@
       "button_exporting_pdf": "出力中...",
       "loading": "AIがストーリーを作成しています..."
     },
+    "pdf": {
+      "generated_at": "生成日時",
+      "word_count_label": "文字数",
+      "ai_model": "AIモデル",
+      "story_format": "フォーマット",
+      "story_genre": "ジャンル",
+      "story_tone": "トーン",
+      "prompt": "プロンプト",
+      "footer_text": "AI ストーリージェネレーターで作成",
+      "page_indicator": "ページ {current} / {total}"
+    },
     "toasts": {
       "error_no_prompt": "ストーリープロンプトを入力してください",
       "error_no_model": "AIモデルを選択してください",

@@ -453,6 +453,17 @@
       "button_exporting_pdf": "Exportiere...",
       "loading": "KI erstellt Ihre Geschichte..."
     },
+    "pdf": {
+      "generated_at": "Erstellt am",
+      "word_count_label": "Wortanzahl",
+      "ai_model": "KI-Modell",
+      "story_format": "Format",
+      "story_genre": "Genre",
+      "story_tone": "Ton",
+      "prompt": "Prompt",
+      "footer_text": "Erstellt mit AI Story Generator",
+      "page_indicator": "Seite {current} / {total}"
+    },
     "toasts": {
       "error_no_prompt": "Bitte geben Sie eine Geschichten-Eingabe ein",
       "error_no_model": "Bitte wählen Sie ein KI-Modell aus",

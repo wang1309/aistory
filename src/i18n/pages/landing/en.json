@@ -453,6 +453,17 @@
       "button_regenerate": "Regenerate",
       "loading": "AI is crafting your story..."
     },
+    "pdf": {
+      "generated_at": "Generated at",
+      "word_count_label": "Word Count",
+      "ai_model": "AI Model",
+      "story_format": "Format",
+      "story_genre": "Genre",
+      "story_tone": "Tone",
+      "prompt": "Prompt",
+      "footer_text": "Created by AI Story Generator",
+      "page_indicator": "Page {current} / {total}"
+    },
     "toasts": {
       "error_no_prompt": "Please enter a story prompt",
       "error_no_model": "Please select an AI model",

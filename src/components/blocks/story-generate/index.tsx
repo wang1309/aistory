@@ -295,7 +295,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
       // 准备PDF元数据
       const metadata: StoryMetadata = {
-        title: section.output.title || 'ai_story_generate',
+        title: section.output.title || 'AI Generated Story',
         prompt: prompt.substring(0, 200) + (prompt.length > 200 ? '...' : ''),
         wordCount: wordCount,
         generatedAt: new Date(),
@@ -305,20 +305,33 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         tone: selectedTone !== 'none' ? selectedTone : undefined,
       };
 
-      // 导出PDF
-      await exportStoryToPdf(generatedStory, metadata, (progress) => {
-        console.log(`PDF导出进度: ${progress}%`);
+      // 准备PDF翻译
+      const pdfTranslations = {
+        generated_at: section.pdf.generated_at,
+        word_count_label: section.pdf.word_count_label,
+        ai_model: section.pdf.ai_model,
+        story_format: section.pdf.story_format,
+        story_genre: section.pdf.story_genre,
+        story_tone: section.pdf.story_tone,
+        prompt: section.pdf.prompt,
+        footer_text: section.pdf.footer_text,
+        page_indicator: section.pdf.page_indicator,
+      };
+
+      // 导出PDF (传递locale和翻译)
+      await exportStoryToPdf(generatedStory, metadata, locale, pdfTranslations, (progress) => {
+        console.log(`PDF export progress: ${progress}%`);
       });
 
       toast.success(section.toasts.success_pdf_exported);
 
     } catch (error) {
-      console.error('PDF导出失败:', error);
+      console.error('PDF export failed:', error);
       toast.error(section.toasts.error_pdf_export_failed);
     } finally {
       setIsExportingPdf(false);
     }
-  }, [generatedStory, prompt, wordCount, selectedModel, selectedFormat, selectedGenre, selectedTone, section]);
+  }, [generatedStory, prompt, wordCount, selectedModel, selectedFormat, selectedGenre, selectedTone, locale, section]);
 
   return (
     <section className="relative py-16 sm:py-20 overflow-hidden">

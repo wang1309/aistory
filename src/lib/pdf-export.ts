@@ -1,10 +1,6 @@
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
-// 引入中文字体支持
-// 使用社区提供的中文字体方案
-// Reference: https://github.com/parallax/jsPDF/issues/1147
-
 export interface StoryMetadata {
   title: string;
   prompt: string;
@@ -16,29 +12,16 @@ export interface StoryMetadata {
   tone?: string;
 }
 
-/**
- * 添加中文字体到PDF
- * 使用Base64编码的字体文件
- */
-function addChineseFontToPdf(pdf: jsPDF) {
-  // 注意:由于完整的中文字体文件非常大(通常几MB),
-  // 这里采用一个轻量级的解决方案:
-  // 使用pdf.setLanguage设置语言,并依赖jsPDF的Unicode支持
-
-  // jsPDF 3.0+版本改进了Unicode支持
-  // 我们通过确保正确的字符编码来支持中文
-  try {
-    // 设置PDF元数据以支持Unicode
-    pdf.setProperties({
-      title: 'AI Story',
-      subject: 'AI Generated Story',
-      author: 'AI Story Generator',
-      keywords: 'ai, story, chinese',
-      creator: 'AI Story Generator'
-    });
-  } catch (error) {
-    console.warn('设置PDF属性失败:', error);
-  }
+export interface PDFTranslations {
+  generated_at: string;
+  word_count_label: string;
+  ai_model: string;
+  story_format: string;
+  story_genre: string;
+  story_tone: string;
+  prompt: string;
+  footer_text: string;
+  page_indicator: string; // 格式: "Page {current} / {total}" 或 "第 {current} 页 / 共 {total} 页"
 }
 
 /**
@@ -65,8 +48,16 @@ function calculateWordCount(text: string): number {
 /**
  * 格式化日期为本地化字符串
  */
-function formatDate(date: Date): string {
-  return date.toLocaleString('zh-CN', {
+function formatDate(date: Date, locale: string = 'en'): string {
+  const localeMap: Record<string, string> = {
+    'en': 'en-US',
+    'zh': 'zh-CN',
+    'ja': 'ja-JP',
+    'ko': 'ko-KR',
+    'de': 'de-DE'
+  };
+
+  return date.toLocaleString(localeMap[locale] || 'en-US', {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -76,28 +67,23 @@ function formatDate(date: Date): string {
 }
 
 /**
- * 将长文本分割成适合PDF页面的段落
- * 改进版本:支持中文文本的正确换行
+ * HTML转义函数,防止XSS
  */
-function splitTextForPdf(
-  pdf: jsPDF,
-  text: string,
-  maxWidth: number
-): string[] {
-  if (!text) return [];
-
-  // 使用jsPDF的splitTextToSize方法,它能正确处理中文字符宽度
-  const lines = pdf.splitTextToSize(text, maxWidth);
-  return lines;
+function escapeHtml(text: string): string {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
 }
 
 /**
  * 导出故事内容为PDF文件
- * 改进版:使用HTML渲染方案完美支持中文
+ * 完全使用HTML渲染方案,避免中文乱码问题
  */
 export async function exportStoryToPdf(
   content: string,
   metadata: StoryMetadata,
+  locale: string = 'en',
+  translations: PDFTranslations,
   onProgress?: (progress: number) => void
 ): Promise<void> {
   try {
@@ -112,7 +98,7 @@ export async function exportStoryToPdf(
       width: 794px;
       background: white;
       padding: 60px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK', sans-serif;
       color: #333;
       line-height: 1.8;
     `;
@@ -127,7 +113,10 @@ export async function exportStoryToPdf(
           margin: 0 0 20px 0;
           color: #1a1a1a;
           line-height: 1.4;
-        ">${escapeHtml(metadata.title || 'AI生成故事')}</h1>
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          max-width: 100%;
+        ">${escapeHtml(metadata.title || 'Untitled Story')}</h1>
 
         <div style="
           background: #f5f5f5;
@@ -137,13 +126,13 @@ export async function exportStoryToPdf(
           color: #666;
           line-height: 1.6;
         ">
-          <div style="margin-bottom: 6px;"><strong>生成时间:</strong> ${formatDate(metadata.generatedAt)}</div>
-          <div style="margin-bottom: 6px;"><strong>字数统计:</strong> ${metadata.wordCount} 字</div>
-          ${metadata.model ? `<div style="margin-bottom: 6px;"><strong>AI模型:</strong> ${escapeHtml(metadata.model)}</div>` : ''}
-          ${metadata.format ? `<div style="margin-bottom: 6px;"><strong>故事格式:</strong> ${escapeHtml(metadata.format)}</div>` : ''}
-          ${metadata.genre ? `<div style="margin-bottom: 6px;"><strong>故事类型:</strong> ${escapeHtml(metadata.genre)}</div>` : ''}
-          ${metadata.tone ? `<div style="margin-bottom: 6px;"><strong>故事风格:</strong> ${escapeHtml(metadata.tone)}</div>` : ''}
-          ${metadata.prompt ? `<div><strong>创作提示:</strong> ${escapeHtml(metadata.prompt.substring(0, 200))}${metadata.prompt.length > 200 ? '...' : ''}</div>` : ''}
+          <div style="margin-bottom: 6px;"><strong>${escapeHtml(translations.generated_at)}:</strong> ${formatDate(metadata.generatedAt, locale)}</div>
+          <div style="margin-bottom: 6px;"><strong>${escapeHtml(translations.word_count_label)}:</strong> ${metadata.wordCount}</div>
+          ${metadata.model ? `<div style="margin-bottom: 6px;"><strong>${escapeHtml(translations.ai_model)}:</strong> ${escapeHtml(metadata.model)}</div>` : ''}
+          ${metadata.format ? `<div style="margin-bottom: 6px;"><strong>${escapeHtml(translations.story_format)}:</strong> ${escapeHtml(metadata.format)}</div>` : ''}
+          ${metadata.genre ? `<div style="margin-bottom: 6px;"><strong>${escapeHtml(translations.story_genre)}:</strong> ${escapeHtml(metadata.genre)}</div>` : ''}
+          ${metadata.tone ? `<div style="margin-bottom: 6px;"><strong>${escapeHtml(translations.story_tone)}:</strong> ${escapeHtml(metadata.tone)}</div>` : ''}
+          ${metadata.prompt ? `<div><strong>${escapeHtml(translations.prompt)}:</strong> ${escapeHtml(metadata.prompt.substring(0, 200))}${metadata.prompt.length > 200 ? '...' : ''}</div>` : ''}
         </div>
       </div>
 
@@ -169,7 +158,7 @@ export async function exportStoryToPdf(
         font-size: 12px;
         color: #999;
       ">
-        由 AI 故事生成器创建
+        ${escapeHtml(translations.footer_text)}
       </div>
     `;
 
@@ -257,27 +246,10 @@ export async function exportStoryToPdf(
 
     onProgress?.(80);
 
-    // 添加页码
-    const totalPages = pdf.getNumberOfPages();
-    pdf.setFontSize(9);
-    pdf.setTextColor(150, 150, 150);
-
-    for (let i = 1; i <= totalPages; i++) {
-      pdf.setPage(i);
-      pdf.text(
-        `第 ${i} 页 / 共 ${totalPages} 页`,
-        pageWidth / 2,
-        pageHeight - 10,
-        { align: 'center' }
-      );
-    }
-
-    onProgress?.(90);
-
     // 生成文件名
     const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
     const title = metadata.title.replace(/[^\w\u4e00-\u9fff]/g, '_').substring(0, 20);
-    const fileName = `AI故事_${title}_${timestamp}.pdf`;
+    const fileName = `AI_Story_${title}_${timestamp}.pdf`;
 
     // 保存PDF
     pdf.save(fileName);
@@ -286,17 +258,8 @@ export async function exportStoryToPdf(
 
   } catch (error) {
     console.log('PDF导出失败:', error);
-    throw new Error('PDF导出失败，请重试');
+    throw new Error('PDF export failed, please try again');
   }
-}
-
-/**
- * HTML转义函数,防止XSS
- */
-function escapeHtml(text: string): string {
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
 }
 
 /**

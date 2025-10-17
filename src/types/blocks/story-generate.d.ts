@@ -192,6 +192,17 @@ export interface StoryGenerate {
     button_regenerate: string;
     loading: string;
   };
+  pdf: {
+    generated_at: string;
+    word_count_label: string;
+    ai_model: string;
+    story_format: string;
+    story_genre: string;
+    story_tone: string;
+    prompt: string;
+    footer_text: string;
+    page_indicator: string;
+  };
   toasts: {
     error_no_prompt: string;
     error_no_model: string;
