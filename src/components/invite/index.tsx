@@ -76,7 +76,7 @@ export default function Invite({ summary }: { summary: any }) {
               open={open}
               setOpen={setOpen}
               username={user.nickname}
-              initInviteCode={user.invite_code}
+              initInviteCode={user.invite_code || ''}
               updateInviteCode={updateInviteCode}
               loading={loading}
             />

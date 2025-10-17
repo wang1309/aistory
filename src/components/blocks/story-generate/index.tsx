@@ -201,7 +201,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       if (!response.ok) {
         console.log("=== Response not OK ===");
         const errorData = await response.json();
-        console.error("Error data:", errorData);
+        console.log("Error data:", errorData);
         toast.error(errorData.message || section.toasts.error_generate_failed);
         return;
       }
@@ -213,7 +213,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       const decoder = new TextDecoder();
 
       if (!reader) {
-        console.error("=== No reader available ===");
+        console.log("=== No reader available ===");
         toast.error(section.toasts.error_no_stream);
         return;
       }
@@ -258,7 +258,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               }
             } catch (e) {
               // Skip invalid JSON lines
-              console.error("JSON Parse error:", e, "Line:", line.substring(0, 100));
+              console.log("JSON Parse error:", e, "Line:", line.substring(0, 100));
             }
           }
         }
@@ -269,11 +269,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       if (accumulatedText.trim()) {
         toast.success(section.toasts.success_generated);
       } else {
-        console.error("=== No story content was generated ===");
+        console.log("=== No story content was generated ===");
         toast.error(section.toasts.error_no_content);
       }
     } catch (error) {
-      console.error("=== Story generation error ===", error);
+      console.log("=== Story generation error ===", error);
       toast.error(section.toasts.error_generate_failed);
     } finally {
       setIsGenerating(false);
@@ -295,7 +295,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
       // 准备PDF元数据
       const metadata: StoryMetadata = {
-        title: section.output.title || 'AI生成故事',
+        title: section.output.title || 'ai_story_generate',
         prompt: prompt.substring(0, 200) + (prompt.length > 200 ? '...' : ''),
         wordCount: wordCount,
         generatedAt: new Date(),
