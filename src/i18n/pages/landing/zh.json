@@ -464,6 +464,15 @@
       "footer_text": "由 AI 故事生成器创建",
       "page_indicator": "第 {current} 页 / 共 {total} 页"
     },
+    "share": {
+      "title": "分享",
+      "copy_link": "复制链接",
+      "share_twitter": "分享到 Twitter",
+      "share_facebook": "分享到 Facebook",
+      "share_linkedin": "分享到 LinkedIn",
+      "link_copied": "链接已复制到剪贴板！",
+      "share_text_template": "我刚用AI创作了一个{wordCount}字的精彩故事！你也来试试👇"
+    },
     "toasts": {
       "error_no_prompt": "请输入故事提示",
       "error_no_model": "请选择一个 AI 模型",

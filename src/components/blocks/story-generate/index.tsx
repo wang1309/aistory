@@ -13,6 +13,7 @@ import { useAppContext } from "@/contexts/app";
 import confetti from "canvas-confetti";
 import { StoryStorage, SavedStory } from "@/lib/story-storage";
 import StoryHistoryDropdown from "@/components/story-history-dropdown";
+import StoryShareButtons from "@/components/story-share-buttons";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -44,7 +45,7 @@ function calculateWordCount(text: string): number {
 
 export default function StoryGenerate({ section }: { section: StoryGenerateType }) {
    const locale = useLocale(); // 获取当前语言
-  const { setShowVerificationModal, setVerificationCallback } = useAppContext();
+  const { user, setShowVerificationModal, setVerificationCallback } = useAppContext();
   // Get translated constants (memoized for performance)
   const RANDOM_PROMPTS = useMemo(() => section.random_prompts, [section]);
 
@@ -899,6 +900,15 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                           <Icon name={isExportingPdf ? "RiLoader4Line" : "RiDownloadLine"} className={`size-4 mr-1 ${isExportingPdf ? "animate-spin" : ""}`} />
                           {isExportingPdf ? section.output.button_exporting_pdf : section.output.button_export_pdf}
                         </Button>
+                        <StoryShareButtons
+                          storyTitle={prompt.substring(0, 50)}
+                          wordCount={wordCount}
+                          model={AI_MODELS.find(m => m.id === selectedModel)?.name || ''}
+                          locale={locale}
+                          inviteCode={user?.invite_code}
+                          translations={section.share}
+                          className="text-xs"
+                        />
                         <Button
                           variant="outline"
                           size="sm"

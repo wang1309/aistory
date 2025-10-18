@@ -464,6 +464,15 @@
       "footer_text": "AI 스토리 생성기로 제작",
       "page_indicator": "{current} 페이지 / 총 {total} 페이지"
     },
+    "share": {
+      "title": "공유",
+      "copy_link": "링크 복사",
+      "share_twitter": "Twitter에 공유",
+      "share_facebook": "Facebook에 공유",
+      "share_linkedin": "LinkedIn에 공유",
+      "link_copied": "링크가 클립보드에 복사되었습니다!",
+      "share_text_template": "방금 AI로 {wordCount}단어의 멋진 스토리를 만들었습니다! 직접 시도해보세요👇"
+    },
     "toasts": {
       "error_no_prompt": "스토리 프롬프트를 입력하세요",
       "error_no_model": "AI 모델을 선택하세요",

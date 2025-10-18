@@ -464,6 +464,15 @@
       "footer_text": "Erstellt mit AI Story Generator",
       "page_indicator": "Seite {current} / {total}"
     },
+    "share": {
+      "title": "Teilen",
+      "copy_link": "Link kopieren",
+      "share_twitter": "Auf Twitter teilen",
+      "share_facebook": "Auf Facebook teilen",
+      "share_linkedin": "Auf LinkedIn teilen",
+      "link_copied": "Link in die Zwischenablage kopiert!",
+      "share_text_template": "Ich habe gerade eine erstaunliche Geschichte mit {wordCount} Wörtern mit KI erstellt! Probieren Sie es selbst aus👇"
+    },
     "toasts": {
       "error_no_prompt": "Bitte geben Sie eine Geschichten-Eingabe ein",
       "error_no_model": "Bitte wählen Sie ein KI-Modell aus",

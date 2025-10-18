@@ -203,6 +203,15 @@ export interface StoryGenerate {
     footer_text: string;
     page_indicator: string;
   };
+  share: {
+    title: string;
+    copy_link: string;
+    share_twitter: string;
+    share_facebook: string;
+    share_linkedin: string;
+    link_copied: string;
+    share_text_template: string;
+  };
   toasts: {
     error_no_prompt: string;
     error_no_model: string;

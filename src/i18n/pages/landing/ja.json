@@ -464,6 +464,15 @@
       "footer_text": "AI ストーリージェネレーターで作成",
       "page_indicator": "ページ {current} / {total}"
     },
+    "share": {
+      "title": "共有",
+      "copy_link": "リンクをコピー",
+      "share_twitter": "Twitterで共有",
+      "share_facebook": "Facebookで共有",
+      "share_linkedin": "LinkedInで共有",
+      "link_copied": "リンクがクリップボードにコピーされました！",
+      "share_text_template": "AIで{wordCount}語の素晴らしいストーリーを作成しました！あなたも試してみてください👇"
+    },
     "toasts": {
       "error_no_prompt": "ストーリープロンプトを入力してください",
       "error_no_model": "AIモデルを選択してください",
