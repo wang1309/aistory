@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Section as SectionType } from "@/types/blocks/section";
 import OptimizedImage from "@/components/seo/optimized-image";
 

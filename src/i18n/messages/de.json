@@ -142,5 +142,12 @@
     "verifying": "Überprüfung läuft...",
     "not_configured": "Überprüfungsdienst nicht konfiguriert",
     "footer_text": "Diese Überprüfung hilft uns, das System vor automatisiertem Missbrauch zu schützen"
+  },
+  "story_page": {
+    "back_to_home": "Zurück zur Startseite",
+    "words": "Wörter",
+    "create_title": "Erstelle deine eigene Geschichte",
+    "create_description": "Generiere einzigartige, kreative Geschichten mit KI in Sekunden. Probiere verschiedene Genres, Längen und Stile!",
+    "start_creating": "Jetzt erstellen"
   }
 }

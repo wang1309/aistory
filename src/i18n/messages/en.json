@@ -142,5 +142,12 @@
     "verifying": "Verifying...",
     "not_configured": "Verification service not configured",
     "footer_text": "This verification helps us protect against automated abuse"
+  },
+  "story_page": {
+    "back_to_home": "Back to Home",
+    "words": "words",
+    "create_title": "Create Your Own Story",
+    "create_description": "Generate unique, creative stories with AI in seconds. Try different genres, lengths, and styles!",
+    "start_creating": "Start Creating"
   }
 }

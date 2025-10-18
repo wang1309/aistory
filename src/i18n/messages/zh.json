@@ -142,5 +142,12 @@
     "verifying": "验证中...",
     "not_configured": "验证服务未配置",
     "footer_text": "此验证帮助我们保护系统免受自动化滥用"
+  },
+  "story_page": {
+    "back_to_home": "返回首页",
+    "words": "字",
+    "create_title": "创建你自己的故事",
+    "create_description": "使用AI在几秒钟内生成独特、创意的故事。尝试不同的类型、长度和风格!",
+    "start_creating": "开始创作"
   }
 }

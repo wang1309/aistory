@@ -142,5 +142,12 @@
     "verifying": "인증 중...",
     "not_configured": "인증 서비스가 구성되지 않았습니다",
     "footer_text": "이 인증은 자동화된 남용으로부터 시스템을 보호하는 데 도움이 됩니다"
+  },
+  "story_page": {
+    "back_to_home": "홈으로 돌아가기",
+    "words": "단어",
+    "create_title": "나만의 이야기 만들기",
+    "create_description": "AI로 몇 초 안에 독특하고 창의적인 이야기를 생성하세요. 다양한 장르, 길이, 스타일을 시도해보세요!",
+    "start_creating": "시작하기"
   }
 }

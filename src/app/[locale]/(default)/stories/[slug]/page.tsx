@@ -5,17 +5,23 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/icon";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
   params: Promise<{ slug: string; locale: string }>;
 };
 
-// Generate static params for all stories
+// Generate static params for all stories in all locales
 export async function generateStaticParams() {
+  const locales = ['en', 'zh', 'ja', 'ko', 'de'];
   const slugs = getAllStorySlugs();
-  return slugs.map((slug) => ({
-    slug: slug,
-  }));
+
+  return locales.flatMap((locale) =>
+    slugs.map((slug) => ({
+      locale: locale,
+      slug: slug,
+    }))
+  );
 }
 
 // Generate metadata for SEO
@@ -49,6 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function StoryPage({ params }: Props) {
   const { slug, locale } = await params;
   const story = getStoryBySlug(slug, locale);
+  const t = await getTranslations();
 
   if (!story) {
     notFound();
@@ -61,7 +68,7 @@ export default async function StoryPage({ params }: Props) {
         <Link href={`/${locale}`}>
           <Button variant="ghost" className="mb-6">
             <Icon name="RiArrowLeftLine" className="size-4 mr-2" />
-            Back to Home
+            {t('story_page.back_to_home')}
           </Button>
         </Link>
 
@@ -90,7 +97,7 @@ export default async function StoryPage({ params }: Props) {
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
             <div className="flex items-center gap-1.5">
               <Icon name="RiFileTextLine" className="size-4" />
-              <span>{story.wordCount.toLocaleString()} words</span>
+              <span>{story.wordCount.toLocaleString()} {t('story_page.words')}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Icon name="RiRobot2Line" className="size-4" />
@@ -123,14 +130,14 @@ export default async function StoryPage({ params }: Props) {
 
         {/* Footer CTA */}
         <div className="mt-12 p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 text-center">
-          <h3 className="text-2xl font-bold mb-3">Create Your Own Story</h3>
+          <h3 className="text-2xl font-bold mb-3">{t('story_page.create_title')}</h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Generate unique, creative stories with AI in seconds. Try different genres, lengths, and styles!
+            {t('story_page.create_description')}
           </p>
           <Link href={`/${locale}/#craft_story`}>
             <Button size="lg" className="rounded-full">
               <Icon name="RiMagicLine" className="size-5 mr-2" />
-              Start Creating
+              {t('story_page.start_creating')}
             </Button>
           </Link>
         </div>
