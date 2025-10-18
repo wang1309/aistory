@@ -160,6 +160,74 @@
       }
     ]
   },
+  "story_showcase": {
+    "name": "story_showcase",
+    "title": "AIが生成した物語の例",
+    "label": "例",
+    "description": "AIストーリージェネレーターが作成した、さまざまなジャンルとスタイルの素晴らしい物語をご覧ください",
+    "items": [
+      {
+        "title": "忘れられた山の竜",
+        "description": "若い見習いが伝説の竜を発見し、村を救うために目覚めさせるべきか決断を迫られます。",
+        "url": "/stories/fantasy-quest-dragon-mountain",
+        "target": "_self",
+        "label": "ファンタジー",
+        "image": {
+          "src": "/imgs/stories/fantasy-1.png"
+        }
+      },
+      {
+        "title": "エウロパからの最後の信号",
+        "description": "深宇宙調査チームが謎の信号を受信し、恐ろしい発見につながります。",
+        "url": "/stories/scifi-thriller-europa-signal",
+        "target": "_self",
+        "label": "SFスリラー",
+        "image": {
+          "src": "/imgs/stories/scifi-1.png"
+        }
+      },
+      {
+        "title": "真夜中のコーヒー",
+        "description": "二人の見知らぬ人が毎晩オールナイトカフェで出会い、名前を明かさずに物語を共有します。",
+        "url": "/stories/romance-coffee-midnight",
+        "target": "_self",
+        "label": "ロマンス",
+        "image": {
+          "src": "/imgs/stories/romance-1.png"
+        }
+      },
+      {
+        "title": "消えた画家",
+        "description": "有名な芸術家が失踪し、彼の居場所への手がかりが隠された絵画を残します。",
+        "url": "/stories/mystery-vanishing-painter",
+        "target": "_self",
+        "label": "ミステリー",
+        "image": {
+          "src": "/imgs/stories/mystery-1.png"
+        }
+      },
+      {
+        "title": "42号室の鏡",
+        "description": "ホテルの宿泊客が、部屋のアンティーク鏡が異なる時間からの反射を映していることを発見します。",
+        "url": "/stories/horror-mirror-room-42",
+        "target": "_self",
+        "label": "ホラー",
+        "image": {
+          "src": "/imgs/stories/horror-1.png"
+        }
+      },
+      {
+        "title": "ルナの星の庭",
+        "description": "好奇心旺盛な少女が魔法の星の種を植え、夜に光る庭を育てます。",
+        "url": "/stories/kids-story-lunas-star-garden",
+        "target": "_self",
+        "label": "子供向け",
+        "image": {
+          "src": "/imgs/stories/kids-1.png"
+        }
+      }
+    ]
+  },
   "stats": {
 
   },

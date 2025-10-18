@@ -1,0 +1,70 @@
+{
+  "story_showcase": {
+    "name": "story_showcase",
+    "title": "Von KI generierte Beispielgeschichten",
+    "label": "Beispiele",
+    "description": "Entdecken Sie erstaunliche Geschichten unseres KI-Story-Generators in verschiedenen Genres und Stilen",
+    "items": [
+      {
+        "title": "Der Drache des vergessenen Berges",
+        "description": "Eine junge Auszubildende entdeckt einen legendären Drachen und muss entscheiden, ob sie ihn wecken soll, um ihr Dorf zu retten.",
+        "url": "/stories/fantasy-quest-dragon-mountain",
+        "target": "_self",
+        "label": "Fantasy-Quest",
+        "image": {
+          "src": "/imgs/stories/fantasy-1.jpg"
+        }
+      },
+      {
+        "title": "Das letzte Signal von Europa",
+        "description": "Ein Weltraumforschungsteam empfängt ein mysteriöses Signal, das zu einer erschreckenden Entdeckung führt.",
+        "url": "/stories/scifi-thriller-europa-signal",
+        "target": "_self",
+        "label": "Sci-Fi-Thriller",
+        "image": {
+          "src": "/imgs/stories/scifi-1.jpg"
+        }
+      },
+      {
+        "title": "Kaffee um Mitternacht",
+        "description": "Zwei Fremde treffen sich jede Nacht in einem Nachtcafé, teilen Geschichten, aber nie ihre Namen.",
+        "url": "/stories/romance-coffee-midnight",
+        "target": "_self",
+        "label": "Romantik",
+        "image": {
+          "src": "/imgs/stories/romance-1.jpg"
+        }
+      },
+      {
+        "title": "Der verschwundene Maler",
+        "description": "Ein renommierter Künstler verschwindet und hinterlässt Gemälde mit versteckten Hinweisen auf seinen Aufenthaltsort.",
+        "url": "/stories/mystery-vanishing-painter",
+        "target": "_self",
+        "label": "Mystery/Krimi",
+        "image": {
+          "src": "/imgs/stories/mystery-1.jpg"
+        }
+      },
+      {
+        "title": "Der Spiegel in Zimmer 42",
+        "description": "Ein Hotelgast entdeckt, dass der antike Spiegel in seinem Zimmer Spiegelungen aus einer anderen Zeit zeigt.",
+        "url": "/stories/horror-mirror-room-42",
+        "target": "_self",
+        "label": "Horror",
+        "image": {
+          "src": "/imgs/stories/horror-1.jpg"
+        }
+      },
+      {
+        "title": "Lunas Sternengarten",
+        "description": "Ein neugieriges Mädchen pflanzt magische Sternensamen und züchtet einen Garten, der nachts leuchtet.",
+        "url": "/stories/kids-story-lunas-star-garden",
+        "target": "_self",
+        "label": "Kindergeschichte",
+        "image": {
+          "src": "/imgs/stories/kids-1.jpg"
+        }
+      }
+    ]
+  }
+}

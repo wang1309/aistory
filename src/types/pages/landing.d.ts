@@ -13,6 +13,7 @@ export interface LandingPage {
   benefit?: Section;
   usage?: Section;
   feature?: Section;
+  story_showcase?: Section;
   showcase?: Section;
   stats?: Section;
   pricing?: Pricing;

@@ -1,0 +1,70 @@
+{
+  "story_showcase": {
+    "name": "story_showcase",
+    "title": "AI가 생성한 예시 스토리",
+    "label": "예시",
+    "description": "다양한 장르와 스타일의 AI 스토리 생성기가 만든 놀라운 이야기를 탐험해보세요",
+    "items": [
+      {
+        "title": "잊혀진 산의 용",
+        "description": "젊은 견습생이 전설의 용을 발견하고 마을을 구하기 위해 깨울지 결정해야 합니다.",
+        "url": "/stories/fantasy-quest-dragon-mountain",
+        "target": "_self",
+        "label": "판타지 퀘스트",
+        "image": {
+          "src": "/imgs/stories/fantasy-1.jpg"
+        }
+      },
+      {
+        "title": "유로파에서 온 마지막 신호",
+        "description": "심우주 연구팀이 미스터리한 신호를 받아 무서운 발견으로 이어집니다.",
+        "url": "/stories/scifi-thriller-europa-signal",
+        "target": "_self",
+        "label": "SF 스릴러",
+        "image": {
+          "src": "/imgs/stories/scifi-1.jpg"
+        }
+      },
+      {
+        "title": "자정의 커피",
+        "description": "두 낯선 사람이 매일 밤 심야 카페에서 만나 이야기를 나누지만 이름은 알려주지 않습니다.",
+        "url": "/stories/romance-coffee-midnight",
+        "target": "_self",
+        "label": "로맨스",
+        "image": {
+          "src": "/imgs/stories/romance-1.jpg"
+        }
+      },
+      {
+        "title": "사라진 화가",
+        "description": "유명한 예술가가 사라지고, 그의 행방에 대한 숨겨진 단서가 담긴 그림을 남깁니다.",
+        "url": "/stories/mystery-vanishing-painter",
+        "target": "_self",
+        "label": "미스터리/범죄",
+        "image": {
+          "src": "/imgs/stories/mystery-1.jpg"
+        }
+      },
+      {
+        "title": "42호실의 거울",
+        "description": "호텔 투숙객이 방의 골동품 거울이 다른 시간의 반사를 보여준다는 것을 발견합니다.",
+        "url": "/stories/horror-mirror-room-42",
+        "target": "_self",
+        "label": "공포",
+        "image": {
+          "src": "/imgs/stories/horror-1.jpg"
+        }
+      },
+      {
+        "title": "루나의 별 정원",
+        "description": "호기심 많은 소녀가 마법의 별 씨앗을 심어 밤에 빛나는 정원을 키웁니다.",
+        "url": "/stories/kids-story-lunas-star-garden",
+        "target": "_self",
+        "label": "어린이 이야기",
+        "image": {
+          "src": "/imgs/stories/kids-1.jpg"
+        }
+      }
+    ]
+  }
+}

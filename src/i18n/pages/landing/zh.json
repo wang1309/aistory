@@ -160,6 +160,74 @@
       }
     ]
   },
+  "story_showcase": {
+    "name": "story_showcase",
+    "title": "AI 生成的示例故事",
+    "label": "示例",
+    "description": "探索由我们的 AI 故事生成器创作的精彩故事,涵盖不同类型和风格",
+    "items": [
+      {
+        "title": "遗忘之山的巨龙",
+        "description": "一位年轻的学徒发现了一条传说中的巨龙,她必须决定是否唤醒它来拯救她的村庄。",
+        "url": "/stories/fantasy-quest-dragon-mountain",
+        "target": "_self",
+        "label": "奇幻冒险",
+        "image": {
+          "src": "/imgs/stories/fantasy-1.png"
+        }
+      },
+      {
+        "title": "来自欧罗巴的最后信号",
+        "description": "一个深空研究团队收到神秘信号,引发了一个可怕的发现。",
+        "url": "/stories/scifi-thriller-europa-signal",
+        "target": "_self",
+        "label": "科幻惊悚",
+        "image": {
+          "src": "/imgs/stories/scifi-1.png"
+        }
+      },
+      {
+        "title": "午夜咖啡",
+        "description": "两个陌生人每晚在通宵咖啡馆相遇,分享故事却从不透露姓名。",
+        "url": "/stories/romance-coffee-midnight",
+        "target": "_self",
+        "label": "浪漫爱情",
+        "image": {
+          "src": "/imgs/stories/romance-1.png"
+        }
+      },
+      {
+        "title": "消失的画家",
+        "description": "一位著名艺术家失踪了,留下的画作中隐藏着他下落的线索。",
+        "url": "/stories/mystery-vanishing-painter",
+        "target": "_self",
+        "label": "悬疑推理",
+        "image": {
+          "src": "/imgs/stories/mystery-1.png"
+        }
+      },
+      {
+        "title": "42号房间的镜子",
+        "description": "一位酒店客人发现房间里的古董镜子显示着来自不同时间的倒影。",
+        "url": "/stories/horror-mirror-room-42",
+        "target": "_self",
+        "label": "恐怖惊悚",
+        "image": {
+          "src": "/imgs/stories/horror-1.png"
+        }
+      },
+      {
+        "title": "露娜的星星花园",
+        "description": "一个好奇的女孩种下魔法星星种子,培育出一个在夜晚发光的花园。",
+        "url": "/stories/kids-story-lunas-star-garden",
+        "target": "_self",
+        "label": "儿童故事",
+        "image": {
+          "src": "/imgs/stories/kids-1.png"
+        }
+      }
+    ]
+  },
   "stats": {
 
   },
