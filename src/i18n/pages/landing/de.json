@@ -588,6 +588,11 @@
               "title": "Funktionen",
               "url": "/#feature",
               "target": "_self"
+            },
+            {
+              "title": "Beispiele",
+              "url": "/#story_showcase",
+              "target": "_self"
             }
           ]
         },

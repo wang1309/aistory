@@ -10,7 +10,7 @@ export default function Showcase({ section }: { section: SectionType }) {
   }
 
   return (
-    <section className="container py-16">
+    <section id = "story_showcase" className="container py-16">
       <div className="mx-auto mb-12 text-center">
         <h2 className="mb-6 text-pretty text-3xl font-bold lg:text-4xl">
           {section.title}

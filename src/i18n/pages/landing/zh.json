@@ -588,6 +588,11 @@
               "title": "功能特点",
               "url": "/#feature",
               "target": "_self"
+            },
+            {
+              "title": "示例故事",
+              "url": "/#story_showcase",
+              "target": "_self"
             }
           ]
         },

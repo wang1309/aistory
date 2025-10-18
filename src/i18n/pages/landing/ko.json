@@ -588,6 +588,11 @@
               "title": "기능",
               "url": "/#feature",
               "target": "_self"
+            },
+            {
+              "title": "예시 스토리",
+              "url": "/#story_showcase",
+              "target": "_self"
             }
           ]
         },

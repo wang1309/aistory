@@ -588,6 +588,11 @@
               "title": "Features",
               "url": "/#feature",
               "target": "_self"
+            },
+            {
+              "title": "Showcase",
+              "url": "/#story_showcase",
+              "target": "_self"
             }
           ]
         },
