@@ -14,7 +14,7 @@
             "items": [
               "Story-Showcase-Seite hinzugefügt, um KI-generierte Geschichtenbeispiele anzuzeigen",
               "Vollständige Internationalisierungsunterstützung implementiert (Chinesisch, Englisch, Japanisch, Koreanisch, Deutsch)",
-              "Changelog-Seite hinzugefügt, um Benutzer über Updates zu informieren"
+              "Vollständiges Changelog-Modul mit Timeline-Anzeige, Versionsverfolgung, Update-Kategorisierung (Funktionen/Fixes/Verbesserungen/Sicherheit), mehrsprachiger Unterstützung hinzugefügt, sowie Einträge in Footer und Sitemap"
             ]
           },
           {

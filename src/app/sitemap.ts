@@ -9,7 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/privacy-policy',
     '/terms-of-service',
-    '/story-generate'
+    '/story-generate',
+    '/changelog'
   ]
 
   // 生成所有语言版本的URL

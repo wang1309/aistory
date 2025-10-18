@@ -14,7 +14,7 @@
             "items": [
               "Added story showcase page to display AI-generated story examples",
               "Implemented full internationalization support (Chinese, English, Japanese, Korean, German)",
-              "Added changelog page to keep users informed of updates"
+              "Added complete Changelog module with timeline-style display, version tracking, update categorization (features/fixes/improvements/security), multi-language support, and added entries in Footer and Sitemap"
             ]
           },
           {
