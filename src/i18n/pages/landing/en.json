@@ -593,6 +593,11 @@
               "title": "Showcase",
               "url": "/#story_showcase",
               "target": "_self"
+            },
+            {
+              "title": "Changelog",
+              "url": "/changelog",
+              "target": "_self"
             }
           ]
         },

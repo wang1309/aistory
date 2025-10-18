@@ -149,5 +149,17 @@
     "create_title": "Create Your Own Story",
     "create_description": "Generate unique, creative stories with AI in seconds. Try different genres, lengths, and styles!",
     "start_creating": "Start Creating"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "description": "Stay updated with our latest features and improvements",
+    "version": "Version",
+    "released_on": "Released on",
+    "types": {
+      "feature": "New Feature",
+      "fix": "Bug Fix",
+      "improvement": "Improvement",
+      "security": "Security"
+    }
   }
 }

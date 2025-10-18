@@ -149,5 +149,17 @@
     "create_title": "Erstelle deine eigene Geschichte",
     "create_description": "Generiere einzigartige, kreative Geschichten mit KI in Sekunden. Probiere verschiedene Genres, Längen und Stile!",
     "start_creating": "Jetzt erstellen"
+  },
+  "changelog": {
+    "title": "Änderungsprotokoll",
+    "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen und Verbesserungen",
+    "version": "Version",
+    "released_on": "Veröffentlicht am",
+    "types": {
+      "feature": "Neue Funktion",
+      "fix": "Fehlerbehebung",
+      "improvement": "Verbesserung",
+      "security": "Sicherheit"
+    }
   }
 }

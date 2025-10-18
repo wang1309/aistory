@@ -593,6 +593,11 @@
               "title": "示例故事",
               "url": "/#story_showcase",
               "target": "_self"
+            },
+            {
+              "title": "更新日志",
+              "url": "/zh/changelog",
+              "target": "_self"
             }
           ]
         },

@@ -593,6 +593,11 @@
               "title": "예시 스토리",
               "url": "/#story_showcase",
               "target": "_self"
+            },
+            {
+              "title": "변경 로그",
+              "url": "/ko/changelog",
+              "target": "_self"
             }
           ]
         },

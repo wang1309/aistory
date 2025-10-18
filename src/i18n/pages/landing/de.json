@@ -593,6 +593,11 @@
               "title": "Beispiele",
               "url": "/#story_showcase",
               "target": "_self"
+            },
+            {
+              "title": "Änderungsprotokoll",
+              "url": "/de/changelog",
+              "target": "_self"
             }
           ]
         },

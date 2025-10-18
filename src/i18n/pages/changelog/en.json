@@ -1,0 +1,85 @@
+{
+  "changelog": {
+    "name": "changelog",
+    "label": "Changelog",
+    "title": "Changelog",
+    "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
+    "items": [
+      {
+        "version": "v1.2.0",
+        "date": "2025-10-18",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added story showcase page to display AI-generated story examples",
+              "Implemented full internationalization support (Chinese, English, Japanese, Korean, German)",
+              "Added changelog page to keep users informed of updates"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Fixed language switching issue where some pages remained in English",
+              "Fixed UI text internationalization on story detail pages"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Improved page loading performance with static generation",
+              "Enhanced mobile responsive layout experience"
+            ]
+          }
+        ]
+      },
+      {
+        "version": "v1.1.0",
+        "date": "2025-10-15",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Launched core AI story generation feature",
+              "Support for multiple story formats: short, medium, long",
+              "Support for various genres: fantasy, sci-fi, romance, mystery, adventure, etc.",
+              "Multiple narrative perspective options: first-person, third-person, etc.",
+              "Customizable target audience and emotional tone"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Enhanced AI generation quality for more coherent story plots",
+              "Improved user interface for a more intuitive story generation process"
+            ]
+          }
+        ]
+      },
+      {
+        "version": "v1.0.0",
+        "date": "2025-10-10",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Official website launch",
+              "Completed basic page framework setup",
+              "Integrated Next.js 15 and latest technology stack",
+              "Implemented user authentication system (Google OAuth support)",
+              "Deployed to production environment"
+            ]
+          },
+          {
+            "type": "security",
+            "items": [
+              "Implemented security verification mechanisms",
+              "Added HTTPS support",
+              "Configured CSP security policy"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

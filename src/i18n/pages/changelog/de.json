@@ -1,0 +1,85 @@
+{
+  "changelog": {
+    "name": "changelog",
+    "label": "Änderungsprotokoll",
+    "title": "Änderungsprotokoll",
+    "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
+    "items": [
+      {
+        "version": "v1.2.0",
+        "date": "2025-10-18",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Story-Showcase-Seite hinzugefügt, um KI-generierte Geschichtenbeispiele anzuzeigen",
+              "Vollständige Internationalisierungsunterstützung implementiert (Chinesisch, Englisch, Japanisch, Koreanisch, Deutsch)",
+              "Changelog-Seite hinzugefügt, um Benutzer über Updates zu informieren"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Problem mit Sprachwechsel behoben, bei dem einige Seiten auf Englisch blieben",
+              "UI-Text-Internationalisierung auf Story-Detailseiten behoben"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Seitenladeleistung mit statischer Generierung verbessert",
+              "Mobiles responsives Layout-Erlebnis verbessert"
+            ]
+          }
+        ]
+      },
+      {
+        "version": "v1.1.0",
+        "date": "2025-10-15",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Kern-KI-Geschichtengenerierungsfunktion gestartet",
+              "Unterstützung für mehrere Geschichtenformate: kurz, mittel, lang",
+              "Unterstützung für verschiedene Genres: Fantasy, Sci-Fi, Romantik, Mystery, Abenteuer usw.",
+              "Mehrere Erzählperspektivoptionen: Ich-Perspektive, dritte Person usw.",
+              "Anpassbares Zielpublikum und emotionaler Ton"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "KI-Generierungsqualität für kohärentere Handlungsstränge verbessert",
+              "Benutzeroberfläche für einen intuitiveren Geschichtengenerierungsprozess verbessert"
+            ]
+          }
+        ]
+      },
+      {
+        "version": "v1.0.0",
+        "date": "2025-10-10",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Offizielle Website-Einführung",
+              "Grundlegende Seitenstruktur abgeschlossen",
+              "Next.js 15 und neuester Technologie-Stack integriert",
+              "Benutzerauthentifizierungssystem implementiert (Google OAuth-Unterstützung)",
+              "In Produktionsumgebung bereitgestellt"
+            ]
+          },
+          {
+            "type": "security",
+            "items": [
+              "Sicherheitsüberprüfungsmechanismen implementiert",
+              "HTTPS-Unterstützung hinzugefügt",
+              "CSP-Sicherheitsrichtlinie konfiguriert"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

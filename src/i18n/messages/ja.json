@@ -149,5 +149,17 @@
     "create_title": "あなた自身の物語を作成",
     "create_description": "AIを使って数秒でユニークで創造的な物語を生成します。さまざまなジャンル、長さ、スタイルを試してみましょう!",
     "start_creating": "作成を開始"
+  },
+  "changelog": {
+    "title": "変更履歴",
+    "description": "最新の機能と改善をご確認ください",
+    "version": "バージョン",
+    "released_on": "リリース日",
+    "types": {
+      "feature": "新機能",
+      "fix": "バグ修正",
+      "improvement": "改善",
+      "security": "セキュリティ"
+    }
   }
 }

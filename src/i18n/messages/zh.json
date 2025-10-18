@@ -149,5 +149,17 @@
     "create_title": "创建你自己的故事",
     "create_description": "使用AI在几秒钟内生成独特、创意的故事。尝试不同的类型、长度和风格!",
     "start_creating": "开始创作"
+  },
+  "changelog": {
+    "title": "更新日志",
+    "description": "了解我们最新的功能和改进",
+    "version": "版本",
+    "released_on": "发布于",
+    "types": {
+      "feature": "新功能",
+      "fix": "问题修复",
+      "improvement": "优化改进",
+      "security": "安全更新"
+    }
   }
 }

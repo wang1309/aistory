@@ -149,5 +149,17 @@
     "create_title": "나만의 이야기 만들기",
     "create_description": "AI로 몇 초 안에 독특하고 창의적인 이야기를 생성하세요. 다양한 장르, 길이, 스타일을 시도해보세요!",
     "start_creating": "시작하기"
+  },
+  "changelog": {
+    "title": "변경 로그",
+    "description": "최신 기능 및 개선 사항을 확인하세요",
+    "version": "버전",
+    "released_on": "출시일",
+    "types": {
+      "feature": "새 기능",
+      "fix": "버그 수정",
+      "improvement": "개선",
+      "security": "보안"
+    }
   }
 }
