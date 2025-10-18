@@ -11,6 +11,8 @@ import { useLocale } from "next-intl";
 import { exportStoryToPdf, StoryMetadata } from "@/lib/pdf-export";
 import { useAppContext } from "@/contexts/app";
 import confetti from "canvas-confetti";
+import { StoryStorage, SavedStory } from "@/lib/story-storage";
+import StoryHistoryDropdown from "@/components/story-history-dropdown";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -298,6 +300,23 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         // Check if this is first time and trigger confetti
         const isFirstTime = triggerFirstTimeConfetti();
 
+        // Save story to LocalStorage
+        try {
+          const selectedModelName = AI_MODELS.find(m => m.id === selectedModel)?.name || '';
+          StoryStorage.saveStory({
+            title: prompt.substring(0, 30) + (prompt.length > 30 ? '...' : ''),
+            prompt: prompt,
+            content: accumulatedText,
+            wordCount: calculateWordCount(accumulatedText),
+            model: selectedModelName,
+            format: selectedFormat !== 'none' ? selectedFormat : undefined,
+            genre: selectedGenre !== 'none' ? selectedGenre : undefined,
+            tone: selectedTone !== 'none' ? selectedTone : undefined,
+          });
+        } catch (error) {
+          console.error('Failed to save story:', error);
+        }
+
         if (isFirstTime) {
           // Special celebration message for first-time success
           toast.success('🎉 ' + section.toasts.success_generated, {
@@ -376,6 +395,36 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       setIsExportingPdf(false);
     }
   }, [generatedStory, prompt, wordCount, selectedModel, selectedFormat, selectedGenre, selectedTone, locale, section]);
+
+  // Load story from history
+  const handleLoadStory = useCallback((story: SavedStory) => {
+    // Load prompt and story content
+    setPrompt(story.prompt);
+    setGeneratedStory(story.content);
+
+    // Load model selection
+    const modelToSelect = AI_MODELS.find(m => m.name === story.model);
+    if (modelToSelect) {
+      setSelectedModel(modelToSelect.id);
+    }
+
+    // Load parameters
+    if (story.format) setSelectedFormat(story.format);
+    if (story.genre) setSelectedGenre(story.genre);
+    if (story.tone) setSelectedTone(story.tone);
+
+    // Show success toast
+    toast.success(
+      locale === 'zh' ? '故事已加载' :
+      locale === 'ja' ? 'ストーリーを読み込みました' :
+      locale === 'ko' ? '스토리가 로드되었습니다' :
+      locale === 'de' ? 'Geschichte geladen' :
+      'Story loaded'
+    );
+
+    // Scroll to top to show loaded content
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [AI_MODELS, locale]);
 
   return (
     <section className="relative py-16 sm:py-20 overflow-hidden">
@@ -719,6 +768,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 </div>
               </div>
             </details>
+          </div>
+
+          {/* Story History Dropdown */}
+          <div className="mb-6 flex justify-center">
+            <StoryHistoryDropdown onLoadStory={handleLoadStory} locale={locale} />
           </div>
 
           {/* Premium Generate Button */}
