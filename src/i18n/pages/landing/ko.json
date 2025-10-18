@@ -391,6 +391,7 @@
         "label": "내러티브 관점(선택 사항)",
         "placeholder": "관점 선택",
         "options": {
+          "none": "없음",
           "first_person": "1인칭",
           "second_person": "2인칭",
           "third_person_limited": "3인칭 제한",

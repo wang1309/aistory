@@ -130,6 +130,7 @@ export interface StoryGenerate {
       label: string;
       placeholder: string;
       options: {
+        none: string;
         first_person: string;
         second_person: string;
         third_person_limited: string;

@@ -391,6 +391,7 @@
         "label": "叙事视角(可选)",
         "placeholder": "选择视角",
         "options": {
+          "none": "无",
           "first_person": "第一人称",
           "second_person": "第二人称",
           "third_person_limited": "第三人称有限",

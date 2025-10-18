@@ -391,6 +391,7 @@
         "label": "Narrative Perspective(Optional)",
         "placeholder": "Select perspective",
         "options": {
+          "none": "None",
           "first_person": "First Person",
           "second_person": "Second Person",
           "third_person_limited": "Third Person Limited",

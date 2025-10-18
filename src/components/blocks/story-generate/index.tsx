@@ -104,7 +104,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const [selectedFormat, setSelectedFormat] = useState("none");
   const [selectedLength, setSelectedLength] = useState("none");
   const [selectedGenre, setSelectedGenre] = useState("none");
-  const [selectedPerspective, setSelectedPerspective] = useState("first-person");
+  const [selectedPerspective, setSelectedPerspective] = useState("none");
   const [selectedAudience, setSelectedAudience] = useState("none");
   const [selectedTone, setSelectedTone] = useState("none");
 
@@ -315,7 +315,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             tone: selectedTone !== 'none' ? selectedTone : undefined,
           });
         } catch (error) {
-          console.error('Failed to save story:', error);
+          console.log('Failed to save story:', error);
         }
 
         if (isFirstTime) {
@@ -390,7 +390,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       toast.success(section.toasts.success_pdf_exported);
 
     } catch (error) {
-      console.error('PDF export failed:', error);
+      console.log('PDF export failed:', error);
       toast.error(section.toasts.error_pdf_export_failed);
     } finally {
       setIsExportingPdf(false);
@@ -718,6 +718,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                     <SelectValue placeholder={section.advanced_options.perspective.placeholder} />
                   </SelectTrigger>
                   <SelectContent className="rounded-md bg-background">
+                    <SelectItem value="none">{section.advanced_options.perspective.options.none}</SelectItem>
                     <SelectItem value="first-person">{section.advanced_options.perspective.options.first_person}</SelectItem>
                     <SelectItem value="second-person">{section.advanced_options.perspective.options.second_person}</SelectItem>
                     <SelectItem value="third-person-limited">{section.advanced_options.perspective.options.third_person_limited}</SelectItem>

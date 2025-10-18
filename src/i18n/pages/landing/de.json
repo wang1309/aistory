@@ -391,6 +391,7 @@
         "label": "Erzählperspektive (Optional)",
         "placeholder": "Perspektive auswählen",
         "options": {
+          "none": "Keine",
           "first_person": "Ich-Perspektive",
           "second_person": "Du-Perspektive",
           "third_person_limited": "Er/Sie-Perspektive begrenzt",

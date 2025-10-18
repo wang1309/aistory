@@ -391,6 +391,7 @@
         "label": "ナラティブの視点（オプション）",
         "placeholder": "視点を選択",
         "options": {
+          "none": "なし",
           "first_person": "一人称",
           "second_person": "二人称",
           "third_person_limited": "三人称限定",
