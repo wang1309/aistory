@@ -177,11 +177,11 @@ export async function POST(req: Request) {
     const finalPrompt = generatePrompt({ prompt, locale, options });
     console.log("=== Generated prompt ===", finalPrompt.substring(0, 200) + "...");
 
-    // Map model ID to actual model name
+    // Map obfuscated model keys to actual model names
     const modelMap: Record<string, string> = {
-      "gemini-2.5-flash-lite": "gemini-2.5-flash-lite",
-      "gemini-2.5-flash": "gemini-2.5-flash",
-      "gemini-2.5-flash-think": "gemini-2.5-flash-think",
+      "fast": "gemini-2.5-flash-lite",
+      "standard": "gemini-2.5-flash",
+      "creative": "gemini-2.5-flash-think",
     };
 
     const actualModel = modelMap[model] || "gemini-2.5-flash";

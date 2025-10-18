@@ -71,7 +71,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   const AI_MODELS = useMemo(() => [
     {
-      id: 'gemini-2.5-flash-lite',
+      id: 'fast',
       name: section.ai_models.models.fastest.name,
       badge: section.ai_models.models.fastest.badge,
       badgeColor: 'bg-green-500/10 text-green-600 border-green-500/30',
@@ -80,7 +80,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       description: section.ai_models.models.fastest.description
     },
     {
-      id: 'gemini-2.5-flash',
+      id: 'standard',
       name: section.ai_models.models.eloquent.name,
       badge: section.ai_models.models.eloquent.badge,
       badgeColor: 'bg-blue-500/10 text-blue-600 border-blue-500/30',
@@ -89,7 +89,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       description: section.ai_models.models.eloquent.description
     },
     {
-      id: 'gemini-2.5-flash-think',
+      id: 'creative',
       name: section.ai_models.models.creative.name,
       badge: section.ai_models.models.creative.badge,
       badgeColor: 'bg-purple-500/10 text-purple-600 border-purple-500/30',
