@@ -217,114 +217,111 @@ export async function POST(req: Request) {
 
     console.log("Story generation started..."+response);
 
-    // Create a TransformStream to convert SSE format to plain text chunks
+    if (!response.body) {
+      return respErr("No response body from API");
+    }
+
+    // Use TransformStream for better Cloudflare Workers compatibility
     const encoder = new TextEncoder();
     const decoder = new TextDecoder();
 
-    const stream = new ReadableStream({
-      async start(controller) {
-        const reader = response.body?.getReader();
-        if (!reader) {
-          console.log("No reader available from response");
-          controller.close();
-          return;
-        }
+    let insideThinkTag = false; // Track if we're inside <think> tags
+    let chunkCount = 0;
+    let buffer = ""; // Buffer for incomplete lines
 
-        console.log("=== Starting to read stream ===");
-        let chunkCount = 0;
-        let insideThinkTag = false; // Track if we're inside <think> tags
+    const transformStream = new TransformStream({
+      async transform(chunk, controller) {
+        chunkCount++;
+        const text = decoder.decode(chunk, { stream: true });
+        console.log(`=== Chunk ${chunkCount} ===`, text.substring(0, 100));
 
-        try {
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) {
-              console.log(`=== Stream finished, total chunks: ${chunkCount} ===`);
-              break;
+        // Add to buffer
+        buffer += text;
+
+        // Split by newlines but keep the last incomplete line in buffer
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || ""; // Keep last incomplete line
+
+        for (const line of lines) {
+          // OpenAI SSE format: "data: {...}"
+          if (line.startsWith("data: ")) {
+            const data = line.slice(6); // Remove "data: " prefix
+
+            if (data === "[DONE]") {
+              console.log("=== Received [DONE] signal ===");
+              continue;
             }
 
-            chunkCount++;
-            const chunk = decoder.decode(value, { stream: true });
-            console.log(`=== Chunk ${chunkCount} ===`, chunk.substring(0, 100));
+            try {
+              const parsed = JSON.parse(data);
+              let content = parsed.choices?.[0]?.delta?.content;
 
-            const lines = chunk.split("\n").filter(line => line.trim() !== "");
+              if (content) {
+                console.log("=== Raw content ===", content.substring(0, 50));
 
-            for (const line of lines) {
-              // OpenAI SSE format: "data: {...}"
-              if (line.startsWith("data: ")) {
-                const data = line.slice(6); // Remove "data: " prefix
+                // Check for <think> tag opening
+                if (content.includes("<think>")) {
+                  insideThinkTag = true;
+                  console.log("=== Detected <think> tag, filtering thinking process ===");
+                  const thinkIndex = content.indexOf("<think>");
+                  if (thinkIndex > 0) {
+                    content = content.substring(0, thinkIndex);
+                  } else {
+                    content = "";
+                  }
+                }
 
-                if (data === "[DONE]") {
-                  console.log("=== Received [DONE] signal ===");
+                // Check for </think> tag closing
+                if (content.includes("</think>")) {
+                  insideThinkTag = false;
+                  console.log("=== Detected </think> tag, resuming story content ===");
+                  const thinkCloseIndex = content.indexOf("</think>");
+                  content = content.substring(thinkCloseIndex + 8);
+                }
+
+                // Skip content if we're inside thinking tags
+                if (insideThinkTag) {
+                  console.log("=== Skipping thinking content ===");
                   continue;
                 }
 
-                try {
-                  const parsed = JSON.parse(data);
-                  let content = parsed.choices?.[0]?.delta?.content;
+                // Send all non-thinking content directly
+                if (content.trim()) {
+                  console.log("=== Extracted content ===", content.substring(0, 50));
+                  const escaped = content
+                    .replace(/\\/g, '\\\\')
+                    .replace(/"/g, '\\"')
+                    .replace(/\n/g, '\\n')
+                    .replace(/\r/g, '\\r')
+                    .replace(/\t/g, '\\t');
 
-                  if (content) {
-                    console.log("=== Raw content ===", content.substring(0, 50));
-
-                    // Check for <think> tag opening
-                    if (content.includes("<think>")) {
-                      insideThinkTag = true;
-                      console.log("=== Detected <think> tag, filtering thinking process ===");
-                      const thinkIndex = content.indexOf("<think>");
-                      if (thinkIndex > 0) {
-                        content = content.substring(0, thinkIndex);
-                      } else {
-                        content = "";
-                      }
-                    }
-
-                    // Check for </think> tag closing
-                    if (content.includes("</think>")) {
-                      insideThinkTag = false;
-                      console.log("=== Detected </think> tag, resuming story content ===");
-                      const thinkCloseIndex = content.indexOf("</think>");
-                      content = content.substring(thinkCloseIndex + 8);
-                    }
-
-                    // Skip content if we're inside thinking tags
-                    if (insideThinkTag) {
-                      console.log("=== Skipping thinking content ===");
-                      continue;
-                    }
-
-                    // Send all non-thinking content directly
-                    if (content.trim()) {
-                      console.log("=== Extracted content ===", content.substring(0, 50));
-                      const escaped = content
-                        .replace(/\\/g, '\\\\')
-                        .replace(/"/g, '\\"')
-                        .replace(/\n/g, '\\n')
-                        .replace(/\r/g, '\\r')
-                        .replace(/\t/g, '\\t');
-
-                      const formattedChunk = `0:"${escaped}"\n`;
-                      console.log("=== Formatted chunk ===", formattedChunk.substring(0, 100));
-                      controller.enqueue(encoder.encode(formattedChunk));
-                    }
-                  } else {
-                    console.log("=== No content in delta ===", JSON.stringify(parsed.choices?.[0]));
-                  }
-                } catch (e) {
-                  console.log("Parse error:", e, "Line:", data.substring(0, 100));
+                  const formattedChunk = `0:"${escaped}"\n`;
+                  console.log("=== Formatted chunk ===", formattedChunk.substring(0, 100));
+                  controller.enqueue(encoder.encode(formattedChunk));
                 }
+              } else {
+                console.log("=== No content in delta ===", JSON.stringify(parsed.choices?.[0]));
               }
+            } catch (e) {
+              console.log("Parse error:", e, "Line:", data.substring(0, 100));
             }
           }
-        } catch (error) {
-          console.log("Stream error:", error);
-          controller.error(error);
-        } finally {
-          console.log("=== Closing stream ===");
-          controller.close();
         }
       },
+
+      flush(controller) {
+        console.log("=== Stream finished, total chunks: " + chunkCount + " ===");
+        // Process any remaining buffer
+        if (buffer.trim()) {
+          console.log("=== Processing remaining buffer ===", buffer.substring(0, 100));
+        }
+      }
     });
 
-    return new Response(stream, {
+    // Pipe the response body through our transform stream
+    const transformedStream = response.body.pipeThrough(transformStream);
+
+    return new Response(transformedStream, {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "no-cache, no-transform",
