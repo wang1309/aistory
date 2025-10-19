@@ -11,7 +11,7 @@ export default async function StructuredData({ locale, type }: StructuredDataPro
   const canonicalUrl = `${webUrl}${locale === "en" ? "" : `/${locale}`}`
 
   const baseStructuredData = {
-    "@context": "https://schema.org",
+    "@context": "https://storiesgenerator.org",
     "@type": type,
     url: canonicalUrl,
     inLanguage: locale,
@@ -32,7 +32,7 @@ export default async function StructuredData({ locale, type }: StructuredDataPro
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD",
-        availability: "https://schema.org/InStock"
+        availability: "https://storiesgenerator.org/InStock"
       },
       aggregateRating: {
         "@type": "AggregateRating",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
@@ -108,6 +108,59 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const [selectedAudience, setSelectedAudience] = useState("none");
   const [selectedTone, setSelectedTone] = useState("none");
 
+  // Use ref to store latest advanced options values to avoid stale closure
+  const advancedOptionsRef = useRef({
+    format: "none",
+    length: "none",
+    genre: "none",
+    perspective: "none",
+    audience: "none",
+    tone: "none"
+  });
+
+  // Update ref whenever advanced options change
+  useEffect(() => {
+    advancedOptionsRef.current = {
+      format: selectedFormat,
+      length: selectedLength,
+      genre: selectedGenre,
+      perspective: selectedPerspective,
+      audience: selectedAudience,
+      tone: selectedTone
+    };
+  }, [selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone]);
+
+  // Wrapped setters with debug logging
+  const handleFormatChange = useCallback((value: string) => {
+    console.log(`📝 Format changed: "${selectedFormat}" → "${value}"`);
+    setSelectedFormat(value);
+  }, [selectedFormat]);
+
+  const handleLengthChange = useCallback((value: string) => {
+    console.log(`📏 Length changed: "${selectedLength}" → "${value}"`);
+    setSelectedLength(value);
+  }, [selectedLength]);
+
+  const handleGenreChange = useCallback((value: string) => {
+    console.log(`🎭 Genre changed: "${selectedGenre}" → "${value}"`);
+    setSelectedGenre(value);
+  }, [selectedGenre]);
+
+  const handlePerspectiveChange = useCallback((value: string) => {
+    console.log(`👁️ Perspective changed: "${selectedPerspective}" → "${value}"`);
+    setSelectedPerspective(value);
+  }, [selectedPerspective]);
+
+  const handleAudienceChange = useCallback((value: string) => {
+    console.log(`👥 Audience changed: "${selectedAudience}" → "${value}"`);
+    setSelectedAudience(value);
+  }, [selectedAudience]);
+
+  const handleToneChange = useCallback((value: string) => {
+    console.log(`🎨 Tone changed: "${selectedTone}" → "${value}"`);
+    setSelectedTone(value);
+  }, [selectedTone]);
+
   // Story generation state
   const [generatedStory, setGeneratedStory] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -117,6 +170,18 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // Calculate word count (memoized for performance)
   const wordCount = useMemo(() => calculateWordCount(generatedStory), [generatedStory]);
+
+  // Calculate number of selected advanced options (not "none")
+  const selectedOptionsCount = useMemo(() => {
+    let count = 0;
+    if (selectedFormat !== "none") count++;
+    if (selectedLength !== "none") count++;
+    if (selectedGenre !== "none") count++;
+    if (selectedPerspective !== "none") count++;
+    if (selectedAudience !== "none") count++;
+    if (selectedTone !== "none") count++;
+    return count;
+  }, [selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone]);
 
   // ========== MEMOIZED HANDLERS (Performance optimization: prevents recreation on every render) ==========
 
@@ -183,21 +248,26 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     setVerificationCallback(() => handleVerificationSuccess);
     setShowVerificationModal(true);
   }, [prompt, selectedModel, section, setShowVerificationModal, setVerificationCallback]);
+  // Note: handleVerificationSuccess is NOT in deps because it's defined below
+  // and using ref for advanced options prevents stale closure issues
 
   // Handle verification success - start story generation
   const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
     console.log("=== Starting story generation after verification ===");
-    console.log("Current state:", {
-      prompt: prompt.substring(0, 100),
+
+    // Get latest advanced options from ref (to avoid stale closure)
+    const latestOptions = advancedOptionsRef.current;
+
+    console.log("=== CURRENT STATE - All Options ===");
+    console.log({
+      prompt: prompt.substring(0, 100) + (prompt.length > 100 ? '...' : ''),
+      promptLength: prompt.length,
       selectedModel,
-      selectedFormat,
-      selectedLength,
-      selectedGenre,
-      selectedPerspective,
-      selectedAudience,
-      selectedTone,
+      advancedOptions: latestOptions,
+      locale,
       turnstileToken: `Present (${turnstileToken.length} chars)`
     });
+    console.log("⚠️ Note: If all advancedOptions are 'none', they won't affect the generated prompt");
 
     try {
       setIsGenerating(true);
@@ -207,12 +277,12 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         prompt: prompt.trim(),
         model: selectedModel,
         locale: locale,
-        format: selectedFormat,
-        length: selectedLength,
-        genre: selectedGenre,
-        perspective: selectedPerspective,
-        audience: selectedAudience,
-        tone: selectedTone,
+        format: latestOptions.format,
+        length: latestOptions.length,
+        genre: latestOptions.genre,
+        perspective: latestOptions.perspective,
+        audience: latestOptions.audience,
+        tone: latestOptions.tone,
         turnstileToken: turnstileToken,
       };
 
@@ -310,9 +380,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             content: accumulatedText,
             wordCount: calculateWordCount(accumulatedText),
             model: selectedModelName,
-            format: selectedFormat !== 'none' ? selectedFormat : undefined,
-            genre: selectedGenre !== 'none' ? selectedGenre : undefined,
-            tone: selectedTone !== 'none' ? selectedTone : undefined,
+            format: latestOptions.format !== 'none' ? latestOptions.format : undefined,
+            genre: latestOptions.genre !== 'none' ? latestOptions.genre : undefined,
+            tone: latestOptions.tone !== 'none' ? latestOptions.tone : undefined,
           });
         } catch (error) {
           console.log('Failed to save story:', error);
@@ -342,7 +412,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     } finally {
       setIsGenerating(false);
     }
-  }, [prompt, selectedModel, selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone, locale, section]);
+  }, [prompt, selectedModel, locale, section, AI_MODELS, triggerFirstTimeConfetti]);
+  // Note: advancedOptions are accessed via ref, so not in dependency array
 
   // PDF export handler
   const handleExportPdf = useCallback(async () => {
@@ -635,6 +706,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
+                  {selectedOptionsCount > 0 && (
+                    <span className="text-xs font-semibold text-primary px-2.5 py-1 rounded-full bg-primary/20 border border-primary/30">
+                      {selectedOptionsCount} {locale === 'zh' ? '项已选' : locale === 'ja' ? '選択済み' : locale === 'ko' ? '선택됨' : selectedOptionsCount === 1 ? 'selected' : 'selected'}
+                    </span>
+                  )}
                   <span className="text-xs text-muted-foreground px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
                     {section.advanced_options.optional_badge}
                   </span>
@@ -647,7 +723,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm text-muted-foreground">{section.advanced_options.format.label}</label>
-                <Select value={selectedFormat} onValueChange={setSelectedFormat}>
+                <Select value={selectedFormat} onValueChange={handleFormatChange}>
                   <SelectTrigger className="w-full rounded-md bg-background">
                     <SelectValue placeholder={section.advanced_options.format.placeholder} />
                   </SelectTrigger>
@@ -667,7 +743,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               </div>
               <div className="space-y-2">
                 <label className="text-sm text-muted-foreground">{section.advanced_options.length.label}</label>
-                <Select value={selectedLength} onValueChange={setSelectedLength}>
+                <Select value={selectedLength} onValueChange={handleLengthChange}>
                   <SelectTrigger className="w-full rounded-md bg-background">
                     <SelectValue placeholder={section.advanced_options.length.placeholder} />
                   </SelectTrigger>
@@ -684,7 +760,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               </div>
               <div className="space-y-2">
                 <label className="text-sm text-muted-foreground">{section.advanced_options.genre.label}</label>
-                <Select value={selectedGenre} onValueChange={setSelectedGenre}>
+                <Select value={selectedGenre} onValueChange={handleGenreChange}>
                   <SelectTrigger className="w-full rounded-md bg-background">
                     <SelectValue placeholder={section.advanced_options.genre.placeholder} />
                   </SelectTrigger>
@@ -713,7 +789,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               </div>
               <div className="space-y-2">
                 <label className="text-sm text-muted-foreground">{section.advanced_options.perspective.label}</label>
-                <Select value={selectedPerspective} onValueChange={setSelectedPerspective}>
+                <Select value={selectedPerspective} onValueChange={handlePerspectiveChange}>
                   <SelectTrigger className="w-full rounded-md bg-background">
                     <SelectValue placeholder={section.advanced_options.perspective.placeholder} />
                   </SelectTrigger>
@@ -728,7 +804,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               </div>
               <div className="space-y-2">
                 <label className="text-sm text-muted-foreground">{section.advanced_options.audience.label}</label>
-                <Select value={selectedAudience} onValueChange={setSelectedAudience}>
+                <Select value={selectedAudience} onValueChange={handleAudienceChange}>
                   <SelectTrigger className="w-full rounded-md bg-background">
                     <SelectValue placeholder={section.advanced_options.audience.placeholder} />
                   </SelectTrigger>
@@ -749,7 +825,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               </div>
               <div className="space-y-2">
                 <label className="text-sm text-muted-foreground">{section.advanced_options.tone.label}</label>
-                <Select value={selectedTone} onValueChange={setSelectedTone}>
+                <Select value={selectedTone} onValueChange={handleToneChange}>
                   <SelectTrigger className="w-full rounded-md bg-background">
                     <SelectValue placeholder={section.advanced_options.tone.placeholder} />
                   </SelectTrigger>

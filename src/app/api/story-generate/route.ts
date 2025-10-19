@@ -195,7 +195,7 @@ export async function POST(req: Request) {
         { role: "user", content: finalPrompt },
       ],
     };
-    console.log("=== Request to GRSAI API ===", JSON.stringify(requestBody, null, 2).substring(0, 500) + "...");
+    console.log("=== Request to GRSAI API ===", JSON.stringify(requestBody, null, 2));
 
     // Call GRSAI API with streaming
     const response = await fetch("https://api.grsai.com/v1/chat/completions", {

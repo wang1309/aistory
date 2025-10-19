@@ -12,7 +12,7 @@
         "target": "_self",
         "label": "Fantasy Quest",
         "image": {
-          "src": "/imgs/stories/fantasy-1.jpg"
+          "src": "/imgs/stories/fantasy-1.png"
         }
       },
       {
@@ -22,7 +22,7 @@
         "target": "_self",
         "label": "Sci-Fi Thriller",
         "image": {
-          "src": "/imgs/stories/scifi-1.jpg"
+          "src": "/imgs/stories/scifi-1.png"
         }
       },
       {
@@ -32,7 +32,7 @@
         "target": "_self",
         "label": "Romance",
         "image": {
-          "src": "/imgs/stories/romance-1.jpg"
+          "src": "/imgs/stories/romance-1.png"
         }
       },
       {
@@ -42,7 +42,7 @@
         "target": "_self",
         "label": "Mystery/Crime",
         "image": {
-          "src": "/imgs/stories/mystery-1.jpg"
+          "src": "/imgs/stories/mystery-1.png"
         }
       },
       {
@@ -52,7 +52,7 @@
         "target": "_self",
         "label": "Horror",
         "image": {
-          "src": "/imgs/stories/horror-1.jpg"
+          "src": "/imgs/stories/horror-1.png"
         }
       },
       {
@@ -62,7 +62,7 @@
         "target": "_self",
         "label": "Kids Story",
         "image": {
-          "src": "/imgs/stories/kids-1.jpg"
+          "src": "/imgs/stories/kids-1.png"
         }
       }
     ]
