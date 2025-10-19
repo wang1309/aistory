@@ -191,7 +191,7 @@ export async function POST(req: Request) {
       model: actualModel,
       stream: true,
       messages: [
-        { role: "system", content: "你是一个专业的故事创作助手。" },
+        { role: "system", content: "你是一个资深专业的故事创作助手，也是一名诺贝尔文学奖获得者" },
         { role: "user", content: finalPrompt },
       ],
     };
