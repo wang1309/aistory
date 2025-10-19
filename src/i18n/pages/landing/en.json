@@ -602,7 +602,7 @@
           ]
         },
         {
-          "title": "AI Tools",
+         "title": "AI Tools",
          "children": [
             {
               "title": "Story Generator",
@@ -636,7 +636,7 @@
         {
           "title": "Email",
           "icon": "RiMailLine",
-          "url": "mailto:wangrui171309@gmail.com",
+          "url": "mailto:contact@storiesgenerator.org",
           "target": "_self"
         }
       ]
