@@ -104,7 +104,45 @@ export async function exportStoryToPdf(
     `;
 
     // 构建HTML内容
+    // 添加CSS变量覆盖,将oklch转换为传统颜色格式以兼容Cloudflare Workers环境
     tempContainer.innerHTML = `
+      <style>
+        :root {
+          /* 将所有oklch颜色变量转换为hex/rgb格式 */
+          --background: #ffffff;
+          --foreground: #2d2d30;
+          --card: #fafafa;
+          --card-foreground: #2d2d30;
+          --popover: #ffffff;
+          --popover-foreground: #2d2d30;
+          --primary: #6366f1;
+          --primary-foreground: #ffffff;
+          --secondary: #2d2d30;
+          --secondary-foreground: #ffffff;
+          --muted: #ebebeb;
+          --muted-foreground: #2d2d30;
+          --accent: #f0f0f1;
+          --accent-foreground: #6366f1;
+          --destructive: #ef4444;
+          --destructive-foreground: #ffffff;
+          --border: #ededed;
+          --input: #fafafa;
+          --ring: #6366f1;
+          --chart-1: #6366f1;
+          --chart-2: #10b981;
+          --chart-3: #f59e0b;
+          --chart-4: #14b8a6;
+          --chart-5: #ef4444;
+          --sidebar: #fafafa;
+          --sidebar-foreground: #2d2d30;
+          --sidebar-primary: #6366f1;
+          --sidebar-primary-foreground: #ffffff;
+          --sidebar-accent: #f0f0f1;
+          --sidebar-accent-foreground: #6366f1;
+          --sidebar-border: #ededed;
+          --sidebar-ring: #6366f1;
+        }
+      </style>
       <div style="margin-bottom: 30px;">
         <h1 style="
           font-size: 28px;
