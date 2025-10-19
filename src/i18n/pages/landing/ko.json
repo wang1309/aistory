@@ -610,6 +610,16 @@
               "target": "_self"
             }
           ]
+        },
+        {
+          "title": "Friend",
+           "children": [
+            {
+              "title": "toolfame",
+              "url": "https://toolfame.com/item/story-generator",
+              "target": "_blank"
+            }
+          ]
         }
       ]
     },
