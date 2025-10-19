@@ -1,8 +1,11 @@
 import { Footer as FooterType } from "@/types/blocks/footer";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export default function Footer({ footer }: { footer: FooterType }) {
+  const t = useTranslations();
+
   if (footer.disabled) {
     return null;
   }
@@ -67,6 +70,35 @@ export default function Footer({ footer }: { footer: FooterType }) {
               ))}
             </div>
           </div>
+
+          {footer.friendshipLinks && footer.friendshipLinks.items && footer.friendshipLinks.items.length > 0 && (
+            <div className="mt-12 flex flex-col items-center">
+              {footer.friendshipLinks.title && (
+                <h3 className="mb-6 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+                  {footer.friendshipLinks.title}
+                </h3>
+              )}
+              <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
+                {footer.friendshipLinks.items.map((link, i) => (
+                  <a
+                    key={i}
+                    href={link.url}
+                    target={link.target || "_blank"}
+                    rel="noopener noreferrer"
+                    className="transition-opacity hover:opacity-80"
+                    title={link.title}
+                  >
+                    <img
+                      src={link.image.src}
+                      alt={link.image.alt || link.title}
+                      className="h-12 w-auto lg:h-14"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="mt-8 flex flex-col justify-between gap-4 border-t pt-8 text-center text-sm font-medium text-muted-foreground lg:flex-row lg:items-center lg:text-left">
             {footer.copyright && (
               <p>

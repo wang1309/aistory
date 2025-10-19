@@ -1,5 +1,15 @@
 import { Brand, Social, Nav, Agreement } from "@/types/blocks/base";
 
+export interface FriendshipLink {
+  title: string;
+  url: string;
+  image: {
+    src: string;
+    alt?: string;
+  };
+  target?: string;
+}
+
 export interface Footer {
   disabled?: boolean;
   name?: string;
@@ -8,4 +18,8 @@ export interface Footer {
   copyright?: string;
   social?: Social;
   agreement?: Agreement;
+  friendshipLinks?: {
+    title?: string;
+    items?: FriendshipLink[];
+  };
 }

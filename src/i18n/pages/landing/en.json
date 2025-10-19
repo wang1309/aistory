@@ -610,16 +610,6 @@
               "target": "_self"
             }
           ]
-        },
-        {
-          "title": "Friend",
-           "children": [
-            {
-              "title": "toolfame",
-              "url": "https://toolfame.com/item/story-generator",
-              "target": "_blank"
-            }
-          ]
         }
       ]
     },
@@ -660,6 +650,19 @@
         {
           "title": "Terms of Service",
           "url": "/terms-of-service"
+        }
+      ]
+    },
+    "friendshipLinks": {
+      "title": "Featured On",
+      "items": [
+        {
+          "title": "ToolFame",
+          "url": "https://toolfame.com/item/story-generator",
+          "image": {
+            "src": "https://toolfame.com/badge-light.svg",
+            "alt": "Featured on ToolFame"
+          }
         }
       ]
     }
