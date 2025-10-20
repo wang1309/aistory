@@ -6,7 +6,8 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 
 import { MdLanguage } from "react-icons/md";
 import { localeNames, localeFlags } from "@/i18n/locale";
@@ -19,11 +20,8 @@ export default function ({ isIcon = false }: { isIcon?: boolean }) {
 
   const handleSwitchLanguage = (value: string) => {
     if (value !== locale) {
-      let newPathName = pathname.replace(`/${locale}`, `/${value}`);
-      if (!newPathName.startsWith(`/${value}`)) {
-        newPathName = `/${value}${newPathName}`;
-      }
-      router.push(newPathName);
+      // Use i18n-aware router which automatically handles locale prefixes
+      router.replace(pathname, { locale: value });
     }
   };
 

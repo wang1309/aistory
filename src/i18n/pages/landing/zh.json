@@ -673,6 +673,14 @@
             "src": "https://toolfame.com/badge-light.svg",
             "alt": "Featured on ToolFame"
           }
+        },
+        {
+          "title": "ToolFame",
+          "url": "https://findly.tools/story-generator?utm_source=story-generator",
+          "image": {
+            "src": "https://findly.tools/badges/findly-tools-badge-light.svg",
+            "alt": "Featured on findly.tools"
+          }
         }
       ]
     }
