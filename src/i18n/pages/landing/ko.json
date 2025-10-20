@@ -596,7 +596,7 @@
             },
             {
               "title": "변경 로그",
-              "url": "/ko/changelog",
+              "url": "/changelog",
               "target": "_self"
             }
           ]

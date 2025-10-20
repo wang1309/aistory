@@ -596,7 +596,7 @@
             },
             {
               "title": "更新日志",
-              "url": "/zh/changelog",
+              "url": "/changelog",
               "target": "_self"
             }
           ]

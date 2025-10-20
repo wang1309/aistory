@@ -596,7 +596,7 @@
             },
             {
               "title": "変更履歴",
-              "url": "/ja/changelog",
+              "url": "/changelog",
               "target": "_self"
             }
           ]

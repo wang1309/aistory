@@ -596,7 +596,7 @@
             },
             {
               "title": "Änderungsprotokoll",
-              "url": "/de/changelog",
+              "url": "/changelog",
               "target": "_self"
             }
           ]
