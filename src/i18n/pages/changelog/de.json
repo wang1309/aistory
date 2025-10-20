@@ -6,6 +6,19 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.2.1",
+        "date": "2025-10-20",
+        "changes": [
+          {
+            "type": "fix",
+            "items": [
+              "Sprachwechsler behoben, der falschen Router verwendete und Sprachstatus verlor",
+              "Sprachwechsel-Komponente verwendet jetzt next-intl's i18n-aware Router und stellt sicher, dass der Sprachstatus nach dem Wechseln der Sprache und dem Klicken auf Links erhalten bleibt"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.0",
         "date": "2025-10-18",
         "changes": [

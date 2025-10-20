@@ -6,6 +6,19 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.2.1",
+        "date": "2025-10-20",
+        "changes": [
+          {
+            "type": "fix",
+            "items": [
+              "Fixed language switcher using incorrect router causing language state loss",
+              "Language toggle component now uses next-intl's i18n-aware router, ensuring language state persists after switching languages and clicking any links"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.0",
         "date": "2025-10-18",
         "changes": [
