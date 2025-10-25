@@ -14,6 +14,15 @@ export interface StoryGenerate {
       dialogue: string;
       setting: string;
     };
+    language_label: string;
+    language_placeholder: string;
+    language_options: {
+      [key: string]: {
+        native: string;
+        english: string;
+        flag: string;
+      };
+    };
     character_counter: string;
   };
   random_prompts: string[];

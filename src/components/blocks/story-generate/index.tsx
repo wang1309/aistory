@@ -62,6 +62,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     section.prompt.quick_add_chips.setting
   ], [section]);
 
+  const LANGUAGE_OPTIONS = useMemo(() => section.prompt.language_options, [section]);
+
   const STORY_PRESETS = useMemo(() => [
     { emoji: '🏰', title: section.presets.items.fantasy_quest.title, desc: section.presets.items.fantasy_quest.desc },
     { emoji: '🚀', title: section.presets.items.scifi_thriller.title, desc: section.presets.items.scifi_thriller.desc },
@@ -107,6 +109,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const [selectedPerspective, setSelectedPerspective] = useState("none");
   const [selectedAudience, setSelectedAudience] = useState("none");
   const [selectedTone, setSelectedTone] = useState("none");
+  const [selectedLanguage, setSelectedLanguage] = useState(locale);
 
   // Use ref to store latest advanced options values to avoid stale closure
   const advancedOptionsRef = useRef({
@@ -115,7 +118,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     genre: "none",
     perspective: "none",
     audience: "none",
-    tone: "none"
+    tone: "none",
+    language: locale
   });
 
   // Update ref whenever advanced options change
@@ -126,9 +130,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       genre: selectedGenre,
       perspective: selectedPerspective,
       audience: selectedAudience,
-      tone: selectedTone
+      tone: selectedTone,
+      language: selectedLanguage
     };
-  }, [selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone]);
+  }, [selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone, selectedLanguage]);
 
   // Wrapped setters with debug logging
   const handleFormatChange = useCallback((value: string) => {
@@ -160,6 +165,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     console.log(`🎨 Tone changed: "${selectedTone}" → "${value}"`);
     setSelectedTone(value);
   }, [selectedTone]);
+
+  const handleLanguageChange = useCallback((value: string) => {
+    console.log(`🌐 Language changed: "${selectedLanguage}" → "${value}"`);
+    setSelectedLanguage(value);
+  }, [selectedLanguage]);
 
   // Story generation state
   const [generatedStory, setGeneratedStory] = useState("");
@@ -277,6 +287,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         prompt: prompt.trim(),
         model: selectedModel,
         locale: locale,
+        outputLanguage: latestOptions.language,
         format: latestOptions.format,
         length: latestOptions.length,
         genre: latestOptions.genre,
@@ -588,6 +599,29 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                           {chip}
                         </button>
                       ))}
+                    </div>
+
+                    {/* Language selector */}
+                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                      <span className="text-xs text-muted-foreground">{section.prompt.language_label}</span>
+                      <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
+                        <SelectTrigger className="w-auto min-w-[140px] h-8 px-3 py-1 text-xs bg-background/90 border-border/50 hover:border-primary/50 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-200">
+                          <SelectValue placeholder={section.prompt.language_placeholder} />
+                        </SelectTrigger>
+                        <SelectContent className="rounded-md bg-background border-border/50 shadow-lg">
+                          {Object.entries(LANGUAGE_OPTIONS).map(([code, option]) => (
+                            <SelectItem key={code} value={code} className="text-xs py-2 px-3 hover:bg-primary/5 focus:bg-primary/10">
+                              <div className="flex items-center gap-2">
+                                <span className="text-base">{option.flag}</span>
+                                <div className="flex flex-col">
+                                  <span className="font-medium text-foreground">{option.native}</span>
+                                  <span className="text-muted-foreground opacity-75">{option.english}</span>
+                                </div>
+                              </div>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     </div>
                   </div>
 

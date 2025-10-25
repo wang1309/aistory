@@ -12,6 +12,7 @@ interface StoryOptions {
 interface UserInput {
   prompt: string;
   locale?: string;
+  outputLanguage?: string;
   options: StoryOptions;
 }
 
@@ -69,8 +70,8 @@ export async function POST(req: Request) {
     const requestData = await req.json();
     console.log("=== Received request data ===", JSON.stringify(requestData, null, 2));
 
-    const { prompt, model, locale, format, length, genre, perspective, audience, tone, turnstileToken } = requestData || {};
-    console.log("=== Extracted params ===", { prompt, model, locale, format, length, genre, perspective, audience, tone, turnstileToken: turnstileToken ? "Present" : "Missing" });
+    const { prompt, model, locale, outputLanguage, format, length, genre, perspective, audience, tone, turnstileToken } = requestData || {};
+    console.log("=== Extracted params ===", { prompt, model, locale, outputLanguage, format, length, genre, perspective, audience, tone, turnstileToken: turnstileToken ? "Present" : "Missing" });
 
     if (!prompt) {
       console.log("Validation failed: prompt is empty");
@@ -174,7 +175,7 @@ export async function POST(req: Request) {
       toneMood: tone === "none" ? null : mapTone[tone] ?? tone ?? null,
     };
 
-    const finalPrompt = generatePrompt({ prompt, locale, options });
+    const finalPrompt = generatePrompt({ prompt, locale: outputLanguage || locale, options });
     console.log("=== Generated prompt ===", finalPrompt.substring(0, 200) + "...");
 
     // Map obfuscated model keys to actual model names
