@@ -1,0 +1,236 @@
+{
+  "feature_intro": {
+    "name": "Introduce",
+    "title": "Was ist ein KI-Buchtitel-Generator?",
+    "label": "Einführung",
+    "description": "Ein KI-Buchtitel-Generator ist ein smartes Online-Tool, das künstliche Intelligenz nutzt, um Autoren, Verlagen und Content-Erstellern zu helfen, in Sekunden einzigartige, einprägsame und genrespezifische Buchtitel zu entwickeln. Durch die Analyse der von Ihnen bereitgestellten Wörter oder kurzen Beschreibungen wendet die KI Sprachmodelle und Keyword-Daten an, um kreative, einprägsame und SEO-freundliche Titel vorzuschlagen. Egal, ob Sie Fantasy, Romantik, Krimi, Selbsthilfe oder Kinderbücher schreiben, ein KI-Buchtitel-Generator passt die Ergebnisse an Ihr Genre an. Er kann sogar als Fantasy-Buchtitel-Generator oder Selbsthilfe-Titel-Ersteller fungieren und Ihnen helfen, Ideen zu entwickeln, die den Ton und die Essenz Ihrer Geschichte einfangen. Geben Sie einfach ein paar Schlüsselwörter oder eine Zusammenfassung Ihres Buches ein, und der KI-Titel-Generator für Bücher generiert sofort mehrere Ideen. Sie können Ihre Ergebnisse verfeinern, indem Sie Ton, Emotion oder Thema anpassen — was ihn perfekt für Autoren macht, die nach kreativen Buchtitelideen suchen, oder für Verlage, die die Online-Sichtbarkeit optimieren möchten.",
+    "image": {
+      "src": "/imgs/booktitle/book_title_what.png"
+    }
+  },
+  "feature_benefits": {
+    "name": "benefits",
+    "title": "Warum unseren Buchtitel-Generator wählen?",
+    "label": "Vorteile",
+    "description": "Die Wahl unseres KI-Buchtitel-Generators bedeutet, einen intelligenteren, schnelleren und kreativeren Weg zu entdecken, den perfekten Titel für Ihr Buch zu finden. Im Gegensatz zu einfachen Tools schlägt dieser Generator nicht nur zufällige Titel vor — er liefert KI-gestützte Buchtitelideen, die mit detaillierten Erklärungen und mehrsprachiger Flexibilität kommen.",
+    "items": [
+      {
+        "icon": "RiLightbulbLine",
+        "title": "KI-gestützte Kreativität mit Titelerklärungen",
+        "description": "Unser KI-Buchtitel-Generator hört nicht bei der Erstellung einprägsamer Namen auf — er erklärt auch, warum jeder Titel funktioniert. Sie erhalten eine kurze Analyse, die beschreibt, was den Titel effektiv macht, wie seine emotionale Wirkung, Keyword-Stärke oder Relevanz für Ihr Genre. Diese Funktion hilft Autoren, die Psychologie hinter erfolgreichen Titeln zu verstehen und mit Zuversicht zu wählen.",
+        "image": {
+          "src": "/imgs/booktitle/book_title_why1.png",
+          "alt": "KI-gestützte Kreativität mit Titelerklärungen"
+        }
+      },
+      {
+        "icon": "RiTimeLine",
+        "title": "Für jedes Genre konzipiert Unser KI-Titel-Generator funktioniert für alle Genres",
+        "description": "Fantasy: Epische, magische und immersive Titel.\nRomantik: Emotionale und nachvollziehbare Namensideen.\nKrimi & Mystery: Scharfe, spannende Titel.\nSelbsthilfe: Motivierende und wachstumsorientierte Ideen.\nKinderbücher: Lustige, fantasievolle und altersgerechte Titel.\nOb Sie ihn als Fantasy-Buchtitel-Generator, Romantik-Titel-Ersteller oder Selbsthilfe-Buchtitel-Generator verwenden, Sie erhalten immer relevante, hochwertige Ergebnisse.",
+        "image": {
+          "src": "/imgs/booktitle/book_title_why2.png",
+          "alt": "Für jedes Genre konzipiert Unser KI-Titel-Generator funktioniert für alle Genres"
+        }
+      },
+      {
+        "icon": "RiStarLine",
+        "title": "Kostenlos, Schnell & SEO-Freundlich",
+        "description": "Unser kostenloser KI-Buchtitel-Generator spart Stunden des Brainstormings, indem er Kreativität mit datengestützten Keyword-Einblicken kombiniert. Jeder generierte Titel ist nicht nur einzigartig und einprägsam, sondern auch für SEO optimiert, um Ihrem Buch zu helfen, sich auf Amazon, Google und anderen Plattformen hervorzuheben.",
+        "image": {
+          "src": "/imgs/booktitle/book_title_why3.png",
+          "alt": "Kostenlos, Schnell & SEO-Freundlich"
+        }
+      }
+    ]
+  },
+  "feature_usecases": {
+    "name": "applications",
+    "title": "Anwendungen von KI-Story-Generatoren",
+    "label": "Anwendungsfälle",
+    "description": "",
+    "items": [
+      {
+        "icon": "RiQuillPenLine",
+        "title": "Buchtitelerstellung für Autoren und Verlage",
+        "description": "Ein KI-Buchtitel-Generator ist ein unschätzbares Werkzeug für Autoren und Verlage, die schnell einprägsame und unvergessliche Titel erstellen möchten. Er schlägt einzigartige, SEO-optimierte Buchtitel basierend auf Genre, Ton und Keyword-Eingabe vor und hilft Autoren, den perfekten Titel für ihre Belletristik- oder Sachbuch-Werke zu finden. Egal, ob Sie einen Fantasy-Roman, eine Romantik oder einen Selbsthilfe-Ratgeber schreiben, das Tool stellt sicher, dass der Titel Ihres Buches bei den Lesern Anklang findet und auf Online-Plattformen gut rankt."
+      },
+      {
+        "icon": "RiLineChartLine",
+        "title": "SEO-Optimierung für Self-Publisher",
+        "description": "Self-Publisher nutzen KI-Buchtitel-Generatoren, um Titel zu erstellen, die nicht nur kreativ, sondern auch SEO-optimiert sind, um eine bessere Sichtbarkeit in Online-Buchhandlungen wie Amazon zu erzielen. Das KI-Tool schlägt keyword-reiche Titel vor, die Ihrem Buch helfen, in Suchergebnissen hervorzustechen und es Lesern leichter machen, Ihr Werk zu entdecken. Es ermöglicht auch genrespezifische Anpassungen, damit Sie sicherstellen können, dass der Titel mit dem Thema des Buches übereinstimmt und organischen Suchverkehr anzieht."
+      },
+      {
+        "icon": "RiMegaphoneLine",
+        "title": "Multi-Genre-Titelerstellung für Marketingkampagnen",
+        "description": "Marketer und Buchpromoter nutzen KI-Buchtitel-Generatoren, um aufmerksamkeitsstarke Titel für Marketingkampagnen oder Buchveröffentlichungen zu entwickeln. Das Tool generiert mehrere Titeloptionen und hilft Marketern, den besten für eine Kampagne basierend auf emotionaler Anziehungskraft, Trend-Relevanz und Keyword-Strategie auszuwählen. Dies ist besonders nützlich für Multi-Genre-Kampagnen, bei denen kreative Titel verschiedene Zielgruppen ansprechen müssen und gleichzeitig SEO-freundlich bleiben."
+      }
+    ]
+  },
+  "faq": {
+    "name": "faq",
+    "title": "Häufig gestellte Fragen",
+    "label": "Häufig gestellte Fragen",
+    "description": "",
+    "items": [
+      {
+        "title": "📚 Welche Arten von Buchtiteln kann die KI generieren?",
+        "description": "Unser KI-Buchtitel-Generator kann fesselnde Titel für nahezu jedes Genre erstellen. Egal, ob Sie ein Fantasy-Epos oder einen Motivations-Ratgeber schreiben, das Tool passt Ihre Eingabe an, um einzigartige, professionelle Titel zu erstellen.\nHier sind einige Beispiele, was Sie generieren können:\nFantasy-Buchtitel: Perfekt für imaginäre Welten, epische Quests oder magische Abenteuer.\nKrimi- und Mystery-Titel: Inspirierte Namen für Detektivgeschichten, Ermittlungen oder Thriller.\nRomantik-Buchtitel: Emotionale, herzerwärmende oder dramatische Namen rund um Liebe und Beziehungen.\nSelbsthilfe-Titel: Motivierende, zielorientierte Titel mit Fokus auf Wachstum, Erfolg und Wohlbefinden.\nKinderbuch-Titel: Fantasievolle, altersgerechte Titel voller Kreativität und Vorstellungskraft.\nOb Sie nach einem Fantasy-Buchtitel-Generator oder einem allgemeinen Titel-Generator für Bücher suchen, unsere KI passt die Ergebnisse an Ihr spezifisches Thema und Ihren Ton an."
+      },
+      {
+      "title": "⚡ Warum einen KI-Buchtitel-Generator verwenden?",
+      "description": "Die Verwendung eines KI-gestützten Buchtitel-Generators hilft Ihnen, Zeit zu sparen und Kreativität zu wecken. Anstatt sich mit Brainstorming abzumühen, beschreiben Sie einfach Ihr Buch, Genre oder Ihre Botschaft — und das System liefert sofort mehrere einzigartige und SEO-freundliche Buchtitelideen.\nSie können Ihre Ergebnisse auch mithilfe erweiterter Optionen wie Ton, Emotion und Zielgruppe verfeinern. Dies stellt sicher, dass Ihr Titel sowohl zur Geschichte als auch zum Markt passt, für den Sie schreiben.\nDer Generator ist ideal für:\nAutoren, die nach professionell klingenden Titeln suchen.\nSelf-Publisher, die die Auffindbarkeit auf Amazon oder Google optimieren.\nMarketer, die kreative, keyword-reiche Buchtitel wollen, die Aufmerksamkeit erregen."
+      },
+      {
+        "title": "🎯 Wird die KI einen guten Titel für mein Buch generieren?",
+        "description": "Ja — mit der richtigen Eingabe kann der KI-Buchtitel-Generator hochwertige, aufmerksamkeitsstarke Titel produzieren, die zu Ihrem Genre und Ihrer Zielgruppe passen. Das Tool analysiert Ihre Eingabe und gibt eine Vielzahl von Vorschlägen zurück — von kreativ und poetisch bis hin zu mutig und kommerziell.\nFür die besten Ergebnisse seien Sie spezifisch über das Thema, den Ton und die Hauptidee Ihrer Geschichte. Sie erhalten mehrere Optionen zur Auswahl, sodass Sie sie zu Ihrem perfekten Titel verfeinern oder kombinieren können.\n💡 Was macht einen großartigen Buchtitel aus?\nEin herausragender Buchtitel sollte:\nEinprägsam, emotional und leicht auszusprechen sein.\nDas Genre und den Ton Ihrer Geschichte widerspiegeln.\nNeugierde wecken und gleichzeitig etwas Mysterium bewahren.\nRelevante Keywords für bessere Online-Sichtbarkeit enthalten.\nUnser KI-Titel-Generator für Bücher hilft Ihnen, Titel zu erstellen, die all diese Ziele erfüllen. Durch die Kombination von KI-Kreativität mit Ihrer Eingabe liefert er optimierte, emotional ansprechende Titel. Sie erhalten mehrere Vorschläge (bis zu 8 Varianten), sodass Sie mühelos den passenden finden.\nSobald Sie Ihren Titel gewählt haben, können Sie mit dem Buchcover-Design, Untertitel oder sogar Serien-Namensideen fortfahren, um Ihr Branding zu vervollständigen."
+      },
+      {
+        "title": "💸 Ist der Buchtitel-Generator kostenlos nutzbar?",
+        "description": "Ja! Dieser kostenlose Buchtitel-Generator steht allen zur Verfügung. Geben Sie einfach Ihre Buchdetails ein, klicken Sie auf \"Titel erhalten\", und Sie erhalten in Sekunden personalisierte Ergebnisse — ohne Abonnement oder Registrierung."
+      }
+    ]
+  },
+  "cta": {
+    "name": "cta",
+    "title": "KI-Buchtitel-Generator Startup",
+    "description": "Entfesseln Sie Ihre Kreativität mit unserem KI-Buchtitel-Generator. Beginnen Sie noch heute damit, einzigartige, einprägsame Titel für Ihr Buch zu generieren!",
+    "buttons": [
+      {
+        "title": "Titel generieren",
+        "url": "#",
+        "target": "_self",
+        "variant": "default",
+        "icon": "RiArrowRightLine"
+      }
+    ]
+  },
+  "hero_booktitle": {
+    "breadcrumb": {
+      "home": "Startseite",
+      "current": "Buchtitel-Generator"
+    },
+    "header": {
+      "title": "KOSTENLOSER KI-BUCHTITEL-GENERATOR",
+      "subtitle": "Finden Sie den perfekten Titel für Ihr Buch mit KI-gestützter Kreativität.",
+      "meta_title": "Kostenloser Buchtitel-Generator ｜ KI-Story-Generator",
+      "meta_description": "Finden Sie den perfekten Namen für Ihren nächsten Bestseller! Unser KI-Buchtitel-Generator erstellt kreative, SEO-freundliche Titel für jedes Genre — schnell und kostenlos."
+    },
+    "form": {
+      "description": {
+        "label": "Beschreiben Sie Ihr Buch kurz",
+        "required": "*",
+        "placeholder": "Eine Geschichte von Liebe und Rache",
+        "helper_text": "Beschreiben Sie die Handlung, das Thema oder die Hauptidee Ihres Buches",
+        "character_counter": "{count} / 1000",
+        "max_length": 1000
+      },
+      "genre": {
+        "label": "Genre",
+        "required": "",
+        "placeholder": "Genre auswählen",
+        "options": {
+          "none": "Alle Genres",
+          "fiction": "Belletristik",
+          "non_fiction": "Sachbuch",
+          "fantasy": "Fantasy",
+          "science_fiction": "Science-Fiction",
+          "romance": "Romantik",
+          "mystery": "Mystery & Thriller",
+          "horror": "Horror",
+          "historical": "Historischer Roman",
+          "biography": "Biografie & Memoiren",
+          "self_help": "Selbsthilfe & Persönlichkeitsentwicklung",
+          "business": "Business & Wirtschaft",
+          "young_adult": "Jugendbuch",
+          "children": "Kinderliteratur",
+          "poetry": "Poesie",
+          "drama": "Drama & Theaterstücke",
+          "crime": "Krimi & Detektivgeschichte",
+          "adventure": "Abenteuer",
+          "literary": "Literarische Fiktion",
+          "psychological": "Psychologisch",
+          "paranormal": "Paranormal & Übernatürlich"
+        }
+      },
+      "tone": {
+        "label": "Ton",
+        "required": "",
+        "placeholder": "Ton auswählen",
+        "options": {
+          "none": "Alle Töne",
+          "dark": "Dunkel & Mysteriös",
+          "light": "Leicht & Aufheiternd",
+          "humorous": "Humorvoll & Witzig",
+          "dramatic": "Dramatisch & Intensiv",
+          "romantic": "Romantisch & Leidenschaftlich",
+          "suspenseful": "Spannend & Aufregend",
+          "inspirational": "Inspirierend & Motivierend",
+          "melancholic": "Melancholisch & Nachdenklich",
+          "whimsical": "Skurril & Verspielt",
+          "serious": "Ernst & Tiefgründig",
+          "edgy": "Kantig & Mutig",
+          "nostalgic": "Nostalgisch & Sentimental",
+          "mysterious": "Geheimnisvoll & Rätselhaft",
+          "epic": "Episch & Großartig",
+          "intimate": "Intim & Persönlich"
+        }
+      },
+      "style": {
+        "label": "Titelstil",
+        "placeholder": "Stil auswählen (optional)",
+        "options": {
+          "none": "Beliebiger Stil",
+          "classic": "Klassisch",
+          "modern": "Modern",
+          "dramatic": "Dramatisch",
+          "single_word": "Ein Wort",
+          "question": "Frage",
+          "essay": "Essay",
+          "research_paper": "Forschungsarbeit",
+          "marketing": "Marketing",
+          "email_subject": "E-Mail-Betreff",
+          "blog": "Blog",
+          "newspaper": "Zeitung",
+          "journal": "Fachzeitschrift"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "Titel generieren",
+      "generating": "Generiere...",
+      "info": {
+        "free": "100% Kostenlos",
+        "time": "~5 Sekunden"
+      }
+    },
+    "output": {
+      "title": "Generierte Buchtitel",
+      "subtitle": "Klicken Sie auf einen Titel zum Kopieren",
+      "title_count": "{count} Titel generiert",
+      "copy_button": "Kopieren",
+      "copied_button": "Kopiert!",
+      "regenerate_button": "Neu generieren",
+      "clear_button": "Alle löschen",
+      "save_to_history": "Im Verlauf gespeichert",
+      "loading": "Erstelle perfekte Titel für Ihr Buch...",
+      "empty_state": "Ihre generierten Titel werden hier angezeigt"
+    },
+    "history": {
+      "title": "Letzte Titel",
+      "empty": "Noch kein Verlauf",
+      "clear_all": "Gesamten Verlauf löschen",
+      "item_prefix": "Generiert"
+    },
+    "toasts": {
+      "error_no_description": "Bitte beschreiben Sie Ihr Buch",
+      "error_no_genre": "Bitte wählen Sie ein Genre",
+      "error_no_tone": "Bitte wählen Sie einen Ton",
+      "error_description_too_short": "Beschreibung ist zu kurz (mindestens 10 Zeichen)",
+      "error_generate_failed": "Generierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "success_generated": "Titel erfolgreich generiert!",
+      "success_copied": "Titel in Zwischenablage kopiert!",
+      "success_saved": "Im Verlauf gespeichert!",
+      "success_cleared": "Verlauf gelöscht!"
+    }
+  }
+}

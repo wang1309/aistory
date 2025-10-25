@@ -16,6 +16,19 @@
           "title": "機能",
           "url": "/#feature",
           "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "AI ライティング",
+          "icon": "RiQuillPenLine",
+          "children": [
+            {
+              "title": "本のタイトル生成",
+              "description": "AIで創造的な本のタイトルを生成",
+              "url": "/book-title-generator",
+              "icon": "RiBookOpenLine",
+              "target": "_self"
+            }
+          ]
         }
       ]
     },

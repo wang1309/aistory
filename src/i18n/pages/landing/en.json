@@ -16,6 +16,19 @@
           "title": "Features",
           "url": "/#feature",
           "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "AI Write",
+          "icon": "RiQuillPenLine",
+          "children": [
+            {
+              "title": "Book Title Generator",
+              "description": "Generate creative book titles with AI",
+              "url": "/book-title-generator",
+              "icon": "RiBookOpenLine",
+              "target": "_self"
+            }
+          ]
         }
       ]
     },

@@ -16,6 +16,19 @@
           "title": "Funktionen",
           "url": "/#feature",
           "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "KI-Schreiben",
+          "icon": "RiQuillPenLine",
+          "children": [
+            {
+              "title": "Buchtitel-Generator",
+              "description": "Kreative Buchtitel mit KI generieren",
+              "url": "/book-title-generator",
+              "icon": "RiBookOpenLine",
+              "target": "_self"
+            }
+          ]
         }
       ]
     },

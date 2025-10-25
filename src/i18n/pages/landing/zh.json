@@ -16,6 +16,19 @@
           "title": "功能特点",
           "url": "/#feature",
           "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "AI 写作",
+          "icon": "RiQuillPenLine",
+          "children": [
+            {
+              "title": "书名生成器",
+              "description": "用 AI 生成创意书名",
+              "url": "/book-title-generator",
+              "icon": "RiBookOpenLine",
+              "target": "_self"
+            }
+          ]
         }
       ]
     },
