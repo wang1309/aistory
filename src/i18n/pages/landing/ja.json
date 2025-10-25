@@ -560,7 +560,7 @@
     "description": "ストーリージェネレーターでここから始めましょう。",
     "buttons": [
       {
-        "title": "始める",
+        "title": "を始める",
         "url": "/#craft_story",
         "target": "",
         "icon": "GoArrowUpRight"

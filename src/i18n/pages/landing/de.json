@@ -560,7 +560,7 @@
     "description": "Beginnen Sie hier mit dem Geschichtengenerator.",
     "buttons": [
       {
-        "title": "Start",
+        "title": "Story Generation",
         "url": "/#craft_story",
         "target": "",
         "icon": "GoArrowUpRight"

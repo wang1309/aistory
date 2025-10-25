@@ -560,7 +560,7 @@
     "description": "스토리 생성기로 여기서 시작하세요.",
     "buttons": [
       {
-        "title": "시작",
+        "title": "시작하기",
         "url": "/#craft_story",
         "target": "",
         "icon": "GoArrowUpRight"
