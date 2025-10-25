@@ -6,6 +6,22 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.2.3",
+        "date": "2025-10-25",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "KI-gestützten Buchtitel-Generator mit anpassbaren Genre-, Ton- und Stiloptionen hinzugefügt",
+              "Vollständige Internationalisierungsunterstützung für 5 Sprachen implementiert (Englisch, Chinesisch, Japanisch, Koreanisch, Deutsch)",
+              "Dedizierte Buchtitel-Generator-Seite mit modernem UI-Design und Benutzererfahrung erstellt",
+              "Umfassende Titel-Generierungs-API mit mehreren Parametern und SEO-Optimierung hinzugefügt",
+              "Buchtitel-Generator in Hauptnavigation und Sitemap für einfache Entdeckung integriert"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.2",
         "date": "2025-10-25",
         "changes": [

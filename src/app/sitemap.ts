@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/privacy-policy',
     '/terms-of-service',
     '/story-generate',
+    '/book-title-generator',
     '/changelog'
   ]
 
@@ -24,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: url,
         lastModified: new Date(),
         changeFrequency: 'daily' as const,
-        priority: route === '' ? 1.0 : route === '/story-generate' ? 0.9 : 0.8,
+        priority: route === '' ? 1.0 : (route === '/story-generate' || route === '/book-title-generator') ? 0.9 : 0.8,
         alternates: {
           languages: locales.reduce((acc, lang) => {
             const langUrl = lang === 'en'

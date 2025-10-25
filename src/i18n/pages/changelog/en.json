@@ -6,6 +6,22 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.2.3",
+        "date": "2025-10-25",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added AI-powered book title generator with customizable genre, tone, and style options",
+              "Implemented complete internationalization support across 5 languages (English, Chinese, Japanese, Korean, German)",
+              "Created dedicated book title generator page with modern UI design and user experience",
+              "Added comprehensive title generation API with multiple parameters and SEO optimization",
+              "Integrated book title generator into main site navigation and sitemap for easy discovery"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.2",
         "date": "2025-10-25",
         "changes": [
