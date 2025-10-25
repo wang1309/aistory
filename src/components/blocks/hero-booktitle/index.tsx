@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import Icon from "@/components/icon";
 import { toast } from "sonner";
 import { HeroBooktitle as HeroBooktitleType } from "@/types/blocks/hero-booktitle";
 import { useLocale } from "next-intl";
 import BookTitleBreadcrumb from "./breadcrumb";
 import { useAppContext } from "@/contexts/app";
+import { cn } from "@/lib/utils";
 
 // ========== INTERFACES ==========
 
@@ -17,6 +19,8 @@ interface GeneratedTitle {
   id: string;
   title: string;
   copied: boolean;
+  isVisible?: boolean;
+  animationDelay?: number;
 }
 
 interface SavedTitleHistory {
@@ -87,16 +91,110 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
   // Generation state
   const [generatedTitles, setGeneratedTitles] = useState<GeneratedTitle[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  const [lastError, setLastError] = useState<string | null>(null);
 
-  // Validation
+  // Collapsible examples state
+  const [isExamplesExpanded, setIsExamplesExpanded] = useState(false);
+
+  // Auto-collapse examples when user starts typing
+  useEffect(() => {
+    if (description.trim()) {
+      setIsExamplesExpanded(false);
+    }
+  }, [description]);
+
+  // Progressive title reveal animation
+  useEffect(() => {
+    if (generatedTitles.length > 0 && !isGenerating) {
+      // Start progressive reveal
+      generatedTitles.forEach((titleObj, index) => {
+        setTimeout(() => {
+          setGeneratedTitles(prev =>
+            prev.map(t =>
+              t.id === titleObj.id ? { ...t, isVisible: true } : t
+            )
+          );
+        }, titleObj.animationDelay);
+      });
+    }
+  }, [generatedTitles.length, isGenerating]);
+
+  // Example prompts for inspiration from translations
+  const examplePrompts = useMemo(() => {
+    if (!section.form?.examples) return [];
+
+    return [
+      {
+        category: section.form.examples.categories.fantasy,
+        prompts: section.form.examples.prompts.fantasy
+      },
+      {
+        category: section.form.examples.categories.romance,
+        prompts: section.form.examples.prompts.romance
+      },
+      {
+        category: section.form.examples.categories.mystery_thriller,
+        prompts: section.form.examples.prompts.mystery_thriller
+      },
+      {
+        category: section.form.examples.categories.self_help,
+        prompts: section.form.examples.prompts.self_help
+      }
+    ];
+  }, [section.form?.examples]);
+
+  // Set example prompt
+  const setExamplePrompt = useCallback((prompt: string) => {
+    setDescription(prompt);
+  }, []);
+
+  // Enhanced validation with content quality checks
   const validateForm = useCallback((): boolean => {
-    if (!description.trim()) {
+    const trimmedDescription = description.trim();
+
+    if (!trimmedDescription) {
       toast.error(section.toasts.error_no_description);
       return false;
     }
 
-    if (description.trim().length < 10) {
+    if (trimmedDescription.length < 10) {
       toast.error(section.toasts.error_description_too_short);
+      return false;
+    }
+
+    if (trimmedDescription.length > 1000) {
+      toast.error("Description is too long (maximum 1000 characters)");
+      return false;
+    }
+
+    // Content quality checks
+    const hasStoryKeywords = /\b(story|tale|adventure|journey|quest|novel|book|narrative|plot|character|protagonist|hero|villain|conflict|resolution|ending|beginning|world|setting|theme|genre|fiction|fantasy|romance|mystery|thriller|drama|biography|memoir|guide|manual|tutorial|course|lesson|chapter|section|part|volume|series|trilogy|saga|epic|legend|myth|fable|parable|allegory|satire|comedy|tragedy|horror|suspense|action|adventure|discovery|exploration|transformation|growth|change|challenge|obstacle|struggle|triumph|success|failure|loss|gain|love|hate|friendship|betrayal|revenge|forgiveness|redemption|salvation|damnation|hope|despair|joy|sorrow|anger|fear|courage|bravery|wisdom|ignorance|truth|lies|secrets|mysteries|puzzles|riddles|clues|evidence|proof|discovery|invention|creation|destruction|birth|death|life|death|beginning|end|start|finish|war|peace|good|evil|right|wrong|justice|injustice|freedom|oppression|rich|poor|strong|weak|young|old|past|present|future|time|space|reality|dream|fantasy|imagination|creativity|logic|reason|emotion|feeling|thought|mind|body|soul|spirit|heart|brain|memory|forgetting|remembering|knowing|learning|teaching|helping|hurting|healing|breaking|fixing|building|destroying|making|taking|giving|receiving|sharing|keeping|losing|finding|hiding|seeking|searching|looking|seeing|hearing|listening|speaking|talking|whispering|shouting|singing|dancing|running|walking|standing|sitting|lying|sleeping|waking|living|dying|being|becoming|changing|staying|leaving|arriving|going|coming|entering|exiting|opening|closing|starting|stopping|beginning|ending|winning|losing|trying|failing|succeeding|achieving|reaching|missing|hitting|missing|catching|dropping|holding|letting|pulling|pushing|moving|staying|waiting|rushing|slowing|speeding|delaying|hurrying|resting|working|playing|laughing|crying|smiling|frowning|loving|hating|liking|disliking|wanting|needing|having|getting|giving|taking|making|doing|being|having|doing|making|getting|giving|taking|coming|going|staying|leaving|entering|exiting|opening|closing|starting|stopping)\b/i.test(trimmedDescription);
+
+    const hasMultipleWords = trimmedDescription.split(/\s+/).length >= 5;
+    const hasNoRepeatedWords = (trimmedDescription.match(/\b(\w+)\b/gi) || []).filter((word, index, array) =>
+      array.indexOf(word.toLowerCase()) !== index && word.length > 3
+    ).length < trimmedDescription.split(/\s+/).length * 0.3;
+
+    if (!hasStoryKeywords) {
+      toast.error("Please include story-related keywords like 'character', 'journey', 'conflict', 'mystery', etc.");
+      return false;
+    }
+
+    if (!hasMultipleWords) {
+      toast.error("Please provide a more detailed description with at least 5 words");
+      return false;
+    }
+
+    if (!hasNoRepeatedWords) {
+      toast.error("Your description seems too repetitive. Please provide more varied details");
+      return false;
+    }
+
+    // Check for meaningful content (not just random characters)
+    const hasMeaningfulContent = /[a-zA-Z]{3,}/.test(trimmedDescription);
+    if (!hasMeaningfulContent) {
+      toast.error("Please provide meaningful text content");
       return false;
     }
 
@@ -234,6 +332,8 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
           id: `title-final-${Date.now()}-${index}`,
           title,
           copied: false,
+          isVisible: false,
+          animationDelay: index * 150, // 150ms delay between each title
         }));
 
         setGeneratedTitles(titlesForDisplay);
@@ -249,11 +349,15 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
         });
       } else {
         console.log("=== No titles were generated ===");
-        toast.error(section.toasts.error_generate_failed);
+        const errorMessage = section.toasts.error_generate_failed;
+        setLastError(errorMessage);
+        toast.error(errorMessage);
       }
     } catch (error) {
       console.error("Title generation failed:", error);
-      toast.error(section.toasts.error_generate_failed);
+      const errorMessage = error instanceof Error ? error.message : section.toasts.error_generate_failed;
+      setLastError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setIsGenerating(false);
     }
@@ -267,6 +371,31 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
     setVerificationCallback(() => handleVerificationSuccess);
     setShowVerificationModal(true);
   }, [validateForm, setShowVerificationModal, setVerificationCallback, handleVerificationSuccess]);
+
+  // Retry handler with exponential backoff
+  const handleRetry = useCallback(async () => {
+    if (retryCount >= 3) {
+      toast.error("Maximum retry attempts reached. Please try again later.");
+      return;
+    }
+
+    const delay = Math.pow(2, retryCount) * 1000; // Exponential backoff: 1s, 2s, 4s
+    toast.info(`Retrying in ${delay / 1000} seconds... (${retryCount + 1}/3)`);
+
+    setTimeout(() => {
+      setRetryCount(prev => prev + 1);
+      setLastError(null);
+      handleGenerate();
+    }, delay);
+  }, [retryCount, handleGenerate]);
+
+  // Reset retry state on successful generation
+  useEffect(() => {
+    if (generatedTitles.length > 0 && !isGenerating) {
+      setRetryCount(0);
+      setLastError(null);
+    }
+  }, [generatedTitles.length, isGenerating]);
 
   // Copy title to clipboard
   const handleCopyTitle = useCallback(async (titleId: string, titleText: string) => {
@@ -379,6 +508,67 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                     </div>
 
                     <p className="mt-2 text-xs text-muted-foreground">{section.form.description.helper_text}</p>
+
+                    {/* Example Prompts */}
+                    {!description && (
+                      <div className="mt-4">
+                        <Collapsible open={isExamplesExpanded} onOpenChange={setIsExamplesExpanded}>
+                          <CollapsibleTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              className={cn(
+                                "w-full justify-between h-auto p-4 rounded-xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border/30 hover:border-primary/30 transition-all duration-200",
+                                isExamplesExpanded && "border-primary/50"
+                              )}
+                            >
+                              <div className="flex items-center gap-2">
+                                <Icon name="RiLightbulbLine" className="size-4 text-primary" />
+                                <span className="text-sm font-medium text-foreground">{section.form.examples?.title || "Need inspiration? Try these examples:"}</span>
+                              </div>
+                              <Icon
+                                name="RiArrowDownSLine"
+                                className={cn(
+                                  "size-4 text-muted-foreground transition-transform duration-200",
+                                  isExamplesExpanded && "rotate-180"
+                                )}
+                              />
+                            </Button>
+                          </CollapsibleTrigger>
+
+                          <CollapsibleContent className="mt-3">
+                            <div className="p-4 rounded-xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border/30">
+                              <div className="space-y-3">
+                                {examplePrompts.map((category, index) => (
+                                  <div key={index} className="space-y-2">
+                                    <div className="text-xs font-semibold text-primary/80 uppercase tracking-wide">{category.category}</div>
+                                    <div className="space-y-1.5">
+                                      {category.prompts.map((prompt, promptIndex) => (
+                                        <button
+                                          key={promptIndex}
+                                          onClick={() => {
+                                            setExamplePrompt(prompt);
+                                            // Auto-collapse after selecting an example
+                                            setTimeout(() => setIsExamplesExpanded(false), 300);
+                                          }}
+                                          className="w-full text-left p-2.5 rounded-lg bg-background/60 hover:bg-background/80 border border-border/40 hover:border-primary/30 transition-all duration-200 group"
+                                        >
+                                          <div className="flex items-start gap-2">
+                                            <Icon name="RiQuillPenLine" className="size-3.5 text-muted-foreground/50 mt-0.5 flex-shrink-0 group-hover:text-primary/60 transition-colors" />
+                                            <span className="text-xs text-muted-foreground/80 group-hover:text-foreground/90 transition-colors leading-relaxed">
+                                              {prompt}
+                                            </span>
+                                          </div>
+                                        </button>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </CollapsibleContent>
+                        </Collapsible>
+                      </div>
+                    )}
                   </div>
 
                   {/* Genre and Tone Row */}
@@ -470,6 +660,30 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                       )}
                     </Button>
 
+                    {/* Error Display and Retry */}
+                    {lastError && !isGenerating && (
+                      <div className="mt-4 p-3 rounded-lg bg-destructive/10 border border-destructive/20">
+                        <div className="flex items-start gap-2">
+                          <Icon name="RiErrorWarningLine" className="size-4 text-destructive flex-shrink-0 mt-0.5" />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm text-destructive font-medium">Generation failed</p>
+                            <p className="text-xs text-muted-foreground mt-1">{lastError}</p>
+                            {retryCount < 3 && (
+                              <Button
+                                onClick={handleRetry}
+                                variant="outline"
+                                size="sm"
+                                className="mt-2 h-8 text-xs border-destructive/30 text-destructive hover:bg-destructive/10"
+                              >
+                                <Icon name="RiRefreshLine" className="size-3 mr-1" />
+                                Retry ({retryCount + 1}/3)
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
                     <div className="mt-3 flex items-center justify-center gap-4 text-xs text-muted-foreground">
                       <span className="flex items-center gap-1">
                         <Icon name="RiCheckLine" className="size-3.5 text-green-500" />
@@ -515,16 +729,55 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                   </div>
 
                   {isGenerating ? (
-                    <div className="flex flex-col items-center justify-center py-12">
-                      <Icon name="RiLoader4Line" className="size-12 text-primary animate-spin mb-4" />
-                      <p className="text-sm text-muted-foreground">{section.output.loading}</p>
+                    <div className="space-y-4">
+                      <p className="text-sm text-muted-foreground text-center mb-6">{section.output.loading}</p>
+
+                      {/* Skeleton Loading Cards */}
+                      <div className="grid grid-cols-1 gap-3">
+                        {[...Array(4)].map((_, index) => (
+                          <div
+                            key={index}
+                            className="group relative p-4 rounded-xl bg-background/80 border border-border/50 overflow-hidden"
+                          >
+                            {/* Shimmer effect overlay */}
+                            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
+
+                            <div className="flex items-start gap-3">
+                              {/* Number skeleton */}
+                              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted/60 animate-pulse" />
+
+                              {/* Title skeleton */}
+                              <div className="flex-1 min-w-0 space-y-2">
+                                <div className="h-4 bg-muted/60 rounded-md animate-pulse w-3/4" />
+                                <div className="h-4 bg-muted/40 rounded-md animate-pulse w-1/2" />
+                              </div>
+
+                              {/* Copy button skeleton */}
+                              <div className="flex-shrink-0 w-8 h-8 bg-muted/60 rounded-md animate-pulse" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Progress indicator */}
+                      <div className="mt-6 text-center">
+                        <div className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+                          <Icon name="RiMagicLine" className="size-3 text-primary animate-pulse" />
+                          <span>Crafting perfect titles...</span>
+                        </div>
+                      </div>
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 gap-3">
                       {generatedTitles.map((titleObj, index) => (
                         <div
                           key={titleObj.id}
-                          className="group relative p-4 rounded-xl bg-background/80 border border-border/50 hover:border-primary/30 hover:bg-background/95 transition-all duration-200 hover:shadow-md"
+                          className={cn(
+                            "group relative p-4 rounded-xl bg-background/80 border border-border/50 hover:border-primary/30 hover:bg-background/95 transition-all duration-200 hover:shadow-md",
+                            titleObj.isVisible
+                              ? "opacity-100 translate-y-0"
+                              : "opacity-0 translate-y-2"
+                          )}
                         >
                           <div className="flex items-start gap-3">
                             <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-semibold text-primary">

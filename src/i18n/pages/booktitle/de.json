@@ -193,6 +193,39 @@
           "newspaper": "Zeitung",
           "journal": "Fachzeitschrift"
         }
+      },
+      "examples": {
+        "title": "Brauchen Sie Inspiration? Probieren Sie diese Beispiele:",
+        "expand": "Beispiele anzeigen",
+        "collapse": "Beispiele ausblenden",
+        "categories": {
+          "fantasy": "Fantasy",
+          "romance": "Romanze",
+          "mystery_thriller": "Mystery & Thriller",
+          "self_help": "Selbsthilfe"
+        },
+        "prompts": {
+          "fantasy": [
+            "Ein junger Zauberer entdeckt, dass er die Zeit manipulieren kann, aber jede Nutzung kostet ihn schmerzhaft",
+            "In einer Welt, in der die Magie stirbt, findet ein Bibliothekar alte Bücher, die sie wiederherstellen könnten",
+            "Ein von Menschen aufgezogener Drache muss sich zwischen seiner Adoptivfamilie und seiner eigenen Art entscheiden"
+          ],
+          "romance": [
+            "Zwei rivalisierende Food-Truck-Besitzer verlieben sich beim Wettkampf auf demselben Festival",
+            "Ein Zeitreisender trifft immer wieder dieselbe Person in verschiedenen Epochen und verliebt sich jedes Mal",
+            "Ein Buchhändler erhält Liebesbriefe in zurückgegebenen Büchern und versucht, den mysteriösen Autor zu finden"
+          ],
+          "mystery_thriller": [
+            "Ein Detektiv mit Synästhesie erlebt Verbrechen als Farben, aber ein Fall bleibt grau",
+            "Ein Archäologe deckt einen Mord auf, der genau vor 100 Jahren stattfand",
+            "Ein Softwareentwickler findet codierte Nachrichten in seiner App, die zukünftige Verbrechen vorhersagen"
+          ],
+          "self_help": [
+            "Transformieren Sie Ihre Morgenroutine mit diesen 5 einfachen aber kraftvollen Gewohnheiten",
+            "Die Wissenschaft hinter dem Aufbau dauerhafter Beziehungen im digitalen Zeitalter",
+            "Wie man kreative Blockaden überwindet und Ihr volles Potenzial freisetzt"
+          ]
+        }
       }
     },
     "generate_button": {

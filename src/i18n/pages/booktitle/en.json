@@ -193,6 +193,39 @@
           "newspaper": "Newspaper",
           "journal": "Journal"
         }
+      },
+      "examples": {
+        "title": "Need inspiration? Try these examples:",
+        "expand": "Show examples",
+        "collapse": "Hide examples",
+        "categories": {
+          "fantasy": "Fantasy",
+          "romance": "Romance",
+          "mystery_thriller": "Mystery/Thriller",
+          "self_help": "Self-Help"
+        },
+        "prompts": {
+          "fantasy": [
+            "A young wizard discovers they can manipulate time, but each use comes at a terrible cost",
+            "In a world where magic is dying, a librarian finds ancient books that could restore it",
+            "A dragon raised by humans must choose between their adoptive family and their own kind"
+          ],
+          "romance": [
+            "Two rival food truck owners fall in love while competing at the same festival",
+            "A time traveler keeps meeting the same person in different eras, falling in love each time",
+            "A bookstore owner receives love notes hidden in returned books, trying to find the mystery writer"
+          ],
+          "mystery_thriller": [
+            "A detective with synesthesia experiences crimes as colors, but one case remains gray",
+            "An archaeologist uncovers a murder that happened exactly 100 years ago to the day",
+            "A software developer finds coded messages in their app that predict future crimes"
+          ],
+          "self_help": [
+            "Transform your morning routine with these 5 simple yet powerful habits",
+            "The science behind building lasting relationships in a digital age",
+            "How to overcome creative blocks and unlock your full potential"
+          ]
+        }
       }
     },
     "generate_button": {

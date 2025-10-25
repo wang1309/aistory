@@ -86,6 +86,23 @@ export interface HeroBooktitle {
         journal: string;
       };
     };
+    examples?: {
+      title: string;
+      expand: string;
+      collapse: string;
+      categories: {
+        fantasy: string;
+        romance: string;
+        mystery_thriller: string;
+        self_help: string;
+      };
+      prompts: {
+        fantasy: string[];
+        romance: string[];
+        mystery_thriller: string[];
+        self_help: string[];
+      };
+    };
   };
   generate_button: {
     text: string;
