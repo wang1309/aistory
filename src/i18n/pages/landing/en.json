@@ -610,6 +610,16 @@
               "target": "_self"
             }
           ]
+        },
+        {
+          "title": "Friend",
+           "children": [
+            {
+              "title": "AI Dirs",
+              "url": "https://backlinkdirs.com",
+              "target": "_blank"
+            }
+          ]
         }
       ]
     },
