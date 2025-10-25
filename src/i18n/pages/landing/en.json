@@ -623,6 +623,11 @@
               "title": "Top AI Hubs",
               "url": "https://topaihubs.com/",
               "target": "_blank"
+            },
+            {
+              "title": "AIStage",
+              "url": "https://aistage.net/",
+              "target": "_blank"
             }
           ]
         }
