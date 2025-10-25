@@ -6,6 +6,31 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.2.2",
+        "date": "2025-10-25",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Unabhängige Ausgabesprach-Auswahl-Funktion zum Story-Generator hinzugefügt",
+              "Unterstützung für 12 Hauptsprachen: Englisch, Chinesisch, Japanisch, Koreanisch, Spanisch, Französisch, Deutsch, Portugiesisch, Russisch, Arabisch, Hindi und Italienisch",
+              "Sprachauswahl befindet sich unter dem \"Schnell hinzufügen\"-Bereich mit intuitiven Flag-Emojis und zweisprachiger Anzeige",
+              "Benutzer können von der Website-Oberfläche verschiedene Story-Ausgabesprachen wählen",
+              "Vollständige mehrsprachige Übersetzungsunterstützung für alle Oberflächentexte"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "API-Parameterübergabe mit neuem outputLanguage-Feld optimisiert",
+              "Zustandsverwaltung verbessert, um Closure-Probleme zu vermeiden",
+              "Typsicherheit durch Erweiterung der TypeScript-Typdefinitionen verstärkt",
+              "Konsistenz mit bestehendem Designsystem beibehalten"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.1",
         "date": "2025-10-20",
         "changes": [

@@ -6,6 +6,31 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.2.2",
+        "date": "2025-10-25",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added independent output language selection feature to the story generator",
+              "Support for 12 major languages: English, Chinese, Japanese, Korean, Spanish, French, German, Portuguese, Russian, Arabic, Hindi, and Italian",
+              "Language selector positioned below the \"Quick adds\" section with intuitive flag emojis and bilingual display",
+              "Users can choose story output language different from the website interface language",
+              "Complete multilingual translation support covering all interface texts"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Optimized API parameter passing with new outputLanguage field",
+              "Improved state management to avoid closure issues",
+              "Enhanced type safety by extending TypeScript type definitions",
+              "Maintained consistency with existing design system"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.1",
         "date": "2025-10-20",
         "changes": [
