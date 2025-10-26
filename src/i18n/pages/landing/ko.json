@@ -637,6 +637,11 @@
               "title": "스토리 생성기",
               "url": "/",
               "target": "_self"
+            },
+            {
+              "title": "책 제목 생성기",
+              "url": "/book-title-generator",
+              "target": "_self"
             }
           ]
         },

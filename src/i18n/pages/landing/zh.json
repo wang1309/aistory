@@ -637,6 +637,11 @@
               "title": "故事生成器",
               "url": "/",
               "target": "_self"
+            },
+            {
+              "title": "书名生成器",
+              "url": "/book-title-generator",
+              "target": "_self"
             }
           ]
         },

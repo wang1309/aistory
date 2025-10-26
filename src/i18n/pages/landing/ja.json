@@ -637,6 +637,11 @@
               "title": "ストーリージェネレーター",
               "url": "/",
               "target": "_self"
+            },
+            {
+              "title": "本のタイトル生成",
+              "url": "/book-title-generator",
+              "target": "_self"
             }
           ]
         },

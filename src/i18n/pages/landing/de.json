@@ -637,6 +637,11 @@
               "title": "Geschichtengenerator",
               "url": "/",
               "target": "_self"
+            },
+            {
+              "title": "Buchtitel-Generator",
+              "url": "/book-title-generator",
+              "target": "_self"
             }
           ]
         },
