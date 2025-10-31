@@ -1,0 +1,321 @@
+{
+  "hero_fanfic": {
+    "header": {
+      "title": "AI Fanfic Generator",
+      "subtitle": "Professional fanfiction creation tool with preset works, character pairing, and plot control. Let AI help you craft amazing stories with your favorite characters.",
+      "meta_title": "AI Fanfic Generator - Free Online Fanfiction Writing Tool",
+      "meta_description": "Create high-quality fanfiction quickly with AI Fanfic Generator. Support for popular works like Harry Potter, Marvel, Genshin Impact. Customize character pairings and plot directions. Designed for fanfic creators."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "current": "AI Fanfic Generator"
+    },
+    "source": {
+      "label": "Source Work",
+      "required": "Please select or enter a source work",
+      "preset_label": "Select Preset Work",
+      "custom_label": "Custom Source",
+      "preset_placeholder": "Choose a popular work...",
+      "worldview_label": "Worldview Description",
+      "worldview_placeholder": "Describe the worldview and setting of the work...",
+      "characters_label": "Main Characters",
+      "characters_placeholder": "Enter character names, separated by commas",
+      "characters_hint": "Example: Harry Potter, Hermione Granger, Draco Malfoy"
+    },
+    "pairing": {
+      "label": "Character Pairing",
+      "required": "Please select at least one character",
+      "type_label": "Pairing Type",
+      "type_options": {
+        "romantic": "Romantic",
+        "gen": "Gen (Character-focused)",
+        "poly": "Poly (Multiple)"
+      },
+      "character_placeholder": "Select character...",
+      "add_character": "Add Character",
+      "remove_character": "Remove",
+      "hint": "Select characters to pair, multiple selection supported"
+    },
+    "plot_type": {
+      "label": "Plot Type",
+      "required": "Please select a plot type",
+      "options": {
+        "canon": {
+          "name": "Canon Compliant",
+          "description": "Follow the source material's settings and plot"
+        },
+        "modern_au": {
+          "name": "Modern AU",
+          "description": "Place characters in a modern urban setting"
+        },
+        "school_au": {
+          "name": "School AU",
+          "description": "Youth story in a school environment"
+        },
+        "fantasy_au": {
+          "name": "Fantasy AU",
+          "description": "Alternate world or fantasy setting"
+        },
+        "crossover": {
+          "name": "Crossover",
+          "description": "Characters from multiple works interact"
+        }
+      }
+    },
+    "prompt": {
+      "label": "Story Prompt",
+      "required": "Please enter a story prompt",
+      "placeholder": "Describe the story plot, scene, or turning point you want...\n\nExample: They meet by chance in the library, connected by an ancient magical book...",
+      "character_counter": "{{count}} / 2000 characters",
+      "language_label": "Output Language",
+      "language_placeholder": "Select language",
+      "language_options": {
+        "zh": {
+          "native": "中文",
+          "english": "Chinese",
+          "flag": "🇨🇳"
+        },
+        "en": {
+          "native": "English",
+          "english": "English",
+          "flag": "🇺🇸"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "Japanese",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "Korean",
+          "flag": "🇰🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "German",
+          "flag": "🇩🇪"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "French",
+          "flag": "🇫🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "Spanish",
+          "flag": "🇪🇸"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "Italian",
+          "flag": "🇮🇹"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "Portuguese",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "Russian",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "Arabic",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "Hindi",
+          "flag": "🇮🇳"
+        }
+      }
+    },
+    "presets": {
+      "title": "Quick Start",
+      "works_title": "Popular Works",
+      "templates_title": "Plot Templates",
+      "popular_pairings": "Popular Pairings"
+    },
+    "ai_models": {
+      "title": "Choose AI Model",
+      "hint": "Different models have different creative styles and speeds",
+      "models": {
+        "character_focused": {
+          "name": "Character Fidelity",
+          "badge": "Fast",
+          "description": "Focus on character accuracy, fast generation",
+          "speed": "~3s"
+        },
+        "creative": {
+          "name": "Creative Adaptation",
+          "badge": "Recommended",
+          "description": "Balance between canon and innovation, rich plot",
+          "speed": "~5s"
+        },
+        "depth": {
+          "name": "Deep Characterization",
+          "badge": "High Quality",
+          "description": "Deep emotional and psychological portrayal, highest quality",
+          "speed": "~10s"
+        }
+      },
+      "selected": "Selected",
+      "select": "Select"
+    },
+    "advanced_options": {
+      "title": "Advanced Options",
+      "subtitle": "Precisely control the style and content of your fanfic",
+      "optional_badge": "Optional",
+      "ooc": {
+        "label": "OOC Level",
+        "placeholder": "Select OOC level",
+        "options": {
+          "none": "Any",
+          "canon_compliant": "Canon Compliant",
+          "slight_ooc": "Slight OOC",
+          "bold_adaptation": "Bold Adaptation"
+        }
+      },
+      "fidelity": {
+        "label": "Source Fidelity",
+        "placeholder": "Select fidelity",
+        "options": {
+          "none": "Any",
+          "high_fidelity": "High Fidelity",
+          "moderate": "Moderate Innovation",
+          "original": "Fully Original"
+        }
+      },
+      "ending": {
+        "label": "Plot Direction",
+        "placeholder": "Select ending",
+        "options": {
+          "none": "Any",
+          "happy": "Happy Ending",
+          "sad": "Bad Ending",
+          "open": "Open Ending"
+        }
+      },
+      "rating": {
+        "label": "Content Rating",
+        "placeholder": "Select rating",
+        "warning": "⚠️ Selecting Mature or Explicit indicates you are 18 years or older",
+        "options": {
+          "none": "Any",
+          "general": "General Audience (G)",
+          "teen": "Teen (T)",
+          "mature": "Mature (M)",
+          "explicit": "Explicit (E)"
+        }
+      },
+      "length": {
+        "label": "Story Length",
+        "placeholder": "Select length",
+        "options": {
+          "none": "Any",
+          "short": "Short (300-500 words)",
+          "medium": "Medium (500-1000 words)",
+          "long": "Long (1000-1500 words)",
+          "extend": "Extended (1500-2000 words)",
+          "epic_short": "Epic (2000-2500 words)",
+          "novella_lite": "Novella (2500-3000 words)"
+        }
+      },
+      "perspective": {
+        "label": "Narrative Perspective",
+        "placeholder": "Select perspective",
+        "options": {
+          "none": "Any",
+          "first_person": "First Person",
+          "second_person": "Second Person",
+          "third_person_limited": "Third Person Limited",
+          "third_person_omniscient": "Third Person Omniscient"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "Generate Fanfic",
+      "generating": "Generating...",
+      "info": {
+        "credit": "Cost",
+        "credit_text": "credits",
+        "time": "Est. Time",
+        "quality": "Quality"
+      },
+      "tip": "💡 Tip: Detailed story prompts yield better results"
+    },
+    "output": {
+      "title": "Generated Fanfic",
+      "status_writing": "AI is writing...",
+      "status_complete": "Complete!",
+      "word_count": "Word count: {{count}} words",
+      "tags_label": "Tags",
+      "button_copy": "Copy",
+      "button_export_pdf": "Export PDF",
+      "button_exporting_pdf": "Exporting...",
+      "button_regenerate": "Regenerate",
+      "loading": "Loading..."
+    },
+    "pdf": {
+      "generated_at": "Generated at",
+      "word_count_label": "Word Count",
+      "ai_model": "AI Model",
+      "source_work": "Source Work",
+      "pairing": "Pairing",
+      "plot_type": "Plot Type",
+      "rating": "Rating",
+      "tags": "Tags",
+      "prompt": "Story Prompt",
+      "footer_text": "Created with AI Fanfic Generator",
+      "page_indicator": "Page {{current}} of {{total}}"
+    },
+    "share": {
+      "title": "Share Fanfic",
+      "copy_link": "Copy Link",
+      "share_twitter": "Share on Twitter",
+      "share_facebook": "Share on Facebook",
+      "share_linkedin": "Share on LinkedIn",
+      "link_copied": "Link copied!",
+      "share_text_template": "I created an amazing fanfic with AI Fanfic Generator! Try it now!"
+    },
+    "toasts": {
+      "error_no_source": "Please select or enter a source work",
+      "error_no_pairing": "Please select at least one character for pairing",
+      "error_no_plot_type": "Please select a plot type",
+      "error_no_prompt": "Please enter a story prompt",
+      "error_no_model": "Please select an AI model",
+      "error_generate_failed": "Generation failed, please try again",
+      "error_no_stream": "Streaming failed",
+      "error_no_content": "No content generated",
+      "error_pdf_export_failed": "PDF export failed",
+      "error_invalid_characters": "Invalid character list format",
+      "success_generated": "Fanfic generated successfully!",
+      "success_copied": "Copied to clipboard",
+      "success_pdf_exported": "PDF exported successfully",
+      "warning_mature_content": "You selected mature content rating. Please confirm you are 18 or older"
+    },
+    "history": {
+      "title": "History",
+      "empty": "No history yet",
+      "load": "Load",
+      "delete": "Delete",
+      "clear_all": "Clear All",
+      "confirm_clear": "Are you sure you want to clear all history?"
+    },
+    "work_categories": {
+      "anime": "Anime",
+      "novel": "Novel",
+      "movie": "Movie/TV",
+      "game": "Game"
+    },
+    "work_details": {
+      "worldview_label": "Worldview:"
+    },
+    "ui": {
+      "pairing_separator": " × ",
+      "speed_icon": "⚡"
+    }
+  }
+}

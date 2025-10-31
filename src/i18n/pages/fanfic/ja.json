@@ -1,0 +1,321 @@
+{
+  "hero_fanfic": {
+    "header": {
+      "title": "AI二次創作ジェネレーター",
+      "subtitle": "プリセット作品、キャラクターペアリング、プロット制御を備えたプロフェッショナルな二次創作ツール。AIがお気に入りのキャラクターで素晴らしいストーリーを作るお手伝いをします。",
+      "meta_title": "AI二次創作ジェネレーター - 無料オンライン二次創作執筆ツール",
+      "meta_description": "AI二次創作ジェネレーターで高品質な二次創作を素早く作成。ハリー・ポッター、マーベル、原神などの人気作品をサポート。カップリングやストーリー展開をカスタマイズ。二次創作者のために設計されました。"
+    },
+    "breadcrumb": {
+      "home": "ホーム",
+      "current": "AI二次創作ジェネレーター"
+    },
+    "source": {
+      "label": "原作",
+      "required": "原作を選択または入力してください",
+      "preset_label": "プリセット作品を選択",
+      "custom_label": "カスタム原作",
+      "preset_placeholder": "人気作品を選択...",
+      "worldview_label": "世界観の説明",
+      "worldview_placeholder": "作品の世界観と設定を説明してください...",
+      "characters_label": "主要キャラクター",
+      "characters_placeholder": "キャラクター名をカンマ区切りで入力",
+      "characters_hint": "例：ハリー・ポッター、ハーマイオニー・グレンジャー、ドラコ・マルフォイ"
+    },
+    "pairing": {
+      "label": "カップリング",
+      "required": "少なくとも1人のキャラクターを選択してください",
+      "type_label": "カップリングタイプ",
+      "type_options": {
+        "romantic": "ロマンティック",
+        "gen": "ジェン（キャラクター中心）",
+        "poly": "ポリ（複数）"
+      },
+      "character_placeholder": "キャラクターを選択...",
+      "add_character": "キャラクターを追加",
+      "remove_character": "削除",
+      "hint": "ペアリングするキャラクターを選択、複数選択可"
+    },
+    "plot_type": {
+      "label": "プロットタイプ",
+      "required": "プロットタイプを選択してください",
+      "options": {
+        "canon": {
+          "name": "原作準拠",
+          "description": "原作の設定とストーリーに従う"
+        },
+        "modern_au": {
+          "name": "現代AU",
+          "description": "現代都市の環境にキャラクターを配置"
+        },
+        "school_au": {
+          "name": "学園AU",
+          "description": "学校環境での青春ストーリー"
+        },
+        "fantasy_au": {
+          "name": "ファンタジーAU",
+          "description": "異世界またはファンタジー設定"
+        },
+        "crossover": {
+          "name": "クロスオーバー",
+          "description": "複数の作品のキャラクターが交流"
+        }
+      }
+    },
+    "prompt": {
+      "label": "ストーリープロンプト",
+      "required": "ストーリープロンプトを入力してください",
+      "placeholder": "希望するストーリーの展開、シーン、または転換点を説明してください...\n\n例：図書館で偶然出会い、古代の魔法の本でつながる...",
+      "character_counter": "{{count}} / 2000文字",
+      "language_label": "出力言語",
+      "language_placeholder": "言語を選択",
+      "language_options": {
+        "zh": {
+          "native": "中文",
+          "english": "中国語",
+          "flag": "🇨🇳"
+        },
+        "en": {
+          "native": "English",
+          "english": "英語",
+          "flag": "🇺🇸"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "日本語",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "韓国語",
+          "flag": "🇰🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "ドイツ語",
+          "flag": "🇩🇪"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "フランス語",
+          "flag": "🇫🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "スペイン語",
+          "flag": "🇪🇸"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "イタリア語",
+          "flag": "🇮🇹"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "ポルトガル語",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "ロシア語",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "アラビア語",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "ヒンディー語",
+          "flag": "🇮🇳"
+        }
+      }
+    },
+    "presets": {
+      "title": "クイックスタート",
+      "works_title": "人気作品",
+      "templates_title": "プロットテンプレート",
+      "popular_pairings": "人気カップリング"
+    },
+    "ai_models": {
+      "title": "AIモデルを選択",
+      "hint": "モデルごとに異なる創作スタイルと速度があります",
+      "models": {
+        "character_focused": {
+          "name": "キャラクター再現",
+          "badge": "高速",
+          "description": "キャラクターの正確性に焦点、高速生成",
+          "speed": "~3秒"
+        },
+        "creative": {
+          "name": "創作適応",
+          "badge": "推奨",
+          "description": "原作と革新のバランス、豊かなストーリー",
+          "speed": "~5秒"
+        },
+        "depth": {
+          "name": "深層描写",
+          "badge": "高品質",
+          "description": "深い感情と心理描写、最高品質",
+          "speed": "~10秒"
+        }
+      },
+      "selected": "選択済み",
+      "select": "選択"
+    },
+    "advanced_options": {
+      "title": "詳細オプション",
+      "subtitle": "二次創作のスタイルと内容を正確に制御",
+      "optional_badge": "オプション",
+      "ooc": {
+        "label": "OOCレベル",
+        "placeholder": "OOCレベルを選択",
+        "options": {
+          "none": "任意",
+          "canon_compliant": "原作準拠",
+          "slight_ooc": "軽度OOC",
+          "bold_adaptation": "大胆な適応"
+        }
+      },
+      "fidelity": {
+        "label": "原作再現度",
+        "placeholder": "再現度を選択",
+        "options": {
+          "none": "任意",
+          "high_fidelity": "高再現度",
+          "moderate": "適度な革新",
+          "original": "完全オリジナル"
+        }
+      },
+      "ending": {
+        "label": "ストーリー展開",
+        "placeholder": "結末を選択",
+        "options": {
+          "none": "任意",
+          "happy": "ハッピーエンド",
+          "sad": "バッドエンド",
+          "open": "オープンエンド"
+        }
+      },
+      "rating": {
+        "label": "コンテンツレーティング",
+        "placeholder": "レーティングを選択",
+        "warning": "⚠️ MatureまたはExplicitを選択すると、18歳以上であることを確認します",
+        "options": {
+          "none": "任意",
+          "general": "全年齢 (G)",
+          "teen": "ティーン (T)",
+          "mature": "成人向け (M)",
+          "explicit": "明示的 (E)"
+        }
+      },
+      "length": {
+        "label": "ストーリーの長さ",
+        "placeholder": "長さを選択",
+        "options": {
+          "none": "任意",
+          "short": "短編（300-500語）",
+          "medium": "中編（500-1000語）",
+          "long": "長編（1000-1500語）",
+          "extend": "拡張（1500-2000語）",
+          "epic_short": "超長編（2000-2500語）",
+          "novella_lite": "小説（2500-3000語）"
+        }
+      },
+      "perspective": {
+        "label": "物語の視点",
+        "placeholder": "視点を選択",
+        "options": {
+          "none": "任意",
+          "first_person": "一人称",
+          "second_person": "二人称",
+          "third_person_limited": "三人称限定",
+          "third_person_omniscient": "三人称全知"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "二次創作を生成",
+      "generating": "生成中...",
+      "info": {
+        "credit": "コスト",
+        "credit_text": "クレジット",
+        "time": "推定時間",
+        "quality": "品質"
+      },
+      "tip": "💡 ヒント：詳細なストーリープロンプトでより良い結果が得られます"
+    },
+    "output": {
+      "title": "生成された二次創作",
+      "status_writing": "AIが執筆中...",
+      "status_complete": "完了！",
+      "word_count": "文字数：{{count}}文字",
+      "tags_label": "タグ",
+      "button_copy": "コピー",
+      "button_export_pdf": "PDF出力",
+      "button_exporting_pdf": "出力中...",
+      "button_regenerate": "再生成",
+      "loading": "読み込み中..."
+    },
+    "pdf": {
+      "generated_at": "生成日時",
+      "word_count_label": "文字数",
+      "ai_model": "AIモデル",
+      "source_work": "原作",
+      "pairing": "カップリング",
+      "plot_type": "プロットタイプ",
+      "rating": "レーティング",
+      "tags": "タグ",
+      "prompt": "ストーリープロンプト",
+      "footer_text": "AI二次創作ジェネレーターで作成",
+      "page_indicator": "ページ {{current}} / {{total}}"
+    },
+    "share": {
+      "title": "二次創作を共有",
+      "copy_link": "リンクをコピー",
+      "share_twitter": "Twitterで共有",
+      "share_facebook": "Facebookで共有",
+      "share_linkedin": "LinkedInで共有",
+      "link_copied": "リンクをコピーしました！",
+      "share_text_template": "AI二次創作ジェネレーターで素晴らしい二次創作を作成しました！今すぐお試しください！"
+    },
+    "toasts": {
+      "error_no_source": "原作を選択または入力してください",
+      "error_no_pairing": "カップリングのため少なくとも1人のキャラクターを選択してください",
+      "error_no_plot_type": "プロットタイプを選択してください",
+      "error_no_prompt": "ストーリープロンプトを入力してください",
+      "error_no_model": "AIモデルを選択してください",
+      "error_generate_failed": "生成に失敗しました。もう一度お試しください",
+      "error_no_stream": "ストリーミングに失敗しました",
+      "error_no_content": "コンテンツが生成されませんでした",
+      "error_pdf_export_failed": "PDF出力に失敗しました",
+      "error_invalid_characters": "無効なキャラクターリスト形式",
+      "success_generated": "二次創作が正常に生成されました！",
+      "success_copied": "クリップボードにコピーしました",
+      "success_pdf_exported": "PDFが正常に出力されました",
+      "warning_mature_content": "成人向けコンテンツレーティングを選択しました。18歳以上であることを確認してください"
+    },
+    "history": {
+      "title": "履歴",
+      "empty": "履歴はまだありません",
+      "load": "読み込む",
+      "delete": "削除",
+      "clear_all": "すべてクリア",
+      "confirm_clear": "すべての履歴をクリアしてもよろしいですか？"
+    },
+    "work_categories": {
+      "anime": "アニメ",
+      "novel": "小説",
+      "movie": "映画/TV",
+      "game": "ゲーム"
+    },
+    "work_details": {
+      "worldview_label": "世界観："
+    },
+    "ui": {
+      "pairing_separator": " × ",
+      "speed_icon": "⚡"
+    }
+  }
+}

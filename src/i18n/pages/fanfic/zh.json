@@ -1,0 +1,321 @@
+{
+  "hero_fanfic": {
+    "header": {
+      "title": "AI 同人文生成器",
+      "subtitle": "专业的同人创作工具，支持预置作品库、CP配对、剧情控制。让AI帮你创作心仪角色的精彩故事。",
+      "meta_title": "AI 同人文生成器 - 免费在线同人小说创作工具",
+      "meta_description": "使用 AI 同人文生成器快速创作高质量同人小说。支持哈利波特、漫威、原神等热门作品，自定义 CP 配对和剧情走向，专为同人创作者设计。"
+    },
+    "breadcrumb": {
+      "home": "首页",
+      "current": "AI 同人文生成器"
+    },
+    "source": {
+      "label": "原作品",
+      "required": "请选择或输入原作品",
+      "preset_label": "选择预置作品",
+      "custom_label": "自定义原作",
+      "preset_placeholder": "选择热门作品...",
+      "worldview_label": "世界观描述",
+      "worldview_placeholder": "描述作品的世界观、背景设定...",
+      "characters_label": "主要角色",
+      "characters_placeholder": "输入角色名称，用逗号分隔",
+      "characters_hint": "例如：哈利·波特, 赫敏·格兰杰, 德拉科·马尔福"
+    },
+    "pairing": {
+      "label": "CP 配对",
+      "required": "请选择至少一个角色",
+      "type_label": "配对类型",
+      "type_options": {
+        "romantic": "浪漫向 (Romantic)",
+        "gen": "单人中心向 (Gen)",
+        "poly": "多人配对 (Poly)"
+      },
+      "character_placeholder": "选择角色...",
+      "add_character": "添加角色",
+      "remove_character": "移除",
+      "hint": "选择要配对的角色，支持多选"
+    },
+    "plot_type": {
+      "label": "剧情类型",
+      "required": "请选择剧情类型",
+      "options": {
+        "canon": {
+          "name": "原著向",
+          "description": "遵循原作设定和剧情发展"
+        },
+        "modern_au": {
+          "name": "现代 AU",
+          "description": "将角色置于现代都市背景"
+        },
+        "school_au": {
+          "name": "校园 AU",
+          "description": "校园环境下的青春故事"
+        },
+        "fantasy_au": {
+          "name": "奇幻 AU",
+          "description": "架空世界或奇幻设定"
+        },
+        "crossover": {
+          "name": "跨界",
+          "description": "多个作品的角色互动"
+        }
+      }
+    },
+    "prompt": {
+      "label": "故事提示",
+      "required": "请输入故事提示",
+      "placeholder": "描述你想要的故事情节、场景或转折点...\n\n例如：两人在图书馆意外相遇，因为一本古老的魔法书而产生了联系...",
+      "character_counter": "{{count}} / 2000 字符",
+      "language_label": "输出语言",
+      "language_placeholder": "选择语言",
+      "language_options": {
+        "zh": {
+          "native": "中文",
+          "english": "Chinese",
+          "flag": "🇨🇳"
+        },
+        "en": {
+          "native": "English",
+          "english": "English",
+          "flag": "🇺🇸"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "Japanese",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "Korean",
+          "flag": "🇰🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "German",
+          "flag": "🇩🇪"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "French",
+          "flag": "🇫🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "Spanish",
+          "flag": "🇪🇸"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "Italian",
+          "flag": "🇮🇹"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "Portuguese",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "Russian",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "Arabic",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "Hindi",
+          "flag": "🇮🇳"
+        }
+      }
+    },
+    "presets": {
+      "title": "快速开始",
+      "works_title": "热门作品",
+      "templates_title": "剧情模板",
+      "popular_pairings": "热门 CP"
+    },
+    "ai_models": {
+      "title": "选择 AI 模型",
+      "hint": "不同模型有不同的创作风格和速度",
+      "models": {
+        "character_focused": {
+          "name": "角色还原",
+          "badge": "快速",
+          "description": "注重角色性格还原，生成速度快",
+          "speed": "~3秒"
+        },
+        "creative": {
+          "name": "创意改编",
+          "badge": "推荐",
+          "description": "平衡原作与创新，情节丰富",
+          "speed": "~5秒"
+        },
+        "depth": {
+          "name": "深度刻画",
+          "badge": "高质量",
+          "description": "深入刻画情感和心理，质量最高",
+          "speed": "~10秒"
+        }
+      },
+      "selected": "已选择",
+      "select": "选择"
+    },
+    "advanced_options": {
+      "title": "高级选项",
+      "subtitle": "精确控制同人文的风格和内容",
+      "optional_badge": "可选",
+      "ooc": {
+        "label": "OOC 程度",
+        "placeholder": "选择 OOC 程度",
+        "options": {
+          "none": "不限",
+          "canon_compliant": "符合原著",
+          "slight_ooc": "轻微 OOC",
+          "bold_adaptation": "大胆改编"
+        }
+      },
+      "fidelity": {
+        "label": "原作还原度",
+        "placeholder": "选择还原度",
+        "options": {
+          "none": "不限",
+          "high_fidelity": "高度还原",
+          "moderate": "适度创新",
+          "original": "完全原创"
+        }
+      },
+      "ending": {
+        "label": "情节走向",
+        "placeholder": "选择结局",
+        "options": {
+          "none": "不限",
+          "happy": "Happy Ending",
+          "sad": "Bad Ending",
+          "open": "Open Ending"
+        }
+      },
+      "rating": {
+        "label": "内容分级",
+        "placeholder": "选择分级",
+        "warning": "⚠️ 选择 Mature 或 Explicit 级别表示您已年满 18 岁",
+        "options": {
+          "none": "不限",
+          "general": "全年龄 (G)",
+          "teen": "青少年 (T)",
+          "mature": "成人 (M)",
+          "explicit": "限制级 (E)"
+        }
+      },
+      "length": {
+        "label": "故事长度",
+        "placeholder": "选择长度",
+        "options": {
+          "none": "不限",
+          "short": "短篇 (300-500字)",
+          "medium": "中篇 (500-1000字)",
+          "long": "长篇 (1000-1500字)",
+          "extend": "加长 (1500-2000字)",
+          "epic_short": "超长 (2000-2500字)",
+          "novella_lite": "小说 (2500-3000字)"
+        }
+      },
+      "perspective": {
+        "label": "叙事视角",
+        "placeholder": "选择视角",
+        "options": {
+          "none": "不限",
+          "first_person": "第一人称",
+          "second_person": "第二人称",
+          "third_person_limited": "第三人称（限制视角）",
+          "third_person_omniscient": "第三人称（全知视角）"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "生成同人文",
+      "generating": "创作中...",
+      "info": {
+        "credit": "消耗",
+        "credit_text": "积分",
+        "time": "预计时间",
+        "quality": "创作质量"
+      },
+      "tip": "💡 提示：详细的故事提示能获得更好的结果"
+    },
+    "output": {
+      "title": "生成的同人文",
+      "status_writing": "AI 正在创作...",
+      "status_complete": "创作完成！",
+      "word_count": "字数：{{count}} 字",
+      "tags_label": "标签",
+      "button_copy": "复制",
+      "button_export_pdf": "导出 PDF",
+      "button_exporting_pdf": "导出中...",
+      "button_regenerate": "重新生成",
+      "loading": "加载中..."
+    },
+    "pdf": {
+      "generated_at": "生成时间",
+      "word_count_label": "字数",
+      "ai_model": "AI 模型",
+      "source_work": "原作品",
+      "pairing": "CP 配对",
+      "plot_type": "剧情类型",
+      "rating": "内容分级",
+      "tags": "标签",
+      "prompt": "故事提示",
+      "footer_text": "由 AI 同人文生成器创作",
+      "page_indicator": "第 {{current}} 页，共 {{total}} 页"
+    },
+    "share": {
+      "title": "分享同人文",
+      "copy_link": "复制链接",
+      "share_twitter": "分享到 Twitter",
+      "share_facebook": "分享到 Facebook",
+      "share_linkedin": "分享到 LinkedIn",
+      "link_copied": "链接已复制！",
+      "share_text_template": "我用 AI 同人文生成器创作了一篇精彩的同人文！快来试试吧！"
+    },
+    "toasts": {
+      "error_no_source": "请选择或输入原作品",
+      "error_no_pairing": "请选择至少一个角色进行配对",
+      "error_no_plot_type": "请选择剧情类型",
+      "error_no_prompt": "请输入故事提示",
+      "error_no_model": "请选择 AI 模型",
+      "error_generate_failed": "生成失败，请重试",
+      "error_no_stream": "流式传输失败",
+      "error_no_content": "未生成任何内容",
+      "error_pdf_export_failed": "PDF 导出失败",
+      "error_invalid_characters": "角色列表格式不正确",
+      "success_generated": "同人文生成成功！",
+      "success_copied": "已复制到剪贴板",
+      "success_pdf_exported": "PDF 导出成功",
+      "warning_mature_content": "您选择了成人内容分级，请确保您已年满 18 岁"
+    },
+    "history": {
+      "title": "历史记录",
+      "empty": "暂无历史记录",
+      "load": "加载",
+      "delete": "删除",
+      "clear_all": "清空所有",
+      "confirm_clear": "确定要清空所有历史记录吗？"
+    },
+    "work_categories": {
+      "anime": "动漫",
+      "novel": "小说",
+      "movie": "影视",
+      "game": "游戏"
+    },
+    "work_details": {
+      "worldview_label": "世界观："
+    },
+    "ui": {
+      "pairing_separator": " × ",
+      "speed_icon": "⚡"
+    }
+  }
+}
