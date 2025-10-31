@@ -1,4 +1,5 @@
-import FanficGenerate from "@/components/blocks/fanfic-generate";
+// Use the new tabbed layout (option card-style) instead of the original
+import TabbedFanficGenerate from "@/components/blocks/fanfic-generate/tabbed-fanfic-generate";
 import { setRequestLocale } from "next-intl/server";
 
 export const revalidate = 60;
@@ -73,7 +74,8 @@ export default async function FanficGeneratorPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <FanficGenerate section={section} />
+      {/* New tabbed layout with 5 steps and auto-advance */}
+      <TabbedFanficGenerate section={section} />
     </>
   );
 }

@@ -92,6 +92,69 @@
   --shadow-xl: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
     0px 8px 10px -1px hsl(202.82 89.12% 53.14% / 0);
   --shadow-2xl: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
+
+  /* Modern Minimalist Design System Extensions */
+  /* ===== Gradients ===== */
+  --gradient-primary: linear-gradient(135deg, oklch(0.67 0.16 245) 0%, oklch(0.72 0.18 295) 50%, oklch(0.65 0.16 210) 100%);
+  --gradient-secondary: linear-gradient(135deg, oklch(0.82 0.16 82.53) 0%, oklch(0.71 0.18 151.71) 100%);
+  --gradient-accent: linear-gradient(135deg, oklch(0.94 0.02 250.85) 0%, oklch(0.88 0.05 265) 100%);
+  --gradient-hero: radial-gradient(1200px 800px at 50% 0%, oklch(0.85 0.08 250) 0%, transparent 50%);
+
+  /* ===== Enhanced Spacing Scale ===== */
+  --space-2xs: 0.25rem;    /* 4px */
+  --space-xs: 0.5rem;      /* 8px */
+  --space-sm: 0.75rem;     /* 12px */
+  --space-md: 1rem;        /* 16px */
+  --space-lg: 1.5rem;      /* 24px */
+  --space-xl: 2rem;        /* 32px */
+  --space-2xl: 2.5rem;     /* 40px */
+  --space-3xl: 3rem;       /* 48px */
+  --space-4xl: 4rem;       /* 64px */
+  --space-5xl: 5rem;       /* 80px */
+  --space-6xl: 6rem;       /* 96px */
+
+  /* ===== Enhanced Shadow System ===== */
+  --shadow-minimal: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-soft: 0 2px 8px -2px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 12px -2px rgba(0, 0, 0, 0.12);
+  --shadow-strong: 0 8px 24px -4px rgba(0, 0, 0, 0.15);
+  --shadow-elevated: 0 12px 32px -6px rgba(0, 0, 0, 0.18);
+  --shadow-card-hover: 0 16px 40px -8px rgba(0, 0, 0, 0.2);
+  --shadow-inner-glow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+
+  /* ===== Animation Timing ===== */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+  --duration-slower: 500ms;
+
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+
+  /* ===== Component Specific Tokens ===== */
+  --button-radius: 0.75rem;
+  --card-radius: 1rem;
+  --input-radius: 0.5rem;
+
+  --focus-ring: 0 0 0 3px oklch(0.68 0.16 243.35 / 0.3);
+  --focus-ring-accent: 0 0 0 3px oklch(0.94 0.02 250.85 / 0.3);
+
+  /* ===== Interactive States ===== */
+  --state-hover-opacity: 0.85;
+  --state-active-opacity: 0.75;
+  --state-disabled-opacity: 0.5;
+
+  /* ===== Enhanced Border System ===== */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --border-width-medium: 1.5px;
+  --border-width-thick: 2px;
+
+  /* ===== Background Patterns ===== */
+  --bg-dots: radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px);
+  --bg-grid: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+             linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
 }
 
 .dark {
@@ -147,6 +210,69 @@
   --shadow-xl: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
     0px 8px 10px -1px hsl(202.82 89.12% 53.14% / 0);
   --shadow-2xl: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
+
+  /* Modern Minimalist Design System Extensions - Dark Theme */
+  /* ===== Gradients ===== */
+  --gradient-primary: linear-gradient(135deg, oklch(0.67 0.16 245) 0%, oklch(0.72 0.18 295) 50%, oklch(0.65 0.16 210) 100%);
+  --gradient-secondary: linear-gradient(135deg, oklch(0.82 0.16 82.53) 0%, oklch(0.71 0.18 151.71) 100%);
+  --gradient-accent: linear-gradient(135deg, oklch(0.94 0.02 250.85) 0%, oklch(0.88 0.05 265) 100%);
+  --gradient-hero: radial-gradient(1200px 800px at 50% 0%, oklch(0.35 0.08 250) 0%, transparent 50%);
+
+  /* Enhanced Spacing (Same as light) */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 2.5rem;
+  --space-3xl: 3rem;
+  --space-4xl: 4rem;
+  --space-5xl: 5rem;
+  --space-6xl: 6rem;
+
+  /* Enhanced Shadow System - Dark Theme */
+  --shadow-minimal: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-soft: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
+  --shadow-medium: 0 4px 12px -2px rgba(0, 0, 0, 0.6);
+  --shadow-strong: 0 8px 24px -4px rgba(0, 0, 0, 0.65);
+  --shadow-elevated: 0 12px 32px -6px rgba(0, 0, 0, 0.7);
+  --shadow-card-hover: 0 16px 40px -8px rgba(0, 0, 0, 0.75);
+  --shadow-inner-glow: inset 0 2px 4px rgba(255, 255, 255, 0.05);
+
+  /* Animation Timing (Same as light) */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+  --duration-slower: 500ms;
+
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+
+  /* Component Specific Tokens (Same as light) */
+  --button-radius: 0.75rem;
+  --card-radius: 1rem;
+  --input-radius: 0.5rem;
+
+  --focus-ring: 0 0 0 3px oklch(0.68 0.16 243.35 / 0.5);
+  --focus-ring-accent: 0 0 0 3px oklch(0.94 0.02 250.85 / 0.5);
+
+  /* Interactive States (Same as light) */
+  --state-hover-opacity: 0.9;
+  --state-active-opacity: 0.8;
+  --state-disabled-opacity: 0.4;
+
+  /* Enhanced Border System (Same as light) */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --border-width-medium: 1.5px;
+  --border-width-thick: 2px;
+
+  /* Background Patterns - Dark Theme */
+  --bg-dots: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  --bg-grid: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+             linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
 }
 
 @theme inline {
@@ -200,4 +326,58 @@
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
+
+  /* Modern Minimalist Extensions */
+  --gradient-primary: var(--gradient-primary);
+  --gradient-secondary: var(--gradient-secondary);
+  --gradient-accent: var(--gradient-accent);
+  --gradient-hero: var(--gradient-hero);
+
+  --space-2xs: var(--space-2xs);
+  --space-xs: var(--space-xs);
+  --space-sm: var(--space-sm);
+  --space-md: var(--space-md);
+  --space-lg: var(--space-lg);
+  --space-xl: var(--space-xl);
+  --space-2xl: var(--space-2xl);
+  --space-3xl: var(--space-3xl);
+  --space-4xl: var(--space-4xl);
+  --space-5xl: var(--space-5xl);
+  --space-6xl: var(--space-6xl);
+
+  --shadow-minimal: var(--shadow-minimal);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-medium: var(--shadow-medium);
+  --shadow-strong: var(--shadow-strong);
+  --shadow-elevated: var(--shadow-elevated);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-inner-glow: var(--shadow-inner-glow);
+
+  --duration-fast: var(--duration-fast);
+  --duration-normal: var(--duration-normal);
+  --duration-slow: var(--duration-slow);
+  --duration-slower: var(--duration-slower);
+
+  --ease-soft: var(--ease-soft);
+  --ease-bounce: var(--ease-bounce);
+  --ease-sharp: var(--ease-sharp);
+
+  --button-radius: var(--button-radius);
+  --card-radius: var(--card-radius);
+  --input-radius: var(--input-radius);
+
+  --focus-ring: var(--focus-ring);
+  --focus-ring-accent: var(--focus-ring-accent);
+
+  --state-hover-opacity: var(--state-hover-opacity);
+  --state-active-opacity: var(--state-active-opacity);
+  --state-disabled-opacity: var(--state-disabled-opacity);
+
+  --border-width-hairline: var(--border-width-hairline);
+  --border-width-thin: var(--border-width-thin);
+  --border-width-medium: var(--border-width-medium);
+  --border-width-thick: var(--border-width-thick);
+
+  --bg-dots: var(--bg-dots);
+  --bg-grid: var(--bg-grid);
 }
