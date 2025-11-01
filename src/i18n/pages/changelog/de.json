@@ -6,6 +6,30 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.2.4",
+        "date": "2025-11-01",
+        "changes": [
+          {
+            "type": "improvement",
+            "items": [
+              "Fanfiction-Story-Generator-Interface mit optimiertem Styling für bessere visuelle Erfahrung und Layout-Ausrichtung verbessert",
+              "Vollständige Internationalisierungsunterstützung für Fanfic-Komponenten in 5 Sprachen hinzugefügt (Chinesisch, Englisch, Japanisch, Koreanisch, Deutsch)",
+              "Hartcodierte chinesische Textprobleme in Advanced Options- und Generate-Tabs behoben",
+              "Neue Popover-UI-Komponente für verbesserte Benutzerinteraktion eingeführt",
+              "Step-Tabs-Komponenten-Styling und Interaktionslogik optimiert",
+              "Smart-Recommendations-Komponente verbessert für höhere Empfehlungsgenauigkeit"
+            ]
+          },
+          {
+            "type": "feature",
+            "items": [
+              "Umfassende TypeScript-Typdefinitionen für Fanfic-Generate-Komponente zur Verbesserung der Code-Wartbarkeit hinzugefügt",
+              "FANFIC_WIDTH_ALIGNMENT_REPORT.md-Dokumentation erstellt, die alle Stiländerungen detailliert beschreibt"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.3",
         "date": "2025-10-25",
         "changes": [
