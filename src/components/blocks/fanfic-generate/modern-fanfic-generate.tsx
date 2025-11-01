@@ -746,31 +746,33 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                   </div>
 
                   {/* Generate Button */}
-                  <Button
-                    onClick={handleGenerate}
-                    disabled={!canGenerate}
-                    size="lg"
-                    className={cn(
-                      "w-full h-14 text-base font-medium",
-                      "bg-gradient-to-r from-primary via-pink-600 to-blue-600",
-                      "hover:from-primary/90 hover:via-pink-600/90 hover:to-blue-600/90",
-                      "shadow-strong hover:shadow-elevated",
-                      "transform hover:scale-[1.02] transition-all duration-200",
-                      isGenerating && "animate-pulse"
-                    )}
-                  >
-                    {isGenerating ? (
-                      <>
-                        <div className="animate-spin mr-2 h-5 w-5 border-2 border-white border-t-transparent rounded-full" />
-                        正在创作中...
-                      </>
-                    ) : (
-                      <>
-                        <Sparkles className="w-5 h-5 mr-2" />
-                        {t('actions.generate_fanfic') || '开始创作'}同人小说
-                      </>
-                    )}
-                  </Button>
+                  <div className="flex justify-center">
+                    <Button
+                      onClick={handleGenerate}
+                      disabled={!canGenerate}
+                      size="lg"
+                      className={cn(
+                        "max-w-md h-14 text-base font-medium",
+                        "bg-gradient-to-r from-primary via-pink-600 to-blue-600",
+                        "hover:from-primary/90 hover:via-pink-600/90 hover:to-blue-600/90",
+                        "shadow-strong hover:shadow-elevated",
+                        "transform hover:scale-[1.02] transition-all duration-200",
+                        isGenerating && "animate-pulse"
+                      )}
+                    >
+                      {isGenerating ? (
+                        <>
+                          <div className="animate-spin mr-2 h-5 w-5 border-2 border-white border-t-transparent rounded-full" />
+                          正在创作中...
+                        </>
+                      ) : (
+                        <>
+                          <Sparkles className="w-5 h-5 mr-2" />
+                          {t('actions.generate_fanfic') || '开始创作'}同人小说
+                        </>
+                      )}
+                    </Button>
+                  </div>
 
                   {/* Progress Bar */}
                   {isGenerating && (
