@@ -327,6 +327,7 @@ export interface FanficGenerate {
       generation?: {
         status_writing?: string;
         status_complete?: string;
+        start_button?: string;
         summary_title?: string;
         source_work_label?: string;
         pairing_label?: string;

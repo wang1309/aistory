@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo, useRef } from "react";
+import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -79,6 +79,32 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
     perspective: 'third',
   });
 
+  // ========== REF FOR LATEST STATE ==========
+  const latestStateRef = useRef({
+    sourceType,
+    selectedPresetWork,
+    customWorkName,
+    pairingType,
+    selectedCharacters,
+    plotType,
+    prompt,
+    advancedOptions,
+  });
+
+  // Update ref when state changes
+  useEffect(() => {
+    latestStateRef.current = {
+      sourceType,
+      selectedPresetWork,
+      customWorkName,
+      pairingType,
+      selectedCharacters,
+      plotType,
+      prompt,
+      advancedOptions,
+    };
+  }, [sourceType, selectedPresetWork, customWorkName, pairingType, selectedCharacters, plotType, prompt, advancedOptions]);
+
   // ========== HANDLER FUNCTIONS ==========
 
   const handlePresetWorkChange = useCallback((workId: string) => {
@@ -156,46 +182,115 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
   // ========== GENERATE FUNCTION ==========
 
   const handleGenerate = useCallback(async () => {
-    if (!user) {
-      setShowVerificationModal(true);
-      setVerificationCallback(() => handleGenerate);
-      return;
-    }
-
     if (!canGenerate) {
       toast.error(t('messages.step_validation') || "Please complete all required information");
       return;
     }
 
+    // Set verification callback and show modal
+    setVerificationCallback(() => handleVerificationSuccess);
+    setShowVerificationModal(true);
+  }, [canGenerate, setShowVerificationModal, setVerificationCallback]);
+
+  // Handle verification success - start fanfic generation
+  const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
+    console.log('=== Starting fanfic generation after verification ===');
+
+    if (!user) {
+      setShowVerificationModal(true);
+      setVerificationCallback(() => handleVerificationSuccess);
+      return;
+    }
+
+    // Get fresh state values from ref at the time of execution
+    const currentState = latestStateRef.current;
+
+    console.log('=== Current state from ref ===', {
+      ...currentState,
+      prompt: currentState.prompt?.substring(0, 100),
+    });
+
     setIsGenerating(true);
+    setGeneratedFanfic('');
+    setWordCount(0);
 
     try {
+      const requestData = {
+        sourceType: currentState.sourceType,
+        presetWorkId: currentState.sourceType === 'preset' ? currentState.selectedPresetWork : null,
+        customWorkName: currentState.sourceType === 'custom' ? currentState.customWorkName : null,
+        pairingType: currentState.pairingType,
+        characters: currentState.selectedCharacters,
+        plotType: currentState.plotType,
+        prompt: currentState.prompt,
+        language,
+        options: currentState.advancedOptions,
+        turnstileToken,
+      };
+      console.log('=== Request data ===', requestData);
+
       // 调用API生成同人小说
       const response = await fetch('/api/fanfic-generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          sourceType,
-          presetWorkId: sourceType === 'preset' ? selectedPresetWork : null,
-          customWorkName: sourceType === 'custom' ? customWorkName : null,
-          pairingType,
-          characters: selectedCharacters,
-          plotType,
-          prompt,
-          language,
-          options: advancedOptions,
-        }),
+        body: JSON.stringify(requestData),
       });
 
-      const data = await response.json();
-      if (data.error) {
-        throw new Error(data.error);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Generation failed');
       }
 
-      setGeneratedFanfic(data.content);
-      const count = calculateWordCount(data.content);
+      // Handle streaming response
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+
+      if (!reader) {
+        throw new Error('No response stream available');
+      }
+
+      let accumulatedText = '';
+      let chunkCount = 0;
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) {
+          console.log(`Stream finished, total chunks: ${chunkCount}`);
+          break;
+        }
+
+        chunkCount++;
+        const chunk = decoder.decode(value, { stream: true });
+        buffer += chunk;
+
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        for (const line of lines) {
+          if (line.startsWith('0:')) {
+            try {
+              const jsonStr = line.slice(2);
+              const text = JSON.parse(jsonStr);
+              accumulatedText += text;
+              setGeneratedFanfic(accumulatedText);
+            } catch (e) {
+              console.error('Parse error:', e, 'Line:', line);
+            }
+          }
+        }
+      }
+
+      // Validate content
+      if (!accumulatedText || accumulatedText.trim().length === 0) {
+        throw new Error('No content generated');
+      }
+
+      // Calculate word count
+      const count = calculateWordCount(accumulatedText);
       setWordCount(count);
 
       // 生成标签
@@ -228,7 +323,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
           },
           plotType,
           prompt,
-          content: data.content,
+          content: accumulatedText,
           wordCount: count,
           tags,
           model: 'standard',
@@ -251,7 +346,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
     } finally {
       setIsGenerating(false);
     }
-  }, [user, setShowVerificationModal, setVerificationCallback, canGenerate, sourceType, selectedPresetWork, customWorkName, pairingType, selectedCharacters, plotType, prompt, language, advancedOptions, locale]);
+  }, [user, setShowVerificationModal, setVerificationCallback]);
 
   // ========== RENDER ==========
 
