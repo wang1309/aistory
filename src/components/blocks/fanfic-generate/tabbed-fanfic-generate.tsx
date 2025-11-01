@@ -788,11 +788,6 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                     </Button>
                   </div>
 
-                  {/* Progress */}
-                  {isGenerating && (
-                    <ProgressBar value={0} variant="gradient" showLabel label={section.tabbed?.status?.generating || 'AI Progress'} />
-                  )}
-
                   {/* Output */}
                   {generatedFanfic && (
                     <AnimatedContainer variant="fadeIn" className="space-y-4">

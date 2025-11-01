@@ -35,14 +35,6 @@ export function OutputDisplay({
         </ModernCardTitle>
       </ModernCardHeader>
       <ModernCardContent className="space-y-4">
-        {isGenerating && (
-          <ProgressBar
-            value={0}
-            variant="gradient"
-            showLabel
-            label="AI创作进度"
-          />
-        )}
 
         {generatedFanfic && (
           <AnimatedContainer variant="fadeIn">

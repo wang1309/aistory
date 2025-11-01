@@ -4,5 +4,6 @@ export interface FanficWhat {
   label?: string;
   title?: string;
   subtitle?: string;
-  intro_paragraph?: string;
+  content?: string;  // Rich text content with line breaks and formatting
+  intro_paragraph?: string;  // Legacy field, kept for backward compatibility
 }

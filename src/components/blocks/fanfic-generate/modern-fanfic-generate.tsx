@@ -774,16 +774,6 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                     </Button>
                   </div>
 
-                  {/* Progress Bar */}
-                  {isGenerating && (
-                    <ProgressBar
-                      value={0}
-                      variant="gradient"
-                      showLabel
-                      label="AI创作进度"
-                    />
-                  )}
-
                   {/* Output Display */}
                   {generatedFanfic && (
                     <div className="p-6 rounded-lg border bg-card space-y-4">

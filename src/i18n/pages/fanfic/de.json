@@ -581,10 +581,9 @@
         }
       },
       "fanfic_what": {
-        "label": "Was ist Fanfic",
+        "label": "Was ist Fanfiction-Generator",
         "title": "Was ist der AI Fanfic-Generator?",
-        "subtitle": "Ihr ultimatives Werkzeug für Fanfiction-Erstellung",
-        "intro_paragraph": "Der AI Fanfic-Generator ist ein leistungsstarkes Tool, das speziell für Fanfiction-Autoren entwickelt wurde. Es nutzt fortschrittliche KI-Technologie, um Ihnen zu helfen, fesselnde Geschichten mit Ihren Lieblingscharakteren aus beliebten Werken wie Harry Potter, Marvel, Genshin Impact und mehr zu erstellen. Wählen Sie einfach Ihr Quellmaterial aus, wählen Sie Charakterpaarungen und lassen Sie unsere KI Ihnen helfen, überzeugende Fanfiction-Erzählungen zu erstellen."
+        "content": "Der AI Fanfic-Generator ist ein fortschrittliches KI-Tool, das entwickelt wurde, um originelle Fanfiction-Geschichten basierend auf Ihren Lieblingsbüchern, Filmen, Spielen oder TV-Serien zu erstellen. Mit leistungsstarken Sprachmodellen kann es kreative Handlungen, fesselnde Dialoge und emotional berührende Charakterinteraktionen generieren——alles auf Ihre Eingabe zugeschnitten.\n\nWie es funktioniert\n\nSie wählen einfach ein Fandom aus, geben Charaktere an und beschreiben Ihr gewünschtes Szenario. Die KI erstellt dann eine vollständige Fanfic-Erzählung, die zum Ton und Stil des ursprünglichen Universums passt——von romantischen Crossovern bis hin zu spannenden Abenteuern.\n\nHauptfunktionen\n\n✨ KI-gesteuertes Storytelling: Erzeugt natürliche, hochwertige Fanfiction sofort.\n💬 Anpassbare Prompts: Kontrolle über Handlung, Genre und Beziehungsdynamik.\n🔁 Mehrere Stile: Schreiben Sie in der Stimme Ihrer Lieblingsautoren oder Fandoms.\n💡 Kostenloser Online-Fanfic-Generator: Keine Downloads erforderlich——einfach tippen und erstellen."
       },
       "faq": {
         "title": "Häufig gestellte Fragen",

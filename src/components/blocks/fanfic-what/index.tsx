@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { FanficWhat as FanficWhatType } from "@/types/blocks/fanfic-what";
 import Icon from "@/components/icon";
 
@@ -8,6 +9,46 @@ export default function FanficWhat({ section }: { section: FanficWhatType | unde
   if (!section || section.disabled) {
     return null;
   }
+
+  // Format content to make section headers bold
+  const formatContent = (content: string): React.ReactNode => {
+    // Define headers to bold in all supported languages
+    const headers = [
+      'How It Works',
+      'Key Features',
+      '工作原理',
+      '核心特性',
+      '仕組み',
+      '主な機能',
+      '作動方式',
+      '작동 방식',
+      '주요 기능',
+      'Wie es funktioniert',
+      'Hauptfunktionen',
+    ];
+
+    const lines = content.split('\n');
+    const result: React.ReactNode[] = [];
+
+    lines.forEach((line, index) => {
+      const isLast = index === lines.length - 1;
+      const trimmedLine = line.trim();
+
+      // Check if this line is a header
+      if (headers.includes(trimmedLine)) {
+        result.push(<strong key={`line-${index}`}>{line}</strong>);
+      } else {
+        result.push(line);
+      }
+
+      // Add newline character back (except after the last line)
+      if (!isLast) {
+        result.push('\n');
+      }
+    });
+
+    return result;
+  };
 
   return (
     <section id={section.name} className="relative py-20 sm:py-24 overflow-hidden bg-background">
@@ -56,11 +97,11 @@ export default function FanficWhat({ section }: { section: FanficWhatType | unde
             </p>
           )}
 
-          {/* Introduction Paragraph */}
-          {section.intro_paragraph && (
-            <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed max-w-3xl mx-auto">
-              {section.intro_paragraph}
-            </p>
+          {/* Introduction Paragraph / Rich Text Content */}
+          {(section.content || section.intro_paragraph) && (
+            <div className="text-base md:text-lg text-muted-foreground/90 leading-relaxed max-w-3xl mx-auto whitespace-pre-line">
+              {section.content ? formatContent(section.content) : section.intro_paragraph}
+            </div>
           )}
         </div>
       </div>
