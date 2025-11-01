@@ -63,6 +63,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
   const [plotType, setPlotType] = useState('canon');
   const [prompt, setPrompt] = useState('');
+  const [language, setLanguage] = useState(locale);
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedFanfic, setGeneratedFanfic] = useState('');
@@ -86,6 +87,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     selectedCharacters,
     plotType,
     prompt,
+    language,
     advancedOptions,
   });
 
@@ -99,9 +101,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       selectedCharacters,
       plotType,
       prompt,
+      language,
       advancedOptions,
     };
-  }, [sourceType, selectedPresetWork, customWorkName, pairingType, selectedCharacters, plotType, prompt, advancedOptions]);
+  }, [sourceType, selectedPresetWork, customWorkName, pairingType, selectedCharacters, plotType, prompt, language, advancedOptions]);
 
   // ========== STEP DEFINITIONS ==========
 
@@ -207,7 +210,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
         characters: currentState.selectedCharacters,
         plotType: currentState.plotType,
         prompt: currentState.prompt,
-        language: 'zh',
+        language: currentState.language,
         options: currentState.advancedOptions,
         turnstileToken,
       };
@@ -580,6 +583,34 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                           )}
                         >
                           {type.label}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Language Selection */}
+                  <div>
+                    <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.language_label || 'Output Language'}</Label>
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
+                      {[
+                        { value: 'zh', label: '中文', flag: '🇨🇳' },
+                        { value: 'en', label: 'English', flag: '🇺🇸' },
+                        { value: 'ja', label: '日本語', flag: '🇯🇵' },
+                        { value: 'ko', label: '한국어', flag: '🇰🇷' },
+                        { value: 'de', label: 'Deutsch', flag: '🇩🇪' },
+                        { value: 'fr', label: 'Français', flag: '🇫🇷' },
+                      ].map((lang) => (
+                        <Button
+                          key={lang.value}
+                          variant={language === lang.value ? "default" : "outline"}
+                          onClick={() => setLanguage(lang.value)}
+                          className={cn(
+                            "h-auto py-2 px-2 flex flex-col gap-1",
+                            language === lang.value && "bg-primary text-primary-foreground"
+                          )}
+                        >
+                          <span className="text-lg">{lang.flag}</span>
+                          <span className="text-xs">{lang.label}</span>
                         </Button>
                       ))}
                     </div>

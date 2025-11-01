@@ -362,6 +362,8 @@
         "modern_au": "모던 AU",
         "school_au": "학교 AU",
         "fantasy_au": "판타지 AU",
+        "language_label": "출력 언어",
+        "language_placeholder": "언어 선택",
         "story_prompt_label": "스토리 프롬프트",
         "story_prompt_placeholder": "원하는 스토리 내용, 플롯, 장면을 설명해주세요...",
         "popular_works": "인기 IP 작품",

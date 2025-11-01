@@ -362,6 +362,8 @@
         "modern_au": "现代AU",
         "school_au": "校园AU",
         "fantasy_au": "奇幻AU",
+        "language_label": "输出语言",
+        "language_placeholder": "选择语言",
         "story_prompt_label": "故事提示",
         "story_prompt_placeholder": "描述你想要的故事内容、情节或场景...",
         "popular_works": "热门IP作品",

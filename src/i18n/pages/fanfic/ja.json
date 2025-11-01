@@ -362,6 +362,8 @@
         "modern_au": "モダンAU",
         "school_au": "学園AU",
         "fantasy_au": "ファンタジーAU",
+        "language_label": "出力言語",
+        "language_placeholder": "言語を選択",
         "story_prompt_label": "ストーリープロンプト",
         "story_prompt_placeholder": "望むストーリー内容、プロット、シーンを記述してください...",
         "popular_works": "人気IP作品",

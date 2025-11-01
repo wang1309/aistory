@@ -300,6 +300,8 @@ export interface FanficGenerate {
       modern_au?: string;
       school_au?: string;
       fantasy_au?: string;
+      language_label?: string;
+      language_placeholder?: string;
       story_prompt_label?: string;
       story_prompt_placeholder?: string;
       popular_works?: string;

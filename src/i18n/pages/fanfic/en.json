@@ -362,6 +362,8 @@
         "modern_au": "Modern AU",
         "school_au": "School AU",
         "fantasy_au": "Fantasy AU",
+        "language_label": "Output Language",
+        "language_placeholder": "Select language",
         "story_prompt_label": "Story Prompt",
         "story_prompt_placeholder": "Describe your desired story content, plot, or scenes...",
         "popular_works": "Popular IP Works",
