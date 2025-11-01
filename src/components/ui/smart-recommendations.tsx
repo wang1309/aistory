@@ -4,7 +4,7 @@ import { ModernCard, ModernCardContent, ModernCardHeader, ModernCardTitle, Moder
 import { Button } from "@/components/ui/button"
 import { EnhancedBadge } from "@/components/ui/enhanced-badge"
 import { AnimatedContainer } from "@/components/ui/animated-container"
-import { Heart, Star, TrendingUp, Sparkles } from "lucide-react"
+import { Heart, Star, TrendingUp, Sparkles, BookOpen } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface Recommendation {

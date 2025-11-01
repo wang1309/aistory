@@ -316,6 +316,235 @@
     "ui": {
       "pairing_separator": " × ",
       "speed_icon": "⚡"
+    },
+    "tabbed": {
+      "hero": {
+        "title": "팬픽 생성",
+        "subtitle": "인기 IP와 캐릭터를 기반으로, AI가 멋진 팬픽 이야기를 만들어드립니다"
+      },
+      "steps": {
+        "step1": {
+          "title": "원작 선택",
+          "description": "작품 선택"
+        },
+        "step2": {
+          "title": "캐릭터 선택",
+          "description": "페어링 선택"
+        },
+        "step3": {
+          "title": "스토리 설정",
+          "description": "매개변수 설정"
+        },
+        "step4": {
+          "title": "고급 옵션",
+          "description": "사용자 정의"
+        },
+        "step5": {
+          "title": "생성 창작",
+          "description": "창작 시작"
+        }
+      },
+      "form": {
+        "source_type_label": "소스 선택",
+        "preset_works": "프리셋 작품",
+        "custom_input": "사용자 정의",
+        "work_name_placeholder": "예: Your Name, 원신, 주술회전...",
+        "work_name_label": "작품명 입력",
+        "select_characters_label": "캐릭터 선택",
+        "selected_count": "（{{count}}개 선택）",
+        "pairing_type_label": "페어링 유형",
+        "romantic": "로맨틱",
+        "gen": "캐릭터 중심",
+        "poly": "다인 페어링",
+        "character_selected": "{{count}}개 선택",
+        "plot_type_label": "플롯 유형",
+        "canon": "캐논",
+        "modern_au": "모던 AU",
+        "school_au": "학교 AU",
+        "fantasy_au": "판타지 AU",
+        "story_prompt_label": "스토리 프롬프트",
+        "story_prompt_placeholder": "원하는 스토리 내용, 플롯, 장면을 설명해주세요...",
+        "popular_works": "인기 IP 작품",
+        "story_prompt_hint": "최소 10자",
+        "character_counter": "{{current}} / 2000자",
+        "meets_requirements": "✓ 요구사항 충족",
+        "ooc_level": "OOC 레벨",
+        "story_length": "스토리 길이",
+        "length_short": "단편 (300-600단어)",
+        "length_medium": "중편 (600-1500단어)",
+        "length_long": "장편 (1500-3000단어)",
+        "advanced_options": {
+          "title": "고급 옵션",
+          "subtitle": "선택 사항",
+          "ooc_level": "OOC 레벨",
+          "ooc_slight": "원작 준수",
+          "ooc_moderate": "약간 OOC",
+          "ooc_bold": "대담한 각색",
+          "story_length": "스토리 길이",
+          "length_short": "단편 (300-600단어)",
+          "length_medium": "중편 (600-1500단어)",
+          "length_long": "장편 (1500-3000단어)"
+        },
+        "generation": {
+          "status_writing": "생성 중...",
+          "status_complete": "생성 완료!",
+          "start_button": "팬픽 창작 시작"
+        }
+      },
+      "buttons": {
+        "next_step": "다음 단계",
+        "previous_step": "이전 단계",
+        "start_creation": "팬픽 창작 시작",
+        "regenerating": "생성 중..."
+      },
+      "summary": {
+        "title": "창작 요약",
+        "source_work": "원작:",
+        "pairing": "페어링:",
+        "plot_type": "유형:",
+        "story_length": "길이:"
+      },
+      "status": {
+        "completed": "✓ 완료",
+        "optional": "선택 사항",
+        "generating": "AI 진행 상황",
+        "creation_complete": "완료",
+        "word_count": "{{count}}단어"
+      },
+      "messages": {
+        "step_completed": "단계 {{step}}으로 자동 진행했습니다",
+        "error_complete_current": "먼저 현재 단계를 완료해주세요",
+        "error_gen_limit": "캐릭터 중심은 최대 1명의 캐릭터만 선택할 수 있습니다",
+        "error_romantic_limit": "로맨틱은 최대 2명의 캐릭터만 선택할 수 있습니다",
+        "toast_copied": "클립보드에 복사했습니다",
+        "copy_success": "클립보드에 복사했습니다",
+        "generation_success": "창작 완료!",
+        "step_validation": "먼저 현재 단계를 완료해주세요",
+        "auto_advance": "단계 {{step}}로 진행했습니다",
+        "error_generation": "생성에 실패했습니다. 다시 시도해주세요"
+      }
+    },
+    "modern": {
+      "steps": {
+        "step1": {
+          "title": "원작 선택",
+          "description": "작품명 선택 또는 입력"
+        },
+        "step2": {
+          "title": "캐릭터 선택",
+          "description": "페어링할 캐릭터 선택"
+        },
+        "step3": {
+          "title": "플롯 설정",
+          "description": "스토리 유형과 프롬프트 선택"
+        },
+        "step4": {
+          "title": "고급 설정",
+          "description": "창작 매개변수 사용자 정의"
+        },
+        "step5": {
+          "title": "생성 시작",
+          "description": "AI가 팬픽 생성"
+        }
+      },
+      "form": {
+        "select_work": "작품 선택",
+        "custom_work": "사용자 정의 작품",
+        "work_name_hint": "원작명 입력 (예: 해리 포터, 원신 등)",
+        "pairing_type": "페어링 유형",
+        "select_characters": "캐릭터 선택",
+        "selected_count": "{{count}}개 캐릭터 선택",
+        "plot_types": "플롯 유형",
+        "story_requirements": "스토리 요구사항",
+        "minimum_chars": "최소 10자",
+        "character_count": "{{current}} / 2000자",
+        "meets_requirements": "✓ 요구사항 충족",
+        "advanced_settings": "고급 설정",
+        "ooc_level": "OOC 레벨",
+        "ooc_none": "제한 없음",
+        "ooc_slight": "약간 OOC",
+        "ooc_moderate": "적절한 OOC",
+        "ooc_heavy": "과도한 OOC",
+        "story_length": "스토리 길이",
+        "length_options": {
+          "short": "단편 (300-500단어)",
+          "medium": "중편 (500-1000단어)",
+          "long": "장편 (1000-2000단어)",
+          "epic": "초장편 (2000+단어)"
+        },
+        "narrative_perspective": "서술 관점",
+        "perspective_options": {
+          "first": "1인칭",
+          "second": "2인칭",
+          "third_limited": "3인칭 제한적 관점",
+          "third_omniscient": "3인칭 전지적 관점"
+        }
+      },
+      "actions": {
+        "next": "다음",
+        "previous": "이전",
+        "generate_fanfic": "팬픽 생성",
+        "generating": "생성 중...",
+        "retry": "재생성",
+        "copy": "복사"
+      },
+      "summary": {
+        "title": "창작 미리보기",
+        "source_work_label": "원작:",
+        "selected_pairing_label": "페어링:",
+        "plot_type_label": "유형:",
+        "length_label": "길이:",
+        "undefined": "선택되지 않음"
+      },
+      "results": {
+        "generation_title": "생성 결과",
+        "word_count": "{{count}}단어",
+        "copy_success": "클립보드에 복사했습니다",
+        "regenerate": "재생성",
+        "download_pdf": "PDF 다운로드"
+      },
+      "messages": {
+        "step_validation": "먼저 현재 단계를 완료해주세요",
+        "auto_advance": "단계 {{step}}으로 진행했습니다",
+        "generation_success": "창작 완료했습니다!",
+        "copy_success": "클립보드에 복사했습니다",
+        "error_generation": "생성에 실패했습니다. 다시 시도해주세요",
+        "advanced_options": {
+          "title": "고급 설정",
+          "subtitle": "선택사항",
+          "ooc_level": "OOC 레벨",
+          "ooc_none": "제한 없음",
+          "ooc_slight": "원작 준수",
+          "ooc_moderate": "약간 OOC",
+          "ooc_bold": "대담한 각색",
+          "story_length": "스토리 길이",
+          "length_short": "단편 (300-600자)",
+          "length_medium": "중편 (600-1500자)",
+          "length_long": "장편 (1500-3000자)",
+          "narrative_perspective": "서술 관점",
+          "perspective_first": "1인칭",
+          "perspective_second": "2인칭",
+          "perspective_third_limited": "3인칭 제한적 관점",
+          "perspective_third_omniscient": "3인칭 전지적 관점"
+        },
+        "generation": {
+          "status_writing": "AI가 작성 중...",
+          "status_complete": "완료!",
+          "summary_title": "창작 요약",
+          "source_work_label": "원작：",
+          "pairing_label": "페어링：",
+          "type_label": "유형：",
+          "length_label": "길이：",
+          "progress_label": "AI 창작 진행 상황",
+          "word_count": "{{count}}자",
+          "actions": {
+            "copy": "복사",
+            "regenerate": "재생성",
+            "download_pdf": "PDF 다운로드"
+          },
+          "undefined": "선택되지 않음"
+        }
+      }
     }
   }
 }

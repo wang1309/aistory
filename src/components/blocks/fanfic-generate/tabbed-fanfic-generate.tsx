@@ -14,7 +14,7 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import Icon from "@/components/icon";
 import { toast } from "sonner";
 import { FanficGenerate as FanficGenerateType } from "@/types/blocks/fanfic-generate";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useAppContext } from "@/contexts/app";
 import confetti from "canvas-confetti";
 import { FanficStorage } from "@/lib/fanfic-storage";
@@ -80,11 +80,11 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   // ========== STEP DEFINITIONS ==========
 
   const steps = [
-    { id: 'step1', title: '选择原作', description: '选择作品' },
-    { id: 'step2', title: '选择角色', description: '选择配对' },
-    { id: 'step3', title: '故事设置', description: '配置参数' },
-    { id: 'step4', title: '高级选项', description: '自定义' },
-    { id: 'step5', title: '生成创作', description: '开始创作' },
+    { id: 'step1', title: section.tabbed?.steps?.step1?.title || 'Select Source', description: section.tabbed?.steps?.step1?.description || 'Choose Work' },
+    { id: 'step2', title: section.tabbed?.steps?.step2?.title || 'Select Characters', description: section.tabbed?.steps?.step2?.description || 'Choose Pairing' },
+    { id: 'step3', title: section.tabbed?.steps?.step3?.title || 'Story Settings', description: section.tabbed?.steps?.step3?.description || 'Configure' },
+    { id: 'step4', title: section.tabbed?.steps?.step4?.title || 'Advanced Options', description: section.tabbed?.steps?.step4?.description || 'Customize' },
+    { id: 'step5', title: section.tabbed?.steps?.step5?.title || 'Generate', description: section.tabbed?.steps?.step5?.description || 'Create' },
   ];
 
   const activeStepId = `step${currentStep}`;
@@ -99,16 +99,16 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const handleAddCharacter = useCallback((characterId: string) => {
     if (!selectedCharacters.includes(characterId)) {
       if (pairingType === 'gen' && selectedCharacters.length >= 1) {
-        toast.error("单人向最多只能选择1个角色");
+        toast.error(section.tabbed?.messages?.error_gen_limit || "Gen-focused can only select 1 character");
         return;
       }
       if (pairingType === 'romantic' && selectedCharacters.length >= 2) {
-        toast.error("浪漫向最多只能选择2个角色");
+        toast.error(section.tabbed?.messages?.error_romantic_limit || "Romantic can only select 2 characters");
         return;
       }
       setSelectedCharacters([...selectedCharacters, characterId]);
     }
-  }, [selectedCharacters, pairingType]);
+  }, [selectedCharacters, pairingType, section]);
 
   const handleRemoveCharacter = useCallback((characterId: string) => {
     setSelectedCharacters(selectedCharacters.filter(id => id !== characterId));
@@ -144,9 +144,9 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       if (!completedSteps.includes(currentStep)) {
         setCompletedSteps([...completedSteps, currentStep]);
       }
-      toast.success(`已自动进入步骤 ${nextStep}`);
+      toast.success((section.tabbed?.messages?.step_completed || "Auto-advanced to step {{step}}").replace('{{step}}', nextStep.toString()));
     }
-  }, [currentStep, completedSteps]);
+  }, [currentStep, completedSteps, section]);
 
   // ========== GENERATE FUNCTION ==========
 
@@ -187,20 +187,21 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       const count = calculateWordCount(data.content);
       setWordCount(count);
 
-      const sourceName = sourceType === 'preset'
-        ? getWorkName(getWorkById(selectedPresetWork), locale)
+      const presetWork = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
+      const sourceName = sourceType === 'preset' && presetWork
+        ? getWorkName(presetWork, locale)
         : customWorkName;
       const tags = [
         `#${sourceName.replace(/\s+/g, '')}`,
         `#${selectedCharacters.map(id => {
-          const char = getCharacterById(getWorkById(selectedPresetWork), id);
+          const char = presetWork ? getCharacterById(presetWork, id) : null;
           return char ? getCharacterName(char, locale) : id;
         }).join('×')}`,
         ...(plotType !== 'canon' ? [`#${plotType.toUpperCase()}`] : []),
       ];
       setGeneratedTags(tags);
 
-      toast.success("创作完成！");
+      toast.success(section.tabbed?.messages?.generation_success || "Creation complete!");
       confetti({
         particleCount: 100,
         spread: 70,
@@ -208,8 +209,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       });
 
     } catch (error) {
-      console.error('生成失败:', error);
-      toast.error(error instanceof Error ? error.message : '生成失败，请重试');
+      console.error('Generation failed:', error);
+      toast.error(error instanceof Error ? error.message : section.tabbed?.messages?.error_generation || 'Generation failed, please try again');
     } finally {
       setIsGenerating(false);
     }
@@ -220,7 +221,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const handleNextStep = () => {
     const completed = isStepCompleted(currentStep);
     if (!completed) {
-      toast.error("请先完成当前步骤");
+      toast.error(section.tabbed?.messages?.error_complete_current || "Please complete current step first");
       return;
     }
     autoAdvance();
@@ -241,12 +242,12 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
             </AnimatedContainer>
             <AnimatedContainer variant="slideUp" delay={0.1}>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                <GradientText variant="hero">创作你的同人故事</GradientText>
+                <GradientText variant="hero">{section.tabbed?.hero?.title || '创作你的同人故事'}</GradientText>
               </h1>
             </AnimatedContainer>
             <AnimatedContainer variant="slideUp" delay={0.2}>
               <p className="text-lg text-muted-foreground">
-                基于热门IP和角色，AI帮你创作精彩的同人小说
+                {section.tabbed?.hero?.subtitle || '基于热门IP和角色，AI帮你创作精彩的同人小说'}
               </p>
             </AnimatedContainer>
           </div>
@@ -284,17 +285,17 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <BookOpen className="w-5 h-5 text-primary" />
-                      <h2 className="text-xl font-semibold">选择原作</h2>
+                      <h2 className="text-xl font-semibold">{section.tabbed?.steps?.step1?.title || '选择原作'}</h2>
                     </div>
                     {isStepCompleted(1) && (
-                      <EnhancedBadge variant="success" size="sm">✓ 已完成</EnhancedBadge>
+                      <EnhancedBadge variant="success" size="sm">{section.tabbed?.status?.completed || '✓ Completed'}</EnhancedBadge>
                     )}
                   </div>
                 </ModernCardHeader>
                 <ModernCardContent className="space-y-6">
                   {/* Source Type */}
                   <div>
-                    <Label className="text-base font-medium mb-3 block">选择来源</Label>
+                    <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.source_type_label || '选择来源'}</Label>
                     <RadioGroup
                       value={sourceType}
                       onValueChange={(value: 'preset' | 'custom') => setSourceType(value)}
@@ -302,11 +303,11 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                     >
                       <div className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-accent/50 transition-colors cursor-pointer">
                         <RadioGroupItem value="preset" id="preset" />
-                        <Label htmlFor="preset" className="flex-1 cursor-pointer font-medium">预置作品</Label>
+                        <Label htmlFor="preset" className="flex-1 cursor-pointer font-medium">{section.tabbed?.form?.preset_works || '预置作品'}</Label>
                       </div>
                       <div className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-accent/50 transition-colors cursor-pointer">
                         <RadioGroupItem value="custom" id="custom" />
-                        <Label htmlFor="custom" className="flex-1 cursor-pointer font-medium">自定义</Label>
+                        <Label htmlFor="custom" className="flex-1 cursor-pointer font-medium">{section.tabbed?.form?.custom_input || '自定义'}</Label>
                       </div>
                     </RadioGroup>
                   </div>
@@ -314,7 +315,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   {/* Preset Works */}
                   {sourceType === 'preset' && (
                     <div>
-                      <Label className="text-base font-medium mb-3 block">热门IP作品</Label>
+                      <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.popular_works || 'Popular IP Works'}</Label>
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                         {PRESET_WORKS.map((work) => (
                           <Button
@@ -337,10 +338,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   {/* Custom Input */}
                   {sourceType === 'custom' && (
                     <div>
-                      <Label className="text-base font-medium mb-3 block">输入作品名称</Label>
+                      <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.work_name_label || '输入作品名称'}</Label>
                       <input
                         type="text"
-                        placeholder="例如：你的名字、原神、咒术回战..."
+                        placeholder={section.tabbed?.form?.work_name_placeholder || '例如：你的名字、原神、咒术回战...'}
                         value={customWorkName}
                         onChange={(e) => setCustomWorkName(e.target.value)}
                         className="w-full h-12 px-4 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50"
@@ -355,7 +356,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                       disabled={!isStepCompleted(1)}
                       className="bg-primary hover:bg-primary/90"
                     >
-                      下一步
+                      {section.tabbed?.buttons?.next_step || '下一步'}
                     </Button>
                   </div>
                 </ModernCardContent>
@@ -369,17 +370,17 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Heart className="w-5 h-5 text-pink-500" />
-                      <h2 className="text-xl font-semibold">选择角色</h2>
+                      <h2 className="text-xl font-semibold">{section.tabbed?.steps?.step2?.title || '选择角色'}</h2>
                     </div>
                     {isStepCompleted(2) && (
-                      <EnhancedBadge variant="success" size="sm">✓ 已完成</EnhancedBadge>
+                      <EnhancedBadge variant="success" size="sm">{section.tabbed?.status?.completed || '✓ Completed'}</EnhancedBadge>
                     )}
                   </div>
                 </ModernCardHeader>
                 <ModernCardContent className="space-y-6">
                   {/* Pairing Type */}
                   <div>
-                    <Label className="text-base font-medium mb-3 block">配对类型</Label>
+                    <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.pairing_type_label || '配对类型'}</Label>
                     <RadioGroup
                       value={pairingType}
                       onValueChange={(value: 'romantic' | 'gen' | 'poly') => {
@@ -390,15 +391,15 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                     >
                       <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50">
                         <RadioGroupItem value="romantic" id="romantic" />
-                        <Label htmlFor="romantic" className="flex-1 cursor-pointer">浪漫向</Label>
+                        <Label htmlFor="romantic" className="flex-1 cursor-pointer">{section.tabbed?.form?.romantic || '浪漫向'}</Label>
                       </div>
                       <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50">
                         <RadioGroupItem value="gen" id="gen" />
-                        <Label htmlFor="gen" className="flex-1 cursor-pointer">单人中心</Label>
+                        <Label htmlFor="gen" className="flex-1 cursor-pointer">{section.tabbed?.form?.gen || '单人中心'}</Label>
                       </div>
                       <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50">
                         <RadioGroupItem value="poly" id="poly" />
-                        <Label htmlFor="poly" className="flex-1 cursor-pointer">多人配对</Label>
+                        <Label htmlFor="poly" className="flex-1 cursor-pointer">{section.tabbed?.form?.poly || '多人配对'}</Label>
                       </div>
                     </RadioGroup>
                   </div>
@@ -409,7 +410,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                     return work ? (
                       <div>
                         <Label className="text-base font-medium mb-3 block">
-                          选择角色 <span className="text-sm text-muted-foreground font-normal">（已选 {selectedCharacters.length} 个）</span>
+                          {section.tabbed?.form?.select_characters_label || '选择角色'} <span className="text-sm text-muted-foreground font-normal">{(section.tabbed?.form?.selected_count || '（已选 {{count}} 个）').replace('{{count}}', selectedCharacters.length.toString())}</span>
                         </Label>
                         <div className="flex flex-wrap gap-2">
                           {work.characters.map((char) => (
@@ -440,14 +441,14 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   {/* Navigation Buttons */}
                   <div className="flex justify-between">
                     <Button variant="outline" onClick={() => setCurrentStep(1)}>
-                      上一步
+                      {section.tabbed?.buttons?.previous_step || '上一步'}
                     </Button>
                     <Button
                       onClick={handleNextStep}
                       disabled={!isStepCompleted(2)}
                       className="bg-primary hover:bg-primary/90"
                     >
-                      下一步
+                      {section.tabbed?.buttons?.next_step || '下一步'}
                     </Button>
                   </div>
                 </ModernCardContent>
@@ -461,23 +462,23 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Wand2 className="w-5 h-5 text-primary" />
-                      <h2 className="text-xl font-semibold">故事设置</h2>
+                      <h2 className="text-xl font-semibold">{section.tabbed?.steps?.step3?.title || '故事设置'}</h2>
                     </div>
                     {isStepCompleted(3) && (
-                      <EnhancedBadge variant="success" size="sm">✓ 已完成</EnhancedBadge>
+                      <EnhancedBadge variant="success" size="sm">{section.tabbed?.status?.completed || '✓ 完成'}</EnhancedBadge>
                     )}
                   </div>
                 </ModernCardHeader>
                 <ModernCardContent className="space-y-6">
                   {/* Plot Type */}
                   <div>
-                    <Label className="text-base font-medium mb-3 block">剧情类型</Label>
+                    <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.plot_type_label || '故事类型'}</Label>
                     <div className="grid grid-cols-2 gap-3">
                       {[
-                        { value: 'canon', label: '原著向' },
-                        { value: 'modern_au', label: '现代AU' },
-                        { value: 'school_au', label: '校园AU' },
-                        { value: 'fantasy_au', label: '奇幻AU' },
+                        { value: 'canon', label: section.tabbed?.form?.canon || '原著向' },
+                        { value: 'modern_au', label: section.tabbed?.form?.modern_au || '现代AU' },
+                        { value: 'school_au', label: section.tabbed?.form?.school_au || '校园AU' },
+                        { value: 'fantasy_au', label: section.tabbed?.form?.fantasy_au || '奇幻AU' },
                       ].map((type) => (
                         <Button
                           key={type.value}
@@ -497,10 +498,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   {/* Prompt */}
                   <div>
                     <Label className="text-base font-medium mb-3 block">
-                      故事提示 <span className="text-sm text-muted-foreground font-normal">（至少10字）</span>
+                      {section.tabbed?.form?.story_prompt_label || 'Story Prompt'} <span className="text-sm text-muted-foreground font-normal">（{section.tabbed?.form?.story_prompt_hint || 'At least 10 characters'}）</span>
                     </Label>
                     <Textarea
-                      placeholder="描述你想要的故事内容、情节或场景..."
+                      placeholder={section.tabbed?.form?.story_prompt_placeholder || '描述你想要的故事内容、情节、场景...'}
                       value={prompt}
                       onChange={(e) => setPrompt(e.target.value)}
                       className="min-h-[120px] resize-none"
@@ -510,10 +511,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                         "text-xs",
                         prompt.trim().length < 10 ? "text-orange-500" : "text-muted-foreground"
                       )}>
-                        {prompt.length} / 2000 字符
+                        {section.tabbed?.form?.character_counter?.replace('{{count}}', prompt.length.toString()) || `${prompt.length.toString()} / 2000字符`}
                       </span>
                       {prompt.trim().length >= 10 && (
-                        <EnhancedBadge variant="success" size="sm">✓ 符合要求</EnhancedBadge>
+                        <EnhancedBadge variant="success" size="sm">{section.tabbed?.form?.meets_requirements || '✓ 符合要求'}</EnhancedBadge>
                       )}
                     </div>
                   </div>
@@ -521,14 +522,14 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   {/* Navigation Buttons */}
                   <div className="flex justify-between">
                     <Button variant="outline" onClick={() => setCurrentStep(2)}>
-                      上一步
+                      {section.tabbed?.buttons?.previous_step || '上一步'}
                     </Button>
                     <Button
                       onClick={handleNextStep}
                       disabled={!isStepCompleted(3)}
                       className="bg-primary hover:bg-primary/90"
                     >
-                      下一步
+                      {section.tabbed?.buttons?.next_step || '下一步'}
                     </Button>
                   </div>
                 </ModernCardContent>
@@ -542,53 +543,53 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Settings className="w-5 h-5 text-primary" />
-                      <h2 className="text-xl font-semibold">高级选项</h2>
+                      <h2 className="text-xl font-semibold">{section.tabbed?.steps?.step4?.title || '高级选项'}</h2>
                     </div>
-                    <EnhancedBadge variant="info" size="sm">可选</EnhancedBadge>
+                    <EnhancedBadge variant="info" size="sm">{section.tabbed?.form?.advanced_options?.subtitle || 'Optional'}</EnhancedBadge>
                   </div>
                 </ModernCardHeader>
                 <ModernCardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* OOC Level */}
                     <div>
-                      <Label className="text-sm font-medium mb-2 block">OOC程度</Label>
+                      <Label className="text-sm font-medium mb-2 block">{section.tabbed?.form?.advanced_options?.ooc_level || 'OOC Level'}</Label>
                       <RadioGroup
                         value={advancedOptions.ooc}
                         onValueChange={(value) => setAdvancedOptions({...advancedOptions, ooc: value})}
                       >
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="slight" id="ooc-slight" />
-                          <Label htmlFor="ooc-slight" className="text-sm">符合原著</Label>
+                          <Label htmlFor="ooc-slight" className="text-sm">{section.tabbed?.form?.advanced_options?.ooc_slight || 'Canon Compliant'}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="moderate" id="ooc-moderate" />
-                          <Label htmlFor="ooc-moderate" className="text-sm">轻微OOC</Label>
+                          <Label htmlFor="ooc-moderate" className="text-sm">{section.tabbed?.form?.advanced_options?.ooc_moderate || 'Slight OOC'}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="bold" id="ooc-bold" />
-                          <Label htmlFor="ooc-bold" className="text-sm">大胆改编</Label>
+                          <Label htmlFor="ooc-bold" className="text-sm">{section.tabbed?.form?.advanced_options?.ooc_bold || 'Bold Adaptation'}</Label>
                         </div>
                       </RadioGroup>
                     </div>
 
                     {/* Story Length */}
                     <div>
-                      <Label className="text-sm font-medium mb-2 block">故事长度</Label>
+                      <Label className="text-sm font-medium mb-2 block">{section.tabbed?.form?.advanced_options?.story_length || 'Story Length'}</Label>
                       <RadioGroup
                         value={advancedOptions.length}
                         onValueChange={(value) => setAdvancedOptions({...advancedOptions, length: value})}
                       >
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="short" id="length-short" />
-                          <Label htmlFor="length-short" className="text-sm">短篇 (300-600字)</Label>
+                          <Label htmlFor="length-short" className="text-sm">{section.tabbed?.form?.advanced_options?.length_short || 'Short (300-600 words)'}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="medium" id="length-medium" />
-                          <Label htmlFor="length-medium" className="text-sm">中篇 (600-1500字)</Label>
+                          <Label htmlFor="length-medium" className="text-sm">{section.tabbed?.form?.advanced_options?.length_medium || 'Medium (600-1500 words)'}</Label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="long" id="length-long" />
-                          <Label htmlFor="length-long" className="text-sm">长篇 (1500-3000字)</Label>
+                          <Label htmlFor="length-long" className="text-sm">{section.tabbed?.form?.advanced_options?.length_long || 'Long (1500-3000 words)'}</Label>
                         </div>
                       </RadioGroup>
                     </div>
@@ -597,13 +598,13 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   {/* Navigation Buttons */}
                   <div className="flex justify-between">
                     <Button variant="outline" onClick={() => setCurrentStep(3)}>
-                      上一步
+                      {section.tabbed?.buttons?.previous_step || '上一步'}
                     </Button>
                     <Button
                       onClick={handleNextStep}
                       className="bg-primary hover:bg-primary/90"
                     >
-                      下一步
+                      {section.tabbed?.buttons?.next_step || '下一步'}
                     </Button>
                   </div>
                 </ModernCardContent>
@@ -617,49 +618,53 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Zap className="w-5 h-5 text-primary" />
-                      <h2 className="text-xl font-semibold">生成创作</h2>
+                      <h2 className="text-xl font-semibold">{section.tabbed?.steps?.step5?.title || '生成创作'}</h2>
                     </div>
                     {isStepCompleted(5) && (
-                      <EnhancedBadge variant="success" size="sm">✓ 已完成</EnhancedBadge>
+                      <EnhancedBadge variant="success" size="sm">{section.tabbed?.status?.completed || '✓ Completed'}</EnhancedBadge>
                     )}
                   </div>
                 </ModernCardHeader>
                 <ModernCardContent className="space-y-6">
                   {/* Summary */}
                   <div className="bg-muted/50 rounded-lg p-4">
-                    <h3 className="font-semibold mb-3">创作概要</h3>
+                    <h3 className="font-semibold mb-3">{section.tabbed?.summary?.title || 'Creation Summary'}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                       <div>
-                        <span className="text-muted-foreground">原作：</span>
+                        <span className="text-muted-foreground">{section.tabbed?.summary?.source_work || 'Source:'}</span>
                         <span className="font-medium ml-2">
-                          {sourceType === 'preset'
-                            ? getWorkName(getWorkById(selectedPresetWork), locale)
-                            : customWorkName}
+                          {(() => {
+                            const presetWork = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
+                            return presetWork ? getWorkName(presetWork, locale) : customWorkName;
+                          })()}
                         </span>
                       </div>
                       <div>
-                        <span className="text-muted-foreground">配对：</span>
+                        <span className="text-muted-foreground">{section.tabbed?.summary?.pairing || 'Pairing:'}</span>
                         <span className="font-medium ml-2">
-                          {selectedCharacters.map(id => {
-                            const char = getCharacterById(getWorkById(selectedPresetWork), id);
-                            return char ? getCharacterName(char, locale) : id;
-                          }).join(' × ') || '未选择'}
+                          {(() => {
+                            const presetWork = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
+                            return selectedCharacters.map(id => {
+                              const char = presetWork ? getCharacterById(presetWork, id) : null;
+                              return char ? getCharacterName(char, locale) : id;
+                            }).join(' × ') || 'Not selected';
+                          })()}
                         </span>
                       </div>
                       <div>
-                        <span className="text-muted-foreground">类型：</span>
+                        <span className="text-muted-foreground">{section.tabbed?.summary?.plot_type || 'Type:'}</span>
                         <span className="font-medium ml-2">
-                          {plotType === 'canon' ? '原著向' :
-                           plotType === 'modern_au' ? '现代AU' :
-                           plotType === 'school_au' ? '校园AU' :
-                           plotType === 'fantasy_au' ? '奇幻AU' : '跨界'}
+                          {plotType === 'canon' ? (section.tabbed?.form?.canon || 'Canon') :
+                           plotType === 'modern_au' ? (section.tabbed?.form?.modern_au || 'Modern AU') :
+                           plotType === 'school_au' ? (section.tabbed?.form?.school_au || 'School AU') :
+                           plotType === 'fantasy_au' ? (section.tabbed?.form?.fantasy_au || 'Fantasy AU') : 'Crossover'}
                         </span>
                       </div>
                       <div>
-                        <span className="text-muted-foreground">长度：</span>
+                        <span className="text-muted-foreground">{section.tabbed?.summary?.story_length || 'Length:'}</span>
                         <span className="font-medium ml-2">
-                          {advancedOptions.length === 'short' ? '短篇' :
-                           advancedOptions.length === 'medium' ? '中篇' : '长篇'}
+                          {advancedOptions.length === 'short' ? (section.tabbed?.form?.advanced_options?.length_short || 'Short') :
+                           advancedOptions.length === 'medium' ? (section.tabbed?.form?.advanced_options?.length_medium || 'Medium') : (section.tabbed?.form?.advanced_options?.length_long || 'Long')}
                         </span>
                       </div>
                     </div>
@@ -681,19 +686,19 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                     {isGenerating ? (
                       <>
                         <div className="animate-spin mr-2 h-5 w-5 border-2 border-white border-t-transparent rounded-full" />
-                        正在创作中...
+                        {section.tabbed?.form?.generation?.status_writing || 'Creating...'}
                       </>
                     ) : (
                       <>
                         <Sparkles className="w-5 h-5 mr-2" />
-                        开始创作同人小说
+                        {section.tabbed?.form?.generation?.start_button || 'Start Creating Fanfic'}
                       </>
                     )}
                   </Button>
 
                   {/* Progress */}
                   {isGenerating && (
-                    <ProgressBar value={0} variant="gradient" showLabel label="AI创作进度" />
+                    <ProgressBar value={0} variant="gradient" showLabel label={section.tabbed?.status?.generating || 'AI Progress'} />
                   )}
 
                   {/* Output */}
@@ -702,10 +707,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                       <div className="flex items-center justify-between">
                         <h3 className="text-lg font-semibold flex items-center gap-2">
                           <Icon name="mdi:text-box" className="w-5 h-5" />
-                          创作完成
+                          {section.tabbed?.form?.generation?.status_complete || 'Complete!'}
                         </h3>
                         <div className="text-sm text-muted-foreground">
-                          {wordCount} 字
+                          {section.tabbed?.status?.word_count?.replace('{{count}}', wordCount.toString()) || `${wordCount} words`}
                         </div>
                       </div>
 
@@ -732,11 +737,11 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                           size="sm"
                           onClick={() => {
                             navigator.clipboard.writeText(generatedFanfic);
-                            toast.success("已复制到剪贴板");
+                            toast.success(section.tabbed?.messages?.copy_success || "Copied to clipboard");
                           }}
                         >
                           <Icon name="mdi:content-copy" className="w-4 h-4 mr-1" />
-                          复制
+                          {section.output?.button_copy || 'Copy'}
                         </Button>
                         <Button
                           variant="outline"
@@ -745,7 +750,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                           disabled={isGenerating}
                         >
                           <Icon name="mdi:refresh" className="w-4 h-4 mr-1" />
-                          重新生成
+                          {section.output?.button_regenerate || 'Regenerate'}
                         </Button>
                       </div>
                     </AnimatedContainer>
@@ -754,7 +759,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   {/* Navigation Buttons */}
                   <div className="flex justify-start">
                     <Button variant="outline" onClick={() => setCurrentStep(4)}>
-                      上一步
+                      {section.tabbed?.buttons?.previous_step || '上一步'}
                     </Button>
                   </div>
                 </ModernCardContent>

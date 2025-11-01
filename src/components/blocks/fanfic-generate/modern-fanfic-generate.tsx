@@ -18,21 +18,13 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import Icon from "@/components/icon";
 import { toast } from "sonner";
 import { FanficGenerate as FanficGenerateType } from "@/types/blocks/fanfic-generate";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useAppContext } from "@/contexts/app";
 import confetti from "canvas-confetti";
 import { FanficStorage } from "@/lib/fanfic-storage";
 import { PRESET_WORKS, getWorkById, getCharacterName, getCharacterById, getWorkName } from "@/lib/preset-works";
 import { cn } from "@/lib/utils";
 import { ChevronDown, ChevronLeft, ChevronRight, Sparkles, Zap, Heart, BookOpen, Wand2 } from "lucide-react";
-
-// ========== STEP DEFINITIONS ==========
-
-const STEPS = [
-  { id: 1, title: "选择原作", description: "选择你喜欢的作品和角色" },
-  { id: 2, title: "配置参数", description: "设置故事类型和风格" },
-  { id: 3, title: "生成创作", description: "AI开始创作你的同人故事" },
-];
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -52,7 +44,16 @@ function calculateWordCount(text: string): number {
 
 export default function ModernFanficGenerate({ section }: { section: FanficGenerateType }) {
   const locale = useLocale();
+  const t = useTranslations('hero_fanfic.modern');
   const { user, setShowVerificationModal, setVerificationCallback } = useAppContext();
+
+  // ========== STEP DEFINITIONS ==========
+
+  const STEPS = [
+    { id: 1, title: section.modern?.steps?.step1?.title || "选择原作", description: section.modern?.steps?.step1?.description || "选择你喜欢的作品和角色" },
+    { id: 2, title: section.modern?.steps?.step2?.title || "配置参数", description: section.modern?.steps?.step2?.description || "设置故事类型和风格" },
+    { id: 3, title: section.modern?.steps?.step3?.title || "生成创作", description: section.modern?.steps?.step3?.description || "AI{t('actions.generate_fanfic') || '开始创作'}你的同人故事" },
+  ];
 
   // ========== STATE MANAGEMENT ==========
 
@@ -88,11 +89,11 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
   const handleAddCharacter = useCallback((characterId: string) => {
     if (!selectedCharacters.includes(characterId)) {
       if (pairingType === 'gen' && selectedCharacters.length >= 1) {
-        toast.error("单人向最多只能选择1个角色");
+        toast.error(t('messages.error_gen_limit') || "Gen-focused can only select 1 character");
         return;
       }
       if (pairingType === 'romantic' && selectedCharacters.length >= 2) {
-        toast.error("浪漫向最多只能选择2个角色");
+        toast.error(t('messages.error_romantic_limit') || "Romantic can only select 2 characters");
         return;
       }
       setSelectedCharacters([...selectedCharacters, characterId]);
@@ -125,11 +126,11 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
 
   const nextStep = () => {
     if (currentStep === 1 && !canProceedToStep2) {
-      toast.error("请完成当前步骤后再继续");
+      toast.error(t('messages.step_validation') || "Please complete current step first");
       return;
     }
     if (currentStep === 2 && !canProceedToStep3) {
-      toast.error("请完成当前步骤后再继续");
+      toast.error(t('messages.step_validation') || "Please complete current step first");
       return;
     }
     setCurrentStep(prev => Math.min(prev + 1, 3));
@@ -149,7 +150,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
     setPairingType('romantic');
     setSelectedCharacters(popularPairing);
     setCurrentStep(2);
-    toast.success("已为您选择热门配置！");
+    toast.success(t('messages.auto_advance') || "Popular configuration selected!");
   }, []);
 
   // ========== GENERATE FUNCTION ==========
@@ -162,7 +163,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
     }
 
     if (!canGenerate) {
-      toast.error("请完善所有必填信息");
+      toast.error(t('messages.step_validation') || "Please complete all required information");
       return;
     }
 
@@ -198,13 +199,14 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
       setWordCount(count);
 
       // 生成标签
-      const sourceName = sourceType === 'preset'
-        ? getWorkName(getWorkById(selectedPresetWork), locale)
+      const presetWork = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
+      const sourceName = sourceType === 'preset' && presetWork
+        ? getWorkName(presetWork, locale)
         : customWorkName;
       const tags = [
         `#${sourceName.replace(/\s+/g, '')}`,
         `#${selectedCharacters.map(id => {
-          const char = getCharacterById(getWorkById(selectedPresetWork), id);
+          const char = presetWork ? getCharacterById(presetWork, id) : null;
           return char ? getCharacterName(char, locale) : id;
         }).join('×')}`,
         ...(plotType !== 'canon' ? [`#${plotType.toUpperCase()}`] : []),
@@ -213,7 +215,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
 
       // 保存到历史记录
       try {
-        FanficStorage.addFanfic({
+        FanficStorage.saveHistory({
           title: `同人文 - ${sourceName}`,
           source: {
             type: sourceType,
@@ -236,7 +238,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
         console.error('保存历史记录失败:', error);
       }
 
-      toast.success("创作完成！");
+      toast.success(t('messages.generation_success') || "Creation complete!");
       confetti({
         particleCount: 100,
         spread: 70,
@@ -244,8 +246,8 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
       });
 
     } catch (error) {
-      console.error('生成失败:', error);
-      toast.error(error instanceof Error ? error.message : '生成失败，请重试');
+      console.error('Generation failed:', error);
+      toast.error(error instanceof Error ? error.message : t('messages.error_generation') || 'Generation failed, please try again');
     } finally {
       setIsGenerating(false);
     }
@@ -260,10 +262,10 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
         subtitle="AI-Powered Fanfiction Generator"
         title={
           <span>
-            <GradientText variant="hero">创作你的同人故事</GradientText>
+            <GradientText variant="hero">{t('steps.step1.title') || '创作你的同人故事'}</GradientText>
           </span>
         }
-        description="基于热门IP和角色，AI帮你创作精彩的同人小说。支持多种剧情类型和风格，让想象力自由飞翔。"
+        description={t('steps.step1.description') || '基于热门IP和角色，AI帮你创作精彩的同人小说。支持多种剧情类型和风格，让想象力自由飞翔。'}
         background="gradient"
       />
 
@@ -282,7 +284,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                 <ModernCardHeader>
                   <ModernCardTitle className="flex items-center gap-2">
                     <BookOpen className="w-5 h-5 text-primary" />
-                    选择原作和角色
+                    {t('steps.step1.title') || '选择原作和角色'}
                   </ModernCardTitle>
                   <ModernCardDescription>
                     从热门IP中选择你喜欢的作品，然后挑选你最喜欢的角色进行配对
@@ -293,7 +295,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                   <div className="bg-primary/5 rounded-lg p-6 border border-primary/20">
                     <h3 className="font-semibold mb-3 flex items-center gap-2">
                       <Sparkles className="w-4 h-4 text-primary" />
-                      快速开始
+                      {t('form.popular_works') || '快速开始'}
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                       {PRESET_WORKS.slice(0, 3).map((work) => (
@@ -324,7 +326,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
 
                   {/* All Works Grid */}
                   <div>
-                    <h3 className="font-semibold mb-3">全部作品</h3>
+                    <h3 className="font-semibold mb-3">{t('form.custom_work') || '全部作品'}</h3>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                       {PRESET_WORKS.map((work) => (
                         <ModernCard
@@ -472,7 +474,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                 <ModernCardHeader>
                   <ModernCardTitle className="flex items-center gap-2">
                     <Wand2 className="w-5 h-5 text-primary" />
-                    配置故事参数
+                    {t('steps.step3.title') || '配置故事参数'}
                   </ModernCardTitle>
                   <ModernCardDescription>
                     自定义你的故事类型、长度、风格等细节
@@ -593,16 +595,18 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
           )}
 
           {/* Step 3: Generate */}
-          {currentStep === 3 && (
-            <div className="space-y-6">
-              <ModernCard variant="elevated" className="max-w-4xl mx-auto">
+          {currentStep === 3 && (() => {
+            const presetWork = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
+            return (
+              <div className="space-y-6">
+                <ModernCard variant="elevated" className="max-w-4xl mx-auto">
                 <ModernCardHeader>
                   <ModernCardTitle className="flex items-center gap-2">
                     <Zap className="w-5 h-5 text-primary" />
                     生成你的同人故事
                   </ModernCardTitle>
                   <ModernCardDescription>
-                    AI正在等待开始创作你的专属同人小说
+                    AI正在等待{t('actions.generate_fanfic') || '开始创作'}你的专属同人小说
                   </ModernCardDescription>
                 </ModernCardHeader>
                 <ModernCardContent className="space-y-6">
@@ -613,8 +617,8 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                       <div>
                         <span className="text-muted-foreground">原作：</span>
                         <span className="font-medium ml-2">
-                          {sourceType === 'preset'
-                            ? getWorkName(getWorkById(selectedPresetWork), locale)
+                          {sourceType === 'preset' && presetWork
+                            ? getWorkName(presetWork, locale)
                             : customWorkName}
                         </span>
                       </div>
@@ -622,7 +626,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                         <span className="text-muted-foreground">配对：</span>
                         <span className="font-medium ml-2">
                           {selectedCharacters.map(id => {
-                            const char = getCharacterById(getWorkById(selectedPresetWork), id);
+                            const char = presetWork ? getCharacterById(presetWork, id) : null;
                             return char ? getCharacterName(char, locale) : id;
                           }).join(' × ')}
                         </span>
@@ -668,7 +672,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                     ) : (
                       <>
                         <Sparkles className="w-5 h-5 mr-2" />
-                        开始创作同人小说
+                        {t('actions.generate_fanfic') || '开始创作'}同人小说
                       </>
                     )}
                   </Button>
@@ -719,7 +723,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                           size="sm"
                           onClick={() => {
                             navigator.clipboard.writeText(generatedFanfic);
-                            toast.success("已复制到剪贴板");
+                            toast.success("{t('results.copy_success') || '已复制到剪贴板'}");
                           }}
                         >
                           <Icon name="mdi:content-copy" className="w-4 h-4 mr-1" />
@@ -739,8 +743,9 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                   )}
                 </ModernCardContent>
               </ModernCard>
-            </div>
-          )}
+              </div>
+            );
+          })()}
         </AnimatedContainer>
       </div>
 
@@ -755,7 +760,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                 className="flex-1"
               >
                 <ChevronLeft className="w-4 h-4 mr-1" />
-                上一步
+                {t('actions.previous') || '上一步'}
               </Button>
             )}
             {currentStep < 3 && (
@@ -767,7 +772,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                   "hover:from-primary/90 hover:to-blue-600"
                 )}
               >
-                下一步
+                {t('actions.next') || '下一步'}
                 <ChevronRight className="w-4 h-4 ml-1" />
               </Button>
             )}
@@ -781,7 +786,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
           {currentStep > 1 && (
             <Button variant="outline" onClick={prevStep}>
               <ChevronLeft className="w-4 h-4 mr-1" />
-              上一步
+              {t('actions.previous') || '上一步'}
             </Button>
           )}
           {currentStep < 3 && (
@@ -790,7 +795,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
               disabled={currentStep === 1 ? !canProceedToStep2 : currentStep === 2 ? !canProceedToStep3 : false}
               className="bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-600"
             >
-              下一步
+              {t('actions.next') || '下一步'}
               <ChevronRight className="w-4 h-4 ml-1" />
             </Button>
           )}
@@ -800,7 +805,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
       {/* Sticky CTA for Generate */}
       {currentStep === 3 && !generatedFanfic && (
         <StickyCTA>
-          开始创作
+          {t('actions.generate_fanfic') || '开始创作'}
         </StickyCTA>
       )}
     </div>

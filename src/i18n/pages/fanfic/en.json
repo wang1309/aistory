@@ -316,6 +316,235 @@
     "ui": {
       "pairing_separator": " × ",
       "speed_icon": "⚡"
+    },
+    "tabbed": {
+      "hero": {
+        "title": "Create Your Fanfiction",
+        "subtitle": "Based on popular IPs and characters, AI helps you create amazing fanfiction stories"
+      },
+      "steps": {
+        "step1": {
+          "title": "Select Source",
+          "description": "Choose Work"
+        },
+        "step2": {
+          "title": "Select Characters",
+          "description": "Choose Pairing"
+        },
+        "step3": {
+          "title": "Story Settings",
+          "description": "Configure"
+        },
+        "step4": {
+          "title": "Advanced Options",
+          "description": "Customize"
+        },
+        "step5": {
+          "title": "Generate",
+          "description": "Create"
+        }
+      },
+      "form": {
+        "source_type_label": "Select Source",
+        "preset_works": "Preset Works",
+        "custom_input": "Custom",
+        "work_name_placeholder": "e.g., Your Name, Genshin Impact, Jujutsu Kaisen...",
+        "work_name_label": "Enter Work Name",
+        "select_characters_label": "Select Characters",
+        "selected_count": "({{count}} selected)",
+        "pairing_type_label": "Pairing Type",
+        "romantic": "Romantic",
+        "gen": "Gen-focused",
+        "poly": "Polyamorous",
+        "character_selected": "{{count}} selected",
+        "plot_type_label": "Plot Type",
+        "canon": "Canon",
+        "modern_au": "Modern AU",
+        "school_au": "School AU",
+        "fantasy_au": "Fantasy AU",
+        "story_prompt_label": "Story Prompt",
+        "story_prompt_placeholder": "Describe your desired story content, plot, or scenes...",
+        "popular_works": "Popular IP Works",
+        "story_prompt_hint": "At least 10 characters",
+        "character_counter": "{{count}} / 2000 characters",
+        "meets_requirements": "✓ Meets requirements",
+        "ooc_level": "OOC Level",
+        "story_length": "Story Length",
+        "length_short": "Short (300-600 words)",
+        "length_medium": "Medium (600-1500 words)",
+        "length_long": "Long (1500-3000 words)",
+        "advanced_options": {
+          "title": "Advanced Options",
+          "subtitle": "Optional",
+          "ooc_level": "OOC Level",
+          "ooc_slight": "Canon Compliant",
+          "ooc_moderate": "Slight OOC",
+          "ooc_bold": "Bold Adaptation",
+          "story_length": "Story Length",
+          "length_short": "Short (300-600 words)",
+          "length_medium": "Medium (600-1500 words)",
+          "length_long": "Long (1500-3000 words)"
+        },
+        "generation": {
+          "status_writing": "Creating...",
+          "status_complete": "Complete!",
+          "start_button": "Start Creating Fanfic"
+        }
+      },
+      "buttons": {
+        "next_step": "Next Step",
+        "previous_step": "Previous Step",
+        "start_creation": "Start Creating Fanfic",
+        "regenerating": "Creating..."
+      },
+      "summary": {
+        "title": "Creation Summary",
+        "source_work": "Source: ",
+        "pairing": "Pairing: ",
+        "plot_type": "Type: ",
+        "story_length": "Length: "
+      },
+      "status": {
+        "completed": "✓ Completed",
+        "optional": "Optional",
+        "generating": "AI Progress",
+        "creation_complete": "Complete",
+        "word_count": "{{count}} words"
+      },
+      "messages": {
+        "step_completed": "Auto-advanced to step {{step}}",
+        "error_complete_current": "Please complete current step first",
+        "error_gen_limit": "Gen-focused can only select 1 character",
+        "error_romantic_limit": "Romantic can only select 2 characters",
+        "toast_copied": "Copied to clipboard",
+        "copy_success": "Copied to clipboard",
+        "generation_success": "Creation complete!",
+        "step_validation": "Please complete current step first",
+        "auto_advance": "Advanced to step {{step}}",
+        "error_generation": "Generation failed, please try again"
+      }
+    },
+    "modern": {
+      "steps": {
+        "step1": {
+          "title": "Select Source Work",
+          "description": "Choose or enter work name"
+        },
+        "step2": {
+          "title": "Select Characters",
+          "description": "Choose characters to pair"
+        },
+        "step3": {
+          "title": "Plot Settings",
+          "description": "Choose story type and prompt"
+        },
+        "step4": {
+          "title": "Advanced Settings",
+          "description": "Customize creation parameters"
+        },
+        "step5": {
+          "title": "Start Generation",
+          "description": "AI creates fanfic"
+        }
+      },
+      "form": {
+        "select_work": "Select Work",
+        "custom_work": "Custom Work",
+        "work_name_hint": "Enter source work name (e.g., Harry Potter, Genshin Impact, etc.)",
+        "pairing_type": "Pairing Type",
+        "select_characters": "Select Characters",
+        "selected_count": "{{count}} characters selected",
+        "plot_types": "Plot Types",
+        "story_requirements": "Story Requirements",
+        "minimum_chars": "Minimum 10 characters",
+        "character_count": "{{current}} / 2000 characters",
+        "meets_requirements": "✓ Meets requirements",
+        "advanced_settings": "Advanced Settings",
+        "ooc_level": "OOC Level",
+        "ooc_none": "Any",
+        "ooc_slight": "Slight OOC",
+        "ooc_moderate": "Moderate OOC",
+        "ooc_heavy": "Heavy OOC",
+        "story_length": "Story Length",
+        "length_options": {
+          "short": "Short (300-500 words)",
+          "medium": "Medium (500-1000 words)",
+          "long": "Long (1000-2000 words)",
+          "epic": "Epic (2000+ words)"
+        },
+        "narrative_perspective": "Narrative Perspective",
+        "perspective_options": {
+          "first": "First Person",
+          "second": "Second Person",
+          "third_limited": "Third Person Limited",
+          "third_omniscient": "Third Person Omniscient"
+        }
+      },
+      "actions": {
+        "next": "Next",
+        "previous": "Previous",
+        "generate_fanfic": "Generate Fanfic",
+        "generating": "Creating...",
+        "retry": "Regenerate",
+        "copy": "Copy"
+      },
+      "summary": {
+        "title": "Creation Preview",
+        "source_work_label": "Source: ",
+        "selected_pairing_label": "Pairing: ",
+        "plot_type_label": "Type: ",
+        "length_label": "Length: ",
+        "undefined": "Not selected"
+      },
+      "results": {
+        "generation_title": "Generation Results",
+        "word_count": "{{count}} words",
+        "copy_success": "Copied to clipboard",
+        "regenerate": "Regenerate",
+        "download_pdf": "Download PDF"
+      },
+      "messages": {
+        "step_validation": "Please complete current step first",
+        "auto_advance": "Advanced to step {{step}}",
+        "generation_success": "Creation complete!",
+        "copy_success": "Copied to clipboard",
+        "error_generation": "Generation failed, please try again",
+        "advanced_options": {
+          "title": "Advanced Options",
+          "subtitle": "Optional",
+          "ooc_level": "OOC Level",
+          "ooc_none": "No restriction",
+          "ooc_slight": "Canon compliant",
+          "ooc_moderate": "Slight OOC",
+          "ooc_bold": "Bold adaptation",
+          "story_length": "Story Length",
+          "length_short": "Short (300-600 words)",
+          "length_medium": "Medium (600-1500 words)",
+          "length_long": "Long (1500-3000 words)",
+          "narrative_perspective": "Narrative Perspective",
+          "perspective_first": "First Person",
+          "perspective_second": "Second Person",
+          "perspective_third_limited": "Third Person Limited",
+          "perspective_third_omniscient": "Third Person Omniscient"
+        },
+        "generation": {
+          "status_writing": "AI is writing...",
+          "status_complete": "Complete!",
+          "summary_title": "Creation Summary",
+          "source_work_label": "Source:",
+          "pairing_label": "Pairing:",
+          "type_label": "Type:",
+          "length_label": "Length:",
+          "progress_label": "AI Creation Progress",
+          "word_count": "{{count}} words",
+          "actions": {
+            "copy": "Copy",
+            "regenerate": "Regenerate",
+            "download_pdf": "Download PDF"
+          },
+          "undefined": "Not selected"
+        }
+      }
     }
   }
 }

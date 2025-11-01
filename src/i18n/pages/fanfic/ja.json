@@ -316,6 +316,235 @@
     "ui": {
       "pairing_separator": " × ",
       "speed_icon": "⚡"
+    },
+    "tabbed": {
+      "hero": {
+        "title": "二次創作を作成",
+        "subtitle": "人気IPとキャラクターに基づき、AIが素晴らしいファンフィクション物語の作成をお手伝いします"
+      },
+      "steps": {
+        "step1": {
+          "title": "原作を選択",
+          "description": "作品を選択"
+        },
+        "step2": {
+          "title": "キャラクターを選択",
+          "description": "ペアリングを選択"
+        },
+        "step3": {
+          "title": "ストーリー設定",
+          "description": "パラメータを設定"
+        },
+        "step4": {
+          "title": "詳細オプション",
+          "description": "カスタマイズ"
+        },
+        "step5": {
+          "title": "生成作成",
+          "description": "作成開始"
+        }
+      },
+      "form": {
+        "source_type_label": "ソースを選択",
+        "preset_works": "プリセット作品",
+        "custom_input": "カスタム",
+        "work_name_placeholder": "例：君の名は、原神、呪術廻戦...",
+        "work_name_label": "作品名を入力",
+        "select_characters_label": "キャラクターを選択",
+        "selected_count": "（{{count}}個選択済み）",
+        "pairing_type_label": "ペアリングタイプ",
+        "romantic": "ロマンス向",
+        "gen": "キャラクター中心",
+        "poly": "多人数ペアリング",
+        "character_selected": "{{count}}個選択",
+        "plot_type_label": "プロットタイプ",
+        "canon": "正典",
+        "modern_au": "モダンAU",
+        "school_au": "学園AU",
+        "fantasy_au": "ファンタジーAU",
+        "story_prompt_label": "ストーリープロンプト",
+        "story_prompt_placeholder": "望むストーリー内容、プロット、シーンを記述してください...",
+        "popular_works": "人気IP作品",
+        "story_prompt_hint": "最低10文字",
+        "character_counter": "{{current}} / 2000文字",
+        "meets_requirements": "✓ 要件を満たしています",
+        "ooc_level": "OOCレベル",
+        "story_length": "ストーリー長",
+        "length_short": "短編（300-600字）",
+        "length_medium": "中編（600-1500字）",
+        "length_long": "長編（1500-3000字）",
+        "advanced_options": {
+          "title": "詳細オプション",
+          "subtitle": "オプション",
+          "ooc_level": "OOCレベル",
+          "ooc_slight": "原作準拠",
+          "ooc_moderate": "軽いOOC",
+          "ooc_bold": "大胆なアレンジ",
+          "story_length": "ストーリー長",
+          "length_short": "短編（300-600字）",
+          "length_medium": "中編（600-1500字）",
+          "length_long": "長編（1500-3000字）"
+        },
+        "generation": {
+          "status_writing": "作成中...",
+          "status_complete": "作成完了！",
+          "start_button": "二次創作の作成を開始"
+        }
+      },
+      "buttons": {
+        "next_step": "次のステップ",
+        "previous_step": "前のステップ",
+        "start_creation": "二次創作の作成を開始",
+        "regenerating": "作成中..."
+      },
+      "summary": {
+        "title": "作成要約",
+        "source_work": "原作：",
+        "pairing": "ペアリング：",
+        "plot_type": "タイプ：",
+        "story_length": "長さ："
+      },
+      "status": {
+        "completed": "✓ 完了",
+        "optional": "オプション",
+        "generating": "AI進行状況",
+        "creation_complete": "完了",
+        "word_count": "{{count}}字"
+      },
+      "messages": {
+        "step_completed": "ステップ{{step}}に自動進行しました",
+        "error_complete_current": "まず現在のステップを完了してください",
+        "error_gen_limit": "キャラクター中心は最大1人のキャラクターしか選択できません",
+        "error_romantic_limit": "ロマンス向は最大2人のキャラクターしか選択できません",
+        "toast_copied": "クリップボードにコピーしました",
+        "copy_success": "クリップボードにコピーしました",
+        "generation_success": "作成完了！",
+        "step_validation": "まず現在のステップを完了してください",
+        "auto_advance": "ステップ{{step}}に進みました",
+        "error_generation": "生成に失敗しました。もう一度お試しください"
+      }
+    },
+    "modern": {
+      "steps": {
+        "step1": {
+          "title": "原作を選択",
+          "description": "作品名を選択または入力"
+        },
+        "step2": {
+          "title": "キャラクターを選択",
+          "description": "ペアリングするキャラクターを選択"
+        },
+        "step3": {
+          "title": "プロット設定",
+          "description": "ストーリータイプとプロンプトを選択"
+        },
+        "step4": {
+          "title": "詳細設定",
+          "description": "作成パラメータをカスタマイズ"
+        },
+        "step5": {
+          "title": "生成開始",
+          "description": "AIが二次創作を作成"
+        }
+      },
+      "form": {
+        "select_work": "作品を選択",
+        "custom_work": "カスタム作品",
+        "work_name_hint": "原作名を入力（例：ハリー・ポッター、原神など）",
+        "pairing_type": "ペアリングタイプ",
+        "select_characters": "キャラクターを選択",
+        "selected_count": "{{count}}人のキャラクターを選択",
+        "plot_types": "プロットタイプ",
+        "story_requirements": "ストーリー要件",
+        "minimum_chars": "最低10文字",
+        "character_count": "{{current}} / 2000文字",
+        "meets_requirements": "✓ 要件を満たしています",
+        "advanced_settings": "詳細設定",
+        "ooc_level": "OOCレベル",
+        "ooc_none": "指定なし",
+        "ooc_slight": "軽いOOC",
+        "ooc_moderate": "適度なOOC",
+        "ooc_heavy": "重度のOOC",
+        "story_length": "ストーリー長",
+        "length_options": {
+          "short": "短編（300-500字）",
+          "medium": "中編（500-1000字）",
+          "long": "長編（1000-2000字）",
+          "epic": "超大作（2000字以上）"
+        },
+        "narrative_perspective": "ナレーション視点",
+        "perspective_options": {
+          "first": "一人称",
+          "second": "二人称",
+          "third_limited": "三人称限定視点",
+          "third_omniscient": "三人称全知視点"
+        }
+      },
+      "actions": {
+        "next": "次へ",
+        "previous": "前へ",
+        "generate_fanfic": "二次創作を生成",
+        "generating": "作成中...",
+        "retry": "再生成",
+        "copy": "コピー"
+      },
+      "summary": {
+        "title": "作成プレビュー",
+        "source_work_label": "原作：",
+        "selected_pairing_label": "ペアリング：",
+        "plot_type_label": "タイプ：",
+        "length_label": "長さ：",
+        "undefined": "未選択"
+      },
+      "results": {
+        "generation_title": "生成結果",
+        "word_count": "{{count}}字",
+        "copy_success": "クリップボードにコピーしました",
+        "regenerate": "再生成",
+        "download_pdf": "PDFをダウンロード"
+      },
+      "messages": {
+        "step_validation": "まず現在のステップを完了してください",
+        "auto_advance": "ステップ{{step}}に進行しました",
+        "generation_success": "作成完了しました！",
+        "copy_success": "クリップボードにコピーしました",
+        "error_generation": "生成に失敗しました。もう一度お試しください",
+        "advanced_options": {
+          "title": "詳細オプション",
+          "subtitle": "オプション",
+          "ooc_level": "OOCレベル",
+          "ooc_none": "指定なし",
+          "ooc_slight": "原作準拠",
+          "ooc_moderate": "軽いOOC",
+          "ooc_bold": "大胆なアレンジ",
+          "story_length": "ストーリー長",
+          "length_short": "短編（300-600字）",
+          "length_medium": "中編（600-1500字）",
+          "length_long": "長編（1500-3000字）",
+          "narrative_perspective": "ナレーション視点",
+          "perspective_first": "一人称",
+          "perspective_second": "二人称",
+          "perspective_third_limited": "三人称限定視点",
+          "perspective_third_omniscient": "三人称全知視点"
+        },
+        "generation": {
+          "status_writing": "AIが執筆中...",
+          "status_complete": "完了！",
+          "summary_title": "作成要約",
+          "source_work_label": "原作：",
+          "pairing_label": "ペアリング：",
+          "type_label": "タイプ：",
+          "length_label": "長さ：",
+          "progress_label": "AI作成進行状況",
+          "word_count": "{{count}}字",
+          "actions": {
+            "copy": "コピー",
+            "regenerate": "再生成",
+            "download_pdf": "PDFをダウンロード"
+          },
+          "undefined": "未選択"
+        }
+      }
     }
   }
 }

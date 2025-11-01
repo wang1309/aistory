@@ -255,6 +255,213 @@ export interface FanficGenerate {
     pairing_separator: string;
     speed_icon: string;
   };
+  tabbed?: {
+    hero?: {
+      title?: string;
+      subtitle?: string;
+    };
+    steps?: {
+      step1?: {
+        title?: string;
+        description?: string;
+      };
+      step2?: {
+        title?: string;
+        description?: string;
+      };
+      step3?: {
+        title?: string;
+        description?: string;
+      };
+      step4?: {
+        title?: string;
+        description?: string;
+      };
+      step5?: {
+        title?: string;
+        description?: string;
+      };
+    };
+    form?: {
+      source_type_label?: string;
+      preset_works?: string;
+      custom_input?: string;
+      work_name_placeholder?: string;
+      work_name_label?: string;
+      select_characters_label?: string;
+      selected_count?: string;
+      pairing_type_label?: string;
+      romantic?: string;
+      gen?: string;
+      poly?: string;
+      character_selected?: string;
+      plot_type_label?: string;
+      canon?: string;
+      modern_au?: string;
+      school_au?: string;
+      fantasy_au?: string;
+      story_prompt_label?: string;
+      story_prompt_placeholder?: string;
+      popular_works?: string;
+      story_prompt_hint?: string;
+      character_counter?: string;
+      meets_requirements?: string;
+      advanced_options?: {
+        title?: string;
+        subtitle?: string;
+        ooc_level?: string;
+        ooc_none?: string;
+        ooc_slight?: string;
+        ooc_moderate?: string;
+        ooc_bold?: string;
+        story_length?: string;
+        length_short?: string;
+        length_medium?: string;
+        length_long?: string;
+        narrative_perspective?: string;
+        perspective_first?: string;
+        perspective_second?: string;
+        perspective_third_limited?: string;
+        perspective_third_omniscient?: string;
+      };
+      generation?: {
+        status_writing?: string;
+        status_complete?: string;
+        summary_title?: string;
+        source_work_label?: string;
+        pairing_label?: string;
+        type_label?: string;
+        length_label?: string;
+        progress_label?: string;
+        word_count?: string;
+        actions?: {
+          copy?: string;
+          regenerate?: string;
+          download_pdf?: string;
+        };
+        undefined?: string;
+      };
+    };
+    buttons?: {
+      next_step?: string;
+      previous_step?: string;
+      start_creation?: string;
+      regenerating?: string;
+    };
+    summary?: {
+      title?: string;
+      source_work?: string;
+      pairing?: string;
+      plot_type?: string;
+      story_length?: string;
+    };
+    status?: {
+      completed?: string;
+      optional?: string;
+      generating?: string;
+      creation_complete?: string;
+      word_count?: string;
+    };
+    messages?: {
+      step_completed?: string;
+      error_complete_current?: string;
+      error_gen_limit?: string;
+      error_romantic_limit?: string;
+      toast_copied?: string;
+      copy_success?: string;
+      generation_success?: string;
+      step_validation?: string;
+      auto_advance?: string;
+      error_generation?: string;
+    };
+  };
+  modern?: {
+    steps?: {
+      step1?: {
+        title?: string;
+        description?: string;
+      };
+      step2?: {
+        title?: string;
+        description?: string;
+      };
+      step3?: {
+        title?: string;
+        description?: string;
+      };
+      step4?: {
+        title?: string;
+        description?: string;
+      };
+      step5?: {
+        title?: string;
+        description?: string;
+      };
+    };
+    form?: {
+      select_work?: string;
+      custom_work?: string;
+      work_name_hint?: string;
+      pairing_type?: string;
+      select_characters?: string;
+      selected_count?: string;
+      plot_types?: string;
+      story_requirements?: string;
+      minimum_chars?: string;
+      character_count?: string;
+      meets_requirements?: string;
+      advanced_settings?: string;
+      ooc_level?: string;
+      ooc_none?: string;
+      ooc_slight?: string;
+      ooc_moderate?: string;
+      ooc_heavy?: string;
+      story_length?: string;
+      length_options?: {
+        short?: string;
+        medium?: string;
+        long?: string;
+        epic?: string;
+      };
+      narrative_perspective?: string;
+      perspective_options?: {
+        first?: string;
+        second?: string;
+        third_limited?: string;
+        third_omniscient?: string;
+      };
+    };
+    actions?: {
+      next?: string;
+      previous?: string;
+      generate_fanfic?: string;
+      generating?: string;
+      retry?: string;
+      copy?: string;
+    };
+    summary?: {
+      title?: string;
+      source_work_label?: string;
+      selected_pairing_label?: string;
+      plot_type_label?: string;
+      length_label?: string;
+      undefined?: string;
+    };
+    results?: {
+      generation_title?: string;
+      word_count?: string;
+      copy_success?: string;
+      regenerate?: string;
+      download_pdf?: string;
+    };
+    messages?: {
+      step_validation?: string;
+      auto_advance?: string;
+      generation_success?: string;
+      copy_success?: string;
+      error_generation?: string;
+    };
+  };
 }
 
 // Data models for preset works

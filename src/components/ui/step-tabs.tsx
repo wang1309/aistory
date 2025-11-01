@@ -27,79 +27,83 @@ export function StepTabs({
 }: StepTabsProps) {
   const activeIndex = steps.findIndex(step => step.id === activeStepId)
 
+  // Calculate progress percentage
+  const progressPercentage = steps.length > 1
+    ? (activeIndex / (steps.length - 1)) * 100
+    : 0
+
   return (
-    <div className={cn("w-full space-y-3", className)}>
-      {/* Horizontal Tabs */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2">
-        {steps.map((step, index) => {
-          const isActive = step.id === activeStepId
-          const isCompleted = step.isCompleted || index < activeIndex
-          const isClickable = index <= activeIndex || isCompleted
+    <div className={cn("w-full space-y-6", className)}>
+      {/* Progress Bar Container */}
+      <div className="relative w-full py-2">
+        {/* Background Progress Bar (Gray) */}
+        <div className="absolute top-5 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-700 rounded-full" />
 
-          return (
-            <div
-              key={step.id}
-              className="flex items-center gap-2"
-            >
-              {/* Step Circle */}
-              <button
-                onClick={() => isClickable && onStepChange(step.id)}
-                disabled={!isClickable}
-                className={cn(
-                  "flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all",
-                  "min-w-[40px]",
-                  isActive && "border-primary bg-primary text-primary-foreground",
-                  isCompleted && "border-green-500 bg-green-500 text-white",
-                  !isActive && !isCompleted && "border-border bg-background text-muted-foreground",
-                  isClickable && "hover:border-primary cursor-pointer",
-                  !isClickable && "cursor-not-allowed opacity-50"
-                )}
-              >
-                {isCompleted ? (
-                  <Check className="w-5 h-5" />
-                ) : (
-                  <span className="text-sm font-medium">{index + 1}</span>
-                )}
-              </button>
+        {/* Active Progress Bar (Green Gradient) */}
+        <div
+          className="absolute top-5 left-0 h-1 bg-gradient-to-r from-green-500 to-green-400 rounded-full transition-all duration-500 ease-out"
+          style={{ width: `${progressPercentage}%` }}
+        />
 
-              {/* Step Text */}
-              <button
-                onClick={() => isClickable && onStepChange(step.id)}
-                disabled={!isClickable}
-                className={cn(
-                  "flex flex-col items-start",
-                  !isClickable && "cursor-not-allowed"
-                )}
-              >
-                <span
+        {/* Step Indicators */}
+        <div className="relative flex justify-between w-full">
+          {steps.map((step, index) => {
+            const isActive = step.id === activeStepId
+            const isCompleted = step.isCompleted || index < activeIndex
+            const isClickable = index <= activeIndex || isCompleted
+
+            return (
+              <div key={step.id} className="flex flex-col items-center flex-shrink-0">
+                {/* Step Circle */}
+                <button
+                  onClick={() => isClickable && onStepChange(step.id)}
+                  disabled={!isClickable}
                   className={cn(
-                    "text-sm font-medium whitespace-nowrap",
-                    isActive && "text-foreground",
-                    isCompleted && "text-green-600",
-                    !isActive && !isCompleted && "text-muted-foreground"
+                    "relative z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-300",
+                    "min-w-[40px] shadow-sm",
+                    isActive && "border-primary bg-primary text-primary-foreground shadow-md ring-4 ring-primary/10",
+                    isCompleted && "border-green-500 bg-green-500 text-white shadow-md ring-4 ring-green-500/10",
+                    !isActive && !isCompleted && "border-gray-300 bg-white dark:border-gray-600 dark:bg-gray-800 text-gray-500 dark:text-gray-400",
+                    isClickable && "hover:scale-105 hover:shadow-md cursor-pointer",
+                    !isClickable && "cursor-not-allowed opacity-60"
                   )}
                 >
-                  {step.title}
-                </span>
-                {step.description && (
-                  <span className="text-xs text-muted-foreground whitespace-nowrap">
-                    {step.description}
-                  </span>
-                )}
-              </button>
-
-              {/* Connector Line */}
-              {index < steps.length - 1 && (
-                <div
-                  className={cn(
-                    "h-[2px] w-12 md:w-16 mx-1.5 transition-colors",
-                    isCompleted ? "bg-green-500" : "bg-border"
+                  {isCompleted ? (
+                    <Check className="w-5 h-5" />
+                  ) : (
+                    <span className="text-sm font-medium">{index + 1}</span>
                   )}
-                />
-              )}
-            </div>
-          )
-        })}
+                </button>
+
+                {/* Step Text */}
+                <button
+                  onClick={() => isClickable && onStepChange(step.id)}
+                  disabled={!isClickable}
+                  className={cn(
+                    "flex flex-col items-start mt-3 text-left max-w-[80px]",
+                    !isClickable && "cursor-not-allowed"
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "text-sm font-medium whitespace-nowrap truncate",
+                      isActive && "text-foreground",
+                      isCompleted && "text-green-600 dark:text-green-400",
+                      !isActive && !isCompleted && "text-muted-foreground"
+                    )}
+                  >
+                    {step.title}
+                  </span>
+                  {step.description && (
+                    <span className="text-xs text-muted-foreground whitespace-nowrap truncate mt-1">
+                      {step.description}
+                    </span>
+                  )}
+                </button>
+              </div>
+            )
+          })}
+        </div>
       </div>
 
       {/* Step Content */}

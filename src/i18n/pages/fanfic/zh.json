@@ -316,6 +316,235 @@
     "ui": {
       "pairing_separator": " × ",
       "speed_icon": "⚡"
+    },
+    "tabbed": {
+      "hero": {
+        "title": "创作你的同人故事",
+        "subtitle": "基于热门IP和角色，AI帮你创作精彩的同人小说"
+      },
+      "steps": {
+        "step1": {
+          "title": "选择原作",
+          "description": "选择作品"
+        },
+        "step2": {
+          "title": "选择角色",
+          "description": "选择配对"
+        },
+        "step3": {
+          "title": "故事设置",
+          "description": "配置参数"
+        },
+        "step4": {
+          "title": "高级选项",
+          "description": "自定义"
+        },
+        "step5": {
+          "title": "生成创作",
+          "description": "开始创作"
+        }
+      },
+      "form": {
+        "source_type_label": "选择来源",
+        "preset_works": "预置作品",
+        "custom_input": "自定义",
+        "work_name_placeholder": "例如：你的名字、原神、咒术回战...",
+        "work_name_label": "输入作品名称",
+        "select_characters_label": "选择角色",
+        "selected_count": "（已选 {{count}} 个）",
+        "pairing_type_label": "配对类型",
+        "romantic": "浪漫向",
+        "gen": "单人中心",
+        "poly": "多人配对",
+        "character_selected": "已选 {{count}} 个",
+        "plot_type_label": "剧情类型",
+        "canon": "原著向",
+        "modern_au": "现代AU",
+        "school_au": "校园AU",
+        "fantasy_au": "奇幻AU",
+        "story_prompt_label": "故事提示",
+        "story_prompt_placeholder": "描述你想要的故事内容、情节或场景...",
+        "popular_works": "热门IP作品",
+        "story_prompt_hint": "至少10字",
+        "character_counter": "{{count}} / 2000 字符",
+        "meets_requirements": "✓ 符合要求",
+        "ooc_level": "OOC程度",
+        "story_length": "故事长度",
+        "length_short": "短篇 (300-600字)",
+        "length_medium": "中篇 (600-1500字)",
+        "length_long": "长篇 (1500-3000字)",
+        "advanced_options": {
+          "title": "高级选项",
+          "subtitle": "可选",
+          "ooc_level": "OOC程度",
+          "ooc_slight": "符合原著",
+          "ooc_moderate": "轻微OOC",
+          "ooc_bold": "大胆改编",
+          "story_length": "故事长度",
+          "length_short": "短篇 (300-600字)",
+          "length_medium": "中篇 (600-1500字)",
+          "length_long": "长篇 (1500-3000字)"
+        },
+        "generation": {
+          "status_writing": "正在创作中...",
+          "status_complete": "创作完成！",
+          "start_button": "开始创作同人小说"
+        }
+      },
+      "buttons": {
+        "next_step": "下一步",
+        "previous_step": "上一步",
+        "start_creation": "开始创作同人小说",
+        "regenerating": "正在创作中..."
+      },
+      "summary": {
+        "title": "创作概要",
+        "source_work": "原作：",
+        "pairing": "配对：",
+        "plot_type": "类型：",
+        "story_length": "长度："
+      },
+      "status": {
+        "completed": "✓ 已完成",
+        "optional": "可选",
+        "generating": "AI创作进度",
+        "creation_complete": "创作完成",
+        "word_count": "{{count}} 字"
+      },
+      "messages": {
+        "step_completed": "已自动进入步骤 {{step}}",
+        "error_complete_current": "请先完成当前步骤",
+        "error_gen_limit": "单人向最多只能选择1个角色",
+        "error_romantic_limit": "浪漫向最多只能选择2个角色",
+        "toast_copied": "已复制到剪贴板",
+        "copy_success": "已复制到剪贴板",
+        "generation_success": "创作完成！",
+        "step_validation": "请先完成当前步骤",
+        "auto_advance": "已进入步骤 {{step}}",
+        "error_generation": "生成失败，请重试"
+      }
+    },
+    "modern": {
+      "steps": {
+        "step1": {
+          "title": "选择原作",
+          "description": "选择或输入作品名称"
+        },
+        "step2": {
+          "title": "选择角色",
+          "description": "选择要配对的角色"
+        },
+        "step3": {
+          "title": "剧情设定",
+          "description": "选择故事类型和提示"
+        },
+        "step4": {
+          "title": "高级设置",
+          "description": "自定义创作参数"
+        },
+        "step5": {
+          "title": "开始生成",
+          "description": "AI创作同人文"
+        }
+      },
+      "form": {
+        "select_work": "选择作品",
+        "custom_work": "自定义作品",
+        "work_name_hint": "输入原作名称（如：哈利波特、原神等）",
+        "pairing_type": "配对类型",
+        "select_characters": "选择角色",
+        "selected_count": "已选择 {{count}} 个角色",
+        "plot_types": "剧情类型",
+        "story_requirements": "故事要求",
+        "minimum_chars": "至少10个字符",
+        "character_count": "{{current}} / 2000 字符",
+        "meets_requirements": "✓ 符合要求",
+        "advanced_settings": "高级设置",
+        "ooc_level": "OOC程度",
+        "ooc_none": "不限",
+        "ooc_slight": "轻微OOC",
+        "ooc_moderate": "适度OOC",
+        "ooc_heavy": "重度OOC",
+        "story_length": "故事长度",
+        "length_options": {
+          "short": "短篇 (300-500字)",
+          "medium": "中篇 (500-1000字)",
+          "long": "长篇 (1000-2000字)",
+          "epic": "超长 (2000+字)"
+        },
+        "narrative_perspective": "叙事视角",
+        "perspective_options": {
+          "first": "第一人称",
+          "second": "第二人称",
+          "third_limited": "第三人称有限视角",
+          "third_omniscient": "第三人称全知视角"
+        }
+      },
+      "actions": {
+        "next": "下一步",
+        "previous": "上一步",
+        "generate_fanfic": "生成同人文",
+        "generating": "正在创作中...",
+        "retry": "重新生成",
+        "copy": "复制"
+      },
+      "summary": {
+        "title": "创作预览",
+        "source_work_label": "原作：",
+        "selected_pairing_label": "配对：",
+        "plot_type_label": "类型：",
+        "length_label": "长度：",
+        "undefined": "未选择"
+      },
+      "results": {
+        "generation_title": "生成结果",
+        "word_count": "{{count}} 字",
+        "copy_success": "已复制到剪贴板",
+        "regenerate": "重新生成",
+        "download_pdf": "下载PDF"
+      },
+      "messages": {
+        "step_validation": "请先完成当前步骤",
+        "auto_advance": "已进入步骤 {{step}}",
+        "generation_success": "创作完成！",
+        "copy_success": "已复制到剪贴板",
+        "error_generation": "生成失败，请重试",
+        "advanced_options": {
+          "title": "高级选项",
+          "subtitle": "可选",
+          "ooc_level": "OOC程度",
+          "ooc_none": "不限",
+          "ooc_slight": "符合原著",
+          "ooc_moderate": "轻微OOC",
+          "ooc_bold": "大胆改编",
+          "story_length": "故事长度",
+          "length_short": "短篇 (300-600字)",
+          "length_medium": "中篇 (600-1500字)",
+          "length_long": "长篇 (1500-3000字)",
+          "narrative_perspective": "叙事视角",
+          "perspective_first": "第一人称",
+          "perspective_second": "第二人称",
+          "perspective_third_limited": "第三人称有限视角",
+          "perspective_third_omniscient": "第三人称全知视角"
+        },
+        "generation": {
+          "status_writing": "正在创作中...",
+          "status_complete": "创作完成！",
+          "summary_title": "创作概要",
+          "source_work_label": "原作：",
+          "pairing_label": "配对：",
+          "type_label": "类型：",
+          "length_label": "长度：",
+          "progress_label": "AI创作进度",
+          "word_count": "{{count}} 字",
+          "actions": {
+            "copy": "复制",
+            "regenerate": "重新生成",
+            "download_pdf": "下载PDF"
+          },
+          "undefined": "未选择"
+        }
+      }
     }
   }
 }
