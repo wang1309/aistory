@@ -130,6 +130,7 @@
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.31.1",
     "postcss": "^8.4.49",
+    "shadcn": "^3.5.0",
     "tailwindcss": "^4.1.4",
     "tsx": "^4.20.3",
     "typescript": "^5.7.2",

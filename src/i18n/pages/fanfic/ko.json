@@ -544,6 +544,47 @@
           },
           "undefined": "선택되지 않음"
         }
+      },
+      "fanfic_feature1": {
+        "label": "기능",
+        "title": "왜 우리의 AI 동人文 생성기를 선택해야 할까요?",
+        "subtitle": "전문적이고 효율적인 창작 도구",
+        "description": "동인 작가들을 위해 특별히 설계된 AI 기반 창작 도구",
+        "recommended_badge": "추천",
+        "features": {
+          "work_library": {
+            "title": "풍부한 작품 라이브러리",
+            "description": "해리 포터, 원신, 마블 등의 인기 IP 내장"
+          },
+          "character_pairing": {
+            "title": "스마트 캐릭터 페어링",
+            "description": "캐릭터 관계를 자동 인식하고 최적의 조합을 추천"
+          },
+          "plot_control": {
+            "title": "정밀한 플롯 제어",
+            "description": "카논부터 AU까지 5가지 플롯 타입"
+          },
+          "ai_models": {
+            "title": "3가지 AI 모델",
+            "description": "속도, 밸런스, 딥 타입 중 선택"
+          }
+        },
+        "statistics": {
+          "works_count": "50+",
+          "works_label": "프리셋 작품",
+          "characters_count": "500+",
+          "characters_label": "캐릭터",
+          "stories_count": "10K+",
+          "stories_label": "생성된 이야기",
+          "users_count": "5K+",
+          "users_label": "활성 사용자"
+        }
+      },
+      "fanfic_what": {
+        "label": "팬픽이란",
+        "title": "AI 팬픽 생성기란?",
+        "subtitle": "궁극의 팬픽션 창작 도구",
+        "intro_paragraph": "AI 팬픽 생성기는 팬픽션 작가들을 위해 특별히 설계된 강력한 도구입니다. 해리 포터, 마블, 원신 등 인기 작품의 좋아하는 캐릭터로 매력적인 스토리를 만드는 데 도움을 주는 고급 AI 기술을 사용합니다. 원작 자료를 선택하고 캐릭터 페어링을 선택한 다음 AI가 설득력 있는 팬픽션 내러티브를 만드는 데 도움을 주도록 하세요."
       }
     }
   }

@@ -544,6 +544,47 @@
           },
           "undefined": "未選択"
         }
+      },
+      "fanfic_feature1": {
+        "label": "機能",
+        "title": "なぜ私たちのAI同人小説生成器を選ぶのか？",
+        "subtitle": "専門的、効率的、創造的な執筆ツール",
+        "description": "同人作者向けに特化されたAIライティングツール",
+        "recommended_badge": "おすすめ",
+        "features": {
+          "work_library": {
+            "title": "豊富な作品ライブラリ",
+            "description": "哈利波特、原神、マーベルなどの人気IPを内蔵"
+          },
+          "character_pairing": {
+            "title": "スマートなキャラ配対",
+            "description": "キャラクター関係を自動識別し、最適な組み合わせを提案"
+          },
+          "plot_control": {
+            "title": "正確なプロット制御",
+            "description": "キャノンからAUまで5種類のプロットタイプ"
+          },
+          "ai_models": {
+            "title": "3つのAIモデル",
+            "description": "速度、バランス、深度タイプから選択"
+          }
+        },
+        "statistics": {
+          "works_count": "50+",
+          "works_label": "プリセット作品",
+          "characters_count": "500+",
+          "characters_label": "キャラクター",
+          "stories_count": "10K+",
+          "stories_label": "生成された物語",
+          "users_count": "5K+",
+          "users_label": "アクティブユーザー"
+        }
+      },
+      "fanfic_what": {
+        "label": "同人小説とは",
+        "title": "AI同人小説生成器とは？",
+        "subtitle": "究極の同人創作ツール",
+        "intro_paragraph": "AI同人小説生成器は、同人作家のために特別に設計された強力なツールです。高度なAI技術を使用して、ハリー・ポッター、マーベル、原神などの人気作品のお気に入りのキャラクターで魅力的なストーリーを作成するのを支援します。単に元の作品を選択し、キャラクターのペアリングを選んで、私たちのAIに説得力のある同人小説の物語を作成するお手伝いをさせてください。"
       }
     }
   }

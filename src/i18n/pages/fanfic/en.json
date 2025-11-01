@@ -544,6 +544,47 @@
           },
           "undefined": "Not selected"
         }
+      },
+      "fanfic_feature1": {
+        "label": "Features",
+        "title": "Why Choose Our AI Fanfic Generator?",
+        "subtitle": "Professional, Efficient, and Creative Writing Tool",
+        "description": "AI-powered writing tool designed specifically for fanfiction creators",
+        "recommended_badge": "Recommended",
+        "features": {
+          "work_library": {
+            "title": "Rich Work Library",
+            "description": "Built-in popular IPs like Harry Potter, Genshin Impact, Marvel"
+          },
+          "character_pairing": {
+            "title": "Smart Character Pairing",
+            "description": "Auto-recognize character relationships and recommend best pairings"
+          },
+          "plot_control": {
+            "title": "Precise Plot Control",
+            "description": "5 plot types from canon to AU, meet different creative needs"
+          },
+          "ai_models": {
+            "title": "3 AI Models",
+            "description": "Speed, Balanced, and Deep - choose the best model for your needs"
+          }
+        },
+        "statistics": {
+          "works_count": "50+",
+          "works_label": "Preset Works",
+          "characters_count": "500+",
+          "characters_label": "Characters",
+          "stories_count": "10K+",
+          "stories_label": "Stories Generated",
+          "users_count": "5K+",
+          "users_label": "Active Users"
+        }
+      },
+      "fanfic_what": {
+        "label": "What is Fanfic",
+        "title": "What is AI Fanfic Generator?",
+        "subtitle": "Your Ultimate Fanfiction Creation Tool",
+        "intro_paragraph": "AI Fanfic Generator is a powerful tool designed specifically for fanfiction writers. It uses advanced AI technology to help you create engaging stories with your favorite characters from popular works like Harry Potter, Marvel, Genshin Impact, and more. Simply select your source material, choose character pairings, and let our AI assist you in crafting compelling fanfiction narratives."
       }
     }
   }

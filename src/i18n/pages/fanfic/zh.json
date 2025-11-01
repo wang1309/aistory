@@ -544,6 +544,47 @@
           },
           "undefined": "未选择"
         }
+      },
+      "fanfic_feature1": {
+        "label": "产品特性",
+        "title": "为什么选择我们的AI同人文生成器？",
+        "subtitle": "专业、高效、富有创意的创作工具",
+        "description": "为同人创作者量身定制的AI工具，让创作变得更简单",
+        "recommended_badge": "推荐",
+        "features": {
+          "work_library": {
+            "title": "丰富的作品库",
+            "description": "内置哈利波特、原神、漫威等热门IP，支持快速选择"
+          },
+          "character_pairing": {
+            "title": "智能CP配对",
+            "description": "自动识别角色关系，推荐最佳配对组合"
+          },
+          "plot_control": {
+            "title": "精准剧情控制",
+            "description": "5种剧情类型可选，从原著向到AU，满足不同创作需求"
+          },
+          "ai_models": {
+            "title": "3种AI模型",
+            "description": "速度型、平衡型、深度型，根据需求选择最适合的模型"
+          }
+        },
+        "statistics": {
+          "works_count": "50+",
+          "works_label": "预置作品",
+          "characters_count": "500+",
+          "characters_label": "角色数据",
+          "stories_count": "10K+",
+          "stories_label": "生成故事",
+          "users_count": "5K+",
+          "users_label": "活跃用户"
+        }
+      },
+      "fanfic_what": {
+        "label": "什么是同人文生成器",
+        "title": "什么是AI同人文生成器？",
+        "subtitle": "你的终极同人创作工具",
+        "intro_paragraph": "AI同人文生成器是专为同人作者设计的强大工具。它使用先进的AI技术，帮助你创作精彩的故事，涉及哈利波特、漫威、原神等热门作品中你最喜爱的角色。只需选择作品来源、角色配对，让我们的AI协助你创作引人入胜的同人小说。"
       }
     }
   }

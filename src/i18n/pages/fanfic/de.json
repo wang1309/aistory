@@ -544,6 +544,47 @@
           },
           "undefined": "Nicht ausgewählt"
         }
+      },
+      "fanfic_feature1": {
+        "label": "Funktionen",
+        "title": "Warum unseren AI Fanfiction-Generator wählen?",
+        "subtitle": "Professionelles, effizientes und kreatives Schreibtool",
+        "description": "KI-gestütztes Schreibtool speziell für Fanfiction-Autoren",
+        "recommended_badge": "Empfohlen",
+        "features": {
+          "work_library": {
+            "title": "Umfangreiche Werk-Bibliothek",
+            "description": "Eingebaute beliebte IPs wie Harry Potter, Genshin Impact, Marvel"
+          },
+          "character_pairing": {
+            "title": "Intelligente Charakterpaarung",
+            "description": "Erkennt automatisch Charakterbeziehungen und empfiehlt beste Paarungen"
+          },
+          "plot_control": {
+            "title": "Präzise Plot-Steuerung",
+            "description": "5 Plot-Typen von Canon bis AU für verschiedene kreative Bedürfnisse"
+          },
+          "ai_models": {
+            "title": "3 KI-Modelle",
+            "description": "Geschwindigkeits-, Balanced- und Deep-Typ zur Auswahl"
+          }
+        },
+        "statistics": {
+          "works_count": "50+",
+          "works_label": "Voreingestellte Werke",
+          "characters_count": "500+",
+          "characters_label": "Charaktere",
+          "stories_count": "10K+",
+          "stories_label": "Generierte Geschichten",
+          "users_count": "5K+",
+          "users_label": "Aktive Benutzer"
+        }
+      },
+      "fanfic_what": {
+        "label": "Was ist Fanfic",
+        "title": "Was ist der AI Fanfic-Generator?",
+        "subtitle": "Ihr ultimatives Werkzeug für Fanfiction-Erstellung",
+        "intro_paragraph": "Der AI Fanfic-Generator ist ein leistungsstarkes Tool, das speziell für Fanfiction-Autoren entwickelt wurde. Es nutzt fortschrittliche KI-Technologie, um Ihnen zu helfen, fesselnde Geschichten mit Ihren Lieblingscharakteren aus beliebten Werken wie Harry Potter, Marvel, Genshin Impact und mehr zu erstellen. Wählen Sie einfach Ihr Quellmaterial aus, wählen Sie Charakterpaarungen und lassen Sie unsere KI Ihnen helfen, überzeugende Fanfiction-Erzählungen zu erstellen."
       }
     }
   }
