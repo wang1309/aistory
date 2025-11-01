@@ -27,6 +27,13 @@
               "url": "/book-title-generator",
               "icon": "RiBookOpenLine",
               "target": "_self"
+            },
+            {
+              "title": "Fanfic Generator",
+              "description": "Create fanfiction with AI - character pairings, plot control, and preset works",
+              "url": "/fanfic-generator",
+              "icon": "RiBookMarkedLine",
+              "target": "_self"
             }
           ]
         }

@@ -2,6 +2,7 @@
 import TabbedFanficGenerate from "@/components/blocks/fanfic-generate/tabbed-fanfic-generate";
 import FanficFeature1 from "@/components/blocks/fanfic-feature1";
 import FanficWhat from "@/components/blocks/fanfic-what";
+import { FAQSimple01 } from "@/components/blocks/faq2";
 import { setRequestLocale } from "next-intl/server";
 
 export const revalidate = 60;
@@ -46,6 +47,7 @@ export default async function FanficGeneratorPage({
   const section = messages.default.hero_fanfic;
   const featureData = messages.default.hero_fanfic.modern?.fanfic_feature1;
   const whatSection = messages.default.hero_fanfic.modern?.fanfic_what;
+  const faqSection = messages.default.hero_fanfic.modern?.faq;
 
   // Transform features object to array format expected by component
   const featureSection = featureData ? {
@@ -104,6 +106,8 @@ export default async function FanficGeneratorPage({
       <FanficWhat section={whatSection} />
       {/* Feature Highlights Section */}
       <FanficFeature1 section={featureSection} />
+      {/* FAQ Section */}
+      <FAQSimple01 section={faqSection} />
     </>
   );
 }

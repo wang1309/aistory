@@ -27,6 +27,13 @@
               "url": "/book-title-generator",
               "icon": "RiBookOpenLine",
               "target": "_self"
+            },
+            {
+              "title": "同人文生成器",
+              "description": "AI 创作同人小说 - 支持 CP 配对、剧情控制和预置作品",
+              "url": "/fanfic-generator",
+              "icon": "RiBookMarkedLine",
+              "target": "_self"
             }
           ]
         }

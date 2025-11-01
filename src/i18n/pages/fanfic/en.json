@@ -585,6 +585,41 @@
         "title": "What is AI Fanfic Generator?",
         "subtitle": "Your Ultimate Fanfiction Creation Tool",
         "intro_paragraph": "AI Fanfic Generator is a powerful tool designed specifically for fanfiction writers. It uses advanced AI technology to help you create engaging stories with your favorite characters from popular works like Harry Potter, Marvel, Genshin Impact, and more. Simply select your source material, choose character pairings, and let our AI assist you in crafting compelling fanfiction narratives."
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "description": "Everything you need to know about the AI Fanfic Generator",
+        "faqs": [
+          {
+            "question": "Is the AI Fanfic Generator free?",
+            "answer": "We offer free trial credits so you can fully experience all features. New users receive free credits upon registration, enough to generate multiple fanfictions."
+          },
+          {
+            "question": "What works and characters are supported?",
+            "answer": "We have a built-in library of 50+ popular IPs including Harry Potter, Marvel, Genshin Impact, Naruto, and more, covering 500+ classic characters. Custom works and characters are also supported."
+          },
+          {
+            "question": "How is the quality of generated fanfiction?",
+            "answer": "We offer 3 AI models to choose from: Speed model for quick creation, Balanced model for quality and speed, and Deep model for best writing quality. You can freely choose based on your needs."
+          },
+          {
+            "question": "Can I control the story direction?",
+            "answer": "Absolutely! You can select plot types (canon, modern AU, school AU, etc.), set character relationships, input detailed story prompts, and adjust parameters like OOC level and narrative perspective."
+          },
+          {
+            "question": "Are there word count limits?",
+            "answer": "We provide multiple length options: Short (300-500 words), Medium (500-1000 words), Long (1000-2000 words), and Epic (2000+ words) to meet different creative needs."
+          },
+          {
+            "question": "Can I use generated fanfiction commercially?",
+            "answer": "The generated content is yours and can be freely published on fanfiction sites, social platforms, etc. However, please respect original copyrights and platform usage rules."
+          }
+        ],
+        "cta": {
+          "title": "Still have questions?",
+          "description": "Can't find the answer you're looking for? Feel free to contact our team, we're happy to help.",
+          "button": "Get in touch"
+        }
       }
     }
   }

@@ -585,6 +585,41 @@
         "title": "Was ist der AI Fanfic-Generator?",
         "subtitle": "Ihr ultimatives Werkzeug für Fanfiction-Erstellung",
         "intro_paragraph": "Der AI Fanfic-Generator ist ein leistungsstarkes Tool, das speziell für Fanfiction-Autoren entwickelt wurde. Es nutzt fortschrittliche KI-Technologie, um Ihnen zu helfen, fesselnde Geschichten mit Ihren Lieblingscharakteren aus beliebten Werken wie Harry Potter, Marvel, Genshin Impact und mehr zu erstellen. Wählen Sie einfach Ihr Quellmaterial aus, wählen Sie Charakterpaarungen und lassen Sie unsere KI Ihnen helfen, überzeugende Fanfiction-Erzählungen zu erstellen."
+      },
+      "faq": {
+        "title": "Häufig gestellte Fragen",
+        "description": "Alles, was Sie über den AI Fanfic-Generator wissen müssen",
+        "faqs": [
+          {
+            "question": "Ist der AI Fanfic-Generator kostenlos?",
+            "answer": "Wir bieten kostenlose Testguthaben an, damit Sie alle Funktionen vollständig erleben können. Neue Benutzer erhalten bei der Registrierung kostenlose Guthaben, die ausreichen, um mehrere Fanfictions zu generieren."
+          },
+          {
+            "question": "Welche Werke und Charaktere werden unterstützt?",
+            "answer": "Wir haben eine eingebaute Bibliothek mit über 50 beliebten IPs, darunter Harry Potter, Genshin Impact, Marvel, Naruto und mehr, die über 500 klassische Charaktere abdeckt. Benutzerdefinierte Werke und Charaktere werden ebenfalls unterstützt."
+          },
+          {
+            "question": "Wie ist die Qualität der generierten Fanfiction?",
+            "answer": "Wir bieten 3 KI-Modelle zur Auswahl: Geschwindigkeitsmodell für schnelle Erstellung, Balanced-Modell für Qualität und Geschwindigkeit und Deep-Modell für beste Schreibqualität. Sie können je nach Bedarf frei wählen."
+          },
+          {
+            "question": "Kann ich die Handlungsrichtung steuern?",
+            "answer": "Absolut! Sie können Plot-Typen auswählen (Canon, Modern AU, School AU usw.), Charakterbeziehungen festlegen, detaillierte Story-Prompts eingeben und Parameter wie OOC-Level und narrative Perspektive anpassen."
+          },
+          {
+            "question": "Gibt es Wortgrenzen?",
+            "answer": "Wir bieten mehrere Längenoptionen: Kurz (300-500 Wörter), Mittel (500-1000 Wörter), Lang (1000-2000 Wörter) und Episch (2000+ Wörter), um verschiedene kreative Bedürfnisse zu erfüllen."
+          },
+          {
+            "question": "Kann ich generierte Fanfiction kommerziell nutzen?",
+            "answer": "Der generierte Inhalt gehört Ihnen und kann frei auf Fanfiction-Seiten, Social-Media-Plattformen usw. veröffentlicht werden. Bitte respektieren Sie jedoch die Urheberrechte der Originalwerke und die Nutzungsregeln der Plattformen."
+          }
+        ],
+        "cta": {
+          "title": "Haben Sie noch Fragen?",
+          "description": "Können Sie die Antwort nicht finden, nach der Sie suchen? Kontaktieren Sie gerne unser Team, wir helfen Ihnen gerne weiter.",
+          "button": "Kontakt aufnehmen"
+        }
       }
     }
   }

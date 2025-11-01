@@ -27,6 +27,13 @@
               "url": "/book-title-generator",
               "icon": "RiBookOpenLine",
               "target": "_self"
+            },
+            {
+              "title": "팬픽 생성기",
+              "description": "AI로 팬픽션 작성 - 캐릭터 페어링, 플롯 제어, 프리셋 작품 지원",
+              "url": "/fanfic-generator",
+              "icon": "RiBookMarkedLine",
+              "target": "_self"
             }
           ]
         }
