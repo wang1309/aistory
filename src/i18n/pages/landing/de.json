@@ -649,6 +649,11 @@
               "title": "Buchtitel-Generator",
               "url": "/book-title-generator",
               "target": "_self"
+            },
+            {
+              "title": "KI-Fanfiction-Generator",
+              "url": "/fanfic-generator",
+              "target": "_self"
             }
           ]
         },

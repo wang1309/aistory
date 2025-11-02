@@ -3,6 +3,7 @@ import TabbedFanficGenerate from "@/components/blocks/fanfic-generate/tabbed-fan
 import FanficFeature1 from "@/components/blocks/fanfic-feature1";
 import FanficWhat from "@/components/blocks/fanfic-what";
 import { FAQSimple01 } from "@/components/blocks/faq2";
+import CTA from "@/components/blocks/cta";
 import { setRequestLocale } from "next-intl/server";
 
 export const revalidate = 60;
@@ -48,24 +49,25 @@ export default async function FanficGeneratorPage({
   const featureData = messages.default.hero_fanfic.modern?.fanfic_feature1;
   const whatSection = messages.default.hero_fanfic.modern?.fanfic_what;
   const faqSection = messages.default.hero_fanfic.modern?.faq;
+  const cta = messages.default.cta;
 
   // Transform features object to array format expected by component
   const featureSection = featureData ? {
     ...featureData,
     features: featureData.features ? Object.entries(featureData.features).map(([key, value]: [string, any]) => ({
-      icon: key === 'work_library' ? 'mdi:book-open-variant' :
-            key === 'character_pairing' ? 'mdi:account-multiple' :
-            key === 'plot_control' ? 'mdi:lightning-bolt' :
-            key === 'ai_models' ? 'mdi:brain' : undefined,
+      icon: key === 'multi_tool' ? 'mdi:auto-fix' :
+            key === 'work_library' ? 'mdi:book-open-variant' :
+            key === 'free_online' ? 'mdi:gift-outline' :
+            key === 'multilingual_pairing' ? 'mdi:translate' : undefined,
       title: value.title,
       description: value.description,
-      highlight: key === 'character_pairing' || key === 'ai_models',
+      highlight: key === 'multi_tool' || key === 'free_online',
     })) : [],
     statistics: featureData.statistics ? [
       { value: featureData.statistics.works_count, label: featureData.statistics.works_label, icon: 'mdi:trending-up' },
       { value: featureData.statistics.characters_count, label: featureData.statistics.characters_label, icon: 'mdi:account-group' },
+      { value: featureData.statistics.languages_count, label: featureData.statistics.languages_label, icon: 'mdi:translate' },
       { value: featureData.statistics.stories_count, label: featureData.statistics.stories_label, icon: 'mdi:sparkles' },
-      { value: featureData.statistics.users_count, label: featureData.statistics.users_label, icon: 'mdi:trending-up' },
     ] : [],
   } : undefined;
 
@@ -108,6 +110,8 @@ export default async function FanficGeneratorPage({
       <FanficFeature1 section={featureSection} />
       {/* FAQ Section */}
       <FAQSimple01 section={faqSection} />
+      {/* CTA Section */}
+      <CTA section={cta} />
     </>
   );
 }

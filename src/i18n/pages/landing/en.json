@@ -649,22 +649,17 @@
               "title": "Book Title Generator",
               "url": "/book-title-generator",
               "target": "_self"
+            },
+            {
+              "title": "AI Fanfic Generator",
+              "url": "/fanfic-generator",
+              "target": "_self"
             }
           ]
         },
         {
           "title": "Friend",
            "children": [
-            {
-              "title": "AI Dirs",
-              "url": "https://backlinkdirs.com",
-              "target": "_blank"
-            },
-            {
-              "title": "Top AI Hubs",
-              "url": "https://topaihubs.com/",
-              "target": "_blank"
-            },
             {
               "title": "AIStage",
               "url": "https://aistage.net/",
@@ -731,6 +726,14 @@
           "image": {
             "src": "https://findly.tools/badges/findly-tools-badge-light.svg",
             "alt": "Featured on findly.tools"
+          }
+        },
+        {
+          "title": "StartupFame",
+          "url": "https://startupfa.me/s/story-generator?utm_source=storiesgenerator.org",
+          "image": {
+            "src": "https://startupfa.me/badges/featured-badge-small.webp",
+            "alt": "Story Generator - Featured on Startup Fame"
           }
         }
       ]

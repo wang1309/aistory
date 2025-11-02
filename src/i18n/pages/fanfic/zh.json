@@ -1,10 +1,24 @@
 {
+  "cta": {
+    "name": "cta",
+    "title": "开始创作你的专属同人文",
+    "description": "使用 AI 同人文生成器释放创造力，立即开始创作你喜爱的角色故事！",
+    "buttons": [
+      {
+        "title": "立即开始",
+        "url": "#",
+        "target": "_self",
+        "variant": "default",
+        "icon": "RiArrowRightLine"
+      }
+    ]
+  },
   "hero_fanfic": {
     "header": {
       "title": "AI 同人文生成器",
       "subtitle": "专业的同人创作工具，支持预置作品库、CP配对、剧情控制。让AI帮你创作心仪角色的精彩故事。",
       "meta_title": "AI 同人文生成器 - 免费在线同人小说创作工具",
-      "meta_description": "使用 AI 同人文生成器快速创作高质量同人小说。支持哈利波特、漫威、原神等热门作品，自定义 CP 配对和剧情走向，专为同人创作者设计。"
+      "meta_description": "免费AI同人文生成器：3秒生成300-3000字故事！支持哈利波特、漫威、原神等20+作品，12种语言输出。无需注册，立即开始创作你的专属同人文！"
     },
     "breadcrumb": {
       "home": "首页",
@@ -319,7 +333,7 @@
     },
     "tabbed": {
       "hero": {
-        "title": "创作你的同人故事",
+        "title": "免费同人文生成器",
         "subtitle": "基于热门IP和角色，AI帮你创作精彩的同人小说"
       },
       "steps": {
@@ -351,6 +365,11 @@
         "work_name_placeholder": "例如：你的名字、原神、咒术回战...",
         "work_name_label": "输入作品名称",
         "select_characters_label": "选择角色",
+        "preset_characters_label": "预设角色",
+        "custom_characters_label": "自定义角色",
+        "custom_character_placeholder": "输入角色名称...",
+        "add_character_button": "添加",
+        "remove_character_tooltip": "删除角色",
         "selected_count": "（已选 {{count}} 个）",
         "pairing_type_label": "配对类型",
         "romantic": "浪漫向",
@@ -362,6 +381,10 @@
         "modern_au": "现代AU",
         "school_au": "校园AU",
         "fantasy_au": "奇幻AU",
+        "crossover": "跨界联动",
+        "time_travel_au": "时空穿越",
+        "soulmate_au": "灵魂伴侣AU",
+        "historical_au": "历史AU",
         "language_label": "输出语言",
         "language_placeholder": "选择语言",
         "story_prompt_label": "故事提示",
@@ -418,6 +441,8 @@
         "error_complete_current": "请先完成当前步骤",
         "error_gen_limit": "单人向最多只能选择1个角色",
         "error_romantic_limit": "浪漫向最多只能选择2个角色",
+        "error_empty_character": "请输入角色名称",
+        "error_duplicate_character": "该角色已添加",
         "toast_copied": "已复制到剪贴板",
         "copy_success": "已复制到剪贴板",
         "generation_success": "创作完成！",
@@ -554,32 +579,32 @@
         "description": "为同人创作者量身定制的AI工具，让创作变得更简单",
         "recommended_badge": "推荐",
         "features": {
+          "multi_tool": {
+            "title": "AI 故事、提示与创意生成器一体化",
+            "description": "生成完整同人文、故事提示、情节创意和标题——多功能创作工具包"
+          },
           "work_library": {
-            "title": "丰富的作品库",
-            "description": "内置哈利波特、原神、漫威等热门IP，支持快速选择"
+            "title": "20+热门作品 & 120+角色",
+            "description": "哈利波特、漫威、原神等，即选即用的角色关系与世界观"
           },
-          "character_pairing": {
-            "title": "智能CP配对",
-            "description": "自动识别角色关系，推荐最佳配对组合"
+          "free_online": {
+            "title": "免费在线同人文生成器",
+            "description": "无需下载，新用户免费额度，3秒生成300-3000字同人文"
           },
-          "plot_control": {
-            "title": "精准剧情控制",
-            "description": "5种剧情类型可选，从原著向到AU，满足不同创作需求"
-          },
-          "ai_models": {
-            "title": "3种AI模型",
-            "description": "速度型、平衡型、深度型，根据需求选择最适合的模型"
+          "multilingual_pairing": {
+            "title": "12种语言输出 & 智能CP配对",
+            "description": "支持从中文到日语的多种语言输出，AI自动识别角色关系并推荐最佳配对"
           }
         },
         "statistics": {
-          "works_count": "50+",
+          "works_count": "20+",
           "works_label": "预置作品",
-          "characters_count": "500+",
+          "characters_count": "120+",
           "characters_label": "角色数据",
+          "languages_count": "12",
+          "languages_label": "输出语言",
           "stories_count": "10K+",
-          "stories_label": "生成故事",
-          "users_count": "5K+",
-          "users_label": "活跃用户"
+          "stories_label": "生成故事"
         }
       },
       "fanfic_what": {
@@ -592,28 +617,40 @@
         "description": "关于 AI 同人文生成器你需要了解的一切",
         "faqs": [
           {
-            "question": "AI 同人文生成器是免费的吗？",
-            "answer": "我们提供免费试用额度，让你充分体验所有功能。新用户注册即可获得免费积分，足够生成多篇同人文。"
+            "question": "什么是 AI 同人文生成器？",
+            "answer": "AI智能创作工具，使用NLP技术根据作品、角色和剧情生成原创同人小说。"
           },
           {
-            "question": "支持哪些作品和角色？",
-            "answer": "我们内置了50+热门IP作品库，包括哈利波特、漫威、原神、火影忍者等，涵盖500+经典角色。同时也支持自定义作品和角色。"
+            "question": "这个 AI 同人文生成器免费吗？",
+            "answer": "是的！新用户免费使用。无需下载或信用卡。可生成300-3000字同人文。"
           },
           {
-            "question": "生成的同人文质量如何？",
-            "answer": "我们提供3种AI模型供选择：速度型适合快速创作，平衡型兼顾质量和速度，深度型提供最佳创作质量。你可以根据需求自由选择。"
+            "question": "可以生成同人文提示词、故事创意和剧情大纲吗？",
+            "answer": "可以！多功能工具包。生成完整故事、提示词、剧情、创意和标题，一站式服务。"
           },
           {
-            "question": "可以控制故事的走向吗？",
-            "answer": "当然可以！你可以选择剧情类型（原著向、现代AU、校园AU等），设定角色关系，输入详细的故事提示，还能调整OOC程度、叙事视角等参数。"
+            "question": "支持同人文标题生成吗？",
+            "answer": "支持！内置标题生成器，根据故事内容建议创意、符合类型的标题。"
           },
           {
-            "question": "生成的内容有字数限制吗？",
-            "answer": "我们提供多种长度选项：短篇（300-500字）、中篇（500-1000字）、长篇（1000-2000字）、超长（2000+字），满足不同创作需求。"
+            "question": "支持哪些作品、角色和剧情类型？",
+            "answer": "20+作品（哈利波特、漫威、原神等），120+角色，支持慢热、AU、宿敌变恋人等热门类型。"
           },
           {
-            "question": "生成的同人文可以商用吗？",
-            "answer": "生成的内容归你所有，可以自由发布到同人文网站、社交平台等。但请注意遵守原作版权及各平台的使用规则。"
+            "question": "AI 同人故事生成器是如何工作的？",
+            "answer": "选作品→选角色配对→选剧情类型→写提示词→设置选项→AI生成同人文。"
+          },
+          {
+            "question": "可以生成不同类型的同人文，如 AU、交叉或特定题材吗？",
+            "answer": "可以！支持现代AU、奇幻AU、交叉、言情、虐文、治愈、疗伤、动作冒险、悬疑等。"
+          },
+          {
+            "question": "为什么这是最好的 AI 同人文生成器？",
+            "answer": "20+作品、12种语言、免费使用、300-3000字、精准控制、3种AI模型。10K+用户信赖。"
+          },
+          {
+            "question": "AI同人文生成器支持哪些语言输出？",
+            "answer": "支持12种语言：中文、英语、日语、韩语、德语、法语、西班牙语、意大利语、葡萄牙语、俄语、阿拉伯语、印地语。"
           }
         ],
         "cta": {

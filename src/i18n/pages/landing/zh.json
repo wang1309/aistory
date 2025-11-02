@@ -649,6 +649,11 @@
               "title": "书名生成器",
               "url": "/book-title-generator",
               "target": "_self"
+            },
+            {
+              "title": "AI 同人文生成器",
+              "url": "/fanfic-generator",
+              "target": "_self"
             }
           ]
         },

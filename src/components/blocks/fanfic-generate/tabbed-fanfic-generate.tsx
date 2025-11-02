@@ -20,6 +20,7 @@ import confetti from "canvas-confetti";
 import { FanficStorage } from "@/lib/fanfic-storage";
 import { PRESET_WORKS, getWorkById, getCharacterName, getCharacterById, getWorkName } from "@/lib/preset-works";
 import { cn } from "@/lib/utils";
+import FanficBreadcrumb from "./breadcrumb";
 import {
   BookOpen,
   Heart,
@@ -60,6 +61,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
   const [pairingType, setPairingType] = useState<'romantic' | 'gen' | 'poly'>('romantic');
   const [selectedCharacters, setSelectedCharacters] = useState<string[]>([]);
+  const [customCharacterInput, setCustomCharacterInput] = useState('');
 
   const [plotType, setPlotType] = useState('canon');
   const [prompt, setPrompt] = useState('');
@@ -142,6 +144,31 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const handleRemoveCharacter = useCallback((characterId: string) => {
     setSelectedCharacters(selectedCharacters.filter(id => id !== characterId));
   }, [selectedCharacters]);
+
+  const handleAddCustomCharacter = useCallback(() => {
+    const trimmedName = customCharacterInput.trim();
+    if (!trimmedName) {
+      toast.error(section.tabbed?.messages?.error_empty_character || "请输入角色名称");
+      return;
+    }
+    if (selectedCharacters.includes(trimmedName)) {
+      toast.error(section.tabbed?.messages?.error_duplicate_character || "该角色已添加");
+      return;
+    }
+
+    // Check pairing type limits
+    if (pairingType === 'gen' && selectedCharacters.length >= 1) {
+      toast.error(section.tabbed?.messages?.error_gen_limit || "Gen-focused can only select 1 character");
+      return;
+    }
+    if (pairingType === 'romantic' && selectedCharacters.length >= 2) {
+      toast.error(section.tabbed?.messages?.error_romantic_limit || "Romantic can only select 2 characters");
+      return;
+    }
+
+    setSelectedCharacters([...selectedCharacters, trimmedName]);
+    setCustomCharacterInput('');
+  }, [customCharacterInput, selectedCharacters, pairingType, section]);
 
   // ========== AUTO ADVANCE LOGIC ==========
 
@@ -327,6 +354,14 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       {/* Hero Section */}
       <div className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-background via-background/95 to-background">
         <div className="container mx-auto px-4 max-w-4xl"> {/* 限制最大宽度 */}
+          {/* Breadcrumb */}
+          <div className="mb-8">
+            <FanficBreadcrumb
+              homeText={section.breadcrumb?.home || 'Home'}
+              currentText={section.breadcrumb?.current || 'AI Fanfic Generator'}
+            />
+          </div>
+
           <div className="text-center">
             <AnimatedContainer variant="slideDown">
               <p className="text-sm md:text-base font-medium text-primary tracking-wide uppercase mb-4">
@@ -497,13 +532,13 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                     </RadioGroup>
                   </div>
 
-                  {/* Character Selection */}
+                  {/* Character Selection - Preset characters */}
                   {sourceType === 'preset' && selectedPresetWork && (() => {
                     const work = getWorkById(selectedPresetWork);
                     return work ? (
                       <div>
                         <Label className="text-base font-medium mb-3 block">
-                          {section.tabbed?.form?.select_characters_label || '选择角色'} <span className="text-sm text-muted-foreground font-normal">{(section.tabbed?.form?.selected_count || '（已选 {{count}} 个）').replace('{{count}}', selectedCharacters.length.toString())}</span>
+                          {section.tabbed?.form?.preset_characters_label || '预设角色'}
                         </Label>
                         <div className="flex flex-wrap gap-2">
                           {work.characters.map((char) => (
@@ -530,6 +565,81 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                       </div>
                     ) : null;
                   })()}
+
+                  {/* Custom Character Input - Available for both preset and custom source types */}
+                  <div className="space-y-3">
+                    <Label className="text-base font-medium block">
+                      {section.tabbed?.form?.custom_characters_label || '自定义角色'}
+                      <span className="text-sm text-muted-foreground font-normal ml-2">
+                        {(section.tabbed?.form?.selected_count || '（已选 {{count}} 个）').replace('{{count}}', selectedCharacters.length.toString())}
+                      </span>
+                    </Label>
+
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        placeholder={section.tabbed?.form?.custom_character_placeholder || '输入角色名称...'}
+                        value={customCharacterInput}
+                        onChange={(e) => setCustomCharacterInput(e.target.value)}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault();
+                            handleAddCustomCharacter();
+                          }
+                        }}
+                        className="flex-1 h-10 px-3 rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      />
+                      <Button
+                        onClick={handleAddCustomCharacter}
+                        variant="outline"
+                        size="sm"
+                        className="h-10"
+                      >
+                        {section.tabbed?.form?.add_character_button || '添加'}
+                      </Button>
+                    </div>
+
+                    {/* Display selected characters */}
+                    {selectedCharacters.length > 0 && (
+                      <div className="flex flex-wrap gap-2">
+                        {selectedCharacters.map((charId) => {
+                          // Check if it's a preset character
+                          const work = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
+                          const presetChar = work?.characters.find(c => c.id === charId);
+                          const isCustom = !presetChar;
+
+                          return (
+                            <div
+                              key={charId}
+                              className={cn(
+                                "relative flex items-center gap-2 px-3 py-1.5 pr-8 rounded-md text-sm",
+                                isCustom
+                                  ? "bg-secondary text-secondary-foreground border border-border"
+                                  : "bg-primary text-primary-foreground"
+                              )}
+                            >
+                              <span>{presetChar ? getCharacterName(presetChar, locale) : charId}</span>
+                              <button
+                                onClick={() => handleRemoveCharacter(charId)}
+                                className={cn(
+                                  "absolute -top-1 -right-1",
+                                  "flex items-center justify-center",
+                                  "w-5 h-5 rounded-full",
+                                  "bg-red-500 text-white",
+                                  "hover:bg-red-600 hover:scale-110",
+                                  "transition-all duration-200",
+                                  "shadow-sm"
+                                )}
+                                title={section.tabbed?.form?.remove_character_tooltip || "删除角色"}
+                              >
+                                <Icon name="RiCloseLine" className="w-3 h-3" />
+                              </button>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
 
                   {/* Navigation Buttons */}
                   <div className="flex justify-between">
@@ -566,19 +676,23 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   {/* Plot Type */}
                   <div>
                     <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.plot_type_label || '故事类型'}</Label>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-4 gap-2">
                       {[
                         { value: 'canon', label: section.tabbed?.form?.canon || '原著向' },
                         { value: 'modern_au', label: section.tabbed?.form?.modern_au || '现代AU' },
                         { value: 'school_au', label: section.tabbed?.form?.school_au || '校园AU' },
                         { value: 'fantasy_au', label: section.tabbed?.form?.fantasy_au || '奇幻AU' },
+                        { value: 'crossover', label: section.tabbed?.form?.crossover || '跨界联动' },
+                        { value: 'time_travel_au', label: section.tabbed?.form?.time_travel_au || '时空穿越' },
+                        { value: 'soulmate_au', label: section.tabbed?.form?.soulmate_au || '灵魂伴侣AU' },
+                        { value: 'historical_au', label: section.tabbed?.form?.historical_au || '历史AU' },
                       ].map((type) => (
                         <Button
                           key={type.value}
                           variant={plotType === type.value ? "default" : "outline"}
                           onClick={() => setPlotType(type.value)}
                           className={cn(
-                            "h-auto py-3 px-4 justify-start",
+                            "h-auto py-2 px-2 text-sm justify-center",
                             plotType === type.value && "bg-primary text-primary-foreground"
                           )}
                         >
@@ -595,10 +709,16 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                       {[
                         { value: 'zh', label: '中文', flag: '🇨🇳' },
                         { value: 'en', label: 'English', flag: '🇺🇸' },
+                        { value: 'es', label: 'Español', flag: '🇪🇸' },
+                        { value: 'hi', label: 'हिन्दी', flag: '🇮🇳' },
+                        { value: 'ar', label: 'العربية', flag: '🇸🇦' },
+                        { value: 'pt', label: 'Português', flag: '🇵🇹' },
+                        { value: 'ru', label: 'Русский', flag: '🇷🇺' },
                         { value: 'ja', label: '日本語', flag: '🇯🇵' },
-                        { value: 'ko', label: '한국어', flag: '🇰🇷' },
                         { value: 'de', label: 'Deutsch', flag: '🇩🇪' },
                         { value: 'fr', label: 'Français', flag: '🇫🇷' },
+                        { value: 'ko', label: '한국어', flag: '🇰🇷' },
+                        { value: 'it', label: 'Italiano', flag: '🇮🇹' },
                       ].map((lang) => (
                         <Button
                           key={lang.value}

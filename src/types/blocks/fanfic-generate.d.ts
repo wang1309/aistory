@@ -3,6 +3,10 @@ export interface FanficGenerate {
     title: string;
     subtitle: string;
   };
+  breadcrumb?: {
+    home: string;
+    current: string;
+  };
   source: {
     label: string;
     required: string;
@@ -289,6 +293,11 @@ export interface FanficGenerate {
       work_name_placeholder?: string;
       work_name_label?: string;
       select_characters_label?: string;
+      preset_characters_label?: string;
+      custom_characters_label?: string;
+      custom_character_placeholder?: string;
+      add_character_button?: string;
+      remove_character_tooltip?: string;
       selected_count?: string;
       pairing_type_label?: string;
       romantic?: string;
@@ -300,6 +309,10 @@ export interface FanficGenerate {
       modern_au?: string;
       school_au?: string;
       fantasy_au?: string;
+      crossover?: string;
+      time_travel_au?: string;
+      soulmate_au?: string;
+      historical_au?: string;
       language_label?: string;
       language_placeholder?: string;
       story_prompt_label?: string;
@@ -370,6 +383,8 @@ export interface FanficGenerate {
       error_complete_current?: string;
       error_gen_limit?: string;
       error_romantic_limit?: string;
+      error_empty_character?: string;
+      error_duplicate_character?: string;
       toast_copied?: string;
       copy_success?: string;
       generation_success?: string;

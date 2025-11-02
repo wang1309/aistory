@@ -649,6 +649,11 @@
               "title": "本のタイトル生成",
               "url": "/book-title-generator",
               "target": "_self"
+            },
+            {
+              "title": "AI二次創作ジェネレーター",
+              "url": "/fanfic-generator",
+              "target": "_self"
             }
           ]
         },

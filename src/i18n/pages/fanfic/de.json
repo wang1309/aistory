@@ -1,10 +1,24 @@
 {
+  "cta": {
+    "name": "cta",
+    "title": "Erstellen Sie Ihre Fanfiction",
+    "description": "Entfesseln Sie Ihre Kreativität mit unserem KI-Fanfiction-Generator. Beginnen Sie jetzt, Geschichten mit Ihren Lieblingscharakteren zu schreiben!",
+    "buttons": [
+      {
+        "title": "Jetzt starten",
+        "url": "#",
+        "target": "_self",
+        "variant": "default",
+        "icon": "RiArrowRightLine"
+      }
+    ]
+  },
   "hero_fanfic": {
     "header": {
       "title": "KI-Fanfiction-Generator",
       "subtitle": "Professionelles Fanfiction-Erstellungstool mit voreingestellten Werken, Charakterpaarungen und Plot-Kontrolle. Lassen Sie die KI Ihnen helfen, erstaunliche Geschichten mit Ihren Lieblingscharakteren zu schreiben.",
       "meta_title": "KI-Fanfiction-Generator - Kostenloses Online-Fanfiction-Schreibtool",
-      "meta_description": "Erstellen Sie schnell hochwertige Fanfiction mit dem KI-Fanfiction-Generator. Unterstützung für beliebte Werke wie Harry Potter, Marvel, Genshin Impact. Passen Sie Charakterpaarungen und Handlungsverläufe an. Entwickelt für Fanfiction-Autoren."
+      "meta_description": "Kostenloser KI-Fanfiction-Generator: 300-3000 Wörter in 3 Sekunden! Harry Potter, Marvel, Genshin & 20+ Fandoms. Keine Anmeldung nötig—jetzt starten!"
     },
     "breadcrumb": {
       "home": "Startseite",
@@ -319,7 +333,7 @@
     },
     "tabbed": {
       "hero": {
-        "title": "Fanfiction erstellen",
+        "title": "Kostenloser Fanfiction-Generator",
         "subtitle": "Basierend auf beliebten IPs und Charakteren, hilft AI Ihnen dabei, fantastische Fanfiction-Geschichten zu erstellen"
       },
       "steps": {
@@ -351,6 +365,11 @@
         "work_name_placeholder": "z.B. Your Name, Genshin Impact, Jujutsu Kaisen...",
         "work_name_label": "Werkname eingeben",
         "select_characters_label": "Charaktere auswählen",
+        "preset_characters_label": "Vordefinierte Charaktere",
+        "custom_characters_label": "Benutzerdefinierte Charaktere",
+        "custom_character_placeholder": "Charaktername eingeben...",
+        "add_character_button": "Hinzufügen",
+        "remove_character_tooltip": "Charakter entfernen",
         "selected_count": "({{count}} ausgewählt)",
         "pairing_type_label": "Paarungstyp",
         "romantic": "Romantisch",
@@ -362,6 +381,10 @@
         "modern_au": "Moderne AU",
         "school_au": "Schul-AU",
         "fantasy_au": "Fantasy-AU",
+        "crossover": "Crossover",
+        "time_travel_au": "Zeitreise-AU",
+        "soulmate_au": "Seelenverwandte-AU",
+        "historical_au": "Historisches AU",
         "language_label": "Ausgabesprache",
         "language_placeholder": "Sprache auswählen",
         "story_prompt_label": "Geschichten-Idee",
@@ -418,6 +441,8 @@
         "error_complete_current": "Bitte aktuellen Schritt zuerst abschließen",
         "error_gen_limit": "Charakter-fokussiert kann nur 1 Charakter auswählen",
         "error_romantic_limit": "Romantisch kann nur 2 Charaktere auswählen",
+        "error_empty_character": "Bitte geben Sie einen Charakternamen ein",
+        "error_duplicate_character": "Dieser Charakter wurde bereits hinzugefügt",
         "toast_copied": "In die Zwischenablage kopiert",
         "copy_success": "In die Zwischenablage kopiert",
         "generation_success": "Erstellung abgeschlossen!",
@@ -554,32 +579,32 @@
         "description": "KI-gestütztes Schreibtool speziell für Fanfiction-Autoren",
         "recommended_badge": "Empfohlen",
         "features": {
+          "multi_tool": {
+            "title": "AI Story, Prompt & Ideen-Generator Alles-in-einem",
+            "description": "Generiere vollständige Fanfictions, Story-Prompts, Plot-Ideen und Titel - Alles-in-einem kreatives Toolkit"
+          },
           "work_library": {
-            "title": "Umfangreiche Werk-Bibliothek",
-            "description": "Eingebaute beliebte IPs wie Harry Potter, Genshin Impact, Marvel"
+            "title": "20+ beliebte Fandoms & 120+ Charaktere",
+            "description": "Harry Potter, Marvel, Genshin Impact und mehr - sofortiger Zugriff auf Charakterbeziehungen und Weltansichten"
           },
-          "character_pairing": {
-            "title": "Intelligente Charakterpaarung",
-            "description": "Erkennt automatisch Charakterbeziehungen und empfiehlt beste Paarungen"
+          "free_online": {
+            "title": "Kostenloser Online-Fanfiction-Generator",
+            "description": "Kein Download erforderlich. Kostenlose Credits für neue Benutzer. 300-3000 Wörter Fanfictions in Sekunden generieren"
           },
-          "plot_control": {
-            "title": "Präzise Plot-Steuerung",
-            "description": "5 Plot-Typen von Canon bis AU für verschiedene kreative Bedürfnisse"
-          },
-          "ai_models": {
-            "title": "3 KI-Modelle",
-            "description": "Geschwindigkeits-, Balanced- und Deep-Typ zur Auswahl"
+          "multilingual_pairing": {
+            "title": "12 Sprachen-Ausgabe & Intelligente Charakterpaarung",
+            "description": "Schreibe Fanfictions in jeder Sprache von Englisch bis Japanisch. KI erkennt automatisch Beziehungen und schlägt beste Paarungen vor"
           }
         },
         "statistics": {
-          "works_count": "50+",
+          "works_count": "20+",
           "works_label": "Voreingestellte Werke",
-          "characters_count": "500+",
+          "characters_count": "120+",
           "characters_label": "Charaktere",
+          "languages_count": "12",
+          "languages_label": "Sprachen",
           "stories_count": "10K+",
-          "stories_label": "Generierte Geschichten",
-          "users_count": "5K+",
-          "users_label": "Aktive Benutzer"
+          "stories_label": "Generierte Geschichten"
         }
       },
       "fanfic_what": {
@@ -592,28 +617,40 @@
         "description": "Alles, was Sie über den AI Fanfic-Generator wissen müssen",
         "faqs": [
           {
-            "question": "Ist der AI Fanfic-Generator kostenlos?",
-            "answer": "Wir bieten kostenlose Testguthaben an, damit Sie alle Funktionen vollständig erleben können. Neue Benutzer erhalten bei der Registrierung kostenlose Guthaben, die ausreichen, um mehrere Fanfictions zu generieren."
+            "question": "Was ist ein AI-Fanfiction-Generator?",
+            "answer": "KI-Tool zur Fanfiction-Erstellung mit NLP. Fandom, Charaktere, Handlung wählen—KI schreibt Story."
           },
           {
-            "question": "Welche Werke und Charaktere werden unterstützt?",
-            "answer": "Wir haben eine eingebaute Bibliothek mit über 50 beliebten IPs, darunter Harry Potter, Genshin Impact, Marvel, Naruto und mehr, die über 500 klassische Charaktere abdeckt. Benutzerdefinierte Werke und Charaktere werden ebenfalls unterstützt."
+            "question": "Ist dieser AI-Fanfiction-Generator kostenlos?",
+            "answer": "Ja! Kostenlose Credits für neue Nutzer. Keine Downloads/Karte. Sofort 300-3000 Wörter."
           },
           {
-            "question": "Wie ist die Qualität der generierten Fanfiction?",
-            "answer": "Wir bieten 3 KI-Modelle zur Auswahl: Geschwindigkeitsmodell für schnelle Erstellung, Balanced-Modell für Qualität und Geschwindigkeit und Deep-Modell für beste Schreibqualität. Sie können je nach Bedarf frei wählen."
+            "question": "Kann ich Fanfiction-Prompts, Story-Ideen und Handlungsgliederungen generieren?",
+            "answer": "Ja! Multifunktions-Toolkit. Komplette Storys, Prompts, Plots, Ideen, Titel in Sekunden generieren."
           },
           {
-            "question": "Kann ich die Handlungsrichtung steuern?",
-            "answer": "Absolut! Sie können Plot-Typen auswählen (Canon, Modern AU, School AU usw.), Charakterbeziehungen festlegen, detaillierte Story-Prompts eingeben und Parameter wie OOC-Level und narrative Perspektive anpassen."
+            "question": "Unterstützt es die Generierung von Fanfiction-Titeln?",
+            "answer": "Ja! Integrierter Titel-Generator schlägt kreative, genre-passende Titel für Ihre Fanfictions vor."
           },
           {
-            "question": "Gibt es Wortgrenzen?",
-            "answer": "Wir bieten mehrere Längenoptionen: Kurz (300-500 Wörter), Mittel (500-1000 Wörter), Lang (1000-2000 Wörter) und Episch (2000+ Wörter), um verschiedene kreative Bedürfnisse zu erfüllen."
+            "question": "Welche Werke, Charaktere und Handlungstypen werden unterstützt?",
+            "answer": "20+ Fandoms (Harry Potter, Marvel, Genshin), 120+ Charaktere, beliebte Tropes (Slow Burn, AU)."
           },
           {
-            "question": "Kann ich generierte Fanfiction kommerziell nutzen?",
-            "answer": "Der generierte Inhalt gehört Ihnen und kann frei auf Fanfiction-Seiten, Social-Media-Plattformen usw. veröffentlicht werden. Bitte respektieren Sie jedoch die Urheberrechte der Originalwerke und die Nutzungsregeln der Plattformen."
+            "question": "Wie funktioniert der AI-Fanfiction-Story-Generator?",
+            "answer": "Werk wählen→Charaktere & Paarung→Handlungstyp→Prompt→Optionen→KI generiert Fanfiction."
+          },
+          {
+            "question": "Kann ich verschiedene Arten von Fanfictions generieren, wie AU, Crossover oder bestimmte Genres?",
+            "answer": "Ja! Modern AU, Fantasy AU, Crossover, Romantik, Angst, Fluff, Hurt/Comfort, Action, Mystery etc."
+          },
+          {
+            "question": "Was macht dies zum besten AI-Fanfiction-Generator?",
+            "answer": "20+ Fandoms, 12 Sprachen, kostenlos, 300-3000 Wörter, präzise Kontrolle, 3 KI-Modelle. 10K+."
+          },
+          {
+            "question": "Welche Sprachen unterstützt der AI-Fanfiction-Generator?",
+            "answer": "12 Sprachen: EN, ZH, JA, KO, DE, FR, ES, IT, PT, RU, AR, HI."
           }
         ],
         "cta": {

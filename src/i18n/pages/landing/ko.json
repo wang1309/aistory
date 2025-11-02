@@ -649,6 +649,11 @@
               "title": "책 제목 생성기",
               "url": "/book-title-generator",
               "target": "_self"
+            },
+            {
+              "title": "AI 팬픽 생성기",
+              "url": "/fanfic-generator",
+              "target": "_self"
             }
           ]
         },

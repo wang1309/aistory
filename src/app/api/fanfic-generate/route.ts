@@ -1,5 +1,21 @@
 import { respErr } from "@/lib/resp";
 
+// Language display names for prompts
+const languageNames: Record<string, { native: string; english: string }> = {
+  zh: { native: '中文', english: 'Chinese' },
+  en: { native: 'English', english: 'English' },
+  es: { native: 'Español', english: 'Spanish' },
+  hi: { native: 'हिन्दी', english: 'Hindi' },
+  ar: { native: 'العربية', english: 'Arabic' },
+  pt: { native: 'Português', english: 'Portuguese' },
+  ru: { native: 'Русский', english: 'Russian' },
+  ja: { native: '日本語', english: 'Japanese' },
+  de: { native: 'Deutsch', english: 'German' },
+  fr: { native: 'Français', english: 'French' },
+  ko: { native: '한국어', english: 'Korean' },
+  it: { native: 'Italiano', english: 'Italian' },
+};
+
 // Verify Cloudflare Turnstile token
 async function verifyTurnstileToken(token: string): Promise<boolean> {
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
@@ -185,7 +201,7 @@ ${fidelityInfo}
 3. 叙事视角：第三人称有限视角
 4. 目标受众：年轻成人
 5. 语气：戏剧性
-6. 语言：${language === 'zh' ? '中文' : language === 'en' ? 'English' : language === 'ja' ? '日本語' : language === 'ko' ? '한국어' : language === 'de' ? 'Deutsch' : 'English'}
+6. 语言：${languageNames[language]?.native || languageNames['zh'].native}
 
 请确保：
 - 遵循原作的世界观设定（如果适用）
@@ -211,7 +227,7 @@ Writing requirements:
 3. Narrative perspective: Third Person Limited
 4. Target audience: Young Adults
 5. Tone: Dramatic
-6. Language: ${language === 'zh' ? 'Chinese' : language === 'en' ? 'English' : language === 'ja' ? 'Japanese' : language === 'ko' ? 'Korean' : language === 'de' ? 'German' : 'English'}
+6. Language: ${languageNames[language]?.english || languageNames['en'].english}
 
 Please ensure:
 - Follow the original work's worldview (if applicable)
