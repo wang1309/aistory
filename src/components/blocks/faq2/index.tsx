@@ -18,7 +18,7 @@ function FeaturedIcon({ icon: Icon, size = "md", className }: FeaturedIconProps)
 
     return (
         <div className={cn(
-            "rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400",
+            "rounded-full bg-muted flex items-center justify-center text-muted-foreground",
             sizeClasses[size],
             className
         )}>
@@ -41,11 +41,11 @@ export const FAQSimple01 = ({ section }: FAQSimple01Props) => {
     }
 
     return (
-        <section className="bg-white dark:bg-gray-950 py-16 md:py-24">
+        <section className="bg-background py-16 md:py-24">
             <div className="mx-auto max-w-container px-4 md:px-8">
                 <div className="mx-auto flex w-full max-w-3xl flex-col items-center text-center">
-                    <h2 className="text-display-sm font-semibold text-gray-900 dark:text-gray-100 md:text-display-md">{section.title}</h2>
-                    <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 md:mt-5 md:text-xl">{section.description}</p>
+                    <h2 className="text-display-sm font-semibold text-foreground md:text-display-md">{section.title}</h2>
+                    <p className="mt-4 text-lg text-muted-foreground md:mt-5 md:text-xl">{section.description}</p>
                 </div>
 
                 <div className="mt-12 md:mt-16">
@@ -59,9 +59,9 @@ export const FAQSimple01 = ({ section }: FAQSimple01Props) => {
                                             <FeaturedIcon className="md:hidden" size="md" icon={IconComponent} />
                                             <FeaturedIcon className="hidden md:flex" size="lg" icon={IconComponent} />
 
-                                            <dt className="mt-4 text-lg font-semibold text-gray-900 dark:text-gray-100">{item.question}</dt>
+                                            <dt className="mt-4 text-lg font-semibold text-foreground">{item.question}</dt>
                                         </div>
-                                        <dd className="mt-1 text-md text-gray-600 dark:text-gray-400 text-center w-full">{item.answer}</dd>
+                                        <dd className="mt-1 text-md text-muted-foreground text-center w-full">{item.answer}</dd>
                                     </div>
                                 </div>
                             );
@@ -69,23 +69,23 @@ export const FAQSimple01 = ({ section }: FAQSimple01Props) => {
                     </dl>
                 </div>
 
-                <div className="mt-12 flex flex-col items-center gap-6 rounded-2xl bg-gray-50 dark:bg-gray-900 px-6 py-8 text-center md:mt-16 md:gap-8 md:px-8 md:py-8 md:pb-10">
+                <div className="mt-12 flex flex-col items-center gap-6 rounded-2xl bg-muted px-6 py-8 text-center md:mt-16 md:gap-8 md:px-8 md:py-8 md:pb-10">
                     <div className="flex items-end -space-x-4">
-                        <Avatar className="size-12 ring-[1.5px] ring-white dark:ring-gray-800">
+                        <Avatar className="size-12 ring-[1.5px] ring-border">
                             <AvatarImage
                                 src="https://www.untitledui.com/images/avatars/marco-kelly?fm=webp&q=80"
                                 alt="Marco Kelly"
                             />
                             <AvatarFallback>MK</AvatarFallback>
                         </Avatar>
-                        <Avatar className="size-14 z-10 ring-[1.5px] ring-white dark:ring-gray-800">
+                        <Avatar className="size-14 z-10 ring-[1.5px] ring-border">
                             <AvatarImage
                                 src="https://www.untitledui.com/images/avatars/amelie-laurent?fm=webp&q=80"
                                 alt="Amelie Laurent"
                             />
                             <AvatarFallback>AL</AvatarFallback>
                         </Avatar>
-                        <Avatar className="size-12 ring-[1.5px] ring-white dark:ring-gray-800">
+                        <Avatar className="size-12 ring-[1.5px] ring-border">
                             <AvatarImage
                                 src="https://www.untitledui.com/images/avatars/jaya-willis?fm=webp&q=80"
                                 alt="Jaya Willis"
@@ -94,8 +94,8 @@ export const FAQSimple01 = ({ section }: FAQSimple01Props) => {
                         </Avatar>
                     </div>
                     <div>
-                        <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{section.cta.title}</h4>
-                        <p className="mt-2 text-md text-gray-600 dark:text-gray-400 md:text-lg">{section.cta.description}</p>
+                        <h4 className="text-xl font-semibold text-foreground">{section.cta.title}</h4>
+                        <p className="mt-2 text-md text-muted-foreground md:text-lg">{section.cta.description}</p>
                     </div>
                     <Button size="lg" asChild>
                         <a href="mailto:contact@storiesgenerator.org">
