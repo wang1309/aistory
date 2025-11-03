@@ -6,6 +6,38 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.2.5",
+        "date": "2025-11-03",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added multi-language output options for fanfic generator with support for 5 languages",
+              "Enhanced fanfic functionality with 688-line preset works library for instant inspiration",
+              "Introduced breadcrumb navigation component for better user navigation",
+              "Strengthened fanfic-generate API with improved performance and error handling",
+              "Added comprehensive TypeScript type definitions for enhanced code maintainability"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Optimized landing page loading performance with improved resource management",
+              "Fixed dark mode display issues in FAQ2 component for better visual consistency",
+              "Enhanced fanfic component styling and interaction logic",
+              "Refined user interface across multiple components"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Fixed title styling issues in fanfic-what component",
+              "Removed redundant component code for cleaner codebase"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.4",
         "date": "2025-11-01",
         "changes": [

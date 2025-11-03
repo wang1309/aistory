@@ -6,6 +6,38 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.2.5",
+        "date": "2025-11-03",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Mehrsprachige Ausgabeoptionen für Fanfic-Generator mit Unterstützung für 5 Sprachen hinzugefügt",
+              "Fanfic-Funktionalität mit 688-zeiliger Voreinstellungswerksbibliothek für sofortige Inspiration erweitert",
+              "Breadcrumb-Navigationskomponente für bessere Benutzernavigation eingeführt",
+              "Verstärkte Fanfic-Generate-API mit verbesserter Leistung und Fehlerbehandlung",
+              "Umfassende TypeScript-Typdefinitionen für verbesserte Code-Wartbarkeit hinzugefügt"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Landing-Page-Ladeleistung mit verbessertem Ressourcenmanagement optimiert",
+              "Dunkle Modus-Anzeigeprobleme in FAQ2-Komponente für bessere visuelle Konsistenz behoben",
+              "Fanfic-Komponenten-Styling und Interaktionslogik verbessert",
+              "Benutzeroberfläche über mehrere Komponenten hinweg verfeinert"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Titel-Styling-Probleme in Fanfic-what-Komponente behoben",
+              "Redundante Komponentencode für sauberere Codebasis entfernt"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.4",
         "date": "2025-11-01",
         "changes": [
