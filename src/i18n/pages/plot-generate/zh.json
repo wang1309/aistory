@@ -1,0 +1,342 @@
+{
+  "plot_generate": {
+    "random_prompts": [
+      "一位侦探发现秘密组织正在暗中操控整座城市",
+      "时间旅行者意外改变了历史，必须在消失之前修复时间线",
+      "两位竞争对手厨师为米其林星级而战，同时坠入爱河",
+      "黑客揭开一个比想象中更深的阴谋",
+      "被困火星的宇航员必须生存到救援到来",
+      "一座魔法图书馆里的书籍活了过来，角色逃入现实世界",
+      "年轻音乐家出卖灵魂换取名声，然后试图夺回它",
+      "科学家的实验出错，导致平行宇宙发生碰撞",
+      "一幅诅咒的画作让每个拥有者都陷入疯狂",
+      "人工智能获得自我意识，开始质疑服务人类的目的",
+      "寻宝者与敌对组织竞相寻找传说中的神器",
+      "在记忆可以买卖的世界里，记忆窃贼偷错了记忆",
+      "幽灵与活人必须合作解开谋杀案的真相",
+      "在人人都有超能力的世界，唯一普通人必须拯救所有人",
+      "地下格斗俱乐部实际上是某个更险恶计划的幌子"
+    ],
+    "metadata": {
+      "title": "情节生成器 - 创建详细故事大纲",
+      "description": "使用我们的先进AI情节生成器生成包含角色、情节要点和叙事结构的综合故事情节。为你的故事创建详细大纲。",
+      "keywords": "AI情节生成器, 情节生成器AI, 故事情节生成器, AI故事大纲创建器, AI故事情节生成器, 免费AI情节生成器, 情节生成器, 故事大纲, AI写作, 情节结构, 角色发展"
+    },
+    "ui": {
+      "title": "情节生成器",
+      "subtitle": "使用我们的先进AI情节生成器创建包含角色、情节要点和叙事结构的详细故事大纲",
+      "story_concept": "故事概念",
+      "random_button": "随机",
+      "ai_model": "AI模型",
+      "output_language": "输出语言",
+      "complexity_level": "复杂度级别",
+      "advanced_options": "高级选项",
+      "generating": "生成中...",
+      "generate_plot": "生成情节",
+      "min": "最小",
+      "max": "最大",
+      "optional": "可选",
+      "none": "无",
+      "words": "字"
+    },
+    "complexity": {
+      "simple": "简单",
+      "medium": "中等",
+      "complex": "复杂",
+      "simple_description": "3个情节要点",
+      "medium_description": "5个情节要点",
+      "complex_description": "9个情节要点"
+    },
+    "characters": {
+      "main": "主要角色",
+      "supporting": "配角"
+    },
+    "plot_structure": {
+      "plot_points": "情节要点",
+      "subplots": "次要情节",
+      "conflict_types": "冲突类型"
+    },
+    "conflict_types": {
+      "internal": "内部冲突（角色vs自我）",
+      "external": "外部冲突（角色vs世界）",
+      "both": "两者都有"
+    },
+    "narrative": {
+      "emotional_arc": "情感弧线",
+      "suspense_style": "悬念风格"
+    },
+    "emotional_arc": {
+      "growth": "成长（从弱到强）",
+      "fall": "堕落（从荣耀到没落）",
+      "awakening": "觉醒（从无知到真相）",
+      "redemption": "救赎（从罪过到赎罪）",
+      "exploration": "探索（发现）"
+    },
+    "suspense_style": {
+      "opening": "开头钩子",
+      "middle": "中段谜团",
+      "multiple": "多条线索",
+      "none": "无"
+    },
+    "genre": {
+      "genre": "类型",
+      "fantasy": "奇幻",
+      "science_fiction": "科幻",
+      "romance": "浪漫",
+      "thriller": "惊悚",
+      "horror": "恐怖",
+      "mystery": "悬疑"
+    },
+    "preview": {
+      "generated_plot": "生成的情节",
+      "no_plot_generated": "尚未生成情节",
+      "no_plot_description": "填写你的故事概念和参数，然后点击\"生成情节\"来创建大纲。"
+    },
+    "plot_to_story": {
+      "ready_to_write": "准备好写你的故事了吗？",
+      "use_plot_description": "使用这个情节生成完整的故事",
+      "generate_story": "生成故事"
+    },
+    "dialog": {
+      "title": "从情节生成故事",
+      "description": "将你的情节大纲转换为完整的故事。你可以在下方调整参数。",
+      "source_plot": "来源情节",
+      "title_label": "标题：",
+      "complexity_label": "复杂度：",
+      "characters_label": "角色：",
+      "plot_points_label": "情节要点：",
+      "subplots_label": "次要情节：",
+      "format": "格式",
+      "length": "长度",
+      "cancel": "取消",
+      "close": "关闭",
+      "generating": "生成中...",
+      "generate_story": "生成故事"
+    },
+    "format": {
+      "prose": "散文",
+      "screenplay": "剧本",
+      "short_story": "短篇故事",
+      "diary": "日记"
+    },
+    "length": {
+      "short": "短篇（300-600字）",
+      "medium": "中等（600-900字）",
+      "long": "长篇（900-1200字）",
+      "extended": "扩展（1200-1500字）",
+      "epic_short": "史诗短篇（1500-2000字）"
+    },
+    "placeholders": {
+      "story_concept": "输入你的故事想法...（例如：'一位侦探发现秘密组织'）",
+      "select_ai_model": "选择AI模型..."
+    },
+    "ai_models": {
+      "fast": "最快",
+      "standard": "平衡",
+      "creative": "最具创意",
+      "fast_description": "快速情节生成",
+      "standard_description": "详细且结构化",
+      "creative_description": "丰富且富有想象力"
+    },
+    "validation": {
+      "enter_story_concept": "请输入故事概念",
+      "select_ai_model": "请选择AI模型"
+    },
+    "success": {
+      "random_prompt_selected": "已选择随机提示！",
+      "plot_generated": "情节生成成功！",
+      "story_generated": "从情节成功生成故事！"
+    },
+    "errors": {
+      "generation_failed": "生成失败：",
+      "plot_not_found": "未找到情节"
+    },
+    "feature_section": {
+      "name": "plot-features",
+      "title": "为什么选择我们的AI情节生成器？",
+      "description": "通过理解您创意需求的先进AI情节生成器，将您的创意愿景转化为引人入胜的叙事作品。",
+      "label": "功能特色",
+      "image": {
+        "src": "/images/plot-generation-hero.jpg",
+        "alt": "AI情节生成插图，展示故事结构可视化"
+      },
+      "items": [
+        {
+          "icon": "zap",
+          "title": "即刻突破写作瓶颈",
+          "description": "生成激发创意的独特情节想法，克服空白页恐惧，几分钟内将故事概念转化为详细大纲。"
+        },
+        {
+          "icon": "settings",
+          "title": "实现专业级故事结构",
+          "description": "创造完美节奏的叙事，通过精心设计的情节要点、角色弧线和情感深度，从头到尾吸引读者。"
+        },
+        {
+          "icon": "globe",
+          "title": "与全球读者建立连接",
+          "description": "用您的母语进行真实创作，同时通过超越国界的文化细微差异叙事，触达世界各地读者。"
+        }
+      ]
+    },
+    "feature1_section": {
+      "name": "plot-features-highlight",
+      "title": "什么是AI情节生成器？",
+      "description": "一个AI驱动的故事大纲创作工具，将您的想法转化为结构化叙事，支持可定制的角色、情节要点和专业级故事架构。",
+      "label": "核心功能",
+      "image": {
+        "src": "/images/plot-generation-hero.jpg",
+        "alt": "AI情节生成插图，展示故事结构可视化"
+      },
+      "items": [
+        {
+          "icon": "cpu",
+          "title": "AI驱动的故事结构化",
+          "description": "先进的Gemini AI模型生成全面的情节大纲，支持可定制的复杂度级别、角色发展弧线和详细的叙事结构。"
+        },
+        {
+          "icon": "edit",
+          "title": "作家友好工具",
+          "description": "通过随机提示克服创作障碍，使用本地存储历史保存情节，并通过流式生成实时观看故事构建过程。"
+        },
+        {
+          "icon": "languages",
+          "title": "全球故事创作",
+          "description": "支持12种语言生成情节，理解文化细微差别，涵盖从奇幻到惊悚的各种类型，提供专业级故事架构。"
+        }
+      ]
+    },
+    "feature3_section": {
+      "name": "plot-usage-guide",
+      "title": "如何使用我们的AI情节生成器",
+      "description": "按照简单的步骤，使用我们的先进AI情节生成器创建引人入胜的故事情节",
+      "label": "使用指南",
+      "items": [
+        {
+          "title": "输入故事概念",
+          "description": "输入您的基本故事想法、主题或初始概念。可以是简单的'一位侦探发现秘密组织'，也可以是您想要发展的复杂叙事。"
+        },
+        {
+          "title": "配置情节参数",
+          "description": "通过选择复杂度级别、角色数量、冲突类型、情感弧线和叙事视角来自定义您的情节。调整每个方面以匹配您的创意构想。"
+        },
+        {
+          "title": "生成和使用情节",
+          "description": "点击生成创建详细的情节大纲。使用生成的情节作为基础，编写完整的故事、剧本或叙事结构。"
+        }
+      ]
+    },
+    "testimonial_section": {
+      "name": "plot-testimonial",
+      "label": "用户评价",
+      "title": "作家们如何评价我们的AI情节生成器",
+      "description": "了解作家、创作者和教育者如何使用我们的先进AI情节生成器克服写作障碍，创建引人入胜的故事结构。",
+      "icon": "GoThumbsup",
+      "items": [
+        {
+          "title": "玛雅·陈",
+          "sub": "小说家",
+          "content": "使用这个情节生成器就像有一个永远不会用完想法的写作伙伴。我输入了一个模糊的类型和几个角色，几分钟后就有了一个完整的故事草稿弧线，可以进一步完善。",
+          "rating": 5,
+          "image": "/imgs/users/1.png"
+        },
+        {
+          "title": "迪伦·罗德里格斯",
+          "sub": "编剧",
+          "content": "我在小说写到一半时卡住了，无法想出下一个转折。工具建议了一个冲突、一个转折点和一个解决方案——修改后，我感觉故事又有了真正的动力。",
+          "rating": 5,
+          "image": "/imgs/users/2.png"
+        },
+        {
+          "title": "普莉娅·辛格",
+          "sub": "短篇小说作家",
+          "content": "作为一个短篇小说作家，我很欣赏这个生成器不会强迫你使用一种结构。你可以选择一个类型，自定义几个参数，输出仍然感觉新鲜而不是模板化的。",
+          "rating": 5,
+          "image": "/imgs/users/3.png"
+        },
+        {
+          "title": "伊桑·威廉姆斯",
+          "sub": "作家兼博主",
+          "content": "界面很直观，提示很容易使用——即使是一个主要手写的人。它为我节省了提纲的时间，让我可以专注于角色和散文写作。",
+          "rating": 5,
+          "image": "/imgs/users/4.png"
+        },
+        {
+          "title": "莉娜·斯文森",
+          "sub": "创意作家",
+          "content": "起初我很怀疑——不确定自动化工具会尊重我的声音。但生成器给了我一个强有力的骨架，我确保注入了自己的风格。最终结果：更多故事，更少空白页焦虑。",
+          "rating": 5,
+          "image": "/imgs/users/5.png"
+        },
+        {
+          "title": "艾莎·马利克博士",
+          "sub": "创意写作讲师",
+          "content": "对于任何教创意写作或做工作室的人来说，这个情节生成器是一个很棒的工具。它让学生快速生成多个故事想法，然后选择一个并在此基础上发展——让学习过程更加动态。",
+          "rating": 5,
+          "image": "/imgs/users/6.png"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "plot-faq",
+      "label": "常见问题",
+      "title": "关于我们AI情节生成器的常见问题",
+      "description": "查找关于我们先进AI情节生成器的常见问题答案，了解如何充分利用其强大的故事创作功能。",
+      "items": [
+        {
+          "title": "什么是AI情节生成器？",
+          "description": "AI情节生成器是一种使用人工智能自动生成故事大纲或框架的先进工具。您可以输入类型、角色、设定或核心冲突等信息，我们的AI情节生成器会提供您可以基于此构建的全面叙事结构。"
+        },
+        {
+          "title": "谁应该使用情节生成器以及何时使用？",
+          "description": "如果您遇到创作瓶颈、需要快速的故事大纲、正在创作小说、短篇故事、游戏叙事或教学写作练习，并且想要尝试不同的类型、转折或起点，就应该使用情节生成器。"
+        },
+        {
+          "title": "如何提高情节生成器生成故事的质量？",
+          "description": "要提高质量：提供清晰详细的提示（类型、角色动机、设定、冲突）；将生成的输出作为起点，用您独特的声音和细节进行修订；尝试不同的提示变体以发现更原创的想法。"
+        },
+        {
+          "title": "AI情节生成器和传统情节生成器有什么区别？",
+          "description": "传统情节生成器通常使用固定模板或随机元素，而AI情节生成器利用大型语言模型，根据您的提示创建更灵活、连贯的故事弧线、角色发展和类型特定的细节。"
+        },
+        {
+          "title": "我可以为特定类型（如奇幻或浪漫）生成情节吗？",
+          "description": "可以 — 许多情节生成器工具提供类型选项（如奇幻、浪漫、恐怖、悬疑）或长尾关键词变体，如'奇幻情节生成器'或'浪漫情节生成器'。这些帮助您调整输出以适应目标风格和受众。"
+        },
+        {
+          "title": "可以将情节生成器的输出用于商业出版吗？",
+          "description": "虽然您可以将生成的大纲作为起点，但强烈建议进行修订并添加原创性 — 进一步发展角色、设定和声音。在使用于商业目的之前，请检查工具的使用条款并验证权利/版权。"
+        },
+        {
+          "title": "当我的故事结构卡住时，情节生成器如何帮助？",
+          "description": "当您卡住时，情节生成器可以提供关键故事节拍序列（开头→中间→高潮→结局），建议角色角色和动机，提出冲突/转折时刻，并激发您可能没有考虑到的想法。"
+        },
+        {
+          "title": "使用情节生成器时常见的错误有哪些，如何避免？",
+          "description": "常见错误：不经修订就使用生成的内容（结果可能感觉模板化），输入提示过于模糊（导致输出泛化），忽视更深层的角色/世界开发，忽略目标受众或类型期望。要避免这些问题，请完善您的提示，个性化输出，并将其与受众对齐。"
+        }
+      ]
+    },
+    "cta_section": {
+      "disabled": false,
+      "name": "plot-cta",
+      "title": "准备创建更多故事吗？",
+      "description": "继续您的创意之旅，使用高级情节生成功能将您的大纲转换为完整的叙事作品。",
+      "buttons": [
+        {
+          "title": "生成另一个情节",
+          "url": "#plot-generate",
+          "target": "",
+          "icon": "RiRefreshLine",
+          "variant": "default"
+        },
+        {
+          "title": "创建完整故事",
+          "url": "/#craft_story",
+          "target": "",
+          "icon": "RiBookOpenLine",
+          "variant": "secondary"
+        }
+      ]
+    }
+  }
+}

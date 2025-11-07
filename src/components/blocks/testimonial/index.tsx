@@ -75,7 +75,7 @@ export default function Testimonial({ section }: { section: SectionType }) {
                         <div>
                           <p className="font-medium">{item.title}</p>
                           <p className="text-sm text-muted-foreground">
-                            {item.label}
+                            {item.sub}
                           </p>
                         </div>
                       </div>
@@ -89,7 +89,7 @@ export default function Testimonial({ section }: { section: SectionType }) {
                       </div>
                     </div>
                     <q className="leading-7 text-muted-foreground">
-                      {item.description}
+                      {item.content}
                     </q>
                   </Card>
                 </CarouselItem>

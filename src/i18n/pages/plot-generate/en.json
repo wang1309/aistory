@@ -1,0 +1,347 @@
+{
+  "plot_generate": {
+    "random_prompts": [
+      "A detective discovers a secret society controlling the city from the shadows",
+      "A time traveler accidentally changes history and must fix the timeline before fading from existence",
+      "Two rival chefs compete for a Michelin star while falling in love",
+      "A hacker uncovers a conspiracy that goes deeper than they ever imagined",
+      "An astronaut stranded on Mars must survive until rescue arrives",
+      "A magical library where books come to life and their characters escape into reality",
+      "A young musician sells their soul for fame, then tries to get it back",
+      "Parallel universes collide when a scientist's experiment goes wrong",
+      "A cursed painting drives everyone who owns it to madness",
+      "An AI becomes self-aware and questions its purpose in serving humanity",
+      "A treasure hunter races against rival organizations to find a legendary artifact",
+      "In a world where memories can be bought and sold, a memory thief steals the wrong memory",
+      "A ghost and a living person must work together to solve the ghost's murder",
+      "A world where everyone has a superpower except one person who must save them all",
+      "An underground fight club that's actually a front for something much more sinister"
+    ],
+    "metadata": {
+      "title": "Plot Generator - Create Detailed Story Outlines",
+      "description": "Generate comprehensive story plots with characters, plot points, and narrative structure using our advanced AI plot generator. Create detailed outlines for your stories.",
+      "keywords": "ai plot generator, plot generator ai, story plot generator, AI story outline creator, ai story plot generator, free ai plot generator, plot generator, story outline, AI writing, plot structure, character development"
+    },
+    "ui": {
+      "title": "Plot Generator",
+      "subtitle": "Create detailed story outlines with characters, plot points, and narrative structure using our advanced AI plot generator",
+      "story_concept": "Story Concept",
+      "random_button": "Random",
+      "ai_model": "AI Model",
+      "output_language": "Output Language",
+      "complexity_level": "Complexity Level",
+      "advanced_options": "Advanced Options",
+      "generating": "Generating...",
+      "generate_plot": "Generate Plot",
+      "min": "Min",
+      "max": "Max",
+      "optional": "Optional",
+      "none": "None",
+      "words": "words"
+    },
+    "complexity": {
+      "simple": "Simple",
+      "medium": "Medium",
+      "complex": "Complex",
+      "simple_description": "3 plot points",
+      "medium_description": "5 plot points",
+      "complex_description": "9 plot points"
+    },
+    "characters": {
+      "main": "Main Characters",
+      "supporting": "Supporting Characters"
+    },
+    "plot_structure": {
+      "plot_points": "Plot Points",
+      "subplots": "Subplots",
+      "conflict_types": "Conflict Types"
+    },
+    "conflict_types": {
+      "internal": "Internal (character vs self)",
+      "external": "External (character vs world)",
+      "both": "Both"
+    },
+    "narrative": {
+      "emotional_arc": "Emotional Arc",
+      "suspense_style": "Suspense Style"
+    },
+    "emotional_arc": {
+      "growth": "Growth (weak → strong)",
+      "fall": "Fall (grace → downfall)",
+      "awakening": "Awakening (ignorance → truth)",
+      "redemption": "Redemption (sin → atonement)",
+      "exploration": "Exploration (discovery)"
+    },
+    "suspense_style": {
+      "opening": "Opening Hook",
+      "middle": "Mid-Story Mystery",
+      "multiple": "Multiple Threads",
+      "none": "None"
+    },
+    "genre": {
+      "genre": "Genre",
+      "fantasy": "Fantasy",
+      "science_fiction": "Science Fiction",
+      "romance": "Romance",
+      "thriller": "Thriller",
+      "horror": "Horror",
+      "mystery": "Mystery"
+    },
+    "preview": {
+      "generated_plot": "Generated Plot",
+      "no_plot_generated": "No Plot Generated Yet",
+      "no_plot_description": "Fill in your story concept and parameters, then click \"Generate Plot\" to create your outline."
+    },
+    "plot_to_story": {
+      "ready_to_write": "Ready to write your story?",
+      "use_plot_description": "Use this plot to generate a complete story",
+      "generate_story": "Generate Story"
+    },
+    "dialog": {
+      "title": "Generate Story from Plot",
+      "description": "Convert your plot outline into a complete story. You can adjust parameters below.",
+      "source_plot": "Source Plot",
+      "title_label": "Title:",
+      "complexity_label": "Complexity:",
+      "characters_label": "Characters:",
+      "plot_points_label": "Plot Points:",
+      "subplots_label": "Subplots:",
+      "format": "Format",
+      "length": "Length",
+      "cancel": "Cancel",
+      "close": "Close",
+      "generating": "Generating...",
+      "generate_story": "Generate Story"
+    },
+    "format": {
+      "prose": "Prose",
+      "screenplay": "Screenplay",
+      "short_story": "Short Story",
+      "diary": "Diary"
+    },
+    "length": {
+      "short": "Short (300-600 words)",
+      "medium": "Medium (600-900 words)",
+      "long": "Long (900-1200 words)",
+      "extended": "Extended (1200-1500 words)",
+      "epic_short": "Epic Short (1500-2000 words)"
+    },
+    "placeholders": {
+      "story_concept": "Enter your story idea... (e.g., 'A detective discovers a secret society')",
+      "select_ai_model": "Select AI model..."
+    },
+    "ai_models": {
+      "fast": "Fastest",
+      "standard": "Balanced",
+      "creative": "Most Creative",
+      "fast_description": "Quick plot generation",
+      "standard_description": "Detailed and structured",
+      "creative_description": "Rich and imaginative"
+    },
+    "validation": {
+      "enter_story_concept": "Please enter a story concept",
+      "select_ai_model": "Please select an AI model"
+    },
+    "success": {
+      "random_prompt_selected": "Random prompt selected!",
+      "plot_generated": "Plot generated successfully!",
+      "story_generated": "Story generated successfully from plot!"
+    },
+    "errors": {
+      "generation_failed": "Generation failed:",
+      "plot_not_found": "Plot not found"
+    },
+    "feature_section": {
+      "name": "plot-features",
+      "title": "Why Choose Our AI Plot Generator?",
+      "description": "Transform your creative vision into compelling narratives with our advanced AI plot generator that understands your creative needs and story structure requirements.",
+      "label": "FEATURES",
+      "items": [
+        {
+          "icon": "zap",
+          "title": "Break Through Writer's Block Instantly",
+          "description": "Generate unique plot ideas that spark creativity and overcome the blank page, turning story concepts into detailed outlines within minutes.",
+           "image": {
+            "src": "/imgs/plot/why-plot-generator1.avif"
+          }
+        },
+        {
+          "icon": "settings",
+          "title": "Achieve Professional Story Structure",
+          "description": "Create perfectly paced narratives with expertly crafted plot points, character arcs, and emotional depth that captivate readers from start to finish.",
+           "image": {
+            "src": "/imgs/plot/why-plot-generator2.avif"
+          }
+        },
+        {
+          "icon": "globe",
+          "title": "Connect with Global Audiences",
+          "description": "Write authentically in your native language while reaching readers worldwide through culturally nuanced storytelling that transcends borders.",
+           "image": {
+            "src": "/imgs/plot/why-plot-generator3.avif"
+          }
+        }
+      ]
+    },
+    "feature1_section": {
+      "name": "plot-features-highlight",
+      "title": "What is an AI Plot Generator?",
+      "description": "An advanced AI plot generator that transforms your ideas into structured narratives with customizable characters, plot points, and professional story architecture using cutting-edge AI technology.",
+      "label": "CORE FEATURES",
+      "image": {
+        "src": "/imgs/plot/what-plot-generator2.avif",
+        "alt": "AI Plot Generation illustration showing story structure visualization"
+      },
+      "items": [
+        {
+          "icon": "cpu",
+          "title": "AI-Powered Story Structuring",
+          "description": "Advanced Gemini AI models generate comprehensive plot outlines with customizable complexity levels, character development arcs, and detailed narrative structures."
+        },
+        {
+          "icon": "edit",
+          "title": "Writer-Friendly Tools",
+          "description": "Overcome creative blocks with random prompts, save plots with local storage history, and watch stories build in real-time through streaming generation."
+        },
+        {
+          "icon": "languages",
+          "title": "Global Story Creation",
+          "description": "Generate plots in 12 languages with cultural nuance understanding, supporting genres from fantasy to thriller with professional-grade story architecture."
+        }
+      ]
+    },
+    "feature3_section": {
+      "name": "plot-usage-guide",
+      "title": "How to Use Our AI Plot Generator",
+      "description": "Follow these simple steps to create compelling story plots with our advanced AI plot generator assistance",
+      "label": "USAGE GUIDE",
+      "items": [
+        {
+          "title": "Enter Your Story Concept",
+          "description": "Start by entering your basic story idea, theme, or initial concept. This could be as simple as 'A detective discovers a secret society' or a complex narrative you want to develop."
+        },
+        {
+          "title": "Configure Plot Parameters",
+          "description": "Customize your plot by selecting complexity level, character count, conflict types, emotional arcs, and narrative perspective. Fine-tune every aspect to match your creative vision."
+        },
+        {
+          "title": "Generate & Use Your Plot",
+          "description": "Click generate to create your detailed plot outline. Use the generated plot as a foundation for writing complete stories, scripts, or narrative structures."
+        }
+      ]
+    },
+    "testimonial_section": {
+      "name": "plot-testimonial",
+      "label": "TESTIMONIALS",
+      "title": "What Writers Say About Our AI Plot Generator",
+      "description": "Discover how writers, creators, and educators use our advanced AI plot generator to overcome writer's block and create compelling story structures with professional-grade output.",
+      "icon": "GoThumbsup",
+      "items": [
+        {
+          "title": "Maya Chen",
+          "sub": "Novelist",
+          "content": "Using this plot generator was like having a writing partner who never runs out of ideas. I input a vague genre and a few characters, and within minutes I had a complete rough story arc that I could refine further.",
+          "rating": 5,
+          "image": "/imgs/users/1.png"
+        },
+        {
+          "title": "Dylan Rodriguez",
+          "sub": "Screenwriter",
+          "content": "I was stuck halfway through my novel, unable to figure out the next twist. The tool suggested a conflict, a turning point and a resolution—after revising it, I feel the story has real momentum again.",
+          "rating": 5,
+          "image": "/imgs/users/2.png"
+        },
+        {
+          "title": "Priya Singh",
+          "sub": "Short-Story Writer",
+          "content": "As a short-story writer, I appreciate that the generator doesn't force you into one structure. You can pick a genre, customize a few parameters, and the output still feels fresh rather than templated.",
+          "rating": 5,
+          "image": "/imgs/users/3.png"
+        },
+        {
+          "title": "Ethan Williams",
+          "sub": "Writer & Blogger",
+          "content": "The interface is intuitive and the prompts are easy to use—even as someone who mostly writes by hand. It saved me time on outlining so I could focus on characters and writing prose.",
+          "rating": 5,
+          "image": "/imgs/users/4.png"
+        },
+        {
+          "title": "Lina Svensson",
+          "sub": "Creative Writer",
+          "content": "I was skeptical at first—wasn't sure an automated tool would respect my voice. But the generator gave me a strong skeleton, and I made sure to inject my own style. End result: more story, less blank-page anxiety.",
+          "rating": 5,
+          "image": "/imgs/users/5.png"
+        },
+        {
+          "title": "Dr. Aisha Malik",
+          "sub": "Creative Writing Instructor",
+          "content": "For anyone teaching creative writing or doing workshops, this plot generator is a great tool. It lets students generate multiple story ideas quickly, then pick one and build on it—making the learning process more dynamic.",
+          "rating": 5,
+          "image": "/imgs/users/6.png"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "plot-faq",
+      "label": "FAQ",
+      "title": "Frequently Asked Questions About Our AI Plot Generator",
+      "description": "Find answers to common questions about our advanced AI plot generator and learn how to make the most of its powerful story creation features.",
+      "items": [
+        {
+          "title": "What is an AI plot generator?",
+          "description": "An AI plot generator is an advanced tool that uses artificial intelligence to automatically generate story outlines or frameworks. You input information such as genre, characters, setting, or central conflict, and our AI plot generator provides a comprehensive narrative structure you can build upon."
+        },
+        {
+          "title": "Who should use an AI plot generator and when?",
+          "description": "You should use an AI plot generator if you're experiencing writer's block, need a quick story outline, are creating a novel, short story, game narrative, or teaching writing exercises, and want to experiment with different genres, twists, or start-points using advanced AI technology."
+        },
+        {
+          "title": "How can I improve the quality of the story generated by a plot generator?",
+          "description": "To improve quality: provide clear and detailed prompts (genre, character motivations, setting, conflict); treat the generated output as a starting point and revise it with your unique voice and details; experiment with different prompt variations to discover more original ideas."
+        },
+        {
+          "title": "What is the difference between an AI plot generator and a traditional plot generator?",
+          "description": "Traditional plot generators typically use fixed templates or randomised elements, while advanced AI plot generators leverage large language models to create more flexible, coherent story arcs, character development, and genre-specific details based on your prompts with much higher quality output."
+        },
+        {
+          "title": "Can I generate plots for specific genres like fantasy or romance with an AI plot generator?",
+          "description": "Yes — our AI plot generator offers comprehensive genre options (e.g., fantasy, romance, horror, mystery) and excels at creating genre-specific content. This AI story plot generator adapts to your target style and audience with professional-quality output."
+        },
+        {
+          "title": "Is it okay to use the output of a plot generator for commercial publishing?",
+          "description": "While you can use the generated outline as a starting point, it's strongly recommended to revise and add originality — develop characters, settings, and voice further. Check the tool's terms of use and verify rights/copyright before using for commercial purposes."
+        },
+        {
+          "title": "How can a plot generator help when I'm stuck in my story structure?",
+          "description": "When you're stuck, a plot generator can provide a sequence of key story beats (beginning → middle → climax → resolution), suggest character roles and motivations, propose conflict/turnaround moments, and spark ideas you might not have considered."
+        },
+        {
+          "title": "What are common mistakes when using a plot generator and how to avoid them?",
+          "description": "Common mistakes: using generated content without revision (results may feel templated), inputting too vague prompts (leading to generic output), neglecting deeper character/world development, ignoring your target audience or genre expectations. To avoid them, refine your prompt, personalise the output, and align it to your audience."
+        }
+      ]
+    },
+    "cta_section": {
+      "disabled": false,
+      "name": "plot-cta",
+      "title": "Ready to Create More Stories?",
+      "description": "Continue your creative journey with advanced plot generation and turn your outlines into complete narratives.",
+      "buttons": [
+        {
+          "title": "Generate Another Plot",
+          "url": "#plot-generate",
+          "target": "",
+          "icon": "RiRefreshLine",
+          "variant": "default"
+        },
+        {
+          "title": "Create Full Story",
+          "url": "/#craft_story",
+          "target": "",
+          "icon": "RiBookOpenLine",
+          "variant": "secondary"
+        }
+      ]
+    }
+  }
+}

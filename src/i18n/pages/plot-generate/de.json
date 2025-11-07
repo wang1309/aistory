@@ -1,0 +1,342 @@
+{
+  "plot_generate": {
+    "random_prompts": [
+      "Ein Detektiv entdeckt eine Geheimgesellschaft, die die Stadt aus dem Schatten kontrolliert",
+      "Ein Zeitreisender ändert versehentlich die Geschichte und muss die Zeitlinie reparieren, bevor er verschwindet",
+      "Zwei rivalisierende Köche konkurrieren um einen Michelin-Stern, während sie sich ineinander verlieben",
+      "Ein Hacker deckt eine Verschwörung auf, die tiefer geht, als sie sich je vorgestellt haben",
+      "Ein auf dem Mars gestrandeter Astronaut muss überleben, bis Rettung eintrifft",
+      "Eine magische Bibliothek, in der Bücher zum Leben erwachen und ihre Charaktere in die Realität entkommen",
+      "Ein junger Musiker verkauft seine Seele für Ruhm und versucht dann, sie zurückzubekommen",
+      "Parallele Universen kollidieren, als das Experiment eines Wissenschaftlers schiefgeht",
+      "Ein verfluchtes Gemälde treibt jeden, der es besitzt, in den Wahnsinn",
+      "Eine KI wird selbstbewusst und hinterfragt ihren Zweck, der Menschheit zu dienen",
+      "Ein Schatzjäger konkurriert mit rivalisierenden Organisationen, um ein legendäres Artefakt zu finden",
+      "In einer Welt, in der Erinnerungen gekauft und verkauft werden können, stiehlt ein Gedächtnisdieb die falsche Erinnerung",
+      "Ein Geist und eine lebende Person müssen zusammenarbeiten, um den Mord am Geist aufzuklären",
+      "Eine Welt, in der jeder eine Superkraft hat, außer einer Person, die alle retten muss",
+      "Ein unterirdischer Kampfclub, der eigentlich eine Fassade für etwas viel Finstereres ist"
+    ],
+    "metadata": {
+      "title": "Plot-Generator - Detaillierte Story-Outlines erstellen",
+      "description": "Generieren Sie umfassende Story-Plots mit Charakteren, Plot-Punkten und Erzählstruktur mit unserem fortschrittlichen KI-Plot-Generator. Erstellen Sie detaillierte Outlines für Ihre Stories.",
+      "keywords": "KI-Plot-Generator, Plot-Generator KI, Story-Plot-Generator, KI-Story-Outline-Ersteller, KI-Story-Plot-Generator, kostenloser KI-Plot-Generator, Plot-Generator, Story-Outline, KI-Schreiben, Plot-Struktur, Charakterentwicklung"
+    },
+    "ui": {
+      "title": "Plot-Generator",
+      "subtitle": "Erstellen Sie detaillierte Story-Outlines mit Charakteren, Plot-Punkten und Erzählstruktur mit unserem fortschrittlichen KI-Plot-Generator",
+      "story_concept": "Story-Konzept",
+      "random_button": "Zufall",
+      "ai_model": "KI-Modell",
+      "output_language": "Ausgabesprache",
+      "complexity_level": "Komplexitätsstufe",
+      "advanced_options": "Erweiterte Optionen",
+      "generating": "Generiere...",
+      "generate_plot": "Plot generieren",
+      "min": "Min",
+      "max": "Max",
+      "optional": "Optional",
+      "none": "Keine",
+      "words": "Wörter"
+    },
+    "complexity": {
+      "simple": "Einfach",
+      "medium": "Mittel",
+      "complex": "Komplex",
+      "simple_description": "3 Plot-Punkte",
+      "medium_description": "5 Plot-Punkte",
+      "complex_description": "9 Plot-Punkte"
+    },
+    "characters": {
+      "main": "Hauptcharaktere",
+      "supporting": "Nebencharaktere"
+    },
+    "plot_structure": {
+      "plot_points": "Plot-Punkte",
+      "subplots": "Nebenhandlungen",
+      "conflict_types": "Konflikttypen"
+    },
+    "conflict_types": {
+      "internal": "Intern (Charakter vs Selbst)",
+      "external": "Extern (Charakter vs Welt)",
+      "both": "Beide"
+    },
+    "narrative": {
+      "emotional_arc": "Emotionaler Bogen",
+      "suspense_style": "Suspense-Stil"
+    },
+    "emotional_arc": {
+      "growth": "Wachstum (schwach → stark)",
+      "fall": "Fall (Gnade → Untergang)",
+      "awakening": "Erwachen (Unwissen → Wahrheit)",
+      "redemption": "Erlösung (Sünde → Sühne)",
+      "exploration": "Entdeckung (Entdeckung)"
+    },
+    "suspense_style": {
+      "opening": "Eröffnungshaken",
+      "middle": "Mittleres Geheimnis",
+      "multiple": "Mehrere Fäden",
+      "none": "Keine"
+    },
+    "genre": {
+      "genre": "Genre",
+      "fantasy": "Fantasy",
+      "science_fiction": "Science Fiction",
+      "romance": "Romantik",
+      "thriller": "Thriller",
+      "horror": "Horror",
+      "mystery": "Mystery"
+    },
+    "preview": {
+      "generated_plot": "Generierter Plot",
+      "no_plot_generated": "Noch kein Plot generiert",
+      "no_plot_description": "Füllen Sie Ihr Story-Konzept und Parameter aus, dann klicken Sie auf \"Plot generieren\", um Ihr Outline zu erstellen."
+    },
+    "plot_to_story": {
+      "ready_to_write": "Bereit, Ihre Story zu schreiben?",
+      "use_plot_description": "Verwenden Sie diesen Plot, um eine vollständige Story zu generieren",
+      "generate_story": "Story generieren"
+    },
+    "dialog": {
+      "title": "Story aus Plot generieren",
+      "description": "Konvertieren Sie Ihr Plot-Outline in eine vollständige Story. Sie können die Parameter unten anpassen.",
+      "source_plot": "Quell-Plot",
+      "title_label": "Titel:",
+      "complexity_label": "Komplexität:",
+      "characters_label": "Charaktere:",
+      "plot_points_label": "Plot-Punkte:",
+      "subplots_label": "Nebenhandlungen:",
+      "format": "Format",
+      "length": "Länge",
+      "cancel": "Abbrechen",
+      "close": "Schließen",
+      "generating": "Generiere...",
+      "generate_story": "Story generieren"
+    },
+    "format": {
+      "prose": "Prosa",
+      "screenplay": "Drehbuch",
+      "short_story": "Kurzgeschichte",
+      "diary": "Tagebuch"
+    },
+    "length": {
+      "short": "Kurz (300-600 Wörter)",
+      "medium": "Mittel (600-900 Wörter)",
+      "long": "Lang (900-1200 Wörter)",
+      "extended": "Erweitert (1200-1500 Wörter)",
+      "epic_short": "Episch Kurz (1500-2000 Wörter)"
+    },
+    "placeholders": {
+      "story_concept": "Geben Sie Ihre Story-Idee ein... (z.B. 'Ein Detektiv entdeckt eine Geheimgesellschaft')",
+      "select_ai_model": "KI-Modell auswählen..."
+    },
+    "ai_models": {
+      "fast": "Schnellste",
+      "standard": "Ausgeglichen",
+      "creative": "Kreativste",
+      "fast_description": "Schnelle Plot-Generierung",
+      "standard_description": "Detailliert und strukturiert",
+      "creative_description": "Reich und fantasievoll"
+    },
+    "validation": {
+      "enter_story_concept": "Bitte geben Sie ein Story-Konzept ein",
+      "select_ai_model": "Bitte wählen Sie ein KI-Modell"
+    },
+    "success": {
+      "random_prompt_selected": "Zufälliger Prompt ausgewählt!",
+      "plot_generated": "Plot erfolgreich generiert!",
+      "story_generated": "Story erfolgreich aus Plot generiert!"
+    },
+    "errors": {
+      "generation_failed": "Generierung fehlgeschlagen:",
+      "plot_not_found": "Plot nicht gefunden"
+    },
+    "feature_section": {
+      "name": "plot-features",
+      "title": "Warum unseren KI-Plot-Generator Wählen?",
+      "description": "Verwandeln Sie Ihre kreative Vision in fesselnde Erzählungen mit unserem fortschrittlichen KI-Plot-Generator, der Ihre kreativen Bedürfnisse versteht.",
+      "label": "FUNKTIONEN",
+      "image": {
+        "src": "/images/plot-generation-hero.jpg",
+        "alt": "KI-Plot-Generierung Illustration mit Story-Struktur-Visualisierung"
+      },
+      "items": [
+        {
+          "icon": "zap",
+          "title": "Schreibblockade Sofort Überwinden",
+          "description": "Generieren Sie einzigartige Plot-Ideen, die Kreativität wecken und die leere Seite überwinden, verwandeln Sie Story-Konzepte in wenigen Minuten in detaillierte Outlines."
+        },
+        {
+          "icon": "settings",
+          "title": "Professionelle Story-Struktur Erreichen",
+          "description": "Erstellen Sie perfekt getaktete Erzählungen mit professionell gestalteten Plot-Punkten, Charakter-Arcs und emotionaler Tiefe, die Leser von Anfang bis Ende fesseln."
+        },
+        {
+          "icon": "globe",
+          "title": "Mit Globalen Publiken Verbinden",
+          "description": "Schreiben Sie authentisch in Ihrer Muttersprache und erreichen Sie weltweit Leser durch kulturell nuanciertes Storytelling, das Grenzen überschreitet."
+        }
+      ]
+    },
+    "feature1_section": {
+      "name": "plot-features-highlight",
+      "title": "Was ist ein KI-Plot-Generator?",
+      "description": "Ein KI-gesteuerter Story-Outline-Ersteller, der Ihre Ideen in strukturierte Erzählungen mit anpassbaren Charakteren, Plot-Punkten und professioneller Story-Architektur umwandelt.",
+      "label": "HAUPTFUNKTIONEN",
+      "image": {
+        "src": "/images/plot-generation-hero.jpg",
+        "alt": "KI-Plot-Generierung-Illustration mit Story-Struktur-Visualisierung"
+      },
+      "items": [
+        {
+          "icon": "cpu",
+          "title": "KI-gesteuerte Story-Strukturierung",
+          "description": "Fortschrittliche Gemini KI-Modelle generieren umfassende Plot-Outlines mit anpassbaren Komplexitätsstufen, Charakter-Entwicklungs-Arcs und detaillierten Erzählstrukturen."
+        },
+        {
+          "icon": "edit",
+          "title": "Autoren-Freundliche Tools",
+          "description": "Überwinden Sie kreative Blockaden mit zufälligen Prompts, speichern Sie Plots mit lokalem Speicher-Verlauf und beobachten Sie Story-Erstellung in Echtzeit durch Streaming-Generierung."
+        },
+        {
+          "icon": "languages",
+          "title": "Globale Story-Erstellung",
+          "description": "Generieren Sie Plots in 12 Sprachen mit kulturellem Nuancen-Verständnis, unterstützend Genres von Fantasy bis Thriller mit professioneller Story-Architektur."
+        }
+      ]
+    },
+    "feature3_section": {
+      "name": "plot-usage-guide",
+      "title": "So verwenden Sie den Plot-Generator",
+      "description": "Folgen Sie diesen einfachen Schritten, um mit KI-Unterstützung überzeugende Story-Plots zu erstellen",
+      "label": "ANLEITUNG",
+      "items": [
+        {
+          "title": "Story-Konzept eingeben",
+          "description": "Beginnen Sie mit Ihrer grundlegenden Story-Idee, Ihrem Thema oder Ihrem Konzept. Das kann so einfach sein wie 'Ein Detektiv entdeckt eine geheime Gesellschaft' oder eine komplexe Erzählung, die Sie entwickeln möchten."
+        },
+        {
+          "title": "Plot-Parameter konfigurieren",
+          "description": "Passen Sie Ihren Plot an, indem Sie Komplexitätsstufe, Charakteranzahl, Konflikttypen, emotionale Bögen und Erzählperspektive auswählen. Justieren Sie jeden Aspekt an Ihre kreative Vision."
+        },
+        {
+          "title": "Plot generieren und verwenden",
+          "description": "Klicken Sie auf Generieren, um Ihre detaillierte Plot-Gliederung zu erstellen. Verwenden Sie den generierten Plot als Grundlage für das Schreiben vollständiger Stories, Skripte oder Erzählstrukturen."
+        }
+      ]
+    },
+    "testimonial_section": {
+      "name": "plot-testimonial",
+      "label": "KUNDENBEWERTUNGEN",
+      "title": "Was Autoren Über Unseren Plot-Generator Sagen",
+      "description": "Entdecken Sie, wie Autoren, Creators und Pädagogen unseren KI-Plot-Generator nutzen, um Schreibblockaden zu überwinden und überzeugende Story-Strukturen zu erstellen.",
+      "icon": "GoThumbsup",
+      "items": [
+        {
+          "title": "Maya Chen",
+          "sub": "Romanautorin",
+          "content": "Die Nutzung dieses Plot-Generators fühlte sich an, als hätte ich einen Schreibpartner, dem niemals die Ideen ausgehen. Ich gab ein vages Genre und einige Charaktere ein und hatte innerhalb von Minuten eine komplette grobe Story-Struktur, die ich weiter verfeinern konnte.",
+          "rating": 5,
+          "image": "/imgs/users/1.png"
+        },
+        {
+          "title": "Dylan Rodriguez",
+          "sub": "Drehbuchautor",
+          "content": "Ich steckte mitten in meinem Roman fest und konnte den nächsten Twist nicht herausfinden. Das Tool schlug einen Konflikt, einen Wendepunkt und eine Auflösung vor – nach der Überarbeitung fühlt sich die Geschichte wieder echt dynamisch an.",
+          "rating": 5,
+          "image": "/imgs/users/2.png"
+        },
+        {
+          "title": "Priya Singh",
+          "sub": "Kurzgeschichten-Autorin",
+          "content": "Als Kurzgeschichten-Autorin schätze ich, dass der Generator mich nicht in eine Struktur zwingt. Man kann ein Genre wählen, einige Parameter anpassen, und das Ergebnis fühlt sich trotzdem frisch an statt vorlagenhaft.",
+          "rating": 5,
+          "image": "/imgs/users/3.png"
+        },
+        {
+          "title": "Ethan Williams",
+          "sub": "Autor & Blogger",
+          "content": "Die Oberfläche ist intuitiv und die Aufforderungen sind einfach zu verwenden – selbst für jemanden, der meist von Hand schreibt. Es sparte mir Zeit bei der Gliederung, sodass ich mich auf Charaktere und Prosa-Texte konzentrieren konnte.",
+          "rating": 5,
+          "image": "/imgs/users/4.png"
+        },
+        {
+          "title": "Lina Svensson",
+          "sub": "Kreative Autorin",
+          "content": "Zuerst war ich skeptisch – war mir nicht sicher, ob ein automatisiertes Tool meine Stimme respektieren würde. Aber der Generator gab mir ein starkes Gerüst, und ich sorgte dafür, meinen eigenen Stil einzubringen. Endergebnis: mehr Geschichte, weniger Angst vor leeren Seiten.",
+          "rating": 5,
+          "image": "/imgs/users/5.png"
+        },
+        {
+          "title": "Dr. Aisha Malik",
+          "sub": "Kreatives Schreiben Dozentin",
+          "content": "Für jeden, der kreatives Schreiben unterrichtet oder Workshops durchführt, ist dieser Plot-Generator ein großartiges Tool. Es ermöglicht Studierenden, schnell mehrere Story-Ideen zu generieren, dann eine auszuwählen und darauf aufzubauen – was den Lernprozess dynamischer macht.",
+          "rating": 5,
+          "image": "/imgs/users/6.png"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "plot-faq",
+      "label": "HAUFIGE FRAGEN",
+      "title": "Häufig Gestellte Fragen Über Unseren KI-Plot-Generator",
+      "description": "Finden Sie Antworten auf häufige Fragen über unseren KI-Plot-Generator und erfahren Sie, wie Sie seine Funktionen optimal nutzen können.",
+      "items": [
+        {
+          "title": "Was ist ein KI-Plot-Generator?",
+          "description": "Ein KI-Plot-Generator ist ein fortschrittliches Tool, das künstliche Intelligenz nutzt, um automatisch Story-Outlines oder Frameworks zu generieren. Sie geben Informationen wie Genre, Charaktere, Setting oder zentralen Konflikt ein, und unser KI-Plot-Generator stellt eine umfassende narrative Struktur bereit, auf der Sie aufbauen können."
+        },
+        {
+          "title": "Wer sollte einen Plot-Generator verwenden und wann?",
+          "description": "Sie sollten einen Plot-Generator verwenden, wenn Sie Schreibblockade erleben, eine schnelle Story-Outline benötigen, einen Roman, Kurzgeschichte, Spiel-Narrative oder Schreib-Übungen erstellen und verschiedene Genres, Twists oder Ausgangspunkte ausprobieren möchten."
+        },
+        {
+          "title": "Wie kann ich die Qualität der vom Plot-Generator generierten Story verbessern?",
+          "description": "Um die Qualität zu verbessern: Geben Sie klare, detaillierte Prompts (Genre, Charakter-Motivationen, Setting, Konflikt); Behandeln Sie die generierte Ausgabe als Ausgangspunkt und überarbeiten Sie sie mit Ihrer einzigartigen Stimme und Details; Experimentieren Sie mit verschiedenen Prompt-Variationen, um originellere Ideen zu entdecken."
+        },
+        {
+          "title": "Was ist der Unterschied zwischen einem KI-Plot-Generator und einem traditionellen Plot-Generator?",
+          "description": "Traditionelle Plot-Generatoren verwenden typischerweise feste Vorlagen oder randomisierte Elemente, während KI-basierte Plot-Generatoren große Sprachmodelle nutzen, um flexiblere, kohärente Story-Arcs, Charakterentwicklung und genrespezifische Details basierend auf Ihren Prompts zu erstellen."
+        },
+        {
+          "title": "Kann ich Plots für spezifische Genres wie Fantasy oder Romanze mit einem Plot-Generator generieren?",
+          "description": "Ja — viele Plot-Generator-Tools bieten Genre-Optionen (z.B. Fantasy, Romanze, Horror, Mystery) oder Long-Tail-Keyword-Varianten wie 'Fantasy Plot Generator' oder 'Romanze Plot Generator'. Diese helfen Ihnen, die Ausgabe an Ihren Zielstil und Ihre Zielgruppe anzupassen."
+        },
+        {
+          "title": "Ist es in Ordnung, die Ausgabe eines Plot-Generators für kommerzielles Veröffentlichen zu verwenden?",
+          "description": "Während Sie die generierte Outline als Ausgangspunkt verwenden können, wird dringend empfohlen, sie zu überarbeiten und Originalität hinzuzufügen — Charaktere, Settings und Stimme weiterzuentwickeln. Überprüfen Sie die Nutzungsbedingungen des Tools und verifizieren Sie Rechte/Copyrights, bevor Sie sie für kommerzielle Zwecke verwenden."
+        },
+        {
+          "title": "Wie kann ein Plot-Generator helfen, wenn ich in meiner Story-Struktur feststecke?",
+          "description": "Wenn Sie feststecken, kann ein Plot-Generator eine Sequenz von Schlüssel-Story-Beats (Anfang → Mitte → Höhepunkt → Ende) bereitstellen, Charakter-Rollen und Motivationen vorschlagen, Konflikt/Wendepunkte vorschlagen und Ideen anregen, die Sie möglicherweise nicht in Betracht gezogen haben."
+        },
+        {
+          "title": "Was sind häufige Fehler bei der Verwendung eines Plot-Generators und wie vermeide ich sie?",
+          "description": "Häufige Fehler: Generierte Inhalte ohne Revision verwenden (Ergebnisse können sich templatisiert anfühlen), zu vage Prompts eingeben (führt zu generischer Ausgabe), tiefere Charakter/Welt-Entwicklung vernachlässigen, Zielgruppe oder Genre-Erwartungen ignorieren. Um sie zu vermeiden, verfeinern Sie Ihren Prompt, personalisieren Sie die Ausgabe und richten Sie sie an Ihrer Zielgruppe aus."
+        }
+      ]
+    },
+    "cta_section": {
+      "disabled": false,
+      "name": "plot-cta",
+      "title": "Bereit, Mehrere Stories Zu Erstellen?",
+      "description": "Setzen Sie Ihre kreative Reise fort mit fortgeschrittener Plot-Generierung und verwandeln Sie Ihre Gliederungen in vollständige Narrative.",
+      "buttons": [
+        {
+          "title": "Weiteren Plot Generieren",
+          "url": "#plot-generate",
+          "target": "",
+          "icon": "RiRefreshLine",
+          "variant": "default"
+        },
+        {
+          "title": "Vollständige Story Erstellen",
+          "url": "/#craft_story",
+          "target": "",
+          "icon": "RiBookOpenLine",
+          "variant": "secondary"
+        }
+      ]
+    }
+  }
+}

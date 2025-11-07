@@ -4,8 +4,11 @@ export interface SectionItem {
   title?: string;
   description?: string;
   label?: string;
+  sub?: string;
+  content?: string;
   icon?: string;
   image?: Image;
+  rating?: number;
   buttons?: Button[];
   url?: string;
   target?: string;
