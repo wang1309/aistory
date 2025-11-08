@@ -1,8 +1,6 @@
 import { respErr } from "@/lib/resp";
 import type { PlotData } from "@/types/plot";
 
-export const runtime = "edge";
-
 /**
  * 验证 Cloudflare Turnstile Token
  */
