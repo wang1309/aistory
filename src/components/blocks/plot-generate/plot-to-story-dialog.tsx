@@ -180,12 +180,6 @@ export default function PlotToStoryDialog({
         PlotStorage.linkPlotToStory(plot.id, savedStory.id);
 
         toast.success(t('success.story_generated'));
-
-        // Navigate to home or story page after a delay
-        setTimeout(() => {
-          onOpenChange(false);
-          router.push('/');
-        }, 2000);
       }
 
     } catch (error) {
@@ -305,8 +299,8 @@ export default function PlotToStoryDialog({
                   <pre className="whitespace-pre-wrap font-sans">{generatedStory}</pre>
                 ) : (
                   <div className="text-center text-muted-foreground py-8">
-                    <Icon name="loading" className="animate-spin mx-auto mb-2" />
-                    <p>{t('dialog.generating')} {t('plot_to_story.generate_story')}...</p>
+                    <Icon name="RiLoader2Line" className="animate-spin mx-auto mb-2" />
+                    <p>{t('dialog.generating')}...</p>
                   </div>
                 )}
               </div>
@@ -329,7 +323,7 @@ export default function PlotToStoryDialog({
               >
                 {isGenerating ? (
                   <>
-                    <Icon name="loading" className="mr-2 animate-spin" />
+                    <Icon name="RiLoader2Line" className="mr-2 animate-spin" />
                     {t('dialog.generating')}...
                   </>
                 ) : (

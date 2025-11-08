@@ -735,8 +735,8 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           >
             {isGenerating ? (
               <>
-                <Icon name="loading" className="mr-2 animate-spin" />
-                {t('ui.generating')} {t('ui.generate_plot')}...
+                <Icon name="RiLoader2Line" className="mr-2 animate-spin" />
+                {t('ui.generating')}...
               </>
             ) : (
               <>
