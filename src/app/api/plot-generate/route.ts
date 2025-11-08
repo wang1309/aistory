@@ -2,8 +2,6 @@ import { respErr } from "@/lib/resp";
 import { buildPlotPrompt } from "@/lib/plot-prompt";
 import type { PlotGenerateOptions } from "@/types/plot";
 
-export const runtime = "edge";
-
 /**
  * 验证 Cloudflare Turnstile Token
  */
