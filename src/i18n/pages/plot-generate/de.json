@@ -92,7 +92,8 @@
     "preview": {
       "generated_plot": "Generierter Plot",
       "no_plot_generated": "Noch kein Plot generiert",
-      "no_plot_description": "Füllen Sie Ihr Story-Konzept und Parameter aus, dann klicken Sie auf \"Plot generieren\", um Ihr Outline zu erstellen."
+      "no_plot_description": "Füllen Sie Ihr Story-Konzept und Parameter aus, dann klicken Sie auf \"Plot generieren\", um Ihr Outline zu erstellen.",
+      "button_copy": "Kopieren"
     },
     "plot_to_story": {
       "ready_to_write": "Bereit, Ihre Story zu schreiben?",
@@ -147,6 +148,7 @@
     "success": {
       "random_prompt_selected": "Zufälliger Prompt ausgewählt!",
       "plot_generated": "Plot erfolgreich generiert!",
+      "plot_copied": "Plot in die Zwischenablage kopiert!",
       "story_generated": "Story erfolgreich aus Plot generiert!"
     },
     "errors": {

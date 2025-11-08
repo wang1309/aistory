@@ -389,35 +389,41 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     toast.success(t('success.plot_generated'));
   }, []);
 
+  // Copy plot to clipboard
+  const handleCopy = useCallback(() => {
+    navigator.clipboard.writeText(generatedPlot);
+    toast.success(t('success.plot_copied'));
+  }, [generatedPlot, section]);
+
   // ========== RENDER ==========
 
   return (
     <div className="container mx-auto px-4 py-6 lg:py-8 max-w-7xl">
+      {/* Breadcrumb Navigation */}
+      <div className="mb-6">
+        <PlotBreadcrumb
+          homeText={t('ui.breadcrumb_home')}
+          currentText={t('ui.breadcrumb_current')}
+        />
+      </div>
+
+      {/* Header - Centered above both columns */}
+      <div className="space-y-3 mb-8 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight flex items-center justify-center gap-2">
+          <span>📖</span>
+          <span className="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
+            {t('ui.title')}
+          </span>
+        </h1>
+        <p className="text-base text-muted-foreground mx-auto max-w-2xl">
+          {t('ui.subtitle')}
+        </p>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-6 lg:gap-8">
 
         {/* LEFT COLUMN: Parameters */}
         <div className="space-y-6">
-
-          {/* Breadcrumb Navigation */}
-          <div className="mb-6">
-            <PlotBreadcrumb
-              homeText={t('ui.breadcrumb_home')}
-              currentText={t('ui.breadcrumb_current')}
-            />
-          </div>
-
-          {/* Header */}
-          <div className="space-y-3 mb-2 text-center">
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight flex items-center justify-center gap-2">
-              <span>📖</span>
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
-                {t('ui.title')}
-              </span>
-            </h1>
-            <p className="text-base text-muted-foreground mx-auto max-w-2xl">
-              {t('ui.subtitle')}
-            </p>
-          </div>
 
           {/* Combined Input Card */}
           <Card className="p-6 space-y-4">
@@ -757,15 +763,25 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
         </div>
 
         {/* RIGHT COLUMN: Preview */}
-        <div className="lg:sticky lg:top-8 h-fit space-y-6">
-          <Card className="p-6 min-h-[500px] max-h-[calc(100vh-200px)] flex flex-col">
+        <div className="space-y-6">
+          <Card className="p-6 h-[600px] flex flex-col">
             {generatedPlot ? (
               <>
                 {/* Fixed Header */}
                 <div className="flex justify-between items-center mb-4 pb-4 border-b flex-shrink-0">
                   <h3 className="text-lg font-semibold m-0">{t('preview.generated_plot')}</h3>
-                  <div className="text-sm text-muted-foreground tabular-nums">
-                    {wordCount.toLocaleString()} {t('ui.words')}
+                  <div className="flex items-center gap-3">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleCopy}
+                    >
+                      <Icon name="RiFileCopyLine" className="size-4 mr-1" />
+                      {t('preview.button_copy')}
+                    </Button>
+                    <div className="text-sm text-muted-foreground tabular-nums">
+                      {wordCount.toLocaleString()} {t('ui.words')}
+                    </div>
                   </div>
                 </div>
                 {/* Scrollable Content */}

@@ -6,6 +6,31 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.0",
+        "date": "2025-11-08",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Umfassende Plot-Generator-Funktion mit KI-gesteuerter Story-Outline-Erstellung hinzugefügt",
+              "Plot-Generator in Hauptnavigation und Sitemap für einfache Entdeckung integriert",
+              "Mehrsprachige Unterstützung für Plot-Generator in 5 Sprachen implementiert (Englisch, Chinesisch, Japanisch, Koreanisch, Deutsch)",
+              "SEO-Optimierung mit KI-Plot-Generator-Long-Tail-Keyword-Integration verstärkt",
+              "Breadcrumb-Navigation zur Plot-Generator-Seite für verbesserte Benutzererfahrung hinzugefügt"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Plot-Generator-Metadaten für bessere Suchmaschinensichtbarkeit optimiert",
+              "Navigationskonsistenz durch Hinzufügen des Plot-Generators zu beiden AI-Schreiben-Abschnitten in Header und Footer verbessert",
+              "Plot-Generator-UI mit überzeugendem Marketing-Copy und professioneller Präsentation verbessert",
+              "Umfassende Zufalls-Prompt-Bibliothek für kreative Inspiration in allen unterstützten Sprachen hinzugefügt"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.5",
         "date": "2025-11-03",
         "changes": [

@@ -6,6 +6,31 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.0",
+        "date": "2025-11-08",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added comprehensive plot generator feature with AI-powered story outline creation",
+              "Integrated plot generator into main navigation and sitemap for easy discovery",
+              "Implemented multi-language support for plot generator across 5 languages (English, Chinese, Japanese, Korean, German)",
+              "Enhanced SEO optimization with AI plot generator long-tail keywords integration",
+              "Added breadcrumb navigation to plot generator page for improved user experience"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Optimized plot generator metadata for better search engine visibility",
+              "Enhanced navigation consistency by adding Plot Generator to both header and footer AI Write sections",
+              "Improved plot generator UI with compelling marketing copy and professional presentation",
+              "Added comprehensive random prompt library for creative inspiration across all supported languages"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.2.5",
         "date": "2025-11-03",
         "changes": [

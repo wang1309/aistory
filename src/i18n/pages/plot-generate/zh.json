@@ -92,7 +92,8 @@
     "preview": {
       "generated_plot": "生成的情节",
       "no_plot_generated": "尚未生成情节",
-      "no_plot_description": "填写你的故事概念和参数，然后点击\"生成情节\"来创建大纲。"
+      "no_plot_description": "填写你的故事概念和参数，然后点击\"生成情节\"来创建大纲。",
+      "button_copy": "复制"
     },
     "plot_to_story": {
       "ready_to_write": "准备好写你的故事了吗？",
@@ -147,6 +148,7 @@
     "success": {
       "random_prompt_selected": "已选择随机提示！",
       "plot_generated": "情节生成成功！",
+      "plot_copied": "情节已复制到剪贴板！",
       "story_generated": "从情节成功生成故事！"
     },
     "errors": {

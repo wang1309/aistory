@@ -92,7 +92,8 @@
     "preview": {
       "generated_plot": "생성된 플롯",
       "no_plot_generated": "아직 플롯이 생성되지 않음",
-      "no_plot_description": "스토리 콘셉트와 매개변수를 입력하고 '플롯 생성'을 클릭하여 아웃라인을 만드세요."
+      "no_plot_description": "스토리 콘셉트와 매개변수를 입력하고 '플롯 생성'을 클릭하여 아웃라인을 만드세요.",
+      "button_copy": "복사"
     },
     "plot_to_story": {
       "ready_to_write": "스토리를 쓸 준비가 되셨나요?",
@@ -147,6 +148,7 @@
     "success": {
       "random_prompt_selected": "랜덤 프롬프트가 선택되었습니다!",
       "plot_generated": "플롯이 성공적으로 생성되었습니다!",
+      "plot_copied": "플롯이 클립보드에 복사되었습니다!",
       "story_generated": "플롯에서 스토리가 성공적으로 생성되었습니다!"
     },
     "errors": {

@@ -92,7 +92,8 @@
     "preview": {
       "generated_plot": "生成されたプロット",
       "no_plot_generated": "まだプロットが生成されていません",
-      "no_plot_description": "物語のコンセプトとパラメータを入力し、「プロットを生成」をクリックしてアウトラインを作成してください。"
+      "no_plot_description": "物語のコンセプトとパラメータを入力し、「プロットを生成」をクリックしてアウトラインを作成してください。",
+      "button_copy": "コピー"
     },
     "plot_to_story": {
       "ready_to_write": "物語を書く準備はできましたか？",
@@ -147,6 +148,7 @@
     "success": {
       "random_prompt_selected": "ランダムなプロンプトが選択されました！",
       "plot_generated": "プロットが正常に生成されました！",
+      "plot_copied": "プロットがクリップボードにコピーされました！",
       "story_generated": "プロットから物語が正常に生成されました！"
     },
     "errors": {
