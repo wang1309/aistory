@@ -25,6 +25,8 @@
     "ui": {
       "title": "플롯 생성기",
       "subtitle": "AI 플롯 생성기로 매력적인 스토리 아웃라인을 만드세요. 상세한 캐릭터, 플롯 포인트, 동적 구조를 생성하여 다음 위대한 스토리를 준비하세요.",
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "플롯 생성기",
       "story_concept": "스토리 콘셉트",
       "random_button": "랜덤",
       "ai_model": "AI 모델",
@@ -156,25 +158,30 @@
       "title": "왜 저희 AI 플롯 생성기를 선택해야 할까요?",
       "description": "당신의 창작적 필요를 이해하는 첨단 AI 플롯 생성기로 창의적인 비전을 매력적인 서사로 변환하세요.",
       "label": "기능",
-      "image": {
-        "src": "/images/plot-generation-hero.jpg",
-        "alt": "AI 플롯 생성 일러스트레이션, 스토리 구조 시각화"
-      },
       "items": [
         {
           "icon": "zap",
           "title": "즉시 작가 블록 극복",
-          "description": "창의성을 자극하는 독특한 플롯 아이디어를 생성하고 빈 페이지를 극복하여 몇 분 안에 스토리 컨셉을 상세한 개요로 변환하세요."
+          "description": "창의성을 자극하는 독특한 플롯 아이디어를 생성하고 빈 페이지를 극복하여 몇 분 안에 스토리 컨셉을 상세한 개요로 변환하세요.",
+          "image": {
+            "src": "/imgs/plot/why-plot-generator1.avif"
+          }
         },
         {
           "icon": "settings",
           "title": "전문가 수준의 스토리 구조 달성",
-          "description": "전문적으로 만들어진 플롯 포인트, 캐릭터 아크, 감정적 깊이로 완벽한 템포의 서사를 만들어 독자를 시작부터 끝까지 사로잡으세요."
+          "description": "전문적으로 만들어진 플롯 포인트, 캐릭터 아크, 감정적 깊이로 완벽한 템포의 서사를 만들어 독자를 시작부터 끝까지 사로잡으세요.",
+          "image": {
+            "src": "/imgs/plot/why-plot-generator2.avif"
+          }
         },
         {
           "icon": "globe",
           "title": "글로벌 독자와 연결",
-          "description": "모국어로 진정성 있게 글을 쓰면서 국경을 넘나드는 문화적 뉘앙스를 가진 스토리텔링으로 전 세계 독자에게 도달하세요."
+          "description": "모국어로 진정성 있게 글을 쓰면서 국경을 넘나드는 문화적 뉘앙스를 가진 스토리텔링으로 전 세계 독자에게 도달하세요.",
+          "image": {
+            "src": "/imgs/plot/why-plot-generator3.avif"
+          }
         }
       ]
     },
@@ -184,8 +191,8 @@
       "description": "아이디어를 구조화된 서사로 변환하는 AI 기반 스토리 개요 생성 도구. 맞춤 설정 가능한 캐릭터, 플롯 포인트, 전문적 스토리 아키텍처를 지원합니다.",
       "label": "핵심 기능",
       "image": {
-        "src": "/images/plot-generation-hero.jpg",
-        "alt": "AI 플롯 생성 일러스트레이션, 스토리 구조 시각화"
+        "src": "/imgs/plot/what-plot-generator2.avif",
+        "alt": "AI Plot Generation illustration showing story structure visualization"
       },
       "items": [
         {

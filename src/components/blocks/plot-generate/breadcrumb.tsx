@@ -10,12 +10,12 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Link } from "@/i18n/navigation";
 
-interface BookTitleBreadcrumbProps {
+interface PlotBreadcrumbProps {
   homeText: string;
   currentText: string;
 }
 
-export default function BookTitleBreadcrumb({ homeText, currentText }: BookTitleBreadcrumbProps) {
+export default function PlotBreadcrumb({ homeText, currentText }: PlotBreadcrumbProps) {
   return (
     <Breadcrumb>
       <BreadcrumbList>

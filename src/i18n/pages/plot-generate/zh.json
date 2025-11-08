@@ -25,6 +25,8 @@
     "ui": {
       "title": "情节生成器",
       "subtitle": "使用我们的AI情节生成器创建引人入胜的故事大纲。生成详细的角色、情节要点和动态结构，为您的下一个精彩故事做好准备。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "情节生成器",
       "story_concept": "故事概念",
       "random_button": "随机",
       "ai_model": "AI模型",
@@ -156,25 +158,30 @@
       "title": "为什么选择我们的AI情节生成器？",
       "description": "通过理解您创意需求的先进AI情节生成器，将您的创意愿景转化为引人入胜的叙事作品。",
       "label": "功能特色",
-      "image": {
-        "src": "/images/plot-generation-hero.jpg",
-        "alt": "AI情节生成插图，展示故事结构可视化"
-      },
       "items": [
         {
           "icon": "zap",
           "title": "即刻突破写作瓶颈",
-          "description": "生成激发创意的独特情节想法，克服空白页恐惧，几分钟内将故事概念转化为详细大纲。"
+          "description": "生成激发创意的独特情节想法，克服空白页恐惧，几分钟内将故事概念转化为详细大纲。",
+          "image": {
+            "src": "/imgs/plot/why-plot-generator1.avif"
+          }
         },
         {
           "icon": "settings",
           "title": "实现专业级故事结构",
-          "description": "创造完美节奏的叙事，通过精心设计的情节要点、角色弧线和情感深度，从头到尾吸引读者。"
+          "description": "创造完美节奏的叙事，通过精心设计的情节要点、角色弧线和情感深度，从头到尾吸引读者。",
+          "image": {
+            "src": "/imgs/plot/why-plot-generator1.avif"
+          }
         },
         {
           "icon": "globe",
           "title": "与全球读者建立连接",
-          "description": "用您的母语进行真实创作，同时通过超越国界的文化细微差异叙事，触达世界各地读者。"
+          "description": "用您的母语进行真实创作，同时通过超越国界的文化细微差异叙事，触达世界各地读者。",
+          "image": {
+            "src": "/imgs/plot/why-plot-generator1.avif"
+          }
         }
       ]
     },
@@ -184,7 +191,7 @@
       "description": "一个AI驱动的故事大纲创作工具，将您的想法转化为结构化叙事，支持可定制的角色、情节要点和专业级故事架构。",
       "label": "核心功能",
       "image": {
-        "src": "/images/plot-generation-hero.jpg",
+        "src": "/imgs/plot/what-plot-generator2.avif",
         "alt": "AI情节生成插图，展示故事结构可视化"
       },
       "items": [

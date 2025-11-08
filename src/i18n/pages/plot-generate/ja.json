@@ -25,6 +25,8 @@
     "ui": {
       "title": "プロットジェネレーター",
       "subtitle": "AIプロットジェネレーターで魅力的なストーリーアウトラインを作成。詳細なキャラクター、プロットポイント、ダイナミックな構造を生成し、次の素晴らしい物語の準備をしましょう。",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "プロットジェネレーター",
       "story_concept": "物語のコンセプト",
       "random_button": "ランダム",
       "ai_model": "AIモデル",
@@ -156,25 +158,30 @@
       "title": "なぜ私たちのAIプロットジェネレーターを選ぶのか？",
       "description": "あなたの創造的なニーズを理解する先進的なAIプロットジェネレーターで、創造的なビジョンを魅力的な物語に変換。",
       "label": "機能",
-      "image": {
-        "src": "/images/plot-generation-hero.jpg",
-        "alt": "AIプロット生成イラストレーション、ストーリー構造の可視化"
-      },
       "items": [
         {
           "icon": "zap",
           "title": "執筆ブロックを即座に突破",
-          "description": "創造性を刺激するユニークなプロットアイデアを生成し、空白ページを克服して数分でストーリーコンセプトを詳細なアウトラインに変換。"
+          "description": "創造性を刺激するユニークなプロットアイデアを生成し、空白ページを克服して数分でストーリーコンセプトを詳細なアウトラインに変換。",
+          "image": {
+            "src": "/imgs/plot/why-plot-generator1.avif"
+          }
         },
         {
           "icon": "settings",
           "title": "プロレベルのストーリー構造を実現",
-          "description": "専門的に作られたプロットポイント、キャラクターアーク、感情的深みで、完璧なペースの物語を作成し、読者を始めから終わりまで魅了。"
+          "description": "専門的に作られたプロットポイント、キャラクターアーク、感情的深みで、完璧なペースの物語を作成し、読者を始めから終わりまで魅了。",
+          "image": {
+            "src": "/imgs/plot/why-plot-generator2.avif"
+          }
         },
         {
           "icon": "globe",
           "title": "グローバルな読者と接続",
-          "description": "母国語で真正に執筆しながら、国境を越えた文化的ニュアンスを持つストーリーテリングで世界中の読者にリーチ。"
+          "description": "母国語で真正に執筆しながら、国境を越えた文化的ニュアンスを持つストーリーテリングで世界中の読者にリーチ。",
+          "image": {
+            "src": "/imgs/plot/why-plot-generator3.avif"
+          }
         }
       ]
     },
@@ -184,8 +191,8 @@
       "description": "アイデアを構造化された物語に変換するAI駆動のストーリーアウトライン作成ツール。カスタマイズ可能なキャラクター、プロットポイント、プロレベルのストーリー建築をサポート。",
       "label": "主要機能",
       "image": {
-        "src": "/images/plot-generation-hero.jpg",
-        "alt": "AIプロット生成イラストレーション、ストーリー構造の可視化表示"
+        "src": "/imgs/plot/what-plot-generator2.avif",
+        "alt": "AI Plot Generation illustration showing story structure visualization"
       },
       "items": [
         {

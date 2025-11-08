@@ -34,6 +34,13 @@
               "url": "/fanfic-generator",
               "icon": "RiBookMarkedLine",
               "target": "_self"
+            },
+            {
+              "title": "情节生成器",
+              "description": "生成详细的故事大纲和情节结构",
+              "url": "/plot-generator",
+              "icon": "RiMapLine",
+              "target": "_self"
             }
           ]
         }
@@ -638,7 +645,7 @@
           ]
         },
         {
-          "title": "AI 工具",
+          "title": "AI 写作",
          "children": [
             {
               "title": "故事生成器",
@@ -653,6 +660,11 @@
             {
               "title": "AI 同人文生成器",
               "url": "/fanfic-generator",
+              "target": "_self"
+            },
+            {
+              "title": "情节生成器",
+              "url": "/plot-generator",
               "target": "_self"
             }
           ]

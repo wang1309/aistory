@@ -29,14 +29,14 @@ export async function generateMetadata({
   const metadata = section.metadata;
 
   return {
-    title: metadata.title + " | AI Story",
+    title: metadata.title,
     description: metadata.description,
     keywords: metadata.keywords,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: metadata.title + " | AI Story",
+      title: metadata.title,
       description: metadata.description,
       url: canonicalUrl,
       siteName: "AI Story",
@@ -44,7 +44,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: metadata.title + " | AI Story",
+      title: metadata.title ,
       description: metadata.description,
     },
   };

@@ -25,6 +25,8 @@
     "ui": {
       "title": "Plot Generator",
       "subtitle": "Create compelling story outlines with our AI plot generator. Generate detailed characters, plot points, and dynamic structures for your next great story.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Plot Generator",
       "story_concept": "Story Concept",
       "random_button": "Random",
       "ai_model": "AI Model",

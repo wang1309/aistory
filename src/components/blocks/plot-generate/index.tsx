@@ -21,6 +21,7 @@ import type { PlotGenerate as PlotGenerateType } from "@/types/blocks/plot-gener
 import ReactMarkdown from "react-markdown";
 import PlotToStoryDialog from "./plot-to-story-dialog";
 import PlotHistoryDropdown from "@/components/plot-history-dropdown";
+import PlotBreadcrumb from "./breadcrumb";
 import { cn } from "@/lib/utils";
 import { ChevronDown, Settings } from "lucide-react";
 
@@ -396,6 +397,14 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
         {/* LEFT COLUMN: Parameters */}
         <div className="space-y-6">
+
+          {/* Breadcrumb Navigation */}
+          <div className="mb-6">
+            <PlotBreadcrumb
+              homeText={t('ui.breadcrumb_home')}
+              currentText={t('ui.breadcrumb_current')}
+            />
+          </div>
 
           {/* Header */}
           <div className="space-y-3 mb-2 text-center">

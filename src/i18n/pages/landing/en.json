@@ -34,6 +34,13 @@
               "url": "/fanfic-generator",
               "icon": "RiBookMarkedLine",
               "target": "_self"
+            },
+            {
+              "title": "Plot Generator",
+              "description": "Generate detailed story outlines and plot structures",
+              "url": "/plot-generator",
+              "icon": "RiMapLine",
+              "target": "_self"
             }
           ]
         }
@@ -638,7 +645,7 @@
           ]
         },
         {
-         "title": "AI Tools",
+         "title": "AI Write",
          "children": [
             {
               "title": "Story Generator",
@@ -653,6 +660,11 @@
             {
               "title": "AI Fanfic Generator",
               "url": "/fanfic-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Plot Generator",
+              "url": "/plot-generator",
               "target": "_self"
             }
           ]
