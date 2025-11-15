@@ -1,0 +1,663 @@
+{
+  "metadata": {
+    "title": "免费AI诗歌生成器 - 俳句、十四行诗、藏头诗在线创作",
+    "description": "秒速创作精美诗歌！免费AI诗歌生成器支持俳句、十四行诗、藏头诗、情诗等12种语言。内置智能分析，零基础也能写出好诗。",
+    "keywords": "AI诗歌生成器,俳句生成器,十四行诗生成器,藏头诗生成器,打油诗生成器,情诗生成器,诗词生成器,在线写诗,免费诗歌生成,现代诗生成,古典诗词"
+  },
+  "poemGenerate": {
+    "header": {
+      "title": "AI 诗歌生成器",
+      "subtitle": "用AI创作独特的诗歌 - 支持现代诗、古典诗词、俳句、十四行诗、情诗生成器"
+    },
+    "mode": {
+      "simple": "简洁模式",
+      "advanced": "专业模式",
+      "toggle_hint": "切换到{mode}",
+      "simple_description": "快速开始，使用我们诗歌生成器的核心参数",
+      "advanced_description": "解锁高级诗歌生成器功能，实现精细化创作控制",
+      "keyboard_shortcut": "⌘K",
+      "toggle_shortcut": "切换"
+    },
+    "prompt": {
+      "label": "诗歌主题或灵感",
+      "required": "必填",
+      "placeholder": "描述您想创作的诗歌主题、意境或灵感来源...\n例如：月光下的思念、春日的第一场雨、城市的夜晚",
+      "random_button": "随机主题",
+      "quick_adds_label": "快速添加",
+      "quick_add_chips": {
+        "emotions": [
+          "温柔",
+          "忧郁",
+          "激昂",
+          "宁静",
+          "浪漫",
+          "怀念"
+        ],
+        "imagery": [
+          "月光",
+          "流水",
+          "花瓣",
+          "山川",
+          "星辰",
+          "微风"
+        ],
+        "scenes": [
+          "黄昏",
+          "雨夜",
+          "春晨",
+          "秋日",
+          "海边",
+          "森林"
+        ]
+      },
+      "language_label": "输出语言",
+      "language_placeholder": "选择诗歌语言",
+      "language_options": {
+        "en": {
+          "native": "English",
+          "english": "English",
+          "flag": "🇺🇸"
+        },
+        "zh": {
+          "native": "中文",
+          "english": "Chinese",
+          "flag": "🇨🇳"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "Japanese",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "Korean",
+          "flag": "🇰🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "Spanish",
+          "flag": "🇪🇸"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "French",
+          "flag": "🇫🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "German",
+          "flag": "🇩🇪"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "Portuguese",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "Russian",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "Arabic",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "Hindi",
+          "flag": "🇮🇳"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "Italian",
+          "flag": "🇮🇹"
+        }
+      },
+      "character_counter": "{current}/{max} 字符"
+    },
+    "random_prompts": [
+      "月光洒在寂静的湖面，波光粼粼如梦",
+      "城市的霓虹灯下，孤独的身影匆匆而过",
+      "春天的第一场雨，唤醒沉睡的大地",
+      "秋风吹落最后一片叶子，岁月如歌",
+      "海浪拍打着礁石，诉说着永恒的故事",
+      "星空下的篝火旁，我们分享彼此的梦想",
+      "晨曦中的露珠，折射出生命的光彩",
+      "雪花飘落在古老的街道，时光仿佛静止"
+    ],
+    "poem_types": {
+      "title": "诗歌类型",
+      "tabs": {
+        "modern": {
+          "name": "现代诗",
+          "description": "自由不羁的表达，注重意象和情感"
+        },
+        "classical": {
+          "name": "古典诗词",
+          "description": "传统格律，平仄押韵，意境深远"
+        },
+        "format": {
+          "name": "特定格式",
+          "description": "俳句生成器、十四行诗生成器、打油诗生成器、藏头诗生成器等固定格式"
+        },
+        "lyric": {
+          "name": "歌词",
+          "description": "主副歌结构，朗朗上口，适合演唱"
+        }
+      }
+    },
+    "ai_models": {
+      "title": "AI 模型",
+      "hint": "选择适合的AI诗歌生成器模型，匹配您的创作风格和需求",
+      "models": {
+        "fast": {
+          "name": "快速模式",
+          "badge": "最快",
+          "description": "快速诗歌生成 - 简洁高效，完美满足即时灵感创作",
+          "speed": "~5秒"
+        },
+        "standard": {
+          "name": "标准模式",
+          "badge": "推荐",
+          "description": "平衡型诗歌生成器模式 - 为大多数诗歌创作需求提供最佳质量和速度",
+          "speed": "~10秒"
+        },
+        "creative": {
+          "name": "创意模式",
+          "badge": "最佳",
+          "description": "深度思考，诗意表达",
+          "speed": "~20秒"
+        }
+      },
+      "selected": "已选",
+      "select": "选择"
+    },
+    "options": {
+      "title": "诗歌参数",
+      "subtitle": "通过专业自定义选项微调您的诗歌生成器输出",
+      "length": {
+        "label": "长度",
+        "placeholder": "选择诗歌长度",
+        "options": {
+          "short": "短诗 (4-8行)",
+          "medium": "中篇 (12-20行)",
+          "long": "长诗 (20+行)"
+        }
+      },
+      "rhyme_scheme": {
+        "label": "韵律/格式",
+        "placeholder": "选择韵律方案",
+        "modern_options": {
+          "free": "自由韵律",
+          "abab": "交叉韵 (ABAB)",
+          "aabb": "对偶韵 (AABB)",
+          "abcb": "简单韵 (ABCB)"
+        },
+        "classical_options": {
+          "wujue": "五言绝句",
+          "qijue": "七言绝句",
+          "wulv": "五言律诗",
+          "qilv": "七言律诗",
+          "ci": "词"
+        },
+        "format_options": {
+          "haiku": "俳句 (5-7-5)",
+          "free_verse": "自由诗",
+          "sonnet": "十四行诗",
+          "limerick": "打油诗",
+          "acrostic": "藏头诗",
+          "love_poem": "情诗",
+          "line_by_line": "逐行诗",
+          "rhyming_couplets": "对联",
+          "villanelle": "维拉内拉"
+        },
+        "lyric_options": {
+          "verse_chorus": "主歌+副歌",
+          "verse_bridge_chorus": "主歌+过渡+副歌"
+        }
+      },
+      "cipai": {
+        "label": "词牌名",
+        "placeholder": "选择词牌",
+        "popular": {
+          "niannujiao": "念奴娇",
+          "qinyuanchun": "沁园春",
+          "shuidiaogetou": "水调歌头",
+          "yulinling": "雨霖铃",
+          "xijiangYue": "西江月",
+          "ruanlanggui": "阮郎归",
+          "yijiangnan": "忆江南",
+          "pusalian": "菩萨蛮"
+        }
+      },
+      "theme": {
+        "label": "主题",
+        "placeholder": "选择诗歌主题",
+        "none_option": "-",
+        "options": {
+          "love": "爱情",
+          "nature": "自然",
+          "philosophy": "哲理",
+          "inspiration": "励志",
+          "life": "人生",
+          "nostalgia": "怀旧",
+          "friendship": "友谊",
+          "family": "亲情",
+          "society": "社会",
+          "history": "历史"
+        }
+      },
+      "mood": {
+        "label": "情感基调",
+        "placeholder": "选择情感氛围",
+        "none_option": "-",
+        "options": {
+          "joyful": "欢快",
+          "melancholic": "忧郁",
+          "passionate": "激昂",
+          "peaceful": "平静",
+          "romantic": "浪漫",
+          "contemplative": "沉思",
+          "hopeful": "充满希望",
+          "sorrowful": "悲伤"
+        }
+      },
+      "style": {
+        "label": "文学风格",
+        "placeholder": "选择艺术流派",
+        "none_option": "-",
+        "options": {
+          "romantic": "浪漫主义",
+          "realism": "现实主义",
+          "symbolism": "象征主义",
+          "surrealism": "超现实主义",
+          "minimalism": "极简主义",
+          "impressionism": "意象派",
+          "modernism": "现代主义",
+          "classical": "古典主义"
+        }
+      },
+      "strict_tone": {
+        "label": "严格平仄",
+        "description": "严格遵守古典诗词的平仄规则"
+      }
+    },
+    "generate_button": {
+      "text": "生成诗歌",
+      "generating": "创作中...",
+      "info": {
+        "credit": "消耗积分",
+        "credit_text": "1 积分",
+        "time": "预计时间",
+        "quality": "创作质量"
+      },
+      "tip": "💡 专业提示：我们诗歌生成器的创意模式能产出最具艺术性和表现力的诗句"
+    },
+    "output": {
+      "title": "您的诗歌生成器结果",
+      "tabs": {
+        "poem": "诗歌",
+        "analysis": "分析",
+        "audio": "朗诵"
+      },
+      "status_writing": "AI 正在创作...",
+      "status_complete": "创作完成",
+      "line_count": "{count} 行",
+      "button_copy": "复制",
+      "button_export_pdf": "导出 PDF",
+      "button_exporting_pdf": "导出中...",
+      "button_regenerate": "重新生成",
+      "button_analyze": "分析诗歌",
+      "button_analyzing": "分析中...",
+      "button_generate_audio": "生成朗诵",
+      "button_generating_audio": "生成中...",
+      "loading": "加载中..."
+    },
+    "analysis": {
+      "title": "诗歌分析",
+      "imagery": {
+        "title": "意象分析",
+        "description": "诗中的核心意象及其象征意义"
+      },
+      "rhyme": {
+        "title": "韵律分析",
+        "description": "押韵方式、音节结构和节奏模式"
+      },
+      "rhetoric": {
+        "title": "修辞手法",
+        "description": "使用的修辞技巧和艺术手法"
+      },
+      "emotion": {
+        "title": "情感基调",
+        "description": "整体情感氛围和情绪变化"
+      },
+      "theme": {
+        "title": "主题解读",
+        "description": "诗歌的深层含义和哲学思考"
+      },
+      "loading": "正在分析诗歌...",
+      "no_analysis": "点击「分析诗歌」按钮查看深度解析",
+      "error": "分析失败，请重试"
+    },
+    "audio": {
+      "title": "朗诵音频",
+      "no_audio": "点击「生成朗诵」按钮创建音频",
+      "error": "音频生成失败，请重试",
+      "player": {
+        "play": "开始朗诵",
+        "pause": "暂停",
+        "stop": "停止",
+        "resume": "继续",
+        "download": "下载",
+        "speed": "播放速度",
+        "speed_label": "朗诵速度",
+        "status_reading": "朗诵中...",
+        "status_paused": "已暂停"
+      },
+      "browser_not_supported": "您的浏览器不支持语音朗诵功能",
+      "tts_failed": "朗诵失败，请重试"
+    },
+    "pdf": {
+      "generated_at": "生成时间",
+      "line_count_label": "行数",
+      "ai_model": "AI 模型",
+      "poem_type": "诗歌类型",
+      "poem_theme": "主题",
+      "poem_mood": "情感",
+      "prompt": "创作灵感",
+      "footer_text": "由 AI Story 诗歌生成器创作",
+      "page_indicator": "第 {current} 页，共 {total} 页"
+    },
+    "share": {
+      "title": "分享诗歌",
+      "copy_link": "复制链接",
+      "share_twitter": "分享到 Twitter",
+      "share_facebook": "分享到 Facebook",
+      "share_linkedin": "分享到 LinkedIn",
+      "link_copied": "链接已复制",
+      "share_text_template": "我用 AI Story 创作了一首诗歌，快来看看吧！"
+    },
+    "history": {
+      "title": "历史记录",
+      "empty": "暂无历史记录",
+      "load": "加载",
+      "delete": "删除",
+      "clear_all": "清空全部",
+      "confirm_clear": "确定要清空所有历史记录吗？"
+    },
+    "toasts": {
+      "error_no_prompt": "请输入诗歌主题或灵感",
+      "error_no_model": "请选择 AI 模型",
+      "error_generate_failed": "诗歌生成失败，请重试",
+      "error_no_stream": "无法获取生成流",
+      "error_no_content": "未生成任何内容",
+      "error_analyze_failed": "诗歌分析失败，请重试",
+      "error_tts_failed": "音频生成失败，请重试",
+      "error_pdf_export_failed": "PDF 导出失败",
+      "error_generate_poem_first": "请先生成诗歌",
+      "success_generated": "诗歌创作完成！",
+      "success_copied": "已复制到剪贴板",
+      "success_analyzed": "诗歌分析完成",
+      "success_audio_generated": "朗诵音频生成完成",
+      "success_pdf_exported": "PDF 导出成功",
+      "success_loaded": "诗歌已加载"
+    },
+    "feature1_section": {
+      "name": "poem-features-highlight",
+      "title": "什么是AI诗歌生成器？",
+      "description": "专业的AI诗歌生成器，将您的灵感转化为优美的诗篇。我们的高级诗词生成器支持现代诗、古典诗词、特定格式和歌词创作 - 让诗歌创作人人可及。",
+      "label": "核心功能",
+      "image": {
+        "src": "/imgs/poem/what-poem-generator2.avif",
+        "alt": "AI诗歌生成器功能展示"
+      },
+      "items": [
+        {
+          "icon": "sparkles",
+          "title": "多样化诗歌类型",
+          "description": "支持现代诗、古典诗词（绝句、律诗、词牌），包括俳句生成器、十四行诗生成器、藏头诗生成器、打油诗生成器和情诗创作"
+        },
+        {
+          "icon": "globe",
+          "title": "真正多语言诗歌生成器",
+          "description": "支持12种语言的母语级诗歌生成，理解不同文化背景下的诗歌韵律和表达方式"
+        },
+        {
+          "icon": "palette",
+          "title": "主题风格定制",
+          "description": "丰富的主题、情感和风格选项，让您精确控制诗歌的氛围和表现力"
+        },
+        {
+          "icon": "analyze",
+          "title": "智能诗歌分析",
+          "description": "唯一内置AI分析的诗歌生成器，深度解析意象、韵律、修辞和情感基调，帮助您掌握创作技巧"
+        },
+        {
+          "icon": "volume-2",
+          "title": "语音朗诵功能",
+          "description": "内置文本转语音功能，支持多语言朗诵，可调节朗读速度，聆听诗歌之美"
+        },
+        {
+          "icon": "history",
+          "title": "创作历史保存",
+          "description": "自动保存创作历史，您可以随时回顾、修改和管理您的诗歌作品"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "poem-features-interactive",
+      "title": "为什么选择我们的专业AI诗歌生成器？",
+      "description": "用我们先进的AI诗歌生成器将您的创意愿景转化为动人的诗篇，同时理解艺术需求和诗歌结构要求。",
+      "label": "核心优势",
+      "items": [
+        {
+          "icon": "heart",
+          "title": "用我们的诗词生成器转化情感",
+          "description": "将复杂的情感和思绪转化为富有感染力的诗歌，让每个字句都充满真挚的情感表达，触动读者的心弦。",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator1.avif"
+          }
+        },
+        {
+          "icon": "globe",
+          "title": "通过通用诗歌连接文化",
+          "description": "用您的母语创作真实的诗歌，同时通过具有文化细微差异的诗意表达跨越国界，触达全球读者。",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator2.avif"
+          }
+        },
+        {
+          "icon": "sparkles",
+          "title": "永不面对创作瓶颈",
+          "description": "使用我们智能诗歌生成器获得无限创意灵感，探索多样化诗歌风格。告别写作障碍 - AI成为您永不枯竭的创作伙伴。",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator3.avif"
+          }
+        }
+      ]
+    },
+    "poem_applications_section": {
+      "name": "poem-applications",
+      "title": "AI诗歌生成器的应用场景",
+      "description": "探索AI诗歌生成器在各个领域的创新应用，从创意写作到教育培训，从情感表达到商业营销",
+      "label": "应用场景",
+      "items": [
+        {
+          "icon": "book-open",
+          "title": "创意写作",
+          "description": "为小说、剧本、歌词增添诗意元素，提升作品的艺术感染力和文学价值，让文字更具表现力。"
+        },
+        {
+          "icon": "graduation-cap",
+          "title": "教育培训",
+          "description": "辅助诗歌教学、文学欣赏课程，帮助学生理解诗歌结构、韵律和修辞手法，提升写作能力。"
+        },
+        {
+          "icon": "heart",
+          "title": "特殊场合",
+          "description": "为婚礼、生日、纪念日等特殊时刻定制专属诗歌，创造独特而难忘的情感表达和美好回忆。"
+        },
+        {
+          "icon": "megaphone",
+          "title": "内容创作",
+          "description": "为社交媒体、博客、品牌营销创作富有诗意的文案，增强内容吸引力和传播效果。"
+        },
+        {
+          "icon": "message-circle",
+          "title": "情感表达",
+          "description": "将爱情、友情、感恩等复杂情感转化为优美的诗句，成为传递心意和情感的美好载体。"
+        },
+        {
+          "icon": "building",
+          "title": "文化传承",
+          "description": "学习和传承古典诗词文化，探索现代与传统的结合，促进诗歌文化的普及和发展。"
+        }
+      ]
+    },
+    "feature3_section": {
+      "name": "poem-usage-guide",
+      "title": "如何使用我们的AI诗歌生成器",
+      "description": "按照这些简单的步骤，使用我们先进的AI诗歌生成器助手创作动人的诗篇",
+      "label": "使用指南",
+      "items": [
+        {
+          "title": "输入您的诗歌主题",
+          "description": "首先输入您的基本诗歌想法、主题或创作灵感。可以简单如'月夜的思念'，也可以是您想要发展的复杂情感表达。"
+        },
+        {
+          "title": "配置诗歌参数",
+          "description": "通过选择诗歌类型、长度、主题、情感基调和风格来定制您的诗歌。调整每个方面以匹配您的创意愿景，无论是浪漫的情诗、结构化的俳句、经典的十四行诗、创意的藏头诗，还是幽默的打油诗。"
+        },
+        {
+          "title": "生成并完善诗歌",
+          "description": "点击生成按钮创建详细的诗歌内容。使用生成的诗歌作为基础，通过智能分析功能深入了解意象、韵律和修辞手法，让您的作品更加完美。"
+        }
+      ]
+    },
+    "testimonial_section": {
+      "name": "poem-testimonials",
+      "label": "用户评价",
+      "title": "用户怎么说",
+      "description": "听听来自世界各地创作者、教育家和爱好者的真实体验，了解AI诗歌生成器如何改变他们的创作方式",
+      "icon": "GoThumbsup",
+      "items": [
+        {
+          "title": "李诗韵",
+          "sub": "诗人 & 作家",
+          "content": "这个AI诗歌生成器真正改变了我克服创作瓶颈的方式。当我感到灵感枯竭时，它能够提供独特的诗句和韵律建议，让我重新找回创作的激情。生成的诗歌质量令人惊叹，既有古典诗词的韵味，又融入了现代的表达方式。",
+          "image": {
+            "src": "/imgs/users/1.png"
+          }
+        },
+        {
+          "title": "张明华",
+          "sub": "文学教授",
+          "content": "作为文学教授，我一直在寻找好的教学工具来帮助学生理解诗歌的结构和韵律。这个AI工具不仅能生成各种诗歌形式，还提供详细的分析功能，让学生能够深入理解意象、修辞手法和情感表达。它已经成为我教学中不可缺少的助手。",
+          "image": {
+            "src": "/imgs/users/2.png"
+          }
+        },
+        {
+          "title": "王艺琳",
+          "sub": "作词人",
+          "content": "创作歌词时，我经常需要在韵律和意境之间找到平衡。这个AI生成器帮助我探索不同的押韵模式，并且能够根据我提供的主题生成富有诗意的歌词片段。多语言支持也让我能够为不同市场的听众创作内容。",
+          "image": {
+            "src": "/imgs/users/3.png"
+          }
+        },
+        {
+          "title": "陈小雨",
+          "sub": "创意写作学生",
+          "content": "刚开始学习诗歌写作时，我对古典诗词的格律感到很困惑。这个工具不仅帮我理解了绝句、律诗等传统形式，还能实时分析我写的诗，指出韵律和结构问题。现在我能够自信地创作出符合格律要求的古典诗歌了。",
+          "image": {
+            "src": "/imgs/users/4.png"
+          }
+        },
+        {
+          "title": "刘晨光",
+          "sub": "社交媒体内容创作者",
+          "content": "在我的社交媒体账号上，诗歌内容总是能获得最高的互动率。这个AI工具帮助我快速创作出富有诗意的短诗，配合精美的图片效果特别好。语音朗诵功能让我能够制作诗歌朗诵视频，大大提升了内容的多样性。",
+          "image": {
+            "src": "/imgs/users/5.png"
+          }
+        },
+        {
+          "title": "孙美琪",
+          "sub": "婚礼策划师",
+          "content": "为客户的婚礼和特殊场合定制诗歌是我工作中的一大亮点。这个AI工具能够根据我提供的背景信息和情感基调，创作出个性化的诗歌作品。每一首诗都恰到好处地表达了新人的爱情故事，成为了婚礼中最感人的环节。",
+          "image": {
+            "src": "/imgs/users/6.png"
+          }
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "poem-faq",
+      "title": "常见问题",
+      "label": "FAQ",
+      "description": "关于AI诗歌生成器的常见问题解答，帮助您更好地了解和使用我们的工具。",
+      "items": [
+        {
+          "title": "AI诗歌生成器是如何工作的？",
+          "description": "我们的AI诗歌生成器使用先进的大型语言模型，通过深度学习理解诗歌的韵律、意象和情感表达。您只需输入主题或灵感，AI就会分析您的需求并生成符合要求的原创诗歌。"
+        },
+        {
+          "title": "支持哪些类型的诗歌？",
+          "description": "我们支持多种诗歌类型：现代诗（自由诗）、古典诗词（五言绝句、七言绝句、五言律诗、七言律诗、词牌）、特定格式（俳句、十四行诗、打油诗、藏头诗、情诗）以及歌词创作。"
+        },
+        {
+          "title": "生成的诗歌是原创的吗？",
+          "description": "是的，每首诗歌都是AI根据您的输入实时生成的原创作品。AI不会复制现有诗歌，而是学习大量诗歌作品后创作出全新的内容，确保独特性和原创性。"
+        },
+        {
+          "title": "支持哪些语言？",
+          "description": "目前支持12种语言：中文、英文、日文、韩文、西班牙文、法文、德文、葡萄牙文、俄文、阿拉伯文、印地文和意大利文。每种语言都有对应的诗歌传统和表达方式的优化。"
+        },
+        {
+          "title": "生成一首诗歌需要多长时间？",
+          "description": "生成时间取决于选择的AI模型：快速模式约5秒，标准模式约10秒，创意模式约20秒。创意模式虽然时间较长，但能生成更具艺术性和表现力的诗歌。"
+        },
+        {
+          "title": "如何获得更好的生成效果？",
+          "description": "提供具体的主题和情感基调，选择合适的诗歌类型，使用详细的描述词。专业模式下的高级选项可以帮助您精确控制诗歌的长度、韵律、主题和风格，获得更满意的结果。"
+        },
+        {
+          "title": "生成诗歌消耗积分吗？",
+          "description": "目前诗歌生成功能是免费使用的，不消耗积分。您可以尽情创作各种类型的诗歌，包括现代诗、古典诗词、特定格式和歌词，无需担心费用问题。"
+        },
+        {
+          "title": "可以分析生成的诗歌吗？",
+          "description": "可以！我们的智能分析功能可以深度解析诗歌的意象、韵律、修辞手法和情感基调，帮助您理解诗歌的艺术特色和创作技巧，提升诗歌鉴赏能力。"
+        },
+        {
+          "title": "支持语音朗诵吗？",
+          "description": "是的，我们内置了文本转语音功能，支持多语言朗诵。您可以调节朗诵速度，聆听诗歌之美，特别适合诗歌分享和教学使用。"
+        },
+        {
+          "title": "如何保存和分享诗歌？",
+          "description": "您可以将诗歌复制到剪贴板，系统会自动保存您的创作历史到本地浏览器存储中。您可以随时查看和管理您的诗歌作品，包括搜索、分类和统计功能。目前最多保存10首诗歌，支持导出为JSON格式进行备份。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "poem-cta",
+      "title": "准备探索更多创作可能性？",
+      "description": "发现我们完整的AI创意工具套件，将您的写作提升到全新水平。从诗歌到故事，让AI成为您永不枯竭的创作伙伴。",
+      "buttons": [
+        {
+          "title": "学习诗歌形式",
+          "url": "#feature3",
+          "icon": "RiGraduationCapLine",
+          "variant": "secondary"
+        },
+        {
+          "title": "尝试故事生成器",
+          "url": "/",
+          "icon": "RiBookOpenLine",
+          "variant": "default"
+        }
+      ]
+    }
+  }
+}

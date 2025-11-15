@@ -1,0 +1,663 @@
+{
+  "metadata": {
+    "title": "無料AI詩作成 - 俳句・ソネット・アクロスティック生成器",
+    "description": "数秒で美しい詩を創作！無料AI詩歌生成器で俳句・ソネット・ラブポエムなど12言語対応。AI分析機能付き、初心者でも本格的な詩が書けます。",
+    "keywords": "AI詩歌生成器,俳句生成器,ソネット生成器,アクロスティック生成器,リムリック生成器,ラブポエム生成器,詩歌生成器,韻文生成器,無料詩歌生成器,オンライン詩歌生成器,現代詩,古典詩"
+  },
+  "poemGenerate": {
+    "header": {
+      "title": "AI 詩歌生成器",
+      "subtitle": "AIで独自の詩を創作 - 現代詩、古典詩、俳句、ソネット、ラブポエム生成器"
+    },
+    "mode": {
+      "simple": "シンプルモード",
+      "advanced": "高度モード",
+      "toggle_hint": "{mode}に切り替え",
+      "simple_description": "コアパラメータのみで素早く開始",
+      "advanced_description": "詳細な制御のためのより多くのオプション",
+      "keyboard_shortcut": "⌘K",
+      "toggle_shortcut": "で切り替え"
+    },
+    "prompt": {
+      "label": "詩のテーマまたはインスピレーション",
+      "required": "必須",
+      "placeholder": "創作したい詩のテーマ、雰囲気、インスピレーション源を説明してください...\n例：月光と憧れ、春の最初の雨、夜の街",
+      "random_button": "ランダムテーマ",
+      "quick_adds_label": "クイック追加",
+      "quick_add_chips": {
+        "emotions": [
+          "優しい",
+          "憂鬱",
+          "情熱的",
+          "静か",
+          "ロマンチック",
+          "懐かしい"
+        ],
+        "imagery": [
+          "月光",
+          "流れる水",
+          "花びら",
+          "山",
+          "星",
+          "そよ風"
+        ],
+        "scenes": [
+          "黄昏",
+          "雨の夜",
+          "春の朝",
+          "秋の日",
+          "海辺",
+          "森"
+        ]
+      },
+      "language_label": "出力言語",
+      "language_placeholder": "詩の言語を選択",
+      "language_options": {
+        "en": {
+          "native": "English",
+          "english": "English",
+          "flag": "🇺🇸"
+        },
+        "zh": {
+          "native": "中文",
+          "english": "Chinese",
+          "flag": "🇨🇳"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "Japanese",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "Korean",
+          "flag": "🇰🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "Spanish",
+          "flag": "🇪🇸"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "French",
+          "flag": "🇫🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "German",
+          "flag": "🇩🇪"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "Portuguese",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "Russian",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "Arabic",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "Hindi",
+          "flag": "🇮🇳"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "Italian",
+          "flag": "🇮🇹"
+        }
+      },
+      "character_counter": "{current}/{max} 文字"
+    },
+    "random_prompts": [
+      "静かな湖に月光が踊り、夢のように輝く",
+      "ネオンの下、孤独な影が急いで通り過ぎる",
+      "春の最初の雨が眠る大地を目覚めさせる",
+      "秋風が最後の葉を運び、時は歌のように流れる",
+      "波が岩に打ちつけ、永遠の物語を語る",
+      "星空の下、焚き火を囲んで夢を分かち合う",
+      "朝露が生命の輝きを映す",
+      "雪が古い通りに降り、時間が止まったよう"
+    ],
+    "poem_types": {
+      "title": "詩のタイプ",
+      "tabs": {
+        "modern": {
+          "name": "現代詩",
+          "description": "自由な表現、イメージと感情に焦点"
+        },
+        "classical": {
+          "name": "古典詩",
+          "description": "伝統的な韻律、音調パターン、深い意味"
+        },
+        "format": {
+          "name": "定型詩",
+          "description": "俳句、ソネット、リメリックなど固定構造"
+        },
+        "lyric": {
+          "name": "歌詞",
+          "description": "ヴァース-コーラス構造、キャッチー、歌いやすい"
+        }
+      }
+    },
+    "ai_models": {
+      "title": "AI モデル",
+      "hint": "異なるモデルで異なる創作スタイルを選択",
+      "models": {
+        "fast": {
+          "name": "高速モード",
+          "badge": "最速",
+          "description": "簡潔で効率的、素早い生成",
+          "speed": "〜5秒"
+        },
+        "standard": {
+          "name": "標準モード",
+          "badge": "推奨",
+          "description": "品質と速度のバランス",
+          "speed": "〜10秒"
+        },
+        "creative": {
+          "name": "創造モード",
+          "badge": "最高",
+          "description": "深い思考、詩的な表現",
+          "speed": "〜20秒"
+        }
+      },
+      "selected": "選択済み",
+      "select": "選択"
+    },
+    "options": {
+      "title": "詩のパラメータ",
+      "subtitle": "詩のスタイルと構造をカスタマイズ",
+      "length": {
+        "label": "長さ",
+        "placeholder": "詩の長さを選択",
+        "options": {
+          "short": "短い (4-8行)",
+          "medium": "中程度 (12-20行)",
+          "long": "長い (20行以上)"
+        }
+      },
+      "theme": {
+        "label": "テーマ",
+        "placeholder": "詩のテーマを選択",
+        "none_option": "-",
+        "options": {
+          "love": "愛",
+          "nature": "自然",
+          "philosophy": "哲学",
+          "inspiration": "インスピレーション",
+          "life": "人生",
+          "nostalgia": "ノスタルジア",
+          "friendship": "友情",
+          "family": "家族",
+          "society": "社会",
+          "history": "歴史"
+        }
+      },
+      "mood": {
+        "label": "感情的なトーン",
+        "placeholder": "感情的な雰囲気を選択",
+        "none_option": "-",
+        "options": {
+          "joyful": "喜び",
+          "melancholic": "憂鬱",
+          "passionate": "情熱的",
+          "peaceful": "平和",
+          "romantic": "ロマンチック",
+          "contemplative": "瞑想的",
+          "hopeful": "希望に満ちた",
+          "sorrowful": "悲しい"
+        }
+      },
+      "style": {
+        "label": "文学スタイル",
+        "placeholder": "芸術運動を選択",
+        "none_option": "-",
+        "options": {
+          "romantic": "ロマン主義",
+          "realism": "写実主義",
+          "symbolism": "象徴主義",
+          "surrealism": "超現実主義",
+          "minimalism": "ミニマリズム",
+          "impressionism": "印象派",
+          "modernism": "モダニズム",
+          "classical": "古典主義"
+        }
+      },
+      "strict_tone": {
+        "label": "厳格な音調パターン",
+        "description": "古典詩の音調規則を厳格に守る"
+      },
+      "rhyme_scheme": {
+        "label": "韻律/形式",
+        "placeholder": "韻律スキームを選択",
+        "modern_options": {
+          "free": "自由韻",
+          "abab": "交差韻 (ABAB)",
+          "aabb": "連韻 (AABB)",
+          "abcb": "単純韻 (ABCB)"
+        },
+        "classical_options": {
+          "wujue": "五言絶句",
+          "qijue": "七言絶句",
+          "wulv": "五言律詩",
+          "qilv": "七言律詩",
+          "ci": "詞"
+        },
+        "format_options": {
+          "haiku": "俳句 (5-7-5)",
+          "free_verse": "自由詩",
+          "sonnet": "ソネット",
+          "limerick": "リメリック",
+          "acrostic": "折句",
+          "love_poem": "恋愛詩",
+          "line_by_line": "行ごと",
+          "rhyming_couplets": "韻律対句",
+          "villanelle": "ヴィラネル"
+        },
+        "lyric_options": {
+          "verse_chorus": "バース + コーラス",
+          "verse_bridge_chorus": "バース + ブリッジ + コーラス"
+        }
+      },
+      "cipai": {
+        "label": "Cipai (Tune Pattern)",
+        "placeholder": "Select Cipai",
+        "popular": {
+          "niannujiao": "Nian Nu Jiao",
+          "qinyuanchun": "Qin Yuan Chun",
+          "shuidiaogetou": "Shui Diao Ge Tou",
+          "yulinling": "Yu Lin Ling",
+          "xijiangYue": "Xi Jiang Yue",
+          "ruanlanggui": "Ruan Lang Gui",
+          "yijiangnan": "Yi Jiang Nan",
+          "pusalian": "Pu Sa Man"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "詩を生成",
+      "generating": "作成中...",
+      "info": {
+        "credit": "クレジットコスト",
+        "credit_text": "1 クレジット",
+        "time": "予想時間",
+        "quality": "品質"
+      },
+      "tip": "💡 ヒント：より芸術的な詩には「創造モード」を選択"
+    },
+    "output": {
+      "title": "作成結果",
+      "tabs": {
+        "poem": "詩",
+        "analysis": "分析",
+        "audio": "朗読"
+      },
+      "status_writing": "AIが作成中...",
+      "status_complete": "作成完了",
+      "line_count": "{count} 行",
+      "button_copy": "コピー",
+      "button_export_pdf": "PDF出力",
+      "button_exporting_pdf": "出力中...",
+      "button_regenerate": "再生成",
+      "button_analyze": "詩を分析",
+      "button_analyzing": "分析中...",
+      "button_generate_audio": "音声生成",
+      "button_generating_audio": "生成中...",
+      "loading": "読み込み中..."
+    },
+    "analysis": {
+      "title": "詩の分析",
+      "imagery": {
+        "title": "イメージ分析",
+        "description": "核心的なイメージと象徴的な意味"
+      },
+      "rhyme": {
+        "title": "韻律分析",
+        "description": "韻のスキーム、音節構造、リズム"
+      },
+      "rhetoric": {
+        "title": "修辞技法",
+        "description": "使用された修辞技法と芸術的手法"
+      },
+      "emotion": {
+        "title": "感情的なトーン",
+        "description": "全体的な感情的雰囲気と感情の変化"
+      },
+      "theme": {
+        "title": "テーマ解釈",
+        "description": "深い意味と哲学的思考"
+      },
+      "loading": "詩を分析中...",
+      "no_analysis": "「詩を分析」ボタンをクリックして詳細な分析を表示",
+      "error": "分析に失敗しました。もう一度お試しください"
+    },
+    "audio": {
+      "title": "音声朗読",
+      "no_audio": "「音声生成」ボタンをクリックして音声を作成",
+      "error": "音声生成に失敗しました。もう一度お試しください",
+      "player": {
+        "play": "朗読開始",
+        "pause": "一時停止",
+        "stop": "停止",
+        "resume": "再開",
+        "download": "ダウンロード",
+        "speed": "速度",
+        "speed_label": "朗読速度",
+        "status_reading": "朗読中...",
+        "status_paused": "一時停止中"
+      },
+      "browser_not_supported": "お使いのブラウザは音声朗読機能をサポートしていません",
+      "tts_failed": "朗読に失敗しました。もう一度お試しください"
+    },
+    "pdf": {
+      "generated_at": "生成日時",
+      "line_count_label": "行数",
+      "ai_model": "AIモデル",
+      "poem_type": "詩の種類",
+      "poem_theme": "テーマ",
+      "poem_mood": "ムード",
+      "prompt": "インスピレーション",
+      "footer_text": "AI Story詩歌生成器で作成",
+      "page_indicator": "ページ {current} / {total}"
+    },
+    "share": {
+      "title": "詩を共有",
+      "copy_link": "リンクをコピー",
+      "share_twitter": "Twitterで共有",
+      "share_facebook": "Facebookで共有",
+      "share_linkedin": "LinkedInで共有",
+      "link_copied": "リンクをコピーしました",
+      "share_text_template": "AI Storyで詩を作成しました。ぜひご覧ください！"
+    },
+    "history": {
+      "title": "履歴",
+      "empty": "履歴はまだありません",
+      "load": "読み込む",
+      "delete": "削除",
+      "clear_all": "すべてクリア",
+      "confirm_clear": "すべての履歴を削除してもよろしいですか？"
+    },
+    "toasts": {
+      "error_no_prompt": "詩のテーマまたはインスピレーションを入力してください",
+      "error_no_model": "AIモデルを選択してください",
+      "error_generate_failed": "詩の生成に失敗しました。もう一度お試しください",
+      "error_no_stream": "生成ストリームを取得できません",
+      "error_no_content": "コンテンツが生成されませんでした",
+      "error_analyze_failed": "詩の分析に失敗しました。もう一度お試しください",
+      "error_tts_failed": "音声生成に失敗しました。もう一度お試しください",
+      "error_pdf_export_failed": "PDF出力に失敗しました",
+      "error_generate_poem_first": "まず詩を生成してください",
+      "success_generated": "詩の作成が完了しました！",
+      "success_copied": "クリップボードにコピーされました",
+      "success_analyzed": "詩の分析が完了しました",
+      "success_audio_generated": "音声朗読が生成されました",
+      "success_pdf_exported": "PDFが正常に出力されました",
+      "success_loaded": "詩が読み込まれました"
+    },
+    "feature1_section": {
+      "name": "poem-features-highlight",
+      "title": "AI詩歌生成器とは？",
+      "description": "インスピレーションを美しい詩に変える専門的なAI詩歌生成器。私たちの高度な詩歌生成器は現代詩、古典詩、特定のフォーマット、歌詞をサポート - 誰でも詩歌創作が可能になります。",
+      "label": "コア機能",
+      "image": {
+        "src": "/imgs/poem/what-poem-generator2.avif",
+        "alt": "AI詩歌生成器機能紹介"
+      },
+      "items": [
+        {
+          "icon": "sparkles",
+          "title": "多様な詩歌タイプ",
+          "description": "現代詩、古典詩（絶句、律詩、詞）をサポート、俳句生成器、ソネット生成器、折句生成器、リメリック生成器、恋愛詩創作を含む"
+        },
+        {
+          "icon": "globe",
+          "title": "真の多言語詩歌生成器",
+          "description": "12言語をサポートし、ネイティブ品質の詩歌生成を実現。異なる文化背景における詩的リズムと表現を理解します"
+        },
+        {
+          "icon": "palette",
+          "title": "テーマとスタイルのカスタマイズ",
+          "description": "豊富なテーマ、感情、スタイルオプションにより、詩の雰囲気と表現力を正確にコントロールできます"
+        },
+        {
+          "icon": "analyze",
+          "title": "インテリジェント詩歌分析",
+          "description": "AIによるイメージ、韻律、修辞、感情トーンの分析機能を内蔵した唯一の詩歌生成器で、創作技術の習得を支援します"
+        },
+        {
+          "icon": "volume-2",
+          "title": "音声朗読機能",
+          "description": "内蔵のテキスト読み上げ機能は多言語朗読をサポートし、速度調整可能で詩の美しさを楽しめます"
+        },
+        {
+          "icon": "history",
+          "title": "創作履歴の保存",
+          "description": "創作履歴を自動保存し、いつでも詩作品のレビュー、修正、管理が可能です"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "poem-features-interactive",
+      "title": "プロフェッショナルなAI詩歌生成器を選ぶ理由",
+      "description": "芸術的ニーズと詩的構造要件の両方を理解する高度なAI詩歌生成器で、創造的ビジョンを美しい詩に変換します。",
+      "label": "主な利点",
+      "items": [
+        {
+          "icon": "heart",
+          "title": "詩歌生成器で感情を変換",
+          "description": "複雑な感情や思考を、すべての言葉と行に真摯な表現を込めた、読者の心に響く魅力的な詩に変換します。",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator1.avif"
+          }
+        },
+        {
+          "icon": "globe",
+          "title": "普遍的な詩歌で文化を繋ぐ",
+          "description": "母国語で本格的に書きながら、国境を越えた文化的にニュアンスのある詩的表現を通じて世界中の読者に届けます。",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator2.avif"
+          }
+        },
+        {
+          "icon": "sparkles",
+          "title": "もう創作の壁に直面しない",
+          "description": "インテリジェント詩歌生成器で無限の創作インスピレーションを得て、多様な詩歌スタイルを探索。ライターズブロックにさよなら - AIがあなたの尽きることのない創作パートナーになります。",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator3.avif"
+          }
+        }
+      ]
+    },
+    "poem_applications_section": {
+      "name": "poem-applications",
+      "title": "AI詩歌生成器の応用",
+      "description": "創作、教育から感情表現、ビジネスマーケティングまで、多様な分野で活躍する詩歌生成器の応用例をご紹介。プロフェッショナルな詩歌創作をシンプルに。",
+      "label": "応用シーン",
+      "items": [
+        {
+          "icon": "book-open",
+          "title": "クリエイティブライティング",
+          "description": "小説、脚本、歌詞に詩的要素を加えて、芸術的魅力と文学的価値を高め、テキストをより表現豊かにします。"
+        },
+        {
+          "icon": "graduation-cap",
+          "title": "教育とトレーニング",
+          "description": "教育用詩歌生成器で詩の指導を支援 - 実践的な創作とAI分析を通じて、学生が詩的構造、リズム、修辞技法を理解するのに役立ちます。"
+        },
+        {
+          "icon": "heart",
+          "title": "特別な機会",
+          "description": "結婚式、誕生日、記念式典のためのカスタム詩を作成し、ユニークな感情表現と美しい思い出を創り出します。"
+        },
+        {
+          "icon": "megaphone",
+          "title": "コンテンツ制作",
+          "description": "ソーシャルメディア、ブログ、ブランドマーケティングのための詩的なコピーを作成し、コンテンツの魅力とエンゲージメントを高めます。"
+        },
+        {
+          "icon": "message-circle",
+          "title": "感情表現",
+          "description": "愛、友情、感謝などの複雑な感情を美しい詩に変換し、感情を伝える媒体として活用します。"
+        },
+        {
+          "icon": "building",
+          "title": "文化遺産",
+          "description": "ユニークな古典詩歌生成器 - 中国古典詩（絶句、律詩、詞）の専門サポートで古典詩歌文化を学び継承し、伝統と現代の融合を探求し、詩的遺産を保存します。"
+        }
+      ]
+    },
+    "feature3_section": {
+      "name": "poem-usage-guide",
+      "title": "AI詩歌生成器の使い方",
+      "description": "これらの簡単なステップに従って、AI詩歌生成器で美しい詩を作成 - 数分でプロフェッショナルな結果、詩歌の経験は不要",
+      "label": "使用ガイド",
+      "items": [
+        {
+          "title": "詩のテーマを入力",
+          "description": "基本的な詩のアイデア、テーマ、または創作インスピレーションを入力することから始めます。「月夜の思い出」のようにシンプルでも、発展させたい複雑な感情表現でも構いません。"
+        },
+        {
+          "title": "詩のパラメータを設定",
+          "description": "詩のタイプ、長さ、テーマ、ムード、スタイルを選択して詩をカスタマイズ。ロマンチックな恋愛詩、構造化された俳句、クラシックなソネット、創造的な折句、遊び心のあるリメリックなど、創造的ビジョンに合わせてすべての側面を微調整します。"
+        },
+        {
+          "title": "詩を生成して洗練",
+          "description": "生成をクリックして詳細な詩のコンテンツを作成。生成された詩を基礎として使用し、インテリジェント分析でイメージ、韻律、修辞技法を理解して完璧な傑作に仕上げます。"
+        }
+      ]
+    },
+    "testimonial_section": {
+      "name": "poem-testimonials",
+      "label": "ユーザーの声",
+      "title": "ユーザーの評価",
+      "description": "世界中のクリエイター、教育者、愛好家から、AI詩歌生成器がどのように創作プロセスを変革し、プロフェッショナルな詩歌を誰にでもアクセス可能にしているかをお聞きください",
+      "icon": "GoThumbsup",
+      "items": [
+        {
+          "title": "Maya Chen",
+          "sub": "詩人・作家",
+          "content": "このAI詩歌生成器は、創作の壁を乗り越える方法を本当に変えてくれました。インスピレーションが湧かないとき、ユニークな詩句の提案と韻律パターンを提供してくれて、情熱を取り戻すのに役立ちます。生成される詩の質は驚くほど高く、古典的な詩的魅力と現代的な表現が融合しています。",
+          "image": {
+            "src": "/imgs/users/1.png"
+          }
+        },
+        {
+          "title": "James Morrison教授",
+          "sub": "文学教授",
+          "content": "文学教授として、この詩歌生成器は欠かせない教育アシスタントになりました。様々な詩的形式を生成するだけでなく、詳細なAI分析を提供し、学生がイメージ、修辞技法、感情表現を深く理解できるようにします。詩歌教育のゲームチェンジャーです。",
+          "image": {
+            "src": "/imgs/users/2.png"
+          }
+        },
+        {
+          "title": "Sophie Laurent",
+          "sub": "ソングライター",
+          "content": "歌詞を書くとき、リズムと感情の深さのバランスを取るのに苦労することがよくあります。このAI生成器は、さまざまな韻律パターンを探索し、テーマに基づいて詩的な歌詞フレーズを作成するのに役立ちます。多言語サポートにより、異なる市場の聴衆向けにコンテンツを作成することもできます。",
+          "image": {
+            "src": "/imgs/users/3.png"
+          }
+        },
+        {
+          "title": "David Kim",
+          "sub": "クリエイティブライティング学生",
+          "content": "詩を学び始めたとき、古典的な形式について混乱していました。この詩歌生成器は、ソネットや俳句のような伝統的な形式を理解するのに役立ち、リアルタイム分析がリズムと構造の問題を指摘してくれます。今では古典的な規則に従った詩を自信を持って作曲できます。詩人志望者にとって最高の学習ツールです。",
+          "image": {
+            "src": "/imgs/users/4.png"
+          }
+        },
+        {
+          "title": "Maria Rodriguez",
+          "sub": "ソーシャルメディアコンテンツクリエイター",
+          "content": "詩のコンテンツは、私のソーシャルメディアアカウントで常に最高のエンゲージメントを得ています。このAIツールは、画像と美しく調和する詩的な短い投稿を素早く作成するのに役立ちます。テキスト読み上げ機能により、詩の朗読動画を作成でき、コンテンツ戦略を大幅に多様化できます。",
+          "image": {
+            "src": "/imgs/users/5.png"
+          }
+        },
+        {
+          "title": "Sarah Thompson",
+          "sub": "イベントプランナー",
+          "content": "クライアントの結婚式や特別な機会のためのカスタム詩を作成することは、私のサービスの特徴になっています。このAIツールは、提供する背景情報と感情的トーンに基づいて、パーソナライズされた詩を生成します。各詩はカップルのラブストーリーを完璧に捉え、式典の最も感動的な瞬間になります。",
+          "image": {
+            "src": "/imgs/users/6.png"
+          }
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "poem-faq",
+      "title": "よくある質問",
+      "label": "FAQ",
+      "description": "AI詩生成ツールに関するよくある質問で、ツールの理解と使用をサポートします。",
+      "items": [
+        {
+          "title": "AI詩生成器はどのように機能しますか？",
+          "description": "私たちのAI詩生成器は、深層学習によって詩のリズム、イメージ、感情表現を理解する高度な大規模言語モデルを使用しています。テーマやインスピレーションを入力するだけで、AIがご要望を分析し、要件を満たすオリジナルの詩を生成します。"
+        },
+        {
+          "title": "どのような詩のタイプをサポートしていますか？",
+          "description": "現代詩（自由詩）、中国古典詩（五言絶句、七言絶句、五言律詩、七言律詩、詞牌）、特定フォーマット（俳句、ソネット、リメリック、アクロスティック、ラブソング）、歌詞作成など、多彩な詩のタイプをサポートしています。"
+        },
+        {
+          "title": "生成される詩はオリジナルですか？",
+          "description": "はい、各詩はお客様の入力に基づいてAIがリアルタイムで生成するオリジナル作品です。AIは既存の詩をコピーせず、膨大な詩作品の学習後、全く新しいコンテンツを作成し、独自性と独自性を確保します。"
+        },
+        {
+          "title": "どの言語をサポートしていますか？",
+          "description": "現在12言語をサポート：中国語、英語、日本語、韓国語、スペイン語、フランス語、ドイツ語、ポルトガル語、ロシア語、アラビア語、ヒンディー語、イタリア語。各言語で詩の伝統と表現スタイルが最適化されています。"
+        },
+        {
+          "title": "詩の生成にはどのくらい時間がかかりますか？",
+          "description": "生成時間は選択したAIモデルによります：高速モード約5秒、標準モード約10秒、クリエイティブモード約20秒。クリエイティブモードは時間がかかりますが、より芸術的で表現力豊かな詩を生成します。"
+        },
+        {
+          "title": "より良い生成結果を得るには？",
+          "description": "具体的なテーマと感情的トーンを提供し、適切な詩のタイプを選択し、詳細な記述単語を使用します。プロフェッショナルモードの高度なオプションで、詩の長さ、韻律、テーマ、スタイルを精密に制御でき、より満足度の高い結果が得られます。"
+        },
+        {
+          "title": "詩の生成はクレジットを消費しますか？",
+          "description": "現在、詩の生成機能は無料で利用でき、クレジットを消費しません。現代詩、古典詩、特定フォーマット、歌詞など、様々なタイプの詩を費用を気にせず作成できます。"
+        },
+        {
+          "title": "生成された詩を分析できますか？",
+          "description": "はい！私たちのインテリジェント分析機能は、詩のイメージ、リズム、修辞技法、感情的トーンを深く分析し、芸術的特徴と創作技術の理解を助け、詩の鑑賞能力を向上させます。"
+        },
+        {
+          "title": "音声朗読はサポートされていますか？",
+          "description": "はい、多言語朗読をサポートするテキスト読み上げ機能を内蔵しています。朗読速度を調整して詩の美しさを鑑賞でき、特に詩の共有や教育用途に適しています。"
+        },
+        {
+          "title": "詩を保存・共有するには？",
+          "description": "詩をクリップボードにコピーでき、システムは自動的に作成履歴をローカルブラウザストレージに保存します。詩作品の検索、分類、統計機能を含めていつでも表示・管理できます。現在最大10首の詩を保存し、JSON形式でのエクスポートでバックアップも可能です。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "poem-cta",
+      "title": "さらなる創造の可能性を探求しますか？",
+      "description": "AIクリエイティブツールの完全なスイートを発見し、あなたの執筆を新たなレベルに引き上げましょう。詩から物語まで、AIをあなたの無限の創作パートナーに。",
+      "buttons": [
+        {
+          "title": "詩の形式を学ぶ",
+          "url": "#feature3",
+          "icon": "RiGraduationCapLine",
+          "variant": "secondary"
+        },
+        {
+          "title": "ストーリー生成器を試す",
+          "url": "/",
+          "icon": "RiBookOpenLine",
+          "variant": "default"
+        }
+      ]
+    }
+  }
+}

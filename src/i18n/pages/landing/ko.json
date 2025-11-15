@@ -46,9 +46,7 @@
         }
       ]
     },
-    "buttons": [
-
-    ],
+    "buttons": [],
     "show_sign": true,
     "show_theme": true,
     "show_locale": true
@@ -74,7 +72,7 @@
     ],
     "show_happy_users": false,
     "show_badge": false,
-    "image":{
+    "image": {
       "src": "",
       "alt": "일러스트"
     },
@@ -92,8 +90,7 @@
       "bloom": 1
     }
   },
-  "branding": {
-  },
+  "branding": {},
   "introduce": {
     "name": "introduce",
     "title": "AI 스토리 생성기란?",
@@ -103,8 +100,24 @@
       "src": "/imgs/features/story2.png"
     },
     "items": [
-
-    ]
+      {
+        "title": "스마트 스토리 창작 엔진",
+        "description": "심층 학습 기반 AI 엔진으로 복잡한 서사 구조와 감정 표현을 이해하고 매력적인 스토리 콘텐츠를 생성합니다.",
+        "icon": "RiSparkling2Line"
+      },
+      {
+        "title": "다양한 장르 스토리 지원",
+        "description": "SF, 판타지, 로맨스, 미스터리 등 다양한 스토리 장르를 지원하여 다양한 창작 필요와 독자 취향을 만족시킵니다.",
+        "icon": "RiBookOpenLine"
+      },
+      {
+        "title": "실시간 창작 제안",
+        "description": "창작 방향을 지능적으로 분석하고 플롯 개발과 캐릭터 구축을 위한 전문적인 제안을 제공하여 창작 영감을 자극합니다.",
+        "icon": "RiLightbulbLine"
+      }
+    ],
+    "image_not_available": "이미지를 사용할 수 없습니다",
+    "default_alt_text": "AI 스토리 생성기 기능 일러스트레이션"
   },
   "benefit": {
     "name": "benefit",
@@ -255,9 +268,7 @@
       }
     ]
   },
-  "stats": {
-
-  },
+  "stats": {},
   "testimonial": {
     "name": "testimonial",
     "label": "추천사",
@@ -267,48 +278,48 @@
     "items": [
       {
         "title": "Sarah Mitchell",
-        "label": "창의적 작가 및 소설가",
-        "description": "이 AI 스토리 생성기는 제 글쓰기 프로세스를 완전히 변화시켰습니다. 작가의 블록에 부딪혔을 때 스토리 아이디어를 생성하는 데 사용하며 품질이 놀랍습니다. 24시간 내내 이용 가능한 창의적 글쓰기 파트너를 갖는 것과 같습니다!",
+        "sub": "창의적 작가 및 소설가",
+        "content": "이 AI 스토리 생성기는 제 글쓰기 프로세스를 완전히 변화시켰습니다. 작가의 블록에 부딪혔을 때 스토리 아이디어를 생성하는 데 사용하며 품질이 놀랍습니다. 24시간 내내 이용 가능한 창의적 글쓰기 파트너를 갖는 것과 같습니다!",
         "image": {
           "src": "/imgs/users/1.png"
         }
       },
       {
         "title": "David Park",
-        "label": "콘텐츠 마케팅 매니저",
-        "description": "우리 팀은 브랜드 캠페인을 위한 매력적인 내러티브를 만들기 위해 이 스토리 생성기를 매일 사용합니다. AI 생성 스토리는 매우 잘 만들어져서 최소한의 편집만 필요합니다. 수많은 시간의 창의적 글쓰기 시간을 절약했습니다.",
+        "sub": "콘텐츠 마케팅 매니저",
+        "content": "우리 팀은 브랜드 캠페인을 위한 매력적인 내러티브를 만들기 위해 이 스토리 생성기를 매일 사용합니다. AI 생성 스토리는 매우 잘 만들어져서 최소한의 편집만 필요합니다. 수많은 시간의 창의적 글쓰기 시간을 절약했습니다.",
         "image": {
           "src": "/imgs/users/2.png"
         }
       },
       {
         "title": "Emily Rodriguez",
-        "label": "고등학교 영어 교사",
-        "description": "저는 모든 학생들에게 창의적 글쓰기 영감을 위해 이 AI 스토리 생성기를 추천합니다. 이 도구는 학생들이 스토리 구조를 이해하고 독특한 스토리 아이디어를 생성하는 데 도움이 됩니다. 내러티브 글쓰기를 가르치는 데 놀라운 교육 리소스입니다!",
+        "sub": "고등학교 영어 교사",
+        "content": "저는 모든 학생들에게 창의적 글쓰기 영감을 위해 이 AI 스토리 생성기를 추천합니다. 이 도구는 학생들이 스토리 구조를 이해하고 독특한 스토리 아이디어를 생성하는 데 도움이 됩니다. 내러티브 글쓰기를 가르치는 데 놀라운 교육 리소스입니다!",
         "image": {
           "src": "/imgs/users/3.png"
         }
       },
       {
         "title": "Michael Chen",
-        "label": "소설 작가 및 블로거",
-        "description": "전문 작가로서 처음에는 AI 스토리 생성기에 대해 회의적이었습니다. 하지만 이 도구는 제 생각이 틀렸음을 증명했습니다! 생성하는 스토리는 창의적이고 일관성이 있으며 실제로 영감을 줍니다. 다양한 내러티브 관점과 플롯 가능성을 탐색하는 데 사용합니다.",
+        "sub": "소설 작가 및 블로거",
+        "content": "전문 작가로서 처음에는 AI 스토리 생성기에 대해 회의적이었습니다. 하지만 이 도구는 제 생각이 틀렸음을 증명했습니다! 생성하는 스토리는 창의적이고 일관성이 있으며 실제로 영감을 줍니다. 다양한 내러티브 관점과 플롯 가능성을 탐색하는 데 사용합니다.",
         "image": {
           "src": "/imgs/users/4.png"
         }
       },
       {
         "title": "Jessica Williams",
-        "label": "콘텐츠 제작자 및 스토리텔러",
-        "description": "무료 AI 스토리 생성기는 제 YouTube 채널의 게임 체인저였습니다. 매주 스토리 컨셉을 생성하고 맞춤화한 다음 매력적인 비디오 스크립트로 전환합니다. 무한한 창의적 가능성이 제 콘텐츠를 신선하고 흥미롭게 유지합니다!",
+        "sub": "콘텐츠 제작자 및 스토리텔러",
+        "content": "무료 AI 스토리 생성기는 제 YouTube 채널의 게임 체인저였습니다. 매주 스토리 컨셉을 생성하고 맞춤화한 다음 매력적인 비디오 스크립트로 전환합니다. 무한한 창의적 가능성이 제 콘텐츠를 신선하고 흥미롭게 유지합니다!",
         "image": {
           "src": "/imgs/users/5.png"
         }
       },
       {
         "title": "Alex Thompson",
-        "label": "대학생",
-        "description": "이 스토리 생성기는 제가 창의적 글쓰기 과제에서 A를 받는 데 도움이 되었습니다. 초기 스토리 초안을 생성하는 데 사용한 다음 세련된 작품으로 발전시킵니다. AI는 공상과학에서 로맨스, 미스터리에 이르기까지 다양한 장르를 완벽하게 이해합니다!",
+        "sub": "대학생",
+        "content": "이 스토리 생성기는 제가 창의적 글쓰기 과제에서 A를 받는 데 도움이 되었습니다. 초기 스토리 초안을 생성하는 데 사용한 다음 세련된 작품으로 발전시킵니다. AI는 공상과학에서 로맨스, 미스터리에 이르기까지 다양한 장르를 완벽하게 이해합니다!",
         "image": {
           "src": "/imgs/users/6.png"
         }
@@ -366,18 +377,66 @@
       "language_label": "스토리 언어:",
       "language_placeholder": "스토리 출력 언어 선택",
       "language_options": {
-        "en": { "native": "English", "english": "English", "flag": "🇺🇸" },
-        "zh": { "native": "中文", "english": "Chinese", "flag": "🇨🇳" },
-        "ja": { "native": "日本語", "english": "Japanese", "flag": "🇯🇵" },
-        "ko": { "native": "한국어", "english": "Korean", "flag": "🇰🇷" },
-        "es": { "native": "Español", "english": "Spanish", "flag": "🇪🇸" },
-        "fr": { "native": "Français", "english": "French", "flag": "🇫🇷" },
-        "de": { "native": "Deutsch", "english": "German", "flag": "🇩🇪" },
-        "pt": { "native": "Português", "english": "Portuguese", "flag": "🇵🇹" },
-        "ru": { "native": "Русский", "english": "Russian", "flag": "🇷🇺" },
-        "ar": { "native": "العربية", "english": "Arabic", "flag": "🇸🇦" },
-        "hi": { "native": "हिन्दी", "english": "Hindi", "flag": "🇮🇳" },
-        "it": { "native": "Italiano", "english": "Italian", "flag": "🇮🇹" }
+        "en": {
+          "native": "English",
+          "english": "English",
+          "flag": "🇺🇸"
+        },
+        "zh": {
+          "native": "中文",
+          "english": "Chinese",
+          "flag": "🇨🇳"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "Japanese",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "Korean",
+          "flag": "🇰🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "Spanish",
+          "flag": "🇪🇸"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "French",
+          "flag": "🇫🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "German",
+          "flag": "🇩🇪"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "Portuguese",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "Russian",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "Arabic",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "Hindi",
+          "flag": "🇮🇳"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "Italian",
+          "flag": "🇮🇹"
+        }
       },
       "character_counter": "{count} / 2000"
     },
@@ -646,7 +705,7 @@
         },
         {
           "title": "AI 글쓰기",
-         "children": [
+          "children": [
             {
               "title": "스토리 생성기",
               "url": "/",
@@ -671,7 +730,7 @@
         },
         {
           "title": "Friend",
-           "children": [
+          "children": [
             {
               "title": "toolfame",
               "url": "https://toolfame.com/item/story-generator",

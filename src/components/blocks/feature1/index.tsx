@@ -4,9 +4,11 @@ import Icon from "@/components/icon";
 import { Section as SectionType } from "@/types/blocks/section";
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from 'next-intl';
 
 export default function Feature1({ section }: { section: SectionType }) {
   const [imageError, setImageError] = useState(false);
+  const t = useTranslations('introduce');
 
   if (section.disabled) {
     return null;
@@ -33,13 +35,13 @@ export default function Feature1({ section }: { section: SectionType }) {
                   <div className="w-full h-full flex items-center justify-center bg-muted/20 border-2 border-dashed border-muted/50">
                     <div className="text-center p-8">
                       <Icon name="image" className="size-12 text-muted-foreground/50 mx-auto mb-4" />
-                      <p className="text-sm text-muted-foreground/70">Image not available</p>
+                      <p className="text-sm text-muted-foreground/70">{t('image_not_available')}</p>
                     </div>
                   </div>
                 ) : (
                   <Image
                     src={section.image?.src || ""}
-                    alt={section.title || "AI Story Generator feature illustration"}
+                    alt={section.title || t('default_alt_text')}
                     width={800}
                     height={450}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

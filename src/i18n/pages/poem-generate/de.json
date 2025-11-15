@@ -1,0 +1,663 @@
+{
+  "metadata": {
+    "title": "Kostenlos AI-Gedichte: Haiku, Sonett & Liebesgedichte",
+    "description": "Erstellen Sie in Sekunden wunderschöne Gedichte! Kostenloser KI-Generator für Haikus, Sonette, Liebesgedichte & mehr. 12 Sprachen + KI-Analyse. Auch für Anfänger!",
+    "keywords": "AI-Gedichtgenerator,Haiku-Generator,Sonett-Generator,Akrostich-Generator,Limerick-Generator,Liebesgedicht-Generator,Gedicht-Generator,Vers-Generator,kostenloser Gedicht-Generator,Online-Gedichtgenerator,moderne Poesie,klassische Poesie"
+  },
+  "poemGenerate": {
+    "header": {
+      "title": "AI Gedichtgenerator",
+      "subtitle": "Erstellen Sie einzigartige Poesie mit KI - Modern, Klassisch, Haiku, Sonett & Liebesgedicht-Generator"
+    },
+    "mode": {
+      "simple": "Einfacher Modus",
+      "advanced": "Erweiterter Modus",
+      "toggle_hint": "Wechseln zu {mode}",
+      "simple_description": "Schneller Start mit nur Kernparametern",
+      "advanced_description": "Mehr Optionen für detaillierte Steuerung",
+      "keyboard_shortcut": "⌘K",
+      "toggle_shortcut": "zum Umschalten"
+    },
+    "prompt": {
+      "label": "Gedichtthema oder Inspiration",
+      "required": "Erforderlich",
+      "placeholder": "Beschreiben Sie das Thema, die Stimmung oder Inspiration für Ihr Gedicht...\nZ.B.: Mondlicht und Sehnsucht, Erster Frühlingsregen, Stadt bei Nacht",
+      "random_button": "Zufälliges Thema",
+      "quick_adds_label": "Schnell hinzufügen",
+      "quick_add_chips": {
+        "emotions": [
+          "Sanft",
+          "Melancholisch",
+          "Leidenschaftlich",
+          "Ruhig",
+          "Romantisch",
+          "Nostalgisch"
+        ],
+        "imagery": [
+          "Mondlicht",
+          "Fließendes Wasser",
+          "Blütenblätter",
+          "Berge",
+          "Sterne",
+          "Brise"
+        ],
+        "scenes": [
+          "Dämmerung",
+          "Regnerische Nacht",
+          "Frühlingmorgen",
+          "Herbsttag",
+          "Meeresküste",
+          "Wald"
+        ]
+      },
+      "language_label": "Ausgabesprache",
+      "language_placeholder": "Gedichtsprache auswählen",
+      "language_options": {
+        "en": {
+          "native": "English",
+          "english": "English",
+          "flag": "🇺🇸"
+        },
+        "zh": {
+          "native": "中文",
+          "english": "Chinese",
+          "flag": "🇨🇳"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "Japanese",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "Korean",
+          "flag": "🇰🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "Spanish",
+          "flag": "🇪🇸"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "French",
+          "flag": "🇫🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "German",
+          "flag": "🇩🇪"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "Portuguese",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "Russian",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "Arabic",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "Hindi",
+          "flag": "🇮🇳"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "Italian",
+          "flag": "🇮🇹"
+        }
+      },
+      "character_counter": "{current}/{max} Zeichen"
+    },
+    "random_prompts": [
+      "Mondlicht tanzt auf dem stillen See, schimmert wie Träume",
+      "Unter neonlichten, eine einsame Gestalt eilt vorbei",
+      "Der erste Frühlingsregen weckt die schlafende Erde",
+      "Herbstwind trägt das letzte Blatt, Zeit fließt wie ein Lied",
+      "Meereswellen brechen gegen Felsen, erzählen ewige Geschichten",
+      "Unter Sternen um ein Lagerfeuer, teilen wir unsere Träume",
+      "Morgentaut spiegelt das Brillieren des Lebens",
+      "Schneeflocken fallen auf alte Straßen, die Zeit scheint stillzustehen"
+    ],
+    "poem_types": {
+      "title": "Gedichttyp",
+      "tabs": {
+        "modern": {
+          "name": "Moderne Poesie",
+          "description": "Freier Ausdruck, Fokus auf Bilder und Emotionen"
+        },
+        "classical": {
+          "name": "Klassische Poesie",
+          "description": "Traditionelle Metrik, Tonmuster, tiefe Bedeutung"
+        },
+        "format": {
+          "name": "Formatgedichte",
+          "description": "Haiku, Sonett, Limerick mit festen Strukturen"
+        },
+        "lyric": {
+          "name": "Liedtexte",
+          "description": "Strophe-Refrain-Struktur, eingängig, geeignet zum Singen"
+        }
+      }
+    },
+    "ai_models": {
+      "title": "KI-Modell",
+      "hint": "Wählen Sie verschiedene Modelle für verschiedene kreative Stile",
+      "models": {
+        "fast": {
+          "name": "Schneller Modus",
+          "badge": "Schnellste",
+          "description": "Prägnant und effizient, schnelle Generierung",
+          "speed": "~5 Sek"
+        },
+        "standard": {
+          "name": "Standardmodus",
+          "badge": "Empfohlen",
+          "description": "Ausgewogene Qualität und Geschwindigkeit",
+          "speed": "~10 Sek"
+        },
+        "creative": {
+          "name": "Kreativer Modus",
+          "badge": "Beste",
+          "description": "Tiefes Denken, poetischer Ausdruck",
+          "speed": "~20 Sek"
+        }
+      },
+      "selected": "Ausgewählt",
+      "select": "Auswählen"
+    },
+    "options": {
+      "title": "Gedichtparameter",
+      "subtitle": "Passen Sie Stil und Struktur Ihres Gedichts an",
+      "length": {
+        "label": "Länge",
+        "placeholder": "Gedichtlänge auswählen",
+        "options": {
+          "short": "Kurz (4-8 Zeilen)",
+          "medium": "Mittel (12-20 Zeilen)",
+          "long": "Lang (20+ Zeilen)"
+        }
+      },
+      "theme": {
+        "label": "Thema",
+        "placeholder": "Gedichtthema auswählen",
+        "none_option": "-",
+        "options": {
+          "love": "Liebe",
+          "nature": "Natur",
+          "philosophy": "Philosophie",
+          "inspiration": "Inspiration",
+          "life": "Leben",
+          "nostalgia": "Nostalgie",
+          "friendship": "Freundschaft",
+          "family": "Familie",
+          "society": "Gesellschaft",
+          "history": "Geschichte"
+        }
+      },
+      "mood": {
+        "label": "Emotionaler Ton",
+        "placeholder": "Emotionale Stimmung auswählen",
+        "none_option": "-",
+        "options": {
+          "joyful": "Freudig",
+          "melancholic": "Melancholisch",
+          "passionate": "Leidenschaftlich",
+          "peaceful": "Friedlich",
+          "romantic": "Romantisch",
+          "contemplative": "Nachdenklich",
+          "hopeful": "Hoffnungsvoll",
+          "sorrowful": "Traurig"
+        }
+      },
+      "style": {
+        "label": "Literarischer Stil",
+        "placeholder": "Kunstbewegung auswählen",
+        "none_option": "-",
+        "options": {
+          "romantic": "Romantik",
+          "realism": "Realismus",
+          "symbolism": "Symbolismus",
+          "surrealism": "Surrealismus",
+          "minimalism": "Minimalismus",
+          "impressionism": "Impressionismus",
+          "modernism": "Moderne",
+          "classical": "Klassizismus"
+        }
+      },
+      "strict_tone": {
+        "label": "Strenge Tonmuster",
+        "description": "Befolgt streng die Tonregeln klassischer Poesie"
+      },
+      "rhyme_scheme": {
+        "label": "Reim/Format",
+        "placeholder": "Reimschema auswählen",
+        "modern_options": {
+          "free": "Freier Reim",
+          "abab": "Kreuzreim (ABAB)",
+          "aabb": "Paarreim (AABB)",
+          "abcb": "Einfacher Reim (ABCB)"
+        },
+        "classical_options": {
+          "wujue": "5-Zeichen Jueju",
+          "qijue": "7-Zeichen Jueju",
+          "wulv": "5-Zeichen Lüshi",
+          "qilv": "7-Zeichen Lüshi",
+          "ci": "Ci-Poesie"
+        },
+        "format_options": {
+          "haiku": "Haiku (5-7-5)",
+          "free_verse": "Freie Verse",
+          "sonnet": "Sonett",
+          "limerick": "Limerick",
+          "acrostic": "Akrostichon",
+          "love_poem": "Liebesgedicht",
+          "line_by_line": "Zeile für Zeile",
+          "rhyming_couplets": "Reimpaare",
+          "villanelle": "Villanelle"
+        },
+        "lyric_options": {
+          "verse_chorus": "Strophe + Refrain",
+          "verse_bridge_chorus": "Strophe + Bridge + Refrain"
+        }
+      },
+      "cipai": {
+        "label": "Cipai (Tune Pattern)",
+        "placeholder": "Select Cipai",
+        "popular": {
+          "niannujiao": "Nian Nu Jiao",
+          "qinyuanchun": "Qin Yuan Chun",
+          "shuidiaogetou": "Shui Diao Ge Tou",
+          "yulinling": "Yu Lin Ling",
+          "xijiangYue": "Xi Jiang Yue",
+          "ruanlanggui": "Ruan Lang Gui",
+          "yijiangnan": "Yi Jiang Nan",
+          "pusalian": "Pu Sa Man"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "Gedicht generieren",
+      "generating": "Erstelle...",
+      "info": {
+        "credit": "Kreditkosten",
+        "credit_text": "1 Kredit",
+        "time": "Geschätzte Zeit",
+        "quality": "Qualität"
+      },
+      "tip": "💡 Tipp: Wählen Sie 'Kreativer Modus' für künstlerischere Gedichte"
+    },
+    "output": {
+      "title": "Erstellungsergebnis",
+      "tabs": {
+        "poem": "Gedicht",
+        "analysis": "Analyse",
+        "audio": "Vortrag"
+      },
+      "status_writing": "KI erstellt...",
+      "status_complete": "Erstellung abgeschlossen",
+      "line_count": "{count} Zeilen",
+      "button_copy": "Kopieren",
+      "button_export_pdf": "PDF exportieren",
+      "button_exporting_pdf": "Exportiere...",
+      "button_regenerate": "Neu generieren",
+      "button_analyze": "Gedicht analysieren",
+      "button_analyzing": "Analysiere...",
+      "button_generate_audio": "Audio generieren",
+      "button_generating_audio": "Generiere...",
+      "loading": "Lade..."
+    },
+    "analysis": {
+      "title": "Gedichtanalyse",
+      "imagery": {
+        "title": "Bildanalyse",
+        "description": "Kernbilder und symbolische Bedeutungen"
+      },
+      "rhyme": {
+        "title": "Reimanalyse",
+        "description": "Reimschema, Silbenstruktur, Rhythmus"
+      },
+      "rhetoric": {
+        "title": "Rhetorische Mittel",
+        "description": "Verwendete rhetorische Techniken und künstlerische Methoden"
+      },
+      "emotion": {
+        "title": "Emotionaler Ton",
+        "description": "Gesamte emotionale Atmosphäre und Stimmungsänderungen"
+      },
+      "theme": {
+        "title": "Themeninterpretation",
+        "description": "Tiefe Bedeutung und philosophische Gedanken"
+      },
+      "loading": "Analysiere Gedicht...",
+      "no_analysis": "Klicken Sie 'Gedicht analysieren' für detaillierte Analyse",
+      "error": "Analyse fehlgeschlagen, bitte versuchen Sie es erneut"
+    },
+    "audio": {
+      "title": "Audio-Vortrag",
+      "no_audio": "Klicken Sie 'Audio generieren', um Audio zu erstellen",
+      "error": "Audio-Generierung fehlgeschlagen, bitte versuchen Sie es erneut",
+      "player": {
+        "play": "Vortrag starten",
+        "pause": "Pausieren",
+        "stop": "Stoppen",
+        "resume": "Fortsetzen",
+        "download": "Herunterladen",
+        "speed": "Geschwindigkeit",
+        "speed_label": "Vortragsgeschwindigkeit",
+        "status_reading": "Lese vor...",
+        "status_paused": "Pausiert"
+      },
+      "browser_not_supported": "Ihr Browser unterstützt die Sprachvortragsfunktion nicht",
+      "tts_failed": "Vortrag fehlgeschlagen, bitte versuchen Sie es erneut"
+    },
+    "pdf": {
+      "generated_at": "Erstellt am",
+      "line_count_label": "Zeilen",
+      "ai_model": "KI-Modell",
+      "poem_type": "Gedichttyp",
+      "poem_theme": "Thema",
+      "poem_mood": "Stimmung",
+      "prompt": "Inspiration",
+      "footer_text": "Erstellt mit AI Story Gedichtgenerator",
+      "page_indicator": "Seite {current} von {total}"
+    },
+    "share": {
+      "title": "Gedicht teilen",
+      "copy_link": "Link kopieren",
+      "share_twitter": "Auf Twitter teilen",
+      "share_facebook": "Auf Facebook teilen",
+      "share_linkedin": "Auf LinkedIn teilen",
+      "link_copied": "Link kopiert",
+      "share_text_template": "Ich habe ein Gedicht mit AI Story erstellt, schau es dir an!"
+    },
+    "history": {
+      "title": "Verlauf",
+      "empty": "Noch kein Verlauf",
+      "load": "Laden",
+      "delete": "Löschen",
+      "clear_all": "Alle löschen",
+      "confirm_clear": "Möchten Sie wirklich den gesamten Verlauf löschen?"
+    },
+    "toasts": {
+      "error_no_prompt": "Bitte geben Sie ein Gedichtthema oder Inspiration ein",
+      "error_no_model": "Bitte wählen Sie ein KI-Modell",
+      "error_generate_failed": "Gedichtgenerierung fehlgeschlagen, bitte versuchen Sie es erneut",
+      "error_no_stream": "Generierungsstream kann nicht abgerufen werden",
+      "error_no_content": "Kein Inhalt generiert",
+      "error_analyze_failed": "Gedichtanalyse fehlgeschlagen, bitte versuchen Sie es erneut",
+      "error_tts_failed": "Audio-Generierung fehlgeschlagen, bitte versuchen Sie es erneut",
+      "error_pdf_export_failed": "PDF-Export fehlgeschlagen",
+      "error_generate_poem_first": "Bitte generieren Sie zuerst ein Gedicht",
+      "success_generated": "Gedicht erfolgreich erstellt!",
+      "success_copied": "In die Zwischenablage kopiert",
+      "success_analyzed": "Gedichtanalyse abgeschlossen",
+      "success_audio_generated": "Audio-Vortrag generiert",
+      "success_pdf_exported": "PDF erfolgreich exportiert",
+      "success_loaded": "Gedicht erfolgreich geladen"
+    },
+    "feature1_section": {
+      "name": "poem-features-highlight",
+      "title": "Was ist der AI-Gedichtgenerator?",
+      "description": "Ein professioneller AI-Gedichtgenerator, der Ihre Inspiration in wunderschöne Verse verwandelt. Unser fortschrittlicher Poesie-Generator unterstützt moderne Poesie, klassische Gedichte, spezifische Formate und Liedtexte - macht Gedichteschreiben für jeden zugänglich.",
+      "label": "Kernfunktionen",
+      "image": {
+        "src": "/imgs/poem/what-poem-generator2.avif",
+        "alt": "AI-Gedichtgenerator Funktionsübersicht"
+      },
+      "items": [
+        {
+          "icon": "sparkles",
+          "title": "Vielfältige Gedichttypen",
+          "description": "Unterstützt moderne Poesie, klassische Gedichte (Jueju, Lüshi, Ci), einschließlich Haiku-Generator, Sonett-Generator, Akrostichon-Generator, Limerick-Generator und Liebesgedicht-Erstellung"
+        },
+        {
+          "icon": "globe",
+          "title": "Echter mehrsprachiger Gedichtgenerator",
+          "description": "Unterstützt 12 Sprachen mit muttersprachlicher Qualität der Gedichtgenerierung, versteht poetische Rhythmen und kulturelle Ausdrucksformen verschiedener Hintergründe"
+        },
+        {
+          "icon": "palette",
+          "title": "Themen- und Stilanpassung",
+          "description": "Reichhaltige Themen-, Emotions- und Stiloptionen ermöglichen es Ihnen, die Atmosphäre und Ausdruckskraft Ihrer Gedichte präzise zu steuern"
+        },
+        {
+          "icon": "analyze",
+          "title": "Intelligente Gedichtanalyse",
+          "description": "Der einzige Gedichtgenerator mit integrierter KI-Analyse von Bildsprache, Reim, Rhetorik und emotionalem Ton, um Ihnen zu helfen, das Handwerk zu meistern"
+        },
+        {
+          "icon": "volume-2",
+          "title": "Sprachrezitationsfunktion",
+          "description": "Integrierte Text-to-Speech-Funktionalität unterstützt mehrsprachige Rezitation mit einstellbarer Geschwindigkeit, um die Schönheit der Poesie zu genießen"
+        },
+        {
+          "icon": "history",
+          "title": "Speicherung der Erstellungshistorie",
+          "description": "Speichert automatisch die Erstellungshistorie, sodass Sie Ihre Gedichtwerke jederzeit überprüfen, ändern und verwalten können"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "poem-features-interactive",
+      "title": "Warum unseren professionellen AI-Gedichtgenerator wählen?",
+      "description": "Verwandeln Sie Ihre kreative Vision in wunderschöne Verse mit unserem fortschrittlichen AI-Gedichtgenerator, der sowohl künstlerische Bedürfnisse als auch poetische Strukturanforderungen versteht.",
+      "label": "HAUPTVORTEILE",
+      "items": [
+        {
+          "icon": "heart",
+          "title": "Emotionen mit unserem Poesie-Generator transformieren",
+          "description": "Verwandeln Sie komplexe Emotionen und Gedanken in fesselnde Poesie, die die Herzen der Leser mit echtem Ausdruck in jedem Wort und jeder Zeile berührt.",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator1.avif"
+          }
+        },
+        {
+          "icon": "globe",
+          "title": "Kulturen durch universelle Poesie verbinden",
+          "description": "Schreiben Sie authentisch in Ihrer Muttersprache und erreichen Sie gleichzeitig ein globales Publikum durch kulturell nuancierte poetische Ausdrucksformen, die Grenzen überschreiten.",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator2.avif"
+          }
+        },
+        {
+          "icon": "sparkles",
+          "title": "Nie wieder kreative Blockaden erleben",
+          "description": "Erhalten Sie endlose kreative Inspiration und erkunden Sie vielfältige Poesiestile mit unserem intelligenten Gedichtgenerator. Verabschieden Sie sich von der Schreibblockade - KI wird Ihr unerschöpflicher kreativer Partner.",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator3.avif"
+          }
+        }
+      ]
+    },
+    "poem_applications_section": {
+      "name": "poem-applications",
+      "title": "AI-Gedichtgenerator Anwendungen",
+      "description": "Entdecken Sie, wie unser vielseitiger Gedichtgenerator verschiedene Bereiche unterstützt - von kreativem Schreiben und Bildung bis hin zu emotionalem Ausdruck und Business-Marketing. Professionelle Gedichterstellung leicht gemacht.",
+      "label": "ANWENDUNGEN",
+      "items": [
+        {
+          "icon": "book-open",
+          "title": "Kreatives Schreiben",
+          "description": "Fügen Sie poetische Elemente zu Romanen, Drehbüchern und Liedtexten hinzu, um die künstlerische Anziehungskraft und den literarischen Wert zu steigern und Texte ausdrucksvoller zu machen."
+        },
+        {
+          "icon": "graduation-cap",
+          "title": "Bildung und Training",
+          "description": "Unterstützen Sie den Poesie-Unterricht mit unserem pädagogischen Gedichtgenerator - hilft Schülern, poetische Strukturen, Rhythmen und rhetorische Mittel durch praktisches Erstellen und KI-gestützte Analyse zu verstehen."
+        },
+        {
+          "icon": "heart",
+          "title": "Besondere Anlässe",
+          "description": "Erstellen Sie maßgeschneiderte Gedichte für Hochzeiten, Geburtstage und Gedenkfeiern, gestalten Sie einzigartige emotionale Ausdrucksformen und schöne Erinnerungen."
+        },
+        {
+          "icon": "megaphone",
+          "title": "Content-Erstellung",
+          "description": "Erstellen Sie poetische Texte für soziale Medien, Blogs und Markenmarketing, um die Attraktivität und das Engagement von Inhalten zu steigern."
+        },
+        {
+          "icon": "message-circle",
+          "title": "Emotionaler Ausdruck",
+          "description": "Verwandeln Sie komplexe Emotionen wie Liebe, Freundschaft und Dankbarkeit in wunderschöne Verse als Medium zur Vermittlung von Gefühlen."
+        },
+        {
+          "icon": "building",
+          "title": "Kulturelles Erbe",
+          "description": "Einzigartiger klassischer Poesie-Generator - Lernen und erben Sie klassische Poesiekultur mit unserer spezialisierten chinesischen Poesie-Unterstützung (Jueju, Lüshi, Ci), erkunden Sie die Fusion von Modern und Traditionell und bewahren Sie das poetische Erbe."
+        }
+      ]
+    },
+    "feature3_section": {
+      "name": "poem-usage-guide",
+      "title": "So verwenden Sie unseren AI-Gedichtgenerator",
+      "description": "Folgen Sie diesen einfachen Schritten, um wunderschöne Gedichte mit unserem AI-Gedichtgenerator zu erstellen - professionelle Ergebnisse in Minuten, keine Poesie-Erfahrung erforderlich",
+      "label": "NUTZUNGSLEITFADEN",
+      "items": [
+        {
+          "title": "Geben Sie Ihr Gedichtthema ein",
+          "description": "Beginnen Sie mit der Eingabe Ihrer grundlegenden Gedichtidee, Ihres Themas oder Ihrer kreativen Inspiration. Dies kann so einfach sein wie 'Mondlicht-Erinnerungen' oder ein komplexer emotionaler Ausdruck, den Sie entwickeln möchten."
+        },
+        {
+          "title": "Konfigurieren Sie Gedichtparameter",
+          "description": "Passen Sie Ihr Gedicht an, indem Sie Gedichttyp, Länge, Thema, Stimmung und Stil auswählen. Optimieren Sie jeden Aspekt, um Ihrer kreativen Vision zu entsprechen, sei es ein romantisches Liebesgedicht, strukturiertes Haiku, klassisches Sonett, kreatives Akrostichon oder verspielter Limerick."
+        },
+        {
+          "title": "Generieren und verfeinern Sie Ihr Gedicht",
+          "description": "Klicken Sie auf Generieren, um Ihren detaillierten Gedichtinhalt zu erstellen. Verwenden Sie das generierte Gedicht als Grundlage und verbessern Sie es dann mit intelligenter Analyse, um Bildsprache, Reim und rhetorische Mittel zu verstehen und ein perfektes Meisterwerk zu schaffen."
+        }
+      ]
+    },
+    "testimonial_section": {
+      "name": "poem-testimonials",
+      "label": "ERFAHRUNGSBERICHTE",
+      "title": "Was Benutzer sagen",
+      "description": "Hören Sie von Kreativen, Pädagogen und Enthusiasten weltweit, wie unser AI-Gedichtgenerator ihren kreativen Prozess transformiert und professionelle Poesie für jeden zugänglich macht",
+      "icon": "GoThumbsup",
+      "items": [
+        {
+          "title": "Maya Chen",
+          "sub": "Dichterin & Autorin",
+          "content": "Dieser AI-Gedichtgenerator hat wirklich verändert, wie ich kreative Blockaden überwinde. Wenn ich mich uninspiriert fühle, bietet er einzigartige Versvorschläge und Reimmuster, die mir helfen, meine Leidenschaft wiederzuentdecken. Die Qualität der generierten Gedichte ist bemerkenswert und verbindet klassischen poetischen Charme mit modernem Ausdruck.",
+          "image": {
+            "src": "/imgs/users/1.png"
+          }
+        },
+        {
+          "title": "Professor James Morrison",
+          "sub": "Literaturprofessor",
+          "content": "Als Literaturprofessor ist dieser Gedichtgenerator zu einem unverzichtbaren Unterrichtsassistenten geworden. Er generiert nicht nur verschiedene poetische Formen, sondern bietet auch detaillierte KI-Analysen, die es Studenten ermöglichen, Bildsprache, rhetorische Mittel und emotionalen Ausdruck tiefgehend zu verstehen. Ein Game-Changer für die Poesie-Bildung.",
+          "image": {
+            "src": "/imgs/users/2.png"
+          }
+        },
+        {
+          "title": "Sophie Laurent",
+          "sub": "Songwriterin",
+          "content": "Beim Schreiben von Liedtexten fällt es mir oft schwer, Rhythmus und emotionale Tiefe in Einklang zu bringen. Dieser AI-Generator hilft mir, verschiedene Reimmuster zu erkunden und erstellt poetische Textfragmente basierend auf meinen Themen. Die mehrsprachige Unterstützung ermöglicht es mir auch, Inhalte für unterschiedliche Märkte zu erstellen.",
+          "image": {
+            "src": "/imgs/users/3.png"
+          }
+        },
+        {
+          "title": "David Kim",
+          "sub": "Kreatives Schreiben Student",
+          "content": "Als ich anfing, Poesie zu lernen, war ich verwirrt über klassische Formen. Dieser Gedichtgenerator half mir, traditionelle Formen wie Sonette und Haiku zu verstehen, und seine Echtzeit-Analyse weist auf Rhythmus- und Strukturprobleme hin. Jetzt kann ich selbstbewusst Gedichte komponieren, die klassischen Konventionen folgen. Bestes Lernwerkzeug für angehende Dichter.",
+          "image": {
+            "src": "/imgs/users/4.png"
+          }
+        },
+        {
+          "title": "Maria Rodriguez",
+          "sub": "Social Media Content Creatorin",
+          "content": "Poesie-Inhalte erzielen konstant das höchste Engagement auf meinen Social-Media-Konten. Dieses KI-Tool hilft mir, schnell poetische Kurzposts zu erstellen, die wunderbar mit Bildern harmonieren. Die Text-to-Speech-Funktion ermöglicht es mir, Poesie-Rezitations-Videos zu erstellen und meine Content-Strategie erheblich zu diversifizieren.",
+          "image": {
+            "src": "/imgs/users/5.png"
+          }
+        },
+        {
+          "title": "Sarah Thompson",
+          "sub": "Eventplanerin",
+          "content": "Maßgeschneiderte Gedichte für die Hochzeiten und besonderen Anlässe meiner Kunden zu erstellen, ist zu einem Markenzeichen meines Service geworden. Dieses KI-Tool generiert personalisierte Gedichte basierend auf den Hintergrundinformationen und dem emotionalen Ton, den ich bereitstelle. Jedes Gedicht fängt die Liebesgeschichte des Paares perfekt ein und wird zum bewegendsten Moment der Zeremonie.",
+          "image": {
+            "src": "/imgs/users/6.png"
+          }
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "poem-faq",
+      "title": "Häufig gestellte Fragen",
+      "label": "FAQ",
+      "description": "Häufige Fragen zu unserem KI-Gedichtgenerator, um Ihnen beim besseren Verständnis und Gebrauch unseres Tools zu helfen.",
+      "items": [
+        {
+          "title": "Wie funktioniert der KI-Gedichtgenerator?",
+          "description": "Unser KI-Gedichtgenerator verwendet fortschrittliche große Sprachmodelle, die durch Deep Learning poetischen Rhythmus, Bilder und emotionalen Ausdruck verstehen. Geben Sie einfach Ihr Thema oder Ihre Inspiration ein, und die KI analysiert Ihre Anforderungen und generiert originale Gedichte, die Ihren Bedürfnissen entsprechen."
+        },
+        {
+          "title": "Welche Gedichttypen werden unterstützt?",
+          "description": "Wir unterstützen mehrere Gedichttypen: Moderne Poesie (freie Verse), Klassische chinesische Poesie (fünfzeilige Vierzeiler, siebenzeilige Vierzeiler, fünfzeilige gereimte Verse, siebenzeilige gereimte Verse, Ci-Gedichte), Spezifische Formate (Haiku, Sonett, Limerick, Akrostichon, Liebesgedicht) und Songtext-Erstellung."
+        },
+        {
+          "title": "Sind die generierten Gedichte originell?",
+          "description": "Ja, jedes Gedicht ist ein originelles Werk, das in Echtzeit von der KI basierend auf Ihrer Eingabe generiert wird. Die KI kopiert keine vorhandenen Gedichte, sondern erstellt völlig neue Inhalte nach dem Lernen aus einer riesigen Sammlung von Gedichtwerken und sorgt so für Einzigartigkeit und Originalität."
+        },
+        {
+          "title": "Welche Sprachen werden unterstützt?",
+          "description": "Derzeit werden 12 Sprachen unterstützt: Chinesisch, Englisch, Japanisch, Koreanisch, Spanisch, Französisch, Deutsch, Portugiesisch, Russisch, Arabisch, Hindi und Italienisch. Jede Sprache ist für ihre poetischen Traditionen und Ausdrucksstile optimiert."
+        },
+        {
+          "title": "Wie lange dauert die Generierung eines Gedichts?",
+          "description": "Die Generierungszeit hängt vom ausgewählten KI-Modell ab: Schneller Modus dauert etwa 5 Sekunden, Standardmodus etwa 10 Sekunden und Kreativer Modus etwa 20 Sekunden. Der kreative Modus dauert länger, erzeugt aber künstlerischere und ausdrucksstärkere Gedichte."
+        },
+        {
+          "title": "Wie kann ich bessere Generierungsergebnisse erzielen?",
+          "description": "Geben Sie spezifische Themen und emotionale Töne an, wählen Sie geeignete Gedichttypen und verwenden Sie detaillierte beschreibende Wörter. Erweiterte Optionen im professionellen Modus helfen Ihnen, Gedichtlänge, Reim, Thema und Stil präzise zu steuern für zufriedenstellendere Ergebnisse."
+        },
+        {
+          "title": "Verbraucht die Gedichterstellung Credits?",
+          "description": "Derzeit ist die Gedichterstellung kostenlos und verbraucht keine Credits. Sie können verschiedene Gedichttypen erstellen, einschließlich moderner Gedichte, klassischer Poesie, spezifischer Formate und Songtexte, ohne sich um Kosten zu sorgen."
+        },
+        {
+          "title": "Können generierte Gedichte analysiert werden?",
+          "description": "Ja! Unsere intelligente Analysemöglichkeit kann Bilder, Rhythmus, rhetorische Mittel und emotionale Töne von Gedichten tief analysieren und Ihnen beim Verstehen künstlerischer Merkmale und kreativer Techniken helfen und verbessert so Ihre Gedichtwertschätzungsfähigkeiten."
+        },
+        {
+          "title": "Wird Stimmenrezitation unterstützt?",
+          "description": "Ja, wir haben eingebaute Text-zu-Sprache-Funktionalität mit mehrsprachiger Rezitation. Sie können die Rezitationsgeschwindigkeit anpassen, um die Schönheit der Poesie zu genießen, besonders geeignet für Gedichtfreigabe und Lehrzwecke."
+        },
+        {
+          "title": "Wie kann ich Gedichte speichern und teilen?",
+          "description": "Sie können Gedichte in die Zwischenablage kopieren, und das System speichert automatisch Ihren Erstellungsverlauf im lokalen Browserspeicher. Sie können Ihre Gedichtwerke jederzeit anzeigen und verwalten, einschließlich Such-, Kategorisierungs- und Statistikfunktionen. Derzeit werden bis zu 10 Gedichte mit JSON-Export für Backup gespeichert."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "poem-cta",
+      "title": "Bereit, mehr kreative Möglichkeiten zu erkunden?",
+      "description": "Entdecken Sie unsere vollständige Suite von KI-Kreativwerkzeugen und heben Sie Ihr Schreiben auf eine neue Ebene. Von Gedichten bis Geschichten, lassen Sie KI Ihr endloser kreativer Partner sein.",
+      "buttons": [
+        {
+          "title": "Gedichtformen lernen",
+          "url": "#feature3",
+          "icon": "RiGraduationCapLine",
+          "variant": "secondary"
+        },
+        {
+          "title": "Story-Generator probieren",
+          "url": "/",
+          "icon": "RiBookOpenLine",
+          "variant": "default"
+        }
+      ]
+    }
+  }
+}

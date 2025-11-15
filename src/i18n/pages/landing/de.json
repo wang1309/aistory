@@ -46,9 +46,7 @@
         }
       ]
     },
-    "buttons": [
-
-    ],
+    "buttons": [],
     "show_sign": true,
     "show_theme": true,
     "show_locale": true
@@ -74,7 +72,7 @@
     ],
     "show_happy_users": false,
     "show_badge": false,
-    "image":{
+    "image": {
       "src": "",
       "alt": "Illustration"
     },
@@ -92,8 +90,7 @@
       "bloom": 1
     }
   },
-  "branding": {
-  },
+  "branding": {},
   "introduce": {
     "name": "introduce",
     "title": "Was ist ein KI-Geschichtengenerator",
@@ -103,8 +100,24 @@
       "src": "/imgs/features/story2.png"
     },
     "items": [
-
-    ]
+      {
+        "title": "Intelligente Story-Erstellungs-Engine",
+        "description": "KI-Engine auf Basis von Deep Learning, die komplexe Erzählstrukturen und emotionale Ausdrücke versteht, um fesselnde Story-Inhalte zu generieren.",
+        "icon": "RiSparkling2Line"
+      },
+      {
+        "title": "Unterstützung für Multiple Story-Genres",
+        "description": "Unterstützung für Science-Fiction, Fantasy, Romance, Mystery und viele andere Story-Typen um verschiedene kreative Bedürfnisse und Leservorlieben zu erfüllen.",
+        "icon": "RiBookOpenLine"
+      },
+      {
+        "title": "Echtzeit-Kreativvorschläge",
+        "description": "Intelligente Analyse der kreativen Richtung mit professionellen Vorschlägen für Handlungsentwicklung und Charakterentwicklung zur Inspiration.",
+        "icon": "RiLightbulbLine"
+      }
+    ],
+    "image_not_available": "Bild nicht verfügbar",
+    "default_alt_text": "KI Story Generator Funktionsillustration"
   },
   "benefit": {
     "name": "benefit",
@@ -255,9 +268,7 @@
       }
     ]
   },
-  "stats": {
-
-  },
+  "stats": {},
   "testimonial": {
     "name": "testimonial",
     "label": "Testimonials",
@@ -267,48 +278,48 @@
     "items": [
       {
         "title": "Sarah Mitchell",
-        "label": "Kreative Autorin & Romanautorin",
-        "description": "Dieser KI-Geschichtengenerator hat meinen Schreibprozess völlig verändert. Ich verwende ihn, um Geschichtenideen zu generieren, wenn ich eine Schreibblockade habe, und die Qualität ist unglaublich. Es ist, als hätte ich einen kreativen Schreibpartner, der 24/7 verfügbar ist!",
+        "sub": "Kreative Autorin & Romanautorin",
+        "content": "Dieser KI-Geschichtengenerator hat meinen Schreibprozess völlig verändert. Ich verwende ihn, um Geschichtenideen zu generieren, wenn ich eine Schreibblockade habe, und die Qualität ist unglaublich. Es ist, als hätte ich einen kreativen Schreibpartner, der 24/7 verfügbar ist!",
         "image": {
           "src": "/imgs/users/1.png"
         }
       },
       {
         "title": "David Park",
-        "label": "Content-Marketing-Manager",
-        "description": "Unser Team verwendet diesen Geschichtengenerator täglich, um fesselnde Erzählungen für unsere Markenkampagnen zu erstellen. Die KI-generierten Geschichten sind so gut gestaltet, dass wir nur minimale Bearbeitung benötigen. Es hat uns unzählige Stunden kreativer Schreibzeit gespart.",
+        "sub": "Content-Marketing-Manager",
+        "content": "Unser Team verwendet diesen Geschichtengenerator täglich, um fesselnde Erzählungen für unsere Markenkampagnen zu erstellen. Die KI-generierten Geschichten sind so gut gestaltet, dass wir nur minimale Bearbeitung benötigen. Es hat uns unzählige Stunden kreativer Schreibzeit gespart.",
         "image": {
           "src": "/imgs/users/2.png"
         }
       },
       {
         "title": "Emily Rodriguez",
-        "label": "Gymnasiallehrerin für Englisch",
-        "description": "Ich empfehle diesen KI-Geschichtengenerator allen meinen Schülern zur Inspiration für kreatives Schreiben. Das Tool hilft ihnen, Geschichtenstruktur zu verstehen und einzigartige Geschichtenideen zu generieren. Es ist eine erstaunliche Bildungsressource für den Unterricht im narrativen Schreiben!",
+        "sub": "Gymnasiallehrerin für Englisch",
+        "content": "Ich empfehle diesen KI-Geschichtengenerator allen meinen Schülern zur Inspiration für kreatives Schreiben. Das Tool hilft ihnen, Geschichtenstruktur zu verstehen und einzigartige Geschichtenideen zu generieren. Es ist eine erstaunliche Bildungsressource für den Unterricht im narrativen Schreiben!",
         "image": {
           "src": "/imgs/users/3.png"
         }
       },
       {
         "title": "Michael Chen",
-        "label": "Belletristikautor & Blogger",
-        "description": "Als professioneller Autor war ich zunächst skeptisch gegenüber KI-Geschichtengeneratoren. Aber dieses Tool hat mich eines Besseren belehrt! Die Geschichten, die es generiert, sind kreativ, kohärent und tatsächlich inspirierend. Ich verwende es, um verschiedene Erzählperspektiven und Handlungsmöglichkeiten zu erkunden.",
+        "sub": "Belletristikautor & Blogger",
+        "content": "Als professioneller Autor war ich zunächst skeptisch gegenüber KI-Geschichtengeneratoren. Aber dieses Tool hat mich eines Besseren belehrt! Die Geschichten, die es generiert, sind kreativ, kohärent und tatsächlich inspirierend. Ich verwende es, um verschiedene Erzählperspektiven und Handlungsmöglichkeiten zu erkunden.",
         "image": {
           "src": "/imgs/users/4.png"
         }
       },
       {
         "title": "Jessica Williams",
-        "label": "Content-Erstellerin & Geschichtenerzählerin",
-        "description": "Der kostenlose KI-Geschichtengenerator war ein Game-Changer für meinen YouTube-Kanal. Ich generiere wöchentlich Geschichtenkonzepte, passe sie an und verwandle sie in fesselnde Videoskripte. Die unbegrenzten kreativen Möglichkeiten halten meinen Content frisch und aufregend!",
+        "sub": "Content-Erstellerin & Geschichtenerzählerin",
+        "content": "Der kostenlose KI-Geschichtengenerator war ein Game-Changer für meinen YouTube-Kanal. Ich generiere wöchentlich Geschichtenkonzepte, passe sie an und verwandle sie in fesselnde Videoskripte. Die unbegrenzten kreativen Möglichkeiten halten meinen Content frisch und aufregend!",
         "image": {
           "src": "/imgs/users/5.png"
         }
       },
       {
         "title": "Alex Thompson",
-        "label": "Universitätsstudent",
-        "description": "Dieser Geschichtengenerator hat mir geholfen, meine kreativen Schreibaufgaben zu meistern. Ich verwende ihn, um erste Geschichtenentwürfe zu generieren und entwickle sie dann zu ausgefeilten Stücken. Die KI versteht verschiedene Genres perfekt - von Sci-Fi über Romantik bis Mystery!",
+        "sub": "Universitätsstudent",
+        "content": "Dieser Geschichtengenerator hat mir geholfen, meine kreativen Schreibaufgaben zu meistern. Ich verwende ihn, um erste Geschichtenentwürfe zu generieren und entwickle sie dann zu ausgefeilten Stücken. Die KI versteht verschiedene Genres perfekt - von Sci-Fi über Romantik bis Mystery!",
         "image": {
           "src": "/imgs/users/6.png"
         }
@@ -366,18 +377,66 @@
       "language_label": "Geschichtensprache:",
       "language_placeholder": "Ausgabesprache für Geschichte auswählen",
       "language_options": {
-        "en": { "native": "English", "english": "English", "flag": "🇺🇸" },
-        "zh": { "native": "中文", "english": "Chinese", "flag": "🇨🇳" },
-        "ja": { "native": "日本語", "english": "Japanese", "flag": "🇯🇵" },
-        "ko": { "native": "한국어", "english": "Korean", "flag": "🇰🇷" },
-        "es": { "native": "Español", "english": "Spanish", "flag": "🇪🇸" },
-        "fr": { "native": "Français", "english": "French", "flag": "🇫🇷" },
-        "de": { "native": "Deutsch", "english": "German", "flag": "🇩🇪" },
-        "pt": { "native": "Português", "english": "Portuguese", "flag": "🇵🇹" },
-        "ru": { "native": "Русский", "english": "Russian", "flag": "🇷🇺" },
-        "ar": { "native": "العربية", "english": "Arabic", "flag": "🇸🇦" },
-        "hi": { "native": "हिन्दी", "english": "Hindi", "flag": "🇮🇳" },
-        "it": { "native": "Italiano", "english": "Italian", "flag": "🇮🇹" }
+        "en": {
+          "native": "English",
+          "english": "English",
+          "flag": "🇺🇸"
+        },
+        "zh": {
+          "native": "中文",
+          "english": "Chinese",
+          "flag": "🇨🇳"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "Japanese",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "Korean",
+          "flag": "🇰🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "Spanish",
+          "flag": "🇪🇸"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "French",
+          "flag": "🇫🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "German",
+          "flag": "🇩🇪"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "Portuguese",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "Russian",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "Arabic",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "Hindi",
+          "flag": "🇮🇳"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "Italian",
+          "flag": "🇮🇹"
+        }
       },
       "character_counter": "{count} / 2000"
     },
@@ -646,7 +705,7 @@
         },
         {
           "title": "KI-Schreiben",
-         "children": [
+          "children": [
             {
               "title": "Geschichtengenerator",
               "url": "/",
@@ -671,7 +730,7 @@
         },
         {
           "title": "Friend",
-           "children": [
+          "children": [
             {
               "title": "toolfame",
               "url": "https://toolfame.com/item/story-generator",

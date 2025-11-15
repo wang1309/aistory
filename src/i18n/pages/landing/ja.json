@@ -46,9 +46,7 @@
         }
       ]
     },
-    "buttons": [
-
-    ],
+    "buttons": [],
     "show_sign": true,
     "show_theme": true,
     "show_locale": true
@@ -74,7 +72,7 @@
     ],
     "show_happy_users": false,
     "show_badge": false,
-    "image":{
+    "image": {
       "src": "",
       "alt": "イラスト"
     },
@@ -92,8 +90,7 @@
       "bloom": 1
     }
   },
-  "branding": {
-  },
+  "branding": {},
   "introduce": {
     "name": "introduce",
     "title": "AIストーリージェネレーターとは",
@@ -103,8 +100,24 @@
       "src": "/imgs/features/story2.png"
     },
     "items": [
-
-    ]
+      {
+        "title": "インテリジェントストーリー作成エンジン",
+        "description": "深層学習をベースにしたAIエンジンで、複雑な叙事構造と感情表現を理解し、魅力的なストーリーコンテンツを生成します。",
+        "icon": "RiSparkling2Line"
+      },
+      {
+        "title": "多彩なストーリータイプサポート",
+        "description": "SF、ファンタジー、ロマンス、ミステリーなど多様なストーリータイプをサポートし、様々な創作ニーズと読者の好みに対応します。",
+        "icon": "RiBookOpenLine"
+      },
+      {
+        "title": "リアルタイム創作提案",
+        "description": "創作方向をインテリジェントに分析し、プロット展開とキャラクター構築の専門的な提案を提供し、創作インスピレーションを刺激します。",
+        "icon": "RiLightbulbLine"
+      }
+    ],
+    "image_not_available": "画像が利用できません",
+    "default_alt_text": "AIストーリージェネレーター機能のイラスト"
   },
   "benefit": {
     "name": "benefit",
@@ -255,9 +268,7 @@
       }
     ]
   },
-  "stats": {
-
-  },
+  "stats": {},
   "testimonial": {
     "name": "testimonial",
     "label": "お客様の声",
@@ -267,48 +278,48 @@
     "items": [
       {
         "title": "Sarah Mitchell",
-        "label": "創作家・小説家",
-        "description": "このAIストーリージェネレーターは、私の執筆プロセスを完全に変えました。作家のブロックに陥ったときにストーリーアイデアを生成するために使用していますが、品質が素晴らしいです。24時間365日利用できる創作パートナーを持っているようなものです！",
+        "sub": "創作家・小説家",
+        "content": "このAIストーリージェネレーターは、私の執筆プロセスを完全に変えました。作家のブロックに陥ったときにストーリーアイデアを生成するために使用していますが、品質が素晴らしいです。24時間365日利用できる創作パートナーを持っているようなものです！",
         "image": {
           "src": "/imgs/users/1.png"
         }
       },
       {
         "title": "David Park",
-        "label": "コンテンツマーケティングマネージャー",
-        "description": "私たちのチームは、ブランドキャンペーン用の魅力的なナラティブを作成するために、このストーリージェネレーターを毎日使用しています。AI生成のストーリーは非常によくできているため、最小限の編集で済みます。無数の時間の創作活動時間を節約しました。",
+        "sub": "コンテンツマーケティングマネージャー",
+        "content": "私たちのチームは、ブランドキャンペーン用の魅力的なナラティブを作成するために、このストーリージェネレーターを毎日使用しています。AI生成のストーリーは非常によくできているため、最小限の編集で済みます。無数の時間の創作活動時間を節約しました。",
         "image": {
           "src": "/imgs/users/2.png"
         }
       },
       {
         "title": "Emily Rodriguez",
-        "label": "高校英語教師",
-        "description": "私は、創作文のインスピレーションのために、すべての生徒にこのAIストーリージェネレーターを推奨しています。このツールは、生徒がストーリー構造を理解し、ユニークなストーリーアイデアを生成するのに役立ちます。ナラティブライティングを教えるための素晴らしい教育リソースです！",
+        "sub": "高校英語教師",
+        "content": "私は、創作文のインスピレーションのために、すべての生徒にこのAIストーリージェネレーターを推奨しています。このツールは、生徒がストーリー構造を理解し、ユニークなストーリーアイデアを生成するのに役立ちます。ナラティブライティングを教えるための素晴らしい教育リソースです！",
         "image": {
           "src": "/imgs/users/3.png"
         }
       },
       {
         "title": "Michael Chen",
-        "label": "小説家・ブロガー",
-        "description": "プロの作家として、最初はAIストーリージェネレーターに懐疑的でした。しかし、このツールは私が間違っていたことを証明してくれました！生成されるストーリーは創造的で一貫性があり、実際にインスピレーションを与えてくれます。さまざまなナラティブの視点やプロットの可能性を探求するために使用しています。",
+        "sub": "小説家・ブロガー",
+        "content": "プロの作家として、最初はAIストーリージェネレーターに懐疑的でした。しかし、このツールは私が間違っていたことを証明してくれました！生成されるストーリーは創造的で一貫性があり、実際にインスピレーションを与えてくれます。さまざまなナラティブの視点やプロットの可能性を探求するために使用しています。",
         "image": {
           "src": "/imgs/users/4.png"
         }
       },
       {
         "title": "Jessica Williams",
-        "label": "コンテンツクリエイター・ストーリーテラー",
-        "description": "無料のAIストーリージェネレーターは、私のYouTubeチャンネルのゲームチェンジャーでした。毎週ストーリーコンセプトを生成し、カスタマイズして、魅力的なビデオスクリプトに変えています。無限の創造的可能性が私のコンテンツを新鮮でエキサイティングに保っています！",
+        "sub": "コンテンツクリエイター・ストーリーテラー",
+        "content": "無料のAIストーリージェネレーターは、私のYouTubeチャンネルのゲームチェンジャーでした。毎週ストーリーコンセプトを生成し、カスタマイズして、魅力的なビデオスクリプトに変えています。無限の創造的可能性が私のコンテンツを新鮮でエキサイティングに保っています！",
         "image": {
           "src": "/imgs/users/5.png"
         }
       },
       {
         "title": "Alex Thompson",
-        "label": "大学生",
-        "description": "このストーリージェネレーターは、私が創作文の課題でAを取るのに役立ちました。最初のストーリー草稿を生成するために使用し、それを洗練された作品に発展させます。AIはSFからロマンス、ミステリーまで、さまざまなジャンルを完璧に理解しています！",
+        "sub": "大学生",
+        "content": "このストーリージェネレーターは、私が創作文の課題でAを取るのに役立ちました。最初のストーリー草稿を生成するために使用し、それを洗練された作品に発展させます。AIはSFからロマンス、ミステリーまで、さまざまなジャンルを完璧に理解しています！",
         "image": {
           "src": "/imgs/users/6.png"
         }
@@ -366,18 +377,66 @@
       "language_label": "ストーリー言語：",
       "language_placeholder": "ストーリー出力言語を選択",
       "language_options": {
-        "en": { "native": "English", "english": "English", "flag": "🇺🇸" },
-        "zh": { "native": "中文", "english": "Chinese", "flag": "🇨🇳" },
-        "ja": { "native": "日本語", "english": "Japanese", "flag": "🇯🇵" },
-        "ko": { "native": "한국어", "english": "Korean", "flag": "🇰🇷" },
-        "es": { "native": "Español", "english": "Spanish", "flag": "🇪🇸" },
-        "fr": { "native": "Français", "english": "French", "flag": "🇫🇷" },
-        "de": { "native": "Deutsch", "english": "German", "flag": "🇩🇪" },
-        "pt": { "native": "Português", "english": "Portuguese", "flag": "🇵🇹" },
-        "ru": { "native": "Русский", "english": "Russian", "flag": "🇷🇺" },
-        "ar": { "native": "العربية", "english": "Arabic", "flag": "🇸🇦" },
-        "hi": { "native": "हिन्दी", "english": "Hindi", "flag": "🇮🇳" },
-        "it": { "native": "Italiano", "english": "Italian", "flag": "🇮🇹" }
+        "en": {
+          "native": "English",
+          "english": "English",
+          "flag": "🇺🇸"
+        },
+        "zh": {
+          "native": "中文",
+          "english": "Chinese",
+          "flag": "🇨🇳"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "Japanese",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "Korean",
+          "flag": "🇰🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "Spanish",
+          "flag": "🇪🇸"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "French",
+          "flag": "🇫🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "German",
+          "flag": "🇩🇪"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "Portuguese",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "Russian",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "Arabic",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "Hindi",
+          "flag": "🇮🇳"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "Italian",
+          "flag": "🇮🇹"
+        }
       },
       "character_counter": "{count} / 2000"
     },
@@ -646,7 +705,7 @@
         },
         {
           "title": "AI ライティング",
-         "children": [
+          "children": [
             {
               "title": "ストーリージェネレーター",
               "url": "/",
@@ -671,7 +730,7 @@
         },
         {
           "title": "Friend",
-           "children": [
+          "children": [
             {
               "title": "toolfame",
               "url": "https://toolfame.com/item/story-generator",

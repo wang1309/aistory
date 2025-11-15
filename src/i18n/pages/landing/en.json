@@ -46,9 +46,7 @@
         }
       ]
     },
-    "buttons": [
-      
-    ],
+    "buttons": [],
     "show_sign": true,
     "show_theme": true,
     "show_locale": true
@@ -74,7 +72,7 @@
     ],
     "show_happy_users": false,
     "show_badge": false,
-    "image":{
+    "image": {
       "src": "",
       "alt": "illustration"
     },
@@ -92,19 +90,34 @@
       "bloom": 1
     }
   },
-  "branding": {
-  },
+  "branding": {},
   "introduce": {
     "name": "introduce",
-    "title": "What is An AI Stoty Generator",
+    "title": "What is An AI Story Generator",
     "label": "Introduce",
     "description": "The world of storytelling has been revolutionized by technology, and AI story generators are at the forefront of this transformation. These innovative tools use artificial intelligence to craft narratives, offering a creative solution for writers, marketers, and content creators. But what exactly is an AI story generator, and how can it benefit you? An AI story generator is a software application that uses algorithms and machine learning to produce stories. These stories can range from simple narratives to complex plots with intricate character development. By processing a vast array of data, including language patterns and narrative structures, these generators can create unique content based on user inputs or prompts.",
     "image": {
       "src": "/imgs/features/story2.png"
     },
     "items": [
-     
-    ]
+      {
+        "title": "Intelligent Story Creation Engine",
+        "description": "Deep learning-powered AI engine that understands complex narrative structures and emotional expressions to generate engaging story content.",
+        "icon": "RiSparkling2Line"
+      },
+      {
+        "title": "Multi-Genre Story Support",
+        "description": "Support for sci-fi, fantasy, romance, mystery and multiple other story types to meet different creative needs and reader preferences.",
+        "icon": "RiBookOpenLine"
+      },
+      {
+        "title": "Real-time Creative Suggestions",
+        "description": "Intelligent analysis of creative direction with professional suggestions for plot development and character building to spark inspiration.",
+        "icon": "RiLightbulbLine"
+      }
+    ],
+    "image_not_available": "Image not available",
+    "default_alt_text": "AI Story Generator feature illustration"
   },
   "benefit": {
     "name": "benefit",
@@ -255,9 +268,7 @@
       }
     ]
   },
-  "stats": {
-
-  },
+  "stats": {},
   "testimonial": {
     "name": "testimonial",
     "label": "Testimonial",
@@ -267,48 +278,48 @@
     "items": [
       {
         "title": "Sarah Mitchell",
-        "label": "Creative Writer & Novelist",
-        "description": "This AI story generator completely transformed my writing process. I use it to generate story ideas when I hit writer's block, and the quality is incredible. It's like having a creative writing partner available 24/7!",
+        "sub": "Creative Writer & Novelist",
+        "content": "This AI story generator completely transformed my writing process. I use it to generate story ideas when I hit writer's block, and the quality is incredible. It's like having a creative writing partner available 24/7!",
         "image": {
           "src": "/imgs/users/1.png"
         }
       },
       {
         "title": "David Park",
-        "label": "Content Marketing Manager",
-        "description": "Our team uses this story generator daily to create engaging narratives for our brand campaigns. The AI-generated stories are so well-crafted that we only need minimal editing. It's saved us countless hours of creative writing time.",
+        "sub": "Content Marketing Manager",
+        "content": "Our team uses this story generator daily to create engaging narratives for our brand campaigns. The AI-generated stories are so well-crafted that we only need minimal editing. It's saved us countless hours of creative writing time.",
         "image": {
           "src": "/imgs/users/2.png"
         }
       },
       {
         "title": "Emily Rodriguez",
-        "label": "High School English Teacher",
-        "description": "I recommend this AI story generator to all my students for creative writing inspiration. The tool helps them understand story structure and generate unique story ideas. It's an amazing educational resource for teaching narrative writing!",
+        "sub": "High School English Teacher",
+        "content": "I recommend this AI story generator to all my students for creative writing inspiration. The tool helps them understand story structure and generate unique story ideas. It's an amazing educational resource for teaching narrative writing!",
         "image": {
           "src": "/imgs/users/3.png"
         }
       },
       {
         "title": "Michael Chen",
-        "label": "Fiction Author & Blogger",
-        "description": "As a professional author, I was skeptical about AI story generators at first. But this tool proved me wrong! The stories it generates are creative, coherent, and actually inspiring. I use it to explore different narrative perspectives and plot possibilities.",
+        "sub": "Fiction Author & Blogger",
+        "content": "As a professional author, I was skeptical about AI story generators at first. But this tool proved me wrong! The stories it generates are creative, coherent, and actually inspiring. I use it to explore different narrative perspectives and plot possibilities.",
         "image": {
           "src": "/imgs/users/4.png"
         }
       },
       {
         "title": "Jessica Williams",
-        "label": "Content Creator & Storyteller",
-        "description": "The free AI story generator has been a game-changer for my YouTube channel. I generate story concepts weekly, customize them, and turn them into engaging video scripts. The unlimited creative possibilities keep my content fresh and exciting!",
+        "sub": "Content Creator & Storyteller",
+        "content": "The free AI story generator has been a game-changer for my YouTube channel. I generate story concepts weekly, customize them, and turn them into engaging video scripts. The unlimited creative possibilities keep my content fresh and exciting!",
         "image": {
           "src": "/imgs/users/5.png"
         }
       },
       {
         "title": "Alex Thompson",
-        "label": "University Student",
-        "description": "This story generator helped me ace my creative writing assignments. I use it to generate initial story drafts, then develop them into polished pieces. The AI understands different genres perfectly - from sci-fi to romance to mystery!",
+        "sub": "University Student",
+        "content": "This story generator helped me ace my creative writing assignments. I use it to generate initial story drafts, then develop them into polished pieces. The AI understands different genres perfectly - from sci-fi to romance to mystery!",
         "image": {
           "src": "/imgs/users/6.png"
         }
@@ -366,18 +377,66 @@
       "language_label": "Story Language:",
       "language_placeholder": "Select story output language",
       "language_options": {
-        "en": { "native": "English", "english": "English", "flag": "🇺🇸" },
-        "zh": { "native": "中文", "english": "Chinese", "flag": "🇨🇳" },
-        "ja": { "native": "日本語", "english": "Japanese", "flag": "🇯🇵" },
-        "ko": { "native": "한국어", "english": "Korean", "flag": "🇰🇷" },
-        "es": { "native": "Español", "english": "Spanish", "flag": "🇪🇸" },
-        "fr": { "native": "Français", "english": "French", "flag": "🇫🇷" },
-        "de": { "native": "Deutsch", "english": "German", "flag": "🇩🇪" },
-        "pt": { "native": "Português", "english": "Portuguese", "flag": "🇵🇹" },
-        "ru": { "native": "Русский", "english": "Russian", "flag": "🇷🇺" },
-        "ar": { "native": "العربية", "english": "Arabic", "flag": "🇸🇦" },
-        "hi": { "native": "हिन्दी", "english": "Hindi", "flag": "🇮🇳" },
-        "it": { "native": "Italiano", "english": "Italian", "flag": "🇮🇹" }
+        "en": {
+          "native": "English",
+          "english": "English",
+          "flag": "🇺🇸"
+        },
+        "zh": {
+          "native": "中文",
+          "english": "Chinese",
+          "flag": "🇨🇳"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "Japanese",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "Korean",
+          "flag": "🇰🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "Spanish",
+          "flag": "🇪🇸"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "French",
+          "flag": "🇫🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "German",
+          "flag": "🇩🇪"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "Portuguese",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "Russian",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "Arabic",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "Hindi",
+          "flag": "🇮🇳"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "Italian",
+          "flag": "🇮🇹"
+        }
       },
       "character_counter": "{count} / 2000"
     },
@@ -645,8 +704,8 @@
           ]
         },
         {
-         "title": "AI Write",
-         "children": [
+          "title": "AI Write",
+          "children": [
             {
               "title": "Story Generator",
               "url": "/",
@@ -671,7 +730,7 @@
         },
         {
           "title": "Friend",
-           "children": [
+          "children": [
             {
               "title": "AIStage",
               "url": "https://aistage.net/",

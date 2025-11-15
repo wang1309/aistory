@@ -1,0 +1,663 @@
+{
+  "metadata": {
+    "title": "Free AI Poem Generator - Haiku, Sonnet, Acrostic & More",
+    "description": "Create stunning poems in seconds! Free AI generator for haiku, sonnets, acrostics, love poems & more. 12 languages + AI analysis. No writing experience needed!",
+    "keywords": "AI poem generator,haiku poem generator,sonnet poem generator,acrostic poem generator,limerick poem generator,love poem generator,poetry generator,verse generator,free poem generator,online poem generator,modern poetry,classical poetry"
+  },
+  "poemGenerate": {
+    "header": {
+      "title": "AI Poem Generator",
+      "subtitle": "Create Unique Poetry with AI - Modern, Classical, Haiku, Sonnet & Love Poem Generator"
+    },
+    "mode": {
+      "simple": "Simple Mode",
+      "advanced": "Advanced Mode",
+      "toggle_hint": "Switch to {mode}",
+      "simple_description": "Quick start with our poem generator's core parameters only",
+      "advanced_description": "Unlock advanced poem generator features for fine-grained creative control",
+      "keyboard_shortcut": "⌘K",
+      "toggle_shortcut": "to toggle"
+    },
+    "prompt": {
+      "label": "Poem Theme or Inspiration",
+      "required": "Required",
+      "placeholder": "Describe the theme, mood, or inspiration for your poem...\nE.g.: Moonlight and longing, First spring rain, City at night",
+      "random_button": "Random Theme",
+      "quick_adds_label": "Quick Add",
+      "quick_add_chips": {
+        "emotions": [
+          "Gentle",
+          "Melancholic",
+          "Passionate",
+          "Serene",
+          "Romantic",
+          "Nostalgic"
+        ],
+        "imagery": [
+          "Moonlight",
+          "Flowing water",
+          "Petals",
+          "Mountains",
+          "Stars",
+          "Breeze"
+        ],
+        "scenes": [
+          "Dusk",
+          "Rainy night",
+          "Spring morning",
+          "Autumn day",
+          "Seaside",
+          "Forest"
+        ]
+      },
+      "language_label": "Output Language",
+      "language_placeholder": "Select poem language",
+      "language_options": {
+        "en": {
+          "native": "English",
+          "english": "English",
+          "flag": "🇺🇸"
+        },
+        "zh": {
+          "native": "中文",
+          "english": "Chinese",
+          "flag": "🇨🇳"
+        },
+        "ja": {
+          "native": "日本語",
+          "english": "Japanese",
+          "flag": "🇯🇵"
+        },
+        "ko": {
+          "native": "한국어",
+          "english": "Korean",
+          "flag": "🇰🇷"
+        },
+        "es": {
+          "native": "Español",
+          "english": "Spanish",
+          "flag": "🇪🇸"
+        },
+        "fr": {
+          "native": "Français",
+          "english": "French",
+          "flag": "🇫🇷"
+        },
+        "de": {
+          "native": "Deutsch",
+          "english": "German",
+          "flag": "🇩🇪"
+        },
+        "pt": {
+          "native": "Português",
+          "english": "Portuguese",
+          "flag": "🇵🇹"
+        },
+        "ru": {
+          "native": "Русский",
+          "english": "Russian",
+          "flag": "🇷🇺"
+        },
+        "ar": {
+          "native": "العربية",
+          "english": "Arabic",
+          "flag": "🇸🇦"
+        },
+        "hi": {
+          "native": "हिन्दी",
+          "english": "Hindi",
+          "flag": "🇮🇳"
+        },
+        "it": {
+          "native": "Italiano",
+          "english": "Italian",
+          "flag": "🇮🇹"
+        }
+      },
+      "character_counter": "{current}/{max} characters"
+    },
+    "random_prompts": [
+      "Moonlight dances on the silent lake, shimmering like dreams",
+      "Beneath city neon lights, a lonely figure hurries past",
+      "The first spring rain awakens the sleeping earth",
+      "Autumn wind carries the last leaf, time flows like a song",
+      "Ocean waves crash against the rocks, telling eternal stories",
+      "By the campfire under stars, we share our dreams",
+      "Morning dewdrops reflect the brilliance of life",
+      "Snowflakes fall on ancient streets, time seems frozen"
+    ],
+    "poem_types": {
+      "title": "Poem Type",
+      "tabs": {
+        "modern": {
+          "name": "Modern Poetry",
+          "description": "Free expression, focus on imagery and emotion"
+        },
+        "classical": {
+          "name": "Classical Poetry",
+          "description": "Traditional prosody, tonal patterns, profound meaning"
+        },
+        "format": {
+          "name": "Format Poetry",
+          "description": "Haiku generator, Sonnet generator, Limerick generator, Acrostic generator with fixed structures"
+        },
+        "lyric": {
+          "name": "Lyrics",
+          "description": "Verse-chorus structure, catchy, suitable for singing"
+        }
+      }
+    },
+    "ai_models": {
+      "title": "AI Model",
+      "hint": "Choose the right AI poem generator model to match your creative style and needs",
+      "models": {
+        "fast": {
+          "name": "Fast Mode",
+          "badge": "Fastest",
+          "description": "Quick poem generation - Concise and efficient, perfect for instant inspiration",
+          "speed": "~5 sec"
+        },
+        "standard": {
+          "name": "Standard Mode",
+          "badge": "Recommended",
+          "description": "Balanced poem generator mode - Optimal quality and speed for most poetry needs",
+          "speed": "~10 sec"
+        },
+        "creative": {
+          "name": "Creative Mode",
+          "badge": "Best",
+          "description": "Deep thinking, poetic expression",
+          "speed": "~20 sec"
+        }
+      },
+      "selected": "Selected",
+      "select": "Select"
+    },
+    "options": {
+      "title": "Poem Parameters",
+      "subtitle": "Fine-tune your poem generator output with professional customization options",
+      "length": {
+        "label": "Length",
+        "placeholder": "Select poem length",
+        "options": {
+          "short": "Short (4-8 lines)",
+          "medium": "Medium (12-20 lines)",
+          "long": "Long (20+ lines)"
+        }
+      },
+      "rhyme_scheme": {
+        "label": "Rhyme/Format",
+        "placeholder": "Select rhyme scheme",
+        "modern_options": {
+          "free": "Free rhyme",
+          "abab": "Alternate rhyme (ABAB)",
+          "aabb": "Couplet rhyme (AABB)",
+          "abcb": "Simple rhyme (ABCB)"
+        },
+        "classical_options": {
+          "wujue": "5-char Jueju",
+          "qijue": "7-char Jueju",
+          "wulv": "5-char Lüshi",
+          "qilv": "7-char Lüshi",
+          "ci": "Ci Poetry"
+        },
+        "format_options": {
+          "haiku": "Haiku (5-7-5)",
+          "free_verse": "Free Verse",
+          "sonnet": "Sonnet",
+          "limerick": "Limerick",
+          "acrostic": "Acrostic",
+          "love_poem": "Love Poem",
+          "line_by_line": "Line by Line",
+          "rhyming_couplets": "Rhyming Couplets",
+          "villanelle": "Villanelle"
+        },
+        "lyric_options": {
+          "verse_chorus": "Verse + Chorus",
+          "verse_bridge_chorus": "Verse + Bridge + Chorus"
+        }
+      },
+      "cipai": {
+        "label": "Cipai (Tune Pattern)",
+        "placeholder": "Select Cipai",
+        "popular": {
+          "niannujiao": "Nian Nu Jiao",
+          "qinyuanchun": "Qin Yuan Chun",
+          "shuidiaogetou": "Shui Diao Ge Tou",
+          "yulinling": "Yu Lin Ling",
+          "xijiangYue": "Xi Jiang Yue",
+          "ruanlanggui": "Ruan Lang Gui",
+          "yijiangnan": "Yi Jiang Nan",
+          "pusalian": "Pu Sa Man"
+        }
+      },
+      "theme": {
+        "label": "Theme",
+        "placeholder": "Select poem theme",
+        "options": {
+          "love": "Love",
+          "nature": "Nature",
+          "philosophy": "Philosophy",
+          "inspiration": "Inspiration",
+          "life": "Life",
+          "nostalgia": "Nostalgia",
+          "friendship": "Friendship",
+          "family": "Family",
+          "society": "Society",
+          "history": "History"
+        },
+        "none_option": "-"
+      },
+      "mood": {
+        "label": "Emotional Tone",
+        "placeholder": "Select emotional mood",
+        "options": {
+          "joyful": "Joyful",
+          "melancholic": "Melancholic",
+          "passionate": "Passionate",
+          "peaceful": "Peaceful",
+          "romantic": "Romantic",
+          "contemplative": "Contemplative",
+          "hopeful": "Hopeful",
+          "sorrowful": "Sorrowful"
+        },
+        "none_option": "-"
+      },
+      "style": {
+        "label": "Literary Style",
+        "placeholder": "Select artistic movement",
+        "options": {
+          "romantic": "Romanticism",
+          "realism": "Realism",
+          "symbolism": "Symbolism",
+          "surrealism": "Surrealism",
+          "minimalism": "Minimalism",
+          "impressionism": "Impressionism",
+          "modernism": "Modernism",
+          "classical": "Classicism"
+        },
+        "none_option": "-"
+      },
+      "strict_tone": {
+        "label": "Strict Tonal Pattern",
+        "description": "Strictly follow classical poetry tonal rules"
+      }
+    },
+    "generate_button": {
+      "text": "Generate Poem",
+      "generating": "Creating...",
+      "info": {
+        "credit": "Credit Cost",
+        "credit_text": "1 Credit",
+        "time": "Est. Time",
+        "quality": "Quality"
+      },
+      "tip": "💡 Pro tip: Our poem generator's Creative Mode produces the most artistic and expressive verses"
+    },
+    "output": {
+      "title": "Your Poem Generator Results",
+      "tabs": {
+        "poem": "Poem",
+        "analysis": "Analysis",
+        "audio": "Recitation"
+      },
+      "status_writing": "AI is creating...",
+      "status_complete": "Creation complete",
+      "line_count": "{count} lines",
+      "button_copy": "Copy",
+      "button_export_pdf": "Export PDF",
+      "button_exporting_pdf": "Exporting...",
+      "button_regenerate": "Regenerate",
+      "button_analyze": "Analyze Poem",
+      "button_analyzing": "Analyzing...",
+      "button_generate_audio": "Generate Audio",
+      "button_generating_audio": "Generating...",
+      "loading": "Loading..."
+    },
+    "analysis": {
+      "title": "Poem Analysis",
+      "imagery": {
+        "title": "Imagery Analysis",
+        "description": "Core imagery and symbolic meanings"
+      },
+      "rhyme": {
+        "title": "Rhyme Analysis",
+        "description": "Rhyme scheme, syllable structure, and rhythm"
+      },
+      "rhetoric": {
+        "title": "Rhetorical Devices",
+        "description": "Rhetorical techniques and artistic methods used"
+      },
+      "emotion": {
+        "title": "Emotional Tone",
+        "description": "Overall emotional atmosphere and mood changes"
+      },
+      "theme": {
+        "title": "Theme Interpretation",
+        "description": "Deep meaning and philosophical thoughts"
+      },
+      "loading": "Analyzing poem...",
+      "no_analysis": "Click 'Analyze Poem' to unlock our poem generator's professional analysis features",
+      "error": "Analysis failed, please try again"
+    },
+    "audio": {
+      "title": "Audio Recitation",
+      "no_audio": "Click 'Generate Audio' button to create audio",
+      "error": "Audio generation failed, please try again",
+      "player": {
+        "play": "Play",
+        "pause": "Pause",
+        "download": "Download",
+        "speed": "Speed",
+        "stop": "Stop",
+        "resume": "Resume",
+        "speed_label": "Recitation Speed",
+        "status_reading": "Reading...",
+        "status_paused": "Paused"
+      },
+      "browser_not_supported": "Your browser does not support speech synthesis",
+      "tts_failed": "Recitation failed, please try again"
+    },
+    "pdf": {
+      "generated_at": "Generated at",
+      "line_count_label": "Lines",
+      "ai_model": "AI Model",
+      "poem_type": "Poem Type",
+      "poem_theme": "Theme",
+      "poem_mood": "Mood",
+      "prompt": "Inspiration",
+      "footer_text": "Created with AI Story Poem Generator",
+      "page_indicator": "Page {current} of {total}"
+    },
+    "share": {
+      "title": "Share Poem",
+      "copy_link": "Copy Link",
+      "share_twitter": "Share on Twitter",
+      "share_facebook": "Share on Facebook",
+      "share_linkedin": "Share on LinkedIn",
+      "link_copied": "Link copied",
+      "share_text_template": "I created a poem with AI Story, check it out!"
+    },
+    "history": {
+      "title": "History",
+      "empty": "No history yet",
+      "load": "Load",
+      "delete": "Delete",
+      "clear_all": "Clear All",
+      "confirm_clear": "Are you sure you want to clear all history?"
+    },
+    "toasts": {
+      "error_no_prompt": "Please enter poem theme or inspiration",
+      "error_no_model": "Please select an AI model",
+      "error_generate_failed": "Poem generation failed, please try again",
+      "error_no_stream": "Cannot get generation stream",
+      "error_no_content": "No content generated",
+      "error_analyze_failed": "Poem analysis failed, please try again",
+      "error_tts_failed": "Audio generation failed, please try again",
+      "error_pdf_export_failed": "PDF export failed",
+      "success_generated": "Poem created successfully!",
+      "success_copied": "Copied to clipboard",
+      "success_analyzed": "Poem analysis complete",
+      "success_audio_generated": "Audio recitation generated",
+      "success_pdf_exported": "PDF exported successfully",
+      "error_generate_poem_first": "Please generate a poem first",
+      "success_loaded": "Poem loaded successfully"
+    },
+    "feature1_section": {
+      "name": "poem-features-highlight",
+      "title": "What is AI Poem Generator?",
+      "description": "A professional AI poem generator that transforms your inspiration into beautiful verses. Our advanced poetry generator supports modern poetry, classical poems, specific formats, and lyrics - making poetry creation accessible to everyone.",
+      "label": "Core Features",
+      "image": {
+        "src": "/imgs/poem/what-poem-generator2.avif",
+        "alt": "AI Poem Generator Features Showcase"
+      },
+      "items": [
+        {
+          "icon": "sparkles",
+          "title": "Diverse Poetry Types",
+          "description": "Supports modern poetry, classical poems (Jueju, Lüshi, Ci), including haiku poem generator, sonnet poem generator, acrostic poem generator, limerick poem generator, and love poem creation"
+        },
+        {
+          "icon": "globe",
+          "title": "True Multilingual Poem Generator",
+          "description": "Supports 12 languages with native-quality poetry generation, understanding poetic rhythms and cultural expressions across different backgrounds"
+        },
+        {
+          "icon": "palette",
+          "title": "Theme & Style Customization",
+          "description": "Rich theme, emotion and style options allow you to precisely control the atmosphere and expressive power of your poetry"
+        },
+        {
+          "icon": "analyze",
+          "title": "Intelligent Poetry Analysis",
+          "description": "The only poem generator with built-in AI analysis of imagery, rhyme, rhetoric and emotional tone to help you master the craft"
+        },
+        {
+          "icon": "volume-2",
+          "title": "Voice Recitation Feature",
+          "description": "Built-in text-to-speech functionality supports multi-language recitation with adjustable speed to enjoy the beauty of poetry"
+        },
+        {
+          "icon": "history",
+          "title": "Creation History Saving",
+          "description": "Automatically saves creation history, allowing you to review, modify and manage your poetry works anytime"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "poem-features-interactive",
+      "title": "Why Choose Our Professional AI Poem Generator?",
+      "description": "Transform your creative vision into beautiful verses with our advanced AI poem generator that understands both artistic needs and poetic structure requirements.",
+      "label": "KEY ADVANTAGES",
+      "items": [
+        {
+          "icon": "heart",
+          "title": "Transform Emotions with Our Poetry Generator",
+          "description": "Convert complex emotions and thoughts into compelling poetry that touches readers' hearts with genuine expression in every word and line.",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator1.avif"
+          }
+        },
+        {
+          "icon": "globe",
+          "title": "Bridge Cultures Through Universal Poetry",
+          "description": "Write authentically in your native language while reaching global audiences through culturally nuanced poetic expressions that transcend borders.",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator2.avif"
+          }
+        },
+        {
+          "icon": "sparkles",
+          "title": "Never Face Creative Block Again",
+          "description": "Get endless creative inspiration and explore diverse poetry styles with our intelligent poem generator. Say goodbye to writer's block - AI becomes your inexhaustible creative partner.",
+          "image": {
+            "src": "/imgs/poem/why-poem-generator3.avif"
+          }
+        }
+      ]
+    },
+    "poem_applications_section": {
+      "name": "poem-applications",
+      "title": "AI Poem Generator Applications",
+      "description": "Discover how our versatile poem generator empowers various fields - from creative writing and education to emotional expression and business marketing. Professional poetry creation made simple.",
+      "label": "APPLICATIONS",
+      "items": [
+        {
+          "icon": "book-open",
+          "title": "Creative Writing",
+          "description": "Add poetic elements to novels, scripts, and lyrics to enhance artistic appeal and literary value, making text more expressive."
+        },
+        {
+          "icon": "graduation-cap",
+          "title": "Educational Training",
+          "description": "Assist in poetry teaching with our educational poem generator - helps students understand poetic structure, rhythm, and rhetorical devices through hands-on creation and AI-powered analysis."
+        },
+        {
+          "icon": "heart",
+          "title": "Special Occasions",
+          "description": "Create custom poems for weddings, birthdays, and memorials, crafting unique emotional expressions and beautiful memories."
+        },
+        {
+          "icon": "megaphone",
+          "title": "Content Creation",
+          "description": "Create poetic copy for social media, blogs, and brand marketing to enhance content appeal and engagement."
+        },
+        {
+          "icon": "message-circle",
+          "title": "Emotional Expression",
+          "description": "Transform complex emotions like love, friendship, and gratitude into beautiful verses as a medium for conveying feelings."
+        },
+        {
+          "icon": "building",
+          "title": "Cultural Heritage",
+          "description": "Unique classical poetry generator - Learn and inherit classical poetry culture with our specialized Chinese poetry support (Jueju, Lüshi, Ci), explore modern-traditional fusion, and preserve poetic heritage."
+        }
+      ]
+    },
+    "feature3_section": {
+      "name": "poem-usage-guide",
+      "title": "How to Use Our AI Poem Generator",
+      "description": "Follow these simple steps to create beautiful poems with our AI poem generator - professional results in minutes, no poetry experience required",
+      "label": "USAGE GUIDE",
+      "items": [
+        {
+          "title": "Enter Your Poem Theme",
+          "description": "Start by entering your basic poem idea, theme, or creative inspiration. This could be as simple as 'Moonlight memories' or a complex emotional expression you want to develop."
+        },
+        {
+          "title": "Configure Poem Parameters",
+          "description": "Customize your poem by selecting poetry type, length, theme, mood, and style. Fine-tune every aspect to match your creative vision, whether it's a romantic love poem, structured haiku, classic sonnet, creative acrostic, or playful limerick."
+        },
+        {
+          "title": "Generate & Refine Your Poem",
+          "description": "Click generate to create your detailed poem content. Use the generated poem as a foundation, then enhance it with intelligent analysis to understand imagery, rhyme, and rhetorical devices for a perfect masterpiece."
+        }
+      ]
+    },
+    "testimonial_section": {
+      "name": "poem-testimonials",
+      "label": "TESTIMONIALS",
+      "title": "What Users Say",
+      "description": "Hear from creators, educators, and enthusiasts worldwide about how our AI poem generator is transforming their creative process and making professional poetry accessible to everyone",
+      "icon": "GoThumbsup",
+      "items": [
+        {
+          "title": "Maya Chen",
+          "sub": "Poet & Author",
+          "content": "This AI poem generator has truly transformed how I overcome creative blocks. When I'm feeling uninspired, it provides unique verse suggestions and rhyme patterns that help me rediscover my passion. The quality of generated poems is remarkable, blending classical poetic charm with modern expression.",
+          "image": {
+            "src": "/imgs/users/1.png"
+          }
+        },
+        {
+          "title": "Professor James Morrison",
+          "sub": "Literature Professor",
+          "content": "As a literature professor, this poem generator has become an indispensable teaching assistant. It not only generates various poetic forms but also provides detailed AI analysis that enables students to deeply understand imagery, rhetorical devices, and emotional expression. A game-changer for poetry education.",
+          "image": {
+            "src": "/imgs/users/2.png"
+          }
+        },
+        {
+          "title": "Sophie Laurent",
+          "sub": "Songwriter",
+          "content": "When writing lyrics, I often struggle to balance rhythm and emotional depth. This AI generator helps me explore different rhyme patterns and creates poetic lyric fragments based on my themes. The multi-language support also allows me to create content for different market audiences.",
+          "image": {
+            "src": "/imgs/users/3.png"
+          }
+        },
+        {
+          "title": "David Kim",
+          "sub": "Creative Writing Student",
+          "content": "When I first started learning poetry, I was confused about classical forms. This poem generator helped me understand traditional forms like sonnets and haiku, and its real-time analysis points out rhythm and structure issues. Now I can confidently compose poems that follow classical conventions. Best learning tool for aspiring poets.",
+          "image": {
+            "src": "/imgs/users/4.png"
+          }
+        },
+        {
+          "title": "Maria Rodriguez",
+          "sub": "Social Media Content Creator",
+          "content": "Poetry content consistently gets the highest engagement on my social media accounts. This AI tool helps me quickly create poetic short posts that pair beautifully with images. The text-to-speech feature lets me create poetry recitation videos, significantly diversifying my content strategy.",
+          "image": {
+            "src": "/imgs/users/5.png"
+          }
+        },
+        {
+          "title": "Sarah Thompson",
+          "sub": "Event Planner",
+          "content": "Creating custom poems for my clients' weddings and special occasions has become a signature service. This AI tool generates personalized poems based on the background information and emotional tone I provide. Each poem perfectly captures the couple's love story, becoming the most touching moment of the ceremony.",
+          "image": {
+            "src": "/imgs/users/6.png"
+          }
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "poem-faq",
+      "title": "Frequently Asked Questions",
+      "label": "FAQ",
+      "description": "Common questions about our AI poem generator to help you better understand and use our tool.",
+      "items": [
+        {
+          "title": "How does the AI poem generator work?",
+          "description": "Our AI poem generator uses advanced large language models that understand poetic rhythm, imagery, and emotional expression through deep learning. Simply input your theme or inspiration, and the AI will analyze your requirements and generate original poetry that meets your needs."
+        },
+        {
+          "title": "What types of poetry are supported?",
+          "description": "We support multiple poetry types: Modern poetry (free verse), Classical Chinese poetry (five-character quatrain, seven-character quatrain, five-character regulated verse, seven-character regulated verse, ci poetry), Specific formats (haiku, sonnet, limerick, acrostic, love poem), and song lyrics creation."
+        },
+        {
+          "title": "Are the generated poems original?",
+          "description": "Yes, each poem is an original work generated in real-time by AI based on your input. The AI does not copy existing poems but creates entirely new content after learning from a vast collection of poetry works, ensuring uniqueness and originality."
+        },
+        {
+          "title": "What languages are supported?",
+          "description": "Currently supports 12 languages: Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Russian, Arabic, Hindi, and Italian. Each language is optimized for its poetic traditions and expressive styles."
+        },
+        {
+          "title": "How long does it take to generate a poem?",
+          "description": "Generation time depends on the selected AI model: Fast mode takes about 5 seconds, Standard mode about 10 seconds, and Creative mode about 20 seconds. Creative mode takes longer but produces more artistic and expressive poetry."
+        },
+        {
+          "title": "How can I get better generation results?",
+          "description": "Provide specific themes and emotional tones, choose appropriate poetry types, and use detailed descriptive words. Advanced options in professional mode help you precisely control poem length, rhyme, theme, and style for more satisfactory results."
+        },
+        {
+          "title": "Does generating poems consume credits?",
+          "description": "Currently, poem generation is free to use and does not consume credits. You can create various types of poetry including modern poems, classical poetry, specific formats, and lyrics without worrying about costs."
+        },
+        {
+          "title": "Can generated poems be analyzed?",
+          "description": "Yes! Our intelligent analysis feature can deeply analyze imagery, rhythm, rhetorical devices, and emotional tone of poems, helping you understand artistic characteristics and creative techniques, enhancing poetry appreciation skills."
+        },
+        {
+          "title": "Is voice recitation supported?",
+          "description": "Yes, we have built-in text-to-speech functionality supporting multilingual recitation. You can adjust recitation speed to appreciate the beauty of poetry, especially suitable for poetry sharing and teaching purposes."
+        },
+        {
+          "title": "How can I save and share poems?",
+          "description": "You can copy poems to clipboard, and the system automatically saves your creation history to local browser storage. You can view and manage your poetry works anytime, including search, categorization, and statistics features. Currently stores up to 10 poems with JSON export for backup."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "poem-cta",
+      "title": "Ready to Explore More Creative Possibilities?",
+      "description": "Discover our complete suite of AI creative tools and take your writing to the next level. From poetry to stories, let AI be your endless creative partner.",
+      "buttons": [
+        {
+          "title": "Learn Poetry Forms",
+          "url": "#feature3",
+          "icon": "RiGraduationCapLine",
+          "variant": "secondary"
+        },
+        {
+          "title": "Try Story Generator",
+          "url": "/",
+          "icon": "RiBookOpenLine",
+          "variant": "default"
+        }
+      ]
+    }
+  }
+}
