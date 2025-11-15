@@ -658,6 +658,10 @@
           "variant": "default"
         }
       ]
+    },
+    "ui": {
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "詩ジェネレーター"
     }
   }
 }

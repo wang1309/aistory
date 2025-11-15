@@ -41,6 +41,13 @@
               "url": "/plot-generator",
               "icon": "RiMapLine",
               "target": "_self"
+            },
+            {
+              "title": "詩ジェネレーター",
+              "description": "AI詩の作成 - 現代詩、古典詩、俳句など多彩な形式をサポート",
+              "url": "/poem-generator",
+              "icon": "RiQuillPenLine",
+              "target": "_self"
             }
           ]
         }
@@ -724,6 +731,11 @@
             {
               "title": "プロットジェネレーター",
               "url": "/plot-generator",
+              "target": "_self"
+            },
+            {
+              "title": "詩ジェネレーター",
+              "url": "/poem-generator",
               "target": "_self"
             }
           ]

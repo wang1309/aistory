@@ -658,6 +658,10 @@
           "variant": "default"
         }
       ]
+    },
+    "ui": {
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "诗歌生成器"
     }
   }
 }

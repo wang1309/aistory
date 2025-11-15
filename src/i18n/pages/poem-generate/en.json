@@ -658,6 +658,10 @@
           "variant": "default"
         }
       ]
+    },
+    "ui": {
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Poem Generator"
     }
   }
 }

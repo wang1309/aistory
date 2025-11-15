@@ -43,7 +43,16 @@ function BreadcrumbLink({
   return (
     <Comp
       data-slot="breadcrumb-link"
-      className={cn("hover:text-foreground transition-colors", className)}
+      className={cn(
+        "relative px-2 py-1 -mx-2 rounded-lg transition-all duration-250 ease-soft",
+        "hover:text-foreground hover:bg-primary/10 hover:scale-105 hover:shadow-soft",
+        "active:scale-100 focus:outline-none focus:ring-2 focus:ring-primary/50",
+        "after:absolute after:bottom-0 after:left-2 after:right-2 after:h-0.5",
+        "after:bg-gradient-to-r after:from-primary after:to-primary/60",
+        "after:transform after:scale-x-0 after:transition-transform after:duration-250",
+        "hover:after:scale-x-100 after:origin-left",
+        className
+      )}
       {...props}
     />
   )

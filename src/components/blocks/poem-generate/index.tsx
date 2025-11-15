@@ -19,6 +19,7 @@ import { ModeToggle } from "@/components/blocks/poem-generate/mode-toggle";
 import type { PoemData, PoemAnalysis } from "@/types/poem";
 import ReactMarkdown from "react-markdown";
 import PoemHistoryDropdown from "@/components/poem-history-dropdown";
+import PoemBreadcrumb from "./breadcrumb";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -48,6 +49,16 @@ async function copyToClipboard(text: string): Promise<boolean> {
 export default function PoemGenerate({ section }: { section: PoemGenerateType }) {
   const locale = useLocale();
   const { user, setShowVerificationModal, setVerificationCallback } = useAppContext();
+
+  // Helper function to get nested translations from section data
+  const t = (path: string) => {
+    const keys = path.split('.');
+    let value = section as any;
+    for (const key of keys) {
+      value = value?.[key];
+    }
+    return value || path;
+  };
 
   // ===== MEMOIZED CONSTANTS =====
   const RANDOM_PROMPTS = useMemo(() => section.random_prompts, [section]);
@@ -370,7 +381,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
     setPoemAnalysis(null);
 
     // Success toast
-    toast.success(section.toasts.success_loaded);
+    toast.success(section.toasts.success_generated);
   }, [locale, section]);
 
   // ===== POEM GENERATION =====
@@ -529,6 +540,14 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4">
+      {/* Breadcrumb Navigation */}
+      <div className="mb-6">
+        <PoemBreadcrumb
+          homeText={t('ui.breadcrumb_home')}
+          currentText={t('ui.breadcrumb_current')}
+        />
+      </div>
+
       {/* Header */}
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-4 mb-4">

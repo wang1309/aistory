@@ -41,6 +41,13 @@
               "url": "/plot-generator",
               "icon": "RiMapLine",
               "target": "_self"
+            },
+            {
+              "title": "Poem Generator",
+              "description": "AI-powered poetry creation - support modern poetry, classical poems, haiku and more",
+              "url": "/poem-generator",
+              "icon": "RiQuillPenLine",
+              "target": "_self"
             }
           ]
         }
@@ -724,6 +731,11 @@
             {
               "title": "Plot Generator",
               "url": "/plot-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Poem Generator",
+              "url": "/poem-generator",
               "target": "_self"
             }
           ]

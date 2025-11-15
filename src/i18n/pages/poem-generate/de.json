@@ -658,6 +658,10 @@
           "variant": "default"
         }
       ]
+    },
+    "ui": {
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Gedicht-Generator"
     }
   }
 }

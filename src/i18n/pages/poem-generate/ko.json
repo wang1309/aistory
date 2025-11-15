@@ -658,6 +658,10 @@
           "variant": "default"
         }
       ]
+    },
+    "ui": {
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "시 생성기"
     }
   }
 }
