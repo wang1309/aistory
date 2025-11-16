@@ -6,6 +6,52 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.2",
+        "date": "2025-11-15",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Breadcrumb-Navigationskomponente mit modernen Hover-Animationen und Interaktionen hinzugefügt",
+              "Gedicht-Generator in globale Navigationsstruktur und Sitemap integriert"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Benutzererlebnis des Gedicht-Generators durch intuitive Breadcrumb-Navigation verbessert",
+              "Sitemap-SEO mit proper Indexierung und Suchpriorität für Gedicht-Generator optimiert",
+              "Landing-Page-Navigation aktualisiert um Gedicht-Generator-Zugangspunkte in Header und Footer"
+            ]
+          }
+        ]
+      },
+      {
+        "version": "v1.3.1",
+        "date": "2025-11-15",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Umfassender KI-Gedicht-Generator mit Unterstützung für multiple Gedichttypen (Haiku, Sonett, Akrostichon, Liebesgedichte etc.) hinzugefügt",
+              "Gedicht-Analyse-API mit KI-gesteuerter literarischer Analyse und Feedback implementiert",
+              "Dual-Modus-Interface (Einfach/Fortgeschritten) mit umfangreichen Anpassungsoptionen erstellt",
+              "Gedicht-Verlaufsverwaltungssystem mit lokalem Speicher und Dropdown-Interface hinzugefügt",
+              "Gedicht-Generator in Hauptnavigation und Site-Struktur integriert"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Vollständige Internationalisierungsunterstützung über 5 Sprachen implementiert (Englisch, Chinesisch, Japanisch, Koreanisch, Deutsch)",
+              "Umfassende TypeScript-Typdefinitionen für verbesserte Code-Wartbarkeit hinzugefügt",
+              "Umfangreiche Marketing-Assets und SEO-Optimierung für Gedicht-Generator erstellt",
+              "UI mit Modus-Umschalt-Funktion und fortgeschrittenen Anpassungsoptionen verbessert"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.0",
         "date": "2025-11-08",
         "changes": [

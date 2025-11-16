@@ -6,6 +6,52 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.2",
+        "date": "2025-11-15",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added breadcrumb navigation component with modern hover animations and interactions",
+              "Integrated poem generator into global navigation structure and sitemap"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Enhanced poem generator user experience with intuitive breadcrumb navigation",
+              "Optimized sitemap SEO with proper poem generator indexing and search priority",
+              "Updated landing page navigation to include poem generator access points in header and footer"
+            ]
+          }
+        ]
+      },
+      {
+        "version": "v1.3.1",
+        "date": "2025-11-15",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added comprehensive AI poem generator supporting multiple poem types (haiku, sonnet, acrostic, love poems, etc.)",
+              "Implemented poem analysis API with AI-powered literary analysis and feedback",
+              "Created dual-mode interface (simple/advanced) with extensive customization options",
+              "Added poem history management system with local storage and dropdown interface",
+              "Integrated poem generator into main navigation and site structure"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Implemented complete internationalization support across 5 languages (English, Chinese, Japanese, Korean, German)",
+              "Added comprehensive TypeScript type definitions for enhanced code maintainability",
+              "Created extensive marketing assets and SEO optimization for poem generator",
+              "Enhanced UI with mode toggle functionality and advanced customization options"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.0",
         "date": "2025-11-08",
         "changes": [
