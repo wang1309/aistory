@@ -10,7 +10,7 @@ import { useParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
 
 import { MdLanguage } from "react-icons/md";
-import { localeNames, localeFlags } from "@/i18n/locale";
+import { localeNames, localeFlags, locales } from "@/i18n/locale";
 
 export default function ({ isIcon = false }: { isIcon?: boolean }) {
   const params = useParams();
@@ -20,8 +20,20 @@ export default function ({ isIcon = false }: { isIcon?: boolean }) {
 
   const handleSwitchLanguage = (value: string) => {
     if (value !== locale) {
-      // Use i18n-aware router which automatically handles locale prefixes
-      router.replace(pathname, { locale: value });
+      // Extract the path without the current locale prefix
+      let pathWithoutLocale = pathname;
+
+      // Remove the locale prefix from the pathname if it exists
+      const localePattern = new RegExp(`^/(${locales.join('|')})`);
+      pathWithoutLocale = pathname.replace(localePattern, '');
+
+      // Ensure the path starts with a slash
+      if (!pathWithoutLocale.startsWith('/')) {
+        pathWithoutLocale = '/' + pathWithoutLocale;
+      }
+
+      // Use i18n-aware router with the clean path
+      router.replace(pathWithoutLocale, { locale: value });
     }
   };
 
