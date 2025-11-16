@@ -11,5 +11,5 @@ export const routing = defineRouting({
   locales,
   defaultLocale,
   localePrefix,
-  localeDetection,
+  localeDetection: true, // Enable locale detection for better cookie support
 });
