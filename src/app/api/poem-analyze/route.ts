@@ -131,6 +131,3 @@ export async function POST(req: Request) {
     return respErr("bad request: " + e);
   }
 }
-
-// 导出运行时配置（Edge Runtime）
-export const runtime = "edge";
