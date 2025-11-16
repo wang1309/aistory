@@ -4,6 +4,7 @@ import {
   setRequestLocale,
 } from "next-intl/server";
 import { AppContextProvider } from "@/contexts/app";
+import { LanguageProvider } from "@/contexts/language-context";
 import { Metadata } from "next";
 import { NextAuthSessionProvider } from "@/auth/session";
 import { NextIntlClientProvider } from "next-intl";
@@ -110,11 +111,13 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <NextAuthSessionProvider>
             <AppContextProvider>
-              <ThemeProvider>
-                {children}
-                <VerificationModal />
-                <Analytics />
-              </ThemeProvider>
+              <LanguageProvider>
+                <ThemeProvider>
+                  {children}
+                  <VerificationModal />
+                  <Analytics />
+                </ThemeProvider>
+              </LanguageProvider>
             </AppContextProvider>
           </NextAuthSessionProvider>
         </NextIntlClientProvider>

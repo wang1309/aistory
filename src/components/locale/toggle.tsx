@@ -6,43 +6,26 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { useParams } from "next/navigation";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { useLanguage } from "@/contexts/language-context";
 
 import { MdLanguage } from "react-icons/md";
-import { localeNames, localeFlags, locales } from "@/i18n/locale";
+import { localeNames, localeFlags } from "@/i18n/locale";
 
 export default function ({ isIcon = false }: { isIcon?: boolean }) {
-  const params = useParams();
-  const locale = params.locale as string;
-  const router = useRouter();
-  const pathname = usePathname();
+  const { currentLocale, isChanging, changeLanguage } = useLanguage();
 
   const handleSwitchLanguage = (value: string) => {
-    if (value !== locale) {
-      // Extract the path without the current locale prefix
-      let pathWithoutLocale = pathname;
-
-      // Remove the locale prefix from the pathname if it exists
-      const localePattern = new RegExp(`^/(${locales.join('|')})`);
-      pathWithoutLocale = pathname.replace(localePattern, '');
-
-      // Ensure the path starts with a slash
-      if (!pathWithoutLocale.startsWith('/')) {
-        pathWithoutLocale = '/' + pathWithoutLocale;
-      }
-
-      // Use i18n-aware router with the clean path
-      router.replace(pathWithoutLocale, { locale: value });
+    if (value !== currentLocale && !isChanging) {
+      changeLanguage(value);
     }
   };
 
   return (
-    <Select value={locale} onValueChange={handleSwitchLanguage}>
-      <SelectTrigger className="flex items-center gap-2 border-none text-muted-foreground outline-hidden hover:bg-transparent focus:ring-0 focus:ring-offset-0">
-        <span className="text-xl">{localeFlags[locale]}</span>
+    <Select value={currentLocale} onValueChange={handleSwitchLanguage} disabled={isChanging}>
+      <SelectTrigger className="flex items-center gap-2 border-none text-muted-foreground outline-hidden hover:bg-transparent focus:ring-0 focus:ring-offset-0 disabled:opacity-50">
+        <span className="text-xl">{localeFlags[currentLocale]}</span>
         {!isIcon && (
-          <span className="hidden md:block">{localeNames[locale]}</span>
+          <span className="hidden md:block">{localeNames[currentLocale]}</span>
         )}
       </SelectTrigger>
       <SelectContent className="z-50 bg-background">
