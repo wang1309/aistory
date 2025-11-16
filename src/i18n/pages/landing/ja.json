@@ -104,7 +104,7 @@
     "label": "紹介",
     "description": "ストーリーテリングの世界はテクノロジーによって革命を遂げており、AIストーリージェネレーターはこの変革の最前線にあります。これらの革新的なツールは人工知能を使用してナラティブを作成し、作家、マーケター、コンテンツクリエイターに創造的なソリューションを提供します。では、AIストーリージェネレーターとは正確には何で、どのようなメリットがあるのでしょうか？AIストーリージェネレーターは、アルゴリズムと機械学習を使用してストーリーを生成するソフトウェアアプリケーションです。これらのストーリーは、シンプルなナラティブから複雑なキャラクター開発を含む複雑なプロットまで様々です。言語パターンやナラティブ構造を含む膨大なデータを処理することで、これらのジェネレーターはユーザーの入力やプロンプトに基づいてユニークなコンテンツを作成できます。",
     "image": {
-      "src": "/imgs/features/story2.png"
+      "src": "/imgs/features/story2.avif"
     },
     "items": [
       {
@@ -137,7 +137,7 @@
         "description": "ライターのスランプに陥った時、AIストーリージェネレーターが創造的なスパークを提供します。AIを24時間365日の創作パートナーにし、思考の固定観念を打ち破り、予期せぬ物語の方向性を探ってみましょう。",
         "icon": "RiNextjsFill",
         "image": {
-          "src": "/imgs/features/story3.png"
+          "src": "/imgs/features/story3.avif"
         }
       },
       {
@@ -145,7 +145,7 @@
         "description": "私たちのAIジェネレーターは、執筆ニーズの約70%をカバーする完全なストーリーフレームワークを提供し、最も重要な創造的な仕上げに集中できるようにし、執筆効率を劇的に向上させます。",
         "icon": "RiClapperboardAiLine",
         "image": {
-          "src": "/imgs/features/story4.png"
+          "src": "/imgs/features/story4.avif"
         }
       },
       {
@@ -153,7 +153,7 @@
         "description": "私たちのAIは物語を生成するだけでなく、豊富なキャラクター背景や世界観設定の構築も支援し、創作活動全体でナラティブの一貫性と深さを確保します。キャラクターの性格から世界のルールまで、物語をより完全でプロフェッショナルに仕上げましょう。",
         "icon": "RiCodeFill",
         "image": {
-          "src": "/imgs/features/story5.png"
+          "src": "/imgs/features/story5.avif"
         }
       }
     ]
@@ -220,7 +220,7 @@
         "target": "_self",
         "label": "ファンタジー",
         "image": {
-          "src": "/imgs/stories/fantasy-1.png"
+          "src": "/imgs/stories/fantasy-1.avif"
         }
       },
       {
@@ -230,7 +230,7 @@
         "target": "_self",
         "label": "SFスリラー",
         "image": {
-          "src": "/imgs/stories/scifi-1.png"
+          "src": "/imgs/stories/scifi-1.avif"
         }
       },
       {
@@ -240,7 +240,7 @@
         "target": "_self",
         "label": "ロマンス",
         "image": {
-          "src": "/imgs/stories/romance-1.png"
+          "src": "/imgs/stories/romance-1.avif"
         }
       },
       {
@@ -250,7 +250,7 @@
         "target": "_self",
         "label": "ミステリー",
         "image": {
-          "src": "/imgs/stories/mystery-1.png"
+          "src": "/imgs/stories/mystery-1.avif"
         }
       },
       {
@@ -260,7 +260,7 @@
         "target": "_self",
         "label": "ホラー",
         "image": {
-          "src": "/imgs/stories/horror-1.png"
+          "src": "/imgs/stories/horror-1.avif"
         }
       },
       {
@@ -270,7 +270,7 @@
         "target": "_self",
         "label": "子供向け",
         "image": {
-          "src": "/imgs/stories/kids-1.png"
+          "src": "/imgs/stories/kids-1.avif"
         }
       }
     ]

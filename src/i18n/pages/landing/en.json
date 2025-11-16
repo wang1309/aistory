@@ -104,7 +104,7 @@
     "label": "Introduce",
     "description": "The world of storytelling has been revolutionized by technology, and AI story generators are at the forefront of this transformation. These innovative tools use artificial intelligence to craft narratives, offering a creative solution for writers, marketers, and content creators. But what exactly is an AI story generator, and how can it benefit you? An AI story generator is a software application that uses algorithms and machine learning to produce stories. These stories can range from simple narratives to complex plots with intricate character development. By processing a vast array of data, including language patterns and narrative structures, these generators can create unique content based on user inputs or prompts.",
     "image": {
-      "src": "/imgs/features/story2.png"
+      "src": "/imgs/features/story2.avif"
     },
     "items": [
       {
@@ -137,7 +137,7 @@
         "description": "When you hit writer's block, AI story generators provide that creative spark you need. Let AI be your 24/7 creative partner, helping you break through mental blocks and explore unexpected story directions.",
         "icon": "RiNextjsFill",
         "image": {
-          "src": "/imgs/features/story3.png"
+          "src": "/imgs/features/story3.avif"
         }
       },
       {
@@ -145,7 +145,7 @@
         "description": "Our AI generator provides you with complete story frameworks, covering 70% of your writing needs, allowing you to focus on the most important creative polishing while dramatically improving your writing efficiency.",
         "icon": "RiClapperboardAiLine",
         "image": {
-          "src": "/imgs/features/story4.png"
+          "src": "/imgs/features/story4.avif"
         }
       },
       {
@@ -153,7 +153,7 @@
         "description": "Our AI doesn't just generate stories – it helps you build rich character backgrounds and world-building elements, ensuring narrative consistency and depth throughout your creative work. From character personalities to world rules, make your stories more complete and professional.",
         "icon": "RiCodeFill",
         "image": {
-          "src": "/imgs/features/story5.png"
+          "src": "/imgs/features/story5.avif"
         }
       }
     ]
@@ -220,7 +220,7 @@
         "target": "_self",
         "label": "Fantasy Quest",
         "image": {
-          "src": "/imgs/stories/fantasy-1.png"
+          "src": "/imgs/stories/fantasy-1.avif"
         }
       },
       {
@@ -230,7 +230,7 @@
         "target": "_self",
         "label": "Sci-Fi Thriller",
         "image": {
-          "src": "/imgs/stories/scifi-1.png"
+          "src": "/imgs/stories/scifi-1.avif"
         }
       },
       {
@@ -240,7 +240,7 @@
         "target": "_self",
         "label": "Romance",
         "image": {
-          "src": "/imgs/stories/romance-1.png"
+          "src": "/imgs/stories/romance-1.avif"
         }
       },
       {
@@ -250,7 +250,7 @@
         "target": "_self",
         "label": "Mystery/Crime",
         "image": {
-          "src": "/imgs/stories/mystery-1.png"
+          "src": "/imgs/stories/mystery-1.avif"
         }
       },
       {
@@ -260,7 +260,7 @@
         "target": "_self",
         "label": "Horror",
         "image": {
-          "src": "/imgs/stories/horror-1.png"
+          "src": "/imgs/stories/horror-1.avif"
         }
       },
       {
@@ -270,7 +270,7 @@
         "target": "_self",
         "label": "Kids Story",
         "image": {
-          "src": "/imgs/stories/kids-1.png"
+          "src": "/imgs/stories/kids-1.avif"
         }
       }
     ]

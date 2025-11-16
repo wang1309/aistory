@@ -104,7 +104,7 @@
     "label": "介绍",
     "description": "讲故事的世界已经被技术彻底改变，AI 故事生成器处于这一变革的最前沿。这些创新工具使用人工智能来创作叙事，为作家、营销人员和内容创作者提供创意解决方案。但 AI 故事生成器究竟是什么，它如何使您受益？AI 故事生成器是一种使用算法和机器学习来生成故事的软件应用程序。这些故事可以从简单的叙述到具有复杂角色发展的复杂情节。通过处理大量数据，包括语言模式和叙事结构，这些生成器可以根据用户输入或提示创建独特的内容。",
     "image": {
-      "src": "/imgs/features/story2.png"
+      "src": "/imgs/features/story2.avif"
     },
     "items": [
       {
@@ -137,7 +137,7 @@
         "description": "当您遇到写作瓶颈时，AI故事生成器为您提供创意火花，让AI成为您全天候的创意伙伴，帮您打破思维定式，探索意想不到的故事方向。",
         "icon": "RiNextjsFill",
         "image": {
-          "src": "/imgs/features/story3.png"
+          "src": "/imgs/features/story3.avif"
         }
       },
       {
@@ -145,7 +145,7 @@
         "description": "我们的AI生成器为您提供完整的故事框架，完成您70%的创作需求，让您专注于最重要的创意润色，大幅提升写作效率。",
         "icon": "RiClapperboardAiLine",
         "image": {
-          "src": "/imgs/features/story4.png"
+          "src": "/imgs/features/story4.avif"
         }
       },
       {
@@ -153,7 +153,7 @@
         "description": "我们的AI不仅生成故事，更能帮您构建丰富的角色背景和世界观设定，确保故事的连贯性和深度。从角色性格到世界规则，让您的故事更加完整和专业。",
         "icon": "RiCodeFill",
         "image": {
-          "src": "/imgs/features/story5.png"
+          "src": "/imgs/features/story5.avif"
         }
       }
     ]
@@ -220,7 +220,7 @@
         "target": "_self",
         "label": "奇幻冒险",
         "image": {
-          "src": "/imgs/stories/fantasy-1.png"
+          "src": "/imgs/stories/fantasy-1.avif"
         }
       },
       {
@@ -230,7 +230,7 @@
         "target": "_self",
         "label": "科幻惊悚",
         "image": {
-          "src": "/imgs/stories/scifi-1.png"
+          "src": "/imgs/stories/scifi-1.avif"
         }
       },
       {
@@ -240,7 +240,7 @@
         "target": "_self",
         "label": "浪漫爱情",
         "image": {
-          "src": "/imgs/stories/romance-1.png"
+          "src": "/imgs/stories/romance-1.avif"
         }
       },
       {
@@ -250,7 +250,7 @@
         "target": "_self",
         "label": "悬疑推理",
         "image": {
-          "src": "/imgs/stories/mystery-1.png"
+          "src": "/imgs/stories/mystery-1.avif"
         }
       },
       {
@@ -260,7 +260,7 @@
         "target": "_self",
         "label": "恐怖惊悚",
         "image": {
-          "src": "/imgs/stories/horror-1.png"
+          "src": "/imgs/stories/horror-1.avif"
         }
       },
       {
@@ -270,7 +270,7 @@
         "target": "_self",
         "label": "儿童故事",
         "image": {
-          "src": "/imgs/stories/kids-1.png"
+          "src": "/imgs/stories/kids-1.avif"
         }
       }
     ]
