@@ -1,6 +1,5 @@
 import {
   defaultLocale,
-  localeDetection,
   localePrefix,
   locales,
 } from "./locale";
@@ -11,5 +10,4 @@ export const routing = defineRouting({
   locales,
   defaultLocale,
   localePrefix,
-  localeDetection: true, // Enable locale detection for better cookie support
 });
