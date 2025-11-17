@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/providers/theme";
 import StructuredData from "@/components/seo/structured-data";
 import VerificationModal from "@/components/verification-modal";
 import Analytics from "@/components/analytics";
+import { Metadata } from "next";
 
 export async function generateMetadata({
   params,
