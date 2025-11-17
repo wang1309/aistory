@@ -5,26 +5,47 @@ import { locales, defaultLocale } from "./i18n/locale";
 
 const LANGUAGE_COOKIE_KEY = "app-locale";
 
-// Enhanced middleware with cookie-based locale detection
+// Enhanced middleware with proper default locale handling
 export default function middleware(request: NextRequest) {
-  // Try to get locale from cookie first
-  const cookieLocale = request.cookies.get(LANGUAGE_COOKIE_KEY)?.value;
+  const pathname = request.nextUrl.pathname;
 
-  // Validate cookie locale
+  // Extract locale from current path
+  const pathLocale = locales.find(locale =>
+    pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+
+  // If path has no locale prefix, it's using the default locale (English)
+  const currentLocale = pathLocale || defaultLocale;
+
+  // Try to get locale from cookie
+  const cookieLocale = request.cookies.get(LANGUAGE_COOKIE_KEY)?.value;
   const validCookieLocale = cookieLocale && locales.includes(cookieLocale) ? cookieLocale : null;
 
-  // If we have a valid cookie locale and it's different from the path locale,
-  // redirect to the correct locale to prevent flash
-  if (validCookieLocale) {
-    const pathname = request.nextUrl.pathname;
+  // Only redirect if:
+  // 1. We have a valid cookie locale
+  // 2. Current locale is different from cookie locale
+  // 3. We're not already on the default locale (English) without a prefix
+  // 4. The path is not already correct for the cookie locale
+  if (validCookieLocale &&
+      currentLocale !== validCookieLocale &&
+      !(currentLocale === defaultLocale && !pathLocale)) {
 
-    // Extract locale from current path
-    const pathLocale = locales.find(locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
+    // Extract path without current locale prefix
+    let pathWithoutLocale = pathname;
+    if (pathLocale) {
+      pathWithoutLocale = pathname.replace(new RegExp(`^/${pathLocale}`), '') || '/';
+    }
 
-    // If current path locale doesn't match cookie locale, redirect
-    if (pathLocale && pathLocale !== validCookieLocale) {
-      const pathWithoutLocale = pathname.replace(new RegExp(`^/${pathLocale}`), '') || '/';
-      const newUrl = new URL(`/${validCookieLocale}${pathWithoutLocale}`, request.url);
+    // Build new URL with the cookie locale
+    let newPath = pathWithoutLocale;
+    // Only add locale prefix if it's not the default locale
+    if (validCookieLocale !== defaultLocale) {
+      newPath = `/${validCookieLocale}${pathWithoutLocale}`;
+    }
+
+    // Only redirect if the new path is different from current
+    if (newPath !== pathname) {
+      const newUrl = new URL(newPath, request.url);
       return NextResponse.redirect(newUrl);
     }
   }

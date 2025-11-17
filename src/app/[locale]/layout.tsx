@@ -5,6 +5,7 @@ import {
 } from "next-intl/server";
 import { AppContextProvider } from "@/contexts/app";
 import { LanguageProvider } from "@/contexts/language-context";
+import { LocaleInitializer } from "@/components/locale-initializer";
 import { Metadata } from "next";
 import { NextAuthSessionProvider } from "@/auth/session";
 import { NextIntlClientProvider } from "next-intl";
@@ -112,6 +113,7 @@ export default async function LocaleLayout({
           <NextAuthSessionProvider>
             <AppContextProvider>
               <LanguageProvider>
+                <LocaleInitializer />
                 <ThemeProvider>
                   {children}
                   <VerificationModal />

@@ -19,52 +19,13 @@ const LANGUAGE_COOKIE_KEY = "app-locale";
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const serverLocale = useLocale();
-  const [clientLocale, setClientLocale] = useState<string>(serverLocale);
   const [isChanging, setIsChanging] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
-  // Set mounted state after component mounts
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Initialize client locale from localStorage or server locale
-  useEffect(() => {
-    // Only run after mounting and on client side
-    if (!mounted || typeof window === "undefined") {
-      return;
-    }
-
-    try {
-      const savedLocale = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-
-      // Validate saved locale
-      if (savedLocale && locales.includes(savedLocale)) {
-        setClientLocale(savedLocale);
-
-        // If saved locale is different from server locale, update URL
-        if (savedLocale !== serverLocale) {
-          const currentPath = window.location.pathname;
-          // Extract path without locale prefix
-          const localePattern = new RegExp(`^/(${locales.join('|')})`);
-          const pathWithoutLocale = currentPath.replace(localePattern, '');
-
-          // Delay navigation to prevent flash
-          setTimeout(() => {
-            router.replace(pathWithoutLocale || '/', { locale: savedLocale });
-          }, 100);
-        }
-      } else {
-        setClientLocale(serverLocale);
-      }
-    } catch (error) {
-      console.warn("Failed to read locale from localStorage:", error);
-      setClientLocale(serverLocale);
-    }
-  }, [mounted, serverLocale, router]);
+  // Use server locale as the single source of truth to avoid sync issues
+  const currentLocale = serverLocale;
 
   const changeLanguage = async (newLocale: string) => {
-    if (!locales.includes(newLocale) || newLocale === clientLocale || isChanging) {
+    if (!locales.includes(newLocale) || newLocale === currentLocale || isChanging) {
       return;
     }
 
@@ -78,23 +39,18 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         document.cookie = `${LANGUAGE_COOKIE_KEY}=${newLocale}; path=/; max-age=${365 * 24 * 60 * 60}; SameSite=Lax`;
       }
 
-      // Update client state immediately for better UX
-      setClientLocale(newLocale);
-
       // Get current path without locale prefix
       const currentPath = window.location.pathname;
       const localePattern = new RegExp(`^/(${locales.join('|')})`);
       const pathWithoutLocale = currentPath.replace(localePattern, '');
 
-      // Navigate to new locale
+      // Navigate to new locale immediately
       await router.replace(pathWithoutLocale || '/', { locale: newLocale });
     } catch (error) {
       console.error("Failed to change language:", error);
-      // Revert on error
-      setClientLocale(serverLocale);
+      // Remove saved preferences on error
       if (typeof window !== "undefined") {
         localStorage.removeItem(LANGUAGE_STORAGE_KEY);
-        // Remove cookie on error
         document.cookie = `${LANGUAGE_COOKIE_KEY}=; path=/; max-age=0; SameSite=Lax`;
       }
     } finally {
@@ -103,7 +59,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   const value: LanguageContextType = {
-    currentLocale: clientLocale,
+    currentLocale,
     isChanging,
     changeLanguage,
   };
