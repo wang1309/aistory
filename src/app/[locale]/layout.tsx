@@ -101,13 +101,13 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html>
+    <html lang={locale}>
       <head>
         <StructuredData locale={locale} type="WebApplication" />
         <StructuredData locale={locale} type="FAQPage" />
       </head>
       <body>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <NextAuthSessionProvider>
             <AppContextProvider>
               <ThemeProvider>
