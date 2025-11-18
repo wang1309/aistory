@@ -7,7 +7,6 @@ import { AppContextProvider } from "@/contexts/app";
 import { NextAuthSessionProvider } from "@/auth/session";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/providers/theme";
-import StructuredData from "@/components/seo/structured-data";
 import VerificationModal from "@/components/verification-modal";
 import Analytics from "@/components/analytics";
 import { Metadata } from "next";
@@ -101,24 +100,16 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <head>
-        <StructuredData locale={locale} type="WebApplication" />
-        <StructuredData locale={locale} type="FAQPage" />
-      </head>
-      <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <NextAuthSessionProvider>
-            <AppContextProvider>
-              <ThemeProvider>
-                {children}
-                <VerificationModal />
-                <Analytics />
-              </ThemeProvider>
-            </AppContextProvider>
-          </NextAuthSessionProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <NextAuthSessionProvider>
+        <AppContextProvider>
+          <ThemeProvider>
+            {children}
+            <VerificationModal />
+            <Analytics />
+          </ThemeProvider>
+        </AppContextProvider>
+      </NextAuthSessionProvider>
+    </NextIntlClientProvider>
   );
 }
