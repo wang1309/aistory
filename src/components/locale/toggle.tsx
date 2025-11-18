@@ -10,10 +10,16 @@ import { useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { MdLanguage } from "react-icons/md";
 import { localeNames, localeFlags } from "@/i18n/locale";
+import { useEffect, useState } from "react";
 
 export default function LocaleToggle({ isIcon = false }: { isIcon?: boolean }) {
   const router = useRouter();
   const currentLocale = useLocale();
+  const [selectedLocale, setSelectedLocale] = useState(currentLocale);
+
+  useEffect(() => {
+    setSelectedLocale(currentLocale);
+  }, [currentLocale]);
 
   const handleSwitchLanguage = (newLocale: string) => {
     if (newLocale !== currentLocale) {
@@ -23,7 +29,7 @@ export default function LocaleToggle({ isIcon = false }: { isIcon?: boolean }) {
 
   return (
     <Select
-      value={currentLocale}
+      value={selectedLocale}
       onValueChange={handleSwitchLanguage}
     >
       <SelectTrigger className="flex items-center gap-2 border-none text-muted-foreground outline-hidden hover:bg-transparent focus:ring-0 focus:ring-offset-0">

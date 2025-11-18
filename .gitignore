@@ -49,3 +49,7 @@ supabase
 .claude
 
 .mcp.json
+
+.codebuddy
+
+AGENTS.md
