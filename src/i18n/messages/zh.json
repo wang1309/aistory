@@ -161,5 +161,9 @@
       "improvement": "优化改进",
       "security": "安全更新"
     }
+  },
+  "introduce": {
+    "image_not_available": "图片无法显示",
+    "default_alt_text": "功能图片"
   }
 }

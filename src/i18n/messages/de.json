@@ -161,5 +161,9 @@
       "improvement": "Verbesserung",
       "security": "Sicherheit"
     }
+  },
+  "introduce": {
+    "image_not_available": "Bild nicht verfügbar",
+    "default_alt_text": "Funktionsbild"
   }
 }

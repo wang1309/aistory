@@ -161,5 +161,9 @@
       "improvement": "改善",
       "security": "セキュリティ"
     }
+  },
+  "introduce": {
+    "image_not_available": "画像を読み込めません",
+    "default_alt_text": "機能の画像"
   }
 }

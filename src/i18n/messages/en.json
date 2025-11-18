@@ -161,5 +161,9 @@
       "improvement": "Improvement",
       "security": "Security"
     }
+  },
+  "introduce": {
+    "image_not_available": "Image not available",
+    "default_alt_text": "Feature image"
   }
 }

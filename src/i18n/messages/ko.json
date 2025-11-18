@@ -161,5 +161,9 @@
       "improvement": "개선",
       "security": "보안"
     }
+  },
+  "introduce": {
+    "image_not_available": "이미지를 불러올 수 없습니다",
+    "default_alt_text": "기능 이미지"
   }
 }
