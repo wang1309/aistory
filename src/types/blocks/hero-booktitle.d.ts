@@ -135,7 +135,14 @@ export interface HeroBooktitle {
     error_no_genre: string;
     error_no_tone: string;
     error_description_too_short: string;
+    error_description_too_long?: string;
+    error_no_keywords?: string;
+    error_description_too_simple?: string;
+    error_description_repetitive?: string;
+    error_no_meaningful_content?: string;
     error_generate_failed: string;
+    error_max_retry_reached?: string;
+    error_copy_failed?: string;
     success_generated: string;
     success_copied: string;
     success_saved: string;

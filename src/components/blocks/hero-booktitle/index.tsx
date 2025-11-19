@@ -13,6 +13,27 @@ import BookTitleBreadcrumb from "./breadcrumb";
 import { useAppContext } from "@/contexts/app";
 import { cn } from "@/lib/utils";
 
+const defaultToastMessages = {
+  error_no_description: "Please describe your book.",
+  error_description_too_short: "Description is too short (minimum 10 characters).",
+  error_description_too_long: "Description is too long (maximum 1000 characters).",
+  error_no_keywords: "Please include story-related keywords such as characters, genre, or conflict.",
+  error_description_too_simple: "Please provide a more detailed description with at least 5 words.",
+  error_description_repetitive: "Your description repeats itself—add more variety before generating titles.",
+  error_no_meaningful_content: "Please provide meaningful text content.",
+  error_generate_failed: "Failed to generate titles. Please try again.",
+  error_max_retry_reached: "Maximum retry attempts reached. Please try again later.",
+  error_copy_failed: "Unable to copy the title. Please copy it manually.",
+  success_generated: "Titles generated successfully!",
+  success_copied: "Title copied to clipboard!",
+  success_saved: "Saved to history!",
+  success_cleared: "History cleared!",
+} as const;
+
+type ToastMessages = typeof defaultToastMessages;
+
+const STORY_KEYWORD_REGEX = /\b(story|tale|adventure|journey|quest|novel|book|narrative|plot|character|protagonist|hero|villain|conflict|resolution|ending|beginning|world|setting|theme|genre|fiction|fantasy|romance|mystery|thriller|drama|biography|memoir|guide|manual|tutorial|course|lesson|chapter|section|part|volume|series|trilogy|saga|epic|legend|myth|fable|parable|allegory|satire|comedy|tragedy|horror|suspense|action|adventure|discovery|exploration|transformation|growth|change|challenge|obstacle|struggle|triumph|success|failure|loss|gain|love|hate|friendship|betrayal|revenge|forgiveness|redemption|salvation|damnation|hope|despair|joy|sorrow|anger|fear|courage|bravery|wisdom|ignorance|truth|lies|secrets|mysteries|puzzles|riddles|clues|evidence|proof|discovery|invention|creation|destruction|birth|death|life|death|beginning|end|start|finish|war|peace|good|evil|right|wrong|justice|injustice|freedom|oppression|rich|poor|strong|weak|young|old|past|present|future|time|space|reality|dream|fantasy|imagination|creativity|logic|reason|emotion|feeling|thought|mind|body|soul|spirit|heart|brain|memory|forgetting|remembering|knowing|learning|teaching|helping|hurting|healing|breaking|fixing|building|destroying|making|taking|giving|receiving|sharing|keeping|losing|finding|hiding|seeking|searching|looking|seeing|hearing|listening|speaking|talking|whispering|shouting|singing|dancing|running|walking|standing|sitting|lying|sleeping|waking|living|dying|being|becoming|changing|staying|leaving|arriving|going|coming|entering|exiting|opening|closing|starting|stopping|beginning|ending|winning|losing|trying|failing|succeeding|achieving|reaching|missing|hitting|missing|catching|dropping|holding|letting|pulling|pushing|moving|staying|waiting|rushing|slowing|speeding|delaying|hurrying|resting|working|playing|laughing|crying|smiling|frowning|loving|hating|liking|disliking|wanting|needing|having|getting|giving|taking|making|doing|being|having|doing|making|getting|giving|taking|coming|going|staying|leaving|entering|exiting|opening|closing|starting|stopping)\b/i;
+
 // ========== INTERFACES ==========
 
 interface GeneratedTitle {
@@ -81,6 +102,13 @@ class TitleHistoryStorage {
 export default function HeroBooktitle({ section }: { section: HeroBooktitleType }) {
   const locale = useLocale();
   const { setShowVerificationModal, setVerificationCallback } = useAppContext();
+  const toastMessages = useMemo<ToastMessages>(
+    () => ({
+      ...defaultToastMessages,
+      ...(section.toasts as Partial<ToastMessages>),
+    }),
+    [section.toasts]
+  );
 
   // Form state
   const [description, setDescription] = useState("");
@@ -154,52 +182,56 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
     const trimmedDescription = description.trim();
 
     if (!trimmedDescription) {
-      toast.error(section.toasts.error_no_description);
+      toast.error(toastMessages.error_no_description);
       return false;
     }
 
     if (trimmedDescription.length < 10) {
-      toast.error(section.toasts.error_description_too_short);
+      toast.error(toastMessages.error_description_too_short);
       return false;
     }
 
     if (trimmedDescription.length > 1000) {
-      toast.error(section.toasts.error_description_too_long);
+      toast.error(toastMessages.error_description_too_long);
       return false;
     }
 
-    // Content quality checks
-    const hasStoryKeywords = /\b(story|tale|adventure|journey|quest|novel|book|narrative|plot|character|protagonist|hero|villain|conflict|resolution|ending|beginning|world|setting|theme|genre|fiction|fantasy|romance|mystery|thriller|drama|biography|memoir|guide|manual|tutorial|course|lesson|chapter|section|part|volume|series|trilogy|saga|epic|legend|myth|fable|parable|allegory|satire|comedy|tragedy|horror|suspense|action|adventure|discovery|exploration|transformation|growth|change|challenge|obstacle|struggle|triumph|success|failure|loss|gain|love|hate|friendship|betrayal|revenge|forgiveness|redemption|salvation|damnation|hope|despair|joy|sorrow|anger|fear|courage|bravery|wisdom|ignorance|truth|lies|secrets|mysteries|puzzles|riddles|clues|evidence|proof|discovery|invention|creation|destruction|birth|death|life|death|beginning|end|start|finish|war|peace|good|evil|right|wrong|justice|injustice|freedom|oppression|rich|poor|strong|weak|young|old|past|present|future|time|space|reality|dream|fantasy|imagination|creativity|logic|reason|emotion|feeling|thought|mind|body|soul|spirit|heart|brain|memory|forgetting|remembering|knowing|learning|teaching|helping|hurting|healing|breaking|fixing|building|destroying|making|taking|giving|receiving|sharing|keeping|losing|finding|hiding|seeking|searching|looking|seeing|hearing|listening|speaking|talking|whispering|shouting|singing|dancing|running|walking|standing|sitting|lying|sleeping|waking|living|dying|being|becoming|changing|staying|leaving|arriving|going|coming|entering|exiting|opening|closing|starting|stopping|beginning|ending|winning|losing|trying|failing|succeeding|achieving|reaching|missing|hitting|missing|catching|dropping|holding|letting|pulling|pushing|moving|staying|waiting|rushing|slowing|speeding|delaying|hurrying|resting|working|playing|laughing|crying|smiling|frowning|loving|hating|liking|disliking|wanting|needing|having|getting|giving|taking|making|doing|being|having|doing|making|getting|giving|taking|coming|going|staying|leaving|entering|exiting|opening|closing|starting|stopping)\b/i.test(trimmedDescription);
+    const normalizedLocale = locale?.toLowerCase() || "en";
+    const shouldApplyEnglishChecks = normalizedLocale === "en" || normalizedLocale.startsWith("en-");
 
-    const hasMultipleWords = trimmedDescription.split(/\s+/).length >= 5;
-    const hasNoRepeatedWords = (trimmedDescription.match(/\b(\w+)\b/gi) || []).filter((word, index, array) =>
-      array.indexOf(word.toLowerCase()) !== index && word.length > 3
-    ).length < trimmedDescription.split(/\s+/).length * 0.3;
+    if (shouldApplyEnglishChecks) {
+      if (!STORY_KEYWORD_REGEX.test(trimmedDescription)) {
+        toast.error(toastMessages.error_no_keywords);
+        return false;
+      }
 
-    if (!hasStoryKeywords) {
-      toast.error(section.toasts.error_no_keywords);
-      return false;
-    }
+      const words = trimmedDescription.match(/\b(\w+)\b/gi) || [];
 
-    if (!hasMultipleWords) {
-      toast.error(section.toasts.error_description_too_simple);
-      return false;
-    }
+      if (words.length < 5) {
+        toast.error(toastMessages.error_description_too_simple);
+        return false;
+      }
 
-    if (!hasNoRepeatedWords) {
-      toast.error(section.toasts.error_description_repetitive);
-      return false;
+      const repeatedWordCount = words.filter((word, index, array) => {
+        const lowerWord = word.toLowerCase();
+        return array.findIndex(item => item.toLowerCase() === lowerWord) !== index && lowerWord.length > 3;
+      }).length;
+
+      if (repeatedWordCount >= words.length * 0.3) {
+        toast.error(toastMessages.error_description_repetitive);
+        return false;
+      }
     }
 
     // Check for meaningful content (not just random characters)
-    const hasMeaningfulContent = /[a-zA-Z]{3,}/.test(trimmedDescription);
+    const hasMeaningfulContent = /\p{L}{3,}/u.test(trimmedDescription);
     if (!hasMeaningfulContent) {
-      toast.error(section.toasts.error_no_meaningful_content);
+      toast.error(toastMessages.error_no_meaningful_content);
       return false;
     }
 
     return true;
-  }, [description, section]);
+  }, [description, locale, toastMessages]);
 
   // Handle verification success - start title generation
   const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
@@ -240,7 +272,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
         console.log("=== Response not OK ===");
         const errorData = await response.json();
         console.log("Error data:", errorData);
-        toast.error(errorData.message || section.toasts.error_generate_failed);
+        toast.error(errorData.message || toastMessages.error_generate_failed);
         return;
       }
 
@@ -252,7 +284,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
       if (!reader) {
         console.log("=== No reader available ===");
-        toast.error(section.toasts.error_generate_failed);
+        toast.error(toastMessages.error_generate_failed);
         return;
       }
 
@@ -337,7 +369,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
         }));
 
         setGeneratedTitles(titlesForDisplay);
-        toast.success(section.toasts.success_generated);
+        toast.success(toastMessages.success_generated);
 
         // Save to history
         TitleHistoryStorage.saveHistory({
@@ -349,19 +381,19 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
         });
       } else {
         console.log("=== No titles were generated ===");
-        const errorMessage = section.toasts.error_generate_failed;
+        const errorMessage = toastMessages.error_generate_failed;
         setLastError(errorMessage);
         toast.error(errorMessage);
       }
     } catch (error) {
       console.error("Title generation failed:", error);
-      const errorMessage = error instanceof Error ? error.message : section.toasts.error_generate_failed;
+      const errorMessage = error instanceof Error ? error.message : toastMessages.error_generate_failed;
       setLastError(errorMessage);
       toast.error(errorMessage);
     } finally {
       setIsGenerating(false);
     }
-  }, [description, selectedGenre, selectedTone, selectedStyle, locale, section]);
+  }, [description, selectedGenre, selectedTone, selectedStyle, locale, toastMessages]);
 
   // Generate titles handler - trigger verification modal
   const handleGenerate = useCallback(async () => {
@@ -375,7 +407,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
   // Retry handler with exponential backoff
   const handleRetry = useCallback(async () => {
     if (retryCount >= 3) {
-      toast.error(section.toasts.error_max_retry_reached);
+      toast.error(toastMessages.error_max_retry_reached);
       return;
     }
 
@@ -387,7 +419,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
       setLastError(null);
       handleGenerate();
     }, delay);
-  }, [retryCount, handleGenerate]);
+  }, [retryCount, handleGenerate, toastMessages]);
 
   // Reset retry state on successful generation
   useEffect(() => {
@@ -410,7 +442,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
         }))
       );
 
-      toast.success(section.toasts.success_copied);
+      toast.success(toastMessages.success_copied);
 
       // Reset copied state after 2 seconds
       setTimeout(() => {
@@ -423,9 +455,9 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
       }, 2000);
     } catch (error) {
       console.error("Failed to copy title:", error);
-      toast.error(section.toasts.error_copy_failed);
+      toast.error(toastMessages.error_copy_failed);
     }
-  }, [section]);
+  }, [toastMessages]);
 
   // Clear all titles
   const handleClearTitles = useCallback(() => {
