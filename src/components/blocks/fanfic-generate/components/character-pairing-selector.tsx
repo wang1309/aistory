@@ -6,7 +6,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { ModernCard, ModernCardHeader, ModernCardTitle, ModernCardDescription, ModernCardContent } from "@/components/ui/modern-card"
 import { cn } from "@/lib/utils"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { getWorkById, getCharacterName, getCharacterById } from "@/lib/preset-works"
 import { Heart } from "lucide-react"
 import { toast } from "sonner"
@@ -29,19 +29,20 @@ export function CharacterPairingSelector({
   setSelectedCharacters,
 }: CharacterPairingSelectorProps) {
   const locale = useLocale()
+  const t = useTranslations()
 
   const handleAddCharacter = useCallback((characterId: string) => {
     if (!selectedCharacters.includes(characterId)) {
       if (pairingType === 'gen' && selectedCharacters.length >= 1) {
-        toast.error("单人向最多只能选择1个角色")
+        toast.error(t('hero_fanfic.pairing.error_gen_limit') || "Gen-focused can only select 1 character")
         return
       }
       if (pairingType === 'romantic' && selectedCharacters.length >= 2) {
-        toast.error("浪漫向最多只能选择2个角色")
+        toast.error(t('hero_fanfic.pairing.error_romantic_limit') || "Romantic can only select 2 characters")
         return
       }
       if (pairingType === 'poly' && selectedCharacters.length >= 5) {
-        toast.error("多人配对最多选择5个角色")
+        toast.error(t('hero_fanfic.pairing.error_poly_limit') || "Poly can only select 5 characters")
         return
       }
       setSelectedCharacters([...selectedCharacters, characterId])

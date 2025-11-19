@@ -8,6 +8,7 @@ import { AnimatedContainer } from "@/components/ui/animated-container"
 import Icon from "@/components/icon"
 import { Sparkles } from "lucide-react"
 import { toast } from "sonner"
+import { useTranslations } from "next-intl"
 
 interface OutputDisplayProps {
   generatedFanfic: string
@@ -26,12 +27,13 @@ export function OutputDisplay({
   onCopy,
   onRegenerate,
 }: OutputDisplayProps) {
+  const t = useTranslations()
   return (
     <ModernCard variant="elevated">
       <ModernCardHeader>
         <ModernCardTitle className="flex items-center gap-2">
           <Sparkles className="w-5 h-5 text-primary" />
-          {isGenerating ? "正在创作中..." : "创作完成"}
+          {isGenerating ? (t('hero_fanfic.output.status_writing') || "Writing...") : (t('hero_fanfic.output.status_complete') || "Complete!")}
         </ModernCardTitle>
       </ModernCardHeader>
       <ModernCardContent className="space-y-4">

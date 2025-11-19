@@ -164,7 +164,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
     }
 
     if (trimmedDescription.length > 1000) {
-      toast.error("Description is too long (maximum 1000 characters)");
+      toast.error(section.toasts.error_description_too_long);
       return false;
     }
 
@@ -177,24 +177,24 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
     ).length < trimmedDescription.split(/\s+/).length * 0.3;
 
     if (!hasStoryKeywords) {
-      toast.error("Please include story-related keywords like 'character', 'journey', 'conflict', 'mystery', etc.");
+      toast.error(section.toasts.error_no_keywords);
       return false;
     }
 
     if (!hasMultipleWords) {
-      toast.error("Please provide a more detailed description with at least 5 words");
+      toast.error(section.toasts.error_description_too_simple);
       return false;
     }
 
     if (!hasNoRepeatedWords) {
-      toast.error("Your description seems too repetitive. Please provide more varied details");
+      toast.error(section.toasts.error_description_repetitive);
       return false;
     }
 
     // Check for meaningful content (not just random characters)
     const hasMeaningfulContent = /[a-zA-Z]{3,}/.test(trimmedDescription);
     if (!hasMeaningfulContent) {
-      toast.error("Please provide meaningful text content");
+      toast.error(section.toasts.error_no_meaningful_content);
       return false;
     }
 
@@ -375,7 +375,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
   // Retry handler with exponential backoff
   const handleRetry = useCallback(async () => {
     if (retryCount >= 3) {
-      toast.error("Maximum retry attempts reached. Please try again later.");
+      toast.error(section.toasts.error_max_retry_reached);
       return;
     }
 
@@ -423,7 +423,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
       }, 2000);
     } catch (error) {
       console.error("Failed to copy title:", error);
-      toast.error("Failed to copy title");
+      toast.error(section.toasts.error_copy_failed);
     }
   }, [section]);
 

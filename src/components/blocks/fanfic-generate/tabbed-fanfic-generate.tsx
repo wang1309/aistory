@@ -48,6 +48,7 @@ function calculateWordCount(text: string): number {
 
 export default function TabbedFanficGenerate({ section }: { section: FanficGenerateType }) {
   const locale = useLocale();
+  const t = useTranslations();
   const { user, setShowVerificationModal, setVerificationCallback } = useAppContext();
 
   // ========== STATE MANAGEMENT ==========
@@ -148,11 +149,11 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const handleAddCustomCharacter = useCallback(() => {
     const trimmedName = customCharacterInput.trim();
     if (!trimmedName) {
-      toast.error(section.tabbed?.messages?.error_empty_character || "请输入角色名称");
+      toast.error(section.tabbed?.messages?.error_empty_character || "Please enter character name");
       return;
     }
     if (selectedCharacters.includes(trimmedName)) {
-      toast.error(section.tabbed?.messages?.error_duplicate_character || "该角色已添加");
+      toast.error(section.tabbed?.messages?.error_duplicate_character || "This character has been added");
       return;
     }
 
@@ -630,7 +631,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                                   "transition-all duration-200",
                                   "shadow-sm"
                                 )}
-                                title={section.tabbed?.form?.remove_character_tooltip || "删除角色"}
+                                title={section.tabbed?.form?.remove_character_tooltip || "Remove character"}
                               >
                                 <Icon name="RiCloseLine" className="w-3 h-3" />
                               </button>
