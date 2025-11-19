@@ -27,12 +27,20 @@ export default function LocaleToggle({ isIcon = false }: { isIcon?: boolean }) {
     }
   };
 
+  const accessibleLabel =
+    localeNames[currentLocale] != null
+      ? `Change language, current: ${localeNames[currentLocale]}`
+      : "Change language";
+
   return (
     <Select
       value={selectedLocale}
       onValueChange={handleSwitchLanguage}
     >
-      <SelectTrigger className="flex items-center gap-2 border-none text-muted-foreground outline-hidden hover:bg-transparent focus:ring-0 focus:ring-offset-0">
+      <SelectTrigger
+        aria-label={accessibleLabel}
+        className="flex items-center gap-2 border-none text-muted-foreground outline-hidden hover:bg-transparent focus:ring-0 focus:ring-offset-0"
+      >
         <span className="text-xl">{localeFlags[currentLocale] || '🌐'}</span>
         {!isIcon && (
           <span className="hidden md:block">{localeNames[currentLocale] || 'Language'}</span>

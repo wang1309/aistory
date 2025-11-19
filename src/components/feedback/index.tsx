@@ -121,6 +121,7 @@ export default function Feedback({
           <Button
             size="icon"
             className="h-12 w-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            aria-label={t("feedback.title")}
             onClick={() => setShowFeedback(true)}
           >
             <MessageCircle className="h-6 w-6" />
