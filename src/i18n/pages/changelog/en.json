@@ -6,6 +6,34 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.3",
+        "date": "2025-11-19",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added AI Writing Tools module with comprehensive AI writing toolkit",
+              "Added Russian language support, expanding internationalization coverage"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Fixed booktitle multi-language generation failure issue",
+              "Fixed multiple alert-related issues, improving system stability",
+              "Fixed routing problems, enhancing page navigation experience"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Optimized page accessibility, improving user experience",
+              "Enhanced alert system with better monitoring and notification features"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.2",
         "date": "2025-11-15",
         "changes": [

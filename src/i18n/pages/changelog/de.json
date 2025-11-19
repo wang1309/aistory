@@ -6,6 +6,34 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.3",
+        "date": "2025-11-19",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "KI-Schreibtools-Modul mit umfassendem KI-Schreib-Toolkit hinzugefügt",
+              "Russische Sprachunterstützung hinzugefügt, um Internationalisierungsabdeckung zu erweitern"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Problem mit mehrsprachiger Buchtitel-Generierung behoben",
+              "Mehrere alarmbezogene Probleme behoben, um Systemstabilität zu verbessern",
+              "Routing-Probleme behoben, um Seitennavigations-Erfahrung zu verbessern"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Seitenzugänglichkeit optimiert, um Benutzererfahrung zu verbessern",
+              "Alarmsystem mit verbesserten Überwachungs- und Benachrichtigungsfunktionen verstärkt"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.2",
         "date": "2025-11-15",
         "changes": [
