@@ -714,6 +714,11 @@
           "title": "AI ライティング",
           "children": [
             {
+              "title": "AI ライティングツール一覧",
+              "url": "/ai-write",
+              "target": "_self"
+            },
+            {
               "title": "ストーリージェネレーター",
               "url": "/",
               "target": "_self"

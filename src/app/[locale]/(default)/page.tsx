@@ -10,9 +10,10 @@ import Pricing from "@/components/blocks/pricing";
 import Showcase from "@/components/blocks/showcase";
 import Stats from "@/components/blocks/stats";
 import Testimonial from "@/components/blocks/testimonial";
-import { getLandingPage } from "@/services/page";
-import { setRequestLocale } from "next-intl/server";
 import StoryGenerate from "@/components/blocks/story-generate";
+import ModuleToolsSection from "@/components/blocks/module-tools";
+import { getLandingPage } from "@/services/page";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -46,11 +47,17 @@ export default async function LandingPage({
   setRequestLocale(locale);
 
   const page = await getLandingPage(locale);
+  const t = await getTranslations();
 
   return (
     <>
       {page.hero && <Hero hero={page.hero} />}
       {page.story_generate && <StoryGenerate section={page.story_generate} />}
+      <ModuleToolsSection
+        module="ai-write"
+        title={t("ai_tools.section_title_home")}
+        description={t("ai_tools.section_description_home")}
+      />
       {page.branding && <Branding section={page.branding} />}
       {page.introduce && <Feature1 section={page.introduce} />}
       {page.benefit && <Feature2 section={page.benefit} />}

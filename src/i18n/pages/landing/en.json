@@ -714,6 +714,11 @@
           "title": "AI Write",
           "children": [
             {
+              "title": "All AI Writing Tools",
+              "url": "/ai-write",
+              "target": "_self"
+            },
+            {
               "title": "Story Generator",
               "url": "/",
               "target": "_self"

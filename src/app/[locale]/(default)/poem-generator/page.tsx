@@ -6,7 +6,8 @@ import Feature2 from "@/components/blocks/feature2";
 import Feature3 from "@/components/blocks/feature3";
 import PoemGenerate from "@/components/blocks/poem-generate";
 import Testimonial from "@/components/blocks/testimonial";
-import { setRequestLocale } from "next-intl/server";
+import ModuleToolsSection from "@/components/blocks/module-tools";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -60,6 +61,7 @@ export default async function PoemGeneratorPage({
 
   // Load translations
   const messages = await import(`@/i18n/pages/poem-generate/${locale}.json`);
+  const t = await getTranslations();
   const section = messages.default.poemGenerate;
   const { feature1_section, feature_section, feature3_section, poem_applications_section, testimonial_section, faq_section, cta_section } = section;
 
@@ -160,7 +162,15 @@ export default async function PoemGeneratorPage({
         <FAQ section={faq_section} />
       )}
 
-       {/* CTA Section - Full Width, Call to Action */}
+       {/* AI Writing tools module */}
+      <ModuleToolsSection
+        module="ai-write"
+        title={t("ai_tools.section_title_hub")}
+        description={t("ai_tools.section_description_hub")}
+        excludeSlug="poem-generator"
+      />
+
+      {/* CTA Section - Full Width, Call to Action */}
       {cta_section && (
         <CTA section={cta_section} />
       )}

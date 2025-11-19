@@ -5,6 +5,8 @@ import Feature from "@/components/blocks/feature";
 import FAQ from "@/components/blocks/faq";
 import CTA from "@/components/blocks/cta";
 import { setRequestLocale } from "next-intl/server";
+import ModuleToolsSection from "@/components/blocks/module-tools";
+import { getTranslations } from "next-intl/server";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -45,6 +47,7 @@ export default async function BookTitlePage({
 
   // Load translations for the booktitle page
   const messages = await import(`@/i18n/pages/booktitle/${locale}.json`);
+  const t = await getTranslations();
   const section = messages.default.hero_booktitle;
   const featureIntro = messages.default.feature_intro;
   const featureBenefits = messages.default.feature_benefits;
@@ -88,6 +91,12 @@ export default async function BookTitlePage({
       <Feature2 section={featureBenefits} />
       <Feature section={featureUsecases} />
       <FAQ section={faq} />
+      <ModuleToolsSection
+        module="ai-write"
+        title={t("ai_tools.section_title_hub")}
+        description={t("ai_tools.section_description_hub")}
+        excludeSlug="book-title-generator"
+      />
       <CTA section={cta} />
     </>
   );

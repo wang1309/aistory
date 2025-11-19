@@ -714,6 +714,11 @@
           "title": "AI 写作",
           "children": [
             {
+              "title": "AI 写作工具大全",
+              "url": "/ai-write",
+              "target": "_self"
+            },
+            {
               "title": "故事生成器",
               "url": "/",
               "target": "_self"

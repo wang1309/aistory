@@ -165,5 +165,37 @@
   "introduce": {
     "image_not_available": "画像を読み込めません",
     "default_alt_text": "機能の画像"
+  },
+  "ai_tools": {
+    "section_title_home": "AI ライティング機能一覧",
+    "section_description_home": "ストーリー生成からタイトル、二次創作、プロット、詩まで、すべての AI ライティング機能をまとめてチェックできます。",
+    "section_title_hub": "AI ライティングツール集",
+    "section_description_hub": "本サイトの AI ライティングツールを一覧で確認し、あなたの執筆シーンに合う機能へすぐに移動できます。",
+    "badge_category": "AI ライティングツール",
+    "badge_hot": "人気",
+    "badge_new": "新着",
+    "button_use_now": "今すぐ使う",
+    "tools": {
+      "story_generator": {
+        "name": "ストーリージェネレーター",
+        "desc": "1つのアイデアを入力するだけで、数秒で複数ジャンル・多言語対応の完全な物語を生成します。"
+      },
+      "book_title_generator": {
+        "name": "本のタイトル生成",
+        "desc": "小説、ブログ、電子書籍のためのキャッチーでクリエイティブなタイトルをAIが提案します。"
+      },
+      "fanfic_generator": {
+        "name": "同人小説生成器",
+        "desc": "CP組み合わせや原作設定、プロット制御に対応した、AI二次創作専用の執筆アシスタントです。"
+      },
+      "plot_generator": {
+        "name": "プロットジェネレーター",
+        "desc": "物語のアウトラインやプロット構造を素早く生成し、執筆の骨組み作りをサポートします。"
+      },
+      "poem_generator": {
+        "name": "詩ジェネレーター",
+        "desc": "現代詩、古典詩、俳句など、さまざまなスタイルの詩をAIと一緒に創作できます。"
+      }
+    }
   }
 }

@@ -714,6 +714,11 @@
           "title": "AI письмо",
           "children": [
             {
+              "title": "Все инструменты AI письма",
+              "url": "/ai-write",
+              "target": "_self"
+            },
+            {
               "title": "Генератор историй",
               "url": "/",
               "target": "_self"

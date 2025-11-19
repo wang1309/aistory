@@ -165,5 +165,37 @@
   "introduce": {
     "image_not_available": "이미지를 불러올 수 없습니다",
     "default_alt_text": "기능 이미지"
+  },
+  "ai_tools": {
+    "section_title_home": "AI 글쓰기 기능 모음",
+    "section_description_home": "스토리 생성부터 제목, 팬픽, 플롯, 시까지 모든 AI 글쓰기 기능을 한 번에 확인하세요.",
+    "section_title_hub": "AI 글쓰기 도구 모음",
+    "section_description_hub": "사이트의 모든 AI 글쓰기 도구를 한눈에 보고, 글쓰기 상황에 맞는 기능으로 바로 이동할 수 있습니다.",
+    "badge_category": "AI 글쓰기 도구",
+    "badge_hot": "인기",
+    "badge_new": "신규",
+    "button_use_now": "지금 사용하기",
+    "tools": {
+      "story_generator": {
+        "name": "스토리 생성기",
+        "desc": "아이디어 한 줄만 입력하면, 여러 장르·언어를 지원하는 완성된 스토리를 몇 초 만에 생성합니다."
+      },
+      "book_title_generator": {
+        "name": "책 제목 생성기",
+        "desc": "소설, 블로그, 전자책을 위한 눈에 띄는 창의적인 제목을 AI가 만들어 줍니다."
+      },
+      "fanfic_generator": {
+        "name": "AI 팬픽 생성기",
+        "desc": "캐릭터 커플링, 원작 설정, 플롯 컨트롤을 지원하는 AI 팬픽 전용 글쓰기 도우미입니다."
+      },
+      "plot_generator": {
+        "name": "플롯 생성기",
+        "desc": "스토리 개요와 플롯 구조를 빠르게 생성하여 글의 뼈대를 손쉽게 잡을 수 있습니다."
+      },
+      "poem_generator": {
+        "name": "시 생성기",
+        "desc": "현대시, 고전시, 하이쿠 등 다양한 형식의 시를 AI와 함께 창작하세요."
+      }
+    }
   }
 }

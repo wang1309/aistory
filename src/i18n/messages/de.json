@@ -165,5 +165,37 @@
   "introduce": {
     "image_not_available": "Bild nicht verfügbar",
     "default_alt_text": "Funktionsbild"
+  },
+  "ai_tools": {
+    "section_title_home": "AI-Schreibwerkzeuge",
+    "section_description_home": "Entdecken Sie alle KI-Schreibfunktionen an einem Ort – von Geschichten über Titel bis hin zu Fanfiction, Handlungen und Gedichten.",
+    "section_title_hub": "Sammlung der AI-Schreibwerkzeuge",
+    "section_description_hub": "Durchsuchen Sie alle AI-Schreibwerkzeuge dieser Seite und springen Sie direkt zu dem Feature, das am besten zu Ihrem Schreibszenario passt.",
+    "badge_category": "AI-Schreibwerkzeug",
+    "badge_hot": "Beliebt",
+    "badge_new": "Neu",
+    "button_use_now": "Jetzt starten",
+    "tools": {
+      "story_generator": {
+        "name": "Geschichtengenerator",
+        "desc": "Geben Sie eine Idee ein und lassen Sie in Sekunden eine vollständige Geschichte in mehreren Genres und Sprachen erstellen."
+      },
+      "book_title_generator": {
+        "name": "Buchtitel-Generator",
+        "desc": "Erzeugt aufmerksamkeitsstarke, kreative Buchtitel für Romane, Blogs und E-Books mit Hilfe von KI."
+      },
+      "fanfic_generator": {
+        "name": "Fanfiction-Generator",
+        "desc": "Fanfiction mit KI schreiben – mit Charakterpaarungen, werkgetreuen Einstellungen und steuerbarer Handlung."
+      },
+      "plot_generator": {
+        "name": "Plot-Generator",
+        "desc": "Erstellt schnell Story-Outlines und Handlungsstrukturen, damit Sie auf einem soliden Gerüst weiterschreiben."
+      },
+      "poem_generator": {
+        "name": "Poem-Generator",
+        "desc": "Verfassen Sie moderne Gedichte, klassische Poesie oder Haikus mit Unterstützung der KI."
+      }
+    }
   }
 }

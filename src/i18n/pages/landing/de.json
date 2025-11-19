@@ -714,6 +714,11 @@
           "title": "KI-Schreiben",
           "children": [
             {
+              "title": "Alle KI-Schreibwerkzeuge",
+              "url": "/ai-write",
+              "target": "_self"
+            },
+            {
               "title": "Geschichtengenerator",
               "url": "/",
               "target": "_self"

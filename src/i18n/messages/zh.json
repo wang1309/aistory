@@ -165,5 +165,37 @@
   "introduce": {
     "image_not_available": "图片无法显示",
     "default_alt_text": "功能图片"
+  },
+  "ai_tools": {
+    "section_title_home": "AI 写作功能合集",
+    "section_description_home": "在一个模块中浏览本站所有 AI 写作功能，从故事生成到书名、同人文、情节与诗歌，一键直达。",
+    "section_title_hub": "AI 写作工具大全",
+    "section_description_hub": "在这里集中查看并使用所有与 AI 写作相关的功能，根据你的创作场景快速跳转到对应工具。",
+    "badge_category": "AI 写作工具",
+    "badge_hot": "热门",
+    "badge_new": "新上线",
+    "button_use_now": "立即使用",
+    "tools": {
+      "story_generator": {
+        "name": "故事生成器",
+        "desc": "输入一个想法，几秒内生成完整故事，支持多语言与多种体裁。"
+      },
+      "book_title_generator": {
+        "name": "书名生成器",
+        "desc": "为小说、专栏或电子书生成高吸引力的创意书名。"
+      },
+      "fanfic_generator": {
+        "name": "同人文生成器",
+        "desc": "支持 CP 配对、原著设定与剧情控制的同人小说写作助手。"
+      },
+      "plot_generator": {
+        "name": "情节生成器",
+        "desc": "快速生成故事大纲与情节结构，帮你搭好完整框架。"
+      },
+      "poem_generator": {
+        "name": "诗歌生成器",
+        "desc": "创作现代诗、古诗词、俳句等多种形式的诗歌内容。"
+      }
+    }
   }
 }

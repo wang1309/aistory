@@ -165,5 +165,37 @@
   "introduce": {
     "image_not_available": "Image not available",
     "default_alt_text": "Feature image"
+  },
+  "ai_tools": {
+    "section_title_home": "AI Writing Tools",
+    "section_description_home": "Discover all AI writing features in one place – from story generation to titles, fanfic, plots and poems.",
+    "section_title_hub": "AI Writing Tools Collection",
+    "section_description_hub": "Browse all AI writing tools on this site and jump directly into the feature that best matches your writing scenario.",
+    "badge_category": "AI writing tool",
+    "badge_hot": "Hot",
+    "badge_new": "New",
+    "button_use_now": "Start now",
+    "tools": {
+      "story_generator": {
+        "name": "Story Generator",
+        "desc": "Turn a single idea into a full story in seconds with AI, across multiple genres and languages."
+      },
+      "book_title_generator": {
+        "name": "Book Title Generator",
+        "desc": "Generate eye-catching, creative book titles for novels, blogs, and eBooks with AI."
+      },
+      "fanfic_generator": {
+        "name": "Fanfic Generator",
+        "desc": "Write fanfiction with AI, including character pairings, canon-friendly plots, and preset works."
+      },
+      "plot_generator": {
+        "name": "Plot Generator",
+        "desc": "Generate detailed story outlines and plot structures to scaffold your writing."
+      },
+      "poem_generator": {
+        "name": "Poem Generator",
+        "desc": "Create poems in modern, classical, or haiku styles with the help of AI."
+      }
+    }
   }
 }

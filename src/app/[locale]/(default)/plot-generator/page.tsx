@@ -5,7 +5,8 @@ import Feature3 from "@/components/blocks/feature3";
 import Testimonial from "@/components/blocks/testimonial";
 import FAQ from "@/components/blocks/faq";
 import CTA from "@/components/blocks/cta";
-import { setRequestLocale } from "next-intl/server";
+import ModuleToolsSection from "@/components/blocks/module-tools";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -60,6 +61,7 @@ export default async function PlotGeneratePage({
 
   // Load translations
   const messages = await import(`@/i18n/pages/plot-generate/${locale}.json`);
+  const t = await getTranslations();
   const section = messages.default.plot_generate;
   const { feature_section, feature1_section, feature3_section, testimonial_section, faq_section, cta_section } = section;
 
@@ -149,6 +151,14 @@ export default async function PlotGeneratePage({
       {faq_section && (
         <FAQ section={faq_section} />
       )}
+
+      {/* AI Writing tools module */}
+      <ModuleToolsSection
+        module="ai-write"
+        title={t("ai_tools.section_title_hub")}
+        description={t("ai_tools.section_description_hub")}
+        excludeSlug="plot-generator"
+      />
 
       {/* CTA Section - 最下方 */}
       {cta_section && (

@@ -4,7 +4,8 @@ import FanficFeature1 from "@/components/blocks/fanfic-feature1";
 import FanficWhat from "@/components/blocks/fanfic-what";
 import { FAQSimple01 } from "@/components/blocks/faq2";
 import CTA from "@/components/blocks/cta";
-import { setRequestLocale } from "next-intl/server";
+import ModuleToolsSection from "@/components/blocks/module-tools";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -45,6 +46,7 @@ export default async function FanficGeneratorPage({
 
   // Load translations for the fanfic page
   const messages = await import(`@/i18n/pages/fanfic/${locale}.json`);
+  const t = await getTranslations();
   const section = messages.default.hero_fanfic;
   const featureData = messages.default.hero_fanfic.modern?.fanfic_feature1;
   const whatSection = messages.default.hero_fanfic.modern?.fanfic_what;
@@ -110,6 +112,13 @@ export default async function FanficGeneratorPage({
       <FanficFeature1 section={featureSection} />
       {/* FAQ Section */}
       <FAQSimple01 section={faqSection} />
+      {/* AI Writing tools module */}
+      <ModuleToolsSection
+        module="ai-write"
+        title={t("ai_tools.section_title_hub")}
+        description={t("ai_tools.section_description_hub")}
+        excludeSlug="fanfic-generator"
+      />
       {/* CTA Section */}
       <CTA section={cta} />
     </>
