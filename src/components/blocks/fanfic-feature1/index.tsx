@@ -76,7 +76,7 @@ export default function FanficFeature1({ section }: { section: FanficFeature1Typ
 
             {section.title && (
               <motion.h2 variants={itemVariants} className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
-                <span className="text-slate-900 dark:text-white drop-shadow-[0_10px_30px_rgba(59,7,100,0.15)] dark:drop-shadow-[0_10px_30px_rgba(12,6,26,0.65)]">
+                <span className="text-foreground drop-shadow-[0_10px_30px_rgba(59,7,100,0.15)] dark:drop-shadow-[0_10px_30px_rgba(12,6,26,0.65)]">
                   {section.title}
                 </span>
               </motion.h2>

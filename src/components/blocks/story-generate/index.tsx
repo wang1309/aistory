@@ -548,7 +548,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           </span>
         </h1>
         
-        <p className="text-xl sm:text-2xl text-muted-foreground/80 max-w-2xl mx-auto font-light tracking-wide leading-relaxed mb-8 sm:mb-8">
+        <p className="text-xl sm:text-2xl text-muted-foreground/80 dark:text-muted-foreground/90 max-w-2xl mx-auto font-light tracking-wide leading-relaxed mb-8 sm:mb-8">
           {section.header.subtitle}
         </p>
       </div>
@@ -562,7 +562,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             <div className="lg:col-span-8 p-8 sm:p-16 lg:border-r border-black/5 dark:border-white/5">
               <div className="flex items-center justify-between mb-10">
                 <div className="flex items-center gap-4">
-                  <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">01</span>
+                  <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground dark:text-muted-foreground/80">01</span>
                   <label className="text-xl font-medium tracking-tight text-foreground">
                     {section.prompt.label}
                   </label>
@@ -573,7 +573,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/5 dark:border-white/10 text-sm font-medium transition-all duration-300"
                 >
                   <Icon name="sparkles" className="size-4 text-indigo-500 group-hover:rotate-12 transition-transform" />
-                  <span className="text-muted-foreground group-hover:text-foreground transition-colors">{section.prompt.random_button}</span>
+                  <span className="text-muted-foreground dark:text-muted-foreground/80 group-hover:text-foreground dark:group-hover:text-foreground transition-colors">{section.prompt.random_button}</span>
                 </button>
               </div>
 
@@ -583,7 +583,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value.slice(0, 2000))}
                   placeholder={section.prompt.placeholder}
-                  className="relative w-full min-h-[350px] bg-transparent border-0 border-b border-black/10 dark:border-white/10 focus:border-indigo-500/50 focus:ring-0 rounded-none px-0 text-2xl sm:text-3xl font-light leading-snug placeholder:text-muted-foreground/30 text-foreground resize-none transition-all duration-300"
+                  className="relative w-full min-h-[350px] bg-transparent border-0 border-b border-black/10 dark:border-white/10 focus:border-indigo-500/50 focus:ring-0 rounded-none px-0 text-2xl sm:text-3xl font-light leading-snug placeholder:text-muted-foreground/30 dark:placeholder:text-muted-foreground/50 text-foreground resize-none transition-all duration-300"
                   style={{ boxShadow: 'none' }}
                 />
                 <div className="absolute bottom-0 right-0 py-2 text-xs font-medium text-muted-foreground/40 dark:text-muted-foreground/70 tracking-widest uppercase">
@@ -600,7 +600,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   <button
                     key={chip}
                     onClick={() => handleQuickAdd(chip)}
-                    className="px-4 py-1.5 rounded-full text-xs font-medium bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/5 dark:border-white/10 text-muted-foreground hover:text-foreground transition-all duration-300"
+                    className="px-4 py-1.5 rounded-full text-xs font-medium bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/5 dark:border-white/10 text-muted-foreground hover:text-foreground dark:text-muted-foreground/80 dark:hover:text-foreground transition-all duration-300"
                   >
                     + {chip}
                   </button>
@@ -611,7 +611,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               <div className="mt-12 flex items-center justify-between">
                  <div className="flex items-center gap-4">
                    <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">02</span>
-                   <span className="text-sm font-medium text-muted-foreground">{section.prompt.language_label}</span>
+                   <span className="text-sm font-medium text-muted-foreground dark:text-muted-foreground/80">{section.prompt.language_label}</span>
                    <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
                      <SelectTrigger className="w-auto border-0 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full gap-2 px-4 text-base font-medium focus:ring-0 text-foreground">
                        <SelectValue />
@@ -722,7 +722,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       {/* Model Selection - Obsidian Cards */}
       <div className="space-y-10 animate-fade-in-up animation-delay-2000">
         <div className="flex items-center gap-4 mt-[30px]">
-          <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">03</span>
+          <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground dark:text-muted-foreground/80">03</span>
           <h3 className="text-xl font-medium text-foreground tracking-tight">
              {section.ai_models.title}
           </h3>
@@ -761,7 +761,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   </div>
                   
                   <div className="mt-auto space-y-3">
-                    <h4 className={`text-lg font-bold tracking-tight ${isSelected ? 'text-indigo-900 dark:text-white' : 'text-foreground/70 group-hover:text-foreground'}`}>
+                    <h4 className={`text-lg font-bold tracking-tight ${isSelected ? 'text-indigo-900 dark:text-white' : 'text-foreground/70 dark:text-foreground/80 group-hover:text-foreground dark:group-hover:text-foreground'}`}>
                       {model.name}
                     </h4>
                     <p className="text-xs text-muted-foreground dark:text-muted-foreground/90 leading-relaxed font-medium">
@@ -771,7 +771,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                       <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${model.badgeColor}`}>
                         {model.badge}
                       </span>
-                      <span className="text-[10px] text-muted-foreground/60 font-medium">
+                      <span className="text-[10px] text-muted-foreground/60 dark:text-muted-foreground/80 font-medium">
                         {model.speed}
                       </span>
                     </div>
@@ -854,7 +854,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                  <div>
                     <h3 className="text-xl font-bold tracking-tight text-foreground">{section.output.title}</h3>
                     {generatedStory && (
-                      <div className="text-sm text-muted-foreground/60 font-light mt-1">
+                      <div className="text-sm text-muted-foreground/60 dark:text-muted-foreground/80 font-light mt-1">
                         {wordCount.toLocaleString()} words • {section.output.status_complete}
                       </div>
                     )}
@@ -863,7 +863,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               
               {generatedStory && !isGenerating && (
                 <div className="flex items-center gap-3 flex-wrap justify-center">
-                   <Button variant="ghost" size="sm" onClick={handleGenerateClick} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5">
+                   <Button variant="ghost" size="sm" onClick={handleGenerateClick} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground dark:text-muted-foreground/80 dark:hover:text-foreground border border-black/5 dark:border-white/5">
                      <Icon name="refresh-cw" className="size-4 mr-2" /> {locale === 'zh' ? '重新生成' : 'Regenerate'}
                    </Button>
 
@@ -878,7 +878,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
                    <div className="w-px h-6 bg-black/10 dark:bg-white/10 mx-1" />
 
-                   <Button variant="ghost" size="sm" onClick={() => { navigator.clipboard.writeText(generatedStory); toast.success(section.toasts.success_copied); }} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5">
+                   <Button variant="ghost" size="sm" onClick={() => { navigator.clipboard.writeText(generatedStory); toast.success(section.toasts.success_copied); }} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground dark:text-muted-foreground/80 dark:hover:text-foreground border border-black/5 dark:border-white/5">
                      <Icon name="copy" className="size-4 mr-2" /> {section.output.button_copy}
                    </Button>
                    <Button variant="ghost" size="sm" onClick={handleExportPdf} disabled={isExportingPdf} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5">
