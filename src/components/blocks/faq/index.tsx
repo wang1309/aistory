@@ -72,13 +72,13 @@ export default function FAQ({ section }: { section: SectionType }) {
             )}
 
             {section.title && (
-              <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold tracking-tighter mb-6 text-black dark:text-white">
+              <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold tracking-tighter mb-6 text-foreground">
                 {section.title}
               </motion.h2>
             )}
 
             {section.description && (
-              <motion.p variants={itemVariants} className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <motion.p variants={itemVariants} className="text-lg text-muted-foreground dark:text-muted-foreground/90 max-w-2xl mx-auto leading-relaxed">
                 {section.description}
               </motion.p>
             )}
@@ -120,7 +120,7 @@ export default function FAQ({ section }: { section: SectionType }) {
                       </span>
                       <span className={cn(
                         "text-lg font-semibold transition-colors duration-300",
-                        openIndex === index ? "text-teal-400" : "text-foreground group-hover:text-teal-200"
+                        openIndex === index ? "text-teal-400" : "text-foreground group-hover:text-teal-200 dark:text-foreground/95 dark:group-hover:text-teal-200"
                       )}>
                         {item.title}
                       </span>
@@ -162,9 +162,9 @@ export default function FAQ({ section }: { section: SectionType }) {
             variants={itemVariants}
             className="mt-16 text-center"
           >
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors cursor-pointer">
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors cursor-pointer dark:text-muted-foreground/80 dark:hover:text-foreground/90">
               <MessageCircle className="w-4 h-4 text-teal-400" />
-              <span className="text-sm font-medium">Can't find what you're looking for? Contact Support</span>
+              <span className="text-sm font-medium dark:text-foreground/90">Can't find what you're looking for? Contact Support</span>
             </div>
           </motion.div>
         </motion.div>

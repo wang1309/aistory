@@ -42,7 +42,7 @@ export default function CTA({ section }: { section: SectionType }) {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <h2 className="mx-auto mb-6 text-4xl font-bold tracking-tight md:text-6xl text-black dark:text-white max-w-4xl drop-shadow-sm">
+              <h2 className="mx-auto mb-6 text-4xl font-bold tracking-tight md:text-6xl text-foreground max-w-4xl drop-shadow-sm">
                 {section.title}
               </h2>
             </motion.div>

@@ -586,14 +586,14 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   className="relative w-full min-h-[350px] bg-transparent border-0 border-b border-black/10 dark:border-white/10 focus:border-indigo-500/50 focus:ring-0 rounded-none px-0 text-2xl sm:text-3xl font-light leading-snug placeholder:text-muted-foreground/30 text-foreground resize-none transition-all duration-300"
                   style={{ boxShadow: 'none' }}
                 />
-                <div className="absolute bottom-0 right-0 py-2 text-xs font-medium text-muted-foreground/40 tracking-widest uppercase">
+                <div className="absolute bottom-0 right-0 py-2 text-xs font-medium text-muted-foreground/40 dark:text-muted-foreground/70 tracking-widest uppercase">
                   {prompt.length} / 2000 CHARS
                 </div>
               </div>
 
               {/* Quick Chips - Refined */}
               <div className="flex flex-wrap items-center gap-3">
-                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/50 mr-2">
+                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/50 dark:text-muted-foreground/80 mr-2">
                   {section.prompt.quick_adds_label}
                 </span>
                 {QUICK_ADD_CHIPS.map((chip, i) => (
@@ -635,7 +635,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 
                 {/* History */}
                 <div className="flex items-center justify-between pb-8 border-b border-black/5 dark:border-white/5">
-                   <h3 className="text-xs font-bold text-muted-foreground/50 uppercase tracking-[0.2em]">
+                   <h3 className="text-xs font-bold text-muted-foreground/50 dark:text-muted-foreground/80 uppercase tracking-[0.2em]">
                      {locale === 'zh' ? '历史记录' : 'HISTORY'}
                    </h3>
                    <StoryHistoryDropdown 
@@ -646,7 +646,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
                 {/* Presets */}
                 <div>
-                  <h3 className="text-xs font-bold text-muted-foreground/50 uppercase tracking-[0.2em] mb-6">
+                  <h3 className="text-xs font-bold text-muted-foreground/50 dark:text-muted-foreground/80 uppercase tracking-[0.2em] mb-6">
                     {section.presets.title}
                   </h3>
                   <div className="space-y-4">
@@ -657,14 +657,14 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                         className="group w-full text-left p-5 rounded-2xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/20 transition-all duration-300 shadow-sm dark:shadow-none"
                       >
                         <div className="flex items-start gap-4">
-                          <span className="text-2xl opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 filter grayscale group-hover:grayscale-0">
+                          <span className="text-2xl opacity-70 dark:opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 filter grayscale group-hover:grayscale-0">
                             {preset.emoji}
                           </span>
                           <div>
-                            <div className="font-medium text-foreground/80 group-hover:text-foreground transition-colors tracking-wide">
+                            <div className="font-medium text-foreground/80 dark:text-foreground/95 group-hover:text-foreground transition-colors tracking-wide">
                               {preset.title}
                             </div>
-                            <div className="text-xs text-muted-foreground/60 mt-1 font-light tracking-wide">
+                            <div className="text-xs text-muted-foreground/60 dark:text-white/90 mt-1 font-light tracking-wide">
                               {preset.desc}
                             </div>
                           </div>
@@ -680,11 +680,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                      <summary className="list-none flex items-center justify-between cursor-pointer py-2">
                        <div className="flex items-center gap-3">
                          <Icon name="sliders" className="size-4 text-muted-foreground" />
-                         <span className="text-sm font-semibold tracking-wide text-foreground/80 group-hover:text-foreground transition-colors">
+                         <span className="text-sm font-semibold tracking-wide text-foreground/80 dark:text-foreground/95 group-hover:text-foreground transition-colors">
                            {section.advanced_options.title}
                          </span>
                        </div>
-                       <Icon name="chevron-down" className="size-4 text-muted-foreground/50 group-open:rotate-180 transition-transform duration-300" />
+                       <Icon name="chevron-down" className="size-4 text-muted-foreground/50 dark:text-muted-foreground/80 group-open:rotate-180 transition-transform duration-300" />
                      </summary>
                      
                      <div className="mt-6 space-y-5 animate-fade-in-down">
@@ -697,7 +697,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                           { label: section.advanced_options.length.label, value: selectedLength, setter: handleLengthChange, opts: section.advanced_options.length.options }
                         ].map((field, i) => (
                           <div key={i} className="space-y-2">
-                            <label className="text-[10px] font-bold text-muted-foreground/40 uppercase tracking-widest ml-1">{field.label}</label>
+                            <label className="text-[10px] font-bold text-muted-foreground/40 dark:text-muted-foreground/70 uppercase tracking-widest ml-1">{field.label}</label>
                             <Select value={field.value} onValueChange={field.setter}>
                               <SelectTrigger className="w-full bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 rounded-xl text-sm hover:bg-white/60 dark:hover:bg-white/10 transition-colors focus:ring-0 text-foreground">
                                 <SelectValue />
@@ -764,7 +764,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                     <h4 className={`text-lg font-bold tracking-tight ${isSelected ? 'text-indigo-900 dark:text-white' : 'text-foreground/70 group-hover:text-foreground'}`}>
                       {model.name}
                     </h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed font-medium">
+                    <p className="text-xs text-muted-foreground dark:text-muted-foreground/90 leading-relaxed font-medium">
                       {model.description}
                     </p>
                     <div className="flex items-center gap-2 pt-2">
@@ -815,10 +815,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
            {/* Usage Hints */}
            <div className="mt-8 space-y-5 animate-fade-in-up animation-delay-3000">
              {/* Features Row */}
-             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-muted-foreground">
+             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-muted-foreground dark:text-muted-foreground/90">
                <div className="flex items-center gap-2">
                  <div className="size-2 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.5)] animate-pulse" />
-                 <span><strong className="text-foreground/80">{locale === 'zh' ? '免费额度' : 'Free Credit'}</strong> per story</span>
+                 <span><strong className="text-foreground/80 dark:text-foreground/90">{locale === 'zh' ? '免费额度' : 'Free Credit'}</strong> per story</span>
                </div>
                <div className="hidden sm:block w-px h-3 bg-black/10 dark:bg-white/10" />
                <div>
@@ -831,10 +831,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
              </div>
 
              {/* Pro Tip */}
-             <div className="flex items-start sm:items-center justify-center gap-2 text-xs text-muted-foreground/70 max-w-lg mx-auto text-center leading-relaxed px-4">
+             <div className="flex items-start sm:items-center justify-center gap-2 text-xs text-muted-foreground/70 dark:text-muted-foreground/90 max-w-lg mx-auto text-center leading-relaxed px-4">
                <Icon name="lightbulb" className="size-3.5 text-amber-500 shrink-0 mt-0.5 sm:mt-0" />
                <span>
-                 <span className="font-semibold text-foreground/80">{locale === 'zh' ? '提示:' : 'Tip:'}</span> {locale === 'zh' ? '提供具体的提示词可以获得更好的结果。您可以随时优化并重新生成！' : 'Be specific in your prompt for better results. You can always refine and regenerate!'}
+                 <span className="font-semibold text-foreground/80 dark:text-foreground/90">{locale === 'zh' ? '提示:' : 'Tip:'}</span> {locale === 'zh' ? '提供具体的提示词可以获得更好的结果。您可以随时优化并重新生成！' : 'Be specific in your prompt for better results. You can always refine and regenerate!'}
                </span>
              </div>
            </div>
@@ -897,7 +897,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                      <div className="absolute inset-0 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
                      <Icon name="pen-tool" className="absolute inset-0 m-auto size-6 text-indigo-500 animate-pulse" />
                    </div>
-                   <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground/60 animate-pulse">
+                   <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground/60 dark:text-muted-foreground/80 animate-pulse">
                      {section.output.loading}
                    </p>
                 </div>
