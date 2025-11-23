@@ -6,6 +6,26 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.4",
+        "date": "2025-11-23",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Russische Lokalisierung für das Changelog-Modul hinzugefügt"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Seitenweites Styling verfeinert, um ein konsistentes Erscheinungsbild sicherzustellen",
+              "Darstellung im Dark Mode verbessert, um die Lesbarkeit zu erhöhen",
+              "Sichtbarkeit wichtiger UI-Elemente im Dark Mode weiter gesteigert"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.3",
         "date": "2025-11-19",
         "changes": [

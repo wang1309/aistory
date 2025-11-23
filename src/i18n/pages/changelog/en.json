@@ -6,6 +6,26 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.4",
+        "date": "2025-11-23",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added Russian localization to the changelog module"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Refined site-wide styling for a more consistent visual system",
+              "Improved dark mode display clarity for better readability",
+              "Boosted dark mode visibility for key interface components"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.3",
         "date": "2025-11-19",
         "changes": [
