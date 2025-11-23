@@ -1,8 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
+import { motion } from "framer-motion";
 import { FanficWhat as FanficWhatType } from "@/types/blocks/fanfic-what";
 import Icon from "@/components/icon";
+import { cn } from "@/lib/utils";
+import { Sparkles, Zap, BookOpen, Lightbulb, Star, Feather } from "lucide-react";
+
+// Headers to detect - extended list
+const SECTION_HEADERS = [
+  'How It Works', 'Key Features', 'Why Choose Us', 'Benefits',
+  '工作原理', '核心特性', '为什么选择我们', '功能亮点',
+  '仕組み', '主な機能',
+  '作動方式', '작동 방식',
+  '주요 기능', '장점',
+  'Wie es funktioniert', 'Hauptfunktionen',
+  'Comment ça marche', 'Fonctionnalités clés'
+];
 
 export default function FanficWhat({ section }: { section: FanficWhatType | undefined }) {
   // Early return if section is not provided or disabled
@@ -10,100 +24,156 @@ export default function FanficWhat({ section }: { section: FanficWhatType | unde
     return null;
   }
 
-  // Format content to make section headers bold
-  const formatContent = (content: string): React.ReactNode => {
-    // Define headers to bold in all supported languages
-    const headers = [
-      'How It Works',
-      'Key Features',
-      '工作原理',
-      '核心特性',
-      '仕組み',
-      '主な機能',
-      '作動方式',
-      '작동 방식',
-      '주요 기능',
-      'Wie es funktioniert',
-      'Hauptfunktionen',
-    ];
+  // Smartly parse content into structured blocks
+  const contentBlocks = useMemo(() => {
+    const rawContent = section.content || section.intro_paragraph || "";
+    const lines = rawContent.split('\n');
+    const blocks: { title?: string; content: string[] }[] = [];
+    
+    let currentBlock: { title?: string; content: string[] } = { content: [] };
+    
+    lines.forEach((line) => {
+      const trimmed = line.trim();
+      if (!trimmed) return;
 
-    const lines = content.split('\n');
-    const result: React.ReactNode[] = [];
-
-    lines.forEach((line, index) => {
-      const isLast = index === lines.length - 1;
-      const trimmedLine = line.trim();
-
-      // Check if this line is a header
-      if (headers.includes(trimmedLine)) {
-        result.push(<strong key={`line-${index}`}>{line}</strong>);
+      // Check if line is a header
+      const isHeader = SECTION_HEADERS.some(h => trimmed === h || trimmed.endsWith(h) || trimmed.startsWith(h + ":"));
+      
+      if (isHeader) {
+        if (currentBlock.title || currentBlock.content.length > 0) {
+          blocks.push(currentBlock);
+        }
+        currentBlock = { title: trimmed, content: [] };
       } else {
-        result.push(line);
-      }
-
-      // Add newline character back (except after the last line)
-      if (!isLast) {
-        result.push('\n');
+        currentBlock.content.push(line);
       }
     });
 
-    return result;
+    if (currentBlock.title || currentBlock.content.length > 0) {
+      blocks.push(currentBlock);
+    }
+
+    return blocks;
+  }, [section.content, section.intro_paragraph]);
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }
+    }
   };
 
   return (
-    <section id={section.name} className="relative py-20 sm:py-24 overflow-hidden bg-background">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0">
-        {/* Gradient blur circles */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/3 rounded-full blur-3xl" />
-
-        {/* Grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, currentColor 1px, transparent 1px)",
-            backgroundSize: "30px 30px",
-          }}
-        />
+    <section id={section.name} className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Background Aesthetics */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-background" />
+        
+        {/* Mesh Gradient Blobs */}
+        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-teal-500/20 blur-[100px] animate-blob mix-blend-screen" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-pink-500/20 blur-[100px] animate-blob animation-delay-2000 mix-blend-screen" />
+        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-violet-500/10 blur-[120px] animate-blob animation-delay-4000 mix-blend-screen" />
+        
+        {/* Noise Texture */}
+        <div className="absolute inset-0 bg-noise mix-blend-overlay opacity-30" />
       </div>
 
-      <div className="container relative">
-        {/* Content Section */}
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Label Badge */}
-          {section.label && (
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-6">
-              <Icon name="sparkles" className="w-4 h-4" />
-              {section.label}
+      <div className="container relative z-10 px-4 md:px-6 mx-auto">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="max-w-7xl mx-auto"
+        >
+          {/* Header Section */}
+          <div className="text-center mb-20">
+            {section.label && (
+              <motion.div variants={itemVariants} className="inline-flex items-center justify-center mb-6">
+                <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
+                  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                  <span className="inline-flex h-full w-full cursor-default items-center justify-center rounded-full bg-slate-950/90 px-5 py-2 text-sm font-medium text-white backdrop-blur-3xl">
+                    <Sparkles className="w-4 h-4 mr-2 text-purple-400" />
+                    {section.label}
+                  </span>
+                </span>
+              </motion.div>
+            )}
+
+            {section.title && (
+              <motion.h2 variants={itemVariants} className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
+                <span className="text-slate-900 dark:text-white drop-shadow-[0_10px_30px_rgba(59,7,100,0.15)] dark:drop-shadow-[0_10px_30px_rgba(12,6,26,0.65)]">
+                  {section.title}
+                </span>
+              </motion.h2>
+            )}
+
+            {section.subtitle && (
+              <motion.p variants={itemVariants} className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                {section.subtitle}
+              </motion.p>
+            )}
+          </div>
+
+          {/* Content Blocks Grid */}
+          {contentBlocks.length > 0 && (
+            <div className={cn(
+              "grid gap-6 md:gap-8",
+              contentBlocks.length === 1 ? "grid-cols-1 max-w-4xl mx-auto" : 
+              contentBlocks.length === 2 ? "grid-cols-1 md:grid-cols-2" :
+              contentBlocks.length === 3 ? "grid-cols-1 md:grid-cols-3" :
+              "grid-cols-1 md:grid-cols-2 lg:grid-cols-2"
+            )}>
+              {contentBlocks.map((block, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="group relative overflow-hidden rounded-3xl glass-premium p-8 hover:-translate-y-2 transition-all duration-500"
+                >
+                  {/* Card Glow Effect */}
+                  <div className="absolute -inset-px bg-gradient-to-r from-teal-500/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                  
+                  <div className="relative z-10 h-full flex flex-col">
+                    {block.title && (
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="flex-shrink-0 p-2.5 rounded-xl bg-white/10 border border-white/10 shadow-inner backdrop-blur-md">
+                          {index % 3 === 0 ? <Zap className="w-6 h-6 text-amber-400" /> :
+                           index % 3 === 1 ? <BookOpen className="w-6 h-6 text-pink-400" /> :
+                           <Star className="w-6 h-6 text-teal-400" />}
+                        </div>
+                        <h3 className="text-2xl font-bold text-foreground tracking-tight">
+                          {block.title}
+                        </h3>
+                      </div>
+                    )}
+                    
+                    <div className="space-y-3 flex-grow">
+                      {block.content.map((line, i) => (
+                        <p key={i} className="text-muted-foreground/90 leading-relaxed">
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           )}
-
-          {/* Title */}
-          {section.title && (
-            <h2 className="mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
-              <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-                {section.title}
-              </span>
-            </h2>
-          )}
-
-          {/* Subtitle */}
-          {section.subtitle && (
-            <p className="mb-6 text-lg md:text-xl text-muted-foreground font-medium">
-              {section.subtitle}
-            </p>
-          )}
-
-          {/* Introduction Paragraph / Rich Text Content */}
-          {(section.content || section.intro_paragraph) && (
-            <div className="text-base md:text-lg text-muted-foreground/90 leading-relaxed max-w-3xl mx-auto whitespace-pre-line">
-              {section.content ? formatContent(section.content) : section.intro_paragraph}
-            </div>
-          )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

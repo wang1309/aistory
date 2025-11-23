@@ -1,120 +1,173 @@
 "use client";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
-import Icon from "@/components/icon";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Section as SectionType } from "@/types/blocks/section";
+import Icon from "@/components/icon";
+import { cn } from "@/lib/utils";
+import { HelpCircle, Plus, Minus, MessageCircle } from "lucide-react";
 
 export default function FAQ({ section }: { section: SectionType }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   if (section.disabled) {
     return null;
   }
 
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }
+    }
+  };
+
   return (
-    <section id={section.name} className="relative py-20 sm:py-24 overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5 pointer-events-none" />
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl opacity-20 pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/3 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl opacity-25 pointer-events-none" />
+    <section id={section.name} className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Background Aesthetics */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-background" />
+        
+        {/* Mesh Gradient Blobs - Consistent with Fanfic theme */}
+        <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-teal-500/10 blur-[120px] animate-blob mix-blend-screen" />
+        <div className="absolute bottom-[10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-pink-500/10 blur-[100px] animate-blob animation-delay-2000 mix-blend-screen" />
+        
+        {/* Noise Texture */}
+        <div className="absolute inset-0 bg-noise mix-blend-overlay opacity-30" />
+      </div>
 
-      <div className="container relative">
-        {/* Header Section */}
-        <div className="text-center mb-16 max-w-3xl mx-auto motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-top-8 motion-safe:duration-700">
-          {/* Section Label Badge */}
-          {section.label && (
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-6">
-              <Icon name="help-circle" className="size-4" />
-              {section.label}
-            </div>
-          )}
+      <div className="container relative z-10 px-4 md:px-6 mx-auto">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="max-w-4xl mx-auto"
+        >
+          {/* Header Section */}
+          <div className="text-center mb-20">
+            {section.label && (
+              <motion.div variants={itemVariants} className="inline-flex items-center justify-center mb-8">
+                <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
+                  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                  <span className="inline-flex h-full w-full cursor-default items-center justify-center rounded-full bg-slate-950/90 px-5 py-2 text-sm font-medium text-white backdrop-blur-3xl">
+                    <HelpCircle className="w-4 h-4 mr-2 text-teal-400" />
+                    {section.label}
+                  </span>
+                </span>
+              </motion.div>
+            )}
 
-          {/* Title with Gradient */}
-          <h2 className="mb-6 text-3xl font-extrabold tracking-tight lg:text-4xl xl:text-5xl">
-            <span className="bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text text-transparent">
-              {section.title}
-            </span>
-          </h2>
+            {section.title && (
+              <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold tracking-tighter mb-6 text-black dark:text-white">
+                {section.title}
+              </motion.h2>
+            )}
 
-          {/* Description */}
-          <p className="text-base lg:text-lg text-muted-foreground/90 leading-relaxed">
-            {section.description}
-          </p>
-        </div>
+            {section.description && (
+              <motion.p variants={itemVariants} className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                {section.description}
+              </motion.p>
+            )}
+          </div>
 
-        {/* FAQ Accordion - Single Column */}
-        <div className="max-w-4xl mx-auto">
-          <Accordion type="multiple" className="space-y-4">
+          {/* FAQ Items */}
+          <div className="space-y-4">
             {section.items?.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-8 motion-safe:duration-700"
-                style={{
-                  animationDelay: `${index * 100 + 200}ms`,
-                }}
+                variants={itemVariants}
+                className="group"
               >
-                <AccordionItem value={`item-${index}`} className="border-0">
-                  <div className="group relative">
-                    {/* Card glow effect */}
-                    <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-2xl blur opacity-0 group-hover:opacity-50 group-data-[state=open]:opacity-75 transition-opacity duration-500" />
+                <div 
+                  className={cn(
+                    "relative overflow-hidden rounded-2xl border transition-all duration-500",
+                    openIndex === index 
+                      ? "bg-white/5 border-teal-500/30 shadow-[0_0_30px_rgba(45,212,191,0.1)]" 
+                      : "bg-white/5 border-white/10 hover:border-white/20 hover:bg-white/10"
+                  )}
+                >
+                  {/* Glow for active state */}
+                  {openIndex === index && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 via-purple-500/5 to-pink-500/5 pointer-events-none" />
+                  )}
 
-                    {/* Accordion Card */}
-                    <div className="relative rounded-xl bg-gradient-to-br from-background/80 to-background/40 border border-border/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500 hover:border-primary/30 group-data-[state=open]:border-primary/40 group-data-[state=open]:shadow-xl group-data-[state=open]:shadow-primary/10 group-data-[state=open]:bg-background/95">
-                      {/* Accordion Trigger (Question) */}
-                      <AccordionTrigger className="w-full px-6 py-5 hover:no-underline group/trigger">
-                        <div className="flex items-start gap-4 flex-1 text-left">
-                          {/* Number Badge */}
-                          <div className="relative flex-shrink-0">
-                            {/* Badge glow */}
-                            <div className="absolute inset-0 bg-primary/30 rounded-lg blur-md opacity-0 group-hover/trigger:opacity-100 group-data-[state=open]:opacity-100 transition-opacity duration-300" />
-
-                            {/* Badge container */}
-                            <div className="relative flex items-center justify-center size-10 rounded-lg bg-gradient-to-br from-primary/20 via-primary/10 to-accent/20 border border-primary/30 font-bold text-sm text-primary transition-all duration-300 group-hover/trigger:border-primary/50 group-hover/trigger:scale-105 group-data-[state=open]:border-primary/50 group-data-[state=open]:scale-105 group-data-[state=open]:bg-gradient-to-br group-data-[state=open]:from-primary/30 group-data-[state=open]:via-primary/20 group-data-[state=open]:to-accent/30">
-                              {index + 1}
-                            </div>
-                          </div>
-
-                          {/* Question Text */}
-                          <h3 className="flex-1 text-base lg:text-lg font-bold text-foreground/90 transition-colors duration-300 group-hover/trigger:text-primary group-data-[state=open]:text-primary pr-4">
-                            {item.title}
-                          </h3>
-
-                          {/* Chevron Icon */}
-                          <div className="flex-shrink-0 flex items-center justify-center size-6 text-primary transition-transform duration-300 group-data-[state=open]:rotate-180">
-                            <Icon name="chevron-down" className="size-5" />
-                          </div>
-                        </div>
-                      </AccordionTrigger>
-
-                      {/* Accordion Content (Answer) */}
-                      <AccordionContent className="px-6 pb-6">
-                        <div className="pl-14 pr-10">
-                          <div className="pt-2 pb-4 border-t border-border/30">
-                            <p className="text-sm lg:text-base text-muted-foreground/90 leading-relaxed mt-4">
-                              {item.description}
-                            </p>
-                          </div>
-                        </div>
-                      </AccordionContent>
+                  <button
+                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    className="relative z-10 w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className={cn(
+                        "flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold transition-colors duration-300",
+                        openIndex === index 
+                          ? "bg-teal-500 text-white shadow-lg shadow-teal-500/30" 
+                          : "bg-white/10 text-muted-foreground group-hover:text-foreground"
+                      )}>
+                        {index + 1}
+                      </span>
+                      <span className={cn(
+                        "text-lg font-semibold transition-colors duration-300",
+                        openIndex === index ? "text-teal-400" : "text-foreground group-hover:text-teal-200"
+                      )}>
+                        {item.title}
+                      </span>
                     </div>
-                  </div>
-                </AccordionItem>
-              </div>
-            ))}
-          </Accordion>
-        </div>
+                    <div className={cn(
+                      "flex-shrink-0 ml-4 p-1 rounded-full border transition-all duration-300",
+                      openIndex === index 
+                        ? "border-teal-500/50 bg-teal-500/20 text-teal-400 rotate-180" 
+                        : "border-white/10 bg-white/5 text-muted-foreground group-hover:border-white/30"
+                    )}>
+                      {openIndex === index ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                    </div>
+                  </button>
 
-        {/* Optional: Help Text */}
-        <div className="mt-12 text-center motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-700 motion-safe:delay-500">
-          <p className="text-sm text-muted-foreground/70">
-            <Icon name="info" className="inline size-4 mr-1" />
-            Can't find what you're looking for? Contact our support team
-          </p>
-        </div>
+                  <AnimatePresence initial={false}>
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                      >
+                        <div className="px-6 pb-6 pt-0 pl-[4.5rem] relative z-10">
+                          <div className="w-full h-px bg-gradient-to-r from-teal-500/20 to-transparent mb-4" />
+                          <p className="text-muted-foreground/90 leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Help Text */}
+          <motion.div 
+            variants={itemVariants}
+            className="mt-16 text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors cursor-pointer">
+              <MessageCircle className="w-4 h-4 text-teal-400" />
+              <span className="text-sm font-medium">Can't find what you're looking for? Contact Support</span>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

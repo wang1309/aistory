@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -50,6 +50,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const locale = useLocale();
   const t = useTranslations();
   const { user, setShowVerificationModal, setVerificationCallback } = useAppContext();
+  const tabbedForm = section.tabbed?.form as any;
 
   // ========== STATE MANAGEMENT ==========
 
@@ -59,6 +60,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const [sourceType, setSourceType] = useState<'preset' | 'custom'>('preset');
   const [selectedPresetWork, setSelectedPresetWork] = useState<string>('');
   const [customWorkName, setCustomWorkName] = useState('');
+  const [customWorldview, setCustomWorldview] = useState('');
+  const [customCharacters, setCustomCharacters] = useState('');
 
   const [pairingType, setPairingType] = useState<'romantic' | 'gen' | 'poly'>('romantic');
   const [selectedCharacters, setSelectedCharacters] = useState<string[]>([]);
@@ -81,11 +84,24 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     perspective: 'third',
   });
 
+  const languageOptions = useMemo(() => Object.entries(section.prompt.language_options || {}), [section.prompt.language_options]);
+
+  useEffect(() => {
+    if (!languageOptions.length) return;
+    if (!languageOptions.some(([code]) => code === language)) {
+      setLanguage(languageOptions[0][0]);
+    }
+  }, [languageOptions, language]);
+
+  const hasStartedGeneration = isGenerating || !!generatedFanfic;
+
   // ========== REF FOR LATEST STATE ==========
   const latestStateRef = useRef({
     sourceType,
     selectedPresetWork,
     customWorkName,
+    customWorldview,
+    customCharacters,
     pairingType,
     selectedCharacters,
     plotType,
@@ -100,6 +116,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       sourceType,
       selectedPresetWork,
       customWorkName,
+      customWorldview,
+      customCharacters,
       pairingType,
       selectedCharacters,
       plotType,
@@ -206,12 +224,6 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   }, [currentStep, completedSteps, section]);
 
   // ========== GENERATE FUNCTION ==========
-
-  const handleGenerate = useCallback(async () => {
-    // Set verification callback and show modal
-    setVerificationCallback(() => handleVerificationSuccess);
-    setShowVerificationModal(true);
-  }, [setShowVerificationModal, setVerificationCallback]);
 
   // Handle verification success - start fanfic generation
   const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
@@ -335,7 +347,13 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     } finally {
       setIsGenerating(false);
     }
-  }, [user, setShowVerificationModal, setVerificationCallback]);
+  }, [sourceType, selectedPresetWork, selectedCharacters, plotType, customWorkName, locale, section]);
+
+  const handleGenerate = useCallback(async () => {
+    // Set verification callback and show modal
+    setVerificationCallback(() => handleVerificationSuccess);
+    setShowVerificationModal(true);
+  }, [handleVerificationSuccess, setShowVerificationModal, setVerificationCallback]);
 
   // ========== NEXT STEP HANDLER ==========
 
@@ -351,660 +369,578 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   // ========== RENDER ==========
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <div className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-background via-background/95 to-background">
-        <div className="container mx-auto px-4 max-w-4xl"> {/* 限制最大宽度 */}
-          {/* Breadcrumb */}
-          <div className="mb-8">
-            <FanficBreadcrumb
-              homeText={section.breadcrumb?.home || 'Home'}
-              currentText={section.breadcrumb?.current || 'AI Fanfic Generator'}
-            />
-          </div>
+    <div className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-pink-500/30">
+    {/* Premium Background Layer - Teal/Pink Variant */}
+    <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
+    
+    <div className="fixed inset-0 -z-30 pointer-events-none overflow-hidden">
+       <div className="absolute top-[-10%] right-[20%] w-[600px] h-[600px] bg-teal-500/20 rounded-full blur-[120px] animate-blob mix-blend-multiply dark:mix-blend-screen" />
+       <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-pink-500/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-screen" />
+       <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-background rounded-full blur-[150px] opacity-80" />
+    </div>
 
-          <div className="text-center">
-            <AnimatedContainer variant="slideDown">
-              <p className="text-sm md:text-base font-medium text-primary tracking-wide uppercase mb-4">
-                AI-Powered Fanfiction Generator
-              </p>
-            </AnimatedContainer>
-            <AnimatedContainer variant="slideUp" delay={0.1}>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                <GradientText variant="hero">{section.tabbed?.hero?.title || '创作你的同人故事'}</GradientText>
-              </h1>
-            </AnimatedContainer>
-            <AnimatedContainer variant="slideUp" delay={0.2}>
-              <p className="text-lg text-muted-foreground">
-                {section.tabbed?.hero?.subtitle || '基于热门IP和角色，AI帮你创作精彩的同人小说'}
-              </p>
-            </AnimatedContainer>
-          </div>
+    <div className="w-full max-w-6xl mx-auto px-6 py-16 sm:py-20 relative">
+      {/* Breadcrumb */}
+      <div className="mb-8 flex justify-start animate-fade-in-up">
+        <div className="glass-premium px-6 py-2 rounded-full">
+          <FanficBreadcrumb
+            homeText={section.breadcrumb?.home || 'Home'}
+            currentText={section.breadcrumb?.current || 'AI Fanfic Generator'}
+          />
         </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
       </div>
 
-      {/* Step Tabs */}
-      <div className="container mx-auto px-4 max-w-4xl py-8">
-        <StepTabs
-          steps={steps.map((step, index) => ({
-            ...step,
-            isCompleted: completedSteps.includes(index + 1) || isStepCompleted(index + 1)
-          }))}
-          activeStepId={activeStepId}
-          onStepChange={(stepId) => {
-            const stepNum = parseInt(stepId.replace('step', ''));
-            // Only allow navigation to completed steps or next step
-            if (stepNum <= currentStep || completedSteps.includes(stepNum)) {
-              setCurrentStep(stepNum);
-            }
-          }}
-        />
+      {/* Header */}
+      <div className="text-center mb-20 animate-fade-in-up animation-delay-1000">
+        <div className="inline-flex items-center justify-center mb-8">
+          <div className="p-px bg-gradient-to-br from-teal-500/20 to-transparent rounded-2xl">
+            <div className="glass-premium rounded-2xl p-4 bg-background/50">
+               <Sparkles className="size-8 text-teal-600 dark:text-teal-400" />
+            </div>
+          </div>
+        </div>
+        
+        <h1 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-600 via-pink-600 to-teal-600 dark:from-teal-200 dark:via-pink-200 dark:to-teal-200 animate-shimmer">
+            {section.tabbed?.hero?.title || 'Fanfiction Creation'}
+          </span>
+        </h1>
+        <p className="text-xl sm:text-2xl text-muted-foreground/80 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
+          {section.tabbed?.hero?.subtitle || 'Craft your own stories in your favorite universes.'}
+        </p>
+      </div>
 
-        {/* Step Content */}
-        <div>
-          <AnimatedContainer key={currentStep} variant="scale">
-            {/* Step 1: Select Source Work */}
-            {currentStep === 1 && (
-              <ModernCard variant="elevated">
-                <ModernCardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <BookOpen className="w-5 h-5 text-primary" />
-                      <h2 className="text-xl font-semibold">{section.tabbed?.steps?.step1?.title || '选择原作'}</h2>
+      {/* Main Flow Container */}
+      <div className="glass-premium rounded-[3rem] p-1 overflow-hidden shadow-2xl shadow-teal-500/10 dark:shadow-black/20 ring-1 ring-black/5 dark:ring-white/10 animate-fade-in-up animation-delay-2000">
+        <div className="bg-background/40 backdrop-blur-xl rounded-[calc(3rem-4px)] min-h-[600px] flex flex-col">
+          
+          {/* Custom Starlight Stepper - Responsive & Full Width */}
+          <div className="border-b border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 px-4 sm:px-8 py-6">
+             <div className="flex items-center justify-between w-full max-w-4xl mx-auto relative">
+                {/* Progress Line */}
+                <div className="absolute left-0 top-1/2 w-full h-px bg-black/10 dark:bg-white/10 -z-10" />
+                <div 
+                  className="absolute left-0 top-1/2 h-px bg-gradient-to-r from-teal-500 to-pink-500 -z-10 transition-all duration-500" 
+                  style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
+                />
+
+                {steps.map((step, index) => {
+                  const stepNum = index + 1;
+                  const isCompleted = completedSteps.includes(stepNum) || stepNum < currentStep;
+                  const isActive = stepNum === currentStep;
+                  
+                  return (
+                    <button
+                      key={step.id}
+                      onClick={() => {
+                        if (stepNum <= currentStep || completedSteps.includes(stepNum)) {
+                          setCurrentStep(stepNum);
+                        }
+                      }}
+                      disabled={stepNum > currentStep && !completedSteps.includes(stepNum)}
+                      className="group relative flex flex-col items-center gap-3 focus:outline-none"
+                    >
+                      <div className={cn(
+                        "w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold transition-all duration-500 border-2",
+                        isActive 
+                          ? "bg-background border-pink-500 text-pink-500 shadow-[0_0_20px_rgba(236,72,153,0.5)] scale-110" 
+                          : isCompleted 
+                            ? "bg-pink-500 border-pink-500 text-white" 
+                            : "bg-white dark:bg-slate-900 border-black/10 dark:border-white/10 text-muted-foreground"
+                      )}>
+                        <span className="leading-none">{stepNum}</span>
+                      </div>
+                    </button>
+                  );
+                })}
+             </div>
+          </div>
+
+          {/* Step Content */}
+          <div className="flex-1 p-8 sm:p-16">
+            <AnimatedContainer>
+              {/* Step 1: Source Selection */}
+              {currentStep === 1 && (
+                <div className="space-y-12">
+                  <div className="text-center">
+                    <h2 className="text-3xl font-bold tracking-tight mb-4">{section.tabbed?.steps?.step1?.title}</h2>
+                    <p className="text-muted-foreground/60 font-light">{section.tabbed?.steps?.step1?.description}</p>
+                  </div>
+
+                  <div className="glass-premium rounded-[2rem] p-8 border border-white/10 space-y-8">
+                    <div className="flex flex-wrap items-center justify-between gap-4">
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/40">
+                          {section.source.label}
+                        </p>
+                        <h3 className="text-2xl font-semibold mt-3">
+                          {sourceType === 'preset' ? section.source.preset_label : section.source.custom_label}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          {tabbedForm?.popular_description || 'Choose a popular IP or enter your own world to kick off the story.'}
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <Button
+                          variant={sourceType === 'preset' ? 'default' : 'outline'}
+                          onClick={() => setSourceType('preset')}
+                          className="rounded-full"
+                        >
+                          {section.source.preset_label}
+                        </Button>
+                        <Button
+                          variant={sourceType === 'custom' ? 'default' : 'outline'}
+                          onClick={() => setSourceType('custom')}
+                          className="rounded-full"
+                        >
+                          {section.source.custom_label}
+                        </Button>
+                      </div>
                     </div>
-                    {isStepCompleted(1) && (
-                      <EnhancedBadge variant="success" size="sm">{section.tabbed?.status?.completed || '✓ Completed'}</EnhancedBadge>
+
+                    {sourceType === 'preset' ? (
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground/50 mb-4">
+                          {tabbedForm?.popular_works_label || tabbedForm?.all_works_label || 'Popular IP Works'}
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          {PRESET_WORKS.map((work) => (
+                            <button
+                              key={work.id}
+                              className={cn(
+                                "p-4 rounded-2xl border transition-all text-left",
+                                selectedPresetWork === work.id
+                                  ? "border-pink-500 bg-pink-500/10"
+                                  : "border-white/10 hover:border-white/30"
+                              )}
+                              onClick={() => handlePresetWorkChange(work.id)}
+                            >
+                              <div className="font-medium text-base line-clamp-1">
+                                {getWorkName(work, locale)}
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                {work.popularPairings.length} {tabbedForm?.popular_pairings_label || 'pairings'}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <div>
+                        <Label className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50 mb-2 block">
+                          {section.source.custom_label}
+                        </Label>
+                        <Textarea
+                          placeholder={section.source.preset_placeholder}
+                          value={customWorkName}
+                          onChange={(e) => setCustomWorkName(e.target.value)}
+                          rows={2}
+                          className="bg-white/5 border-white/10"
+                        />
+                      </div>
                     )}
                   </div>
-                </ModernCardHeader>
-                <ModernCardContent className="space-y-6">
-                  {/* Source Type */}
-                  <div>
-                    <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.source_type_label || '选择来源'}</Label>
-                    <RadioGroup
-                      value={sourceType}
-                      onValueChange={(value: 'preset' | 'custom') => setSourceType(value)}
-                      className="grid grid-cols-2 gap-4"
-                    >
-                      <div className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-accent/50 transition-colors cursor-pointer">
-                        <RadioGroupItem value="preset" id="preset" />
-                        <Label htmlFor="preset" className="flex-1 cursor-pointer font-medium">{section.tabbed?.form?.preset_works || '预置作品'}</Label>
-                      </div>
-                      <div className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-accent/50 transition-colors cursor-pointer">
-                        <RadioGroupItem value="custom" id="custom" />
-                        <Label htmlFor="custom" className="flex-1 cursor-pointer font-medium">{section.tabbed?.form?.custom_input || '自定义'}</Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
+                </div>
+              )}
 
-                  {/* Preset Works */}
-                  {sourceType === 'preset' && (
-                    <div>
-                      <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.popular_works || 'Popular IP Works'}</Label>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                        {PRESET_WORKS.map((work) => (
-                          <Button
-                            key={work.id}
-                            variant={selectedPresetWork === work.id ? "default" : "outline"}
-                            size="sm"
-                            onClick={() => handlePresetWorkChange(work.id)}
+              {/* Step 2: Characters */}
+                {currentStep === 2 && (
+                  <div className="space-y-12">
+                    <div className="text-center">
+                      <h2 className="text-3xl font-bold tracking-tight mb-4">{section.tabbed?.steps?.step2?.title}</h2>
+                      <p className="text-muted-foreground/60 font-light">{section.tabbed?.steps?.step2?.description}</p>
+                    </div>
+
+                    {/* Pairing Type */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {(
+                        [
+                          { value: 'romantic', label: section.tabbed?.form?.romantic },
+                          { value: 'gen', label: section.tabbed?.form?.gen },
+                          { value: 'poly', label: section.tabbed?.form?.poly }
+                        ] as { value: 'romantic' | 'gen' | 'poly'; label?: string }[]
+                      ).map((option) => (
+                        <button
+                          key={option.value}
+                          onClick={() => {
+                            setPairingType(option.value);
+                            setSelectedCharacters([]);
+                          }}
+                          className={cn(
+                            "w-full px-6 py-4 rounded-2xl border transition-all text-left",
+                            pairingType === option.value
+                              ? "bg-pink-500 text-white border-pink-500 shadow-lg"
+                              : "bg-white/5 border-white/10 text-muted-foreground hover:text-foreground"
+                          )}
+                        >
+                          <div className="font-semibold text-lg">{option.label}</div>
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Preset Characters */}
+                    <div className="space-y-4">
+                      <Label className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">
+                        {section.tabbed?.form?.preset_characters_label}
+                      </Label>
+                      <div className="flex flex-wrap gap-3">
+                        {(sourceType === 'preset' && selectedPresetWork ? getWorkById(selectedPresetWork)?.characters : [])?.map((char) => (
+                          <button
+                            key={char.id}
+                            onClick={() => selectedCharacters.includes(char.id) ? handleRemoveCharacter(char.id) : handleAddCharacter(char.id)}
                             className={cn(
-                              "h-auto py-3 px-3 text-sm justify-start",
-                              selectedPresetWork === work.id && "bg-primary text-primary-foreground"
+                              "px-5 py-2 rounded-full text-sm font-semibold border transition-all",
+                              selectedCharacters.includes(char.id)
+                                ? "bg-pink-500 text-white border-pink-500 shadow-lg"
+                                : "bg-white/5 border-white/10 hover:bg-white/10"
                             )}
                           >
-                            {getWorkName(work, locale)}
-                          </Button>
+                            {getCharacterName(char, locale)}
+                          </button>
                         ))}
                       </div>
                     </div>
-                  )}
 
-                  {/* Custom Input */}
-                  {sourceType === 'custom' && (
-                    <div>
-                      <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.work_name_label || '输入作品名称'}</Label>
-                      <input
-                        type="text"
-                        placeholder={section.tabbed?.form?.work_name_placeholder || '例如：你的名字、原神、咒术回战...'}
-                        value={customWorkName}
-                        onChange={(e) => setCustomWorkName(e.target.value)}
-                        className="w-full h-12 px-4 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50"
-                      />
-                    </div>
-                  )}
-
-                  {/* Next Button */}
-                  <div className="flex justify-end">
-                    <Button
-                      onClick={handleNextStep}
-                      disabled={!isStepCompleted(1)}
-                      className="bg-primary hover:bg-primary/90"
-                    >
-                      {section.tabbed?.buttons?.next_step || '下一步'}
-                    </Button>
-                  </div>
-                </ModernCardContent>
-              </ModernCard>
-            )}
-
-            {/* Step 2: Select Characters */}
-            {currentStep === 2 && (
-              <ModernCard variant="elevated">
-                <ModernCardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Heart className="w-5 h-5 text-pink-500" />
-                      <h2 className="text-xl font-semibold">{section.tabbed?.steps?.step2?.title || '选择角色'}</h2>
-                    </div>
-                    {isStepCompleted(2) && (
-                      <EnhancedBadge variant="success" size="sm">{section.tabbed?.status?.completed || '✓ Completed'}</EnhancedBadge>
-                    )}
-                  </div>
-                </ModernCardHeader>
-                <ModernCardContent className="space-y-6">
-                  {/* Pairing Type */}
-                  <div>
-                    <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.pairing_type_label || '配对类型'}</Label>
-                    <RadioGroup
-                      value={pairingType}
-                      onValueChange={(value: 'romantic' | 'gen' | 'poly') => {
-                        setPairingType(value);
-                        setSelectedCharacters([]);
-                      }}
-                      className="grid grid-cols-3 gap-3"
-                    >
-                      <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50">
-                        <RadioGroupItem value="romantic" id="romantic" />
-                        <Label htmlFor="romantic" className="flex-1 cursor-pointer">{section.tabbed?.form?.romantic || '浪漫向'}</Label>
+                    {/* Custom Characters */}
+                    <div className="space-y-3">
+                      <Label className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">
+                        {section.tabbed?.form?.custom_characters_label}
+                      </Label>
+                      <div className="flex gap-3">
+                        <input
+                          type="text"
+                          placeholder={section.tabbed?.form?.custom_character_placeholder}
+                          value={customCharacterInput}
+                          onChange={(e) => setCustomCharacterInput(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault();
+                              handleAddCustomCharacter();
+                            }
+                          }}
+                          className="flex-1 h-12 px-4 rounded-2xl bg-white/5 border border-white/10 focus:border-pink-500/50 focus:ring-0"
+                        />
+                        <Button
+                          onClick={handleAddCustomCharacter}
+                          className="h-12 px-8 rounded-2xl bg-white/10 hover:bg-white/20 text-foreground font-bold"
+                        >
+                          {section.tabbed?.form?.add_character_button || 'Add'}
+                        </Button>
                       </div>
-                      <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50">
-                        <RadioGroupItem value="gen" id="gen" />
-                        <Label htmlFor="gen" className="flex-1 cursor-pointer">{section.tabbed?.form?.gen || '单人中心'}</Label>
-                      </div>
-                      <div className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-accent/50">
-                        <RadioGroupItem value="poly" id="poly" />
-                        <Label htmlFor="poly" className="flex-1 cursor-pointer">{section.tabbed?.form?.poly || '多人配对'}</Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
-
-                  {/* Character Selection - Preset characters */}
-                  {sourceType === 'preset' && selectedPresetWork && (() => {
-                    const work = getWorkById(selectedPresetWork);
-                    return work ? (
-                      <div>
-                        <Label className="text-base font-medium mb-3 block">
-                          {section.tabbed?.form?.preset_characters_label || '预设角色'}
-                        </Label>
-                        <div className="flex flex-wrap gap-2">
-                          {work.characters.map((char) => (
-                            <Button
-                              key={char.id}
-                              variant={selectedCharacters.includes(char.id) ? "default" : "outline"}
-                              size="sm"
-                              onClick={() => {
-                                if (selectedCharacters.includes(char.id)) {
-                                  handleRemoveCharacter(char.id);
-                                } else {
-                                  handleAddCharacter(char.id);
-                                }
-                              }}
-                              className={cn(
-                                "h-auto py-2 px-3",
-                                selectedCharacters.includes(char.id) && "bg-primary text-primary-foreground"
-                              )}
-                            >
-                              {getCharacterName(char, locale)}
-                            </Button>
-                          ))}
-                        </div>
-                      </div>
-                    ) : null;
-                  })()}
-
-                  {/* Custom Character Input - Available for both preset and custom source types */}
-                  <div className="space-y-3">
-                    <Label className="text-base font-medium block">
-                      {section.tabbed?.form?.custom_characters_label || '自定义角色'}
-                      <span className="text-sm text-muted-foreground font-normal ml-2">
-                        {(section.tabbed?.form?.selected_count || '（已选 {{count}} 个）').replace('{{count}}', selectedCharacters.length.toString())}
-                      </span>
-                    </Label>
-
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        placeholder={section.tabbed?.form?.custom_character_placeholder || '输入角色名称...'}
-                        value={customCharacterInput}
-                        onChange={(e) => setCustomCharacterInput(e.target.value)}
-                        onKeyPress={(e) => {
-                          if (e.key === 'Enter') {
-                            e.preventDefault();
-                            handleAddCustomCharacter();
-                          }
-                        }}
-                        className="flex-1 h-10 px-3 rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50"
-                      />
-                      <Button
-                        onClick={handleAddCustomCharacter}
-                        variant="outline"
-                        size="sm"
-                        className="h-10"
-                      >
-                        {section.tabbed?.form?.add_character_button || '添加'}
-                      </Button>
-                    </div>
-
-                    {/* Display selected characters */}
-                    {selectedCharacters.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {selectedCharacters.map((charId) => {
-                          // Check if it's a preset character
-                          const work = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
-                          const presetChar = work?.characters.find(c => c.id === charId);
-                          const isCustom = !presetChar;
-
-                          return (
-                            <div
-                              key={charId}
-                              className={cn(
-                                "relative flex items-center gap-2 px-3 py-1.5 pr-8 rounded-md text-sm",
-                                isCustom
-                                  ? "bg-secondary text-secondary-foreground border border-border"
-                                  : "bg-primary text-primary-foreground"
-                              )}
-                            >
-                              <span>{presetChar ? getCharacterName(presetChar, locale) : charId}</span>
+                      {selectedCharacters.length > 0 && (
+                        <div className="flex flex-wrap gap-3">
+                          {selectedCharacters.map((charId) => (
+                            <div key={charId} className="flex items-center gap-2 px-4 py-2 bg-pink-500/10 text-pink-400 rounded-full border border-pink-500/20">
+                              <span className="text-sm font-semibold">
+                                {(() => {
+                                  const work = getWorkById(selectedPresetWork);
+                                  const presetChar = work?.characters.find((c) => c.id === charId);
+                                  return presetChar ? getCharacterName(presetChar, locale) : charId;
+                                })()}
+                              </span>
                               <button
                                 onClick={() => handleRemoveCharacter(charId)}
-                                className={cn(
-                                  "absolute -top-1 -right-1",
-                                  "flex items-center justify-center",
-                                  "w-5 h-5 rounded-full",
-                                  "bg-red-500 text-white",
-                                  "hover:bg-red-600 hover:scale-110",
-                                  "transition-all duration-200",
-                                  "shadow-sm"
-                                )}
-                                title={section.tabbed?.form?.remove_character_tooltip || "Remove character"}
+                                className="p-1 rounded-full hover:bg-pink-500/20"
                               >
-                                <Icon name="RiCloseLine" className="w-3 h-3" />
+                                <Icon name="close" className="w-3 h-3" />
                               </button>
                             </div>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Navigation Buttons */}
-                  <div className="flex justify-between">
-                    <Button variant="outline" onClick={() => setCurrentStep(1)}>
-                      {section.tabbed?.buttons?.previous_step || '上一步'}
-                    </Button>
-                    <Button
-                      onClick={handleNextStep}
-                      disabled={!isStepCompleted(2)}
-                      className="bg-primary hover:bg-primary/90"
-                    >
-                      {section.tabbed?.buttons?.next_step || '下一步'}
-                    </Button>
-                  </div>
-                </ModernCardContent>
-              </ModernCard>
-            )}
-
-            {/* Step 3: Story Options */}
-            {currentStep === 3 && (
-              <ModernCard variant="elevated">
-                <ModernCardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Wand2 className="w-5 h-5 text-primary" />
-                      <h2 className="text-xl font-semibold">{section.tabbed?.steps?.step3?.title || '故事设置'}</h2>
-                    </div>
-                    {isStepCompleted(3) && (
-                      <EnhancedBadge variant="success" size="sm">{section.tabbed?.status?.completed || '✓ 完成'}</EnhancedBadge>
-                    )}
-                  </div>
-                </ModernCardHeader>
-                <ModernCardContent className="space-y-6">
-                  {/* Plot Type */}
-                  <div>
-                    <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.plot_type_label || '故事类型'}</Label>
-                    <div className="grid grid-cols-4 gap-2">
-                      {[
-                        { value: 'canon', label: section.tabbed?.form?.canon || '原著向' },
-                        { value: 'modern_au', label: section.tabbed?.form?.modern_au || '现代AU' },
-                        { value: 'school_au', label: section.tabbed?.form?.school_au || '校园AU' },
-                        { value: 'fantasy_au', label: section.tabbed?.form?.fantasy_au || '奇幻AU' },
-                        { value: 'crossover', label: section.tabbed?.form?.crossover || '跨界联动' },
-                        { value: 'time_travel_au', label: section.tabbed?.form?.time_travel_au || '时空穿越' },
-                        { value: 'soulmate_au', label: section.tabbed?.form?.soulmate_au || '灵魂伴侣AU' },
-                        { value: 'historical_au', label: section.tabbed?.form?.historical_au || '历史AU' },
-                      ].map((type) => (
-                        <Button
-                          key={type.value}
-                          variant={plotType === type.value ? "default" : "outline"}
-                          onClick={() => setPlotType(type.value)}
-                          className={cn(
-                            "h-auto py-2 px-2 text-sm justify-center",
-                            plotType === type.value && "bg-primary text-primary-foreground"
-                          )}
-                        >
-                          {type.label}
-                        </Button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Language Selection */}
-                  <div>
-                    <Label className="text-base font-medium mb-3 block">{section.tabbed?.form?.language_label || 'Output Language'}</Label>
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
-                      {[
-                        { value: 'zh', label: '中文', flag: '🇨🇳' },
-                        { value: 'en', label: 'English', flag: '🇺🇸' },
-                        { value: 'es', label: 'Español', flag: '🇪🇸' },
-                        { value: 'hi', label: 'हिन्दी', flag: '🇮🇳' },
-                        { value: 'ar', label: 'العربية', flag: '🇸🇦' },
-                        { value: 'pt', label: 'Português', flag: '🇵🇹' },
-                        { value: 'ru', label: 'Русский', flag: '🇷🇺' },
-                        { value: 'ja', label: '日本語', flag: '🇯🇵' },
-                        { value: 'de', label: 'Deutsch', flag: '🇩🇪' },
-                        { value: 'fr', label: 'Français', flag: '🇫🇷' },
-                        { value: 'ko', label: '한국어', flag: '🇰🇷' },
-                        { value: 'it', label: 'Italiano', flag: '🇮🇹' },
-                      ].map((lang) => (
-                        <Button
-                          key={lang.value}
-                          variant={language === lang.value ? "default" : "outline"}
-                          onClick={() => setLanguage(lang.value)}
-                          className={cn(
-                            "h-auto py-2 px-2 flex flex-col gap-1",
-                            language === lang.value && "bg-primary text-primary-foreground"
-                          )}
-                        >
-                          <span className="text-lg">{lang.flag}</span>
-                          <span className="text-xs">{lang.label}</span>
-                        </Button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Prompt */}
-                  <div>
-                    <Label className="text-base font-medium mb-3 block">
-                      {section.tabbed?.form?.story_prompt_label || 'Story Prompt'} <span className="text-sm text-muted-foreground font-normal">（{section.tabbed?.form?.story_prompt_hint || 'At least 10 characters'}）</span>
-                    </Label>
-                    <Textarea
-                      placeholder={section.tabbed?.form?.story_prompt_placeholder || '描述你想要的故事内容、情节、场景...'}
-                      value={prompt}
-                      onChange={(e) => setPrompt(e.target.value)}
-                      className="min-h-[120px] resize-none"
-                    />
-                    <div className="flex justify-between items-center mt-2">
-                      <span className={cn(
-                        "text-xs",
-                        prompt.trim().length < 10 ? "text-orange-500" : "text-muted-foreground"
-                      )}>
-                        {section.tabbed?.form?.character_counter?.replace('{{count}}', prompt.length.toString()) || `${prompt.length.toString()} / 2000字符`}
-                      </span>
-                      {prompt.trim().length >= 10 && (
-                        <EnhancedBadge variant="success" size="sm">{section.tabbed?.form?.meets_requirements || '✓ 符合要求'}</EnhancedBadge>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Navigation Buttons */}
-                  <div className="flex justify-between">
-                    <Button variant="outline" onClick={() => setCurrentStep(2)}>
-                      {section.tabbed?.buttons?.previous_step || '上一步'}
-                    </Button>
-                    <Button
-                      onClick={handleNextStep}
-                      disabled={!isStepCompleted(3)}
-                      className="bg-primary hover:bg-primary/90"
-                    >
-                      {section.tabbed?.buttons?.next_step || '下一步'}
-                    </Button>
-                  </div>
-                </ModernCardContent>
-              </ModernCard>
-            )}
-
-            {/* Step 4: Advanced Options */}
-            {currentStep === 4 && (
-              <ModernCard variant="elevated">
-                <ModernCardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Settings className="w-5 h-5 text-primary" />
-                      <h2 className="text-xl font-semibold">{section.tabbed?.steps?.step4?.title || '高级选项'}</h2>
-                    </div>
-                    <EnhancedBadge variant="info" size="sm">{section.tabbed?.form?.advanced_options?.subtitle || 'Optional'}</EnhancedBadge>
-                  </div>
-                </ModernCardHeader>
-                <ModernCardContent className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* OOC Level */}
-                    <div>
-                      <Label className="text-sm font-medium mb-2 block">{section.tabbed?.form?.advanced_options?.ooc_level || 'OOC Level'}</Label>
-                      <RadioGroup
-                        value={advancedOptions.ooc}
-                        onValueChange={(value) => setAdvancedOptions({...advancedOptions, ooc: value})}
-                      >
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="slight" id="ooc-slight" />
-                          <Label htmlFor="ooc-slight" className="text-sm">{section.tabbed?.form?.advanced_options?.ooc_slight || 'Canon Compliant'}</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="moderate" id="ooc-moderate" />
-                          <Label htmlFor="ooc-moderate" className="text-sm">{section.tabbed?.form?.advanced_options?.ooc_moderate || 'Slight OOC'}</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="bold" id="ooc-bold" />
-                          <Label htmlFor="ooc-bold" className="text-sm">{section.tabbed?.form?.advanced_options?.ooc_bold || 'Bold Adaptation'}</Label>
-                        </div>
-                      </RadioGroup>
-                    </div>
-
-                    {/* Story Length */}
-                    <div>
-                      <Label className="text-sm font-medium mb-2 block">{section.tabbed?.form?.advanced_options?.story_length || 'Story Length'}</Label>
-                      <RadioGroup
-                        value={advancedOptions.length}
-                        onValueChange={(value) => setAdvancedOptions({...advancedOptions, length: value})}
-                      >
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="short" id="length-short" />
-                          <Label htmlFor="length-short" className="text-sm">{section.tabbed?.form?.advanced_options?.length_short || 'Short (300-600 words)'}</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="medium" id="length-medium" />
-                          <Label htmlFor="length-medium" className="text-sm">{section.tabbed?.form?.advanced_options?.length_medium || 'Medium (600-1500 words)'}</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="long" id="length-long" />
-                          <Label htmlFor="length-long" className="text-sm">{section.tabbed?.form?.advanced_options?.length_long || 'Long (1500-3000 words)'}</Label>
-                        </div>
-                      </RadioGroup>
-                    </div>
-                  </div>
-
-                  {/* Navigation Buttons */}
-                  <div className="flex justify-between">
-                    <Button variant="outline" onClick={() => setCurrentStep(3)}>
-                      {section.tabbed?.buttons?.previous_step || '上一步'}
-                    </Button>
-                    <Button
-                      onClick={handleNextStep}
-                      className="bg-primary hover:bg-primary/90"
-                    >
-                      {section.tabbed?.buttons?.next_step || '下一步'}
-                    </Button>
-                  </div>
-                </ModernCardContent>
-              </ModernCard>
-            )}
-
-            {/* Step 5: Generate */}
-            {currentStep === 5 && (
-              <ModernCard variant="elevated">
-                <ModernCardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Zap className="w-5 h-5 text-primary" />
-                      <h2 className="text-xl font-semibold">{section.tabbed?.steps?.step5?.title || '生成创作'}</h2>
-                    </div>
-                    {isStepCompleted(5) && (
-                      <EnhancedBadge variant="success" size="sm">{section.tabbed?.status?.completed || '✓ Completed'}</EnhancedBadge>
-                    )}
-                  </div>
-                </ModernCardHeader>
-                <ModernCardContent className="space-y-6">
-                  {/* Summary */}
-                  <div className="bg-muted/50 rounded-lg p-4">
-                    <h3 className="font-semibold mb-3">{section.tabbed?.summary?.title || 'Creation Summary'}</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-                      <div>
-                        <span className="text-muted-foreground">{section.tabbed?.summary?.source_work || 'Source:'}</span>
-                        <span className="font-medium ml-2">
-                          {(() => {
-                            const presetWork = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
-                            return presetWork ? getWorkName(presetWork, locale) : customWorkName;
-                          })()}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground">{section.tabbed?.summary?.pairing || 'Pairing:'}</span>
-                        <span className="font-medium ml-2">
-                          {(() => {
-                            const presetWork = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
-                            return selectedCharacters.map(id => {
-                              const char = presetWork ? getCharacterById(presetWork, id) : null;
-                              return char ? getCharacterName(char, locale) : id;
-                            }).join(' × ') || 'Not selected';
-                          })()}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground">{section.tabbed?.summary?.plot_type || 'Type:'}</span>
-                        <span className="font-medium ml-2">
-                          {plotType === 'canon' ? (section.tabbed?.form?.canon || 'Canon') :
-                           plotType === 'modern_au' ? (section.tabbed?.form?.modern_au || 'Modern AU') :
-                           plotType === 'school_au' ? (section.tabbed?.form?.school_au || 'School AU') :
-                           plotType === 'fantasy_au' ? (section.tabbed?.form?.fantasy_au || 'Fantasy AU') : 'Crossover'}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground">{section.tabbed?.summary?.story_length || 'Length:'}</span>
-                        <span className="font-medium ml-2">
-                          {advancedOptions.length === 'short' ? (section.tabbed?.form?.advanced_options?.length_short || 'Short') :
-                           advancedOptions.length === 'medium' ? (section.tabbed?.form?.advanced_options?.length_medium || 'Medium') : (section.tabbed?.form?.advanced_options?.length_long || 'Long')}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Generate Button */}
-                  <div className="flex justify-center">
-                    <Button
-                      onClick={handleGenerate}
-                      disabled={!prompt.trim() || isGenerating}
-                      className={cn(
-                        "max-w-md h-14 text-base font-medium",
-                        "bg-gradient-to-r from-primary via-pink-600 to-blue-600",
-                        "hover:from-primary/90 hover:via-pink-600/90 hover:to-blue-600/90",
-                        "shadow-strong hover:shadow-elevated",
-                        "transform hover:scale-[1.02] transition-all duration-200",
-                        isGenerating && "animate-pulse"
-                      )}
-                    >
-                      {isGenerating ? (
-                        <>
-                          <div className="animate-spin mr-2 h-5 w-5 border-2 border-white border-t-transparent rounded-full" />
-                          {section.tabbed?.form?.generation?.status_writing || 'Creating...'}
-                        </>
-                      ) : (
-                        <>
-                          <Sparkles className="w-5 h-5 mr-2" />
-                          {section.tabbed?.form?.generation?.start_button || 'Start Creating Fanfic'}
-                        </>
-                      )}
-                    </Button>
-                  </div>
-
-                  {/* Output */}
-                  {generatedFanfic && (
-                    <AnimatedContainer variant="fadeIn" className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-semibold flex items-center gap-2">
-                          <Icon name="mdi:text-box" className="w-5 h-5" />
-                          {section.tabbed?.form?.generation?.status_complete || 'Complete!'}
-                        </h3>
-                        <div className="text-sm text-muted-foreground">
-                          {section.tabbed?.status?.word_count?.replace('{{count}}', wordCount.toString()) || `${wordCount} words`}
-                        </div>
-                      </div>
-
-                      {/* Tags */}
-                      {generatedTags.length > 0 && (
-                        <div className="flex flex-wrap gap-2">
-                          {generatedTags.map((tag, index) => (
-                            <EnhancedBadge key={index} variant="secondary" size="sm">
-                              {tag}
-                            </EnhancedBadge>
                           ))}
                         </div>
                       )}
+                    </div>
+                  </div>
+                )}
 
-                      {/* Content */}
-                      <div className="prose prose-sm max-w-none dark:prose-invert p-4 rounded-lg bg-muted/30 whitespace-pre-wrap max-h-[400px] overflow-y-auto">
-                        {generatedFanfic}
+                {/* Step 3: Story Settings */}
+                {currentStep === 3 && (
+                  <div className="space-y-12">
+                      <div className="text-center">
+                         <h2 className="text-3xl font-bold tracking-tight mb-4">{section.tabbed?.steps?.step3?.title}</h2>
+                         <p className="text-muted-foreground/60 font-light">{section.tabbed?.steps?.step3?.description}</p>
                       </div>
 
-                      {/* Actions */}
-                      <div className="flex flex-wrap gap-2">
+                      {/* Plot Type */}
+                      <div className="space-y-4">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.tabbed?.form?.plot_type_label}</Label>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                          {[
+                            { value: 'canon', label: section.tabbed?.form?.canon },
+                            { value: 'modern_au', label: section.tabbed?.form?.modern_au },
+                            { value: 'school_au', label: section.tabbed?.form?.school_au },
+                            { value: 'fantasy_au', label: section.tabbed?.form?.fantasy_au },
+                            { value: 'crossover', label: section.tabbed?.form?.crossover },
+                            { value: 'time_travel_au', label: section.tabbed?.form?.time_travel_au },
+                            { value: 'soulmate_au', label: section.tabbed?.form?.soulmate_au },
+                            { value: 'historical_au', label: section.tabbed?.form?.historical_au },
+                          ].map((type) => (
+                            <button
+                              key={type.value}
+                              onClick={() => setPlotType(type.value)}
+                              className={cn(
+                                "py-3 px-2 rounded-xl text-sm font-medium transition-all duration-300 border",
+                                plotType === type.value 
+                                  ? "bg-teal-500 text-white border-teal-500 shadow-lg"
+                                  : "bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20"
+                              )}
+                            >
+                              {type.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Language */}
+                      <div className="space-y-4">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">
+                          {section.tabbed?.form?.language_label || section.prompt.language_label}
+                        </Label>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+                          {Object.entries(section.prompt.language_options || {}).map(([code, lang]) => (
+                            <button
+                              key={code}
+                              type="button"
+                              onClick={() => setLanguage(code)}
+                              aria-pressed={language === code}
+                              className={cn(
+                                "relative py-3 px-3 rounded-2xl flex flex-col items-center gap-2 border transition-all",
+                                language === code
+                                  ? "bg-white/10 border-white/30 text-foreground shadow-lg shadow-teal-500/20"
+                                  : "bg-white/5 border-white/10 text-muted-foreground hover:text-foreground"
+                              )}
+                            >
+                              {language === code && (
+                                <span className="absolute top-2 right-2 w-5 h-5 rounded-full bg-teal-500 text-white flex items-center justify-center text-xs font-bold">
+                                  ✓
+                                </span>
+                              )}
+                              <span className="text-2xl" aria-hidden>
+                                {lang.flag}
+                              </span>
+                              <div className="text-center">
+                                <p className="text-sm font-semibold leading-tight">{lang.native}</p>
+                                <p className="text-[10px] uppercase text-muted-foreground/80 tracking-wide">
+                                  {lang.english}
+                                </p>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Prompt */}
+                      <div className="space-y-4 relative group">
+                        <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/10 to-pink-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.tabbed?.form?.story_prompt_label}</Label>
+                        <Textarea
+                          placeholder={section.tabbed?.form?.story_prompt_placeholder}
+                          value={prompt}
+                          onChange={(e) => setPrompt(e.target.value)}
+                          className="relative min-h-[200px] w-full bg-transparent border-0 border-b border-white/10 focus:border-teal-500/50 focus:ring-0 rounded-none px-0 text-xl font-light leading-relaxed placeholder:text-muted-foreground/20 resize-none transition-all duration-300"
+                          style={{ boxShadow: 'none' }}
+                        />
+                        <div className="flex justify-end">
+                           <span className={cn("text-[10px] font-bold uppercase tracking-widest", prompt.trim().length < 10 ? "text-orange-400" : "text-teal-400")}>
+                              {prompt.length} / 2000
+                           </span>
+                        </div>
+                      </div>
+                  </div>
+                )}
+
+                {/* Step 4: Advanced */}
+                {currentStep === 4 && (
+                  <div className="space-y-12">
+                     <div className="text-center">
+                         <h2 className="text-3xl font-bold tracking-tight mb-4">{section.tabbed?.steps?.step4?.title}</h2>
+                         <p className="text-muted-foreground/60 font-light">{section.tabbed?.form?.advanced_options?.subtitle}</p>
+                     </div>
+
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div className="space-y-6">
+                           <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.tabbed?.form?.advanced_options?.ooc_level}</Label>
+                           <div className="space-y-3">
+                              {['slight', 'moderate', 'bold'].map((opt) => (
+                                <button
+                                  key={opt}
+                                  onClick={() => setAdvancedOptions({...advancedOptions, ooc: opt})}
+                                  className={cn(
+                                    "w-full text-left px-6 py-4 rounded-xl border transition-all",
+                                    advancedOptions.ooc === opt
+                                      ? "bg-pink-500/10 border-pink-500/50 text-pink-400"
+                                      : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10"
+                                  )}
+                                >
+                                  <div className="font-bold text-sm uppercase tracking-wide">{opt}</div>
+                                </button>
+                              ))}
+                           </div>
+                        </div>
+
+                        <div className="space-y-6">
+                           <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.tabbed?.form?.advanced_options?.story_length}</Label>
+                           <div className="space-y-3">
+                              {['short', 'medium', 'long'].map((opt) => (
+                                <button
+                                  key={opt}
+                                  onClick={() => setAdvancedOptions({...advancedOptions, length: opt})}
+                                  className={cn(
+                                    "w-full text-left px-6 py-4 rounded-xl border transition-all",
+                                    advancedOptions.length === opt
+                                      ? "bg-teal-500/10 border-teal-500/50 text-teal-400"
+                                      : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10"
+                                  )}
+                                >
+                                  <div className="font-bold text-sm uppercase tracking-wide">{opt}</div>
+                                </button>
+                              ))}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                )}
+
+                {/* Step 5: Output */}
+                {currentStep === 5 && (
+                  <div className="space-y-12">
+                    {!hasStartedGeneration ? (
+                      <div className="text-center py-12">
+                        <div className="inline-flex p-6 rounded-full bg-white/5 mb-8 animate-pulse">
+                          <Zap className="size-12 text-yellow-400" />
+                        </div>
+                        <h2 className="text-3xl font-bold mb-6">{section.tabbed?.steps?.step5?.title}</h2>
+
+                        <div className="max-w-md mx-auto glass-premium rounded-2xl p-6 mb-8 text-left text-sm space-y-2">
+                          <div className="flex justify-between border-b border-white/5 pb-2">
+                            <span className="text-muted-foreground">Source</span>
+                            <span className="font-bold">{sourceType === 'preset' ? getWorkName(getWorkById(selectedPresetWork)!, locale) : customWorkName}</span>
+                          </div>
+                          <div className="flex justify-between border-b border-white/5 pb-2">
+                            <span className="text-muted-foreground">Pairing</span>
+                            <span className="font-bold">{selectedCharacters.length} Characters</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-muted-foreground">Type</span>
+                            <span className="font-bold uppercase">{plotType}</span>
+                          </div>
+                        </div>
+
                         <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => {
-                            navigator.clipboard.writeText(generatedFanfic);
-                            toast.success(section.tabbed?.messages?.copy_success || "Copied to clipboard");
-                          }}
-                        >
-                          <Icon name="mdi:content-copy" className="w-4 h-4 mr-1" />
-                          {section.output?.button_copy || 'Copy'}
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
                           onClick={handleGenerate}
-                          disabled={isGenerating}
+                          className="h-16 px-12 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 text-white text-lg font-bold shadow-[0_0_30px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.6)] hover:scale-105 transition-all duration-500"
                         >
-                          <Icon name="mdi:refresh" className="w-4 h-4 mr-1" />
-                          {section.output?.button_regenerate || 'Regenerate'}
+                          <Sparkles className="mr-2 size-5" /> {section.tabbed?.form?.generation?.start_button}
                         </Button>
                       </div>
-                    </AnimatedContainer>
-                  )}
+                    ) : (
+                      <div className="space-y-8">
+                        {/* Status Card */}
+                        <div className="glass-premium rounded-[2rem] p-8 md:p-12 bg-background/40">
+                          <div className="flex flex-wrap items-center justify-between gap-4">
+                            <div className="flex items-center gap-3">
+                              <span
+                                className={cn(
+                                  "px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border",
+                                  isGenerating
+                                    ? "bg-yellow-500/10 text-yellow-300 border-yellow-500/40 animate-pulse"
+                                    : "bg-teal-500/10 text-teal-300 border-teal-500/40"
+                                )}
+                              >
+                                {isGenerating
+                                  ? (section.tabbed?.form?.generation?.status_writing || 'Writing...')
+                                  : (section.tabbed?.form?.generation?.status_complete || 'Complete')}
+                              </span>
+                              <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">
+                                {wordCount > 0 ? `${wordCount} WORDS` : section.tabbed?.form?.generation?.progress_label}
+                              </div>
+                            </div>
+                            {isGenerating && (
+                              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                <span className="w-2 h-2 rounded-full bg-pink-400 animate-ping" />
+                                {section.tabbed?.form?.generation?.status_writing || 'Streaming response...'}
+                              </div>
+                            )}
+                          </div>
+                        </div>
 
-                  {/* Navigation Buttons */}
-                  <div className="flex justify-start">
-                    <Button variant="outline" onClick={() => setCurrentStep(4)}>
-                      {section.tabbed?.buttons?.previous_step || '上一步'}
+                        {/* Output Card */}
+                        <div className="glass-premium rounded-[2rem] overflow-hidden animate-fade-in-up">
+                          <div className="p-8 md:p-12 bg-background/60 min-h-[400px]">
+                            {generatedTags.length > 0 && (
+                              <div className="flex flex-wrap gap-2 mb-8">
+                                {generatedTags.map(tag => (
+                                  <span key={tag} className="px-3 py-1 rounded-full bg-white/5 text-xs font-bold text-muted-foreground border border-white/5">{tag}</span>
+                                ))}
+                              </div>
+                            )}
+
+                            <div className="prose prose-lg dark:prose-invert max-w-none font-serif leading-loose">
+                              <div className="whitespace-pre-wrap min-h-[200px]">
+                                {generatedFanfic || (section.tabbed?.form?.generation?.status_writing || 'Preparing response...')}
+                              </div>
+                            </div>
+
+                            {isGenerating && (
+                              <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
+                                <div className="w-4 h-4 border-2 border-pink-400 border-t-transparent rounded-full animate-spin" />
+                                {section.tabbed?.form?.generation?.status_writing || 'Streaming response...'}
+                              </div>
+                            )}
+                          </div>
+                          <div className="bg-white/5 p-6 flex justify-end gap-4">
+                            <Button
+                              variant="ghost"
+                              disabled={!generatedFanfic}
+                              onClick={() => {
+                                if (!generatedFanfic) return;
+                                navigator.clipboard.writeText(generatedFanfic);
+                                toast.success(section.tabbed?.messages?.copy_success || 'Copied!');
+                              }}
+                            >
+                              <Icon name="copy" className="mr-2 size-4" /> Copy
+                            </Button>
+                            <Button variant="ghost" onClick={handleGenerate} disabled={isGenerating}>
+                              <Icon name="refresh" className="mr-2 size-4" />
+                              {section.tabbed?.form?.generation?.start_button || 'Regenerate'}
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    <div className="flex justify-start">
+                      <Button
+                        variant="ghost"
+                        onClick={() => setCurrentStep(4)}
+                        className="text-muted-foreground hover:text-foreground"
+                      >
+                        {section.tabbed?.buttons?.previous_step || 'Previous Step'}
+                      </Button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Persistent Nav Buttons (only for steps 1-4) */}
+                {currentStep < 5 && (
+                  <div className="flex justify-between mt-16 pt-8 border-t border-white/5">
+                    {currentStep > 1 ? (
+                      <Button variant="ghost" onClick={() => setCurrentStep(currentStep - 1)} className="text-muted-foreground hover:text-foreground">
+                        {section.tabbed?.buttons?.previous_step}
+                      </Button>
+                    ) : <div />}
+                    
+                    <Button
+                      onClick={handleNextStep}
+                      disabled={!isStepCompleted(currentStep)}
+                      className="rounded-full px-8 bg-white text-black hover:bg-white/90 font-bold shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {section.tabbed?.buttons?.next_step} <Icon name="arrow-right" className="ml-2 size-4" />
                     </Button>
                   </div>
-                </ModernCardContent>
-              </ModernCard>
-            )}
-          </AnimatedContainer>
+                )}
+
+              </AnimatedContainer>
+            </div>
+          </div>
         </div>
       </div>
     </div>

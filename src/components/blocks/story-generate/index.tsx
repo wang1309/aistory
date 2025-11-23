@@ -504,564 +504,417 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       locale === 'de' ? 'Geschichte geladen' :
       'Story loaded'
     );
-
-    // Scroll to top to show loaded content
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [AI_MODELS, locale]);
 
+  // Share translations
+  const shareTranslations = useMemo(() => ({
+    title: locale === 'zh' ? '分享' : locale === 'ja' ? '共有' : 'Share',
+    copy_link: locale === 'zh' ? '复制链接' : locale === 'ja' ? 'リンクをコピー' : 'Copy Link',
+    share_twitter: 'Twitter',
+    share_facebook: 'Facebook',
+    share_linkedin: 'LinkedIn',
+    link_copied: locale === 'zh' ? '链接已复制' : locale === 'ja' ? 'リンクをコピーしました' : 'Link copied!',
+    share_text_template: locale === 'zh' ? '我用AI写了一个 {wordCount} 字的故事！' : locale === 'ja' ? 'AIで{wordCount}文字の物語を書きました！' : 'I wrote a {wordCount} word story with AI!',
+  }), [locale]);
+
+  // ========== RENDER ==========
+
   return (
-    <section className="relative py-16 sm:py-20 overflow-hidden">
-      <div className="container">
-        <div className="mx-auto w-full max-w-5xl">
-          {/* Enhanced Header */}
-          <div className="relative text-center mb-12 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-500">
-            {/* Background ambient glow */}
-            <div className="absolute -inset-x-20 -inset-y-8 bg-gradient-to-b from-primary/5 via-accent/5 to-transparent blur-2xl -z-10" />
+    <section className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-indigo-500/30">
+      {/* Premium Background Layer - Deep Space Variant */}
+      <div className="absolute inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
+      
+      <div className="absolute inset-0 -z-30 pointer-events-none overflow-hidden">
+         <div className="absolute top-[-10%] left-[20%] w-[700px] h-[700px] bg-indigo-500/20 rounded-full blur-[120px] animate-blob mix-blend-multiply dark:mix-blend-screen" />
+         <div className="absolute bottom-[10%] right-[-10%] w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-screen" />
+         <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-background rounded-full blur-[150px] opacity-80" />
+      </div>
 
-            {/* Icon with shimmer */}
-            <div className="relative inline-flex items-center justify-center mb-4 group">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/30 to-primary/20 blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 scale-150" />
-              <div className="relative rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 p-4 ring-1 ring-primary/20">
-                <Icon name="book" className="size-8 text-primary drop-shadow-lg" />
-              </div>
+      <div className="w-full max-w-6xl mx-auto px-6 py-24 sm:py-32 relative">
+      
+      {/* Minimalist Header */}
+      <div className="relative text-center animate-fade-in-up">
+        <div className="inline-flex items-center justify-center mb-8">
+          <div className="p-px bg-gradient-to-br from-indigo-500/20 to-transparent rounded-2xl">
+            <div className="glass-premium rounded-2xl p-4 bg-background/50">
+               <Icon name="book" className="size-8 text-indigo-600 dark:text-indigo-400" />
             </div>
-
-            {/* Main headline */}
-            <h2 id="craft_story" className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">
-              <span className="bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text text-transparent">
-                {section.header.title}
-              </span>
-            </h2>
-
-            {/* Subtitle with sparkle */}
-            <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto flex items-center justify-center gap-2">
-              <span className="animate-pulse">✨</span>
-              {section.header.subtitle}
-            </p>
           </div>
+        </div>
 
-          {/* Prompt Studio with Split Layout */}
-          <div className="relative mb-8">
-            {/* Main creator card */}
-            <div className="relative group">
-              {/* Glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-500 will-change-opacity" />
+        <h1 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 via-violet-600 to-indigo-700 dark:from-white dark:via-indigo-200 dark:to-indigo-400 animate-shimmer">
+            {section.header.title}
+          </span>
+        </h1>
+        
+        <p className="text-xl sm:text-2xl text-muted-foreground/80 max-w-2xl mx-auto font-light tracking-wide leading-relaxed mb-8 sm:mb-8">
+          {section.header.subtitle}
+        </p>
+      </div>
 
-              {/* Glassmorphic container */}
-              <div className="relative rounded-2xl lg:rounded-3xl border-2 border-border/50 bg-gradient-to-br from-background/80 to-background/40 backdrop-blur-xl shadow-2xl ring-1 ring-white/10 overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
-                  {/* LEFT: Prompt Studio (2/3 width) */}
-                  <div className="lg:col-span-2 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-border/30">
-                    <div className="flex items-center justify-between mb-4">
-                      <label className="text-sm font-semibold text-foreground/90 flex items-center gap-2">
-                        <Icon name="pencil" className="size-4 text-primary" />
-                        {section.prompt.label}
-                        <span className="ml-1 text-xs text-muted-foreground font-normal">{section.prompt.required}</span>
-                      </label>
-                      <button
-                        onClick={handleRandomPrompt}
-                        type="button"
-                        className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors group/btn"
-                      >
-                        <Icon name="sparkles" className="size-3.5 group-hover/btn:rotate-12 transition-transform" />
-                        {section.prompt.random_button}
-                      </button>
-                    </div>
-
-                    {/* Textarea with enhanced styling */}
-                    <div className="relative">
-                      {/* Inner glow effect */}
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 focus-within:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-                      <Textarea
-                        value={prompt}
-                        onChange={(e) => setPrompt(e.target.value.slice(0, 2000))}
-                        placeholder={section.prompt.placeholder}
-                        className="min-h-[200px] resize-y rounded-xl bg-background/90 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/50 text-base sm:text-lg leading-[1.65] tracking-normal transition-colors duration-300"
-                      />
-
-                      {/* Character counter */}
-                      <div className="absolute bottom-3 right-3 flex items-center gap-2 text-xs text-muted-foreground/60">
-                        <span>{prompt.length} / 2000</span>
-                      </div>
-                    </div>
-
-                    {/* Quick enhancement chips */}
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      <span className="text-xs text-muted-foreground">{section.prompt.quick_adds_label}</span>
-                      {QUICK_ADD_CHIPS.map((chip) => (
-                        <button
-                          key={chip}
-                          onClick={() => handleQuickAdd(chip)}
-                          type="button"
-                          className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 hover:border-primary/30 transition-all duration-200 hover:scale-105"
-                        >
-                          {chip}
-                        </button>
-                      ))}
-                    </div>
-
-                    {/* Language selector */}
-                    <div className="mt-4 flex flex-wrap items-center gap-3">
-                      <span className="text-xs text-muted-foreground">{section.prompt.language_label}</span>
-                      <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
-                        <SelectTrigger className="w-auto min-w-[140px] h-8 px-3 py-1 text-xs bg-background/90 border-border/50 hover:border-primary/50 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-200">
-                          <SelectValue placeholder={section.prompt.language_placeholder} />
-                        </SelectTrigger>
-                        <SelectContent className="rounded-md bg-background border-border/50 shadow-lg">
-                          {Object.entries(LANGUAGE_OPTIONS).map(([code, option]) => (
-                            <SelectItem key={code} value={code} className="text-xs py-2 px-3 hover:bg-primary/5 focus:bg-primary/10">
-                              <div className="flex items-center gap-2">
-                                <span className="text-base">{option.flag}</span>
-                                <div className="flex flex-col">
-                                  <span className="font-medium text-foreground">{option.native}</span>
-                                  <span className="text-muted-foreground opacity-75">{option.english}</span>
-                                </div>
-                              </div>
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  {/* RIGHT: Quick Presets (1/3 width) */}
-                  <div className="p-6 lg:p-8 bg-gradient-to-br from-muted/30 to-muted/10">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Icon name="lightbulb" className="size-4 text-accent" />
-                      <h3 className="text-sm font-semibold text-foreground/90">{section.presets.title}</h3>
-                    </div>
-
-                    <div className="space-y-3">
-                      {STORY_PRESETS.map((preset) => (
-                        <button
-                          key={preset.title}
-                          onClick={() => handlePresetClick(preset)}
-                          type="button"
-                          className="w-full text-left p-3 rounded-lg bg-background/80 hover:bg-background/95 border border-border/30 hover:border-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-md group"
-                        >
-                          <div className="flex items-center gap-3">
-                            <span className="text-2xl">{preset.emoji}</span>
-                            <div className="flex-1 min-w-0">
-                              <div className="text-sm font-medium text-foreground/90 group-hover:text-primary transition-colors">
-                                {preset.title}
-                              </div>
-                              <div className="text-xs text-muted-foreground truncate">
-                                {preset.desc}
-                              </div>
-                            </div>
-                            <Icon name="arrow-right" className="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+      {/* Main Studio - Crystal Monolith */}
+      <div className="relative animate-fade-in-up animation-delay-1000">
+        <div className="glass-premium rounded-[3rem] p-1 overflow-hidden shadow-2xl shadow-indigo-500/10 dark:shadow-black/20 ring-1 ring-black/5 dark:ring-white/10">
+          <div className="bg-background/40 backdrop-blur-xl rounded-[calc(3rem-4px)] grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden">
+            
+            {/* Editor (8 cols) */}
+            <div className="lg:col-span-8 p-8 sm:p-16 lg:border-r border-black/5 dark:border-white/5">
+              <div className="flex items-center justify-between mb-10">
+                <div className="flex items-center gap-4">
+                  <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">01</span>
+                  <label className="text-xl font-medium tracking-tight text-foreground">
+                    {section.prompt.label}
+                  </label>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* AI Model Selection - Card Based */}
-          <div className="mb-8">
-            {/* Section label */}
-            <div className="flex items-center gap-2 mb-4">
-              <Icon name="bot" className="size-5 text-primary" />
-              <h3 className="text-lg font-semibold text-foreground/90">{section.ai_models.title}</h3>
-            </div>
-
-            {/* Model cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {AI_MODELS.map((model) => {
-                const isSelected = selectedModel === model.id;
-                return (
-                  <button
-                    key={model.id}
-                    onClick={() => setSelectedModel(model.id)}
-                    type="button"
-                    className={`relative group text-left p-5 rounded-xl transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10 ${
-                      isSelected
-                        ? 'bg-primary/10 border-2 border-primary/60 shadow-lg shadow-primary/20'
-                        : 'bg-background/75 hover:bg-background/90 border-2 border-border/40 hover:border-primary/50'
-                    }`}
-                  >
-                    {/* Badge */}
-                    <div className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold mb-3 border ${model.badgeColor}`}>
-                      {model.badge}
-                    </div>
-
-                    {/* Model info */}
-                    <div className="flex items-start gap-3 mb-3">
-                      <span className="text-3xl">{model.icon}</span>
-                      <div className="flex-1">
-                        <h4 className="text-base font-bold text-foreground/90 mb-1">
-                          {model.name}
-                        </h4>
-                        <p className="text-xs text-muted-foreground">
-                          {model.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Stats */}
-                    <div className="flex items-center justify-between pt-3 border-t border-border/30">
-                      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <Icon name="clock" className="size-3.5" />
-                        {model.speed}
-                      </div>
-                      <div className={`text-xs font-medium transition-opacity ${
-                        isSelected ? 'text-primary opacity-100' : 'text-primary opacity-0 group-hover:opacity-100'
-                      }`}>
-                        {isSelected ? section.ai_models.selected : section.ai_models.select}
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Model comparison hint */}
-            <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground/70">
-              <Icon name="info" className="size-3.5" />
-              <span>{section.ai_models.hint}</span>
-            </div>
-          </div>
-
-          {/* Advanced Options - Enhanced */}
-          <div className="mb-8">
-            <details className="group">
-              <summary className="flex items-center justify-between cursor-pointer p-5 rounded-xl bg-gradient-to-br from-muted/40 to-muted/20 hover:from-muted/50 hover:to-muted/30 border border-border/40 hover:border-border/60 transition-all duration-300 list-none">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
-                    <Icon name="sliders" className="size-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground/90">{section.advanced_options.title}</h3>
-                    <p className="text-xs text-muted-foreground mt-0.5">{section.advanced_options.subtitle}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  {selectedOptionsCount > 0 && (
-                    <span className="text-xs font-semibold text-primary px-2.5 py-1 rounded-full bg-primary/20 border border-primary/30">
-                      {selectedOptionsCount} {locale === 'zh' ? '项已选' : locale === 'ja' ? '選択済み' : locale === 'ko' ? '선택됨' : selectedOptionsCount === 1 ? 'selected' : 'selected'}
-                    </span>
-                  )}
-                  <span className="text-xs text-muted-foreground px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
-                    {section.advanced_options.optional_badge}
-                  </span>
-                  <Icon name="chevron-down" className="size-5 text-muted-foreground group-open:rotate-180 transition-transform duration-300" />
-                </div>
-              </summary>
-
-              {/* Expanded content */}
-              <div className="mt-4 p-6 rounded-xl bg-background/60 border border-border/30">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">{section.advanced_options.format.label}</label>
-                <Select value={selectedFormat} onValueChange={handleFormatChange}>
-                  <SelectTrigger className="w-full rounded-md bg-background">
-                    <SelectValue placeholder={section.advanced_options.format.placeholder} />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-md bg-background">
-                  <SelectItem value="none">{section.advanced_options.format.options.none}</SelectItem>
-                    <SelectItem value="prose">{section.advanced_options.format.options.prose}</SelectItem>
-                    <SelectItem value="screenplay">{section.advanced_options.format.options.screenplay}</SelectItem>
-                    <SelectItem value="short-story">{section.advanced_options.format.options.short_story}</SelectItem>
-                    <SelectItem value="letter">{section.advanced_options.format.options.letter}</SelectItem>
-                    <SelectItem value="diary">{section.advanced_options.format.options.diary}</SelectItem>
-                    <SelectItem value="fairy-tale">{section.advanced_options.format.options.fairy_tale}</SelectItem>
-                    <SelectItem value="myth">{section.advanced_options.format.options.myth}</SelectItem>
-                    <SelectItem value="fable">{section.advanced_options.format.options.fable}</SelectItem>
-                    <SelectItem value="poem">{section.advanced_options.format.options.poem}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">{section.advanced_options.length.label}</label>
-                <Select value={selectedLength} onValueChange={handleLengthChange}>
-                  <SelectTrigger className="w-full rounded-md bg-background">
-                    <SelectValue placeholder={section.advanced_options.length.placeholder} />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-md bg-background">
-                  <SelectItem value="none">{section.advanced_options.length.options.none}</SelectItem>
-                    <SelectItem value="short">{section.advanced_options.length.options.short}</SelectItem>
-                    <SelectItem value="medium">{section.advanced_options.length.options.medium}</SelectItem>
-                    <SelectItem value="long">{section.advanced_options.length.options.long}</SelectItem>
-                    <SelectItem value="extend">{section.advanced_options.length.options.extend}</SelectItem>
-                    <SelectItem value="epic-short">{section.advanced_options.length.options.epic_short}</SelectItem>
-                    <SelectItem value="novella-lite">{section.advanced_options.length.options.novella_lite}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">{section.advanced_options.genre.label}</label>
-                <Select value={selectedGenre} onValueChange={handleGenreChange}>
-                  <SelectTrigger className="w-full rounded-md bg-background">
-                    <SelectValue placeholder={section.advanced_options.genre.placeholder} />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-md bg-background">
-                  <SelectItem value="none">{section.advanced_options.genre.options.none}</SelectItem>
-                    <SelectItem value="fantasy">{section.advanced_options.genre.options.fantasy}</SelectItem>
-                    <SelectItem value="science-fiction">{section.advanced_options.genre.options.science_fiction}</SelectItem>
-                    <SelectItem value="romance">{section.advanced_options.genre.options.romance}</SelectItem>
-                    <SelectItem value="thriller">{section.advanced_options.genre.options.thriller}</SelectItem>
-                    <SelectItem value="drama">{section.advanced_options.genre.options.drama}</SelectItem>
-                    <SelectItem value="comedy">{section.advanced_options.genre.options.comedy}</SelectItem>
-                    <SelectItem value="action">{section.advanced_options.genre.options.action}</SelectItem>
-                    <SelectItem value="western">{section.advanced_options.genre.options.western}</SelectItem>
-                    <SelectItem value="crime">{section.advanced_options.genre.options.crime}</SelectItem>
-                    <SelectItem value="science">{section.advanced_options.genre.options.science}</SelectItem>
-                    <SelectItem value="fiction">{section.advanced_options.genre.options.fiction}</SelectItem>
-                    <SelectItem value="non-fiction">{section.advanced_options.genre.options.non_fiction}</SelectItem>
-                    <SelectItem value="mystery">{section.advanced_options.genre.options.mystery}</SelectItem>
-                    <SelectItem value="biography">{section.advanced_options.genre.options.biography}</SelectItem>
-                    <SelectItem value="self-help">{section.advanced_options.genre.options.self_help}</SelectItem>
-                    <SelectItem value="horror">{section.advanced_options.genre.options.horror}</SelectItem>
-                    <SelectItem value="adventure">{section.advanced_options.genre.options.adventure}</SelectItem>
-                    <SelectItem value="historical">{section.advanced_options.genre.options.historical}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">{section.advanced_options.perspective.label}</label>
-                <Select value={selectedPerspective} onValueChange={handlePerspectiveChange}>
-                  <SelectTrigger className="w-full rounded-md bg-background">
-                    <SelectValue placeholder={section.advanced_options.perspective.placeholder} />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-md bg-background">
-                    <SelectItem value="none">{section.advanced_options.perspective.options.none}</SelectItem>
-                    <SelectItem value="first-person">{section.advanced_options.perspective.options.first_person}</SelectItem>
-                    <SelectItem value="second-person">{section.advanced_options.perspective.options.second_person}</SelectItem>
-                    <SelectItem value="third-person-limited">{section.advanced_options.perspective.options.third_person_limited}</SelectItem>
-                    <SelectItem value="third-person-omniscient">{section.advanced_options.perspective.options.third_person_omniscient}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">{section.advanced_options.audience.label}</label>
-                <Select value={selectedAudience} onValueChange={handleAudienceChange}>
-                  <SelectTrigger className="w-full rounded-md bg-background">
-                    <SelectValue placeholder={section.advanced_options.audience.placeholder} />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-md bg-background">
-                  <SelectItem value="none">{section.advanced_options.audience.options.none}</SelectItem>
-                    <SelectItem value="kids">{section.advanced_options.audience.options.kids}</SelectItem>
-                    <SelectItem value="pre-teen">{section.advanced_options.audience.options.pre_teen}</SelectItem>
-                    <SelectItem value="teens">{section.advanced_options.audience.options.teens}</SelectItem>
-                    <SelectItem value="young-adults">{section.advanced_options.audience.options.young_adults}</SelectItem>
-                    <SelectItem value="adults">{section.advanced_options.audience.options.adults}</SelectItem>
-                    <SelectItem value="mature-audience">{section.advanced_options.audience.options.mature_audience}</SelectItem>
-                    <SelectItem value="general">{section.advanced_options.audience.options.general}</SelectItem>
-                    <SelectItem value="families">{section.advanced_options.audience.options.families}</SelectItem>
-                    <SelectItem value="educators">{section.advanced_options.audience.options.educators}</SelectItem>
-                    <SelectItem value="writers-author">{section.advanced_options.audience.options.writers_author}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm text-muted-foreground">{section.advanced_options.tone.label}</label>
-                <Select value={selectedTone} onValueChange={handleToneChange}>
-                  <SelectTrigger className="w-full rounded-md bg-background">
-                    <SelectValue placeholder={section.advanced_options.tone.placeholder} />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-md bg-background">
-                  <SelectItem value="none">{section.advanced_options.tone.options.none}</SelectItem>
-                    <SelectItem value="hopeful">{section.advanced_options.tone.options.hopeful}</SelectItem>
-                    <SelectItem value="dark">{section.advanced_options.tone.options.dark}</SelectItem>
-                    <SelectItem value="romantic">{section.advanced_options.tone.options.romantic}</SelectItem>
-                    <SelectItem value="suspenseful">{section.advanced_options.tone.options.suspenseful}</SelectItem>
-                    <SelectItem value="inspirational">{section.advanced_options.tone.options.inspirational}</SelectItem>
-                    <SelectItem value="funny">{section.advanced_options.tone.options.funny}</SelectItem>
-                    <SelectItem value="dramatic">{section.advanced_options.tone.options.dramatic}</SelectItem>
-                    <SelectItem value="whimsical">{section.advanced_options.tone.options.whimsical}</SelectItem>
-                    <SelectItem value="tragic">{section.advanced_options.tone.options.tragic}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-                </div>
-              </div>
-            </details>
-          </div>
-
-          {/* Story History Dropdown */}
-          <div className="mb-6 flex justify-center">
-            <StoryHistoryDropdown onLoadStory={handleLoadStory} locale={locale} />
-          </div>
-
-          {/* Premium Generate Button */}
-          <div>
-            <div className="flex flex-col items-center gap-4">
-              {/* Main generate button with glow effect */}
-              <div className="relative group">
-                {/* Animated glow */}
-                <div className="absolute -inset-2 bg-gradient-to-r from-primary via-accent to-primary opacity-75 blur-xl transition-opacity duration-500 group-hover:opacity-100 animate-pulse anim-medium rounded-full will-change-opacity" />
-
-                <Button
-                  onClick={handleGenerateClick}
-                  disabled={isGenerating || !prompt.trim() || !selectedModel}
-                  className="relative w-full sm:w-auto min-w-[280px] h-14 rounded-full bg-gradient-to-r from-primary via-primary/90 to-primary text-primary-foreground text-base font-bold shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                <button
+                  onClick={handleRandomPrompt}
+                  type="button"
+                  className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/5 dark:border-white/10 text-sm font-medium transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="relative">
-                      <Icon name={isGenerating ? "RiLoader4Line" : "RiMagicLine"} className={`size-5 motion-safe:group-hover:rotate-12 transition-transform duration-300 ${isGenerating ? "animate-spin" : ""}`} />
-                      <div className="absolute inset-0 bg-white/50 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                    <span>{isGenerating ? section.generate_button.generating : section.generate_button.text}</span>
-                    {!isGenerating && <Icon name="RiArrowRightLine" className="size-5 group-hover:translate-x-1 transition-transform duration-300" />}
-                  </div>
-                </Button>
+                  <Icon name="sparkles" className="size-4 text-indigo-500 group-hover:rotate-12 transition-transform" />
+                  <span className="text-muted-foreground group-hover:text-foreground transition-colors">{section.prompt.random_button}</span>
+                </button>
               </div>
 
-              {/* Info below button */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-sm text-muted-foreground">
-                {/* Credit cost */}
-                <div className="flex items-center gap-2">
-                  <div className="p-1.5 rounded-md bg-primary/10 border border-primary/20">
-                    <Icon name="coins" className="size-3.5 text-primary" />
-                  </div>
-                  <span>
-                    <span className="font-semibold text-foreground">{section.generate_button.info.credit}</span> {section.generate_button.info.credit_text}
-                  </span>
-                </div>
-
-                {/* Divider */}
-                <div className="hidden sm:block h-4 w-px bg-border" />
-
-                {/* Generation time */}
-                <div className="flex items-center gap-2">
-                  <Icon name="clock" className="size-3.5 text-muted-foreground" />
-                  <span>{section.generate_button.info.time}</span>
-                </div>
-
-                {/* Divider */}
-                <div className="hidden sm:block h-4 w-px bg-border" />
-
-                {/* Quality indicator */}
-                <div className="flex items-center gap-2">
-                  <Icon name="badge-check" className="size-3.5 text-green-500" />
-                  <span className="text-green-600 dark:text-green-400 font-medium">{section.generate_button.info.quality}</span>
+              <div className="relative group mb-8">
+                <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
+                <Textarea
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value.slice(0, 2000))}
+                  placeholder={section.prompt.placeholder}
+                  className="relative w-full min-h-[350px] bg-transparent border-0 border-b border-black/10 dark:border-white/10 focus:border-indigo-500/50 focus:ring-0 rounded-none px-0 text-2xl sm:text-3xl font-light leading-snug placeholder:text-muted-foreground/30 text-foreground resize-none transition-all duration-300"
+                  style={{ boxShadow: 'none' }}
+                />
+                <div className="absolute bottom-0 right-0 py-2 text-xs font-medium text-muted-foreground/40 tracking-widest uppercase">
+                  {prompt.length} / 2000 CHARS
                 </div>
               </div>
 
-              {/* Tips or help text */}
-              <div className="mt-2 text-center text-xs text-muted-foreground/70 max-w-md">
-                <Icon name="RiLightbulbLine" className="size-3.5 inline mr-1" />
-                {section.generate_button.tip}
+              {/* Quick Chips - Refined */}
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/50 mr-2">
+                  {section.prompt.quick_adds_label}
+                </span>
+                {QUICK_ADD_CHIPS.map((chip, i) => (
+                  <button
+                    key={chip}
+                    onClick={() => handleQuickAdd(chip)}
+                    className="px-4 py-1.5 rounded-full text-xs font-medium bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/5 dark:border-white/10 text-muted-foreground hover:text-foreground transition-all duration-300"
+                  >
+                    + {chip}
+                  </button>
+                ))}
+              </div>
+
+              {/* Language Bar - Minimal */}
+              <div className="mt-12 flex items-center justify-between">
+                 <div className="flex items-center gap-4">
+                   <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">02</span>
+                   <span className="text-sm font-medium text-muted-foreground">{section.prompt.language_label}</span>
+                   <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
+                     <SelectTrigger className="w-auto border-0 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full gap-2 px-4 text-base font-medium focus:ring-0 text-foreground">
+                       <SelectValue />
+                     </SelectTrigger>
+                     <SelectContent className="glass-premium rounded-2xl p-2 min-w-[200px] bg-background/95 backdrop-blur-xl border-black/5 dark:border-white/10">
+                       {Object.entries(LANGUAGE_OPTIONS).map(([code, option]) => (
+                         <SelectItem key={code} value={code} className="rounded-xl my-1 cursor-pointer focus:bg-black/5 dark:focus:bg-white/10">
+                           <span className="mr-3 text-lg opacity-80">{option.flag}</span>
+                           <span className="font-medium tracking-wide">{option.native}</span>
+                         </SelectItem>
+                       ))}
+                     </SelectContent>
+                   </Select>
+                 </div>
+              </div>
+            </div>
+
+            {/* Sidebar (4 cols) */}
+            <div className="lg:col-span-4 bg-black/5 dark:bg-black/20 backdrop-blur-sm p-8 sm:p-12 border-t lg:border-t-0 lg:border-l border-black/5 dark:border-white/5">
+              <div className="sticky top-12 space-y-10">
+                
+                {/* History */}
+                <div className="flex items-center justify-between pb-8 border-b border-black/5 dark:border-white/5">
+                   <h3 className="text-xs font-bold text-muted-foreground/50 uppercase tracking-[0.2em]">
+                     {locale === 'zh' ? '历史记录' : 'HISTORY'}
+                   </h3>
+                   <StoryHistoryDropdown 
+                     onLoadStory={handleLoadStory}
+                     locale={locale}
+                   />
+                </div>
+
+                {/* Presets */}
+                <div>
+                  <h3 className="text-xs font-bold text-muted-foreground/50 uppercase tracking-[0.2em] mb-6">
+                    {section.presets.title}
+                  </h3>
+                  <div className="space-y-4">
+                    {STORY_PRESETS.map((preset) => (
+                      <button
+                        key={preset.title}
+                        onClick={() => handlePresetClick(preset)}
+                        className="group w-full text-left p-5 rounded-2xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/20 transition-all duration-300 shadow-sm dark:shadow-none"
+                      >
+                        <div className="flex items-start gap-4">
+                          <span className="text-2xl opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 filter grayscale group-hover:grayscale-0">
+                            {preset.emoji}
+                          </span>
+                          <div>
+                            <div className="font-medium text-foreground/80 group-hover:text-foreground transition-colors tracking-wide">
+                              {preset.title}
+                            </div>
+                            <div className="text-xs text-muted-foreground/60 mt-1 font-light tracking-wide">
+                              {preset.desc}
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Advanced Options */}
+                <div className="pt-8 border-t border-black/5 dark:border-white/5">
+                   <details className="group">
+                     <summary className="list-none flex items-center justify-between cursor-pointer py-2">
+                       <div className="flex items-center gap-3">
+                         <Icon name="sliders" className="size-4 text-muted-foreground" />
+                         <span className="text-sm font-semibold tracking-wide text-foreground/80 group-hover:text-foreground transition-colors">
+                           {section.advanced_options.title}
+                         </span>
+                       </div>
+                       <Icon name="chevron-down" className="size-4 text-muted-foreground/50 group-open:rotate-180 transition-transform duration-300" />
+                     </summary>
+                     
+                     <div className="mt-6 space-y-5 animate-fade-in-down">
+                        {[
+                          { label: section.advanced_options.format.label, value: selectedFormat, setter: handleFormatChange, opts: section.advanced_options.format.options },
+                          { label: section.advanced_options.genre.label, value: selectedGenre, setter: handleGenreChange, opts: section.advanced_options.genre.options },
+                          { label: section.advanced_options.tone.label, value: selectedTone, setter: handleToneChange, opts: section.advanced_options.tone.options },
+                          { label: section.advanced_options.perspective.label, value: selectedPerspective, setter: handlePerspectiveChange, opts: section.advanced_options.perspective.options },
+                          { label: section.advanced_options.audience.label, value: selectedAudience, setter: handleAudienceChange, opts: section.advanced_options.audience.options },
+                          { label: section.advanced_options.length.label, value: selectedLength, setter: handleLengthChange, opts: section.advanced_options.length.options }
+                        ].map((field, i) => (
+                          <div key={i} className="space-y-2">
+                            <label className="text-[10px] font-bold text-muted-foreground/40 uppercase tracking-widest ml-1">{field.label}</label>
+                            <Select value={field.value} onValueChange={field.setter}>
+                              <SelectTrigger className="w-full bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 rounded-xl text-sm hover:bg-white/60 dark:hover:bg-white/10 transition-colors focus:ring-0 text-foreground">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
+                                {Object.entries(field.opts).map(([k, v]) => (
+                                  <SelectItem key={k} value={k === 'funny' ? 'humorous' : k} className="text-sm cursor-pointer focus:bg-black/5 dark:focus:bg-white/10">{v}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        ))}
+                     </div>
+                   </details>
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Generated Story Display Area */}
-          {(isGenerating || generatedStory) && (
-            <div className="mt-12 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-500">
-              <div className="relative group">
-                {/* Glow effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-500 will-change-opacity" />
-
-                {/* Story container */}
-                <div className="relative rounded-2xl lg:rounded-3xl border-2 border-border/50 bg-gradient-to-br from-background/95 to-background/80 backdrop-blur-sm shadow-2xl ring-1 ring-white/10 overflow-hidden">
-                  {/* Header */}
-                  <div className="flex items-center justify-between p-6 border-b border-border/30 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
-                        <Icon name="RiBookOpenLine" className="size-5 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-foreground">{section.output.title}</h3>
-                        <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                          <span>
-                            {isGenerating ? section.output.status_writing : section.output.status_complete}
-                          </span>
-                          {/* Word count display */}
-                          {generatedStory && (
-                            <>
-                              <span className="text-muted-foreground/40">•</span>
-                              <div className="flex items-center gap-1.5">
-                                <Icon name="RiFileTextLine" className="size-3.5" />
-                                <span className="font-semibold text-foreground">
-                                  {wordCount.toLocaleString()}
-                                </span>
-                                <span>{section.output.word_count.replace('{count}', String(wordCount))}</span>
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                    {generatedStory && !isGenerating && (
-                      <div className="flex items-center gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => {
-                            navigator.clipboard.writeText(generatedStory);
-                            toast.success(section.toasts.success_copied);
-                          }}
-                          className="text-xs"
-                        >
-                          <Icon name="RiFileCopyLine" className="size-4 mr-1" />
-                          {section.output.button_copy}
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={handleExportPdf}
-                          disabled={isExportingPdf}
-                          className="text-xs"
-                        >
-                          <Icon name={isExportingPdf ? "RiLoader4Line" : "RiDownloadLine"} className={`size-4 mr-1 ${isExportingPdf ? "animate-spin" : ""}`} />
-                          {isExportingPdf ? section.output.button_exporting_pdf : section.output.button_export_pdf}
-                        </Button>
-                        <StoryShareButtons
-                          storyTitle={prompt.substring(0, 50)}
-                          wordCount={wordCount}
-                          model={AI_MODELS.find(m => m.id === selectedModel)?.name || ''}
-                          locale={locale}
-                          inviteCode={user?.invite_code}
-                          translations={section.share}
-                          className="text-xs"
-                        />
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={handleGenerateClick}
-                          className="text-xs"
-                        >
-                          <Icon name="RiRefreshLine" className="size-4 mr-1" />
-                          {section.output.button_regenerate}
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Story content */}
-                  <div className="p-6 lg:p-8">
-                    {isGenerating && !generatedStory ? (
-                      <div className="flex flex-col items-center justify-center py-12 gap-4">
-                        <div className="relative">
-                          <div className="size-16 rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <Icon name="RiQuillPenLine" className="size-6 text-primary" />
-                          </div>
-                        </div>
-                        <p className="text-sm text-muted-foreground">{section.output.loading}</p>
-                      </div>
-                    ) : (
-                      <div className="prose prose-slate dark:prose-invert max-w-none">
-                        <div className="text-base sm:text-lg leading-[1.65] whitespace-pre-wrap text-foreground/90 tracking-normal">
-                          {generatedStory}
-                          {isGenerating && (
-                            <span className="inline-block w-2 h-5 ml-1 bg-primary animate-pulse" />
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
-    </section>
+
+      {/* Model Selection - Obsidian Cards */}
+      <div className="space-y-10 animate-fade-in-up animation-delay-2000">
+        <div className="flex items-center gap-4 mt-[30px]">
+          <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">03</span>
+          <h3 className="text-xl font-medium text-foreground tracking-tight">
+             {section.ai_models.title}
+          </h3>
+          <div className="h-px flex-1 bg-gradient-to-r from-black/10 dark:from-white/10 to-transparent" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {AI_MODELS.map((model) => {
+            const isSelected = selectedModel === model.id;
+            return (
+              <button
+                key={model.id}
+                onClick={() => setSelectedModel(model.id)}
+                className={`
+                  relative group p-8 rounded-[2rem] text-left transition-all duration-500
+                  ${isSelected 
+                    ? 'bg-indigo-50 dark:bg-black/60 ring-1 ring-indigo-500 dark:ring-white/20 shadow-2xl shadow-indigo-500/20 dark:shadow-black/50' 
+                    : 'bg-white/40 dark:bg-white/5 border border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10'
+                  }
+                `}
+              >
+                <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
+                   {isSelected && <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-indigo-500/20 blur-[80px]" />}
+                </div>
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-start justify-between mb-8">
+                    <span className={`text-4xl ${isSelected ? 'opacity-100' : 'opacity-50 grayscale group-hover:grayscale-0 transition-all'}`}>
+                      {model.icon}
+                    </span>
+                    {isSelected && (
+                      <div className="size-6 rounded-full bg-indigo-500 flex items-center justify-center">
+                        <Icon name="check" className="size-3.5 text-white" />
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="mt-auto space-y-3">
+                    <h4 className={`text-lg font-bold tracking-tight ${isSelected ? 'text-indigo-900 dark:text-white' : 'text-foreground/70 group-hover:text-foreground'}`}>
+                      {model.name}
+                    </h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed font-medium">
+                      {model.description}
+                    </p>
+                    <div className="flex items-center gap-2 pt-2">
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${model.badgeColor}`}>
+                        {model.badge}
+                      </span>
+                      <span className="text-[10px] text-muted-foreground/60 font-medium">
+                        {model.speed}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Generate Button */}
+      <div className="flex justify-center pt-8 animate-fade-in-up animation-delay-3000">
+         <div className="relative group w-full max-w-md">
+          <Button
+            onClick={handleGenerateClick}
+            className="relative w-full h-20 rounded-full overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-[length:200%_auto] animate-gradient text-white shadow-2xl shadow-indigo-500/40 hover:shadow-indigo-500/60 hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 text-xl font-bold tracking-wide border-none group/btn"
+          >
+             {/* Shimmer Overlay */}
+             <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:250%_250%] animate-shimmer pointer-events-none" />
+             
+             {/* Noise Texture */}
+             <div className="absolute inset-0 bg-noise opacity-20 mix-blend-overlay pointer-events-none" />
+
+             <div className="relative z-10 flex items-center justify-center gap-3">
+                {isGenerating ? (
+                  <>
+                    <div className="size-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span className="animate-pulse">{section.generate_button.generating}</span>
+                  </>
+                ) : (
+                  <>
+                    <Icon name="sparkles" className="size-6 group-hover/btn:animate-pulse text-indigo-100" />
+                    <span>{section.generate_button.text}</span>
+                    <Icon name="arrow-right" className="size-5 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-300" />
+                  </>
+                )}
+             </div>
+           </Button>
+           
+           {/* Usage Hints */}
+           <div className="mt-8 space-y-5 animate-fade-in-up animation-delay-3000">
+             {/* Features Row */}
+             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-muted-foreground">
+               <div className="flex items-center gap-2">
+                 <div className="size-2 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.5)] animate-pulse" />
+                 <span><strong className="text-foreground/80">{locale === 'zh' ? '免费额度' : 'Free Credit'}</strong> per story</span>
+               </div>
+               <div className="hidden sm:block w-px h-3 bg-black/10 dark:bg-white/10" />
+               <div>
+                 {locale === 'zh' ? '预计耗时: ~10秒' : 'Estimated: ~10 seconds'}
+               </div>
+               <div className="hidden sm:block w-px h-3 bg-black/10 dark:bg-white/10" />
+               <div className="text-emerald-600 dark:text-emerald-400 font-semibold">
+                 {locale === 'zh' ? '优质内容' : 'Premium Quality'}
+               </div>
+             </div>
+
+             {/* Pro Tip */}
+             <div className="flex items-start sm:items-center justify-center gap-2 text-xs text-muted-foreground/70 max-w-lg mx-auto text-center leading-relaxed px-4">
+               <Icon name="lightbulb" className="size-3.5 text-amber-500 shrink-0 mt-0.5 sm:mt-0" />
+               <span>
+                 <span className="font-semibold text-foreground/80">{locale === 'zh' ? '提示:' : 'Tip:'}</span> {locale === 'zh' ? '提供具体的提示词可以获得更好的结果。您可以随时优化并重新生成！' : 'Be specific in your prompt for better results. You can always refine and regenerate!'}
+               </span>
+             </div>
+           </div>
+         </div>
+      </div>
+
+      {/* Generated Story Output */}
+      {(isGenerating || generatedStory) && (
+        <div className="mt-24 animate-fade-in-up">
+          <div className="glass-premium rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-black/5 dark:ring-white/10">
+            {/* Header */}
+            <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-10 border-b border-black/5 dark:border-white/5 bg-white/40 dark:bg-white/5 gap-6">
+              <div className="flex items-center gap-5">
+                 <div className="p-3 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-black/5 dark:border-white/10">
+                   <Icon name="book-open" className="size-6 text-indigo-600 dark:text-indigo-400" />
+                 </div>
+                 <div>
+                    <h3 className="text-xl font-bold tracking-tight text-foreground">{section.output.title}</h3>
+                    {generatedStory && (
+                      <div className="text-sm text-muted-foreground/60 font-light mt-1">
+                        {wordCount.toLocaleString()} words • {section.output.status_complete}
+                      </div>
+                    )}
+                 </div>
+              </div>
+              
+              {generatedStory && !isGenerating && (
+                <div className="flex items-center gap-3 flex-wrap justify-center">
+                   <Button variant="ghost" size="sm" onClick={handleGenerateClick} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5">
+                     <Icon name="refresh-cw" className="size-4 mr-2" /> {locale === 'zh' ? '重新生成' : 'Regenerate'}
+                   </Button>
+
+                   <StoryShareButtons 
+                     storyTitle={section.output.title}
+                     wordCount={wordCount}
+                     model={AI_MODELS.find(m => m.id === selectedModel)?.name || 'AI'}
+                     locale={locale}
+                     inviteCode={user?.invite_code}
+                     translations={shareTranslations}
+                   />
+
+                   <div className="w-px h-6 bg-black/10 dark:bg-white/10 mx-1" />
+
+                   <Button variant="ghost" size="sm" onClick={() => { navigator.clipboard.writeText(generatedStory); toast.success(section.toasts.success_copied); }} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5">
+                     <Icon name="copy" className="size-4 mr-2" /> {section.output.button_copy}
+                   </Button>
+                   <Button variant="ghost" size="sm" onClick={handleExportPdf} disabled={isExportingPdf} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5">
+                     <Icon name="download" className="size-4 mr-2" /> PDF
+                   </Button>
+                </div>
+              )}
+            </div>
+
+            {/* Content */}
+            <div className="p-8 md:p-16 bg-white/20 dark:bg-black/20 min-h-[400px]">
+              {isGenerating && !generatedStory ? (
+                <div className="h-full flex flex-col items-center justify-center gap-6 py-20">
+                   <div className="relative size-20">
+                     <div className="absolute inset-0 rounded-full border-2 border-indigo-500/20" />
+                     <div className="absolute inset-0 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
+                     <Icon name="pen-tool" className="absolute inset-0 m-auto size-6 text-indigo-500 animate-pulse" />
+                   </div>
+                   <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground/60 animate-pulse">
+                     {section.output.loading}
+                   </p>
+                </div>
+              ) : (
+                <div className="prose prose-lg md:prose-xl dark:prose-invert max-w-4xl mx-auto font-serif leading-loose tracking-wide text-foreground">
+                   <div className="whitespace-pre-wrap">
+                      {generatedStory}
+                      {isGenerating && <span className="inline-block w-2 h-6 ml-1 bg-indigo-500 animate-pulse" />}
+                   </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+    </div>
+  </section>
   );
 }

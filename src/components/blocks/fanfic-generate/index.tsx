@@ -537,37 +537,33 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
 
               {/* Preset Work Selection */}
               {sourceType === 'preset' && (
-                <div className="space-y-4">
-                  <Select value={selectedPresetWork} onValueChange={handlePresetWorkChange}>
-                    <SelectTrigger>
-                      <SelectValue placeholder={section.source.preset_placeholder} />
-                    </SelectTrigger>
-                    <SelectContent>
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="font-semibold mb-3 text-sm">{section.source.preset_label}</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {PRESET_WORKS.map((work) => (
-                        <SelectItem key={work.id} value={work.id}>
-                          {getWorkName(work, locale)}
-                        </SelectItem>
+                        <button
+                          key={work.id}
+                          type="button"
+                          className={cn(
+                            "p-4 rounded-lg border transition-all text-left",
+                            selectedPresetWork === work.id
+                              ? "border-primary bg-primary/10"
+                              : "bg-card hover:border-primary/30"
+                          )}
+                          onClick={() => handlePresetWorkChange(work.id)}
+                        >
+                          <div className="font-medium text-sm line-clamp-1">
+                            {getWorkName(work, locale)}
+                          </div>
+                          <div className="text-xs text-muted-foreground">
+                            {work.popularPairings.length} pairings
+                          </div>
+                        </button>
                       ))}
-                    </SelectContent>
-                  </Select>
+                    </div>
+                  </div>
 
-                  {/* Show selected work details */}
-                  {selectedPresetWork && (() => {
-                    const work = getWorkById(selectedPresetWork);
-                    return work ? (
-                      <div className="p-4 rounded-lg bg-muted/50 space-y-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-medium px-2 py-1 rounded-md bg-primary/10 text-primary">
-                            {section.work_categories[work.category as keyof typeof section.work_categories]}
-                          </span>
-                        </div>
-                        <p className="text-sm text-muted-foreground">{work.description}</p>
-                        <div className="text-xs text-muted-foreground">
-                          <strong>{section.work_details.worldview_label}</strong>{work.worldview}
-                        </div>
-                      </div>
-                    ) : null;
-                  })()}
                 </div>
               )}
 
@@ -584,33 +580,6 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
                       className="mt-2"
                       rows={2}
                     />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="custom-worldview">{section.source.worldview_label}</Label>
-                    <Textarea
-                      id="custom-worldview"
-                      placeholder={section.source.worldview_placeholder}
-                      value={customWorldview}
-                      onChange={(e) => setCustomWorldview(e.target.value)}
-                      className="mt-2"
-                      rows={3}
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="custom-characters">{section.source.characters_label}</Label>
-                    <Textarea
-                      id="custom-characters"
-                      placeholder={section.source.characters_placeholder}
-                      value={customCharacters}
-                      onChange={(e) => setCustomCharacters(e.target.value)}
-                      className="mt-2"
-                      rows={2}
-                    />
-                    <p className="text-xs text-muted-foreground mt-1">
-                      {section.source.characters_hint}
-                    </p>
                   </div>
                 </div>
               )}

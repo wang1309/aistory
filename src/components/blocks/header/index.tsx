@@ -39,7 +39,7 @@ export default function Header({ header }: { header: HeaderType }) {
   }
 
   return (
-    <section className="py-3">
+    <section className="py-3 relative z-50">
       <div className="container">
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">

@@ -17,9 +17,9 @@ import { PoemStorage } from "@/lib/poem-storage";
 import { getDefaultOptions, getRecommendedModel, getSavedMode, saveMode } from "@/lib/poem-defaults";
 import { ModeToggle } from "@/components/blocks/poem-generate/mode-toggle";
 import type { PoemData, PoemAnalysis } from "@/types/poem";
-import ReactMarkdown from "react-markdown";
 import PoemHistoryDropdown from "@/components/poem-history-dropdown";
 import PoemBreadcrumb from "./breadcrumb";
+import { cn } from "@/lib/utils";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -135,6 +135,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const [isReading, setIsReading] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [readingSpeed, setReadingSpeed] = useState(1.0);
+  const [hasSpeechSupport, setHasSpeechSupport] = useState(false);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   // Use ref to store latest options to avoid stale closure
@@ -341,6 +342,13 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
     }
   }, [isReading, handleStopReading, handleStartReading]);
 
+  // Detect speech synthesis support on client only
+  useEffect(() => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      setHasSpeechSupport(true);
+    }
+  }, []);
+
   // ===== LOAD POEM FROM HISTORY =====
 
   const handleLoadPoem = useCallback((poem: PoemData) => {
@@ -450,35 +458,25 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
           return;
         }
 
-        if (!response.body) {
-          toast.error(section.toasts.error_no_stream);
-          return;
-        }
+        // Read the entire response as text and extract poem chunks.
+        // This is more robust than client-side streaming and ensures we always
+        // set generatedPoem when the API returns content.
+        const rawText = await response.text();
+        console.log("Raw poem response (first 300 chars):", rawText.slice(0, 300));
 
-        // Process streaming response
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
         let accumulatedPoem = "";
+        const lines = rawText.split("\n");
 
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
+        for (const line of lines) {
+          if (line.startsWith('0:"')) {
+            const content = line.slice(3, -1)
+              .replace(/\\n/g, '\n')
+              .replace(/\\"/g, '"')
+              .replace(/\\t/g, '\t')
+              .replace(/\\r/g, '\r')
+              .replace(/\\\\/g, '\\');
 
-          const chunk = decoder.decode(value);
-          const lines = chunk.split("\n");
-
-          for (const line of lines) {
-            if (line.startsWith('0:"')) {
-              const content = line.slice(3, -1)
-                .replace(/\\n/g, '\n')
-                .replace(/\\"/g, '"')
-                .replace(/\\t/g, '\t')
-                .replace(/\\r/g, '\r')
-                .replace(/\\\\/g, '\\');
-
-              accumulatedPoem += content;
-              setGeneratedPoem(accumulatedPoem);
-            }
+            accumulatedPoem += content;
           }
         }
 
@@ -486,6 +484,12 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
           toast.error(section.toasts.error_no_content);
           return;
         }
+
+        console.log("=== SETTING GENERATED POEM ===");
+        console.log("Accumulated poem length:", accumulatedPoem.length);
+        console.log("Accumulated poem content:", accumulatedPoem);
+        setGeneratedPoem(accumulatedPoem);
+        console.log("=== POEM STATE UPDATED ===");
 
         // Success!
         toast.success(section.toasts.success_generated);
@@ -539,558 +543,587 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const lineCount = calculateLineCount(generatedPoem);
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4">
-      {/* Breadcrumb Navigation */}
-      <div className="mb-6">
-        <PoemBreadcrumb
-          homeText={t('ui.breadcrumb_home')}
-          currentText={t('ui.breadcrumb_current')}
-        />
+    <div className="min-h-screen relative overflow-hidden bg-background selection:bg-pink-500/30">
+      {/* Premium Background Layer */}
+      <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
+      
+      <div className="fixed inset-0 -z-30 pointer-events-none overflow-hidden">
+         <div className="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-pink-900/20 rounded-full blur-[120px] animate-blob mix-blend-screen" />
+         <div className="absolute bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-screen" />
+         <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-background rounded-full blur-[150px] opacity-80" />
       </div>
 
-      {/* Header */}
-      <div className="text-center mb-12">
-        <div className="flex items-center justify-center gap-4 mb-4">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            {section.header.title}
-          </h1>
-          <ModeToggle
-            advancedMode={advancedMode}
-            onToggle={setAdvancedMode}
-            labels={section.mode}
-          />
+      <div className="w-full max-w-5xl mx-auto px-6 pt-16 sm:pt-20 pb-24 sm:pb-32 relative">
+        {/* Breadcrumb Navigation */}
+        <div className="mb-10 flex justify-start animate-fade-in-up">
+          <div className="glass-premium px-5 py-2 rounded-full">
+            <PoemBreadcrumb
+              homeText={t('ui.breadcrumb_home')}
+              currentText={t('ui.breadcrumb_current')}
+            />
+          </div>
         </div>
-        <p className="text-xl text-muted-foreground">
-          {section.header.subtitle}
-        </p>
-      </div>
 
-      {/* Main Content - Single Column */}
-      <div className="space-y-8">
-
-        {/* Poem Type Tabs */}
-        <div className="space-y-3">
-          <Tabs value={selectedPoemType} onValueChange={(v) => setSelectedPoemType(v as any)} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 gap-2 h-auto p-1 bg-muted">
-              <TabsTrigger value="modern" className="text-sm py-3 data-[state=active]:bg-background">
-                {section.poem_types.tabs.modern.name}
-              </TabsTrigger>
-              <TabsTrigger value="classical" className="text-sm py-3 data-[state=active]:bg-background">
-                {section.poem_types.tabs.classical.name}
-              </TabsTrigger>
-              <TabsTrigger value="format" className="text-sm py-3 data-[state=active]:bg-background">
-                {section.poem_types.tabs.format.name}
-              </TabsTrigger>
-              <TabsTrigger value="lyric" className="text-sm py-3 data-[state=active]:bg-background">
-                {section.poem_types.tabs.lyric.name}
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-          <p className="text-sm text-muted-foreground text-center">
-            {selectedPoemType === 'modern' && section.poem_types.tabs.modern.description}
-            {selectedPoemType === 'classical' && section.poem_types.tabs.classical.description}
-            {selectedPoemType === 'format' && section.poem_types.tabs.format.description}
-            {selectedPoemType === 'lyric' && section.poem_types.tabs.lyric.description}
+        {/* Header */}
+        <div className="text-center mb-20 animate-fade-in-up animation-delay-1000">
+          <div className="inline-flex items-center justify-center mb-8">
+            <div className="p-px bg-gradient-to-br from-white/20 to-transparent rounded-2xl">
+              <div className="glass-premium rounded-2xl p-4">
+                 <Icon name="feather" className="size-8 text-foreground/80" />
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex flex-col items-center justify-center gap-6 mb-8">
+            <h1 className="text-6xl sm:text-8xl font-black tracking-tighter leading-[0.9]">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 via-purple-600 to-pink-600 dark:from-pink-200 dark:via-purple-200 dark:to-pink-400 animate-shimmer">
+                {section.header.title}
+              </span>
+            </h1>
+            <div className="glass-premium p-1 rounded-full">
+              <ModeToggle
+                advancedMode={advancedMode}
+                onToggle={setAdvancedMode}
+                labels={section.mode}
+              />
+            </div>
+          </div>
+          <p className="text-xl sm:text-2xl text-muted-foreground/60 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
+            {section.header.subtitle}
           </p>
         </div>
 
-        {/* Format Options - Only shown when Format tab is selected */}
-        {selectedPoemType === 'format' && (
-          <div className="space-y-3">
-            <Label className="text-sm font-medium">{section.options.rhyme_scheme.label}</Label>
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
-              {Object.entries(section.options.rhyme_scheme.format_options).map(([key, label]) => (
-                <Button
-                  key={key}
-                  variant={selectedRhymeScheme === key ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedRhymeScheme(key)}
-                  className="text-xs h-8 whitespace-nowrap flex-shrink-0"
-                >
-                  {label}
-                </Button>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* Main Content - Crystal Monolith */}
+        <div className="space-y-16 animate-fade-in-up animation-delay-2000">
 
-        {/* Prompt Input Section */}
-        <div className="space-y-3">
-            <Label htmlFor="poem-prompt" className="text-base font-semibold flex items-center gap-2">
-              {section.prompt.label}
-              <span className="text-xs text-red-500">{section.prompt.required}</span>
-            </Label>
-            <Textarea
-              id="poem-prompt"
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-              placeholder={section.prompt.placeholder}
-              className="min-h-[200px] resize-none text-base"
-              maxLength={maxCharacters}
-            />
-            <div className="flex items-center justify-between text-sm text-muted-foreground">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleRandomPrompt}
-                className="gap-2"
-              >
-                <Icon name="Sparkles" className="w-4 h-4" />
-                {section.prompt.random_button}
-              </Button>
-              <span>
-                {section.prompt.character_counter
-                  .replace('{current}', String(characterCount))
-                  .replace('{max}', String(maxCharacters))}
-              </span>
-            </div>
-          </div>
+          <div className="glass-premium rounded-[3rem] p-1 overflow-hidden shadow-2xl shadow-black/20">
+            <div className="bg-background/40 rounded-[calc(3rem-4px)] p-8 sm:p-16">
+              
+              {/* Poem Type Tabs - Segmented Control */}
+              <div className="space-y-8 mb-16">
+                <Tabs value={selectedPoemType} onValueChange={(v) => setSelectedPoemType(v as any)} className="w-full flex flex-col items-center">
+                  <TabsList className="grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 bg-white/5 border border-white/5 rounded-2xl w-full max-w-2xl">
+                    {['modern', 'classical', 'format', 'lyric'].map((type) => (
+                      <TabsTrigger 
+                        key={type} 
+                        value={type} 
+                        className="rounded-xl py-3 text-sm font-medium data-[state=active]:bg-foreground data-[state=active]:text-background transition-all duration-300"
+                      >
+                        {section.poem_types.tabs[type as keyof typeof section.poem_types.tabs].name}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </Tabs>
+                <p className="text-sm text-muted-foreground/60 text-center font-light tracking-wide">
+                  {selectedPoemType === 'modern' && section.poem_types.tabs.modern.description}
+                  {selectedPoemType === 'classical' && section.poem_types.tabs.classical.description}
+                  {selectedPoemType === 'format' && section.poem_types.tabs.format.description}
+                  {selectedPoemType === 'lyric' && section.poem_types.tabs.lyric.description}
+                </p>
+              </div>
 
-        {/* Quick Add Chips - Horizontal Scroll */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">{section.prompt.quick_adds_label}</Label>
-          <div className="relative">
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
-              {[...QUICK_ADD_EMOTIONS, ...QUICK_ADD_IMAGERY, ...QUICK_ADD_SCENES].map((item, idx) => (
-                <Button
-                  key={idx}
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handleQuickAdd(item)}
-                  className="text-xs h-8 whitespace-nowrap flex-shrink-0"
-                >
-                  {item}
-                </Button>
-              ))}
-            </div>
-          </div>
-        </div>
+              {/* Format Options - Only shown when Format tab is selected */}
+              {selectedPoemType === 'format' && (
+                <div className="space-y-4 mb-12 animate-slide-down flex flex-col items-center">
+                  <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.options.rhyme_scheme.label}</Label>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {Object.entries(section.options.rhyme_scheme.format_options).map(([key, label]) => (
+                      <button
+                        key={key}
+                        onClick={() => setSelectedRhymeScheme(key)}
+                        className={cn(
+                          "px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border",
+                          selectedRhymeScheme === key
+                            ? "bg-pink-500 text-white border-pink-500 shadow-lg shadow-pink-500/20"
+                            : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
+                        )}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-        {/* AI Model Selection + Language - Horizontal Layout */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <Label className="text-base font-semibold">{section.ai_models.title}</Label>
-            <div className="flex items-center gap-2">
-              <Label htmlFor="output-language" className="text-sm font-medium">
-                {section.prompt.language_label}
-              </Label>
-              <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-                <SelectTrigger id="output-language" className="w-32">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.entries(LANGUAGE_OPTIONS).map(([code, lang]) => (
-                    <SelectItem key={code} value={code}>
-                      <span className="flex items-center gap-2">
-                        <span>{lang.flag}</span>
-                        <span>{lang.native}</span>
-                      </span>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          {/* AI Models - 3 Column Grid */}
-          <div className="grid grid-cols-3 gap-3">
-            {AI_MODELS.map((model) => (
-              <button
-                key={model.id}
-                onClick={() => setSelectedModel(model.id)}
-                className={`text-left p-4 rounded-lg border-2 transition-all ${
-                  selectedModel === model.id
-                    ? 'border-primary bg-primary/5 ring-2 ring-primary/20'
-                    : 'border-border hover:border-primary/50'
-                }`}
-              >
-                <div className="flex flex-col gap-2">
+              {/* Prompt Input Section */}
+              <div className="space-y-6 mb-12 max-w-3xl mx-auto">
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl">{model.icon}</span>
-                    <span className={`text-xs px-2 py-0.5 rounded-full border ${model.badgeColor}`}>
-                      {model.badge}
+                    <Label htmlFor="poem-prompt" className="text-xl font-medium tracking-tight flex items-center gap-3">
+                      <span className="flex items-center justify-center size-8 rounded-full border border-white/10 text-xs font-serif italic text-muted-foreground">01</span>
+                      {section.prompt.label}
+                    </Label>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleRandomPrompt}
+                      className="gap-2 text-pink-400 hover:text-pink-300 hover:bg-pink-500/10 rounded-full h-9 px-4"
+                    >
+                      <Icon name="Sparkles" className="w-4 h-4" />
+                      {section.prompt.random_button}
+                    </Button>
+                  </div>
+                  
+                  <div className="relative group">
+                    <div className="absolute -inset-4 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
+                    <Textarea
+                      id="poem-prompt"
+                      value={prompt}
+                      onChange={(e) => setPrompt(e.target.value)}
+                      placeholder={section.prompt.placeholder}
+                      className="relative min-h-[200px] w-full bg-transparent border-0 border-b border-white/10 focus:border-pink-500/50 focus:ring-0 rounded-none px-0 text-2xl sm:text-3xl font-light leading-snug placeholder:text-muted-foreground/20 resize-none transition-all duration-300 text-center"
+                      style={{ boxShadow: 'none' }}
+                      maxLength={maxCharacters}
+                    />
+                    <div className="absolute bottom-0 right-0 py-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">
+                      {characterCount} / {maxCharacters}
+                    </div>
+                  </div>
+                </div>
+
+              {/* Quick Add Chips */}
+              <div className="space-y-4 mb-16 max-w-3xl mx-auto text-center">
+                <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.prompt.quick_adds_label}</Label>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {[...QUICK_ADD_EMOTIONS, ...QUICK_ADD_IMAGERY, ...QUICK_ADD_SCENES].map((item, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleQuickAdd(item)}
+                      className="px-4 py-1.5 rounded-full text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 text-muted-foreground hover:text-foreground transition-all duration-300"
+                    >
+                      + {item}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-16" />
+
+              {/* AI Model & Language */}
+              <div className="space-y-10 mb-12">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-6 max-w-4xl mx-auto">
+                  <div className="flex items-center gap-4">
+                    <span className="flex items-center justify-center size-8 rounded-full border border-white/10 text-xs font-serif italic text-muted-foreground">02</span>
+                    <Label className="text-xl font-medium tracking-tight">
+                      {section.ai_models.title}
+                    </Label>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 glass-premium rounded-full p-1 pr-4">
+                    <div className="bg-white/10 rounded-full p-2">
+                       <Icon name="globe" className="size-4 text-muted-foreground" />
+                    </div>
+                    <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60 mr-2">
+                      {section.prompt.language_label}
                     </span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-sm mb-1">{model.name}</div>
-                    <div className="text-xs text-muted-foreground mb-2">{model.description}</div>
-                    <div className="text-xs text-muted-foreground">{model.speed}</div>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Advanced Mode Options - Collapsible */}
-        {advancedMode && (
-          <div className="space-y-4 p-6 border rounded-lg bg-muted/30">
-            <Label className="text-base font-semibold">{section.options.title}</Label>
-            <p className="text-sm text-muted-foreground -mt-2">{section.options.subtitle}</p>
-
-            <div className="grid grid-cols-2 gap-4">
-              {/* Length */}
-              <div className="space-y-2">
-                <Label htmlFor="poem-length" className="text-sm">{section.options.length.label}</Label>
-                <Select value={selectedLength} onValueChange={setSelectedLength}>
-                  <SelectTrigger id="poem-length">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="short">{section.options.length.options.short}</SelectItem>
-                    <SelectItem value="medium">{section.options.length.options.medium}</SelectItem>
-                    <SelectItem value="long">{section.options.length.options.long}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Theme */}
-              <div className="space-y-2">
-                <Label htmlFor="theme" className="text-sm">{section.options.theme.label}</Label>
-                <Select value={selectedTheme || "none"} onValueChange={(v) => setSelectedTheme(v === "none" ? null : v)}>
-                  <SelectTrigger id="theme">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="none">{section.options.theme.none_option}</SelectItem>
-                    <SelectItem value="love">{section.options.theme.options.love}</SelectItem>
-                    <SelectItem value="nature">{section.options.theme.options.nature}</SelectItem>
-                    <SelectItem value="philosophy">{section.options.theme.options.philosophy}</SelectItem>
-                    <SelectItem value="inspiration">{section.options.theme.options.inspiration}</SelectItem>
-                    <SelectItem value="life">{section.options.theme.options.life}</SelectItem>
-                    <SelectItem value="nostalgia">{section.options.theme.options.nostalgia}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Mood */}
-              <div className="space-y-2">
-                <Label htmlFor="mood" className="text-sm">{section.options.mood.label}</Label>
-                <Select value={selectedMood || "none"} onValueChange={(v) => setSelectedMood(v === "none" ? null : v)}>
-                  <SelectTrigger id="mood">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="none">{section.options.mood.none_option}</SelectItem>
-                    <SelectItem value="joyful">{section.options.mood.options.joyful}</SelectItem>
-                    <SelectItem value="melancholic">{section.options.mood.options.melancholic}</SelectItem>
-                    <SelectItem value="passionate">{section.options.mood.options.passionate}</SelectItem>
-                    <SelectItem value="peaceful">{section.options.mood.options.peaceful}</SelectItem>
-                    <SelectItem value="romantic">{section.options.mood.options.romantic}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Style */}
-              <div className="space-y-2">
-                <Label htmlFor="style" className="text-sm">{section.options.style.label}</Label>
-                <Select value={selectedStyle || "none"} onValueChange={(v) => setSelectedStyle(v === "none" ? null : v)}>
-                  <SelectTrigger id="style">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="none">{section.options.style.none_option}</SelectItem>
-                    <SelectItem value="romantic">{section.options.style.options.romantic}</SelectItem>
-                    <SelectItem value="realism">{section.options.style.options.realism}</SelectItem>
-                    <SelectItem value="symbolism">{section.options.style.options.symbolism}</SelectItem>
-                    <SelectItem value="minimalism">{section.options.style.options.minimalism}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* History Dropdown */}
-        <div className="flex justify-end">
-          <PoemHistoryDropdown
-            onLoadPoem={handleLoadPoem}
-            locale={locale}
-          />
-        </div>
-
-        {/* Generate Button - Large and Prominent */}
-        <div className="space-y-4">
-          <Button
-            onClick={handleGenerate}
-            disabled={isGenerating || !selectedModel}
-            className="w-full h-16 text-lg font-semibold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
-            size="lg"
-          >
-            {isGenerating ? (
-              <>
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-2"></div>
-                {section.generate_button.generating}
-              </>
-            ) : (
-              <>
-                <Icon name="Sparkles" className="w-6 h-6 mr-2" />
-                {section.generate_button.text}
-              </>
-            )}
-          </Button>
-          <p className="text-sm text-center text-muted-foreground">{section.generate_button.tip}</p>
-        </div>
-
-      </div>
-
-      {/* Output Section - Separated with visual break */}
-      {generatedPoem && (
-        <>
-          <div className="my-12 border-t-2"></div>
-          <div className="border rounded-lg bg-card shadow-lg">
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b">
-                <h3 className="text-lg font-semibold">{section.output.title}</h3>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-muted-foreground">
-                    {section.output.line_count.replace('{count}', String(lineCount))}
-                  </span>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleCopyPoem}
-                    className="gap-2"
-                  >
-                    <Icon name="Copy" className="w-4 h-4" />
-                    {section.output.button_copy}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleAnalyzePoem}
-                    disabled={isAnalyzing}
-                    className="gap-2"
-                  >
-                    {isAnalyzing ? (
-                      <><div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current"></div>{section.output.button_analyzing}</>
-                    ) : (
-                      <><Icon name="Search" className="w-4 h-4" />{section.output.button_analyze}</>
-                    )}
-                  </Button>
-                </div>
-              </div>
-
-              {/* Tabs */}
-              <Tabs value={activeOutputTab} onValueChange={setActiveOutputTab} className="w-full">
-                <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
-                  <TabsTrigger
-                    value="poem"
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent"
-                  >
-                    {section.output.tabs.poem}
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="analysis"
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent"
-                  >
-                    {section.output.tabs.analysis}
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="audio"
-                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent"
-                  >
-                    {section.output.tabs.audio}
-                  </TabsTrigger>
-                </TabsList>
-
-                {/* Poem Tab */}
-                <TabsContent value="poem" className="p-6 mt-0">
-                  <div className="prose prose-sm max-w-none dark:prose-invert font-serif prose-p:leading-relaxed prose-headings:font-serif prose-strong:text-foreground prose-em:text-foreground/90">
-                    <ReactMarkdown>{generatedPoem}</ReactMarkdown>
-                  </div>
-                </TabsContent>
-
-                {/* Analysis Tab */}
-                <TabsContent value="analysis" className="p-6 mt-0">
-                  {isAnalyzing ? (
-                    <div className="flex items-center justify-center gap-3 py-12">
-                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
-                      <span className="text-muted-foreground">{section.analysis.loading}</span>
-                    </div>
-                  ) : poemAnalysis ? (
-                    <div className="space-y-6">
-                      {/* Imagery Analysis */}
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-sm flex items-center gap-2">
-                          <Icon name="Image" className="w-4 h-4" />
-                          {section.analysis.imagery.title}
-                        </h4>
-                        <p className="text-xs text-muted-foreground">{section.analysis.imagery.description}</p>
-                        <div className="flex flex-wrap gap-2">
-                          {poemAnalysis.imagery.map((img, idx) => {
-                            // Handle both object and string formats
-                            const imageText = typeof img === 'string' ? img : img.image;
-                            const significance = typeof img === 'object' && img.significance ? img.significance : null;
-
-                            return (
-                              <span
-                                key={idx}
-                                className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
-                                title={significance || undefined}
-                              >
-                                {imageText}
-                                {significance && (
-                                  <span className="text-xs text-muted-foreground ml-1">
-                                    ({significance})
-                                  </span>
-                                )}
-                              </span>
-                            );
-                          })}
-                        </div>
-                      </div>
-
-                      {/* Rhyme Analysis */}
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-sm flex items-center gap-2">
-                          <Icon name="Music" className="w-4 h-4" />
-                          {section.analysis.rhyme.title}
-                        </h4>
-                        <p className="text-xs text-muted-foreground">{section.analysis.rhyme.description}</p>
-                        <p className="text-sm leading-relaxed">{poemAnalysis.rhymeAnalysis}</p>
-                      </div>
-
-                      {/* Rhetorical Devices */}
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-sm flex items-center gap-2">
-                          <Icon name="Sparkles" className="w-4 h-4" />
-                          {section.analysis.rhetoric.title}
-                        </h4>
-                        <p className="text-xs text-muted-foreground">{section.analysis.rhetoric.description}</p>
-                        <div className="flex flex-wrap gap-2">
-                          {poemAnalysis.rhetoricalDevices.map((device, idx) => (
-                            <span key={idx} className="px-3 py-1 bg-blue-500/10 text-blue-600 rounded-full text-sm">
-                              {device}
+                    <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
+                      <SelectTrigger id="output-language" className="h-8 w-auto bg-transparent border-0 focus:ring-0 font-medium gap-2">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="glass-premium rounded-xl p-2 min-w-[200px]">
+                        {Object.entries(LANGUAGE_OPTIONS).map(([code, lang]) => (
+                          <SelectItem key={code} value={code} className="rounded-lg cursor-pointer focus:bg-white/10">
+                            <span className="flex items-center gap-3">
+                              <span className="text-lg opacity-80">{lang.flag}</span>
+                              <span className="font-medium tracking-wide">{lang.native}</span>
                             </span>
-                          ))}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                  {AI_MODELS.map((model) => {
+                    const isSelected = selectedModel === model.id;
+                    return (
+                      <button
+                        key={model.id}
+                        onClick={() => setSelectedModel(model.id)}
+                        className={cn(
+                          "relative group p-8 rounded-[2rem] text-left transition-all duration-500",
+                          isSelected
+                            ? "bg-black/40 ring-1 ring-white/20 shadow-2xl shadow-black/50"
+                            : "bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10"
+                        )}
+                      >
+                        <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
+                           {isSelected && <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-pink-500/20 blur-[60px]" />}
                         </div>
-                      </div>
-
-                      {/* Emotional Tone */}
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-sm flex items-center gap-2">
-                          <Icon name="Heart" className="w-4 h-4" />
-                          {section.analysis.emotion.title}
-                        </h4>
-                        <p className="text-xs text-muted-foreground">{section.analysis.emotion.description}</p>
-                        <p className="text-sm leading-relaxed">{poemAnalysis.emotionalTone}</p>
-                      </div>
-
-                      {/* Theme Interpretation */}
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-sm flex items-center gap-2">
-                          <Icon name="BookOpen" className="w-4 h-4" />
-                          {section.analysis.theme.title}
-                        </h4>
-                        <p className="text-xs text-muted-foreground">{section.analysis.theme.description}</p>
-                        <p className="text-sm leading-relaxed">{poemAnalysis.themeInterpretation}</p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="text-center py-12 text-muted-foreground">
-                      <Icon name="Search" className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                      <p>{section.analysis.no_analysis}</p>
-                    </div>
-                  )}
-                </TabsContent>
-
-                {/* Audio Tab */}
-                <TabsContent value="audio" className="p-6 mt-0">
-                  {'speechSynthesis' in window ? (
-                    <div className="space-y-6">
-                      {/* Controls */}
-                      <div className="flex flex-col items-center gap-4">
-                        {!isReading ? (
-                          <Button
-                            onClick={handleStartReading}
-                            disabled={!generatedPoem.trim()}
-                            className="w-full max-w-xs h-12 text-base font-semibold"
-                            size="lg"
-                          >
-                            <Icon name="Volume2" className="w-5 h-5 mr-2" />
-                            {section.audio.player.play}
-                          </Button>
-                        ) : (
-                          <div className="flex gap-3 w-full max-w-xs">
-                            {isPaused ? (
-                              <Button
-                                onClick={handleResumeReading}
-                                className="flex-1 h-12"
-                                size="lg"
-                              >
-                                <Icon name="Play" className="w-5 h-5 mr-2" />
-                                {section.audio.player.resume}
-                              </Button>
-                            ) : (
-                              <Button
-                                onClick={handlePauseReading}
-                                className="flex-1 h-12"
-                                size="lg"
-                                variant="outline"
-                              >
-                                <Icon name="Pause" className="w-5 h-5 mr-2" />
-                                {section.audio.player.pause}
-                              </Button>
+                        
+                        <div className="relative z-10 flex flex-col h-full">
+                          <div className="flex items-start justify-between mb-6">
+                            <div className={cn(
+                              "p-3 rounded-2xl transition-colors duration-300",
+                              isSelected ? "bg-white/10 text-white" : "bg-white/5 text-muted-foreground group-hover:text-foreground"
+                            )}>
+                              <span className="text-2xl">{model.icon}</span>
+                            </div>
+                            {isSelected && (
+                              <div className="size-2 rounded-full bg-pink-400 shadow-[0_0_10px_rgba(244,114,182,0.8)] animate-pulse" />
                             )}
-                            <Button
-                              onClick={handleStopReading}
-                              className="flex-1 h-12"
-                              size="lg"
-                              variant="outline"
-                            >
-                              <Icon name="Square" className="w-5 h-5 mr-2" />
-                              {section.audio.player.stop}
-                            </Button>
                           </div>
-                        )}
-
-                        {/* Status indicator */}
-                        {isReading && (
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <div className="animate-pulse w-2 h-2 rounded-full bg-primary"></div>
-                            <span>{isPaused ? section.audio.player.status_paused : section.audio.player.status_reading}</span>
+                          
+                          <div className="font-bold text-lg mb-2 tracking-wide group-hover:text-pink-400 transition-colors">{model.name}</div>
+                          <div className="text-xs text-muted-foreground/60 leading-relaxed mb-6 font-light">{model.description}</div>
+                          
+                          <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 pt-4 border-t border-white/5 flex items-center gap-2">
+                             <Icon name="clock" className="size-3" /> {model.speed}
                           </div>
-                        )}
-                      </div>
-
-                      {/* Speed control */}
-                      <div className="space-y-3">
-                        <Label className="text-sm font-medium">{section.audio.player.speed_label}</Label>
-                        <div className="flex gap-2 flex-wrap">
-                          {[0.5, 0.75, 1, 1.25, 1.5, 2].map((speed) => (
-                            <Button
-                              key={speed}
-                              variant={readingSpeed === speed ? "default" : "outline"}
-                              size="sm"
-                              onClick={() => handleSpeedChange(speed)}
-                              className="text-xs"
-                            >
-                              {speed}x
-                            </Button>
-                          ))}
                         </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="text-center py-12 text-muted-foreground">
-                      <Icon name="Volume2" className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                      <p>{section.audio.browser_not_supported}</p>
-                    </div>
-                  )}
-                </TabsContent>
-              </Tabs>
-            </div>
-        </>
-      )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
 
-      {/* Generation Status */}
-      {isGenerating && (
-        <div className="flex items-center justify-center gap-3 py-8">
-          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
-          <span className="text-muted-foreground">{section.output.status_writing}</span>
+              {/* Advanced Mode Options */}
+              <div className={cn(
+                  "max-w-4xl mx-auto overflow-hidden transition-all duration-700 ease-in-out",
+                  advancedMode ? "max-h-[800px] opacity-100 pt-8 border-t border-white/5" : "max-h-0 opacity-0"
+              )}>
+                  <div className="flex items-center gap-3 mb-8">
+                    <Icon name="sliders" className="size-4 text-muted-foreground" />
+                    <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground/60">{section.options.title}</h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+                    {/* Length - Mandatory */}
+                    <div className="space-y-2">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.options.length.label}</Label>
+                        <Select value={selectedLength} onValueChange={setSelectedLength}>
+                          <SelectTrigger className="h-12 rounded-xl bg-white/5 border-white/5 hover:bg-white/10 transition-colors focus:ring-0">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent className="glass-premium rounded-xl">
+                            {Object.entries(section.options.length.options).map(([k, v]) => (
+                              <SelectItem key={k} value={k} className="cursor-pointer focus:bg-white/10">{v}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                    </div>
+
+                    {/* Theme - Optional */}
+                    <div className="space-y-2">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.options.theme.label}</Label>
+                        <Select value={selectedTheme || "none"} onValueChange={(v) => setSelectedTheme(v === "none" ? null : v)}>
+                          <SelectTrigger className="h-12 rounded-xl bg-white/5 border-white/5 hover:bg-white/10 transition-colors focus:ring-0">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent className="glass-premium rounded-xl">
+                            <SelectItem value="none" className="text-muted-foreground">{section.options.theme.none_option}</SelectItem>
+                            {Object.entries(section.options.theme.options).map(([k, v]) => (
+                              <SelectItem key={k} value={k} className="cursor-pointer focus:bg-white/10">{v}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                    </div>
+
+                    {/* Mood - Optional */}
+                    <div className="space-y-2">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.options.mood.label}</Label>
+                        <Select value={selectedMood || "none"} onValueChange={(v) => setSelectedMood(v === "none" ? null : v)}>
+                          <SelectTrigger className="h-12 rounded-xl bg-white/5 border-white/5 hover:bg-white/10 transition-colors focus:ring-0">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent className="glass-premium rounded-xl">
+                            <SelectItem value="none" className="text-muted-foreground">{section.options.mood.none_option}</SelectItem>
+                            {Object.entries(section.options.mood.options).map(([k, v]) => (
+                              <SelectItem key={k} value={k} className="cursor-pointer focus:bg-white/10">{v}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                    </div>
+
+                    {/* Style - Optional */}
+                    <div className="space-y-2">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.options.style.label}</Label>
+                        <Select value={selectedStyle || "none"} onValueChange={(v) => setSelectedStyle(v === "none" ? null : v)}>
+                          <SelectTrigger className="h-12 rounded-xl bg-white/5 border-white/5 hover:bg-white/10 transition-colors focus:ring-0">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent className="glass-premium rounded-xl">
+                            <SelectItem value="none" className="text-muted-foreground">{section.options.style.none_option}</SelectItem>
+                            {Object.entries(section.options.style.options).map(([k, v]) => (
+                              <SelectItem key={k} value={k} className="cursor-pointer focus:bg-white/10">{v}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                    </div>
+                  </div>
+              </div>
+
+              {/* Actions */}
+              <div className="pt-16 flex flex-col items-center gap-8">
+                 <div className="relative w-full max-w-md group">
+                    <div className="absolute -inset-4 bg-gradient-to-r from-pink-500/30 via-purple-500/30 to-indigo-500/30 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <Button
+                      onClick={handleGenerate}
+                      disabled={isGenerating || !selectedModel}
+                      className="relative w-full h-20 rounded-full bg-foreground text-background hover:bg-white hover:text-foreground hover:scale-[1.02] transition-all duration-500 text-lg font-bold tracking-wide shadow-2xl border-none"
+                    >
+                      {isGenerating ? (
+                        <div className="flex items-center gap-3">
+                          <div className="size-5 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+                          <span className="animate-pulse">{section.generate_button.generating}</span>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-3">
+                          <Icon name="Sparkles" className="size-5" />
+                          {section.generate_button.text}
+                        </div>
+                      )}
+                    </Button>
+                 </div>
+                 
+                 {/* History & Tips */}
+                 <div className="flex flex-col items-center gap-6 w-full">
+                    <PoemHistoryDropdown onLoadPoem={handleLoadPoem} locale={locale} />
+                    <p className="text-xs font-medium text-muted-foreground/40 flex items-center gap-2">
+                       <Icon name="info" className="size-3" />
+                       {section.generate_button.tip}
+                    </p>
+                 </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Output Section */}
+          {generatedPoem && (
+            <div className="relative animate-fade-in-up mt-16">
+              {/* Debug indicator */}
+              <div className="text-center mb-4 text-sm text-green-500 font-bold">
+                ✓ Poem Generated ({generatedPoem.length} chars)
+              </div>
+              <div className="glass-premium rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-black/5 dark:ring-white/10">
+                
+                {/* Output Header */}
+                <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-10 border-b border-black/5 dark:border-white/5 bg-white/40 dark:bg-white/5 gap-6">
+                    <div className="flex items-center gap-5">
+                        <div className="p-3 rounded-2xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 border border-black/5 dark:border-white/10">
+                           <Icon name="feather" className="size-6 text-pink-600 dark:text-pink-400" />
+                        </div>
+                        <div>
+                           <h3 className="text-xl font-bold tracking-tight text-foreground">{section.output.title}</h3>
+                           <div className="text-sm text-muted-foreground/60 font-light mt-1">
+                             {section.output.line_count.replace('{count}', String(lineCount))}
+                           </div>
+                        </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-3">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={handleCopyPoem}
+                          className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5"
+                        >
+                          <Icon name="Copy" className="size-4 mr-2" />
+                          {section.output.button_copy}
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={handleAnalyzePoem}
+                          disabled={isAnalyzing}
+                          className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5"
+                        >
+                          {isAnalyzing ? (
+                            <div className="animate-spin rounded-full h-4 w-4 border-2 border-current border-t-transparent mr-2" />
+                          ) : (
+                            <Icon name="Search" className="size-4 mr-2" />
+                          )}
+                          {isAnalyzing ? section.output.button_analyzing : section.output.button_analyze}
+                        </Button>
+                    </div>
+                </div>
+
+                {/* Output Tabs */}
+                <Tabs value={activeOutputTab} onValueChange={setActiveOutputTab} className="w-full">
+                  <div className="px-8 pt-8">
+                    <TabsList className="bg-transparent p-0 border-b border-black/5 dark:border-white/10 w-full justify-start rounded-none h-auto gap-8">
+                      {['poem', 'analysis', 'audio'].map((tab) => (
+                        <TabsTrigger 
+                          key={tab}
+                          value={tab}
+                          className="rounded-none border-b-2 border-transparent px-0 py-4 data-[state=active]:border-pink-500 data-[state=active]:bg-transparent data-[state=active]:text-pink-600 dark:data-[state=active]:text-pink-400 text-muted-foreground hover:text-foreground transition-all"
+                        >
+                          {section.output.tabs[tab as keyof typeof section.output.tabs]}
+                        </TabsTrigger>
+                      ))}
+                    </TabsList>
+                  </div>
+
+                  <div className="p-8 md:p-16 min-h-[400px] bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+                    {/* Poem Content */}
+                    <TabsContent value="poem" className="mt-0 animate-fade-in">
+                      <div className="max-w-3xl mx-auto text-center">
+                        <pre className="font-serif text-xl sm:text-2xl leading-loose text-slate-900 dark:text-slate-100 whitespace-pre-wrap">
+{generatedPoem}
+                        </pre>
+                      </div>
+                    </TabsContent>
+
+                    {/* Analysis Content */}
+                    <TabsContent value="analysis" className="mt-0 animate-fade-in">
+                      {isAnalyzing ? (
+                        <div className="flex flex-col items-center justify-center py-20 gap-4">
+                          <div className="size-12 rounded-full border-2 border-pink-500/20 border-t-pink-500 animate-spin"></div>
+                          <span className="text-sm font-medium tracking-widest uppercase text-muted-foreground/60 animate-pulse">{section.analysis.loading}</span>
+                        </div>
+                      ) : poemAnalysis ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                          <div className="space-y-10">
+                             {/* Imagery */}
+                             <div className="space-y-4">
+                                <h4 className="text-sm font-bold uppercase tracking-widest text-pink-400 flex items-center gap-2">
+                                  <Icon name="Image" className="size-4" />
+                                  {section.analysis.imagery.title}
+                                </h4>
+                                <div className="flex flex-wrap gap-2">
+                                  {poemAnalysis.imagery.map((img, idx) => {
+                                    const imageText = typeof img === 'string' ? img : img.image;
+                                    return (
+                                      <span key={idx} className="px-4 py-1.5 bg-pink-500/5 text-pink-300 rounded-full text-sm border border-pink-500/10">
+                                        {imageText}
+                                      </span>
+                                    );
+                                  })}
+                                </div>
+                             </div>
+                             
+                             {/* Emotion */}
+                             <div className="space-y-4">
+                                <h4 className="text-sm font-bold uppercase tracking-widest text-purple-400 flex items-center gap-2">
+                                  <Icon name="Heart" className="size-4" />
+                                  {section.analysis.emotion.title}
+                                </h4>
+                                <p className="text-base leading-relaxed text-muted-foreground/80 font-light">{poemAnalysis.emotionalTone}</p>
+                             </div>
+                          </div>
+                          
+                          <div className="space-y-10">
+                             {/* Theme */}
+                             <div className="space-y-4">
+                                <h4 className="text-sm font-bold uppercase tracking-widest text-indigo-400 flex items-center gap-2">
+                                  <Icon name="BookOpen" className="size-4" />
+                                  {section.analysis.theme.title}
+                                </h4>
+                                <p className="text-base leading-relaxed text-muted-foreground/80 font-light">{poemAnalysis.themeInterpretation}</p>
+                             </div>
+                             
+                             {/* Rhetoric */}
+                             <div className="space-y-4">
+                                <h4 className="text-sm font-bold uppercase tracking-widest text-blue-400 flex items-center gap-2">
+                                  <Icon name="Sparkles" className="size-4" />
+                                  {section.analysis.rhetoric.title}
+                                </h4>
+                                <div className="flex flex-wrap gap-2">
+                                  {poemAnalysis.rhetoricalDevices.map((device, idx) => (
+                                    <span key={idx} className="px-4 py-1.5 bg-blue-500/5 text-blue-300 rounded-full text-sm border border-blue-500/10">
+                                      {device}
+                                    </span>
+                                  ))}
+                                </div>
+                             </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="text-center py-20 text-muted-foreground/40">
+                          <Icon name="Search" className="size-12 mx-auto mb-4 opacity-20" />
+                          <p className="text-lg font-medium">{section.analysis.no_analysis}</p>
+                        </div>
+                      )}
+                    </TabsContent>
+
+                    {/* Audio Content */}
+                    <TabsContent value="audio" className="mt-0 animate-fade-in">
+                      {hasSpeechSupport ? (
+                        <div className="flex flex-col items-center justify-center py-12 gap-12">
+                           {/* Visualizer */}
+                           <div className="flex items-end justify-center gap-1.5 h-24">
+                              {[...Array(16)].map((_, i) => (
+                                <div 
+                                  key={i} 
+                                  className={cn(
+                                    "w-2 bg-gradient-to-t from-pink-500 to-purple-500 rounded-full transition-all duration-150 ease-in-out",
+                                    isReading && !isPaused ? "animate-music-bar" : "h-2 opacity-20"
+                                  )}
+                                  style={{ animationDelay: `${i * 0.05}s` }}
+                                />
+                              ))}
+                           </div>
+
+                           <div className="flex items-center gap-8">
+                              {!isReading ? (
+                                <button
+                                  onClick={handleStartReading}
+                                  disabled={!generatedPoem.trim()}
+                                  className={cn(
+                                    "size-20 rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 text-white shadow-[0_20px_45px_rgba(170,85,255,0.35)] ring-4 ring-pink-500/20 flex items-center justify-center transition-all",
+                                    !generatedPoem.trim()
+                                      ? "opacity-40 cursor-not-allowed"
+                                      : "hover:scale-110 focus-visible:scale-105 focus-visible:outline-none focus-visible:ring-8 focus-visible:ring-pink-500/40"
+                                  )}
+                                  aria-label={section.audio.player.play}
+                                >
+                                  <Icon name="Play" className="size-8 ml-1 text-white" />
+                                </button>
+                              ) : (
+                                <>
+                                  <button
+                                    onClick={isPaused ? handleResumeReading : handlePauseReading}
+                                    className="size-16 rounded-full border-2 border-white/20 hover:bg-white/10 text-white transition-all flex items-center justify-center"
+                                  >
+                                    <Icon name={isPaused ? "Play" : "Pause"} className="size-6" />
+                                  </button>
+                                  <button
+                                    onClick={handleStopReading}
+                                    className="size-16 rounded-full border-2 border-white/20 hover:bg-white/10 text-white transition-all flex items-center justify-center"
+                                  >
+                                    <Icon name="Square" className="size-6" />
+                                  </button>
+                                </>
+                              )}
+                           </div>
+                           
+                           <div className="glass-premium px-6 py-3 rounded-full flex items-center gap-4">
+                              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">{section.audio.player.speed_label}</span>
+                              <div className="flex gap-2">
+                                {[0.75, 1, 1.25, 1.5].map((speed) => (
+                                  <button
+                                    key={speed}
+                                    onClick={() => handleSpeedChange(speed)}
+                                    className={cn(
+                                      "h-10 w-10 rounded-full text-xs font-semibold transition-all border border-white/20 flex items-center justify-center",
+                                      readingSpeed === speed
+                                        ? "bg-white text-black shadow-[0_10px_25px_rgba(255,255,255,0.35)] ring-2 ring-pink-500/50"
+                                        : "text-muted-foreground hover:text-white hover:bg-white/10"
+                                    )}
+                                    aria-pressed={readingSpeed === speed}
+                                  >
+                                    {speed}x
+                                  </button>
+                                ))}
+                              </div>
+                           </div>
+                        </div>
+                      ) : (
+                        <div className="text-center py-20 text-muted-foreground/40">
+                          <Icon name="Volume2" className="size-12 mx-auto mb-4 opacity-20" />
+                          <p>{section.audio.browser_not_supported}</p>
+                        </div>
+                      )}
+                    </TabsContent>
+                  </div>
+                </Tabs>
+              </div>
+            </div>
+          )}
+
         </div>
-      )}
+      </div>
     </div>
   );
 }

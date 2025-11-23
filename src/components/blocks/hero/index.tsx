@@ -1,34 +1,41 @@
 "use client";
 
-import { memo, useMemo, useState, useEffect } from "react";
+import { memo, useMemo, useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import HappyUsers from "./happy-users";
+import Particles from "./particles";
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion";
 
 import { Hero as HeroType } from "@/types/blocks/hero";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
 
 // Lazy load Prism component (client-side only for WebGL)
-// This maintains SEO as Prism is purely visual and doesn't affect content indexing
 const Prism = dynamic(() => import("@/components/Prism"), {
-  ssr: false, // Prism uses WebGL which cannot be server-rendered
+  ssr: false,
   loading: () => (
-    <div className="absolute inset-0 bg-gradient-radial from-primary/20 to-background opacity-50" />
+    <div className="absolute inset-0 bg-background opacity-50" />
   ),
 });
 
 const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
-  // Client-side mount detection for Prism
   const [isMounted, setIsMounted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Memoize expensive text splitting operation
   const { texts, highlightText } = useMemo(() => {
     const highlightText = hero.highlight_text;
     let texts = null;
@@ -38,13 +45,11 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
     return { texts, highlightText };
   }, [hero.title, hero.highlight_text]);
 
-  // Memoize dangerouslySetInnerHTML object to prevent re-creation
   const descriptionHtml = useMemo(
     () => ({ __html: hero.description || "" }),
     [hero.description]
   );
 
-  // Memoize Prism configuration props
   const prismProps = useMemo(
     () => ({
       animationType: hero.prism_background?.animationType || "rotate",
@@ -57,7 +62,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
       noise: hero.prism_background?.noise ?? 0.5,
       glow: hero.prism_background?.glow ?? 1,
       bloom: hero.prism_background?.bloom ?? 1,
-      suspendWhenOffscreen: true, // Performance optimization
+      suspendWhenOffscreen: true,
     }),
     [hero.prism_background]
   );
@@ -67,219 +72,248 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
   }
 
   return (
-    <>
-      <section className="relative min-h-[92vh] flex items-center justify-center py-24 lg:py-32 overflow-hidden">
-        <div className="container px-4 sm:px-6 lg:px-8">
-          {hero.prism_background?.enabled ? (
-            <div className="pointer-events-none absolute inset-0 -z-10">
-              {/* Prism Background - lazy loaded on client side */}
-              {isMounted && (
-                <div className="absolute inset-0 opacity-70">
-                  <Prism {...prismProps} />
-                </div>
-              )}
-
-              {/* Radial gradient overlay for focus */}
-              <div className="absolute inset-0 bg-gradient-radial from-background/20 via-background/40 to-background/80" />
-
-              {/* Simplified single ambient glow blob */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[80px] motion-safe:animate-pulse anim-medium" />
+    <section 
+      ref={containerRef}
+      className="relative min-h-[92vh] flex items-center justify-center py-24 lg:py-32 overflow-hidden"
+    >
+      {/* Background System */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        {hero.prism_background?.enabled && isMounted ? (
+          <>
+            <div className="absolute inset-0 opacity-70">
+              <Prism {...prismProps} />
             </div>
-          ) : (
-            <div className="pointer-events-none absolute inset-0 -z-10">
-              {/* Base gradient layer with subtle mesh effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
+            <div className="absolute inset-0 bg-gradient-radial from-background/20 via-background/40 to-background/80" />
+          </>
+        ) : (
+          <>
+            {/* Standard Ethereal Tech Background */}
+            <div className="absolute inset-0 bg-background" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-[0.05]" />
+            <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay" />
+            
+            {/* Aurora Blobs */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/10 rounded-full blur-[120px] opacity-40 animate-blob" />
+            <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[128px] opacity-30 animate-blob animation-delay-2000" />
+            
+            {/* Floating Particles */}
+            <Particles />
+          </>
+        )}
+      </div>
 
-              {/* Animated mesh gradient orbs */}
-              <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/4 h-[500px] w-[500px] rounded-full bg-gradient-radial from-primary/15 via-primary/8 to-transparent blur-3xl motion-safe:animate-pulse anim-medium" />
+      <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Badge */}
+        {hero.show_badge && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center justify-center mb-12"
+          >
+            <img
+              src="/imgs/badges/phdaily.svg"
+              alt="phdaily"
+              className="h-12 object-cover transition-transform duration-300 hover:scale-110"
+            />
+          </motion.div>
+        )}
 
-              <div className="absolute right-0 top-1/3 translate-x-1/4 h-[400px] w-[400px] rounded-full bg-gradient-radial from-accent/12 via-accent/6 to-transparent blur-3xl motion-safe:animate-pulse anim-medium animation-delay-1000" />
-
-              <div className="absolute left-0 bottom-1/4 -translate-x-1/4 h-[350px] w-[350px] rounded-full bg-gradient-radial from-primary/10 via-primary/5 to-transparent blur-3xl motion-safe:animate-pulse anim-medium animation-delay-2000" />
-
-              {/* Center spotlight effect */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[800px] lg:h-[700px] lg:w-[1000px] rounded-full bg-gradient-radial from-primary/8 via-transparent to-transparent blur-[100px]" />
-
-              {/* Subtle grid pattern overlay */}
-              <div
-                className="absolute inset-0 opacity-[0.015]"
-                style={{
-                  backgroundImage: `
-                    linear-gradient(to right, currentColor 1px, transparent 1px),
-                    linear-gradient(to bottom, currentColor 1px, transparent 1px)
-                  `,
-                  backgroundSize: '80px 80px'
-                }}
-              />
-
-              {/* Top gradient fade for depth */}
-              <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-background/80 via-background/40 to-transparent" />
-
-              {/* Bottom gradient fade */}
-              <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background/60 to-transparent" />
-            </div>
-          )}
-          {hero.show_badge && (
-            <div className="flex items-center justify-center mb-12 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95 motion-safe:duration-500">
-              <img
-                src="/imgs/badges/phdaily.svg"
-                alt="phdaily"
-                className="h-12 object-cover transition-transform duration-300 hover:scale-110"
-              />
-            </div>
-          )}
-          <div className="text-center">
-            {hero.announcement.show && (
+        <div className="text-center flex flex-col items-center">
+          {/* Announcement */}
+          {hero.announcement.show && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <Link
                 href={hero.announcement.url as any}
-                className="mx-auto mb-8 inline-flex items-center group relative motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-top-4 motion-safe:duration-700 motion-safe:delay-100"
+                className="group relative inline-flex items-center gap-2 rounded-full px-4 py-1.5 md:py-2 text-sm font-medium transition-all hover:bg-muted/50"
               >
-                {/* Glow effect behind announcement */}
-                <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-primary/20 via-primary/30 to-primary/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
-
-                <div className="relative rounded-full border border-border/60 bg-gradient-to-b from-background/60 to-background/40 px-5 py-2.5 text-sm backdrop-blur-xl shadow-xl shadow-black/5 ring-1 ring-white/10 transition-all duration-500 group-hover:border-primary/50 group-hover:bg-gradient-to-b group-hover:from-background/80 group-hover:to-background/60 group-hover:shadow-2xl group-hover:shadow-primary/10 group-hover:scale-[1.02]">
-                  {/* Shine effect on hover */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out" />
-
-                  <div className="relative flex items-center gap-3">
-                    {hero.announcement.label && (
-                      <Badge className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary border-primary/30 hover:bg-gradient-to-br hover:from-primary/30 hover:to-primary/20 transition-all duration-300 font-semibold shadow-sm">
-                        {hero.announcement.label}
-                      </Badge>
-                    )}
-                    <span className="font-semibold text-foreground/90 group-hover:text-foreground transition-colors duration-300">
-                      {hero.announcement.title}
-                    </span>
-                    <Icon name="RiArrowRightLine" className="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all duration-300" />
-                  </div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 via-purple-500/20 to-blue-500/20 opacity-0 blur transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="relative flex items-center gap-2 rounded-full border border-primary/20 bg-background/50 px-4 py-1.5 backdrop-blur-xl">
+                  {hero.announcement.label && (
+                    <Badge variant="secondary" className="rounded-full px-2 py-0.5 text-xs bg-primary/10 text-primary border-primary/20">
+                      {hero.announcement.label}
+                    </Badge>
+                  )}
+                  <span className="text-foreground/80 group-hover:text-foreground transition-colors">
+                    {hero.announcement.title}
+                  </span>
+                  <Icon name="arrow-right" className="size-3.5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                 </div>
               </Link>
-            )}
+            </motion.div>
+          )}
 
+          {/* Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="mt-8 max-w-5xl"
+          >
             {texts && texts.length > 1 ? (
-              <h1 className="mx-auto mb-8 mt-6 max-w-6xl relative motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-700 motion-safe:delay-200">
-                <span className="block text-balance text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] tracking-tight">
-                  {texts[0]}
-                  <span className="relative inline-block">
-                    {/* Enhanced gradient text with multiple layers */}
-                    <span className="bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent relative drop-shadow-sm">
-                      {highlightText}
-                    </span>
-                    {/* Multi-layered glow effect */}
-                    <span className="absolute inset-0 bg-gradient-to-r from-primary/30 via-primary/40 to-primary/30 blur-2xl -z-10 scale-110 motion-safe:animate-pulse anim-medium" />
-                    <span className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/30 to-primary/20 blur-3xl -z-10 scale-125" />
-                  </span>
-                  {texts[1]}
+              <h1 className="text-balance text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
+                <span className="block text-foreground">{texts[0]}</span>
+                <span className="block bg-gradient-to-r from-primary via-purple-500 to-blue-500 bg-clip-text text-transparent pb-2">
+                  {highlightText}
                 </span>
+                <span className="block text-foreground">{texts[1]}</span>
               </h1>
             ) : (
-              <h1 className="mx-auto mb-8 mt-6 max-w-6xl text-balance text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] tracking-tight motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-700 motion-safe:delay-200">
+              <h1 className="text-balance text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl text-foreground">
                 {hero.title}
               </h1>
             )}
+          </motion.div>
 
-            <div className="mx-auto mt-8 max-w-3xl motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-700 motion-safe:delay-300">
-              <p
-                className="text-lg sm:text-xl lg:text-2xl text-muted-foreground leading-[1.65] font-normal text-balance px-4"
-                dangerouslySetInnerHTML={descriptionHtml}
-              />
-            </div>
-            {hero.buttons && (
-              <div className="mt-12 sm:mt-14 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-700 motion-safe:delay-400">
-                {hero.buttons.map((item, i) => {
-                  const isPrimary = item.variant === 'default' || i === 0;
+          {/* Description */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="mt-8 max-w-3xl"
+          >
+            <p
+              className="text-lg sm:text-xl text-muted-foreground/80 leading-relaxed font-light text-balance"
+              dangerouslySetInnerHTML={descriptionHtml}
+            />
+          </motion.div>
 
-                  return (
-                    <Link
-                      key={i}
-                      href={item.url as any}
-                      target={item.target || ""}
-                      className="group relative w-full sm:w-auto"
-                    >
-                      {isPrimary ? (
-                        <div className="relative">
-                          {/* Multi-layered glow effect */}
-                          <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-primary to-primary/80 opacity-70 blur-xl transition-all duration-500 group-hover:opacity-100 group-hover:blur-2xl will-change-opacity" />
-                          <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary via-primary to-primary/80 opacity-50 blur transition-opacity duration-500 group-hover:opacity-80 will-change-opacity" />
+          {/* Buttons */}
+          {hero.buttons && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="mt-10 flex flex-col sm:flex-row gap-4"
+            >
+              {hero.buttons.map((item, i) => {
+                const isPrimary = item.variant === 'default' || i === 0;
+                return (
+                  <Link
+                    key={i}
+                    href={item.url as any}
+                    target={item.target || ""}
+                    className="group relative"
+                  >
+                    {isPrimary ? (
+                      <Button
+                        size="lg"
+                        className="relative h-16 sm:h-20 rounded-full px-10 text-lg font-bold 
+                          bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 
+                          bg-[length:200%_auto] animate-gradient 
+                          text-white 
+                          shadow-[0_8px_32px_-8px_rgba(79,70,229,0.4)] 
+                          hover:shadow-[0_16px_48px_-12px_rgba(79,70,229,0.6)] 
+                          hover:scale-[1.02] active:scale-[0.98] 
+                          border border-white/10 overflow-hidden
+                          transition-all duration-500 group/btn"
+                      >
+                         {/* Deep Space Noise Texture */}
+                         <div className="absolute inset-0 bg-noise opacity-20 mix-blend-overlay pointer-events-none" />
+                         
+                         {/* Glass Gloss Top Highlight */}
+                         <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent opacity-50 pointer-events-none" />
+                         
+                         {/* Dynamic Shimmer Effect */}
+                         <div className="absolute inset-0 -translate-x-full group-hover/btn:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none" />
 
-                          <Button
-                            className="relative w-full sm:w-auto px-10 py-7 text-base font-bold shadow-2xl transition-all duration-300 group-hover:shadow-[0_20px_60px_-15px_rgba(var(--primary),0.4)] bg-gradient-to-b from-primary to-primary/90 hover:from-primary hover:to-primary group-hover:scale-[1.02] border border-primary/20"
-                            size="lg"
-                          >
-                            <span className="flex items-center justify-center gap-2">
-                              {item.icon && <Icon name={item.icon} className="size-5 transition-transform duration-300 group-hover:scale-110" />}
-                              <span>{item.title}</span>
-                            </span>
-                          </Button>
-                        </div>
-                      ) : (
-                        <div className="relative">
-                          {/* Subtle glow for secondary button */}
-                          <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-60" />
+                        <span className="relative flex items-center gap-3 z-10">
+                          {item.icon && (
+                            <div className="relative group-hover/btn:rotate-12 transition-transform duration-500">
+                               <Icon name={item.icon} className="size-6 drop-shadow-md" />
+                            </div>
+                          )}
+                          <span className="drop-shadow-sm">{item.title}</span>
+                          <Icon name="arrow-right" className="size-5 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-300" />
+                        </span>
+                      </Button>
+                    ) : (
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="h-14 rounded-full px-8 text-base font-semibold border-2 hover:bg-muted/50 transition-all hover:-translate-y-0.5"
+                      >
+                        <span className="flex items-center gap-2">
+                          {item.icon && <Icon name={item.icon} className="size-5" />}
+                          {item.title}
+                        </span>
+                      </Button>
+                    )}
+                  </Link>
+                );
+              })}
+            </motion.div>
+          )}
 
-                          <Button
-                            className="relative w-full sm:w-auto px-10 py-7 text-base font-bold border-2 bg-gradient-to-b from-background/60 to-background/40 backdrop-blur-md hover:from-background/80 hover:to-background/60 hover:border-primary/50 transition-all duration-300 group-hover:scale-[1.02] shadow-xl hover:shadow-2xl ring-1 ring-white/10"
-                            size="lg"
-                            variant="outline"
-                          >
-                            <span className="flex items-center justify-center gap-2">
-                              {item.icon && <Icon name={item.icon} className="size-5 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />}
-                              <span className="bg-gradient-to-br from-foreground to-foreground/80 bg-clip-text text-transparent">{item.title}</span>
-                            </span>
-                          </Button>
-                        </div>
-                      )}
-                    </Link>
-                  );
-                })}
+          {/* Hero Image */}
+          {hero.image?.src && (
+            <motion.div
+              style={{ y, opacity }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-20 relative w-full max-w-6xl perspective-1000"
+            >
+              {/* Ambient Glow */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-purple-500/20 to-blue-500/20 rounded-[2.5rem] blur-3xl opacity-50" />
+              
+              {/* Prism Glass Container */}
+              <div className="relative rounded-[2rem] bg-background/50 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/10 overflow-hidden ring-1 ring-white/20">
+                {/* Specular Highlight */}
+                <div className="absolute inset-0 rounded-[2rem] border border-white/20 pointer-events-none z-20" />
+                
+                <Image
+                  src={hero.image.src}
+                  alt={hero.image.alt || "illustration"}
+                  width={1200}
+                  height={675}
+                  priority
+                  quality={100}
+                  className="relative w-full rounded-[1.9rem] shadow-inner"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                />
+                
+                {/* Sheen Effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full animate-shimmer pointer-events-none z-10" />
               </div>
-            )}
-            {hero.image?.src && (
-              <div className="mt-20 sm:mt-24 flex justify-center motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-6 motion-safe:duration-1000 motion-safe:delay-600">
-                <div className="relative group max-w-6xl w-full px-4">
-                  {/* Multi-layered glow effect behind image */}
-                  <div className="absolute -inset-6 bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 rounded-3xl blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700 will-change-opacity" />
-                  <div className="absolute -inset-3 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-80 transition-opacity duration-700 will-change-opacity" />
+            </motion.div>
+          )}
 
-                  {/* Image with premium glassmorphic frame */}
-                  <div className="relative rounded-2xl lg:rounded-[2rem] border-2 border-white/10 bg-gradient-to-br from-background/90 via-background/70 to-background/50 p-3 lg:p-4 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] ring-1 ring-white/20 transition-all duration-700 group-hover:border-primary/30 group-hover:shadow-[0_20px_80px_rgba(var(--primary),0.15)] group-hover:scale-[1.01]">
-                    {/* Inner shadow for depth */}
-                    <div className="absolute inset-0 rounded-2xl lg:rounded-[2rem] shadow-[inset_0_1px_2px_rgba(255,255,255,0.1)]" />
+          {/* Tip */}
+          {hero.tip && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.8 }}
+              className="mt-12"
+            >
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm text-primary">
+                <span className="text-base">✨</span>
+                {hero.tip}
+              </div>
+            </motion.div>
+          )}
 
-                    <Image
-                      src={hero.image.src}
-                      alt={hero.image.alt || "illustration"}
-                      width={1200}
-                      height={675}
-                      priority
-                      quality={95}
-                      className="relative w-full rounded-xl lg:rounded-3xl shadow-2xl shadow-black/20 transition-transform duration-700 group-hover:scale-[1.005]"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-            {hero.tip && (
-              <div className="mt-10 flex justify-center motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-700 motion-safe:delay-700">
-                <div className="group relative inline-flex items-center gap-2.5 rounded-full border border-primary/40 bg-gradient-to-br from-primary/10 to-primary/5 px-5 py-2.5 text-sm font-semibold text-primary backdrop-blur-md shadow-lg ring-1 ring-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:scale-105 hover:border-primary/60">
-                  <span className="text-base motion-safe:animate-pulse">✨</span>
-                  <span className="relative">
-                    {hero.tip}
-                    {/* Subtle glow under text */}
-                    <span className="absolute inset-0 blur-sm opacity-50 bg-primary/20" />
-                  </span>
-                </div>
-              </div>
-            )}
-            {hero.show_happy_users && <HappyUsers />}
-          </div>
+          {/* Happy Users */}
+          {hero.show_happy_users && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.9 }}
+              className="mt-8"
+            >
+              <HappyUsers />
+            </motion.div>
+          )}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }, (prevProps, nextProps) => {
-  // Custom comparison - only re-render if hero actually changed
   return JSON.stringify(prevProps.hero) === JSON.stringify(nextProps.hero);
 });
 
