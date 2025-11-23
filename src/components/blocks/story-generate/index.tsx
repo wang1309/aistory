@@ -520,7 +520,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   // ========== RENDER ==========
 
   return (
-    <section className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-indigo-500/30">
+    <section
+      id="craft_story"
+      className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-indigo-500/30"
+    >
       {/* Premium Background Layer - Deep Space Variant */}
       <div className="absolute inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
       
