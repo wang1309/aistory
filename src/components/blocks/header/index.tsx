@@ -55,7 +55,7 @@ export default function Header({ header }: { header: HeaderType }) {
                 />
               )}
               {header.brand?.title && (
-                <span className="text-xl text-primary font-bold">
+                <span className="text-xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 dark:from-white dark:via-indigo-200 dark:to-indigo-400 animate-gradient drop-shadow-sm">
                   {header.brand?.title || ""}
                 </span>
               )}
@@ -181,7 +181,7 @@ export default function Header({ header }: { header: HeaderType }) {
                 />
               )}
               {header.brand?.title && (
-                <span className="text-xl font-bold">
+                <span className="text-xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 dark:from-white dark:via-indigo-200 dark:to-indigo-400 animate-gradient drop-shadow-sm">
                   {header.brand?.title || ""}
                 </span>
               )}
@@ -207,7 +207,7 @@ export default function Header({ header }: { header: HeaderType }) {
                         />
                       )}
                       {header.brand?.title && (
-                        <span className="text-xl font-bold">
+                        <span className="text-xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 dark:from-white dark:via-indigo-200 dark:to-indigo-400 animate-gradient drop-shadow-sm">
                           {header.brand?.title || ""}
                         </span>
                       )}
