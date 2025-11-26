@@ -13,8 +13,10 @@ import { useAppContext } from "@/contexts/app";
 import confetti from "canvas-confetti";
 import { StoryStorage, SavedStory } from "@/lib/story-storage";
 import StoryHistoryDropdown from "@/components/story-history-dropdown";
+
 import StoryShareButtons from "@/components/story-share-buttons";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
+import CompletionGuide from "@/components/story/completion-guide";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -445,6 +447,41 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     toast.error(section.toasts.error_generate_failed);
   }, [section]);
 
+  // Listen for Quick Start event from Hero
+  useEffect(() => {
+    const handleQuickStart = () => {
+      console.log("⚡ Quick Start triggered!");
+
+      // 1. Select Fast Model if not selected
+      if (selectedModel !== 'fast') {
+        setSelectedModel('fast');
+      }
+
+      // 2. Generate Random Prompt
+      const randomIndex = Math.floor(Math.random() * RANDOM_PROMPTS.length);
+      const randomPrompt = RANDOM_PROMPTS[randomIndex];
+      setPrompt(randomPrompt);
+
+      // 3. Trigger Generation (needs a small delay to ensure state updates)
+      // We use a timeout to allow the state updates to propagate
+      setTimeout(() => {
+        // We can't call handleGenerateClick directly because it uses the *current* state 
+        // which might be stale in this closure or not yet updated.
+        // However, since we're setting state above, we need to ensure the next render sees it.
+        // A better approach for "auto-submit" is often a separate useEffect that watches a flag,
+        // but for simplicity here, we'll manually trigger the ref execution if we have the data.
+
+        if (turnstileRef.current) {
+          setIsGenerating(true);
+          turnstileRef.current.execute();
+        }
+      }, 100);
+    };
+
+    window.addEventListener('quick-start-story', handleQuickStart);
+    return () => window.removeEventListener('quick-start-story', handleQuickStart);
+  }, [RANDOM_PROMPTS, selectedModel]); // Dependencies needed for the logic inside
+
   // PDF export handler
   const handleExportPdf = useCallback(async () => {
     if (!generatedStory.trim()) {
@@ -536,6 +573,25 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     share_text_template: locale === 'zh' ? '我用AI写了一个 {wordCount} 字的故事！' : locale === 'ja' ? 'AIで{wordCount}文字の物語を書きました！' : 'I wrote a {wordCount} word story with AI!',
   }), [locale]);
 
+  // Reset for new story
+  const handleCreateAnother = useCallback(() => {
+    setGeneratedStory("");
+    setPrompt("");
+    // Scroll to the top of the story generation section
+    const element = document.getElementById('craft_story');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
+
+  // Handle share action from Completion Guide
+  const handleShare = useCallback(() => {
+    // For now, just scroll to the share buttons section or copy link
+    // Since we have share buttons above, we can just highlight them or copy the link directly
+    navigator.clipboard.writeText(window.location.href);
+    toast.success(shareTranslations.link_copied);
+  }, [shareTranslations]);
+
   // ========== RENDER ==========
 
   return (
@@ -600,15 +656,20 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 </div>
 
                 <div className="relative group mb-8">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
+                  <div className="pointer-events-none absolute -inset-4 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
                   <Textarea
+                    id="story-prompt-input"
                     value={prompt}
-                    onChange={(e) => setPrompt(e.target.value.slice(0, 2000))}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 2000) {
+                        setPrompt(e.target.value);
+                      }
+                    }}
                     placeholder={section.prompt.placeholder}
-                    className="relative w-full min-h-[350px] bg-transparent border-0 border-b border-black/10 dark:border-white/10 focus:border-indigo-500/50 focus:ring-0 rounded-none px-0 text-2xl sm:text-3xl font-light leading-snug placeholder:text-muted-foreground/30 dark:placeholder:text-muted-foreground/50 text-foreground resize-none transition-all duration-300"
+                    className="min-h-[280px] text-lg p-6 rounded-2xl bg-white/50 dark:bg-black/20 border-2 border-indigo-100 dark:border-indigo-900/30 focus:border-indigo-500 dark:focus:border-indigo-500 transition-all resize-none shadow-inner"
                     style={{ boxShadow: 'none' }}
                   />
-                  <div className="absolute bottom-0 right-0 py-2 text-xs font-medium text-muted-foreground/40 dark:text-muted-foreground/70 tracking-widest uppercase">
+                  <div className="pointer-events-none absolute bottom-0 right-0 py-2 text-xs font-medium text-muted-foreground/40 dark:text-muted-foreground/70 tracking-widest uppercase">
                     {prompt.length} / 2000 CHARS
                   </div>
                 </div>
@@ -806,7 +867,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         </div>
 
         {/* Generate Button */}
-        <div className="flex justify-center pt-8 animate-fade-in-up animation-delay-3000">
+        <div id="generate-button" className="flex justify-center pt-8 animate-fade-in-up animation-delay-3000">
           <div className="relative group w-full max-w-md">
             <Button
               onClick={handleGenerateClick}
@@ -934,6 +995,16 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               </div>
             </div>
           </div>
+
+        )}
+
+        {/* Completion Guide */}
+        {generatedStory && !isGenerating && (
+          <CompletionGuide
+            onCreateAnother={handleCreateAnother}
+            onShare={handleShare}
+            translations={section.completion_guide}
+          />
         )}
 
       </div>

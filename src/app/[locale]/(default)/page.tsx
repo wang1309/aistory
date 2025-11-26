@@ -14,29 +14,7 @@ import StoryGenerate from "@/components/blocks/story-generate";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getLandingPage } from "@/services/page";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-
-export const revalidate = 60;
-export const dynamic = "force-static";
-export const dynamicParams = true;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}`;
-
-  if (locale !== "en") {
-    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}`;
-  }
-
-  return {
-    alternates: {
-      canonical: canonicalUrl,
-    },
-  };
-}
+import StoryGuide from "@/components/onboarding/story-guide";
 
 export default async function LandingPage({
   params,
@@ -51,6 +29,7 @@ export default async function LandingPage({
 
   return (
     <>
+      <StoryGuide />
       {page.hero && <Hero hero={page.hero} />}
       {page.story_generate && <StoryGenerate section={page.story_generate} />}
       <ModuleToolsSection

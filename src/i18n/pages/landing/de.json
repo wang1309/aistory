@@ -661,6 +661,12 @@
       "success_generated": "Geschichte erfolgreich generiert!",
       "success_copied": "Geschichte in die Zwischenablage kopiert!",
       "success_pdf_exported": "PDF erfolgreich exportiert!"
+    },
+    "completion_guide": {
+      "title": "Gefällt Ihnen die Geschichte?",
+      "subtitle": "Sie können sie speichern oder eine neue Idee ausprobieren!",
+      "create_another": "Neue Geschichte erstellen",
+      "share_action": "Geschichte teilen"
     }
   },
   "cta": {
@@ -817,6 +823,26 @@
           }
         }
       ]
+    }
+  },
+  "story_guide": {
+    "step_1": {
+      "title": "Willkommen beim AI Story Generator! 👋",
+      "description": "Lassen Sie uns in nur 30 Sekunden Ihre erste magische Geschichte erstellen."
+    },
+    "step_2": {
+      "title": "Beschreiben Sie Ihre Idee 💡",
+      "description": "Geben Sie hier eine kurze Beschreibung ein oder klicken Sie auf 'Zufälliger Prompt' für Inspiration."
+    },
+    "step_3": {
+      "title": "Magie erschaffen ✨",
+      "description": "Klicken Sie hier und sehen Sie zu, wie Ihre Geschichte zum Leben erwacht!"
+    },
+    "buttons": {
+      "done": "Fertig",
+      "skip": "Überspringen",
+      "next": "Weiter",
+      "previous": "Zurück"
     }
   }
 }

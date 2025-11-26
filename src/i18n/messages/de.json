@@ -197,5 +197,25 @@
         "desc": "Verfassen Sie moderne Gedichte, klassische Poesie oder Haikus mit Unterstützung der KI."
       }
     }
+  },
+  "story_guide": {
+    "step_1": {
+      "title": "Willkommen beim AI Story Generator! 👋",
+      "description": "Lassen Sie uns in nur 30 Sekunden Ihre erste magische Geschichte erstellen."
+    },
+    "step_2": {
+      "title": "Beschreiben Sie Ihre Idee 💡",
+      "description": "Geben Sie hier eine kurze Beschreibung ein oder klicken Sie auf 'Zufälliger Prompt' für Inspiration."
+    },
+    "step_3": {
+      "title": "Magie erschaffen ✨",
+      "description": "Klicken Sie hier und sehen Sie zu, wie Ihre Geschichte zum Leben erwacht!"
+    },
+    "buttons": {
+      "done": "Fertig",
+      "skip": "Überspringen",
+      "next": "Weiter",
+      "previous": "Zurück"
+    }
   }
 }

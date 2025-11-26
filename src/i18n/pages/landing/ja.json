@@ -660,7 +660,13 @@
       "error_pdf_export_failed": "PDFのエクスポートに失敗しました。もう一度お試しください。",
       "success_generated": "ストーリーが正常に生成されました！",
       "success_copied": "ストーリーがクリップボードにコピーされました！",
-      "success_pdf_exported": "PDFが正常にエクスポートされました！"
+      "success_pdf_exported": "PDFのエクスポートに成功しました！"
+    },
+    "completion_guide": {
+      "title": "この物語は気に入りましたか？",
+      "subtitle": "保存するか、新しいアイデアを試してみてください！",
+      "create_another": "新しい物語を作る",
+      "share_action": "物語を共有する"
     }
   },
   "cta": {
@@ -817,6 +823,26 @@
           }
         }
       ]
+    }
+  },
+  "story_guide": {
+    "step_1": {
+      "title": "AI ストーリージェネレーターへようこそ！👋",
+      "description": "わずか30秒で、最初の魔法の物語を作成しましょう。"
+    },
+    "step_2": {
+      "title": "アイデアを説明してください 💡",
+      "description": "ここに短い説明を入力するか、「ランダムプロンプト」をクリックしてインスピレーションを得てください。"
+    },
+    "step_3": {
+      "title": "魔法を作成 ✨",
+      "description": "ここをクリックして、あなたの物語が瞬時に生まれるのを見てください！"
+    },
+    "buttons": {
+      "done": "完了",
+      "skip": "スキップ",
+      "next": "次へ",
+      "previous": "前へ"
     }
   }
 }

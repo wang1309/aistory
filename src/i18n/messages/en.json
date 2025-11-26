@@ -197,5 +197,25 @@
         "desc": "Create poems in modern, classical, or haiku styles with the help of AI."
       }
     }
+  },
+  "story_guide": {
+    "step_1": {
+      "title": "Welcome to AI Story Generator! 👋",
+      "description": "Let's create your first magical story in just 30 seconds."
+    },
+    "step_2": {
+      "title": "Describe Your Idea 💡",
+      "description": "Type a short description here, or click 'Random Prompt' for inspiration."
+    },
+    "step_3": {
+      "title": "Create Magic ✨",
+      "description": "Click here to watch your story come to life instantly!"
+    },
+    "buttons": {
+      "done": "Done",
+      "skip": "Skip",
+      "next": "Next",
+      "previous": "Previous"
+    }
   }
 }

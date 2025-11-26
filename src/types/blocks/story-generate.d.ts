@@ -233,4 +233,10 @@ export interface StoryGenerate {
     success_copied: string;
     success_pdf_exported: string;
   };
+  completion_guide: {
+    title: string;
+    subtitle: string;
+    create_another: string;
+    share_action: string;
+  };
 }
