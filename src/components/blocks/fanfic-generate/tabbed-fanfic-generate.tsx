@@ -15,11 +15,11 @@ import Icon from "@/components/icon";
 import { toast } from "sonner";
 import { FanficGenerate as FanficGenerateType } from "@/types/blocks/fanfic-generate";
 import { useLocale, useTranslations } from "next-intl";
-import { useAppContext } from "@/contexts/app";
 import confetti from "canvas-confetti";
 import { FanficStorage } from "@/lib/fanfic-storage";
 import { PRESET_WORKS, getWorkById, getCharacterName, getCharacterById, getWorkName } from "@/lib/preset-works";
 import { cn } from "@/lib/utils";
+import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import FanficBreadcrumb from "./breadcrumb";
 import {
   BookOpen,
@@ -49,7 +49,6 @@ function calculateWordCount(text: string): number {
 export default function TabbedFanficGenerate({ section }: { section: FanficGenerateType }) {
   const locale = useLocale();
   const t = useTranslations();
-  const { user, setShowVerificationModal, setVerificationCallback } = useAppContext();
   const tabbedForm = section.tabbed?.form as any;
 
   // ========== STATE MANAGEMENT ==========
@@ -109,6 +108,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     language,
     advancedOptions,
   });
+
+  const turnstileRef = useRef<TurnstileInvisibleHandle | null>(null);
 
   // Update ref when state changes
   useEffect(() => {
@@ -349,11 +350,23 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     }
   }, [sourceType, selectedPresetWork, selectedCharacters, plotType, customWorkName, locale, section]);
 
-  const handleGenerate = useCallback(async () => {
-    // Set verification callback and show modal
-    setVerificationCallback(() => handleVerificationSuccess);
-    setShowVerificationModal(true);
-  }, [handleVerificationSuccess, setShowVerificationModal, setVerificationCallback]);
+  const handleTurnstileSuccess = useCallback((token: string) => {
+    console.log("✓ Turnstile verification successful (Tabbed Fanfic)");
+    handleVerificationSuccess(token);
+  }, [handleVerificationSuccess]);
+
+  const handleTurnstileError = useCallback(() => {
+    console.error("❌ Turnstile verification failed (Tabbed Fanfic)");
+    setIsGenerating(false);
+    toast.error(section.tabbed?.messages?.error_generation || "Generation failed, please try again");
+  }, [section]);
+
+  const handleGenerate = useCallback(() => {
+    if (isGenerating) return;
+
+    setIsGenerating(true);
+    turnstileRef.current?.execute();
+  }, [isGenerating]);
 
   // ========== NEXT STEP HANDLER ==========
 
@@ -943,6 +956,11 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
           </div>
         </div>
       </div>
+      <TurnstileInvisible
+        ref={turnstileRef}
+        onSuccess={handleTurnstileSuccess}
+        onError={handleTurnstileError}
+      />
     </div>
   );
 }

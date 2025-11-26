@@ -24,6 +24,7 @@ import confetti from "canvas-confetti";
 import { FanficStorage } from "@/lib/fanfic-storage";
 import { PRESET_WORKS, getWorkById, getCharacterName, getCharacterById, getWorkName } from "@/lib/preset-works";
 import { cn } from "@/lib/utils";
+import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import { ChevronDown, ChevronLeft, ChevronRight, Sparkles, Zap, Heart, BookOpen, Wand2 } from "lucide-react";
 
 // ========== HELPER FUNCTIONS ==========
@@ -45,7 +46,7 @@ function calculateWordCount(text: string): number {
 export default function ModernFanficGenerate({ section }: { section: FanficGenerateType }) {
   const locale = useLocale();
   const t = useTranslations('hero_fanfic.modern');
-  const { user, setShowVerificationModal, setVerificationCallback } = useAppContext();
+  const { user } = useAppContext();
 
   // ========== STEP DEFINITIONS ==========
 
@@ -69,6 +70,8 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedFanfic, setGeneratedFanfic] = useState('');
   const [wordCount, setWordCount] = useState(0);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const turnstileRef = useRef<TurnstileInvisibleHandle | null>(null);
   const [generatedTags, setGeneratedTags] = useState<string[]>([]);
   const [advancedOptions, setAdvancedOptions] = useState({
     ooc: 'slight',
@@ -181,26 +184,31 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
 
   // ========== GENERATE FUNCTION ==========
 
-  const handleGenerate = useCallback(async () => {
+  const handleGenerate = useCallback(() => {
     if (!canGenerate) {
       toast.error(t('messages.step_validation') || "Please complete all required information");
       return;
     }
 
-    // Set verification callback and show modal
-    setVerificationCallback(() => handleVerificationSuccess);
-    setShowVerificationModal(true);
-  }, [canGenerate, setShowVerificationModal, setVerificationCallback]);
+    // Start loading state while Turnstile verification is in progress
+    setIsGenerating(true);
+
+    // Trigger invisible Turnstile verification
+    // After verification succeeds, handleTurnstileSuccess will be called automatically
+    turnstileRef.current?.execute();
+  }, [canGenerate, t]);
 
   // Handle verification success - start fanfic generation
-  const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
+  const handleVerificationSuccess = useCallback(async (token: string) => {
     console.log('=== Starting fanfic generation after verification ===');
 
     if (!user) {
-      setShowVerificationModal(true);
-      setVerificationCallback(() => handleVerificationSuccess);
+      toast.error(t('messages.login_required') || '请先登录后再生成同人小说');
+      setIsGenerating(false);
       return;
     }
+
+    setTurnstileToken(token);
 
     // Get fresh state values from ref at the time of execution
     const currentState = latestStateRef.current;
@@ -225,7 +233,7 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
         prompt: currentState.prompt,
         language,
         options: currentState.advancedOptions,
-        turnstileToken,
+        turnstileToken: token,
       };
       console.log('=== Request data ===', requestData);
 
@@ -346,7 +354,32 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
     } finally {
       setIsGenerating(false);
     }
-  }, [user, setShowVerificationModal, setVerificationCallback]);
+  }, [
+    user,
+    sourceType,
+    selectedPresetWork,
+    customWorkName,
+    selectedCharacters,
+    plotType,
+    pairingType,
+    prompt,
+    advancedOptions,
+    language,
+    locale,
+    t,
+  ]);
+
+  const handleTurnstileSuccess = useCallback((token: string) => {
+    console.log('✓ Turnstile verification successful (Fanfic)');
+    setTurnstileToken(token);
+    handleVerificationSuccess(token);
+  }, [handleVerificationSuccess]);
+
+  const handleTurnstileError = useCallback(() => {
+    console.error('❌ Turnstile verification failed (Fanfic)');
+    setIsGenerating(false);
+    toast.error(t('messages.error_generation') || 'Generation failed, please try again');
+  }, [t]);
 
   // ========== RENDER ==========
 
@@ -895,6 +928,11 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
           {t('actions.generate_fanfic') || '开始创作'}
         </StickyCTA>
       )}
+      <TurnstileInvisible
+        ref={turnstileRef}
+        onSuccess={handleTurnstileSuccess}
+        onError={handleTurnstileError}
+      />
     </div>
   );
 }

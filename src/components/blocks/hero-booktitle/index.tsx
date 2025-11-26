@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,8 +10,8 @@ import { toast } from "sonner";
 import { HeroBooktitle as HeroBooktitleType } from "@/types/blocks/hero-booktitle";
 import { useLocale } from "next-intl";
 import BookTitleBreadcrumb from "./breadcrumb";
-import { useAppContext } from "@/contexts/app";
 import { cn } from "@/lib/utils";
+import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 
 const defaultToastMessages = {
   error_no_description: "Please describe your book.",
@@ -101,7 +101,6 @@ class TitleHistoryStorage {
 
 export default function HeroBooktitle({ section }: { section: HeroBooktitleType }) {
   const locale = useLocale();
-  const { setShowVerificationModal, setVerificationCallback } = useAppContext();
   const toastMessages = useMemo<ToastMessages>(
     () => ({
       ...defaultToastMessages,
@@ -121,6 +120,8 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
   const [isGenerating, setIsGenerating] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
   const [lastError, setLastError] = useState<string | null>(null);
+
+  const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
 
   // Collapsible examples state
   const [isExamplesExpanded, setIsExamplesExpanded] = useState(false);
@@ -395,14 +396,31 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
     }
   }, [description, selectedGenre, selectedTone, selectedStyle, locale, toastMessages]);
 
-  // Generate titles handler - trigger verification modal
-  const handleGenerate = useCallback(async () => {
+  // Invisible Turnstile success handler - delegate to generation logic
+  const handleTurnstileSuccess = useCallback((turnstileToken: string) => {
+    console.log("✓ Turnstile verification successful (Book Title)");
+    handleVerificationSuccess(turnstileToken);
+  }, [handleVerificationSuccess]);
+
+  // Invisible Turnstile error handler
+  const handleTurnstileError = useCallback(() => {
+    console.error("❌ Turnstile verification failed (Book Title)");
+    setIsGenerating(false);
+    toast.error(toastMessages.error_generate_failed);
+  }, [toastMessages]);
+
+  // Generate titles handler - trigger invisible Turnstile verification
+  const handleGenerate = useCallback(() => {
     if (!validateForm()) return;
 
-    // Set verification callback and show modal
-    setVerificationCallback(() => handleVerificationSuccess);
-    setShowVerificationModal(true);
-  }, [validateForm, setShowVerificationModal, setVerificationCallback, handleVerificationSuccess]);
+    // Start loading state while Turnstile verification is in progress
+    setIsGenerating(true);
+    setLastError(null);
+
+    // Trigger invisible Turnstile verification
+    // After verification succeeds, handleTurnstileSuccess will be called automatically
+    turnstileRef.current?.execute();
+  }, [validateForm]);
 
   // Retry handler with exponential backoff
   const handleRetry = useCallback(async () => {
@@ -774,6 +792,12 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
           </div>
         )}
       </div>
+      {/* Invisible Turnstile for non-interactive verification */}
+      <TurnstileInvisible
+        ref={turnstileRef}
+        onSuccess={handleTurnstileSuccess}
+        onError={handleTurnstileError}
+      />
     </section>
   );
 }

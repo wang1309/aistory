@@ -14,6 +14,7 @@ import confetti from "canvas-confetti";
 import { StoryStorage, SavedStory } from "@/lib/story-storage";
 import StoryHistoryDropdown from "@/components/story-history-dropdown";
 import StoryShareButtons from "@/components/story-share-buttons";
+import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -45,7 +46,7 @@ function calculateWordCount(text: string): number {
 
 export default function StoryGenerate({ section }: { section: StoryGenerateType }) {
   const locale = useLocale(); // 获取当前语言
-  const { user, setShowVerificationModal, setVerificationCallback } = useAppContext();
+  const { user } = useAppContext();
   // Get translated constants (memoized for performance)
   const RANDOM_PROMPTS = useMemo(() => section.random_prompts, [section]);
 
@@ -104,6 +105,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const [prompt, setPrompt] = useState("");
   const [selectedModel, setSelectedModel] = useState<string | null>(null);
   const [selectedFormat, setSelectedFormat] = useState("none");
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const [selectedLength, setSelectedLength] = useState("none");
   const [selectedGenre, setSelectedGenre] = useState("none");
   const [selectedPerspective, setSelectedPerspective] = useState("none");
@@ -241,7 +244,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     return false;
   }, []);
 
-  // Handle clicking the generate button - show verification modal first
+  // Handle clicking the generate button - trigger invisible Turnstile verification
   const handleGenerateClick = useCallback(() => {
     // Validation
     if (!prompt.trim()) {
@@ -254,15 +257,16 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       return;
     }
 
-    // Set verification callback and show modal
-    setVerificationCallback(() => handleVerificationSuccess);
-    setShowVerificationModal(true);
-  }, [prompt, selectedModel, section, setShowVerificationModal, setVerificationCallback]);
-  // Note: handleVerificationSuccess is NOT in deps because it's defined below
-  // and using ref for advanced options prevents stale closure issues
+    // Start loading state while Turnstile verification is in progress
+    setIsGenerating(true);
 
-  // Handle verification success - start story generation
-  const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
+    // Trigger invisible Turnstile verification
+    // After verification succeeds, handleTurnstileSuccess will be called automatically
+    turnstileRef.current?.execute();
+  }, [prompt, selectedModel, section]);
+
+  // Perform story generation with Turnstile token
+  const performStoryGeneration = useCallback(async (turnstileToken: string) => {
     console.log("=== Starting story generation after verification ===");
 
     // Get latest advanced options from ref (to avoid stale closure)
@@ -425,6 +429,21 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     }
   }, [prompt, selectedModel, locale, section, AI_MODELS, triggerFirstTimeConfetti]);
   // Note: advancedOptions are accessed via ref, so not in dependency array
+
+  // Handle Turnstile verification success
+  const handleTurnstileSuccess = useCallback((token: string) => {
+    console.log("✓ Turnstile verification successful");
+    setTurnstileToken(token);
+    // Automatically start generation after verification
+    performStoryGeneration(token);
+  }, [performStoryGeneration]);
+
+  // Handle Turnstile error
+  const handleTurnstileError = useCallback(() => {
+    console.error("❌ Turnstile verification failed");
+    setIsGenerating(false);
+    toast.error(section.toasts.error_generate_failed);
+  }, [section]);
 
   // PDF export handler
   const handleExportPdf = useCallback(async () => {
@@ -918,6 +937,13 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         )}
 
       </div>
+
+      {/* Invisible Turnstile for non-interactive verification */}
+      <TurnstileInvisible
+        ref={turnstileRef}
+        onSuccess={handleTurnstileSuccess}
+        onError={handleTurnstileError}
+      />
     </section>
   );
 }

@@ -12,7 +12,6 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import Icon from "@/components/icon";
 import { toast } from "sonner";
 import { useLocale } from "next-intl";
-import { useAppContext } from "@/contexts/app";
 import confetti from "canvas-confetti";
 import { PlotStorage } from "@/lib/plot-storage";
 import { extractPlotTitle, countPlotWords } from "@/lib/plot-prompt";
@@ -24,6 +23,7 @@ import PlotHistoryDropdown from "@/components/plot-history-dropdown";
 import PlotBreadcrumb from "./breadcrumb";
 import { cn } from "@/lib/utils";
 import { ChevronDown, Settings } from "lucide-react";
+import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -55,7 +55,6 @@ interface PlotGenerateProps {
 
 export default function PlotGenerate({ section }: PlotGenerateProps) {
   const locale = useLocale();
-  const { setShowVerificationModal, setVerificationCallback } = useAppContext();
 
   // Helper function to get nested translations from section data
   const t = (path: string) => {
@@ -162,6 +161,8 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
   const [showPlotToStoryDialog, setShowPlotToStoryDialog] = useState(false);
 
+  const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
+
   // Use ref to store latest values (avoid stale closure)
   const plotOptionsRef = useRef({
     complexity: 'medium' as 'simple' | 'medium' | 'complex',
@@ -242,10 +243,13 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       return;
     }
 
-    // Set verification callback and show modal
-    setVerificationCallback(() => handleVerificationSuccess);
-    setShowVerificationModal(true);
-  }, [prompt, selectedModel, setVerificationCallback, setShowVerificationModal, section]);
+    // Start loading state while Turnstile verification is in progress
+    setIsGenerating(true);
+
+    // Trigger invisible Turnstile verification
+    // After verification succeeds, handleTurnstileSuccess will be called automatically
+    turnstileRef.current?.execute();
+  }, [prompt, selectedModel, section]);
 
   const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
     console.log("=== Starting Plot Generation ===");
@@ -363,6 +367,17 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       setIsGenerating(false);
     }
   }, [prompt, selectedModel]);
+
+  const handleTurnstileSuccess = useCallback((turnstileToken: string) => {
+    console.log("✓ Turnstile verification successful (Plot)");
+    handleVerificationSuccess(turnstileToken);
+  }, [handleVerificationSuccess]);
+
+  const handleTurnstileError = useCallback(() => {
+    console.error("❌ Turnstile verification failed (Plot)");
+    setIsGenerating(false);
+    toast.error(t('errors.generation_failed'));
+  }, [section]);
 
   // Computed values
   const wordCount = useMemo(() => calculateWordCount(generatedPlot), [generatedPlot]);
@@ -859,6 +874,12 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           open={showPlotToStoryDialog}
           onOpenChange={setShowPlotToStoryDialog}
           translations={section}
+        />
+        {/* Invisible Turnstile for non-interactive verification */}
+        <TurnstileInvisible
+          ref={turnstileRef}
+          onSuccess={handleTurnstileSuccess}
+          onError={handleTurnstileError}
         />
       </div>
     </div>
