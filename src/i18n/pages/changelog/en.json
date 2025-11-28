@@ -6,6 +6,34 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.5",
+        "date": "2025-11-28",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Introduced onboarding flow and post-generation guidance to help first-time users understand features and next steps"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Fixed Get Started section anchor position so the entry scrolls to the correct location"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Further optimized overall site loading performance, reducing first screen load time",
+              "Improved loading progress display for smoother and more accurate feedback",
+              "Refined AI Writing Tools module performance and interaction details",
+              "Streamlined human verification to reduce unnecessary steps and improve flow",
+              "Polished Hero and Header styling for a more unified look aligned with the current design system"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.4",
         "date": "2025-11-23",
         "changes": [

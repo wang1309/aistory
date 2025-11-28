@@ -6,6 +6,34 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.5",
+        "date": "2025-11-28",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Neue Onboarding-Experience und Hinweise nach der Generierung, damit Erstnutzer Funktionen und nächste Schritte schneller verstehen"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Problem mit der Get-Started-Sektion behoben, bei dem der Anker nicht zur korrekten Position scrollte"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Gesamtseitenladeleistung weiter optimiert und die Zeit bis zur ersten Ansicht verkürzt",
+              "Anzeige des Ladefortschritts verfeinert, um flüssigeres und genaueres Feedback zu bieten",
+              "Performance und Interaktionsdetails des AI Writing Tools-Moduls verbessert",
+              "Ablauf der Mensch-Maschine-Verifizierung vereinfacht und unnötige Schritte reduziert, um die Nutzung zu beschleunigen",
+              "Hero- und Header-Bereiche visuell überarbeitet, um besser mit dem aktuellen Designsystem zu harmonieren"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.4",
         "date": "2025-11-23",
         "changes": [
