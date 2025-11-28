@@ -217,5 +217,17 @@
       "next": "Next",
       "previous": "Previous"
     }
+  },
+  "generation_progress": {
+    "tips": [
+      "Crafting the perfect opening scene...",
+      "Developing unique characters with depth...",
+      "Weaving an engaging plot structure...",
+      "Adding vivid descriptions and details...",
+      "Creating compelling dialogue...",
+      "Building tension and conflict...",
+      "Polishing the narrative flow...",
+      "Adding the finishing touches..."
+    ]
   }
 }

@@ -17,6 +17,8 @@ import StoryHistoryDropdown from "@/components/story-history-dropdown";
 import StoryShareButtons from "@/components/story-share-buttons";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import CompletionGuide from "@/components/story/completion-guide";
+import GenerationProgress from "@/components/story/generation-progress";
+import { useTranslations } from "next-intl";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -49,6 +51,23 @@ function calculateWordCount(text: string): number {
 export default function StoryGenerate({ section }: { section: StoryGenerateType }) {
   const locale = useLocale(); // 获取当前语言
   const { user } = useAppContext();
+  const t = useTranslations("generation_progress");
+
+  // Get progress tips from translations
+  const progressTips = useMemo(() => {
+    try {
+      return t.raw("tips") as string[];
+    } catch {
+      // Fallback tips if translation fails
+      return [
+        "Crafting the perfect opening scene...",
+        "Developing unique characters...",
+        "Weaving an engaging plot...",
+        "Adding vivid descriptions...",
+      ];
+    }
+  }, [t]);
+
   // Get translated constants (memoized for performance)
   const RANDOM_PROMPTS = useMemo(() => section.random_prompts, [section]);
 
@@ -975,14 +994,12 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               <div className="p-8 md:p-16 bg-white/20 dark:bg-black/20 min-h-[400px]">
                 {isGenerating && !generatedStory ? (
                   <div className="h-full flex flex-col items-center justify-center gap-6 py-20">
-                    <div className="relative size-20">
-                      <div className="absolute inset-0 rounded-full border-2 border-indigo-500/20" />
-                      <div className="absolute inset-0 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
-                      <Icon name="pen-tool" className="absolute inset-0 m-auto size-6 text-indigo-500 animate-pulse" />
-                    </div>
-                    <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground/60 dark:text-muted-foreground/80 animate-pulse">
-                      {section.output.loading}
-                    </p>
+                    {/* Generation Progress Component */}
+                    <GenerationProgress
+                      isGenerating={isGenerating}
+                      tips={progressTips}
+                      estimatedDuration={15}
+                    />
                   </div>
                 ) : (
                   <div className="prose prose-lg md:prose-xl dark:prose-invert max-w-4xl mx-auto font-serif leading-loose tracking-wide text-foreground">

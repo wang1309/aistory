@@ -217,5 +217,17 @@
       "next": "Weiter",
       "previous": "Zurück"
     }
+  },
+  "generation_progress": {
+    "tips": [
+      "Die perfekte Eröffnungsszene entwerfen...",
+      "Einzigartige Charaktere mit Tiefe entwickeln...",
+      "Eine fesselnde Handlungsstruktur weben...",
+      "Lebendige Beschreibungen und Details hinzufügen...",
+      "Überzeugende Dialoge erstellen...",
+      "Spannung und Konflikte aufbauen...",
+      "Den Erzählfluss verfeinern...",
+      "Den letzten Schliff geben..."
+    ]
   }
 }
