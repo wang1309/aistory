@@ -31,7 +31,6 @@ export default async function ModuleToolsSection({
 
   const HeadingTag = headingLevel;
   const badgeCategoryLabel = t("ai_tools.badge_category");
-  const buttonLabel = t("ai_tools.button_use_now");
 
   const toolCards = tools.map((tool) => ({
     slug: tool.slug,
@@ -80,7 +79,6 @@ export default async function ModuleToolsSection({
         <AnimatedToolsGrid
           tools={toolCards}
           badgeCategoryLabel={badgeCategoryLabel}
-          buttonLabel={buttonLabel}
         />
       </div>
     </section>

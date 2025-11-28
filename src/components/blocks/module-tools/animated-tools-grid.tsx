@@ -2,11 +2,8 @@
 
 import React from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import Icon from "@/components/icon";
-import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
 
 interface ToolBadge {
   type: string;
@@ -25,7 +22,6 @@ export interface ToolCardData {
 interface AnimatedToolsGridProps {
   tools: ToolCardData[];
   badgeCategoryLabel: string;
-  buttonLabel: string;
 }
 
 const containerVariants = {
@@ -48,7 +44,7 @@ const itemVariants = {
   }
 };
 
-export function AnimatedToolsGrid({ tools, badgeCategoryLabel, buttonLabel }: AnimatedToolsGridProps) {
+export function AnimatedToolsGrid({ tools, badgeCategoryLabel }: AnimatedToolsGridProps) {
   return (
     <motion.div
       initial="hidden"
@@ -58,18 +54,17 @@ export function AnimatedToolsGrid({ tools, badgeCategoryLabel, buttonLabel }: An
       className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
     >
       {tools.map((tool) => (
-        <ToolCard 
-          key={tool.slug} 
-          tool={tool} 
-          badgeCategoryLabel={badgeCategoryLabel} 
-          buttonLabel={buttonLabel} 
+        <ToolCard
+          key={tool.slug}
+          tool={tool}
+          badgeCategoryLabel={badgeCategoryLabel}
         />
       ))}
     </motion.div>
   );
 }
 
-function ToolCard({ tool, badgeCategoryLabel, buttonLabel }: { tool: ToolCardData, badgeCategoryLabel: string, buttonLabel: string }) {
+function ToolCard({ tool, badgeCategoryLabel }: { tool: ToolCardData; badgeCategoryLabel: string }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -84,7 +79,7 @@ function ToolCard({ tool, badgeCategoryLabel, buttonLabel }: { tool: ToolCardDat
       variants={itemVariants}
       className="group h-full"
     >
-      <div 
+      <div
         className="relative h-full overflow-hidden rounded-3xl border border-border/50 bg-card/30 hover:bg-card/50 transition-colors duration-500 flex flex-col"
         onMouseMove={handleMouseMove}
       >
@@ -102,20 +97,20 @@ function ToolCard({ tool, badgeCategoryLabel, buttonLabel }: { tool: ToolCardDat
           }}
         />
 
-        <div className="relative z-20 p-8 flex flex-col h-full">
-          <div className="flex items-start justify-between mb-6">
-            <div className="flex items-center gap-4">
-              <div className="relative flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/10 shadow-inner group-hover:scale-110 group-hover:border-primary/30 transition-all duration-500">
-                <Icon name={tool.icon} className="w-7 h-7 text-primary/80 group-hover:text-primary transition-colors" />
+        <div className="relative z-20 p-5 flex flex-col h-full">
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/10 shadow-inner group-hover:scale-110 group-hover:border-primary/30 transition-all duration-500">
+                <Icon name={tool.icon} className="w-5 h-5 text-primary/80 group-hover:text-primary transition-colors" />
                 {/* Icon Glow */}
-                <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-              
+
               <div>
-                <h3 className="text-xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-base font-bold text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
                   {tool.name}
                 </h3>
-                <p className="text-xs font-semibold text-muted-foreground/60 uppercase tracking-widest mt-1">
+                <p className="text-[10px] font-semibold text-muted-foreground/60 uppercase tracking-widest mt-0.5">
                   {badgeCategoryLabel}
                 </p>
               </div>
@@ -127,9 +122,9 @@ function ToolCard({ tool, badgeCategoryLabel, buttonLabel }: { tool: ToolCardDat
                   <span
                     key={badge.label}
                     className={cn(
-                      "px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide border backdrop-blur-sm",
-                      badge.type === "hot" 
-                        ? "bg-red-500/10 text-red-500 border-red-500/20" 
+                      "px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wide border backdrop-blur-sm",
+                      badge.type === "hot"
+                        ? "bg-red-500/10 text-red-500 border-red-500/20"
                         : "bg-teal-500/10 text-teal-500 border-teal-500/20"
                     )}
                   >
@@ -138,28 +133,6 @@ function ToolCard({ tool, badgeCategoryLabel, buttonLabel }: { tool: ToolCardDat
                 ))}
               </div>
             )}
-          </div>
-
-          <div className="flex-grow mb-8">
-            <p className="text-base text-muted-foreground/80 leading-relaxed font-light line-clamp-3">
-              {tool.description}
-            </p>
-          </div>
-
-          <div className="mt-auto">
-            <Link href={tool.href as any} className="block w-full">
-              <Button
-                variant="ghost"
-                className="w-full justify-between rounded-xl h-12 px-0 hover:bg-transparent group/btn p-0"
-              >
-                <span className="text-sm font-semibold text-primary group-hover/btn:text-primary/80 transition-colors">
-                  {buttonLabel}
-                </span>
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary group-hover/btn:bg-primary group-hover/btn:text-primary-foreground transition-all duration-300 group-hover/btn:translate-x-2">
-                   <ArrowRight className="w-4 h-4" />
-                </div>
-              </Button>
-            </Link>
           </div>
         </div>
 
