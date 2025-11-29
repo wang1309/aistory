@@ -13,11 +13,6 @@
     "nav": {
       "items": [
         {
-          "title": "Возможности",
-          "url": "/#feature",
-          "icon": "RiSparkling2Line"
-        },
-        {
           "title": "AI письмо",
           "icon": "RiQuillPenLine",
           "children": [

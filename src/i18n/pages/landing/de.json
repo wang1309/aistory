@@ -13,11 +13,6 @@
     "nav": {
       "items": [
         {
-          "title": "Funktionen",
-          "url": "/#feature",
-          "icon": "RiSparkling2Line"
-        },
-        {
           "title": "KI-Schreiben",
           "icon": "RiQuillPenLine",
           "children": [

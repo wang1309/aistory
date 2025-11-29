@@ -13,11 +13,6 @@
     "nav": {
       "items": [
         {
-          "title": "功能特点",
-          "url": "/#feature",
-          "icon": "RiSparkling2Line"
-        },
-        {
           "title": "AI 写作",
           "icon": "RiQuillPenLine",
           "children": [

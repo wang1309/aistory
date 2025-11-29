@@ -13,11 +13,6 @@
     "nav": {
       "items": [
         {
-          "title": "機能",
-          "url": "/#feature",
-          "icon": "RiSparkling2Line"
-        },
-        {
           "title": "AI ライティング",
           "icon": "RiQuillPenLine",
           "children": [
