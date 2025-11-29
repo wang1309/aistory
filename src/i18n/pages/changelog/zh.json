@@ -6,6 +6,24 @@
     "description": "了解我们最新的功能改进、问题修复和安全更新",
     "items": [
       {
+        "version": "v1.3.6",
+        "date": "2025-11-29",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "新增基于 NextAuth 的统一登录体系，为后续账号体系和个性化功能打下基础"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "简化首页顶部导航，移除独立的“Features / 功能特点”入口，仅保留 AI 写作主入口"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.5",
         "date": "2025-11-28",
         "changes": [

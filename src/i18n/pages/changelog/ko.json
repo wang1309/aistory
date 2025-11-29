@@ -6,6 +6,24 @@
     "description": "최신 기능, 개선 사항, 버그 수정 및 보안 업데이트를 확인하세요",
     "items": [
       {
+        "version": "v1.3.6",
+        "date": "2025-11-29",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "NextAuth 기반 통합 로그인 시스템을 도입하여 향후 계정 기능과 개인화 기능을 위한 기반을 마련했습니다"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "헤더 내비게이션을 단순화하여 독립적인 \"Features\" 탭을 제거하고 AI 글쓰기 진입점으로 통합했습니다"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.5",
         "date": "2025-11-28",
         "changes": [

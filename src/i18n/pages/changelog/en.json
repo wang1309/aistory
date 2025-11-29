@@ -6,6 +6,24 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.6",
+        "date": "2025-11-29",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Introduced a unified login system powered by NextAuth, laying the foundation for user accounts and future personalization features"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Simplified the main header navigation by removing the standalone Features tab and keeping AI Write as the primary entry"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.5",
         "date": "2025-11-28",
         "changes": [

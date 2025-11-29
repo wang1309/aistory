@@ -6,6 +6,24 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.6",
+        "date": "2025-11-29",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Ein einheitliches Login-System auf Basis von NextAuth eingeführt, als Grundlage für Benutzerkonten und zukünftige Personalisierungsfunktionen"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Hauptnavigation im Header vereinfacht, indem der eigenständige \"Features\"-Tab entfernt und AI-Schreiben als Haupteinstieg beibehalten wurde"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.5",
         "date": "2025-11-28",
         "changes": [
