@@ -12,7 +12,7 @@ import {
 
 // Users table
 export const users = pgTable(
-  "users",
+  "sg_users",
   {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
     uuid: varchar({ length: 255 }).notNull().unique(),
