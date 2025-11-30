@@ -130,6 +130,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const [selectedFormat, setSelectedFormat] = useState("none");
   const [turnstileToken, setTurnstileToken] = useState<string>("");
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
+  const outputRef = useRef<HTMLDivElement | null>(null);
+  const outputScrollRef = useRef<HTMLDivElement | null>(null);
   const [selectedLength, setSelectedLength] = useState("none");
   const [selectedGenre, setSelectedGenre] = useState("none");
   const [selectedPerspective, setSelectedPerspective] = useState("none");
@@ -221,6 +223,48 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     if (selectedTone !== "none") count++;
     return count;
   }, [selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone]);
+
+  useEffect(() => {
+    if (isGenerating && outputRef.current) {
+      try {
+        const element = outputRef.current;
+        const rect = element.getBoundingClientRect();
+        const absoluteTop = rect.top + window.scrollY;
+        const viewportHeight = window.innerHeight || 0;
+        const cardHeight = rect.height || 0;
+
+        if (!viewportHeight) {
+          return;
+        }
+
+        let targetTop = absoluteTop;
+
+        if (cardHeight > 0 && cardHeight < viewportHeight) {
+          const available = viewportHeight - cardHeight;
+          const topMargin = available * 0.25; // 上方留 25% 的可用空间
+          targetTop = Math.max(absoluteTop - topMargin, 0);
+        } else {
+          // 卡片比视口高或等高时，稍微向下滚一点，不要顶在最上方
+          targetTop = Math.max(absoluteTop - viewportHeight * 0.1, 0);
+        }
+
+        window.scrollTo({ top: targetTop, behavior: "smooth" });
+      } catch (e) {
+        console.log("scroll to output failed", e);
+      }
+    }
+  }, [isGenerating]);
+
+  useEffect(() => {
+    if (isGenerating && outputScrollRef.current) {
+      try {
+        const el = outputScrollRef.current;
+        el.scrollTop = el.scrollHeight;
+      } catch (e) {
+        console.log("scroll generated content failed", e);
+      }
+    }
+  }, [generatedStory, isGenerating]);
 
   // ========== MEMOIZED HANDLERS (Performance optimization: prevents recreation on every render) ==========
 
@@ -1068,7 +1112,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         {/* Generated Story Output */}
         {(isGenerating || generatedStory) && (
-          <div className="mt-24 animate-fade-in-up">
+          <div ref={outputRef} className="mt-24 animate-fade-in-up">
             <div className="glass-premium rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-black/5 dark:ring-white/10">
               {/* Header */}
               <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-10 border-b border-black/5 dark:border-white/5 bg-white/40 dark:bg-white/5 gap-6">
@@ -1114,7 +1158,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               </div>
 
               {/* Content */}
-              <div className="p-8 md:p-16 bg-white/20 dark:bg-black/20 min-h-[400px]">
+              <div
+                ref={outputScrollRef}
+                className="p-8 md:p-16 bg-white/20 dark:bg-black/20 min-h-[320px] max-h-[480px] overflow-y-auto"
+              >
                 {isGenerating && !generatedStory ? (
                   <div className="h-full flex flex-col items-center justify-center gap-6 py-20">
                     {/* Generation Progress Component */}
