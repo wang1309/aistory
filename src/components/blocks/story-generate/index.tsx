@@ -724,6 +724,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             settings,
             status,
             visibility: status === "published" ? "public" : "private",
+            sourceCategory: "story",
           }),
         });
 

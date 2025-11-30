@@ -91,6 +91,7 @@ export async function POST(req: Request) {
       settings,
       status,
       visibility,
+      sourceCategory,
     } = body || {};
 
     if (!content || typeof content !== "string") {
@@ -114,6 +115,18 @@ export async function POST(req: Request) {
       storyVisibility = visibility;
     }
 
+    let sourceCategoryValue: string | null = null;
+    if (
+      typeof sourceCategory === "string" &&
+      (sourceCategory === "story" ||
+        sourceCategory === "title" ||
+        sourceCategory === "fanfic" ||
+        sourceCategory === "plot" ||
+        sourceCategory === "poem")
+    ) {
+      sourceCategoryValue = sourceCategory;
+    }
+
     const now = new Date();
 
     const newStory = await insertStory({
@@ -127,6 +140,7 @@ export async function POST(req: Request) {
       settings: settings ?? null,
       status: storyStatus,
       visibility: storyVisibility,
+      source_category: sourceCategoryValue,
       created_at: now,
       updated_at: now,
     });

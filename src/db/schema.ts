@@ -160,6 +160,7 @@ export const sg_stories = pgTable(
     settings: jsonb().$type<Record<string, unknown>>(),
     status: varchar({ length: 20 }).notNull().default("draft"),
     visibility: varchar({ length: 20 }).notNull().default("private"),
+    source_category: varchar({ length: 50 }),
     created_at: timestamp({ withTimezone: true }),
     updated_at: timestamp({ withTimezone: true }),
   },
