@@ -8,6 +8,9 @@ import {
   timestamp,
   unique,
   uniqueIndex,
+  jsonb,
+  date,
+  index,
 } from "drizzle-orm/pg-core";
 
 // Users table
@@ -39,7 +42,7 @@ export const users = pgTable(
 );
 
 // Orders table
-export const orders = pgTable("orders", {
+export const orders = pgTable("sg_orders", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   order_no: varchar({ length: 255 }).notNull().unique(),
   created_at: timestamp({ withTimezone: true }),
@@ -68,7 +71,7 @@ export const orders = pgTable("orders", {
 });
 
 // API Keys table
-export const apikeys = pgTable("apikeys", {
+export const apikeys = pgTable("sg_apikeys", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   api_key: varchar({ length: 255 }).notNull().unique(),
   title: varchar({ length: 100 }),
@@ -78,7 +81,7 @@ export const apikeys = pgTable("apikeys", {
 });
 
 // Credits table
-export const credits = pgTable("credits", {
+export const credits = pgTable("sg_credits", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   trans_no: varchar({ length: 255 }).notNull().unique(),
   created_at: timestamp({ withTimezone: true }),
@@ -90,7 +93,7 @@ export const credits = pgTable("credits", {
 });
 
 // Categories table
-export const categories = pgTable("categories", {
+export const categories = pgTable("sg_categories", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   uuid: varchar({ length: 255 }).notNull().unique(),
   name: varchar({ length: 255 }).notNull().unique(),
@@ -103,7 +106,7 @@ export const categories = pgTable("categories", {
 });
 
 // Posts table
-export const posts = pgTable("posts", {
+export const posts = pgTable("sg_posts", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   uuid: varchar({ length: 255 }).notNull().unique(),
   slug: varchar({ length: 255 }),
@@ -121,7 +124,7 @@ export const posts = pgTable("posts", {
 });
 
 // Affiliates table
-export const affiliates = pgTable("affiliates", {
+export const affiliates = pgTable("sg_affiliates", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   user_uuid: varchar({ length: 255 }).notNull(),
   created_at: timestamp({ withTimezone: true }),
@@ -142,3 +145,105 @@ export const feedbacks = pgTable("sg_feedbacks", {
   content: text(),
   rating: integer(),
 });
+
+export const sg_stories = pgTable(
+  "sg_stories",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    uuid: varchar({ length: 255 }).notNull().unique(),
+    user_uuid: varchar({ length: 255 }).notNull(),
+    title: varchar({ length: 200 }),
+    prompt: text(),
+    content: text().notNull(),
+    word_count: integer().notNull().default(0),
+    model_used: varchar({ length: 50 }),
+    settings: jsonb().$type<Record<string, unknown>>(),
+    status: varchar({ length: 20 }).notNull().default("draft"),
+    visibility: varchar({ length: 20 }).notNull().default("private"),
+    created_at: timestamp({ withTimezone: true }),
+    updated_at: timestamp({ withTimezone: true }),
+  },
+  (table) => [
+    uniqueIndex("sg_stories_uuid_unique_idx").on(table.uuid),
+    index("sg_stories_user_created_idx").on(table.user_uuid, table.created_at),
+  ]
+);
+
+export const sg_user_stats = pgTable("sg_user_stats", {
+  user_uuid: varchar({ length: 255 }).primaryKey(),
+  total_stories: integer().notNull().default(0),
+  total_words: integer().notNull().default(0),
+  creation_days: integer().notNull().default(0),
+  longest_streak: integer().notNull().default(0),
+  current_streak: integer().notNull().default(0),
+  last_creation_date: date(),
+  updated_at: timestamp({ withTimezone: true }),
+});
+
+export const sg_story_likes = pgTable(
+  "sg_story_likes",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    story_uuid: varchar({ length: 255 }).notNull(),
+    user_uuid: varchar({ length: 255 }).notNull(),
+    created_at: timestamp({ withTimezone: true }),
+  },
+  (table) => [
+    uniqueIndex("sg_story_likes_story_user_unique_idx").on(
+      table.story_uuid,
+      table.user_uuid
+    ),
+    index("sg_story_likes_story_idx").on(table.story_uuid),
+    index("sg_story_likes_user_idx").on(table.user_uuid),
+  ]
+);
+
+export const sg_story_comments = pgTable(
+  "sg_story_comments",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    story_uuid: varchar({ length: 255 }).notNull(),
+    user_uuid: varchar({ length: 255 }).notNull(),
+    content: text().notNull(),
+    parent_id: integer(),
+    root_id: integer(),
+    is_deleted: boolean().notNull().default(false),
+    created_at: timestamp({ withTimezone: true }),
+    updated_at: timestamp({ withTimezone: true }),
+    deleted_at: timestamp({ withTimezone: true }),
+  },
+  (table) => [
+    index("sg_story_comments_story_root_created_idx").on(
+      table.story_uuid,
+      table.root_id,
+      table.created_at
+    ),
+    index("sg_story_comments_user_idx").on(table.user_uuid),
+    index("sg_story_comments_parent_idx").on(table.parent_id),
+  ]
+);
+
+export const sg_tags = pgTable("sg_tags", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  slug: varchar({ length: 64 }).notNull().unique(),
+  name: varchar({ length: 64 }).notNull(),
+  created_at: timestamp({ withTimezone: true }),
+});
+
+export const sg_story_tag_relations = pgTable(
+  "sg_story_tag_relations",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    story_uuid: varchar({ length: 255 }).notNull(),
+    tag_id: integer().notNull(),
+    created_at: timestamp({ withTimezone: true }),
+  },
+  (table) => [
+    uniqueIndex("sg_story_tag_relations_story_tag_unique_idx").on(
+      table.story_uuid,
+      table.tag_id
+    ),
+    index("sg_story_tag_relations_story_idx").on(table.story_uuid),
+    index("sg_story_tag_relations_tag_idx").on(table.tag_id),
+  ]
+);

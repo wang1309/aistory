@@ -19,6 +19,8 @@ import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/Turns
 import CompletionGuide from "@/components/story/completion-guide";
 import GenerationProgress from "@/components/story/generation-progress";
 import { useTranslations } from "next-intl";
+import StorySaveDialog from "@/components/story/story-save-dialog";
+import type { StoryStatus } from "@/models/story";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -50,7 +52,7 @@ function calculateWordCount(text: string): number {
 
 export default function StoryGenerate({ section }: { section: StoryGenerateType }) {
   const locale = useLocale(); // 获取当前语言
-  const { user } = useAppContext();
+  const { user, setShowSignModal } = useAppContext();
   const t = useTranslations("generation_progress");
 
   // Get progress tips from translations
@@ -201,6 +203,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // PDF export state
   const [isExportingPdf, setIsExportingPdf] = useState(false);
+
+  const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
+  const [isSavingStory, setIsSavingStory] = useState(false);
 
   // Calculate word count (memoized for performance)
   const wordCount = useMemo(() => calculateWordCount(generatedStory), [generatedStory]);
@@ -603,13 +608,131 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     }
   }, []);
 
-  // Handle share action from Completion Guide
-  const handleShare = useCallback(() => {
-    // For now, just scroll to the share buttons section or copy link
-    // Since we have share buttons above, we can just highlight them or copy the link directly
-    navigator.clipboard.writeText(window.location.href);
-    toast.success(shareTranslations.link_copied);
-  }, [shareTranslations]);
+  const handleSaveClick = useCallback(() => {
+    if (!generatedStory.trim()) {
+      toast.error(section.toasts.error_no_content);
+      return;
+    }
+
+    if (!user) {
+      setShowSignModal(true);
+      return;
+    }
+
+    setIsSaveDialogOpen(true);
+  }, [generatedStory, section, user, setShowSignModal]);
+
+  const handleConfirmSave = useCallback(
+    async (status: StoryStatus) => {
+      if (!generatedStory.trim()) {
+        toast.error(section.toasts.error_no_content);
+        return;
+      }
+
+      try {
+        setIsSavingStory(true);
+
+        const latestOptions = advancedOptionsRef.current;
+
+        const settings: Record<string, unknown> = {
+          locale,
+          outputLanguage: latestOptions.language,
+        };
+
+        if (latestOptions.format !== "none") {
+          settings.format = latestOptions.format;
+        }
+        if (latestOptions.length !== "none") {
+          settings.length = latestOptions.length;
+        }
+        if (latestOptions.genre !== "none") {
+          settings.genre = latestOptions.genre;
+        }
+        if (latestOptions.perspective !== "none") {
+          settings.perspective = latestOptions.perspective;
+        }
+        if (latestOptions.audience !== "none") {
+          settings.audience = latestOptions.audience;
+        }
+        if (latestOptions.tone !== "none") {
+          settings.tone = latestOptions.tone;
+        }
+
+        const selectedModelName =
+          AI_MODELS.find((m) => m.id === selectedModel)?.name || "";
+
+        const resp = await fetch("/api/stories", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title:
+              prompt.substring(0, 30) + (prompt.length > 30 ? "..." : ""),
+            prompt,
+            content: generatedStory,
+            wordCount,
+            modelUsed: selectedModelName,
+            settings,
+            status,
+            visibility: status === "published" ? "public" : "private",
+          }),
+        });
+
+        if (!resp.ok) {
+          throw new Error("request failed with status: " + resp.status);
+        }
+
+        const { code, message } = await resp.json();
+
+        if (code !== 0) {
+          if (message === "no auth") {
+            setShowSignModal(true);
+          }
+
+          toast.error(
+            locale === "zh"
+              ? message === "no auth"
+                ? "请先登录后再保存故事"
+                : `保存失败：${message}`
+              : message || "Failed to save story"
+          );
+          return;
+        }
+
+        toast.success(
+          locale === "zh"
+            ? status === "published"
+              ? "故事已发布"
+              : "故事已保存"
+            : status === "published"
+            ? "Story published"
+            : "Story saved"
+        );
+
+        setIsSaveDialogOpen(false);
+      } catch (error) {
+        console.log("save story failed", error);
+        toast.error(
+          locale === "zh"
+            ? "保存失败，请稍后再试"
+            : "Failed to save story, please try again."
+        );
+      } finally {
+        setIsSavingStory(false);
+      }
+    },
+    [
+      generatedStory,
+      section,
+      locale,
+      AI_MODELS,
+      selectedModel,
+      prompt,
+      wordCount,
+      setShowSignModal,
+    ]
+  );
 
   // ========== RENDER ==========
 
@@ -1019,10 +1142,18 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         {generatedStory && !isGenerating && (
           <CompletionGuide
             onCreateAnother={handleCreateAnother}
-            onShare={handleShare}
+            onSave={handleSaveClick}
             translations={section.completion_guide}
           />
         )}
+
+        <StorySaveDialog
+          open={isSaveDialogOpen}
+          onOpenChange={setIsSaveDialogOpen}
+          onSelect={handleConfirmSave}
+          locale={locale}
+          isSaving={isSavingStory}
+        />
 
       </div>
 

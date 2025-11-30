@@ -14,6 +14,9 @@
     "user_center": "User Center",
     "admin_system": "Admin System"
   },
+  "common": {
+    "error": "Something went wrong. Please try again later."
+  },
   "sign_modal": {
     "sign_in_title": "Sign In",
     "sign_in_description": "Sign in to your account",
@@ -57,6 +60,39 @@
       "interval_one_time": "One-Time"
     }
   },
+  "my_stories": {
+    "title": "My Stories",
+    "description": "Browse and manage stories you've generated and saved with AI.",
+    "no_stories": "No stories saved to your library yet",
+    "back_to_list": "Back to my stories",
+    "edit_title": "Edit title",
+    "edit_title_description": "Give this story a clearer, more memorable title.",
+    "edit_title_label": "Story title",
+    "edit_title_save": "Save",
+    "edit_title_cancel": "Cancel",
+    "edit_title_success": "Title updated",
+    "delete_story": "Delete story",
+    "delete_story_confirm_title": "Delete this story?",
+    "delete_story_confirm_description": "This action cannot be undone, but it will not affect content already generated locally.",
+    "delete_story_confirm_ok": "Delete",
+    "delete_story_confirm_cancel": "Cancel",
+    "delete_story_success": "Story deleted",
+    "tags_label": "Tags",
+    "tags_description": "Add 1–5 tags to help others discover this story in the community. Separate with commas.",
+    "tags_placeholder": "e.g. fantasy, adventure, coming of age",
+    "tags_saving": "Saving tags…",
+    "tags_saved": "Tags updated",
+    "tags_load_error": "Failed to load tags. Please try again later.",
+    "tags_save_error": "Failed to save tags. Please try again later.",
+    "tags_save_button": "Save tags",
+    "table": {
+      "title": "Title",
+      "untitled": "Untitled Story",
+      "word_count": "Word Count",
+      "status": "Status",
+      "created_at": "Created At"
+    }
+  },
   "my_credits": {
     "title": "My Credits",
     "left_tip": "left credits: {left_credits}",
@@ -97,6 +133,39 @@
     "category": "Category",
     "author": "Author"
   },
+  "community": {
+    "title": "Story Square",
+    "description": "Browse public AI stories from other creators and get inspired.",
+    "no_stories": "No public stories yet. Be the first to publish one!",
+    "word_count": "{words} words",
+    "created_at": "Published on {date}",
+    "prev_page": "Previous",
+    "next_page": "Next",
+    "page_info": "Page {page} of {totalPages}",
+    "back_to_community": "Back to Story Square",
+    "comments_title": "Comments",
+    "comments_placeholder": "Share your thoughts, reactions or feedback about this story (max 500 characters)…",
+    "comments_submit": "Post comment",
+    "comments_submitting": "Posting…",
+    "comments_empty": "No comments yet. Be the first to share your thoughts!",
+    "comments_error": "Failed to load comments. Please try again later.",
+    "comments_submit_error": "Failed to post comment. Please try again.",
+    "comments_too_long": "Comments cannot exceed 500 characters.",
+    "comments_login_hint": "Sign in to join the discussion.",
+    "comments_login_button": "Sign in",
+    "comments_replying_to": "Replying to",
+    "comments_cancel_reply": "Cancel reply",
+    "comments_reply": "Reply",
+    "comments_deleted": "This comment has been removed.",
+    "comments_loading": "Loading…",
+    "comments_load_more": "Load more comments",
+    "comments_delete": "Delete",
+    "comments_delete_confirm": "Are you sure you want to delete this comment? This action cannot be undone.",
+    "comments_delete_success": "Comment deleted.",
+    "comments_delete_error": "Failed to delete comment. Please try again later.",
+    "filtering_by_tag": "Filtered by tag: {tag}",
+    "clear_tag_filter": "Clear tag filter"
+  },
   "my_invites": {
     "title": "My Invites",
     "description": "View your invite records",
@@ -123,6 +192,46 @@
       "reward_amount": "Reward Amount",
       "pending": "Pending",
       "completed": "Completed"
+    }
+  },
+  "creation_dashboard": {
+    "nav_title": "Creation Overview",
+    "title": "Creation Overview",
+    "description": "See how much you've written with AI – stories, words, active days and streaks.",
+    "cards": {
+      "total_stories": {
+        "title": "Total Stories",
+        "description": "Includes all drafts, saved and published stories."
+      },
+      "total_words": {
+        "title": "Total Words",
+        "description": "Total words generated in your stories, based on story content."
+      },
+      "creation_days": {
+        "title": "Creation Days",
+        "description": "Number of calendar days where you created at least one story."
+      },
+      "streak": {
+        "title": "Creation Streak",
+        "description": "Your current streak in days, with a longest streak of {longest_streak} days."
+      }
+    },
+    "activity": {
+      "title": "Last 30 Days Activity",
+      "description": "Each square represents a day. Darker color means more stories created.",
+      "weekdays": {
+        "0": "Sun",
+        "1": "Mon",
+        "2": "Tue",
+        "3": "Wed",
+        "4": "Thu",
+        "5": "Fri",
+        "6": "Sat"
+      },
+      "tooltip": "{date}: {stories} stories, {words} words",
+      "trend_title": "Daily Word Count Trend",
+      "trend_hint": "The bar chart shows your daily word counts over the last 30 days.",
+      "empty": "No cloud stories in the last 30 days yet. Start by writing your first one!"
     }
   },
   "feedback": {

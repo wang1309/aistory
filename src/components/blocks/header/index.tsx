@@ -32,11 +32,14 @@ import { Menu } from "lucide-react";
 import SignToggle from "@/components/sign/toggle";
 import ThemeToggle from "@/components/theme/toggle";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export default function Header({ header }: { header: HeaderType }) {
   if (header.disabled) {
     return null;
   }
+
+  const t = useTranslations();
 
   return (
     <section className="py-3 relative z-50">
@@ -139,6 +142,20 @@ export default function Header({ header }: { header: HeaderType }) {
                       </NavigationMenuItem>
                     );
                   })}
+                  <NavigationMenuItem>
+                    <Link
+                      className={cn(
+                        "text-muted-foreground",
+                        navigationMenuTriggerStyle,
+                        buttonVariants({
+                          variant: "ghost",
+                        })
+                      )}
+                      href={"/community" as any}
+                    >
+                      {t("community.title")}
+                    </Link>
+                  </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
@@ -275,6 +292,12 @@ export default function Header({ header }: { header: HeaderType }) {
                       );
                     })}
                   </Accordion>
+                  <Link
+                    href={"/community" as any}
+                    className="font-semibold my-4 flex items-center gap-2 px-4"
+                  >
+                    {t("community.title")}
+                  </Link>
                 </div>
                 <div className="flex-1"></div>
                 <div className="border-t pt-4">

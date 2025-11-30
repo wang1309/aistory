@@ -18,9 +18,21 @@ export default async function ({ children }: { children: ReactNode }) {
     nav: {
       items: [
         {
+          title: t("creation_dashboard.nav_title"),
+          url: "/creator-dashboard",
+          icon: "RiDashboardLine",
+          is_active: false,
+        },
+        {
           title: t("user.my_orders"),
           url: "/my-orders",
           icon: "RiOrderPlayLine",
+          is_active: false,
+        },
+        {
+          title: t("my_stories.title"),
+          url: "/my-stories",
+          icon: "RiBookOpenLine",
           is_active: false,
         },
         {

@@ -14,6 +14,9 @@
     "user_center": "用户中心",
     "admin_system": "管理后台"
   },
+  "common": {
+    "error": "发生错误，请稍后重试。"
+  },
   "sign_modal": {
     "sign_in_title": "登录",
     "sign_in_description": "登录您的账户",
@@ -57,6 +60,39 @@
       "interval_one_time": "一次性"
     }
   },
+  "my_stories": {
+    "title": "我的故事",
+    "description": "查看并管理你用 AI 生成并保存的故事。",
+    "no_stories": "暂时还没有保存到云端的故事",
+    "back_to_list": "返回我的故事列表",
+    "edit_title": "编辑标题",
+    "edit_title_description": "为这篇故事设置一个更容易记住的标题。",
+    "edit_title_label": "故事标题",
+    "edit_title_save": "保存",
+    "edit_title_cancel": "取消",
+    "edit_title_success": "标题已更新",
+    "delete_story": "删除故事",
+    "delete_story_confirm_title": "确认删除这篇故事？",
+    "delete_story_confirm_description": "删除后将无法恢复，但不会影响你本地已生成的内容。",
+    "delete_story_confirm_ok": "确认删除",
+    "delete_story_confirm_cancel": "取消",
+    "delete_story_success": "故事已删除",
+    "tags_label": "标签",
+    "tags_description": "为故事添加 1-5 个标签，方便在创作广场中被发现。使用逗号分隔。",
+    "tags_placeholder": "例如：奇幻, 冒险, 成长",
+    "tags_saving": "保存标签中…",
+    "tags_saved": "标签已更新",
+    "tags_load_error": "加载标签失败，请稍后重试。",
+    "tags_save_error": "保存标签失败，请稍后重试。",
+    "tags_save_button": "保存标签",
+    "table": {
+      "title": "标题",
+      "untitled": "未命名故事",
+      "word_count": "字数",
+      "status": "状态",
+      "created_at": "创建时间"
+    }
+  },
   "my_credits": {
     "title": "我的积分",
     "left_tip": "剩余积分: {left_credits}",
@@ -97,6 +133,39 @@
     "category": "分类",
     "author": "作者"
   },
+  "community": {
+    "title": "创作广场",
+    "description": "浏览其他创作者公开发布的 AI 故事，获取新的灵感。",
+    "no_stories": "目前还没有公开的故事，先去写一篇并发布吧。",
+    "word_count": "{words} 字",
+    "created_at": "{date} 发布",
+    "prev_page": "上一页",
+    "next_page": "下一页",
+    "page_info": "第 {page} / {totalPages} 页",
+    "back_to_community": "返回创作广场",
+    "comments_title": "讨论区",
+    "comments_placeholder": "写下你对这个故事的想法、感受或建议（最多 500 字）……",
+    "comments_submit": "发表评论",
+    "comments_submitting": "发送中…",
+    "comments_empty": "还没有评论，抢沙发吧～",
+    "comments_error": "加载评论失败，请稍后重试。",
+    "comments_submit_error": "发表评论失败，请稍后重试。",
+    "comments_too_long": "评论不能超过 500 字。",
+    "comments_login_hint": "登录后可以参与评论互动。",
+    "comments_login_button": "去登录",
+    "comments_replying_to": "正在回复评论",
+    "comments_cancel_reply": "取消回复",
+    "comments_reply": "回复",
+    "comments_deleted": "该评论已被删除",
+    "comments_loading": "加载中…",
+    "comments_load_more": "加载更多评论",
+    "comments_delete": "删除",
+    "comments_delete_confirm": "确定要删除这条评论吗？此操作不可撤销。",
+    "comments_delete_success": "评论已删除。",
+    "comments_delete_error": "删除评论失败，请稍后重试。",
+    "filtering_by_tag": "当前标签：{tag}",
+    "clear_tag_filter": "清除标签筛选"
+  },
   "my_invites": {
     "title": "我的邀请",
     "description": "查看您的邀请记录",
@@ -123,6 +192,46 @@
       "reward_amount": "奖励金额",
       "pending": "已注册，未支付",
       "completed": "已支付"
+    }
+  },
+  "creation_dashboard": {
+    "nav_title": "创作总览",
+    "title": "创作总览",
+    "description": "查看你的创作总量、字数和连续创作情况，感受自己的写作成长。",
+    "cards": {
+      "total_stories": {
+        "title": "总作品数",
+        "description": "包含所有草稿、已保存和已发布的故事。"
+      },
+      "total_words": {
+        "title": "累计字数",
+        "description": "按故事正文统计的总字数，帮助你量化创作输出。"
+      },
+      "creation_days": {
+        "title": "创作天数",
+        "description": "至少创作过一篇故事的自然日数量。"
+      },
+      "streak": {
+        "title": "连续创作",
+        "description": "当前连续创作天数，历史最高 {longest_streak} 天。"
+      }
+    },
+    "activity": {
+      "title": "最近 30 天创作日历",
+      "description": "每个小格代表一天，颜色越深，创作的故事越多。",
+      "weekdays": {
+        "0": "日",
+        "1": "一",
+        "2": "二",
+        "3": "三",
+        "4": "四",
+        "5": "五",
+        "6": "六"
+      },
+      "tooltip": "{date}：创作 {stories} 篇，合计 {words} 字",
+      "trend_title": "创作趋势（按天字数）",
+      "trend_hint": "柱状图展示最近 30 天每天写作的字数，相对高度反映输出强度。",
+      "empty": "最近 30 天还没有云端故事，先去写一篇故事试试吧。"
     }
   },
   "feedback": {
