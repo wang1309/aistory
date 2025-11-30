@@ -26,32 +26,75 @@ export default function StorySaveDialog({
   locale,
   isSaving,
 }: StorySaveDialogProps) {
-  const labels = useMemo(
-    () => ({
-      title: locale === "zh" ? "保存你的杰作" : "Save Your Masterpiece",
-      description:
-        locale === "zh"
-          ? "选择保存方式，记录你的创作灵感"
-          : "Choose how you would like to save your creation",
-      draft: locale === "zh" ? "保存为草稿" : "Save as Draft",
-      draftDesc:
-        locale === "zh"
-          ? "还没写完？仅自己可见，随时继续编辑"
-          : "Not finished? Keep it private and edit later",
-      saved: locale === "zh" ? "保存到作品库" : "Save to Library",
-      savedDesc:
-        locale === "zh"
-          ? "保存到个人作品库，随时回顾阅读"
-          : "Save to your collection, ready to read anytime",
-      published: locale === "zh" ? "发布到广场" : "Publish to Community",
-      publishedDesc:
-        locale === "zh"
-          ? "公开分享你的故事，获得社区反馈与互动"
-          : "Share with the community and get feedback",
-      cancel: locale === "zh" ? "取消" : "Cancel",
-    }),
-    [locale]
-  );
+  const labels = useMemo(() => {
+    if (locale === "zh") {
+      return {
+        title: "保存你的杰作",
+        description: "选择保存方式，记录你的创作灵感",
+        draft: "保存为草稿",
+        draftDesc: "还没写完？仅自己可见，随时继续编辑",
+        saved: "保存到作品库",
+        savedDesc: "保存到个人作品库，随时回顾阅读",
+        published: "发布到广场",
+        publishedDesc: "公开分享你的故事，获得社区反馈与互动",
+        cancel: "取消",
+      };
+    }
+
+    if (locale === "ja") {
+      return {
+        title: "作品を保存",
+        description: "保存方法を選んで、インスピレーションを残しましょう",
+        draft: "下書きとして保存",
+        draftDesc: "まだ書き途中ですか？自分だけが見られる状態であとから編集できます",
+        saved: "ライブラリに保存",
+        savedDesc: "マイコレクションに保存して、いつでも読み返せます",
+        published: "コミュニティに公開",
+        publishedDesc: "作品を公開して、コミュニティからフィードバックをもらいましょう",
+        cancel: "キャンセル",
+      };
+    }
+
+    if (locale === "ko") {
+      return {
+        title: "작품 저장하기",
+        description: "저장 방식을 선택하여 지금의 영감을 기록하세요",
+        draft: "임시 저장",
+        draftDesc: "아직 완성 전인가요? 비공개로 두고 나중에 계속 수정할 수 있어요",
+        saved: "라이브러리에 저장",
+        savedDesc: "내 작품 라이브러리에 저장해 두고 언제든지 다시 읽을 수 있어요",
+        published: "커뮤니티에 공개",
+        publishedDesc: "커뮤니티와 작품을 공유하고 피드백을 받아보세요",
+        cancel: "취소",
+      };
+    }
+
+    if (locale === "de") {
+      return {
+        title: "Dein Meisterwerk speichern",
+        description: "Wähle, wie du deine Kreation speichern möchtest",
+        draft: "Als Entwurf speichern",
+        draftDesc: "Noch nicht fertig? Privat behalten und später weiterschreiben",
+        saved: "In der Bibliothek speichern",
+        savedDesc: "In deiner Sammlung sichern, jederzeit bereit zum Lesen",
+        published: "In der Community veröffentlichen",
+        publishedDesc: "Mit der Community teilen und Feedback erhalten",
+        cancel: "Abbrechen",
+      };
+    }
+
+    return {
+      title: "Save Your Masterpiece",
+      description: "Choose how you would like to save your creation",
+      draft: "Save as Draft",
+      draftDesc: "Not finished? Keep it private and edit later",
+      saved: "Save to Library",
+      savedDesc: "Save to your collection, ready to read anytime",
+      published: "Publish to Community",
+      publishedDesc: "Share with the community and get feedback",
+      cancel: "Cancel",
+    };
+  }, [locale]);
 
   const options = [
     {
