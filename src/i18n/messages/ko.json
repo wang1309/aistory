@@ -57,6 +57,39 @@
       "interval_one_time": "1회"
     }
   },
+  "my_stories": {
+    "title": "내 스토리",
+    "description": "AI로 생성하고 저장한 스토리를 살펴보고 관리할 수 있습니다.",
+    "no_stories": "아직 클라우드에 저장된 스토리가 없습니다.",
+    "back_to_list": "내 스토리 목록으로 돌아가기",
+    "edit_title": "제목 편집",
+    "edit_title_description": "이 스토리에 더 기억하기 쉬운 제목을 붙여 주세요.",
+    "edit_title_label": "스토리 제목",
+    "edit_title_save": "저장",
+    "edit_title_cancel": "취소",
+    "edit_title_success": "제목이 업데이트되었습니다.",
+    "delete_story": "스토리 삭제",
+    "delete_story_confirm_title": "이 스토리를 삭제하시겠습니까?",
+    "delete_story_confirm_description": "이 작업은 되돌릴 수 없지만, 이미 로컬에 생성된 내용에는 영향을 주지 않습니다.",
+    "delete_story_confirm_ok": "삭제",
+    "delete_story_confirm_cancel": "취소",
+    "delete_story_success": "스토리가 삭제되었습니다.",
+    "tags_label": "태그",
+    "tags_description": "스토리가 더 잘 발견될 수 있도록 1~5개의 태그를 추가하세요. 쉼표로 구분합니다.",
+    "tags_placeholder": "예: 판타지, 모험, 성장",
+    "tags_saving": "태그 저장 중…",
+    "tags_saved": "태그가 업데이트되었습니다.",
+    "tags_load_error": "태그를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.",
+    "tags_save_error": "태그 저장에 실패했습니다. 잠시 후 다시 시도해 주세요.",
+    "tags_save_button": "태그 저장",
+    "table": {
+      "title": "제목",
+      "untitled": "제목 없는 스토리",
+      "word_count": "단어 수",
+      "status": "상태",
+      "created_at": "생성일"
+    }
+  },
   "my_credits": {
     "title": "내 크레딧",
     "left_tip": "남은 크레딧: {left_credits}",
@@ -156,6 +189,46 @@
       "reward_amount": "보상 금액",
       "pending": "대기 중",
       "completed": "완료됨"
+    }
+  },
+  "creation_dashboard": {
+    "nav_title": "창작 현황",
+    "title": "창작 현황",
+    "description": "AI와 함께 써 온 분량을 스토리 수, 단어 수, 창작 일수, 연속 기록으로 한눈에 확인하세요.",
+    "cards": {
+      "total_stories": {
+        "title": "총 스토리 수",
+        "description": "초안, 저장, 공개 상태의 모든 스토리를 포함합니다."
+      },
+      "total_words": {
+        "title": "총 단어 수",
+        "description": "스토리 본문을 기준으로 집계한 전체 단어 수입니다."
+      },
+      "creation_days": {
+        "title": "창작 일수",
+        "description": "하루에 한 편 이상 스토리를 작성한 날짜 수입니다."
+      },
+      "streak": {
+        "title": "연속 창작",
+        "description": "현재 연속 창작 일수이며, 최장 {longest_streak}일의 기록을 가지고 있습니다."
+      }
+    },
+    "activity": {
+      "title": "최근 30일 활동",
+      "description": "각 칸은 하루를 의미하며, 색이 진할수록 더 많은 스토리를 작성한 날입니다.",
+      "weekdays": {
+        "0": "일",
+        "1": "월",
+        "2": "화",
+        "3": "수",
+        "4": "목",
+        "5": "금",
+        "6": "토"
+      },
+      "tooltip": "{date}: 스토리 {stories}편, {words}단어",
+      "trend_title": "일별 단어 수 추이",
+      "trend_hint": "최근 30일 동안 매일의 단어 수를 막대 그래프로 보여줍니다.",
+      "empty": "최근 30일 동안 아직 클라우드 스토리가 없습니다. 먼저 한 편을 작성해 보세요."
     }
   },
   "feedback": {

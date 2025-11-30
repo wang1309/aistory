@@ -23,6 +23,10 @@ function getIntensityClass(count: number) {
 export default function CreationActivity({ data }: CreationActivityProps) {
   const t = useTranslations("creation_dashboard");
 
+  // 调试日志
+  console.log("=== CreationActivity Debug ===");
+  console.log("data:", JSON.stringify(data, null, 2));
+
   const daysToShow = 30;
 
   const statsMap = useMemo(() => {
@@ -50,8 +54,10 @@ export default function CreationActivity({ data }: CreationActivityProps) {
   const maxWords = useMemo(() => {
     let max = 0;
     for (const item of data || []) {
-      if (item.total_words > max) max = item.total_words;
+      const words = Number(item.total_words) || 0;
+      if (words > max) max = words;
     }
+    console.log("maxWords:", max);
     return max > 0 ? max : 1;
   }, [data]);
 
@@ -111,12 +117,15 @@ export default function CreationActivity({ data }: CreationActivityProps) {
                 {t("activity.trend_title")}
               </span>
             </div>
-            <div className="h-28 flex items-end gap-[2px]">
+            <div className="h-28 flex items-end gap-[1px]">
               {dayList.map((day, index) => {
-                const value = day.stat?.total_words ?? 0;
+                const value = Number(day.stat?.total_words) || 0;
                 const ratio = value > 0 ? Math.max(value / maxWords, 0.05) : 0;
-                const height = Math.round(ratio * 100);
-                const showLabel = index % 5 === 0 || index === dayList.length - 1;
+                // 用固定像素高度，父容器 h-28 = 112px
+                const heightPx = Math.round(ratio * 96); // 留 16px 给标签
+                
+                // 每 5 个点、最后一个点、或有数据的点都显示标签
+                const showLabel = index % 5 === 0 || index === dayList.length - 1 || value > 0;
                 const title = `${day.key} • ${t("activity.tooltip", {
                   date: day.key,
                   stories: day.stat?.story_count ?? 0,
@@ -129,8 +138,8 @@ export default function CreationActivity({ data }: CreationActivityProps) {
                     title={title}
                   >
                     <div
-                      className="w-full rounded-sm bg-indigo-400/80 dark:bg-indigo-500"
-                      style={{ height: `${height}%` }}
+                      className="w-1/2 rounded-sm bg-indigo-400/80 dark:bg-indigo-500"
+                      style={{ height: `${heightPx}px` }}
                     />
                     {showLabel && (
                       <div className="text-[9px] text-muted-foreground leading-none">

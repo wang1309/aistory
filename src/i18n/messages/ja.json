@@ -57,6 +57,39 @@
       "interval_one_time": "1回限り"
     }
   },
+  "my_stories": {
+    "title": "マイストーリー",
+    "description": "AIで生成して保存したストーリーを閲覧・管理できます。",
+    "no_stories": "まだクラウドに保存されたストーリーはありません。",
+    "back_to_list": "マイストーリー一覧に戻る",
+    "edit_title": "タイトルを編集",
+    "edit_title_description": "このストーリーに、覚えやすくわかりやすいタイトルを付けましょう。",
+    "edit_title_label": "ストーリータイトル",
+    "edit_title_save": "保存",
+    "edit_title_cancel": "キャンセル",
+    "edit_title_success": "タイトルを更新しました",
+    "delete_story": "ストーリーを削除",
+    "delete_story_confirm_title": "このストーリーを削除しますか？",
+    "delete_story_confirm_description": "この操作は取り消せませんが、ローカルで生成済みの内容には影響しません。",
+    "delete_story_confirm_ok": "削除する",
+    "delete_story_confirm_cancel": "キャンセル",
+    "delete_story_success": "ストーリーを削除しました",
+    "tags_label": "タグ",
+    "tags_description": "ストーリーを見つけやすくするために 1〜5 個のタグを追加してください。カンマ区切りで入力します。",
+    "tags_placeholder": "例：ファンタジー, 冒険, 成長",
+    "tags_saving": "タグを保存中…",
+    "tags_saved": "タグを更新しました",
+    "tags_load_error": "タグの読み込みに失敗しました。しばらくしてからもう一度お試しください。",
+    "tags_save_error": "タグの保存に失敗しました。しばらくしてからもう一度お試しください。",
+    "tags_save_button": "タグを保存",
+    "table": {
+      "title": "タイトル",
+      "untitled": "タイトル未設定のストーリー",
+      "word_count": "語数",
+      "status": "ステータス",
+      "created_at": "作成日"
+    }
+  },
   "my_credits": {
     "title": "クレジット残高",
     "left_tip": "残りクレジット: {left_credits}",
@@ -156,6 +189,46 @@
       "reward_amount": "報酬額",
       "pending": "保留中",
       "completed": "完了"
+    }
+  },
+  "creation_dashboard": {
+    "nav_title": "創作サマリー",
+    "title": "創作サマリー",
+    "description": "AI と一緒に書いてきた量を、作品数・総語数・創作日数・連続日数から振り返りましょう。",
+    "cards": {
+      "total_stories": {
+        "title": "総ストーリー数",
+        "description": "下書き・保存・公開を含むすべてのストーリーです。"
+      },
+      "total_words": {
+        "title": "総語数",
+        "description": "ストーリー本文を基にした累計語数です。"
+      },
+      "creation_days": {
+        "title": "創作日数",
+        "description": "少なくとも 1 本ストーリーを書いたカレンダー日数です。"
+      },
+      "streak": {
+        "title": "連続創作",
+        "description": "現在の連続創作日数。最長 {longest_streak} 日を記録しています。"
+      }
+    },
+    "activity": {
+      "title": "直近30日間の創作アクティビティ",
+      "description": "各マスは1日を表し、色が濃いほど作成したストーリー数が多いことを示します。",
+      "weekdays": {
+        "0": "日",
+        "1": "月",
+        "2": "火",
+        "3": "水",
+        "4": "木",
+        "5": "金",
+        "6": "土"
+      },
+      "tooltip": "{date}：{stories} 件・合計 {words} 語",
+      "trend_title": "1日ごとの語数トレンド",
+      "trend_hint": "直近30日間の毎日の語数を棒グラフで表示します。",
+      "empty": "直近30日間にクラウド保存されたストーリーがまだありません。まずは 1 本書いてみましょう。"
     }
   },
   "feedback": {

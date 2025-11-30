@@ -57,6 +57,39 @@
       "interval_one_time": "Einmalig"
     }
   },
+  "my_stories": {
+    "title": "Meine Stories",
+    "description": "Durchsuche und verwalte Stories, die du mit KI erstellt und gespeichert hast.",
+    "no_stories": "Du hast noch keine Stories in deiner Bibliothek gespeichert.",
+    "back_to_list": "Zurück zu meinen Stories",
+    "edit_title": "Titel bearbeiten",
+    "edit_title_description": "Gib dieser Story einen klaren, gut merkbaren Titel.",
+    "edit_title_label": "Story-Titel",
+    "edit_title_save": "Speichern",
+    "edit_title_cancel": "Abbrechen",
+    "edit_title_success": "Titel aktualisiert",
+    "delete_story": "Story löschen",
+    "delete_story_confirm_title": "Diese Story wirklich löschen?",
+    "delete_story_confirm_description": "Diese Aktion kann nicht rückgängig gemacht werden, beeinflusst aber nicht bereits lokal erzeugte Inhalte.",
+    "delete_story_confirm_ok": "Löschen",
+    "delete_story_confirm_cancel": "Abbrechen",
+    "delete_story_success": "Story gelöscht",
+    "tags_label": "Tags",
+    "tags_description": "Füge 1–5 Tags hinzu, damit andere deine Story im Community‑Bereich leichter finden. Trenne sie mit Kommas.",
+    "tags_placeholder": "z. B. Fantasy, Abenteuer, Coming of Age",
+    "tags_saving": "Tags werden gespeichert…",
+    "tags_saved": "Tags aktualisiert",
+    "tags_load_error": "Tags konnten nicht geladen werden. Bitte versuche es später erneut.",
+    "tags_save_error": "Tags konnten nicht gespeichert werden. Bitte versuche es später erneut.",
+    "tags_save_button": "Tags speichern",
+    "table": {
+      "title": "Titel",
+      "untitled": "Unbenannte Story",
+      "word_count": "Wortzahl",
+      "status": "Status",
+      "created_at": "Erstellt am"
+    }
+  },
   "my_credits": {
     "title": "Mein Guthaben",
     "left_tip": "Verbleibendes Guthaben: {left_credits}",
@@ -156,6 +189,46 @@
       "reward_amount": "Belohnungsbetrag",
       "pending": "Ausstehend",
       "completed": "Abgeschlossen"
+    }
+  },
+  "creation_dashboard": {
+    "nav_title": "Schreibübersicht",
+    "title": "Schreibübersicht",
+    "description": "Sieh dir an, wie viel du mit KI geschrieben hast – Stories, Wörter, aktive Tage und Serien.",
+    "cards": {
+      "total_stories": {
+        "title": "Gesamtzahl der Stories",
+        "description": "Beinhaltet alle Entwürfe, gespeicherten und veröffentlichten Stories."
+      },
+      "total_words": {
+        "title": "Gesamtzahl der Wörter",
+        "description": "Alle Wörter in deinen Stories, basierend auf dem Story‑Inhalt."
+      },
+      "creation_days": {
+        "title": "Schreibtage",
+        "description": "Anzahl der Kalendertage, an denen du mindestens eine Story erstellt hast."
+      },
+      "streak": {
+        "title": "Schreibserie",
+        "description": "Deine aktuelle Serie in Tagen, mit einer längsten Serie von {longest_streak} Tagen."
+      }
+    },
+    "activity": {
+      "title": "Aktivität der letzten 30 Tage",
+      "description": "Jedes Feld steht für einen Tag. Dunklere Farben bedeuten mehr erstellte Stories.",
+      "weekdays": {
+        "0": "So",
+        "1": "Mo",
+        "2": "Di",
+        "3": "Mi",
+        "4": "Do",
+        "5": "Fr",
+        "6": "Sa"
+      },
+      "tooltip": "{date}: {stories} Stories, {words} Wörter",
+      "trend_title": "Tägliche Wortanzahl",
+      "trend_hint": "Das Balkendiagramm zeigt deine täglichen Wortzahlen der letzten 30 Tage.",
+      "empty": "In den letzten 30 Tagen gibt es noch keine Cloud‑Stories. Schreibe deine erste Story!"
     }
   },
   "feedback": {
