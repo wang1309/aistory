@@ -208,6 +208,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
   const [isSavingStory, setIsSavingStory] = useState(false);
+  const [hasSavedCurrentStory, setHasSavedCurrentStory] = useState(false);
 
   // Calculate word count (memoized for performance)
   const wordCount = useMemo(() => calculateWordCount(generatedStory), [generatedStory]);
@@ -354,6 +355,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     console.log("⚠️ Note: If all advancedOptions are 'none', they won't affect the generated prompt");
 
     try {
+      // 开始新一轮生成时，认为是一个全新的故事，清除上一轮的“已保存”状态
+      setHasSavedCurrentStory(false);
       setIsGenerating(true);
       setGeneratedStory("");
 
@@ -645,6 +648,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const handleCreateAnother = useCallback(() => {
     setGeneratedStory("");
     setPrompt("");
+    setHasSavedCurrentStory(false);
     // Scroll to the top of the story generation section
     const element = document.getElementById('craft_story');
     if (element) {
@@ -753,6 +757,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             ? "Story published"
             : "Story saved"
         );
+
+        // 标记当前故事已经成功保存，禁用 Save Story 按钮
+        setHasSavedCurrentStory(true);
 
         setIsSaveDialogOpen(false);
       } catch (error) {
@@ -1191,6 +1198,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             onCreateAnother={handleCreateAnother}
             onSave={handleSaveClick}
             translations={section.completion_guide}
+            isSaveDisabled={isSavingStory || hasSavedCurrentStory}
           />
         )}
 

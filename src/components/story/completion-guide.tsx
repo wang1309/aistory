@@ -8,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 interface CompletionGuideProps {
     onCreateAnother: () => void;
     onSave: () => void;
+    isSaveDisabled?: boolean;
     translations: {
         title: string;
         subtitle: string;
@@ -16,7 +17,7 @@ interface CompletionGuideProps {
     };
 }
 
-export default function CompletionGuide({ onCreateAnother, onSave, translations }: CompletionGuideProps) {
+export default function CompletionGuide({ onCreateAnother, onSave, translations, isSaveDisabled }: CompletionGuideProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -51,7 +52,8 @@ export default function CompletionGuide({ onCreateAnother, onSave, translations 
                     <Button
                         onClick={onSave}
                         size="lg"
-                        className="w-full sm:w-auto rounded-full h-14 px-8 text-base font-bold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-lg shadow-indigo-500/20 transition-all hover:-translate-y-0.5 hover:shadow-indigo-500/40"
+                        disabled={isSaveDisabled}
+                        className="w-full sm:w-auto rounded-full h-14 px-8 text-base font-bold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-lg shadow-indigo-500/20 transition-all hover:-translate-y-0.5 hover:shadow-indigo-500/40 disabled:opacity-60 disabled:cursor-default disabled:hover:translate-y-0 disabled:hover:shadow-none"
                     >
                         {translations.share_action}
                         <Icon name="save" className="size-5 ml-2" />
