@@ -231,6 +231,11 @@
       "empty": "In den letzten 30 Tagen gibt es noch keine Cloud‑Stories. Schreibe deine erste Story!"
     }
   },
+  "story_status": {
+    "draft": "Entwurf",
+    "saved": "Gespeichert",
+    "published": "Veröffentlicht"
+  },
   "feedback": {
     "title": "Feedback",
     "description": "Wir würden gerne hören, was gut gelaufen ist oder wie wir die Produkterfahrung verbessern können.",

@@ -234,6 +234,11 @@
       "empty": "最近 30 天还没有云端故事，先去写一篇故事试试吧。"
     }
   },
+  "story_status": {
+    "draft": "草稿",
+    "saved": "已保存",
+    "published": "已发布"
+  },
   "feedback": {
     "title": "反馈",
     "description": "我们很乐意听取您对产品的看法或如何改进产品体验。",

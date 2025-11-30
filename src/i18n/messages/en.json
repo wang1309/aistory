@@ -234,6 +234,11 @@
       "empty": "No cloud stories in the last 30 days yet. Start by writing your first one!"
     }
   },
+  "story_status": {
+    "draft": "Draft",
+    "saved": "Saved",
+    "published": "Published"
+  },
   "feedback": {
     "title": "Feedback",
     "description": "We'd love to hear what went well or how we can improve the product experience.",

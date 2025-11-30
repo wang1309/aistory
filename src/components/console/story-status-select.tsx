@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import type { StoryStatus } from "@/models/story";
@@ -13,6 +14,7 @@ interface StoryStatusSelectProps {
 const STATUS_VALUES: StoryStatus[] = ["draft", "saved", "published"];
 
 export default function StoryStatusSelect({ uuid, initialStatus }: StoryStatusSelectProps) {
+  const t = useTranslations("story_status");
   const [status, setStatus] = useState<StoryStatus>(initialStatus);
   const [isPending, startTransition] = useTransition();
 
@@ -64,7 +66,7 @@ export default function StoryStatusSelect({ uuid, initialStatus }: StoryStatusSe
       <SelectContent>
         {STATUS_VALUES.map((value) => (
           <SelectItem key={value} value={value}>
-            {value}
+            {t(value)}
           </SelectItem>
         ))}
       </SelectContent>
