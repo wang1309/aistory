@@ -13,6 +13,32 @@ export default async function ({ children }: { children: ReactNode }) {
   }
 
   const t = await getTranslations();
+  // NOTE: 如需恢复暂时隐藏的导航项（My Orders / My Credits / My Invites / API Keys），
+  // 可以将下面这些对象重新插入到 sidebar.nav.items 中：
+  // {
+  //   title: t("user.my_orders"),
+  //   url: "/my-orders",
+  //   icon: "RiOrderPlayLine",
+  //   is_active: false,
+  // },
+  // {
+  //   title: t("my_credits.title"),
+  //   url: "/my-credits",
+  //   icon: "RiBankCardLine",
+  //   is_active: false,
+  // },
+  // {
+  //   title: t("my_invites.title"),
+  //   url: "/my-invites",
+  //   icon: "RiMoneyCnyCircleFill",
+  //   is_active: false,
+  // },
+  // {
+  //   title: t("api_keys.title"),
+  //   url: "/api-keys",
+  //   icon: "RiKey2Line",
+  //   is_active: false,
+  // },
 
   const sidebar: Sidebar = {
     nav: {
@@ -24,33 +50,9 @@ export default async function ({ children }: { children: ReactNode }) {
           is_active: false,
         },
         {
-          title: t("user.my_orders"),
-          url: "/my-orders",
-          icon: "RiOrderPlayLine",
-          is_active: false,
-        },
-        {
           title: t("my_stories.title"),
           url: "/my-stories",
           icon: "RiBookOpenLine",
-          is_active: false,
-        },
-        {
-          title: t("my_credits.title"),
-          url: "/my-credits",
-          icon: "RiBankCardLine",
-          is_active: false,
-        },
-        {
-          title: t("my_invites.title"),
-          url: "/my-invites",
-          icon: "RiMoneyCnyCircleFill",
-          is_active: false,
-        },
-        {
-          title: t("api_keys.title"),
-          url: "/api-keys",
-          icon: "RiKey2Line",
           is_active: false,
         },
       ],
