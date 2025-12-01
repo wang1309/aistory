@@ -86,6 +86,7 @@ export async function POST(req: Request) {
       language = 'zh',
       options = {},
       turnstileToken,
+      model: requestedModel = 'creative',
     } = requestData || {};
 
     console.log("=== Extracted params ===", {
@@ -99,6 +100,7 @@ export async function POST(req: Request) {
       language,
       options,
       turnstileToken: turnstileToken ? "Present" : "Missing",
+      model: requestedModel,
     });
 
     // Validate required fields
@@ -165,7 +167,9 @@ export async function POST(req: Request) {
       "bold": "adventure",
     };
 
-    const model = "standard"; // Default model
+    const model = typeof requestedModel === "string" && requestedModel
+      ? requestedModel
+      : "creative"; // Default logical model key
     const mappedLength = lengthMap[options.length || "medium"] || "medium";
     const mappedGenre = oocMap[options.ooc || "none"] || "fantasy";
 

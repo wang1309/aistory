@@ -29,6 +29,10 @@ import {
   Sparkles,
   Settings
 } from "lucide-react";
+import CompletionGuide from "@/components/story/completion-guide";
+import StorySaveDialog from "@/components/story/story-save-dialog";
+import type { StoryStatus } from "@/models/story";
+import { useAppContext } from "@/contexts/app";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -50,6 +54,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const locale = useLocale();
   const t = useTranslations();
   const tabbedForm = section.tabbed?.form as any;
+  const { user, setShowSignModal } = useAppContext();
 
   // ========== STATE MANAGEMENT ==========
 
@@ -69,6 +74,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const [plotType, setPlotType] = useState('canon');
   const [prompt, setPrompt] = useState('');
   const [language, setLanguage] = useState(locale);
+  const [selectedModel, setSelectedModel] = useState<string>('creative');
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedFanfic, setGeneratedFanfic] = useState('');
@@ -82,6 +88,9 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     length: 'medium',
     perspective: 'third',
   });
+  const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
+  const [isSavingStory, setIsSavingStory] = useState(false);
+  const [hasSavedCurrentStory, setHasSavedCurrentStory] = useState(false);
 
   const languageOptions = useMemo(() => Object.entries(section.prompt.language_options || {}), [section.prompt.language_options]);
 
@@ -93,6 +102,76 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   }, [languageOptions, language]);
 
   const hasStartedGeneration = isGenerating || !!generatedFanfic;
+
+  const AI_MODELS = useMemo(
+    () => {
+      const models = section.ai_models?.models;
+
+      if (!models) {
+        return [
+          {
+            id: "character_focused",
+            name: "Character-Focused",
+            badge: "Fast",
+            description: "Optimized for character dynamics",
+          },
+          {
+            id: "creative",
+            name: "Creative",
+            badge: "Balanced",
+            description: "Balances quality and speed",
+          },
+          {
+            id: "depth",
+            name: "Depth",
+            badge: "Deep",
+            description: "More detailed and reflective",
+          },
+        ];
+      }
+
+      return [
+        {
+          id: "character_focused",
+          name: models.character_focused.name,
+          badge: models.character_focused.badge,
+          description: models.character_focused.description,
+        },
+        {
+          id: "creative",
+          name: models.creative.name,
+          badge: models.creative.badge,
+          description: models.creative.description,
+        },
+        {
+          id: "depth",
+          name: models.depth.name,
+          badge: models.depth.badge,
+          description: models.depth.description,
+        },
+      ];
+    },
+    [section.ai_models]
+  );
+
+  const completionGuideTranslations = section.completion_guide || {
+    title:
+      locale === "zh"
+        ? "喜欢这篇同人文吗？"
+        : "Liked your story?",
+    subtitle:
+      locale === "zh"
+        ? "你可以保存它，或者尝试新的创意！"
+        : "You can save it, or try a new idea!",
+    create_another:
+      locale === "zh"
+        ? "再写一篇同人文"
+        : "Create Another",
+    share_action:
+      locale === "zh"
+        ? "保存故事"
+        : "Save Story",
+  };
 
   // ========== REF FOR LATEST STATE ==========
   const latestStateRef = useRef({
@@ -107,6 +186,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     prompt,
     language,
     advancedOptions,
+    selectedModel,
   });
 
   const turnstileRef = useRef<TurnstileInvisibleHandle | null>(null);
@@ -125,8 +205,9 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       prompt,
       language,
       advancedOptions,
+      selectedModel,
     };
-  }, [sourceType, selectedPresetWork, customWorkName, pairingType, selectedCharacters, plotType, prompt, language, advancedOptions]);
+  }, [sourceType, selectedPresetWork, customWorkName, pairingType, selectedCharacters, plotType, prompt, language, advancedOptions, selectedModel]);
 
   // ========== STEP DEFINITIONS ==========
 
@@ -241,6 +322,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     setIsGenerating(true);
     setGeneratedFanfic('');
     setWordCount(0);
+    setHasSavedCurrentStory(false);
 
     try {
       const requestData = {
@@ -254,6 +336,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
         language: currentState.language,
         options: currentState.advancedOptions,
         turnstileToken,
+        model: currentState.selectedModel,
       };
       console.log('=== Request data ===', requestData);
 
@@ -367,6 +450,139 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     setIsGenerating(true);
     turnstileRef.current?.execute();
   }, [isGenerating]);
+
+  const handleCreateAnother = useCallback(() => {
+    setGeneratedFanfic("");
+    setWordCount(0);
+    setGeneratedTags([]);
+    setHasSavedCurrentStory(false);
+  }, []);
+
+  const handleSaveClick = useCallback(() => {
+    if (!generatedFanfic.trim()) {
+      toast.error(section.toasts?.error_no_content || "No content generated");
+      return;
+    }
+
+    if (!user) {
+      setShowSignModal(true);
+      return;
+    }
+
+    setIsSaveDialogOpen(true);
+  }, [generatedFanfic, section, user, setShowSignModal]);
+
+  const handleConfirmSave = useCallback(
+    async (status: StoryStatus) => {
+      if (!generatedFanfic.trim()) {
+        toast.error(section.toasts?.error_no_content || "No content generated");
+        return;
+      }
+
+      try {
+        setIsSavingStory(true);
+
+        const settings: Record<string, unknown> = {
+          locale,
+          outputLanguage: language,
+          sourceType,
+          selectedPresetWork,
+          customWorkName,
+          pairingType,
+          selectedCharacters,
+          plotType,
+          advancedOptions,
+        };
+
+        const modelKey = selectedModel || 'creative';
+        const modelMap: Record<string, string> = {
+          character_focused: 'gemini-2.5-flash-lite',
+          creative: 'gemini-2.5-flash',
+          depth: 'gemini-2.5-flash-think',
+        };
+        const actualModel = modelMap[modelKey] || 'gemini-2.5-flash';
+
+        const resp = await fetch("/api/stories", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title:
+              prompt.substring(0, 30) + (prompt.length > 30 ? "..." : ""),
+            prompt,
+            content: generatedFanfic,
+            wordCount,
+            modelUsed: actualModel,
+            settings,
+            status,
+            visibility: status === "published" ? "public" : "private",
+            sourceCategory: "fanfic",
+          }),
+        });
+
+        if (!resp.ok) {
+          throw new Error("request failed with status: " + resp.status);
+        }
+
+        const { code, message } = await resp.json();
+
+        if (code !== 0) {
+          if (message === "no auth") {
+            setShowSignModal(true);
+          }
+
+          toast.error(
+            locale === "zh"
+              ? message === "no auth"
+                ? "请先登录后再保存故事"
+                : `保存失败：${message}`
+              : message || "Failed to save story"
+          );
+          return;
+        }
+
+        toast.success(
+          locale === "zh"
+            ? status === "published"
+              ? "故事已发布"
+              : "故事已保存"
+            : status === "published"
+            ? "Story published"
+            : "Story saved"
+        );
+
+        setHasSavedCurrentStory(true);
+        setIsSaveDialogOpen(false);
+      } catch (error) {
+        console.error("save fanfic failed", error);
+        toast.error(
+          locale === "zh"
+            ? "保存失败，请稍后再试"
+            : "Failed to save story, please try again."
+        );
+      } finally {
+        setIsSavingStory(false);
+      }
+    }, [
+      generatedFanfic,
+      section,
+      locale,
+      language,
+      sourceType,
+      selectedPresetWork,
+      customWorkName,
+      pairingType,
+      selectedCharacters,
+      plotType,
+      advancedOptions,
+      prompt,
+      wordCount,
+      setShowSignModal,
+      AI_MODELS,
+      selectedModel,
+    ]
+  );
 
   // ========== NEXT STEP HANDLER ==========
 
@@ -769,46 +985,84 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                          <p className="text-muted-foreground/60 font-light">{section.tabbed?.form?.advanced_options?.subtitle}</p>
                      </div>
 
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div className="space-y-6">
-                           <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.tabbed?.form?.advanced_options?.ooc_level}</Label>
-                           <div className="space-y-3">
-                              {['slight', 'moderate', 'bold'].map((opt) => (
-                                <button
-                                  key={opt}
-                                  onClick={() => setAdvancedOptions({...advancedOptions, ooc: opt})}
-                                  className={cn(
-                                    "w-full text-left px-6 py-4 rounded-xl border transition-all",
-                                    advancedOptions.ooc === opt
-                                      ? "bg-pink-500/10 border-pink-500/50 text-pink-400"
-                                      : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10"
-                                  )}
-                                >
-                                  <div className="font-bold text-sm uppercase tracking-wide">{opt}</div>
-                                </button>
-                              ))}
-                           </div>
-                        </div>
+                     <div className="space-y-10">
+                       {/* AI Model Selection */}
+                       <div className="space-y-4">
+                         <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">
+                           {section.ai_models?.title || 'AI Model'}
+                         </Label>
+                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                           {AI_MODELS.map((model) => (
+                             <button
+                               key={model.id}
+                               type="button"
+                               onClick={() => setSelectedModel(model.id)}
+                               className={cn(
+                                 "w-full text-left px-5 py-4 rounded-2xl border transition-all bg-white/5 hover:bg-white/10",
+                                 selectedModel === model.id
+                                   ? "border-pink-500/70 shadow-lg shadow-pink-500/20"
+                                   : "border-white/10"
+                               )}
+                             >
+                               <div className="flex items-center justify-between mb-1">
+                                 <span className="font-semibold text-sm">{model.name}</span>
+                                 {model.badge && (
+                                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-300 border border-pink-500/40">
+                                     {model.badge}
+                                   </span>
+                                 )}
+                               </div>
+                               {model.description && (
+                                 <p className="text-xs text-muted-foreground/80 leading-snug line-clamp-2">
+                                   {model.description}
+                                 </p>
+                               )}
+                             </button>
+                           ))}
+                         </div>
+                       </div>
 
-                        <div className="space-y-6">
-                           <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.tabbed?.form?.advanced_options?.story_length}</Label>
-                           <div className="space-y-3">
-                              {['short', 'medium', 'long'].map((opt) => (
-                                <button
-                                  key={opt}
-                                  onClick={() => setAdvancedOptions({...advancedOptions, length: opt})}
-                                  className={cn(
-                                    "w-full text-left px-6 py-4 rounded-xl border transition-all",
-                                    advancedOptions.length === opt
-                                      ? "bg-teal-500/10 border-teal-500/50 text-teal-400"
-                                      : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10"
-                                  )}
-                                >
-                                  <div className="font-bold text-sm uppercase tracking-wide">{opt}</div>
-                                </button>
-                              ))}
-                           </div>
-                        </div>
+                       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                          <div className="space-y-6">
+                             <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.tabbed?.form?.advanced_options?.ooc_level}</Label>
+                             <div className="space-y-3">
+                                {['slight', 'moderate', 'bold'].map((opt) => (
+                                  <button
+                                    key={opt}
+                                    onClick={() => setAdvancedOptions({...advancedOptions, ooc: opt})}
+                                    className={cn(
+                                      "w-full text-left px-6 py-4 rounded-xl border transition-all",
+                                      advancedOptions.ooc === opt
+                                        ? "bg-pink-500/10 border-pink-500/50 text-pink-400"
+                                        : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10"
+                                    )}
+                                  >
+                                    <div className="font-bold text-sm uppercase tracking-wide">{opt}</div>
+                                  </button>
+                                ))}
+                             </div>
+                          </div>
+
+                          <div className="space-y-6">
+                             <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.tabbed?.form?.advanced_options?.story_length}</Label>
+                             <div className="space-y-3">
+                                {['short', 'medium', 'long'].map((opt) => (
+                                  <button
+                                    key={opt}
+                                    onClick={() => setAdvancedOptions({...advancedOptions, length: opt})}
+                                    className={cn(
+                                      "w-full text-left px-6 py-4 rounded-xl border transition-all",
+                                      advancedOptions.length === opt
+                                        ? "bg-teal-500/10 border-teal-500/50 text-teal-400"
+                                        : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10"
+                                    )}
+                                  >
+                                    <div className="font-bold text-sm uppercase tracking-wide">{opt}</div>
+                                  </button>
+                                ))}
+                             </div>
+                          </div>
+                       </div>
                      </div>
                   </div>
                 )}
@@ -918,6 +1172,16 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                             </Button>
                           </div>
                         </div>
+                        {generatedFanfic && !isGenerating && (
+                          <div className="mt-4">
+                            <CompletionGuide
+                              onCreateAnother={handleCreateAnother}
+                              onSave={handleSaveClick}
+                              translations={completionGuideTranslations}
+                              isSaveDisabled={isSavingStory || hasSavedCurrentStory}
+                            />
+                          </div>
+                        )}
                       </div>
                     )}
                     <div className="flex justify-start">
@@ -960,6 +1224,14 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
         ref={turnstileRef}
         onSuccess={handleTurnstileSuccess}
         onError={handleTurnstileError}
+      />
+
+      <StorySaveDialog
+        open={isSaveDialogOpen}
+        onOpenChange={setIsSaveDialogOpen}
+        onSelect={handleConfirmSave}
+        locale={locale}
+        isSaving={isSavingStory}
       />
     </div>
   );

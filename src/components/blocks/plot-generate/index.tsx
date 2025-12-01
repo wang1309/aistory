@@ -24,6 +24,10 @@ import PlotBreadcrumb from "./breadcrumb";
 import { cn } from "@/lib/utils";
 import { ChevronDown, Settings } from "lucide-react";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
+import CompletionGuide from "@/components/story/completion-guide";
+import StorySaveDialog from "@/components/story/story-save-dialog";
+import type { StoryStatus } from "@/models/story";
+import { useAppContext } from "@/contexts/app";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -55,6 +59,7 @@ interface PlotGenerateProps {
 
 export default function PlotGenerate({ section }: PlotGenerateProps) {
   const locale = useLocale();
+  const { user, setShowSignModal } = useAppContext();
 
   // Helper function to get nested translations from section data
   const t = (path: string) => {
@@ -160,6 +165,9 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   const [currentPlotId, setCurrentPlotId] = useState<string | null>(null);
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
   const [showPlotToStoryDialog, setShowPlotToStoryDialog] = useState(false);
+  const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
+  const [isSavingStory, setIsSavingStory] = useState(false);
+  const [hasSavedCurrentStory, setHasSavedCurrentStory] = useState(false);
 
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
 
@@ -262,6 +270,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     setIsGenerating(true);
     setGeneratedPlot("");
     setCurrentPlotId(null);
+    setHasSavedCurrentStory(false);
 
     try {
       const requestBody = {
@@ -379,9 +388,156 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     toast.error(t('errors.generation_failed'));
   }, [section]);
 
+  // 保存相关逻辑
+
+  const handleCreateAnother = useCallback(() => {
+    setGeneratedPlot("");
+    setCurrentPlotId(null);
+    setHasSavedCurrentStory(false);
+  }, []);
+
+  const handleSaveClick = useCallback(() => {
+    if (!generatedPlot.trim()) {
+      toast.error(locale === "zh" ? "没有可保存的剧情，请先生成大纲" : "No plot generated to save");
+      return;
+    }
+
+    if (!user) {
+      setShowSignModal(true);
+      return;
+    }
+
+    setIsSaveDialogOpen(true);
+  }, [generatedPlot, locale, user, setShowSignModal]);
+
+  const handleConfirmSave = useCallback(
+    async (status: StoryStatus) => {
+      if (!generatedPlot.trim()) {
+        toast.error(locale === "zh" ? "没有可保存的剧情，请先生成大纲" : "No plot generated to save");
+        return;
+      }
+
+      try {
+        setIsSavingStory(true);
+
+        const latestOptions = plotOptionsRef.current;
+
+        const settings: Record<string, unknown> = {
+          locale,
+          outputLanguage: latestOptions.language,
+          complexity: latestOptions.complexity,
+          mainCharacterCount: latestOptions.mainCharacterCount,
+          supportingCharacterCount: latestOptions.supportingCharacterCount,
+          plotPointCount: latestOptions.plotPointCount,
+          subPlotCount: latestOptions.subPlotCount,
+          conflictTypes: latestOptions.conflictTypes,
+          emotionalArc: latestOptions.emotionalArc,
+          suspenseStyle: latestOptions.suspenseStyle,
+        };
+
+        if (latestOptions.genre !== "none") {
+          settings.genre = latestOptions.genre;
+        }
+        if (latestOptions.tone !== "none") {
+          settings.tone = latestOptions.tone;
+        }
+        if (latestOptions.perspective !== "none") {
+          settings.perspective = latestOptions.perspective;
+        }
+
+        const modelKey = selectedModel || "standard";
+        const modelMap: Record<string, string> = {
+          fast: "gemini-2.5-flash-lite",
+          standard: "gemini-2.5-flash",
+          creative: "gemini-2.5-flash-think",
+        };
+        const actualModel = modelMap[modelKey] || "gemini-2.5-flash";
+
+        const resp = await fetch("/api/stories", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: extractPlotTitle(generatedPlot) || (prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")),
+            prompt,
+            content: generatedPlot,
+            wordCount: calculateWordCount(generatedPlot),
+            modelUsed: actualModel,
+            settings,
+            status,
+            visibility: status === "published" ? "public" : "private",
+            sourceCategory: "plot",
+          }),
+        });
+
+        if (!resp.ok) {
+          throw new Error("request failed with status: " + resp.status);
+        }
+
+        const { code, message } = await resp.json();
+
+        if (code !== 0) {
+          if (message === "no auth") {
+            setShowSignModal(true);
+          }
+
+          toast.error(
+            locale === "zh"
+              ? message === "no auth"
+                ? "请先登录后再保存故事"
+                : `保存失败：${message}`
+              : message || "Failed to save story"
+          );
+          return;
+        }
+
+        toast.success(
+          locale === "zh"
+            ? status === "published"
+              ? "故事已发布"
+              : "故事已保存"
+            : status === "published"
+            ? "Story published"
+            : "Story saved"
+        );
+
+        setHasSavedCurrentStory(true);
+        setIsSaveDialogOpen(false);
+      } catch (error) {
+        console.error("save plot story failed", error);
+        toast.error(
+          locale === "zh"
+            ? "保存失败，请稍后再试"
+            : "Failed to save story, please try again."
+        );
+      } finally {
+        setIsSavingStory(false);
+      }
+    }, [generatedPlot, locale, prompt, selectedModel, setShowSignModal])
+  ;
+
   // Computed values
   const wordCount = useMemo(() => calculateWordCount(generatedPlot), [generatedPlot]);
   const promptCharCount = prompt.length;
+
+  const completionGuideTranslations = useMemo(() => {
+    if (locale === "zh") {
+      return {
+        title: "喜欢这个剧情大纲吗？",
+        subtitle: "你可以保存它，或者基于它继续创作故事。",
+        create_another: "再生成一个大纲",
+        share_action: "保存到故事库",
+      };
+    }
+
+    return {
+      title: "Like this plot outline?",
+      subtitle: "You can save it, or generate another one to explore new ideas.",
+      create_another: "Generate Another Plot",
+      share_action: "Save Story",
+    };
+  }, [locale]);
 
   // Load plot from history
   const handleLoadPlot = useCallback((plot: PlotData) => {
@@ -838,6 +994,16 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
               </div>
             </div>
 
+            {/* Completion Guide */}
+            {generatedPlot && (
+              <CompletionGuide
+                onCreateAnother={handleCreateAnother}
+                onSave={handleSaveClick}
+                isSaveDisabled={hasSavedCurrentStory}
+                translations={completionGuideTranslations}
+              />
+            )}
+
             {/* Actions: Generate Story from Plot */}
             {generatedPlot && currentPlotId && (
               <div className="relative group animate-slide-up">
@@ -874,6 +1040,13 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           open={showPlotToStoryDialog}
           onOpenChange={setShowPlotToStoryDialog}
           translations={section}
+        />
+        <StorySaveDialog
+          open={isSaveDialogOpen}
+          onOpenChange={setIsSaveDialogOpen}
+          onSelect={handleConfirmSave}
+          locale={locale}
+          isSaving={isSavingStory}
         />
         {/* Invisible Turnstile for non-interactive verification */}
         <TurnstileInvisible

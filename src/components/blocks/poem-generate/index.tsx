@@ -21,6 +21,9 @@ import PoemHistoryDropdown from "@/components/poem-history-dropdown";
 import PoemBreadcrumb from "./breadcrumb";
 import { cn } from "@/lib/utils";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
+import CompletionGuide from "@/components/story/completion-guide";
+import StorySaveDialog from "@/components/story/story-save-dialog";
+import type { StoryStatus } from "@/models/story";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -49,7 +52,7 @@ async function copyToClipboard(text: string): Promise<boolean> {
 
 export default function PoemGenerate({ section }: { section: PoemGenerateType }) {
   const locale = useLocale();
-  const { user } = useAppContext();
+  const { user, setShowSignModal } = useAppContext();
 
   // Helper function to get nested translations from section data
   const t = (path: string) => {
@@ -124,6 +127,11 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedPoem, setGeneratedPoem] = useState("");
   const [isFirstGeneration, setIsFirstGeneration] = useState(true);
+
+  // Save dialog state
+  const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
+  const [isSavingStory, setIsSavingStory] = useState(false);
+  const [hasSavedCurrentPoem, setHasSavedCurrentPoem] = useState(false);
 
   // Output tabs
   const [activeOutputTab, setActiveOutputTab] = useState("poem");
@@ -430,6 +438,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
     setIsGenerating(true);
     setGeneratedPoem("");
     setActiveOutputTab("poem");
+    setHasSavedCurrentPoem(false);
 
     try {
       // Build classical options if needed
@@ -558,11 +567,161 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
     toast.error(section.toasts.error_generate_failed);
   }, [section]);
 
+  // ===== SAVE / COMPLETION LOGIC =====
+
+  const handleCreateAnother = useCallback(() => {
+    setGeneratedPoem("");
+    setPoemAnalysis(null);
+    setActiveOutputTab("poem");
+    setHasSavedCurrentPoem(false);
+  }, []);
+
+  const handleSaveClick = useCallback(() => {
+    if (!generatedPoem.trim()) {
+      toast.error(section.toasts.error_generate_poem_first);
+      return;
+    }
+
+    if (!user) {
+      setShowSignModal(true);
+      return;
+    }
+
+    setIsSaveDialogOpen(true);
+  }, [generatedPoem, section, user, setShowSignModal]);
+
+  const handleConfirmSave = useCallback(
+    async (status: StoryStatus) => {
+      if (!generatedPoem.trim()) {
+        toast.error(section.toasts.error_generate_poem_first);
+        return;
+      }
+
+      try {
+        setIsSavingStory(true);
+
+        const opts = optionsRef.current;
+
+        const settings: Record<string, unknown> = {
+          locale,
+          poemType: opts.poemType,
+          length: opts.length,
+          rhymeScheme: opts.rhymeScheme,
+          theme: opts.theme,
+          mood: opts.mood,
+          style: opts.style,
+          outputLanguage: opts.language,
+          strictTone: opts.strictTone,
+        };
+
+        if (opts.cipai) {
+          settings.cipai = opts.cipai;
+        }
+
+        const modelKey = selectedModel || "standard";
+        const modelMap: Record<string, string> = {
+          fast: "gemini-2.5-flash-lite",
+          standard: "gemini-2.5-flash",
+          creative: "gemini-2.5-flash-think",
+        };
+        const actualModel = modelMap[modelKey] || "gemini-2.5-flash";
+
+        const baseTitle =
+          generatedPoem
+            .split("\n")
+            .find((line) => line.trim().length > 0)
+            ?.trim() || prompt.trim() || section.header.title;
+
+        const title =
+          baseTitle.length > 50 ? baseTitle.substring(0, 50) + "..." : baseTitle;
+
+        const resp = await fetch("/api/stories", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title,
+            prompt,
+            content: generatedPoem,
+            wordCount: generatedPoem.length,
+            modelUsed: actualModel,
+            settings,
+            status,
+            visibility: status === "published" ? "public" : "private",
+            sourceCategory: "poem",
+          }),
+        });
+
+        if (!resp.ok) {
+          throw new Error("request failed with status: " + resp.status);
+        }
+
+        const { code, message } = await resp.json();
+
+        if (code !== 0) {
+          if (message === "no auth") {
+            setShowSignModal(true);
+          }
+
+          toast.error(
+            locale === "zh"
+              ? message === "no auth"
+                ? "请先登录后再保存故事"
+                : `保存失败：${message}`
+              : message || "Failed to save story"
+          );
+          return;
+        }
+
+        toast.success(
+          locale === "zh"
+            ? status === "published"
+              ? "故事已发布"
+              : "故事已保存"
+            : status === "published"
+            ? "Story published"
+            : "Story saved"
+        );
+
+        setHasSavedCurrentPoem(true);
+        setIsSaveDialogOpen(false);
+      } catch (error) {
+        console.error("save poem failed", error);
+        toast.error(
+          locale === "zh"
+            ? "保存失败，请稍后再试"
+            : "Failed to save story, please try again."
+        );
+      } finally {
+        setIsSavingStory(false);
+      }
+    }, [generatedPoem, prompt, locale, selectedModel, section, setShowSignModal]
+  );
+
   // ===== RENDER =====
 
   const characterCount = prompt.length;
   const maxCharacters = 2000;
   const lineCount = calculateLineCount(generatedPoem);
+
+  const completionGuideTranslations = useMemo(() => {
+    if (locale === "zh") {
+      return {
+        title: "喜欢这首诗吗？",
+        subtitle: "你可以保存它，或者再写一首新的诗歌。",
+        create_another: "再写一首诗",
+        share_action: "保存到故事库",
+      };
+    }
+
+    return {
+      title: "Like your poem?",
+      subtitle: "You can save it, or create another one to explore new inspiration.",
+      create_another: "Create Another Poem",
+      share_action: "Save Story",
+    };
+  }, [locale, section]);
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-background selection:bg-pink-500/30">
@@ -885,7 +1044,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                     className="relative w-full h-20 rounded-full bg-foreground text-background hover:bg-white hover:text-foreground hover:scale-[1.02] transition-all duration-500 text-lg font-bold tracking-wide shadow-2xl border-none"
                   >
                     {isGenerating ? (
-                      <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3">
                         <div className="size-5 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
                         <span className="animate-pulse">{section.generate_button.generating}</span>
                       </div>
@@ -913,16 +1072,17 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
           {/* Output Section */}
           {generatedPoem && (
-            <div className="relative animate-fade-in-up mt-16">
-              {/* Debug indicator */}
-              <div className="text-center mb-4 text-sm text-green-500 font-bold">
-                ✓ Poem Generated ({generatedPoem.length} chars)
-              </div>
-              <div className="glass-premium rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-black/5 dark:ring-white/10">
+            <div className="mt-16 space-y-8">
+              <div className="relative animate-fade-in-up">
+                {/* Debug indicator */}
+                <div className="text-center mb-4 text-sm text-green-500 font-bold">
+                  ✓ Poem Generated ({generatedPoem.length} chars)
+                </div>
+                <div className="glass-premium rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-black/5 dark:ring-white/10">
 
-                {/* Output Header */}
-                <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-10 border-b border-black/5 dark:border-white/5 bg-white/40 dark:bg-white/5 gap-6">
-                  <div className="flex items-center gap-5">
+                  {/* Output Header */}
+                  <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-10 border-b border-black/5 dark:border-white/5 bg-white/40 dark:bg-white/5 gap-6">
+                    <div className="flex items-center gap-5">
                     <div className="p-3 rounded-2xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 border border-black/5 dark:border-white/10">
                       <Icon name="feather" className="size-6 text-pink-600 dark:text-pink-400" />
                     </div>
@@ -959,7 +1119,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                       {isAnalyzing ? section.output.button_analyzing : section.output.button_analyze}
                     </Button>
                   </div>
-                </div>
+                  </div>
 
                 {/* Output Tabs */}
                 <Tabs value={activeOutputTab} onValueChange={setActiveOutputTab} className="w-full">
@@ -1141,6 +1301,12 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                   </div>
                 </Tabs>
               </div>
+              <CompletionGuide
+                onCreateAnother={handleCreateAnother}
+                onSave={handleSaveClick}
+                isSaveDisabled={hasSavedCurrentPoem}
+                translations={completionGuideTranslations}
+              />
             </div>
           )}
 
@@ -1151,6 +1317,13 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
           ref={turnstileRef}
           onSuccess={handleTurnstileSuccess}
           onError={handleTurnstileError}
+        />
+        <StorySaveDialog
+          open={isSaveDialogOpen}
+          onOpenChange={setIsSaveDialogOpen}
+          onSelect={handleConfirmSave}
+          locale={locale}
+          isSaving={isSavingStory}
         />
       </div>
     </div>

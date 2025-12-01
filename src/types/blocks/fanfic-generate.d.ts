@@ -238,6 +238,12 @@ export interface FanficGenerate {
     success_pdf_exported: string;
     warning_mature_content: string;
   };
+  completion_guide?: {
+    title: string;
+    subtitle: string;
+    create_another: string;
+    share_action: string;
+  };
   history: {
     title: string;
     empty: string;

@@ -706,8 +706,13 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           settings.tone = latestOptions.tone;
         }
 
-        const selectedModelName =
-          AI_MODELS.find((m) => m.id === selectedModel)?.name || "";
+        const modelKey = selectedModel || "standard";
+        const modelMap: Record<string, string> = {
+          fast: "gemini-2.5-flash-lite",
+          standard: "gemini-2.5-flash",
+          creative: "gemini-2.5-flash-think",
+        };
+        const actualModel = modelMap[modelKey] || "gemini-2.5-flash";
 
         const resp = await fetch("/api/stories", {
           method: "POST",
@@ -720,7 +725,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             prompt,
             content: generatedStory,
             wordCount,
-            modelUsed: selectedModelName,
+            modelUsed: actualModel,
             settings,
             status,
             visibility: status === "published" ? "public" : "private",
