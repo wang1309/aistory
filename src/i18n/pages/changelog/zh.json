@@ -6,6 +6,33 @@
     "description": "了解我们最新的功能改进、问题修复和安全更新",
     "items": [
       {
+        "version": "v1.3.7",
+        "date": "2025-12-01",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "为诗歌生成器新增保存故事能力，集成生成完成指引和故事保存弹窗，保存时写入 sourceCategory 为 poem 并记录真实模型 ID",
+              "在故事广场（社区页面）新增按来源类型（story、fanfic、plot、poem）筛选的标签，支持按来源浏览故事"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "优化情节生成器的 Save Story 指引布局，将保存文案移动到单独一行，减少视觉拥挤感",
+              "为故事广场的来源筛选标签补全多语言文案，使所有已支持界面语言下的标签保持一致"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "修复诗歌生成器输出区域 JSX 结构问题导致的构建与运行错误",
+              "修复 Next.js 15 在故事相关 API 路由上的 Route Handler 类型报错，通过放宽 context 参数类型确保生产环境构建通过"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.6",
         "date": "2025-11-29",
         "changes": [

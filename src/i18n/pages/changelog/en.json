@@ -6,6 +6,33 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.7",
+        "date": "2025-12-01",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added save story support for the poem generator, including post-generation guidance and the Story Save dialog, storing stories with source category poem and accurate model ID",
+              "Added source category filter tags to the Story Square community page so users can browse stories by origin (story, fanfic, plot, poem)"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Refined the plot generator save guidance layout so Save Story content appears on its own row and feels less visually crowded",
+              "Enhanced Story Square filters with full multi-language label support across all supported interface languages"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Fixed poem generator build and runtime issues caused by JSX structure problems in the output area",
+              "Fixed Next.js 15 route handler type errors that were preventing production builds by relaxing dynamic API route context typing"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.6",
         "date": "2025-11-29",
         "changes": [

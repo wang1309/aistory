@@ -6,6 +6,33 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.7",
+        "date": "2025-12-01",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Speicherfunktion für vom Gedichtgenerator erzeugte Geschichten hinzugefügt, inklusive Post-Generation-Guidance und Story-Speicherdialog; gespeicherte Einträge erhalten die Quellkategorie poem sowie die tatsächlich verwendete Modell-ID",
+              "Quellkategorie-Filter-Tags auf der Story-Square-Community-Seite eingeführt, damit Nutzer Geschichten nach Herkunft (story, fanfic, plot, poem) durchsuchen können"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Layout der Save-Story-Anleitung im Plotgenerator verfeinert, sodass der Speichertext in einer eigenen Zeile erscheint und das Layout weniger gedrängt wirkt",
+              "Story-Square-Filter um vollständige mehrsprachige Label-Unterstützung für alle unterstützten Interface-Sprachen erweitert"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Build- und Laufzeitprobleme des Gedichtgenerators behoben, die durch eine fehlerhafte JSX-Struktur im Ausgabebereich verursacht wurden",
+              "Next.js-15-Route-Handler-Typfehler in Story-bezogenen API-Routen behoben, die Produktionsbuilds verhinderten, indem die context-Typisierung für dynamische API-Routen gelockert wurde"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.6",
         "date": "2025-11-29",
         "changes": [
