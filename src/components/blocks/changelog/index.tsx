@@ -3,6 +3,7 @@
 import { Changelog as ChangelogType } from "@/types/blocks/changelog";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { CheckCircle2, Bug, Zap, Shield } from "lucide-react";
 
@@ -51,6 +52,41 @@ export default function Changelog({ changelog }: { changelog: ChangelogType }) {
           className: "",
         };
     }
+  };
+
+  const getChangeLink = (text: string) => {
+    const lower = text.toLowerCase();
+
+    // 故事广场 / Story Square -> 社区故事广场
+    if (text.includes("故事广场") || lower.includes("story square")) {
+      return "/community";
+    }
+
+    // 我的故事 / My Stories -> 用户中心我的故事
+    if (
+      text.includes("我的故事") ||
+      lower.includes("my stories") ||
+      lower.includes("my-stories") ||
+      lower.includes("meine geschichten") ||
+      lower.includes("мои истории")
+    ) {
+      return "/my-stories";
+    }
+
+    // 创作概览 / Creation Overview / 创作总览 / 创作サマリー / 창작 현황 / Schreibübersicht / Обзор творчества
+    if (
+      text.includes("创作概览") ||
+      text.includes("创作总览") ||
+      lower.includes("creation overview") ||
+      text.includes("創作サマリー") ||
+      text.includes("창작 현황") ||
+      lower.includes("schreibübersicht") ||
+      text.includes("Обзор творчества")
+    ) {
+      return "/creator-dashboard";
+    }
+
+    return null;
   };
 
   return (
@@ -120,15 +156,41 @@ export default function Changelog({ changelog }: { changelog: ChangelogType }) {
                                 </Badge>
                               </div>
                               <ul className="space-y-2 ml-1">
-                                {change.items.map((changeItem, itemIndex) => (
-                                  <li
-                                    key={itemIndex}
-                                    className="flex items-start gap-2 text-sm text-foreground/90"
-                                  >
-                                    <span className="text-muted-foreground mt-1">•</span>
-                                    <span>{changeItem}</span>
-                                  </li>
-                                ))}
+                                {change.items.map((changeItem, itemIndex) => {
+                                  const href = getChangeLink(changeItem);
+
+                                  const content = (
+                                    <>
+                                      <span className="text-muted-foreground mt-1">•</span>
+                                      <span>{changeItem}</span>
+                                    </>
+                                  );
+
+                                  if (!href) {
+                                    return (
+                                      <li
+                                        key={itemIndex}
+                                        className="flex items-start gap-2 text-sm text-foreground/90"
+                                      >
+                                        {content}
+                                      </li>
+                                    );
+                                  }
+
+                                  return (
+                                    <li
+                                      key={itemIndex}
+                                      className="flex items-start gap-2 text-sm text-foreground/90"
+                                    >
+                                      <Link
+                                        href={href as any}
+                                        className="inline-flex items-start gap-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                                      >
+                                        {content}
+                                      </Link>
+                                    </li>
+                                  );
+                                })}
                               </ul>
                             </div>
                           );

@@ -12,8 +12,11 @@
           {
             "type": "feature",
             "items": [
-              "Added save story support for the poem generator, including post-generation guidance and the Story Save dialog, storing stories with source category poem and accurate model ID",
-              "Added source category filter tags to the Story Square community page so users can browse stories by origin (story, fanfic, plot, poem)"
+              "Added save story support for the poem generator, including post-generation guidance and the Story Save dialog",
+              "Added source category filter tags to the Story Square community page so users can browse stories by origin (story, fanfic, plot, poem)",
+              "Added Story Square community page to showcase publicly shared AI-generated stories",
+              "Added My Stories dashboard in the user console to manage saved stories in one place",
+              "Added Creation Overview dashboard to visualize your total stories, words written, active days, and streaks"
             ]
           },
           {

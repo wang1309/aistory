@@ -12,8 +12,11 @@
           {
             "type": "feature",
             "items": [
-              "Speicherfunktion für vom Gedichtgenerator erzeugte Geschichten hinzugefügt, inklusive Post-Generation-Guidance und Story-Speicherdialog; gespeicherte Einträge erhalten die Quellkategorie poem sowie die tatsächlich verwendete Modell-ID",
-              "Quellkategorie-Filter-Tags auf der Story-Square-Community-Seite eingeführt, damit Nutzer Geschichten nach Herkunft (story, fanfic, plot, poem) durchsuchen können"
+              "Speicherfunktion für vom Gedichtgenerator erzeugte Geschichten hinzugefügt, inklusive Post-Generation-Guidance und Story-Speicherdialog",
+              "Quellkategorie-Filter-Tags auf der Story-Square-Community-Seite eingeführt, damit Nutzer Geschichten nach Herkunft (story, fanfic, plot, poem) durchsuchen können",
+              "Neue Story-Square-Community-Seite hinzugefügt, auf der öffentlich geteilte KI-Geschichten gebündelt angezeigt werden",
+              "Neues \"Meine Geschichten\"-Dashboard im Benutzerbereich eingeführt, um gespeicherte Stories zentral zu verwalten",
+              "Neues Schreibübersicht-(Creation Overview-)Dashboard hinzugefügt, das Gesamtzahl der Stories, Wörter, aktiven Tage und Serien übersichtlich darstellt"
             ]
           },
           {
