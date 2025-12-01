@@ -8,7 +8,7 @@ import StoryPreviewButton from "@/components/community/story-preview-button";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
-  searchParams?: Promise<{ page?: string; tag?: string }>;
+  searchParams?: Promise<{ page?: string; tag?: string; sourceCategory?: string }>;
 }
 
 export async function generateMetadata({
@@ -62,10 +62,15 @@ export default async function CommunityPage({
     ? String(resolvedSearchParams.tag)
     : undefined;
 
+  const sourceCategory = resolvedSearchParams?.sourceCategory
+    ? String(resolvedSearchParams.sourceCategory)
+    : undefined;
+
   const { items, total } = await getPublicStories({
     page,
     limit: pageSize,
     tagSlug,
+    sourceCategory,
   });
 
   const tagsByStoryUuid = new Map<
@@ -148,6 +153,78 @@ export default async function CommunityPage({
             </Link>
           </div>
         )}
+      </div>
+
+      {/* Source Category Filter */}
+      <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
+        {[
+          {
+            key: "all",
+            value: undefined as string | undefined,
+            label:
+              locale === "zh"
+                ? "全部来源"
+                : "All sources",
+          },
+          {
+            key: "story",
+            value: "story",
+            label:
+              locale === "zh"
+                ? "长篇/短篇故事"
+                : "Story",
+          },
+          {
+            key: "fanfic",
+            value: "fanfic",
+            label:
+              locale === "zh"
+                ? "同人故事"
+                : "Fanfic",
+          },
+          {
+            key: "plot",
+            value: "plot",
+            label:
+              locale === "zh"
+                ? "剧情大纲"
+                : "Plot",
+          },
+          {
+            key: "poem",
+            value: "poem",
+            label:
+              locale === "zh"
+                ? "诗歌"
+                : "Poem",
+          },
+        ].map((option) => {
+          const isActive = option.value === sourceCategory || (!option.value && !sourceCategory);
+
+          const params = new URLSearchParams();
+          if (tagSlug) {
+            params.set("tag", tagSlug);
+          }
+          if (option.value) {
+            params.set("sourceCategory", option.value);
+          }
+
+          const href = `/community${params.toString() ? `?${params.toString()}` : ""}` as any;
+
+          return (
+            <Link
+              key={option.key}
+              href={href}
+              className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+                isActive
+                  ? "bg-indigo-600 text-white border-indigo-600 shadow-md"
+                  : "bg-white/70 dark:bg-white/5 text-muted-foreground border-black/5 dark:border-white/10 hover:bg-indigo-50 dark:hover:bg-indigo-900/40 hover:text-indigo-700 dark:hover:text-indigo-300"
+              }`}
+            >
+              {option.label}
+            </Link>
+          );
+        })}
       </div>
 
       {items.length === 0 ? (

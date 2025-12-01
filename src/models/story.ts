@@ -136,6 +136,7 @@ interface GetPublicStoriesOptions {
   page?: number;
   limit?: number;
   tagSlug?: string;
+  sourceCategory?: string;
 }
 
 export async function getPublicStories(
@@ -153,7 +154,10 @@ export async function getPublicStories(
   if (options.tagSlug) {
     const tagSlug = options.tagSlug;
 
-    const where = and(baseWhere, eq(sg_tags.slug, tagSlug));
+    let where = and(baseWhere, eq(sg_tags.slug, tagSlug));
+    if (options.sourceCategory) {
+      where = and(where, eq(sg_stories.source_category, options.sourceCategory));
+    }
 
     const rows = await db()
       .select({
@@ -187,7 +191,10 @@ export async function getPublicStories(
     return { items, total };
   }
 
-  const where = baseWhere;
+  let where = baseWhere;
+  if (options.sourceCategory) {
+    where = and(where, eq(sg_stories.source_category, options.sourceCategory));
+  }
 
   const items = await db()
     .select()
