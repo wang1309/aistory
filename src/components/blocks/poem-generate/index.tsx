@@ -1120,6 +1120,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                     </Button>
                   </div>
                   </div>
+                </div>
 
                 {/* Output Tabs */}
                 <Tabs value={activeOutputTab} onValueChange={setActiveOutputTab} className="w-full">
