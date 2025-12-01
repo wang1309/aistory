@@ -8,7 +8,7 @@ import {
 
 export async function GET(
   req: Request,
-  context: { params: { uuid: string } }
+  context: any
 ) {
   try {
     const uuid = context.params?.uuid;
@@ -53,7 +53,7 @@ export async function GET(
 
 export async function POST(
   req: Request,
-  context: { params: { uuid: string } }
+  context: any
 ) {
   try {
     const user_uuid = await getUserUuid();

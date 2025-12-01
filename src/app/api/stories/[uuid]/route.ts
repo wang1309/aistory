@@ -10,7 +10,7 @@ import {
 
 export async function GET(
   req: Request,
-  context: { params: { uuid: string } }
+  context: any
 ) {
   try {
     const user_uuid = await getUserUuid();
@@ -37,7 +37,7 @@ export async function GET(
 
 export async function PATCH(
   req: Request,
-  context: { params: { uuid: string } }
+  context: any
 ) {
   try {
     const user_uuid = await getUserUuid();
@@ -87,7 +87,7 @@ export async function PATCH(
 
 export async function DELETE(
   req: Request,
-  context: { params: { uuid: string } }
+  context: any
 ) {
   try {
     const user_uuid = await getUserUuid();

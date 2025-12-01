@@ -5,7 +5,7 @@ import { softDeleteStoryComment } from "@/models/storyInteraction";
 
 export async function DELETE(
   req: Request,
-  context: { params: { uuid: string; commentId: string } }
+  context: any
 ) {
   try {
     const user_uuid = await getUserUuid();
