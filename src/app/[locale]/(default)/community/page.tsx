@@ -164,6 +164,12 @@ export default async function CommunityPage({
             label:
               locale === "zh"
                 ? "全部来源"
+                : locale === "ja"
+                ? "すべてのソース"
+                : locale === "ko"
+                ? "모든 소스"
+                : locale === "de"
+                ? "Alle Quellen"
                 : "All sources",
           },
           {
@@ -172,6 +178,12 @@ export default async function CommunityPage({
             label:
               locale === "zh"
                 ? "长篇/短篇故事"
+                : locale === "ja"
+                ? "ストーリー"
+                : locale === "ko"
+                ? "스토리"
+                : locale === "de"
+                ? "Geschichte"
                 : "Story",
           },
           {
@@ -180,6 +192,12 @@ export default async function CommunityPage({
             label:
               locale === "zh"
                 ? "同人故事"
+                : locale === "ja"
+                ? "二次創作"
+                : locale === "ko"
+                ? "팬픽션"
+                : locale === "de"
+                ? "Fanfiction"
                 : "Fanfic",
           },
           {
@@ -188,6 +206,12 @@ export default async function CommunityPage({
             label:
               locale === "zh"
                 ? "剧情大纲"
+                : locale === "ja"
+                ? "プロット概要"
+                : locale === "ko"
+                ? "줄거리 개요"
+                : locale === "de"
+                ? "Handlungsentwurf"
                 : "Plot",
           },
           {
@@ -196,6 +220,12 @@ export default async function CommunityPage({
             label:
               locale === "zh"
                 ? "诗歌"
+                : locale === "ja"
+                ? "詩"
+                : locale === "ko"
+                ? "시"
+                : locale === "de"
+                ? "Gedicht"
                 : "Poem",
           },
         ].map((option) => {
