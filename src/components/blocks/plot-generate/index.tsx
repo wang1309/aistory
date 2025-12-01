@@ -994,16 +994,6 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
               </div>
             </div>
 
-            {/* Completion Guide */}
-            {generatedPlot && (
-              <CompletionGuide
-                onCreateAnother={handleCreateAnother}
-                onSave={handleSaveClick}
-                isSaveDisabled={hasSavedCurrentStory}
-                translations={completionGuideTranslations}
-              />
-            )}
-
             {/* Actions: Generate Story from Plot */}
             {generatedPlot && currentPlotId && (
               <div className="relative group animate-slide-up">
@@ -1033,6 +1023,17 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           </div>
 
         </div>
+
+        {generatedPlot && (
+          <div className="mt-10">
+            <CompletionGuide
+              onCreateAnother={handleCreateAnother}
+              onSave={handleSaveClick}
+              isSaveDisabled={hasSavedCurrentStory}
+              translations={completionGuideTranslations}
+            />
+          </div>
+        )}
 
         {/* Plot to Story Dialog */}
         <PlotToStoryDialog
