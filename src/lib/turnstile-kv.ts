@@ -93,19 +93,19 @@ export async function isIdentityVerifiedInKv(): Promise<boolean> {
 
   const kv = getTurnstileKv();
   const key = getIdentityKey(identity);
+  const isDev = process.env.NODE_ENV === "development";
 
-  if (kv) {
+  if (!isDev && kv) {
     try {
       const value = await (kv as any).get(key, "text");
       if (value) {
         console.log("Turnstile KV: cache hit for", identity);
         return true;
       }
+      return false;
     } catch (e) {
       console.log("Turnstile KV: read error", e);
     }
-
-    return false;
   }
 
   const restConfig = getKvRestConfigFromEnv();
@@ -159,16 +159,16 @@ export async function markIdentityVerifiedInKv(): Promise<void> {
     identity,
     verifiedAt: Date.now(),
   });
+  const isDev = process.env.NODE_ENV === "development";
 
-  if (kv) {
+  if (!isDev && kv) {
     try {
       await (kv as any).put(key, payload, { expirationTtl: TURNSTILE_KV_TTL_SECONDS });
       console.log("Turnstile KV: marked verified for", identity);
+      return;
     } catch (e) {
       console.log("Turnstile KV: write error", e);
     }
-
-    return;
   }
 
   const restConfig = getKvRestConfigFromEnv();
