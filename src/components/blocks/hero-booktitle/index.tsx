@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
+import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 
 const isDev = process.env.NODE_ENV === "development";
 const devLog = (...args: any[]) => {
@@ -126,12 +127,19 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
   // Generation state
   const [generatedTitles, setGeneratedTitles] = useState<GeneratedTitle[]>([]);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [isLoadingHistory, setIsLoadingHistory] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
   const [lastError, setLastError] = useState<string | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
+
+  useDraftAutoSave({
+    key: `book-title-generator:description:${locale}`,
+    value: description,
+    onRestore: (draft) => setDescription(draft),
+  });
 
   // Collapsible examples state
   const [isExamplesExpanded, setIsExamplesExpanded] = useState(false);

@@ -22,6 +22,7 @@ import { useTranslations } from "next-intl";
 import StorySaveDialog from "@/components/story/story-save-dialog";
 import type { StoryStatus } from "@/models/story";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
+import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 
 const isDev = process.env.NODE_ENV === "development";
@@ -235,6 +236,12 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     if (selectedTone !== "none") count++;
     return count;
   }, [selectedFormat, selectedLength, selectedGenre, selectedPerspective, selectedAudience, selectedTone]);
+
+  useDraftAutoSave({
+    key: `story-generator:prompt:${locale}`,
+    value: prompt,
+    onRestore: (draft) => setPrompt(draft),
+  });
 
   useEffect(() => {
     if (isGenerating && outputRef.current) {

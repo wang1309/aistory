@@ -26,6 +26,7 @@ import StorySaveDialog from "@/components/story/story-save-dialog";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import type { StoryStatus } from "@/models/story";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
+import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -134,6 +135,12 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
   const [isSavingStory, setIsSavingStory] = useState(false);
   const [hasSavedCurrentPoem, setHasSavedCurrentPoem] = useState(false);
+
+  useDraftAutoSave({
+    key: `poem-generator:prompt:${locale}`,
+    value: prompt,
+    onRestore: (draft) => setPrompt(draft),
+  });
 
   // Output tabs
   const [activeOutputTab, setActiveOutputTab] = useState("poem");

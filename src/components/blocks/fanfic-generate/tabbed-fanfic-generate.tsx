@@ -35,6 +35,7 @@ import type { StoryStatus } from "@/models/story";
 import { useAppContext } from "@/contexts/app";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
+import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -74,7 +75,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const [customCharacterInput, setCustomCharacterInput] = useState('');
 
   const [plotType, setPlotType] = useState('canon');
-  const [prompt, setPrompt] = useState('');
+  const [prompt, setPrompt] = useState("");
   const [language, setLanguage] = useState(locale);
   const [selectedModel, setSelectedModel] = useState<string>('fast');
 
@@ -91,6 +92,13 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     perspective: 'third',
   });
   const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
+
+  useDraftAutoSave({
+    key: `fanfic-generator:tabbed-prompt:${locale}`,
+    value: prompt,
+    onRestore: (draft) => setPrompt(draft),
+  });
+
   const [isSavingStory, setIsSavingStory] = useState(false);
   const [hasSavedCurrentStory, setHasSavedCurrentStory] = useState(false);
 

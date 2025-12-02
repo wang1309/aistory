@@ -27,6 +27,7 @@ import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/Turns
 import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
+import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import type { StoryStatus } from "@/models/story";
 import { useAppContext } from "@/contexts/app";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
@@ -188,6 +189,12 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     tone: 'none',
     perspective: 'none',
     language: locale
+  });
+
+  useDraftAutoSave({
+    key: `plot-generator:prompt:${locale}`,
+    value: prompt,
+    onRestore: (draft) => setPrompt(draft),
   });
 
   // Update ref whenever options change

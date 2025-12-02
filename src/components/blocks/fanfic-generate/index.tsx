@@ -18,6 +18,7 @@ import { PRESET_WORKS, getWorkById, getCharacterName, getCharacterById, getWorkN
 import { cn } from "@/lib/utils";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
+import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 
 const isDev = process.env.NODE_ENV === "development";
 const devLog = (...args: any[]) => {
@@ -118,7 +119,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
   const [plotType, setPlotType] = useState<string>('');
 
   // Prompt state
-  const [prompt, setPrompt] = useState('');
+  const [prompt, setPrompt] = useState("");
   const [outputLanguage, setOutputLanguage] = useState(locale);
 
   // AI model state
@@ -133,8 +134,15 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
   const [selectedPerspective, setSelectedPerspective] = useState('none');
 
   // Generation state
-  const [generatedFanfic, setGeneratedFanfic] = useState('');
+  const [generatedFanfic, setGeneratedFanfic] = useState("");
+  const [hasStartedGeneration, setHasStartedGeneration] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+
+  useDraftAutoSave({
+    key: `fanfic-generator:prompt:${locale}`,
+    value: prompt,
+    onRestore: (draft) => setPrompt(draft),
+  });
   const [wordCount, setWordCount] = useState(0);
   const [generatedTags, setGeneratedTags] = useState<string[]>([]);
   const [isExportingPDF, setIsExportingPDF] = useState(false);
