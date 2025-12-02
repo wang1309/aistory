@@ -6,6 +6,25 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.8",
+        "date": "2025-12-02",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added unified keyboard shortcut support to all main generators (Story, Plot, Poem, Fanfic, Tabbed Fanfic, Book Title) including Generate (⌘⏎ / Ctrl⏎) and Focus Input (⌘F / CtrlF)",
+              "Introduced a reusable GeneratorShortcutHints component to display available shortcuts consistently below the primary generate buttons"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Refined generator button labels to keep them clean while surfacing keyboard shortcuts in a dedicated hint area for better discoverability"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.7",
         "date": "2025-12-01",
         "changes": [
