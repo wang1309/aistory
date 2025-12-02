@@ -1,5 +1,7 @@
+import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { buildPlotPrompt } from "@/lib/plot-prompt";
+import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
 import type { PlotGenerateOptions } from "@/types/plot";
 
 /**
@@ -15,6 +17,16 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
   if (!secretKey) {
     console.log("TURNSTILE_SECRET_KEY is not configured");
     return false;
+  }
+
+  try {
+    const cached = await isIdentityVerifiedInKv();
+    if (cached) {
+      console.log("Using Turnstile KV cache (Plot Gen)");
+      return true;
+    }
+  } catch (e) {
+    console.log("Turnstile KV cache check failed (Plot Gen)", e);
   }
 
   try {
@@ -46,7 +58,17 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
       console.log("Error codes:", data["error-codes"]);
     }
 
-    return data.success === true;
+    const success = data.success === true;
+
+    if (success) {
+      try {
+        await markIdentityVerifiedInKv();
+      } catch (e) {
+        console.log("Turnstile KV cache write failed (Plot Gen)", e);
+      }
+    }
+
+    return success;
   } catch (error) {
     console.log("Turnstile verification error:", error);
     return false;

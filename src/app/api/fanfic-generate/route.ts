@@ -1,4 +1,6 @@
+import "@/lib/logger";
 import { respErr } from "@/lib/resp";
+import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
 
 // Language display names for prompts
 const languageNames: Record<string, { native: string; english: string }> = {
@@ -30,6 +32,16 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
   }
 
   try {
+    const cached = await isIdentityVerifiedInKv();
+    if (cached) {
+      console.log("Using Turnstile KV cache (Fanfic Gen)");
+      return true;
+    }
+  } catch (e) {
+    console.log("Turnstile KV cache check failed (Fanfic Gen)", e);
+  }
+
+  try {
     const requestBody = {
       secret: secretKey,
       response: token,
@@ -58,7 +70,17 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
       console.log("Error codes:", data["error-codes"]);
     }
 
-    return data.success === true;
+    const success = data.success === true;
+
+    if (success) {
+      try {
+        await markIdentityVerifiedInKv();
+      } catch (e) {
+        console.log("Turnstile KV cache write failed (Fanfic Gen)", e);
+      }
+    }
+
+    return success;
   } catch (error) {
     console.log("Turnstile verification error:", error);
     return false;

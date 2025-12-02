@@ -1,8 +1,10 @@
+import "@/lib/logger";
 import { respData, respErr } from "@/lib/resp";
 
 import { getUserUuid } from "@/services/user";
 import { insertFeedback } from "@/models/feedback";
 import { getUuid } from "@/lib/hash";
+import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
 
 
 // Verify Cloudflare Turnstile token
@@ -16,6 +18,16 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
   if (!secretKey) {
     console.log("TURNSTILE_SECRET_KEY is not configured");
     return false;
+  }
+
+  try {
+    const cached = await isIdentityVerifiedInKv();
+    if (cached) {
+      console.log("Using Turnstile KV cache (Add Feedback)");
+      return true;
+    }
+  } catch (e) {
+    console.log("Turnstile KV cache check failed (Add Feedback)", e);
   }
 
   try {
@@ -47,7 +59,17 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
       console.log("Error codes:", data["error-codes"]);
     }
 
-    return data.success === true;
+    const success = data.success === true;
+
+    if (success) {
+      try {
+        await markIdentityVerifiedInKv();
+      } catch (e) {
+        console.log("Turnstile KV cache write failed (Add Feedback)", e);
+      }
+    }
+
+    return success;
   } catch (error) {
     console.log("Turnstile verification error:", error);
     return false;
