@@ -16,6 +16,8 @@ import confetti from "canvas-confetti";
 import { FanficStorage } from "@/lib/fanfic-storage";
 import { PRESET_WORKS, getWorkById, getCharacterName, getCharacterById, getWorkName } from "@/lib/preset-works";
 import { cn } from "@/lib/utils";
+import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
+import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 
 const isDev = process.env.NODE_ENV === "development";
 const devLog = (...args: any[]) => {
@@ -120,7 +122,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
   const [outputLanguage, setOutputLanguage] = useState(locale);
 
   // AI model state
-  const [selectedModel, setSelectedModel] = useState<string | null>(null);
+  const [selectedModel, setSelectedModel] = useState<string | null>('fast');
 
   // Advanced options state
   const [selectedOOC, setSelectedOOC] = useState('none');
@@ -144,6 +146,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
   // Refs
   const abortControllerRef = useRef<AbortController | null>(null);
   const outputRef = useRef<HTMLDivElement>(null);
+   const promptRef = useRef<HTMLTextAreaElement | null>(null);
 
   // ========== COMPUTED VALUES ==========
 
@@ -287,6 +290,15 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
     setVerificationCallback(() => handleVerificationSuccess);
     setShowVerificationModal(true);
   }, [validateForm, setShowVerificationModal, setVerificationCallback]);
+
+  useGeneratorShortcuts({
+    onGenerate: handleGenerate,
+    onFocusInput: () => {
+      if (promptRef.current) {
+        promptRef.current.focus();
+      }
+    },
+  });
 
   // Handle verification success - start fanfic generation
   const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
@@ -723,6 +735,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
 
               <Textarea
                 placeholder={section.prompt.placeholder}
+                ref={promptRef}
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 className="min-h-[150px] resize-y"
@@ -964,10 +977,12 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
                 ) : (
                   <>
                     <Icon name="mdi:magic-staff" className="w-5 h-5 mr-2" />
-                    {section.generate_button.text}
+                    <span>{section.generate_button.text}</span>
                   </>
                 )}
               </Button>
+
+              <GeneratorShortcutHints />
 
               <p className="text-xs text-center text-muted-foreground mt-3">
                 {section.generate_button.tip}

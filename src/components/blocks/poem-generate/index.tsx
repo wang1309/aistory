@@ -23,7 +23,9 @@ import { cn } from "@/lib/utils";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
+import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import type { StoryStatus } from "@/models/story";
+import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -108,7 +110,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const [advancedMode, setAdvancedMode] = useState(false);
 
   const [prompt, setPrompt] = useState("");
-  const [selectedModel, setSelectedModel] = useState<string | null>(null);
+  const [selectedModel, setSelectedModel] = useState<string | null>("fast");
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [selectedPoemType, setSelectedPoemType] = useState<'modern' | 'classical' | 'format' | 'lyric'>('format');
 
@@ -150,6 +152,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   // Turnstile state
   const [turnstileToken, setTurnstileToken] = useState<string>("");
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
+  const promptRef = useRef<HTMLTextAreaElement | null>(null);
 
   // Use ref to store latest options to avoid stale closure
   const optionsRef = useRef({
@@ -590,6 +593,20 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
     setIsSaveDialogOpen(true);
   }, [generatedPoem, section, user, setShowSignModal]);
 
+  useGeneratorShortcuts({
+    onGenerate: handleGenerate,
+    onFocusInput: () => {
+      if (promptRef.current) {
+        promptRef.current.focus();
+      }
+    },
+    onQuickSave: () => {
+      if (!isGenerating && !isSavingStory && !hasSavedCurrentPoem) {
+        handleSaveClick();
+      }
+    },
+  });
+
   const handleConfirmSave = useCallback(
     async (status: StoryStatus) => {
       if (!generatedPoem.trim()) {
@@ -848,6 +865,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                   <div className="absolute -inset-4 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
                   <Textarea
                     id="poem-prompt"
+                    ref={promptRef}
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder={section.prompt.placeholder}
@@ -1051,11 +1069,13 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                     ) : (
                       <div className="flex items-center gap-3">
                         <Icon name="Sparkles" className="size-5" />
-                        {section.generate_button.text}
+                        <span>{section.generate_button.text}</span>
                       </div>
                     )}
                   </Button>
                 </div>
+
+                <GeneratorShortcutHints showQuickSave />
 
                 {/* History & Tips */}
                 <div className="flex flex-col items-center gap-6 w-full">

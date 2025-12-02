@@ -33,6 +33,8 @@ import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
 import type { StoryStatus } from "@/models/story";
 import { useAppContext } from "@/contexts/app";
+import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
+import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -74,7 +76,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const [plotType, setPlotType] = useState('canon');
   const [prompt, setPrompt] = useState('');
   const [language, setLanguage] = useState(locale);
-  const [selectedModel, setSelectedModel] = useState<string>('creative');
+  const [selectedModel, setSelectedModel] = useState<string>('fast');
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedFanfic, setGeneratedFanfic] = useState('');
@@ -110,19 +112,19 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       if (!models) {
         return [
           {
-            id: "character_focused",
+            id: "fast",
             name: "Character-Focused",
             badge: "Fast",
             description: "Optimized for character dynamics",
           },
           {
-            id: "creative",
+            id: "standard",
             name: "Creative",
             badge: "Balanced",
             description: "Balances quality and speed",
           },
           {
-            id: "depth",
+            id: "creative",
             name: "Depth",
             badge: "Deep",
             description: "More detailed and reflective",
@@ -132,19 +134,19 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
       return [
         {
-          id: "character_focused",
+          id: "fast",
           name: models.character_focused.name,
           badge: models.character_focused.badge,
           description: models.character_focused.description,
         },
         {
-          id: "creative",
+          id: "standard",
           name: models.creative.name,
           badge: models.creative.badge,
           description: models.creative.description,
         },
         {
-          id: "depth",
+          id: "creative",
           name: models.depth.name,
           badge: models.depth.badge,
           description: models.depth.description,
@@ -190,6 +192,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   });
 
   const turnstileRef = useRef<TurnstileInvisibleHandle | null>(null);
+  const promptRef = useRef<HTMLTextAreaElement | null>(null);
 
   // Update ref when state changes
   useEffect(() => {
@@ -472,6 +475,20 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     setIsSaveDialogOpen(true);
   }, [generatedFanfic, section, user, setShowSignModal]);
 
+  useGeneratorShortcuts({
+    onGenerate: handleGenerate,
+    onFocusInput: () => {
+      if (promptRef.current) {
+        promptRef.current.focus();
+      }
+    },
+    onQuickSave: () => {
+      if (!isGenerating && !isSavingStory && !hasSavedCurrentStory) {
+        handleSaveClick();
+      }
+    },
+  });
+
   const handleConfirmSave = useCallback(
     async (status: StoryStatus) => {
       if (!generatedFanfic.trim()) {
@@ -494,11 +511,11 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
           advancedOptions,
         };
 
-        const modelKey = selectedModel || 'creative';
+        const modelKey = selectedModel || 'standard';
         const modelMap: Record<string, string> = {
-          character_focused: 'gemini-2.5-flash-lite',
-          creative: 'gemini-2.5-flash',
-          depth: 'gemini-2.5-flash-think',
+          fast: 'gemini-2.5-flash-lite',
+          standard: 'gemini-2.5-flash',
+          creative: 'gemini-2.5-flash-think',
         };
         const actualModel = modelMap[modelKey] || 'gemini-2.5-flash';
 
@@ -962,6 +979,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                         <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/10 to-pink-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
                         <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.tabbed?.form?.story_prompt_label}</Label>
                         <Textarea
+                          ref={promptRef}
                           placeholder={section.tabbed?.form?.story_prompt_placeholder}
                           value={prompt}
                           onChange={(e) => setPrompt(e.target.value)}
@@ -1096,8 +1114,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                           onClick={handleGenerate}
                           className="h-16 px-12 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 text-white text-lg font-bold shadow-[0_0_30px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.6)] hover:scale-105 transition-all duration-500"
                         >
-                          <Sparkles className="mr-2 size-5" /> {section.tabbed?.form?.generation?.start_button}
+                          <Sparkles className="mr-2 size-5" />
+                          <span>{section.tabbed?.form?.generation?.start_button}</span>
                         </Button>
+                        <GeneratorShortcutHints showQuickSave />
                       </div>
                     ) : (
                       <div className="space-y-8">

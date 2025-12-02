@@ -26,8 +26,10 @@ import { ChevronDown, Settings } from "lucide-react";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
+import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import type { StoryStatus } from "@/models/story";
 import { useAppContext } from "@/contexts/app";
+import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -170,6 +172,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   const [hasSavedCurrentStory, setHasSavedCurrentStory] = useState(false);
 
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
+  const promptRef = useRef<HTMLTextAreaElement | null>(null);
 
   // Use ref to store latest values (avoid stale closure)
   const plotOptionsRef = useRef({
@@ -410,6 +413,20 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     setIsSaveDialogOpen(true);
   }, [generatedPlot, locale, user, setShowSignModal]);
 
+  useGeneratorShortcuts({
+    onGenerate: handleGenerateClick,
+    onFocusInput: () => {
+      if (promptRef.current) {
+        promptRef.current.focus();
+      }
+    },
+    onQuickSave: () => {
+      if (!isGenerating && !isSavingStory && !hasSavedCurrentStory) {
+        handleSaveClick();
+      }
+    },
+  });
+
   const handleConfirmSave = useCallback(
     async (status: StoryStatus) => {
       if (!generatedPlot.trim()) {
@@ -640,6 +657,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                     <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
                     <Textarea
                       id="prompt"
+                      ref={promptRef}
                       placeholder={t('placeholders.story_concept')}
                       value={prompt}
                       onChange={(e) => setPrompt(e.target.value)}
@@ -913,33 +931,33 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
             {/* Plot History Dropdown */}
             <div className="flex justify-center">
-               <PlotHistoryDropdown onLoadPlot={handleLoadPlot} locale={locale} />
+              <PlotHistoryDropdown onLoadPlot={handleLoadPlot} locale={locale} />
             </div>
 
             {/* Generate Button */}
-            <div className="pt-4">
+            <div className="mt-10 flex flex-col gap-3">
               <div className="relative group w-full">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-glow" />
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <Button
                   onClick={handleGenerateClick}
                   disabled={isGenerating || !prompt.trim() || !selectedModel}
                   className="relative w-full h-16 rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 hover:from-blue-500 hover:via-cyan-400 hover:to-teal-300 text-white text-xl font-bold shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] border-none"
                 >
                   {isGenerating ? (
-                    <div className="flex items-center gap-3">
-                      <div className="size-6 border-4 border-white/30 border-t-white rounded-full animate-spin" />
-                      <span className="animate-pulse">{t('ui.generating')}...</span>
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="size-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span className="animate-pulse">{t('ui.generating')}</span>
                     </div>
                   ) : (
-                    <span className="flex items-center gap-3">
-                      <Icon name="sparkles" className="size-6 animate-pulse" />
-                      {t('ui.generate_plot')}
-                    </span>
+                    <div className="flex items-center justify-center gap-3">
+                      <Icon name="sparkles" className="size-6" />
+                      <span>{t('ui.generate_plot')}</span>
+                    </div>
                   )}
                 </Button>
               </div>
+              <GeneratorShortcutHints showQuickSave />
             </div>
-
           </div>
 
           {/* RIGHT COLUMN: Preview */}

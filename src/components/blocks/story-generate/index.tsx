@@ -21,6 +21,8 @@ import GenerationProgress from "@/components/story/generation-progress";
 import { useTranslations } from "next-intl";
 import StorySaveDialog from "@/components/story/story-save-dialog";
 import type { StoryStatus } from "@/models/story";
+import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
+import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 
 const isDev = process.env.NODE_ENV === "development";
 const devLog = (...args: any[]) => {
@@ -133,18 +135,20 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   ], [section]);
 
   const [prompt, setPrompt] = useState("");
-  const [selectedModel, setSelectedModel] = useState<string | null>(null);
+  const [selectedModel, setSelectedModel] = useState<string | null>("fast");
   const [selectedFormat, setSelectedFormat] = useState("none");
+  const [selectedTone, setSelectedTone] = useState("none");
+  const [selectedLanguage, setSelectedLanguage] = useState(locale);
+
   const [turnstileToken, setTurnstileToken] = useState<string>("");
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
+  const promptRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
   const outputScrollRef = useRef<HTMLDivElement | null>(null);
   const [selectedLength, setSelectedLength] = useState("none");
   const [selectedGenre, setSelectedGenre] = useState("none");
   const [selectedPerspective, setSelectedPerspective] = useState("none");
   const [selectedAudience, setSelectedAudience] = useState("none");
-  const [selectedTone, setSelectedTone] = useState("none");
-  const [selectedLanguage, setSelectedLanguage] = useState(locale);
 
   // Use ref to store latest advanced options values to avoid stale closure
   const advancedOptionsRef = useRef({
@@ -577,7 +581,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       const metadata: StoryMetadata = {
         title: section.output.title || 'AI Generated Story',
         prompt: prompt.substring(0, 200) + (prompt.length > 200 ? '...' : ''),
-        wordCount: wordCount,
+        wordCount,
         generatedAt: new Date(),
         model: selectedModelName,
         format: selectedFormat !== 'none' ? selectedFormat : undefined,
@@ -676,6 +680,20 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
     setIsSaveDialogOpen(true);
   }, [generatedStory, section, user, setShowSignModal]);
+
+  useGeneratorShortcuts({
+    onGenerate: handleGenerateClick,
+    onFocusInput: () => {
+      if (promptRef.current) {
+        promptRef.current.focus();
+      }
+    },
+    onQuickSave: () => {
+      if (!isGenerating && !isSavingStory && !hasSavedCurrentStory) {
+        handleSaveClick();
+      }
+    },
+  });
 
   const handleConfirmSave = useCallback(
     async (status: StoryStatus) => {
@@ -865,15 +883,16 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   <div className="pointer-events-none absolute -inset-4 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
                   <Textarea
                     id="story-prompt-input"
+                    ref={promptRef}
                     value={prompt}
                     onChange={(e) => {
-                      if (e.target.value.length <= 2000) {
+                      const newValue = e.target.value;
+                      if (newValue.length <= 2000) {
                         setPrompt(e.target.value);
                       }
                     }}
                     placeholder={section.prompt.placeholder}
                     className="min-h-[280px] text-lg p-6 rounded-2xl bg-white/50 dark:bg-black/20 border-2 border-indigo-100 dark:border-indigo-900/30 focus:border-indigo-500 dark:focus:border-indigo-500 transition-all resize-none shadow-inner"
-                    style={{ boxShadow: 'none' }}
                   />
                   <div className="pointer-events-none absolute bottom-0 right-0 py-2 text-xs font-medium text-muted-foreground/40 dark:text-muted-foreground/70 tracking-widest uppercase">
                     {prompt.length} / 2000 CHARS
@@ -889,7 +908,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                     <button
                       key={chip}
                       onClick={() => handleQuickAdd(chip)}
-                      className="px-4 py-1.5 rounded-full text-xs font-medium bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/5 dark:border-white/10 text-muted-foreground hover:text-foreground dark:text-muted-foreground/80 dark:hover:text-foreground transition-all duration-300"
+                      className="px-4 py-1.5 rounded-full text-xs font-medium bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/5 dark:border-white/5 text-muted-foreground hover:text-foreground dark:text-muted-foreground/80 dark:hover:text-foreground transition-all duration-300"
                     >
                       + {chip}
                     </button>
@@ -899,7 +918,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 {/* Language Bar - Minimal */}
                 <div className="mt-12 flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">02</span>
+                    <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground dark:text-muted-foreground/80">02</span>
                     <span className="text-sm font-medium text-muted-foreground dark:text-muted-foreground/80">{section.prompt.language_label}</span>
                     <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
                       <SelectTrigger className="w-auto border-0 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full gap-2 px-4 text-base font-medium focus:ring-0 text-foreground">
@@ -986,7 +1005,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                           { label: section.advanced_options.length.label, value: selectedLength, setter: handleLengthChange, opts: section.advanced_options.length.options }
                         ].map((field, i) => (
                           <div key={i} className="space-y-2">
-                            <label className="text-[10px] font-bold text-muted-foreground/40 dark:text-muted-foreground/70 uppercase tracking-widest ml-1">{field.label}</label>
+                            <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 dark:text-muted-foreground/70 ml-1">{field.label}</label>
                             <Select value={field.value} onValueChange={field.setter}>
                               <SelectTrigger className="w-full bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 rounded-xl text-sm hover:bg-white/60 dark:hover:bg-white/10 transition-colors focus:ring-0 text-foreground">
                                 <SelectValue />
@@ -1100,6 +1119,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 )}
               </div>
             </Button>
+
+            <GeneratorShortcutHints showQuickSave />
 
             {/* Usage Hints */}
             <div className="mt-8 space-y-5 animate-fade-in-up animation-delay-3000">

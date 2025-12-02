@@ -12,6 +12,8 @@ import { useLocale } from "next-intl";
 import BookTitleBreadcrumb from "./breadcrumb";
 import { cn } from "@/lib/utils";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
+import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
+import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 
 const isDev = process.env.NODE_ENV === "development";
 const devLog = (...args: any[]) => {
@@ -129,6 +131,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
   const [lastError, setLastError] = useState<string | null>(null);
 
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
+  const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
 
   // Collapsible examples state
   const [isExamplesExpanded, setIsExamplesExpanded] = useState(false);
@@ -429,6 +432,15 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
     turnstileRef.current?.execute();
   }, [validateForm]);
 
+  useGeneratorShortcuts({
+    onGenerate: handleGenerate,
+    onFocusInput: () => {
+      if (descriptionRef.current) {
+        descriptionRef.current.focus();
+      }
+    },
+  });
+
   // Retry handler with exponential backoff
   const handleRetry = useCallback(async () => {
     if (retryCount >= 3) {
@@ -555,6 +567,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                   <div className="relative group">
                     <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
                     <Textarea
+                      ref={descriptionRef}
                       value={description}
                       onChange={(e) => setDescription(e.target.value.slice(0, section.form.description.max_length))}
                       placeholder={section.form.description.placeholder}
@@ -688,11 +701,13 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                       ) : (
                         <div className="flex items-center gap-3">
                           <Icon name="RiSparklingLine" className="size-5" />
-                          {section.generate_button.text}
+                          <span>{section.generate_button.text}</span>
                         </div>
                       )}
                     </Button>
                   </div>
+
+                  <GeneratorShortcutHints />
 
                   {/* Info Pills */}
                   <div className="flex items-center gap-6">

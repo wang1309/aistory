@@ -189,9 +189,19 @@ export async function POST(req: Request) {
       "bold": "adventure",
     };
 
-    const model = typeof requestedModel === "string" && requestedModel
+    const modelInput = typeof requestedModel === "string" && requestedModel
       ? requestedModel
       : "creative"; // Default logical model key
+
+    const modelAliasMap: Record<string, string> = {
+      fast: "fast",
+      standard: "standard",
+      creative: "creative",
+      character_focused: "fast",
+      depth: "creative",
+    };
+
+    const normalizedModel = modelAliasMap[modelInput] || "creative";
     const mappedLength = lengthMap[options.length || "medium"] || "medium";
     const mappedGenre = oocMap[options.ooc || "none"] || "fantasy";
 
@@ -264,15 +274,15 @@ Please ensure:
 
     const finalPrompt = fanficPrompt;
 
-    // Map obfuscated model keys to actual model names
+    // Map logical model keys to actual model names (same convention as story-generate)
     const modelMap: Record<string, string> = {
-      "character_focused": "gemini-2.5-flash-lite",
-      "creative": "gemini-2.5-flash",
-      "depth": "gemini-2.5-flash-think",
+      fast: "gemini-2.5-flash-lite",
+      standard: "gemini-2.5-flash",
+      creative: "gemini-2.5-flash-think",
     };
 
-    const actualModel = modelMap[model] || "gemini-2.5-flash";
-    console.log("=== Model mapping ===", { requestedModel: model, actualModel });
+    const actualModel = modelMap[normalizedModel] || "gemini-2.5-flash";
+    console.log("=== Model mapping ===", { requestedModel: modelInput, normalizedModel, actualModel });
 
     const requestBody = {
       model: actualModel,
