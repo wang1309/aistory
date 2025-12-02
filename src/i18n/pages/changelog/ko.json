@@ -13,7 +13,8 @@
             "type": "feature",
             "items": [
               "Added unified keyboard shortcut support to all main generators (Story, Plot, Poem, Fanfic, Tabbed Fanfic, Book Title) including Generate (⌘⏎ / Ctrl⏎) and Focus Input (⌘F / CtrlF)",
-              "Introduced a reusable GeneratorShortcutHints component to display available shortcuts consistently below the primary generate buttons"
+              "Introduced a reusable GeneratorShortcutHints component to display available shortcuts consistently below the primary generate buttons",
+              "Enabled auto-save draft support for the main input fields across all core generators (Story, Plot, Poem, Fanfic, Tabbed Fanfic, Book Title), persisting drafts to localStorage per locale and restoring them automatically after refresh or navigation"
             ]
           },
           {
