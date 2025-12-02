@@ -17,6 +17,13 @@ import { FanficStorage } from "@/lib/fanfic-storage";
 import { PRESET_WORKS, getWorkById, getCharacterName, getCharacterById, getWorkName } from "@/lib/preset-works";
 import { cn } from "@/lib/utils";
 
+const isDev = process.env.NODE_ENV === "development";
+const devLog = (...args: any[]) => {
+  if (isDev) {
+    console.log(...args);
+  }
+};
+
 // ========== HELPER FUNCTIONS ==========
 
 /**
@@ -283,7 +290,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
 
   // Handle verification success - start fanfic generation
   const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
-    console.log('=== Starting fanfic generation after verification ===');
+    devLog('=== Starting fanfic generation after verification ===');
 
     setIsGenerating(true);
     setGeneratedFanfic('');
@@ -329,7 +336,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
         turnstileToken: turnstileToken
       };
 
-      console.log('=== Request body to API ===', JSON.stringify(requestData, null, 2));
+      devLog('=== Request body to API ===', JSON.stringify(requestData, null, 2));
 
       // Generate tags
       const tags = generateTags({
@@ -350,24 +357,24 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
         signal: abortControllerRef.current.signal
       });
 
-      console.log('=== Response status ===', response.status);
+      devLog('=== Response status ===', response.status);
 
       if (!response.ok) {
-        console.log('=== Response not OK ===');
+        devLog('=== Response not OK ===');
         const errorData = await response.json();
-        console.log('Error data:', errorData);
+        devLog('Error data:', errorData);
         toast.error(errorData.message || section.toasts.error_generate_failed);
         return;
       }
 
-      console.log('=== Starting to read stream ===');
+      devLog('=== Starting to read stream ===');
 
       // Handle streaming response
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
 
       if (!reader) {
-        console.log('=== No reader available ===');
+        devLog('=== No reader available ===');
         toast.error(section.toasts.error_no_stream);
         return;
       }
@@ -380,7 +387,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
         const { done, value } = await reader.read();
 
         if (done) {
-          console.log(`=== Stream finished, total chunks: ${chunkCount} ===`);
+          devLog(`=== Stream finished, total chunks: ${chunkCount} ===`);
           break;
         }
 
@@ -388,7 +395,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
 
         // Decode the chunk
         const chunk = decoder.decode(value, { stream: true });
-        console.log(`=== Frontend chunk ${chunkCount} ===`, chunk.substring(0, 100));
+        devLog(`=== Frontend chunk ${chunkCount} ===`, chunk.substring(0, 100));
 
         // Add to buffer
         buffer += chunk;
@@ -402,11 +409,11 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
             // Extract the text content from the data stream
             try {
               const jsonStr = line.slice(2); // Remove "0:" prefix
-              console.log('=== Parsing line ===', jsonStr.substring(0, 50));
+              devLog('=== Parsing line ===', jsonStr.substring(0, 50));
 
               // Parse the JSON string to get the actual text
               const text = JSON.parse(jsonStr);
-              console.log('=== Extracted text ===', text.substring(0, 50));
+              devLog('=== Extracted text ===', text.substring(0, 50));
 
               accumulatedText += text;
               setGeneratedFanfic(accumulatedText);
@@ -427,7 +434,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
         throw new Error(section.toasts.error_no_content);
       }
 
-      console.log('=== Final fanfic length ===', accumulatedText.length, 'chars');
+      devLog('=== Final fanfic length ===', accumulatedText.length, 'chars');
 
       // Save to history
       FanficStorage.saveHistory({
@@ -455,7 +462,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
 
     } catch (error: any) {
       if (error.name === 'AbortError') {
-        console.log('Generation aborted');
+        devLog('Generation aborted');
       } else {
         console.error('Generation failed:', error);
         toast.error(error.message || section.toasts.error_generate_failed);

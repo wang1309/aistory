@@ -13,6 +13,13 @@ import BookTitleBreadcrumb from "./breadcrumb";
 import { cn } from "@/lib/utils";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 
+const isDev = process.env.NODE_ENV === "development";
+const devLog = (...args: any[]) => {
+  if (isDev) {
+    console.log(...args);
+  }
+};
+
 const defaultToastMessages = {
   error_no_description: "Please describe your book.",
   error_description_too_short: "Description is too short (minimum 10 characters).",
@@ -236,12 +243,12 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
   // Handle verification success - start title generation
   const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
-    console.log("=== Starting title generation after verification ===");
-    console.log("Description:", description.substring(0, 100));
-    console.log("Genre:", selectedGenre);
-    console.log("Tone:", selectedTone);
-    console.log("Style:", selectedStyle);
-    console.log("Turnstile token:", `Present (${turnstileToken.length} chars)`);
+    devLog("=== Starting title generation after verification ===");
+    devLog("Description:", description.substring(0, 100));
+    devLog("Genre:", selectedGenre);
+    devLog("Tone:", selectedTone);
+    devLog("Style:", selectedStyle);
+    devLog("Turnstile token:", `Present (${turnstileToken.length} chars)`);
 
     try {
       setIsGenerating(true);
@@ -256,7 +263,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
         turnstileToken: turnstileToken,
       };
 
-      console.log("=== Request body to API ===", JSON.stringify(requestBody, null, 2));
+      devLog("=== Request body to API ===", JSON.stringify(requestBody, null, 2));
 
       const response = await fetch("/api/book-title-generate", {
         method: "POST",
@@ -266,25 +273,25 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
         body: JSON.stringify(requestBody),
       });
 
-      console.log("=== Response status ===", response.status, response.statusText);
-      console.log("=== Response headers ===", Object.fromEntries(response.headers.entries()));
+      devLog("=== Response status ===", response.status, response.statusText);
+      devLog("=== Response headers ===", Object.fromEntries(response.headers.entries()));
 
       if (!response.ok) {
-        console.log("=== Response not OK ===");
+        devLog("=== Response not OK ===");
         const errorData = await response.json();
-        console.log("Error data:", errorData);
+        devLog("Error data:", errorData);
         toast.error(errorData.message || toastMessages.error_generate_failed);
         return;
       }
 
-      console.log("=== Starting to read stream ===");
+      devLog("=== Starting to read stream ===");
 
       // Handle streaming response
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
 
       if (!reader) {
-        console.log("=== No reader available ===");
+        devLog("=== No reader available ===");
         toast.error(toastMessages.error_generate_failed);
         return;
       }
@@ -298,7 +305,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
         const { done, value } = await reader.read();
 
         if (done) {
-          console.log(`=== Stream finished, total chunks: ${chunkCount} ===`);
+          devLog(`=== Stream finished, total chunks: ${chunkCount} ===`);
           break;
         }
 
@@ -306,7 +313,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
         // Decode the chunk
         const chunk = decoder.decode(value, { stream: true });
-        console.log(`=== Frontend chunk ${chunkCount} ===`, chunk.substring(0, 100));
+        devLog(`=== Frontend chunk ${chunkCount} ===`, chunk.substring(0, 100));
 
         // Add to buffer
         buffer += chunk;
@@ -320,12 +327,12 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
             // Extract the text content from the data stream
             try {
               const jsonStr = line.slice(2); // Remove "0:" prefix
-              console.log("=== Parsing line ===", jsonStr.substring(0, 50));
+              devLog("=== Parsing line ===", jsonStr.substring(0, 50));
               const parsed = JSON.parse(jsonStr);
 
               if (typeof parsed === "string") {
                 accumulatedText += parsed;
-                console.log("=== Accumulated text length ===", accumulatedText.length);
+                devLog("=== Accumulated text length ===", accumulatedText.length);
 
                 // Split by newlines to get individual titles
                 const lines = accumulatedText.split("\n").filter(l => l.trim().length > 0);
@@ -342,13 +349,13 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
               }
             } catch (e) {
               // Skip invalid JSON lines
-              console.log("JSON Parse error:", e, "Line:", line.substring(0, 100));
+              devLog("JSON Parse error:", e, "Line:", line.substring(0, 100));
             }
           }
         }
       }
 
-      console.log("=== Final accumulated text length ===", accumulatedText.length);
+      devLog("=== Final accumulated text length ===", accumulatedText.length);
 
       if (accumulatedText.trim()) {
         // Final processing: extract clean titles
@@ -381,7 +388,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
           style: selectedStyle,
         });
       } else {
-        console.log("=== No titles were generated ===");
+        devLog("=== No titles were generated ===");
         const errorMessage = toastMessages.error_generate_failed;
         setLastError(errorMessage);
         toast.error(errorMessage);
@@ -398,7 +405,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
   // Invisible Turnstile success handler - delegate to generation logic
   const handleTurnstileSuccess = useCallback((turnstileToken: string) => {
-    console.log("✓ Turnstile verification successful (Book Title)");
+    devLog("✓ Turnstile verification successful (Book Title)");
     handleVerificationSuccess(turnstileToken);
   }, [handleVerificationSuccess]);
 

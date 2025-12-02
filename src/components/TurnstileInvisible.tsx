@@ -3,6 +3,8 @@
 import { Turnstile } from "@marsidev/react-turnstile";
 import { useRef, useImperativeHandle, forwardRef } from "react";
 
+const isDev = process.env.NODE_ENV === "development";
+
 interface TurnstileInvisibleProps {
     onSuccess: (token: string) => void;
     onError?: () => void;
@@ -43,7 +45,9 @@ const TurnstileInvisible = forwardRef<
         return null;
     }
 
-    console.log("✅ Turnstile component mounted with Site Key:", siteKey?.substring(0, 10) + "...");
+    if (isDev) {
+        console.log("✅ Turnstile component mounted with Site Key:", siteKey?.substring(0, 10) + "...");
+    }
 
     return (
         <div style={{ position: "absolute", left: "-9999px", visibility: "hidden" }}>
@@ -51,8 +55,10 @@ const TurnstileInvisible = forwardRef<
                 ref={turnstileRef}
                 siteKey={siteKey}
                 onSuccess={(token) => {
-                    console.log("✅ Turnstile verification SUCCESS!");
-                    console.log("Token received (length):", token?.length);
+                    if (isDev) {
+                        console.log("✅ Turnstile verification SUCCESS!");
+                        console.log("Token received (length):", token?.length);
+                    }
                     onSuccess(token);
                     turnstileRef.current?.reset();
                 }}

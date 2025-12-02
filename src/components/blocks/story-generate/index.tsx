@@ -22,6 +22,13 @@ import { useTranslations } from "next-intl";
 import StorySaveDialog from "@/components/story/story-save-dialog";
 import type { StoryStatus } from "@/models/story";
 
+const isDev = process.env.NODE_ENV === "development";
+const devLog = (...args: any[]) => {
+  if (isDev) {
+    console.log(...args);
+  }
+};
+
 // ========== HELPER FUNCTIONS ==========
 
 /**
@@ -165,37 +172,37 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // Wrapped setters with debug logging
   const handleFormatChange = useCallback((value: string) => {
-    console.log(`📝 Format changed: "${selectedFormat}" → "${value}"`);
+    devLog(`📝 Format changed: "${selectedFormat}" → "${value}"`);
     setSelectedFormat(value);
   }, [selectedFormat]);
 
   const handleLengthChange = useCallback((value: string) => {
-    console.log(`📏 Length changed: "${selectedLength}" → "${value}"`);
+    devLog(`📏 Length changed: "${selectedLength}" → "${value}"`);
     setSelectedLength(value);
   }, [selectedLength]);
 
   const handleGenreChange = useCallback((value: string) => {
-    console.log(`🎭 Genre changed: "${selectedGenre}" → "${value}"`);
+    devLog(`🎭 Genre changed: "${selectedGenre}" → "${value}"`);
     setSelectedGenre(value);
   }, [selectedGenre]);
 
   const handlePerspectiveChange = useCallback((value: string) => {
-    console.log(`👁️ Perspective changed: "${selectedPerspective}" → "${value}"`);
+    devLog(`👁️ Perspective changed: "${selectedPerspective}" → "${value}"`);
     setSelectedPerspective(value);
   }, [selectedPerspective]);
 
   const handleAudienceChange = useCallback((value: string) => {
-    console.log(`👥 Audience changed: "${selectedAudience}" → "${value}"`);
+    devLog(`👥 Audience changed: "${selectedAudience}" → "${value}"`);
     setSelectedAudience(value);
   }, [selectedAudience]);
 
   const handleToneChange = useCallback((value: string) => {
-    console.log(`🎨 Tone changed: "${selectedTone}" → "${value}"`);
+    devLog(`🎨 Tone changed: "${selectedTone}" → "${value}"`);
     setSelectedTone(value);
   }, [selectedTone]);
 
   const handleLanguageChange = useCallback((value: string) => {
-    console.log(`🌐 Language changed: "${selectedLanguage}" → "${value}"`);
+    devLog(`🌐 Language changed: "${selectedLanguage}" → "${value}"`);
     setSelectedLanguage(value);
   }, [selectedLanguage]);
 
@@ -251,7 +258,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         window.scrollTo({ top: targetTop, behavior: "smooth" });
       } catch (e) {
-        console.log("scroll to output failed", e);
+        devLog("scroll to output failed", e);
       }
     }
   }, [isGenerating]);
@@ -262,7 +269,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         const el = outputScrollRef.current;
         el.scrollTop = el.scrollHeight;
       } catch (e) {
-        console.log("scroll generated content failed", e);
+        devLog("scroll generated content failed", e);
       }
     }
   }, [generatedStory, isGenerating]);
@@ -338,13 +345,13 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // Perform story generation with Turnstile token
   const performStoryGeneration = useCallback(async (turnstileToken: string) => {
-    console.log("=== Starting story generation after verification ===");
+    devLog("=== Starting story generation after verification ===");
 
     // Get latest advanced options from ref (to avoid stale closure)
     const latestOptions = advancedOptionsRef.current;
 
-    console.log("=== CURRENT STATE - All Options ===");
-    console.log({
+    devLog("=== CURRENT STATE - All Options ===");
+    devLog({
       prompt: prompt.substring(0, 100) + (prompt.length > 100 ? '...' : ''),
       promptLength: prompt.length,
       selectedModel,
@@ -352,7 +359,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       locale,
       turnstileToken: `Present (${turnstileToken.length} chars)`
     });
-    console.log("⚠️ Note: If all advancedOptions are 'none', they won't affect the generated prompt");
+    devLog("⚠️ Note: If all advancedOptions are 'none', they won't affect the generated prompt");
 
     try {
       // 开始新一轮生成时，认为是一个全新的故事，清除上一轮的“已保存”状态
@@ -374,7 +381,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         turnstileToken: turnstileToken,
       };
 
-      console.log("=== Request body to API ===", JSON.stringify(requestBody, null, 2));
+      devLog("=== Request body to API ===", JSON.stringify(requestBody, null, 2));
 
       const response = await fetch("/api/story-generate", {
         method: "POST",
@@ -384,25 +391,25 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         body: JSON.stringify(requestBody),
       });
 
-      console.log("=== Response status ===", response.status, response.statusText);
-      console.log("=== Response headers ===", Object.fromEntries(response.headers.entries()));
+      devLog("=== Response status ===", response.status, response.statusText);
+      devLog("=== Response headers ===", Object.fromEntries(response.headers.entries()));
 
       if (!response.ok) {
-        console.log("=== Response not OK ===");
+        devLog("=== Response not OK ===");
         const errorData = await response.json();
-        console.log("Error data:", errorData);
+        devLog("Error data:", errorData);
         toast.error(errorData.message || section.toasts.error_generate_failed);
         return;
       }
 
-      console.log("=== Starting to read stream ===");
+      devLog("=== Starting to read stream ===");
 
       // Handle streaming response
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
 
       if (!reader) {
-        console.log("=== No reader available ===");
+        devLog("=== No reader available ===");
         toast.error(section.toasts.error_no_stream);
         return;
       }
@@ -415,7 +422,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         const { done, value } = await reader.read();
 
         if (done) {
-          console.log(`=== Stream finished, total chunks: ${chunkCount} ===`);
+          devLog(`=== Stream finished, total chunks: ${chunkCount} ===`);
           break;
         }
 
@@ -423,7 +430,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         // Decode the chunk
         const chunk = decoder.decode(value, { stream: true });
-        console.log(`=== Frontend chunk ${chunkCount} ===`, chunk.substring(0, 100));
+        devLog(`=== Frontend chunk ${chunkCount} ===`, chunk.substring(0, 100));
 
         // Add to buffer
         buffer += chunk;
@@ -437,23 +444,23 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             // Extract the text content from the data stream
             try {
               const jsonStr = line.slice(2); // Remove "0:" prefix
-              console.log("=== Parsing line ===", jsonStr.substring(0, 50));
+              devLog("=== Parsing line ===", jsonStr.substring(0, 50));
               const parsed = JSON.parse(jsonStr);
 
               if (typeof parsed === "string") {
                 accumulatedText += parsed;
                 setGeneratedStory(accumulatedText);
-                console.log("=== Accumulated text length ===", accumulatedText.length);
+                devLog("=== Accumulated text length ===", accumulatedText.length);
               }
             } catch (e) {
               // Skip invalid JSON lines
-              console.log("JSON Parse error:", e, "Line:", line.substring(0, 100));
+              devLog("JSON Parse error:", e, "Line:", line.substring(0, 100));
             }
           }
         }
       }
 
-      console.log("=== Final accumulated text length ===", accumulatedText.length);
+      devLog("=== Final accumulated text length ===", accumulatedText.length);
 
       if (accumulatedText.trim()) {
         // Check if this is first time and trigger confetti
@@ -473,7 +480,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             tone: latestOptions.tone !== 'none' ? latestOptions.tone : undefined,
           });
         } catch (error) {
-          console.log('Failed to save story:', error);
+          devLog('Failed to save story:', error);
         }
 
         if (isFirstTime) {
@@ -491,11 +498,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           toast.success(section.toasts.success_generated);
         }
       } else {
-        console.log("=== No story content was generated ===");
+        devLog("=== No story content was generated ===");
         toast.error(section.toasts.error_no_content);
       }
     } catch (error) {
-      console.log("=== Story generation error ===", error);
+      devLog("=== Story generation error ===", error);
       toast.error(section.toasts.error_generate_failed);
     } finally {
       setIsGenerating(false);
@@ -505,7 +512,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // Handle Turnstile verification success
   const handleTurnstileSuccess = useCallback((token: string) => {
-    console.log("✓ Turnstile verification successful");
+    devLog("✓ Turnstile verification successful");
     setTurnstileToken(token);
     // Automatically start generation after verification
     performStoryGeneration(token);
@@ -521,7 +528,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   // Listen for Quick Start event from Hero
   useEffect(() => {
     const handleQuickStart = () => {
-      console.log("⚡ Quick Start triggered!");
+      devLog("⚡ Quick Start triggered!");
 
       // 1. Select Fast Model if not selected
       if (selectedModel !== 'fast') {
@@ -593,13 +600,13 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
       // 导出PDF (传递locale和翻译)
       await exportStoryToPdf(generatedStory, metadata, locale, pdfTranslations, (progress) => {
-        console.log(`PDF export progress: ${progress}%`);
+        devLog(`PDF export progress: ${progress}%`);
       });
 
       toast.success(section.toasts.success_pdf_exported);
 
     } catch (error) {
-      console.log('PDF export failed:', error);
+      devLog('PDF export failed:', error);
       toast.error(section.toasts.error_pdf_export_failed);
     } finally {
       setIsExportingPdf(false);
@@ -769,7 +776,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         setIsSaveDialogOpen(false);
       } catch (error) {
-        console.log("save story failed", error);
+        devLog("save story failed", error);
         toast.error(
           locale === "zh"
             ? "保存失败，请稍后再试"
