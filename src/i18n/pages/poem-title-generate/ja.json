@@ -1,0 +1,193 @@
+{
+    "hero_poem_title": {
+        "breadcrumb": {
+            "home": "ホーム",
+            "current": "詩タイトルジェネレーター"
+        },
+        "header": {
+            "title": "AI 詩タイトルジェネレーター",
+            "subtitle": "AIの創造力で詩にぴったりのタイトルを生成",
+            "meta_title": "無料 AI 詩タイトルジェネレーター | AI Story Generator",
+            "meta_description": "AIで創造的で印象的な詩のタイトルを生成。文学的なタイトルとSNS向けタイトルを数秒で作成。無料で簡単に使えます。"
+        },
+        "form": {
+            "poem_content": {
+                "label": "詩の内容またはテーマ",
+                "required": "*",
+                "placeholder": "詩を貼り付けるか、テーマやイメージを説明してください...",
+                "helper_text": "詩の内容を入力するか、テーマを説明してタイトル提案を受け取ります",
+                "max_length": 2000
+            },
+            "language": {
+                "label": "タイトル言語",
+                "placeholder": "言語を選択",
+                "options": {
+                    "zh": "中国語",
+                    "en": "英語",
+                    "bilingual": "バイリンガル"
+                }
+            },
+            "style": {
+                "label": "スタイル",
+                "chips": {
+                    "classical": "古典的",
+                    "modern": "現代的",
+                    "minimalist": "ミニマリスト",
+                    "imagist": "イマジスト",
+                    "dark": "ダーク",
+                    "healing": "癒し系",
+                    "romantic": "ロマンチック"
+                }
+            },
+            "mood": {
+                "label": "ムード",
+                "chips": {
+                    "sad": "悲しい",
+                    "melancholic": "憂鬱",
+                    "calm": "穏やか",
+                    "gentle": "優しい",
+                    "hopeful": "希望的",
+                    "angry": "怒り",
+                    "surreal": "シュール"
+                }
+            },
+            "length": {
+                "label": "タイトルの長さ",
+                "options": {
+                    "short": "短い (4-8文字)",
+                    "medium": "中程度 (8-12文字)",
+                    "long": "長い (12文字以上)"
+                }
+            },
+            "usage_scene": {
+                "label": "使用シーン",
+                "placeholder": "シーンを選択",
+                "options": {
+                    "literary_submission": "文芸投稿",
+                    "collection": "詩集",
+                    "social_media": "SNS",
+                    "competition": "コンテスト",
+                    "gift_card": "ギフトカード"
+                }
+            },
+            "examples": {
+                "title": "インスピレーションが必要ですか？",
+                "prompts": [
+                    "月と故郷への思いを詠んだ現代詩、古典的なイメージと現代の孤独を融合",
+                    "駅での別れの苦さと甘さを表現した恋愛詩",
+                    "冬の初雪と子供時代の思い出を描いた自然詩"
+                ]
+            }
+        },
+        "generate_button": {
+            "text": "タイトルを生成",
+            "generating": "生成中...",
+            "info": {
+                "free": "100% 無料",
+                "time": "約5秒"
+            }
+        },
+        "output": {
+            "title": "生成された詩タイトル",
+            "subtitle": "タイトルをクリックしてコピー",
+            "literary_group_title": "文学的タイトル",
+            "platform_group_title": "プラットフォーム向けタイトル",
+            "explanation_label": "このタイトルが効果的な理由",
+            "copy_button": "コピー",
+            "copied_button": "コピー済み！",
+            "regenerate_button": "再生成",
+            "clear_button": "すべてクリア",
+            "loading": "詩のタイトルを作成中...",
+            "empty_state": "生成されたタイトルがここに表示されます"
+        },
+        "toasts": {
+            "error_no_content": "詩の内容またはテーマを入力してください",
+            "error_content_too_short": "内容が短すぎます（最低10文字）",
+            "error_generate_failed": "生成に失敗しました。もう一度お試しください。",
+            "success_generated": "タイトルが正常に生成されました！",
+            "success_copied": "タイトルをクリップボードにコピーしました！"
+        }
+    },
+    "feature_intro": {
+        "name": "紹介",
+        "title": "AI 詩タイトルジェネレーターとは？",
+        "label": "紹介",
+        "description": "AI詩タイトルジェネレーターは、高度な言語モデルを使用して詩に印象的なタイトルを作成するインテリジェントツールです。ロマンチックなソネット、ダークな自由詩、古典的な俳句など、どんな詩でも、このツールはイメージ、ムード、テーマを分析し、詩の本質を捉えたタイトルを提案します。",
+        "image": {
+            "src": "/imgs/poem-title/poem_title_what.png"
+        }
+    },
+    "feature_benefits": {
+        "name": "メリット",
+        "title": "なぜ私たちの詩タイトルジェネレーターを選ぶのか？",
+        "label": "メリット",
+        "description": "AI搭載の詩タイトルジェネレーターは、すべてのレベルの詩人にユニークな利点を提供します。",
+        "items": [
+            {
+                "icon": "RiLightbulbLine",
+                "title": "デュアルパーパスタイトル",
+                "description": "文学的な出版物向けと、SNS向けのバイラルフレンドリーなタイトルの両方を生成します。",
+                "image": {
+                    "src": "/imgs/poem-title/poem_title_why1.png",
+                    "alt": "デュアルパーパスタイトル"
+                }
+            },
+            {
+                "icon": "RiTimeLine",
+                "title": "スタイル＆ムードマッチング",
+                "description": "古典的、現代的、ミニマリスト、ロマンチックなスタイルから選択。AIがすべての好みを考慮して完璧なタイトルを作成します。",
+                "image": {
+                    "src": "/imgs/poem-title/poem_title_why2.png",
+                    "alt": "スタイル＆ムードマッチング"
+                }
+            },
+            {
+                "icon": "RiStarLine",
+                "title": "説明付き",
+                "description": "生成された各タイトルには、詩のイメージと感情とのつながりを説明する簡単な説明が付いています。",
+                "image": {
+                    "src": "/imgs/poem-title/poem_title_why3.png",
+                    "alt": "説明付き"
+                }
+            }
+        ]
+    },
+    "faq": {
+        "name": "よくある質問",
+        "title": "よくある質問",
+        "label": "よくある質問",
+        "description": "",
+        "items": [
+            {
+                "title": "AIはどのように詩のタイトルを生成しますか？",
+                "description": "AIは高度な言語モデルを使用して詩の内容、イメージ、ムード、テーマを分析し、作品の本質を捉えたタイトルを生成します。"
+            },
+            {
+                "title": "文学的タイトルとプラットフォーム向けタイトルの違いは？",
+                "description": "文学的タイトルは芸術的で深みがあり、文芸誌や詩集に最適です。プラットフォーム向けタイトルはキャッチーで魅力的、SNS共有向けに最適化されています。"
+            },
+            {
+                "title": "バイリンガルタイトルを生成できますか？",
+                "description": "はい！言語オプションで「バイリンガル」を選択すると、各タイトルの中国語版と英語版の両方が生成されます。"
+            },
+            {
+                "title": "このツールは無料ですか？",
+                "description": "はい、詩タイトルジェネレーターは完全無料です。詩のために必要なだけタイトルを生成してください。"
+            }
+        ]
+    },
+    "cta": {
+        "name": "CTA",
+        "title": "完璧な詩タイトルの作成を始めよう",
+        "description": "読者の心に響くタイトルであなたの詩を変えましょう。",
+        "buttons": [
+            {
+                "title": "タイトルを生成",
+                "url": "#",
+                "target": "_self",
+                "variant": "default",
+                "icon": "RiArrowRightLine"
+            }
+        ]
+    }
+}

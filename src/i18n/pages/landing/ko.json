@@ -43,6 +43,13 @@
               "url": "/poem-generator",
               "icon": "RiQuillPenLine",
               "target": "_self"
+            },
+            {
+              "title": "시 제목 생성기",
+              "description": "시의 문학적 또는 플랫폼용 제목 생성",
+              "url": "/poem-title-generator",
+              "icon": "RiStarLine",
+              "target": "_self"
             }
           ]
         }
@@ -742,6 +749,11 @@
             {
               "title": "시 생성기",
               "url": "/poem-generator",
+              "target": "_self"
+            },
+            {
+              "title": "시 제목 생성기",
+              "url": "/poem-title-generator",
               "target": "_self"
             }
           ]

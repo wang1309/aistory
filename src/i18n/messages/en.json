@@ -309,6 +309,10 @@
       "poem_generator": {
         "name": "Poem Generator",
         "desc": "Create poems in modern, classical, or haiku styles with the help of AI."
+      },
+      "poem_title_generator": {
+        "name": "Poem Title Generator",
+        "desc": "Generate creative, evocative titles for your poems – literary or viral-ready, in multiple languages."
       }
     }
   },

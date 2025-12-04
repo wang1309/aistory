@@ -43,6 +43,13 @@
               "url": "/poem-generator",
               "icon": "RiQuillPenLine",
               "target": "_self"
+            },
+            {
+              "title": "诗歌标题生成器",
+              "description": "为诗歌生成文学向或平台向标题，支持多语言输出",
+              "url": "/poem-title-generator",
+              "icon": "RiStarLine",
+              "target": "_self"
             }
           ]
         }
@@ -742,6 +749,11 @@
             {
               "title": "诗歌生成器",
               "url": "/poem-generator",
+              "target": "_self"
+            },
+            {
+              "title": "诗歌标题生成器",
+              "url": "/poem-title-generator",
               "target": "_self"
             }
           ]

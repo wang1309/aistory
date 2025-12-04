@@ -43,6 +43,13 @@
               "url": "/poem-generator",
               "icon": "RiQuillPenLine",
               "target": "_self"
+            },
+            {
+              "title": "Генератор названий стихов",
+              "description": "Создавайте литературные или вирусные названия для стихов",
+              "url": "/poem-title-generator",
+              "icon": "RiStarLine",
+              "target": "_self"
             }
           ]
         }
@@ -742,6 +749,11 @@
             {
               "title": "Генератор стихов",
               "url": "/poem-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Генератор названий стихов",
+              "url": "/poem-title-generator",
               "target": "_self"
             }
           ]

@@ -43,6 +43,13 @@
               "url": "/poem-generator",
               "icon": "RiQuillPenLine",
               "target": "_self"
+            },
+            {
+              "title": "Gedichttitel-Generator",
+              "description": "Literarische oder plattformgerechte Titel für Gedichte generieren",
+              "url": "/poem-title-generator",
+              "icon": "RiStarLine",
+              "target": "_self"
             }
           ]
         }
@@ -742,6 +749,11 @@
             {
               "title": "Poem-Generator",
               "url": "/poem-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Gedichttitel-Generator",
+              "url": "/poem-title-generator",
               "target": "_self"
             }
           ]

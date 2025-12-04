@@ -1,0 +1,193 @@
+{
+    "hero_poem_title": {
+        "breadcrumb": {
+            "home": "홈",
+            "current": "시 제목 생성기"
+        },
+        "header": {
+            "title": "AI 시 제목 생성기",
+            "subtitle": "AI 창의성으로 시에 완벽한 제목을 생성하세요",
+            "meta_title": "무료 AI 시 제목 생성기 | AI Story Generator",
+            "meta_description": "AI로 창의적이고 인상적인 시 제목을 생성하세요. 문학적 제목과 SNS용 제목을 몇 초 만에 만들 수 있습니다. 무료로 쉽게 사용하세요."
+        },
+        "form": {
+            "poem_content": {
+                "label": "시 내용 또는 테마",
+                "required": "*",
+                "placeholder": "시를 붙여넣거나 시의 테마와 이미지를 설명하세요...",
+                "helper_text": "시 내용을 입력하거나 테마를 설명하여 제목 제안을 받으세요",
+                "max_length": 2000
+            },
+            "language": {
+                "label": "제목 언어",
+                "placeholder": "언어 선택",
+                "options": {
+                    "zh": "중국어",
+                    "en": "영어",
+                    "bilingual": "이중 언어"
+                }
+            },
+            "style": {
+                "label": "스타일",
+                "chips": {
+                    "classical": "고전적",
+                    "modern": "현대적",
+                    "minimalist": "미니멀리스트",
+                    "imagist": "이미지스트",
+                    "dark": "다크",
+                    "healing": "힐링",
+                    "romantic": "로맨틱"
+                }
+            },
+            "mood": {
+                "label": "분위기",
+                "chips": {
+                    "sad": "슬픔",
+                    "melancholic": "우울",
+                    "calm": "고요",
+                    "gentle": "부드러움",
+                    "hopeful": "희망",
+                    "angry": "분노",
+                    "surreal": "초현실적"
+                }
+            },
+            "length": {
+                "label": "제목 길이",
+                "options": {
+                    "short": "짧음 (4-8자)",
+                    "medium": "중간 (8-12자)",
+                    "long": "김 (12자 이상)"
+                }
+            },
+            "usage_scene": {
+                "label": "사용 장면",
+                "placeholder": "장면 선택",
+                "options": {
+                    "literary_submission": "문학 투고",
+                    "collection": "시집",
+                    "social_media": "소셜 미디어",
+                    "competition": "대회",
+                    "gift_card": "기프트 카드"
+                }
+            },
+            "examples": {
+                "title": "영감이 필요하세요?",
+                "prompts": [
+                    "달과 고향에 대한 그리움을 담은 현대시, 고전적 이미지와 현대적 고독을 융합",
+                    "기차역에서의 이별의 쓸쓸함과 달콤함을 표현한 사랑 시",
+                    "겨울 첫 눈과 어린 시절 추억을 담은 자연시"
+                ]
+            }
+        },
+        "generate_button": {
+            "text": "제목 생성",
+            "generating": "생성 중...",
+            "info": {
+                "free": "100% 무료",
+                "time": "약 5초"
+            }
+        },
+        "output": {
+            "title": "생성된 시 제목",
+            "subtitle": "제목을 클릭하여 복사",
+            "literary_group_title": "문학적 제목",
+            "platform_group_title": "플랫폼용 제목",
+            "explanation_label": "이 제목이 효과적인 이유",
+            "copy_button": "복사",
+            "copied_button": "복사됨!",
+            "regenerate_button": "재생성",
+            "clear_button": "모두 지우기",
+            "loading": "시 제목을 만들고 있습니다...",
+            "empty_state": "생성된 제목이 여기에 표시됩니다"
+        },
+        "toasts": {
+            "error_no_content": "시 내용 또는 테마를 입력하세요",
+            "error_content_too_short": "내용이 너무 짧습니다 (최소 10자)",
+            "error_generate_failed": "생성에 실패했습니다. 다시 시도해 주세요.",
+            "success_generated": "제목이 성공적으로 생성되었습니다!",
+            "success_copied": "제목이 클립보드에 복사되었습니다!"
+        }
+    },
+    "feature_intro": {
+        "name": "소개",
+        "title": "AI 시 제목 생성기란?",
+        "label": "소개",
+        "description": "AI 시 제목 생성기는 고급 언어 모델을 사용하여 시에 인상적인 제목을 만드는 지능형 도구입니다. 로맨틱한 소네트, 다크한 자유시, 고전적인 하이쿠 등 어떤 시든 이 도구는 이미지, 분위기, 테마를 분석하여 시의 본질을 담은 제목을 제안합니다.",
+        "image": {
+            "src": "/imgs/poem-title/poem_title_what.png"
+        }
+    },
+    "feature_benefits": {
+        "name": "장점",
+        "title": "왜 우리의 시 제목 생성기를 선택해야 하나요?",
+        "label": "장점",
+        "description": "AI 기반 시 제목 생성기는 모든 수준의 시인에게 독특한 장점을 제공합니다.",
+        "items": [
+            {
+                "icon": "RiLightbulbLine",
+                "title": "이중 목적 제목",
+                "description": "진지한 출판물용 문학적 제목과 소셜 미디어용 바이럴 친화적 제목을 동시에 생성합니다.",
+                "image": {
+                    "src": "/imgs/poem-title/poem_title_why1.png",
+                    "alt": "이중 목적 제목"
+                }
+            },
+            {
+                "icon": "RiTimeLine",
+                "title": "스타일 & 분위기 매칭",
+                "description": "고전적, 현대적, 미니멀리스트, 로맨틱 스타일 중에서 선택하세요. AI가 모든 선호도를 고려하여 완벽한 제목을 만듭니다.",
+                "image": {
+                    "src": "/imgs/poem-title/poem_title_why2.png",
+                    "alt": "스타일 & 분위기 매칭"
+                }
+            },
+            {
+                "icon": "RiStarLine",
+                "title": "설명 포함",
+                "description": "생성된 각 제목에는 시의 이미지와 감정과의 연결을 설명하는 간단한 설명이 포함됩니다.",
+                "image": {
+                    "src": "/imgs/poem-title/poem_title_why3.png",
+                    "alt": "설명 포함"
+                }
+            }
+        ]
+    },
+    "faq": {
+        "name": "자주 묻는 질문",
+        "title": "자주 묻는 질문",
+        "label": "자주 묻는 질문",
+        "description": "",
+        "items": [
+            {
+                "title": "AI는 어떻게 시 제목을 생성하나요?",
+                "description": "AI는 고급 언어 모델을 사용하여 시의 내용, 이미지, 분위기, 테마를 분석하고 작품의 본질을 담은 제목을 생성합니다."
+            },
+            {
+                "title": "문학적 제목과 플랫폼용 제목의 차이점은?",
+                "description": "문학적 제목은 예술적이고 깊이가 있어 문학지나 시집에 적합합니다. 플랫폼용 제목은 더 눈길을 끌고 매력적이며, 소셜 미디어 공유에 최적화되어 있습니다."
+            },
+            {
+                "title": "이중 언어 제목을 생성할 수 있나요?",
+                "description": "네! 언어 옵션에서 '이중 언어'를 선택하면 각 제목의 중국어와 영어 버전이 모두 생성됩니다."
+            },
+            {
+                "title": "이 도구는 무료인가요?",
+                "description": "네, 시 제목 생성기는 완전 무료입니다. 시에 필요한 만큼 제목을 생성하세요."
+            }
+        ]
+    },
+    "cta": {
+        "name": "CTA",
+        "title": "완벽한 시 제목 만들기를 시작하세요",
+        "description": "독자의 마음을 사로잡는 제목으로 시를 변화시키세요.",
+        "buttons": [
+            {
+                "title": "제목 생성",
+                "url": "#",
+                "target": "_self",
+                "variant": "default",
+                "icon": "RiArrowRightLine"
+            }
+        ]
+    }
+}

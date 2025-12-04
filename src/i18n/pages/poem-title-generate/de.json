@@ -1,0 +1,193 @@
+{
+    "hero_poem_title": {
+        "breadcrumb": {
+            "home": "Startseite",
+            "current": "Gedichttitel-Generator"
+        },
+        "header": {
+            "title": "KI GEDICHTTITEL-GENERATOR",
+            "subtitle": "Generieren Sie den perfekten Titel für Ihr Gedicht mit KI-Kreativität",
+            "meta_title": "Kostenloser KI Gedichttitel-Generator | AI Story Generator",
+            "meta_description": "Generieren Sie kreative, eindrucksvolle Gedichttitel mit KI. Erstellen Sie literarische und virale Titel für Ihre Poesie in Sekunden. Kostenlos und einfach zu bedienen."
+        },
+        "form": {
+            "poem_content": {
+                "label": "Ihr Gedicht oder Thema",
+                "required": "*",
+                "placeholder": "Fügen Sie Ihr Gedicht hier ein oder beschreiben Sie das Thema und die Bildsprache...",
+                "helper_text": "Geben Sie Ihren Gedichtinhalt ein oder beschreiben Sie das Thema für Titelvorschläge",
+                "max_length": 2000
+            },
+            "language": {
+                "label": "Titelsprache",
+                "placeholder": "Sprache wählen",
+                "options": {
+                    "zh": "Chinesisch",
+                    "en": "Englisch",
+                    "bilingual": "Zweisprachig"
+                }
+            },
+            "style": {
+                "label": "Stil",
+                "chips": {
+                    "classical": "Klassisch",
+                    "modern": "Modern",
+                    "minimalist": "Minimalistisch",
+                    "imagist": "Imagistisch",
+                    "dark": "Dunkel",
+                    "healing": "Heilend",
+                    "romantic": "Romantisch"
+                }
+            },
+            "mood": {
+                "label": "Stimmung",
+                "chips": {
+                    "sad": "Traurig",
+                    "melancholic": "Melancholisch",
+                    "calm": "Ruhig",
+                    "gentle": "Sanft",
+                    "hopeful": "Hoffnungsvoll",
+                    "angry": "Wütend",
+                    "surreal": "Surreal"
+                }
+            },
+            "length": {
+                "label": "Titellänge",
+                "options": {
+                    "short": "Kurz (4-8 Zeichen)",
+                    "medium": "Mittel (8-12 Zeichen)",
+                    "long": "Lang (12+ Zeichen)"
+                }
+            },
+            "usage_scene": {
+                "label": "Verwendungszweck",
+                "placeholder": "Zweck wählen",
+                "options": {
+                    "literary_submission": "Literarische Einreichung",
+                    "collection": "Gedichtsammlung",
+                    "social_media": "Social Media",
+                    "competition": "Wettbewerb",
+                    "gift_card": "Geschenkkarte"
+                }
+            },
+            "examples": {
+                "title": "Brauchen Sie Inspiration?",
+                "prompts": [
+                    "Ein Gedicht über den Mond und Sehnsucht nach der Heimat, klassische Bilder mit moderner Einsamkeit verbindend",
+                    "Liebesgedicht über den bittersüßen Abschied am Bahnhof",
+                    "Naturgedicht über den ersten Schnee des Winters und Kindheitserinnerungen"
+                ]
+            }
+        },
+        "generate_button": {
+            "text": "Titel generieren",
+            "generating": "Generiere...",
+            "info": {
+                "free": "100% Kostenlos",
+                "time": "~5 Sekunden"
+            }
+        },
+        "output": {
+            "title": "Generierte Gedichttitel",
+            "subtitle": "Klicken Sie auf einen Titel zum Kopieren",
+            "literary_group_title": "Literarische Titel",
+            "platform_group_title": "Plattform-Titel",
+            "explanation_label": "Warum dieser Titel funktioniert",
+            "copy_button": "Kopieren",
+            "copied_button": "Kopiert!",
+            "regenerate_button": "Neu generieren",
+            "clear_button": "Alle löschen",
+            "loading": "Perfekte Titel für Ihr Gedicht werden erstellt...",
+            "empty_state": "Ihre generierten Titel erscheinen hier"
+        },
+        "toasts": {
+            "error_no_content": "Bitte geben Sie Ihr Gedicht ein oder beschreiben Sie das Thema",
+            "error_content_too_short": "Inhalt ist zu kurz (mindestens 10 Zeichen)",
+            "error_generate_failed": "Generierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+            "success_generated": "Titel erfolgreich generiert!",
+            "success_copied": "Titel in die Zwischenablage kopiert!"
+        }
+    },
+    "feature_intro": {
+        "name": "Einführung",
+        "title": "Was ist der KI Gedichttitel-Generator?",
+        "label": "Einführung",
+        "description": "Ein KI-Gedichttitel-Generator ist ein intelligentes Tool, das fortschrittliche Sprachmodelle verwendet, um eindrucksvolle, unvergessliche Titel für Ihre Poesie zu erstellen. Ob Sie ein romantisches Sonett, einen dunklen freien Vers oder ein klassisches Haiku geschrieben haben – dieses Tool analysiert Bildsprache, Stimmung und Themen Ihres Gedichts.",
+        "image": {
+            "src": "/imgs/poem-title/poem_title_what.png"
+        }
+    },
+    "feature_benefits": {
+        "name": "Vorteile",
+        "title": "Warum unseren Gedichttitel-Generator wählen?",
+        "label": "Vorteile",
+        "description": "Unser KI-gestützter Gedichttitel-Generator bietet einzigartige Vorteile für Dichter aller Niveaus.",
+        "items": [
+            {
+                "icon": "RiLightbulbLine",
+                "title": "Doppelzweck-Titel",
+                "description": "Generieren Sie sowohl literarische Titel für seriöse Publikationen als auch virale Titel für Social Media.",
+                "image": {
+                    "src": "/imgs/poem-title/poem_title_why1.png",
+                    "alt": "Doppelzweck-Titel"
+                }
+            },
+            {
+                "icon": "RiTimeLine",
+                "title": "Stil- & Stimmungsanpassung",
+                "description": "Wählen Sie aus klassischen, modernen, minimalistischen oder romantischen Stilen. Die KI berücksichtigt alle Ihre Präferenzen für den perfekten Titel.",
+                "image": {
+                    "src": "/imgs/poem-title/poem_title_why2.png",
+                    "alt": "Stil- & Stimmungsanpassung"
+                }
+            },
+            {
+                "icon": "RiStarLine",
+                "title": "Erklärung inklusive",
+                "description": "Jeder generierte Titel enthält eine kurze Erklärung, wie er mit den Bildern und Emotionen Ihres Gedichts verbunden ist.",
+                "image": {
+                    "src": "/imgs/poem-title/poem_title_why3.png",
+                    "alt": "Erklärung inklusive"
+                }
+            }
+        ]
+    },
+    "faq": {
+        "name": "FAQ",
+        "title": "Häufig gestellte Fragen",
+        "label": "FAQ",
+        "description": "",
+        "items": [
+            {
+                "title": "Wie generiert die KI Gedichttitel?",
+                "description": "Unsere KI analysiert den Inhalt, die Bildsprache, Stimmung und Themen Ihres Gedichts mit fortschrittlichen Sprachmodellen und generiert Titel, die das Wesen Ihres Werks einfangen."
+            },
+            {
+                "title": "Was ist der Unterschied zwischen literarischen und Plattform-Titeln?",
+                "description": "Literarische Titel sind künstlerisch und tiefgründig, perfekt für Zeitschriften und Anthologien. Plattform-Titel sind eingängiger und ansprechender, optimiert für Social Media."
+            },
+            {
+                "title": "Kann ich zweisprachige Titel generieren?",
+                "description": "Ja! Wählen Sie 'Zweisprachig' in der Sprachoption, um sowohl chinesische als auch englische Versionen jedes Titels zu generieren."
+            },
+            {
+                "title": "Ist dieses Tool kostenlos?",
+                "description": "Ja, unser Gedichttitel-Generator ist völlig kostenlos. Generieren Sie so viele Titel wie Sie für Ihre Poesie benötigen."
+            }
+        ]
+    },
+    "cta": {
+        "name": "CTA",
+        "title": "Beginnen Sie mit der Erstellung perfekter Gedichttitel",
+        "description": "Transformieren Sie Ihre Poesie mit fesselnden Titeln, die bei Lesern Anklang finden.",
+        "buttons": [
+            {
+                "title": "Titel generieren",
+                "url": "#",
+                "target": "_self",
+                "variant": "default",
+                "icon": "RiArrowRightLine"
+            }
+        ]
+    }
+}
