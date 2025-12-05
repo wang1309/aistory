@@ -291,6 +291,10 @@
         "name": "Geschichtengenerator",
         "desc": "Geben Sie eine Idee ein und lassen Sie in Sekunden eine vollständige Geschichte in mehreren Genres und Sprachen erstellen."
       },
+      "fantasy_generator": {
+        "name": "Fantasy-Geschichtengenerator",
+        "desc": "Erstellen Sie mit KI immersive Fantasy-Geschichten – epische Quests, High Fantasy, Urban Fantasy und mehr."
+      },
       "book_title_generator": {
         "name": "Buchtitel-Generator",
         "desc": "Erzeugt aufmerksamkeitsstarke, kreative Buchtitel für Romane, Blogs und E-Books mit Hilfe von KI."

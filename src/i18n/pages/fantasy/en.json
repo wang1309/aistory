@@ -1,0 +1,290 @@
+{
+  "hero_fantasy": {
+    "header": {
+      "title": "Fantasy Story Generator",
+      "subtitle": "Create immersive fantasy worlds with AI-powered storytelling. From epic quests to mystical adventures.",
+      "meta_title": "AI Fantasy Story Generator - Create Epic Fantasy Tales | AIStory",
+      "meta_description": "Generate captivating fantasy stories with AI. Create rich worlds, compelling characters, and epic adventures in high fantasy, xianxia, urban fantasy, and more."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Fantasy Story Generator"
+    },
+    "mode_tabs": {
+      "quick": "Quick Mode",
+      "worldbuilder": "Worldbuilder Mode"
+    },
+    "quick_mode": {
+      "prompt": {
+        "label": "Story Idea",
+        "placeholder": "Describe your fantasy story idea... e.g., 'A young prince who cannot use magic must save the kingdom from an ancient dragon'",
+        "required": "*",
+        "character_counter": "{{count}}/2000"
+      },
+      "subgenre": {
+        "label": "Subgenre",
+        "placeholder": "Select a fantasy subgenre",
+        "options": {
+          "high_fantasy": "High Fantasy",
+          "urban_fantasy": "Urban Fantasy",
+          "eastern_fantasy": "Eastern Fantasy",
+          "xianxia": "Xianxia / Cultivation",
+          "dark_fantasy": "Dark Fantasy",
+          "comedic_fantasy": "Comedic Fantasy",
+          "steampunk": "Steampunk Fantasy",
+          "epic_fantasy": "Epic Fantasy"
+        }
+      },
+      "tone": {
+        "label": "Story Tone",
+        "placeholder": "Select tone (optional)",
+        "options": {
+          "none": "Default",
+          "lighthearted": "Lighthearted",
+          "healing": "Healing / Cozy",
+          "epic": "Epic / Grand",
+          "dark": "Dark / Gritty",
+          "tragic": "Tragic",
+          "passionate": "Passionate / Hot-blooded"
+        }
+      },
+      "audience": {
+        "label": "Target Audience",
+        "placeholder": "Select audience (optional)",
+        "options": {
+          "none": "General",
+          "children": "Children",
+          "teens": "Teens / Young Adults",
+          "adults": "Adults"
+        }
+      },
+      "length": {
+        "label": "Story Length",
+        "placeholder": "Select length",
+        "options": {
+          "opening": "Opening Fragment (~500 words)",
+          "short": "Short Story (~1500 words)",
+          "medium_outline": "Medium with Outline (~2500 words)"
+        }
+      },
+      "perspective": {
+        "label": "Narrative Perspective",
+        "placeholder": "Select perspective (optional)",
+        "options": {
+          "none": "Default",
+          "first_person": "First Person",
+          "third_person_limited": "Third Person Limited",
+          "omniscient": "Omniscient"
+        }
+      }
+    },
+    "worldbuilder_mode": {
+      "steps": {
+        "subgenre": {
+          "title": "Subgenre",
+          "description": "Choose your fantasy type"
+        },
+        "setting": {
+          "title": "World Setting",
+          "description": "Define your world"
+        },
+        "magic_system": {
+          "title": "Magic System",
+          "description": "Design the rules of magic"
+        },
+        "characters": {
+          "title": "Characters",
+          "description": "Create your heroes and villains"
+        },
+        "plot": {
+          "title": "Plot",
+          "description": "Outline the story"
+        }
+      },
+      "subgenre": {
+        "label": "Fantasy Subgenre",
+        "placeholder": "Select a subgenre",
+        "options": {
+          "high_fantasy": "High Fantasy",
+          "urban_fantasy": "Urban Fantasy",
+          "eastern_fantasy": "Eastern Fantasy",
+          "xianxia": "Xianxia / Cultivation",
+          "dark_fantasy": "Dark Fantasy",
+          "comedic_fantasy": "Comedic Fantasy",
+          "steampunk": "Steampunk Fantasy",
+          "epic_fantasy": "Epic Fantasy"
+        }
+      },
+      "setting": {
+        "era": {
+          "label": "Era / Time Period",
+          "placeholder": "Select an era",
+          "options": {
+            "medieval": "Medieval",
+            "modern": "Modern Day",
+            "future": "Future / Sci-Fantasy",
+            "ancient": "Ancient",
+            "mixed": "Mixed / Alternate"
+          }
+        },
+        "world_overview": {
+          "label": "World Overview",
+          "placeholder": "Describe the geography, climate, and major civilizations of your world..."
+        },
+        "factions": {
+          "label": "Major Factions / Powers",
+          "placeholder": "Describe the empires, kingdoms, guilds, sects, or other major powers..."
+        }
+      },
+      "magic_system": {
+        "source": {
+          "label": "Magic Source",
+          "placeholder": "Select the source of magic",
+          "options": {
+            "innate": "Innate Talent",
+            "bloodline": "Bloodline / Heritage",
+            "cultivation": "Cultivation / Training",
+            "contract": "Contracts / Pacts",
+            "technology": "Magitech / Technology",
+            "divine": "Divine / Granted by Gods"
+          }
+        },
+        "cost": {
+          "label": "Cost of Magic",
+          "placeholder": "What price must be paid to use magic? (life force, memories, sanity, lifespan...)"
+        },
+        "limitations": {
+          "label": "Limitations & Rules",
+          "placeholder": "What are the restrictions? (casting conditions, forbidden spells, resource limits...)"
+        }
+      },
+      "characters": {
+        "protagonist": {
+          "label": "Protagonist",
+          "name": {
+            "label": "Name / Title",
+            "placeholder": "e.g., Prince Aldric, The Wandering Sage"
+          },
+          "race_class": {
+            "label": "Race / Class",
+            "placeholder": "e.g., Human Mage, Half-Elf Ranger, Dragon-blood Cultivator"
+          },
+          "personality": {
+            "label": "Personality Keywords",
+            "placeholder": "e.g., Brave, Curious, Hot-tempered, Compassionate"
+          },
+          "background": {
+            "label": "Background & Flaw",
+            "placeholder": "Their origin story and a key weakness or flaw..."
+          },
+          "goal": {
+            "label": "Goal & Motivation",
+            "placeholder": "What drives them? What do they seek?"
+          }
+        },
+        "antagonist": {
+          "label": "Antagonist / Villain",
+          "name": {
+            "label": "Name / Title",
+            "placeholder": "e.g., The Shadow King, Elder Vex"
+          },
+          "motivation": {
+            "label": "Goal & Motivation",
+            "placeholder": "What do they want and why?"
+          },
+          "relationship": {
+            "label": "Relationship to Protagonist",
+            "placeholder": "How are they connected to the hero?"
+          }
+        }
+      },
+      "plot": {
+        "main_quest": {
+          "label": "Main Quest / Mission",
+          "placeholder": "e.g., Find the lost artifact, Break the ancient curse, Stop the war..."
+        },
+        "key_events": {
+          "label": "Key Story Beats",
+          "placeholder": "Opening, Turning Point, Midpoint, Climax, Resolution direction..."
+        },
+        "twists": {
+          "label": "Plot Twists (Optional)",
+          "placeholder": "e.g., The mentor is the true villain, The kingdom's god is artificial..."
+        }
+      }
+    },
+    "ai_models": {
+      "title": "AI Model",
+      "hint": "Choose the AI model for generation",
+      "models": {
+        "fast": {
+          "name": "Swift Scribe",
+          "badge": "Fast",
+          "description": "Quick generation, great for brainstorming",
+          "speed": "~15 seconds"
+        },
+        "standard": {
+          "name": "Story Weaver",
+          "badge": "Balanced",
+          "description": "Balanced quality and speed",
+          "speed": "~30 seconds"
+        },
+        "creative": {
+          "name": "Epic Bard",
+          "badge": "Creative",
+          "description": "Rich details and creative flourishes",
+          "speed": "~45 seconds"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "Generate Fantasy Story",
+      "generating": "Weaving your tale...",
+      "tip": "Each generation uses 1 credit. Results may vary."
+    },
+    "output": {
+      "tabs": {
+        "story": "Story",
+        "worldview": "World Setting",
+        "characters": "Characters",
+        "outline": "Outline"
+      },
+      "title": "Your Fantasy Story",
+      "status_writing": "Writing...",
+      "status_complete": "Complete",
+      "word_count": "{{count}} words",
+      "button_copy": "Copy",
+      "button_export_pdf": "Export PDF",
+      "button_exporting_pdf": "Exporting...",
+      "button_regenerate": "Regenerate",
+      "button_send_to_workspace": "Send to Writing Space",
+      "loading": "Generating your fantasy world..."
+    },
+    "navigation": {
+      "next": "Next Step",
+      "previous": "Previous",
+      "generate": "Generate"
+    },
+    "toasts": {
+      "error_no_prompt": "Please enter your story idea",
+      "error_no_subgenre": "Please select a fantasy subgenre",
+      "error_no_model": "Please select an AI model",
+      "error_generate_failed": "Generation failed. Please try again.",
+      "error_no_stream": "Unable to receive response stream",
+      "error_no_content": "No content was generated",
+      "success_generated": "Your fantasy story is ready!",
+      "success_copied": "Copied to clipboard!"
+    },
+    "ui": {
+      "required": "*",
+      "optional": "Optional",
+      "speed_icon": "⏱️"
+    }
+  },
+  "cta": {
+    "title": "Ready to Create Your Fantasy World?",
+    "description": "Join thousands of writers crafting epic tales with AI assistance.",
+    "button": "Start Creating",
+    "button_link": "/fantasy-generator"
+  }
+}

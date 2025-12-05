@@ -17,6 +17,13 @@
           "icon": "RiQuillPenLine",
           "children": [
             {
+              "title": "Fantasy Story Generator",
+              "description": "Create immersive fantasy stories with AI – epic quests, xianxia and more",
+              "url": "/fantasy-generator",
+              "icon": "RiSparkling2Line",
+              "target": "_self"
+            },
+            {
               "title": "Book Title Generator",
               "description": "Generate creative book titles with AI",
               "url": "/book-title-generator",
@@ -729,6 +736,11 @@
             {
               "title": "Story Generator",
               "url": "/",
+              "target": "_self"
+            },
+            {
+              "title": "Fantasy Story Generator",
+              "url": "/fantasy-generator",
               "target": "_self"
             },
             {

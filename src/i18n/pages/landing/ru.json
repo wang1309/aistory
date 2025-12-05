@@ -17,6 +17,13 @@
           "icon": "RiQuillPenLine",
           "children": [
             {
+              "title": "Генератор фэнтези-историй",
+              "description": "Создавайте с ИИ атмосферные фэнтези‑истории",
+              "url": "/fantasy-generator",
+              "icon": "RiSparkling2Line",
+              "target": "_self"
+            },
+            {
               "title": "Генератор названий книг",
               "description": "Создавайте креативные названия книг с помощью ИИ",
               "url": "/book-title-generator",
@@ -729,6 +736,11 @@
             {
               "title": "Генератор историй",
               "url": "/",
+              "target": "_self"
+            },
+            {
+              "title": "Генератор фэнтези-историй",
+              "url": "/fantasy-generator",
               "target": "_self"
             },
             {

@@ -49,6 +49,17 @@ export const tools: Tool[] = [
     priority: 100,
   },
   {
+    slug: "fantasy-generator",
+    nameKey: "ai_tools.tools.fantasy_generator.name",
+    shortDescKey: "ai_tools.tools.fantasy_generator.desc",
+    module: "ai-write",
+    category: "story",
+    href: "/fantasy-generator",
+    icon: "RiSparkling2Line",
+    badges: ["new"],
+    priority: 95,
+  },
+  {
     slug: "book-title-generator",
     nameKey: "ai_tools.tools.book_title_generator.name",
     shortDescKey: "ai_tools.tools.book_title_generator.desc",

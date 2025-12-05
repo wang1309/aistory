@@ -17,6 +17,13 @@
           "icon": "RiQuillPenLine",
           "children": [
             {
+              "title": "ファンタジーストーリージェネレーター",
+              "description": "AIで没入感のあるファンタジー物語を生成",
+              "url": "/fantasy-generator",
+              "icon": "RiSparkling2Line",
+              "target": "_self"
+            },
+            {
               "title": "本のタイトル生成",
               "description": "AIで創造的な本のタイトルを生成",
               "url": "/book-title-generator",
@@ -695,7 +702,7 @@
       },
       "url": "/"
     },
-    "copyright": "© 2025 • ストーリージェネレーター All rights reserved.",
+    "copyright": " 2025 • ストーリージェネレーター All rights reserved.",
     "nav": {
       "items": [
         {
@@ -729,6 +736,11 @@
             {
               "title": "ストーリージェネレーター",
               "url": "/",
+              "target": "_self"
+            },
+            {
+              "title": "ファンタジーストーリージェネレーター",
+              "url": "/fantasy-generator",
               "target": "_self"
             },
             {

@@ -294,6 +294,10 @@
         "name": "Story Generator",
         "desc": "Turn a single idea into a full story in seconds with AI, across multiple genres and languages."
       },
+      "fantasy_generator": {
+        "name": "Fantasy Story Generator",
+        "desc": "Create immersive fantasy stories with AI – epic quests, xianxia, urban fantasy and more."
+      },
       "book_title_generator": {
         "name": "Book Title Generator",
         "desc": "Generate eye-catching, creative book titles for novels, blogs, and eBooks with AI."

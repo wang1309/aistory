@@ -1,0 +1,290 @@
+{
+  "hero_fantasy": {
+    "header": {
+      "title": "奇幻故事生成器",
+      "subtitle": "用 AI 创造沉浸式的奇幻世界。从史诗冒险到神秘传说，一键生成。",
+      "meta_title": "AI 奇幻故事生成器 - 创作史诗级奇幻故事 | AIStory",
+      "meta_description": "使用 AI 生成引人入胜的奇幻故事。创建丰富的世界观、鲜明的角色和史诗般的冒险，支持高魔奇幻、玄幻仙侠、都市奇幻等多种类型。"
+    },
+    "breadcrumb": {
+      "home": "首页",
+      "current": "奇幻故事生成器"
+    },
+    "mode_tabs": {
+      "quick": "快速模式",
+      "worldbuilder": "世界观向导"
+    },
+    "quick_mode": {
+      "prompt": {
+        "label": "故事想法",
+        "placeholder": "描述你的奇幻故事想法... 例如：「一个不会魔法的王子必须拯救被远古巨龙威胁的王国」",
+        "required": "*",
+        "character_counter": "{{count}}/2000"
+      },
+      "subgenre": {
+        "label": "子类型",
+        "placeholder": "选择奇幻子类型",
+        "options": {
+          "high_fantasy": "高魔奇幻",
+          "urban_fantasy": "都市奇幻",
+          "eastern_fantasy": "东方玄幻",
+          "xianxia": "仙侠修真",
+          "dark_fantasy": "黑暗奇幻",
+          "comedic_fantasy": "搞笑奇幻",
+          "steampunk": "蒸汽朋克",
+          "epic_fantasy": "史诗奇幻"
+        }
+      },
+      "tone": {
+        "label": "故事基调",
+        "placeholder": "选择基调（可选）",
+        "options": {
+          "none": "默认",
+          "lighthearted": "轻松愉快",
+          "healing": "治愈温馨",
+          "epic": "史诗恢弘",
+          "dark": "黑暗沉重",
+          "tragic": "悲剧虐心",
+          "passionate": "热血激昂"
+        }
+      },
+      "audience": {
+        "label": "目标受众",
+        "placeholder": "选择受众（可选）",
+        "options": {
+          "none": "通用",
+          "children": "儿童",
+          "teens": "青少年",
+          "adults": "成人"
+        }
+      },
+      "length": {
+        "label": "篇幅长度",
+        "placeholder": "选择长度",
+        "options": {
+          "opening": "开头片段（约500字）",
+          "short": "短篇故事（约1500字）",
+          "medium_outline": "中篇+大纲（约2500字）"
+        }
+      },
+      "perspective": {
+        "label": "叙事视角",
+        "placeholder": "选择视角（可选）",
+        "options": {
+          "none": "默认",
+          "first_person": "第一人称",
+          "third_person_limited": "第三人称有限",
+          "omniscient": "全知视角"
+        }
+      }
+    },
+    "worldbuilder_mode": {
+      "steps": {
+        "subgenre": {
+          "title": "子类型",
+          "description": "选择奇幻类型"
+        },
+        "setting": {
+          "title": "世界背景",
+          "description": "定义你的世界"
+        },
+        "magic_system": {
+          "title": "魔法系统",
+          "description": "设计魔法规则"
+        },
+        "characters": {
+          "title": "角色设定",
+          "description": "创建英雄与反派"
+        },
+        "plot": {
+          "title": "剧情大纲",
+          "description": "规划故事走向"
+        }
+      },
+      "subgenre": {
+        "label": "奇幻子类型",
+        "placeholder": "选择子类型",
+        "options": {
+          "high_fantasy": "高魔奇幻",
+          "urban_fantasy": "都市奇幻",
+          "eastern_fantasy": "东方玄幻",
+          "xianxia": "仙侠修真",
+          "dark_fantasy": "黑暗奇幻",
+          "comedic_fantasy": "搞笑奇幻",
+          "steampunk": "蒸汽朋克",
+          "epic_fantasy": "史诗奇幻"
+        }
+      },
+      "setting": {
+        "era": {
+          "label": "时代背景",
+          "placeholder": "选择时代",
+          "options": {
+            "medieval": "中世纪",
+            "modern": "现代",
+            "future": "未来/科幻",
+            "ancient": "远古",
+            "mixed": "架空混合"
+          }
+        },
+        "world_overview": {
+          "label": "世界概况",
+          "placeholder": "描述世界的地理、气候、主要文明..."
+        },
+        "factions": {
+          "label": "主要势力",
+          "placeholder": "描述帝国、王国、公会、宗门、教会等主要势力..."
+        }
+      },
+      "magic_system": {
+        "source": {
+          "label": "魔法来源",
+          "placeholder": "选择魔法来源",
+          "options": {
+            "innate": "天赋",
+            "bloodline": "血统",
+            "cultivation": "修炼",
+            "contract": "契约",
+            "technology": "科技魔法",
+            "divine": "神赐"
+          }
+        },
+        "cost": {
+          "label": "魔法代价",
+          "placeholder": "使用魔法要付出什么代价？（生命、记忆、理智、寿命...）"
+        },
+        "limitations": {
+          "label": "限制与规则",
+          "placeholder": "有什么限制？（施法条件、禁忌、资源限制...）"
+        }
+      },
+      "characters": {
+        "protagonist": {
+          "label": "主角",
+          "name": {
+            "label": "姓名/代称",
+            "placeholder": "例如：王子阿尔德里克、流浪贤者"
+          },
+          "race_class": {
+            "label": "种族/职业",
+            "placeholder": "例如：人类法师、半精灵游侠、龙血修真者"
+          },
+          "personality": {
+            "label": "性格关键词",
+            "placeholder": "例如：勇敢、好奇、暴躁、善良"
+          },
+          "background": {
+            "label": "背景与缺点",
+            "placeholder": "他/她的来历和主要弱点..."
+          },
+          "goal": {
+            "label": "目标与动力",
+            "placeholder": "是什么驱动着他/她？追求什么？"
+          }
+        },
+        "antagonist": {
+          "label": "反派/对立角色",
+          "name": {
+            "label": "姓名/代称",
+            "placeholder": "例如：暗影之王、维克斯长老"
+          },
+          "motivation": {
+            "label": "目标与动机",
+            "placeholder": "他/她想要什么？为什么？"
+          },
+          "relationship": {
+            "label": "与主角的关系",
+            "placeholder": "他/她与主角有什么联系？"
+          }
+        }
+      },
+      "plot": {
+        "main_quest": {
+          "label": "主线任务",
+          "placeholder": "例如：寻找神器、打破诅咒、阻止战争..."
+        },
+        "key_events": {
+          "label": "关键节点",
+          "placeholder": "开端、转折、中点、高潮、结局方向..."
+        },
+        "twists": {
+          "label": "预设反转（可选）",
+          "placeholder": "例如：导师其实是反派、王国的神是人工制造..."
+        }
+      }
+    },
+    "ai_models": {
+      "title": "AI 模型",
+      "hint": "选择生成模型",
+      "models": {
+        "fast": {
+          "name": "疾风笔",
+          "badge": "快速",
+          "description": "快速生成，适合头脑风暴",
+          "speed": "约15秒"
+        },
+        "standard": {
+          "name": "织梦者",
+          "badge": "均衡",
+          "description": "质量与速度的平衡",
+          "speed": "约30秒"
+        },
+        "creative": {
+          "name": "史诗吟游",
+          "badge": "创意",
+          "description": "丰富细节，创意十足",
+          "speed": "约45秒"
+        }
+      }
+    },
+    "generate_button": {
+      "text": "生成奇幻故事",
+      "generating": "正在编织你的传说...",
+      "tip": "每次生成消耗 1 积分，结果可能有所不同。"
+    },
+    "output": {
+      "tabs": {
+        "story": "故事正文",
+        "worldview": "世界观设定",
+        "characters": "角色设定",
+        "outline": "剧情大纲"
+      },
+      "title": "你的奇幻故事",
+      "status_writing": "创作中...",
+      "status_complete": "创作完成",
+      "word_count": "{{count}} 字",
+      "button_copy": "复制",
+      "button_export_pdf": "导出 PDF",
+      "button_exporting_pdf": "导出中...",
+      "button_regenerate": "重新生成",
+      "button_send_to_workspace": "发送到写作空间",
+      "loading": "正在生成你的奇幻世界..."
+    },
+    "navigation": {
+      "next": "下一步",
+      "previous": "上一步",
+      "generate": "生成"
+    },
+    "toasts": {
+      "error_no_prompt": "请输入你的故事想法",
+      "error_no_subgenre": "请选择奇幻子类型",
+      "error_no_model": "请选择 AI 模型",
+      "error_generate_failed": "生成失败，请重试",
+      "error_no_stream": "无法接收响应流",
+      "error_no_content": "未生成任何内容",
+      "success_generated": "你的奇幻故事已生成！",
+      "success_copied": "已复制到剪贴板！"
+    },
+    "ui": {
+      "required": "*",
+      "optional": "可选",
+      "speed_icon": "⏱️"
+    }
+  },
+  "cta": {
+    "title": "准备好创造你的奇幻世界了吗？",
+    "description": "加入数千名作家，用 AI 辅助创作史诗级故事。",
+    "button": "开始创作",
+    "button_link": "/fantasy-generator"
+  }
+}

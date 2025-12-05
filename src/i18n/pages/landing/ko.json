@@ -17,6 +17,13 @@
           "icon": "RiQuillPenLine",
           "children": [
             {
+              "title": "판타지 스토리 생성기",
+              "description": "AI로 몰입감 있는 판타지 스토리 생성",
+              "url": "/fantasy-generator",
+              "icon": "RiSparkling2Line",
+              "target": "_self"
+            },
+            {
               "title": "책 제목 생성기",
               "description": "AI로 창의적인 책 제목 생성",
               "url": "/book-title-generator",
@@ -729,6 +736,11 @@
             {
               "title": "스토리 생성기",
               "url": "/",
+              "target": "_self"
+            },
+            {
+              "title": "판타지 스토리 생성기",
+              "url": "/fantasy-generator",
               "target": "_self"
             },
             {

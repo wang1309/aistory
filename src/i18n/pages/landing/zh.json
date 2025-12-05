@@ -17,6 +17,13 @@
           "icon": "RiQuillPenLine",
           "children": [
             {
+              "title": "奇幻故事生成器",
+              "description": "用 AI 创作沉浸式奇幻世界，支持高魔、西幻、玄幻、仙侠等多种风格",
+              "url": "/fantasy-generator",
+              "icon": "RiSparkling2Line",
+              "target": "_self"
+            },
+            {
               "title": "书名生成器",
               "description": "用 AI 生成创意书名",
               "url": "/book-title-generator",
@@ -729,6 +736,11 @@
             {
               "title": "故事生成器",
               "url": "/",
+              "target": "_self"
+            },
+            {
+              "title": "奇幻故事生成器",
+              "url": "/fantasy-generator",
               "target": "_self"
             },
             {
