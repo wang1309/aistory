@@ -86,6 +86,30 @@ export default function Changelog({ changelog }: { changelog: ChangelogType }) {
       return "/creator-dashboard";
     }
 
+    // Backstory Generator
+    if (
+      lower.includes("backstory generator") ||
+      text.includes("背景故事生成器")
+    ) {
+      return "/backstory-generator";
+    }
+
+    // Story Prompt Generator
+    if (
+      lower.includes("story prompt generator") ||
+      text.includes("故事灵感生成器")
+    ) {
+      return "/story-prompt-generator";
+    }
+
+    // 诗歌标题生成器 / Poem Title Generator
+    if (
+      text.includes("诗歌标题生成器") ||
+      lower.includes("poem title generator")
+    ) {
+      return "/poem-title-generator";
+    }
+
     return null;
   };
 

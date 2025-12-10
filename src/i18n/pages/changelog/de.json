@@ -6,6 +6,27 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.9",
+        "date": "2025-12-10",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Added dedicated Backstory Generator page with full internationalization support for character backstories",
+              "Launched Poem Title Generator with its own landing page, hero module, and AI Tools hub integration",
+              "Added Story Prompt Generator page to create creative prompts and connect into story, backstory, and fantasy tools",
+              "Added a one-click \"Back to component\" button that appears in the bottom-right corner after you scroll past the generation area"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Fixed production build failure in the story generator caused by a stale breadcrumb import referencing a non-existent file"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.8",
         "date": "2025-12-02",
         "changes": [
