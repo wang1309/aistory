@@ -8,7 +8,7 @@
             "title": "AI POEM TITLE GENERATOR",
             "subtitle": "Generate the perfect title for your poem with AI-powered creativity",
             "meta_title": "Free AI Poem Title Generator | AI Story Generator",
-            "meta_description": "Generate creative, evocative poem titles with AI. Create literary and viral-ready titles for your poetry in seconds. Free and easy to use."
+            "meta_description": "Free AI poem title generator and poem titles generator that instantly creates powerful, click-worthy titles for your poems, social posts, and submissions."
         },
         "form": {
             "poem_content": {
@@ -22,8 +22,18 @@
                 "label": "Title Language",
                 "placeholder": "Select language",
                 "options": {
-                    "zh": "Chinese (中文)",
                     "en": "English",
+                    "zh": "Chinese (中文)",
+                    "ja": "Japanese (日本語)",
+                    "ko": "Korean (한국어)",
+                    "es": "Spanish (Español)",
+                    "fr": "French (Français)",
+                    "de": "German (Deutsch)",
+                    "pt": "Portuguese (Português)",
+                    "ru": "Russian (Русский)",
+                    "ar": "Arabic (العربية)",
+                    "hi": "Hindi (हिन्दी)",
+                    "it": "Italian (Italiano)",
                     "bilingual": "Bilingual (中英双语)"
                 }
             },
@@ -70,12 +80,20 @@
                     "gift_card": "Gift Card"
                 }
             },
+            "random_button": "Random prompt",
             "examples": {
                 "title": "Need inspiration? Try these examples",
                 "prompts": [
                     "A poem about the moon reflecting longing for home, mixing classical imagery with modern loneliness",
                     "Love poem exploring the bittersweet feeling of saying goodbye at a train station",
-                    "Nature poem capturing the first snowfall of winter and childhood memories"
+                    "Nature poem capturing the first snowfall of winter and childhood memories",
+                    "A poem about growing up and slowly drifting apart from childhood friends in a changing city",
+                    "A poem describing insomnia at 3 a.m., scrolling through old messages on the phone",
+                    "A seaside poem about waves erasing names written together in the sand",
+                    "A poem personifying the four seasons as guests visiting the same small town",
+                    "A poem about a stray cat that only appears on rainy nights",
+                    "A rooftop poem where two people share secrets under neon lights",
+                    "A poem about losing a loved one and learning to live with the echo of their presence"
                 ]
             }
         },
@@ -112,23 +130,24 @@
         "name": "Introduce",
         "title": "What is AI Poem Title Generator?",
         "label": "Introduce",
-        "description": "An AI poem title generator is an intelligent tool that uses advanced language models to create evocative, memorable titles for your poetry. Whether you've written a romantic sonnet, a dark free verse, or a classical haiku, this tool analyzes your poem's imagery, mood, and themes to suggest titles that capture its essence.\n\nThe generator produces two types of titles: Literary titles perfect for journals and anthologies, and Platform titles optimized for social media virality. Each suggestion comes with an explanation of why it works with your poem.",
+        "description": "An AI poem title generator is an intelligent tool that uses advanced language models to create evocative, memorable titles for your poetry. Our AI poem title generator analyzes your poem's imagery, mood, and themes to suggest titles that feel natural and human, not machine-made.\n\nWhether you've written a romantic sonnet, a dark free verse, or a classical haiku, this poem title generator helps you quickly discover strong options for print and digital use. When you need many ideas at once, it also works as a flexible poem titles generator, giving you multiple creative directions so you never get stuck searching for the right title again.\n\nThe generator produces two types of titles: Literary titles perfect for journals and anthologies, and Platform titles optimized for social media virality. Each suggestion comes with an explanation of why it works with your poem.",
         "image": {
-            "src": "/imgs/poem-title/poem_title_what.png"
+            "src": "/imgs/poem-title/what-is-poem-title1.avif",
+            "alt": "What is AI Poem Title Generator?"
         }
     },
     "feature_benefits": {
         "name": "benefits",
         "title": "Why Choose Our Poem Title Generator?",
         "label": "benefits",
-        "description": "Our AI-powered poem title generator offers unique advantages for poets of all levels.",
+        "description": "Our AI-powered poem title generator offers unique advantages for poets of all levels. Instead of spending hours brainstorming, you can let this ai poem title generator quickly explore different styles, tones, and lengths for you. The tool doubles as a practical poem titles generator: compare multiple options side by side, refine what you like, and confidently choose the title that fits your poem and your audience.",
         "items": [
             {
                 "icon": "RiLightbulbLine",
                 "title": "Dual-Purpose Titles",
                 "description": "Generate both literary titles for serious publications and viral-friendly titles for social media. Perfect for poets who want to reach different audiences with the same work.",
                 "image": {
-                    "src": "/imgs/poem-title/poem_title_why1.png",
+                    "src": "/imgs/poem-title/why-use-poem-generator1.avif",
                     "alt": "Dual-Purpose Titles"
                 }
             },
@@ -137,7 +156,7 @@
                 "title": "Style & Mood Matching",
                 "description": "Select from classical, modern, minimalist, or romantic styles. Choose emotional tones from melancholic to hopeful. The AI considers all your preferences to craft the perfect title.",
                 "image": {
-                    "src": "/imgs/poem-title/poem_title_why2.png",
+                    "src": "/imgs/poem-title/why-use-poem-generator2.avif",
                     "alt": "Style & Mood Matching"
                 }
             },
@@ -146,9 +165,32 @@
                 "title": "Explanation Included",
                 "description": "Each generated title comes with a brief explanation of how it connects to your poem's imagery and emotions. Understand why each suggestion works.",
                 "image": {
-                    "src": "/imgs/poem-title/poem_title_why3.png",
+                    "src": "/imgs/poem-title/why-use-poem-generator3.avif",
                     "alt": "Explanation Included"
                 }
+            }
+        ]
+    },
+    "feature_usecases": {
+        "name": "applications",
+        "title": "Applications of AI Poem Title Generator",
+        "label": "applications",
+        "description": "",
+        "items": [
+            {
+                "icon": "RiQuillPenLine",
+                "title": "Titles for Poetry Collections and Submissions",
+                "description": "Use the AI poem title generator when you need strong, literary titles for poetry collections, magazines, and competitions. It quickly proposes multiple variations for the same poem, so you can pick versions tailored to different journals, anthologies, or chapbook concepts."
+            },
+            {
+                "icon": "RiMegaphoneLine",
+                "title": "Scroll-Stopping Titles for Social Media & Content",
+                "description": "Poets, creators, and marketers can turn rough ideas into attention-grabbing poem titles for Instagram, Xiaohongshu, TikTok, or newsletters. The tool suggests shorter, platform-ready options that are easy to read on mobile and optimized for clicks and shares."
+            },
+            {
+                "icon": "RiLineChartLine",
+                "title": "Teaching, Workshops, and Creative Practice",
+                "description": "Teachers and writing coaches use the poem titles generator to spark classroom exercises, workshop prompts, or daily writing challenges. By generating many title possibilities in seconds, it helps students focus less on naming and more on exploring new images, emotions, and narrative angles."
             }
         ]
     },
@@ -156,11 +198,11 @@
         "name": "faq",
         "title": "Frequently Asked Questions",
         "label": "faq",
-        "description": "",
+        "description": "Answers to common questions about how our AI poem title generator and poem titles generator work.",
         "items": [
             {
                 "title": "How does the AI generate poem titles?",
-                "description": "Our AI analyzes your poem's content, imagery, mood, and themes using advanced language models. It then generates titles that capture the essence of your work while matching your specified style preferences."
+                "description": "Our AI poem title generator analyzes your poem's content, imagery, mood, and themes using advanced language models. It then generates titles that capture the essence of your work while matching your specified style preferences."
             },
             {
                 "title": "What's the difference between Literary and Platform titles?",

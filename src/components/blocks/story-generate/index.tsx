@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import BackstoryBreadcrumb from "./breadcrumb";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/icon";
 import { toast } from "sonner";
@@ -242,6 +243,49 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     value: prompt,
     onRestore: (draft) => setPrompt(draft),
   });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    try {
+      const raw = window.localStorage.getItem("story-generator:prefill-prompt");
+      if (!raw) return;
+
+      let promptText: string | null = null;
+      try {
+        const parsed = JSON.parse(raw) as { prompt?: string; value?: string } | null;
+        if (parsed && typeof parsed.prompt === "string") {
+          promptText = parsed.prompt;
+        } else if (parsed && typeof parsed.value === "string") {
+          promptText = parsed.value;
+        }
+      } catch {
+        promptText = raw;
+      }
+
+      if (!promptText || !promptText.trim()) {
+        window.localStorage.removeItem("story-generator:prefill-prompt");
+        return;
+      }
+
+      setPrompt(promptText);
+      window.localStorage.removeItem("story-generator:prefill-prompt");
+
+      const element = document.getElementById("craft_story");
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+
+      setTimeout(() => {
+        if (promptRef.current) {
+          promptRef.current.focus();
+        }
+      }, 200);
+    } catch {
+    }
+  }, []);
 
   useEffect(() => {
     if (isGenerating && outputRef.current) {

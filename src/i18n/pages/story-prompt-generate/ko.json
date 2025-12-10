@@ -1,0 +1,298 @@
+{
+  "metadata": {
+    "title": "무료 스토리 프롬프트 생성기 - AI 스토리 생성기",
+    "description": "무료 AI 스토리 프롬프트 생성기. 장르와 톤에 맞는 고품질 프롬프트를 몇 초 만에 만들어 글막힘을 풀고 새로운 스토리 아이디어를 얻으세요, 회원가입 없이 바로 사용 가능합니다.",
+    "keywords": "스토리 프롬프트 생성기,AI 글쓰기 프롬프트,스토리 아이디어,글쓰기 영감,AI 스토리 생성기,창작 도구"
+  },
+  "template": "story-prompt-generate",
+  "theme": "light",
+  "header": {
+    "brand": {
+      "title": "스토리 프롬프트 생성기",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "스토리 프롬프트 생성기"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "AI 글쓰기",
+          "icon": "RiQuillPenLine",
+          "children": [
+            {
+              "title": "스토리 생성기",
+              "description": "AI로 매력적인 스토리 만들기",
+              "url": "/",
+              "icon": "RiBookOpenLine",
+              "target": "_self"
+            },
+            {
+              "title": "스토리 프롬프트 생성기",
+              "description": "창의적인 스토리 아이디어를 즉시 생성",
+              "url": "/story-prompt-generator",
+              "icon": "RiLightbulbLine",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "buttons": [],
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "story_prompt_generate": {
+    "header": {
+      "title": "스토리 프롬프트 생성기",
+      "subtitle": "창의적인 스토리 프롬프트를 즉시 생성하세요. 영감을 찾는 작가나 AI 지원 프롬프트에 완벽합니다."
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "개요",
+      "title": "AI 스토리 프롬프트 생성기란?",
+      "description": "AI 스토리 프롬프트 생성기는 선택한 장르, 톤, 제약을 곧바로 글을 시작할 수 있는 프롬프트로 바꿔 주어, 빈 화면을 바라보는 시간을 없애 줍니다. 가볍게 아이디어를 뽑는 short story prompt generator 로도, 긴 이야기를 위한 ai that generates full story prompt 로도 활용할 수 있습니다.",
+      "image": {
+        "src": "/imgs/story-prompt/what-is-story-prompt1.avif",
+        "alt": "AI 스토리 프롬프트 생성기란?"
+      },
+      "items": [
+        {
+          "title": "AI에 바로 쓰는 프롬프트",
+          "description": "구조화된 프롬프트를 만들어 어떤 스토리 생성기나 글쓰기 도구에도 바로 붙여넣을 수 있습니다.",
+          "icon": "sparkles"
+        },
+        {
+          "title": "아이디어 레스큐",
+          "description": "판타지부터 코지 미스터리까지, 몇 초 만에 새로운 각도를 제시해 글막힘을 해소합니다.",
+          "icon": "lightbulb"
+        },
+        {
+          "title": "원클릭 다중 버전",
+          "description": "다양한 스타일의 프롬프트를 한 번에 받아, 마음에 드는 것을 골라 섞고 다듬을 수 있습니다.",
+          "icon": "shuffle"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "장점",
+      "title": "왜 이 AI 스토리 프롬프트 생성기를 써야 하나요",
+      "description": "속도, 유연성, 창의성을 위해 설계되어 아이디어에서 초안까지 더 빠르게 이동합니다.",
+      "items": [
+        {
+          "title": "장르 감지",
+          "description": "톤, 템포, 클리셰가 선택한 장르(판타지, SF, 로맨스, 스릴러 등)에 맞춰 자동 조정됩니다.",
+          "icon": "book-open",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt1.avif",
+            "alt": "장르 감지"
+          }
+        },
+        {
+          "title": "제약 친화",
+          "description": "목표, 갈등, 시점·장면·길이 같은 제약을 입력하면 이를 존중한 프롬프트를 제공합니다.",
+          "icon": "settings",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt2.avif",
+            "alt": "제약 친화"
+          }
+        },
+        {
+          "title": "프로덕션 친화",
+          "description": "출력은 간결하고 명료해 각본, 장편 소설, 게임 퀘스트, AI 채팅 핸드오프에 바로 사용할 수 있습니다.",
+          "icon": "cpu",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt3.avif",
+            "alt": "프로덕션 친화"
+          }
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "활용 사례",
+      "title": "AI 스토리 프롬프트 생성기의 활용",
+      "description": "빠르고 구조화된 영감을 원하는 모든 스토리텔러에게 적합하며, 짧은 이야기를 위한 short story prompt generator 부터 장편 플롯 설계까지 두루 사용할 수 있습니다.",
+      "items": [
+        {
+          "title": "소설 & 웹소설 작가",
+          "description": "톤과 장르에 맞는 장·씬·챕터 흐름을 프롬프트로 제안해 아웃라인을 빠르게 구축하세요.",
+          "icon": "pen-tool"
+        },
+        {
+          "title": "시나리오 작가 & TV 라이터룸",
+          "description": "B 플롯, 콜드 오픈, 캐릭터 비트를 브레인스토밍해 쇼의 리듬에 맞춥니다.",
+          "icon": "clapperboard"
+        },
+        {
+          "title": "RPG / 게임 디자이너",
+          "description": "퀘스트 훅, NPC 동기, 분기 시나리오를 온디맨드로 생성합니다.",
+          "icon": "gamepad"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "자주 묻는 질문",
+      "description": "AI 스토리 프롬프트 생성기의 사용법과 출력에 대한 답변입니다.",
+      "items": [
+        {
+          "title": "생성한 프롬프트를 상업적으로 사용할 수 있나요?",
+          "description": "네. 생성된 프롬프트는 소설, 대본, 게임 등 어떤 창작물이든 자유롭게 쓸 수 있습니다."
+        },
+        {
+          "title": "프롬프트가 내가 설정한 제약을 지켜주나요?",
+          "description": "장르, 톤, 목표, 갈등, 시점, 길이 등의 제약을 고려해 생성합니다."
+        },
+        {
+          "title": "다른 AI 도구에 프롬프트를 넘길 수 있나요?",
+          "description": "물론입니다. 짧고 명확한 프롬프트라 어떤 AI 글쓰기/채팅 도구에도 바로 붙여넣을 수 있습니다. 이 도구를 ai that generates full story prompt 처럼 사용해, 다른 모델에서 이어서 전개해도 좋습니다."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "지금 다음 이야기를 시작하세요",
+      "description": "몇 초 만에 구조화된 AI 대응 프롬프트를 생성합니다. 가입은 필요 없습니다.",
+      "buttons": [
+        {
+          "title": "프롬프트 생성",
+          "url": "/story-prompt-generator",
+          "target": "",
+          "icon": "GoRocket"
+        },
+        {
+          "title": "스토리 생성기 사용해보기",
+          "url": "/",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    },
+    "ui": {
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "스토리 프롬프트 생성기",
+      "genre_label": "장르",
+      "genre_placeholder": "장르 선택",
+      "length_label": "스토리 길이",
+      "length_placeholder": "길이 선택",
+      "tone_label": "톤 & 분위기",
+      "tone_placeholder": "톤 선택",
+      "language_label": "출력 언어",
+      "language_placeholder": "언어 선택",
+      "advanced_options": "고급 옵션",
+      "worldview_label": "세계관 설정",
+      "protagonist_label": "주인공 특성",
+      "protagonist_placeholder": "예: 숨겨진 과거를 가진 냉소적인 탐정",
+      "goal_label": "스토리 목표",
+      "goal_placeholder": "예: 왕국을 위협하는 음모를 밝히다",
+      "conflict_label": "핵심 갈등",
+      "conflict_placeholder": "갈등 유형 선택",
+      "constraints_label": "특별 제약",
+      "constraints_placeholder": "예: 비 오는 밤에 시작, 1인칭 시점",
+      "audience_label": "타겟 독자",
+      "audience_placeholder": "독자층 선택",
+      "generate_button": "프롬프트 생성",
+      "generating": "생성 중...",
+      "refresh_button": "새로고침",
+      "copy_button": "복사",
+      "use_prompt_button": "이 프롬프트 사용",
+      "favorite_button": "저장",
+      "clear_button": "지우기",
+      "output_title": "생성된 프롬프트",
+      "output_empty": "창의적인 프롬프트가 여기에 표시됩니다. 설정을 선택하고 생성을 클릭하세요!",
+      "prompt_count": "프롬프트"
+    },
+    "genres": {
+      "fantasy": "판타지",
+      "scifi": "SF",
+      "romance": "로맨스",
+      "thriller": "스릴러",
+      "mystery": "미스터리",
+      "horror": "호러",
+      "adventure": "모험",
+      "historical": "역사",
+      "urban": "현대",
+      "comedy": "코미디",
+      "drama": "드라마",
+      "xianxia": "선협/무협"
+    },
+    "lengths": {
+      "short": "단편",
+      "short_desc": "300-800자",
+      "medium": "중편",
+      "medium_desc": "800-2000자",
+      "long": "장편",
+      "long_desc": "2000자 이상"
+    },
+    "tones": {
+      "light": "가벼운",
+      "healing": "힐링",
+      "dark": "다크",
+      "passionate": "열정적",
+      "realistic": "현실적",
+      "suspenseful": "서스펜스",
+      "romantic": "로맨틱",
+      "epic": "웅장한"
+    },
+    "worldviews": {
+      "realistic": "현실/현대",
+      "near_future": "근미래",
+      "high_fantasy": "하이 판타지",
+      "cultivation": "수련/선협",
+      "cyberpunk": "사이버펑크",
+      "post_apocalyptic": "포스트 아포칼립스",
+      "steampunk": "스팀펑크",
+      "mythology": "신화"
+    },
+    "conflicts": {
+      "person_vs_person": "인간 대 인간",
+      "person_vs_society": "인간 대 사회",
+      "person_vs_nature": "인간 대 자연",
+      "person_vs_self": "인간 대 자아",
+      "person_vs_fate": "인간 대 운명",
+      "multi_conflict": "복합 갈등"
+    },
+    "audiences": {
+      "children": "어린이 (5-12세)",
+      "teen": "청소년 (13-17세)",
+      "young_adult": "청년 (18-25세)",
+      "adult": "성인 (26세 이상)",
+      "mature": "성숙한 독자",
+      "all_ages": "전연령"
+    },
+    "ai_models": {
+      "fast": "빠른",
+      "fast_description": "빠른 생성, 좋은 품질",
+      "standard": "표준",
+      "standard_description": "속도와 창의성의 균형",
+      "creative": "창의적",
+      "creative_description": "가장 창의적, 시간이 더 걸림"
+    },
+    "toasts": {
+      "copied": "클립보드에 복사되었습니다!",
+      "generation_failed": "생성에 실패했습니다. 다시 시도해 주세요.",
+      "no_genre": "최소 하나의 장르를 선택해 주세요.",
+      "prompt_generated": "프롬프트가 성공적으로 생성되었습니다!"
+    },
+    "sample_ideas": [
+      "음식을 통해 역사를 바꾸는 시간여행 셰프",
+      "초자연적 사건을 함께 수사해야 하는 라이벌 탐정 두 명",
+      "다른 은퇴한 영웅들을 위한 지원 그룹을 운영하는 은퇴한 슈퍼히어로",
+      "감정을 발달시키고 자신의 목적을 의문시하는 AI",
+      "책이 독자를 이야기 속으로 이동시킬 수 있다는 것을 발견한 사서"
+    ]
+  },
+  "footer": {
+    "brand": {
+      "title": "스토리 프롬프트 생성기",
+      "description": "AI로 창의적인 스토리 프롬프트 생성"
+    },
+    "copyright": "© 2025 AIStory. All rights reserved.",
+    "social": []
+  }
+}

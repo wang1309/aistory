@@ -1,0 +1,204 @@
+{
+    "backstory_generate": {
+        "metadata": {
+            "title": "Free Backstory Generator - AI Character Background Creator",
+            "description": "Free AI backstory generator that expands a one-line character idea into a structured backstory, built for writers, RPG DMs and creators stuck on outlines.",
+            "keywords": "backstory generator, character background, RPG character, DND backstory, novel character, VTuber persona, AI character creator"
+        },
+        "ui": {
+            "title": "Free Backstory Generator",
+            "subtitle": "Create rich, structured character backstories with AI",
+            "breadcrumb_home": "Home",
+            "breadcrumb_current": "Backstory Generator",
+            "character_concept": "Character Concept",
+            "random_button": "Random",
+            "ai_model": "AI Model",
+            "output_language": "Output Language",
+            "worldview": "World Setting",
+            "role_type": "Character Role",
+            "output_length": "Output Length",
+            "advanced_options": "Advanced Options",
+            "tone": "Story Tone",
+            "generate_button": "Generate Backstory",
+            "generating": "Generating..."
+        },
+        "placeholders": {
+            "character_concept": "Describe your character concept... (e.g., 'A rogue assassin seeking redemption after a fateful encounter')",
+            "select_ai_model": "Select AI model"
+        },
+        "ai_models": {
+            "fast": "Fast",
+            "fast_description": "Quick generation (~20s)",
+            "standard": "Standard",
+            "standard_description": "Balanced quality (~40s)",
+            "creative": "Creative",
+            "creative_description": "Most detailed (~60s)"
+        },
+        "worldview": {
+            "fantasy": "Fantasy",
+            "scifi": "Sci-Fi",
+            "urban": "Modern Urban",
+            "xianxia": "Xianxia",
+            "historical": "Historical",
+            "campus": "Campus",
+            "dnd": "DND/TRPG",
+            "cyberpunk": "Cyberpunk"
+        },
+        "role_type": {
+            "protagonist": "Hero",
+            "supporting": "Support",
+            "antagonist": "Villain",
+            "npc": "NPC",
+            "vtuber": "VTuber"
+        },
+        "length": {
+            "short": "Short",
+            "short_description": "~200-400 words",
+            "medium": "Standard",
+            "medium_description": "~400-800 words",
+            "detailed": "Detailed",
+            "detailed_description": "~800-1500 words"
+        },
+        "tone": {
+            "dark": "Dark",
+            "inspirational": "Inspirational",
+            "comedic": "Comedic",
+            "tragic": "Tragic",
+            "epic": "Epic"
+        },
+        "output": {
+            "title": "Generated Backstory",
+            "words": "words",
+            "copy": "Copy",
+            "generating_message": "AI is crafting your character's backstory...",
+            "empty_message": "Your character's backstory will appear here. Enter a concept and click Generate to begin."
+        },
+        "validation": {
+            "enter_concept": "Please enter a character concept",
+            "select_ai_model": "Please select an AI model"
+        },
+        "success": {
+            "random_prompt_selected": "Random concept selected!",
+            "backstory_generated": "Backstory generated successfully!",
+            "backstory_copied": "Backstory copied to clipboard!"
+        },
+        "errors": {
+            "generation_failed": "Generation failed. Please try again."
+        },
+        "random_prompts": [
+            "A rogue assassin seeking redemption after a fateful encounter",
+            "A fallen noble who lost everything but gained a mysterious power",
+            "A young mage with forbidden knowledge and a tragic past",
+            "A war veteran haunted by the ghosts of fallen comrades",
+            "A street urchin who discovers they are the lost heir to a kingdom",
+            "A cursed knight bound to protect a secret they don't understand",
+            "A traveling merchant with connections to every underworld organization",
+            "An amnesiac wanderer with skills that suggest a dark past"
+        ],
+        "feature_intro": {
+            "name": "introduce",
+            "title": "What is Backstory Generator?",
+            "label": "Introduce",
+            "description": "Backstory Generator is a free AI backstory generator that turns a short character concept into a rich, structured background story. Instead of dumping random text, it organizes your character’s past into sections such as origin, key turning points, relationships, goals, and story hooks that are easy to plug into your stories and campaigns.\n\nYou stay in control: choose the world setting, role type, tone, length, and language, then let the backstory generator expand your prompt while keeping motivations and details consistent. Whether you write fantasy novels, run DND sessions, design VTuber lore, or build chatbot personas, this AI backstory generator helps you go from a one-sentence idea to a ready-to-use backstory in seconds.",
+            "image": {
+                "src": "/imgs/backstory/what-is-backstory1.avif"
+            }
+        },
+        "feature1_section": {
+            "name": "feature1",
+            "title": "Why Use Our AI Backstory Generator",
+            "label": "Benefits",
+            "description": "See how this free backstory generator saves time while keeping your characters deep, consistent, and believable.",
+            "items": [
+                {
+                    "title": "Structured Output",
+                    "description": "Use the backstory generator to get clear sections for origin, turning points, relationships, goals, and story hooks, so you can understand your character’s whole life at a glance.",
+                    "icon": "RiListCheck2",
+                    "image": {
+                         "src": "/imgs/backstory/why-use-backstory1.avif"
+                    }
+                },
+                {
+                    "title": "Multi-Scene Support",
+                    "description": "Whether for DND campaigns, novels, VTubers, or chatbots, our AI backstory generator adapts to your needs so one tool can power every character you create.",
+                    "icon": "RiGamepadLine",
+                    "image": {
+                         "src": "/imgs/backstory/why-use-backstory2.avif"
+                    }          
+                },
+                {
+                    "title": "Instant Inspiration",
+                    "description": "When you feel stuck, this free backstory generator quickly produces fresh character ideas and angles that you can edit, remix, and expand.",
+                    "icon": "RiLightbulbFlashLine",
+                    "image": {
+                         "src": "/imgs/backstory/why-use-backstory3.avif"
+                    }
+                }
+            ]
+        },
+        "feature_section": {
+            "name": "applications",
+            "title": "Applications of AI Backstory Generator",
+            "label": "applications",
+            "description": "This backstory generator is built for creators across different domains.",
+            "items": [
+                {
+                    "title": "RPG Players & DMs",
+                    "description": "Use the AI backstory generator to quickly build memorable PCs, NPCs, and villains for DND, Pathfinder, and other tabletop games, complete with built-in plot hooks.",
+                    "icon": "RiDiceLine"
+                },
+                {
+                    "title": "Novel Writers",
+                    "description": "Let the backstory generator handle your characters’ pasts so you can focus on scenes and plot. Keep motivations, wounds, and growth arcs consistent from outline to final draft.",
+                    "icon": "RiBookLine"
+                },
+                {
+                    "title": "VTuber & Virtual Creators",
+                    "description": "Use this AI backstory generator to design rich VTuber and virtual creator personas, with lore you can reveal to fans over time through streams, videos, and social posts.",
+                    "icon": "RiUserHeartLine"
+                }
+            ]
+        },
+        "faq_section": {
+            "name": "faq",
+            "label": "FAQ",
+            "title": "Frequently Asked Questions",
+            "description": "Common questions about our backstory generator and AI backstory generator.",
+            "items": [
+                {
+                    "title": "What makes a good character backstory?",
+                    "description": "A good backstory includes: clear origin and formative events, logical character motivations, internal conflicts and flaws, meaningful relationships, and unresolved mysteries that can drive future stories. Our AI backstory generator is designed to highlight these elements so you can fine-tune them for your world."
+                },
+                {
+                    "title": "Can I use generated backstories commercially?",
+                    "description": "Yes. All content you generate with this free backstory generator is yours to use for personal or commercial projects, including novels, games, VTuber channels, and other creative work."
+                },
+                {
+                    "title": "How do I integrate backstory with my existing story?",
+                    "description": "Our structured output makes it easy to extract specific elements—goals, secrets, relationships, and story hooks—and weave them into your existing narrative or campaign. You can run the backstory generator again as your world evolves and keep everything aligned."
+                },
+                {
+                    "title": "Is this backstory generator good for fantasy and darker characters?",
+                    "description": "Yes. If you're searching for a backstory generator fantasy tool or a tragic backstory generator, this app is built for those use cases. Choose the Fantasy or Xianxia world settings, pick your character's role and set the tone to something darker like Tragic or Epic, and the AI will expand your prompt into a lore-friendly backstory that fits your magic system, kingdoms, and long-term character arc."
+                },
+                {
+                    "title": "How do I create a tragic backstory without overdoing the drama?",
+                    "description": "Start from clear motivations and consequences instead of pure shock value. Use the tragic backstory generator features by selecting a tragic tone and focusing on one or two defining losses or failures. The AI will suggest events, wounds and relationships that feel grounded, so your character stays sympathetic instead of edgy just for its own sake."
+                }
+            ]
+        },
+        "cta_section": {
+            "name": "cta",
+            "title": "Start Creating Characters",
+            "description": "Build memorable characters with rich backstories in minutes.",
+            "buttons": [
+                {
+                    "title": "Generate Backstory",
+                    "url": "/backstory-generator",
+                    "target": "",
+                    "icon": "GoArrowUpRight"
+                }
+            ]
+        }
+    }
+}

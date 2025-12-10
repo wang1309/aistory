@@ -1,0 +1,204 @@
+{
+    "backstory_generate": {
+        "metadata": {
+            "title": "無料バックストーリージェネレーター - AIキャラクター背景作成ツール",
+            "description": "無料AIバックストーリージェネレーター。ひと言のキャラクター案から構造化された背景を生成し、設定やプロットに行き詰まった小説家・TRPG GM・クリエイターをサポートします。",
+            "keywords": "backstory generator, character background, RPG character, DND backstory, novel character, VTuber persona, AI character creator"
+        },
+        "ui": {
+            "title": "無料バックストーリージェネレーター",
+            "subtitle": "AIで豊かで構造化されたキャラクターバックストーリーを生成します。",
+            "breadcrumb_home": "ホーム",
+            "breadcrumb_current": "バックストーリージェネレーター",
+            "character_concept": "キャラクターコンセプト",
+            "random_button": "ランダム",
+            "ai_model": "AIモデル",
+            "output_language": "出力言語",
+            "worldview": "世界設定",
+            "role_type": "キャラクターの役割",
+            "output_length": "出力ボリューム",
+            "advanced_options": "詳細オプション",
+            "tone": "物語のトーン",
+            "generate_button": "バックストーリーを生成",
+            "generating": "生成中..."
+        },
+        "placeholders": {
+            "character_concept": "キャラクターのコンセプトを説明してください...（例：『運命的な出会いをきっかけに贖罪を求める暗殺者』）",
+            "select_ai_model": "AIモデルを選択"
+        },
+        "ai_models": {
+            "fast": "高速",
+            "fast_description": "高速生成 (~20秒)",
+            "standard": "スタンダード",
+            "standard_description": "バランスの取れた品質 (~40秒)",
+            "creative": "クリエイティブ",
+            "creative_description": "最も詳細 (~60秒)"
+        },
+        "worldview": {
+            "fantasy": "ファンタジー",
+            "scifi": "SF",
+            "urban": "現代都市",
+            "xianxia": "仙侠",
+            "historical": "歴史・架空史",
+            "campus": "学園",
+            "dnd": "DND/TRPG",
+            "cyberpunk": "サイバーパンク"
+        },
+        "role_type": {
+            "protagonist": "主人公",
+            "supporting": "サブキャラ",
+            "antagonist": "敵役",
+            "npc": "NPC",
+            "vtuber": "VTuber"
+        },
+        "length": {
+            "short": "短め",
+            "short_description": "約200〜400語",
+            "medium": "標準",
+            "medium_description": "約400〜800語",
+            "detailed": "詳細",
+            "detailed_description": "約800〜1500語"
+        },
+        "tone": {
+            "dark": "ダーク",
+            "inspirational": "感動的",
+            "comedic": "コメディ",
+            "tragic": "悲劇的",
+            "epic": "壮大"
+        },
+        "output": {
+            "title": "生成されたバックストーリー",
+            "words": "語",
+            "copy": "コピー",
+            "generating_message": "AIがキャラクターのバックストーリーを作成しています...",
+            "empty_message": "ここにキャラクターのバックストーリーが表示されます。コンセプトを入力して「生成」をクリックしてください。"
+        },
+        "validation": {
+            "enter_concept": "キャラクターコンセプトを入力してください",
+            "select_ai_model": "AIモデルを選択してください"
+        },
+        "success": {
+            "random_prompt_selected": "ランダムなコンセプトを選択しました！",
+            "backstory_generated": "バックストーリーを生成しました！",
+            "backstory_copied": "バックストーリーをコピーしました！"
+        },
+        "errors": {
+            "generation_failed": "生成に失敗しました。もう一度お試しください。"
+        },
+        "random_prompts": [
+            "A rogue assassin seeking redemption after a fateful encounter",
+            "A fallen noble who lost everything but gained a mysterious power",
+            "A young mage with forbidden knowledge and a tragic past",
+            "A war veteran haunted by the ghosts of fallen comrades",
+            "A street urchin who discovers they are the lost heir to a kingdom",
+            "A cursed knight bound to protect a secret they don't understand",
+            "A traveling merchant with connections to every underworld organization",
+            "An amnesiac wanderer with skills that suggest a dark past"
+        ],
+        "feature_intro": {
+            "name": "introduce",
+            "title": "バックストーリージェネレーターとは？",
+            "label": "概要",
+            "description": "Backstory Generator は、ひと言のキャラクター案から豊かで構造化されたバックストーリーを生成する AI ツールです。出自、転機、人間関係、目標、ストーリーフックなどのセクションに分けて整理することで、物語やキャンペーンにすぐ組み込める形でキャラクターの過去を提示します。\n\n空白のページを前に悩むのではなく、ジェネレーターを創作パートナーとして使ってください。1〜2文でキャラクターを説明し、世界観・役割・トーン・文量・言語を選べば、AI が一貫した動機と設定を保ったまま完全なバックストーリー案を提案してくれます。小説、TRPG、VTuber ロア、チャットボットの人格づくりなどにすぐ活用できます。",
+            "image": {
+                "src": "/imgs/backstory/what-is-backstory1.avif"
+            }
+        },
+        "feature1_section": {
+            "name": "feature1",
+            "title": "AI バックストーリージェネレーターを使う理由",
+            "label": "メリット",
+            "description": "この無料バックストーリージェネレーターが、キャラクターの深みと一貫性を保ちながらどのように作業時間を短縮してくれるかをご紹介します。",
+            "items": [
+                {
+                    "title": "構造化された出力",
+                    "description": "出自、転機、人間関係、目標、ストーリーフックなどのセクションに分けて出力するので、キャラクターの一生を一目で把握できます。",
+                    "icon": "RiListCheck2",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory1.avif"
+                    }
+                },
+                {
+                    "title": "幅広いシーンに対応",
+                    "description": "DND キャンペーン、小説、VTuber、チャットボットなど、用途に合わせて出力スタイルを調整できるため、ひとつのツールで多くのキャラクターづくりをまかなえます。",
+                    "icon": "RiGamepadLine",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory2.avif"
+                    }
+                },
+                {
+                    "title": "インスピレーションの即時補給",
+                    "description": "行き詰まったときでも、ジェネレーターがすぐに新しいキャラクター案や切り口を提示してくれるので、それをもとに編集・アレンジ・拡張できます。",
+                    "icon": "RiLightbulbFlashLine",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory3.avif"
+                    }
+                }
+            ]
+        },
+        "feature_section": {
+            "name": "applications",
+            "title": "AI バックストーリージェネレーターの活用シーン",
+            "label": "活用例",
+            "description": "このバックストーリージェネレーターは、さまざまな分野のクリエイター向けに設計されています。",
+            "items": [
+                {
+                    "title": "RPG プレイヤー & GM",
+                    "description": "DND や Pathfinder などの TRPG 用に、印象的な PC・NPC・ヴィランを素早く作成できます。物語のフックも最初から盛り込まれます。",
+                    "icon": "RiDiceLine"
+                },
+                {
+                    "title": "小説家",
+                    "description": "キャラクターの過去設定をジェネレーターに任せることで、あなたはシーンやプロットに集中できます。動機や傷、成長アークの一貫性を下書きから完成稿まで保てます。",
+                    "icon": "RiBookLine"
+                },
+                {
+                    "title": "VTuber・バーチャルクリエイター",
+                    "description": "VTuber やバーチャルキャラクターの豊かなバックストーリーを設計し、配信や動画、SNS を通じて少しずつファンに明かしていくことができます。",
+                    "icon": "RiUserHeartLine"
+                }
+            ]
+        },
+        "faq_section": {
+            "name": "faq",
+            "label": "FAQ",
+            "title": "よくある質問",
+            "description": "バックストーリージェネレーターおよび AI バックストーリー生成に関するよくある質問です。",
+            "items": [
+                {
+                    "title": "良いキャラクターバックストーリーとは？",
+                    "description": "良いバックストーリーには、明確な出自と形成的な出来事、論理的な動機、内面的な葛藤や欠点、有意義な人間関係、そして今後の物語を動かす未解決の謎が含まれます。本ツールは、こうした要素を強調し、あなたの世界観に合わせて微調整しやすくするために設計されています。"
+                },
+                {
+                    "title": "生成したバックストーリーを商用利用できますか？",
+                    "description": "はい。この無料バックストーリージェネレーターで生成したコンテンツはすべて、あなたの小説、ゲーム、VTuber チャンネルなど、個人・商用プロジェクトに自由に利用できます。"
+                },
+                {
+                    "title": "既存の物語にバックストーリーをどう組み込めばよいですか？",
+                    "description": "構造化された出力により、キャラクターの目標、秘密、人間関係、ストーリーフックといった要素を簡単に取り出し、既存の物語やキャンペーンに織り込むことができます。世界観の変化に合わせて、必要に応じて再生成することも可能です。"
+                },
+                {
+                    "title": "このバックストーリージェネレーターは、ファンタジーやダーク寄りのキャラクターにも向いていますか？",
+                    "description": "はい。いわゆるファンタジー向けのバックストーリー生成や、悲劇的なバックストーリーを作りたい場合にも対応しています。世界観で「ファンタジー」や「仙侠」を選び、キャラクターの役割を指定しつつ、トーンを「悲劇的」や「壮大」など少し暗めに設定すれば、魔法体系や王国設定、長期的な成長アークに馴染むロア付きのバックストーリーを AI が提案してくれます。"
+                },
+                {
+                    "title": "悲劇的なバックストーリーを、やり過ぎにならないように書くには？",
+                    "description": "まずはショック演出よりも、動機と結果をはっきりさせることから始めましょう。ツールの悲劇寄りな生成機能を使うときは、トーンを悲劇寄りに設定し、1〜2 個の決定的な喪失や失敗にフォーカスしてください。AI が現実味のある出来事・傷・人間関係を補ってくれるので、キャラクターは過度に中二的になるのではなく、共感できる悲劇の主人公として描けます。"
+                }
+            ]
+        },
+        "cta_section": {
+            "name": "cta",
+            "title": "キャラクター作りを始めましょう",
+            "description": "数分で豊かなバックストーリーを持つ印象的なキャラクターを作成できます。",
+            "buttons": [
+                {
+                    "title": "バックストーリーを生成",
+                    "url": "/backstory-generator",
+                    "target": "",
+                    "icon": "GoArrowUpRight"
+                }
+            ]
+        }
+    }
+}

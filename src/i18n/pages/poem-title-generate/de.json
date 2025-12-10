@@ -8,7 +8,7 @@
             "title": "KI GEDICHTTITEL-GENERATOR",
             "subtitle": "Generieren Sie den perfekten Titel für Ihr Gedicht mit KI-Kreativität",
             "meta_title": "Kostenloser KI Gedichttitel-Generator | AI Story Generator",
-            "meta_description": "Generieren Sie kreative, eindrucksvolle Gedichttitel mit KI. Erstellen Sie literarische und virale Titel für Ihre Poesie in Sekunden. Kostenlos und einfach zu bedienen."
+            "meta_description": "Kostenloser KI Gedichttitel-Generator, der in Sekunden starke, klickstarke Titel für Gedichte, Social-Media-Posts und Einsendungen erstellt – perfekt für Dichter und Verlage."
         },
         "form": {
             "poem_content": {
@@ -22,9 +22,19 @@
                 "label": "Titelsprache",
                 "placeholder": "Sprache wählen",
                 "options": {
-                    "zh": "Chinesisch",
                     "en": "Englisch",
-                    "bilingual": "Zweisprachig"
+                    "zh": "Chinesisch",
+                    "ja": "Japanisch",
+                    "ko": "Koreanisch",
+                    "es": "Spanisch",
+                    "fr": "Französisch",
+                    "de": "Deutsch",
+                    "pt": "Portugiesisch",
+                    "ru": "Russisch",
+                    "ar": "Arabisch",
+                    "hi": "Hindi",
+                    "it": "Italienisch",
+                    "bilingual": "Chinesisch-Englisch zweisprachig"
                 }
             },
             "style": {
@@ -70,12 +80,20 @@
                     "gift_card": "Geschenkkarte"
                 }
             },
+            "random_button": "Zufälliges Beispiel",
             "examples": {
                 "title": "Brauchen Sie Inspiration?",
                 "prompts": [
                     "Ein Gedicht über den Mond und Sehnsucht nach der Heimat, klassische Bilder mit moderner Einsamkeit verbindend",
                     "Liebesgedicht über den bittersüßen Abschied am Bahnhof",
-                    "Naturgedicht über den ersten Schnee des Winters und Kindheitserinnerungen"
+                    "Naturgedicht über den ersten Schnee des Winters und Kindheitserinnerungen",
+                    "Ein Gedicht über das Erwachsenwerden und das langsame Auseinanderdriften von Kindheitsfreunden in einer sich verändernden Stadt",
+                    "Ein Gedicht über Schlaflosigkeit um drei Uhr morgens, während man alte Chatverläufe auf dem Handy durchblättert",
+                    "Ein Meeresgedicht, in dem Wellen gemeinsam geschriebene Namen immer wieder aus dem Sand löschen",
+                    "Ein Gedicht, das die vier Jahreszeiten als Gäste personifiziert, die dieselbe Kleinstadt besuchen",
+                    "Ein Gedicht über eine streunende Katze, die nur in regnerischen Nächten auftaucht",
+                    "Ein Rooftop-Gedicht, in dem zwei Menschen unter Neonlichtern Geheimnisse teilen",
+                    "Ein Gedicht über den Verlust eines geliebten Menschen und das Lernen, mit dem Echo seiner Gegenwart zu leben"
                 ]
             }
         },
@@ -112,23 +130,24 @@
         "name": "Einführung",
         "title": "Was ist der KI Gedichttitel-Generator?",
         "label": "Einführung",
-        "description": "Ein KI-Gedichttitel-Generator ist ein intelligentes Tool, das fortschrittliche Sprachmodelle verwendet, um eindrucksvolle, unvergessliche Titel für Ihre Poesie zu erstellen. Ob Sie ein romantisches Sonett, einen dunklen freien Vers oder ein klassisches Haiku geschrieben haben – dieses Tool analysiert Bildsprache, Stimmung und Themen Ihres Gedichts.",
+        "description": "Ein KI-Gedichttitel-Generator ist ein intelligentes Tool, das fortschrittliche Sprachmodelle verwendet, um eindrucksvolle, unvergessliche Titel für Ihre Poesie zu erstellen. Er liest die Bildsprache, Stimmung und Themen Ihres Gedichts aus und schlägt Titel vor, die natürlich und menschlich klingen – nicht wie zufällig zusammengesetzte Wörter.\n\nEgal, ob Sie ein romantisches Sonett, einen dunklen freien Vers oder ein klassisches Haiku geschrieben haben: Dieses Tool liefert Ihnen in wenigen Sekunden mehrere Titelvorschläge, die sich sowohl für Printpublikationen als auch für Online-Plattformen eignen. Wenn Ihnen gar kein Titel einfällt, hilft es Ihnen, neue kreative Richtungen zu entdecken, anstatt vor einem leeren Feld zu sitzen.\n\nDer Generator erstellt zwei Arten von Titeln: literarische Titel, die sich perfekt für Zeitschriften und Anthologien eignen, und Plattform-Titel, die für Social-Media-Reichweite optimiert sind. Jeder Vorschlag enthält eine kurze Erklärung, warum der Titel zu Ihrem Gedicht passt.",
         "image": {
-            "src": "/imgs/poem-title/poem_title_what.png"
+            "src": "/imgs/poem-title/what-is-poem-title1.avif",
+            "alt": "Was ist der KI Gedichttitel-Generator?"
         }
     },
     "feature_benefits": {
         "name": "Vorteile",
         "title": "Warum unseren Gedichttitel-Generator wählen?",
         "label": "Vorteile",
-        "description": "Unser KI-gestützter Gedichttitel-Generator bietet einzigartige Vorteile für Dichter aller Niveaus.",
+        "description": "Unser KI-gestützter Gedichttitel-Generator bietet einzigartige Vorteile für Dichter aller Niveaus. Statt stundenlang über einer einzigen Zeile zu brüten, lassen Sie das Tool verschiedene Stile, Stimmungen und Längen für Sie erkunden. Es fungiert gleichzeitig als Ideen-Generator: Sie sehen mehrere Optionen nebeneinander, verfeinern Ihre Favoriten und wählen am Ende den Titel, der am besten zu Ihrem Text und Ihrem Publikum passt.",
         "items": [
             {
                 "icon": "RiLightbulbLine",
                 "title": "Doppelzweck-Titel",
                 "description": "Generieren Sie sowohl literarische Titel für seriöse Publikationen als auch virale Titel für Social Media.",
                 "image": {
-                    "src": "/imgs/poem-title/poem_title_why1.png",
+                    "src": "/imgs/poem-title/why-use-poem-generator1.avif",
                     "alt": "Doppelzweck-Titel"
                 }
             },
@@ -137,7 +156,7 @@
                 "title": "Stil- & Stimmungsanpassung",
                 "description": "Wählen Sie aus klassischen, modernen, minimalistischen oder romantischen Stilen. Die KI berücksichtigt alle Ihre Präferenzen für den perfekten Titel.",
                 "image": {
-                    "src": "/imgs/poem-title/poem_title_why2.png",
+                    "src": "/imgs/poem-title/why-use-poem-generator2.avif",
                     "alt": "Stil- & Stimmungsanpassung"
                 }
             },
@@ -146,9 +165,32 @@
                 "title": "Erklärung inklusive",
                 "description": "Jeder generierte Titel enthält eine kurze Erklärung, wie er mit den Bildern und Emotionen Ihres Gedichts verbunden ist.",
                 "image": {
-                    "src": "/imgs/poem-title/poem_title_why3.png",
+                    "src": "/imgs/poem-title/why-use-poem-generator3.avif",
                     "alt": "Erklärung inklusive"
                 }
+            }
+        ]
+    },
+    "feature_usecases": {
+        "name": "applications",
+        "title": "Einsatzmöglichkeiten des KI-Gedichttitel-Generators",
+        "label": "Anwendungsfälle",
+        "description": "",
+        "items": [
+            {
+                "icon": "RiQuillPenLine",
+                "title": "Titel für Gedichtbände und Einsendungen",
+                "description": "Nutzen Sie den KI-Gedichttitel-Generator, wenn Sie starke, literarische Titel für Gedichtsammlungen, Magazine oder Wettbewerbe benötigen. Das Tool schlägt in Sekunden mehrere Varianten für dasselbe Gedicht vor, sodass Sie Versionen wählen können, die zu unterschiedlichen Zeitschriften, Anthologien oder Chapbooks passen."
+            },
+            {
+                "icon": "RiMegaphoneLine",
+                "title": "Aufmerksamkeitsstarke Titel für Social Media und Content",
+                "description": "Lyriker, Creator und Marketer verwandeln mit dem Generator grobe Ideen in aufmerksamkeitsstarke Gedichttitel für Instagram, TikTok, Newsletter oder Blogs. Die Vorschläge sind kürzer, mobilfreundlich und darauf ausgelegt, im Feed ins Auge zu fallen und Klicks sowie Shares zu fördern."
+            },
+            {
+                "icon": "RiLineChartLine",
+                "title": "Unterricht, Workshops und kreatives Training",
+                "description": "Lehrkräfte und Schreibcoaches setzen den Gedichttitel-Generator im Unterricht, in Workshops oder für tägliche Schreibübungen ein. Da in wenigen Sekunden viele Titelmöglichkeiten entstehen, können sich Teilnehmende weniger mit dem Namen aufhalten und mehr mit Bildern, Emotionen und neuen Erzählperspektiven experimentieren."
             }
         ]
     },

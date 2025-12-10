@@ -21,9 +21,7 @@ export interface HeroPoemTitle {
             label: string;
             placeholder: string;
             options: {
-                zh: string;
-                en: string;
-                bilingual: string;
+                [key: string]: string;
             };
         };
         style: {
@@ -69,6 +67,7 @@ export interface HeroPoemTitle {
                 gift_card: string;
             };
         };
+        random_button?: string;
         examples?: {
             title: string;
             prompts: string[];

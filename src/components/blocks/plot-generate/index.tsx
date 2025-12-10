@@ -593,7 +593,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   // ========== RENDER ==========
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-blue-500/30">
+    <div id="plot_generator" className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-blue-500/30">
       {/* Premium Background Layer - Deep Space Variant */}
       <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
       

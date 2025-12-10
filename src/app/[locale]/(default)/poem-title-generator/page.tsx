@@ -1,6 +1,7 @@
 import HeroPoemTitle from "@/components/blocks/hero-poem-title";
 import Feature1 from "@/components/blocks/feature1";
 import Feature2 from "@/components/blocks/feature2";
+import Feature from "@/components/blocks/feature";
 import FAQ from "@/components/blocks/faq";
 import CTA from "@/components/blocks/cta";
 import { setRequestLocale } from "next-intl/server";
@@ -50,6 +51,7 @@ export default async function PoemTitleGeneratorPage({
     const section = messages.default.hero_poem_title;
     const featureIntro = messages.default.feature_intro;
     const featureBenefits = messages.default.feature_benefits;
+    const featureUsecases = messages.default.feature_usecases;
     const faq = messages.default.faq;
     const cta = messages.default.cta;
 
@@ -87,6 +89,7 @@ export default async function PoemTitleGeneratorPage({
             <HeroPoemTitle section={section} />
             <Feature1 section={featureIntro} />
             <Feature2 section={featureBenefits} />
+            <Feature section={featureUsecases} />
             <FAQ section={faq} />
             <ModuleToolsSection
                 module="ai-write"

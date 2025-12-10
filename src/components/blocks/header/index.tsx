@@ -100,13 +100,8 @@ export default function Header({ header }: { header: HeaderType }) {
                                           className="size-5 shrink-0"
                                         />
                                       )}
-                                      <div>
-                                        <div className="text-sm font-semibold">
-                                          {iitem.title}
-                                        </div>
-                                        <p className="text-sm leading-snug text-muted-foreground">
-                                          {iitem.description}
-                                        </p>
+                                      <div className="text-sm font-semibold">
+                                        {iitem.title}
                                       </div>
                                     </Link>
                                   </NavigationMenuLink>
@@ -260,13 +255,8 @@ export default function Header({ header }: { header: HeaderType }) {
                                       className="size-4 shrink-0"
                                     />
                                   )}
-                                  <div>
-                                    <div className="text-sm font-semibold">
-                                      {iitem.title}
-                                    </div>
-                                    <p className="text-sm leading-snug text-muted-foreground">
-                                      {iitem.description}
-                                    </p>
+                                  <div className="text-sm font-semibold">
+                                    {iitem.title}
                                   </div>
                                 </Link>
                               ))}

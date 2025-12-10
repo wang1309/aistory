@@ -1,0 +1,326 @@
+{
+  "metadata": {
+    "title": "Free Story Prompt Generator - AI Story Generator",
+    "description": "Free AI story prompt generator. Instantly create high-quality prompts for any genre and tone, beat writer's block, and spark new story ideas.",
+    "keywords": "story prompt generator,AI writing prompts,story ideas,writing inspiration,AI story generator,creative writing tool"
+  },
+  "template": "story-prompt-generate",
+  "theme": "light",
+  "header": {
+    "brand": {
+      "title": "Story Prompt Generator",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Story Prompt Generator"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "AI Write",
+          "icon": "RiQuillPenLine",
+          "children": [
+            {
+              "title": "Story Generator",
+              "description": "Create engaging stories with AI",
+              "url": "/",
+              "icon": "RiBookOpenLine",
+              "target": "_self"
+            },
+            {
+              "title": "Story Prompt Generator",
+              "description": "Generate creative story prompts and ideas",
+              "url": "/story-prompt-generator",
+              "icon": "RiLightbulbLine",
+              "target": "_self"
+            },
+            {
+              "title": "Fantasy Story Generator",
+              "description": "Create immersive fantasy stories with AI",
+              "url": "/fantasy-generator",
+              "icon": "RiSparkling2Line",
+              "target": "_self"
+            },
+            {
+              "title": "Fanfic Generator",
+              "description": "Create fanfiction with AI",
+              "url": "/fanfic-generator",
+              "icon": "RiBookMarkedLine",
+              "target": "_self"
+            },
+            {
+              "title": "Plot Generator",
+              "description": "Generate detailed story outlines",
+              "url": "/plot-generator",
+              "icon": "RiMapLine",
+              "target": "_self"
+            },
+            {
+              "title": "Backstory Generator",
+              "description": "Create rich character backstories",
+              "url": "/backstory-generator",
+              "icon": "RiUser3Line",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "buttons": [],
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "story_prompt_generate": {
+    "header": {
+      "title": "Story Prompt Generator",
+      "subtitle": "Generate creative story prompts instantly. Perfect for writers seeking inspiration or AI-ready prompts."
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What is an AI Story Prompt Generator?",
+      "description": "An AI story prompt generator instantly turns your genres, tones, and constraints into ready-to-write prompts so you can start drafting without staring at a blank page. It works as both a short story prompt generator for quick ideas and an ai that generates full story prompt for bigger projects.",
+      "image": {
+            "src": "/imgs/story-prompt/what-is-story-prompt1.avif",
+            "alt": "What is an AI Story Prompt Generator?"
+      },
+      "items": [
+        {
+          "title": "AI-Ready Prompts",
+          "description": "Generate structured prompts that drop straight into any story generator or writing tool without extra tweaking.",
+          "icon": "sparkles"
+        },
+        {
+          "title": "Idea Rescue",
+          "description": "Beat writer’s block in seconds with fresh angles for any genre, from fantasy quests to cozy mysteries.",
+          "icon": "lightbulb"
+        },
+        {
+          "title": "One Click, Multiple Variations",
+          "description": "Get batches of varied prompts so you can pick, remix, and refine the one that fits your story vision.",
+          "icon": "shuffle"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why use our AI Story Prompt Generator",
+      "description": "Designed for speed, flexibility, and creativity, so you can move from idea to draft faster.",
+      "items": [
+        {
+          "title": "Genre-Aware Suggestions",
+          "description": "Tone, pacing, and tropes adapt to the genre you pick—fantasy, sci-fi, romance, thriller, and more.",
+          "icon": "book-open",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt1.avif",
+            "alt": "Genre-Aware Suggestions"
+          }
+        },
+        {
+          "title": "Constraint-Friendly",
+          "description": "Add goals, conflicts, or special constraints (POV, scenes, length) and get prompts that respect them.",
+          "icon": "settings",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt2.avif",
+            "alt": "Constraint-Friendly"
+          }
+        },
+        {
+          "title": "Production-Friendly",
+          "description": "Outputs are concise and clear, ready for screenwriting, novels, game quests, or AI chat handoff.",
+          "icon": "cpu",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt3.avif",
+            "alt": "Production-Friendly"
+          }
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "applications",
+      "title": "Applications of AI Story Prompt Generator",
+      "description": "Great for any storyteller who needs fast, structured inspiration, whether you open it as a short story prompt generator or as a starting point for longer arcs.",
+      "items": [
+        {
+          "title": "Fiction & Webnovel Writers",
+          "description": "Outline arcs, scenes, or chapters with prompts that match your tone and genre.",
+          "icon": "pen-tool"
+        },
+        {
+          "title": "Screenwriters & TV Rooms",
+          "description": "Brainstorm B-plots, cold opens, and character beats that fit your show’s pacing.",
+          "icon": "clapperboard"
+        },
+        {
+          "title": "RPG / Game Designers",
+          "description": "Create quest hooks, NPC motivations, and branching scenarios on demand.",
+          "icon": "gamepad"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Frequently Asked Questions",
+      "description": "Answers about our AI story prompt generator, usage, and outputs.",
+      "items": [
+        {
+          "title": "Can I use these prompts commercially?",
+          "description": "Yes. The prompts you generate are yours to use in novels, scripts, games, or any creative work."
+        },
+        {
+          "title": "Do prompts respect my constraints?",
+          "description": "We factor in your genres, tones, and constraints (goal, conflict, POV, length) when generating prompts."
+        },
+        {
+          "title": "Can I send prompts to other AI tools?",
+          "description": "Absolutely. Prompts are concise and ready to paste into any AI story writer or chat model, and you can treat this tool as an ai that generates full story prompt that you then expand elsewhere."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Start Your Next Story Now",
+      "description": "Generate structured, AI-ready prompts in seconds. No signup required.",
+      "buttons": [
+        {
+          "title": "Generate Prompts",
+          "url": "/story-prompt-generator",
+          "target": "",
+          "icon": "GoRocket"
+        },
+        {
+          "title": "Try Story Generator",
+          "url": "/",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    },
+    "ui": {
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Story Prompt Generator",
+      "genre_label": "Genre",
+      "genre_placeholder": "Select genre",
+      "length_label": "Story Length",
+      "length_placeholder": "Select length",
+      "tone_label": "Tone & Mood",
+      "tone_placeholder": "Select tone",
+      "language_label": "Output Language",
+      "language_placeholder": "Select language",
+      "advanced_options": "Advanced Options",
+      "worldview_label": "World Setting",
+      "protagonist_label": "Protagonist Traits",
+      "protagonist_placeholder": "e.g., A cynical detective with a hidden past",
+      "goal_label": "Story Goal",
+      "goal_placeholder": "e.g., Uncover a conspiracy that threatens the kingdom",
+      "conflict_label": "Core Conflict",
+      "conflict_placeholder": "Select conflict type",
+      "constraints_label": "Special Constraints",
+      "constraints_placeholder": "e.g., Must start in a rainy night, first-person POV",
+      "audience_label": "Target Audience",
+      "audience_placeholder": "Select audience",
+      "generate_button": "Generate Prompts",
+      "generating": "Generating...",
+      "refresh_button": "Refresh",
+      "copy_button": "Copy",
+      "use_prompt_button": "Use This Prompt",
+      "favorite_button": "Save",
+      "clear_button": "Clear All",
+      "output_title": "Generated Prompts",
+      "output_empty": "Your creative prompts will appear here. Select your preferences and click Generate!",
+      "prompt_count": "prompts"
+    },
+    "genres": {
+      "fantasy": "Fantasy",
+      "scifi": "Sci-Fi",
+      "romance": "Romance",
+      "thriller": "Thriller",
+      "mystery": "Mystery",
+      "horror": "Horror",
+      "adventure": "Adventure",
+      "historical": "Historical",
+      "urban": "Urban/Contemporary",
+      "comedy": "Comedy",
+      "drama": "Drama",
+      "xianxia": "Xianxia/Cultivation"
+    },
+    "lengths": {
+      "short": "Short",
+      "short_desc": "300-800 words",
+      "medium": "Medium",
+      "medium_desc": "800-2000 words",
+      "long": "Long",
+      "long_desc": "2000+ words"
+    },
+    "tones": {
+      "light": "Light & Fun",
+      "healing": "Healing & Warm",
+      "dark": "Dark & Gritty",
+      "passionate": "Passionate & Intense",
+      "realistic": "Realistic & Grounded",
+      "suspenseful": "Suspenseful",
+      "romantic": "Romantic",
+      "epic": "Epic & Grand"
+    },
+    "worldviews": {
+      "realistic": "Realistic/Modern",
+      "near_future": "Near Future",
+      "high_fantasy": "High Fantasy",
+      "cultivation": "Cultivation/Xianxia",
+      "cyberpunk": "Cyberpunk",
+      "post_apocalyptic": "Post-Apocalyptic",
+      "steampunk": "Steampunk",
+      "mythology": "Mythology"
+    },
+    "conflicts": {
+      "person_vs_person": "Person vs Person",
+      "person_vs_society": "Person vs Society",
+      "person_vs_nature": "Person vs Nature",
+      "person_vs_self": "Person vs Self",
+      "person_vs_fate": "Person vs Fate",
+      "multi_conflict": "Multiple Conflicts"
+    },
+    "audiences": {
+      "children": "Children (5-12)",
+      "teen": "Teen (13-17)",
+      "young_adult": "Young Adult (18-25)",
+      "adult": "Adult (26+)",
+      "mature": "Mature",
+      "all_ages": "All Ages"
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick generation, good quality",
+      "standard": "Standard",
+      "standard_description": "Balanced speed and creativity",
+      "creative": "Creative",
+      "creative_description": "Most creative, takes longer"
+    },
+    "toasts": {
+      "copied": "Prompt copied to clipboard!",
+      "generation_failed": "Generation failed. Please try again.",
+      "no_genre": "Please select at least one genre.",
+      "prompt_generated": "Prompts generated successfully!"
+    },
+    "sample_ideas": [
+      "A time-traveling chef who accidentally changes history through food",
+      "Two rival detectives forced to work together on a supernatural case",
+      "A retired superhero running a support group for other ex-heroes",
+      "An AI that develops emotions and questions its purpose",
+      "A librarian who discovers books can transport readers into their stories"
+    ]
+  },
+  "footer": {
+    "brand": {
+      "title": "Story Prompt Generator",
+      "description": "Generate creative story prompts with AI"
+    },
+    "copyright": "© 2025 AIStory. All rights reserved.",
+    "social": []
+  }
+}

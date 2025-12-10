@@ -623,7 +623,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   // ========== RENDER ==========
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-pink-500/30">
+    <div id="fanfic_generator" className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-pink-500/30">
     {/* Premium Background Layer - Teal/Pink Variant */}
     <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
     

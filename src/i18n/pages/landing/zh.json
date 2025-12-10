@@ -17,6 +17,13 @@
           "icon": "RiQuillPenLine",
           "children": [
             {
+              "title": "故事灵感生成器",
+              "description": "一键生成创意故事提示词，帮助突破写作瓶颈",
+              "url": "/story-prompt-generator",
+              "icon": "RiLightbulbLine",
+              "target": "_self"
+            },
+            {
               "title": "奇幻故事生成器",
               "description": "用 AI 创作沉浸式奇幻世界，支持高魔、西幻、玄幻、仙侠等多种风格",
               "url": "/fantasy-generator",
@@ -56,6 +63,13 @@
               "description": "为诗歌生成文学向或平台向标题，支持多语言输出",
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
+              "target": "_self"
+            },
+            {
+              "title": "角色背景生成器",
+              "description": "为RPG、小说、虚拟人生成结构化的角色背景故事",
+              "url": "/backstory-generator",
+              "icon": "RiUser3Line",
               "target": "_self"
             }
           ]
@@ -739,6 +753,11 @@
               "target": "_self"
             },
             {
+              "title": "故事灵感生成器",
+              "url": "/story-prompt-generator",
+              "target": "_self"
+            },
+            {
               "title": "奇幻故事生成器",
               "url": "/fantasy-generator",
               "target": "_self"
@@ -766,6 +785,11 @@
             {
               "title": "诗歌标题生成器",
               "url": "/poem-title-generator",
+              "target": "_self"
+            },
+            {
+              "title": "角色背景生成器",
+              "url": "/backstory-generator",
               "target": "_self"
             }
           ]

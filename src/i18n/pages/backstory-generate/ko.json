@@ -1,0 +1,204 @@
+{
+    "backstory_generate": {
+        "metadata": {
+            "title": "무료 백스토리 생성기 - AI 캐릭터 배경 생성 도구",
+            "description": "무료 AI 백스토리 생성기로 한 줄짜리 캐릭터 아이디어를 구조화된 백스토리로 확장해, 설정과 플롯에서 막힌 소설가, RPG 마스터, 크리에이터를 도와보세요.",
+            "keywords": "backstory generator, character background, RPG character, DND backstory, novel character, VTuber persona, AI character creator"
+        },
+        "ui": {
+            "title": "무료 백스토리 생성기",
+            "subtitle": "AI로 풍부하고 구조적인 캐릭터 백스토리를 만들어 보세요.",
+            "breadcrumb_home": "홈",
+            "breadcrumb_current": "백스토리 생성기",
+            "character_concept": "캐릭터 컨셉",
+            "random_button": "랜덤",
+            "ai_model": "AI 모델",
+            "output_language": "출력 언어",
+            "worldview": "세계관",
+            "role_type": "캐릭터 역할",
+            "output_length": "출력 길이",
+            "advanced_options": "고급 옵션",
+            "tone": "스토리 톤",
+            "generate_button": "백스토리 생성",
+            "generating": "생성 중..."
+        },
+        "placeholders": {
+            "character_concept": "캐릭터 컨셉을 설명하세요... (예: '운명적인 만남 이후 속죄를 찾는 암살자')",
+            "select_ai_model": "AI 모델을 선택하세요"
+        },
+        "ai_models": {
+            "fast": "빠름",
+            "fast_description": "빠른 생성 (~20초)",
+            "standard": "표준",
+            "standard_description": "균형 잡힌 품질 (~40초)",
+            "creative": "창의적",
+            "creative_description": "가장 자세함 (~60초)"
+        },
+        "worldview": {
+            "fantasy": "판타지",
+            "scifi": "SF",
+            "urban": "현대 도시",
+            "xianxia": "선협",
+            "historical": "역사물",
+            "campus": "캠퍼스",
+            "dnd": "DND/TRPG",
+            "cyberpunk": "사이버펑크"
+        },
+        "role_type": {
+            "protagonist": "주인공",
+            "supporting": "조연",
+            "antagonist": "악역",
+            "npc": "NPC",
+            "vtuber": "VTuber"
+        },
+        "length": {
+            "short": "짧게",
+            "short_description": "~200-400자",
+            "medium": "보통",
+            "medium_description": "~400-800자",
+            "detailed": "자세히",
+            "detailed_description": "~800-1500자"
+        },
+        "tone": {
+            "dark": "다크",
+            "inspirational": "감동적인",
+            "comedic": "코믹",
+            "tragic": "비극적인",
+            "epic": "서사적인"
+        },
+        "output": {
+            "title": "생성된 백스토리",
+            "words": "자",
+            "copy": "복사",
+            "generating_message": "AI가 캐릭터의 백스토리를 작성하고 있습니다...",
+            "empty_message": "여기에 캐릭터 백스토리가 표시됩니다. 컨셉을 입력하고 '생성' 버튼을 눌러 시작하세요."
+        },
+        "validation": {
+            "enter_concept": "캐릭터 컨셉을 입력하세요",
+            "select_ai_model": "AI 모델을 선택하세요"
+        },
+        "success": {
+            "random_prompt_selected": "랜덤 컨셉이 선택되었습니다!",
+            "backstory_generated": "백스토리가 성공적으로 생성되었습니다!",
+            "backstory_copied": "백스토리가 클립보드에 복사되었습니다!"
+        },
+        "errors": {
+            "generation_failed": "생성에 실패했습니다. 다시 시도해 주세요."
+        },
+        "random_prompts": [
+            "A rogue assassin seeking redemption after a fateful encounter",
+            "A fallen noble who lost everything but gained a mysterious power",
+            "A young mage with forbidden knowledge and a tragic past",
+            "A war veteran haunted by the ghosts of fallen comrades",
+            "A street urchin who discovers they are the lost heir to a kingdom",
+            "A cursed knight bound to protect a secret they don't understand",
+            "A traveling merchant with connections to every underworld organization",
+            "An amnesiac wanderer with skills that suggest a dark past"
+        ],
+        "feature_intro": {
+            "name": "introduce",
+            "title": "백스토리 생성기란?",
+            "label": "소개",
+            "description": "Backstory Generator는 한 줄짜리 캐릭터 아이디어를 풍부하고 구조적인 백스토리로 확장해 주는 AI 도구입니다. 출신, 전환점, 인간관계, 목표, 스토리 훅 등으로 내용을 나누어 정리해 주어, 곧바로 소설이나 캠페인에 넣어 사용할 수 있습니다.\n\n빈 페이지를 바라보며 고민하는 대신, 이 도구를 창작 파트너로 활용해 보세요. 캐릭터를 한두 문장으로 설명하고 세계관, 역할, 톤, 분량, 언어를 선택하면, AI가 설정과 동기를 일관되게 유지한 채 완성도 높은 백스토리 초안을 제안해 줍니다. 소설, RPG, VTuber 설정, 챗봇 캐릭터 등 다양한 용도에 활용할 수 있습니다.",
+            "image": {
+                "src": "/imgs/backstory/what-is-backstory1.avif"
+            }
+        },
+        "feature1_section": {
+            "name": "feature1",
+            "title": "AI 백스토리 생성기를 써야 하는 이유",
+            "label": "장점",
+            "description": "이 무료 백스토리 생성기가 캐릭터의 깊이와 일관성을 유지하면서 어떻게 시간을 아껴 주는지 확인해 보세요.",
+            "items": [
+                {
+                    "title": "구조적인 출력",
+                    "description": "출신, 전환점, 인간관계, 목표, 스토리 훅 등으로 구분된 섹션을 제공해 캐릭터의 삶 전체를 한눈에 파악할 수 있습니다.",
+                    "icon": "RiListCheck2",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory1.avif"
+                    }
+                },
+                {
+                    "title": "다양한 활용 가능",
+                    "description": "DND 캠페인, 소설, VTuber, 챗봇 등 어떤 용도든 한 가지 도구로 여러 캐릭터를 만들 수 있도록 설계되어 있습니다.",
+                    "icon": "RiGamepadLine",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory2.avif"
+                    }
+                },
+                {
+                    "title": "즉각적인 영감 제공",
+                    "description": "막혔을 때도 이 생성기가 빠르게 새로운 캐릭터 아이디어와 관점을 제시해 주어, 사용자가 직접 수정·재구성·확장할 수 있습니다.",
+                    "icon": "RiLightbulbFlashLine",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory3.avif"
+                    }
+                }
+            ]
+        },
+        "feature_section": {
+            "name": "applications",
+            "title": "AI 백스토리 생성기의 활용 사례",
+            "label": "활용 분야",
+            "description": "이 백스토리 생성기는 다양한 분야의 크리에이터를 위해 설계되었습니다.",
+            "items": [
+                {
+                    "title": "RPG 플레이어 & DM",
+                    "description": "DND, Pathfinder 등 TRPG에서 기억에 남는 PC, NPC, 빌런을 빠르게 만들고, 스토리 훅까지 함께 설계할 수 있습니다.",
+                    "icon": "RiDiceLine"
+                },
+                {
+                    "title": "소설 작가",
+                    "description": "캐릭터의 과거 설정을 생성기에 맡기면, 장면 구성과 플롯에 더 많은 시간을 쓸 수 있습니다. 동기, 상처, 성장 곡선을 초고부터 완성본까지 일관되게 유지할 수 있습니다.",
+                    "icon": "RiBookLine"
+                },
+                {
+                    "title": "VTuber & 버추얼 크리에이터",
+                    "description": "풍부한 설정을 가진 VTuber·버추얼 캐릭터를 설계하고, 방송·영상·SNS를 통해 서서히 팬에게 공개할 수 있습니다.",
+                    "icon": "RiUserHeartLine"
+                }
+            ]
+        },
+        "faq_section": {
+            "name": "faq",
+            "label": "FAQ",
+            "title": "자주 묻는 질문",
+            "description": "백스토리 생성기와 AI 백스토리 생성에 대한 자주 묻는 질문입니다.",
+            "items": [
+                {
+                    "title": "좋은 캐릭터 백스토리의 조건은 무엇인가요?",
+                    "description": "좋은 백스토리는 명확한 출신과 형성 과정, 설득력 있는 동기, 내적 갈등과 약점, 의미 있는 관계, 그리고 미래 이야기를 이끌어 갈 수 있는 미해결의 비밀을 포함합니다. 이 생성기는 이러한 요소를 강조하여, 당신의 세계관에 맞게 쉽게 다듬을 수 있도록 설계되었습니다."
+                },
+                {
+                    "title": "생성된 백스토리를 상업적으로 사용할 수 있나요?",
+                    "description": "네. 이 무료 백스토리 생성기로 만든 모든 콘텐츠는 소설, 게임, VTuber 채널 등 개인 및 상업적 프로젝트에 자유롭게 사용할 수 있습니다."
+                },
+                {
+                    "title": "기존 이야기와 백스토리를 어떻게 연결하나요?",
+                    "description": "구조화된 출력 덕분에 목표, 비밀, 관계, 스토리 훅과 같은 요소를 쉽게 추출하여 기존 서사나 캠페인에 녹여 넣을 수 있습니다. 세계관이 변할 때마다 필요에 따라 다시 생성해 설정을 맞출 수도 있습니다."
+                },
+                {
+                    "title": "이 백스토리 생성기는 판타지나 다크한 캐릭터에도 잘 어울리나요?",
+                    "description": "네. 판타지 세계관용 백스토리 생성기나 비극적인 백스토리를 만들고 싶을 때에도 잘 사용할 수 있습니다. 세계관에서 '판타지'나 '선협'을 선택하고, 캐릭터 역할을 지정한 뒤 톤을 '비극적인'이나 '서사적인' 등 어두운 쪽으로 설정하면, AI가 마법 체계와 왕국 설정, 장기적인 성장 서사에 어울리는 백스토리를 로어 친화적으로 확장해 줍니다."
+                },
+                {
+                    "title": "비극적인 백스토리를 너무 과하게 만들지 않으려면 어떻게 해야 하나요?",
+                    "description": "단순한 충격 효과보다 분명한 동기와 결과에서 출발하는 것이 좋습니다. 비극적 백스토리 생성 기능을 사용할 때는 톤을 비극적인 쪽으로 설정하고, 한두 가지 결정적인 상실이나 실패에 집중해 보세요. AI가 설득력 있는 사건, 상처, 관계를 제안해 주어 캐릭터가 억지로 '중2병'처럼 보이기보다, 공감 가능한 인물로 느껴지도록 도와줍니다."
+                }
+            ]
+        },
+        "cta_section": {
+            "name": "cta",
+            "title": "지금 캐릭터 만들기를 시작하세요",
+            "description": "몇 분 만에 풍부한 백스토리를 가진 인상적인 캐릭터를 만들 수 있습니다.",
+            "buttons": [
+                {
+                    "title": "백스토리 생성",
+                    "url": "/backstory-generator",
+                    "target": "",
+                    "icon": "GoArrowUpRight"
+                }
+            ]
+        }
+    }
+}

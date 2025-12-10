@@ -317,6 +317,14 @@
       "poem_title_generator": {
         "name": "Poem Title Generator",
         "desc": "Generate creative, evocative titles for your poems – literary or viral-ready, in multiple languages."
+      },
+      "backstory_generator": {
+        "name": "Backstory Generator",
+        "desc": "Create rich, structured character backstories for RPGs, novels, VTubers, and chatbots."
+      },
+      "story_prompt_generator": {
+        "name": "Story Prompt Generator",
+        "desc": "Generate creative story prompts and ideas instantly to defeat writer's block."
       }
     }
   },

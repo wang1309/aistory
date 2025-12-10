@@ -17,6 +17,13 @@
           "icon": "RiQuillPenLine",
           "children": [
             {
+              "title": "Story Prompt Generator",
+              "description": "Generate creative story prompts and ideas instantly",
+              "url": "/story-prompt-generator",
+              "icon": "RiLightbulbLine",
+              "target": "_self"
+            },
+            {
               "title": "Fantasy Story Generator",
               "description": "Create immersive fantasy stories with AI – epic quests, xianxia and more",
               "url": "/fantasy-generator",
@@ -56,6 +63,13 @@
               "description": "Generate creative, evocative titles for your poems – literary or viral-ready",
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
+              "target": "_self"
+            },
+            {
+              "title": "Backstory Generator",
+              "description": "Create rich, structured character backstories for RPGs, novels, and VTubers",
+              "url": "/backstory-generator",
+              "icon": "RiUser3Line",
               "target": "_self"
             }
           ]
@@ -739,6 +753,11 @@
               "target": "_self"
             },
             {
+              "title": "Story Prompt Generator",
+              "url": "/story-prompt-generator",
+              "target": "_self"
+            },
+            {
               "title": "Fantasy Story Generator",
               "url": "/fantasy-generator",
               "target": "_self"
@@ -766,6 +785,11 @@
             {
               "title": "Poem Title Generator",
               "url": "/poem-title-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Backstory Generator",
+              "url": "/backstory-generator",
               "target": "_self"
             }
           ]

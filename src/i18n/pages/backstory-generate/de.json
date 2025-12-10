@@ -1,0 +1,204 @@
+{
+    "backstory_generate": {
+        "metadata": {
+            "title": "Kostenloser Backstory-Generator - KI-Tool für Charakterhintergründe",
+            "description": "Kostenloser KI-Backstory-Generator, der aus einer kurzen Charakteridee eine strukturierte Vorgeschichte erstellt – für Autor:innen, RPG-Spielleiter und Kreative mit Schreibblockaden.",
+            "keywords": "backstory generator, character background, RPG character, DND backstory, novel character, VTuber persona, AI character creator"
+        },
+        "ui": {
+            "title": "Kostenloser Backstory-Generator",
+            "subtitle": "Erstellen Sie mit KI reichhaltige, strukturierte Charaktervorgeschichten.",
+            "breadcrumb_home": "Startseite",
+            "breadcrumb_current": "Backstory-Generator",
+            "character_concept": "Charakterkonzept",
+            "random_button": "Zufällig",
+            "ai_model": "KI-Modell",
+            "output_language": "Ausgabesprache",
+            "worldview": "Weltsetting",
+            "role_type": "Charakterrolle",
+            "output_length": "Textlänge",
+            "advanced_options": "Erweiterte Optionen",
+            "tone": "Ton der Geschichte",
+            "generate_button": "Backstory generieren",
+            "generating": "Wird generiert..."
+        },
+        "placeholders": {
+            "character_concept": "Beschreiben Sie Ihr Charakterkonzept... (z. B. 'Ein Schurken-Assassine, der nach einer schicksalhaften Begegnung Erlösung sucht')",
+            "select_ai_model": "KI-Modell auswählen"
+        },
+        "ai_models": {
+            "fast": "Schnell",
+            "fast_description": "Schnelle Generierung (~20s)",
+            "standard": "Standard",
+            "standard_description": "Ausgewogene Qualität (~40s)",
+            "creative": "Kreativ",
+            "creative_description": "Am detailliertesten (~60s)"
+        },
+        "worldview": {
+            "fantasy": "Fantasy",
+            "scifi": "Sci-Fi",
+            "urban": "Moderne Großstadt",
+            "xianxia": "Xianxia",
+            "historical": "Historisch",
+            "campus": "Campus",
+            "dnd": "DND/TRPG",
+            "cyberpunk": "Cyberpunk"
+        },
+        "role_type": {
+            "protagonist": "Held",
+            "supporting": "Nebenfigur",
+            "antagonist": "Antagonist",
+            "npc": "NSC",
+            "vtuber": "VTuber"
+        },
+        "length": {
+            "short": "Kurz",
+            "short_description": "~200-400 Wörter",
+            "medium": "Standard",
+            "medium_description": "~400-800 Wörter",
+            "detailed": "Ausführlich",
+            "detailed_description": "~800-1500 Wörter"
+        },
+        "tone": {
+            "dark": "Düster",
+            "inspirational": "Inspirierend",
+            "comedic": "Komödiantisch",
+            "tragic": "Tragisch",
+            "epic": "Episch"
+        },
+        "output": {
+            "title": "Generierte Backstory",
+            "words": "Wörter",
+            "copy": "Kopieren",
+            "generating_message": "Die KI schreibt gerade die Backstory Ihres Charakters...",
+            "empty_message": "Die Backstory Ihres Charakters wird hier erscheinen. Geben Sie ein Konzept ein und klicken Sie auf 'Generieren', um zu beginnen."
+        },
+        "validation": {
+            "enter_concept": "Bitte geben Sie ein Charakterkonzept ein",
+            "select_ai_model": "Bitte wählen Sie ein KI-Modell"
+        },
+        "success": {
+            "random_prompt_selected": "Zufälliges Konzept ausgewählt!",
+            "backstory_generated": "Backstory erfolgreich generiert!",
+            "backstory_copied": "Backstory in die Zwischenablage kopiert!"
+        },
+        "errors": {
+            "generation_failed": "Generierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+        },
+        "random_prompts": [
+            "A rogue assassin seeking redemption after a fateful encounter",
+            "A fallen noble who lost everything but gained a mysterious power",
+            "A young mage with forbidden knowledge and a tragic past",
+            "A war veteran haunted by the ghosts of fallen comrades",
+            "A street urchin who discovers they are the lost heir to a kingdom",
+            "A cursed knight bound to protect a secret they don't understand",
+            "A traveling merchant with connections to every underworld organization",
+            "An amnesiac wanderer with skills that suggest a dark past"
+        ],
+        "feature_intro": {
+            "name": "introduce",
+            "title": "Was ist der Backstory-Generator?",
+            "label": "Einführung",
+            "description": "Der Backstory-Generator ist ein KI-gestütztes Tool, das aus einer kurzen Charakteridee eine reichhaltige, strukturierte Vorgeschichte macht. Statt einfach nur Text auszugeben, gliedert er die Vergangenheit Ihrer Figur in Abschnitte wie Herkunft, Wendepunkte, Beziehungen, Ziele und Story-Hooks, die sich leicht in Kampagnen und Romane einfügen lassen.\n\nSie behalten die Kontrolle: Wählen Sie Weltsetting, Rollenart, Ton, Länge und Sprache und lassen Sie den Generator Ihr Prompt so erweitern, dass Motivation und Details konsistent bleiben. Ob Sie Fantasy-Romane schreiben, DND-Runden leiten, VTuber-Lore planen oder Chatbot-Persönlichkeiten entwerfen – dieses Tool bringt Sie von einer Ein-Satz-Idee zu einer einsatzbereiten Backstory in Sekunden.",
+            "image": {
+                "src": "/imgs/backstory/what-is-backstory1.avif"
+            }
+        },
+        "feature1_section": {
+            "name": "feature1",
+            "title": "Warum unseren KI-Backstory-Generator nutzen",
+            "label": "Vorteile",
+            "description": "Sehen Sie, wie dieser kostenlose Backstory-Generator Zeit spart und Ihre Figuren trotzdem tief, konsistent und glaubwürdig hält.",
+            "items": [
+                {
+                    "title": "Strukturierte Ausgabe",
+                    "description": "Erhalten Sie klar getrennte Abschnitte für Herkunft, Wendepunkte, Beziehungen, Ziele und Story-Hooks, damit Sie das ganze Leben Ihrer Figur auf einen Blick erfassen können.",
+                    "icon": "RiListCheck2",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory1.avif"
+                    }
+                },
+                {
+                    "title": "Vielseitige Einsatzszenarien",
+                    "description": "Ob für DND-Kampagnen, Romane, VTuber oder Chatbots – der Generator passt sich Ihrem Use-Case an, sodass ein Tool alle Ihre Figuren unterstützen kann.",
+                    "icon": "RiGamepadLine",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory2.avif"
+                    }
+                },
+                {
+                    "title": "Sofortige Inspiration",
+                    "description": "Wenn Sie feststecken, liefert der Generator schnell neue Ideen und Blickwinkel, die Sie nach Belieben bearbeiten, remixen und erweitern können.",
+                    "icon": "RiLightbulbFlashLine",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory3.avif"
+                    }
+                }
+            ]
+        },
+        "feature_section": {
+            "name": "applications",
+            "title": "Einsatzbereiche des KI-Backstory-Generators",
+            "label": "Anwendungsfälle",
+            "description": "Dieser Backstory-Generator ist für Kreative in verschiedenen Bereichen gemacht.",
+            "items": [
+                {
+                    "title": "RPG-Spieler:innen & Spielleiter:innen",
+                    "description": "Nutzen Sie den Generator, um schnell einprägsame Spielercharaktere, NSCs und Schurken für DND, Pathfinder und andere Rollenspiele zu erstellen – inklusive eingebauter Plot-Hooks.",
+                    "icon": "RiDiceLine"
+                },
+                {
+                    "title": "Romanautor:innen",
+                    "description": "Lassen Sie die Backstory von der KI ausarbeiten, damit Sie sich auf Szenen und Plot konzentrieren können. Motivation, Wunden und Entwicklungsbögen bleiben vom Exposé bis zur Endfassung konsistent.",
+                    "icon": "RiBookLine"
+                },
+                {
+                    "title": "VTuber & virtuelle Creator",
+                    "description": "Entwerfen Sie reichhaltige VTuber- und virtuelle Personas mit Lore, die Sie Stück für Stück über Streams, Videos und Social Media enthüllen können.",
+                    "icon": "RiUserHeartLine"
+                }
+            ]
+        },
+        "faq_section": {
+            "name": "faq",
+            "label": "FAQ",
+            "title": "Häufig gestellte Fragen",
+            "description": "Antworten auf häufige Fragen zu unserem Backstory-Generator.",
+            "items": [
+                {
+                    "title": "Was macht eine gute Charakter-Backstory aus?",
+                    "description": "Eine gute Backstory enthält: klare Herkunft und prägende Ereignisse, nachvollziehbare Motivation, innere Konflikte und Schwächen, bedeutende Beziehungen sowie ungelöste Geheimnisse, die zukünftige Geschichten antreiben können. Unser Generator hebt diese Elemente hervor, damit Sie sie für Ihre Welt feinabstimmen können."
+                },
+                {
+                    "title": "Darf ich generierte Backstories kommerziell nutzen?",
+                    "description": "Ja. Alle Inhalte, die Sie mit diesem kostenlosen Backstory-Generator erzeugen, können Sie für private oder kommerzielle Projekte verwenden – etwa Romane, Spiele, VTuber-Kanäle und andere kreative Arbeiten."
+                },
+                {
+                    "title": "Wie integriere ich Backstories in meine bestehende Geschichte?",
+                    "description": "Dank der strukturierten Ausgabe können Sie gezielt Ziele, Geheimnisse, Beziehungen und Story-Hooks herausgreifen und in Ihre bestehende Handlung oder Kampagne einweben. Sie können die Backstory jederzeit neu generieren, wenn sich Ihre Welt weiterentwickelt."
+                },
+                {
+                    "title": "Eignet sich dieser Backstory-Generator für Fantasy- und düstere Charaktere?",
+                    "description": "Ja. Wenn Sie nach einem Backstory-Generator für Fantasy-Figuren oder nach einem Tool für tragische Backstories suchen, ist dieses Tool genau dafür gemacht. Wählen Sie das Weltsetting \"Fantasy\" oder \"Xianxia\", legen Sie die Rolle des Charakters fest und stellen Sie den Ton zum Beispiel auf \"Tragisch\" oder \"Episch\". Die KI erweitert Ihren Prompt dann zu einer lore-freundlichen Vorgeschichte, die zu Ihrem Magiesystem, Ihren Reichen und zum langfristigen Charakterbogen passt."
+                },
+                {
+                    "title": "Wie schreibe ich eine tragische Backstory, ohne es mit dem Drama zu übertreiben?",
+                    "description": "Beginnen Sie mit klaren Motiven und Konsequenzen statt mit Schockeffekten. Nutzen Sie die Möglichkeiten für tragische Backstories, indem Sie einen tragischen Ton wählen und sich auf ein oder zwei prägende Verluste oder Fehlschläge konzentrieren. Die KI schlägt Ereignisse, Wunden und Beziehungen vor, die glaubwürdig wirken, damit Ihre Figur mitfühlbar bleibt und nicht nur künstlich 'edgy' wirkt."
+                }
+            ]
+        },
+        "cta_section": {
+            "name": "cta",
+            "title": "Jetzt Charaktere erstellen",
+            "description": "Erschaffen Sie in wenigen Minuten unvergessliche Figuren mit überzeugenden Backstories.",
+            "buttons": [
+                {
+                    "title": "Backstory generieren",
+                    "url": "/backstory-generator",
+                    "target": "",
+                    "icon": "GoArrowUpRight"
+                }
+            ]
+        }
+    }
+}

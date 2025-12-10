@@ -513,7 +513,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
   const descriptionLength = useMemo(() => description.length, [description]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background text-foreground selection:bg-emerald-500/30">
+    <section id="book_title_generator" className="relative min-h-screen overflow-hidden bg-background text-foreground selection:bg-emerald-500/30">
       {/* Premium Background Layer - Regal Variant */}
       <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
       

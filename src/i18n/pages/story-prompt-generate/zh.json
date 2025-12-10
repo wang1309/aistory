@@ -1,0 +1,326 @@
+{
+  "metadata": {
+    "title": "免费故事灵感生成器 - AI 故事生成器",
+    "description": "免费 AI 故事灵感生成器，一键生成高质量故事提示词，帮你秒破解写作瓶颈，支持多类型题材与风格，无需注册直接使用。",
+    "keywords": "故事灵感生成器,AI写作提示,故事创意,写作灵感,AI故事生成,创意写作工具"
+  },
+  "template": "story-prompt-generate",
+  "theme": "light",
+  "header": {
+    "brand": {
+      "title": "故事灵感生成器",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "故事灵感生成器"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "AI 创作",
+          "icon": "RiQuillPenLine",
+          "children": [
+            {
+              "title": "故事生成器",
+              "description": "用 AI 创作精彩故事",
+              "url": "/",
+              "icon": "RiBookOpenLine",
+              "target": "_self"
+            },
+            {
+              "title": "故事灵感生成器",
+              "description": "生成创意故事提示和灵感",
+              "url": "/story-prompt-generator",
+              "icon": "RiLightbulbLine",
+              "target": "_self"
+            },
+            {
+              "title": "奇幻故事生成器",
+              "description": "用 AI 创作沉浸式奇幻故事",
+              "url": "/fantasy-generator",
+              "icon": "RiSparkling2Line",
+              "target": "_self"
+            },
+            {
+              "title": "同人文生成器",
+              "description": "用 AI 创作同人小说",
+              "url": "/fanfic-generator",
+              "icon": "RiBookMarkedLine",
+              "target": "_self"
+            },
+            {
+              "title": "情节生成器",
+              "description": "生成详细的故事大纲",
+              "url": "/plot-generator",
+              "icon": "RiMapLine",
+              "target": "_self"
+            },
+            {
+              "title": "背景故事生成器",
+              "description": "创建丰富的角色背景",
+              "url": "/backstory-generator",
+              "icon": "RiUser3Line",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "buttons": [],
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "story_prompt_generate": {
+    "header": {
+      "title": "故事灵感生成器",
+      "subtitle": "一键生成创意故事提示，为作家提供灵感，或直接用于 AI 写作。"
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "概览",
+      "title": "什么是 AI 故事灵感生成器？",
+      "description": "AI 故事灵感生成器可以根据你的类型、基调和限制，瞬间产出可直接开写的提示词，不再对着空白页发愁。既可以当作快速点子用的 short story prompt generator，也可以当作 ai that generates full story prompt 的长篇创作起点。",
+      "image": {
+        "src": "/imgs/story-prompt/what-is-story-prompt1.avif",
+        "alt": "什么是 AI 故事灵感生成器？"
+      },
+      "items": [
+        {
+          "title": "AI 即用型灵感",
+          "description": "生成结构化提示，直接粘贴进任何故事生成器或写作工具，无需额外调整。",
+          "icon": "sparkles"
+        },
+        {
+          "title": "灵感救星",
+          "description": "几秒内打破写作瓶颈，从奇幻冒险到温馨悬疑，获得全新切入角度。",
+          "icon": "lightbulb"
+        },
+        {
+          "title": "一键多样化",
+          "description": "一次获取多条不同风格的提示，随心挑选、混搭和微调，匹配你的故事愿景。",
+          "icon": "shuffle"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "为什么使用我们的 AI 故事灵感生成器",
+      "description": "为速度、灵活与创意而生，让你更快从想法进入动笔阶段。",
+      "items": [
+        {
+          "title": "类型感知",
+          "description": "基调、节奏与套路会根据你选择的类型自动调整——无论是奇幻、科幻、言情还是惊悚。",
+          "icon": "book-open",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt1.avif",
+            "alt": "类型感知"
+          }
+        },
+        {
+          "title": "尊重约束",
+          "description": "支持添加目标、冲突或特殊限制（视角、场景、长度），生成的提示会遵循这些要求。",
+          "icon": "settings",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt2.avif",
+            "alt": "尊重约束"
+          }
+        },
+        {
+          "title": "产出友好",
+          "description": "输出简洁清晰，适合编剧、长篇小说、游戏任务设计，或直接交给 AI 对话模型。",
+          "icon": "cpu",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt3.avif",
+            "alt": "产出友好"
+          }
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "应用场景",
+      "title": "AI 故事灵感生成器的应用",
+      "description": "适合任何需要快速、结构化灵感的故事创作者，无论是用作 short story prompt generator 写短篇，还是为长篇故事搭建大纲。",
+      "items": [
+        {
+          "title": "小说与网文作者",
+          "description": "根据你的基调和类型生成剧情走向、场景或章节提示，快速搭建大纲。",
+          "icon": "pen-tool"
+        },
+        {
+          "title": "影视与编剧团队",
+          "description": "头脑风暴支线、冷开场和人物节奏，让节奏贴合你的剧集。",
+          "icon": "clapperboard"
+        },
+        {
+          "title": "RPG / 游戏设计师",
+          "description": "按需生成任务钩子、NPC 动机和分支情节，随时灵活迭代。",
+          "icon": "gamepad"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "常见问题",
+      "description": "关于我们的 AI 故事灵感生成器、用法与输出的解答。",
+      "items": [
+        {
+          "title": "可以商业使用这些提示吗？",
+          "description": "可以。你生成的提示可用于小说、剧本、游戏或任何创作项目。"
+        },
+        {
+          "title": "提示会遵循我的限制吗？",
+          "description": "我们会在生成时考虑你的类型、基调和限制（目标、冲突、视角、长度等）。"
+        },
+        {
+          "title": "可以把提示用到其他 AI 工具吗？",
+          "description": "当然可以。提示简洁明了，可直接粘贴到任何 AI 写作或对话模型，你也可以把它当作 ai that generates full story prompt，再在其他工具里继续扩写。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "马上开始你的下一个故事",
+      "description": "几秒生成结构化、AI 即用的提示，无需注册。",
+      "buttons": [
+        {
+          "title": "生成灵感",
+          "url": "/story-prompt-generator",
+          "target": "",
+          "icon": "GoRocket"
+        },
+        {
+          "title": "试用故事生成器",
+          "url": "/",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    },
+    "ui": {
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "故事灵感生成器",
+      "genre_label": "故事类型",
+      "genre_placeholder": "选择类型",
+      "length_label": "故事篇幅",
+      "length_placeholder": "选择篇幅",
+      "tone_label": "基调风格",
+      "tone_placeholder": "选择基调",
+      "language_label": "输出语言",
+      "language_placeholder": "选择语言",
+      "advanced_options": "高级选项",
+      "worldview_label": "世界观设定",
+      "protagonist_label": "主角特征",
+      "protagonist_placeholder": "例如：一个愤世嫉俗但内心善良的侦探",
+      "goal_label": "故事目标",
+      "goal_placeholder": "例如：揭开威胁王国的阴谋",
+      "conflict_label": "核心冲突",
+      "conflict_placeholder": "选择冲突类型",
+      "constraints_label": "特殊限制",
+      "constraints_placeholder": "例如：必须从雨夜开始，第一人称视角",
+      "audience_label": "目标读者",
+      "audience_placeholder": "选择读者群",
+      "generate_button": "生成灵感",
+      "generating": "生成中...",
+      "refresh_button": "刷新",
+      "copy_button": "复制",
+      "use_prompt_button": "用这个写故事",
+      "favorite_button": "收藏",
+      "clear_button": "清空",
+      "output_title": "生成的灵感",
+      "output_empty": "你的创意灵感将在这里显示。选择偏好后点击生成！",
+      "prompt_count": "条灵感"
+    },
+    "genres": {
+      "fantasy": "奇幻",
+      "scifi": "科幻",
+      "romance": "言情",
+      "thriller": "惊悚",
+      "mystery": "悬疑",
+      "horror": "恐怖",
+      "adventure": "冒险",
+      "historical": "历史",
+      "urban": "都市",
+      "comedy": "喜剧",
+      "drama": "剧情",
+      "xianxia": "仙侠/修真"
+    },
+    "lengths": {
+      "short": "短篇",
+      "short_desc": "300-800字",
+      "medium": "中篇",
+      "medium_desc": "800-2000字",
+      "long": "长篇",
+      "long_desc": "2000字以上"
+    },
+    "tones": {
+      "light": "轻松欢快",
+      "healing": "治愈温暖",
+      "dark": "黑暗沉重",
+      "passionate": "热血激昂",
+      "realistic": "现实向",
+      "suspenseful": "悬疑紧张",
+      "romantic": "浪漫唯美",
+      "epic": "史诗宏大"
+    },
+    "worldviews": {
+      "realistic": "现实/现代",
+      "near_future": "近未来",
+      "high_fantasy": "高魔奇幻",
+      "cultivation": "修真/仙侠",
+      "cyberpunk": "赛博朋克",
+      "post_apocalyptic": "末日废土",
+      "steampunk": "蒸汽朋克",
+      "mythology": "神话传说"
+    },
+    "conflicts": {
+      "person_vs_person": "人与人",
+      "person_vs_society": "人与社会",
+      "person_vs_nature": "人与自然",
+      "person_vs_self": "人与自我",
+      "person_vs_fate": "人与命运",
+      "multi_conflict": "多线冲突"
+    },
+    "audiences": {
+      "children": "儿童 (5-12岁)",
+      "teen": "青少年 (13-17岁)",
+      "young_adult": "青年 (18-25岁)",
+      "adult": "成人 (26岁+)",
+      "mature": "成熟读者",
+      "all_ages": "全年龄"
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "快速生成，质量良好",
+      "standard": "标准",
+      "standard_description": "速度与创意平衡",
+      "creative": "创意",
+      "creative_description": "最具创意，耗时较长"
+    },
+    "toasts": {
+      "copied": "已复制到剪贴板！",
+      "generation_failed": "生成失败，请重试。",
+      "no_genre": "请至少选择一个故事类型。",
+      "prompt_generated": "灵感生成成功！"
+    },
+    "sample_ideas": [
+      "一个穿越时空的厨师，通过美食意外改变了历史",
+      "两个互为对手的侦探被迫合作调查超自然案件",
+      "一个退休的超级英雄，开了一个前英雄互助小组",
+      "一个产生了情感的AI，开始质疑自己存在的意义",
+      "一个图书管理员发现书籍可以将读者传送进故事里"
+    ]
+  },
+  "footer": {
+    "brand": {
+      "title": "故事灵感生成器",
+      "description": "用 AI 生成创意故事灵感"
+    },
+    "copyright": "© 2025 AIStory. 保留所有权利。",
+    "social": []
+  }
+}

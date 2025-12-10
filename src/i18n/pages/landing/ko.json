@@ -57,6 +57,13 @@
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
               "target": "_self"
+            },
+            {
+              "title": "백스토리 생성기",
+              "description": "RPG, 소설, VTuber를 위한 구조화된 캐릭터 배경 생성",
+              "url": "/backstory-generator",
+              "icon": "RiUser3Line",
+              "target": "_self"
             }
           ]
         }
@@ -739,6 +746,11 @@
               "target": "_self"
             },
             {
+              "title": "스토리 프롬프트 생성기",
+              "url": "/story-prompt-generator",
+              "target": "_self"
+            },
+            {
               "title": "판타지 스토리 생성기",
               "url": "/fantasy-generator",
               "target": "_self"
@@ -766,6 +778,11 @@
             {
               "title": "시 제목 생성기",
               "url": "/poem-title-generator",
+              "target": "_self"
+            },
+            {
+              "title": "백스토리 생성기",
+              "url": "/backstory-generator",
               "target": "_self"
             }
           ]

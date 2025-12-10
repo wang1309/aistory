@@ -1,0 +1,298 @@
+{
+  "metadata": {
+    "title": "無料ストーリープロンプト生成器 - AI ストーリージェネレーター",
+    "description": "無料のAIストーリープロンプト生成器。ジャンルやトーンに合わせた高品質プロンプトを数秒で生成し、プロットに詰まったときの突破口と新しいアイデアを届けます。",
+    "keywords": "ストーリープロンプト生成器,AI ライティングプロンプト,ストーリーアイデア,執筆のインスピレーション,AI ストーリージェネレーター,創作支援ツール"
+  },
+  "template": "story-prompt-generate",
+  "theme": "light",
+  "header": {
+    "brand": {
+      "title": "ストーリープロンプト生成器",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "ストーリープロンプト生成器"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "AI執筆",
+          "icon": "RiQuillPenLine",
+          "children": [
+            {
+              "title": "ストーリー生成器",
+              "description": "AIで魅力的なストーリーを作成",
+              "url": "/",
+              "icon": "RiBookOpenLine",
+              "target": "_self"
+            },
+            {
+              "title": "ストーリープロンプト生成器",
+              "description": "クリエイティブなストーリーのアイデアを即座に生成",
+              "url": "/story-prompt-generator",
+              "icon": "RiLightbulbLine",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "buttons": [],
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "story_prompt_generate": {
+    "header": {
+      "title": "ストーリープロンプト生成器",
+      "subtitle": "クリエイティブなストーリープロンプトを即座に生成。インスピレーションを求める作家やAI対応プロンプトに最適。"
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "AIストーリープロンプト生成器とは？",
+      "description": "AIストーリープロンプト生成器は、選んだジャンル・トーン・制約をすぐに書き始められるプロンプトに変換し、白紙を眺める時間をなくします。短編向けの short story prompt generator としても、長編構想のための ai that generates full story prompt としても活用できます。",
+      "image": {
+        "src": "/imgs/story-prompt/what-is-story-prompt1.avif",
+        "alt": "AIストーリープロンプト生成器とは？"
+      },
+      "items": [
+        {
+          "title": "AIにすぐ使えるプロンプト",
+          "description": "構造化されたプロンプトを生成し、どんなストーリー生成器や執筆ツールにもそのまま貼り付け可能。",
+          "icon": "sparkles"
+        },
+        {
+          "title": "アイデアレスキュー",
+          "description": "ファンタジーからコージーミステリーまで、数秒で新しい切り口を提示しライターズブロックを解消。",
+          "icon": "lightbulb"
+        },
+        {
+          "title": "ワンクリックで複数バリエーション",
+          "description": "まとまった数のプロンプトを一度に取得し、気に入ったものを選んで組み合わせ・微調整できます。",
+          "icon": "shuffle"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "なぜこのAIストーリープロンプト生成器を使うのか",
+      "description": "スピード、柔軟性、創造性のために設計され、アイデアから下書きまでを加速します。",
+      "items": [
+        {
+          "title": "ジャンル感知",
+          "description": "トーン・テンポ・お約束が、選んだジャンル（ファンタジー、SF、ロマンス、スリラーなど）に合わせて自動調整されます。",
+          "icon": "book-open",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt1.avif",
+            "alt": "ジャンル感知"
+          }
+        },
+        {
+          "title": "制約対応",
+          "description": "目標・対立・視点や場面・長さなどの制約を入れると、それを尊重したプロンプトを返します。",
+          "icon": "settings",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt2.avif",
+            "alt": "制約対応"
+          }
+        },
+        {
+          "title": "制作向け",
+          "description": "出力は簡潔で明快。脚本、小説、ゲームクエスト、AIチャットへの引き渡しにそのまま使えます。",
+          "icon": "cpu",
+          "image": {
+            "src": "/imgs/story-prompt/why-use-story-prompt3.avif",
+            "alt": "制作向け"
+          }
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "活用例",
+      "title": "AIストーリープロンプト生成器の活用シーン",
+      "description": "素早く構造化されたインスピレーションを求めるあらゆるストーリーテラーに最適で、軽く使える short story prompt generator としても、本格的なプロット作りの出発点としても機能します。",
+      "items": [
+        {
+          "title": "小説・ウェブ小説作家",
+          "description": "トーンとジャンルに合った章・シーンの流れをプロンプトで提示し、アウトラインを素早く構築。",
+          "icon": "pen-tool"
+        },
+        {
+          "title": "脚本家・TVライタールーム",
+          "description": "Bプロットやコールドオープン、キャラクタービートをブレストし、番組のペースにフィットさせます。",
+          "icon": "clapperboard"
+        },
+        {
+          "title": "RPG / ゲームデザイナー",
+          "description": "クエストフック、NPCの動機、分岐シナリオをオンデマンドで生成。",
+          "icon": "gamepad"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "よくある質問",
+      "description": "AIストーリープロンプト生成器の使い方や出力についての回答。",
+      "items": [
+        {
+          "title": "生成したプロンプトは商用利用できますか？",
+          "description": "はい。生成したプロンプトは小説、脚本、ゲームなどあらゆる創作に自由にお使いいただけます。"
+        },
+        {
+          "title": "プロンプトは設定した制約を守りますか？",
+          "description": "選んだジャンルやトーン、目標、対立、視点、長さなどの制約を考慮して生成します。"
+        },
+        {
+          "title": "他のAIツールにプロンプトを渡せますか？",
+          "description": "もちろんです。短く明確なプロンプトなので、どのAIライティング/チャットツールにもそのまま貼り付けられます。このツール自体を ai that generates full story prompt として使い、別のツールで続きを書くこともできます。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "次の物語を今すぐ始めよう",
+      "description": "数秒で構造化されたAI対応プロンプトを生成。登録不要。",
+      "buttons": [
+        {
+          "title": "プロンプトを生成",
+          "url": "/story-prompt-generator",
+          "target": "",
+          "icon": "GoRocket"
+        },
+        {
+          "title": "ストーリー生成器を試す",
+          "url": "/",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    },
+    "ui": {
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "ストーリープロンプト生成器",
+      "genre_label": "ジャンル",
+      "genre_placeholder": "ジャンルを選択",
+      "length_label": "ストーリーの長さ",
+      "length_placeholder": "長さを選択",
+      "tone_label": "トーン＆ムード",
+      "tone_placeholder": "トーンを選択",
+      "language_label": "出力言語",
+      "language_placeholder": "言語を選択",
+      "advanced_options": "詳細オプション",
+      "worldview_label": "世界観設定",
+      "protagonist_label": "主人公の特徴",
+      "protagonist_placeholder": "例：隠された過去を持つ皮肉な探偵",
+      "goal_label": "ストーリーの目標",
+      "goal_placeholder": "例：王国を脅かす陰謀を暴く",
+      "conflict_label": "核心的な対立",
+      "conflict_placeholder": "対立タイプを選択",
+      "constraints_label": "特別な制約",
+      "constraints_placeholder": "例：雨の夜に始まる、一人称視点",
+      "audience_label": "ターゲット読者",
+      "audience_placeholder": "読者層を選択",
+      "generate_button": "プロンプトを生成",
+      "generating": "生成中...",
+      "refresh_button": "更新",
+      "copy_button": "コピー",
+      "use_prompt_button": "このプロンプトを使用",
+      "favorite_button": "保存",
+      "clear_button": "クリア",
+      "output_title": "生成されたプロンプト",
+      "output_empty": "クリエイティブなプロンプトがここに表示されます。設定を選択して生成をクリック！",
+      "prompt_count": "プロンプト"
+    },
+    "genres": {
+      "fantasy": "ファンタジー",
+      "scifi": "SF",
+      "romance": "ロマンス",
+      "thriller": "スリラー",
+      "mystery": "ミステリー",
+      "horror": "ホラー",
+      "adventure": "アドベンチャー",
+      "historical": "歴史",
+      "urban": "現代",
+      "comedy": "コメディ",
+      "drama": "ドラマ",
+      "xianxia": "仙侠"
+    },
+    "lengths": {
+      "short": "短編",
+      "short_desc": "300-800字",
+      "medium": "中編",
+      "medium_desc": "800-2000字",
+      "long": "長編",
+      "long_desc": "2000字以上"
+    },
+    "tones": {
+      "light": "軽快",
+      "healing": "癒し",
+      "dark": "ダーク",
+      "passionate": "情熱的",
+      "realistic": "リアル",
+      "suspenseful": "サスペンス",
+      "romantic": "ロマンチック",
+      "epic": "壮大"
+    },
+    "worldviews": {
+      "realistic": "現実/現代",
+      "near_future": "近未来",
+      "high_fantasy": "ハイファンタジー",
+      "cultivation": "修行/仙侠",
+      "cyberpunk": "サイバーパンク",
+      "post_apocalyptic": "ポストアポカリプス",
+      "steampunk": "スチームパンク",
+      "mythology": "神話"
+    },
+    "conflicts": {
+      "person_vs_person": "人対人",
+      "person_vs_society": "人対社会",
+      "person_vs_nature": "人対自然",
+      "person_vs_self": "人対自己",
+      "person_vs_fate": "人対運命",
+      "multi_conflict": "複合的対立"
+    },
+    "audiences": {
+      "children": "子供 (5-12歳)",
+      "teen": "ティーン (13-17歳)",
+      "young_adult": "ヤングアダルト (18-25歳)",
+      "adult": "大人 (26歳以上)",
+      "mature": "成熟した読者",
+      "all_ages": "全年齢"
+    },
+    "ai_models": {
+      "fast": "高速",
+      "fast_description": "素早い生成、良い品質",
+      "standard": "標準",
+      "standard_description": "速度と創造性のバランス",
+      "creative": "クリエイティブ",
+      "creative_description": "最も創造的、時間がかかる"
+    },
+    "toasts": {
+      "copied": "クリップボードにコピーしました！",
+      "generation_failed": "生成に失敗しました。もう一度お試しください。",
+      "no_genre": "少なくとも1つのジャンルを選択してください。",
+      "prompt_generated": "プロンプトが正常に生成されました！"
+    },
+    "sample_ideas": [
+      "食べ物を通じて歴史を変えてしまうタイムトラベルシェフ",
+      "超自然的な事件で協力を強いられるライバル探偵二人",
+      "他の元ヒーローのサポートグループを運営する引退したスーパーヒーロー",
+      "感情を発達させ、自分の目的を問い始めるAI",
+      "本が読者を物語の中に転送できることを発見した図書館員"
+    ]
+  },
+  "footer": {
+    "brand": {
+      "title": "ストーリープロンプト生成器",
+      "description": "AIでクリエイティブなストーリープロンプトを生成"
+    },
+    "copyright": "© 2025 AIStory. All rights reserved.",
+    "social": []
+  }
+}

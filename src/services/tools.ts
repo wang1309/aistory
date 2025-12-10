@@ -100,6 +100,36 @@ export const tools: Tool[] = [
     icon: "RiQuillPenLine",
     priority: 60,
   },
+  {
+    slug: "poem-title-generator",
+    nameKey: "ai_tools.tools.poem_title_generator.name",
+    shortDescKey: "ai_tools.tools.poem_title_generator.desc",
+    module: "ai-write",
+    category: "title",
+    href: "/poem-title-generator",
+    icon: "RiStarLine",
+    priority: 55,
+  },
+  {
+    slug: "backstory-generator",
+    nameKey: "ai_tools.tools.backstory_generator.name",
+    shortDescKey: "ai_tools.tools.backstory_generator.desc",
+    module: "ai-write",
+    category: "story",
+    href: "/backstory-generator",
+    icon: "RiUser3Line",
+    priority: 85,
+  },
+  {
+    slug: "story-prompt-generator",
+    nameKey: "ai_tools.tools.story_prompt_generator.name",
+    shortDescKey: "ai_tools.tools.story_prompt_generator.desc",
+    module: "ai-write",
+    category: "story",
+    href: "/story-prompt-generator",
+    icon: "RiLightbulbLine",
+    priority: 65,
+  },
 ];
 
 export function getToolsByModule(module: ModuleId): Tool[] {

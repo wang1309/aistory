@@ -5,7 +5,7 @@
  */
 export interface PoemTitleGenerateOptions {
     poemContent: string;        // 诗歌全文或主题关键词
-    language: 'zh' | 'en' | 'bilingual';  // 中文/英文/双语
+    language: string;  // 语言代码，例如 'zh' | 'en' | 'ja' | 'es' | 'bilingual'
     styles: string[];           // 风格标签数组
     moods: string[];            // 情绪标签数组
     length: 'short' | 'medium' | 'long';  // 4-8字/8-12字/12字以上

@@ -11,6 +11,7 @@ export default function Feature1({ section }: { section: SectionType }) {
   const [imageError, setImageError] = useState(false);
   const t = useTranslations('introduce');
   const containerRef = useRef<HTMLDivElement>(null);
+  const hasImage = Boolean(section.image?.src);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -47,7 +48,7 @@ export default function Feature1({ section }: { section: SectionType }) {
         <div className="grid items-center gap-20 lg:grid-cols-2 lg:gap-24">
           
           {/* Left: Visual Showcase */}
-          {section.image && (
+          {(
             <motion.div 
               style={{ y, opacity }}
               className="relative group perspective-1000"
@@ -61,7 +62,7 @@ export default function Feature1({ section }: { section: SectionType }) {
                 <div className="absolute inset-0 rounded-[2rem] border border-white/20 pointer-events-none z-20" />
                 <div className="absolute inset-[1px] rounded-[calc(2rem-1px)] border border-white/5 pointer-events-none z-20" />
                 
-                {imageError ? (
+                {imageError || !hasImage ? (
                   <div className="aspect-[4/3] w-full flex items-center justify-center bg-muted/5">
                     <div className="text-center p-12">
                       <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/10 flex items-center justify-center">

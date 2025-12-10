@@ -110,10 +110,20 @@ const usageSceneMap: Record<string, string> = {
     gift_card: "Gift card/personalized message",
 };
 
-// Language names
+// Language names (aligned with Story Generator language options)
 const languageNames: Record<string, { native: string; english: string }> = {
     zh: { native: "中文", english: "Chinese" },
     en: { native: "English", english: "English" },
+    ja: { native: "日本語", english: "Japanese" },
+    ko: { native: "한국어", english: "Korean" },
+    es: { native: "Español", english: "Spanish" },
+    fr: { native: "Français", english: "French" },
+    de: { native: "Deutsch", english: "German" },
+    pt: { native: "Português", english: "Portuguese" },
+    ru: { native: "Русский", english: "Russian" },
+    ar: { native: "العربية", english: "Arabic" },
+    hi: { native: "हिन्दी", english: "Hindi" },
+    it: { native: "Italiano", english: "Italian" },
     bilingual: { native: "中英双语", english: "Chinese-English Bilingual" },
 };
 

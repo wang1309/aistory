@@ -748,7 +748,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   }, [locale, section]);
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-background selection:bg-pink-500/30">
+    <div id="poem_generator" className="min-h-screen relative overflow-hidden bg-background selection:bg-pink-500/30">
       {/* Premium Background Layer */}
       <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
 

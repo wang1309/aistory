@@ -317,6 +317,14 @@
       "poem_title_generator": {
         "name": "诗歌标题生成器",
         "desc": "为诗歌生成文学向或平台向标题，支持多语言输出与解释说明。"
+      },
+      "backstory_generator": {
+        "name": "角色背景生成器",
+        "desc": "为 RPG、小说、虚拟人等角色生成结构化的背景故事。"
+      },
+      "story_prompt_generator": {
+        "name": "故事灵感生成器",
+        "desc": "一键生成创意故事提示词，帮助突破写作瓶颈，快速开启创作。"
       }
     }
   },

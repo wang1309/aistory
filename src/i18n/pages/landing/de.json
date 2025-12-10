@@ -57,6 +57,13 @@
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
               "target": "_self"
+            },
+            {
+              "title": "Hintergrundgeschichten-Generator",
+              "description": "Strukturierte Charakterhintergründe für RPGs, Romane und VTuber erstellen",
+              "url": "/backstory-generator",
+              "icon": "RiUser3Line",
+              "target": "_self"
             }
           ]
         }
@@ -739,6 +746,11 @@
               "target": "_self"
             },
             {
+              "title": "Story-Prompt-Generator",
+              "url": "/story-prompt-generator",
+              "target": "_self"
+            },
+            {
               "title": "Fantasy-Geschichtengenerator",
               "url": "/fantasy-generator",
               "target": "_self"
@@ -766,6 +778,11 @@
             {
               "title": "Gedichttitel-Generator",
               "url": "/poem-title-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Hintergrundgeschichten-Generator",
+              "url": "/backstory-generator",
               "target": "_self"
             }
           ]

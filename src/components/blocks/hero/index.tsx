@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import HappyUsers from "./happy-users";
-import Particles from "./particles";
+import FloatingFlowers from "@/components/effects/floating-flowers";
 import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion";
 
 import { Hero as HeroType } from "@/types/blocks/hero";
@@ -98,7 +98,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
             <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[128px] opacity-30 animate-blob animation-delay-2000" />
 
             {/* Floating Particles */}
-            <Particles />
+            <FloatingFlowers count={40} />
           </>
         )}
       </div>

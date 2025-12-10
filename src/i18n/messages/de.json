@@ -310,6 +310,18 @@
       "poem_generator": {
         "name": "Poem-Generator",
         "desc": "Verfassen Sie moderne Gedichte, klassische Poesie oder Haikus mit Unterstützung der KI."
+      },
+      "poem_title_generator": {
+        "name": "Gedichttitel-Generator",
+        "desc": "Erzeugt kreative, stimmungsvolle Titel für Ihre Gedichte – von literarisch bis social‑media‑tauglich, auch mehrsprachig."
+      },
+      "backstory_generator": {
+        "name": "Backstory‑Generator",
+        "desc": "Erstellt reichhaltige, strukturierte Charakter‑Backstories für RPGs, Romane, VTuber und Chatbots."
+      },
+      "story_prompt_generator": {
+        "name": "Story‑Prompt‑Generator",
+        "desc": "Generiert sofort kreative Story‑Prompts und Ideen, um Schreibblockaden zu durchbrechen."
       }
     }
   },

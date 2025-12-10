@@ -93,7 +93,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
 
     // Form state
     const [poemContent, setPoemContent] = useState("");
-    const [selectedLanguage, setSelectedLanguage] = useState<"zh" | "en" | "bilingual">("zh");
+    const [selectedLanguage, setSelectedLanguage] = useState<string>("zh");
     const [selectedStyles, setSelectedStyles] = useState<string[]>([]);
     const [selectedMoods, setSelectedMoods] = useState<string[]>([]);
     const [selectedLength, setSelectedLength] = useState<"short" | "medium" | "long">("medium");
@@ -137,6 +137,11 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
         { id: "angry", label: section.form.mood.chips.angry },
         { id: "surreal", label: section.form.mood.chips.surreal },
     ], [section.form.mood.chips]);
+
+    const RANDOM_PROMPTS = useMemo(
+        () => section.form.examples?.prompts || [],
+        [section.form.examples]
+    );
 
     // Toggle chip selection
     const toggleStyle = useCallback((styleId: string) => {
@@ -360,6 +365,13 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
         setGeneratedTitles([]);
     }, []);
 
+    const handleRandomPrompt = useCallback(() => {
+        if (!RANDOM_PROMPTS.length) return;
+        const randomPrompt = RANDOM_PROMPTS[Math.floor(Math.random() * RANDOM_PROMPTS.length)];
+        setPoemContent(randomPrompt);
+        setIsExamplesExpanded(false);
+    }, [RANDOM_PROMPTS]);
+
     // Separate titles by category
     const literaryTitles = useMemo(
         () => generatedTitles.filter(t => t.category === "literary"),
@@ -373,7 +385,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
     const contentLength = poemContent.length;
 
     return (
-        <section className="relative min-h-screen overflow-hidden bg-background text-foreground selection:bg-amber-500/30">
+        <section id="poem_title_generator" className="relative min-h-screen overflow-hidden bg-background text-foreground selection:bg-amber-500/30">
             {/* Premium Background Layer */}
             <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
 
@@ -428,13 +440,26 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                         <div className="max-w-3xl mx-auto space-y-12">
                             {/* Poem Content Field */}
                             <div className="space-y-6">
-                                <div className="flex items-center justify-between">
-                                    <label className="text-xl font-medium tracking-tight flex items-center gap-3 text-foreground">
-                                        <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">01</span>
-                                        {section.form.poem_content.label}
-                                    </label>
-                                    {section.form.poem_content.required && (
-                                        <span className="text-[10px] font-bold uppercase tracking-widest text-red-500/80 bg-red-500/10 px-2 py-1 rounded-full">Required</span>
+                                <div className="flex items-center justify-between gap-4 flex-wrap">
+                                    <div className="flex items-center gap-3">
+                                        <label className="text-xl font-medium tracking-tight flex items-center gap-3 text-foreground">
+                                            <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">01</span>
+                                            {section.form.poem_content.label}
+                                        </label>
+                                        {section.form.poem_content.required && (
+                                            <span className="text-[10px] font-bold uppercase tracking-widest text-red-500/80 bg-red-500/10 px-2 py-1 rounded-full">Required</span>
+                                        )}
+                                    </div>
+                                    {RANDOM_PROMPTS.length > 0 && (
+                                        <Button
+                                            variant="ghost"
+                                            size="sm"
+                                            onClick={handleRandomPrompt}
+                                            className="gap-2 text-amber-600 hover:text-amber-500 hover:bg-amber-500/10 rounded-full h-10 px-4"
+                                        >
+                                            <Icon name="Sparkles" className="size-4" />
+                                            {section.form.random_button || "Random prompt"}
+                                        </Button>
                                     )}
                                 </div>
 
@@ -499,14 +524,16 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                             <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">
                                                 {section.form.language.label}
                                             </label>
-                                            <Select value={selectedLanguage} onValueChange={(v: "zh" | "en" | "bilingual") => setSelectedLanguage(v)}>
+                                            <Select value={selectedLanguage} onValueChange={(v: string) => setSelectedLanguage(v)}>
                                                 <SelectTrigger className="h-12 rounded-xl bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors focus:ring-0 text-foreground">
                                                     <SelectValue placeholder={section.form.language.placeholder} />
                                                 </SelectTrigger>
                                                 <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
-                                                    <SelectItem value="zh">{section.form.language.options.zh}</SelectItem>
-                                                    <SelectItem value="en">{section.form.language.options.en}</SelectItem>
-                                                    <SelectItem value="bilingual">{section.form.language.options.bilingual}</SelectItem>
+                                                    {Object.entries(section.form.language.options).map(([code, label]) => (
+                                                        <SelectItem key={code} value={code}>
+                                                            {label}
+                                                        </SelectItem>
+                                                    ))}
                                                 </SelectContent>
                                             </Select>
                                         </div>

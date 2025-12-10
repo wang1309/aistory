@@ -1,0 +1,204 @@
+{
+    "backstory_generate": {
+        "metadata": {
+            "title": "免费角色背景生成器 - AI人物设定工具",
+            "description": "免费AI角色背景生成器，从一句角色概念快速扩展为结构化背景故事，专为被设定和大纲卡住的小说作者、跑团DM与内容创作者而设计。",
+            "keywords": "角色背景生成器, 人物设定, RPG角色, DND背景故事, 小说角色, VTuber人设, AI角色创作"
+        },
+        "ui": {
+            "title": "免费角色背景生成器",
+            "subtitle": "用AI为你的角色创建丰富、结构化的背景故事",
+            "breadcrumb_home": "首页",
+            "breadcrumb_current": "背景故事生成器",
+            "character_concept": "角色概念",
+            "random_button": "随机",
+            "ai_model": "AI模型",
+            "output_language": "输出语言",
+            "worldview": "世界观",
+            "role_type": "角色类型",
+            "output_length": "输出长度",
+            "advanced_options": "高级选项",
+            "tone": "故事基调",
+            "generate_button": "生成背景故事",
+            "generating": "生成中..."
+        },
+        "placeholders": {
+            "character_concept": "描述你的角色概念... (例如: '一名寻求救赎的刺客，在一次命运般的相遇后决定改变人生')",
+            "select_ai_model": "选择AI模型"
+        },
+        "ai_models": {
+            "fast": "极速",
+            "fast_description": "快速生成 (~20秒)",
+            "standard": "标准",
+            "standard_description": "平衡质量 (~40秒)",
+            "creative": "创意",
+            "creative_description": "最详细 (~60秒)"
+        },
+        "worldview": {
+            "fantasy": "奇幻",
+            "scifi": "科幻",
+            "urban": "都市",
+            "xianxia": "仙侠",
+            "historical": "历史",
+            "campus": "校园",
+            "dnd": "DND/TRPG",
+            "cyberpunk": "赛博朋克"
+        },
+        "role_type": {
+            "protagonist": "主角",
+            "supporting": "配角",
+            "antagonist": "反派",
+            "npc": "NPC",
+            "vtuber": "虚拟人"
+        },
+        "length": {
+            "short": "简短",
+            "short_description": "~200-400字",
+            "medium": "标准",
+            "medium_description": "~400-800字",
+            "detailed": "详细",
+            "detailed_description": "~800-1500字"
+        },
+        "tone": {
+            "dark": "黑暗",
+            "inspirational": "励志",
+            "comedic": "喜剧",
+            "tragic": "悲剧",
+            "epic": "史诗"
+        },
+        "output": {
+            "title": "生成的背景故事",
+            "words": "字",
+            "copy": "复制",
+            "generating_message": "AI正在为你的角色创作背景故事...",
+            "empty_message": "你的角色背景故事将显示在这里。输入概念并点击生成按钮开始。"
+        },
+        "validation": {
+            "enter_concept": "请输入角色概念",
+            "select_ai_model": "请选择AI模型"
+        },
+        "success": {
+            "random_prompt_selected": "已选择随机概念！",
+            "backstory_generated": "背景故事生成成功！",
+            "backstory_copied": "背景故事已复制到剪贴板！"
+        },
+        "errors": {
+            "generation_failed": "生成失败，请重试。"
+        },
+        "random_prompts": [
+            "一名寻求救赎的刺客，在一次命运般的相遇后决定改变人生",
+            "曾经的贵族子弟，失去一切后却获得了神秘的力量",
+            "掌握禁忌知识的年轻法师，背负着悲惨的过去",
+            "被战争阴影缠绕的老兵，时常梦见倒下的战友",
+            "发现自己是失落王国继承人的街头孤儿",
+            "被诅咒束缚的骑士，必须守护一个自己也不理解的秘密",
+            "与各路黑道都有联系的神秘商人",
+            "失去记忆的流浪者，却拥有暗示黑暗过去的技能"
+        ],
+        "feature_intro": {
+            "name": "introduce",
+            "title": "什么是角色背景生成器？",
+            "label": "功能介绍",
+            "description": "角色背景生成器是一款基于 AI 的写作工具，可以把你的一两句角色概念扩展成完整、结构清晰的背景故事。它会围绕出身背景、关键转折、人际关系、内在目标以及后续剧情钩子等维度，帮你快速搭建一个可信、可持续推进剧情的角色人设。\n\n无论你是在写小说、跑团(DND/TRPG)、设计 VTuber 人设，还是为聊天机器人构建人格，只需要简单描述角色、选择世界观、角色类型、故事基调和篇幅，AI 就能生成一份可直接使用、也便于你二次修改的角色背景，大幅减少卡文和反复推导设定的时间。",
+            "image": {
+                "src": "/imgs/backstory/what-is-backstory1.avif"
+            }
+        },
+        "feature1_section": {
+            "name": "feature1",
+            "title": "为什么使用角色背景生成器",
+            "label": "优势",
+            "description": "几分钟内创建引人入胜的角色背景",
+            "items": [
+                {
+                    "title": "结构化输出",
+                    "description": "获得有组织的背景故事，包含清晰的章节：出身、转折点、人际关系、目标和剧情钩子。",
+                    "icon": "RiListCheck2",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory1.avif"
+                    }
+                },
+                {
+                    "title": "多场景支持",
+                    "description": "无论是DND战役、小说、VTuber还是聊天机器人，我们的生成器都能适应你的需求。",
+                    "icon": "RiGamepadLine",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory2.avif"
+                    }
+                },
+                {
+                    "title": "即时灵感",
+                    "description": "用AI生成的角色概念克服写作障碍，然后自定义和扩展。",
+                    "icon": "RiLightbulbFlashLine",
+                    "image": {
+                        "src": "/imgs/backstory/why-use-backstory3.avif"
+                    }
+                }
+            ]
+        },
+        "feature_section": {
+            "name": "applications",
+            "title": "AI 角色背景生成器的应用场景",
+            "label": "应用场景",
+            "description": "角色背景生成器服务于不同领域的创作者",
+            "items": [
+                {
+                    "title": "RPG玩家与DM",
+                    "description": "为DND、Pathfinder等桌游创建令人难忘的角色，自带剧情钩子。",
+                    "icon": "RiDiceLine"
+                },
+                {
+                    "title": "小说作者",
+                    "description": "为你的故事构建复杂角色，具有一致的动机和成长弧线。",
+                    "icon": "RiBookLine"
+                },
+                {
+                    "title": "VTuber与虚拟创作者",
+                    "description": "设计有丰富背景的吸引人设，让粉丝可以逐渐发现。",
+                    "icon": "RiUserHeartLine"
+                }
+            ]
+        },
+        "faq_section": {
+            "name": "faq",
+            "label": "常见问题",
+            "title": "常见问题解答",
+            "description": "关于角色背景生成器的常见问题",
+            "items": [
+                {
+                    "title": "什么是好的角色背景故事？",
+                    "description": "好的背景故事包括：清晰的出身和成长事件、合理的角色动机、内在冲突和缺陷、有意义的人际关系，以及可以推动未来故事的未解之谜。"
+                },
+                {
+                    "title": "生成的背景故事可以商用吗？",
+                    "description": "可以！所有生成的内容都归你所有，可用于个人或商业项目，包括小说、游戏和内容创作。"
+                },
+                {
+                    "title": "如何将背景故事与现有故事整合？",
+                    "description": "我们的结构化输出让你可以轻松提取特定元素（目标、秘密、关系），并将其融入你现有的叙事或战役中。"
+                },
+                {
+                    "title": "这个角色背景生成器适合奇幻和偏黑暗的角色吗？",
+                    "description": "适合。如果你在找一款专门用于奇幻世界或悲剧角色的角色背景生成器，这个工具就是为这些场景设计的。选择“奇幻”或“仙侠”等世界观，为角色设定主角、反派等角色类型，并把故事基调调整为“悲剧”或“史诗”，AI 就会根据你的提示生成符合魔法体系、王国设定和长期人物成长弧线的背景故事。"
+                },
+                {
+                    "title": "怎样写出悲剧背景，又不显得过度中二或猎奇？",
+                    "description": "从清晰的动机和后果出发，而不是单纯制造惨案。使用本工具的悲剧向生成功能时，可以选择悲剧向的故事基调，只聚焦一到两个决定性的失去或失败。AI 会为你补全事件、伤痕和关系细节，让角色的痛苦显得有根有据、仍然令人共情，而不是为了“惨”而惨。"
+                }
+            ]
+        },
+        "cta_section": {
+            "name": "cta",
+            "title": "开始创建角色",
+            "description": "几分钟内构建具有丰富背景故事的难忘角色。",
+            "buttons": [
+                {
+                    "title": "生成背景故事",
+                    "url": "/backstory-generator",
+                    "target": "",
+                    "icon": "GoArrowUpRight"
+                }
+            ]
+        }
+    }
+}

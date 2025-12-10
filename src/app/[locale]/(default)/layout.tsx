@@ -3,6 +3,7 @@ import Header from "@/components/blocks/header";
 import { ReactNode } from "react";
 import { getLandingPage } from "@/services/page";
 import Feedback from "@/components/feedback";
+import ScrollToGenerator from "@/components/scroll-to-generator";
 
 export default async function DefaultLayout({
   children,
@@ -19,6 +20,7 @@ export default async function DefaultLayout({
       {page.header && <Header header={page.header} />}
       <main className="overflow-x-hidden">{children}</main>
       {page.footer && <Footer footer={page.footer} />}
+      <ScrollToGenerator />
       <Feedback socialLinks={page.footer?.social?.items} />
     </>
   );

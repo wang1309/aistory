@@ -339,7 +339,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
   // ========== RENDER ==========
 
   return (
-    <section className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-emerald-500/30">
+    <section id="fantasy_generator" className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-emerald-500/30">
       {/* Invisible Turnstile */}
       <TurnstileInvisible
         ref={turnstileRef}

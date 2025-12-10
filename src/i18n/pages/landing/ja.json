@@ -57,6 +57,13 @@
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
               "target": "_self"
+            },
+            {
+              "title": "バックストーリージェネレーター",
+              "description": "RPG、小説、VTuber向けの構造化されたキャラクター背景を生成",
+              "url": "/backstory-generator",
+              "icon": "RiUser3Line",
+              "target": "_self"
             }
           ]
         }
@@ -739,6 +746,11 @@
               "target": "_self"
             },
             {
+              "title": "ストーリープロンプト生成器",
+              "url": "/story-prompt-generator",
+              "target": "_self"
+            },
+            {
               "title": "ファンタジーストーリージェネレーター",
               "url": "/fantasy-generator",
               "target": "_self"
@@ -766,6 +778,11 @@
             {
               "title": "詩タイトルジェネレーター",
               "url": "/poem-title-generator",
+              "target": "_self"
+            },
+            {
+              "title": "バックストーリージェネレーター",
+              "url": "/backstory-generator",
               "target": "_self"
             }
           ]

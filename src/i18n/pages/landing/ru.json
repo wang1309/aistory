@@ -57,6 +57,13 @@
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
               "target": "_self"
+            },
+            {
+              "title": "Генератор предысторий",
+              "description": "Создавайте структурированные предыстории персонажей для RPG, романов и VTuber",
+              "url": "/backstory-generator",
+              "icon": "RiUser3Line",
+              "target": "_self"
             }
           ]
         }
@@ -739,6 +746,11 @@
               "target": "_self"
             },
             {
+              "title": "Генератор идей для историй",
+              "url": "/story-prompt-generator",
+              "target": "_self"
+            },
+            {
               "title": "Генератор фэнтези-историй",
               "url": "/fantasy-generator",
               "target": "_self"
@@ -766,6 +778,11 @@
             {
               "title": "Генератор названий стихов",
               "url": "/poem-title-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Генератор предысторий",
+              "url": "/backstory-generator",
               "target": "_self"
             }
           ]
