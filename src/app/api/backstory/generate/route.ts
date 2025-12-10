@@ -299,15 +299,21 @@ export async function POST(req: Request) {
 
         console.log("✓ GRSAI API response received, starting streaming");
 
-        // Handle streaming response
-        let insideThinkTag = false;
+        // Handle streaming response - Use buffer for Cloudflare Workers compatibility
         const encoder = new TextEncoder();
+        const decoder = new TextDecoder();
+        
+        let insideThinkTag = false;
+        let buffer = ""; // Buffer for incomplete lines
 
         const transformStream = new TransformStream({
             async transform(chunk, controller) {
                 try {
-                    const text = new TextDecoder().decode(chunk);
-                    const lines = text.split("\n").filter((line) => line.trim() !== "");
+                    const text = decoder.decode(chunk, { stream: true });
+                    buffer += text;
+
+                    const lines = buffer.split("\n");
+                    buffer = lines.pop() || ""; // Keep the last incomplete line in buffer
 
                     for (const line of lines) {
                         if (line.startsWith("data: ")) {
@@ -320,31 +326,36 @@ export async function POST(req: Request) {
 
                             try {
                                 const parsed = JSON.parse(data);
-                                const content = parsed.choices?.[0]?.delta?.content || "";
+                                let content = parsed.choices?.[0]?.delta?.content;
 
                                 if (content) {
                                     // Filter <think> tag content (AI thinking process)
                                     if (content.includes("<think>")) {
                                         insideThinkTag = true;
+                                        const idx = content.indexOf("<think>");
+                                        content = idx > 0 ? content.substring(0, idx) : "";
                                     }
 
-                                    if (insideThinkTag) {
-                                        if (content.includes("</think>")) {
-                                            insideThinkTag = false;
-                                        }
-                                        continue;
+                                    if (content.includes("</think>")) {
+                                        insideThinkTag = false;
+                                        const idx = content.indexOf("</think>");
+                                        content = content.substring(idx + 8);
                                     }
 
-                                    // Escape special characters for SSE
-                                    const escaped = content
-                                        .replace(/\\/g, '\\\\')
-                                        .replace(/"/g, '\\"')
-                                        .replace(/\n/g, '\\n')
-                                        .replace(/\r/g, '\\r')
-                                        .replace(/\t/g, '\\t');
+                                    if (insideThinkTag) continue;
 
-                                    // Send data chunk
-                                    controller.enqueue(encoder.encode(`0:"${escaped}"\n`));
+                                    if (content.trim()) {
+                                        // Escape special characters for SSE
+                                        const escaped = content
+                                            .replace(/\\/g, '\\\\')
+                                            .replace(/"/g, '\\"')
+                                            .replace(/\n/g, '\\n')
+                                            .replace(/\r/g, '\\r')
+                                            .replace(/\t/g, '\\t');
+
+                                        // Send data chunk
+                                        controller.enqueue(encoder.encode(`0:"${escaped}"\n`));
+                                    }
                                 }
                             } catch (parseError) {
                                 console.log("Failed to parse SSE data:", parseError);
@@ -360,13 +371,12 @@ export async function POST(req: Request) {
             }
         });
 
-        const readableStream = response.body.pipeThrough(transformStream);
+        const transformedStream = response.body.pipeThrough(transformStream);
 
-        return new Response(readableStream, {
+        return new Response(transformedStream, {
             headers: {
-                "Content-Type": "text/event-stream; charset=utf-8",
+                "Content-Type": "text/plain; charset=utf-8",
                 "Cache-Control": "no-cache, no-transform",
-                "Connection": "keep-alive",
                 "X-Content-Type-Options": "nosniff",
             },
         });
