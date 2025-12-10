@@ -3,7 +3,6 @@
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import BackstoryBreadcrumb from "./breadcrumb";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/icon";
 import { toast } from "sonner";
