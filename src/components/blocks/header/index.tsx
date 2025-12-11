@@ -55,6 +55,9 @@ export default function Header({ header }: { header: HeaderType }) {
                   src={header.brand.logo.src}
                   alt={header.brand.logo.alt || header.brand.title}
                   className="w-8"
+                  width={32}
+                  height={32}
+                  loading="lazy"
                 />
               )}
               {header.brand?.title && (
@@ -190,6 +193,9 @@ export default function Header({ header }: { header: HeaderType }) {
                   src={header.brand.logo.src}
                   alt={header.brand.logo.alt || header.brand.title}
                   className="w-8"
+                  width={32}
+                  height={32}
+                  loading="lazy"
                 />
               )}
               {header.brand?.title && (
@@ -216,6 +222,9 @@ export default function Header({ header }: { header: HeaderType }) {
                           src={header.brand.logo.src}
                           alt={header.brand.logo.alt || header.brand.title}
                           className="w-8"
+                          width={32}
+                          height={32}
+                          loading="lazy"
                         />
                       )}
                       {header.brand?.title && (

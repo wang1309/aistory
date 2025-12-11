@@ -2,6 +2,7 @@ import { Footer as FooterType } from "@/types/blocks/footer";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { ViewportLazy } from "@/components/viewport-lazy";
 
 export default function Footer({ footer }: { footer: FooterType }) {
   const t = useTranslations();
@@ -24,6 +25,9 @@ export default function Footer({ footer }: { footer: FooterType }) {
                         src={footer.brand.logo.src}
                         alt={footer.brand.logo.alt || footer.brand.title}
                         className="h-11"
+                        width={44}
+                        height={44}
+                        loading="lazy"
                       />
                     )}
                     {footer.brand.title && (
@@ -78,6 +82,15 @@ export default function Footer({ footer }: { footer: FooterType }) {
                   {footer.friendshipLinks.title}
                 </h3>
               )}
+              {/* 文本外链常驻，保证第三方抓取可见 */}
+              <div className="sr-only">
+                {footer.friendshipLinks.items.map((link, i) => (
+                  <a key={i} href={link.url} target={link.target || "_blank"} rel="noopener noreferrer">
+                    {link.title || link.image?.alt || link.url}
+                  </a>
+                ))}
+              </div>
+              {/* 图片徽章仍使用 lazy，减少带宽 */}
               <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
                 {footer.friendshipLinks.items.map((link, i) => (
                   <a
@@ -92,6 +105,9 @@ export default function Footer({ footer }: { footer: FooterType }) {
                       src={link.image.src}
                       alt={link.image.alt || link.title}
                       className="h-12 w-auto lg:h-14"
+                      width={160}
+                      height={64}
+                      loading="lazy"
                     />
                   </a>
                 ))}

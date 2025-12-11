@@ -21,6 +21,9 @@ export default function Branding({ section }: { section: SectionType }) {
                     src={item.image.src}
                     alt={item.image.alt || item.title}
                     className="h-7 dark:invert"
+                    width={112}
+                    height={28}
+                    loading="lazy"
                   />
                 );
               }

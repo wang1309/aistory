@@ -94,11 +94,11 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
             <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay" />
 
             {/* Aurora Blobs */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/10 rounded-full blur-[120px] opacity-40 animate-blob" />
-            <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[128px] opacity-30 animate-blob animation-delay-2000" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/10 rounded-full blur-[120px] opacity-40" />
+            <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[128px] opacity-30" />
 
-            {/* Floating Particles */}
-            <FloatingFlowers count={40} />
+            {/* Floating Particles (kept as requested) */}
+            <FloatingFlowers count={30} />
           </>
         )}
       </div>

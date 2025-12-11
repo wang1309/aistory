@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,13 +9,25 @@ import Icon from "@/components/icon";
 import { toast } from "sonner";
 import { StoryGenerate as StoryGenerateType } from "@/types/blocks/story-generate";
 import { useLocale } from "next-intl";
-import { exportStoryToPdf, StoryMetadata } from "@/lib/pdf-export";
+import type { StoryMetadata } from "@/lib/pdf-export";
 import { useAppContext } from "@/contexts/app";
-import confetti from "canvas-confetti";
 import { StoryStorage, SavedStory } from "@/lib/story-storage";
-import StoryHistoryDropdown from "@/components/story-history-dropdown";
+const StoryHistoryDropdown = dynamic(() => import("@/components/story-history-dropdown"), {
+  ssr: false,
+  loading: () => null,
+});
+const StoryShareButtons = dynamic(() => import("@/components/story-share-buttons"), {
+  ssr: false,
+  loading: () => null,
+});
+const GeneratorShortcutHints = dynamic(
+  () => import("@/components/generator-shortcut-hints").then((m) => m.GeneratorShortcutHints),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
 
-import StoryShareButtons from "@/components/story-share-buttons";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import CompletionGuide from "@/components/story/completion-guide";
 import GenerationProgress from "@/components/story/generation-progress";
@@ -23,7 +36,6 @@ import StorySaveDialog from "@/components/story/story-save-dialog";
 import type { StoryStatus } from "@/models/story";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
-import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 
 const isDev = process.env.NODE_ENV === "development";
 const devLog = (...args: any[]) => {
@@ -142,6 +154,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
 
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const confettiModuleRef = useRef<((opts?: any) => void) | null>(null);
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
@@ -350,12 +363,18 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   }, [RANDOM_PROMPTS]);
 
   // Confetti celebration for first-time story generation
-  const triggerFirstTimeConfetti = useCallback(() => {
+  const triggerFirstTimeConfetti = useCallback(async () => {
     // Check if user has generated a story before
     const hasGeneratedBefore = localStorage.getItem('hasGeneratedStory');
 
     if (!hasGeneratedBefore) {
       // Trigger confetti animation
+      if (!confettiModuleRef.current) {
+        const mod = await import("canvas-confetti");
+        confettiModuleRef.current = (mod as any).default || (mod as any);
+      }
+      const confetti = confettiModuleRef.current;
+      if (typeof confetti !== "function") return false;
       confetti({
         particleCount: 200,
         spread: 70,
@@ -518,7 +537,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
       if (accumulatedText.trim()) {
         // Check if this is first time and trigger confetti
-        const isFirstTime = triggerFirstTimeConfetti();
+        const isFirstTime = await triggerFirstTimeConfetti();
 
         // Save story to LocalStorage
         try {
@@ -652,8 +671,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         page_indicator: section.pdf.page_indicator,
       };
 
+      const { exportStoryToPdf } = await import("@/lib/pdf-export");
+
       // 导出PDF (传递locale和翻译)
-      await exportStoryToPdf(generatedStory, metadata, locale, pdfTranslations, (progress) => {
+      await exportStoryToPdf(generatedStory, metadata, locale, pdfTranslations, (progress: number) => {
         devLog(`PDF export progress: ${progress}%`);
       });
 
