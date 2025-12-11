@@ -1,8 +1,5 @@
 import { Suspense } from "react";
 import nextDynamic from "next/dynamic";
-import Hero from "@/components/blocks/hero";
-import StoryGenerate from "@/components/blocks/story-generate";
-import StoryGuide from "@/components/onboarding/story-guide";
 import { getLandingPage } from "@/services/page";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ViewportLazy } from "@/components/viewport-lazy";
@@ -11,11 +8,18 @@ export const revalidate = 3600; // 1 hour
 export const dynamic = "force-static";
 
 // Dynamic imports for non-critical components
+const StoryGenerate = nextDynamic(() => import("@/components/blocks/story-generate"), {
+  loading: () => <StoryGenerateSkeleton />,
+});
 const ModuleToolsSection = nextDynamic(() => import("@/components/blocks/module-tools"));
 const Branding = nextDynamic(() => import("@/components/blocks/branding"));
 const Feature1 = nextDynamic(() => import("@/components/blocks/feature1"));
 const Feature2 = nextDynamic(() => import("@/components/blocks/feature2"));
 const Feature3 = nextDynamic(() => import("@/components/blocks/feature3"));
+const Hero = nextDynamic(() => import("@/components/blocks/hero"), {
+  loading: () => <HeroSkeleton />,
+});
+const StoryGuide = nextDynamic(() => import("@/components/onboarding/story-guide"));
 const Feature = nextDynamic(() => import("@/components/blocks/feature"));
 const Showcase = nextDynamic(() => import("@/components/blocks/showcase"));
 const Stats = nextDynamic(() => import("@/components/blocks/stats"));
@@ -27,6 +31,14 @@ const CTA = nextDynamic(() => import("@/components/blocks/cta"));
 // Loading placeholder component
 function SectionSkeleton() {
   return <div className="w-full h-96 bg-muted/5 animate-pulse" />;
+}
+
+function HeroSkeleton() {
+  return <SectionSkeleton />;
+}
+
+function StoryGenerateSkeleton() {
+  return <SectionSkeleton />;
 }
 
 export default async function LandingPage({
@@ -45,7 +57,13 @@ export default async function LandingPage({
       {/* Critical: Always render immediately */}
       <StoryGuide />
       {page.hero && <Hero hero={page.hero} />}
-      {page.story_generate && <StoryGenerate section={page.story_generate} />}
+      {page.story_generate && (
+        <ViewportLazy fallback={<SectionSkeleton />}>
+          <Suspense fallback={<SectionSkeleton />}>
+            <StoryGenerate section={page.story_generate} />
+          </Suspense>
+        </ViewportLazy>
+      )}
 
       {/* High Priority: Lazy load with Suspense + viewport gate */}
       <ViewportLazy fallback={<SectionSkeleton />}>

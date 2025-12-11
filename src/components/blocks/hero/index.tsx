@@ -1,13 +1,12 @@
 "use client";
 
-import { memo, useMemo, useState, useEffect, useRef } from "react";
+import { memo, useMemo, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import HappyUsers from "./happy-users";
 import FloatingFlowers from "@/components/effects/floating-flowers";
-import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion";
 
 import { Hero as HeroType } from "@/types/blocks/hero";
 import Icon from "@/components/icon";
@@ -24,17 +23,17 @@ const Prism = dynamic(() => import("@/components/Prism"), {
 
 const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
   const [isMounted, setIsMounted] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const [allowPrism, setAllowPrism] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+    if (typeof window !== "undefined") {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!reduceMotion && hero.prism_background?.enabled) {
+        const timer = setTimeout(() => setAllowPrism(true), 500);
+        return () => clearTimeout(timer);
+      }
+    }
   }, []);
 
   const { texts, highlightText } = useMemo(() => {
@@ -73,13 +72,10 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
   }
 
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-[92vh] flex items-center justify-center py-24 lg:py-32 overflow-hidden"
-    >
+    <section className="relative min-h-[92vh] flex items-center justify-center py-24 lg:py-32 overflow-hidden">
       {/* Background System */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        {hero.prism_background?.enabled && isMounted ? (
+        {allowPrism && isMounted ? (
           <>
             <div className="absolute inset-0 opacity-70">
               <Prism {...prismProps} />
@@ -106,28 +102,19 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
       <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Badge */}
         {hero.show_badge && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center justify-center mb-12"
-          >
+          <div className="flex items-center justify-center mb-12">
             <img
               src="/imgs/badges/phdaily.svg"
               alt="phdaily"
               className="h-12 object-cover transition-transform duration-300 hover:scale-110"
             />
-          </motion.div>
+          </div>
         )}
 
         <div className="text-center flex flex-col items-center">
           {/* Announcement */}
           {hero.announcement.show && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
+            <div>
               <Link
                 href={hero.announcement.url as any}
                 className="group relative inline-flex items-center gap-2 rounded-full px-4 py-1.5 md:py-2 text-sm font-medium transition-all hover:bg-muted/50"
@@ -145,16 +132,11 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                   <Icon name="arrow-right" className="size-3.5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                 </div>
               </Link>
-            </motion.div>
+            </div>
           )}
 
           {/* Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-8 max-w-5xl"
-          >
+          <div className="mt-8 max-w-5xl">
             {texts && texts.length > 1 ? (
               <h1 className="text-balance text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
                 <span className="block text-foreground">{texts[0]}</span>
@@ -168,29 +150,19 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                 {hero.title}
               </h1>
             )}
-          </motion.div>
+          </div>
 
           {/* Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-8 max-w-3xl"
-          >
+          <div className="mt-8 max-w-3xl">
             <p
               className="text-lg sm:text-xl text-muted-foreground/80 leading-relaxed font-light text-balance"
               dangerouslySetInnerHTML={descriptionHtml}
             />
-          </motion.div>
+          </div>
 
           {/* Buttons */}
           {hero.buttons && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center"
-            >
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
               {hero.buttons.map((item, i) => {
                 const isPrimary = item.variant === 'default' || i === 0;
                 return (
@@ -213,35 +185,30 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                           border border-white/10 overflow-hidden
                           transition-all duration-500 group/btn"
                       >
-                        {/* Deep Space Noise Texture */}
                         <div className="absolute inset-0 bg-noise opacity-20 mix-blend-overlay pointer-events-none" />
-
-                        {/* Glass Gloss Top Highlight */}
                         <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent opacity-50 pointer-events-none" />
-
-                        {/* Dynamic Shimmer Effect */}
-                        <div className="absolute inset-0 -translate-x-full group-hover/btn:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none" />
-
-                        <span className="relative flex items-center justify-center gap-3 z-10">
+                        <div className="relative flex items-center gap-2">
                           {item.icon && (
-                            <div className="relative group-hover/btn:rotate-12 transition-transform duration-500">
-                              <Icon name={item.icon} className="size-6 drop-shadow-md" />
-                            </div>
+                            <Icon name={item.icon} className="size-5 shrink-0" />
                           )}
-                          <span className="drop-shadow-sm">{item.title}</span>
-                          <Icon name="arrow-right" className="size-5 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-300" />
-                        </span>
+                          <span>{item.title}</span>
+                        </div>
                       </Button>
                     ) : (
                       <Button
-                        size="lg"
                         variant="outline"
-                        className="w-full sm:w-auto h-14 rounded-full px-8 text-base font-semibold border-2 hover:bg-muted/50 transition-all hover:-translate-y-0.5"
+                        size="lg"
+                        className="relative w-full sm:w-auto h-16 sm:h-20 rounded-full px-10 text-lg font-semibold 
+                          border border-border/50 bg-background/60 backdrop-blur-xl
+                          hover:border-primary/50 hover:text-primary
+                          transition-all duration-300"
                       >
-                        <span className="flex items-center justify-center gap-2">
-                          {item.icon && <Icon name={item.icon} className="size-5" />}
-                          {item.title}
-                        </span>
+                        <div className="relative flex items-center gap-2">
+                          {item.icon && (
+                            <Icon name={item.icon} className="size-5 shrink-0" />
+                          )}
+                          <span>{item.title}</span>
+                        </div>
                       </Button>
                     )}
                   </Link>
@@ -256,7 +223,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                   window.dispatchEvent(event);
                   document.getElementById('craft_story')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="group/quick relative w-full sm:w-auto h-14 sm:h-16 rounded-full px-8 text-base sm:text-lg font-bold
+                className="group/quick relative w-full sm:w-auto h-16 sm:h-20 rounded-full px-10 text-lg font-bold
                   bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500
                   bg-[length:200%_auto] animate-gradient
                   text-white
@@ -266,15 +233,9 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                   border border-white/20 overflow-hidden
                   transition-all duration-500"
               >
-                {/* Noise Texture */}
                 <div className="absolute inset-0 bg-noise opacity-20 mix-blend-overlay pointer-events-none" />
-
-                {/* Gloss Highlight */}
                 <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/30 to-transparent opacity-50 pointer-events-none" />
-
-                {/* Shimmer */}
                 <div className="absolute inset-0 -translate-x-full group-hover/quick:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 pointer-events-none" />
-
                 <span className="relative flex items-center justify-center gap-2 z-10">
                   <Icon name="zap" className="size-5 fill-current animate-pulse" />
                   <span className="drop-shadow-sm">
@@ -291,26 +252,15 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                   </span>
                 </span>
               </button>
-            </motion.div>
+            </div>
           )}
 
           {/* Hero Image */}
           {hero.image?.src && (
-            <motion.div
-              style={{ y, opacity }}
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-20 relative w-full max-w-6xl perspective-1000"
-            >
-              {/* Ambient Glow */}
+            <div className="mt-20 relative w-full max-w-6xl perspective-1000">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-purple-500/20 to-blue-500/20 rounded-[2.5rem] blur-3xl opacity-50" />
-
-              {/* Prism Glass Container */}
               <div className="relative rounded-[2rem] bg-background/50 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/10 overflow-hidden ring-1 ring-white/20">
-                {/* Specular Highlight */}
                 <div className="absolute inset-0 rounded-[2rem] border border-white/20 pointer-events-none z-20" />
-
                 <Image
                   src={hero.image.src}
                   alt={hero.image.alt || "illustration"}
@@ -321,38 +271,26 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                   className="relative w-full rounded-[1.9rem] shadow-inner"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                 />
-
-                {/* Sheen Effect */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full animate-shimmer pointer-events-none z-10" />
               </div>
-            </motion.div>
+            </div>
           )}
 
           {/* Tip */}
           {hero.tip && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.8 }}
-              className="mt-12"
-            >
+            <div className="mt-12">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm text-primary">
                 <span className="text-base">✨</span>
                 {hero.tip}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {/* Happy Users */}
           {hero.show_happy_users && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.9 }}
-              className="mt-8"
-            >
+            <div className="mt-8">
               <HappyUsers />
-            </motion.div>
+            </div>
           )}
         </div>
       </div>

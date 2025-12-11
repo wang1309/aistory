@@ -28,11 +28,18 @@ const GeneratorShortcutHints = dynamic(
   }
 );
 
-import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
+import type { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
+const TurnstileInvisible = dynamic(() => import("@/components/TurnstileInvisible"), {
+  ssr: false,
+  loading: () => null,
+});
 import CompletionGuide from "@/components/story/completion-guide";
 import GenerationProgress from "@/components/story/generation-progress";
 import { useTranslations } from "next-intl";
-import StorySaveDialog from "@/components/story/story-save-dialog";
+const StorySaveDialog = dynamic(() => import("@/components/story/story-save-dialog"), {
+  ssr: false,
+  loading: () => null,
+});
 import type { StoryStatus } from "@/models/story";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
@@ -915,11 +922,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             </div>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
+          <h2 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 via-violet-600 to-indigo-700 dark:from-white dark:via-indigo-200 dark:to-indigo-400 animate-shimmer">
               {section.header.title}
             </span>
-          </h1>
+          </h2>
 
           <p className="text-xl sm:text-2xl text-muted-foreground/80 dark:text-muted-foreground/90 max-w-2xl mx-auto font-light tracking-wide leading-relaxed mb-8 sm:mb-8">
             {section.header.subtitle}
