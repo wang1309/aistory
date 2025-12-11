@@ -5,7 +5,7 @@
     "brand": {
       "title": "스토리 생성기",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.avif",
         "alt": "스토리 생성기"
       },
       "url": "/"
@@ -704,7 +704,7 @@
       "title": "스토리 생성기",
       "description": "AI 스토리 생성기로 창의적 잠재력을 발휘하세요. 필터 없는 옵션부터 무료 액세스까지, 오늘 바로 무한한 스토리텔링 가능성을 탐험하세요!",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.avif",
         "alt": "스토리 생성기"
       },
       "url": "/"

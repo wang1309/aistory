@@ -17,7 +17,7 @@ Allow: /terms-of-service
 # Allow public assets
 Allow: /imgs/
 Allow: /favicon.ico
-Allow: /logo.png
+Allow: /logo.avif
 Allow: /story.png
 
 # Sitemaps (update with your actual domain)

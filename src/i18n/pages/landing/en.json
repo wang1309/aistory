@@ -5,7 +5,7 @@
     "brand": {
       "title": "Story Generator",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.avif",
         "alt": "Story Generator"
       },
       "url": "/"
@@ -711,7 +711,7 @@
       "title": "Story Generator",
       "description": "Unlock creative potential with an AI story generator. From no filter options to free access, explore limitless storytelling possibilities today!",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.avif",
         "alt": "Story Generator"
       },
       "url": "/"

@@ -5,7 +5,7 @@
     "brand": {
       "title": "Geschichtengenerator",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.avif",
         "alt": "Geschichtengenerator"
       },
       "url": "/"
@@ -704,7 +704,7 @@
       "title": "Geschichtengenerator",
       "description": "Entfalten Sie kreatives Potenzial mit einem KI-Geschichtengenerator. Von ungefilterten Optionen bis zu kostenlosem Zugang – erkunden Sie noch heute grenzenlose Erzählmöglichkeiten!",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.avif",
         "alt": "Geschichtengenerator"
       },
       "url": "/"

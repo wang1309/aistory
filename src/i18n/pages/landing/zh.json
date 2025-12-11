@@ -5,7 +5,7 @@
     "brand": {
       "title": "故事生成器",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.avif",
         "alt": "故事生成器"
       },
       "url": "/"
@@ -711,7 +711,7 @@
       "title": "故事生成器",
       "description": "使用 AI 故事生成器释放创意潜力。从无过滤选项到免费访问，立即探索无限的讲故事可能性！",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.avif",
         "alt": "故事生成器"
       },
       "url": "/"

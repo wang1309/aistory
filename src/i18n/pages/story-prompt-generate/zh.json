@@ -10,7 +10,7 @@
     "brand": {
       "title": "故事灵感生成器",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.avif",
         "alt": "故事灵感生成器"
       },
       "url": "/"

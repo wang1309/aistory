@@ -10,7 +10,7 @@
     "brand": {
       "title": "ストーリープロンプト生成器",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.avif",
         "alt": "ストーリープロンプト生成器"
       },
       "url": "/"
