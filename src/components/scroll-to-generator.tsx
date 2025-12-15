@@ -10,6 +10,7 @@ const GENERATOR_IDS = [
   "craft_story",           // Story Generator (homepage)
   "backstory_generator",   // Backstory Generator
   "book_title_generator",  // Book Title Generator
+  "dialogue-generate",     // Dialogue Generator
   "fanfic_generator",      // Fanfic Generator
   "fantasy_generator",     // Fantasy Generator
   "plot_generator",        // Plot Generator

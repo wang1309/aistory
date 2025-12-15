@@ -10,6 +10,11 @@
     "breadcrumb_home": "홈",
     "breadcrumb_current": "대화 생성기",
     "scenario_prompt": "시나리오 / 배경",
+    "clear_prompt": "입력 지우기",
+    "prompt_history": "기록",
+    "prompt_history_recent": "최근 입력",
+    "prompt_history_empty": "기록이 없습니다",
+    "prompt_history_clear": "기록 지우기",
     "random_button": "랜덤 시나리오",
     "ai_model": "AI 모델",
     "output_language": "출력 언어",
@@ -75,11 +80,14 @@
     "title": "생성된 대화",
     "words": "단어",
     "copy": "복사",
-    "generating_message": "대화를 만들고 있습니다...",
+    "export": "내보내기",
+    "export_md": "MD 내보내기",
+    "export_txt": "TXT 내보내기",
+    "generating_message": "대화를 생성하는 중...",
     "empty_message": "생성된 대화가 여기에 표시됩니다"
   },
   "validation": {
-    "enter_scenario": "시나리오나 배경을 입력하세요",
+    "enter_scenario": "시나리오 또는 컨텍스트를 입력해 주세요",
     "select_ai_model": "AI 모델을 선택하세요",
     "add_characters": "이름이 있는 캐릭터를 최소 2명 추가하세요"
   },

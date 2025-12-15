@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
+import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import TurnstileInvisible, {
   TurnstileInvisibleHandle,
 } from "@/components/TurnstileInvisible";
@@ -13,6 +14,14 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Select,
   SelectContent,
@@ -36,6 +45,16 @@ interface DialogueGenerateProps {
   section: DialogueGenerateType;
 }
 
+interface PromptHistoryItem {
+  id: string;
+  value: string;
+  createdAt: string;
+}
+
+const DIALOGUE_PROMPT_DRAFT_KEY = "dialogue-generate:prompt-draft";
+const DIALOGUE_PROMPT_HISTORY_KEY = "dialogue-generate:prompt-history";
+const MAX_PROMPT_HISTORY_ITEMS = 10;
+
 function RequiredLabel({ children, htmlFor }: { children: ReactNode; htmlFor?: string }) {
   return (
     <Label htmlFor={htmlFor}>
@@ -49,6 +68,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
   const locale = useLocale();
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const outputScrollRef = useRef<HTMLDivElement | null>(null);
+  const promptRef = useRef<HTMLTextAreaElement | null>(null);
 
   const [prompt, setPrompt] = useState("");
   const [selectedModel, setSelectedModel] = useState<string>("fast");
@@ -67,6 +87,10 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
   const [generatedDialogue, setGeneratedDialogue] = useState("");
   const [showAdvanced, setShowAdvanced] = useState(false);
 
+  const [promptHistoryOpen, setPromptHistoryOpen] = useState(false);
+  const [promptHistory, setPromptHistory] = useState<PromptHistoryItem[]>([]);
+  const [promptHistoryCount, setPromptHistoryCount] = useState(0);
+
   const t = useCallback(
     (key: string) => {
       const keys = key.split(".");
@@ -78,6 +102,96 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
     },
     [section]
   );
+
+  const restorePromptDraft = useCallback((draft: string) => {
+    setPrompt(draft);
+  }, []);
+
+  useDraftAutoSave({
+    key: DIALOGUE_PROMPT_DRAFT_KEY,
+    value: prompt,
+    onRestore: restorePromptDraft,
+  });
+
+  const getPromptHistory = useCallback((): PromptHistoryItem[] => {
+    if (typeof window === "undefined") return [];
+    try {
+      const raw = window.localStorage.getItem(DIALOGUE_PROMPT_HISTORY_KEY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) return [];
+
+      return parsed
+        .map((item: any) => ({
+          id: typeof item?.id === "string" ? item.id : "",
+          value: typeof item?.value === "string" ? item.value : "",
+          createdAt: typeof item?.createdAt === "string" ? item.createdAt : "",
+        }))
+        .filter((item: PromptHistoryItem) => item.id && item.value.trim());
+    } catch {
+      return [];
+    }
+  }, []);
+
+  const setPromptHistoryStorage = useCallback((items: PromptHistoryItem[]) => {
+    if (typeof window === "undefined") return;
+    try {
+      window.localStorage.setItem(DIALOGUE_PROMPT_HISTORY_KEY, JSON.stringify(items));
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  const refreshPromptHistoryCount = useCallback(() => {
+    const items = getPromptHistory();
+    setPromptHistoryCount(items.length);
+  }, [getPromptHistory]);
+
+  useEffect(() => {
+    refreshPromptHistoryCount();
+  }, [refreshPromptHistoryCount]);
+
+  useEffect(() => {
+    if (!promptHistoryOpen) return;
+    const items = getPromptHistory();
+    setPromptHistory(items);
+  }, [promptHistoryOpen, getPromptHistory]);
+
+  const savePromptToHistory = useCallback(
+    (value: string) => {
+      const trimmed = value.trim();
+      if (!trimmed) return;
+      if (typeof window === "undefined") return;
+
+      const existing = getPromptHistory();
+      const deduped = existing.filter((x) => x.value.trim() !== trimmed);
+
+      const newItem: PromptHistoryItem = {
+        id: `dlg_prompt_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+        value: value,
+        createdAt: new Date().toISOString(),
+      };
+
+      const next = [newItem, ...deduped].slice(0, MAX_PROMPT_HISTORY_ITEMS);
+      setPromptHistoryStorage(next);
+      setPromptHistoryCount(next.length);
+      if (promptHistoryOpen) {
+        setPromptHistory(next);
+      }
+    },
+    [getPromptHistory, promptHistoryOpen, setPromptHistoryStorage]
+  );
+
+  const clearPromptHistory = useCallback(() => {
+    if (typeof window === "undefined") return;
+    try {
+      window.localStorage.removeItem(DIALOGUE_PROMPT_HISTORY_KEY);
+    } catch {
+      // ignore
+    }
+    setPromptHistory([]);
+    setPromptHistoryCount(0);
+  }, []);
 
   const AI_MODELS = useMemo(
     () => [
@@ -290,18 +404,81 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
       return;
     }
 
+    savePromptToHistory(prompt);
+
     // Start loading state while Turnstile verification is in progress
     setIsGenerating(true);
 
     // Trigger invisible Turnstile verification
     // After verification succeeds, handleTurnstileSuccess will be called automatically
     turnstileRef.current?.execute();
-  }, [prompt, selectedModel, characters, t]);
+  }, [prompt, selectedModel, characters, t, savePromptToHistory]);
 
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(generatedDialogue);
     toast.success(t("success.dialogue_copied"));
   }, [generatedDialogue, t]);
+
+  const downloadTextFile = useCallback((content: string, filename: string, mimeType: string) => {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }, []);
+
+  const markdownToPlainText = useCallback((md: string) => {
+    return (
+      md
+        // normalize line endings
+        .replace(/\r\n/g, "\n")
+        // code fences
+        .replace(/```[\s\S]*?```/g, (block) => {
+          const inner = block.replace(/^```[a-zA-Z0-9_-]*\n?/, "").replace(/```\s*$/, "");
+          return inner;
+        })
+        // inline code
+        .replace(/`([^`]+)`/g, "$1")
+        // images ![alt](url) -> alt (url)
+        .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, "$1 ($2)")
+        // links [text](url) -> text (url)
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)")
+        // headings
+        .replace(/^\s{0,3}#{1,6}\s+/gm, "")
+        // blockquotes
+        .replace(/^\s{0,3}>\s?/gm, "")
+        // bold/italic
+        .replace(/\*\*([^*]+)\*\*/g, "$1")
+        .replace(/__([^_]+)__/g, "$1")
+        .replace(/\*([^*]+)\*/g, "$1")
+        .replace(/_([^_]+)_/g, "$1")
+        // horizontal rules
+        .replace(/^\s{0,3}(-{3,}|\*{3,}|_{3,})\s*$/gm, "")
+        // list markers
+        .replace(/^\s{0,3}([-*+]\s+)/gm, "")
+        .replace(/^\s{0,3}(\d+\.)\s+/gm, "")
+        // collapse excessive blank lines
+        .replace(/\n{3,}/g, "\n\n")
+        .trim()
+    );
+  }, []);
+
+  const handleExportMd = useCallback(() => {
+    if (!generatedDialogue) return;
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+    downloadTextFile(generatedDialogue, `dialogue-${timestamp}.md`, "text/markdown;charset=utf-8");
+  }, [downloadTextFile, generatedDialogue]);
+
+  const handleExportTxt = useCallback(() => {
+    if (!generatedDialogue) return;
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+    const plain = markdownToPlainText(generatedDialogue);
+    downloadTextFile(plain, `dialogue-${timestamp}.txt`, "text/plain;charset=utf-8");
+  }, [downloadTextFile, generatedDialogue, markdownToPlainText]);
 
   const wordCount = useMemo(() => {
     if (!generatedDialogue) return 0;
@@ -364,22 +541,97 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                 {/* Scenario Prompt */}
                 <div className="space-y-2">
                   <RequiredLabel htmlFor="prompt">{t("ui.scenario_prompt")}</RequiredLabel>
-                  <Textarea
-                    id="prompt"
-                    value={prompt}
-                    onChange={(e) => setPrompt(e.target.value)}
-                    placeholder={t("placeholders.scenario_prompt")}
-                    className="min-h-[120px] resize-none"
-                  />
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleRandomPrompt}
-                    className="mt-2"
-                  >
-                    <Icon name="RiShuffleLine" className="w-4 h-4 mr-2" />
-                    {t("ui.random_button")}
-                  </Button>
+                  <div className="relative">
+                    <Textarea
+                      ref={promptRef}
+                      id="prompt"
+                      value={prompt}
+                      onChange={(e) => setPrompt(e.target.value)}
+                      placeholder={t("placeholders.scenario_prompt")}
+                      className="min-h-[120px] resize-none pr-10 pb-10"
+                    />
+                    {prompt.trim() && (
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="absolute bottom-2 right-2 h-8 w-8"
+                        aria-label={t("ui.clear_prompt")}
+                        onClick={() => {
+                          setPrompt("");
+                          requestAnimationFrame(() => {
+                            promptRef.current?.focus();
+                          });
+                        }}
+                      >
+                        <Icon name="RiEraserLine" className="w-4 h-4" />
+                      </Button>
+                    )}
+                  </div>
+                  <div className="mt-2 flex items-center gap-2">
+                    <Button variant="outline" size="sm" onClick={handleRandomPrompt}>
+                      <Icon name="RiShuffleLine" className="w-4 h-4 mr-2" />
+                      {t("ui.random_button")}
+                    </Button>
+                    <DropdownMenu open={promptHistoryOpen} onOpenChange={setPromptHistoryOpen}>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="outline" size="sm" className="gap-2">
+                          <Icon name="RiHistoryLine" className="w-4 h-4" />
+                          {t("ui.prompt_history")}
+                          {promptHistoryCount > 0 && (
+                            <span className="ml-1 rounded-full bg-primary/10 px-2 py-0.5 text-xs text-primary">
+                              {promptHistoryCount}
+                            </span>
+                          )}
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end" className="w-[360px] max-w-[90vw]">
+                        <DropdownMenuLabel className="flex items-center justify-between">
+                          <span>{t("ui.prompt_history_recent")}</span>
+                          <span className="text-xs text-muted-foreground font-normal">
+                            {promptHistoryCount} / {MAX_PROMPT_HISTORY_ITEMS}
+                          </span>
+                        </DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        {promptHistory.length === 0 ? (
+                          <div className="p-4 text-sm text-muted-foreground">
+                            {t("ui.prompt_history_empty")}
+                          </div>
+                        ) : (
+                          <div className="max-h-[320px] overflow-y-auto">
+                            {promptHistory.map((item) => {
+                              const preview = (item.value.split("\n").find((l) => l.trim()) || item.value)
+                                .trim()
+                                .slice(0, 80);
+                              return (
+                                <DropdownMenuItem
+                                  key={item.id}
+                                  className="cursor-pointer flex-col items-start gap-1 py-2"
+                                  onClick={() => {
+                                    setPrompt(item.value);
+                                    setPromptHistoryOpen(false);
+                                    requestAnimationFrame(() => {
+                                      promptRef.current?.focus();
+                                    });
+                                  }}
+                                >
+                                  <div className="w-full text-sm font-medium truncate">{preview}</div>
+                                </DropdownMenuItem>
+                              );
+                            })}
+                          </div>
+                        )}
+                        {promptHistoryCount > 0 && (
+                          <>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem variant="destructive" onClick={clearPromptHistory}>
+                              {t("ui.prompt_history_clear")}
+                            </DropdownMenuItem>
+                          </>
+                        )}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
                 </div>
 
                 {/* Characters */}
@@ -584,7 +836,37 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                       <span className="text-sm text-muted-foreground">
                         {wordCount} {t("output.words")}
                       </span>
-                      <Button variant="outline" size="sm" onClick={handleCopy}>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            disabled={!generatedDialogue || isGenerating}
+                          >
+                            <Icon name="RiDownloadLine" className="w-4 h-4 mr-2" />
+                            {t("output.export")}
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem
+                            onClick={handleExportMd}
+                            disabled={!generatedDialogue || isGenerating}
+                          >
+                            {t("output.export_md")}
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={handleExportTxt}
+                            disabled={!generatedDialogue || isGenerating}
+                          >
+                            {t("output.export_txt")}
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={handleCopy}
+                      >
                         <Icon name="RiFileCopyLine" className="w-4 h-4 mr-2" />
                         {t("output.copy")}
                       </Button>

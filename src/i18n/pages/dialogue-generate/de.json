@@ -10,6 +10,11 @@
     "breadcrumb_home": "Startseite",
     "breadcrumb_current": "Dialoggenerator",
     "scenario_prompt": "Szenario / Kontext",
+    "clear_prompt": "Eingabe löschen",
+    "prompt_history": "Verlauf",
+    "prompt_history_recent": "Letzte Eingaben",
+    "prompt_history_empty": "Noch kein Verlauf",
+    "prompt_history_clear": "Verlauf löschen",
     "random_button": "Zufälliges Szenario",
     "ai_model": "KI-Modell",
     "output_language": "Ausgabesprache",
@@ -75,11 +80,14 @@
     "title": "Generierter Dialog",
     "words": "Wörter",
     "copy": "Kopieren",
-    "generating_message": "Erstelle Ihren Dialog...",
-    "empty_message": "Ihr generierter Dialog wird hier erscheinen"
+    "export": "Exportieren",
+    "export_md": "MD exportieren",
+    "export_txt": "TXT exportieren",
+    "generating_message": "Dein Dialog wird erstellt...",
+    "empty_message": "Dein generierter Dialog erscheint hier"
   },
   "validation": {
-    "enter_scenario": "Bitte geben Sie ein Szenario oder einen Kontext ein",
+    "enter_scenario": "Bitte gib ein Szenario oder einen Kontext ein",
     "select_ai_model": "Bitte wählen Sie ein KI-Modell",
     "add_characters": "Bitte fügen Sie mindestens 2 Charaktere mit Namen hinzu"
   },

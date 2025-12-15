@@ -10,6 +10,11 @@
     "breadcrumb_home": "Главная",
     "breadcrumb_current": "Генератор Диалогов",
     "scenario_prompt": "Сценарий / Контекст",
+    "clear_prompt": "Очистить ввод",
+    "prompt_history": "История",
+    "prompt_history_recent": "Недавние вводы",
+    "prompt_history_empty": "История пуста",
+    "prompt_history_clear": "Очистить историю",
     "random_button": "Случайный Сценарий",
     "ai_model": "Модель ИИ",
     "output_language": "Язык Вывода",
@@ -72,9 +77,12 @@
     "long_description": "30-50 обменов"
   },
   "output": {
-    "title": "Сгенерированный Диалог",
+    "title": "Сгенерированный диалог",
     "words": "слов",
     "copy": "Копировать",
+    "export": "Экспорт",
+    "export_md": "Экспорт MD",
+    "export_txt": "Экспорт TXT",
     "generating_message": "Создаем ваш диалог...",
     "empty_message": "Ваш сгенерированный диалог появится здесь"
   },

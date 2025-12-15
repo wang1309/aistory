@@ -10,6 +10,11 @@
     "breadcrumb_home": "ホーム",
     "breadcrumb_current": "対話ジェネレーター",
     "scenario_prompt": "シナリオ / コンテキスト",
+    "clear_prompt": "入力をクリア",
+    "prompt_history": "履歴",
+    "prompt_history_recent": "最近の入力",
+    "prompt_history_empty": "履歴はありません",
+    "prompt_history_clear": "履歴をクリア",
     "random_button": "ランダムシナリオ",
     "ai_model": "AIモデル",
     "output_language": "出力言語",
@@ -75,7 +80,10 @@
     "title": "生成された対話",
     "words": "語",
     "copy": "コピー",
-    "generating_message": "対話を作成中...",
+    "export": "エクスポート",
+    "export_md": "MDを書き出し",
+    "export_txt": "TXTを書き出し",
+    "generating_message": "対話を作成しています...",
     "empty_message": "生成された対話がここに表示されます"
   },
   "validation": {
