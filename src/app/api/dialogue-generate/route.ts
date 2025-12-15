@@ -119,37 +119,87 @@ export async function POST(req: Request) {
       );
     }
 
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
+
+    let insideThinkTag = false;
+    let buffer = "";
+
     const transformStream = new TransformStream({
       transform(chunk, controller) {
-        const text = new TextDecoder().decode(chunk);
-        const lines = text.split("\n").filter((line) => line.trim() !== "");
+        const text = decoder.decode(chunk, { stream: true });
+
+        buffer += text;
+
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
 
         for (const line of lines) {
           if (line.startsWith("data: ")) {
             const data = line.slice(6);
+
             if (data === "[DONE]") {
               continue;
             }
 
             try {
               const parsed = JSON.parse(data);
-              const content = parsed.choices?.[0]?.delta?.content || "";
+              let content = parsed.choices?.[0]?.delta?.content || "";
 
               if (content) {
-                let filteredContent = content;
-                if (filteredContent.includes("<think>")) {
-                  filteredContent = filteredContent.replace(
-                    /<think>[\s\S]*?<\/think>/g,
-                    ""
-                  );
+                if (content.includes("<think>")) {
+                  insideThinkTag = true;
+                  const thinkIndex = content.indexOf("<think>");
+                  if (thinkIndex > 0) {
+                    content = content.substring(0, thinkIndex);
+                  } else {
+                    content = "";
+                  }
                 }
 
-                if (filteredContent) {
-                  const escaped = JSON.stringify(filteredContent);
-                  controller.enqueue(
-                    new TextEncoder().encode(`0:${escaped}\n`)
-                  );
+                if (content.includes("</think>")) {
+                  insideThinkTag = false;
+                  const thinkCloseIndex = content.indexOf("</think>");
+                  content = content.substring(thinkCloseIndex + 8);
                 }
+
+                if (insideThinkTag) {
+                  continue;
+                }
+
+                if (content) {
+                  const escaped = content
+                    .replace(/\\/g, "\\\\")
+                    .replace(/"/g, '\\"')
+                    .replace(/\n/g, "\\n")
+                    .replace(/\r/g, "\\r")
+                    .replace(/\t/g, "\\t");
+
+                  controller.enqueue(encoder.encode(`0:"${escaped}"\n`));
+                }
+              }
+            } catch {
+              // Skip malformed JSON
+            }
+          }
+        }
+      },
+
+      flush(controller) {
+        if (buffer.trim() && buffer.startsWith("data: ")) {
+          const data = buffer.slice(6);
+          if (data !== "[DONE]") {
+            try {
+              const parsed = JSON.parse(data);
+              const content = parsed.choices?.[0]?.delta?.content || "";
+              if (content && !insideThinkTag) {
+                const escaped = content
+                  .replace(/\\/g, "\\\\")
+                  .replace(/"/g, '\\"')
+                  .replace(/\n/g, "\\n")
+                  .replace(/\r/g, "\\r")
+                  .replace(/\t/g, "\\t");
+                controller.enqueue(encoder.encode(`0:"${escaped}"\n`));
               }
             } catch {
               // Skip malformed JSON
@@ -159,14 +209,13 @@ export async function POST(req: Request) {
       },
     });
 
-    const readable = response.body?.pipeThrough(transformStream);
+    const transformedStream = response.body?.pipeThrough(transformStream);
 
-    return new Response(readable, {
+    return new Response(transformedStream, {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
-        "Transfer-Encoding": "chunked",
-        "Cache-Control": "no-cache",
-        Connection: "keep-alive",
+        "Cache-Control": "no-cache, no-transform",
+        "X-Content-Type-Options": "nosniff",
       },
     });
   } catch (error) {
