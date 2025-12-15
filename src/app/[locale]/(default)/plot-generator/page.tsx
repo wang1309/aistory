@@ -7,6 +7,7 @@ import FAQ from "@/components/blocks/faq";
 import CTA from "@/components/blocks/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -19,9 +20,9 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
 
-  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/plot-generate`;
+  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/plot-generator`;
   if (locale !== "en") {
-    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/plot-generate`;
+    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/plot-generator`;
   }
 
   // Load translations for metadata
@@ -35,6 +36,7 @@ export async function generateMetadata({
     keywords: metadata.keywords,
     alternates: {
       canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/plot-generator"),
     },
     openGraph: {
       title: metadata.title,
@@ -67,7 +69,7 @@ export default async function PlotGeneratePage({
 
   // Build URLs for breadcrumb structured data
   const homeUrl = process.env.NEXT_PUBLIC_WEB_URL || "";
-  const currentUrl = `${homeUrl}${locale === "en" ? "" : `/${locale}`}/plot-generate`;
+  const currentUrl = `${homeUrl}${locale === "en" ? "" : `/${locale}`}/plot-generator`;
 
   // Breadcrumb JSON-LD structured data for SEO
   const breadcrumbSchema = {

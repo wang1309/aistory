@@ -64,6 +64,13 @@
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
               "target": "_self"
+            },
+            {
+              "title": "ダイアログジェネレーター",
+              "description": "ストーリー、脚本、ゲーム用のリアルなキャラクター対話を生成",
+              "url": "/dialogue-generator",
+              "icon": "RiChat3Line",
+              "target": "_self"
             }
           ]
         }
@@ -783,6 +790,11 @@
             {
               "title": "バックストーリージェネレーター",
               "url": "/backstory-generator",
+              "target": "_self"
+            },
+            {
+              "title": "ダイアログジェネレーター",
+              "url": "/dialogue-generator",
               "target": "_self"
             }
           ]

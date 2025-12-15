@@ -6,6 +6,7 @@ import FAQ from "@/components/blocks/faq";
 import CTA from "@/components/blocks/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -34,6 +35,7 @@ export async function generateMetadata({
         keywords: metadata.keywords,
         alternates: {
             canonical: canonicalUrl,
+            languages: buildLanguageAlternates("/backstory-generator"),
         },
         openGraph: {
             title: metadata.title,

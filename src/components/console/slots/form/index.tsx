@@ -4,7 +4,7 @@ import { Form as FormSlotType } from "@/types/slots/form";
 import { Separator } from "@/components/ui/separator";
 import Toolbar from "@/components/blocks/toolbar";
 
-export default function ({ ...form }: FormSlotType) {
+export default function ConsoleFormSlot({ ...form }: FormSlotType) {
   return (
     <div className="space-y-6">
       {form.crumb?.items && <Crumb items={form.crumb.items} />}

@@ -4,8 +4,9 @@ import googleOneTap from "google-one-tap";
 import { signIn } from "next-auth/react";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { isAuthEnabled, isGoogleOneTapEnabled } from "@/lib/auth";
 
-export default function () {
+export default function useOneTapLogin() {
   const { data: session, status } = useSession();
 
   const oneTapLogin = async function () {
@@ -35,6 +36,10 @@ export default function () {
   useEffect(() => {
     // console.log("one tap login status", status, session);
 
+    if (!isAuthEnabled() || !isGoogleOneTapEnabled()) {
+      return;
+    }
+
     if (status === "unauthenticated") {
       oneTapLogin();
 
@@ -47,6 +52,4 @@ export default function () {
       };
     }
   }, [status]);
-
-  return <></>;
 }

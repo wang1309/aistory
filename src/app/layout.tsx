@@ -1,7 +1,6 @@
 import "@/app/globals.css";
 
 import { getLocale, setRequestLocale } from "next-intl/server";
-import { locales } from "@/i18n/locale";
 import { cn } from "@/lib/utils";
 import { Open_Sans, Noto_Sans_SC } from "next/font/google";
 
@@ -28,8 +27,6 @@ export default async function RootLayout({
 }>) {
   const locale = await getLocale();
   setRequestLocale(locale);
-
-  const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "";
   const googleAdsenseCode = process.env.NEXT_PUBLIC_GOOGLE_ADCODE || "";
 
   return (
@@ -41,17 +38,6 @@ export default async function RootLayout({
         )}
 
         <link rel="icon" href="/favicon.ico" />
-
-        {locales &&
-          locales.map((loc) => (
-            <link
-              key={loc}
-              rel="alternate"
-              hrefLang={loc}
-              href={`${webUrl}${loc === "en" ? "" : `/${loc}`}/`}
-            />
-          ))}
-        <link rel="alternate" hrefLang="x-default" href={webUrl} />
       </head>
       <body className={cn(openSans.variable, notoSansSC.variable, "font-sans antialiased")}>
         {children}

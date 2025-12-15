@@ -71,6 +71,13 @@
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
               "target": "_self"
+            },
+            {
+              "title": "对话生成器",
+              "description": "为故事、剧本和游戏生成逼真的角色对话",
+              "url": "/dialogue-generator",
+              "icon": "RiChat3Line",
+              "target": "_self"
             }
           ]
         }
@@ -791,11 +798,16 @@
               "title": "角色背景生成器",
               "url": "/backstory-generator",
               "target": "_self"
+            },
+            {
+              "title": "对话生成器",
+              "url": "/dialogue-generator",
+              "target": "_self"
             }
           ]
         },
         {
-          "title": "Friend",
+          "title": "友链",
           "children": [
             {
               "title": "toolfame",

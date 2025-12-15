@@ -1,6 +1,7 @@
 import Changelog from "@/components/blocks/changelog";
 import { getChangelogPage } from "@/services/page";
 import { getTranslations } from "next-intl/server";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -21,6 +22,7 @@ export async function generateMetadata({
     description: t("changelog.description"),
     alternates: {
       canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/changelog"),
     },
   };
 }

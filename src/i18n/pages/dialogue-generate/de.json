@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "title": "KI-Dialoggenerator - Erstellen Sie realistische Charaktergespräche",
+    "description": "Generieren Sie mit unserem kostenlosen KI-Dialoggenerator ansprechende, realistische Dialoge zwischen Charakteren. Perfekt für Drehbuchautoren, Romanautoren, Spieleentwickler und kreative Schriftsteller.",
+    "keywords": "KI-Dialoggenerator, Charakterdialog, Gesprächsgenerator, Drehbuchdialog, Romandialog, kreatives Schreibwerkzeug"
+  },
+  "ui": {
+    "title": "KI-Dialoggenerator",
+    "subtitle": "Erstellen Sie mit KI überzeugende, realistische Gespräche zwischen Charakteren",
+    "breadcrumb_home": "Startseite",
+    "breadcrumb_current": "Dialoggenerator",
+    "scenario_prompt": "Szenario / Kontext",
+    "random_button": "Zufälliges Szenario",
+    "ai_model": "KI-Modell",
+    "output_language": "Ausgabesprache",
+    "dialogue_type": "Dialogtyp",
+    "tone": "Ton",
+    "output_length": "Länge",
+    "setting": "Schauplatz / Ort",
+    "include_narration": "Erzählende Beschreibungen einschließen",
+    "characters": "Charaktere",
+    "add_character": "Charakter hinzufügen",
+    "character_name": "Name",
+    "character_personality": "Persönlichkeit",
+    "character_role": "Rolle",
+    "remove_character": "Entfernen",
+    "advanced_options": "Erweiterte Optionen",
+    "generate_button": "Dialog generieren",
+    "generating": "Generiere..."
+  },
+  "placeholders": {
+    "scenario_prompt": "Beschreiben Sie das Szenario oder den Kontext für den Dialog... (z.B. 'Zwei alte Freunde treffen sich nach 10 Jahren in einem Café')",
+    "select_ai_model": "KI-Modell auswählen",
+    "character_name": "Charaktername",
+    "character_personality": "z.B. schüchtern, selbstbewusst",
+    "character_role": "z.B. Protagonist, Mentor",
+    "setting": "z.B. Eine schwach beleuchtete Bar im Chicago der 1920er Jahre"
+  },
+  "ai_models": {
+    "fast": "Schnell",
+    "fast_description": "Schnelle Generierung",
+    "standard": "Standard",
+    "standard_description": "Ausgewogene Qualität",
+    "creative": "Kreativ",
+    "creative_description": "Am ausdrucksstärksten"
+  },
+  "dialogue_type": {
+    "conversation": "Lockeres Gespräch",
+    "argument": "Streit / Debatte",
+    "interview": "Interview",
+    "negotiation": "Verhandlung",
+    "confession": "Geständnis",
+    "comedy": "Komödie",
+    "dramatic": "Dramatisch",
+    "philosophical": "Philosophisch"
+  },
+  "tone": {
+    "casual": "Locker",
+    "formal": "Formell",
+    "emotional": "Emotional",
+    "humorous": "Humorvoll",
+    "tense": "Angespannt",
+    "romantic": "Romantisch",
+    "mysterious": "Mysteriös"
+  },
+  "length": {
+    "short": "Kurz",
+    "short_description": "5-10 Austausche",
+    "medium": "Mittel",
+    "medium_description": "15-25 Austausche",
+    "long": "Lang",
+    "long_description": "30-50 Austausche"
+  },
+  "output": {
+    "title": "Generierter Dialog",
+    "words": "Wörter",
+    "copy": "Kopieren",
+    "generating_message": "Erstelle Ihren Dialog...",
+    "empty_message": "Ihr generierter Dialog wird hier erscheinen"
+  },
+  "validation": {
+    "enter_scenario": "Bitte geben Sie ein Szenario oder einen Kontext ein",
+    "select_ai_model": "Bitte wählen Sie ein KI-Modell",
+    "add_characters": "Bitte fügen Sie mindestens 2 Charaktere mit Namen hinzu"
+  },
+  "success": {
+    "random_prompt_selected": "Zufälliges Szenario ausgewählt!",
+    "dialogue_generated": "Dialog erfolgreich generiert!",
+    "dialogue_copied": "Dialog in die Zwischenablage kopiert!"
+  },
+  "errors": {
+    "generation_failed": "Dialog konnte nicht generiert werden. Bitte versuchen Sie es erneut."
+  },
+  "random_prompts": [
+    "Zwei Fremde, die während eines Stromausfalls im Aufzug stecken, entdecken eine überraschende Verbindung",
+    "Ein Detektiv verhört einen Verdächtigen, der behauptet, ein nicht überprüfbares Alibi zu haben",
+    "Ein Elternteil und ein erwachsenes Kind führen ein längst überfälliges Gespräch über ein Familiengeheimnis",
+    "Zwei rivalisierende Geschäftsinhaber werden während einer Krise zur Zusammenarbeit gezwungen",
+    "Ein Zeitreisender versucht, jemanden aus der Vergangenheit von der Zukunft zu überzeugen, ohne zu viel zu verraten",
+    "Ehemalige beste Freunde treffen sich bei einer Beerdigung wieder und konfrontieren ungelöste Probleme"
+  ],
+  "feature1": {
+    "label": "Funktionen",
+    "title": "Was ist der KI-Dialoggenerator",
+    "description": "Unser KI-Dialoggenerator verwendet fortschrittliche Sprachmodelle, um natürliche, ansprechende Gespräche zwischen Charakteren zu erstellen. Ob Sie ein Drehbuch, einen Roman, ein Spiel oder ein anderes kreatives Projekt schreiben, dieses Tool hilft Ihnen, authentische Dialoge zu erstellen, die Ihre Charaktere zum Leben erwecken.",
+    "items": [
+      {
+        "title": "Multi-Charakter-Unterstützung",
+        "description": "Erstellen Sie Dialoge mit mehreren Charakteren, jeder mit seiner eigenen Persönlichkeit und Stimme.",
+        "icon": "RiTeamLine"
+      },
+      {
+        "title": "Anpassbarer Ton & Stil",
+        "description": "Wählen Sie aus verschiedenen Dialogtypen und Tönen, um perfekt zur Stimmung Ihrer Geschichte zu passen.",
+        "icon": "RiPaletteLine"
+      },
+      {
+        "title": "Narrative Integration",
+        "description": "Fügen Sie optional erzählende Beschreibungen hinzu, um Szenen zu setzen und Charakteremotionen zu vermitteln.",
+        "icon": "RiBookOpenLine"
+      }
+    ]
+  },
+  "feature2": {
+    "label": "Vorteile",
+    "title": "Warum den KI-Dialoggenerator verwenden",
+    "description": "Sparen Sie Zeit und verbessern Sie Ihr kreatives Schreiben mit KI-gestützter Dialoggenerierung",
+    "items": [
+      {
+        "title": "Schreibblockaden überwinden",
+        "description": "Wenn Sie bei einer Gesprächsszene feststecken, lassen Sie die KI einen ersten Dialog generieren, den Sie verfeinern und personalisieren können.",
+        "icon": "RiLightbulbLine",
+        "image": { "src": "/imgs/features/story3.avif" }
+      },
+      {
+        "title": "Konsistente Charakterstimmen",
+        "description": "Definieren Sie Charakterpersönlichkeiten und die KI behält ihre einzigartigen Sprechstile während des gesamten Dialogs bei.",
+        "icon": "RiUserVoiceLine",
+        "image": { "src": "/imgs/features/story4.avif" }
+      },
+      {
+        "title": "Schnelles Prototyping",
+        "description": "Generieren Sie schnell mehrere Versionen einer Szene, um verschiedene Richtungen für Ihre Geschichte zu erkunden.",
+        "icon": "RiSpeedLine",
+        "image": { "src": "/imgs/features/story5.avif" }
+      }
+    ]
+  },
+  "feature3": {
+    "label": "So geht's",
+    "title": "So nutzen Sie unseren KI-Dialoggenerator",
+    "description": "Befolgen Sie diese einfachen Schritte, um in wenigen Minuten natürlichen, charaktergetriebenen Dialog zu erstellen.",
+    "items": [
+      {
+        "title": "Szenario beschreiben",
+        "description": "Geben Sie den Kontext der Szene ein und fügen Sie mindestens zwei Charaktere mit Namen, Persönlichkeit und Rolle hinzu.",
+        "icon": "RiTeamLine",
+        "image": { "src": "/imgs/features/story3.avif" }
+      },
+      {
+        "title": "Stil & Ton wählen",
+        "description": "Wählen Sie Dialogtyp, Ton und Länge. Optional können Sie Schauplatz und Erzählung hinzufügen, um die Szene zu bereichern.",
+        "icon": "RiPaletteLine",
+        "image": { "src": "/imgs/features/story4.avif" }
+      },
+      {
+        "title": "Generieren & verfeinern",
+        "description": "Klicken Sie auf „Dialog generieren“, kopieren Sie das Ergebnis und passen Sie es an die Stimme Ihrer Geschichte an.",
+        "icon": "RiChat3Line",
+        "image": { "src": "/imgs/features/story5.avif" }
+      }
+    ]
+  },
+  "feature": {
+    "name": "dialogue-who-uses",
+    "label": "Für wen",
+    "title": "Wer nutzt den KI-Dialoggenerator?",
+    "description": "Für Kreative, die glaubwürdige Charakterstimmen schnell brauchen.",
+    "items": [
+      {
+        "title": "Drehbuchautor:innen",
+        "description": "Szenen entwerfen, Schlagabtausche verfeinern und alternative Takes testen – mit konsistenten Stimmen.",
+        "icon": "RiMovie2Line"
+      },
+      {
+        "title": "Romanautor:innen & Fiction Writers",
+        "description": "Authentische Dialoge erzeugen, die Persönlichkeit, Beziehungen und Emotionen eines Kapitels treffen.",
+        "icon": "RiBook2Line"
+      },
+      {
+        "title": "Game-Dev & RPG-Design",
+        "description": "Quest-Dialoge, NPC-Interaktionen und verzweigte Gespräche schnell prototypen und iterieren.",
+        "icon": "RiGamepadLine"
+      }
+    ]
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "KI-Dialoggenerator FAQs",
+    "description": "Häufige Fragen zu unserem KI-Dialoggenerator",
+    "items": [
+      {
+        "title": "Welche Arten von Dialogen kann ich generieren?",
+        "description": "Sie können verschiedene Typen generieren, darunter lockere Gespräche, Streitgespräche, Interviews, Verhandlungen, Geständnisse, komödiantische Austausche, dramatische Szenen und philosophische Diskussionen."
+      },
+      {
+        "title": "Wie viele Charaktere kann ich hinzufügen?",
+        "description": "Sie können so viele Charaktere hinzufügen, wie Sie benötigen. Jeder Charakter kann einen Namen, Persönlichkeitsmerkmale und eine Rolle haben, um der KI zu helfen, unterschiedliche Stimmen zu erstellen."
+      },
+      {
+        "title": "Kann ich den generierten Dialog kommerziell nutzen?",
+        "description": "Ja, alle von unserem Tool generierten Dialoge gehören Ihnen und können für jeden Zweck verwendet werden, einschließlich kommerzieller Projekte wie Romane, Drehbücher und Spiele."
+      },
+      {
+        "title": "Welche Sprachen werden unterstützt?",
+        "description": "Wir unterstützen mehrere Sprachen, darunter Englisch, Chinesisch, Deutsch, Koreanisch, Japanisch und Russisch. Die KI generiert Dialoge in Ihrer ausgewählten Sprache."
+      },
+      {
+        "title": "Wie erhalte ich die besten Ergebnisse?",
+        "description": "Geben Sie detaillierte Charakterbeschreibungen, ein klares Szenario an und wählen Sie den passenden Dialogtyp und Ton. Je mehr Kontext Sie geben, desto besser das Ergebnis."
+      },
+      {
+        "title": "Ist das ein kostenloser KI-Dialoggenerator?",
+        "description": "Ja. Sie können den KI-Dialoggenerator kostenlos und ohne Anmeldung nutzen. Falls wir künftig Nutzungslimits einführen, wird dies deutlich auf der Seite angezeigt."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Jetzt mit der Dialogerstellung beginnen",
+    "description": "Verwandeln Sie Ihre Geschichtenideen in überzeugende Charaktergespräche",
+    "buttons": [
+      {
+        "title": "Dialog generieren",
+        "url": "/dialogue-generator#dialogue-generate",
+        "icon": "RiChat3Line"
+      }
+    ]
+  }
+}

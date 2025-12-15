@@ -5,6 +5,7 @@ import { getPublicStories } from "@/models/story";
 import { getTagsForStory } from "@/models/storyTags";
 import StoryLikeButton from "@/components/story/story-like-button";
 import StoryPreviewButton from "@/components/community/story-preview-button";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -30,6 +31,7 @@ export async function generateMetadata({
     description: t("community.description"),
     alternates: {
       canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/community"),
     },
   };
 }

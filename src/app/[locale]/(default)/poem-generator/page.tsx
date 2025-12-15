@@ -8,6 +8,7 @@ import PoemGenerate from "@/components/blocks/poem-generate";
 import Testimonial from "@/components/blocks/testimonial";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -35,6 +36,7 @@ export async function generateMetadata({
     keywords: metadata.keywords,
     alternates: {
       canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/poem-generator"),
     },
     openGraph: {
       title: metadata.title,

@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "title": "AI 对话生成器 - 创建逼真的角色对话",
+    "description": "使用我们免费的 AI 对话生成器生成引人入胜、逼真的角色对话。非常适合编剧、小说家、游戏开发者和创意作家。",
+    "keywords": "AI对话生成器, 角色对话, 对话生成, 剧本对话, 小说对话, 创意写作工具"
+  },
+  "ui": {
+    "title": "AI 对话生成器",
+    "subtitle": "使用 AI 创建引人入胜、逼真的角色对话",
+    "breadcrumb_home": "首页",
+    "breadcrumb_current": "对话生成器",
+    "scenario_prompt": "场景 / 背景",
+    "random_button": "随机场景",
+    "ai_model": "AI 模型",
+    "output_language": "输出语言",
+    "dialogue_type": "对话类型",
+    "tone": "语气",
+    "output_length": "长度",
+    "setting": "场景 / 地点",
+    "include_narration": "包含叙述描写",
+    "characters": "角色",
+    "add_character": "添加角色",
+    "character_name": "名称",
+    "character_personality": "性格",
+    "character_role": "角色定位",
+    "remove_character": "移除",
+    "advanced_options": "高级选项",
+    "generate_button": "生成对话",
+    "generating": "生成中..."
+  },
+  "placeholders": {
+    "scenario_prompt": "描述对话的场景或背景... (例如：'两个老朋友在咖啡店相遇，已经10年没见了')",
+    "select_ai_model": "选择 AI 模型",
+    "character_name": "角色名称",
+    "character_personality": "例如：害羞、自信",
+    "character_role": "例如：主角、导师",
+    "setting": "例如：1920年代芝加哥一家昏暗的酒吧"
+  },
+  "ai_models": {
+    "fast": "快速",
+    "fast_description": "快速生成",
+    "standard": "标准",
+    "standard_description": "平衡质量",
+    "creative": "创意",
+    "creative_description": "最具表现力"
+  },
+  "dialogue_type": {
+    "conversation": "日常对话",
+    "argument": "争论 / 辩论",
+    "interview": "采访",
+    "negotiation": "谈判",
+    "confession": "告白",
+    "comedy": "喜剧",
+    "dramatic": "戏剧性",
+    "philosophical": "哲学性"
+  },
+  "tone": {
+    "casual": "随意",
+    "formal": "正式",
+    "emotional": "情感化",
+    "humorous": "幽默",
+    "tense": "紧张",
+    "romantic": "浪漫",
+    "mysterious": "神秘"
+  },
+  "length": {
+    "short": "短",
+    "short_description": "5-10 轮对话",
+    "medium": "中等",
+    "medium_description": "15-25 轮对话",
+    "long": "长",
+    "long_description": "30-50 轮对话"
+  },
+  "output": {
+    "title": "生成的对话",
+    "words": "字",
+    "copy": "复制",
+    "generating_message": "正在创建您的对话...",
+    "empty_message": "生成的对话将显示在这里"
+  },
+  "validation": {
+    "enter_scenario": "请输入场景或背景",
+    "select_ai_model": "请选择 AI 模型",
+    "add_characters": "请添加至少2个有名称的角色"
+  },
+  "success": {
+    "random_prompt_selected": "已选择随机场景！",
+    "dialogue_generated": "对话生成成功！",
+    "dialogue_copied": "对话已复制到剪贴板！"
+  },
+  "errors": {
+    "generation_failed": "生成对话失败，请重试。"
+  },
+  "random_prompts": [
+    "两个陌生人在停电时被困在电梯里，发现他们之间有着令人惊讶的联系",
+    "一名侦探审问一个声称有无法核实的不在场证明的嫌疑人",
+    "父母和成年子女就一个家庭秘密进行了一次早该进行的对话",
+    "两个竞争对手的企业主在危机中被迫合作",
+    "一个时间旅行者试图在不透露太多的情况下说服过去的人相信未来",
+    "曾经最好的朋友在葬礼上重逢，面对未解决的问题"
+  ],
+  "feature1": {
+    "label": "功能",
+    "title": "什么是 AI 对话生成器",
+    "description": "我们的 AI 对话生成器使用先进的语言模型来创建自然、引人入胜的角色对话。无论您是在写剧本、小说、游戏还是任何创意项目，这个工具都能帮助您创作出让角色栩栩如生的真实对话。",
+    "items": [
+      {
+        "title": "多角色支持",
+        "description": "创建多个角色的对话，每个角色都有自己独特的个性和声音。",
+        "icon": "RiTeamLine"
+      },
+      {
+        "title": "可自定义语气和风格",
+        "description": "从各种对话类型和语气中选择，完美匹配您故事的氛围。",
+        "icon": "RiPaletteLine"
+      },
+      {
+        "title": "叙事整合",
+        "description": "可选择包含叙述描写来设置场景和传达角色情感。",
+        "icon": "RiBookOpenLine"
+      }
+    ]
+  },
+  "feature2": {
+    "label": "优势",
+    "title": "为什么使用 AI 对话生成器",
+    "description": "使用 AI 驱动的对话生成节省时间并增强您的创意写作",
+    "items": [
+      {
+        "title": "克服写作障碍",
+        "description": "当您在对话场景上卡住时，让 AI 生成初始对话，然后您可以进行完善和个性化。",
+        "icon": "RiLightbulbLine",
+        "image": { "src": "/imgs/features/story3.avif" }
+      },
+      {
+        "title": "一致的角色声音",
+        "description": "定义角色个性，AI 会在整个对话中保持他们独特的说话风格。",
+        "icon": "RiUserVoiceLine",
+        "image": { "src": "/imgs/features/story4.avif" }
+      },
+      {
+        "title": "快速原型制作",
+        "description": "快速生成场景的多个版本，探索故事的不同方向。",
+        "icon": "RiSpeedLine",
+        "image": { "src": "/imgs/features/story5.avif" }
+      }
+    ]
+  },
+  "feature3": {
+    "label": "使用方法",
+    "title": "如何使用我们的 AI 对话生成器",
+    "description": "按照以下简单步骤，在几分钟内生成自然、角色驱动的对话。",
+    "items": [
+      {
+        "title": "描述场景",
+        "description": "输入场景背景，并添加至少两个角色（名称、性格、角色定位）。",
+        "icon": "RiTeamLine",
+        "image": { "src": "/imgs/features/story3.avif" }
+      },
+      {
+        "title": "选择风格与语气",
+        "description": "选择对话类型、语气和长度。可选填写地点并开启叙述描写，让场景更丰富。",
+        "icon": "RiPaletteLine",
+        "image": { "src": "/imgs/features/story4.avif" }
+      },
+      {
+        "title": "生成并润色",
+        "description": "点击“生成对话”，然后复制并根据你的作品风格进行编辑。",
+        "icon": "RiChat3Line",
+        "image": { "src": "/imgs/features/story5.avif" }
+      }
+    ]
+  },
+  "feature": {
+    "name": "dialogue-who-uses",
+    "label": "适用人群",
+    "title": "谁适合使用 AI 对话生成器",
+    "description": "为需要真实角色声音的创作者而生，让你更快写出更像人的对话。",
+    "items": [
+      {
+        "title": "编剧",
+        "description": "快速起草场景对话、打磨口吻与节奏，并探索不同版本的“台词走向”。",
+        "icon": "RiMovie2Line"
+      },
+      {
+        "title": "小说家与故事创作者",
+        "description": "生成贴合人物性格与关系变化的对话，让章节情绪推进更自然。",
+        "icon": "RiBook2Line"
+      },
+      {
+        "title": "游戏开发者与 RPG 设计师",
+        "description": "用于任务对话、NPC 互动与分支剧情的快速原型，便于迭代与测试。",
+        "icon": "RiGamepadLine"
+      }
+    ]
+  },
+  "faq": {
+    "label": "常见问题",
+    "title": "AI 对话生成器常见问题",
+    "description": "关于我们 AI 对话生成器的常见问题",
+    "items": [
+      {
+        "title": "我可以生成哪些类型的对话？",
+        "description": "您可以生成各种类型的对话，包括日常对话、争论、采访、谈判、告白、喜剧交流、戏剧性场景和哲学讨论。"
+      },
+      {
+        "title": "我可以添加多少个角色？",
+        "description": "您可以根据需要添加任意数量的角色。每个角色都可以定义名称、性格特征和角色，以帮助 AI 创建独特的声音。"
+      },
+      {
+        "title": "我可以将生成的对话用于商业用途吗？",
+        "description": "是的，我们工具生成的所有对话都归您所有，可用于任何目的，包括小说、剧本和游戏等商业项目。"
+      },
+      {
+        "title": "支持哪些语言？",
+        "description": "我们支持多种语言，包括英语、中文、德语、韩语、日语和俄语。AI 将以您选择的语言生成对话。"
+      },
+      {
+        "title": "如何获得最佳结果？",
+        "description": "提供详细的角色描述、清晰的场景，并选择适当的对话类型和语气。您提供的背景越多，输出效果越好。"
+      },
+      {
+        "title": "这是免费的 AI 对话生成器吗？",
+        "description": "是的，你可以免费使用本 AI 对话生成器且无需登录。如果未来引入使用限制，我们会在页面上清晰提示。"
+      }
+    ]
+  },
+  "cta": {
+    "title": "立即开始创建对话",
+    "description": "将您的故事创意转化为引人入胜的角色对话",
+    "buttons": [
+      {
+        "title": "生成对话",
+        "url": "/dialogue-generator#dialogue-generate",
+        "icon": "RiChat3Line"
+      }
+    ]
+  }
+}

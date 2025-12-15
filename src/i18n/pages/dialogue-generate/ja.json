@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "title": "AI対話ジェネレーター - リアルなキャラクター会話を作成",
+    "description": "無料のAI対話ジェネレーターで魅力的でリアルなキャラクター間の対話を生成。脚本家、小説家、ゲーム開発者、クリエイティブライターに最適です。",
+    "keywords": "AI対話ジェネレーター, キャラクター対話, 会話生成, 脚本対話, 小説対話, クリエイティブライティングツール"
+  },
+  "ui": {
+    "title": "AI対話ジェネレーター",
+    "subtitle": "AIでキャラクター間の魅力的でリアルな会話を作成",
+    "breadcrumb_home": "ホーム",
+    "breadcrumb_current": "対話ジェネレーター",
+    "scenario_prompt": "シナリオ / コンテキスト",
+    "random_button": "ランダムシナリオ",
+    "ai_model": "AIモデル",
+    "output_language": "出力言語",
+    "dialogue_type": "対話タイプ",
+    "tone": "トーン",
+    "output_length": "長さ",
+    "setting": "設定 / 場所",
+    "include_narration": "ナレーション説明を含める",
+    "characters": "キャラクター",
+    "add_character": "キャラクター追加",
+    "character_name": "名前",
+    "character_personality": "性格",
+    "character_role": "役割",
+    "remove_character": "削除",
+    "advanced_options": "詳細オプション",
+    "generate_button": "対話を生成",
+    "generating": "生成中..."
+  },
+  "placeholders": {
+    "scenario_prompt": "対話のシナリオやコンテキストを説明してください... (例: '10年ぶりにカフェで再会した2人の旧友')",
+    "select_ai_model": "AIモデルを選択",
+    "character_name": "キャラクター名",
+    "character_personality": "例: 内気、自信家",
+    "character_role": "例: 主人公、メンター",
+    "setting": "例: 1920年代シカゴの薄暗いバー"
+  },
+  "ai_models": {
+    "fast": "高速",
+    "fast_description": "素早い生成",
+    "standard": "標準",
+    "standard_description": "バランスの取れた品質",
+    "creative": "クリエイティブ",
+    "creative_description": "最も表現力豊か"
+  },
+  "dialogue_type": {
+    "conversation": "カジュアルな会話",
+    "argument": "議論 / ディベート",
+    "interview": "インタビュー",
+    "negotiation": "交渉",
+    "confession": "告白",
+    "comedy": "コメディ",
+    "dramatic": "ドラマチック",
+    "philosophical": "哲学的"
+  },
+  "tone": {
+    "casual": "カジュアル",
+    "formal": "フォーマル",
+    "emotional": "感情的",
+    "humorous": "ユーモラス",
+    "tense": "緊張感",
+    "romantic": "ロマンチック",
+    "mysterious": "ミステリアス"
+  },
+  "length": {
+    "short": "短い",
+    "short_description": "5-10のやり取り",
+    "medium": "中程度",
+    "medium_description": "15-25のやり取り",
+    "long": "長い",
+    "long_description": "30-50のやり取り"
+  },
+  "output": {
+    "title": "生成された対話",
+    "words": "語",
+    "copy": "コピー",
+    "generating_message": "対話を作成中...",
+    "empty_message": "生成された対話がここに表示されます"
+  },
+  "validation": {
+    "enter_scenario": "シナリオまたはコンテキストを入力してください",
+    "select_ai_model": "AIモデルを選択してください",
+    "add_characters": "名前のあるキャラクターを少なくとも2人追加してください"
+  },
+  "success": {
+    "random_prompt_selected": "ランダムシナリオが選択されました！",
+    "dialogue_generated": "対話が正常に生成されました！",
+    "dialogue_copied": "対話がクリップボードにコピーされました！"
+  },
+  "errors": {
+    "generation_failed": "対話の生成に失敗しました。もう一度お試しください。"
+  },
+  "random_prompts": [
+    "停電中にエレベーターに閉じ込められた2人の見知らぬ人が驚くべきつながりを発見する",
+    "刑事が確認不可能なアリバイを主張する容疑者を尋問する",
+    "親と成人した子供が家族の秘密について長い間延期していた会話をする",
+    "危機の中で2人のライバル経営者が協力を余儀なくされる",
+    "タイムトラベラーが過去の誰かに未来について説得しようとするが、あまり明かさないようにする",
+    "かつての親友が葬儀で再会し、未解決の問題に直面する"
+  ],
+  "feature1": {
+    "label": "機能",
+    "title": "AI対話ジェネレーターとは",
+    "description": "AI対話ジェネレーターは高度な言語モデルを使用して、キャラクター間の自然で魅力的な会話を作成します。脚本、小説、ゲーム、その他のクリエイティブプロジェクトを書いている場合でも、このツールはキャラクターに命を吹き込む本物の対話を作成するのに役立ちます。",
+    "items": [
+      {
+        "title": "マルチキャラクターサポート",
+        "description": "それぞれ独自の個性と声を持つ複数のキャラクターの対話を作成します。",
+        "icon": "RiTeamLine"
+      },
+      {
+        "title": "カスタマイズ可能なトーンとスタイル",
+        "description": "さまざまな対話タイプとトーンから選択して、ストーリーの雰囲気に完璧に合わせます。",
+        "icon": "RiPaletteLine"
+      },
+      {
+        "title": "ナラティブ統合",
+        "description": "オプションでナラティブ説明を含めて、シーンを設定し、キャラクターの感情を伝えます。",
+        "icon": "RiBookOpenLine"
+      }
+    ]
+  },
+  "feature2": {
+    "label": "メリット",
+    "title": "AI対話ジェネレーターを使用する理由",
+    "description": "AI駆動の対話生成で時間を節約し、クリエイティブライティングを向上させます",
+    "items": [
+      {
+        "title": "ライターズブロックを克服",
+        "description": "会話シーンで行き詰まったとき、AIに最初の対話を生成させ、それを洗練してパーソナライズできます。",
+        "icon": "RiLightbulbLine",
+        "image": { "src": "/imgs/features/story3.avif" }
+      },
+      {
+        "title": "一貫したキャラクターボイス",
+        "description": "キャラクターの個性を定義すると、AIは対話全体を通じて独自の話し方を維持します。",
+        "icon": "RiUserVoiceLine",
+        "image": { "src": "/imgs/features/story4.avif" }
+      },
+      {
+        "title": "迅速なプロトタイピング",
+        "description": "シーンの複数のバージョンを素早く生成して、ストーリーのさまざまな方向性を探ります。",
+        "icon": "RiSpeedLine",
+        "image": { "src": "/imgs/features/story5.avif" }
+      }
+    ]
+  },
+  "feature3": {
+    "label": "使い方",
+    "title": "AI対話ジェネレーターの使い方",
+    "description": "次のステップに沿って、数分で自然なキャラクター対話を生成できます。",
+    "items": [
+      {
+        "title": "シナリオを記述",
+        "description": "シーンの背景を入力し、名前・性格・役割を持つキャラクターを少なくとも2人追加します。",
+        "icon": "RiTeamLine",
+        "image": { "src": "/imgs/features/story3.avif" }
+      },
+      {
+        "title": "スタイルとトーンを選択",
+        "description": "対話タイプ、トーン、長さを選びます。必要に応じて場所やナレーションを追加し、より豊かなシーンにします。",
+        "icon": "RiPaletteLine",
+        "image": { "src": "/imgs/features/story4.avif" }
+      },
+      {
+        "title": "生成して調整",
+        "description": "「対話を生成」をクリックし、結果をコピーして作品の文体に合わせて編集します。",
+        "icon": "RiChat3Line",
+        "image": { "src": "/imgs/features/story5.avif" }
+      }
+    ]
+  },
+  "feature": {
+    "name": "dialogue-who-uses",
+    "label": "対象",
+    "title": "AI対話ジェネレーターは誰向け？",
+    "description": "リアルなキャラクターボイスを素早く作りたいクリエイターのためのツールです。",
+    "items": [
+      {
+        "title": "脚本家",
+        "description": "シーンの下書き、掛け合いの強化、別テイクの検討をキャラの一貫性を保ちながら行えます。",
+        "icon": "RiMovie2Line"
+      },
+      {
+        "title": "小説家・フィクションライター",
+        "description": "性格や関係性、章の感情曲線に合った自然な会話を生成できます。",
+        "icon": "RiBook2Line"
+      },
+      {
+        "title": "ゲーム開発・RPGデザイン",
+        "description": "クエスト会話、NPCのやり取り、分岐対話を素早くプロトタイプして反復できます。",
+        "icon": "RiGamepadLine"
+      }
+    ]
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "AIダイアログジェネレーター FAQ",
+    "description": "AI対話ジェネレーターに関する一般的な質問",
+    "items": [
+      {
+        "title": "どのような種類の対話を生成できますか？",
+        "description": "カジュアルな会話、議論、インタビュー、交渉、告白、コメディ交換、ドラマチックなシーン、哲学的な議論など、さまざまなタイプを生成できます。"
+      },
+      {
+        "title": "何人のキャラクターを追加できますか？",
+        "description": "必要なだけキャラクターを追加できます。各キャラクターには名前、性格特性、役割を定義して、AIが独自の声を作成するのを助けることができます。"
+      },
+      {
+        "title": "生成された対話を商用利用できますか？",
+        "description": "はい、ツールで生成されたすべての対話はあなたのものであり、小説、脚本、ゲームなどの商用プロジェクトを含むあらゆる目的に使用できます。"
+      },
+      {
+        "title": "どの言語がサポートされていますか？",
+        "description": "英語、中国語、ドイツ語、韓国語、日本語、ロシア語など、複数の言語をサポートしています。AIは選択した言語で対話を生成します。"
+      },
+      {
+        "title": "最良の結果を得るにはどうすればよいですか？",
+        "description": "詳細なキャラクター説明、明確なシナリオを提供し、適切な対話タイプとトーンを選択してください。より多くのコンテキストを提供するほど、より良い出力が得られます。"
+      },
+      {
+        "title": "これは無料のAI対話ジェネレーターですか？",
+        "description": "はい。ログイン不要で無料でご利用いただけます。将来的に利用制限を設ける場合は、ページ上で明確に案内します。"
+      }
+    ]
+  },
+  "cta": {
+    "title": "今すぐ対話作成を開始",
+    "description": "ストーリーのアイデアを魅力的なキャラクター会話に変換",
+    "buttons": [
+      {
+        "title": "対話を生成",
+        "url": "/dialogue-generator#dialogue-generate",
+        "icon": "RiChat3Line"
+      }
+    ]
+  }
+}

@@ -71,6 +71,13 @@
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
               "target": "_self"
+            },
+            {
+              "title": "Dialogue Generator",
+              "description": "Generate realistic character dialogues for stories, scripts, and games",
+              "url": "/dialogue-generator",
+              "icon": "RiChat3Line",
+              "target": "_self"
             }
           ]
         }
@@ -790,6 +797,11 @@
             {
               "title": "Backstory Generator",
               "url": "/backstory-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Dialogue Generator",
+              "url": "/dialogue-generator",
               "target": "_self"
             }
           ]

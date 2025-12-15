@@ -4,7 +4,7 @@ import { Table as TableSlotType } from "@/types/slots/table";
 import Toolbar from "@/components/blocks/toolbar";
 import { Card } from "@/components/ui/card";
 
-export default function ({ ...table }: TableSlotType) {
+export default function DashboardTableSlot({ ...table }: TableSlotType) {
   return (
     <>
       <Header crumb={table.crumb} />

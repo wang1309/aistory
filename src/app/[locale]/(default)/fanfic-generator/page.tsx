@@ -6,6 +6,7 @@ import { FAQSimple01 } from "@/components/blocks/faq2";
 import CTA from "@/components/blocks/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -32,6 +33,7 @@ export async function generateMetadata({
     description: section.header.meta_description,
     alternates: {
       canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/fanfic-generator"),
     },
   };
 }

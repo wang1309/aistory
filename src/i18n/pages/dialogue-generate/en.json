@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "title": "AI Dialogue Generator - Create Realistic Character Conversations",
+    "description": "Generate engaging, realistic dialogue between characters with our free AI dialogue generator. Perfect for screenwriters, novelists, game developers, and creative writers.",
+    "keywords": "AI dialogue generator, character dialogue, conversation generator, screenplay dialogue, novel dialogue, creative writing tool"
+  },
+  "ui": {
+    "title": "AI Dialogue Generator",
+    "subtitle": "Create compelling, realistic conversations between characters with AI",
+    "breadcrumb_home": "Home",
+    "breadcrumb_current": "Dialogue Generator",
+    "scenario_prompt": "Scenario / Context",
+    "random_button": "Random Scenario",
+    "ai_model": "AI Model",
+    "output_language": "Output Language",
+    "dialogue_type": "Dialogue Type",
+    "tone": "Tone",
+    "output_length": "Length",
+    "setting": "Setting / Location",
+    "include_narration": "Include narrative descriptions",
+    "characters": "Characters",
+    "add_character": "Add Character",
+    "character_name": "Name",
+    "character_personality": "Personality",
+    "character_role": "Role",
+    "remove_character": "Remove",
+    "advanced_options": "Advanced Options",
+    "generate_button": "Generate Dialogue",
+    "generating": "Generating..."
+  },
+  "placeholders": {
+    "scenario_prompt": "Describe the scenario or context for the dialogue... (e.g., 'Two old friends meet after 10 years at a coffee shop')",
+    "select_ai_model": "Select an AI model",
+    "character_name": "Character name",
+    "character_personality": "e.g., shy, confident",
+    "character_role": "e.g., protagonist, mentor",
+    "setting": "e.g., A dimly lit bar in 1920s Chicago"
+  },
+  "ai_models": {
+    "fast": "Fast",
+    "fast_description": "Quick generation",
+    "standard": "Standard",
+    "standard_description": "Balanced quality",
+    "creative": "Creative",
+    "creative_description": "Most expressive"
+  },
+  "dialogue_type": {
+    "conversation": "Casual Conversation",
+    "argument": "Argument / Debate",
+    "interview": "Interview",
+    "negotiation": "Negotiation",
+    "confession": "Confession",
+    "comedy": "Comedy",
+    "dramatic": "Dramatic",
+    "philosophical": "Philosophical"
+  },
+  "tone": {
+    "casual": "Casual",
+    "formal": "Formal",
+    "emotional": "Emotional",
+    "humorous": "Humorous",
+    "tense": "Tense",
+    "romantic": "Romantic",
+    "mysterious": "Mysterious"
+  },
+  "length": {
+    "short": "Short",
+    "short_description": "5-10 exchanges",
+    "medium": "Medium",
+    "medium_description": "15-25 exchanges",
+    "long": "Long",
+    "long_description": "30-50 exchanges"
+  },
+  "output": {
+    "title": "Generated Dialogue",
+    "words": "words",
+    "copy": "Copy",
+    "generating_message": "Creating your dialogue...",
+    "empty_message": "Your generated dialogue will appear here"
+  },
+  "validation": {
+    "enter_scenario": "Please enter a scenario or context",
+    "select_ai_model": "Please select an AI model",
+    "add_characters": "Please add at least 2 characters with names"
+  },
+  "success": {
+    "random_prompt_selected": "Random scenario selected!",
+    "dialogue_generated": "Dialogue generated successfully!",
+    "dialogue_copied": "Dialogue copied to clipboard!"
+  },
+  "errors": {
+    "generation_failed": "Failed to generate dialogue. Please try again."
+  },
+  "random_prompts": [
+    "Two strangers stuck in an elevator during a power outage discover they have a surprising connection",
+    "A detective interrogates a suspect who claims to have an alibi that's impossible to verify",
+    "A parent and adult child have a long-overdue conversation about a family secret",
+    "Two rival business owners are forced to work together during a crisis",
+    "A time traveler tries to convince someone from the past about the future without revealing too much",
+    "Former best friends reunite at a funeral and confront unresolved issues"
+  ],
+  "feature1": {
+    "label": "Features",
+    "title": "What is AI Dialogue Generator",
+    "description": "Our AI Dialogue Generator uses advanced language models to create natural, engaging conversations between characters. Whether you're writing a screenplay, novel, game, or any creative project, this tool helps you craft authentic dialogue that brings your characters to life.",
+    "items": [
+      {
+        "title": "Multi-Character Support",
+        "description": "Create dialogues with multiple characters, each with their own distinct personality and voice.",
+        "icon": "RiTeamLine"
+      },
+      {
+        "title": "Customizable Tone & Style",
+        "description": "Choose from various dialogue types and tones to match your story's mood perfectly.",
+        "icon": "RiPaletteLine"
+      },
+      {
+        "title": "Narrative Integration",
+        "description": "Optionally include narrative descriptions to set scenes and convey character emotions.",
+        "icon": "RiBookOpenLine"
+      }
+    ]
+  },
+  "feature2": {
+    "label": "Benefits",
+    "title": "Why Use AI Dialogue Generator",
+    "description": "Save time and enhance your creative writing with AI-powered dialogue generation",
+    "items": [
+      {
+        "title": "Overcome Writer's Block",
+        "description": "When you're stuck on a conversation scene, let AI generate initial dialogue that you can refine and personalize.",
+        "icon": "RiLightbulbLine",
+        "image": { "src": "/imgs/features/story3.avif" }
+      },
+      {
+        "title": "Consistent Character Voices",
+        "description": "Define character personalities and the AI maintains their unique speaking styles throughout the dialogue.",
+        "icon": "RiUserVoiceLine",
+        "image": { "src": "/imgs/features/story4.avif" }
+      },
+      {
+        "title": "Rapid Prototyping",
+        "description": "Quickly generate multiple versions of a scene to explore different directions for your story.",
+        "icon": "RiSpeedLine",
+        "image": { "src": "/imgs/features/story5.avif" }
+      }
+    ]
+  },
+  "feature3": {
+    "label": "How to Use",
+    "title": "How to Use Our AI Dialogue Generator",
+    "description": "Follow these simple steps to generate natural, character-driven dialogue in minutes.",
+    "items": [
+      {
+        "title": "Describe the scenario",
+        "description": "Enter the scene context and add at least two characters with names, personalities, and roles.",
+        "icon": "RiTeamLine",
+        "image": { "src": "/imgs/features/story3.avif" }
+      },
+      {
+        "title": "Choose style & tone",
+        "description": "Pick a dialogue type, tone, and length. Optionally add setting and narration for richer scenes.",
+        "icon": "RiPaletteLine",
+        "image": { "src": "/imgs/features/story4.avif" }
+      },
+      {
+        "title": "Generate & refine",
+        "description": "Click Generate Dialogue, then copy and edit the result to match your story’s voice.",
+        "icon": "RiChat3Line",
+        "image": { "src": "/imgs/features/story5.avif" }
+      }
+    ]
+  },
+  "feature": {
+    "name": "dialogue-who-uses",
+    "label": "Who Uses",
+    "title": "Who Uses AI Dialogue Generator",
+    "description": "Built for creators who need believable character voices—fast.",
+    "items": [
+      {
+        "title": "Screenwriters",
+        "description": "Draft scenes, punch up banter, and explore alternate takes without losing character consistency.",
+        "icon": "RiMovie2Line"
+      },
+      {
+        "title": "Novelists & Fiction Writers",
+        "description": "Create authentic dialogue that matches personality, relationships, and the emotional arc of a chapter.",
+        "icon": "RiBook2Line"
+      },
+      {
+        "title": "Game Developers & RPG Designers",
+        "description": "Prototype quest conversations, NPC interactions, and branching dialogue quickly for iteration.",
+        "icon": "RiGamepadLine"
+      }
+    ]
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "AI dialogue generator FAQs",
+    "description": "Common questions about our AI Dialogue Generator",
+    "items": [
+      {
+        "title": "What types of dialogue can I generate?",
+        "description": "You can generate various types including casual conversations, arguments, interviews, negotiations, confessions, comedic exchanges, dramatic scenes, and philosophical discussions."
+      },
+      {
+        "title": "How many characters can I include?",
+        "description": "You can add as many characters as you need. Each character can have a name, personality traits, and role defined to help the AI create distinct voices."
+      },
+      {
+        "title": "Can I use the generated dialogue commercially?",
+        "description": "Yes, all dialogue generated by our tool is yours to use for any purpose, including commercial projects like novels, screenplays, and games."
+      },
+      {
+        "title": "What languages are supported?",
+        "description": "We support multiple languages including English, Chinese, German, Korean, Japanese, and Russian. The AI will generate dialogue in your selected language."
+      },
+      {
+        "title": "How do I get the best results?",
+        "description": "Provide detailed character descriptions, a clear scenario, and choose the appropriate dialogue type and tone. The more context you give, the better the output."
+      },
+      {
+        "title": "Is this a free AI dialogue generator?",
+        "description": "Yes. You can use the AI Dialogue Generator for free without signing in. If we introduce usage limits in the future, they will be clearly shown on the page."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Start Creating Dialogue Now",
+    "description": "Transform your story ideas into compelling character conversations",
+    "buttons": [
+      {
+        "title": "Generate Dialogue",
+        "url": "/dialogue-generator#dialogue-generate",
+        "icon": "RiChat3Line"
+      }
+    ]
+  }
+}

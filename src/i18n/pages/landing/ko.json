@@ -64,6 +64,13 @@
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
               "target": "_self"
+            },
+            {
+              "title": "대화 생성기",
+              "description": "스토리, 대본, 게임을 위한 사실적인 캐릭터 대화 생성",
+              "url": "/dialogue-generator",
+              "icon": "RiChat3Line",
+              "target": "_self"
             }
           ]
         }
@@ -784,11 +791,16 @@
               "title": "백스토리 생성기",
               "url": "/backstory-generator",
               "target": "_self"
+            },
+            {
+              "title": "대화 생성기",
+              "url": "/dialogue-generator",
+              "target": "_self"
             }
           ]
         },
         {
-          "title": "Friend",
+          "title": "친구",
           "children": [
             {
               "title": "toolfame",

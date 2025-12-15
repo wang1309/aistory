@@ -325,6 +325,10 @@
       "story_prompt_generator": {
         "name": "故事灵感生成器",
         "desc": "一键生成创意故事提示词，帮助突破写作瓶颈，快速开启创作。"
+      },
+      "dialogue_generator": {
+        "name": "对话生成器",
+        "desc": "使用 AI 为剧本、小说和游戏创建逼真、引人入胜的角色对话。"
       }
     }
   },

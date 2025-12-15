@@ -15,10 +15,6 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion";
 
 export default function Testimonial({ section }: { section: SectionType }) {
-  if (section.disabled) {
-    return null;
-  }
-
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -34,6 +30,10 @@ export default function Testimonial({ section }: { section: SectionType }) {
       speed: 0.7,
     })
   );
+
+  if (section.disabled) {
+    return null;
+  }
 
   return (
     <section 
@@ -180,7 +180,7 @@ function TestimonialCard({ item }: { item: any }) {
         <div className="relative flex-1">
           <Icon name="quote" className="absolute -top-2 -left-2 size-8 text-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <blockquote className="relative text-muted-foreground/90 leading-relaxed font-light text-base italic">
-            "{item.content}"
+            &quot;{item.content}&quot;
           </blockquote>
         </div>
 

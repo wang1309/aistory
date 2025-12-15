@@ -3,7 +3,7 @@ import TableBlock from "@/components/blocks/table";
 import { Table as TableSlotType } from "@/types/slots/table";
 import Toolbar from "@/components/blocks/toolbar";
 
-export default function ({ ...table }: TableSlotType) {
+export default function ConsoleTableSlot({ ...table }: TableSlotType) {
   return (
     <div className="space-y-6">
       <div>

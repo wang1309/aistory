@@ -4,7 +4,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { ReactNode } from "react";
 import { toast } from "sonner";
 
-export default function ({
+export default function TableCopy({
   text,
   children,
 }: {

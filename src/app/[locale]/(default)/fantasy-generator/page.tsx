@@ -2,6 +2,7 @@ import FantasyGenerate from "@/components/blocks/fantasy-generate";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import CTA from "@/components/blocks/cta";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -28,6 +29,7 @@ export async function generateMetadata({
     description: section.header.meta_description,
     alternates: {
       canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/fantasy-generator"),
     },
   };
 }

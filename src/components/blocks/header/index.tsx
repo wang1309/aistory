@@ -35,11 +35,11 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
 export default function Header({ header }: { header: HeaderType }) {
+  const t = useTranslations();
+
   if (header.disabled) {
     return null;
   }
-
-  const t = useTranslations();
 
   return (
     <section className="py-3 relative z-50">

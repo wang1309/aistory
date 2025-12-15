@@ -325,6 +325,10 @@
       "story_prompt_generator": {
         "name": "Story Prompt Generator",
         "desc": "Generate creative story prompts and ideas instantly to defeat writer's block."
+      },
+      "dialogue_generator": {
+        "name": "Dialogue Generator",
+        "desc": "Create realistic, engaging character dialogues for screenplays, novels, and games with AI."
       }
     }
   },

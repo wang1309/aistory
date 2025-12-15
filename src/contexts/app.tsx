@@ -22,12 +22,31 @@ const AppContext = createContext({} as ContextValue);
 export const useAppContext = () => useContext(AppContext);
 
 export const AppContextProvider = ({ children }: { children: ReactNode }) => {
-  if (isAuthEnabled() && isGoogleOneTapEnabled()) {
-    useOneTapLogin();
+  if (!isAuthEnabled()) {
+    return <AppContextProviderWithoutAuth>{children}</AppContextProviderWithoutAuth>;
   }
 
-  const { data: session } = isAuthEnabled() ? useSession() : { data: null };
+  return <AppContextProviderWithAuth>{children}</AppContextProviderWithAuth>;
+};
 
+function AppContextProviderWithAuth({ children }: { children: ReactNode }) {
+  useOneTapLogin();
+
+  const { data: session } = useSession();
+  return <AppContextProviderInner session={session}>{children}</AppContextProviderInner>;
+}
+
+function AppContextProviderWithoutAuth({ children }: { children: ReactNode }) {
+  return <AppContextProviderInner session={null}>{children}</AppContextProviderInner>;
+}
+
+function AppContextProviderInner({
+  children,
+  session,
+}: {
+  children: ReactNode;
+  session: any;
+}) {
   const [showSignModal, setShowSignModal] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
 
@@ -141,4 +160,4 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </AppContext.Provider>
   );
-};
+}

@@ -9,7 +9,7 @@ import { Brand as BrandType } from "@/types/blocks/base";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 
-export default function ({ brand }: { brand: BrandType }) {
+export default function DashboardSidebarHeader({ brand }: { brand: BrandType }) {
   const { open } = useSidebar();
   return (
     <SidebarHeader>

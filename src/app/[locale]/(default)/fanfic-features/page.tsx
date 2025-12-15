@@ -1,6 +1,7 @@
 // Example page using FanficFeature1 component
 import FanficFeature1 from "@/components/blocks/fanfic-feature1";
 import { setRequestLocale } from "next-intl/server";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -27,6 +28,7 @@ export async function generateMetadata({
     description: "了解更多关于AI同人文生成器的强大功能",
     alternates: {
       canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/fanfic-features"),
     },
   };
 }

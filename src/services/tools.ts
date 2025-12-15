@@ -81,6 +81,16 @@ export const tools: Tool[] = [
     priority: 80,
   },
   {
+    slug: "dialogue-generator",
+    nameKey: "ai_tools.tools.dialogue_generator.name",
+    shortDescKey: "ai_tools.tools.dialogue_generator.desc",
+    module: "ai-write",
+    category: "story",
+    href: "/dialogue-generator",
+    icon: "RiChat3Line",
+    priority: 78,
+  },
+  {
     slug: "plot-generator",
     nameKey: "ai_tools.tools.plot_generator.name",
     shortDescKey: "ai_tools.tools.plot_generator.desc",

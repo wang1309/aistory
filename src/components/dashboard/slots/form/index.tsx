@@ -3,7 +3,7 @@ import { Form as FormSlotType } from "@/types/slots/form";
 import Header from "@/components/dashboard/header";
 import { Card } from "@/components/ui/card";
 
-export default function ({ ...form }: FormSlotType) {
+export default function DashboardFormSlot({ ...form }: FormSlotType) {
   return (
     <>
       <Header crumb={form.crumb} />

@@ -2,6 +2,7 @@ import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getToolsByModule } from "@/services/tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -27,6 +28,7 @@ export async function generateMetadata({
     description: t("ai_tools.section_description_hub"),
     alternates: {
       canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/ai-write"),
     },
   };
 }

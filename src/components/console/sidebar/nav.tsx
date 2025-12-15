@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 
-export default function ({
+export default function ConsoleSidebarNav({
   className,
   items,
   ...props

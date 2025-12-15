@@ -24,6 +24,7 @@ const Prism = dynamic(() => import("@/components/Prism"), {
 const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
   const [isMounted, setIsMounted] = useState(false);
   const [allowPrism, setAllowPrism] = useState(false);
+  const locale = useLocale();
 
   useEffect(() => {
     setIsMounted(true);
@@ -248,7 +249,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                       es: 'Prueba Rápida',
                       pt: 'Teste Rápido',
                       ru: 'Быстрый старт',
-                    } as Record<string, string>)[useLocale()] || 'Quick Try'}
+                    } as Record<string, string>)[locale] || 'Quick Try'}
                   </span>
                 </span>
               </button>

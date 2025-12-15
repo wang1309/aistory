@@ -64,6 +64,13 @@
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
               "target": "_self"
+            },
+            {
+              "title": "Генератор диалогов",
+              "description": "Создавайте реалистичные диалоги персонажей для историй, сценариев и игр",
+              "url": "/dialogue-generator",
+              "icon": "RiChat3Line",
+              "target": "_self"
             }
           ]
         }
@@ -783,6 +790,11 @@
             {
               "title": "Генератор предысторий",
               "url": "/backstory-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Генератор диалогов",
+              "url": "/dialogue-generator",
               "target": "_self"
             }
           ]

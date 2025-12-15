@@ -8,10 +8,6 @@ import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } fr
 import { useRef } from "react";
 
 export default function Showcase({ section }: { section: SectionType }) {
-  if (section.disabled) {
-    return null;
-  }
-
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -20,6 +16,10 @@ export default function Showcase({ section }: { section: SectionType }) {
 
   const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
+
+  if (section.disabled) {
+    return null;
+  }
 
   return (
     <section 

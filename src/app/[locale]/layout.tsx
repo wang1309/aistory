@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/providers/theme";
 import VerificationModal from "@/components/verification-modal";
 import Analytics from "@/components/analytics";
 import { Metadata } from "next";
+import { buildLanguageAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -36,6 +37,7 @@ export async function generateMetadata({
     keywords: t("metadata.keywords") || "",
     alternates: {
       canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/"),
     },
 
     // Open Graph metadata

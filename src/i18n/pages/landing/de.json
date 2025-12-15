@@ -64,6 +64,13 @@
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
               "target": "_self"
+            },
+            {
+              "title": "Dialog-Generator",
+              "description": "Realistische Charakterdialoge für Geschichten, Drehbücher und Spiele generieren",
+              "url": "/dialogue-generator",
+              "icon": "RiChat3Line",
+              "target": "_self"
             }
           ]
         }
@@ -784,11 +791,16 @@
               "title": "Hintergrundgeschichten-Generator",
               "url": "/backstory-generator",
               "target": "_self"
+            },
+            {
+              "title": "Dialog-Generator",
+              "url": "/dialogue-generator",
+              "target": "_self"
             }
           ]
         },
         {
-          "title": "Friend",
+          "title": "Freunde",
           "children": [
             {
               "title": "toolfame",
