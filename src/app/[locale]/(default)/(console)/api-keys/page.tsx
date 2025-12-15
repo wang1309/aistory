@@ -8,7 +8,7 @@ import moment from "moment";
 import { Badge } from "@/components/ui/badge";
 
 
-export default async function () {
+export default async function ApiKeysPage() {
   const t = await getTranslations();
 
   const user_uuid = await getUserUuid();

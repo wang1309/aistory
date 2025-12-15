@@ -29,7 +29,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ({
+export default async function PostSlugPage ({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;

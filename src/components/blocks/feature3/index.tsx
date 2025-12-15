@@ -9,10 +9,6 @@ import Icon from "@/components/icon";
 import { Section as SectionType } from "@/types/blocks/section";
 
 export default function Feature3({ section }: { section: SectionType }) {
-  if (section.disabled) {
-    return null;
-  }
-
   const [activeTab, setActiveTab] = useState("tab-1");
   const containerRef = useRef<HTMLDivElement>(null);
   const hasVisualContent = section.items?.some((item) => Boolean(item.image?.src));
@@ -24,6 +20,10 @@ export default function Feature3({ section }: { section: SectionType }) {
 
   const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
+
+  if (section.disabled) {
+    return null;
+  }
 
   return (
     <section 

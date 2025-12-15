@@ -6,7 +6,7 @@ import { getTimestamp } from "@/lib/time";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
 
-export default function () {
+export default function InviteCodePage() {
   const params = useParams();
   const code = params.code as string;
 

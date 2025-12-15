@@ -23,10 +23,6 @@ import Image from "next/image";
 const DURATION = 5000;
 
 export default function Feature2({ section }: { section: SectionType }) {
-  if (section.disabled) {
-    return null;
-  }
-
   const [api, setApi] = useState<CarouselApi>();
   const [currentAccordion, setCurrentAccordion] = useState("1");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -40,6 +36,10 @@ export default function Feature2({ section }: { section: SectionType }) {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
 
   useEffect(() => {
+    if (section.disabled) {
+      return;
+    }
+
     api?.scrollTo(+currentAccordion - 1);
     const interval = setInterval(() => {
       setCurrentAccordion((prev) => {
@@ -50,6 +50,10 @@ export default function Feature2({ section }: { section: SectionType }) {
 
     return () => clearInterval(interval);
   }, [api, currentAccordion, section.items?.length]);
+
+  if (section.disabled) {
+    return null;
+  }
 
   return (
     <section 

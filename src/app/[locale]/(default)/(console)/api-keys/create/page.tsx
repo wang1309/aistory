@@ -8,7 +8,7 @@ import { getTranslations } from "next-intl/server";
 import { getUserUuid } from "@/services/user";
 
 
-export default async function () {
+export default async function ApiKeysCreatePage() {
   const t = await getTranslations();
 
   const user_uuid = await getUserUuid();

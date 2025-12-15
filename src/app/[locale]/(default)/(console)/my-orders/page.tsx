@@ -11,7 +11,7 @@ import Link from "next/link";
 import { getStripeBilling } from "@/services/order";
 
 
-export default async function () {
+export default async function MyOrdersPage() {
   const t = await getTranslations();
 
   const user_uuid = await getUserUuid();

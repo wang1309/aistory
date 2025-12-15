@@ -164,7 +164,7 @@ export default function FAQ({ section }: { section: SectionType }) {
           >
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors cursor-pointer dark:text-muted-foreground/80 dark:hover:text-foreground/90">
               <MessageCircle className="w-4 h-4 text-teal-400" />
-              <span className="text-sm font-medium dark:text-foreground/90">Can't find what you're looking for? Contact Support</span>
+              <span className="text-sm font-medium dark:text-foreground/90">Can&apos;t find what you&apos;re looking for? Contact Support</span>
             </div>
           </motion.div>
         </motion.div>

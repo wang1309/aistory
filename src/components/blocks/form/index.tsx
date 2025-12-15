@@ -78,7 +78,7 @@ const generateFormSchema = (fields: FormFieldType[]) => {
   return z.object(schemaFields);
 };
 
-export default function ({
+export default function BlockForm({
   fields,
   data,
   passby,

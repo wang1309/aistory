@@ -11,7 +11,7 @@ import { getUuid } from "@/lib/hash";
 import { CategoryStatus, getCategories } from "@/models/category";
 
 
-export default async function () {
+export default async function AdminPostAddPage() {
   const user = await getUserInfo();
   if (!user || !user.uuid) {
     return <Empty message="no auth" />;

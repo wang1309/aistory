@@ -13,7 +13,7 @@ import { getUserInfo } from "@/services/user";
 import { CategoryStatus, getCategories } from "@/models/category";
 
 
-export default async function ({
+export default async function AdminPostEditPage({
   params,
 }: {
   params: Promise<{ uuid: string }>;

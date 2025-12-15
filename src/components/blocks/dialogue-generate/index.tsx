@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo, useRef, useEffect } from "react";
+import { useState, useCallback, useMemo, useRef, useEffect, ReactNode } from "react";
 import { useLocale } from "next-intl";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
@@ -36,13 +36,22 @@ interface DialogueGenerateProps {
   section: DialogueGenerateType;
 }
 
+function RequiredLabel({ children, htmlFor }: { children: ReactNode; htmlFor?: string }) {
+  return (
+    <Label htmlFor={htmlFor}>
+      {children}
+      <span className="text-red-500 ml-1">*</span>
+    </Label>
+  );
+}
+
 export default function DialogueGenerate({ section }: DialogueGenerateProps) {
   const locale = useLocale();
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const outputScrollRef = useRef<HTMLDivElement | null>(null);
 
   const [prompt, setPrompt] = useState("");
-  const [selectedModel, setSelectedModel] = useState<string>("");
+  const [selectedModel, setSelectedModel] = useState<string>("fast");
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [dialogueType, setDialogueType] = useState("conversation");
   const [tone, setTone] = useState("casual");
@@ -354,7 +363,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
               <CardContent className="p-6 space-y-6">
                 {/* Scenario Prompt */}
                 <div className="space-y-2">
-                  <Label htmlFor="prompt">{t("ui.scenario_prompt")}</Label>
+                  <RequiredLabel htmlFor="prompt">{t("ui.scenario_prompt")}</RequiredLabel>
                   <Textarea
                     id="prompt"
                     value={prompt}
@@ -375,7 +384,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
 
                 {/* Characters */}
                 <div className="space-y-3">
-                  <Label>{t("ui.characters")}</Label>
+                  <RequiredLabel>{t("ui.characters")}</RequiredLabel>
                   {characters.map((char, index) => (
                     <div key={index} className="flex gap-2 items-start">
                       <div className="flex-1 grid grid-cols-3 gap-2">
@@ -415,7 +424,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
 
                 {/* AI Model */}
                 <div className="space-y-2">
-                  <Label>{t("ui.ai_model")}</Label>
+                  <RequiredLabel>{t("ui.ai_model")}</RequiredLabel>
                   <div className="grid grid-cols-3 gap-3">
                     {AI_MODELS.map((model) => (
                       <button

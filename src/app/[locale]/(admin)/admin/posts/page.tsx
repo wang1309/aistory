@@ -7,7 +7,7 @@ import { getAllPosts } from "@/models/post";
 import moment from "moment";
 import { getCategories } from "@/models/category";
 
-export default async function () {
+export default async function AdminPostsPage() {
   const posts = await getAllPosts();
   const categories = await getCategories({});
 

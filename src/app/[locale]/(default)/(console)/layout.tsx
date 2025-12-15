@@ -6,7 +6,7 @@ import { getUserInfo } from "@/services/user";
 import { redirect } from "next/navigation";
 
 
-export default async function ({ children }: { children: ReactNode }) {
+export default async function ConsoleLayoutPage({ children }: { children: ReactNode }) {
   const userInfo = await getUserInfo();
   if (!userInfo || !userInfo.email) {
     redirect("/auth/signin");

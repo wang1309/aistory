@@ -7,7 +7,7 @@ import { getFeedbacksTotal } from "@/models/feedback";
 import { getPostsTotal } from "@/models/post";
 import { DataCard } from "@/types/blocks/base";
 
-export default async function () {
+export default async function AdminDashboardPage() {
   const totalPaidOrders = await getPaidOrdersTotal();
   const totalUsers = await getUsersTotal();
   const totalFeedbacks = await getFeedbacksTotal();

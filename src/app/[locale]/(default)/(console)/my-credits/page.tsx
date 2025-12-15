@@ -8,7 +8,7 @@ import { getUserUuid } from "@/services/user";
 import moment from "moment";
 
 
-export default async function () {
+export default async function MyCreditsPage() {
   const t = await getTranslations();
 
   const user_uuid = await getUserUuid();

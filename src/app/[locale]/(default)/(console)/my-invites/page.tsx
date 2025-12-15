@@ -17,7 +17,7 @@ import moment from "moment";
 import { redirect } from "next/navigation";
 
 
-export default async function () {
+export default async function MyInvitesPage() {
   const t = await getTranslations();
 
   const user_uuid = await getUserUuid();

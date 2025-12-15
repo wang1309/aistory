@@ -19,13 +19,12 @@ const SECTION_HEADERS = [
 ];
 
 export default function FanficWhat({ section }: { section: FanficWhatType | undefined }) {
-  // Early return if section is not provided or disabled
-  if (!section || section.disabled) {
-    return null;
-  }
-
   // Smartly parse content into structured blocks
   const contentBlocks = useMemo(() => {
+    if (!section || section.disabled) {
+      return [];
+    }
+
     const rawContent = section.content || section.intro_paragraph || "";
     const lines = rawContent.split('\n');
     const blocks: { title?: string; content: string[] }[] = [];
@@ -54,7 +53,12 @@ export default function FanficWhat({ section }: { section: FanficWhatType | unde
     }
 
     return blocks;
-  }, [section.content, section.intro_paragraph]);
+  }, [section, section?.content, section?.intro_paragraph, section?.disabled]);
+
+  // Early return if section is not provided or disabled
+  if (!section || section.disabled) {
+    return null;
+  }
 
   // Animation variants
   const containerVariants = {
