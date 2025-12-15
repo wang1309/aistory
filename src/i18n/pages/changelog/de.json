@@ -6,6 +6,35 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.10",
+        "date": "2025-12-15",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Launched AI Dialogue Generator with a dedicated page",
+              "Added export options (Markdown and TXT) for generated dialogues",
+              "Added prompt draft auto-save and input history for the Dialogue Generator to prevent data loss"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "Set the Dialogue Generator default AI model to Fast for quicker iterations",
+              "Optimized overall performance and cleaned up unused files",
+              "Updated site logo assets"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "Fixed an issue where Backstory output could be interrupted",
+              "Resolved ESLint issues to keep builds stable"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.9",
         "date": "2025-12-10",
         "changes": [

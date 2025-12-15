@@ -6,6 +6,35 @@
     "description": "了解我们最新的功能改进、问题修复和安全更新",
     "items": [
       {
+        "version": "v1.3.10",
+        "date": "2025-12-15",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "新增 AI Dialogue Generator 对话生成器独立页面",
+              "新增对话生成结果导出能力（Markdown / TXT）",
+              "为对话生成器输入框新增草稿自动保存与历史记录，避免刷新丢失"
+            ]
+          },
+          {
+            "type": "improvement",
+            "items": [
+              "将对话生成器默认模型设置为 Fast，提升迭代效率",
+              "优化整体性能并清理无用文件",
+              "更新站点 Logo 资源"
+            ]
+          },
+          {
+            "type": "fix",
+            "items": [
+              "修复 Backstory 输出可能被中断的问题",
+              "修复 ESLint 问题，保证构建稳定"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.9",
         "date": "2025-12-10",
         "changes": [
