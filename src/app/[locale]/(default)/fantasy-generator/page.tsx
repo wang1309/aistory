@@ -1,4 +1,8 @@
 import FantasyGenerate from "@/components/blocks/fantasy-generate";
+import Feature from "@/components/blocks/feature";
+import Feature1 from "@/components/blocks/feature1";
+import Feature2 from "@/components/blocks/feature2";
+import FAQ from "@/components/blocks/faq";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import CTA from "@/components/blocks/cta";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -46,6 +50,10 @@ export default async function FantasyGeneratorPage({
   const messages = await import(`@/i18n/pages/fantasy/${locale}.json`);
   const t = await getTranslations();
   const section = messages.default.hero_fantasy;
+  const featureIntro = messages.default.feature_intro;
+  const featureBenefits = messages.default.feature_benefits;
+  const featureSection = messages.default.feature_section;
+  const faqSection = messages.default.faq_section;
   const cta = messages.default.cta;
 
   // Build URLs for breadcrumb structured data
@@ -81,6 +89,10 @@ export default async function FantasyGeneratorPage({
       />
       {/* Fantasy Story Generator */}
       <FantasyGenerate section={section} />
+      {featureIntro && <Feature1 section={featureIntro} />}
+      {featureBenefits && <Feature2 section={featureBenefits} />}
+      {featureSection && <Feature section={featureSection} />}
+      {faqSection && <FAQ section={faqSection} />}
       {/* AI Writing tools module */}
       <ModuleToolsSection
         module="ai-write"

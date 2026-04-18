@@ -281,10 +281,127 @@
       "speed_icon": "⏱️"
     }
   },
+  "feature_intro": {
+    "name": "feature_intro",
+    "label": "Überblick",
+    "title": "Was ist ein KI-Fantasy-Story-Generator?",
+    "description": "Ein KI-Fantasy-Story-Generator verwandelt eine grobe Idee, ein Subgenre und eine Tonalität in einen lesbaren Fantasy-Entwurf. Im Schnellmodus bekommst du sofort Inspiration, im Worldbuilder-Modus definierst du zuerst Setting, Magieregeln, Figuren und Quest.",
+    "image": {
+      "src": "/imgs/stories/fantasy-1.avif",
+      "alt": "Überblick über den KI-Fantasy-Story-Generator"
+    },
+    "items": [
+      {
+        "title": "Von der Idee zum Abenteuer",
+        "description": "Aus einem einzigen Hook entsteht schnell ein Fantasy-Setup mit Konflikt, Atmosphäre und klarer Richtung.",
+        "icon": "RiSparkling2Line"
+      },
+      {
+        "title": "Strukturiertes Worldbuilding",
+        "description": "Lege Welt, Fraktionen, Magiesystem und Figurenziele fest, damit die erzeugte Geschichte stimmiger wirkt.",
+        "icon": "RiMapLine"
+      },
+      {
+        "title": "Entwürfe zum Weiterentwickeln",
+        "description": "Erhalte Storytext, Weltnotizen, Figurenmaterial und Outline-Bausteine, die du später weiterbearbeiten kannst.",
+        "icon": "RiQuillPenLine"
+      }
+    ]
+  },
+  "feature_benefits": {
+    "name": "feature_benefits",
+    "label": "Vorteile",
+    "title": "Warum unseren KI-Fantasy-Story-Generator nutzen",
+    "description": "Gedacht für Autorinnen und Autoren, die mehr brauchen als zufällige Szenen. Du steuerst Genrestimmung, Weltlogik und Figurenkonflikte schon vor der Generierung.",
+    "items": [
+      {
+        "title": "Subgenre-bewusste Generierung",
+        "description": "Wechsle zwischen High Fantasy, Urban Fantasy, Xianxia, Dark Fantasy, Steampunk und mehr, ohne den ganzen Prompt neu schreiben zu müssen.",
+        "icon": "RiBookOpenLine",
+        "image": {
+          "src": "/imgs/features/story2.avif",
+          "alt": "Fantasy-Generierung nach Subgenre"
+        }
+      },
+      {
+        "title": "Weltregeln formen die Handlung",
+        "description": "Im Worldbuilder-Modus definierst du Magiequelle, Kosten, Grenzen, Fraktionen und Motivationen, die direkt in die Story einfließen.",
+        "icon": "RiSparkling2Line",
+        "image": {
+          "src": "/imgs/features/story3.avif",
+          "alt": "Kontrolle über Fantasy-Worldbuilding"
+        }
+      },
+      {
+        "title": "Flexible Ausgabeoptionen",
+        "description": "Passe Ton, Zielgruppe, Länge und Perspektive an, von einer kurzen Einstiegsszene bis zu einem strukturierteren Entwurf.",
+        "icon": "RiTimeLine",
+        "image": {
+          "src": "/imgs/features/story4.avif",
+          "alt": "Flexible Steuerung der Story-Ausgabe"
+        }
+      }
+    ]
+  },
+  "feature_section": {
+    "name": "applications",
+    "label": "Einsatzbereiche",
+    "title": "Wofür eignet sich der KI-Fantasy-Story-Generator?",
+    "description": "Für Kreative, die schnell Fantasy-Material mit genug Struktur zum Weiterschreiben, Pitchen oder Prototyping brauchen.",
+    "items": [
+      {
+        "title": "Roman- und Webnovel-Autor:innen",
+        "description": "Entwirf Einstiege, Kapitelideen, Nebenquests und Varianten von Handlungsbögen, ohne die gewählte Fantasystimmung zu verlieren.",
+        "icon": "RiQuillPenLine"
+      },
+      {
+        "title": "TRPG- und Game-Narrative-Designer",
+        "description": "Erzeuge Quest-Hooks, Fraktionskonflikte, Magiesysteme und Figurenmotive für Kampagnen oder Spielwelten.",
+        "icon": "RiGamepadLine"
+      },
+      {
+        "title": "Rollenspiel- und Content-Creator",
+        "description": "Nutze die Ergebnisse als Grundlage für Charakter-RP, Lore-Posts, Kurzvideos oder andere Fantasy-Inhalte.",
+        "icon": "RiLightbulbLine"
+      }
+    ]
+  },
+  "faq_section": {
+    "name": "faq",
+    "label": "FAQ",
+    "title": "Häufig gestellte Fragen",
+    "description": "Antworten zu Fantasy-Generierung, Worldbuilding-Steuerung und Ausgaben.",
+    "items": [
+      {
+        "title": "Welche Fantasy-Stile werden unterstützt?",
+        "description": "Das Tool unterstützt unter anderem High Fantasy, Urban Fantasy, Eastern Fantasy, Xianxia, Dark Fantasy, humorvolle Fantasy, Steampunk und Epic Fantasy."
+      },
+      {
+        "title": "Kann ich die Worldbuilding-Details steuern?",
+        "description": "Ja. Im Worldbuilder-Modus definierst du Setting, Fraktionen, Magiequelle, Magiekosten, Einschränkungen, Protagonist, Antagonist und wichtige Storybeats."
+      },
+      {
+        "title": "Kann ich das Ergebnis als Entwurf oder Outline verwenden?",
+        "description": "Ja. Storytext, Weltnotizen, Figureninfos und Outline-Material sind dafür gedacht, später weiterbearbeitet und ausgebaut zu werden."
+      },
+      {
+        "title": "Werden mehrere Sprachen unterstützt?",
+        "description": "Ja. Du kannst Fantasy-Geschichten in mehreren Oberflächen- und Ausgabesprachen erzeugen, passend zu deinem Projekt."
+      }
+    ]
+  },
   "cta": {
-    "title": "Ready to Create Your Fantasy World?",
-    "description": "Join thousands of writers crafting epic tales with AI assistance.",
-    "button": "Start Creating",
-    "button_link": "/fantasy-generator"
+    "name": "cta",
+    "title": "Bereit, deine Fantasy-Welt zu erschaffen?",
+    "description": "Definiere Welt, Magie und Figuren und verwandle sie in wenigen Minuten in einen ausbaubaren Fantasy-Entwurf.",
+    "buttons": [
+      {
+        "title": "Jetzt starten",
+        "url": "/fantasy-generator",
+        "target": "_self",
+        "variant": "default",
+        "icon": "RiArrowRightLine"
+      }
+    ]
   }
 }

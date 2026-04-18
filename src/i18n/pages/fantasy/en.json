@@ -281,10 +281,131 @@
       "speed_icon": "⏱️"
     }
   },
+  "feature_intro": {
+    "name": "feature_intro",
+    "label": "Overview",
+    "title": "What is an AI Fantasy Story Generator?",
+    "description": "This tool turns a rough idea, subgenre, and tone into a readable fantasy draft. Use Quick Mode for fast inspiration or Worldbuilder Mode when you want to shape the setting, magic rules, characters, and quest before the story is written.",
+    "image": {
+      "src": "/imgs/stories/fantasy-1.avif",
+      "alt": "AI tool for fantasy story creation overview"
+    },
+    "items": [
+      {
+        "title": "From Prompt to Quest",
+        "description": "Start with a single hook and quickly turn it into a fantasy setup with conflict, atmosphere, and direction.",
+        "icon": "RiSparkling2Line"
+      },
+      {
+        "title": "Worldbuilding With Structure",
+        "description": "Guide the world, factions, magic system, and character goals so the generated story feels more coherent.",
+        "icon": "RiMapLine"
+      },
+      {
+        "title": "Drafts You Can Expand",
+        "description": "Generate story text, setting notes, character setup, and outline material that you can continue editing elsewhere.",
+        "icon": "RiQuillPenLine"
+      }
+    ]
+  },
+  "feature_benefits": {
+    "name": "feature_benefits",
+    "label": "Benefits",
+    "title": "Why use our AI Fantasy Story Generator",
+    "description": "Built for writers who need more than random scenes. Control genre flavor, world logic, and character conflict before you generate.",
+    "items": [
+      {
+        "title": "Subgenre-Aware Generation",
+        "description": "Switch between high fantasy, urban fantasy, xianxia, dark fantasy, steampunk, and more without rewriting your whole prompt.",
+        "icon": "RiBookOpenLine",
+        "image": {
+          "src": "/imgs/features/story2.avif",
+          "alt": "Subgenre-aware fantasy generation"
+        }
+      },
+      {
+        "title": "World Rules That Shape Plot",
+        "description": "Use the worldbuilder flow to define magic source, costs, limits, factions, and motivations that influence the final story.",
+        "icon": "RiSparkling2Line",
+        "image": {
+          "src": "/imgs/features/story3.avif",
+          "alt": "Fantasy worldbuilding controls"
+        }
+      },
+      {
+        "title": "Flexible Output Controls",
+        "description": "Adjust tone, audience, length, and perspective to get anything from a short opening scene to a more structured mid-length draft.",
+        "icon": "RiTimeLine",
+        "image": {
+          "src": "/imgs/features/story4.avif",
+          "alt": "Flexible fantasy story output controls"
+        }
+      }
+    ]
+  },
+  "feature_section": {
+    "name": "applications",
+    "label": "Applications",
+    "title": "Applications of the AI Fantasy Story Generator",
+    "description": "Made for storytellers who need fast fantasy material with enough structure to keep writing, pitching, or prototyping.",
+    "items": [
+      {
+        "title": "Fiction & Web Novel Writers",
+        "description": "Draft openings, chapter ideas, side quests, and arc variations without losing your chosen fantasy tone.",
+        "icon": "RiQuillPenLine"
+      },
+      {
+        "title": "TRPG & Game Narrative Designers",
+        "description": "Generate quest hooks, faction tensions, magic systems, and character motivations for campaigns or game worlds.",
+        "icon": "RiGamepadLine"
+      },
+      {
+        "title": "Roleplay & Content Creators",
+        "description": "Create story seeds for character roleplay, lore posts, short videos, or audience-facing fantasy content.",
+        "icon": "RiLightbulbLine"
+      }
+    ]
+  },
+  "faq_section": {
+    "name": "faq",
+    "label": "FAQ",
+    "title": "Frequently Asked Questions",
+    "description": "Common questions about fantasy story generation, worldbuilding controls, and output quality.",
+    "items": [
+      {
+        "title": "What fantasy styles can it generate?",
+        "description": "It supports multiple fantasy directions including high fantasy, urban fantasy, eastern fantasy, xianxia, dark fantasy, comedic fantasy, steampunk, and epic fantasy."
+      },
+      {
+        "title": "Can I control the worldbuilding details?",
+        "description": "Yes. Worldbuilder Mode lets you define setting, factions, magic source, magic costs, limitations, protagonist details, antagonist motives, and major plot beats."
+      },
+      {
+        "title": "Can I use the result as a draft or outline?",
+        "description": "Yes. The generated story, worldview notes, character details, and outline are designed to give you material you can keep editing in your own writing workflow."
+      },
+      {
+        "title": "Who should use this fantasy story generator?",
+        "description": "This fantasy story generator works well for novelists, web fiction writers, TRPG designers, and creators who need structured fantasy drafts without starting from a blank page."
+      },
+      {
+        "title": "Does it support multiple languages?",
+        "description": "Yes. The tool can generate fantasy stories in multiple interface and output languages so you can work in the language that fits your project."
+      }
+    ]
+  },
   "cta": {
+    "name": "cta",
     "title": "Ready to Create Your Fantasy World?",
-    "description": "Join thousands of writers crafting epic tales with AI assistance.",
-    "button": "Start Creating",
-    "button_link": "/fantasy-generator"
+    "description": "Shape your setting, magic, and characters, then turn them into a fantasy draft in minutes.",
+    "buttons": [
+      {
+        "title": "Start Creating",
+        "url": "/fantasy-generator",
+        "target": "_self",
+        "variant": "default",
+        "icon": "RiArrowRightLine"
+      }
+    ]
   }
 }

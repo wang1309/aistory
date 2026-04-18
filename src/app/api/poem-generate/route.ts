@@ -134,6 +134,7 @@ export async function POST(req: Request) {
     console.log("✓ Turnstile verification passed, proceeding with poem generation");
 
     const apiKey = process.env.GRSAI_API_KEY;
+    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
     if (!apiKey) {
       return respErr("API KEY not found");
     }
@@ -181,7 +182,7 @@ export async function POST(req: Request) {
     console.log("=== Request to GRSAI API ===", JSON.stringify(requestBody, null, 2));
 
     // 调用 GRSAI API（流式响应）
-    const response = await fetch("https://api.grsai.com/v1/chat/completions", {
+    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

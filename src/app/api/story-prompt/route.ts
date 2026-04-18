@@ -281,6 +281,7 @@ export async function POST(req: Request) {
     }
 
     const apiKey = process.env.GRSAI_API_KEY;
+    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
     if (!apiKey) {
       return respErr("API KEY not found");
     }
@@ -311,7 +312,7 @@ export async function POST(req: Request) {
     };
 
     // Call API with streaming
-    const response = await fetch("https://api.grsai.com/v1/chat/completions", {
+    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

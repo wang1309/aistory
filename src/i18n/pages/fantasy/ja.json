@@ -281,10 +281,127 @@
       "speed_icon": "⏱️"
     }
   },
+  "feature_intro": {
+    "name": "feature_intro",
+    "label": "概要",
+    "title": "AI ファンタジーストーリージェネレーターとは？",
+    "description": "AI ファンタジーストーリージェネレーターは、ざっくりした発想とサブジャンル、トーンをもとに、読める形のファンタジー草稿へ広げてくれるツールです。素早く着想を得たいならクイックモード、世界観や魔法ルール、人物、クエストまで整えたいならワールドビルダーモードが使えます。",
+    "image": {
+      "src": "/imgs/stories/fantasy-1.avif",
+      "alt": "AI ファンタジーストーリージェネレーターの概要"
+    },
+    "items": [
+      {
+        "title": "ひとつの着想から冒険へ",
+        "description": "短いフックからでも、対立・雰囲気・物語の方向性を備えたファンタジーの導入をすばやく作れます。",
+        "icon": "RiSparkling2Line"
+      },
+      {
+        "title": "構造化された世界観設計",
+        "description": "世界設定、勢力図、魔法体系、登場人物の目的を入力し、より筋の通った生成結果に導けます。",
+        "icon": "RiMapLine"
+      },
+      {
+        "title": "あとから広げやすい草稿",
+        "description": "本文だけでなく、世界観メモ、キャラクター設定、アウトライン素材も得られるので、そのまま加筆できます。",
+        "icon": "RiQuillPenLine"
+      }
+    ]
+  },
+  "feature_benefits": {
+    "name": "feature_benefits",
+    "label": "メリット",
+    "title": "AI ファンタジーストーリージェネレーターを使う理由",
+    "description": "ただランダムな場面を出すのではなく、ジャンル感、世界の整合性、人物同士の衝突まで踏まえて生成できるよう設計されています。",
+    "items": [
+      {
+        "title": "サブジャンルを踏まえた生成",
+        "description": "ハイファンタジー、アーバンファンタジー、仙侠、ダークファンタジー、スチームパンクなどを、毎回プロンプトを書き直さずに切り替えられます。",
+        "icon": "RiBookOpenLine",
+        "image": {
+          "src": "/imgs/features/story2.avif",
+          "alt": "サブジャンル対応のファンタジー生成"
+        }
+      },
+      {
+        "title": "世界のルールが物語に反映される",
+        "description": "ワールドビルダーモードで魔法の源、代償、制限、勢力、動機を定義し、最終的な物語に反映できます。",
+        "icon": "RiSparkling2Line",
+        "image": {
+          "src": "/imgs/features/story3.avif",
+          "alt": "ファンタジー世界観のコントロール"
+        }
+      },
+      {
+        "title": "出力条件を柔軟に調整",
+        "description": "トーン、対象読者、長さ、視点を調整して、短い冒頭からやや構造化された中編草稿まで幅広く対応できます。",
+        "icon": "RiTimeLine",
+        "image": {
+          "src": "/imgs/features/story4.avif",
+          "alt": "柔軟なファンタジー出力設定"
+        }
+      }
+    ]
+  },
+  "feature_section": {
+    "name": "applications",
+    "label": "活用シーン",
+    "title": "AI ファンタジーストーリージェネレーターの活用例",
+    "description": "すばやくファンタジー素材を得たい人や、執筆・企画・試作に使える程度の構造を求める人に向いています。",
+    "items": [
+      {
+        "title": "小説・Web小説の執筆",
+        "description": "冒頭、章アイデア、サイドクエスト、展開パターンを、選んだファンタジーの雰囲気を保ったまま作れます。",
+        "icon": "RiQuillPenLine"
+      },
+      {
+        "title": "TRPG・ゲームシナリオ設計",
+        "description": "クエストフック、勢力対立、魔法体系、人物動機を生成し、キャンペーンやゲーム世界の設計に使えます。",
+        "icon": "RiGamepadLine"
+      },
+      {
+        "title": "ロールプレイ・コンテンツ制作",
+        "description": "キャラクターRP、設定投稿、短編動画、ファンタジー系コンテンツの種として活用できます。",
+        "icon": "RiLightbulbLine"
+      }
+    ]
+  },
+  "faq_section": {
+    "name": "faq",
+    "label": "FAQ",
+    "title": "よくある質問",
+    "description": "ファンタジー生成、世界観コントロール、出力内容に関するよくある質問です。",
+    "items": [
+      {
+        "title": "どんなファンタジースタイルに対応していますか？",
+        "description": "ハイファンタジー、アーバンファンタジー、東方ファンタジー、仙侠、ダークファンタジー、コメディファンタジー、スチームパンク、エピックファンタジーなどに対応しています。"
+      },
+      {
+        "title": "世界観の細部まで指定できますか？",
+        "description": "はい。ワールドビルダーモードでは、時代背景、勢力、魔法の源、代償、制限、主人公設定、敵役の動機、重要な展開まで指定できます。"
+      },
+      {
+        "title": "生成結果は草稿やアウトラインとして使えますか？",
+        "description": "はい。本文だけでなく、世界観メモ、キャラクター設定、アウトライン素材も出力されるため、そのまま加筆や再構成に使えます。"
+      },
+      {
+        "title": "複数言語に対応していますか？",
+        "description": "はい。複数の UI 言語と出力言語に対応しているため、プロジェクトに合う言語で作業できます。"
+      }
+    ]
+  },
   "cta": {
-    "title": "Ready to Create Your Fantasy World?",
-    "description": "Join thousands of writers crafting epic tales with AI assistance.",
-    "button": "Start Creating",
-    "button_link": "/fantasy-generator"
+    "name": "cta",
+    "title": "あなたのファンタジー世界を作る準備はできましたか？",
+    "description": "世界観、魔法、登場人物を整えて、数分で広げやすいファンタジー草稿に変えましょう。",
+    "buttons": [
+      {
+        "title": "今すぐ始める",
+        "url": "/fantasy-generator",
+        "target": "_self",
+        "variant": "default",
+        "icon": "RiArrowRightLine"
+      }
+    ]
   }
 }

@@ -281,10 +281,127 @@
       "speed_icon": "⏱️"
     }
   },
+  "feature_intro": {
+    "name": "feature_intro",
+    "label": "概览",
+    "title": "什么是 AI 奇幻故事生成器？",
+    "description": "AI 奇幻故事生成器可以把一个粗略灵感、子类型和故事基调，快速扩展成可阅读的奇幻故事草稿。你可以用快速模式马上拿到灵感，也可以用世界观向导先定义设定、魔法规则、角色与任务，再生成更完整的故事。",
+    "image": {
+      "src": "/imgs/stories/fantasy-1.avif",
+      "alt": "AI 奇幻故事生成器概览"
+    },
+    "items": [
+      {
+        "title": "从灵感直接进入冒险",
+        "description": "只需一个故事钩子，就能快速生成带有冲突、氛围和方向感的奇幻开篇。",
+        "icon": "RiSparkling2Line"
+      },
+      {
+        "title": "结构化世界观构建",
+        "description": "你可以明确世界设定、势力分布、魔法系统和角色目标，让生成结果更连贯。",
+        "icon": "RiMapLine"
+      },
+      {
+        "title": "可继续扩写的草稿",
+        "description": "除了故事正文，还能得到世界观、角色设定和大纲素材，方便继续打磨。",
+        "icon": "RiQuillPenLine"
+      }
+    ]
+  },
+  "feature_benefits": {
+    "name": "feature_benefits",
+    "label": "优势",
+    "title": "为什么使用我们的 AI 奇幻故事生成器",
+    "description": "它不是随机吐出几段剧情，而是帮助你在生成前先锁定类型气质、世界逻辑和角色冲突。",
+    "items": [
+      {
+        "title": "识别奇幻子类型",
+        "description": "支持高魔奇幻、都市奇幻、玄幻、仙侠、黑暗奇幻、蒸汽朋克等多种风格，不必反复重写提示词。",
+        "icon": "RiBookOpenLine",
+        "image": {
+          "src": "/imgs/features/story2.avif",
+          "alt": "奇幻子类型生成"
+        }
+      },
+      {
+        "title": "世界规则影响剧情",
+        "description": "通过世界观向导设置魔法来源、代价、限制、势力关系和人物动机，让剧情更像一个完整体系。",
+        "icon": "RiSparkling2Line",
+        "image": {
+          "src": "/imgs/features/story3.avif",
+          "alt": "奇幻世界观控制"
+        }
+      },
+      {
+        "title": "输出控制更灵活",
+        "description": "你可以调节基调、受众、篇幅和叙事视角，从短开篇到中篇草稿都能覆盖。",
+        "icon": "RiTimeLine",
+        "image": {
+          "src": "/imgs/features/story4.avif",
+          "alt": "灵活的奇幻故事输出控制"
+        }
+      }
+    ]
+  },
+  "feature_section": {
+    "name": "applications",
+    "label": "应用场景",
+    "title": "AI 奇幻故事生成器适合哪些人",
+    "description": "适合需要快速获得奇幻素材、同时又不想放弃世界观和剧情结构的创作者。",
+    "items": [
+      {
+        "title": "小说与网文作者",
+        "description": "快速产出开篇、章节灵感、支线任务和不同剧情走向，同时保持奇幻类型气质统一。",
+        "icon": "RiQuillPenLine"
+      },
+      {
+        "title": "TRPG 与游戏叙事设计",
+        "description": "生成任务钩子、阵营矛盾、魔法体系和角色动机，用于战役设计或游戏世界观原型。",
+        "icon": "RiGamepadLine"
+      },
+      {
+        "title": "角色扮演与内容创作者",
+        "description": "为角色扮演设定、世界观帖文、短视频脚本或奇幻内容栏目快速提供故事种子。",
+        "icon": "RiLightbulbLine"
+      }
+    ]
+  },
+  "faq_section": {
+    "name": "faq",
+    "label": "FAQ",
+    "title": "常见问题",
+    "description": "关于奇幻故事生成、世界观控制与输出质量的常见问题。",
+    "items": [
+      {
+        "title": "它可以生成哪些奇幻风格？",
+        "description": "支持高魔奇幻、都市奇幻、东方玄幻、仙侠修真、黑暗奇幻、搞笑奇幻、蒸汽朋克和史诗奇幻等多种方向。"
+      },
+      {
+        "title": "我可以控制世界观细节吗？",
+        "description": "可以。世界观向导支持你定义时代背景、势力、魔法来源、代价、限制、主角设定、反派动机以及关键剧情节点。"
+      },
+      {
+        "title": "生成结果可以当作草稿或大纲使用吗？",
+        "description": "可以。生成内容不仅包含故事正文，还能提供世界观、角色和剧情大纲素材，适合继续扩写和重写。"
+      },
+      {
+        "title": "支持多语言输出吗？",
+        "description": "支持。你可以在多种界面与输出语言下生成奇幻故事，方便匹配自己的写作项目。"
+      }
+    ]
+  },
   "cta": {
+    "name": "cta",
     "title": "准备好创造你的奇幻世界了吗？",
-    "description": "加入数千名作家，用 AI 辅助创作史诗级故事。",
-    "button": "开始创作",
-    "button_link": "/fantasy-generator"
+    "description": "先设定世界、魔法与角色，再在几分钟内得到可继续扩写的奇幻故事草稿。",
+    "buttons": [
+      {
+        "title": "开始创作",
+        "url": "/fantasy-generator",
+        "target": "_self",
+        "variant": "default",
+        "icon": "RiArrowRightLine"
+      }
+    ]
   }
 }

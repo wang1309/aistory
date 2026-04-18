@@ -25,6 +25,7 @@ export async function POST(req: Request) {
     }
 
     const apiKey = process.env.GRSAI_API_KEY;
+    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
     if (!apiKey) {
       return respErr("API KEY not found");
     }
@@ -49,7 +50,7 @@ export async function POST(req: Request) {
     console.log("=== Request to GRSAI API (Analysis) ===");
 
     // 调用 GRSAI API（非流式响应）
-    const response = await fetch("https://api.grsai.com/v1/chat/completions", {
+    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

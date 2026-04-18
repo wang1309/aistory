@@ -184,6 +184,7 @@ export async function POST(req: Request) {
     console.log("✓ Turnstile verification passed, proceeding with title generation");
 
     const apiKey = process.env.GRSAI_API_KEY;
+    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
     if (!apiKey) {
       return respErr("API KEY not found");
     }
@@ -240,7 +241,7 @@ Return only the titles, one per line.`;
     console.log("=== Request to GRSAI API ===", JSON.stringify(requestBody, null, 2));
 
     // Call GRSAI API with streaming
-    const response = await fetch("https://api.grsai.com/v1/chat/completions", {
+    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

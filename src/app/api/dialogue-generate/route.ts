@@ -3,6 +3,7 @@ import { DialogueGenerateRequest } from "@/types/dialogue";
 
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || "";
 const GRSAI_API_KEY = process.env.GRSAI_API_KEY || "";
+const GRSAI_BASE_URL = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
 
 const modelMap: Record<string, string> = {
   fast: "gemini-2.5-flash-lite",
@@ -90,7 +91,7 @@ export async function POST(req: Request) {
 
     const modelName = modelMap[model] || modelMap.standard;
 
-    const response = await fetch("https://api.grsai.com/v1/chat/completions", {
+    const response = await fetch(`${GRSAI_BASE_URL}/v1/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

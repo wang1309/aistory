@@ -231,6 +231,7 @@ export async function POST(req: Request) {
 
         // API Key check
         const apiKey = process.env.GRSAI_API_KEY;
+        const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
         if (!apiKey) {
             console.log("GRSAI_API_KEY not found");
             return respErr("API KEY not configured");
@@ -277,7 +278,7 @@ export async function POST(req: Request) {
         console.log("=== Calling GRSAI API ===");
 
         // Call GRSAI API
-        const response = await fetch("https://api.grsai.com/v1/chat/completions", {
+        const response = await fetch(`${baseUrl}/v1/chat/completions`, {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${apiKey}`,
