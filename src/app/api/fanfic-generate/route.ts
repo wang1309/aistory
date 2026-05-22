@@ -277,12 +277,12 @@ Please ensure:
 
     // Map logical model keys to actual model names (same convention as story-generate)
     const modelMap: Record<string, string> = {
-      fast: "gemini-2.5-flash-lite",
-      standard: "gemini-2.5-flash",
-      creative: "gemini-2.5-flash-think",
+      fast: "gemini-2.5-flash",
+      standard: "gemini-3.1-flash-lite",
+      creative: "gemini-3-flash",
     };
 
-    const actualModel = modelMap[normalizedModel] || "gemini-2.5-flash";
+    const actualModel = modelMap[normalizedModel] || "gemini-3.1-flash-lite";
     console.log("=== Model mapping ===", { requestedModel: modelInput, normalizedModel, actualModel });
 
     const requestBody = {

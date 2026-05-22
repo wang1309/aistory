@@ -1,0 +1,294 @@
+{
+  "metadata": {
+    "title": "AI 만화 생성기 - 만화 대사 & 컷 스크립트 만들기",
+    "description": "AI 만화 생성기: 스토리 아이디어에서 대사·나레이션 컷별 스크립트를 무료 생성. 망가·웹툰 작가를 위한 도구.",
+    "keywords": "AI 만화 생성기, 만화 대사 생성기, 만화 스크립트 생성기, AI 망가 스크립트, 웹툰 스크립트 생성기, 컷 스크립트 생성"
+  },
+  "comic_generate": {
+    "ui": {
+      "title": "AI 만화 생성기",
+      "subtitle": "어떤 스토리 아이디어에서든 만화 대사, 나레이션, 컷별 스크립트를 만드세요.",
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "AI 만화 생성기",
+      "story_prompt_label": "스토리 아이디어 / 장면",
+      "story_prompt_placeholder": "생성하고 싶은 장면, 갈등, 또는 핵심 순간을 설명해주세요...",
+      "comic_style_label": "만화 스타일",
+      "panel_count_label": "컷 수",
+      "tone_label": "분위기",
+      "language_label": "출력 언어",
+      "characters_label": "캐릭터",
+      "add_character": "캐릭터 추가",
+      "character_name": "이름",
+      "character_personality": "성격",
+      "character_role": "역할",
+      "remove_character": "삭제",
+      "setting_label": "배경 / 장소",
+      "setting_placeholder": "예: 자정의 옥상, 학교 복도, 폐허가 된 도시 거리",
+      "scene_goal_label": "장면 목표",
+      "scene_goal_placeholder": "예: 비밀 폭로, 갈등 시작, 웃음 포인트, 클리프행어로 마무리",
+      "narration_mode_label": "나레이션 / 캡션 스타일",
+      "reading_format_label": "읽기 방향",
+      "advanced_options": "고급 옵션",
+      "generate_button": "만화 스크립트 생성",
+      "generating": "생성 중...",
+      "random_button": "랜덤 아이디어",
+      "copy_button": "복사",
+      "export_button": "내보내기",
+      "output_title": "생성된 만화 스크립트",
+      "output_empty": "컷별 만화 스크립트가 여기에 표시됩니다. 아이디어를 입력하고 생성을 클릭하세요!",
+      "panel_label": "컷",
+      "ai_model": "AI 모델",
+      "clear_prompt": "지우기",
+      "prompt_history": "기록",
+      "prompt_history_recent": "최근 입력",
+      "prompt_history_empty": "기록 없음",
+      "prompt_history_clear": "기록 삭제",
+      "hero_step_1": "장면 설명",
+      "hero_step_2": "스타일 선택",
+      "hero_step_3": "스크립트 생성"
+    },
+    "comic_styles": {
+      "manga": "망가",
+      "webtoon": "웹툰",
+      "comic_strip": "코믹 스트립",
+      "graphic_novel": "그래픽 노블",
+      "superhero": "슈퍼히어로 코믹",
+      "slice_of_life": "일상계",
+      "humor": "개그 / 유머 만화",
+      "drama": "드라마 만화"
+    },
+    "panel_counts": {
+      "3": "3컷",
+      "4": "4컷",
+      "6": "6컷",
+      "8": "8컷",
+      "10": "10컷",
+      "12": "12컷"
+    },
+    "tones": {
+      "dramatic": "드라마틱",
+      "light": "가볍고 재미있는",
+      "romantic": "로맨틱",
+      "dark": "다크 & 무거운",
+      "suspenseful": "긴장감 있는",
+      "comedic": "코믹",
+      "emotional": "감성적",
+      "epic": "서사적"
+    },
+    "narration_modes": {
+      "none": "나레이션 없음",
+      "light": "가벼운 캡션",
+      "cinematic": "시네마틱 나레이션",
+      "webtoon": "웹툰 스타일 캡션"
+    },
+    "reading_formats": {
+      "ltr": "왼쪽에서 오른쪽",
+      "rtl": "오른쪽에서 왼쪽 (망가)",
+      "vertical": "세로 스크롤 (웹툰)"
+    },
+    "ai_models": {
+      "fast": "빠름",
+      "fast_description": "빠른 생성, 좋은 품질",
+      "standard": "표준",
+      "standard_description": "속도와 창의성의 균형",
+      "creative": "창의적",
+      "creative_description": "가장 표현력 있고 풍부한 스토리"
+    },
+    "validation": {
+      "enter_prompt": "스토리 아이디어 또는 장면을 입력해주세요.",
+      "select_model": "AI 모델을 선택해주세요.",
+      "add_characters": "이름이 있는 캐릭터를 최소 2명 추가해주세요."
+    },
+    "success": {
+      "random_prompt_selected": "랜덤 아이디어가 선택되었습니다!",
+      "script_generated": "만화 스크립트가 성공적으로 생성되었습니다!",
+      "script_copied": "만화 스크립트가 클립보드에 복사되었습니다!"
+    },
+    "errors": {
+      "generation_failed": "만화 스크립트 생성에 실패했습니다. 다시 시도해주세요."
+    },
+    "random_prompts": [
+      "방과 후 교실에 갇힌 두 학생이 책상 밑에 숨겨진 메모를 발견한다.",
+      "도시 전체가 정전된 가운데 신인 히어로가 기차역에서 은퇴한 빌런과 만난다.",
+      "지나치게 자신만만한 마법사의 주문이 완전히 잘못되는 4컷 개그 장면.",
+      "폭풍이 마을을 덮치는 가운데 남매가 집안의 가보를 놓고 다툰다.",
+      "엘리베이터 문이 열리는 순간 비밀을 고백하는 웹툰 스타일 고백 장면.",
+      "수수께끼로만 대화하는 외계인 대사와 협상해야 하는 우주선 선장."
+    ],
+    "output": {
+      "words": "글자",
+      "copy": "복사",
+      "export_md": "MD 내보내기",
+      "export_txt": "TXT 내보내기",
+      "generating_message": "만화 스크립트를 생성 중입니다...",
+      "empty_message": "컷별 만화 스크립트가 여기에 표시됩니다."
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "개요",
+      "title": "AI 만화 생성기란 무엇인가요?",
+      "description": "AI 만화 생성기는 아이디어를 만화 스타일의 장면, 캐릭터 대사, 나레이션, 구조화된 컷 스크립트로 변환하는 글쓰기 도구입니다. 이미지 생성과 달리, 만화 제작의 스토리 측면에 집중하여 작가와 크리에이터가 그림 작업 전에 장면을 계획하고 대사를 다듬을 수 있도록 도와줍니다.",
+      "image": {
+        "src": "/imgs/features/story3.avif",
+        "alt": "AI 만화 생성기란"
+      },
+      "items": [
+        {
+          "title": "대사 우선 만화 글쓰기",
+          "description": "시각적 스토리텔링의 속도에 맞는 자연스럽고 감정적인 만화 대사를 생성합니다.",
+          "icon": "RiChat3Line"
+        },
+        {
+          "title": "컷별 구조",
+          "description": "거친 장면 아이디어를 액션 설명, 나레이션, 대사가 포함된 정리된 컷 구성으로 변환합니다.",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "스토리텔러를 위해 설계",
+          "description": "캐릭터 목소리, 리듬, 감정적 순간을 중심으로 망가, 웹툰, 코믹 스트립 장면을 만들어냅니다.",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "혜택",
+      "title": "AI 만화 생성기를 사용하는 이유",
+      "description": "스토리 품질, 캐릭터 목소리, 시각적 리듬을 잃지 않고 더 빠르게 만화를 쓸 수 있는 크리에이터를 위해 설계되었습니다.",
+      "items": [
+        {
+          "title": "만화 스크립트를 더 빠르게",
+          "description": "대사, 캡션, 컷 구성이 이미 정리된 상태로 몇 분 안에 초안을 완성하세요.",
+          "icon": "RiSpeedLine",
+          "image": {
+            "src": "/imgs/features/story3.avif",
+            "alt": "만화 스크립트를 더 빠르게"
+          }
+        },
+        {
+          "title": "캐릭터 목소리 일관성 유지",
+          "description": "캐릭터 성격과 역할을 정의하면 모든 컷에 걸쳐 개성 있는 대사를 만들 수 있습니다.",
+          "icon": "RiUserVoiceLine",
+          "image": {
+            "src": "/imgs/features/story4.avif",
+            "alt": "캐릭터 목소리 일관성"
+          }
+        },
+        {
+          "title": "컷 구성을 더 명확하게",
+          "description": "컷별 구조화된 출력으로 수정, 스토리보드 작업, 작가와의 협업이 쉬워집니다.",
+          "icon": "RiLayoutMasonryLine",
+          "image": {
+            "src": "/imgs/features/story5.avif",
+            "alt": "컷 구성을 더 명확하게"
+          }
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "활용 사례",
+      "title": "AI 만화 생성기가 필요한 분들",
+      "description": "이미지 생성이 아닌 구조화된 만화 글쓰기와 스토리 중심 대사가 필요한 크리에이터를 위해 만들어졌습니다.",
+      "items": [
+        {
+          "title": "만화 작가",
+          "description": "만화 페이지, 단편 스트립, 시리즈 스토리의 장면, 캡션, 대사를 빠르게 초안 작성.",
+          "icon": "RiPenNibLine"
+        },
+        {
+          "title": "망가 크리에이터",
+          "description": "간단한 콘셉트나 캐릭터 설정에서 망가 스타일 대사, 감정적 순간, 컷 흐름을 생성.",
+          "icon": "RiBookMarkedLine"
+        },
+        {
+          "title": "웹툰 스토리텔러",
+          "description": "명확한 리듬, 나레이션, 자연스러운 장면 전환으로 세로 스크롤 에피소드를 계획.",
+          "icon": "RiSmartphoneLine"
+        },
+        {
+          "title": "소설 만화화 작가",
+          "description": "소설 장면을 액션 비트, 컷 흐름, 대사 구조가 있는 만화 스크립트로 변환.",
+          "icon": "RiFileTextLine"
+        },
+        {
+          "title": "인디 크리에이터 팀",
+          "description": "스토리보드, 러프 스케치, 제작 전 기획 도구로 활용.",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "RPG & 인터랙티브 스토리 디자이너",
+          "description": "대사 위주 장면, 드라마틱한 반전, 리액션 컷을 생성하여 만화 스타일 인터랙티브 스토리에 활용.",
+          "icon": "RiGamepadLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "자주 묻는 질문",
+      "title": "AI 만화 생성기 자주 묻는 질문",
+      "description": "AI 만화 생성기의 출력 내용과 창작 워크플로우에 관한 자주 묻는 질문입니다.",
+      "items": [
+        {
+          "title": "AI 만화 생성기란 무엇인가요?",
+          "description": "스토리 아이디어를 만화 스타일 콘텐츠로 변환하는 도구입니다. 만화 대사, 나레이션, 컷별 스크립트 등 텍스트 출력에 특화되어 있습니다."
+        },
+        {
+          "title": "이 AI 만화 생성기는 이미지를 생성하나요?",
+          "description": "아니요. 이 AI 만화 생성기는 이미지 생성이 아닌 만화 대사, 캡션, 구조화된 스크립트 작성에 특화되어 있습니다."
+        },
+        {
+          "title": "망가와 웹툰에도 사용할 수 있나요?",
+          "description": "네. 생성 시 망가, 웹툰 등의 스타일을 선택할 수 있으며, AI가 해당 형식에 맞게 컷 구성, 리듬, 대사 톤을 조정합니다."
+        },
+        {
+          "title": "컷별 스크립트를 생성할 수 있나요?",
+          "description": "네. 장면을 컷별 구조로 정리하여 액션 설명, 캐릭터 대사, 나레이션 캡션을 포함한 형태로 출력합니다."
+        },
+        {
+          "title": "생성된 스크립트를 상업적으로 사용할 수 있나요?",
+          "description": "네. 생성된 스크립트는 상업용 만화, 망가, 웹툰을 포함한 자신의 창작 프로젝트에 자유롭게 사용할 수 있습니다."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "지금 바로 스토리를 만화 스크립트로",
+      "description": "AI 만화 생성기로 망가, 웹툰, 만화 스토리텔링을 위한 대사, 나레이션, 컷별 스크립트를 만들어보세요.",
+      "buttons": [
+        {
+          "title": "만화 스크립트 생성",
+          "url": "/comic-generator",
+          "target": "",
+          "icon": "GoRocket"
+        },
+        {
+          "title": "대사 생성기 사용해보기",
+          "url": "/dialogue-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "사용 방법",
+      "title": "AI 만화 생성기 사용법",
+      "description": "세 단계만으로 아이디어에서 완전한 칸별 만화 스크립트를 생성할 수 있습니다.",
+      "items": [
+        {
+          "title": "장면 설명하기",
+          "description": "스토리 아이디어, 핵심 갈등, 장면 분위기를 입력하세요. 무작위 영감 버튼으로 빠르게 시작할 수도 있습니다."
+        },
+        {
+          "title": "만화 매개변수 설정",
+          "description": "만화 스타일, 칸 수, 스토리 톤을 선택하고 캐릭터 정보와 고급 옵션으로 스크립트를 맞춤 설정합니다."
+        },
+        {
+          "title": "생성 및 다듬기",
+          "description": "생성 버튼을 누르면 AI가 칸별 만화 스크립트를 만듭니다. 결과를 복사하거나 매개변수를 조정해 다시 생성할 수 있습니다."
+        }
+      ]
+    }
+  }
+}

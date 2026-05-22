@@ -1,0 +1,294 @@
+{
+  "metadata": {
+    "title": "AI Comic Generator - Comic-Dialoge & Panel-Skripte erstellen",
+    "description": "AI Comic Generator: Erstelle Dialoge, Narration und Panel-Skripte aus jeder Story-Idee. Gratis-Tool für Manga- und Webtoon-Autoren.",
+    "keywords": "AI Comic Generator, Comic-Dialog-Generator, Comic-Skript-Generator, AI Manga-Skript, Webtoon-Skript-Generator, Panel-Skript-Generator"
+  },
+  "comic_generate": {
+    "ui": {
+      "title": "AI Comic Generator",
+      "subtitle": "Erstelle Comic-Dialoge, Erzählungen und Panel-Skripte aus jeder Story-Idee.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "AI Comic Generator",
+      "story_prompt_label": "Story-Idee / Szene",
+      "story_prompt_placeholder": "Beschreibe die Szene, den Konflikt oder den entscheidenden Moment...",
+      "comic_style_label": "Comic-Stil",
+      "panel_count_label": "Anzahl der Panels",
+      "tone_label": "Ton",
+      "language_label": "Ausgabesprache",
+      "characters_label": "Charaktere",
+      "add_character": "Charakter hinzufügen",
+      "character_name": "Name",
+      "character_personality": "Persönlichkeit",
+      "character_role": "Rolle",
+      "remove_character": "Entfernen",
+      "setting_label": "Schauplatz / Ort",
+      "setting_placeholder": "z. B. Regnerisches Dach um Mitternacht, Schulflur, zerstörte Stadtstraße",
+      "scene_goal_label": "Szenenziel",
+      "scene_goal_placeholder": "z. B. Ein Geheimnis enthüllen, Konflikt beginnen, Pointe landen, Cliffhanger",
+      "narration_mode_label": "Erzähler- / Untertitelstil",
+      "reading_format_label": "Leserichtung",
+      "advanced_options": "Erweiterte Optionen",
+      "generate_button": "Comic-Skript erstellen",
+      "generating": "Wird erstellt...",
+      "random_button": "Zufällige Idee",
+      "copy_button": "Kopieren",
+      "export_button": "Exportieren",
+      "output_title": "Erstelltes Comic-Skript",
+      "output_empty": "Dein Panel-Skript erscheint hier. Gib deine Story-Idee ein und klicke auf Erstellen!",
+      "panel_label": "Panel",
+      "ai_model": "KI-Modell",
+      "clear_prompt": "Löschen",
+      "prompt_history": "Verlauf",
+      "prompt_history_recent": "Letzte Eingaben",
+      "prompt_history_empty": "Kein Verlauf",
+      "prompt_history_clear": "Verlauf löschen",
+      "hero_step_1": "Szene beschreiben",
+      "hero_step_2": "Stil wählen",
+      "hero_step_3": "Skript erstellen"
+    },
+    "comic_styles": {
+      "manga": "Manga",
+      "webtoon": "Webtoon",
+      "comic_strip": "Comic-Strip",
+      "graphic_novel": "Graphic Novel",
+      "superhero": "Superhelden-Comic",
+      "slice_of_life": "Alltags-Comic",
+      "humor": "Humor / Gag-Comic",
+      "drama": "Drama-Comic"
+    },
+    "panel_counts": {
+      "3": "3 Panels",
+      "4": "4 Panels",
+      "6": "6 Panels",
+      "8": "8 Panels",
+      "10": "10 Panels",
+      "12": "12 Panels"
+    },
+    "tones": {
+      "dramatic": "Dramatisch",
+      "light": "Leicht & Lustig",
+      "romantic": "Romantisch",
+      "dark": "Dunkel & Ernst",
+      "suspenseful": "Spannend",
+      "comedic": "Komisch",
+      "emotional": "Emotional",
+      "epic": "Episch"
+    },
+    "narration_modes": {
+      "none": "Keine Erzählung",
+      "light": "Leichte Untertitel",
+      "cinematic": "Filmische Erzählung",
+      "webtoon": "Webtoon-Stil-Untertitel"
+    },
+    "reading_formats": {
+      "ltr": "Links nach Rechts",
+      "rtl": "Rechts nach Links (Manga)",
+      "vertical": "Vertikal scrollen (Webtoon)"
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schnelle Generierung, gute Qualität",
+      "standard": "Standard",
+      "standard_description": "Balance zwischen Geschwindigkeit und Kreativität",
+      "creative": "Kreativ",
+      "creative_description": "Ausdrucksstärkste und reichhaltigste Ausgabe"
+    },
+    "validation": {
+      "enter_prompt": "Bitte gib eine Story-Idee oder Szene ein.",
+      "select_model": "Bitte wähle ein KI-Modell aus.",
+      "add_characters": "Bitte füge mindestens 2 Charaktere mit Namen hinzu."
+    },
+    "success": {
+      "random_prompt_selected": "Zufällige Idee ausgewählt!",
+      "script_generated": "Comic-Skript erfolgreich erstellt!",
+      "script_copied": "Comic-Skript in die Zwischenablage kopiert!"
+    },
+    "errors": {
+      "generation_failed": "Erstellung des Comic-Skripts fehlgeschlagen. Bitte versuche es erneut."
+    },
+    "random_prompts": [
+      "Zwei Klassenkameraden sind nach der Schule im Klassenzimmer gefangen und entdecken eine versteckte Nachricht unter einem Pult.",
+      "Ein Nachwuchsheld trifft während eines stadtweiten Stromausfalls auf einem Bahnsteig auf einen pensionierten Schurken.",
+      "Eine Gag-Szene mit vier Panels über einen überheblichen Zauberer, dessen Zauber komplett schiefgeht.",
+      "Zwei Geschwister streiten um ein Familienerbstück, während draußen ein Sturm das Dorf zerstört.",
+      "Eine Webtoon-artige Geständnisszene, in der ein Charakter ein Geheimnis enthüllt, als die Fahrstuhltüren aufgehen.",
+      "Ein Raumschiffkapitän muss mit einem Außerirdischen verhandeln, der nur in Rätseln spricht."
+    ],
+    "output": {
+      "words": "Wörter",
+      "copy": "Kopieren",
+      "export_md": "Als MD exportieren",
+      "export_txt": "Als TXT exportieren",
+      "generating_message": "Comic-Skript wird erstellt...",
+      "empty_message": "Dein Panel-Skript erscheint hier."
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Übersicht",
+      "title": "Was ist ein AI Comic Generator?",
+      "description": "Ein AI Comic Generator ist ein Schreibwerkzeug, das Ideen in Comic-Szenen, Charakterdialoge, Erzählungen und strukturierte Panel-Skripte umwandelt. Anstatt Bilder zu generieren, konzentriert sich unser AI Comic Generator auf den Story-Teil der Comic-Erstellung.",
+      "image": {
+        "src": "/imgs/features/story3.avif",
+        "alt": "Was ist ein AI Comic Generator"
+      },
+      "items": [
+        {
+          "title": "Dialog-zentriertes Comic-Schreiben",
+          "description": "Generiere Comic-Dialoge, die natürlich, emotional und für das visuelle Storytelling-Tempo geeignet sind.",
+          "icon": "RiChat3Line"
+        },
+        {
+          "title": "Panel-für-Panel-Struktur",
+          "description": "Verwandle eine grobe Szenenidee in einen klaren Panel-Aufbau mit Aktionsbeschreibungen, Erzählung und Sprecherzeilen.",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "Für Geschichtenerzähler konzipiert",
+          "description": "Gestalte Manga-, Webtoon- und Comic-Strip-Szenen rund um Charakterstimmen, Tempo und emotionale Höhepunkte.",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum unseren AI Comic Generator nutzen?",
+      "description": "Entwickelt für Kreative, die schneller Comics schreiben müssen, ohne Story-Qualität, Charakterstimmen oder visuelles Tempo zu opfern.",
+      "items": [
+        {
+          "title": "Comic-Skripte schneller erstellen",
+          "description": "Von der groben Idee zum fertigen Entwurf in Minuten – mit bereits organisierten Dialogen, Untertiteln und Panel-Struktur.",
+          "icon": "RiSpeedLine",
+          "image": {
+            "src": "/imgs/features/story3.avif",
+            "alt": "Comic-Skripte schneller erstellen"
+          }
+        },
+        {
+          "title": "Charakterstimmen konsistent halten",
+          "description": "Definiere Charakterpersönlichkeiten und Rollen, damit jede Textzeile in allen Panels unverwechselbar und glaubwürdig klingt.",
+          "icon": "RiUserVoiceLine",
+          "image": {
+            "src": "/imgs/features/story4.avif",
+            "alt": "Charakterstimmen konsistent halten"
+          }
+        },
+        {
+          "title": "Panels klarer planen",
+          "description": "Nutze die strukturierte Panel-Ausgabe, um Comic-Szenen einfacher zu überarbeiten, Storyboards zu erstellen oder an Künstler weiterzugeben.",
+          "icon": "RiLayoutMasonryLine",
+          "image": {
+            "src": "/imgs/features/story5.avif",
+            "alt": "Panels klarer planen"
+          }
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Anwendungsfälle",
+      "title": "Wer sollte diesen AI Comic Generator nutzen?",
+      "description": "Entwickelt für Kreative, die strukturiertes Comic-Schreiben und storyzentrierte Dialoge brauchen – keine Bildgenerierung.",
+      "items": [
+        {
+          "title": "Comicautoren",
+          "description": "Szenen, Untertitel und Dialoge schnell entwerfen – für Comic-Seiten, Kurzstrips oder serialisierte Storys.",
+          "icon": "RiPenNibLine"
+        },
+        {
+          "title": "Manga-Künstler",
+          "description": "Manga-artige Dialoge, emotionale Beats und Panel-Fluss aus einem einfachen Konzept oder einer Charakteridee erstellen.",
+          "icon": "RiBookMarkedLine"
+        },
+        {
+          "title": "Webtoon-Autoren",
+          "description": "Vertikal scrollbare Episoden mit klarerem Tempo, Erzählung und natürlicher Szenenentwicklung planen.",
+          "icon": "RiSmartphoneLine"
+        },
+        {
+          "title": "Romanautoren bei der Adaption",
+          "description": "Prosa-Szenen in Comic-Skripte mit klaren Aktions-Beats, Panel-Fluss und Dialogstruktur umwandeln.",
+          "icon": "RiFileTextLine"
+        },
+        {
+          "title": "Indie-Kreativteams",
+          "description": "Als schreiborientiertes Planungswerkzeug vor Storyboard, Skizzen oder Produktion einsetzen.",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "RPG & Interaktive Story-Designer",
+          "description": "Dialogintensive Szenen, dramatische Enthüllungen und Reaktionspanels für Comic-artiges interaktives Storytelling generieren.",
+          "icon": "RiGamepadLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "AI Comic Generator – Häufig gestellte Fragen",
+      "description": "Häufige Fragen zu unserem AI Comic Generator, seinen Ausgaben und dem kreativen Workflow.",
+      "items": [
+        {
+          "title": "Was ist ein AI Comic Generator?",
+          "description": "Ein AI Comic Generator ist ein Tool, das Story-Ideen in Comic-artige Inhalte umwandelt. Unser AI Comic Generator konzentriert sich auf Textausgaben – Comic-Dialoge, Erzählungen und Panel-Skripte."
+        },
+        {
+          "title": "Erstellt dieser AI Comic Generator Comic-Bilder?",
+          "description": "Nein. Dieser AI Comic Generator ist für das Schreiben von Comic-Dialogen, Untertiteln und strukturierten Skripten konzipiert – nicht für die Bildgenerierung."
+        },
+        {
+          "title": "Kann ich ihn für Manga und Webtoons verwenden?",
+          "description": "Ja. Du kannst beim Generieren Manga, Webtoon oder andere Stile auswählen. Die KI passt Panel-Struktur, Tempo und Dialogton an das gewählte Format an."
+        },
+        {
+          "title": "Kann der AI Comic Generator Panel-für-Panel-Skripte erstellen?",
+          "description": "Ja. Unser AI Comic Generator gliedert deine Szene in eine Panel-für-Panel-Struktur mit Aktionsbeschreibungen, Charakterdialogen und Erzähluntertiteln."
+        },
+        {
+          "title": "Kann ich die generierten Skripte kommerziell nutzen?",
+          "description": "Ja. Du kannst die vom AI Comic Generator erstellten Skripte in deinen eigenen Projekten verwenden, auch für kommerzielle Comics, Manga und Webtoons."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Verwandle deine Story-Idee jetzt in ein Comic-Skript",
+      "description": "Nutze unseren AI Comic Generator für Dialoge, Erzählungen und Panel-Skripte für Manga, Webtoons und Comic-Storytelling.",
+      "buttons": [
+        {
+          "title": "Comic-Skript erstellen",
+          "url": "/comic-generator",
+          "target": "",
+          "icon": "GoRocket"
+        },
+        {
+          "title": "Dialog-Generator ausprobieren",
+          "url": "/dialogue-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "ANLEITUNG",
+      "title": "So verwendest du den AI-Comic-Generator",
+      "description": "Erstelle in nur drei Schritten ein komplettes Panel-für-Panel-Comic-Skript.",
+      "items": [
+        {
+          "title": "Szene beschreiben",
+          "description": "Gib deine Story-Idee, den zentralen Konflikt oder die Szene-Stimmung ein. Nutze den Zufalls-Knopf für schnellen Start."
+        },
+        {
+          "title": "Comic-Parameter einstellen",
+          "description": "Wähle Comic-Stil, Panel-Anzahl und Story-Ton und füge Charakter-Details und erweiterte Optionen hinzu."
+        },
+        {
+          "title": "Generieren und verfeinern",
+          "description": "Klicke auf Generieren und die AI erstellt ein Panel-für-Panel-Skript. Kopiere das Ergebnis oder passe Parameter an und generiere erneut."
+        }
+      ]
+    }
+  }
+}

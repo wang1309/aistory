@@ -71,6 +71,13 @@
               "url": "/dialogue-generator",
               "icon": "RiChat3Line",
               "target": "_self"
+            },
+            {
+              "title": "만화 생성기",
+              "description": "만화 대사, 나레이션, 컷별 스크립트를 생성하는 AI 도구",
+              "url": "/comic-generator",
+              "icon": "RiLayoutGridLine",
+              "target": "_self"
             }
           ]
         }
@@ -795,6 +802,11 @@
             {
               "title": "대화 생성기",
               "url": "/dialogue-generator",
+              "target": "_self"
+            },
+            {
+              "title": "만화 생성기",
+              "url": "/comic-generator",
               "target": "_self"
             }
           ]

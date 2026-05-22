@@ -91,6 +91,17 @@ export const tools: Tool[] = [
     priority: 78,
   },
   {
+    slug: "comic-generator",
+    nameKey: "ai_tools.tools.comic_generator.name",
+    shortDescKey: "ai_tools.tools.comic_generator.desc",
+    module: "ai-write",
+    category: "story",
+    href: "/comic-generator",
+    icon: "RiComicsLine",
+    badges: ["new"],
+    priority: 76,
+  },
+  {
     slug: "plot-generator",
     nameKey: "ai_tools.tools.plot_generator.name",
     shortDescKey: "ai_tools.tools.plot_generator.desc",

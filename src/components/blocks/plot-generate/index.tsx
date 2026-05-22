@@ -471,11 +471,11 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
         const modelKey = selectedModel || "standard";
         const modelMap: Record<string, string> = {
-          fast: "gemini-2.5-flash-lite",
-          standard: "gemini-2.5-flash",
-          creative: "gemini-2.5-flash-think",
+          fast: "gemini-2.5-flash",
+          standard: "gemini-3.1-flash-lite",
+          creative: "gemini-3-flash",
         };
-        const actualModel = modelMap[modelKey] || "gemini-2.5-flash";
+        const actualModel = modelMap[modelKey] || "gemini-3.1-flash-lite";
 
         const resp = await fetch("/api/stories", {
           method: "POST",

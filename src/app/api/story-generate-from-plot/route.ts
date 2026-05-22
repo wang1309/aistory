@@ -216,12 +216,12 @@ Please expand this outline into a full narrative story. Maintain the structure, 
 
     // 模型映射
     const modelMap: Record<string, string> = {
-      "fast": "gemini-2.5-flash-lite",
-      "standard": "gemini-2.5-flash",
-      "creative": "gemini-2.5-flash-think",
+      "fast": "gemini-2.5-flash",
+      "standard": "gemini-3.1-flash-lite",
+      "creative": "gemini-3-flash",
     };
 
-    const actualModel = modelMap[model] || "gemini-2.5-flash";
+    const actualModel = modelMap[model] || "gemini-3.1-flash-lite";
     console.log("=== Model mapping ===", { requestedModel: model, actualModel });
 
     // 构建 GRSAI API 请求

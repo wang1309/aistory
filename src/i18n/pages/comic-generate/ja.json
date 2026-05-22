@@ -1,0 +1,294 @@
+{
+  "metadata": {
+    "title": "AIコミックジェネレーター - セリフとコマ割りスクリプトを作成",
+    "description": "AI漫画ジェネレーター：ストーリーアイデアからセリフ・ナレーション付きのコマ割りスクリプトを無料作成。マンガ・ウェブトゥーン向け。",
+    "keywords": "AIコミックジェネレーター, コミックセリフ生成, コミックスクリプト生成, AIマンガスクリプト, ウェブトゥーンスクリプト, コマ割りスクリプト"
+  },
+  "comic_generate": {
+    "ui": {
+      "title": "AIコミックジェネレーター",
+      "subtitle": "どんなストーリーのアイデアからも、コミックのセリフ・ナレーション・コマ割りスクリプトを作成。",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "AIコミックジェネレーター",
+      "story_prompt_label": "ストーリーのアイデア / シーン",
+      "story_prompt_placeholder": "生成したいシーン、コンフリクト、または重要な場面を説明してください...",
+      "comic_style_label": "コミックスタイル",
+      "panel_count_label": "コマ数",
+      "tone_label": "トーン",
+      "language_label": "出力言語",
+      "characters_label": "キャラクター",
+      "add_character": "キャラクターを追加",
+      "character_name": "名前",
+      "character_personality": "性格",
+      "character_role": "役割",
+      "remove_character": "削除",
+      "setting_label": "舞台 / 場所",
+      "setting_placeholder": "例：真夜中の屋上、学校の廊下、廃墟の街",
+      "scene_goal_label": "シーンの目的",
+      "scene_goal_placeholder": "例：秘密を明かす、対立を起こす、オチをつける、引きで終わる",
+      "narration_mode_label": "ナレーション / キャプションスタイル",
+      "reading_format_label": "読む方向",
+      "advanced_options": "詳細オプション",
+      "generate_button": "コミックスクリプトを生成",
+      "generating": "生成中...",
+      "random_button": "ランダムアイデア",
+      "copy_button": "コピー",
+      "export_button": "エクスポート",
+      "output_title": "生成されたコミックスクリプト",
+      "output_empty": "コマ割りスクリプトがここに表示されます。アイデアを入力して生成してください！",
+      "panel_label": "コマ",
+      "ai_model": "AIモデル",
+      "clear_prompt": "クリア",
+      "prompt_history": "履歴",
+      "prompt_history_recent": "最近の入力",
+      "prompt_history_empty": "履歴なし",
+      "prompt_history_clear": "履歴を削除",
+      "hero_step_1": "シーンを記述",
+      "hero_step_2": "スタイルを選択",
+      "hero_step_3": "スクリプト生成"
+    },
+    "comic_styles": {
+      "manga": "マンガ",
+      "webtoon": "ウェブトゥーン",
+      "comic_strip": "コミックストリップ",
+      "graphic_novel": "グラフィックノベル",
+      "superhero": "スーパーヒーローコミック",
+      "slice_of_life": "日常系",
+      "humor": "ギャグ・コメディ",
+      "drama": "ドラマ系"
+    },
+    "panel_counts": {
+      "3": "3コマ",
+      "4": "4コマ",
+      "6": "6コマ",
+      "8": "8コマ",
+      "10": "10コマ",
+      "12": "12コマ"
+    },
+    "tones": {
+      "dramatic": "ドラマチック",
+      "light": "ライト・楽しい",
+      "romantic": "ロマンチック",
+      "dark": "ダーク・シリアス",
+      "suspenseful": "サスペンス",
+      "comedic": "コメディ",
+      "emotional": "感情的",
+      "epic": "エピック・熱い"
+    },
+    "narration_modes": {
+      "none": "ナレーションなし",
+      "light": "軽めのキャプション",
+      "cinematic": "シネマティックナレーション",
+      "webtoon": "ウェブトゥーン式キャプション"
+    },
+    "reading_formats": {
+      "ltr": "左から右",
+      "rtl": "右から左（マンガ式）",
+      "vertical": "縦スクロール（ウェブトゥーン）"
+    },
+    "ai_models": {
+      "fast": "高速",
+      "fast_description": "素早い生成、高品質",
+      "standard": "スタンダード",
+      "standard_description": "速度とクリエイティビティのバランス",
+      "creative": "クリエイティブ",
+      "creative_description": "最も表現力豊か"
+    },
+    "validation": {
+      "enter_prompt": "ストーリーアイデアまたはシーンを入力してください。",
+      "select_model": "AIモデルを選択してください。",
+      "add_characters": "名前のあるキャラクターを少なくとも2人追加してください。"
+    },
+    "success": {
+      "random_prompt_selected": "ランダムアイデアが選択されました！",
+      "script_generated": "コミックスクリプトが生成されました！",
+      "script_copied": "コミックスクリプトをクリップボードにコピーしました！"
+    },
+    "errors": {
+      "generation_failed": "コミックスクリプトの生成に失敗しました。もう一度お試しください。"
+    },
+    "random_prompts": [
+      "放課後に教室に閉じ込められた2人の同級生が、机の下に隠されたメモを発見する。",
+      "新人ヒーローが全市停電の中、駅のホームで引退した悪役と出会う。",
+      "自信満々な魔法使いの呪文が完全に失敗する4コマギャグシーン。",
+      "村の外では嵐が荒れ狂う中、兄妹が家宝をめぐって口論する。",
+      "エレベーターのドアが開いた瞬間、一人のキャラクターが秘密を打ち明けるウェブトゥーン風告白シーン。",
+      "謎かけでしか話せない宇宙人大使と交渉しなければならない宇宙船の船長。"
+    ],
+    "output": {
+      "words": "文字",
+      "copy": "コピー",
+      "export_md": "MDエクスポート",
+      "export_txt": "TXTエクスポート",
+      "generating_message": "コミックスクリプトを作成中...",
+      "empty_message": "コマ割りスクリプトがここに表示されます。"
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "AIコミックジェネレーターとは？",
+      "description": "AIコミックジェネレーターは、アイデアをコミックシーン、キャラクターのセリフ、ナレーション、コマ割りスクリプトに変換するライティングツールです。画像生成とは異なり、コミック制作のストーリー面に特化しています。",
+      "image": {
+        "src": "/imgs/features/story3.avif",
+        "alt": "AIコミックジェネレーターとは"
+      },
+      "items": [
+        {
+          "title": "セリフ優先のコミック執筆",
+          "description": "視覚的なストーリーテリングのペースに合った、自然で感情豊かなコミックセリフを生成します。",
+          "icon": "RiChat3Line"
+        },
+        {
+          "title": "コマ割り構造",
+          "description": "粗いシーンアイデアを、アクション説明・ナレーション・セリフを含む整理されたコマ割りに変換します。",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "ストーリーテラーのために",
+          "description": "キャラクターの声、テンポ、感情的な山場を中心に、マンガ・ウェブトゥーン・コミックのシーンを作り上げます。",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "AIコミックジェネレーターを使う理由",
+      "description": "ストーリーの質・キャラクターの声・視覚的なテンポを損なわず、より速くコミック執筆ができるクリエイター向けに設計されています。",
+      "items": [
+        {
+          "title": "コミックスクリプトを素早く作成",
+          "description": "粗いアイデアから数分でコミック用下書きへ。セリフ・キャプション・コマ構成がすでに整理されています。",
+          "icon": "RiSpeedLine",
+          "image": {
+            "src": "/imgs/features/story3.avif",
+            "alt": "コミックスクリプトを素早く作成"
+          }
+        },
+        {
+          "title": "キャラクターの声を一貫させる",
+          "description": "キャラクターの性格と役割を定義することで、すべてのコマにわたって個性的なセリフを実現します。",
+          "icon": "RiUserVoiceLine",
+          "image": {
+            "src": "/imgs/features/story4.avif",
+            "alt": "キャラクターの声を一貫させる"
+          }
+        },
+        {
+          "title": "コマ割りをより明確に計画",
+          "description": "コマごとの構造化された出力で、修正・ネーム作成・アーティストとの共有が簡単になります。",
+          "icon": "RiLayoutMasonryLine",
+          "image": {
+            "src": "/imgs/features/story5.avif",
+            "alt": "コマ割りをより明確に計画"
+          }
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "活用例",
+      "title": "AIコミックジェネレーターはこんな方に",
+      "description": "画像生成ではなく、構造化されたコミック執筆とストーリー重視のセリフが必要なクリエイターのために作られています。",
+      "items": [
+        {
+          "title": "コミック作家",
+          "description": "コミックページ、短編ストリップ、連載ストーリーのシーン・キャプション・セリフを素早く下書き。",
+          "icon": "RiPenNibLine"
+        },
+        {
+          "title": "マンガ家",
+          "description": "シンプルなコンセプトやキャラ設定から、マンガ風のセリフ・感情的な山場・コマ割りを作成。",
+          "icon": "RiBookMarkedLine"
+        },
+        {
+          "title": "ウェブトゥーン作家",
+          "description": "明確なテンポ・ナレーション・自然な場面展開で縦スクロールのエピソードを計画。",
+          "icon": "RiSmartphoneLine"
+        },
+        {
+          "title": "小説のコミカライズ作家",
+          "description": "小説のシーンをアクションビート・コマの流れ・セリフ構成を含むコミックスクリプトへ変換。",
+          "icon": "RiFileTextLine"
+        },
+        {
+          "title": "インディークリエイターチーム",
+          "description": "ネーム・ラフスケッチ・制作前の計画ツールとして活用。",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "RPG・インタラクティブ物語デザイナー",
+          "description": "セリフの多いシーン・ドラマチックな展開・リアクションコマを生成。",
+          "icon": "RiGamepadLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "よくある質問",
+      "title": "AIコミックジェネレーターのよくある質問",
+      "description": "AIコミックジェネレーターの出力内容とクリエイティブワークフローに関するよくある質問です。",
+      "items": [
+        {
+          "title": "AIコミックジェネレーターとは何ですか？",
+          "description": "ストーリーのアイデアをコミック風のコンテンツに変換するツールです。セリフ・ナレーション・コマ割りスクリプトなどのテキスト出力に特化しています。"
+        },
+        {
+          "title": "このツールはコミックの画像を生成しますか？",
+          "description": "いいえ。このAIコミックジェネレーターは、画像生成ではなくセリフ・キャプション・構造化スクリプトの作成に特化しています。"
+        },
+        {
+          "title": "マンガやウェブトゥーンにも使えますか？",
+          "description": "はい。生成時にマンガ・ウェブトゥーンなどのスタイルを選択できます。AIが選択したフォーマットに合わせてコマ構成・テンポ・セリフのトーンを調整します。"
+        },
+        {
+          "title": "コマ割りスクリプトを生成できますか？",
+          "description": "はい。シーンをコマごとの構造に整理し、アクション説明・セリフ・ナレーションキャプションを含む形で出力します。"
+        },
+        {
+          "title": "生成されたスクリプトは商業利用できますか？",
+          "description": "はい。生成されたスクリプトは、商業コミック・マンガ・ウェブトゥーンを含む自身のプロジェクトで自由にご利用いただけます。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "今すぐストーリーをコミックスクリプトに",
+      "description": "AIコミックジェネレーターでマンガ・ウェブトゥーン・コミック向けのセリフ・ナレーション・コマ割りスクリプトを作成しましょう。",
+      "buttons": [
+        {
+          "title": "コミックスクリプトを生成",
+          "url": "/comic-generator",
+          "target": "",
+          "icon": "GoRocket"
+        },
+        {
+          "title": "セリフジェネレーターを試す",
+          "url": "/dialogue-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "AI漫画ジェネレーターの使い方",
+      "description": "3つのステップで、アイデアから完全なコマ割りスクリプトを生成できます。",
+      "items": [
+        {
+          "title": "シーンを記述する",
+          "description": "ストーリーのアイデア、重要な対立、シーンの雰囲気を入力します。ランダムインスピレーションボタンで簡単に始められます。"
+        },
+        {
+          "title": "漫画パラメータを設定",
+          "description": "漫画スタイル、コマ数、ストーリートーンを選び、キャラクター情報や詳細オプションでスクリプトをカスタマイズします。"
+        },
+        {
+          "title": "生成して最適化",
+          "description": "生成ボタンを押すと、AIがコマ割りスクリプトを作成します。結果をコピーするか、パラメータを調整して再生成できます。"
+        }
+      ]
+    }
+  }
+}

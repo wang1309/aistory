@@ -244,7 +244,7 @@ export async function POST(req: Request) {
         console.log("Moods:", moods);
 
         const requestBody = {
-            model: "gemini-2.5-flash",
+            model: "gemini-3.1-flash-lite",
             stream: true,
             messages: [
                 { role: "system", content: promptData.system },

@@ -329,6 +329,10 @@
       "dialogue_generator": {
         "name": "Dialogue Generator",
         "desc": "Create realistic, engaging character dialogues for screenplays, novels, and games with AI."
+      },
+      "comic_generator": {
+        "name": "AI Comic Generator",
+        "desc": "Generate comic dialogue, narration, and panel-by-panel scripts for manga, webtoon, and comic storytelling."
       }
     }
   },

@@ -78,6 +78,13 @@
               "url": "/dialogue-generator",
               "icon": "RiChat3Line",
               "target": "_self"
+            },
+            {
+              "title": "Comic Generator",
+              "description": "Generate comic dialogue, narration, and panel-by-panel scripts for manga and webtoon",
+              "url": "/comic-generator",
+              "icon": "RiLayoutGridLine",
+              "target": "_self"
             }
           ]
         }
@@ -802,6 +809,11 @@
             {
               "title": "Dialogue Generator",
               "url": "/dialogue-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Comic Generator",
+              "url": "/comic-generator",
               "target": "_self"
             }
           ]

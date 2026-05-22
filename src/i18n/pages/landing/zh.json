@@ -78,6 +78,13 @@
               "url": "/dialogue-generator",
               "icon": "RiChat3Line",
               "target": "_self"
+            },
+            {
+              "title": "漫画生成器",
+              "description": "为漫画、网漫和条漫创作生成漫画对白、旁白和逐格分镜脚本",
+              "url": "/comic-generator",
+              "icon": "RiLayoutGridLine",
+              "target": "_self"
             }
           ]
         }
@@ -802,6 +809,11 @@
             {
               "title": "对话生成器",
               "url": "/dialogue-generator",
+              "target": "_self"
+            },
+            {
+              "title": "漫画生成器",
+              "url": "/comic-generator",
               "target": "_self"
             }
           ]

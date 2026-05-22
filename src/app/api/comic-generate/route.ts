@@ -1,5 +1,5 @@
-import { buildDialoguePrompt } from "@/lib/dialogue-prompt";
-import { DialogueGenerateRequest } from "@/types/dialogue";
+import { buildComicPrompt } from "@/lib/comic-prompt";
+import { ComicGenerateRequest } from "@/types/comic";
 
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || "";
 const GRSAI_API_KEY = process.env.GRSAI_API_KEY || "";
@@ -24,10 +24,7 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
 
     const result = await fetch(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-      {
-        method: "POST",
-        body: formData,
-      }
+      { method: "POST", body: formData }
     );
 
     const outcome = await result.json();
@@ -40,7 +37,7 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
 
 export async function POST(req: Request) {
   try {
-    const body: DialogueGenerateRequest = await req.json();
+    const body: ComicGenerateRequest = await req.json();
 
     const {
       turnstileToken,
@@ -48,11 +45,13 @@ export async function POST(req: Request) {
       model,
       locale,
       characters,
-      dialogueType,
+      comicStyle,
+      panelCount,
       tone,
-      length,
       setting,
-      includeNarration,
+      narrationMode,
+      sceneGoal,
+      readingFormat,
     } = body;
 
     if (!prompt || !model) {
@@ -77,16 +76,18 @@ export async function POST(req: Request) {
       );
     }
 
-    const finalPrompt = buildDialoguePrompt({
+    const finalPrompt = buildComicPrompt({
       prompt,
       model,
       locale: locale || "en",
       characters,
-      dialogueType,
+      comicStyle,
+      panelCount,
       tone,
-      length,
       setting,
-      includeNarration,
+      narrationMode,
+      sceneGoal,
+      readingFormat,
     });
 
     const modelName = modelMap[model] || modelMap.standard;
@@ -101,12 +102,17 @@ export async function POST(req: Request) {
         model: modelName,
         messages: [
           {
+            role: "system",
+            content:
+              "You are a professional comic script writer with deep expertise in manga, webtoon, and western comics. You specialize in crafting panel-by-panel scripts with natural dialogue, clear visual descriptions, and strong narrative pacing.",
+          },
+          {
             role: "user",
             content: finalPrompt,
           },
         ],
         stream: true,
-        temperature: model === "creative" ? 0.9 : 0.7,
+        temperature: model === "creative" ? 0.9 : 0.75,
         max_tokens: 4096,
       }),
     });
@@ -115,7 +121,7 @@ export async function POST(req: Request) {
       const errorText = await response.text();
       console.error("GRSAI API error:", errorText);
       return new Response(
-        JSON.stringify({ error: "Failed to generate dialogue" }),
+        JSON.stringify({ error: "Failed to generate comic script" }),
         { status: 500, headers: { "Content-Type": "application/json" } }
       );
     }
@@ -129,7 +135,6 @@ export async function POST(req: Request) {
     const transformStream = new TransformStream({
       transform(chunk, controller) {
         const text = decoder.decode(chunk, { stream: true });
-
         buffer += text;
 
         const lines = buffer.split("\n");
@@ -139,9 +144,7 @@ export async function POST(req: Request) {
           if (line.startsWith("data: ")) {
             const data = line.slice(6);
 
-            if (data === "[DONE]") {
-              continue;
-            }
+            if (data === "[DONE]") continue;
 
             try {
               const parsed = JSON.parse(data);
@@ -150,23 +153,17 @@ export async function POST(req: Request) {
               if (content) {
                 if (content.includes("<think>")) {
                   insideThinkTag = true;
-                  const thinkIndex = content.indexOf("<think>");
-                  if (thinkIndex > 0) {
-                    content = content.substring(0, thinkIndex);
-                  } else {
-                    content = "";
-                  }
+                  const idx = content.indexOf("<think>");
+                  content = idx > 0 ? content.substring(0, idx) : "";
                 }
 
                 if (content.includes("</think>")) {
                   insideThinkTag = false;
-                  const thinkCloseIndex = content.indexOf("</think>");
-                  content = content.substring(thinkCloseIndex + 8);
+                  const idx = content.indexOf("</think>");
+                  content = content.substring(idx + 8);
                 }
 
-                if (insideThinkTag) {
-                  continue;
-                }
+                if (insideThinkTag) continue;
 
                 if (content) {
                   const escaped = content
@@ -220,7 +217,7 @@ export async function POST(req: Request) {
       },
     });
   } catch (error) {
-    console.error("Dialogue generation error:", error);
+    console.error("Comic generation error:", error);
     return new Response(
       JSON.stringify({ error: "Internal server error" }),
       { status: 500, headers: { "Content-Type": "application/json" } }

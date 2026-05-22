@@ -231,7 +231,7 @@ Return only the titles, one per line.`;
     console.log("Output Language:", `${currentLanguage.english} (${currentLanguage.native})`);
 
     const requestBody = {
-      model: "gemini-2.5-flash",
+      model: "gemini-3.1-flash-lite",
       stream: true,
       messages: [
         { role: "system", content: systemPrompt },

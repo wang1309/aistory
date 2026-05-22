@@ -36,7 +36,7 @@ export async function POST(req: Request) {
 
     // 使用快速模型进行分析
     const requestBody = {
-      model: "gemini-2.5-flash", // 使用快速模型
+      model: "gemini-3.1-flash-lite", // 使用快速模型
       stream: false, // 分析不需要流式响应
       messages: [
         {

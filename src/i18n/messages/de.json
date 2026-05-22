@@ -326,6 +326,10 @@
       "dialogue_generator": {
         "name": "Dialog-Generator",
         "desc": "Erstellen Sie mit KI realistische, fesselnde Charakterdialoge für Drehbücher, Romane und Spiele."
+      },
+      "comic_generator": {
+        "name": "AI Comic Generator",
+        "desc": "Generieren Sie Comic-Dialoge, Erzählungen und Panel-Skripte für Manga, Webtoon und Comic-Storytelling."
       }
     }
   },
