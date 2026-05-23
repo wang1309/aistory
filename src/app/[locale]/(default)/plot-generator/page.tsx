@@ -128,19 +128,19 @@ export default async function PlotGeneratePage({
       <PlotGenerate section={section} />
 
       {feature1_section && (
-        <FeatureIntro section={feature1_section} accent="blue" />
+        <FeatureIntro section={feature1_section} accent="orange" />
       )}
 
       {feature_section && (
-        <Benefits section={feature_section} accent="blue" />
+        <Benefits section={feature_section} accent="orange" />
       )}
 
       {feature3_section && (
-        <HowToUse section={feature3_section} accent="blue" />
+        <HowToUse section={feature3_section} accent="orange" />
       )}
 
       {faq_section && (
-        <FAQ section={faq_section} accent="blue" />
+        <FAQ section={faq_section} accent="orange" />
       )}
 
       <ModuleToolsSection
@@ -148,10 +148,11 @@ export default async function PlotGeneratePage({
         title={t("ai_tools.section_title_hub")}
         description={t("ai_tools.section_description_hub")}
         excludeSlug="plot-generator"
+                accent="orange"
       />
 
       {cta_section && (
-        <CTA section={cta_section} accent="blue" />
+        <CTA section={cta_section} accent="orange" />
       )}
 
     </>

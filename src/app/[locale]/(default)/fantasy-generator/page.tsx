@@ -89,17 +89,18 @@ export default async function FantasyGeneratorPage({
       />
       {/* Fantasy Story Generator */}
       <FantasyGenerate section={section} />
-      {featureIntro && <FeatureIntro section={featureIntro} accent="emerald" />}
-      {featureBenefits && <Benefits section={featureBenefits} accent="emerald" />}
-      {featureSection && <UseCases section={featureSection} accent="emerald" />}
-      {faqSection && <FAQ section={faqSection} accent="emerald" />}
+      {featureIntro && <FeatureIntro section={featureIntro} accent="orange" />}
+      {featureBenefits && <Benefits section={featureBenefits} accent="orange" />}
+      {featureSection && <UseCases section={featureSection} accent="orange" />}
+      {faqSection && <FAQ section={faqSection} accent="orange" />}
       <ModuleToolsSection
         module="ai-write"
         title={t("ai_tools.section_title_hub")}
         description={t("ai_tools.section_description_hub")}
         excludeSlug="fantasy-generator"
+                accent="orange"
       />
-      <CTA section={cta} accent="emerald" />
+      <CTA section={cta} accent="orange" />
     </>
   );
 }

@@ -134,23 +134,23 @@ export default async function PoemGeneratorPage({
       </div>
 
       {feature1_section && (
-        <FeatureIntro section={feature1_section} accent="pink" />
+        <FeatureIntro section={feature1_section} accent="orange" />
       )}
 
       {feature_section && (
-        <Benefits section={feature_section} accent="pink" />
+        <Benefits section={feature_section} accent="orange" />
       )}
 
       {poem_applications_section && (
-        <UseCases section={poem_applications_section} accent="pink" />
+        <UseCases section={poem_applications_section} accent="orange" />
       )}
 
       {feature3_section && (
-        <HowToUse section={feature3_section} accent="pink" />
+        <HowToUse section={feature3_section} accent="orange" />
       )}
 
       {faq_section && (
-        <FAQ section={faq_section} accent="pink" />
+        <FAQ section={faq_section} accent="orange" />
       )}
 
       <ModuleToolsSection
@@ -158,10 +158,11 @@ export default async function PoemGeneratorPage({
         title={t("ai_tools.section_title_hub")}
         description={t("ai_tools.section_description_hub")}
         excludeSlug="poem-generator"
+                accent="orange"
       />
 
       {cta_section && (
-        <CTA section={cta_section} accent="pink" />
+        <CTA section={cta_section} accent="orange" />
       )}
 
     </>

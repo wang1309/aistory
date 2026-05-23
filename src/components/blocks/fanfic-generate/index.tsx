@@ -1,5 +1,6 @@
 "use client";
 
+import { Sparkles, Zap, Palette, User, Drama } from "lucide-react";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -164,7 +165,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
       name: section.ai_models.models.character_focused.name,
       badge: section.ai_models.models.character_focused.badge,
       badgeColor: 'bg-green-500/10 text-green-600 border-green-500/30',
-      icon: '👤',
+      icon: <User className="h-4 w-4" />,
       speed: section.ai_models.models.character_focused.speed,
       description: section.ai_models.models.character_focused.description
     },
@@ -173,7 +174,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
       name: section.ai_models.models.creative.name,
       badge: section.ai_models.models.creative.badge,
       badgeColor: 'bg-blue-500/10 text-blue-600 border-blue-500/30',
-      icon: '✨',
+      icon: <Sparkles className="h-4 w-4" />,
       speed: section.ai_models.models.creative.speed,
       description: section.ai_models.models.creative.description
     },
@@ -182,7 +183,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
       name: section.ai_models.models.depth.name,
       badge: section.ai_models.models.depth.badge,
       badgeColor: 'bg-purple-500/10 text-purple-600 border-purple-500/30',
-      icon: '🎭',
+      icon: <Drama className="h-4 w-4" />,
       speed: section.ai_models.models.depth.speed,
       description: section.ai_models.models.depth.description
     }

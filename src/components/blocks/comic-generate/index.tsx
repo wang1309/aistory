@@ -408,10 +408,11 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
   );
 
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden">
+    <div className="min-h-screen bg-background overflow-hidden">
       {/* Subtle warm top glow + dot texture */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
           style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }}

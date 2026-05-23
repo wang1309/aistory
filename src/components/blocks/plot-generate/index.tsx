@@ -22,7 +22,7 @@ import PlotToStoryDialog from "./plot-to-story-dialog";
 import PlotHistoryDropdown from "@/components/plot-history-dropdown";
 import PlotBreadcrumb from "./breadcrumb";
 import { cn } from "@/lib/utils";
-import { ChevronDown, Settings } from "lucide-react";
+import { ChevronDown, Settings, Zap, Sparkles, Palette, BookOpen } from "lucide-react";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
@@ -81,7 +81,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       name: t('ai_models.fast'),
       badge: 'FAST',
       badgeColor: 'bg-green-500/10 text-green-600 border-green-500/30',
-      icon: '⚡',
+      icon: <Zap className="h-4 w-4" />,
       speed: '~20s',
       description: t('ai_models.fast_description')
     },
@@ -90,7 +90,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       name: t('ai_models.standard'),
       badge: 'RECOMMENDED',
       badgeColor: 'bg-blue-500/10 text-blue-600 border-blue-500/30',
-      icon: '✨',
+      icon: <Sparkles className="h-4 w-4" />,
       speed: '~40s',
       description: t('ai_models.standard_description')
     },
@@ -99,7 +99,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       name: t('ai_models.creative'),
       badge: 'BEST',
       badgeColor: 'bg-purple-500/10 text-purple-600 border-purple-500/30',
-      icon: '🎨',
+      icon: <Palette className="h-4 w-4" />,
       speed: '~60s',
       description: t('ai_models.creative_description')
     }
@@ -593,117 +593,98 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   // ========== RENDER ==========
 
   return (
-    <div id="plot_generator" className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-blue-500/30">
-      {/* Premium Background Layer - Deep Space Variant */}
-      <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
-      
-      <div className="fixed inset-0 -z-30 pointer-events-none overflow-hidden">
-         <div className="absolute top-[-10%] right-[20%] w-[700px] h-[700px] bg-indigo-500/20 rounded-full blur-[120px] animate-blob mix-blend-multiply dark:mix-blend-screen" />
-         <div className="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-screen" />
-         <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-background rounded-full blur-[150px] opacity-80" />
+    <div id="plot_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-orange-500/30">
+      {/* Subtle warm top glow + dot texture */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
 
-      <div className="w-full max-w-7xl mx-auto px-6 pt-16 pb-24 sm:pt-24 sm:pb-32 relative">
+      <div className="relative mx-auto w-full max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <div className="mb-10 flex justify-start animate-fade-in-up">
-          <div className="glass-premium px-6 py-2 rounded-full">
-            <PlotBreadcrumb
-              homeText={t('ui.breadcrumb_home')}
-              currentText={t('ui.breadcrumb_current')}
-            />
-          </div>
+        <div className="mb-8">
+          <PlotBreadcrumb
+            homeText={t('ui.breadcrumb_home')}
+            currentText={t('ui.breadcrumb_current')}
+          />
         </div>
 
         {/* Header */}
-        <div className="space-y-8 mb-24 text-center animate-fade-in-up animation-delay-1000">
-          <div className="inline-flex items-center justify-center mb-4">
-            <div className="p-px bg-gradient-to-br from-blue-500/20 to-transparent rounded-2xl">
-              <div className="glass-premium rounded-2xl p-4 bg-background/50">
-                <Icon name="book-open" className="size-8 text-blue-600 dark:text-blue-400" />
-              </div>
-            </div>
-          </div>
-          <h1 className="text-6xl sm:text-8xl font-black tracking-tighter leading-[0.9]">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 dark:from-blue-200 dark:via-cyan-200 dark:to-blue-400 animate-shimmer">
-              {t('ui.title')}
-            </span>
+        <div className="mt-8 mx-auto max-w-3xl text-center mb-10">
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
+            {t('ui.title')}
           </h1>
-          <p className="text-xl sm:text-2xl text-muted-foreground/80 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             {t('ui.subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16">
+        {/* Hero → Tool transition */}
+        <div className="mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-12">
 
           {/* LEFT COLUMN: Parameters */}
-          <div className="space-y-12 animate-fade-in-up animation-delay-2000">
+          <div className="space-y-6">
 
-            {/* Main Config Monolith */}
-            <div className="glass-premium rounded-[3rem] p-1 overflow-hidden shadow-2xl shadow-blue-500/10 dark:shadow-black/20 ring-1 ring-black/5 dark:ring-white/10">
-              <div className="bg-background/40 backdrop-blur-xl rounded-[calc(3rem-4px)] p-8 sm:p-10">
+            {/* Main Config Card */}
+            <div className="rounded-2xl border border-border bg-card shadow-sm">
+              <div className="p-6 sm:p-8">
                 {/* Story Concept */}
-                <div className="space-y-6 mb-12">
+                <div className="space-y-3 mb-8">
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="prompt" className="text-xl font-medium tracking-tight flex items-center gap-3 text-foreground">
-                      <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">01</span>
+                    <Label htmlFor="prompt" className="text-sm font-medium text-foreground flex items-center gap-2">
+                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">1</span>
                       {t('ui.story_concept')}
                     </Label>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={handleRandomPrompt}
-                      className="h-8 gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:bg-blue-500/10 rounded-full px-3"
+                      className="h-7 gap-1.5 text-xs text-orange-600 dark:text-orange-400 hover:bg-orange-500/10"
                       type="button"
                     >
                       <Icon name="sparkles" className="size-3" />
-                      <span className="text-xs font-bold uppercase tracking-widest">{t('ui.random_button')}</span>
+                      {t('ui.random_button')}
                     </Button>
                   </div>
-                  
-                  <div className="relative group">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
-                    <Textarea
-                      id="prompt"
-                      ref={promptRef}
-                      placeholder={t('placeholders.story_concept')}
-                      value={prompt}
-                      onChange={(e) => setPrompt(e.target.value)}
-                      className="relative min-h-[200px] text-lg sm:text-xl font-light p-0 bg-transparent border-0 border-b border-black/10 dark:border-white/10 focus:border-blue-500/50 focus:ring-0 resize-y leading-relaxed placeholder:text-muted-foreground/30 text-foreground transition-all duration-300 rounded-none"
-                      style={{ boxShadow: 'none' }}
-                    />
-                    <div className="absolute bottom-0 right-0 py-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">
-                      <span className={cn(
-                        "tabular-nums transition-colors",
-                        promptCharCount < 10 && prompt.length > 0 && "text-red-500"
-                      )}>
-                        {promptCharCount}
-                      </span>
-                      <span className="mx-1 opacity-50">/</span>
-                      <span>RECOMMENDED 50+</span>
-                    </div>
+
+                  <Textarea
+                    id="prompt"
+                    ref={promptRef}
+                    placeholder={t('placeholders.story_concept')}
+                    value={prompt}
+                    onChange={(e) => setPrompt(e.target.value)}
+                    className="min-h-[140px] resize-none text-sm focus-visible:ring-orange-500/30"
+                  />
+                  <div className="text-right text-xs text-muted-foreground/50">
+                    <span className={cn("tabular-nums", promptCharCount < 10 && prompt.length > 0 && "text-red-500")}>
+                      {promptCharCount}
+                    </span>
+                    <span className="mx-1 opacity-50">/</span>
+                    <span>50+ recommended</span>
                   </div>
                 </div>
 
                 {/* Settings Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-black/5 dark:border-white/5 pt-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-border pt-6">
                   {/* AI Model */}
-                  <div className="space-y-3">
-                    <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{t('ui.ai_model')}</Label>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs font-medium text-muted-foreground">{t('ui.ai_model')}</Label>
                     <Select value={selectedModel || ""} onValueChange={setSelectedModel}>
-                      <SelectTrigger className="h-12 rounded-xl bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors focus:ring-0 text-foreground">
+                      <SelectTrigger className="text-sm">
                         <SelectValue placeholder={t('placeholders.select_ai_model')} />
                       </SelectTrigger>
-                      <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
+                      <SelectContent>
                         {AI_MODELS.map((model) => (
-                          <SelectItem key={model.id} value={model.id} className="rounded-lg cursor-pointer focus:bg-black/5 dark:focus:bg-white/10">
-                            <div className="flex items-center gap-3 py-1">
-                              <span className="text-xl opacity-80">{model.icon}</span>
-                              <div className="flex flex-col items-start text-left">
-                                <span className="font-medium tracking-wide">{model.name}</span>
-                                <span className={`text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border mt-0.5 opacity-60 ${model.badgeColor}`}>
-                                  {model.badge}
-                                </span>
-                              </div>
+                          <SelectItem key={model.id} value={model.id}>
+                            <div className="flex items-center gap-2 py-0.5">
+                              <span className="opacity-70">{model.icon}</span>
+                              <span className="font-medium">{model.name}</span>
+                              <span className={`text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border ${model.badgeColor}`}>
+                                {model.badge}
+                              </span>
                             </div>
                           </SelectItem>
                         ))}
@@ -712,16 +693,16 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                   </div>
 
                   {/* Output Language */}
-                  <div className="space-y-3">
-                    <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{t('ui.output_language')}</Label>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs font-medium text-muted-foreground">{t('ui.output_language')}</Label>
                     <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-                      <SelectTrigger className="h-12 rounded-xl bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors focus:ring-0 text-foreground">
+                      <SelectTrigger className="text-sm">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
+                      <SelectContent>
                         {LANGUAGE_OPTIONS.map((lang) => (
-                          <SelectItem key={lang.code} value={lang.code} className="rounded-lg cursor-pointer focus:bg-black/5 dark:focus:bg-white/10">
-                            <span className="mr-3 text-lg opacity-80">{lang.flag}</span> {lang.name}
+                          <SelectItem key={lang.code} value={lang.code}>
+                            <span className="mr-2">{lang.flag}</span> {lang.name}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -730,27 +711,25 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                 </div>
 
                 {/* Complexity Level */}
-                <div className="mt-10 space-y-4">
-                  <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{t('ui.complexity_level')}</Label>
-                  <div className="grid grid-cols-3 gap-3">
+                <div className="mt-6 space-y-3">
+                  <Label className="text-xs font-medium text-muted-foreground">{t('ui.complexity_level')}</Label>
+                  <div className="grid grid-cols-3 gap-2">
                     {(['simple', 'medium', 'complex'] as const).map((level) => (
                       <button
                         key={level}
                         onClick={() => handleComplexityChange(level)}
                         className={cn(
-                          "relative py-4 px-2 rounded-2xl border transition-all duration-300 overflow-hidden group",
+                          "py-3 px-2 rounded-xl border text-xs font-medium transition-all duration-200",
                           complexity === level
-                            ? 'border-blue-500/50 bg-blue-500/10 text-blue-600 dark:text-blue-400 shadow-lg'
-                            : 'border-black/5 dark:border-white/5 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground'
+                            ? 'border-orange-500/40 bg-orange-500/[0.08] text-orange-600 dark:text-orange-400'
+                            : 'border-border bg-background hover:bg-muted/50 text-muted-foreground'
                         )}
                       >
-                        <div className="relative z-10 text-center">
-                          <div className="font-bold text-xs uppercase tracking-wider mb-1">{t(`complexity.${level}`)}</div>
-                          <div className="text-[9px] opacity-50 line-clamp-1 px-1 font-light tracking-wide">
-                            {level === 'simple' && t('complexity.simple_description')}
-                            {level === 'medium' && t('complexity.medium_description')}
-                            {level === 'complex' && t('complexity.complex_description')}
-                          </div>
+                        <div className="font-semibold mb-0.5">{t(`complexity.${level}`)}</div>
+                        <div className="text-[9px] opacity-60 line-clamp-1">
+                          {level === 'simple' && t('complexity.simple_description')}
+                          {level === 'medium' && t('complexity.medium_description')}
+                          {level === 'complex' && t('complexity.complex_description')}
                         </div>
                       </button>
                     ))}
@@ -760,41 +739,39 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
             </div>
 
             {/* Advanced Options Toggle */}
-            <div className="relative group">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl blur opacity-50" />
-              <Collapsible
-                open={showAdvancedOptions}
-                onOpenChange={setShowAdvancedOptions}
-                className="relative bg-background/60 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[2rem] overflow-hidden shadow-lg"
-              >
-                <CollapsibleTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-between h-16 px-8 hover:bg-white/40 dark:hover:bg-white/5 group/trigger text-foreground"
-                  >
-                    <span className="flex items-center gap-4 font-semibold tracking-wide">
-                      <div className="p-2 rounded-xl bg-purple-500/10 text-purple-500 group-hover/trigger:text-purple-600 dark:group-hover/trigger:text-purple-400 transition-colors">
-                        <Settings className="h-4 w-4" />
-                      </div>
-                      {t('ui.advanced_options')}
-                    </span>
-                    <ChevronDown
-                      className={cn(
-                        "h-5 w-5 text-muted-foreground transition-transform duration-300",
-                        showAdvancedOptions && "rotate-180"
-                      )}
-                    />
-                  </Button>
-                </CollapsibleTrigger>
+            <Collapsible
+              open={showAdvancedOptions}
+              onOpenChange={setShowAdvancedOptions}
+              className="rounded-2xl border border-border bg-card overflow-hidden"
+            >
+              <CollapsibleTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-between h-14 px-6 hover:bg-muted/50 text-foreground rounded-none"
+                >
+                  <span className="flex items-center gap-3 text-sm font-medium">
+                    <div className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500">
+                      <Settings className="h-3.5 w-3.5" />
+                    </div>
+                    {t('ui.advanced_options')}
+                  </span>
+                  <ChevronDown
+                    className={cn(
+                      "h-4 w-4 text-muted-foreground transition-transform duration-300",
+                      showAdvancedOptions && "rotate-180"
+                    )}
+                  />
+                </Button>
+              </CollapsibleTrigger>
 
-                <CollapsibleContent className="data-[state=open]:animate-slide-down data-[state=closed]:animate-slide-up overflow-hidden">
-                  <div className="p-8 pt-2 space-y-10 border-t border-black/5 dark:border-white/5">
+              <CollapsibleContent className="overflow-hidden">
+                <div className="p-6 pt-2 space-y-6 border-t border-border">
                     {/* Character Counts */}
-                    <div className="space-y-8">
-                      <div className="space-y-4">
+                    <div className="space-y-5">
+                      <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">{t('characters.main')}</Label>
-                          <span className="text-xs font-bold tabular-nums text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full bg-blue-500/10">
+                          <Label className="text-xs font-medium text-muted-foreground">{t('characters.main')}</Label>
+                          <span className="text-xs font-bold tabular-nums text-orange-600 dark:text-orange-400 px-2 py-0.5 rounded-full bg-orange-500/10">
                             {mainCharacterCount}
                           </span>
                         </div>
@@ -804,13 +781,13 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                           min={1}
                           max={3}
                           step={1}
-                          className="py-2"
+                          className="py-1"
                         />
                       </div>
-                      <div className="space-y-4">
+                      <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">{t('characters.supporting')}</Label>
-                          <span className="text-xs font-bold tabular-nums text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full bg-blue-500/10">
+                          <Label className="text-xs font-medium text-muted-foreground">{t('characters.supporting')}</Label>
+                          <span className="text-xs font-bold tabular-nums text-orange-600 dark:text-orange-400 px-2 py-0.5 rounded-full bg-orange-500/10">
                             {supportingCharacterCount}
                           </span>
                         </div>
@@ -820,17 +797,17 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                           min={0}
                           max={5}
                           step={1}
-                          className="py-2"
+                          className="py-1"
                         />
                       </div>
                     </div>
 
                     {/* Plot Config */}
-                    <div className="space-y-8 pt-6 border-t border-black/5 dark:border-white/5">
-                      <div className="space-y-4">
+                    <div className="space-y-5 pt-4 border-t border-border">
+                      <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">{t('plot_structure.plot_points')}</Label>
-                          <span className="text-xs font-bold tabular-nums text-purple-600 dark:text-purple-400 px-3 py-1 rounded-full bg-purple-500/10">
+                          <Label className="text-xs font-medium text-muted-foreground">{t('plot_structure.plot_points')}</Label>
+                          <span className="text-xs font-bold tabular-nums text-orange-600 dark:text-orange-400 px-2 py-0.5 rounded-full bg-orange-500/10">
                             {plotPointCount}
                           </span>
                         </div>
@@ -840,13 +817,13 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                           min={3}
                           max={9}
                           step={1}
-                          className="py-2"
+                          className="py-1"
                         />
                       </div>
-                      <div className="space-y-4">
+                      <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <Label className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">{t('plot_structure.subplots')}</Label>
-                          <span className="text-xs font-bold tabular-nums text-purple-600 dark:text-purple-400 px-3 py-1 rounded-full bg-purple-500/10">
+                          <Label className="text-xs font-medium text-muted-foreground">{t('plot_structure.subplots')}</Label>
+                          <span className="text-xs font-bold tabular-nums text-orange-600 dark:text-orange-400 px-2 py-0.5 rounded-full bg-orange-500/10">
                             {subPlotCount}
                           </span>
                         </div>
@@ -856,15 +833,15 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                           min={0}
                           max={3}
                           step={1}
-                          className="py-2"
+                          className="py-1"
                         />
                       </div>
                     </div>
 
                     {/* Conflict Types */}
-                    <div className="space-y-4 pt-6 border-t border-black/5 dark:border-white/5">
-                      <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{t('plot_structure.conflict_types')}</Label>
-                      <div className="flex flex-wrap gap-3">
+                    <div className="space-y-3 pt-4 border-t border-border">
+                      <Label className="text-xs font-medium text-muted-foreground">{t('plot_structure.conflict_types')}</Label>
+                      <div className="flex flex-wrap gap-2">
                         {[
                           { value: 'internal', label: t('conflict_types.internal') },
                           { value: 'external', label: t('conflict_types.external') },
@@ -874,10 +851,10 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                             key={type.value}
                             onClick={() => handleConflictTypeToggle(type.value)}
                             className={cn(
-                              "cursor-pointer px-5 py-2 rounded-full border transition-all text-xs font-bold uppercase tracking-wide select-none",
+                              "cursor-pointer px-4 py-1.5 rounded-full border transition-all text-xs font-medium select-none",
                               conflictTypes.includes(type.value)
-                                ? "bg-blue-500 text-white border-blue-500 shadow-lg shadow-blue-500/20"
-                                : "bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground"
+                                ? "bg-orange-500 text-white border-orange-500"
+                                : "border-border bg-background hover:bg-muted/50 text-muted-foreground"
                             )}
                           >
                             {type.label}
@@ -887,13 +864,13 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                     </div>
 
                     {/* Selectors */}
-                    <div className="space-y-6 pt-6 border-t border-black/5 dark:border-white/5">
-                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                          <div className="space-y-2">
-                            <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{t('narrative.emotional_arc')}</Label>
+                    <div className="space-y-4 pt-4 border-t border-border">
+                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1.5">
+                            <Label className="text-xs font-medium text-muted-foreground">{t('narrative.emotional_arc')}</Label>
                             <Select value={emotionalArc} onValueChange={setEmotionalArc}>
-                              <SelectTrigger className="h-10 rounded-lg bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10 focus:ring-0 text-foreground"><SelectValue /></SelectTrigger>
-                              <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
+                              <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
+                              <SelectContent>
                                 <SelectItem value="growth">{t('emotional_arc.growth')}</SelectItem>
                                 <SelectItem value="fall">{t('emotional_arc.fall')}</SelectItem>
                                 <SelectItem value="awakening">{t('emotional_arc.awakening')}</SelectItem>
@@ -902,11 +879,11 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                               </SelectContent>
                             </Select>
                           </div>
-                          <div className="space-y-2">
-                            <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{t('narrative.suspense_style')}</Label>
+                          <div className="space-y-1.5">
+                            <Label className="text-xs font-medium text-muted-foreground">{t('narrative.suspense_style')}</Label>
                             <Select value={suspenseStyle} onValueChange={setSuspenseStyle}>
-                              <SelectTrigger className="h-10 rounded-lg bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10 focus:ring-0 text-foreground"><SelectValue /></SelectTrigger>
-                              <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
+                              <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
+                              <SelectContent>
                                 <SelectItem value="opening">{t('suspense_style.opening')}</SelectItem>
                                 <SelectItem value="middle">{t('suspense_style.middle')}</SelectItem>
                                 <SelectItem value="multiple">{t('suspense_style.multiple')}</SelectItem>
@@ -915,11 +892,11 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                             </Select>
                           </div>
                        </div>
-                       <div className="space-y-2">
-                          <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{t('genre.genre')} ({t('ui.optional')})</Label>
+                       <div className="space-y-1.5">
+                          <Label className="text-xs font-medium text-muted-foreground">{t('genre.genre')} ({t('ui.optional')})</Label>
                           <Select value={selectedGenre} onValueChange={setSelectedGenre}>
-                            <SelectTrigger className="h-10 rounded-lg bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10 focus:ring-0 text-foreground"><SelectValue /></SelectTrigger>
-                            <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
+                            <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
+                            <SelectContent>
                               <SelectItem value="none">{t('ui.none')}</SelectItem>
                               <SelectItem value="fantasy">{t('genre.fantasy')}</SelectItem>
                               <SelectItem value="science-fiction">{t('genre.science_fiction')}</SelectItem>
@@ -932,9 +909,8 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                        </div>
                     </div>
                   </div>
-                </CollapsibleContent>
-              </Collapsible>
-            </div>
+              </CollapsibleContent>
+            </Collapsible>
 
             {/* Plot History Dropdown */}
             <div className="flex justify-center">
@@ -942,47 +918,43 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
             </div>
 
             {/* Generate Button */}
-            <div className="mt-10 flex flex-col gap-3">
-              <div className="relative group w-full">
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <Button
-                  onClick={handleGenerateClick}
-                  disabled={isGenerating || !prompt.trim() || !selectedModel}
-                  className="relative w-full h-16 rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 hover:from-blue-500 hover:via-cyan-400 hover:to-teal-300 text-white text-xl font-bold shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] border-none"
-                >
-                  {isGenerating ? (
-                    <div className="flex items-center justify-center gap-3">
-                      <div className="size-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      <span className="animate-pulse">{t('ui.generating')}</span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center gap-3">
-                      <Icon name="sparkles" className="size-6" />
-                      <span>{t('ui.generate_plot')}</span>
-                    </div>
-                  )}
-                </Button>
-              </div>
+            <div className="flex flex-col gap-3">
+              <Button
+                onClick={handleGenerateClick}
+                disabled={isGenerating || !prompt.trim() || !selectedModel}
+                className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 transition-colors"
+              >
+                {isGenerating ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="size-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span>{t('ui.generating')}</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center gap-2">
+                    <Icon name="sparkles" className="size-4" />
+                    <span>{t('ui.generate_plot')}</span>
+                  </div>
+                )}
+              </Button>
               <GeneratorShortcutHints showQuickSave />
             </div>
           </div>
 
           {/* RIGHT COLUMN: Preview */}
-          <div className="space-y-6 animate-fade-in-up animation-delay-2000">
-            <div className="relative h-[800px] flex flex-col">
-               <div className="absolute -inset-1 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-[3rem] blur-xl opacity-50" />
-               <div className="relative flex-1 flex flex-col p-0 glass-premium rounded-[3rem] overflow-hidden shadow-2xl ring-1 ring-black/5 dark:ring-white/10">
+          <div className="space-y-4">
+            <div className="relative h-[700px] flex flex-col">
+               <div className="relative flex-1 flex flex-col rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
                 {generatedPlot ? (
                   <>
                     {/* Toolbar */}
-                    <div className="flex justify-between items-center p-8 border-b border-black/5 dark:border-white/5 bg-white/40 dark:bg-white/5">
-                      <div className="flex items-center gap-4">
-                        <div className="p-3 rounded-2xl bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20">
-                          <Icon name="check-circle" className="size-5" />
+                    <div className="flex justify-between items-center px-5 py-4 border-b border-border bg-muted/30">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20">
+                          <Icon name="check-circle" className="size-4" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-bold tracking-tight text-foreground">{t('preview.generated_plot')}</h3>
-                          <div className="text-xs font-medium text-muted-foreground/60 uppercase tracking-widest">
+                          <h3 className="text-sm font-semibold text-foreground">{t('preview.generated_plot')}</h3>
+                          <div className="text-xs text-muted-foreground/60">
                             {wordCount.toLocaleString()} {t('ui.words')}
                           </div>
                         </div>
@@ -991,27 +963,27 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                         variant="ghost"
                         size="sm"
                         onClick={handleCopy}
-                        className="hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground rounded-full"
+                        className="h-8 gap-1.5 text-xs text-muted-foreground hover:text-foreground"
                       >
-                        <Icon name="copy" className="size-4 mr-2" />
+                        <Icon name="copy" className="size-3.5" />
                         {t('preview.button_copy')}
                       </Button>
                     </div>
 
                     {/* Content */}
-                    <div className="flex-1 overflow-y-auto p-8 sm:p-12 custom-scrollbar bg-white/20 dark:bg-background/30">
-                      <div className="prose prose-lg dark:prose-invert max-w-none font-serif leading-loose tracking-wide text-foreground">
+                    <div className="flex-1 overflow-y-auto p-6 sm:p-8 custom-scrollbar">
+                      <div className="prose prose-sm dark:prose-invert max-w-none leading-relaxed text-foreground">
                         <ReactMarkdown>{generatedPlot}</ReactMarkdown>
                       </div>
                     </div>
                   </>
                 ) : (
                   <div className="flex-1 flex flex-col items-center justify-center p-12 text-center">
-                    <div className="size-32 rounded-full bg-blue-500/10 flex items-center justify-center mb-8 ring-1 ring-blue-500/20 animate-pulse-glow">
-                      <Icon name="book-open" className="size-12 text-blue-500/50" />
+                    <div className="size-20 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-6 border border-orange-500/20">
+                      <Icon name="book-open" className="size-8 text-orange-500/50" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-3 tracking-tight text-foreground">{t('preview.no_plot_generated')}</h3>
-                    <p className="text-muted-foreground/60 max-w-xs font-light leading-relaxed">
+                    <h3 className="text-base font-semibold mb-2 text-foreground">{t('preview.no_plot_generated')}</h3>
+                    <p className="text-sm text-muted-foreground/60 max-w-xs leading-relaxed">
                       {t('preview.no_plot_description')}
                     </p>
                   </div>
@@ -1021,28 +993,24 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
             {/* Actions: Generate Story from Plot */}
             {generatedPlot && currentPlotId && (
-              <div className="relative group animate-slide-up">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-[2rem] blur opacity-50 group-hover:opacity-75 transition duration-500" />
-                <div className="relative p-8 flex flex-col sm:flex-row items-center justify-between gap-8 glass-premium rounded-[2rem] bg-background/80">
-                  <div className="flex items-start gap-5">
-                    <div className="p-4 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 shrink-0 border border-purple-500/20">
-                      <Icon name="pen-tool" className="size-6" />
+              <div className="rounded-2xl border border-border bg-card p-5 flex flex-col sm:flex-row items-center justify-between gap-5">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2.5 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 shrink-0 border border-orange-500/20">
+                      <Icon name="pen-tool" className="size-5" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg tracking-tight text-foreground">{t('plot_to_story.ready_to_write')}</h4>
-                      <p className="text-sm text-muted-foreground/80 mt-1 font-light">
+                      <h4 className="font-semibold text-sm text-foreground">{t('plot_to_story.ready_to_write')}</h4>
+                      <p className="text-xs text-muted-foreground/70 mt-0.5">
                         {t('plot_to_story.use_plot_description')}
                       </p>
                     </div>
                   </div>
                   <Button
                     onClick={() => setShowPlotToStoryDialog(true)}
-                    size="lg"
-                    className="rounded-full px-10 h-14 font-bold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white shadow-lg shrink-0 w-full sm:w-auto text-base"
+                    className="h-10 px-6 text-sm font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 shrink-0 w-full sm:w-auto"
                   >
-                    📖 {t('plot_to_story.generate_story')}
+                    <BookOpen className="h-3.5 w-3.5 mr-1.5" /> {t('plot_to_story.generate_story')}
                   </Button>
-                </div>
               </div>
             )}
           </div>

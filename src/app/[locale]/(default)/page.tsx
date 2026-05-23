@@ -4,6 +4,14 @@ import { getLandingPage } from "@/services/page";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ViewportLazy } from "@/components/viewport-lazy";
 
+// Shared section components (same as comic-generator page)
+import FeatureIntro from "@/components/sections/feature-intro";
+import Benefits from "@/components/sections/benefits";
+import UseCases from "@/components/sections/use-cases";
+import HowToUse from "@/components/sections/how-to-use";
+import SectionFAQ from "@/components/sections/faq";
+import SectionCTA from "@/components/sections/cta";
+
 export const revalidate = 3600; // 1 hour
 export const dynamic = "force-static";
 
@@ -13,20 +21,14 @@ const StoryGenerate = nextDynamic(() => import("@/components/blocks/story-genera
 });
 const ModuleToolsSection = nextDynamic(() => import("@/components/blocks/module-tools"));
 const Branding = nextDynamic(() => import("@/components/blocks/branding"));
-const Feature1 = nextDynamic(() => import("@/components/blocks/feature1"));
-const Feature2 = nextDynamic(() => import("@/components/blocks/feature2"));
-const Feature3 = nextDynamic(() => import("@/components/blocks/feature3"));
 const Hero = nextDynamic(() => import("@/components/blocks/hero"), {
   loading: () => <HeroSkeleton />,
 });
 const StoryGuide = nextDynamic(() => import("@/components/onboarding/story-guide"));
-const Feature = nextDynamic(() => import("@/components/blocks/feature"));
 const Showcase = nextDynamic(() => import("@/components/blocks/showcase"));
 const Stats = nextDynamic(() => import("@/components/blocks/stats"));
 const Pricing = nextDynamic(() => import("@/components/blocks/pricing"));
 const Testimonial = nextDynamic(() => import("@/components/blocks/testimonial"));
-const FAQ = nextDynamic(() => import("@/components/blocks/faq"));
-const CTA = nextDynamic(() => import("@/components/blocks/cta"));
 
 // Loading placeholder component
 function SectionSkeleton() {
@@ -72,24 +74,25 @@ export default async function LandingPage({
             module="ai-write"
             title={t("ai_tools.section_title_home")}
             description={t("ai_tools.section_description_home")}
+            accent="orange"
           />
         </Suspense>
       </ViewportLazy>
 
-      {/* Medium Priority: Lazy load below the fold */}
+      {/* Medium Priority: Shared section components (same as comic-generator) */}
       <ViewportLazy fallback={<SectionSkeleton />}>
         <Suspense fallback={<SectionSkeleton />}>
           {page.branding && <Branding section={page.branding} />}
-          {page.introduce && <Feature1 section={page.introduce} />}
-          {page.benefit && <Feature2 section={page.benefit} />}
-          {page.usage && <Feature3 section={page.usage} />}
+          {page.introduce && <FeatureIntro section={page.introduce} accent="orange" />}
+          {page.benefit && <Benefits section={page.benefit} accent="orange" />}
+          {page.usage && <HowToUse section={page.usage} accent="orange" />}
         </Suspense>
       </ViewportLazy>
 
       {/* Lower Priority: Lazy load further down */}
       <ViewportLazy fallback={<SectionSkeleton />}>
         <Suspense fallback={<SectionSkeleton />}>
-          {page.feature && <Feature section={page.feature} />}
+          {page.feature && <UseCases section={page.feature} accent="orange" />}
           {page.story_showcase && <Showcase section={page.story_showcase} />}
           {page.showcase && <Showcase section={page.showcase} />}
           {page.stats && <Stats section={page.stats} />}
@@ -101,8 +104,8 @@ export default async function LandingPage({
         <Suspense fallback={<SectionSkeleton />}>
           {page.pricing && <Pricing pricing={page.pricing} />}
           {page.testimonial && <Testimonial section={page.testimonial} />}
-          {page.faq && <FAQ section={page.faq} />}
-          {page.cta && <CTA section={page.cta} />}
+          {page.faq && <SectionFAQ section={page.faq} accent="orange" />}
+          {page.cta && <SectionCTA section={page.cta} accent="orange" />}
         </Suspense>
       </ViewportLazy>
     </>

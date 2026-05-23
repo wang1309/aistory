@@ -15,7 +15,7 @@ import { useAppContext } from "@/contexts/app";
 import confetti from "canvas-confetti";
 import { cn } from "@/lib/utils";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
-import { Wand2, Sparkles, BookOpen, Globe, Users, Scroll } from "lucide-react";
+import { Wand2, Sparkles, Zap, Palette, PenTool, BookOpen, Globe, Users, Scroll } from "lucide-react";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -95,7 +95,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         name: section.ai_models.models.fast.name,
         badge: section.ai_models.models.fast.badge,
         badgeColor: "bg-green-500/10 text-green-600 border-green-500/30",
-        icon: "⚡",
+        icon: <Zap className="h-4 w-4" />,
         speed: section.ai_models.models.fast.speed,
         description: section.ai_models.models.fast.description,
       },
@@ -104,7 +104,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         name: section.ai_models.models.standard.name,
         badge: section.ai_models.models.standard.badge,
         badgeColor: "bg-blue-500/10 text-blue-600 border-blue-500/30",
-        icon: "✒️",
+        icon: <PenTool className="h-4 w-4" />,
         speed: section.ai_models.models.standard.speed,
         description: section.ai_models.models.standard.description,
       },
@@ -113,7 +113,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         name: section.ai_models.models.creative.name,
         badge: section.ai_models.models.creative.badge,
         badgeColor: "bg-purple-500/10 text-purple-600 border-purple-500/30",
-        icon: "🎨",
+        icon: <Palette className="h-4 w-4" />,
         speed: section.ai_models.models.creative.speed,
         description: section.ai_models.models.creative.description,
       },
@@ -339,7 +339,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
   // ========== RENDER ==========
 
   return (
-    <section id="fantasy_generator" className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-emerald-500/30">
+    <section id="fantasy_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-orange-500/30">
       {/* Invisible Turnstile */}
       <TurnstileInvisible
         ref={turnstileRef}
@@ -347,27 +347,26 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         onError={handleTurnstileError}
       />
 
-      {/* Premium Background - Emerald/Gold Fantasy Theme */}
-      <div className="absolute inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
-      <div className="absolute inset-0 -z-30 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[20%] w-[700px] h-[700px] bg-emerald-500/20 rounded-full blur-[120px] animate-blob mix-blend-multiply dark:mix-blend-screen" />
-        <div className="absolute bottom-[10%] right-[-10%] w-[600px] h-[600px] bg-amber-500/15 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-screen" />
-        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-background rounded-full blur-[150px] opacity-80" />
+      {/* Subtle warm top glow + dot texture */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
 
       <div className="w-full max-w-6xl mx-auto px-6 py-24 sm:py-32 relative">
         {/* Header */}
         <div className="relative text-center animate-fade-in-up mb-12">
           <div className="inline-flex items-center justify-center mb-8">
-            <div className="p-px bg-gradient-to-br from-emerald-500/20 to-transparent rounded-2xl">
+            <div className="p-px bg-gradient-to-br from-orange-500/20 to-transparent rounded-2xl">
               <div className="glass-premium rounded-2xl p-4 bg-background/50">
-                <Wand2 className="size-8 text-emerald-600 dark:text-emerald-400" />
+                <Wand2 className="size-8 text-orange-600 dark:text-orange-400" />
               </div>
             </div>
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 via-amber-600 to-emerald-700 dark:from-white dark:via-emerald-200 dark:to-amber-400 animate-shimmer">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-700 via-orange-600 to-orange-700 dark:from-white dark:via-orange-200 dark:to-orange-400 animate-shimmer">
               {section.header.title}
             </span>
           </h1>
@@ -380,11 +379,11 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         {/* Mode Tabs */}
         <Tabs value={mode} onValueChange={(v) => setMode(v as "quick" | "worldbuilder")} className="mb-8">
           <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 glass-premium">
-            <TabsTrigger value="quick" className="data-[state=active]:bg-emerald-500/20">
+            <TabsTrigger value="quick" className="data-[state=active]:bg-orange-500/20">
               <Sparkles className="w-4 h-4 mr-2" />
               {section.mode_tabs.quick}
             </TabsTrigger>
-            <TabsTrigger value="worldbuilder" className="data-[state=active]:bg-emerald-500/20">
+            <TabsTrigger value="worldbuilder" className="data-[state=active]:bg-orange-500/20">
               <Globe className="w-4 h-4 mr-2" />
               {section.mode_tabs.worldbuilder}
             </TabsTrigger>
@@ -513,7 +512,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                       className={cn(
                         "flex items-center gap-2 px-4 py-2 rounded-full transition-all",
                         currentStep === step.id
-                          ? "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300"
+                          ? "bg-orange-500/20 text-orange-700 dark:text-orange-300"
                           : "text-muted-foreground hover:bg-muted/50"
                       )}
                     >
@@ -540,9 +539,9 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                         key={key}
                         onClick={() => setWbSubgenre(key)}
                         className={cn(
-                          "p-4 rounded-xl border-2 text-center transition-all hover:border-emerald-500/50",
+                          "p-4 rounded-xl border-2 text-center transition-all hover:border-orange-500/50",
                           wbSubgenre === key
-                            ? "border-emerald-500 bg-emerald-500/10"
+                            ? "border-orange-500 bg-orange-500/10"
                             : "border-border"
                         )}
                       >
@@ -649,7 +648,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
 
                   {/* Protagonist */}
                   <div className="space-y-4">
-                    <h4 className="font-semibold text-emerald-600 dark:text-emerald-400">
+                    <h4 className="font-semibold text-orange-600 dark:text-orange-400">
                       {section.worldbuilder_mode.characters.protagonist.label}
                     </h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -783,7 +782,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                 {currentStep < 5 ? (
                   <Button
                     onClick={() => setCurrentStep((s) => Math.min(5, s + 1))}
-                    className="bg-emerald-600 hover:bg-emerald-700"
+                    className="bg-orange-600 hover:bg-orange-700"
                   >
                     {section.navigation.next}
                   </Button>
@@ -808,9 +807,9 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                 type="button"
                 onClick={() => setSelectedModel(model.id)}
                 className={cn(
-                  "p-4 rounded-xl border-2 text-left transition-all hover:border-emerald-500/50 relative",
+                  "p-4 rounded-xl border-2 text-left transition-all hover:border-orange-500/50 relative",
                   selectedModel === model.id
-                    ? "border-emerald-500 bg-emerald-500/10"
+                    ? "border-orange-500 bg-orange-500/10"
                     : "border-border bg-card"
                 )}
               >
@@ -830,7 +829,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                 </div>
                 {selectedModel === model.id && (
                   <div className="absolute bottom-2 right-2">
-                    <Icon name="mdi:check-circle" className="w-5 h-5 text-emerald-500" />
+                    <Icon name="mdi:check-circle" className="w-5 h-5 text-orange-500" />
                   </div>
                 )}
               </button>
@@ -839,11 +838,11 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         </div>
 
         {/* Generate Button */}
-        <div className="glass-premium rounded-3xl p-8 bg-gradient-to-r from-emerald-50 to-amber-50 dark:from-emerald-950/20 dark:to-amber-950/20 mb-8">
+        <div className="glass-premium rounded-3xl p-8 bg-gradient-to-r from-orange-50 to-orange-50 dark:from-orange-950/20 dark:to-orange-950/20 mb-8">
           <Button
             onClick={handleGenerateClick}
             disabled={isGenerating}
-            className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-emerald-600 to-amber-600 hover:from-emerald-700 hover:to-amber-700"
+            className="w-full h-14 text-lg bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
             size="lg"
           >
             {isGenerating ? (
@@ -879,7 +878,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
             {isGenerating && !generatedStory && (
               <div className="flex items-center justify-center py-12">
                 <div className="text-center">
-                  <Icon name="mdi:loading" className="w-8 h-8 animate-spin mx-auto mb-4 text-emerald-500" />
+                  <Icon name="mdi:loading" className="w-8 h-8 animate-spin mx-auto mb-4 text-orange-500" />
                   <p className="text-muted-foreground">{section.output.loading}</p>
                 </div>
               </div>

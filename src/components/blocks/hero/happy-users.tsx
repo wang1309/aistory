@@ -12,7 +12,7 @@ const HappyUsers = memo(function HappyUsers() {
   return (
     <div className="mx-auto mt-12 sm:mt-16 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-700 motion-safe:delay-700">
       {/* Glassmorphic container */}
-      <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 rounded-2xl border border-border/40 bg-background/30 backdrop-blur-xl px-6 py-4 shadow-lg ring-1 ring-white/5">
+      <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 rounded-2xl border border-border bg-card px-6 py-4 shadow-sm">
 
         {/* Avatar stack with enhanced styling */}
         <div className="flex items-center -space-x-3">

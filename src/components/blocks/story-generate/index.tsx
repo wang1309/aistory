@@ -1,5 +1,6 @@
 "use client";
 
+import { Zap, Sparkles, Palette, Castle, Rocket, Heart, Search, PenTool } from "lucide-react";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
@@ -118,10 +119,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const LANGUAGE_OPTIONS = useMemo(() => section.prompt.language_options, [section]);
 
   const STORY_PRESETS = useMemo(() => [
-    { emoji: '🏰', title: section.presets.items.fantasy_quest.title, desc: section.presets.items.fantasy_quest.desc },
-    { emoji: '🚀', title: section.presets.items.scifi_thriller.title, desc: section.presets.items.scifi_thriller.desc },
-    { emoji: '💕', title: section.presets.items.love_story.title, desc: section.presets.items.love_story.desc },
-    { emoji: '🕵️', title: section.presets.items.crime_mystery.title, desc: section.presets.items.crime_mystery.desc }
+    { icon: <Castle className="h-5 w-5" />, title: section.presets.items.fantasy_quest.title, desc: section.presets.items.fantasy_quest.desc },
+    { icon: <Rocket className="h-5 w-5" />, title: section.presets.items.scifi_thriller.title, desc: section.presets.items.scifi_thriller.desc },
+    { icon: <Heart className="h-5 w-5" />, title: section.presets.items.love_story.title, desc: section.presets.items.love_story.desc },
+    { icon: <Search className="h-5 w-5" />, title: section.presets.items.crime_mystery.title, desc: section.presets.items.crime_mystery.desc }
   ], [section]);
 
   const AI_MODELS = useMemo(() => [
@@ -130,7 +131,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       name: section.ai_models.models.fastest.name,
       badge: section.ai_models.models.fastest.badge,
       badgeColor: 'bg-green-500/10 text-green-600 border-green-500/30',
-      icon: '⚡',
+      icon: <Zap className="h-4 w-4" />,
       speed: section.ai_models.models.fastest.speed,
       description: section.ai_models.models.fastest.description
     },
@@ -139,7 +140,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       name: section.ai_models.models.eloquent.name,
       badge: section.ai_models.models.eloquent.badge,
       badgeColor: 'bg-blue-500/10 text-blue-600 border-blue-500/30',
-      icon: '✒️',
+      icon: <PenTool className="h-4 w-4" />,
       speed: section.ai_models.models.eloquent.speed,
       description: section.ai_models.models.eloquent.description
     },
@@ -148,7 +149,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       name: section.ai_models.models.creative.name,
       badge: section.ai_models.models.creative.badge,
       badgeColor: 'bg-purple-500/10 text-purple-600 border-purple-500/30',
-      icon: '🎨',
+      icon: <Palette className="h-4 w-4" />,
       speed: section.ai_models.models.creative.speed,
       description: section.ai_models.models.creative.description
     }
@@ -899,66 +900,67 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   return (
     <section
       id="craft_story"
-      className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-indigo-500/30"
+      className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-orange-500/20"
     >
-      {/* Premium Background Layer - Deep Space Variant */}
-      <div className="absolute inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
-
-      <div className="absolute inset-0 -z-30 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[20%] w-[700px] h-[700px] bg-indigo-500/20 rounded-full blur-[120px] animate-blob mix-blend-multiply dark:mix-blend-screen" />
-        <div className="absolute bottom-[10%] right-[-10%] w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-screen" />
-        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-background rounded-full blur-[150px] opacity-80" />
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
 
       <div className="w-full max-w-6xl mx-auto px-6 py-24 sm:py-32 relative">
 
-        {/* Minimalist Header */}
+        {/* Header */}
         <div className="relative text-center animate-fade-in-up">
-          <div className="inline-flex items-center justify-center mb-8">
-            <div className="p-px bg-gradient-to-br from-indigo-500/20 to-transparent rounded-2xl">
-              <div className="glass-premium rounded-2xl p-4 bg-background/50">
-                <Icon name="book" className="size-8 text-indigo-600 dark:text-indigo-400" />
-              </div>
+          <div className="inline-flex items-center justify-center mb-6">
+            <div className="flex items-center justify-center size-14 rounded-2xl bg-orange-500/10">
+              <Icon name="book" className="size-7 text-orange-600 dark:text-orange-400" />
             </div>
           </div>
 
-          <h2 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 via-violet-600 to-indigo-700 dark:from-white dark:via-indigo-200 dark:to-indigo-400 animate-shimmer">
-              {section.header.title}
-            </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight mb-4 leading-[1.15]">
+            {section.header.title}
           </h2>
 
-          <p className="text-xl sm:text-2xl text-muted-foreground/80 dark:text-muted-foreground/90 max-w-2xl mx-auto font-light tracking-wide leading-relaxed mb-8 sm:mb-8">
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto font-light">
             {section.header.subtitle}
           </p>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
+            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">1</span>
+            <span>{section.prompt.label}</span>
+            <span className="text-border/60">→</span>
+            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">2</span>
+            <span>{section.ai_models.title}</span>
+            <span className="text-border/60">→</span>
+            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">3</span>
+            <span>{section.generate_button.text}</span>
+          </div>
         </div>
 
-        {/* Main Studio - Crystal Monolith */}
-        <div className="relative animate-fade-in-up animation-delay-1000">
-          <div className="glass-premium rounded-[3rem] p-1 overflow-hidden shadow-2xl shadow-indigo-500/10 dark:shadow-black/20 ring-1 ring-black/5 dark:ring-white/10">
-            <div className="bg-background/40 backdrop-blur-xl rounded-[calc(3rem-4px)] grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden">
+        {/* Main Panel */}
+        <div className="relative mt-10 animate-fade-in-up animation-delay-1000">
+          <div className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
 
               {/* Editor (8 cols) */}
-              <div className="lg:col-span-8 p-8 sm:p-16 lg:border-r border-black/5 dark:border-white/5">
-                <div className="flex items-center justify-between mb-10">
-                  <div className="flex items-center gap-4">
-                    <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground dark:text-muted-foreground/80">01</span>
-                    <label className="text-xl font-medium tracking-tight text-foreground">
-                      {section.prompt.label}
-                    </label>
-                  </div>
+              <div className="lg:col-span-8 p-5 sm:p-8 lg:border-r border-border">
+                <div className="flex items-center justify-between mb-6">
+                  <label className="text-sm font-semibold text-foreground">
+                    {section.prompt.label}
+                  </label>
                   <button
                     onClick={handleRandomPrompt}
                     type="button"
-                    className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/5 dark:border-white/10 text-sm font-medium transition-all duration-300"
+                    className="group flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/50 hover:bg-muted text-xs font-medium transition-colors"
                   >
-                    <Icon name="sparkles" className="size-4 text-indigo-500 group-hover:rotate-12 transition-transform" />
-                    <span className="text-muted-foreground dark:text-muted-foreground/80 group-hover:text-foreground dark:group-hover:text-foreground transition-colors">{section.prompt.random_button}</span>
+                    <Icon name="sparkles" className="size-3.5 text-orange-500 group-hover:rotate-12 transition-transform" />
+                    <span className="text-muted-foreground group-hover:text-foreground transition-colors">{section.prompt.random_button}</span>
                   </button>
                 </div>
 
-                <div className="relative group mb-8">
-                  <div className="pointer-events-none absolute -inset-4 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
+                <div className="relative mb-6">
                   <Textarea
                     id="story-prompt-input"
                     ref={promptRef}
@@ -970,58 +972,55 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                       }
                     }}
                     placeholder={section.prompt.placeholder}
-                    className="min-h-[280px] text-lg p-6 rounded-2xl bg-white/50 dark:bg-black/20 border-2 border-indigo-100 dark:border-indigo-900/30 focus:border-indigo-500 dark:focus:border-indigo-500 transition-all resize-none shadow-inner"
+                    className="min-h-[240px] text-base p-5 rounded-xl bg-background border border-border focus:border-orange-500/50 focus-visible:ring-orange-500/20 transition-all resize-none"
                   />
-                  <div className="pointer-events-none absolute bottom-0 right-0 py-2 text-xs font-medium text-muted-foreground/40 dark:text-muted-foreground/70 tracking-widest uppercase">
-                    {prompt.length} / 2000 CHARS
+                  <div className="pointer-events-none absolute bottom-3 right-4 text-xs font-medium text-muted-foreground/40">
+                    {prompt.length} / 2000
                   </div>
                 </div>
 
-                {/* Quick Chips - Refined */}
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/50 dark:text-muted-foreground/80 mr-2">
+                {/* Quick Add Chips */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-medium text-muted-foreground/60 mr-1">
                     {section.prompt.quick_adds_label}
                   </span>
                   {QUICK_ADD_CHIPS.map((chip, i) => (
                     <button
                       key={chip}
                       onClick={() => handleQuickAdd(chip)}
-                      className="px-4 py-1.5 rounded-full text-xs font-medium bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/5 dark:border-white/5 text-muted-foreground hover:text-foreground dark:text-muted-foreground/80 dark:hover:text-foreground transition-all duration-300"
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
                     >
                       + {chip}
                     </button>
                   ))}
                 </div>
 
-                {/* Language Bar - Minimal */}
-                <div className="mt-12 flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground dark:text-muted-foreground/80">02</span>
-                    <span className="text-sm font-medium text-muted-foreground dark:text-muted-foreground/80">{section.prompt.language_label}</span>
-                    <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
-                      <SelectTrigger className="w-auto border-0 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full gap-2 px-4 text-base font-medium focus:ring-0 text-foreground">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent className="glass-premium rounded-2xl p-2 min-w-[200px] bg-background/95 backdrop-blur-xl border-black/5 dark:border-white/10">
-                        {Object.entries(LANGUAGE_OPTIONS).map(([code, option]) => (
-                          <SelectItem key={code} value={code} className="rounded-xl my-1 cursor-pointer focus:bg-black/5 dark:focus:bg-white/10">
-                            <span className="mr-3 text-lg opacity-80">{option.flag}</span>
-                            <span className="font-medium tracking-wide">{option.native}</span>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                {/* Language */}
+                <div className="mt-8 flex items-center gap-3">
+                  <span className="text-xs font-medium text-muted-foreground">{section.prompt.language_label}</span>
+                  <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
+                    <SelectTrigger className="w-auto border-0 bg-transparent hover:bg-muted/50 rounded-full gap-2 px-3 text-sm font-medium focus:ring-0 text-foreground">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="rounded-xl p-1 min-w-[200px]">
+                      {Object.entries(LANGUAGE_OPTIONS).map(([code, option]) => (
+                        <SelectItem key={code} value={code} className="rounded-lg my-0.5 cursor-pointer">
+                          <span className="mr-2 text-base opacity-80">{option.flag}</span>
+                          <span className="font-medium">{option.native}</span>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
               {/* Sidebar (4 cols) */}
-              <div className="lg:col-span-4 bg-black/5 dark:bg-black/20 backdrop-blur-sm p-8 sm:p-12 border-t lg:border-t-0 lg:border-l border-black/5 dark:border-white/5">
-                <div className="sticky top-12 space-y-10">
+              <div className="lg:col-span-4 bg-muted/30 p-5 sm:p-8 border-t lg:border-t-0 lg:border-l border-border">
+                <div className="sticky top-20 space-y-8">
 
                   {/* History */}
-                  <div className="flex items-center justify-between pb-8 border-b border-black/5 dark:border-white/5">
-                    <h3 className="text-xs font-bold text-muted-foreground/50 dark:text-muted-foreground/80 uppercase tracking-[0.2em]">
+                  <div className="flex items-center justify-between pb-6 border-b border-border">
+                    <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                       {locale === 'zh' ? '历史记录' : 'HISTORY'}
                     </h3>
                     <StoryHistoryDropdown
@@ -1032,25 +1031,25 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
                   {/* Presets */}
                   <div>
-                    <h3 className="text-xs font-bold text-muted-foreground/50 dark:text-muted-foreground/80 uppercase tracking-[0.2em] mb-6">
+                    <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">
                       {section.presets.title}
                     </h3>
-                    <div className="space-y-4">
+                    <div className="space-y-2">
                       {STORY_PRESETS.map((preset) => (
                         <button
                           key={preset.title}
                           onClick={() => handlePresetClick(preset)}
-                          className="group w-full text-left p-5 rounded-2xl bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/20 transition-all duration-300 shadow-sm dark:shadow-none"
+                          className="group w-full text-left p-4 rounded-xl bg-background hover:bg-background/80 border border-border hover:border-orange-300 dark:hover:border-orange-400/50 transition-all duration-200"
                         >
-                          <div className="flex items-start gap-4">
-                            <span className="text-2xl opacity-70 dark:opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 filter grayscale group-hover:grayscale-0">
-                              {preset.emoji}
+                          <div className="flex items-start gap-3">
+                            <span className="text-foreground/50 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-200">
+                              {preset.icon}
                             </span>
                             <div>
-                              <div className="font-medium text-foreground/80 dark:text-foreground/95 group-hover:text-foreground transition-colors tracking-wide">
+                              <div className="font-medium text-foreground/80 group-hover:text-foreground transition-colors text-sm">
                                 {preset.title}
                               </div>
-                              <div className="text-xs text-muted-foreground/60 dark:text-white/90 mt-1 font-light tracking-wide">
+                              <div className="text-xs text-muted-foreground/60 mt-0.5">
                                 {preset.desc}
                               </div>
                             </div>
@@ -1061,19 +1060,19 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   </div>
 
                   {/* Advanced Options */}
-                  <div className="pt-8 border-t border-black/5 dark:border-white/5">
+                  <div className="pt-6 border-t border-border">
                     <details className="group">
                       <summary className="list-none flex items-center justify-between cursor-pointer py-2">
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                           <Icon name="sliders" className="size-4 text-muted-foreground" />
-                          <span className="text-sm font-semibold tracking-wide text-foreground/80 dark:text-foreground/95 group-hover:text-foreground transition-colors">
+                          <span className="text-sm font-semibold text-foreground/80 group-hover:text-foreground transition-colors">
                             {section.advanced_options.title}
                           </span>
                         </div>
-                        <Icon name="chevron-down" className="size-4 text-muted-foreground/50 dark:text-muted-foreground/80 group-open:rotate-180 transition-transform duration-300" />
+                        <Icon name="chevron-down" className="size-3.5 text-muted-foreground group-open:rotate-180 transition-transform duration-200" />
                       </summary>
 
-                      <div className="mt-6 space-y-5 animate-fade-in-down">
+                      <div className="mt-4 space-y-4">
                         {[
                           { label: section.advanced_options.format.label, value: selectedFormat, setter: handleFormatChange, opts: section.advanced_options.format.options },
                           { label: section.advanced_options.genre.label, value: selectedGenre, setter: handleGenreChange, opts: section.advanced_options.genre.options },
@@ -1082,15 +1081,15 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                           { label: section.advanced_options.audience.label, value: selectedAudience, setter: handleAudienceChange, opts: section.advanced_options.audience.options },
                           { label: section.advanced_options.length.label, value: selectedLength, setter: handleLengthChange, opts: section.advanced_options.length.options }
                         ].map((field, i) => (
-                          <div key={i} className="space-y-2">
-                            <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 dark:text-muted-foreground/70 ml-1">{field.label}</label>
+                          <div key={i} className="space-y-1.5">
+                            <label className="text-xs font-medium text-muted-foreground/60 ml-1">{field.label}</label>
                             <Select value={field.value} onValueChange={field.setter}>
-                              <SelectTrigger className="w-full bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 rounded-xl text-sm hover:bg-white/60 dark:hover:bg-white/10 transition-colors focus:ring-0 text-foreground">
+                              <SelectTrigger className="w-full bg-background border-border rounded-lg text-sm hover:bg-muted/50 transition-colors focus:ring-0 text-foreground">
                                 <SelectValue />
                               </SelectTrigger>
-                              <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
+                              <SelectContent className="rounded-xl">
                                 {Object.entries(field.opts).map(([k, v]) => (
-                                  <SelectItem key={k} value={k === 'funny' ? 'humorous' : k} className="text-sm cursor-pointer focus:bg-black/5 dark:focus:bg-white/10">{v}</SelectItem>
+                                  <SelectItem key={k} value={k === 'funny' ? 'humorous' : k} className="text-sm cursor-pointer">{v}</SelectItem>
                                 ))}
                               </SelectContent>
                             </Select>
@@ -1105,63 +1104,52 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           </div>
         </div>
 
-        {/* Model Selection - Obsidian Cards */}
-        <div className="space-y-10 animate-fade-in-up animation-delay-2000">
-          <div className="flex items-center gap-4 mt-[30px]">
-            <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground dark:text-muted-foreground/80">03</span>
-            <h3 className="text-xl font-medium text-foreground tracking-tight">
+        {/* Model Selection */}
+        <div className="space-y-6 animate-fade-in-up animation-delay-2000">
+          <div className="flex items-center gap-3 mt-8">
+            <h3 className="text-sm font-semibold text-foreground">
               {section.ai_models.title}
             </h3>
-            <div className="h-px flex-1 bg-gradient-to-r from-black/10 dark:from-white/10 to-transparent" />
+            <div className="h-px flex-1 bg-border" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {AI_MODELS.map((model) => {
               const isSelected = selectedModel === model.id;
               return (
                 <button
                   key={model.id}
                   onClick={() => setSelectedModel(model.id)}
-                  className={`
-                  relative group p-8 rounded-[2rem] text-left transition-all duration-500
-                  ${isSelected
-                      ? 'bg-indigo-50 dark:bg-black/60 ring-1 ring-indigo-500 dark:ring-white/20 shadow-2xl shadow-indigo-500/20 dark:shadow-black/50'
-                      : 'bg-white/40 dark:bg-white/5 border border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10'
-                    }
-                `}
+                  className={`group p-5 rounded-xl text-left transition-all duration-200 ${
+                    isSelected
+                      ? 'bg-orange-500/[0.08] border-2 border-orange-500/40'
+                      : 'bg-card border border-border hover:border-orange-300 dark:hover:border-orange-400/50 hover:bg-muted/30'
+                  }`}
                 >
-                  <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
-                    {isSelected && <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-indigo-500/20 blur-[80px]" />}
+                  <div className="flex items-start justify-between mb-4">
+                    <span className={`transition-all ${isSelected ? 'text-orange-600 dark:text-orange-400' : 'text-muted-foreground opacity-60 group-hover:opacity-100'}`}>
+                      {model.icon}
+                    </span>
+                    {isSelected && (
+                      <div className="size-5 rounded-full bg-orange-500 flex items-center justify-center">
+                        <Icon name="check" className="size-3 text-white" />
+                      </div>
+                    )}
                   </div>
 
-                  <div className="relative z-10 flex flex-col h-full">
-                    <div className="flex items-start justify-between mb-8">
-                      <span className={`text-4xl ${isSelected ? 'opacity-100' : 'opacity-50 grayscale group-hover:grayscale-0 transition-all'}`}>
-                        {model.icon}
-                      </span>
-                      {isSelected && (
-                        <div className="size-6 rounded-full bg-indigo-500 flex items-center justify-center">
-                          <Icon name="check" className="size-3.5 text-white" />
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="mt-auto space-y-3">
-                      <h4 className={`text-lg font-bold tracking-tight ${isSelected ? 'text-indigo-900 dark:text-white' : 'text-foreground/70 dark:text-foreground/80 group-hover:text-foreground dark:group-hover:text-foreground'}`}>
-                        {model.name}
-                      </h4>
-                      <p className="text-xs text-muted-foreground dark:text-muted-foreground/90 leading-relaxed font-medium">
-                        {model.description}
-                      </p>
-                      <div className="flex items-center gap-2 pt-2">
-                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${model.badgeColor}`}>
-                          {model.badge}
-                        </span>
-                        <span className="text-[10px] text-muted-foreground/60 dark:text-muted-foreground/80 font-medium">
-                          {model.speed}
-                        </span>
-                      </div>
-                    </div>
+                  <h4 className={`text-sm font-bold tracking-tight mb-1 ${isSelected ? 'text-orange-900 dark:text-orange-100' : 'text-foreground/70 group-hover:text-foreground'}`}>
+                    {model.name}
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+                    {model.description}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${model.badgeColor}`}>
+                      {model.badge}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground/60 font-medium">
+                      {model.speed}
+                    </span>
                   </div>
                 </button>
               );
@@ -1170,19 +1158,13 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         </div>
 
         {/* Generate Button */}
-        <div id="generate-button" className="flex justify-center pt-8 animate-fade-in-up animation-delay-3000">
+        <div id="generate-button" className="flex justify-center pt-6 animate-fade-in-up animation-delay-3000">
           <div className="relative group w-full max-w-md">
             <Button
               onClick={handleGenerateClick}
-              className="relative w-full h-20 rounded-full overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-[length:200%_auto] animate-gradient text-white shadow-2xl shadow-indigo-500/40 hover:shadow-indigo-500/60 hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 text-xl font-bold tracking-wide border-none group/btn"
+              className="w-full h-14 text-lg font-semibold bg-orange-600 hover:bg-orange-700 disabled:opacity-60 text-white shadow-md shadow-orange-600/20 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 rounded-xl border-none"
             >
-              {/* Shimmer Overlay */}
-              <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:250%_250%] animate-shimmer pointer-events-none" />
-
-              {/* Noise Texture */}
-              <div className="absolute inset-0 bg-noise opacity-20 mix-blend-overlay pointer-events-none" />
-
-              <div className="relative z-10 flex items-center justify-center gap-3">
+              <div className="flex items-center justify-center gap-2">
                 {isGenerating ? (
                   <>
                     <div className="size-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -1190,9 +1172,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   </>
                 ) : (
                   <>
-                    <Icon name="sparkles" className="size-6 group-hover/btn:animate-pulse text-indigo-100" />
+                    <Sparkles className="size-5" />
                     <span>{section.generate_button.text}</span>
-                    <Icon name="arrow-right" className="size-5 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-300" />
                   </>
                 )}
               </div>
@@ -1201,29 +1182,21 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             <GeneratorShortcutHints showQuickSave />
 
             {/* Usage Hints */}
-            <div className="mt-8 space-y-5 animate-fade-in-up animation-delay-3000">
-              {/* Features Row */}
-              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-muted-foreground dark:text-muted-foreground/90">
-                <div className="flex items-center gap-2">
-                  <div className="size-2 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.5)] animate-pulse" />
-                  <span><strong className="text-foreground/80 dark:text-foreground/90">{locale === 'zh' ? '免费额度' : 'Free Credit'}</strong> per story</span>
+            <div className="mt-6 space-y-3">
+              <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1.5">
+                  <div className="size-1.5 rounded-full bg-orange-400" />
+                  <span>{locale === 'zh' ? '免费额度' : 'Free Credit'}</span>
                 </div>
-                <div className="hidden sm:block w-px h-3 bg-black/10 dark:bg-white/10" />
-                <div>
-                  {locale === 'zh' ? '预计耗时: ~10秒' : 'Estimated: ~10 seconds'}
-                </div>
-                <div className="hidden sm:block w-px h-3 bg-black/10 dark:bg-white/10" />
-                <div className="text-emerald-600 dark:text-emerald-400 font-semibold">
-                  {locale === 'zh' ? '优质内容' : 'Premium Quality'}
-                </div>
+                <div className="hidden sm:block w-px h-3 bg-border" />
+                <div>{locale === 'zh' ? '预计耗时: ~10秒' : 'Estimated: ~10 seconds'}</div>
+                <div className="hidden sm:block w-px h-3 bg-border" />
+                <div className="text-emerald-600 dark:text-emerald-400 font-medium">{locale === 'zh' ? '优质内容' : 'Premium Quality'}</div>
               </div>
 
-              {/* Pro Tip */}
-              <div className="flex items-start sm:items-center justify-center gap-2 text-xs text-muted-foreground/70 dark:text-muted-foreground/90 max-w-lg mx-auto text-center leading-relaxed px-4">
-                <Icon name="lightbulb" className="size-3.5 text-amber-500 shrink-0 mt-0.5 sm:mt-0" />
-                <span>
-                  <span className="font-semibold text-foreground/80 dark:text-foreground/90">{locale === 'zh' ? '提示:' : 'Tip:'}</span> {locale === 'zh' ? '提供具体的提示词可以获得更好的结果。您可以随时优化并重新生成！' : 'Be specific in your prompt for better results. You can always refine and regenerate!'}
-                </span>
+              <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground/60 max-w-lg mx-auto">
+                <Icon name="lightbulb" className="size-3 text-amber-500 shrink-0" />
+                <span>{locale === 'zh' ? '提供具体的提示词可以获得更好的结果。' : 'Be specific in your prompt for better results.'}</span>
               </div>
             </div>
           </div>
@@ -1231,13 +1204,13 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         {/* Generated Story Output */}
         {(isGenerating || generatedStory) && (
-          <div ref={outputRef} className="mt-24 animate-fade-in-up">
-            <div className="glass-premium rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-black/5 dark:ring-white/10">
+          <div ref={outputRef} className="mt-16 animate-fade-in-up">
+            <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm">
               {/* Header */}
-              <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-10 border-b border-black/5 dark:border-white/5 bg-white/40 dark:bg-white/5 gap-6">
-                <div className="flex items-center gap-5">
-                  <div className="p-3 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-black/5 dark:border-white/10">
-                    <Icon name="book-open" className="size-6 text-indigo-600 dark:text-indigo-400" />
+              <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-8 border-b border-border bg-orange-500/[0.03] dark:bg-orange-500/[0.05] gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-center size-10 rounded-xl bg-orange-500/10">
+                    <Icon name="book-open" className="size-5 text-orange-600 dark:text-orange-400" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold tracking-tight text-foreground">{section.output.title}</h3>
@@ -1250,9 +1223,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 </div>
 
                 {generatedStory && !isGenerating && (
-                  <div className="flex items-center gap-3 flex-wrap justify-center">
-                    <Button variant="ghost" size="sm" onClick={handleGenerateClick} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground dark:text-muted-foreground/80 dark:hover:text-foreground border border-black/5 dark:border-white/5">
-                      <Icon name="refresh-cw" className="size-4 mr-2" /> {locale === 'zh' ? '重新生成' : 'Regenerate'}
+                  <div className="flex items-center gap-2 flex-wrap justify-center">
+                    <Button variant="ghost" size="sm" onClick={handleGenerateClick} className="gap-1.5 text-xs">
+                      <Icon name="refresh-cw" className="size-3.5" /> {locale === 'zh' ? '重新生成' : 'Regenerate'}
                     </Button>
 
                     <StoryShareButtons
@@ -1264,13 +1237,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                       translations={shareTranslations}
                     />
 
-                    <div className="w-px h-6 bg-black/10 dark:bg-white/10 mx-1" />
-
-                    <Button variant="ghost" size="sm" onClick={() => { navigator.clipboard.writeText(generatedStory); toast.success(section.toasts.success_copied); }} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground dark:text-muted-foreground/80 dark:hover:text-foreground border border-black/5 dark:border-white/5">
-                      <Icon name="copy" className="size-4 mr-2" /> {section.output.button_copy}
+                    <Button variant="ghost" size="sm" onClick={() => { navigator.clipboard.writeText(generatedStory); toast.success(section.toasts.success_copied); }} className="gap-1.5 text-xs">
+                      <Icon name="copy" className="size-3.5" /> {section.output.button_copy}
                     </Button>
-                    <Button variant="ghost" size="sm" onClick={handleExportPdf} disabled={isExportingPdf} className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5">
-                      <Icon name="download" className="size-4 mr-2" /> PDF
+                    <Button variant="ghost" size="sm" onClick={handleExportPdf} disabled={isExportingPdf} className="gap-1.5 text-xs">
+                      <Icon name="download" className="size-3.5" /> PDF
                     </Button>
                   </div>
                 )}
@@ -1279,7 +1250,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               {/* Content */}
               <div
                 ref={outputScrollRef}
-                className="p-8 md:p-16 bg-white/20 dark:bg-black/20 min-h-[320px] max-h-[480px] overflow-y-auto"
+                className="p-8 md:p-16 min-h-[320px] min-h-[320px] max-h-[480px] overflow-y-auto"
               >
                 {isGenerating && !generatedStory ? (
                   <div className="h-full flex flex-col items-center justify-center gap-6 py-20">
@@ -1294,7 +1265,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   <div className="prose prose-lg md:prose-xl dark:prose-invert max-w-4xl mx-auto font-serif leading-loose tracking-wide text-foreground">
                     <div className="whitespace-pre-wrap">
                       {generatedStory}
-                      {isGenerating && <span className="inline-block w-2 h-6 ml-1 bg-indigo-500 animate-pulse" />}
+                      {isGenerating && <span className="inline-block w-2 h-6 ml-1 bg-orange-500 animate-pulse" />}
                     </div>
                   </div>
                 )}

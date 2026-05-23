@@ -385,16 +385,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
     const contentLength = poemContent.length;
 
     return (
-        <section id="poem_title_generator" className="relative min-h-screen overflow-hidden bg-background text-foreground selection:bg-amber-500/30">
-            {/* Premium Background Layer */}
-            <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
-
-            <div className="fixed inset-0 -z-30 pointer-events-none overflow-hidden">
-                <div className="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-amber-500/20 rounded-full blur-[120px] animate-blob mix-blend-multiply dark:mix-blend-screen" />
-                <div className="absolute bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-rose-500/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-screen" />
-                <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-background rounded-full blur-[150px] opacity-80" />
-            </div>
-
+        <section id="poem_title_generator" className="bg-background">
             {/* Invisible Turnstile */}
             <TurnstileInvisible
                 ref={turnstileRef}
@@ -402,260 +393,237 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                 onError={handleTurnstileError}
             />
 
-            <div className="w-full max-w-5xl mx-auto px-6 pt-16 pb-24 sm:pt-24 sm:pb-32 relative">
-                {/* Breadcrumb Navigation */}
-                <div className="mb-10 flex justify-start animate-fade-in-up">
-                    <div className="glass-premium px-6 py-2 rounded-full">
-                        <PoemTitleBreadcrumb
-                            homeText={section.breadcrumb.home}
-                            currentText={section.breadcrumb.current}
-                        />
-                    </div>
+            <div className="relative mx-auto w-full max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
+                {/* Breadcrumb */}
+                <div className="mb-8">
+                    <PoemTitleBreadcrumb
+                        homeText={section.breadcrumb.home}
+                        currentText={section.breadcrumb.current}
+                    />
                 </div>
 
-                {/* Enhanced Header */}
-                <div className="relative text-center mb-20 animate-fade-in-up animation-delay-1000">
-                    <div className="inline-flex items-center justify-center mb-8">
-                        <div className="p-px bg-gradient-to-br from-amber-500/20 to-transparent rounded-2xl">
-                            <div className="glass-premium rounded-2xl p-4 bg-background/50">
-                                <Icon name="RiQuillPenLine" className="size-8 text-amber-600 dark:text-amber-400" />
-                            </div>
+                {/* Header */}
+                <div className="mb-10 text-center">
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                        <div className="p-2 rounded-xl bg-orange-500/10">
+                            <Icon name="RiQuillPenLine" className="size-5 text-orange-600 dark:text-orange-400" />
                         </div>
-                    </div>
-
-                    <h1 className="text-6xl sm:text-8xl font-black tracking-tighter mb-8 leading-[0.9]">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 dark:from-amber-200 dark:via-orange-200 dark:to-amber-400 animate-shimmer">
+                        <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
                             {section.header.title}
-                        </span>
-                    </h1>
-
-                    <p className="text-xl sm:text-2xl text-muted-foreground/80 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
+                        </h1>
+                    </div>
+                    <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-6">
                         {section.header.subtitle}
                     </p>
+                    <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
                 </div>
 
                 {/* Main Form Card */}
-                <div className="glass-premium rounded-[3rem] p-1 overflow-hidden shadow-2xl shadow-amber-500/10 dark:shadow-black/20 ring-1 ring-black/5 dark:ring-white/10 animate-fade-in-up animation-delay-2000 mb-24">
-                    <div className="bg-background/40 backdrop-blur-xl rounded-[calc(3rem-4px)] p-8 sm:p-16">
-                        <div className="max-w-3xl mx-auto space-y-12">
+                <div className="rounded-2xl border border-border bg-card shadow-sm mb-8">
+                    <div className="p-6 sm:p-10">
+                        <div className="space-y-8">
                             {/* Poem Content Field */}
-                            <div className="space-y-6">
+                            <div className="space-y-3">
                                 <div className="flex items-center justify-between gap-4 flex-wrap">
-                                    <div className="flex items-center gap-3">
-                                        <label className="text-xl font-medium tracking-tight flex items-center gap-3 text-foreground">
-                                            <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">01</span>
-                                            {section.form.poem_content.label}
-                                        </label>
-                                        {section.form.poem_content.required && (
-                                            <span className="text-[10px] font-bold uppercase tracking-widest text-red-500/80 bg-red-500/10 px-2 py-1 rounded-full">Required</span>
-                                        )}
-                                    </div>
+                                    <label className="text-sm font-semibold flex items-center gap-2 text-foreground">
+                                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">1</span>
+                                        {section.form.poem_content.label}
+                                    </label>
                                     {RANDOM_PROMPTS.length > 0 && (
                                         <Button
                                             variant="ghost"
                                             size="sm"
                                             onClick={handleRandomPrompt}
-                                            className="gap-2 text-amber-600 hover:text-amber-500 hover:bg-amber-500/10 rounded-full h-10 px-4"
+                                            className="gap-1.5 text-orange-600 hover:text-orange-700 hover:bg-orange-500/10 dark:text-orange-400 dark:hover:text-orange-300 h-8 px-3 text-xs"
                                         >
-                                            <Icon name="Sparkles" className="size-4" />
+                                            <Icon name="Sparkles" className="size-3.5" />
                                             {section.form.random_button || "Random prompt"}
                                         </Button>
                                     )}
                                 </div>
 
-                                <div className="relative group">
-                                    <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/10 to-rose-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
+                                <div className="relative">
                                     <Textarea
                                         ref={contentRef}
                                         value={poemContent}
                                         onChange={(e) => setPoemContent(e.target.value.slice(0, section.form.poem_content.max_length || 2000))}
                                         placeholder={section.form.poem_content.placeholder}
-                                        className="relative min-h-[200px] w-full bg-transparent border-0 border-b border-black/10 dark:border-white/10 focus:border-amber-500/50 focus:ring-0 rounded-none px-0 text-xl sm:text-2xl font-light leading-snug placeholder:text-muted-foreground/30 text-foreground resize-none transition-all duration-300"
-                                        style={{ boxShadow: "none" }}
+                                        className="min-h-[160px] resize-none text-sm focus-visible:ring-orange-500/30"
                                     />
-                                    <div className="absolute bottom-0 right-0 py-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">
-                                        {contentLength} / {section.form.poem_content.max_length || 2000} CHARS
+                                    <div className="absolute bottom-2 right-3 text-xs text-muted-foreground/50">
+                                        {contentLength} / {section.form.poem_content.max_length || 2000}
                                     </div>
                                 </div>
 
                                 {/* Example Prompts */}
                                 {!poemContent && section.form.examples && (
-                                    <div className="mt-4">
-                                        <Collapsible open={isExamplesExpanded} onOpenChange={setIsExamplesExpanded}>
-                                            <CollapsibleTrigger asChild>
-                                                <Button variant="ghost" className="text-xs font-medium text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 gap-2 px-0">
-                                                    <Icon name="RiLightbulbLine" className="size-3" />
-                                                    {section.form.examples.title}
-                                                </Button>
-                                            </CollapsibleTrigger>
-                                            <CollapsibleContent className="mt-4 animate-slide-down">
-                                                <div className="space-y-2">
-                                                    {section.form.examples.prompts.map((prompt, index) => (
-                                                        <button
-                                                            key={index}
-                                                            onClick={() => {
-                                                                setPoemContent(prompt);
-                                                                setIsExamplesExpanded(false);
-                                                            }}
-                                                            className="w-full text-left p-3 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-all text-sm text-muted-foreground hover:text-foreground"
-                                                        >
-                                                            {prompt}
-                                                        </button>
-                                                    ))}
-                                                </div>
-                                            </CollapsibleContent>
-                                        </Collapsible>
-                                    </div>
+                                    <Collapsible open={isExamplesExpanded} onOpenChange={setIsExamplesExpanded}>
+                                        <CollapsibleTrigger asChild>
+                                            <Button variant="ghost" className="text-xs font-medium text-orange-600 dark:text-orange-400 hover:bg-orange-500/10 gap-1.5 px-0 h-7">
+                                                <Icon name="RiLightbulbLine" className="size-3" />
+                                                {section.form.examples.title}
+                                            </Button>
+                                        </CollapsibleTrigger>
+                                        <CollapsibleContent className="mt-3">
+                                            <div className="space-y-1.5">
+                                                {section.form.examples.prompts.map((prompt, index) => (
+                                                    <button
+                                                        key={index}
+                                                        onClick={() => {
+                                                            setPoemContent(prompt);
+                                                            setIsExamplesExpanded(false);
+                                                        }}
+                                                        className="w-full text-left p-3 rounded-lg bg-muted hover:bg-muted/80 border border-border transition-colors text-sm text-muted-foreground hover:text-foreground"
+                                                    >
+                                                        {prompt}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </CollapsibleContent>
+                                    </Collapsible>
                                 )}
                             </div>
 
                             {/* Options Section */}
-                            <div className="pt-12 border-t border-black/5 dark:border-white/5">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <span className="flex items-center justify-center size-8 rounded-full border border-black/10 dark:border-white/10 text-xs font-serif italic text-muted-foreground">02</span>
-                                    <h3 className="text-xl font-medium tracking-tight text-foreground">Customize Output</h3>
+                            <div className="pt-6 border-t border-border space-y-6">
+                                <div className="flex items-center gap-2">
+                                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">2</span>
+                                    <h3 className="text-sm font-semibold text-foreground">{section.form.usage_scene.label}</h3>
                                 </div>
 
-                                <div className="space-y-8">
-                                    {/* Language & Length Row */}
-                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                                        {/* Language */}
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">
-                                                {section.form.language.label}
-                                            </label>
-                                            <Select value={selectedLanguage} onValueChange={(v: string) => setSelectedLanguage(v)}>
-                                                <SelectTrigger className="h-12 rounded-xl bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors focus:ring-0 text-foreground">
-                                                    <SelectValue placeholder={section.form.language.placeholder} />
-                                                </SelectTrigger>
-                                                <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
-                                                    {Object.entries(section.form.language.options).map(([code, label]) => (
-                                                        <SelectItem key={code} value={code}>
-                                                            {label}
-                                                        </SelectItem>
-                                                    ))}
-                                                </SelectContent>
-                                            </Select>
-                                        </div>
-
-                                        {/* Length */}
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">
-                                                {section.form.length.label}
-                                            </label>
-                                            <Select value={selectedLength} onValueChange={(v: "short" | "medium" | "long") => setSelectedLength(v)}>
-                                                <SelectTrigger className="h-12 rounded-xl bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors focus:ring-0 text-foreground">
-                                                    <SelectValue />
-                                                </SelectTrigger>
-                                                <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
-                                                    <SelectItem value="short">{section.form.length.options.short}</SelectItem>
-                                                    <SelectItem value="medium">{section.form.length.options.medium}</SelectItem>
-                                                    <SelectItem value="long">{section.form.length.options.long}</SelectItem>
-                                                </SelectContent>
-                                            </Select>
-                                        </div>
-
-                                        {/* Usage Scene */}
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">
-                                                {section.form.usage_scene.label}
-                                            </label>
-                                            <Select value={selectedUsageScene} onValueChange={setSelectedUsageScene}>
-                                                <SelectTrigger className="h-12 rounded-xl bg-white/40 dark:bg-white/5 border-black/5 dark:border-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-colors focus:ring-0 text-foreground">
-                                                    <SelectValue placeholder={section.form.usage_scene.placeholder} />
-                                                </SelectTrigger>
-                                                <SelectContent className="glass-premium rounded-xl bg-background/95 border-black/5 dark:border-white/10">
-                                                    <SelectItem value="literary_submission">{section.form.usage_scene.options.literary_submission}</SelectItem>
-                                                    <SelectItem value="collection">{section.form.usage_scene.options.collection}</SelectItem>
-                                                    <SelectItem value="social_media">{section.form.usage_scene.options.social_media}</SelectItem>
-                                                    <SelectItem value="competition">{section.form.usage_scene.options.competition}</SelectItem>
-                                                    <SelectItem value="gift_card">{section.form.usage_scene.options.gift_card}</SelectItem>
-                                                </SelectContent>
-                                            </Select>
-                                        </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    {/* Language */}
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-medium text-muted-foreground">
+                                            {section.form.language.label}
+                                        </label>
+                                        <Select value={selectedLanguage} onValueChange={(v: string) => setSelectedLanguage(v)}>
+                                            <SelectTrigger className="text-sm">
+                                                <SelectValue placeholder={section.form.language.placeholder} />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {Object.entries(section.form.language.options).map(([code, label]) => (
+                                                    <SelectItem key={code} value={code}>
+                                                        {label}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
                                     </div>
 
-                                    {/* Style Chips */}
-                                    <div className="space-y-3">
-                                        <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">
-                                            {section.form.style.label}
+                                    {/* Length */}
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-medium text-muted-foreground">
+                                            {section.form.length.label}
                                         </label>
-                                        <div className="flex flex-wrap gap-2">
-                                            {styleChips.map((chip) => (
-                                                <button
-                                                    key={chip.id}
-                                                    onClick={() => toggleStyle(chip.id)}
-                                                    className={cn(
-                                                        "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                                                        selectedStyles.includes(chip.id)
-                                                            ? "bg-amber-500 text-white shadow-lg shadow-amber-500/30"
-                                                            : "bg-black/5 dark:bg-white/5 text-muted-foreground hover:bg-black/10 dark:hover:bg-white/10"
-                                                    )}
-                                                >
-                                                    {chip.label}
-                                                </button>
-                                            ))}
-                                        </div>
+                                        <Select value={selectedLength} onValueChange={(v: "short" | "medium" | "long") => setSelectedLength(v)}>
+                                            <SelectTrigger className="text-sm">
+                                                <SelectValue />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="short">{section.form.length.options.short}</SelectItem>
+                                                <SelectItem value="medium">{section.form.length.options.medium}</SelectItem>
+                                                <SelectItem value="long">{section.form.length.options.long}</SelectItem>
+                                            </SelectContent>
+                                        </Select>
                                     </div>
 
-                                    {/* Mood Chips */}
-                                    <div className="space-y-3">
-                                        <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">
-                                            {section.form.mood.label}
+                                    {/* Usage Scene */}
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-medium text-muted-foreground">
+                                            {section.form.usage_scene.label}
                                         </label>
-                                        <div className="flex flex-wrap gap-2">
-                                            {moodChips.map((chip) => (
-                                                <button
-                                                    key={chip.id}
-                                                    onClick={() => toggleMood(chip.id)}
-                                                    className={cn(
-                                                        "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                                                        selectedMoods.includes(chip.id)
-                                                            ? "bg-rose-500 text-white shadow-lg shadow-rose-500/30"
-                                                            : "bg-black/5 dark:bg-white/5 text-muted-foreground hover:bg-black/10 dark:hover:bg-white/10"
-                                                    )}
-                                                >
-                                                    {chip.label}
-                                                </button>
-                                            ))}
-                                        </div>
+                                        <Select value={selectedUsageScene} onValueChange={setSelectedUsageScene}>
+                                            <SelectTrigger className="text-sm">
+                                                <SelectValue placeholder={section.form.usage_scene.placeholder} />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="literary_submission">{section.form.usage_scene.options.literary_submission}</SelectItem>
+                                                <SelectItem value="collection">{section.form.usage_scene.options.collection}</SelectItem>
+                                                <SelectItem value="social_media">{section.form.usage_scene.options.social_media}</SelectItem>
+                                                <SelectItem value="competition">{section.form.usage_scene.options.competition}</SelectItem>
+                                                <SelectItem value="gift_card">{section.form.usage_scene.options.gift_card}</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                </div>
+
+                                {/* Style Chips */}
+                                <div className="space-y-2">
+                                    <label className="text-xs font-medium text-muted-foreground">
+                                        {section.form.style.label}
+                                    </label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {styleChips.map((chip) => (
+                                            <button
+                                                key={chip.id}
+                                                onClick={() => toggleStyle(chip.id)}
+                                                className={cn(
+                                                    "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors border",
+                                                    selectedStyles.includes(chip.id)
+                                                        ? "border-orange-500/40 bg-orange-500/[0.08] text-orange-600 dark:text-orange-400"
+                                                        : "border-border bg-background hover:bg-muted/50 text-muted-foreground"
+                                                )}
+                                            >
+                                                {chip.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Mood Chips */}
+                                <div className="space-y-2">
+                                    <label className="text-xs font-medium text-muted-foreground">
+                                        {section.form.mood.label}
+                                    </label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {moodChips.map((chip) => (
+                                            <button
+                                                key={chip.id}
+                                                onClick={() => toggleMood(chip.id)}
+                                                className={cn(
+                                                    "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors border",
+                                                    selectedMoods.includes(chip.id)
+                                                        ? "border-orange-500/40 bg-orange-500/[0.08] text-orange-600 dark:text-orange-400"
+                                                        : "border-border bg-background hover:bg-muted/50 text-muted-foreground"
+                                                )}
+                                            >
+                                                {chip.label}
+                                            </button>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
 
                             {/* Generate Action */}
-                            <div className="pt-12 flex flex-col items-center gap-8">
-                                <div className="relative group w-full max-w-md">
-                                    <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/30 via-orange-500/30 to-rose-500/30 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                                    <Button
-                                        onClick={handleGenerate}
-                                        disabled={isGenerating}
-                                        className="relative w-full h-20 rounded-full bg-foreground text-background hover:bg-white hover:text-black dark:hover:bg-white dark:hover:text-black hover:scale-[1.02] transition-all duration-500 text-lg font-bold tracking-wide shadow-2xl border-none"
-                                    >
-                                        {isGenerating ? (
-                                            <div className="flex items-center gap-3">
-                                                <div className="size-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                                                <span className="animate-pulse">{section.generate_button.generating}</span>
-                                            </div>
-                                        ) : (
-                                            <div className="flex items-center gap-3">
-                                                <Icon name="RiSparklingLine" className="size-5" />
-                                                <span>{section.generate_button.text}</span>
-                                            </div>
-                                        )}
-                                    </Button>
-                                </div>
+                            <div className="pt-2 space-y-4">
+                                <Button
+                                    onClick={handleGenerate}
+                                    disabled={isGenerating}
+                                    className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 transition-colors"
+                                >
+                                    {isGenerating ? (
+                                        <div className="flex items-center gap-2">
+                                            <div className="size-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                                            <span>{section.generate_button.generating}</span>
+                                        </div>
+                                    ) : (
+                                        <div className="flex items-center gap-2">
+                                            <Icon name="RiSparklingLine" className="size-4" />
+                                            <span>{section.generate_button.text}</span>
+                                        </div>
+                                    )}
+                                </Button>
 
                                 <GeneratorShortcutHints />
 
-                                {/* Info Pills */}
-                                <div className="flex items-center gap-6">
-                                    <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 bg-black/5 dark:bg-white/5 px-4 py-2 rounded-full border border-black/5 dark:border-white/5">
-                                        <Icon name="RiCheckLine" className="size-3 text-amber-500" />
+                                <div className="flex items-center justify-center gap-4">
+                                    <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                                        <Icon name="RiCheckLine" className="size-3 text-orange-500" />
                                         {section.generate_button.info.free}
                                     </span>
-                                    <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 bg-black/5 dark:bg-white/5 px-4 py-2 rounded-full border border-black/5 dark:border-white/5">
-                                        <Icon name="RiTimeLine" className="size-3 text-blue-500" />
+                                    <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                                        <Icon name="RiTimeLine" className="size-3 text-orange-500" />
                                         {section.generate_button.info.time}
                                     </span>
                                 </div>
@@ -666,76 +634,74 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
 
                 {/* Generated Titles Output */}
                 {(generatedTitles.length > 0 || isGenerating) && (
-                    <div className="animate-fade-in-up">
-                        <div className="flex items-center justify-between mb-12 px-4">
-                            <div className="flex items-center gap-4">
-                                <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20">
-                                    <Icon name="RiStarLine" className="size-6 text-amber-600 dark:text-amber-400" />
+                    <div className="space-y-6">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <div className="p-2 rounded-lg bg-orange-500/10">
+                                    <Icon name="RiStarLine" className="size-4 text-orange-600 dark:text-orange-400" />
                                 </div>
                                 <div>
-                                    <h3 className="text-2xl font-bold tracking-tight text-foreground">{section.output.title}</h3>
-                                    <p className="text-sm text-muted-foreground/60">{section.output.subtitle}</p>
+                                    <h3 className="text-base font-semibold text-foreground">{section.output.title}</h3>
+                                    <p className="text-xs text-muted-foreground">{section.output.subtitle}</p>
                                 </div>
                             </div>
                             {generatedTitles.length > 0 && (
                                 <Button
                                     onClick={handleClearTitles}
                                     variant="ghost"
-                                    className="text-muted-foreground hover:text-red-500 hover:bg-red-500/10 rounded-full"
+                                    size="sm"
+                                    className="text-muted-foreground hover:text-destructive hover:bg-destructive/10 h-8 px-3 text-xs"
                                 >
-                                    <Icon name="RiCloseLine" className="size-4 mr-2" />
+                                    <Icon name="RiCloseLine" className="size-3.5 mr-1" />
                                     {section.output.clear_button}
                                 </Button>
                             )}
                         </div>
 
                         {isGenerating ? (
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {[...Array(6)].map((_, index) => (
-                                    <div key={index} className="h-40 rounded-[2rem] bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 overflow-hidden relative">
-                                        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 dark:via-white/5 to-transparent animate-shimmer" />
+                                    <div key={index} className="h-28 rounded-xl bg-muted border border-border overflow-hidden relative">
+                                        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-background/40 to-transparent animate-shimmer" />
                                     </div>
                                 ))}
                             </div>
                         ) : (
-                            <div className="space-y-12">
+                            <div className="space-y-8">
                                 {/* Literary Titles */}
                                 {literaryTitles.length > 0 && (
-                                    <div className="space-y-6">
-                                        <h4 className="text-lg font-semibold text-foreground/80 flex items-center gap-2">
-                                            <Icon name="RiBookOpenLine" className="size-5 text-amber-500" />
+                                    <div className="space-y-3">
+                                        <h4 className="text-sm font-semibold text-foreground flex items-center gap-1.5">
+                                            <Icon name="RiBookOpenLine" className="size-4 text-orange-500" />
                                             {section.output.literary_group_title}
                                         </h4>
-                                        <div className="grid grid-cols-1 gap-4">
+                                        <div className="grid grid-cols-1 gap-3">
                                             {literaryTitles.map((titleObj, index) => (
                                                 <div
                                                     key={titleObj.id}
-                                                    className={cn(
-                                                        "group relative p-6 rounded-2xl bg-white/60 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-amber-500/30 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-500",
-                                                        titleObj.isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-                                                    )}
-                                                    style={{ transitionDelay: `${index * 100}ms` }}
+                                                    className="group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] transition-all duration-300"
+                                                    style={{ transitionDelay: `${index * 50}ms` }}
                                                 >
                                                     <div className="flex items-start justify-between gap-4">
                                                         <div className="flex-1">
-                                                            <p className="text-xl font-medium text-foreground/90 leading-tight tracking-tight group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300 mb-2">
+                                                            <p className="text-base font-medium text-foreground leading-tight group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors mb-1">
                                                                 {titleObj.title}
                                                             </p>
                                                             {titleObj.englishTitle && (
-                                                                <p className="text-sm text-muted-foreground/60 mb-2 italic">{titleObj.englishTitle}</p>
+                                                                <p className="text-xs text-muted-foreground mb-1.5 italic">{titleObj.englishTitle}</p>
                                                             )}
-                                                            <p className="text-sm text-muted-foreground/70">{titleObj.explanation}</p>
+                                                            <p className="text-xs text-muted-foreground">{titleObj.explanation}</p>
                                                         </div>
                                                         <Button
                                                             onClick={() => handleCopyTitle(titleObj.id, titleObj.title)}
                                                             variant="ghost"
                                                             size="sm"
-                                                            className="flex-shrink-0 h-8 px-3 rounded-full bg-black/5 dark:bg-white/5 hover:bg-amber-500 hover:text-white transition-all"
+                                                            className="flex-shrink-0 h-8 w-8 p-0 rounded-lg hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400"
                                                         >
                                                             {titleObj.copied ? (
-                                                                <Icon name="RiCheckLine" className="size-4" />
+                                                                <Icon name="RiCheckLine" className="size-3.5" />
                                                             ) : (
-                                                                <Icon name="RiFileCopyLine" className="size-4" />
+                                                                <Icon name="RiFileCopyLine" className="size-3.5" />
                                                             )}
                                                         </Button>
                                                     </div>
@@ -747,41 +713,38 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
 
                                 {/* Platform Titles */}
                                 {platformTitles.length > 0 && (
-                                    <div className="space-y-6">
-                                        <h4 className="text-lg font-semibold text-foreground/80 flex items-center gap-2">
-                                            <Icon name="RiShare2Line" className="size-5 text-rose-500" />
+                                    <div className="space-y-3">
+                                        <h4 className="text-sm font-semibold text-foreground flex items-center gap-1.5">
+                                            <Icon name="RiShare2Line" className="size-4 text-orange-500" />
                                             {section.output.platform_group_title}
                                         </h4>
-                                        <div className="grid grid-cols-1 gap-4">
+                                        <div className="grid grid-cols-1 gap-3">
                                             {platformTitles.map((titleObj, index) => (
                                                 <div
                                                     key={titleObj.id}
-                                                    className={cn(
-                                                        "group relative p-6 rounded-2xl bg-white/60 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-rose-500/30 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-500",
-                                                        titleObj.isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-                                                    )}
-                                                    style={{ transitionDelay: `${index * 100}ms` }}
+                                                    className="group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] transition-all duration-300"
+                                                    style={{ transitionDelay: `${index * 50}ms` }}
                                                 >
                                                     <div className="flex items-start justify-between gap-4">
                                                         <div className="flex-1">
-                                                            <p className="text-xl font-medium text-foreground/90 leading-tight tracking-tight group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors duration-300 mb-2">
+                                                            <p className="text-base font-medium text-foreground leading-tight group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors mb-1">
                                                                 {titleObj.title}
                                                             </p>
                                                             {titleObj.englishTitle && (
-                                                                <p className="text-sm text-muted-foreground/60 mb-2 italic">{titleObj.englishTitle}</p>
+                                                                <p className="text-xs text-muted-foreground mb-1.5 italic">{titleObj.englishTitle}</p>
                                                             )}
-                                                            <p className="text-sm text-muted-foreground/70">{titleObj.explanation}</p>
+                                                            <p className="text-xs text-muted-foreground">{titleObj.explanation}</p>
                                                         </div>
                                                         <Button
                                                             onClick={() => handleCopyTitle(titleObj.id, titleObj.title)}
                                                             variant="ghost"
                                                             size="sm"
-                                                            className="flex-shrink-0 h-8 px-3 rounded-full bg-black/5 dark:bg-white/5 hover:bg-rose-500 hover:text-white transition-all"
+                                                            className="flex-shrink-0 h-8 w-8 p-0 rounded-lg hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400"
                                                         >
                                                             {titleObj.copied ? (
-                                                                <Icon name="RiCheckLine" className="size-4" />
+                                                                <Icon name="RiCheckLine" className="size-3.5" />
                                                             ) : (
-                                                                <Icon name="RiFileCopyLine" className="size-4" />
+                                                                <Icon name="RiFileCopyLine" className="size-3.5" />
                                                             )}
                                                         </Button>
                                                     </div>

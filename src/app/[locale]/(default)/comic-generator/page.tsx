@@ -167,6 +167,7 @@ export default async function ComicGeneratorPage({
                 title={t("ai_tools.section_title_hub")}
                 description={t("ai_tools.section_description_hub")}
                 excludeSlug="comic-generator"
+                accent="orange"
             />
 
             {cta_section && <CTA section={cta_section} accent="orange" />}

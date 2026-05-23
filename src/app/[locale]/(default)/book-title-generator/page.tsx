@@ -88,17 +88,18 @@ export default async function BookTitlePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <HeroBooktitle section={section} />
-      <FeatureIntro section={featureIntro} accent="indigo" />
-      <Benefits section={featureBenefits} accent="indigo" />
-      <UseCases section={featureUsecases} accent="indigo" />
-      <FAQ section={faq} accent="indigo" />
+      <FeatureIntro section={featureIntro} accent="orange" />
+      <Benefits section={featureBenefits} accent="orange" />
+      <UseCases section={featureUsecases} accent="orange" />
+      <FAQ section={faq} accent="orange" />
       <ModuleToolsSection
         module="ai-write"
         title={t("ai_tools.section_title_hub")}
         description={t("ai_tools.section_description_hub")}
         excludeSlug="book-title-generator"
+                accent="orange"
       />
-      <CTA section={cta} accent="indigo" />
+      <CTA section={cta} accent="orange" />
     </>
   );
 }

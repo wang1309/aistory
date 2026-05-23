@@ -108,16 +108,17 @@ export default async function FanficGeneratorPage({
       />
       {/* New tabbed layout with 5 steps and auto-advance */}
       <TabbedFanficGenerate section={section} />
-      {whatSection && <FeatureIntro section={whatSection} accent="teal" />}
-      {featureSection && <Benefits section={featureSection} accent="teal" />}
-      {faqSection && <FAQ section={faqSection} accent="teal" />}
+      {whatSection && <FeatureIntro section={whatSection} accent="orange" />}
+      {featureSection && <Benefits section={featureSection} accent="orange" />}
+      {faqSection && <FAQ section={faqSection} accent="orange" />}
       <ModuleToolsSection
         module="ai-write"
         title={t("ai_tools.section_title_hub")}
         description={t("ai_tools.section_description_hub")}
         excludeSlug="fanfic-generator"
+                accent="orange"
       />
-      <CTA section={cta} accent="teal" />
+      <CTA section={cta} accent="orange" />
     </>
   );
 }

@@ -151,23 +151,23 @@ export default async function DialogueGeneratorPage({
             <DialogueGenerate section={section} />
 
             {section.feature1 && (
-                <FeatureIntro section={section.feature1} accent="cyan" />
+                <FeatureIntro section={section.feature1} accent="orange" />
             )}
 
             {section.feature2 && (
-                <Benefits section={section.feature2} accent="cyan" />
+                <Benefits section={section.feature2} accent="orange" />
             )}
 
             {section.feature3 && (
-                <HowToUse section={section.feature3} accent="cyan" />
+                <HowToUse section={section.feature3} accent="orange" />
             )}
 
             {section.feature && (
-                <UseCases section={section.feature} accent="cyan" />
+                <UseCases section={section.feature} accent="orange" />
             )}
 
             {section.faq && (
-                <FAQ section={section.faq} accent="cyan" />
+                <FAQ section={section.faq} accent="orange" />
             )}
 
             <ModuleToolsSection
@@ -175,10 +175,11 @@ export default async function DialogueGeneratorPage({
                 title={t("ai_tools.section_title_hub")}
                 description={t("ai_tools.section_description_hub")}
                 excludeSlug="dialogue-generator"
+                accent="orange"
             />
 
             {section.cta && (
-                <CTA section={section.cta} accent="cyan" />
+                <CTA section={section.cta} accent="orange" />
             )}
         </>
     );

@@ -129,22 +129,22 @@ export default async function BackstoryGeneratePage({
 
             {/* What is Backstory Generator */}
             {feature_intro && (
-                <FeatureIntro section={feature_intro} accent="violet" />
+                <FeatureIntro section={feature_intro} accent="orange" />
             )}
 
             {/* Why Use */}
             {feature1_section && (
-                <Benefits section={feature1_section} accent="violet" />
+                <Benefits section={feature1_section} accent="orange" />
             )}
 
             {/* Use Cases */}
             {feature_section && (
-                <UseCases section={feature_section} accent="violet" />
+                <UseCases section={feature_section} accent="orange" />
             )}
 
             {/* FAQ */}
             {faq_section && (
-                <FAQ section={faq_section} accent="violet" />
+                <FAQ section={faq_section} accent="orange" />
             )}
 
             {/* Related AI Writing Tools */}
@@ -153,11 +153,12 @@ export default async function BackstoryGeneratePage({
                 title={t("ai_tools.section_title_hub")}
                 description={t("ai_tools.section_description_hub")}
                 excludeSlug="backstory-generator"
+                accent="orange"
             />
 
             {/* CTA */}
             {cta_section && (
-                <CTA section={cta_section} accent="violet" />
+                <CTA section={cta_section} accent="orange" />
             )}
         </>
     );

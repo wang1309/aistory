@@ -49,18 +49,18 @@ type PromptDisplay = {
 
 // Genre options with icons
 const GENRE_OPTIONS = [
-  { id: "fantasy", icon: "🏰" },
-  { id: "scifi", icon: "🚀" },
-  { id: "romance", icon: "💕" },
-  { id: "thriller", icon: "🔪" },
-  { id: "mystery", icon: "🔍" },
-  { id: "horror", icon: "👻" },
-  { id: "adventure", icon: "🗺️" },
-  { id: "historical", icon: "📜" },
-  { id: "urban", icon: "🏙️" },
-  { id: "comedy", icon: "😂" },
-  { id: "drama", icon: "🎭" },
-  { id: "xianxia", icon: "⛩️" },
+  { id: "fantasy" },
+  { id: "scifi" },
+  { id: "romance" },
+  { id: "thriller" },
+  { id: "mystery" },
+  { id: "horror" },
+  { id: "adventure" },
+  { id: "historical" },
+  { id: "urban" },
+  { id: "comedy" },
+  { id: "drama" },
+  { id: "xianxia" },
 ];
 
 // Length options
@@ -68,14 +68,14 @@ const LENGTH_OPTIONS = ["short", "medium", "long"] as const;
 
 // Tone options
 const TONE_OPTIONS = [
-  { id: "light", icon: "☀️" },
-  { id: "healing", icon: "🌸" },
-  { id: "dark", icon: "🌑" },
-  { id: "passionate", icon: "🔥" },
-  { id: "realistic", icon: "📷" },
-  { id: "suspenseful", icon: "😰" },
-  { id: "romantic", icon: "💖" },
-  { id: "epic", icon: "⚔️" },
+  { id: "light" },
+  { id: "healing" },
+  { id: "dark" },
+  { id: "passionate" },
+  { id: "realistic" },
+  { id: "suspenseful" },
+  { id: "romantic" },
+  { id: "epic" },
 ];
 
 // Worldview options
@@ -393,13 +393,12 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
   }, [generatedContent, promptList]);
 
   return (
-    <div id="story_prompt_generator" className="min-h-screen bg-background text-foreground selection:bg-indigo-500/20">
-      {/* Ambient Background */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 inset-x-0 h-[600px] bg-gradient-to-b from-indigo-500/5 via-purple-500/5 to-transparent" />
-        <div className="absolute -top-[30%] right-[5%] w-[900px] h-[900px] bg-indigo-500/10 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob" />
-        <div className="absolute top-[10%] left-[5%] w-[700px] h-[700px] bg-purple-500/10 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000" />
-        <div className="absolute bottom-[10%] right-[20%] w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-4000" />
+    <div id="story_prompt_generator" className="min-h-screen bg-background text-foreground selection:bg-orange-500/20">
+      {/* Subtle warm top glow + dot texture */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
 
       <TurnstileInvisible
@@ -427,8 +426,8 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-indigo-500/10 mb-4">
-              <Lightbulb className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />
+            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-orange-500/10 mb-4">
+              <Lightbulb className="w-8 h-8 text-orange-600 dark:text-orange-400" />
             </div>
             <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-foreground">
               {t("header.title")}
@@ -452,7 +451,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
               {/* Genre Selection */}
               <div className="space-y-4">
                 <Label className="text-sm font-medium text-foreground flex items-center gap-2">
-                  <span className="inline-flex h-6 px-2 items-center justify-center rounded-full bg-indigo-50 text-[11px] font-semibold text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-200 border border-indigo-100/80 dark:border-indigo-500/40">
+                  <span className="inline-flex h-6 px-2 items-center justify-center rounded-full bg-orange-50 text-[11px] font-semibold text-orange-700 dark:bg-orange-500/15 dark:text-orange-200 border border-orange-100/80 dark:border-orange-500/40">
                     GENRE
                   </span>
                   <span>{t("ui.genre_label")}</span>
@@ -471,8 +470,8 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                       className={cn(
                         "px-3 py-1.5 rounded-xl text-xs md:text-sm font-medium border transition-colors flex items-center",
                         selectedGenres.includes(genre.id)
-                          ? "bg-gradient-to-r from-indigo-100 to-slate-50 dark:from-slate-900 dark:to-slate-950 border-indigo-400/90 dark:border-indigo-500 text-indigo-900 dark:text-indigo-50 shadow-sm"
-                          : "bg-transparent border-border/60 text-muted-foreground hover:border-indigo-400/60 hover:text-foreground hover:bg-indigo-50/40 dark:hover:bg-slate-900/60"
+                          ? "bg-gradient-to-r from-orange-100 to-slate-50 dark:from-slate-900 dark:to-slate-950 border-orange-400/90 dark:border-orange-500 text-orange-900 dark:text-orange-50 shadow-sm"
+                          : "bg-transparent border-border/60 text-muted-foreground hover:border-orange-400/60 hover:text-foreground hover:bg-orange-50/40 dark:hover:bg-slate-900/60"
                       )}
                     >
                       {t(`genres.${genre.id}`)}
@@ -527,8 +526,8 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                         className={cn(
                           "px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-colors",
                           selectedTone === tone.id
-                            ? "bg-indigo-500/10 border-indigo-500/30 text-indigo-600 dark:text-indigo-400"
-                            : "bg-transparent border-border/50 text-muted-foreground hover:border-indigo-500/20 hover:text-foreground"
+                            ? "bg-orange-500/10 border-orange-500/30 text-orange-600 dark:text-orange-400"
+                            : "bg-transparent border-border/50 text-muted-foreground hover:border-orange-500/20 hover:text-foreground"
                         )}
                       >
                         {t(`tones.${tone.id}`)}
@@ -568,19 +567,19 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                       <SelectContent>
                         <SelectItem value="fast">
                           <span className="flex items-center gap-2">
-                            <Zap className="w-3 h-3 text-emerald-500" />
+                            <Zap className="w-3 h-3 text-orange-500" />
                             {t("ai_models.fast")}
                           </span>
                         </SelectItem>
                         <SelectItem value="standard">
                           <span className="flex items-center gap-2">
-                            <Sparkles className="w-3 h-3 text-blue-500" />
+                            <Sparkles className="w-3 h-3 text-orange-500" />
                             {t("ai_models.standard")}
                           </span>
                         </SelectItem>
                         <SelectItem value="creative">
                           <span className="flex items-center gap-2">
-                            <Wand2 className="w-3 h-3 text-purple-500" />
+                            <Wand2 className="w-3 h-3 text-orange-500" />
                             {t("ai_models.creative")}
                           </span>
                         </SelectItem>
@@ -594,7 +593,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                   <CollapsibleTrigger asChild>
                     <Button
                       variant="ghost"
-                      className="w-full flex justify-between items-center px-0 pt-1 h-auto hover:bg-transparent text-xs font-medium text-muted-foreground hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                      className="w-full flex justify-between items-center px-0 pt-1 h-auto hover:bg-transparent text-xs font-medium text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                     >
                       <span className="flex items-center gap-1.5">
                         <Settings2 className="w-3.5 h-3.5" />
@@ -696,7 +695,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                 <Button
                   onClick={handleGenerateClick}
                   disabled={isGenerating}
-                  className="w-full h-11 text-sm font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-sm"
+                  className="w-full h-11 text-sm bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
                 >
                   {isGenerating ? (
                     <>
@@ -723,18 +722,18 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
             ref={resultRef}
             className="relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 to-purple-500/5 rounded-[2rem] blur-2xl -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 to-orange-500/5 rounded-[2rem] blur-2xl -z-10" />
 
             <div className={cn(
               "rounded-[2rem] border border-border/60 backdrop-blur-xl overflow-hidden transition-all duration-500",
               generatedContent
-                ? "bg-white/80 dark:bg-slate-950/80 shadow-2xl shadow-indigo-500/10"
+                ? "bg-white/80 dark:bg-slate-950/80 shadow-2xl shadow-orange-500/10"
                 : "bg-white/40 dark:bg-slate-900/40 shadow-xl border-dashed"
             )}>
               {/* Toolbar */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-border/50 bg-white/20 dark:bg-white/5">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+                  <div className="p-2 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400">
                     <Lightbulb className="w-5 h-5" />
                   </div>
                   <span className="text-sm font-semibold text-foreground">
@@ -793,7 +792,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                         >
                           <div className="flex items-start justify-between gap-3 mb-3">
                             <div className="flex items-center gap-3">
-                              <span className="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-500/10 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                              <span className="flex items-center justify-center w-8 h-8 rounded-xl bg-orange-500/10 text-sm font-semibold text-orange-600 dark:text-orange-400">
                                 {index + 1}
                               </span>
                               <span className="text-sm font-semibold text-foreground">
@@ -808,7 +807,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                                 className={cn(
                                   "h-8 text-xs gap-1.5",
                                   copiedIndex === index
-                                    ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
+                                    ? "bg-gradient-to-r from-orange-600 to-orange-600 text-white"
                                     : "text-muted-foreground hover:text-foreground"
                                 )}
                               >
@@ -817,7 +816,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                               </Button>
                               <Button
                                 size="sm"
-                                className="h-8 text-xs gap-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white"
+                                className="h-8 text-xs gap-1.5 bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white"
                                 asChild
                               >
                                 <Link
@@ -858,9 +857,9 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                       {isGenerating ? (
                         <div className="space-y-6">
                           <div className="relative mx-auto w-16 h-16">
-                            <div className="absolute inset-0 rounded-full border-4 border-indigo-500/20" />
-                            <div className="absolute inset-0 rounded-full border-4 border-t-indigo-500 animate-spin" />
-                            <Sparkles className="absolute inset-0 m-auto w-6 h-6 text-indigo-500 animate-pulse" />
+                            <div className="absolute inset-0 rounded-full border-4 border-orange-500/20" />
+                            <div className="absolute inset-0 rounded-full border-4 border-t-orange-500 animate-spin" />
+                            <Sparkles className="absolute inset-0 m-auto w-6 h-6 text-orange-500 animate-pulse" />
                           </div>
                           <p className="text-sm font-medium text-muted-foreground animate-pulse">
                             {t("ui.generating")}
@@ -868,8 +867,8 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                         </div>
                       ) : (
                         <div className="space-y-4 max-w-sm mx-auto opacity-60">
-                          <div className="w-20 h-20 mx-auto bg-indigo-500/5 rounded-3xl flex items-center justify-center rotate-3">
-                            <Lightbulb className="w-10 h-10 text-indigo-400/50" />
+                          <div className="w-20 h-20 mx-auto bg-orange-500/5 rounded-3xl flex items-center justify-center rotate-3">
+                            <Lightbulb className="w-10 h-10 text-orange-400/50" />
                           </div>
                           <p className="text-muted-foreground text-sm leading-relaxed">
                             {t("ui.output_empty")}

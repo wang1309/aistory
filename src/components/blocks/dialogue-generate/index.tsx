@@ -496,13 +496,12 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
   }, [generatedDialogue, isGenerating]);
 
   return (
-    <section id="dialogue-generate" className="relative py-16 lg:py-24 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-background" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-[0.05]" />
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[128px] opacity-40 animate-blob" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/15 rounded-full blur-[100px] opacity-30" />
+    <section id="dialogue-generate" className="py-16 lg:py-24 overflow-hidden">
+      {/* Subtle warm top glow + dot texture */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
 
       <div className="container relative px-4 md:px-6 mx-auto">
@@ -802,7 +801,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                 <Button
                   onClick={handleGenerateClick}
                   disabled={isGenerating}
-                  className="w-full h-12 text-lg"
+                  className="w-full h-12 text-lg font-semibold bg-orange-600 hover:bg-orange-700 disabled:opacity-60 text-white shadow-md shadow-orange-600/20 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
                   size="lg"
                 >
                   {isGenerating ? (

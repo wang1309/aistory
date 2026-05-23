@@ -623,14 +623,12 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   // ========== RENDER ==========
 
   return (
-    <div id="fanfic_generator" className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-pink-500/30">
-    {/* Premium Background Layer - Teal/Pink Variant */}
-    <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
-    
-    <div className="fixed inset-0 -z-30 pointer-events-none overflow-hidden">
-       <div className="absolute top-[-10%] right-[20%] w-[600px] h-[600px] bg-teal-500/20 rounded-full blur-[120px] animate-blob mix-blend-multiply dark:mix-blend-screen" />
-       <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-pink-500/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-screen" />
-       <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-background rounded-full blur-[150px] opacity-80" />
+    <div id="fanfic_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-orange-500/30">
+    {/* Subtle warm top glow + dot texture */}
+    <div className="pointer-events-none absolute inset-0">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+      <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+      <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
     </div>
 
     <div className="w-full max-w-6xl mx-auto px-6 py-16 sm:py-20 relative">
@@ -647,15 +645,15 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       {/* Header */}
       <div className="text-center mb-20 animate-fade-in-up animation-delay-1000">
         <div className="inline-flex items-center justify-center mb-8">
-          <div className="p-px bg-gradient-to-br from-teal-500/20 to-transparent rounded-2xl">
+          <div className="p-px bg-gradient-to-br from-orange-500/20 to-transparent rounded-2xl">
             <div className="glass-premium rounded-2xl p-4 bg-background/50">
-               <Sparkles className="size-8 text-teal-600 dark:text-teal-400" />
+               <Sparkles className="size-8 text-orange-600 dark:text-orange-400" />
             </div>
           </div>
         </div>
         
         <h1 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-600 via-pink-600 to-teal-600 dark:from-teal-200 dark:via-pink-200 dark:to-teal-200 animate-shimmer">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-600 to-orange-600 dark:from-orange-200 dark:via-orange-200 dark:to-orange-200 animate-shimmer">
             {section.tabbed?.hero?.title || 'Fanfiction Creation'}
           </span>
         </h1>
@@ -665,7 +663,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       </div>
 
       {/* Main Flow Container */}
-      <div className="glass-premium rounded-[3rem] p-1 overflow-hidden shadow-2xl shadow-teal-500/10 dark:shadow-black/20 ring-1 ring-black/5 dark:ring-white/10 animate-fade-in-up animation-delay-2000">
+      <div className="glass-premium rounded-[3rem] p-1 overflow-hidden shadow-2xl shadow-orange-500/10 dark:shadow-black/20 ring-1 ring-black/5 dark:ring-white/10 animate-fade-in-up animation-delay-2000">
         <div className="bg-background/40 backdrop-blur-xl rounded-[calc(3rem-4px)] min-h-[600px] flex flex-col">
           
           {/* Custom Starlight Stepper - Responsive & Full Width */}
@@ -674,7 +672,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                 {/* Progress Line */}
                 <div className="absolute left-0 top-1/2 w-full h-px bg-black/10 dark:bg-white/10 -z-10" />
                 <div 
-                  className="absolute left-0 top-1/2 h-px bg-gradient-to-r from-teal-500 to-pink-500 -z-10 transition-all duration-500" 
+                  className="absolute left-0 top-1/2 h-px bg-gradient-to-r from-orange-500 to-orange-500 -z-10 transition-all duration-500" 
                   style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
                 />
 
@@ -697,9 +695,9 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                       <div className={cn(
                         "w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold transition-all duration-500 border-2",
                         isActive 
-                          ? "bg-background border-pink-500 text-pink-500 shadow-[0_0_20px_rgba(236,72,153,0.5)] scale-110" 
+                          ? "bg-background border-orange-500 text-orange-500 shadow-[0_0_20px_rgba(236,72,153,0.5)] scale-110" 
                           : isCompleted 
-                            ? "bg-pink-500 border-pink-500 text-white" 
+                            ? "bg-orange-500 border-orange-500 text-white" 
                             : "bg-white dark:bg-slate-900 border-black/10 dark:border-white/10 text-muted-foreground"
                       )}>
                         <span className="leading-none">{stepNum}</span>
@@ -764,7 +762,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               className={cn(
                                 "p-4 rounded-2xl border transition-all text-left",
                                 selectedPresetWork === work.id
-                                  ? "border-pink-500 bg-pink-500/10"
+                                  ? "border-orange-500 bg-orange-500/10"
                                   : "border-white/10 hover:border-white/30"
                               )}
                               onClick={() => handlePresetWorkChange(work.id)}
@@ -823,7 +821,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                           className={cn(
                             "w-full px-6 py-4 rounded-2xl border transition-all text-left",
                             pairingType === option.value
-                              ? "bg-pink-500 text-white border-pink-500 shadow-lg"
+                              ? "bg-orange-500 text-white border-orange-500 shadow-lg"
                               : "bg-white/5 border-white/10 text-muted-foreground hover:text-foreground"
                           )}
                         >
@@ -845,7 +843,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                             className={cn(
                               "px-5 py-2 rounded-full text-sm font-semibold border transition-all",
                               selectedCharacters.includes(char.id)
-                                ? "bg-pink-500 text-white border-pink-500 shadow-lg"
+                                ? "bg-orange-500 text-white border-orange-500 shadow-lg"
                                 : "bg-white/5 border-white/10 hover:bg-white/10"
                             )}
                           >
@@ -872,7 +870,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               handleAddCustomCharacter();
                             }
                           }}
-                          className="flex-1 h-12 px-4 rounded-2xl bg-white/5 border border-white/10 focus:border-pink-500/50 focus:ring-0"
+                          className="flex-1 h-12 px-4 rounded-2xl bg-white/5 border border-white/10 focus:border-orange-500/50 focus:ring-0"
                         />
                         <Button
                           onClick={handleAddCustomCharacter}
@@ -884,7 +882,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                       {selectedCharacters.length > 0 && (
                         <div className="flex flex-wrap gap-3">
                           {selectedCharacters.map((charId) => (
-                            <div key={charId} className="flex items-center gap-2 px-4 py-2 bg-pink-500/10 text-pink-400 rounded-full border border-pink-500/20">
+                            <div key={charId} className="flex items-center gap-2 px-4 py-2 bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/20">
                               <span className="text-sm font-semibold">
                                 {(() => {
                                   const work = getWorkById(selectedPresetWork);
@@ -894,7 +892,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               </span>
                               <button
                                 onClick={() => handleRemoveCharacter(charId)}
-                                className="p-1 rounded-full hover:bg-pink-500/20"
+                                className="p-1 rounded-full hover:bg-orange-500/20"
                               >
                                 <Icon name="close" className="w-3 h-3" />
                               </button>
@@ -934,7 +932,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               className={cn(
                                 "py-3 px-2 rounded-xl text-sm font-medium transition-all duration-300 border",
                                 plotType === type.value 
-                                  ? "bg-teal-500 text-white border-teal-500 shadow-lg"
+                                  ? "bg-orange-500 text-white border-orange-500 shadow-lg"
                                   : "bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20"
                               )}
                             >
@@ -959,12 +957,12 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               className={cn(
                                 "relative py-3 px-3 rounded-2xl flex flex-col items-center gap-2 border transition-all",
                                 language === code
-                                  ? "bg-white/10 border-white/30 text-foreground shadow-lg shadow-teal-500/20"
+                                  ? "bg-white/10 border-white/30 text-foreground shadow-lg shadow-orange-500/20"
                                   : "bg-white/5 border-white/10 text-muted-foreground hover:text-foreground"
                               )}
                             >
                               {language === code && (
-                                <span className="absolute top-2 right-2 w-5 h-5 rounded-full bg-teal-500 text-white flex items-center justify-center text-xs font-bold">
+                                <span className="absolute top-2 right-2 w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center text-xs font-bold">
                                   ✓
                                 </span>
                               )}
@@ -984,18 +982,18 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                       {/* Prompt */}
                       <div className="space-y-4 relative group">
-                        <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/10 to-pink-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
+                        <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/10 to-orange-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
                         <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.tabbed?.form?.story_prompt_label}</Label>
                         <Textarea
                           ref={promptRef}
                           placeholder={section.tabbed?.form?.story_prompt_placeholder}
                           value={prompt}
                           onChange={(e) => setPrompt(e.target.value)}
-                          className="relative min-h-[200px] w-full bg-transparent border-0 border-b border-white/10 focus:border-teal-500/50 focus:ring-0 rounded-none px-0 text-xl font-light leading-relaxed placeholder:text-muted-foreground/20 resize-none transition-all duration-300"
+                          className="relative min-h-[200px] w-full bg-transparent border-0 border-b border-white/10 focus:border-orange-500/50 focus:ring-0 rounded-none px-0 text-xl font-light leading-relaxed placeholder:text-muted-foreground/20 resize-none transition-all duration-300"
                           style={{ boxShadow: 'none' }}
                         />
                         <div className="flex justify-end">
-                           <span className={cn("text-[10px] font-bold uppercase tracking-widest", prompt.trim().length < 10 ? "text-orange-400" : "text-teal-400")}>
+                           <span className={cn("text-[10px] font-bold uppercase tracking-widest", prompt.trim().length < 10 ? "text-orange-400" : "text-orange-400")}>
                               {prompt.length} / 2000
                            </span>
                         </div>
@@ -1026,14 +1024,14 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                                className={cn(
                                  "w-full text-left px-5 py-4 rounded-2xl border transition-all bg-white/5 hover:bg-white/10",
                                  selectedModel === model.id
-                                   ? "border-pink-500/70 shadow-lg shadow-pink-500/20"
+                                   ? "border-orange-500/70 shadow-lg shadow-orange-500/20"
                                    : "border-white/10"
                                )}
                              >
                                <div className="flex items-center justify-between mb-1">
                                  <span className="font-semibold text-sm">{model.name}</span>
                                  {model.badge && (
-                                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-300 border border-pink-500/40">
+                                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-300 border border-orange-500/40">
                                      {model.badge}
                                    </span>
                                  )}
@@ -1059,7 +1057,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                                     className={cn(
                                       "w-full text-left px-6 py-4 rounded-xl border transition-all",
                                       advancedOptions.ooc === opt
-                                        ? "bg-pink-500/10 border-pink-500/50 text-pink-400"
+                                        ? "bg-orange-500/10 border-orange-500/50 text-orange-400"
                                         : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10"
                                     )}
                                   >
@@ -1079,7 +1077,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                                     className={cn(
                                       "w-full text-left px-6 py-4 rounded-xl border transition-all",
                                       advancedOptions.length === opt
-                                        ? "bg-teal-500/10 border-teal-500/50 text-teal-400"
+                                        ? "bg-orange-500/10 border-orange-500/50 text-orange-400"
                                         : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10"
                                     )}
                                   >
@@ -1120,7 +1118,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                         <Button
                           onClick={handleGenerate}
-                          className="h-16 px-12 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 text-white text-lg font-bold shadow-[0_0_30px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.6)] hover:scale-105 transition-all duration-500"
+                          className="h-16 px-12 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-500 text-white text-lg font-bold shadow-[0_0_30px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.6)] hover:scale-105 transition-all duration-500"
                         >
                           <Sparkles className="mr-2 size-5" />
                           <span>{section.tabbed?.form?.generation?.start_button}</span>
@@ -1138,7 +1136,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                                   "px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border",
                                   isGenerating
                                     ? "bg-yellow-500/10 text-yellow-300 border-yellow-500/40 animate-pulse"
-                                    : "bg-teal-500/10 text-teal-300 border-teal-500/40"
+                                    : "bg-orange-500/10 text-orange-300 border-orange-500/40"
                                 )}
                               >
                                 {isGenerating
@@ -1151,7 +1149,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                             </div>
                             {isGenerating && (
                               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                <span className="w-2 h-2 rounded-full bg-pink-400 animate-ping" />
+                                <span className="w-2 h-2 rounded-full bg-orange-400 animate-ping" />
                                 {section.tabbed?.form?.generation?.status_writing || 'Streaming response...'}
                               </div>
                             )}
@@ -1177,7 +1175,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                             {isGenerating && (
                               <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
-                                <div className="w-4 h-4 border-2 border-pink-400 border-t-transparent rounded-full animate-spin" />
+                                <div className="w-4 h-4 border-2 border-orange-400 border-t-transparent rounded-full animate-spin" />
                                 {section.tabbed?.form?.generation?.status_writing || 'Streaming response...'}
                               </div>
                             )}

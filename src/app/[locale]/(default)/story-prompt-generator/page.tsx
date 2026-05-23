@@ -133,19 +133,20 @@ export default async function StoryPromptGeneratorPage({
             {/* Main Component */}
             <StoryPromptGenerate section={section} />
 
-            {feature_intro && <FeatureIntro section={feature_intro} accent="amber" />}
-            {feature_benefits && <Benefits section={feature_benefits} accent="amber" />}
-            {feature_section && <UseCases section={feature_section} accent="amber" />}
-            {faq_section && <FAQ section={faq_section} accent="amber" />}
+            {feature_intro && <FeatureIntro section={feature_intro} accent="orange" />}
+            {feature_benefits && <Benefits section={feature_benefits} accent="orange" />}
+            {feature_section && <UseCases section={feature_section} accent="orange" />}
+            {faq_section && <FAQ section={faq_section} accent="orange" />}
 
             <ModuleToolsSection
                 module="ai-write"
                 title={t("ai_tools.section_title_hub")}
                 description={t("ai_tools.section_description_hub")}
                 excludeSlug="story-prompt-generator"
+                accent="orange"
             />
 
-            {cta_section && <CTA section={cta_section} accent="amber" />}
+            {cta_section && <CTA section={cta_section} accent="orange" />}
         </>
     );
 }

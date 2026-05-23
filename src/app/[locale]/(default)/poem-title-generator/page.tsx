@@ -88,17 +88,18 @@ export default async function PoemTitleGeneratorPage({
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <HeroPoemTitle section={section} />
-            <FeatureIntro section={featureIntro} accent="rose" />
-            <Benefits section={featureBenefits} accent="rose" />
-            <UseCases section={featureUsecases} accent="rose" />
-            <FAQ section={faq} accent="rose" />
+            <FeatureIntro section={featureIntro} accent="orange" />
+            <Benefits section={featureBenefits} accent="orange" />
+            <UseCases section={featureUsecases} accent="orange" />
+            <FAQ section={faq} accent="orange" />
             <ModuleToolsSection
                 module="ai-write"
                 title={t("ai_tools.section_title_hub")}
                 description={t("ai_tools.section_description_hub")}
                 excludeSlug="poem-title-generator"
+                accent="orange"
             />
-            <CTA section={cta} accent="rose" />
+            <CTA section={cta} accent="orange" />
         </>
     );
 }

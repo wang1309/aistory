@@ -76,7 +76,6 @@ export default async function AiWritePage({
         module="ai-write"
         title={t("ai_tools.section_title_hub")}
         description={t("ai_tools.section_description_hub")}
-        headingLevel="h1"
       />
     </>
   );

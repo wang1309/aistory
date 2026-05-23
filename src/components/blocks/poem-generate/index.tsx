@@ -1,5 +1,7 @@
 "use client";
 
+import { Zap, Sparkles, Palette, PenTool } from "lucide-react";
+
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -81,7 +83,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       name: section.ai_models.models.fast.name,
       badge: section.ai_models.models.fast.badge,
       badgeColor: 'bg-green-500/10 text-green-600 border-green-500/30',
-      icon: '⚡',
+      icon: <Zap className="h-4 w-4" />,
       speed: section.ai_models.models.fast.speed,
       description: section.ai_models.models.fast.description
     },
@@ -90,7 +92,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       name: section.ai_models.models.standard.name,
       badge: section.ai_models.models.standard.badge,
       badgeColor: 'bg-blue-500/10 text-blue-600 border-blue-500/30',
-      icon: '✒️',
+      icon: <PenTool className="h-4 w-4" />,
       speed: section.ai_models.models.standard.speed,
       description: section.ai_models.models.standard.description
     },
@@ -99,7 +101,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       name: section.ai_models.models.creative.name,
       badge: section.ai_models.models.creative.badge,
       badgeColor: 'bg-purple-500/10 text-purple-600 border-purple-500/30',
-      icon: '🎨',
+      icon: <Palette className="h-4 w-4" />,
       speed: section.ai_models.models.creative.speed,
       description: section.ai_models.models.creative.description
     }
@@ -748,78 +750,61 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   }, [locale, section]);
 
   return (
-    <div id="poem_generator" className="min-h-screen relative overflow-hidden bg-background selection:bg-pink-500/30">
-      {/* Premium Background Layer */}
-      <div className="fixed inset-0 -z-20 bg-noise opacity-[0.15] pointer-events-none mix-blend-overlay" />
-
-      <div className="fixed inset-0 -z-30 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-pink-900/20 rounded-full blur-[120px] animate-blob mix-blend-screen" />
-        <div className="absolute bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-screen" />
-        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-background rounded-full blur-[150px] opacity-80" />
-      </div>
-
-      <div className="w-full max-w-5xl mx-auto px-6 pt-16 sm:pt-20 pb-24 sm:pb-32 relative">
+    <div id="poem_generator" className="bg-background">
+      <div className="relative mx-auto w-full max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <div className="mb-10 flex justify-start animate-fade-in-up">
-          <div className="glass-premium px-5 py-2 rounded-full">
-            <PoemBreadcrumb
-              homeText={t('ui.breadcrumb_home')}
-              currentText={t('ui.breadcrumb_current')}
+        <div className="mb-8">
+          <PoemBreadcrumb
+            homeText={t('ui.breadcrumb_home')}
+            currentText={t('ui.breadcrumb_current')}
+          />
+        </div>
+
+        {/* Header */}
+        <div className="mb-10 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="p-2 rounded-xl bg-orange-500/10">
+              <Icon name="feather" className="size-5 text-orange-600 dark:text-orange-400" />
+            </div>
+            <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
+              {section.header.title}
+            </h1>
+          </div>
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-6">
+            {section.header.subtitle}
+          </p>
+          <div className="mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div className="flex items-center gap-3">
+            <ModeToggle
+              advancedMode={advancedMode}
+              onToggle={setAdvancedMode}
+              labels={section.mode}
             />
           </div>
         </div>
 
-        {/* Header */}
-        <div className="text-center mb-20 animate-fade-in-up animation-delay-1000">
-          <div className="inline-flex items-center justify-center mb-8">
-            <div className="p-px bg-gradient-to-br from-white/20 to-transparent rounded-2xl">
-              <div className="glass-premium rounded-2xl p-4">
-                <Icon name="feather" className="size-8 text-foreground/80" />
-              </div>
-            </div>
-          </div>
+        {/* Main Content */}
+        <div className="space-y-6">
 
-          <div className="flex flex-col items-center justify-center gap-6 mb-8">
-            <h1 className="text-6xl sm:text-8xl font-black tracking-tighter leading-[0.9]">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 via-purple-600 to-pink-600 dark:from-pink-200 dark:via-purple-200 dark:to-pink-400 animate-shimmer">
-                {section.header.title}
-              </span>
-            </h1>
-            <div className="glass-premium p-1 rounded-full">
-              <ModeToggle
-                advancedMode={advancedMode}
-                onToggle={setAdvancedMode}
-                labels={section.mode}
-              />
-            </div>
-          </div>
-          <p className="text-xl sm:text-2xl text-muted-foreground/60 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
-            {section.header.subtitle}
-          </p>
-        </div>
-
-        {/* Main Content - Crystal Monolith */}
-        <div className="space-y-16 animate-fade-in-up animation-delay-2000">
-
-          <div className="glass-premium rounded-[3rem] p-1 overflow-hidden shadow-2xl shadow-black/20">
-            <div className="bg-background/40 rounded-[calc(3rem-4px)] p-8 sm:p-16">
+          <div className="rounded-2xl border border-border bg-card shadow-sm">
+            <div className="p-6 sm:p-10">
 
               {/* Poem Type Tabs - Segmented Control */}
-              <div className="space-y-8 mb-16">
-                <Tabs value={selectedPoemType} onValueChange={(v) => setSelectedPoemType(v as any)} className="w-full flex flex-col items-center">
-                  <TabsList className="grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 bg-white/5 border border-white/5 rounded-2xl w-full max-w-2xl">
+              <div className="space-y-4 mb-8">
+                <Tabs value={selectedPoemType} onValueChange={(v) => setSelectedPoemType(v as any)} className="w-full">
+                  <TabsList className="grid grid-cols-2 sm:grid-cols-4 gap-1 p-1 bg-muted rounded-xl w-full">
                     {['modern', 'classical', 'format', 'lyric'].map((type) => (
                       <TabsTrigger
                         key={type}
                         value={type}
-                        className="rounded-xl py-3 text-sm font-medium data-[state=active]:bg-foreground data-[state=active]:text-background transition-all duration-300"
+                        className="rounded-lg py-2 text-sm font-medium data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-all"
                       >
                         {section.poem_types.tabs[type as keyof typeof section.poem_types.tabs].name}
                       </TabsTrigger>
                     ))}
                   </TabsList>
                 </Tabs>
-                <p className="text-sm text-muted-foreground/60 text-center font-light tracking-wide">
+                <p className="text-sm text-muted-foreground">
                   {selectedPoemType === 'modern' && section.poem_types.tabs.modern.description}
                   {selectedPoemType === 'classical' && section.poem_types.tabs.classical.description}
                   {selectedPoemType === 'format' && section.poem_types.tabs.format.description}
@@ -829,18 +814,18 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
               {/* Format Options - Only shown when Format tab is selected */}
               {selectedPoemType === 'format' && (
-                <div className="space-y-4 mb-12 animate-slide-down flex flex-col items-center">
-                  <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.options.rhyme_scheme.label}</Label>
-                  <div className="flex flex-wrap justify-center gap-2">
+                <div className="space-y-3 mb-8">
+                  <Label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">{section.options.rhyme_scheme.label}</Label>
+                  <div className="flex flex-wrap gap-2">
                     {Object.entries(section.options.rhyme_scheme.format_options).map(([key, label]) => (
                       <button
                         key={key}
                         onClick={() => setSelectedRhymeScheme(key)}
                         className={cn(
-                          "px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border",
+                          "px-4 py-1.5 rounded-lg text-sm font-medium transition-colors border",
                           selectedRhymeScheme === key
-                            ? "bg-pink-500 text-white border-pink-500 shadow-lg shadow-pink-500/20"
-                            : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
+                            ? "border-orange-500/40 bg-orange-500/[0.08] text-orange-600 dark:text-orange-400"
+                            : "border-border bg-background hover:bg-muted/50 text-muted-foreground"
                         )}
                       >
                         {label}
@@ -851,50 +836,48 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
               )}
 
               {/* Prompt Input Section */}
-              <div className="space-y-6 mb-12 max-w-3xl mx-auto">
+              <div className="space-y-3 mb-8">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="poem-prompt" className="text-xl font-medium tracking-tight flex items-center gap-3">
-                    <span className="flex items-center justify-center size-8 rounded-full border border-white/10 text-xs font-serif italic text-muted-foreground">01</span>
+                  <Label htmlFor="poem-prompt" className="text-sm font-semibold flex items-center gap-2">
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">1</span>
                     {section.prompt.label}
                   </Label>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={handleRandomPrompt}
-                    className="gap-2 text-pink-400 hover:text-pink-300 hover:bg-pink-500/10 rounded-full h-9 px-4"
+                    className="gap-1.5 text-orange-600 hover:text-orange-700 hover:bg-orange-500/10 dark:text-orange-400 dark:hover:text-orange-300 h-8 px-3 text-xs"
                   >
-                    <Icon name="Sparkles" className="w-4 h-4" />
+                    <Icon name="Sparkles" className="w-3.5 h-3.5" />
                     {section.prompt.random_button}
                   </Button>
                 </div>
 
-                <div className="relative group">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
+                <div className="relative">
                   <Textarea
                     id="poem-prompt"
                     ref={promptRef}
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder={section.prompt.placeholder}
-                    className="relative min-h-[200px] w-full bg-transparent border-0 border-b border-white/10 focus:border-pink-500/50 focus:ring-0 rounded-none px-0 text-2xl sm:text-3xl font-light leading-snug placeholder:text-muted-foreground/20 resize-none transition-all duration-300 text-center"
-                    style={{ boxShadow: 'none' }}
+                    className="min-h-[140px] resize-none text-sm focus-visible:ring-orange-500/30"
                     maxLength={maxCharacters}
                   />
-                  <div className="absolute bottom-0 right-0 py-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">
+                  <div className="absolute bottom-2 right-3 text-xs text-muted-foreground/50">
                     {characterCount} / {maxCharacters}
                   </div>
                 </div>
               </div>
 
               {/* Quick Add Chips */}
-              <div className="space-y-4 mb-16 max-w-3xl mx-auto text-center">
-                <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.prompt.quick_adds_label}</Label>
-                <div className="flex flex-wrap justify-center gap-2">
+              <div className="space-y-2 mb-8">
+                <Label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">{section.prompt.quick_adds_label}</Label>
+                <div className="flex flex-wrap gap-2">
                   {[...QUICK_ADD_EMOTIONS, ...QUICK_ADD_IMAGERY, ...QUICK_ADD_SCENES].map((item, idx) => (
                     <button
                       key={idx}
                       onClick={() => handleQuickAdd(item)}
-                      className="px-4 py-1.5 rounded-full text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 text-muted-foreground hover:text-foreground transition-all duration-300"
+                      className="px-3 py-1 rounded-md text-xs font-medium bg-muted hover:bg-muted/80 border border-border text-muted-foreground hover:text-foreground transition-colors"
                     >
                       + {item}
                     </button>
@@ -902,35 +885,31 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                 </div>
               </div>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-16" />
+              <div className="h-px bg-border my-8" />
 
               {/* AI Model & Language */}
-              <div className="space-y-10 mb-12">
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-6 max-w-4xl mx-auto">
-                  <div className="flex items-center gap-4">
-                    <span className="flex items-center justify-center size-8 rounded-full border border-white/10 text-xs font-serif italic text-muted-foreground">02</span>
-                    <Label className="text-xl font-medium tracking-tight">
-                      {section.ai_models.title}
-                    </Label>
-                  </div>
+              <div className="space-y-4 mb-8">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <Label className="text-sm font-semibold flex items-center gap-2">
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">2</span>
+                    {section.ai_models.title}
+                  </Label>
 
-                  <div className="flex items-center gap-3 glass-premium rounded-full p-1 pr-4">
-                    <div className="bg-white/10 rounded-full p-2">
-                      <Icon name="globe" className="size-4 text-muted-foreground" />
-                    </div>
-                    <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60 mr-2">
+                  <div className="flex items-center gap-2 border border-border rounded-lg px-3 py-1.5 bg-background">
+                    <Icon name="globe" className="size-4 text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground">
                       {section.prompt.language_label}
                     </span>
                     <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-                      <SelectTrigger id="output-language" className="h-8 w-auto bg-transparent border-0 focus:ring-0 font-medium gap-2">
+                      <SelectTrigger id="output-language" className="h-7 w-auto border-0 bg-transparent focus:ring-0 text-sm font-medium p-0 gap-1">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="glass-premium rounded-xl p-2 min-w-[200px]">
+                      <SelectContent>
                         {Object.entries(LANGUAGE_OPTIONS).map(([code, lang]) => (
-                          <SelectItem key={code} value={code} className="rounded-lg cursor-pointer focus:bg-white/10">
-                            <span className="flex items-center gap-3">
-                              <span className="text-lg opacity-80">{lang.flag}</span>
-                              <span className="font-medium tracking-wide">{lang.native}</span>
+                          <SelectItem key={code} value={code}>
+                            <span className="flex items-center gap-2">
+                              <span>{lang.flag}</span>
+                              <span>{lang.native}</span>
                             </span>
                           </SelectItem>
                         ))}
@@ -939,7 +918,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {AI_MODELS.map((model) => {
                     const isSelected = selectedModel === model.id;
                     return (
@@ -947,35 +926,32 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                         key={model.id}
                         onClick={() => setSelectedModel(model.id)}
                         className={cn(
-                          "relative group p-8 rounded-[2rem] text-left transition-all duration-500",
+                          "group p-4 rounded-xl text-left transition-colors border",
                           isSelected
-                            ? "bg-black/40 ring-1 ring-white/20 shadow-2xl shadow-black/50"
-                            : "bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10"
+                            ? "border-orange-500/40 bg-orange-500/[0.08]"
+                            : "border-border bg-background hover:bg-muted/50"
                         )}
                       >
-                        <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
-                          {isSelected && <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-pink-500/20 blur-[60px]" />}
+                        <div className="flex items-start justify-between mb-3">
+                          <div className={cn(
+                            "p-2 rounded-lg transition-colors",
+                            isSelected ? "bg-orange-500/10 text-orange-600 dark:text-orange-400" : "bg-muted text-muted-foreground"
+                          )}>
+                            {model.icon}
+                          </div>
+                          {isSelected && (
+                            <div className="size-2 rounded-full bg-orange-500 animate-pulse" />
+                          )}
                         </div>
 
-                        <div className="relative z-10 flex flex-col h-full">
-                          <div className="flex items-start justify-between mb-6">
-                            <div className={cn(
-                              "p-3 rounded-2xl transition-colors duration-300",
-                              isSelected ? "bg-white/10 text-white" : "bg-white/5 text-muted-foreground group-hover:text-foreground"
-                            )}>
-                              <span className="text-2xl">{model.icon}</span>
-                            </div>
-                            {isSelected && (
-                              <div className="size-2 rounded-full bg-pink-400 shadow-[0_0_10px_rgba(244,114,182,0.8)] animate-pulse" />
-                            )}
-                          </div>
+                        <div className={cn(
+                          "font-semibold text-sm mb-1",
+                          isSelected ? "text-orange-600 dark:text-orange-400" : "text-foreground"
+                        )}>{model.name}</div>
+                        <div className="text-xs text-muted-foreground leading-relaxed mb-3">{model.description}</div>
 
-                          <div className="font-bold text-lg mb-2 tracking-wide group-hover:text-pink-400 transition-colors">{model.name}</div>
-                          <div className="text-xs text-muted-foreground/60 leading-relaxed mb-6 font-light">{model.description}</div>
-
-                          <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 pt-4 border-t border-white/5 flex items-center gap-2">
-                            <Icon name="clock" className="size-3" /> {model.speed}
-                          </div>
+                        <div className="text-xs text-muted-foreground/60 pt-3 border-t border-border flex items-center gap-1.5">
+                          <Icon name="clock" className="size-3" /> {model.speed}
                         </div>
                       </button>
                     );
@@ -985,109 +961,107 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
               {/* Advanced Mode Options */}
               <div className={cn(
-                "max-w-4xl mx-auto overflow-hidden transition-all duration-700 ease-in-out",
-                advancedMode ? "max-h-[800px] opacity-100 pt-8 border-t border-white/5" : "max-h-0 opacity-0"
+                "overflow-hidden transition-all duration-500 ease-in-out",
+                advancedMode ? "max-h-[600px] opacity-100 mb-8" : "max-h-0 opacity-0"
               )}>
-                <div className="flex items-center gap-3 mb-8">
-                  <Icon name="sliders" className="size-4 text-muted-foreground" />
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground/60">{section.options.title}</h3>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
-                  {/* Length - Mandatory */}
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.options.length.label}</Label>
-                    <Select value={selectedLength} onValueChange={setSelectedLength}>
-                      <SelectTrigger className="h-12 rounded-xl bg-white/5 border-white/5 hover:bg-white/10 transition-colors focus:ring-0">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent className="glass-premium rounded-xl">
-                        {Object.entries(section.options.length.options).map(([k, v]) => (
-                          <SelectItem key={k} value={k} className="cursor-pointer focus:bg-white/10">{v}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                <div className="pt-6 border-t border-border">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Icon name="sliders" className="size-4 text-muted-foreground" />
+                    <h3 className="text-sm font-semibold text-muted-foreground">{section.options.title}</h3>
                   </div>
 
-                  {/* Theme - Optional */}
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.options.theme.label}</Label>
-                    <Select value={selectedTheme || "none"} onValueChange={(v) => setSelectedTheme(v === "none" ? null : v)}>
-                      <SelectTrigger className="h-12 rounded-xl bg-white/5 border-white/5 hover:bg-white/10 transition-colors focus:ring-0">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent className="glass-premium rounded-xl">
-                        <SelectItem value="none" className="text-muted-foreground">{section.options.theme.none_option}</SelectItem>
-                        {Object.entries(section.options.theme.options).map(([k, v]) => (
-                          <SelectItem key={k} value={k} className="cursor-pointer focus:bg-white/10">{v}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Length - Mandatory */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-medium text-muted-foreground">{section.options.length.label}</Label>
+                      <Select value={selectedLength} onValueChange={setSelectedLength}>
+                        <SelectTrigger className="text-sm">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Object.entries(section.options.length.options).map(([k, v]) => (
+                            <SelectItem key={k} value={k}>{v}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                  {/* Mood - Optional */}
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.options.mood.label}</Label>
-                    <Select value={selectedMood || "none"} onValueChange={(v) => setSelectedMood(v === "none" ? null : v)}>
-                      <SelectTrigger className="h-12 rounded-xl bg-white/5 border-white/5 hover:bg-white/10 transition-colors focus:ring-0">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent className="glass-premium rounded-xl">
-                        <SelectItem value="none" className="text-muted-foreground">{section.options.mood.none_option}</SelectItem>
-                        {Object.entries(section.options.mood.options).map(([k, v]) => (
-                          <SelectItem key={k} value={k} className="cursor-pointer focus:bg-white/10">{v}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                    {/* Theme - Optional */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-medium text-muted-foreground">{section.options.theme.label}</Label>
+                      <Select value={selectedTheme || "none"} onValueChange={(v) => setSelectedTheme(v === "none" ? null : v)}>
+                        <SelectTrigger className="text-sm">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="none">{section.options.theme.none_option}</SelectItem>
+                          {Object.entries(section.options.theme.options).map(([k, v]) => (
+                            <SelectItem key={k} value={k}>{v}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                  {/* Style - Optional */}
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.options.style.label}</Label>
-                    <Select value={selectedStyle || "none"} onValueChange={(v) => setSelectedStyle(v === "none" ? null : v)}>
-                      <SelectTrigger className="h-12 rounded-xl bg-white/5 border-white/5 hover:bg-white/10 transition-colors focus:ring-0">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent className="glass-premium rounded-xl">
-                        <SelectItem value="none" className="text-muted-foreground">{section.options.style.none_option}</SelectItem>
-                        {Object.entries(section.options.style.options).map(([k, v]) => (
-                          <SelectItem key={k} value={k} className="cursor-pointer focus:bg-white/10">{v}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    {/* Mood - Optional */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-medium text-muted-foreground">{section.options.mood.label}</Label>
+                      <Select value={selectedMood || "none"} onValueChange={(v) => setSelectedMood(v === "none" ? null : v)}>
+                        <SelectTrigger className="text-sm">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="none">{section.options.mood.none_option}</SelectItem>
+                          {Object.entries(section.options.mood.options).map(([k, v]) => (
+                            <SelectItem key={k} value={k}>{v}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {/* Style - Optional */}
+                    <div className="space-y-1.5">
+                      <Label className="text-xs font-medium text-muted-foreground">{section.options.style.label}</Label>
+                      <Select value={selectedStyle || "none"} onValueChange={(v) => setSelectedStyle(v === "none" ? null : v)}>
+                        <SelectTrigger className="text-sm">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="none">{section.options.style.none_option}</SelectItem>
+                          {Object.entries(section.options.style.options).map(([k, v]) => (
+                            <SelectItem key={k} value={k}>{v}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Actions */}
-              <div className="pt-16 flex flex-col items-center gap-8">
-                <div className="relative w-full max-w-md group">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-pink-500/30 via-purple-500/30 to-indigo-500/30 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  <Button
-                    onClick={handleGenerate}
-                    disabled={isGenerating || !selectedModel}
-                    className="relative w-full h-20 rounded-full bg-foreground text-background hover:bg-white hover:text-foreground hover:scale-[1.02] transition-all duration-500 text-lg font-bold tracking-wide shadow-2xl border-none"
-                  >
-                    {isGenerating ? (
-                        <div className="flex items-center gap-3">
-                        <div className="size-5 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
-                        <span className="animate-pulse">{section.generate_button.generating}</span>
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-3">
-                        <Icon name="Sparkles" className="size-5" />
-                        <span>{section.generate_button.text}</span>
-                      </div>
-                    )}
-                  </Button>
-                </div>
+              <div className="pt-6 space-y-4">
+                <Button
+                  onClick={handleGenerate}
+                  disabled={isGenerating || !selectedModel}
+                  className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 transition-colors"
+                >
+                  {isGenerating ? (
+                    <div className="flex items-center gap-2">
+                      <div className="size-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                      <span>{section.generate_button.generating}</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <Icon name="Sparkles" className="size-4" />
+                      <span>{section.generate_button.text}</span>
+                    </div>
+                  )}
+                </Button>
 
                 <GeneratorShortcutHints showQuickSave />
 
-                {/* History & Tips */}
-                <div className="flex flex-col items-center gap-6 w-full">
+                <div className="flex flex-col items-center gap-3">
                   <PoemHistoryDropdown onLoadPoem={handleLoadPoem} locale={locale} />
-                  <p className="text-xs font-medium text-muted-foreground/40 flex items-center gap-2">
+                  <p className="text-xs text-muted-foreground/50 flex items-center gap-1.5">
                     <Icon name="info" className="size-3" />
                     {section.generate_button.tip}
                   </p>
@@ -1099,65 +1073,59 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
           {/* Output Section */}
           {generatedPoem && (
-            <div className="mt-16 space-y-8">
-              <div className="relative animate-fade-in-up">
-                {/* Debug indicator */}
-                <div className="text-center mb-4 text-sm text-green-500 font-bold">
-                  ✓ Poem Generated ({generatedPoem.length} chars)
-                </div>
-                <div className="glass-premium rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-black/5 dark:ring-white/10">
+            <div className="space-y-4">
+              <div className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
 
-                  {/* Output Header */}
-                  <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-10 border-b border-black/5 dark:border-white/5 bg-white/40 dark:bg-white/5 gap-6">
-                    <div className="flex items-center gap-5">
-                    <div className="p-3 rounded-2xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 border border-black/5 dark:border-white/10">
-                      <Icon name="feather" className="size-6 text-pink-600 dark:text-pink-400" />
+                {/* Output Header */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 py-4 border-b border-border gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-orange-500/10">
+                      <Icon name="feather" className="size-4 text-orange-600 dark:text-orange-400" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold tracking-tight text-foreground">{section.output.title}</h3>
-                      <div className="text-sm text-muted-foreground/60 font-light mt-1">
+                      <h3 className="text-sm font-semibold text-foreground">{section.output.title}</h3>
+                      <div className="text-xs text-muted-foreground mt-0.5">
                         {section.output.line_count.replace('{count}', String(lineCount))}
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
                     <Button
-                      variant="ghost"
+                      variant="outline"
                       size="sm"
                       onClick={handleCopyPoem}
-                      className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5"
+                      className="h-8 px-3 text-xs"
                     >
-                      <Icon name="Copy" className="size-4 mr-2" />
+                      <Icon name="Copy" className="size-3.5 mr-1.5" />
                       {section.output.button_copy}
                     </Button>
                     <Button
-                      variant="ghost"
+                      variant="outline"
                       size="sm"
                       onClick={handleAnalyzePoem}
                       disabled={isAnalyzing}
-                      className="rounded-full h-10 px-4 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground border border-black/5 dark:border-white/5"
+                      className="h-8 px-3 text-xs"
                     >
                       {isAnalyzing ? (
-                        <div className="animate-spin rounded-full h-4 w-4 border-2 border-current border-t-transparent mr-2" />
+                        <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-current border-t-transparent mr-1.5" />
                       ) : (
-                        <Icon name="Search" className="size-4 mr-2" />
+                        <Icon name="Search" className="size-3.5 mr-1.5" />
                       )}
                       {isAnalyzing ? section.output.button_analyzing : section.output.button_analyze}
                     </Button>
-                  </div>
                   </div>
                 </div>
 
                 {/* Output Tabs */}
                 <Tabs value={activeOutputTab} onValueChange={setActiveOutputTab} className="w-full">
-                  <div className="px-8 pt-8">
-                    <TabsList className="bg-transparent p-0 border-b border-black/5 dark:border-white/10 w-full justify-start rounded-none h-auto gap-8">
+                  <div className="px-6 pt-4">
+                    <TabsList className="bg-transparent p-0 border-b border-border w-full justify-start rounded-none h-auto gap-6">
                       {['poem', 'analysis', 'audio'].map((tab) => (
                         <TabsTrigger
                           key={tab}
                           value={tab}
-                          className="rounded-none border-b-2 border-transparent px-0 py-4 data-[state=active]:border-pink-500 data-[state=active]:bg-transparent data-[state=active]:text-pink-600 dark:data-[state=active]:text-pink-400 text-muted-foreground hover:text-foreground transition-all"
+                          className="rounded-none border-b-2 border-transparent px-0 pb-3 pt-0 text-sm data-[state=active]:border-orange-500 data-[state=active]:bg-transparent data-[state=active]:text-orange-600 dark:data-[state=active]:text-orange-400 text-muted-foreground hover:text-foreground transition-colors"
                         >
                           {section.output.tabs[tab as keyof typeof section.output.tabs]}
                         </TabsTrigger>
@@ -1165,37 +1133,36 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                     </TabsList>
                   </div>
 
-                  <div className="p-8 md:p-16 min-h-[400px] bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+                  <div className="p-6 min-h-[300px]">
                     {/* Poem Content */}
-                    <TabsContent value="poem" className="mt-0 animate-fade-in">
-                      <div className="max-w-3xl mx-auto text-center">
-                        <pre className="font-serif text-xl sm:text-2xl leading-loose text-slate-900 dark:text-slate-100 whitespace-pre-wrap">
+                    <TabsContent value="poem" className="mt-0">
+                      <div className="max-w-2xl mx-auto text-center">
+                        <pre className="font-serif text-lg leading-loose text-foreground whitespace-pre-wrap">
                           {generatedPoem}
                         </pre>
                       </div>
                     </TabsContent>
 
                     {/* Analysis Content */}
-                    <TabsContent value="analysis" className="mt-0 animate-fade-in">
+                    <TabsContent value="analysis" className="mt-0">
                       {isAnalyzing ? (
-                        <div className="flex flex-col items-center justify-center py-20 gap-4">
-                          <div className="size-12 rounded-full border-2 border-pink-500/20 border-t-pink-500 animate-spin"></div>
-                          <span className="text-sm font-medium tracking-widest uppercase text-muted-foreground/60 animate-pulse">{section.analysis.loading}</span>
+                        <div className="flex flex-col items-center justify-center py-16 gap-3">
+                          <div className="size-10 rounded-full border-2 border-orange-500/20 border-t-orange-500 animate-spin" />
+                          <span className="text-sm text-muted-foreground">{section.analysis.loading}</span>
                         </div>
                       ) : poemAnalysis ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                          <div className="space-y-10">
-                            {/* Imagery */}
-                            <div className="space-y-4">
-                              <h4 className="text-sm font-bold uppercase tracking-widest text-pink-400 flex items-center gap-2">
-                                <Icon name="Image" className="size-4" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          <div className="space-y-6">
+                            <div className="space-y-3">
+                              <h4 className="text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                                <Icon name="Image" className="size-3.5" />
                                 {section.analysis.imagery.title}
                               </h4>
-                              <div className="flex flex-wrap gap-2">
+                              <div className="flex flex-wrap gap-1.5">
                                 {poemAnalysis.imagery.map((img, idx) => {
                                   const imageText = typeof img === 'string' ? img : img.image;
                                   return (
-                                    <span key={idx} className="px-4 py-1.5 bg-pink-500/5 text-pink-300 rounded-full text-sm border border-pink-500/10">
+                                    <span key={idx} className="px-3 py-1 bg-orange-500/5 text-orange-600 dark:text-orange-400 rounded-md text-xs border border-orange-500/20">
                                       {imageText}
                                     </span>
                                   );
@@ -1203,35 +1170,32 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                               </div>
                             </div>
 
-                            {/* Emotion */}
-                            <div className="space-y-4">
-                              <h4 className="text-sm font-bold uppercase tracking-widest text-purple-400 flex items-center gap-2">
-                                <Icon name="Heart" className="size-4" />
+                            <div className="space-y-3">
+                              <h4 className="text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                                <Icon name="Heart" className="size-3.5" />
                                 {section.analysis.emotion.title}
                               </h4>
-                              <p className="text-base leading-relaxed text-muted-foreground/80 font-light">{poemAnalysis.emotionalTone}</p>
+                              <p className="text-sm leading-relaxed text-muted-foreground">{poemAnalysis.emotionalTone}</p>
                             </div>
                           </div>
 
-                          <div className="space-y-10">
-                            {/* Theme */}
-                            <div className="space-y-4">
-                              <h4 className="text-sm font-bold uppercase tracking-widest text-indigo-400 flex items-center gap-2">
-                                <Icon name="BookOpen" className="size-4" />
+                          <div className="space-y-6">
+                            <div className="space-y-3">
+                              <h4 className="text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                                <Icon name="BookOpen" className="size-3.5" />
                                 {section.analysis.theme.title}
                               </h4>
-                              <p className="text-base leading-relaxed text-muted-foreground/80 font-light">{poemAnalysis.themeInterpretation}</p>
+                              <p className="text-sm leading-relaxed text-muted-foreground">{poemAnalysis.themeInterpretation}</p>
                             </div>
 
-                            {/* Rhetoric */}
-                            <div className="space-y-4">
-                              <h4 className="text-sm font-bold uppercase tracking-widest text-blue-400 flex items-center gap-2">
-                                <Icon name="Sparkles" className="size-4" />
+                            <div className="space-y-3">
+                              <h4 className="text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                                <Icon name="Sparkles" className="size-3.5" />
                                 {section.analysis.rhetoric.title}
                               </h4>
-                              <div className="flex flex-wrap gap-2">
+                              <div className="flex flex-wrap gap-1.5">
                                 {poemAnalysis.rhetoricalDevices.map((device, idx) => (
-                                  <span key={idx} className="px-4 py-1.5 bg-blue-500/5 text-blue-300 rounded-full text-sm border border-blue-500/10">
+                                  <span key={idx} className="px-3 py-1 bg-orange-500/5 text-orange-600 dark:text-orange-400 rounded-md text-xs border border-orange-500/20">
                                     {device}
                                   </span>
                                 ))}
@@ -1240,76 +1204,76 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                           </div>
                         </div>
                       ) : (
-                        <div className="text-center py-20 text-muted-foreground/40">
-                          <Icon name="Search" className="size-12 mx-auto mb-4 opacity-20" />
-                          <p className="text-lg font-medium">{section.analysis.no_analysis}</p>
+                        <div className="text-center py-16 text-muted-foreground">
+                          <Icon name="Search" className="size-10 mx-auto mb-3 opacity-20" />
+                          <p className="text-sm">{section.analysis.no_analysis}</p>
                         </div>
                       )}
                     </TabsContent>
 
                     {/* Audio Content */}
-                    <TabsContent value="audio" className="mt-0 animate-fade-in">
+                    <TabsContent value="audio" className="mt-0">
                       {hasSpeechSupport ? (
-                        <div className="flex flex-col items-center justify-center py-12 gap-12">
+                        <div className="flex flex-col items-center justify-center py-8 gap-8">
                           {/* Visualizer */}
-                          <div className="flex items-end justify-center gap-1.5 h-24">
+                          <div className="flex items-end justify-center gap-1 h-16">
                             {[...Array(16)].map((_, i) => (
                               <div
                                 key={i}
                                 className={cn(
-                                  "w-2 bg-gradient-to-t from-pink-500 to-purple-500 rounded-full transition-all duration-150 ease-in-out",
-                                  isReading && !isPaused ? "animate-music-bar" : "h-2 opacity-20"
+                                  "w-1.5 bg-orange-500 rounded-full transition-all duration-150",
+                                  isReading && !isPaused ? "animate-music-bar" : "h-1.5 opacity-20"
                                 )}
                                 style={{ animationDelay: `${i * 0.05}s` }}
                               />
                             ))}
                           </div>
 
-                          <div className="flex items-center gap-8">
+                          <div className="flex items-center gap-4">
                             {!isReading ? (
                               <button
                                 onClick={handleStartReading}
                                 disabled={!generatedPoem.trim()}
                                 className={cn(
-                                  "size-20 rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 text-white shadow-[0_20px_45px_rgba(170,85,255,0.35)] ring-4 ring-pink-500/20 flex items-center justify-center transition-all",
+                                  "size-14 rounded-full bg-orange-600 dark:bg-orange-500 text-white flex items-center justify-center transition-all",
                                   !generatedPoem.trim()
                                     ? "opacity-40 cursor-not-allowed"
-                                    : "hover:scale-110 focus-visible:scale-105 focus-visible:outline-none focus-visible:ring-8 focus-visible:ring-pink-500/40"
+                                    : "hover:bg-orange-700 dark:hover:bg-orange-600"
                                 )}
                                 aria-label={section.audio.player.play}
                               >
-                                <Icon name="Play" className="size-8 ml-1 text-white" />
+                                <Icon name="Play" className="size-6 ml-0.5 text-white" />
                               </button>
                             ) : (
                               <>
                                 <button
                                   onClick={isPaused ? handleResumeReading : handlePauseReading}
-                                  className="size-16 rounded-full border-2 border-white/20 hover:bg-white/10 text-white transition-all flex items-center justify-center"
+                                  className="size-12 rounded-full border border-border hover:bg-muted text-foreground transition-colors flex items-center justify-center"
                                 >
-                                  <Icon name={isPaused ? "Play" : "Pause"} className="size-6" />
+                                  <Icon name={isPaused ? "Play" : "Pause"} className="size-5" />
                                 </button>
                                 <button
                                   onClick={handleStopReading}
-                                  className="size-16 rounded-full border-2 border-white/20 hover:bg-white/10 text-white transition-all flex items-center justify-center"
+                                  className="size-12 rounded-full border border-border hover:bg-muted text-foreground transition-colors flex items-center justify-center"
                                 >
-                                  <Icon name="Square" className="size-6" />
+                                  <Icon name="Square" className="size-5" />
                                 </button>
                               </>
                             )}
                           </div>
 
-                          <div className="glass-premium px-6 py-3 rounded-full flex items-center gap-4">
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">{section.audio.player.speed_label}</span>
-                            <div className="flex gap-2">
+                          <div className="flex items-center gap-3 px-4 py-2 rounded-lg border border-border bg-muted/30">
+                            <span className="text-xs text-muted-foreground">{section.audio.player.speed_label}</span>
+                            <div className="flex gap-1.5">
                               {[0.75, 1, 1.25, 1.5].map((speed) => (
                                 <button
                                   key={speed}
                                   onClick={() => handleSpeedChange(speed)}
                                   className={cn(
-                                    "h-10 w-10 rounded-full text-xs font-semibold transition-all border border-white/20 flex items-center justify-center",
+                                    "h-8 w-10 rounded-md text-xs font-medium transition-colors border",
                                     readingSpeed === speed
-                                      ? "bg-white text-black shadow-[0_10px_25px_rgba(255,255,255,0.35)] ring-2 ring-pink-500/50"
-                                      : "text-muted-foreground hover:text-white hover:bg-white/10"
+                                      ? "border-orange-500/40 bg-orange-500/[0.08] text-orange-600 dark:text-orange-400"
+                                      : "border-border bg-background text-muted-foreground hover:bg-muted"
                                   )}
                                   aria-pressed={readingSpeed === speed}
                                 >
@@ -1320,9 +1284,9 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                           </div>
                         </div>
                       ) : (
-                        <div className="text-center py-20 text-muted-foreground/40">
-                          <Icon name="Volume2" className="size-12 mx-auto mb-4 opacity-20" />
-                          <p>{section.audio.browser_not_supported}</p>
+                        <div className="text-center py-16 text-muted-foreground">
+                          <Icon name="Volume2" className="size-10 mx-auto mb-3 opacity-20" />
+                          <p className="text-sm">{section.audio.browser_not_supported}</p>
                         </div>
                       )}
                     </TabsContent>

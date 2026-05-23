@@ -11,7 +11,7 @@ import { useLocale } from "next-intl";
 import confetti from "canvas-confetti";
 import { cn } from "@/lib/utils";
 import { StoryStorage } from "@/lib/story-storage";
-import { ChevronDown, Settings2, Sparkles, Copy, RefreshCw, Wand2, BookOpen, Eraser } from "lucide-react";
+import { ChevronDown, Settings2, Sparkles, Zap, Palette, Copy, RefreshCw, Wand2, BookOpen, Eraser, Castle, Rocket, Building2, Landmark, Scroll, Bot, Star, Skull, User } from "lucide-react";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
@@ -69,7 +69,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             name: t('ai_models.fast'),
             badge: 'FAST',
             badgeColor: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
-            icon: '⚡',
+            icon: <Zap className="h-4 w-4" />,
             description: t('ai_models.fast_description')
         },
         {
@@ -77,7 +77,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             name: t('ai_models.standard'),
             badge: 'RECOMMENDED',
             badgeColor: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
-            icon: '✨',
+            icon: <Sparkles className="h-4 w-4" />,
             description: t('ai_models.standard_description')
         },
         {
@@ -85,7 +85,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             name: t('ai_models.creative'),
             badge: 'PRO',
             badgeColor: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20',
-            icon: '🎨',
+            icon: <Palette className="h-4 w-4" />,
             description: t('ai_models.creative_description')
         }
     ], [section]);
@@ -108,20 +108,20 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
 
     // ========== WORLDVIEW OPTIONS ==========
     const WORLDVIEW_OPTIONS = useMemo(() => [
-        { id: 'fantasy', name: t('worldview.fantasy'), icon: '🏰' },
-        { id: 'scifi', name: t('worldview.scifi'), icon: '🚀' },
-        { id: 'urban', name: t('worldview.urban'), icon: '🏙️' },
-        { id: 'xianxia', name: t('worldview.xianxia'), icon: '⛩️' },
-        { id: 'historical', name: t('worldview.historical'), icon: '📜' },
-        { id: 'cyberpunk', name: t('worldview.cyberpunk'), icon: '🤖' }
+        { id: 'fantasy', name: t('worldview.fantasy'), icon: <Castle className="h-3.5 w-3.5" /> },
+        { id: 'scifi', name: t('worldview.scifi'), icon: <Rocket className="h-3.5 w-3.5" /> },
+        { id: 'urban', name: t('worldview.urban'), icon: <Building2 className="h-3.5 w-3.5" /> },
+        { id: 'xianxia', name: t('worldview.xianxia'), icon: <Landmark className="h-3.5 w-3.5" /> },
+        { id: 'historical', name: t('worldview.historical'), icon: <Scroll className="h-3.5 w-3.5" /> },
+        { id: 'cyberpunk', name: t('worldview.cyberpunk'), icon: <Bot className="h-3.5 w-3.5" /> }
     ], [section]);
 
     // ========== ROLE TYPE OPTIONS ==========
     const ROLE_TYPE_OPTIONS = useMemo(() => [
-        { id: 'protagonist', name: t('role_type.protagonist'), icon: '⭐' },
-        { id: 'supporting', name: t('role_type.supporting'), icon: '🌟' },
-        { id: 'antagonist', name: t('role_type.antagonist'), icon: '😈' },
-        { id: 'npc', name: t('role_type.npc'), icon: '👤' },
+        { id: 'protagonist', name: t('role_type.protagonist'), icon: <Star className="h-3.5 w-3.5" /> },
+        { id: 'supporting', name: t('role_type.supporting'), icon: <Sparkles className="h-3.5 w-3.5" /> },
+        { id: 'antagonist', name: t('role_type.antagonist'), icon: <Skull className="h-3.5 w-3.5" /> },
+        { id: 'npc', name: t('role_type.npc'), icon: <User className="h-3.5 w-3.5" /> },
     ], [section]);
 
     // ========== TONE OPTIONS ==========
@@ -529,12 +529,12 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     });
 
     return (
-        <div id="backstory_generator" className="min-h-screen bg-background text-foreground selection:bg-purple-500/20">
-            {/* Refined Ambient Background */}
-            <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-purple-500/5 to-transparent" />
-                <div className="absolute -top-[20%] right-[10%] w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-blob" />
-                <div className="absolute -top-[10%] left-[10%] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000" />
+        <div id="backstory_generator" className="min-h-screen bg-background text-foreground selection:bg-orange-500/20">
+            {/* Subtle warm top glow + dot texture */}
+            <div className="pointer-events-none absolute inset-0">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+                <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+                <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
             </div>
 
             <TurnstileInvisible
@@ -589,14 +589,14 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between">
                                     <Label className="text-sm font-semibold text-foreground flex items-center gap-2">
-                                        <Sparkles className="w-4 h-4 text-purple-500" />
+                                        <Sparkles className="w-4 h-4 text-orange-500" />
                                         {t('ui.character_concept')}
                                     </Label>
                                     <Button
                                         variant="ghost"
                                         size="sm"
                                         onClick={handleRandomPrompt}
-                                        className="h-7 text-xs gap-1.5 text-purple-600 dark:text-purple-400 hover:bg-purple-500/10 px-2.5 rounded-full"
+                                        className="h-7 text-xs gap-1.5 text-orange-600 dark:text-orange-400 hover:bg-orange-500/10 px-2.5 rounded-full"
                                     >
                                         <Wand2 className="w-3 h-3" />
                                         {t('ui.random_button')}
@@ -608,7 +608,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                         value={prompt}
                                         onChange={(e) => setPrompt(e.target.value)}
                                         placeholder={t('placeholders.character_concept')}
-                                        className="min-h-[140px] resize-none bg-white/50 dark:bg-black/20 border-border/50 focus:border-purple-500/50 focus:ring-purple-500/20 rounded-xl p-4 text-base leading-relaxed transition-all shadow-sm"
+                                        className="min-h-[140px] resize-none bg-white/50 dark:bg-black/20 border-border/50 focus:border-orange-500/50 focus:ring-orange-500/20 rounded-xl p-4 text-base leading-relaxed transition-all shadow-sm"
                                     />
                                     {prompt && (
                                         <Button
@@ -668,8 +668,8 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                                 className={cn(
                                                     "px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-all",
                                                     selectedWorldview === opt.id
-                                                        ? "bg-purple-500/10 border-purple-500/30 text-purple-600 dark:text-purple-400"
-                                                        : "bg-transparent border-border/50 text-muted-foreground hover:border-purple-500/20 hover:text-foreground"
+                                                        ? "bg-orange-500/10 border-orange-500/30 text-orange-600 dark:text-orange-400"
+                                                        : "bg-transparent border-border/50 text-muted-foreground hover:border-orange-500/20 hover:text-foreground"
                                                 )}
                                             >
                                                 {opt.name}
@@ -681,7 +681,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                 {/* Advanced Settings */}
                                 <Collapsible open={showAdvancedOptions} onOpenChange={setShowAdvancedOptions}>
                                     <CollapsibleTrigger asChild>
-                                        <Button variant="ghost" className="w-full flex justify-between items-center p-0 h-auto hover:bg-transparent text-xs font-medium text-muted-foreground hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                                        <Button variant="ghost" className="w-full flex justify-between items-center p-0 h-auto hover:bg-transparent text-xs font-medium text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
                                             <span className="flex items-center gap-1.5">
                                                 <Settings2 className="w-3.5 h-3.5" />
                                                 {t('ui.advanced_options')}
@@ -701,8 +701,8 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                                         className={cn(
                                                             "px-2 py-1.5 rounded-md text-xs font-medium border text-left transition-all flex items-center gap-2",
                                                             selectedRoleType === opt.id
-                                                                ? "bg-purple-500/10 border-purple-500/30 text-purple-600 dark:text-purple-400"
-                                                                : "bg-transparent border-border/50 text-muted-foreground hover:border-purple-500/20 hover:text-foreground"
+                                                                ? "bg-orange-500/10 border-orange-500/30 text-orange-600 dark:text-orange-400"
+                                                                : "bg-transparent border-border/50 text-muted-foreground hover:border-orange-500/20 hover:text-foreground"
                                                         )}
                                                     >
                                                         <span>{opt.icon}</span>
@@ -756,7 +756,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                 <Button
                                     onClick={handleGenerateClick}
                                     disabled={isGenerating}
-                                    className="w-full h-12 text-base font-bold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/30 transition-all hover:scale-[1.01] rounded-xl"
+                                    className="w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
                                 >
                                     {isGenerating ? (
                                         <>
@@ -784,19 +784,19 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                         className="min-h-[500px] relative"
                         style={rightPanelHeight ? { height: rightPanelHeight } : undefined}
                     >
-                        <div className="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-blue-500/5 rounded-[2rem] blur-2xl -z-10" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 to-orange-500/5 rounded-[2rem] blur-2xl -z-10" />
                         
                         <div className={cn(
                             "h-full rounded-[2rem] border border-border backdrop-blur-xl overflow-hidden transition-all duration-500 flex flex-col",
                             generatedBackstory 
-                                ? "bg-white/80 dark:bg-slate-950/80 shadow-2xl shadow-purple-500/10" 
+                                ? "bg-white/80 dark:bg-slate-950/80 shadow-2xl shadow-orange-500/10" 
                                 : "bg-white/40 dark:bg-slate-900/40 shadow-xl border-dashed"
                         )}>
                             
                             {/* Toolbar */}
                             <div className="flex items-center justify-between px-6 py-4 border-b border-border/50 bg-white/20 dark:bg-white/5">
                                 <div className="flex items-center gap-3">
-                                    <div className="p-2 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                                    <div className="p-2 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400">
                                         <BookOpen className="w-5 h-5" />
                                     </div>
                                     <div className="flex flex-col">
@@ -840,16 +840,16 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                         {isGenerating ? (
                                             <div className="space-y-6">
                                                 <div className="relative mx-auto w-16 h-16">
-                                                    <div className="absolute inset-0 rounded-full border-4 border-purple-500/20" />
-                                                    <div className="absolute inset-0 rounded-full border-4 border-t-purple-500 animate-spin" />
-                                                    <Sparkles className="absolute inset-0 m-auto w-6 h-6 text-purple-500 animate-pulse" />
+                                                    <div className="absolute inset-0 rounded-full border-4 border-orange-500/20" />
+                                                    <div className="absolute inset-0 rounded-full border-4 border-t-orange-500 animate-spin" />
+                                                    <Sparkles className="absolute inset-0 m-auto w-6 h-6 text-orange-500 animate-pulse" />
                                                 </div>
                                                 <p className="text-sm font-medium animate-pulse">{t('output.generating_message')}</p>
                                             </div>
                                         ) : (
                                             <div className="space-y-4 max-w-xs mx-auto">
-                                                <div className="w-16 h-16 mx-auto bg-purple-500/5 rounded-2xl flex items-center justify-center rotate-3">
-                                                    <Wand2 className="w-8 h-8 text-purple-400/50" />
+                                                <div className="w-16 h-16 mx-auto bg-orange-500/5 rounded-2xl flex items-center justify-center rotate-3">
+                                                    <Wand2 className="w-8 h-8 text-orange-400/50" />
                                                 </div>
                                                 <p className="text-muted-foreground text-sm">
                                                     {t('output.empty_message')}
