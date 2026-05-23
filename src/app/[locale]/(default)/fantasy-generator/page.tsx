@@ -1,10 +1,10 @@
 import FantasyGenerate from "@/components/blocks/fantasy-generate";
-import Feature from "@/components/blocks/feature";
-import Feature1 from "@/components/blocks/feature1";
-import Feature2 from "@/components/blocks/feature2";
-import FAQ from "@/components/blocks/faq";
+import FeatureIntro from "@/components/sections/feature-intro";
+import Benefits from "@/components/sections/benefits";
+import UseCases from "@/components/sections/use-cases";
+import FAQ from "@/components/sections/faq";
+import CTA from "@/components/sections/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
-import CTA from "@/components/blocks/cta";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
 
@@ -89,19 +89,17 @@ export default async function FantasyGeneratorPage({
       />
       {/* Fantasy Story Generator */}
       <FantasyGenerate section={section} />
-      {featureIntro && <Feature1 section={featureIntro} />}
-      {featureBenefits && <Feature2 section={featureBenefits} />}
-      {featureSection && <Feature section={featureSection} />}
-      {faqSection && <FAQ section={faqSection} />}
-      {/* AI Writing tools module */}
+      {featureIntro && <FeatureIntro section={featureIntro} accent="emerald" />}
+      {featureBenefits && <Benefits section={featureBenefits} accent="emerald" />}
+      {featureSection && <UseCases section={featureSection} accent="emerald" />}
+      {faqSection && <FAQ section={faqSection} accent="emerald" />}
       <ModuleToolsSection
         module="ai-write"
         title={t("ai_tools.section_title_hub")}
         description={t("ai_tools.section_description_hub")}
         excludeSlug="fantasy-generator"
       />
-      {/* CTA Section */}
-      <CTA section={cta} />
+      <CTA section={cta} accent="emerald" />
     </>
   );
 }

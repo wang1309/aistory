@@ -1,10 +1,10 @@
 import ComicGenerate from "@/components/blocks/comic-generate";
-import ComicFeatureIntro from "@/components/blocks/comic-generate/feature-intro";
-import ComicBenefits from "@/components/blocks/comic-generate/benefits";
-import ComicUseCases from "@/components/blocks/comic-generate/use-cases";
-import ComicFAQ from "@/components/blocks/comic-generate/faq";
-import ComicCTA from "@/components/blocks/comic-generate/cta";
-import ComicHowToUse from "@/components/blocks/comic-generate/how-to-use";
+import FeatureIntro from "@/components/sections/feature-intro";
+import Benefits from "@/components/sections/benefits";
+import UseCases from "@/components/sections/use-cases";
+import HowToUse from "@/components/sections/how-to-use";
+import FAQ from "@/components/sections/faq";
+import CTA from "@/components/sections/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
@@ -156,22 +156,12 @@ export default async function ComicGeneratorPage({
             {/* Main Generator Component */}
             <ComicGenerate section={section} />
 
-            {/* What is AI Comic Generator */}
-            {feature_intro && <ComicFeatureIntro section={feature_intro} />}
+            {feature_intro && <FeatureIntro section={feature_intro} accent="orange" />}
+            {how_to_use && <HowToUse section={how_to_use} accent="orange" />}
+            {feature_benefits && <Benefits section={feature_benefits} accent="orange" />}
+            {feature_section && <UseCases section={feature_section} accent="orange" />}
+            {faq_section && <FAQ section={faq_section} accent="orange" />}
 
-            {/* How to Use */}
-            {how_to_use && <ComicHowToUse section={how_to_use} />}
-
-            {/* Why use it / Benefits */}
-            {feature_benefits && <ComicBenefits section={feature_benefits} />}
-
-            {/* Use cases / Who should use */}
-            {feature_section && <ComicUseCases section={feature_section} />}
-
-            {/* FAQ */}
-            {faq_section && <ComicFAQ section={faq_section} />}
-
-            {/* Related AI Writing Tools */}
             <ModuleToolsSection
                 module="ai-write"
                 title={t("ai_tools.section_title_hub")}
@@ -179,8 +169,7 @@ export default async function ComicGeneratorPage({
                 excludeSlug="comic-generator"
             />
 
-            {/* CTA */}
-            {cta_section && <ComicCTA section={cta_section} />}
+            {cta_section && <CTA section={cta_section} accent="orange" />}
         </>
     );
 }

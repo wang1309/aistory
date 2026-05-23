@@ -1,12 +1,10 @@
 import DialogueGenerate from "@/components/blocks/dialogue-generate";
-import Feature1 from "@/components/blocks/feature1";
-import FeatureWhatDialogue from "@/components/blocks/feature-what-dialogue";
-import Feature2 from "@/components/blocks/feature2";
-import FeatureWhyDialogue from "@/components/blocks/feature-why-dialogue";
-import Feature3 from "@/components/blocks/feature3";
-import Feature from "@/components/blocks/feature";
-import FAQ from "@/components/blocks/faq";
-import CTA from "@/components/blocks/cta";
+import FeatureIntro from "@/components/sections/feature-intro";
+import Benefits from "@/components/sections/benefits";
+import HowToUse from "@/components/sections/how-to-use";
+import UseCases from "@/components/sections/use-cases";
+import FAQ from "@/components/sections/faq";
+import CTA from "@/components/sections/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
@@ -153,23 +151,23 @@ export default async function DialogueGeneratorPage({
             <DialogueGenerate section={section} />
 
             {section.feature1 && (
-                <FeatureWhatDialogue section={section.feature1} />
+                <FeatureIntro section={section.feature1} accent="cyan" />
             )}
 
             {section.feature2 && (
-                <FeatureWhyDialogue section={section.feature2} />
+                <Benefits section={section.feature2} accent="cyan" />
             )}
 
             {section.feature3 && (
-                <Feature3 section={section.feature3} />
+                <HowToUse section={section.feature3} accent="cyan" />
             )}
 
             {section.feature && (
-                <Feature section={section.feature} />
+                <UseCases section={section.feature} accent="cyan" />
             )}
 
             {section.faq && (
-                <FAQ section={section.faq} />
+                <FAQ section={section.faq} accent="cyan" />
             )}
 
             <ModuleToolsSection
@@ -180,7 +178,7 @@ export default async function DialogueGeneratorPage({
             />
 
             {section.cta && (
-                <CTA section={section.cta} />
+                <CTA section={section.cta} accent="cyan" />
             )}
         </>
     );

@@ -1,9 +1,9 @@
 import BackstoryGenerate from "@/components/blocks/backstory-generate";
-import Feature1 from "@/components/blocks/feature1";
-import Feature2 from "@/components/blocks/feature2";
-import Feature from "@/components/blocks/feature";
-import FAQ from "@/components/blocks/faq";
-import CTA from "@/components/blocks/cta";
+import FeatureIntro from "@/components/sections/feature-intro";
+import Benefits from "@/components/sections/benefits";
+import UseCases from "@/components/sections/use-cases";
+import FAQ from "@/components/sections/faq";
+import CTA from "@/components/sections/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
@@ -127,27 +127,27 @@ export default async function BackstoryGeneratePage({
             {/* Main Component */}
             <BackstoryGenerate section={section} />
 
-            {/* Feature1 Section - What is Backstory Generator */}
+            {/* What is Backstory Generator */}
             {feature_intro && (
-                <Feature1 section={feature_intro} />
+                <FeatureIntro section={feature_intro} accent="violet" />
             )}
 
-            {/* Feature2 Section - Why use Backstory Generator */}
+            {/* Why Use */}
             {feature1_section && (
-                <Feature2 section={feature1_section} />
+                <Benefits section={feature1_section} accent="violet" />
             )}
 
-            {/* Feature Grid Section - Perfect For / Use cases */}
+            {/* Use Cases */}
             {feature_section && (
-                <Feature section={feature_section} />
+                <UseCases section={feature_section} accent="violet" />
             )}
 
-            {/* FAQ Section */}
+            {/* FAQ */}
             {faq_section && (
-                <FAQ section={faq_section} />
+                <FAQ section={faq_section} accent="violet" />
             )}
 
-            {/* AI Writing tools module */}
+            {/* Related AI Writing Tools */}
             <ModuleToolsSection
                 module="ai-write"
                 title={t("ai_tools.section_title_hub")}
@@ -155,9 +155,9 @@ export default async function BackstoryGeneratePage({
                 excludeSlug="backstory-generator"
             />
 
-            {/* CTA Section */}
+            {/* CTA */}
             {cta_section && (
-                <CTA section={cta_section} />
+                <CTA section={cta_section} accent="violet" />
             )}
         </>
     );

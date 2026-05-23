@@ -1,11 +1,10 @@
-import CTA from "@/components/blocks/cta";
-import FAQ from "@/components/blocks/faq";
-import Feature from "@/components/blocks/feature";
-import Feature1 from "@/components/blocks/feature1";
-import Feature2 from "@/components/blocks/feature2";
-import Feature3 from "@/components/blocks/feature3";
 import PoemGenerate from "@/components/blocks/poem-generate";
-import Testimonial from "@/components/blocks/testimonial";
+import FeatureIntro from "@/components/sections/feature-intro";
+import Benefits from "@/components/sections/benefits";
+import UseCases from "@/components/sections/use-cases";
+import HowToUse from "@/components/sections/how-to-use";
+import FAQ from "@/components/sections/faq";
+import CTA from "@/components/sections/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
@@ -134,37 +133,26 @@ export default async function PoemGeneratorPage({
         <PoemGenerate section={section} />
       </div>
 
-      {/* Feature1 Section - Full Width */}
       {feature1_section && (
-        <Feature1 section={feature1_section} />
+        <FeatureIntro section={feature1_section} accent="pink" />
       )}
 
-      {/* Feature2 Section - Full Width, Interactive */}
       {feature_section && (
-        <Feature2 section={feature_section} />
+        <Benefits section={feature_section} accent="pink" />
       )}
 
-      {/* Feature Section - Full Width, Applications Grid */}
       {poem_applications_section && (
-        <Feature section={poem_applications_section} />
+        <UseCases section={poem_applications_section} accent="pink" />
       )}
 
-      {/* Feature3 Section - Full Width, Usage Guide */}
       {feature3_section && (
-        <Feature3 section={feature3_section} />
+        <HowToUse section={feature3_section} accent="pink" />
       )}
 
-      {/* Testimonial Section - Full Width, User Reviews */}
-      {testimonial_section && (
-        <Testimonial section={testimonial_section} />
-      )}
-
-      {/* FAQ Section - Full Width, Common Questions */}
       {faq_section && (
-        <FAQ section={faq_section} />
+        <FAQ section={faq_section} accent="pink" />
       )}
 
-       {/* AI Writing tools module */}
       <ModuleToolsSection
         module="ai-write"
         title={t("ai_tools.section_title_hub")}
@@ -172,9 +160,8 @@ export default async function PoemGeneratorPage({
         excludeSlug="poem-generator"
       />
 
-      {/* CTA Section - Full Width, Call to Action */}
       {cta_section && (
-        <CTA section={cta_section} />
+        <CTA section={cta_section} accent="pink" />
       )}
 
     </>

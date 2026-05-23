@@ -1,9 +1,9 @@
 import StoryPromptGenerate from "@/components/blocks/story-prompt-generate";
-import Feature1 from "@/components/blocks/feature1";
-import Feature2 from "@/components/blocks/feature2";
-import Feature from "@/components/blocks/feature";
-import FAQ from "@/components/blocks/faq";
-import CTA from "@/components/blocks/cta";
+import FeatureIntro from "@/components/sections/feature-intro";
+import Benefits from "@/components/sections/benefits";
+import UseCases from "@/components/sections/use-cases";
+import FAQ from "@/components/sections/faq";
+import CTA from "@/components/sections/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
@@ -133,19 +133,11 @@ export default async function StoryPromptGeneratorPage({
             {/* Main Component */}
             <StoryPromptGenerate section={section} />
 
-            {/* Feature1 Section - What is Story Prompt Generator */}
-            {feature_intro && <Feature1 section={feature_intro} />}
+            {feature_intro && <FeatureIntro section={feature_intro} accent="amber" />}
+            {feature_benefits && <Benefits section={feature_benefits} accent="amber" />}
+            {feature_section && <UseCases section={feature_section} accent="amber" />}
+            {faq_section && <FAQ section={faq_section} accent="amber" />}
 
-            {/* Feature2 Section - Why use Story Prompt Generator */}
-            {feature_benefits && <Feature2 section={feature_benefits} />}
-
-            {/* Feature Grid Section - Applications / Use cases */}
-            {feature_section && <Feature section={feature_section} />}
-
-            {/* FAQ Section */}
-            {faq_section && <FAQ section={faq_section} />}
-
-            {/* AI Writing tools module */}
             <ModuleToolsSection
                 module="ai-write"
                 title={t("ai_tools.section_title_hub")}
@@ -153,8 +145,7 @@ export default async function StoryPromptGeneratorPage({
                 excludeSlug="story-prompt-generator"
             />
 
-            {/* CTA Section */}
-            {cta_section && <CTA section={cta_section} />}
+            {cta_section && <CTA section={cta_section} accent="amber" />}
         </>
     );
 }

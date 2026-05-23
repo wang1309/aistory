@@ -1,12 +1,11 @@
 import HeroPoemTitle from "@/components/blocks/hero-poem-title";
-import Feature1 from "@/components/blocks/feature1";
-import Feature2 from "@/components/blocks/feature2";
-import Feature from "@/components/blocks/feature";
-import FAQ from "@/components/blocks/faq";
-import CTA from "@/components/blocks/cta";
-import { setRequestLocale } from "next-intl/server";
+import FeatureIntro from "@/components/sections/feature-intro";
+import Benefits from "@/components/sections/benefits";
+import UseCases from "@/components/sections/use-cases";
+import FAQ from "@/components/sections/faq";
+import CTA from "@/components/sections/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
-import { getTranslations } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
 
 export const revalidate = 60;
@@ -89,17 +88,17 @@ export default async function PoemTitleGeneratorPage({
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <HeroPoemTitle section={section} />
-            <Feature1 section={featureIntro} />
-            <Feature2 section={featureBenefits} />
-            <Feature section={featureUsecases} />
-            <FAQ section={faq} />
+            <FeatureIntro section={featureIntro} accent="rose" />
+            <Benefits section={featureBenefits} accent="rose" />
+            <UseCases section={featureUsecases} accent="rose" />
+            <FAQ section={faq} accent="rose" />
             <ModuleToolsSection
                 module="ai-write"
                 title={t("ai_tools.section_title_hub")}
                 description={t("ai_tools.section_description_hub")}
                 excludeSlug="poem-title-generator"
             />
-            <CTA section={cta} />
+            <CTA section={cta} accent="rose" />
         </>
     );
 }

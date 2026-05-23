@@ -1,12 +1,11 @@
 import HeroBooktitle from "@/components/blocks/hero-booktitle";
-import Feature1 from "@/components/blocks/feature1";
-import Feature2 from "@/components/blocks/feature2";
-import Feature from "@/components/blocks/feature";
-import FAQ from "@/components/blocks/faq";
-import CTA from "@/components/blocks/cta";
-import { setRequestLocale } from "next-intl/server";
+import FeatureIntro from "@/components/sections/feature-intro";
+import Benefits from "@/components/sections/benefits";
+import UseCases from "@/components/sections/use-cases";
+import FAQ from "@/components/sections/faq";
+import CTA from "@/components/sections/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
-import { getTranslations } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
 
 export const revalidate = 60;
@@ -89,17 +88,17 @@ export default async function BookTitlePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <HeroBooktitle section={section} />
-      <Feature1 section={featureIntro} />
-      <Feature2 section={featureBenefits} />
-      <Feature section={featureUsecases} />
-      <FAQ section={faq} />
+      <FeatureIntro section={featureIntro} accent="indigo" />
+      <Benefits section={featureBenefits} accent="indigo" />
+      <UseCases section={featureUsecases} accent="indigo" />
+      <FAQ section={faq} accent="indigo" />
       <ModuleToolsSection
         module="ai-write"
         title={t("ai_tools.section_title_hub")}
         description={t("ai_tools.section_description_hub")}
         excludeSlug="book-title-generator"
       />
-      <CTA section={cta} />
+      <CTA section={cta} accent="indigo" />
     </>
   );
 }

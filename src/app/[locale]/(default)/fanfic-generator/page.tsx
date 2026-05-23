@@ -1,9 +1,9 @@
 // Use the new tabbed layout (option card-style) instead of the original
 import TabbedFanficGenerate from "@/components/blocks/fanfic-generate/tabbed-fanfic-generate";
-import FanficFeature1 from "@/components/blocks/fanfic-feature1";
-import FanficWhat from "@/components/blocks/fanfic-what";
-import { FAQSimple01 } from "@/components/blocks/faq2";
-import CTA from "@/components/blocks/cta";
+import FeatureIntro from "@/components/sections/feature-intro";
+import Benefits from "@/components/sections/benefits";
+import FAQ from "@/components/sections/faq";
+import CTA from "@/components/sections/cta";
 import ModuleToolsSection from "@/components/blocks/module-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
@@ -108,21 +108,16 @@ export default async function FanficGeneratorPage({
       />
       {/* New tabbed layout with 5 steps and auto-advance */}
       <TabbedFanficGenerate section={section} />
-      {/* What is Fanfic Generator Section */}
-      <FanficWhat section={whatSection} />
-      {/* Feature Highlights Section */}
-      <FanficFeature1 section={featureSection} />
-      {/* FAQ Section */}
-      <FAQSimple01 section={faqSection} />
-      {/* AI Writing tools module */}
+      {whatSection && <FeatureIntro section={whatSection} accent="teal" />}
+      {featureSection && <Benefits section={featureSection} accent="teal" />}
+      {faqSection && <FAQ section={faqSection} accent="teal" />}
       <ModuleToolsSection
         module="ai-write"
         title={t("ai_tools.section_title_hub")}
         description={t("ai_tools.section_description_hub")}
         excludeSlug="fanfic-generator"
       />
-      {/* CTA Section */}
-      <CTA section={cta} />
+      <CTA section={cta} accent="teal" />
     </>
   );
 }
