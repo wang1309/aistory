@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -468,6 +469,8 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
 
         {/* Hero → Tool transition */}
         <div className="mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+        <GeneratorNavTabs />
 
         {/* Main layout: sidebar + content */}
         <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[400px_1fr] xl:grid-cols-[440px_1fr]">

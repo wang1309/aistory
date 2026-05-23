@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -437,6 +438,8 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
             </p>
           </motion.div>
         </div>
+
+        <GeneratorNavTabs />
 
         <div className="space-y-10">
           {/* Generator Form */}

@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -570,6 +571,8 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                         </p>
                     </motion.div>
                 </div>
+
+                <GeneratorNavTabs />
 
                 <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[420px_1fr] gap-8 lg:gap-12 items-start">
                     

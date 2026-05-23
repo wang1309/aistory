@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { Zap, Sparkles, Palette, PenTool } from "lucide-react";
 
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
@@ -782,6 +783,8 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
             />
           </div>
         </div>
+
+        <GeneratorNavTabs />
 
         {/* Main Content */}
         <div className="space-y-6">

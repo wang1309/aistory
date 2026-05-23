@@ -3,7 +3,6 @@ import nextDynamic from "next/dynamic";
 import { getLandingPage } from "@/services/page";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ViewportLazy } from "@/components/viewport-lazy";
-
 // Shared section components (same as comic-generator page)
 import FeatureIntro from "@/components/sections/feature-intro";
 import Benefits from "@/components/sections/benefits";

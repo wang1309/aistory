@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -542,6 +543,8 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
         {/* Hero → Tool transition */}
         <div className="mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+        <GeneratorNavTabs />
 
         {/* Main Tool Card */}
         <div className="rounded-2xl border border-border bg-card shadow-sm mb-16">

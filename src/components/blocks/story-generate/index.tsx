@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { Zap, Sparkles, Palette, Castle, Rocket, Heart, Search, PenTool } from "lucide-react";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
@@ -939,6 +940,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             <span>{section.generate_button.text}</span>
           </div>
         </div>
+
+        <GeneratorNavTabs />
 
         {/* Main Panel */}
         <div className="relative mt-10 animate-fade-in-up animation-delay-1000">

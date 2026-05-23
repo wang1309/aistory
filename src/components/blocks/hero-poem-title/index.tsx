@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -417,6 +418,8 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                     </p>
                     <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
                 </div>
+
+                <GeneratorNavTabs />
 
                 {/* Main Form Card */}
                 <div className="rounded-2xl border border-border bg-card shadow-sm mb-8">

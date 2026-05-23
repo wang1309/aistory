@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -661,6 +662,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
           {section.tabbed?.hero?.subtitle || 'Craft your own stories in your favorite universes.'}
         </p>
       </div>
+
+      <GeneratorNavTabs />
 
       {/* Main Flow Container */}
       <div className="glass-premium rounded-[3rem] p-1 overflow-hidden shadow-2xl shadow-orange-500/10 dark:shadow-black/20 ring-1 ring-black/5 dark:ring-white/10 animate-fade-in-up animation-delay-2000">

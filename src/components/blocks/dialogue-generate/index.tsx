@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect, ReactNode } from "react";
 import { useLocale } from "next-intl";
 import { toast } from "sonner";
@@ -527,6 +528,8 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
             {t("ui.subtitle")}
           </p>
         </motion.div>
+
+        <GeneratorNavTabs />
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
           {/* Left: Input Form */}

@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -375,6 +376,8 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
             {section.header.subtitle}
           </p>
         </div>
+
+        <GeneratorNavTabs />
 
         {/* Mode Tabs */}
         <Tabs value={mode} onValueChange={(v) => setMode(v as "quick" | "worldbuilder")} className="mb-8">

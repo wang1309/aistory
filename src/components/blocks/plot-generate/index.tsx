@@ -1,5 +1,6 @@
 "use client";
 
+import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -622,6 +623,8 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
         {/* Hero → Tool transition */}
         <div className="mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+        <GeneratorNavTabs />
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-12">
 
