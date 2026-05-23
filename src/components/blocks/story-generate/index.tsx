@@ -156,7 +156,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   ], [section]);
 
   const [prompt, setPrompt] = useState("");
-  const [selectedModel, setSelectedModel] = useState<string | null>("fast");
+  const [selectedModel, setSelectedModel] = useState<string | null>("standard");
   const [selectedFormat, setSelectedFormat] = useState("none");
   const [selectedTone, setSelectedTone] = useState("none");
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
@@ -479,7 +479,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         devLog("=== Response not OK ===");
         const errorData = await response.json();
         devLog("Error data:", errorData);
-        toast.error(errorData.message || section.toasts.error_generate_failed);
+        const isVerificationError = errorData.message === "verification failed" || errorData.message === "verification required";
+        toast.error(isVerificationError ? section.toasts.error_verification_failed : section.toasts.error_generate_failed);
         return;
       }
 
@@ -603,7 +604,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const handleTurnstileError = useCallback(() => {
     console.error("❌ Turnstile verification failed");
     setIsGenerating(false);
-    toast.error(section.toasts.error_generate_failed);
+    toast.error(section.toasts.error_verification_failed);
   }, [section]);
 
   // Listen for Quick Start event from Hero
@@ -611,9 +612,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     const handleQuickStart = () => {
       devLog("⚡ Quick Start triggered!");
 
-      // 1. Select Fast Model if not selected
-      if (selectedModel !== 'fast') {
-        setSelectedModel('fast');
+      // 1. Select Standard Model if not selected
+      if (selectedModel !== 'standard') {
+        setSelectedModel('standard');
       }
 
       // 2. Generate Random Prompt

@@ -226,6 +226,7 @@ export interface StoryGenerate {
     error_no_prompt: string;
     error_no_model: string;
     error_generate_failed: string;
+    error_verification_failed: string;
     error_no_stream: string;
     error_no_content: string;
     error_pdf_export_failed: string;

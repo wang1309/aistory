@@ -692,6 +692,7 @@
       "error_no_prompt": "Please enter a story prompt",
       "error_no_model": "Please select an AI model",
       "error_generate_failed": "Failed to generate story. Please try again.",
+      "error_verification_failed": "Human verification failed. Please try disabling your proxy or switching to a different network.",
       "error_no_stream": "Failed to read response stream",
       "error_no_content": "No story content was generated",
       "error_pdf_export_failed": "PDF export failed. Please try again.",

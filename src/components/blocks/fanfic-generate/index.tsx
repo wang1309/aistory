@@ -124,7 +124,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
   const [outputLanguage, setOutputLanguage] = useState(locale);
 
   // AI model state
-  const [selectedModel, setSelectedModel] = useState<string | null>('fast');
+  const [selectedModel, setSelectedModel] = useState<string | null>('standard');
 
   // Advanced options state
   const [selectedOOC, setSelectedOOC] = useState('none');

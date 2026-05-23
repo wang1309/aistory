@@ -144,7 +144,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
   const [selectedLength, setSelectedLength] = useState<string>("medium");
   const [selectedTone, setSelectedTone] = useState<string>("light");
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
-  const [selectedModel, setSelectedModel] = useState<string>("fast");
+  const [selectedModel, setSelectedModel] = useState<string>("standard");
   
   // Advanced options
   const [showAdvanced, setShowAdvanced] = useState(false);

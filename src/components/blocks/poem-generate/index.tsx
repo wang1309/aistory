@@ -113,7 +113,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const [advancedMode, setAdvancedMode] = useState(false);
 
   const [prompt, setPrompt] = useState("");
-  const [selectedModel, setSelectedModel] = useState<string | null>("fast");
+  const [selectedModel, setSelectedModel] = useState<string | null>("standard");
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [selectedPoemType, setSelectedPoemType] = useState<'modern' | 'classical' | 'format' | 'lyric'>('format');
 

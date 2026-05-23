@@ -70,7 +70,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
   const [twists, setTwists] = useState("");
 
   // AI model state
-  const [selectedModel, setSelectedModel] = useState("fast");
+  const [selectedModel, setSelectedModel] = useState("standard");
 
   // Generation state
   const [isGenerating, setIsGenerating] = useState(false);

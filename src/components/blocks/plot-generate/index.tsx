@@ -144,7 +144,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
   // ========== STATE MANAGEMENT ==========
   const [prompt, setPrompt] = useState("");
-  const [selectedModel, setSelectedModel] = useState<string | null>('fast');
+  const [selectedModel, setSelectedModel] = useState<string | null>('standard');
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
 
   // Plot-specific parameters

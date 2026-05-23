@@ -146,7 +146,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
 
     // ========== STATE MANAGEMENT ==========
     const [prompt, setPrompt] = useState("");
-    const [selectedModel, setSelectedModel] = useState<string | null>('fast');
+    const [selectedModel, setSelectedModel] = useState<string | null>('standard');
     const [selectedLanguage, setSelectedLanguage] = useState(locale);
     const [selectedWorldview, setSelectedWorldview] = useState('fantasy');
     const [selectedRoleType, setSelectedRoleType] = useState('protagonist');

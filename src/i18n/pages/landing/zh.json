@@ -692,6 +692,7 @@
       "error_no_prompt": "请输入故事提示",
       "error_no_model": "请选择一个 AI 模型",
       "error_generate_failed": "生成故事失败，请重试。",
+      "error_verification_failed": "人机验证失败，请尝试关闭代理或切换网络环境后重试。",
       "error_no_stream": "读取响应流失败",
       "error_no_content": "没有生成故事内容",
       "error_pdf_export_failed": "PDF导出失败，请重试。",

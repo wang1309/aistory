@@ -77,7 +77,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const [plotType, setPlotType] = useState('canon');
   const [prompt, setPrompt] = useState("");
   const [language, setLanguage] = useState(locale);
-  const [selectedModel, setSelectedModel] = useState<string>('fast');
+  const [selectedModel, setSelectedModel] = useState<string>('standard');
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedFanfic, setGeneratedFanfic] = useState('');

@@ -685,6 +685,7 @@
       "error_no_prompt": "ストーリープロンプトを入力してください",
       "error_no_model": "AIモデルを選択してください",
       "error_generate_failed": "ストーリー生成に失敗しました。もう一度お試しください。",
+      "error_verification_failed": "人間確認に失敗しました。プロキシを無効にするか、別のネットワークに切り替えてから再試行してください。",
       "error_no_stream": "レスポンスストリームの読み取りに失敗しました",
       "error_no_content": "ストーリーコンテンツが生成されませんでした",
       "error_pdf_export_failed": "PDFのエクスポートに失敗しました。もう一度お試しください。",

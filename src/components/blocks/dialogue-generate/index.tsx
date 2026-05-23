@@ -71,7 +71,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
 
   const [prompt, setPrompt] = useState("");
-  const [selectedModel, setSelectedModel] = useState<string>("fast");
+  const [selectedModel, setSelectedModel] = useState<string>("standard");
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [dialogueType, setDialogueType] = useState("conversation");
   const [tone, setTone] = useState("casual");
