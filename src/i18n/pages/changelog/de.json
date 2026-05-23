@@ -6,6 +6,24 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.12",
+        "date": "2026-05-23",
+        "changes": [
+          {
+            "type": "improvement",
+            "items": [
+              "Einheitliche Designsprache auf allen Generator-Seiten für ein konsistentes visuelles Erlebnis",
+              "Glassmorphismus-Effekte entfernt, ersetzt durch klare Kartenrahmen und Hintergrundfarben",
+              "Einheitliches Header-Layout: oranges Symbol + fetter Titel + Trennlinie auf allen Seiten",
+              "Einheitliche Schaltflächengröße (h-14, abgerundet) für klareres Interaktionsfeedback",
+              "Optionsauswahl (Stil, Stimmung, Komplexität usw.) jetzt mit Rahmen-Karten-Stil und orangem Highlight bei Auswahl",
+              "Markenname in der Navigation auf einfarbiges Orange geändert, Verlaufsanimation entfernt",
+              "Insgesamt sauberere und fokussiertere Benutzeroberfläche für bessere Benutzererfahrung"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.11",
         "date": "2026-05-22",
         "changes": [

@@ -6,6 +6,24 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.12",
+        "date": "2026-05-23",
+        "changes": [
+          {
+            "type": "improvement",
+            "items": [
+              "Unified design language across all generator pages for a consistent visual experience",
+              "Removed glassmorphism decorative effects in favor of clean card borders and background colors",
+              "Standardized header layout: orange icon + bold title + divider line across all pages",
+              "Unified generate button spec (h-14, rounded-xl) for clearer interaction feedback",
+              "Option selectors (style, mood, complexity, etc.) now use bordered card style with orange highlight on selection",
+              "Navigation brand name changed to solid orange, removing gradient animation",
+              "Overall UI is cleaner and more focused, improving user experience"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.11",
         "date": "2026-05-22",
         "changes": [
