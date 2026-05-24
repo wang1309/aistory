@@ -319,6 +319,10 @@
         "name": "Backstory‑Generator",
         "desc": "Erstellt reichhaltige, strukturierte Charakter‑Backstories für RPGs, Romane, VTuber und Chatbots."
       },
+      "dnd_backstory_generator": {
+        "name": "DnD-Hintergrundgeschichten-Generator",
+        "desc": "Erstelle spielbare D&D-Hintergründe mit Volk, Klasse, Makeln, Bindungen, Geheimnissen und DM Hooks."
+      },
       "story_prompt_generator": {
         "name": "Story‑Prompt‑Generator",
         "desc": "Generiert sofort kreative Story‑Prompts und Ideen, um Schreibblockaden zu durchbrechen."

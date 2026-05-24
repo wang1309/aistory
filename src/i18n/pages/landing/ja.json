@@ -66,6 +66,13 @@
               "target": "_self"
             },
             {
+              "title": "DnD バックストーリージェネレーター",
+              "description": "種族、クラス、目的、欠点、DMフックを含むプレイ向け DnD 背景を生成",
+              "url": "/dnd-backstory-generator",
+              "icon": "RiSwordLine",
+              "target": "_self"
+            },
+            {
               "title": "ダイアログジェネレーター",
               "description": "ストーリー、脚本、ゲーム用のリアルなキャラクター対話を生成",
               "url": "/dialogue-generator",
@@ -798,6 +805,11 @@
             {
               "title": "バックストーリージェネレーター",
               "url": "/backstory-generator",
+              "target": "_self"
+            },
+            {
+              "title": "DnD バックストーリージェネレーター",
+              "url": "/dnd-backstory-generator",
               "target": "_self"
             },
             {

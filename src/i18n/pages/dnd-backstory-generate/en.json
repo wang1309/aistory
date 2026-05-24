@@ -1,0 +1,303 @@
+{
+  "dnd_backstory_generate": {
+    "metadata": {
+      "title": "Free DnD Backstory Generator - Create Playable D&D 5e Character Lore",
+      "description": "DnD Backstory Generator for D&D 5e and 5.5e players and DMs. Build playable character backstories with traits, bonds, flaws, secrets, and DM hooks.",
+      "keywords": "DnD Backstory Generator, D&D backstory generator, D&D character backstory, 5e backstory, NPC backstory, DM hooks, DnD character generator"
+    },
+    "ui": {
+      "title": "DnD Backstory Generator",
+      "subtitle": "Build a playable D&D 5e or 5.5e character backstory with flaws, bonds, secrets, and DM hooks.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "DnD Backstory Generator",
+      "character_concept": "Character Concept",
+      "random_button": "Random Seed",
+      "ai_model": "AI Model",
+      "output_language": "Output Language",
+      "race": "Race / Heritage",
+      "character_class": "Class / Archetype",
+      "background": "Background / Origin",
+      "campaign_tone": "Campaign Tone",
+      "use_case": "Use Case",
+      "output_length": "Output Length",
+      "advanced_options": "Advanced Options",
+      "alignment": "Alignment / Moral Leaning",
+      "core_motivation": "Core Motivation",
+      "defining_event": "Defining Event",
+      "flaw_or_fear": "Greatest Fear or Flaw",
+      "important_bond": "Important Bond",
+      "secret": "Secret",
+      "hook_type": "Campaign Hook Type",
+      "world_notes": "World / Region Notes",
+      "party_role": "Party Role",
+      "deity_patron_oath": "Deity / Patron / Oath",
+      "rival_faction": "Rival or Faction",
+      "extra_constraints": "Extra Constraints",
+      "generate_button": "Generate DnD Backstory",
+      "generating": "Generating...",
+      "hero_step_1": "Define the character",
+      "hero_step_2": "Add playable details",
+      "hero_step_3": "Generate hooks",
+      "output_title": "Generated DnD Backstory"
+    },
+    "placeholders": {
+      "character_concept": "Describe the D&D character you want to build... (e.g. 'A tiefling warlock hiding a pact debt from the party')",
+      "race": "e.g. Tiefling, Half-Orc, High Elf",
+      "character_class": "e.g. Warlock, Paladin, Rogue",
+      "background": "e.g. Sage, Soldier, Criminal",
+      "core_motivation": "What drives this character right now?",
+      "defining_event": "What event changed their life?",
+      "flaw_or_fear": "What weakness, fear, or bad habit haunts them?",
+      "important_bond": "Who or what matters most to them?",
+      "secret": "What truth are they hiding?",
+      "world_notes": "Any setting, city, region, or campaign lore to respect",
+      "party_role": "e.g. frontline tank, party face, scout",
+      "deity_patron_oath": "Optional deity, patron, oath, or creed",
+      "rival_faction": "Optional enemy, rival, or faction tie",
+      "extra_constraints": "Extra instructions for tone, lore, or table use"
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick playable draft",
+      "standard": "Standard",
+      "standard_description": "Balanced quality and speed",
+      "creative": "Creative",
+      "creative_description": "Most detailed roleplay output"
+    },
+    "race_options": {
+      "human": "Human",
+      "elf": "Elf",
+      "half_elf": "Half-Elf",
+      "dwarf": "Dwarf",
+      "halfling": "Halfling",
+      "gnome": "Gnome",
+      "half_orc": "Half-Orc",
+      "tiefling": "Tiefling",
+      "dragonborn": "Dragonborn",
+      "aasimar": "Aasimar",
+      "custom": "Custom"
+    },
+    "class_options": {
+      "barbarian": "Barbarian",
+      "bard": "Bard",
+      "cleric": "Cleric",
+      "druid": "Druid",
+      "fighter": "Fighter",
+      "monk": "Monk",
+      "paladin": "Paladin",
+      "ranger": "Ranger",
+      "rogue": "Rogue",
+      "sorcerer": "Sorcerer",
+      "warlock": "Warlock",
+      "wizard": "Wizard",
+      "artificer": "Artificer",
+      "custom": "Custom"
+    },
+    "campaign_tones": {
+      "heroic": "Heroic Fantasy",
+      "grim": "Grim Adventure",
+      "political": "Political Intrigue",
+      "dark_fantasy": "Dark Fantasy",
+      "comedic": "Comedic Party"
+    },
+    "use_cases": {
+      "player_character": "Player Character",
+      "npc": "NPC",
+      "villain": "Villain"
+    },
+    "lengths": {
+      "short": "Short",
+      "standard": "Standard",
+      "detailed": "Detailed"
+    },
+    "alignments": {
+      "lawful_good": "Lawful Good",
+      "neutral_good": "Neutral Good",
+      "chaotic_good": "Chaotic Good",
+      "lawful_neutral": "Lawful Neutral",
+      "true_neutral": "True Neutral",
+      "chaotic_neutral": "Chaotic Neutral",
+      "lawful_evil": "Lawful Evil",
+      "neutral_evil": "Neutral Evil",
+      "chaotic_evil": "Chaotic Evil",
+      "unaligned": "Unaligned / Flexible"
+    },
+    "hook_types": {
+      "debt": "Debt or Obligation",
+      "revenge": "Revenge",
+      "prophecy": "Prophecy",
+      "lost_family": "Lost Family",
+      "faction_tie": "Faction Tie",
+      "artifact": "Artifact or Relic",
+      "guilt": "Guilt or Past Failure",
+      "mystery": "Unsolved Mystery"
+    },
+    "output_languages": {
+      "en": "English",
+      "zh": "Chinese",
+      "ja": "Japanese",
+      "ko": "Korean",
+      "de": "German",
+      "ru": "Russian"
+    },
+    "validation": {
+      "enter_concept": "Please enter a D&D character concept.",
+      "enter_race": "Please enter a race or heritage.",
+      "enter_class": "Please enter a class or archetype.",
+      "enter_background": "Please enter a background or origin.",
+      "select_model": "Please select an AI model."
+    },
+    "success": {
+      "random_prompt_selected": "Random DnD seed selected!",
+      "backstory_generated": "DnD backstory generated successfully!",
+      "backstory_copied": "DnD backstory copied to clipboard!"
+    },
+    "errors": {
+      "generation_failed": "Failed to generate DnD backstory. Please try again."
+    },
+    "output": {
+      "title": "Generated DnD Backstory",
+      "words": "words",
+      "copy": "Copy",
+      "generating_message": "Forging your playable DnD backstory...",
+      "empty_message": "Your structured DnD backstory will appear here with traits, flaws, bonds, secrets, and DM hooks."
+    },
+    "random_prompts": [
+      "A tiefling warlock who owes a debt to a cursed archfey and hides it from the party",
+      "A dwarf fighter sworn to recover a clan relic before a rival mercenary company claims it",
+      "An aasimar cleric whose healing powers returned only after a village burned under their watch",
+      "A halfling rogue who stole from the wrong thieves' guild and now travels under a false name",
+      "A human paladin whose oath is starting to conflict with the corrupt order that trained them",
+      "A wood elf ranger tracking the same monstrous beast that once destroyed their border settlement"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What Is a DnD Backstory Generator?",
+      "description": "A DnD Backstory Generator helps you turn a rough fantasy character idea into a playable D&D profile. Instead of writing a long novel-style biography, this DnD Backstory Generator focuses on what players and DMs actually use at the table: a clear origin, strong motivation, meaningful bonds, visible flaws, hidden secrets, and DM hooks that can become quests or conflicts.\n\nThis DnD Backstory Generator is built for D&D 5e and 5.5e style play. You can guide the result with race, class, background, alignment, tone, hook type, and extra lore notes, then get a structured backstory that is easy to drop into a campaign, session zero, or NPC roster.",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "DnD Backstory Generator overview"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why Use This DnD Backstory Generator",
+      "description": "This DnD Backstory Generator is designed for playability, not just flavor text.",
+      "items": [
+        {
+          "title": "Playable Structure",
+          "description": "This DnD Backstory Generator outputs traits, ideals, bonds, flaws, secrets, and DM hooks in a format players and DMs can skim fast during prep or play.",
+          "icon": "RiListCheck2",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "Playable DnD structure"
+          }
+        },
+        {
+          "title": "Better Hooks for Campaigns",
+          "description": "Every DnD Backstory Generator result includes actionable DM hooks, making it easier to connect your character to factions, quests, rivals, and session zero relationships.",
+          "icon": "RiSwordLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "Campaign hooks for DnD"
+          }
+        },
+        {
+          "title": "Useful for PCs and NPCs",
+          "description": "Use the DnD Backstory Generator for player characters, villains, side NPCs, or recurring quest givers without having to rewrite the whole structure every time.",
+          "icon": "RiGroupLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "DnD backstory for players and NPCs"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the DnD Backstory Generator",
+      "description": "Create a playable D&D character backstory in three focused steps.",
+      "items": [
+        {
+          "title": "Choose Your Character Shell",
+          "description": "Pick a race, class, and background, then describe the core character concept you want this DnD Backstory Generator to expand."
+        },
+        {
+          "title": "Add Playable Details",
+          "description": "Set the campaign tone, use case, alignment, and optional details like motivation, flaw, bond, secret, deity, rival, or faction ties."
+        },
+        {
+          "title": "Generate Hooks for the Table",
+          "description": "Generate your result and use the structured output for session zero, character sheets, NPC prep, or DM plot hooks."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Use Cases",
+      "title": "Who Should Use This DnD Backstory Generator",
+      "description": "Built for D&D tables that want richer characters without slowing down prep.",
+      "items": [
+        {
+          "title": "New Players",
+          "description": "Use this DnD Backstory Generator to go from a simple race-and-class idea to a complete playable concept with flaws, goals, and party-friendly hooks.",
+          "icon": "RiUserStarLine"
+        },
+        {
+          "title": "Experienced Roleplayers",
+          "description": "If you already know the vibe you want, this DnD Backstory Generator helps you stress-test motivation, secrets, and campaign fit before the first session.",
+          "icon": "RiScrollLine"
+        },
+        {
+          "title": "Dungeon Masters",
+          "description": "Dungeon Masters can use the DnD Backstory Generator to produce NPCs, villains, allies, cult leaders, mentors, and rumor-ready quest hooks much faster.",
+          "icon": "RiDiceLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "DnD Backstory Generator FAQs",
+      "description": "Common questions about using a DnD Backstory Generator for D&D 5e and 5.5e campaigns.",
+      "items": [
+        {
+          "title": "What makes this DnD Backstory Generator different from a normal backstory tool?",
+          "description": "This DnD Backstory Generator is built around what D&D players and DMs actually need: traits, ideals, bonds, flaws, goals, secrets, and usable DM hooks. It is not just a generic fantasy biography writer."
+        },
+        {
+          "title": "Can I use this DnD Backstory Generator for NPCs and villains?",
+          "description": "Yes. You can switch the use case from player character to NPC or villain, and the DnD Backstory Generator will shape the motivation, relationship tension, and hooks to fit that role."
+        },
+        {
+          "title": "Does the DnD Backstory Generator work for D&D 5e and 5.5e?",
+          "description": "Yes. This DnD Backstory Generator is written for the common D&D 5e and 5.5e style of play, while avoiding overly rigid rules text so it still works across many homebrew tables."
+        },
+        {
+          "title": "Will the DnD Backstory Generator create DM hooks automatically?",
+          "description": "Yes. Every DnD Backstory Generator output includes three actionable DM hooks that can become scenes, quests, rivalries, secrets, or faction problems inside a campaign."
+        },
+        {
+          "title": "How long should a good D&D backstory be?",
+          "description": "For most tables, shorter and more playable is better. A strong D&D backstory should tell the DM who the character is, what they want, what can hurt them, and what hooks the campaign can pull. This DnD Backstory Generator is designed around that principle."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Create Your Next D&D Character",
+      "description": "Use the DnD Backstory Generator to build a playable backstory with real motivations, flaws, secrets, and DM hooks.",
+      "buttons": [
+        {
+          "title": "Generate DnD Backstory",
+          "url": "/dnd-backstory-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

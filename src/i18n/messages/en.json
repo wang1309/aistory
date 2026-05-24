@@ -322,6 +322,10 @@
         "name": "Backstory Generator",
         "desc": "Create rich, structured character backstories for RPGs, novels, VTubers, and chatbots."
       },
+      "dnd_backstory_generator": {
+        "name": "DnD Backstory Generator",
+        "desc": "Build playable D&D backstories with race, class, flaws, bonds, secrets, and DM hooks."
+      },
       "story_prompt_generator": {
         "name": "Story Prompt Generator",
         "desc": "Generate creative story prompts and ideas instantly to defeat writer's block."

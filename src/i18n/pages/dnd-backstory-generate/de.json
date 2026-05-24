@@ -1,0 +1,303 @@
+{
+  "dnd_backstory_generate": {
+    "metadata": {
+      "title": "Free DnD-Hintergrundgeschichten-Generator - Spielbare D&D 5e Hintergründe erstellen",
+      "description": "Der DnD-Hintergrundgeschichten-Generator erstellt für D&D 5e und 5.5e spielbare Hintergründe mit Makeln, Bindungen, Geheimnissen und DM Hooks.",
+      "keywords": "DnD Backstory Generator,D&D backstory generator,D&D character backstory,5e backstory,NPC backstory,DM hooks"
+    },
+    "ui": {
+      "title": "DnD-Hintergrundgeschichten-Generator",
+      "subtitle": "Erstelle für D&D 5e / 5.5e sofort spielbare Hintergründe mit Schwächen, Bindungen, Geheimnissen und DM Hooks.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "DnD-Hintergrundgeschichten-Generator",
+      "character_concept": "Charakterkonzept",
+      "random_button": "Zufall",
+      "ai_model": "KI-Modell",
+      "output_language": "Ausgabesprache",
+      "race": "Volk / Herkunft",
+      "character_class": "Klasse / Archetyp",
+      "background": "Hintergrund / Ursprung",
+      "campaign_tone": "Kampagnenton",
+      "use_case": "Verwendungszweck",
+      "output_length": "Länge",
+      "advanced_options": "Erweiterte Optionen",
+      "alignment": "Gesinnung / moralische Tendenz",
+      "core_motivation": "Zentrale Motivation",
+      "defining_event": "Prägendes Ereignis",
+      "flaw_or_fear": "Größter Makel oder größte Angst",
+      "important_bond": "Wichtige Bindung",
+      "secret": "Geheimnis",
+      "hook_type": "Hook-Typ",
+      "world_notes": "Welt- / Regionsnotizen",
+      "party_role": "Gruppenrolle",
+      "deity_patron_oath": "Gottheit / Patron / Eid",
+      "rival_faction": "Rivale oder Fraktion",
+      "extra_constraints": "Zusätzliche Vorgaben",
+      "generate_button": "DnD Hintergrund generieren",
+      "generating": "Wird generiert...",
+      "hero_step_1": "Charakter definieren",
+      "hero_step_2": "Spielbare Details ergänzen",
+      "hero_step_3": "Hooks erzeugen",
+      "output_title": "Generierter DnD Hintergrund"
+    },
+    "placeholders": {
+      "character_concept": "Beschreibe den D&D-Charakter, den du erstellen willst",
+      "race": "z. B. Tiefling, Human, Elf",
+      "character_class": "z. B. Warlock, Rogue, Paladin",
+      "background": "z. B. Sage, Soldier, Criminal",
+      "core_motivation": "Was treibt den Charakter aktuell an?",
+      "defining_event": "Welches Ereignis hat alles verändert?",
+      "flaw_or_fear": "Welche Schwäche oder Angst verfolgt ihn?",
+      "important_bond": "Wer oder was ist ihm am wichtigsten?",
+      "secret": "Welche Wahrheit verbirgt er?",
+      "world_notes": "Notizen zu Setting oder Region",
+      "party_role": "z. B. scout, healer, face",
+      "deity_patron_oath": "Optionale Gottheit, Patron oder Eid",
+      "rival_faction": "Optionaler Rivale oder Fraktionsbezug",
+      "extra_constraints": "Zusätzliche Vorgaben"
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schneller Entwurf",
+      "standard": "Standard",
+      "standard_description": "Balance aus Tempo und Qualität",
+      "creative": "Kreativ",
+      "creative_description": "Ausführlichstes Ergebnis"
+    },
+    "race_options": {
+      "human": "Mensch",
+      "elf": "Elf",
+      "half_elf": "Halb-Elf",
+      "dwarf": "Zwerg",
+      "halfling": "Halbling",
+      "gnome": "Gnom",
+      "half_orc": "Halb-Ork",
+      "tiefling": "Tiefling",
+      "dragonborn": "Dragonborn",
+      "aasimar": "Aasimar",
+      "custom": "Benutzerdefiniert"
+    },
+    "class_options": {
+      "barbarian": "Barbar",
+      "bard": "Barde",
+      "cleric": "Kleriker",
+      "druid": "Druide",
+      "fighter": "Kämpfer",
+      "monk": "Mönch",
+      "paladin": "Paladin",
+      "ranger": "Waldläufer",
+      "rogue": "Schurke",
+      "sorcerer": "Zauberer",
+      "warlock": "Hexenmeister",
+      "wizard": "Magier",
+      "artificer": "Artificer",
+      "custom": "Benutzerdefiniert"
+    },
+    "campaign_tones": {
+      "heroic": "Heroische Fantasy",
+      "grim": "Düsteres Abenteuer",
+      "political": "Politische Intrige",
+      "dark_fantasy": "Dark Fantasy",
+      "comedic": "Komödiantisch"
+    },
+    "use_cases": {
+      "player_character": "Spielercharakter",
+      "npc": "NPC",
+      "villain": "Schurke"
+    },
+    "lengths": {
+      "short": "Kurz",
+      "standard": "Standard",
+      "detailed": "Detailliert"
+    },
+    "alignments": {
+      "lawful_good": "Rechtschaffen Gut",
+      "neutral_good": "Neutral Gut",
+      "chaotic_good": "Chaotisch Gut",
+      "lawful_neutral": "Rechtschaffen Neutral",
+      "true_neutral": "Wahrhaft Neutral",
+      "chaotic_neutral": "Chaotisch Neutral",
+      "lawful_evil": "Rechtschaffen Böse",
+      "neutral_evil": "Neutral Böse",
+      "chaotic_evil": "Chaotisch Böse",
+      "unaligned": "Ungebunden / Flexibel"
+    },
+    "hook_types": {
+      "debt": "Schuld oder Verpflichtung",
+      "revenge": "Rache",
+      "prophecy": "Prophezeiung",
+      "lost_family": "Verlorene Familie",
+      "faction_tie": "Fraktionsbindung",
+      "artifact": "Artefakt oder Relikt",
+      "guilt": "Schuldgefühl / früheres Versagen",
+      "mystery": "Ungelöstes Geheimnis"
+    },
+    "output_languages": {
+      "en": "Englisch",
+      "zh": "Chinesisch",
+      "ja": "Japanisch",
+      "ko": "Koreanisch",
+      "de": "Deutsch",
+      "ru": "Russisch"
+    },
+    "validation": {
+      "enter_concept": "Bitte gib ein Charakterkonzept ein.",
+      "enter_race": "Bitte gib ein Volk oder eine Herkunft ein.",
+      "enter_class": "Bitte gib eine Klasse oder einen Archetyp ein.",
+      "enter_background": "Bitte gib einen Hintergrund oder Ursprung ein.",
+      "select_model": "Bitte wähle ein KI-Modell aus."
+    },
+    "success": {
+      "random_prompt_selected": "Zufälliger DnD-Seed ausgewählt!",
+      "backstory_generated": "DnD-Hintergrund erfolgreich generiert!",
+      "backstory_copied": "DnD-Hintergrund in die Zwischenablage kopiert!"
+    },
+    "errors": {
+      "generation_failed": "DnD-Hintergrund konnte nicht generiert werden."
+    },
+    "output": {
+      "title": "Generierter DnD Hintergrund",
+      "words": "Wörter",
+      "copy": "Kopieren",
+      "generating_message": "Es wird ein spielbarer DnD-Hintergrund geschmiedet...",
+      "empty_message": "Hier erscheint ein strukturierter DnD-Hintergrund mit Traits, Flaws, Bonds, Secrets und DM Hooks."
+    },
+    "random_prompts": [
+      "Ein Tiefling-Warlock mit einer geheimen Schuld gegenüber einem Erzfee-Patron",
+      "Ein Zwergenkämpfer, der ein Familienrelikt zurückholen will",
+      "Ein Aasimar-Kleriker, der sein Dorf nicht retten konnte",
+      "Ein Halbling-Rogue auf der Flucht vor einer Diebesgilde",
+      "Ein menschlicher Paladin zwischen Eid und korrupter Ordensführung",
+      "Ein Waldelfen-Ranger, der das Monster jagt, das seine Heimat zerstörte"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Was ist ein DnD-Hintergrundgeschichten-Generator?",
+      "description": "Ein DnD-Hintergrundgeschichten-Generator hilft dir dabei, eine grobe D&D-Idee in einen spielbaren Hintergrund zu verwandeln. Statt eines langen Fantasy-Essays konzentriert sich dieses Tool auf das, was am Spieltisch zählt: Herkunft, Motivation, Bindungen, Makel, Geheimnisse und Hooks, die ein DM direkt in Quests oder Konflikte einbauen kann.\n\nDieser DnD-Hintergrundgeschichten-Generator ist auf D&D 5e / 5.5e ausgerichtet. Du kannst Volk, Klasse, Hintergrund, Gesinnung, Ton, Hook-Typ und Welt-Notizen angeben und erhältst ein strukturiertes Ergebnis für Kampagnen, Session Zero oder NPC-Planung.",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "Überblick zum DnD-Hintergrundgeschichten-Generator"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum diesen DnD-Hintergrundgeschichten-Generator nutzen?",
+      "description": "Dieser DnD-Hintergrundgeschichten-Generator ist auf Nutzbarkeit am Tisch ausgelegt.",
+      "items": [
+        {
+          "title": "Spielbare Struktur",
+          "description": "Traits, Ideals, Bonds, Flaws, Geheimnisse und DM Hooks werden klar strukturiert ausgegeben.",
+          "icon": "RiListCheck2",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "Playable DnD structure"
+          }
+        },
+        {
+          "title": "Leicht in Kampagnen integrierbar",
+          "description": "Jedes Ergebnis enthält drei konkrete DM Hooks für Quests, Rivalitäten, Fraktionen oder Szenen.",
+          "icon": "RiSwordLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "DnD hooks"
+          }
+        },
+        {
+          "title": "Für PCs und NPCs geeignet",
+          "description": "Du kannst damit Spielercharaktere, NPCs oder Schurken in derselben klaren Form erzeugen.",
+          "icon": "RiGroupLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "PC and NPC support"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "So nutzt du den DnD-Hintergrundgeschichten-Generator",
+      "description": "Erstelle in drei Schritten einen spielbaren D&D-Hintergrund.",
+      "items": [
+        {
+          "title": "Charakter-Grundlage festlegen",
+          "description": "Wähle Volk, Klasse und Hintergrund und gib das Kernkonzept ein, das dieser DnD-Hintergrundgeschichten-Generator ausbauen soll."
+        },
+        {
+          "title": "Spielrelevante Details ergänzen",
+          "description": "Lege Kampagnenton, Verwendungszweck, Gesinnung und optionale Angaben wie Motivation, Makel, Bindung, Geheimnis oder Fraktionsbezug fest."
+        },
+        {
+          "title": "Generieren und am Tisch verwenden",
+          "description": "Nutze die strukturierte Ausgabe direkt für Session Zero, Charakterbögen, NPC-Vorbereitung oder DM Hooks."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Anwendungsfälle",
+      "title": "Wer sollte diesen DnD-Hintergrundgeschichten-Generator nutzen?",
+      "description": "Ideal für D&D-Gruppen, die starke Charaktere wollen, ohne zu viel Vorbereitungszeit zu verlieren.",
+      "items": [
+        {
+          "title": "Neue Spieler",
+          "description": "Auch mit nur Volk und Klasse bekommst du schnell Motivation, Schwächen und Ziele.",
+          "icon": "RiUserStarLine"
+        },
+        {
+          "title": "Erfahrene Rollenspieler",
+          "description": "Schon vorhandene Konzepte lassen sich mit Geheimnissen, Bindungen und Kampagnenfit schärfen.",
+          "icon": "RiScrollLine"
+        },
+        {
+          "title": "Dungeon Master",
+          "description": "DMs können NPCs, Schurken, Mentoren und Fraktionsfiguren deutlich schneller vorbereiten.",
+          "icon": "RiDiceLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "DnD-Hintergrundgeschichten-Generator FAQ",
+      "description": "Häufige Fragen zur Hintergrund-Erstellung für D&D 5e / 5.5e.",
+      "items": [
+        {
+          "title": "Was unterscheidet dieses Tool von einem normalen Hintergrundgenerator?",
+          "description": "Dieser DnD-Hintergrundgeschichten-Generator ist auf D&D-Spielbarkeit ausgelegt und priorisiert Traits, Ideals, Bonds, Flaws, Geheimnisse und DM Hooks statt generischer Fantasy-Prosa."
+        },
+        {
+          "title": "Kann ich damit auch NPCs oder Schurken erstellen?",
+          "description": "Ja. Der Generator kann auf Spielercharakter, NPC oder Schurke umgestellt werden und passt Motivation und Hooks entsprechend an."
+        },
+        {
+          "title": "Funktioniert der Generator für D&D 5e und 5.5e?",
+          "description": "Ja. Er orientiert sich an den gängigen Erwartungen von D&D 5e / 5.5e, ohne zu starr an Regeldetails gebunden zu sein."
+        },
+        {
+          "title": "Erstellt der DnD-Hintergrundgeschichten-Generator automatisch DM Hooks?",
+          "description": "Ja. Jedes Ergebnis enthält drei konkrete und sofort nutzbare DM Hooks."
+        },
+        {
+          "title": "Wie lang sollte ein guter D&D-Hintergrund sein?",
+          "description": "Für die meisten Tische ist ein kompakter, spielbarer Hintergrund hilfreicher als ein langer Romantext. Genau darauf ist dieser DnD-Hintergrundgeschichten-Generator ausgelegt."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Erstelle deinen nächsten D&D-Charakter",
+      "description": "Nutze den DnD-Hintergrundgeschichten-Generator, um Motivation, Makel, Geheimnisse und DM Hooks schnell auszuarbeiten.",
+      "buttons": [
+        {
+          "title": "DnD Hintergrund generieren",
+          "url": "/dnd-backstory-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

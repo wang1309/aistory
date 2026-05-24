@@ -10,6 +10,12 @@
         "date": "2026-05-23",
         "changes": [
           {
+            "type": "feature",
+            "items": [
+              "Launched DnD Backstory Generator with a dedicated page for building playable D&D character backstories and DM hooks"
+            ]
+          },
+          {
             "type": "improvement",
             "items": [
               "Unified design language across all generator pages for a consistent visual experience",

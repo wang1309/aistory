@@ -73,6 +73,13 @@
               "target": "_self"
             },
             {
+              "title": "DnD 背景故事生成器",
+              "description": "生成适用于 DnD 跑团的角色背景，包含种族、职业、目标、缺陷和 DM 钩子",
+              "url": "/dnd-backstory-generator",
+              "icon": "RiSwordLine",
+              "target": "_self"
+            },
+            {
               "title": "对话生成器",
               "description": "为故事、剧本和游戏生成逼真的角色对话",
               "url": "/dialogue-generator",
@@ -805,6 +812,11 @@
             {
               "title": "角色背景生成器",
               "url": "/backstory-generator",
+              "target": "_self"
+            },
+            {
+              "title": "DnD 背景故事生成器",
+              "url": "/dnd-backstory-generator",
               "target": "_self"
             },
             {

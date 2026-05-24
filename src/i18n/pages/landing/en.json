@@ -73,6 +73,13 @@
               "target": "_self"
             },
             {
+              "title": "DnD Backstory Generator",
+              "description": "Generate playable DnD character backstories with class, race, goals, flaws, and DM hooks",
+              "url": "/dnd-backstory-generator",
+              "icon": "RiSwordLine",
+              "target": "_self"
+            },
+            {
               "title": "Dialogue Generator",
               "description": "Generate realistic character dialogues for stories, scripts, and games",
               "url": "/dialogue-generator",
@@ -805,6 +812,11 @@
             {
               "title": "Backstory Generator",
               "url": "/backstory-generator",
+              "target": "_self"
+            },
+            {
+              "title": "DnD Backstory Generator",
+              "url": "/dnd-backstory-generator",
               "target": "_self"
             },
             {

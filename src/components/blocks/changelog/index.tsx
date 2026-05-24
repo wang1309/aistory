@@ -88,6 +88,14 @@ export default function Changelog({ changelog }: { changelog: ChangelogType }) {
 
     // Backstory Generator
     if (
+      lower.includes("dnd backstory generator") ||
+      lower.includes("d&d backstory generator") ||
+      text.includes("dnd背景故事生成器")
+    ) {
+      return "/dnd-backstory-generator";
+    }
+
+    if (
       lower.includes("backstory generator") ||
       text.includes("背景故事生成器")
     ) {

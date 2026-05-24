@@ -66,6 +66,13 @@
               "target": "_self"
             },
             {
+              "title": "DnD-Hintergrundgeschichten-Generator",
+              "description": "Spielbare DnD-Backstorys mit Volk, Klasse, Zielen, Schwächen und DM-Hooks generieren",
+              "url": "/dnd-backstory-generator",
+              "icon": "RiSwordLine",
+              "target": "_self"
+            },
+            {
               "title": "Dialog-Generator",
               "description": "Realistische Charakterdialoge für Geschichten, Drehbücher und Spiele generieren",
               "url": "/dialogue-generator",
@@ -798,6 +805,11 @@
             {
               "title": "Hintergrundgeschichten-Generator",
               "url": "/backstory-generator",
+              "target": "_self"
+            },
+            {
+              "title": "DnD-Hintergrundgeschichten-Generator",
+              "url": "/dnd-backstory-generator",
               "target": "_self"
             },
             {

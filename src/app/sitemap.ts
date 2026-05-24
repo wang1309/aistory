@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/story-prompt-generator',
     '/poem-title-generator',
     '/backstory-generator',
+    '/dnd-backstory-generator',
     '/comic-generator',
     '/changelog'
   ]
@@ -46,6 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
               || route === '/story-prompt-generator'
               || route === '/poem-title-generator'
               || route === '/backstory-generator'
+              || route === '/dnd-backstory-generator'
               || route === '/comic-generator')
             ? 0.9
             : 0.8,

@@ -3,30 +3,32 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useRef, useEffect, useState, useCallback } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 interface NavTab {
   href: string;
-  label: string;
+  labelKey: string;
 }
 
 const TABS: NavTab[] = [
-  { href: "/", label: "Story Generator" },
-  { href: "/story-prompt-generator", label: "Story Prompt Generator" },
-  { href: "/fanfic-generator", label: "Fanfic Generator" },
-  { href: "/fantasy-generator", label: "Fantasy Story Generator" },
-  { href: "/plot-generator", label: "Plot Generator" },
-  { href: "/poem-generator", label: "Poem Generator" },
-  { href: "/comic-generator", label: "AI Comic Generator" },
-  { href: "/backstory-generator", label: "Backstory Generator" },
-  { href: "/book-title-generator", label: "Book Title Generator" },
-  { href: "/poem-title-generator", label: "Poem Title Generator" },
-  { href: "/dialogue-generator", label: "Dialogue Generator" },
+  { href: "/", labelKey: "ai_tools.tools.story_generator.name" },
+  { href: "/story-prompt-generator", labelKey: "ai_tools.tools.story_prompt_generator.name" },
+  { href: "/fanfic-generator", labelKey: "ai_tools.tools.fanfic_generator.name" },
+  { href: "/fantasy-generator", labelKey: "ai_tools.tools.fantasy_generator.name" },
+  { href: "/plot-generator", labelKey: "ai_tools.tools.plot_generator.name" },
+  { href: "/poem-generator", labelKey: "ai_tools.tools.poem_generator.name" },
+  { href: "/comic-generator", labelKey: "ai_tools.tools.comic_generator.name" },
+  { href: "/backstory-generator", labelKey: "ai_tools.tools.backstory_generator.name" },
+  { href: "/dnd-backstory-generator", labelKey: "ai_tools.tools.dnd_backstory_generator.name" },
+  { href: "/book-title-generator", labelKey: "ai_tools.tools.book_title_generator.name" },
+  { href: "/poem-title-generator", labelKey: "ai_tools.tools.poem_title_generator.name" },
+  { href: "/dialogue-generator", labelKey: "ai_tools.tools.dialogue_generator.name" },
 ];
 
 export default function GeneratorNavTabs() {
   const pathname = usePathname();
   const locale = useLocale();
+  const t = useTranslations();
   const scrollRef = useRef<HTMLDivElement>(null);
   const activeRef = useRef<HTMLAnchorElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -115,7 +117,7 @@ export default function GeneratorNavTabs() {
           ].join(" ")}
           aria-current={isActive ? "page" : undefined}
         >
-          {tab.label}
+          {t(tab.labelKey)}
         </Link>
       );
     });

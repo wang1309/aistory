@@ -1,0 +1,303 @@
+{
+  "dnd_backstory_generate": {
+    "metadata": {
+      "title": "Free DnD バックストーリージェネレーター - D&D 5e キャラクター背景を作成",
+      "description": "DnD バックストーリージェネレーターは、D&D 5e / 5.5e のプレイヤーと DM 向けに、絆、欠点、秘密、DM hooks を含む実用的な背景を生成します。",
+      "keywords": "DnD Backstory Generator,D&D backstory generator,D&D character backstory,5e backstory,NPC backstory,DM hooks"
+    },
+    "ui": {
+      "title": "DnD バックストーリージェネレーター",
+      "subtitle": "D&D 5e / 5.5e 向けに、実際の卓で使いやすい背景、欠点、絆、秘密、DM hooks を生成します。",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "DnD バックストーリージェネレーター",
+      "character_concept": "キャラクターコンセプト",
+      "random_button": "ランダム",
+      "ai_model": "AIモデル",
+      "output_language": "出力言語",
+      "race": "種族 / 血統",
+      "character_class": "クラス / アーキタイプ",
+      "background": "背景 / 出自",
+      "campaign_tone": "キャンペーンの雰囲気",
+      "use_case": "用途",
+      "output_length": "長さ",
+      "advanced_options": "詳細オプション",
+      "alignment": "アライメント / 道徳傾向",
+      "core_motivation": "中核となる動機",
+      "defining_event": "決定的な出来事",
+      "flaw_or_fear": "最大の欠点または恐れ",
+      "important_bond": "重要な絆",
+      "secret": "秘密",
+      "hook_type": "フックの種類",
+      "world_notes": "世界 / 地域メモ",
+      "party_role": "パーティ内の役割",
+      "deity_patron_oath": "神格 / パトロン / 誓い",
+      "rival_faction": "宿敵または派閥",
+      "extra_constraints": "追加条件",
+      "generate_button": "DnD 背景を生成",
+      "generating": "生成中...",
+      "hero_step_1": "キャラクターを定義",
+      "hero_step_2": "卓向け詳細を追加",
+      "hero_step_3": "フックを生成",
+      "output_title": "生成された DnD 背景"
+    },
+    "placeholders": {
+      "character_concept": "作りたい D&D キャラクターを説明してください",
+      "race": "例: Tiefling, Human, Elf",
+      "character_class": "例: Warlock, Rogue, Paladin",
+      "background": "例: Sage, Soldier, Criminal",
+      "core_motivation": "今このキャラクターを動かしているものは？",
+      "defining_event": "人生を変えた出来事は？",
+      "flaw_or_fear": "最大の弱点や恐れは？",
+      "important_bond": "最も大切な人物や対象は？",
+      "secret": "隠している真実は？",
+      "world_notes": "設定や地域に関する補足",
+      "party_role": "例: scout, healer, face",
+      "deity_patron_oath": "任意の神格、契約相手、誓い",
+      "rival_faction": "任意の宿敵や派閥",
+      "extra_constraints": "追加の条件"
+    },
+    "ai_models": {
+      "fast": "高速",
+      "fast_description": "素早い草案",
+      "standard": "標準",
+      "standard_description": "速度と品質のバランス",
+      "creative": "創造的",
+      "creative_description": "最も詳細"
+    },
+    "race_options": {
+      "human": "Human",
+      "elf": "Elf",
+      "half_elf": "Half-Elf",
+      "dwarf": "Dwarf",
+      "halfling": "Halfling",
+      "gnome": "Gnome",
+      "half_orc": "Half-Orc",
+      "tiefling": "Tiefling",
+      "dragonborn": "Dragonborn",
+      "aasimar": "Aasimar",
+      "custom": "Custom"
+    },
+    "class_options": {
+      "barbarian": "Barbarian",
+      "bard": "Bard",
+      "cleric": "Cleric",
+      "druid": "Druid",
+      "fighter": "Fighter",
+      "monk": "Monk",
+      "paladin": "Paladin",
+      "ranger": "Ranger",
+      "rogue": "Rogue",
+      "sorcerer": "Sorcerer",
+      "warlock": "Warlock",
+      "wizard": "Wizard",
+      "artificer": "Artificer",
+      "custom": "Custom"
+    },
+    "campaign_tones": {
+      "heroic": "英雄譚",
+      "grim": "シリアス",
+      "political": "政治劇",
+      "dark_fantasy": "ダークファンタジー",
+      "comedic": "コメディ"
+    },
+    "use_cases": {
+      "player_character": "PC",
+      "npc": "NPC",
+      "villain": "ヴィラン"
+    },
+    "lengths": {
+      "short": "短い",
+      "standard": "標準",
+      "detailed": "詳細"
+    },
+    "alignments": {
+      "lawful_good": "秩序にして善",
+      "neutral_good": "中立にして善",
+      "chaotic_good": "混沌にして善",
+      "lawful_neutral": "秩序にして中立",
+      "true_neutral": "真なる中立",
+      "chaotic_neutral": "混沌にして中立",
+      "lawful_evil": "秩序にして悪",
+      "neutral_evil": "中立にして悪",
+      "chaotic_evil": "混沌にして悪",
+      "unaligned": "未定 / 柔軟"
+    },
+    "hook_types": {
+      "debt": "借り / 義務",
+      "revenge": "復讐",
+      "prophecy": "予言",
+      "lost_family": "失われた家族",
+      "faction_tie": "派閥との関係",
+      "artifact": "遺物 / アーティファクト",
+      "guilt": "罪悪感 / 過去の失敗",
+      "mystery": "未解決の謎"
+    },
+    "output_languages": {
+      "en": "英語",
+      "zh": "中国語",
+      "ja": "日本語",
+      "ko": "韓国語",
+      "de": "ドイツ語",
+      "ru": "ロシア語"
+    },
+    "validation": {
+      "enter_concept": "キャラクターコンセプトを入力してください。",
+      "enter_race": "種族または血統を入力してください。",
+      "enter_class": "クラスまたはアーキタイプを入力してください。",
+      "enter_background": "背景または出自を入力してください。",
+      "select_model": "AIモデルを選択してください。"
+    },
+    "success": {
+      "random_prompt_selected": "ランダムな DnD シードを選択しました！",
+      "backstory_generated": "DnD 背景を生成しました！",
+      "backstory_copied": "DnD 背景をコピーしました！"
+    },
+    "errors": {
+      "generation_failed": "DnD 背景の生成に失敗しました。"
+    },
+    "output": {
+      "title": "生成された DnD 背景",
+      "words": "語",
+      "copy": "コピー",
+      "generating_message": "卓で使える DnD 背景を作成中...",
+      "empty_message": "ここに traits、flaws、bonds、secrets、DM hooks を含む DnD 背景が表示されます。"
+    },
+    "random_prompts": [
+      "仲間に隠れて契約の借りを背負うティーフリングのウォーロック",
+      "一族の遺物を奪還したいドワーフのファイター",
+      "村を守れなかった過去を持つアアシマーのクレリック",
+      "盗賊ギルドから逃げるハーフリングのローグ",
+      "腐敗した騎士団と誓いの間で揺れる人間のパラディン",
+      "故郷を滅ぼした怪物を追うウッドエルフのレンジャー"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "DnD バックストーリージェネレーターとは？",
+      "description": "DnD バックストーリージェネレーターは、D&D のキャラクターアイデアを実際の卓で使いやすい背景設定に変換するツールです。長い小説風の文章ではなく、出自、動機、絆、欠点、秘密、そして DM がシナリオに接続しやすい hooks を重視します。\n\nこの DnD バックストーリージェネレーターは D&D 5e / 5.5e の遊び方を前提にしつつ、レース、クラス、背景、アライメント、雰囲気、フックの種類、設定メモで結果を細かく調整できます。",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "DnD バックストーリージェネレーターの概要"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "利点",
+      "title": "この DnD バックストーリージェネレーターを使う理由",
+      "description": "この DnD バックストーリージェネレーターは雰囲気だけでなく、実際のセッションで使える情報を優先します。",
+      "items": [
+        {
+          "title": "卓向け構造",
+          "description": "traits、ideals、bonds、flaws、秘密、DM hooks を見やすく整理して出力します。",
+          "icon": "RiListCheck2",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "Playable DnD structure"
+          }
+        },
+        {
+          "title": "キャンペーン接続がしやすい",
+          "description": "DnD バックストーリージェネレーターは毎回 3 つの実用的な DM hooks を生成し、クエストやライバル関係、派閥に結び付けやすくします。",
+          "icon": "RiSwordLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "DnD hooks"
+          }
+        },
+        {
+          "title": "PC と NPC の両方に対応",
+          "description": "PC、NPC、ヴィランを切り替えて使えるので、同じ構造でさまざまな D&D キャラクターを作れます。",
+          "icon": "RiGroupLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "PC and NPC support"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "DnD バックストーリージェネレーターの使い方",
+      "description": "3つの手順で、卓で使いやすい D&D 背景を作成できます。",
+      "items": [
+        {
+          "title": "キャラクターの骨格を決める",
+          "description": "種族、クラス、背景を選び、この DnD バックストーリージェネレーターに広げてほしいキャラクター像を入力します。"
+        },
+        {
+          "title": "遊びに使う情報を追加する",
+          "description": "キャンペーンの雰囲気、用途、アライメントに加え、動機、欠点、絆、秘密、神格、ライバル、派閥情報などを設定します。"
+        },
+        {
+          "title": "生成して卓に持ち込む",
+          "description": "生成された構造化出力を、session zero、キャラクターシート補足、NPC準備、DM hooks として使います。"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "用途",
+      "title": "この DnD バックストーリージェネレーターは誰向け？",
+      "description": "準備を長文化せずに、立体的な D&D キャラクターを作りたい人向けです。",
+      "items": [
+        {
+          "title": "新規プレイヤー",
+          "description": "レースとクラスだけのアイデアでも、動機や欠点、目標を素早く補えます。",
+          "icon": "RiUserStarLine"
+        },
+        {
+          "title": "経験者",
+          "description": "すでに方向性があるキャラクターでも、秘密や絆、卓との相性を整理できます。",
+          "icon": "RiScrollLine"
+        },
+        {
+          "title": "DM",
+          "description": "NPC、ヴィラン、メンター、派閥人物などを短時間で用意できます。",
+          "icon": "RiDiceLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "DnD バックストーリージェネレーター FAQ",
+      "description": "D&D 5e / 5.5e 向け背景生成についてのよくある質問。",
+      "items": [
+        {
+          "title": "普通のバックストーリーツールと何が違いますか？",
+          "description": "この DnD バックストーリージェネレーターは D&D の卓で使う情報に合わせて、traits、ideals、bonds、flaws、秘密、DM hooks を重視しています。"
+        },
+        {
+          "title": "NPC やヴィランにも使えますか？",
+          "description": "はい。用途を NPC やヴィランに切り替えると、動機やフックの設計がその役割向けになります。"
+        },
+        {
+          "title": "D&D 5e / 5.5e に対応していますか？",
+          "description": "はい。D&D 5e / 5.5e の一般的なプレイ感を前提にしつつ、ホームブルー環境でも使いやすいように設計しています。"
+        },
+        {
+          "title": "DM hooks は自動で生成されますか？",
+          "description": "はい。各結果には DM がシーンやクエストに転用しやすい 3 つの actionable hooks が含まれます。"
+        },
+        {
+          "title": "良い D&D の背景はどのくらいの長さが適切ですか？",
+          "description": "多くの卓では長文よりも、すぐ使える短く整理された背景が有効です。この DnD バックストーリージェネレーターもその前提で作られています。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "次の D&D キャラクターを作ろう",
+      "description": "DnD バックストーリージェネレーターで、卓で使える動機、欠点、秘密、DM hooks をすばやく整えましょう。",
+      "buttons": [
+        {
+          "title": "DnD 背景を生成",
+          "url": "/dnd-backstory-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

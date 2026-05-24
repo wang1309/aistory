@@ -1,0 +1,303 @@
+{
+  "dnd_backstory_generate": {
+    "metadata": {
+      "title": "Free DnD 백스토리 생성기 - D&D 5e 캐릭터 배경 생성",
+      "description": "DnD 백스토리 생성기는 D&D 5e / 5.5e 플레이어와 DM을 위해 결함, 유대, 비밀, DM hooks를 포함한 플레이 가능한 배경을 생성합니다.",
+      "keywords": "DnD Backstory Generator,D&D backstory generator,D&D character backstory,5e backstory,NPC backstory,DM hooks"
+    },
+    "ui": {
+      "title": "DnD 백스토리 생성기",
+      "subtitle": "D&D 5e / 5.5e 플레이에 바로 쓸 수 있는 배경, 결함, 유대, 비밀, DM hooks를 생성하세요.",
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "DnD 백스토리 생성기",
+      "character_concept": "캐릭터 콘셉트",
+      "random_button": "랜덤",
+      "ai_model": "AI 모델",
+      "output_language": "출력 언어",
+      "race": "종족 / 혈통",
+      "character_class": "클래스 / 아키타입",
+      "background": "배경 / 출신",
+      "campaign_tone": "캠페인 톤",
+      "use_case": "용도",
+      "output_length": "출력 길이",
+      "advanced_options": "고급 옵션",
+      "alignment": "성향 / 도덕 성향",
+      "core_motivation": "핵심 동기",
+      "defining_event": "결정적 사건",
+      "flaw_or_fear": "가장 큰 약점 또는 공포",
+      "important_bond": "중요한 유대",
+      "secret": "비밀",
+      "hook_type": "캠페인 훅 유형",
+      "world_notes": "세계 / 지역 메모",
+      "party_role": "파티 역할",
+      "deity_patron_oath": "신 / 후원자 / 맹세",
+      "rival_faction": "라이벌 또는 세력",
+      "extra_constraints": "추가 조건",
+      "generate_button": "DnD 배경 생성",
+      "generating": "생성 중...",
+      "hero_step_1": "캐릭터 정의",
+      "hero_step_2": "플레이 가능한 정보 추가",
+      "hero_step_3": "훅 생성",
+      "output_title": "생성된 DnD 배경"
+    },
+    "placeholders": {
+      "character_concept": "만들고 싶은 D&D 캐릭터를 설명하세요",
+      "race": "예: Tiefling, Human, Elf",
+      "character_class": "예: Warlock, Rogue, Paladin",
+      "background": "예: Sage, Soldier, Criminal",
+      "core_motivation": "이 캐릭터를 움직이는 핵심 동기는 무엇인가요?",
+      "defining_event": "인생을 바꾼 사건은 무엇인가요?",
+      "flaw_or_fear": "가장 큰 약점이나 공포는 무엇인가요?",
+      "important_bond": "가장 중요한 인물이나 관계는 무엇인가요?",
+      "secret": "숨기고 있는 진실은 무엇인가요?",
+      "world_notes": "설정이나 지역 관련 메모",
+      "party_role": "예: scout, healer, face",
+      "deity_patron_oath": "선택적 신격, 후원자, 맹세",
+      "rival_faction": "선택적 라이벌 또는 세력",
+      "extra_constraints": "추가 조건"
+    },
+    "ai_models": {
+      "fast": "빠름",
+      "fast_description": "빠른 초안",
+      "standard": "표준",
+      "standard_description": "속도와 품질의 균형",
+      "creative": "창의적",
+      "creative_description": "가장 자세한 결과"
+    },
+    "race_options": {
+      "human": "Human",
+      "elf": "Elf",
+      "half_elf": "Half-Elf",
+      "dwarf": "Dwarf",
+      "halfling": "Halfling",
+      "gnome": "Gnome",
+      "half_orc": "Half-Orc",
+      "tiefling": "Tiefling",
+      "dragonborn": "Dragonborn",
+      "aasimar": "Aasimar",
+      "custom": "Custom"
+    },
+    "class_options": {
+      "barbarian": "Barbarian",
+      "bard": "Bard",
+      "cleric": "Cleric",
+      "druid": "Druid",
+      "fighter": "Fighter",
+      "monk": "Monk",
+      "paladin": "Paladin",
+      "ranger": "Ranger",
+      "rogue": "Rogue",
+      "sorcerer": "Sorcerer",
+      "warlock": "Warlock",
+      "wizard": "Wizard",
+      "artificer": "Artificer",
+      "custom": "Custom"
+    },
+    "campaign_tones": {
+      "heroic": "영웅 판타지",
+      "grim": "암울한 모험",
+      "political": "정치적 음모",
+      "dark_fantasy": "다크 판타지",
+      "comedic": "코믹 파티"
+    },
+    "use_cases": {
+      "player_character": "플레이어 캐릭터",
+      "npc": "NPC",
+      "villain": "빌런"
+    },
+    "lengths": {
+      "short": "짧게",
+      "standard": "표준",
+      "detailed": "자세히"
+    },
+    "alignments": {
+      "lawful_good": "질서 선",
+      "neutral_good": "중립 선",
+      "chaotic_good": "혼돈 선",
+      "lawful_neutral": "질서 중립",
+      "true_neutral": "완전 중립",
+      "chaotic_neutral": "혼돈 중립",
+      "lawful_evil": "질서 악",
+      "neutral_evil": "중립 악",
+      "chaotic_evil": "혼돈 악",
+      "unaligned": "미정 / 유동적"
+    },
+    "hook_types": {
+      "debt": "빚 / 의무",
+      "revenge": "복수",
+      "prophecy": "예언",
+      "lost_family": "잃어버린 가족",
+      "faction_tie": "세력 연결",
+      "artifact": "유물 / 아티팩트",
+      "guilt": "죄책감 / 과거의 실패",
+      "mystery": "미해결 수수께끼"
+    },
+    "output_languages": {
+      "en": "영어",
+      "zh": "중국어",
+      "ja": "일본어",
+      "ko": "한국어",
+      "de": "독일어",
+      "ru": "러시아어"
+    },
+    "validation": {
+      "enter_concept": "캐릭터 콘셉트를 입력하세요.",
+      "enter_race": "종족 또는 혈통을 입력하세요.",
+      "enter_class": "클래스 또는 아키타입을 입력하세요.",
+      "enter_background": "배경 또는 출신을 입력하세요.",
+      "select_model": "AI 모델을 선택하세요."
+    },
+    "success": {
+      "random_prompt_selected": "랜덤 DnD 시드를 선택했습니다!",
+      "backstory_generated": "DnD 배경을 생성했습니다!",
+      "backstory_copied": "DnD 배경을 복사했습니다!"
+    },
+    "errors": {
+      "generation_failed": "DnD 배경 생성에 실패했습니다."
+    },
+    "output": {
+      "title": "생성된 DnD 배경",
+      "words": "단어",
+      "copy": "복사",
+      "generating_message": "플레이에 바로 쓸 수 있는 DnD 배경을 만드는 중...",
+      "empty_message": "여기에 traits, flaws, bonds, secrets, DM hooks가 포함된 DnD 배경이 표시됩니다."
+    },
+    "random_prompts": [
+      "파티에 숨긴 계약의 빚을 진 티플링 워락",
+      "가문 유물을 되찾으려는 드워프 파이터",
+      "마을을 지키지 못한 과거를 가진 아아시마르 클레릭",
+      "도둑 길드에서 도망치는 하플링 로그",
+      "타락한 기사단과 맹세 사이에서 갈등하는 인간 팔라딘",
+      "고향을 파괴한 괴물을 쫓는 우드 엘프 레인저"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "개요",
+      "title": "DnD 백스토리 생성기란 무엇인가요?",
+      "description": "DnD 백스토리 생성기는 D&D 캐릭터 아이디어를 실제 플레이에서 바로 활용할 수 있는 배경 설정으로 바꿔주는 도구입니다. 긴 소설형 배경이 아니라 출신, 동기, 유대, 약점, 비밀, 그리고 DM이 바로 장면과 퀘스트에 연결할 수 있는 hooks를 중심으로 구성됩니다.\n\n이 DnD 백스토리 생성기는 D&D 5e / 5.5e 스타일 플레이를 기준으로 하며, 종족, 클래스, 배경, 성향, 톤, 훅 유형, 세계관 메모로 결과를 조정할 수 있습니다.",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "DnD 백스토리 생성기 개요"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "장점",
+      "title": "왜 이 DnD 백스토리 생성기를 써야 하나요?",
+      "description": "이 DnD 백스토리 생성기는 분위기보다 실제 사용성을 우선합니다.",
+      "items": [
+        {
+          "title": "플레이 중심 구조",
+          "description": "traits, ideals, bonds, flaws, secrets, DM hooks를 빠르게 읽을 수 있게 정리합니다.",
+          "icon": "RiListCheck2",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "Playable DnD structure"
+          }
+        },
+        {
+          "title": "캠페인 연결이 쉬움",
+          "description": "항상 3개의 actionable DM hooks를 생성해 퀘스트, 라이벌, 세력 갈등으로 이어지게 합니다.",
+          "icon": "RiSwordLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "DnD hooks"
+          }
+        },
+        {
+          "title": "PC와 NPC 모두 지원",
+          "description": "플레이어 캐릭터, NPC, 빌런 모두 같은 구조 안에서 빠르게 만들 수 있습니다.",
+          "icon": "RiGroupLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "PC and NPC support"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "DnD 백스토리 생성기 사용 방법",
+      "description": "3단계로 바로 플레이 가능한 D&D 배경을 만들 수 있습니다.",
+      "items": [
+        {
+          "title": "캐릭터 골격 정하기",
+          "description": "종족, 클래스, 배경을 선택하고 이 DnD 백스토리 생성기가 확장할 캐릭터 콘셉트를 입력합니다."
+        },
+        {
+          "title": "플레이 세부 정보 추가",
+          "description": "캠페인 톤, 용도, 성향과 함께 동기, 결함, 유대, 비밀, 신격, 라이벌, 세력 연결을 추가합니다."
+        },
+        {
+          "title": "생성 후 바로 사용",
+          "description": "생성된 구조화 출력은 세션 제로, 캐릭터 시트 보강, NPC 준비, DM hooks로 바로 사용할 수 있습니다."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "활용",
+      "title": "이 DnD 백스토리 생성기는 누구를 위한 도구인가요?",
+      "description": "준비 시간을 과도하게 늘리지 않고도 입체적인 D&D 캐릭터를 만들고 싶은 테이블에 적합합니다.",
+      "items": [
+        {
+          "title": "신규 플레이어",
+          "description": "종족과 클래스 정도만 정해도 동기, 결함, 목표를 빠르게 보강할 수 있습니다.",
+          "icon": "RiUserStarLine"
+        },
+        {
+          "title": "숙련 플레이어",
+          "description": "이미 방향성이 있는 캐릭터도 비밀, 유대, 캠페인 적합성을 정리할 수 있습니다.",
+          "icon": "RiScrollLine"
+        },
+        {
+          "title": "DM",
+          "description": "NPC, 빌런, 멘토, 세력 인물 등을 더 빠르게 준비할 수 있습니다.",
+          "icon": "RiDiceLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "DnD 백스토리 생성기 FAQ",
+      "description": "D&D 5e / 5.5e 배경 생성에 대한 자주 묻는 질문.",
+      "items": [
+        {
+          "title": "일반 배경 생성기와 무엇이 다른가요?",
+          "description": "이 DnD 백스토리 생성기는 D&D 플레이에 실제로 필요한 traits, ideals, bonds, flaws, secrets, DM hooks를 중심으로 설계되었습니다."
+        },
+        {
+          "title": "NPC와 빌런에도 쓸 수 있나요?",
+          "description": "네. 용도를 NPC나 빌런으로 바꾸면 동기와 훅 구조가 그 역할에 맞게 조정됩니다."
+        },
+        {
+          "title": "D&D 5e / 5.5e에 맞나요?",
+          "description": "네. D&D 5e / 5.5e의 일반적인 플레이 감각을 기준으로 하면서도 홈브루 테이블에서도 쓰기 쉽게 만들었습니다."
+        },
+        {
+          "title": "DM hooks도 자동으로 만들어주나요?",
+          "description": "네. 각 결과에는 DM이 장면이나 퀘스트로 바로 연결할 수 있는 3개의 actionable hooks가 포함됩니다."
+        },
+        {
+          "title": "좋은 D&D 배경은 얼마나 길어야 하나요?",
+          "description": "대부분의 테이블에서는 긴 서사보다 짧고 바로 쓸 수 있는 배경이 더 유용합니다. 이 DnD 백스토리 생성기도 그 원칙을 따릅니다."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "다음 D&D 캐릭터를 만들어보세요",
+      "description": "DnD 백스토리 생성기로 플레이 가능한 동기, 약점, 비밀, DM hooks를 빠르게 정리하세요.",
+      "buttons": [
+        {
+          "title": "DnD 배경 생성",
+          "url": "/dnd-backstory-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

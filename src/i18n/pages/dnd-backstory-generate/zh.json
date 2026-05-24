@@ -1,0 +1,303 @@
+{
+  "dnd_backstory_generate": {
+    "metadata": {
+      "title": "Free DnD 背景故事生成器 - 生成可直接跑团的 D&D 角色设定",
+      "description": "DnD 背景故事生成器，面向 D&D 5e / 5.5e 玩家与 DM，快速生成可玩角色背景，包含性格、羁绊、缺陷、秘密与 DM 剧情钩子。",
+      "keywords": "DnD Backstory Generator,D&D背景故事生成器,DnD角色背景,D&D 5e角色设定,NPC背景故事,DM剧情钩子"
+    },
+    "ui": {
+      "title": "DnD 背景故事生成器",
+      "subtitle": "为 D&D 5e / 5.5e 角色快速生成可直接跑团使用的背景故事、缺陷、羁绊、秘密与 DM hooks。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "DnD 背景故事生成器",
+      "character_concept": "角色概念",
+      "random_button": "随机种子",
+      "ai_model": "AI 模型",
+      "output_language": "输出语言",
+      "race": "种族 / 血统",
+      "character_class": "职业 / 原型",
+      "background": "背景 / 出身",
+      "campaign_tone": "战役基调",
+      "use_case": "用途",
+      "output_length": "输出长度",
+      "advanced_options": "高级选项",
+      "alignment": "阵营 / 道德倾向",
+      "core_motivation": "核心动机",
+      "defining_event": "决定性事件",
+      "flaw_or_fear": "最大缺陷或恐惧",
+      "important_bond": "重要羁绊",
+      "secret": "秘密",
+      "hook_type": "剧情钩子类型",
+      "world_notes": "世界 / 地区备注",
+      "party_role": "队伍定位",
+      "deity_patron_oath": "神祇 / 契主 / 誓言",
+      "rival_faction": "宿敌或阵营",
+      "extra_constraints": "额外约束",
+      "generate_button": "生成 DnD 背景故事",
+      "generating": "生成中...",
+      "hero_step_1": "定义角色",
+      "hero_step_2": "补充可玩细节",
+      "hero_step_3": "生成剧情钩子",
+      "output_title": "生成的 DnD 背景故事"
+    },
+    "placeholders": {
+      "character_concept": "描述你想创建的 D&D 角色，例如：'向邪精灵欠下契约债务并对队友隐瞒真相的提夫林术士'",
+      "race": "例如：提夫林、半兽人、高等精灵",
+      "character_class": "例如：术士、圣武士、游荡者",
+      "background": "例如：贤者、士兵、罪犯",
+      "core_motivation": "这个角色此刻最想达成什么？",
+      "defining_event": "什么事件改变了他/她的人生？",
+      "flaw_or_fear": "什么弱点、恐惧或坏习惯在困扰他/她？",
+      "important_bond": "谁或什么对他/她最重要？",
+      "secret": "他/她在隐藏什么真相？",
+      "world_notes": "任何需要遵循的设定、城市、地区或世界观",
+      "party_role": "例如：前排坦克、社交位、侦察",
+      "deity_patron_oath": "可选的神祇、契主、誓言或信条",
+      "rival_faction": "可选的敌人、宿敌或阵营联系",
+      "extra_constraints": "关于语气、世界观或玩法的额外要求"
+    },
+    "ai_models": {
+      "fast": "极速",
+      "fast_description": "快速生成可玩草稿",
+      "standard": "标准",
+      "standard_description": "质量与速度平衡",
+      "creative": "创意",
+      "creative_description": "最丰富的角色扮演细节"
+    },
+    "race_options": {
+      "human": "人类",
+      "elf": "精灵",
+      "half_elf": "半精灵",
+      "dwarf": "矮人",
+      "halfling": "半身人",
+      "gnome": "侏儒",
+      "half_orc": "半兽人",
+      "tiefling": "提夫林",
+      "dragonborn": "龙裔",
+      "aasimar": "亚斯玛",
+      "custom": "自定义"
+    },
+    "class_options": {
+      "barbarian": "野蛮人",
+      "bard": "吟游诗人",
+      "cleric": "牧师",
+      "druid": "德鲁伊",
+      "fighter": "战士",
+      "monk": "武僧",
+      "paladin": "圣武士",
+      "ranger": "游侠",
+      "rogue": "游荡者",
+      "sorcerer": "术士",
+      "warlock": "契术师",
+      "wizard": "法师",
+      "artificer": "奇械师",
+      "custom": "自定义"
+    },
+    "campaign_tones": {
+      "heroic": "英雄奇幻",
+      "grim": "严峻冒险",
+      "political": "政治阴谋",
+      "dark_fantasy": "黑暗奇幻",
+      "comedic": "轻松搞笑"
+    },
+    "use_cases": {
+      "player_character": "玩家角色",
+      "npc": "NPC",
+      "villain": "反派"
+    },
+    "lengths": {
+      "short": "简短",
+      "standard": "标准",
+      "detailed": "详细"
+    },
+    "alignments": {
+      "lawful_good": "守序善良",
+      "neutral_good": "中立善良",
+      "chaotic_good": "混乱善良",
+      "lawful_neutral": "守序中立",
+      "true_neutral": "绝对中立",
+      "chaotic_neutral": "混乱中立",
+      "lawful_evil": "守序邪恶",
+      "neutral_evil": "中立邪恶",
+      "chaotic_evil": "混乱邪恶",
+      "unaligned": "未定 / 灵活"
+    },
+    "hook_types": {
+      "debt": "债务或义务",
+      "revenge": "复仇",
+      "prophecy": "预言",
+      "lost_family": "失散亲人",
+      "faction_tie": "阵营联系",
+      "artifact": "神器或遗物",
+      "guilt": "愧疚或过去失败",
+      "mystery": "未解之谜"
+    },
+    "output_languages": {
+      "en": "英语",
+      "zh": "中文",
+      "ja": "日语",
+      "ko": "韩语",
+      "de": "德语",
+      "ru": "俄语"
+    },
+    "validation": {
+      "enter_concept": "请输入 D&D 角色概念。",
+      "enter_race": "请输入种族或血统。",
+      "enter_class": "请输入职业或原型。",
+      "enter_background": "请输入背景或出身。",
+      "select_model": "请选择 AI 模型。"
+    },
+    "success": {
+      "random_prompt_selected": "已选择随机 DnD 角色种子！",
+      "backstory_generated": "DnD 背景故事生成成功！",
+      "backstory_copied": "DnD 背景故事已复制到剪贴板！"
+    },
+    "errors": {
+      "generation_failed": "DnD 背景故事生成失败，请重试。"
+    },
+    "output": {
+      "title": "生成的 DnD 背景故事",
+      "words": "字",
+      "copy": "复制",
+      "generating_message": "正在为你的角色锻造可直接跑团使用的 DnD 背景故事...",
+      "empty_message": "这里会显示结构化的 DnD 背景故事，包含性格、缺陷、羁绊、秘密与 DM hooks。"
+    },
+    "random_prompts": [
+      "向邪精灵欠下契约债务并对队友隐瞒真相的提夫林术士",
+      "发誓在宿敌佣兵团之前夺回家族圣物的矮人战士",
+      "曾在村庄焚毁时失去神恩，如今刚重新获得治愈力量的亚斯玛牧师",
+      "偷错盗贼公会目标后只能化名旅行的半身人游荡者",
+      "自己的誓言正在与腐败骑士团命令冲突的人类圣武士",
+      "追踪当年摧毁边境聚落怪物的木精灵游侠"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "概览",
+      "title": "什么是 DnD 背景故事生成器？",
+      "description": "DnD 背景故事生成器是一款面向 D&D 玩家与 DM 的角色背景工具，可以把一个粗略的奇幻角色想法扩展成可直接跑团使用的结构化设定。与传统的“写一段长背景故事”不同，这个 DnD 背景故事生成器更关注真正会在桌面玩法中用到的信息：明确的出身、动机、羁绊、缺陷、秘密，以及可被 DM 直接改造成任务或冲突的剧情钩子。\n\n这个 DnD 背景故事生成器以 D&D 5e / 5.5e 常见玩法语境为核心。你可以指定种族、职业、背景、阵营、战役基调、钩子类型与额外世界观设定，然后得到一份适合带进战役、会前准备或 NPC 名册的可玩角色背景。",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "DnD 背景故事生成器概览"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "为什么使用这个 DnD 背景故事生成器",
+      "description": "这个 DnD 背景故事生成器强调可玩性，而不是堆砌华丽文本。",
+      "items": [
+        {
+          "title": "更适合跑团的结构",
+          "description": "这个 DnD 背景故事生成器会输出 traits、ideals、bonds、flaws、秘密和 DM hooks，方便玩家与 DM 在准备和跑团时快速浏览。",
+          "icon": "RiListCheck2",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "适合跑团的结构化输出"
+          }
+        },
+        {
+          "title": "更容易接入战役",
+          "description": "每次生成都会附带可执行的 DM hooks，让 DnD 背景故事生成器的结果更容易和阵营、任务、宿敌、会前设定连接起来。",
+          "icon": "RiSwordLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "适合战役接入的 DnD hooks"
+          }
+        },
+        {
+          "title": "同时适合 PC 与 NPC",
+          "description": "你可以用这个 DnD 背景故事生成器快速创建玩家角色、反派、支线 NPC 或长期任务发布者，而不必每次从头重写结构。",
+          "icon": "RiGroupLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "适用于玩家角色与 NPC"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "如何使用 DnD 背景故事生成器",
+      "description": "只需 3 步，就能生成一份适合直接跑团使用的 D&D 角色背景。",
+      "items": [
+        {
+          "title": "先搭好角色骨架",
+          "description": "选择种族、职业和背景，再输入一句角色概念，让这个 DnD 背景故事生成器知道你想塑造什么样的角色。"
+        },
+        {
+          "title": "补充可玩细节",
+          "description": "设置战役基调、用途、阵营，以及动机、缺陷、羁绊、秘密、神祇、宿敌或阵营联系等额外信息。"
+        },
+        {
+          "title": "生成并直接拿去用",
+          "description": "点击生成，得到结构化的角色背景、秘密和 DM hooks，可直接用于 session zero、人物卡、NPC 设计或战役推进。"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "应用场景",
+      "title": "谁适合使用这个 DnD 背景故事生成器",
+      "description": "适合想让角色更立得住、但又不想把准备时间耗在长篇设定上的 D&D 团队。",
+      "items": [
+        {
+          "title": "新玩家",
+          "description": "如果你只有一个简单的种族和职业想法，这个 DnD 背景故事生成器能快速补齐动机、缺陷、目标和可与队伍互动的钩子。",
+          "icon": "RiUserStarLine"
+        },
+        {
+          "title": "老玩家 / 角色厨",
+          "description": "如果你已经知道角色气质，这个 DnD 背景故事生成器可以帮助你校准秘密、创伤、羁绊与战役适配度。",
+          "icon": "RiScrollLine"
+        },
+        {
+          "title": "Dungeon Master",
+          "description": "DM 可以用这个 DnD 背景故事生成器更快生成 NPC、反派、导师、邪教头目或可延展成支线任务的剧情人物。",
+          "icon": "RiDiceLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "DnD 背景故事生成器常见问题",
+      "description": "关于 D&D 5e / 5.5e 背景故事生成器的常见问题。",
+      "items": [
+        {
+          "title": "这个 DnD 背景故事生成器和普通角色背景工具有什么不同？",
+          "description": "这个 DnD 背景故事生成器围绕 D&D 实际会用到的信息组织输出，例如 traits、ideals、bonds、flaws、目标、秘密和可执行 DM hooks，而不是只写一段泛奇幻小传。"
+        },
+        {
+          "title": "这个 DnD 背景故事生成器可以用来做 NPC 或反派吗？",
+          "description": "可以。你可以把用途切换为玩家角色、NPC 或反派，DnD 背景故事生成器会据此调整动机、关系张力和剧情钩子。"
+        },
+        {
+          "title": "这个 DnD 背景故事生成器支持 D&D 5e 和 5.5e 吗？",
+          "description": "支持。这个 DnD 背景故事生成器主要面向 D&D 5e / 5.5e 常见语境设计，同时避免把规则文本写得过死，因此也适合大多数家规团。"
+        },
+        {
+          "title": "DnD 背景故事生成器会自动生成 DM hooks 吗？",
+          "description": "会。每次生成结果都会包含 3 条可执行的 DM hooks，DM 可以直接把它们转成场景、任务、宿敌关系、秘密或阵营冲突。"
+        },
+        {
+          "title": "一个好的 D&D 背景故事应该写多长？",
+          "description": "多数桌游团更需要短而可用的背景，而不是长篇小说。好的 D&D 背景应该让 DM 快速知道角色是谁、想要什么、有什么弱点，以及战役可以如何利用这些信息。这个 DnD 背景故事生成器正是按这个原则设计的。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "创建你的下一个 D&D 角色",
+      "description": "使用 DnD 背景故事生成器，为你的角色快速补齐动机、缺陷、秘密与 DM hooks。",
+      "buttons": [
+        {
+          "title": "生成 DnD 背景故事",
+          "url": "/dnd-backstory-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

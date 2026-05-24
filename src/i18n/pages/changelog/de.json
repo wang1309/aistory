@@ -10,6 +10,12 @@
         "date": "2026-05-23",
         "changes": [
           {
+            "type": "feature",
+            "items": [
+              "DnD-Hintergrundgeschichten-Generator mit eigener Seite gestartet, um spielbare D&D-Charakterhintergründe und DM Hooks zu erstellen"
+            ]
+          },
+          {
             "type": "improvement",
             "items": [
               "Einheitliche Designsprache auf allen Generator-Seiten für ein konsistentes visuelles Erlebnis",

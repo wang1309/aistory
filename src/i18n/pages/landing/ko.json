@@ -66,6 +66,13 @@
               "target": "_self"
             },
             {
+              "title": "DnD 백스토리 생성기",
+              "description": "종족, 클래스, 목표, 약점, DM 훅을 포함한 플레이용 DnD 배경 설정 생성",
+              "url": "/dnd-backstory-generator",
+              "icon": "RiSwordLine",
+              "target": "_self"
+            },
+            {
               "title": "대화 생성기",
               "description": "스토리, 대본, 게임을 위한 사실적인 캐릭터 대화 생성",
               "url": "/dialogue-generator",
@@ -798,6 +805,11 @@
             {
               "title": "백스토리 생성기",
               "url": "/backstory-generator",
+              "target": "_self"
+            },
+            {
+              "title": "DnD 백스토리 생성기",
+              "url": "/dnd-backstory-generator",
               "target": "_self"
             },
             {

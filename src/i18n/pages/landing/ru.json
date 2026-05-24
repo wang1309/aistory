@@ -66,6 +66,13 @@
               "target": "_self"
             },
             {
+              "title": "DnD генератор предысторий",
+              "description": "Создавайте игровые DnD-предыстории с расой, классом, целями, слабостями и зацепками для DM",
+              "url": "/dnd-backstory-generator",
+              "icon": "RiSwordLine",
+              "target": "_self"
+            },
+            {
               "title": "Генератор диалогов",
               "description": "Создавайте реалистичные диалоги персонажей для историй, сценариев и игр",
               "url": "/dialogue-generator",
@@ -798,6 +805,11 @@
             {
               "title": "Генератор предысторий",
               "url": "/backstory-generator",
+              "target": "_self"
+            },
+            {
+              "title": "DnD генератор предысторий",
+              "url": "/dnd-backstory-generator",
               "target": "_self"
             },
             {
