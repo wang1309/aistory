@@ -380,5 +380,23 @@
       "Den Erzählfluss verfeinern...",
       "Den letzten Schliff geben..."
     ]
-  }
+  },
+  "structured_data_faq": [
+    {
+      "question": "Ist der KI-Geschichtengenerator wirklich kostenlos?",
+      "answer": "Ja, unser KI-Geschichtengenerator ist völlig kostenlos. Keine Registrierung, keine versteckten Gebühren, keine Einschränkungen für Ihre Kreativität."
+    },
+    {
+      "question": "Muss ich mich anmelden, um den Geschichtengenerator zu nutzen?",
+      "answer": "Keine Anmeldung erforderlich! Sie können sofort Geschichten erstellen, ohne ein Konto zu erstellen oder persönliche Daten anzugeben."
+    },
+    {
+      "question": "Welche Arten von Geschichten kann ich generieren?",
+      "answer": "Sie können verschiedene Arten von Geschichten generieren, darunter Fantasy, Science-Fiction, Romantik, Mystery, Abenteuer und mehr. Beschreiben Sie einfach, was Sie wollen!"
+    },
+    {
+      "question": "Kann ich meine generierten Geschichten exportieren oder speichern?",
+      "answer": "Ja! Sie können Ihre generierten Geschichten einfach kopieren und in Ihrem bevorzugten Format speichern. Wir unterstützen auch den PDF-Export für Ihren Komfort."
+    }
+  ]
 }

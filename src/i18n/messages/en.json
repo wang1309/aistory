@@ -383,5 +383,23 @@
       "Polishing the narrative flow...",
       "Adding the finishing touches..."
     ]
-  }
+  },
+  "structured_data_faq": [
+    {
+      "question": "Is the AI story generator really free?",
+      "answer": "Yes, our AI story generator is completely free to use. No registration, no hidden fees, no limits on your creativity."
+    },
+    {
+      "question": "Do I need to sign up to use the story generator?",
+      "answer": "No sign up required! You can start creating stories immediately without creating an account or providing any personal information."
+    },
+    {
+      "question": "What types of stories can I generate?",
+      "answer": "You can generate various types of stories including fantasy, sci-fi, romance, mystery, adventure, and more. Simply describe what you want!"
+    },
+    {
+      "question": "Can I export or save my generated stories?",
+      "answer": "Yes! You can easily copy your generated stories and save them in your preferred format. We also support PDF export for your convenience."
+    }
+  ]
 }

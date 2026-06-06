@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import nextDynamic from "next/dynamic";
 import { getLandingPage } from "@/services/page";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildLanguageAlternates } from "@/lib/seo";
 import { ViewportLazy } from "@/components/viewport-lazy";
 // Shared section components (same as comic-generator page)
 import FeatureIntro from "@/components/sections/feature-intro";
@@ -42,6 +43,48 @@ function StoryGenerateSkeleton() {
   return <SectionSkeleton />;
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations();
+
+  const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org";
+  const canonicalUrl = locale === "en" ? webUrl : `${webUrl}/${locale}`;
+
+  return {
+    title: t("metadata.title"),
+    description: t("metadata.description"),
+    keywords: t("metadata.keywords"),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/"),
+    },
+    openGraph: {
+      title: t("metadata.title"),
+      description: t("metadata.description"),
+      url: canonicalUrl,
+      siteName: t("metadata.siteName"),
+      type: "website",
+      images: [
+        {
+          url: `${webUrl}/share.png`,
+          width: 1200,
+          height: 630,
+          alt: t("metadata.title"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("metadata.title"),
+      description: t("metadata.description"),
+    },
+  };
+}
+
 export default async function LandingPage({
   params,
 }: {
@@ -53,8 +96,28 @@ export default async function LandingPage({
   const page = await getLandingPage(locale);
   const t = await getTranslations();
 
+  const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org";
+  const currentUrl = locale === "en" ? webUrl : `${webUrl}/${locale}`;
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: currentUrl,
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Critical: Always render immediately */}
       <StoryGuide />
       {page.hero && <Hero hero={page.hero} />}
