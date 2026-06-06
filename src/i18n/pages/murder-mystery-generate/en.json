@@ -1,0 +1,250 @@
+{
+  "murder_mystery_generate": {
+    "metadata": {
+      "title": "Free Murder Mystery Generator - AI Party Game Scenarios",
+      "description": "Generate complete, ready-to-play murder mystery party game scenarios with suspects, clues, and solutions. Free AI murder mystery generator for any group size.",
+      "keywords": "murder mystery generator, AI murder mystery, murder mystery party game, mystery party scenario generator, whodunit generator, free murder mystery"
+    },
+    "ui": {
+      "title": "Murder Mystery Generator",
+      "subtitle": "Generate a complete party murder mystery with suspects, clues, and a hidden solution — ready to play tonight.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Murder Mystery Generator",
+      "scenario_idea": "Scenario Idea",
+      "random_button": "Random Scenario",
+      "ai_model": "AI Model",
+      "output_language": "Output Language",
+      "setting_type": "Setting",
+      "time_period": "Time Period",
+      "player_count": "Player Count",
+      "complexity": "Complexity",
+      "mystery_type": "Mystery Type",
+      "tone": "Tone",
+      "advanced_options": "Advanced Options",
+      "generate_button": "Generate Mystery",
+      "generating": "Crafting the mystery...",
+      "hero_step_1": "Describe the scenario",
+      "hero_step_2": "Set the stage & players",
+      "hero_step_3": "Get your ready-to-play game",
+      "output_title": "Your Murder Mystery"
+    },
+    "placeholders": {
+      "scenario_idea": "Describe the murder mystery scenario... (e.g. 'A famous jewel thief is found dead at a masked gala where every guest had a reason to hate them')"
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick scenario draft",
+      "standard": "Standard",
+      "standard_description": "Balanced detail and depth",
+      "creative": "Creative",
+      "creative_description": "Most elaborate mystery"
+    },
+    "setting_types": {
+      "manor": "Country Manor",
+      "cruise": "Luxury Cruise Ship",
+      "museum": "Museum or Gallery",
+      "university": "University or Library",
+      "corporate": "Corporate Office",
+      "hotel": "Grand Hotel",
+      "theatre": "Theatre or Opera House",
+      "small_town": "Small Town",
+      "train": "Orient Express–style Train",
+      "masquerade": "Masquerade Ball"
+    },
+    "time_periods": {
+      "victorian": "Victorian Era (1880s)",
+      "art_deco": "1920s Art Deco",
+      "fifties": "1950s Classic",
+      "modern": "Modern Day",
+      "future": "Near Future"
+    },
+    "player_counts": {
+      "small": "4–6 Players",
+      "medium": "6–10 Players",
+      "large": "10+ Players (Large Party)"
+    },
+    "complexities": {
+      "simple": "Simple (1–2 hours, beginner-friendly)",
+      "standard": "Standard (2–3 hours, mixed groups)",
+      "complex": "Complex (3–4 hours, experienced players)"
+    },
+    "mystery_types": {
+      "classic_whodunit": "Classic Whodunit",
+      "locked_room": "Locked Room Mystery",
+      "poison": "Poison Mystery",
+      "heist_gone_wrong": "Heist Gone Wrong",
+      "disappearance": "Mysterious Disappearance"
+    },
+    "tones": {
+      "serious": "Serious & Dark",
+      "comedic": "Light-hearted & Comedic",
+      "gothic": "Gothic & Atmospheric",
+      "thriller": "Thriller & Tense",
+      "cozy": "Cozy Mystery"
+    },
+    "validation": {
+      "enter_scenario": "Please enter a scenario idea for the murder mystery.",
+      "select_model": "Please select an AI model."
+    },
+    "success": {
+      "random_prompt_selected": "Random scenario selected!",
+      "mystery_generated": "Murder mystery generated successfully!",
+      "mystery_copied": "Mystery copied to clipboard!"
+    },
+    "errors": {
+      "generation_failed": "Failed to generate the mystery. Please try again."
+    },
+    "output": {
+      "title": "Your Murder Mystery",
+      "words": "words",
+      "copy": "Copy",
+      "generating_message": "Writing your murder mystery scenario...",
+      "empty_message": "Your complete murder mystery — suspects, clues, and the hidden solution — will appear here."
+    },
+    "random_prompts": [
+      "A renowned art critic is poisoned at the opening night of a stolen-masterpiece exhibition",
+      "The CEO of a failing tech company is found dead in his locked penthouse office the night before a major exposé",
+      "A celebrated chef dies at their own retirement banquet, surrounded by former rivals and estranged family",
+      "A blackmailer is murdered on a fog-bound Scottish estate where every guest had received a threatening letter",
+      "A famous magician vanishes during their own illusion and is later found dead in the locked dressing room",
+      "The host of a reality TV show is killed live on air — and the murderer is one of the contestants",
+      "A notorious jewel thief is strangled aboard a luxury train carrying the very stones they were accused of stealing",
+      "The victim at a reunion dinner was the only one who knew a 20-year-old secret that ruined five careers",
+      "A reclusive billionaire is found dead at their own will-reading — before the will is even opened",
+      "An undercover detective investigating a secret society is killed at the society's annual masquerade"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What Is a Murder Mystery Generator?",
+      "description": "A Murder Mystery Generator uses AI to create a complete, playable whodunit party game from a single scenario idea. Instead of buying a boxed kit or spending hours writing your own script, this Murder Mystery Generator produces a full scenario in seconds: a vivid crime, a cast of suspects with motives and alibis, layered clues, and a hidden solution only the host sees.\n\nThis Murder Mystery Generator is designed for party hosts, tabletop game fans, and anyone who wants a memorable evening without the prep work. Choose your setting, time period, number of players, and complexity — and receive a game-ready mystery tailored to your group.",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "Murder Mystery Generator overview"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why Use This Murder Mystery Generator",
+      "description": "Every scenario is original, fair, and ready to play — no design experience needed.",
+      "items": [
+        {
+          "title": "Complete Game in One Click",
+          "description": "This Murder Mystery Generator outputs everything you need: the crime scene, victim profile, full suspect list with motives and alibis, numbered clue list, host tips, and a sealed solution section — all in a single generation.",
+          "icon": "RiGamepadLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "Complete murder mystery party game"
+          }
+        },
+        {
+          "title": "Fair and Deducible",
+          "description": "Unlike random mystery kits, every scenario from this Murder Mystery Generator is crafted so the killer can be logically deduced from the clues alone. Red herrings are present but never unfair.",
+          "icon": "RiSearchEyeLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "Fair murder mystery clues"
+          }
+        },
+        {
+          "title": "Any Group, Any Occasion",
+          "description": "Choose from 4-6 players up to 10+ for large parties. Set the tone from cozy and comedic to gothic and tense. This Murder Mystery Generator scales to your event — not the other way around.",
+          "icon": "RiGroupLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "Murder mystery for any group size"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the Murder Mystery Generator",
+      "description": "Create a ready-to-play murder mystery party game in three steps.",
+      "items": [
+        {
+          "title": "Describe Your Scenario",
+          "description": "Write a one-line scenario idea — a setting, a victim, or a situation. Or click Random Scenario for instant inspiration from the Murder Mystery Generator."
+        },
+        {
+          "title": "Set the Stage",
+          "description": "Choose the setting, time period, player count, complexity, and tone that match your party. The Murder Mystery Generator adapts the entire scenario to your choices."
+        },
+        {
+          "title": "Print, Share, and Play",
+          "description": "Copy the full mystery, print suspect cards, and you're ready. The solution is clearly marked for the host's eyes only — players can't stumble on it accidentally."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Use Cases",
+      "title": "Who Uses This Murder Mystery Generator",
+      "description": "Perfect for party hosts, tabletop RPG groups, and team events.",
+      "items": [
+        {
+          "title": "Party Hosts",
+          "description": "Plan a murder mystery dinner party without buying a boxed kit. The Murder Mystery Generator creates a unique scenario every time — your guests will never have played it before.",
+          "icon": "RiCalendarEventLine"
+        },
+        {
+          "title": "Tabletop & RPG Groups",
+          "description": "Run a one-shot mystery session for your gaming group. The Murder Mystery Generator outputs suspects, clues, and GM notes in a format tabletop players and DMs can use immediately.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "Team Events & Icebreakers",
+          "description": "Use the Murder Mystery Generator for corporate team-building events, school events, or escape-room-style challenges where groups need to collaborate to solve a puzzle.",
+          "icon": "RiBriefcaseLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Murder Mystery Generator FAQs",
+      "description": "Common questions about using a Murder Mystery Generator for your party or event.",
+      "items": [
+        {
+          "title": "Does the Murder Mystery Generator include a solution?",
+          "description": "Yes. Every scenario includes a clearly marked Solution section that reveals the killer's identity, motive, method, and which clues prove guilt. This section is intended for the host's eyes only."
+        },
+        {
+          "title": "Can the Murder Mystery Generator scale to different group sizes?",
+          "description": "Yes. Choose from small (4-6 players), medium (6-10 players), or large (10+ players). The number of suspects and clue complexity adjusts to match your group size."
+        },
+        {
+          "title": "Is the mystery actually solvable?",
+          "description": "Yes. This Murder Mystery Generator is designed so that players who follow the clues carefully can identify the killer. Red herrings create misdirection, but the correct solution is always provable from the evidence."
+        },
+        {
+          "title": "Can I use the Murder Mystery Generator for a themed party?",
+          "description": "Absolutely. Choose a time period (Victorian, 1920s, Modern, etc.) and setting (Manor, Cruise Ship, Theatre) to match any party theme. You can also describe the theme in the scenario field for maximum customization."
+        },
+        {
+          "title": "How long does a generated murder mystery take to play?",
+          "description": "Simple scenarios run 1-2 hours, Standard 2-3 hours, and Complex 3-4 hours. The Murder Mystery Generator includes host tips on how to pace the game and distribute clues."
+        },
+        {
+          "title": "Is the Murder Mystery Generator free?",
+          "description": "Yes. You can generate as many murder mystery scenarios as you need with no account required. Every scenario is unique and generated fresh each time."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Create Your Murder Mystery Tonight",
+      "description": "Use the Murder Mystery Generator to build a complete, ready-to-play party game — suspects, clues, and solution included.",
+      "buttons": [
+        {
+          "title": "Generate Murder Mystery",
+          "url": "/murder-mystery-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

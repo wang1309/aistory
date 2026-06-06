@@ -1,0 +1,250 @@
+{
+  "murder_mystery_generate": {
+    "metadata": {
+      "title": "Kostenloser Murder Mystery Generator - KI Partyspiel-Szenarien",
+      "description": "Erstelle komplette, spielfertige Murder Mystery Partyspiel-Szenarien mit Verdächtigen, Hinweisen und Lösungen. Kostenloser KI Murder Mystery Generator für jede Gruppengröße.",
+      "keywords": "Murder Mystery Generator, KI Murder Mystery, Murder Mystery Partyspiel, Mystery Party Szenario Generator, Whodunit Generator, kostenloser Murder Mystery"
+    },
+    "ui": {
+      "title": "Murder Mystery Generator",
+      "subtitle": "Erstelle ein komplettes Party-Murder-Mystery mit Verdächtigen, Hinweisen und einer verborgenen Lösung — heute Abend spielbereit.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Murder Mystery Generator",
+      "scenario_idea": "Szenario-Idee",
+      "random_button": "Zufälliges Szenario",
+      "ai_model": "KI-Modell",
+      "output_language": "Ausgabesprache",
+      "setting_type": "Schauplatz",
+      "time_period": "Zeitraum",
+      "player_count": "Spieleranzahl",
+      "complexity": "Komplexität",
+      "mystery_type": "Mystery-Typ",
+      "tone": "Stimmung",
+      "advanced_options": "Erweiterte Optionen",
+      "generate_button": "Mystery generieren",
+      "generating": "Mystery wird erstellt...",
+      "hero_step_1": "Szenario beschreiben",
+      "hero_step_2": "Bühne und Spieler festlegen",
+      "hero_step_3": "Spielfertiges Spiel erhalten",
+      "output_title": "Dein Murder Mystery"
+    },
+    "placeholders": {
+      "scenario_idea": "Beschreibe das Murder Mystery Szenario...（z.B. 'Ein berühmter Juweldieb wird auf einem Maskenball vergiftet, wo jeder Gast einen Grund hatte, ihn zu hassen'）"
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schneller Szenario-Entwurf",
+      "standard": "Standard",
+      "standard_description": "Ausgewogene Details und Tiefe",
+      "creative": "Kreativ",
+      "creative_description": "Aufwändigstes Mystery"
+    },
+    "setting_types": {
+      "manor": "Landherrenhaus",
+      "cruise": "Luxus-Kreuzfahrtschiff",
+      "museum": "Museum oder Galerie",
+      "university": "Universität oder Bibliothek",
+      "corporate": "Firmenbüro",
+      "hotel": "Grand Hotel",
+      "theatre": "Theater oder Opernhaus",
+      "small_town": "Kleinstadt",
+      "train": "Orient-Express-Stil Zug",
+      "masquerade": "Maskenball"
+    },
+    "time_periods": {
+      "victorian": "Viktorianische Ära (1880er)",
+      "art_deco": "1920er Art Déco",
+      "fifties": "1950er Klassik",
+      "modern": "Modern",
+      "future": "Nahe Zukunft"
+    },
+    "player_counts": {
+      "small": "4–6 Spieler",
+      "medium": "6–10 Spieler",
+      "large": "10+ Spieler (Große Party)"
+    },
+    "complexities": {
+      "simple": "Einfach (1–2 Stunden, anfängerfreundlich)",
+      "standard": "Standard (2–3 Stunden, gemischte Gruppen)",
+      "complex": "Komplex (3–4 Stunden, erfahrene Spieler)"
+    },
+    "mystery_types": {
+      "classic_whodunit": "Klassisches Whodunit",
+      "locked_room": "Locked-Room-Mystery",
+      "poison": "Gift-Mystery",
+      "heist_gone_wrong": "Schiefgelaufener Überfall",
+      "disappearance": "Mysteriöses Verschwinden"
+    },
+    "tones": {
+      "serious": "Ernst und dunkel",
+      "comedic": "Leicht und komödiantisch",
+      "gothic": "Gothisch und atmosphärisch",
+      "thriller": "Thriller und spannend",
+      "cozy": "Gemütliches Mystery"
+    },
+    "validation": {
+      "enter_scenario": "Bitte gib eine Szenario-Idee für das Murder Mystery ein.",
+      "select_model": "Bitte wähle ein KI-Modell."
+    },
+    "success": {
+      "random_prompt_selected": "Zufälliges Szenario ausgewählt!",
+      "mystery_generated": "Murder Mystery erfolgreich generiert!",
+      "mystery_copied": "Mystery in die Zwischenablage kopiert!"
+    },
+    "errors": {
+      "generation_failed": "Mystery konnte nicht generiert werden. Bitte versuche es erneut."
+    },
+    "output": {
+      "title": "Dein Murder Mystery",
+      "words": "Wörter",
+      "copy": "Kopieren",
+      "generating_message": "Murder Mystery Szenario wird geschrieben...",
+      "empty_message": "Dein vollständiges Murder Mystery — Verdächtige, Hinweise und die verborgene Lösung — wird hier erscheinen."
+    },
+    "random_prompts": [
+      "Ein renommierter Kunstkritiker wird in der Eröffnungsnacht einer Ausstellung gestohlener Meisterwerke vergiftet",
+      "Der CEO eines angeschlagenen Tech-Unternehmens wird am Vorabend einer großen Enthüllung in seinem verschlossenen Penthouse-Büro tot aufgefunden",
+      "Ein gefeierter Koch stirbt auf seinem eigenen Abschiedsdinner, umgeben von ehemaligen Rivalen und entfremdeten Familienmitgliedern",
+      "Ein Erpresser wird auf einem nebelumhüllten schottischen Anwesen ermordet, wo jeder Gast einen Drohbrief erhalten hatte",
+      "Ein berühmter Zauberer verschwindet während seiner eigenen Illusion und wird später tot in der verschlossenen Garderobe gefunden",
+      "Der Moderator einer Reality-TV-Show wird live im Fernsehen getötet — und der Mörder ist einer der Kandidaten",
+      "Ein berüchtigter Juweldieb wird an Bord eines Luxuszuges erwürgt, der genau die Steine trägt, die er gestohlen haben soll",
+      "Das Opfer eines Klassentreffens war die einzige Person, die ein 20 Jahre altes Geheimnis kannte, das fünf Karrieren ruinierte",
+      "Ein zurückgezogen lebender Milliardär wird bei seiner eigenen Testamentseröffnung tot aufgefunden — bevor das Testament überhaupt geöffnet wurde",
+      "Ein Undercover-Detektiv, der eine Geheimgesellschaft untersucht, wird beim jährlichen Maskenball der Gesellschaft getötet"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Was ist ein Murder Mystery Generator?",
+      "description": "Ein Murder Mystery Generator nutzt KI, um aus einer einzigen Szenario-Idee ein vollständiges, spielbares Whodunit-Partyspiel zu erstellen. Statt ein Boxset zu kaufen oder stundenlang ein eigenes Skript zu schreiben, produziert dieser Murder Mystery Generator in Sekunden ein vollständiges Szenario: ein lebendiges Verbrechen, eine Reihe von Verdächtigen mit Motiven und Alibis, mehrstufige Hinweise und eine verborgene Lösung, die nur der Gastgeber sieht.\n\nDieser Murder Mystery Generator ist für Party-Gastgeber, Tabletop-Spielfans und alle konzipiert, die einen unvergesslichen Abend ohne Vorbereitungsaufwand erleben möchten.",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "Murder Mystery Generator Überblick"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum diesen Murder Mystery Generator verwenden",
+      "description": "Jedes Szenario ist original, fair und spielfertig — keine Designerfahrung erforderlich.",
+      "items": [
+        {
+          "title": "Vollständiges Spiel mit einem Klick",
+          "description": "Dieser Murder Mystery Generator gibt alles aus, was du benötigst: Tatort, Opferprofil, vollständige Verdächtigenliste mit Motiven und Alibis, nummerierte Hinweisliste, Gastgeber-Tipps und ein versiegelter Lösungsabschnitt — alles in einer einzigen Generierung.",
+          "icon": "RiGamepadLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "Vollständiges Murder Mystery Partyspiel"
+          }
+        },
+        {
+          "title": "Fair und lösbar",
+          "description": "Im Gegensatz zu zufälligen Mystery-Kits ist jedes Szenario dieses Murder Mystery Generators so gestaltet, dass der Täter allein durch die Hinweise logisch ermittelt werden kann. Falsche Fährten sind vorhanden, aber niemals unfair.",
+          "icon": "RiSearchEyeLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "Faire Murder Mystery Hinweise"
+          }
+        },
+        {
+          "title": "Jede Gruppe, jeder Anlass",
+          "description": "Wähle von 4–6 Spielern bis zu 10+ für große Partys. Stelle die Stimmung von gemütlich und komisch bis gotisch und spannend ein. Dieser Murder Mystery Generator skaliert für dein Event.",
+          "icon": "RiGroupLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "Murder Mystery für jede Gruppengröße"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "Verwendung",
+      "title": "So verwendest du den Murder Mystery Generator",
+      "description": "Erstelle in drei Schritten ein spielfertiges Murder Mystery Partyspiel.",
+      "items": [
+        {
+          "title": "Beschreibe dein Szenario",
+          "description": "Schreibe eine einzeilige Szenario-Idee — einen Schauplatz, ein Opfer oder eine Situation. Oder klicke auf 'Zufälliges Szenario' für sofortige Inspiration vom Murder Mystery Generator."
+        },
+        {
+          "title": "Die Bühne bereiten",
+          "description": "Wähle Schauplatz, Zeitraum, Spieleranzahl, Komplexität und Stimmung passend zu deiner Party. Der Murder Mystery Generator passt das gesamte Szenario an deine Auswahl an."
+        },
+        {
+          "title": "Drucken, teilen und spielen",
+          "description": "Kopiere das vollständige Mystery, drucke die Verdächtigen-Karten und du bist bereit. Die Lösung ist deutlich als nur für den Gastgeber bestimmt markiert — Spieler können nicht versehentlich darauf stoßen."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Anwendungsfälle",
+      "title": "Wer verwendet diesen Murder Mystery Generator",
+      "description": "Perfekt für Party-Gastgeber, Tabletop-RPG-Gruppen und Team-Events.",
+      "items": [
+        {
+          "title": "Party-Gastgeber",
+          "description": "Plane eine Murder Mystery Dinner Party ohne ein Boxset zu kaufen. Der Murder Mystery Generator erstellt jedes Mal ein einzigartiges Szenario — deine Gäste werden es noch nie gespielt haben.",
+          "icon": "RiCalendarEventLine"
+        },
+        {
+          "title": "Tabletop & RPG-Gruppen",
+          "description": "Führe eine One-Shot-Mystery-Session für deine Spielgruppe durch. Der Murder Mystery Generator gibt Verdächtige, Hinweise und Spielleiter-Notizen in einem Format aus, das Tabletop-Spieler und Spielleiter sofort verwenden können.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "Team-Events & Eisbrecher",
+          "description": "Verwende den Murder Mystery Generator für Firmen-Teambuilding-Events, Schulveranstaltungen oder Escape-Room-ähnliche Challenges, bei denen Gruppen zusammenarbeiten müssen, um ein Rätsel zu lösen.",
+          "icon": "RiBriefcaseLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Murder Mystery Generator FAQs",
+      "description": "Häufige Fragen zur Verwendung eines Murder Mystery Generators für deine Party oder dein Event.",
+      "items": [
+        {
+          "title": "Enthält der Murder Mystery Generator eine Lösung?",
+          "description": "Ja. Jedes Szenario enthält einen deutlich markierten Lösungsabschnitt, der die Identität des Täters, sein Motiv, seine Methode und welche Hinweise die Schuld beweisen, offenbart. Dieser Abschnitt ist nur für den Gastgeber bestimmt."
+        },
+        {
+          "title": "Kann der Murder Mystery Generator auf verschiedene Gruppengrößen skaliert werden?",
+          "description": "Ja. Wähle zwischen klein (4–6 Spieler), mittel (6–10 Spieler) oder groß (10+ Spieler). Die Anzahl der Verdächtigen und die Hinweiskomplexität passen sich automatisch an deine Gruppengröße an."
+        },
+        {
+          "title": "Ist das Mystery wirklich lösbar?",
+          "description": "Ja. Dieser Murder Mystery Generator ist so gestaltet, dass Spieler, die den Hinweisen sorgfältig folgen, den Täter identifizieren können. Falsche Fährten erzeugen Ablenkung, aber die richtige Lösung ist stets aus den Beweisen zu beweisen."
+        },
+        {
+          "title": "Kann ich den Murder Mystery Generator für eine Themen-Party verwenden?",
+          "description": "Absolut. Wähle einen Zeitraum (Viktorianisch, 1920er, Modern usw.) und einen Schauplatz (Herrenhaus, Kreuzfahrtschiff, Theater), um jedes Party-Thema zu matchen. Du kannst auch das Thema im Szenariofeld beschreiben für maximale Anpassung."
+        },
+        {
+          "title": "Wie lange dauert ein generiertes Murder Mystery Spiel?",
+          "description": "Einfache Szenarien dauern 1–2 Stunden, Standard 2–3 Stunden und Komplex 3–4 Stunden. Der Murder Mystery Generator enthält Gastgeber-Tipps, wie man das Spieltempo steuert und Hinweise verteilt."
+        },
+        {
+          "title": "Ist der Murder Mystery Generator kostenlos?",
+          "description": "Ja. Du kannst so viele Murder Mystery Szenarien generieren, wie du benötigst, ohne ein Konto zu benötigen. Jedes Szenario ist einzigartig und wird jedes Mal frisch generiert."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Erstelle heute Abend dein Murder Mystery",
+      "description": "Nutze den Murder Mystery Generator, um ein vollständiges, spielfertiges Partyspiel zu erstellen — mit Verdächtigen, Hinweisen und Lösung.",
+      "buttons": [
+        {
+          "title": "Murder Mystery generieren",
+          "url": "/murder-mystery-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

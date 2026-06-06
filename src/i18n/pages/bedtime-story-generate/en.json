@@ -1,0 +1,249 @@
+{
+  "bedtime_story_generate": {
+    "metadata": {
+      "title": "Free Bedtime Story Generator - AI Stories for Kids at Bedtime",
+      "description": "Generate original, age-appropriate bedtime stories for children in seconds. Personalize by age group, theme, moral lesson, and more. Free and unlimited.",
+      "keywords": "bedtime story generator, AI bedtime story, kids bedtime story, children's story generator, bedtime stories for kids, AI story for children, free bedtime story"
+    },
+    "ui": {
+      "title": "Bedtime Story Generator",
+      "subtitle": "Create a personalized, age-appropriate bedtime story for your child in seconds.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Bedtime Story Generator",
+      "story_idea": "Story Idea",
+      "random_button": "Surprise Me",
+      "ai_model": "AI Model",
+      "output_language": "Output Language",
+      "age_group": "Child's Age Group",
+      "story_theme": "Story Theme",
+      "story_length": "Story Length",
+      "ending_mood": "Ending Mood",
+      "moral_lesson": "Moral Lesson",
+      "child_name": "Child's Name (optional)",
+      "advanced_options": "Advanced Options",
+      "generate_button": "Generate Bedtime Story",
+      "generating": "Crafting your story...",
+      "hero_step_1": "Describe the story idea",
+      "hero_step_2": "Choose age & theme",
+      "hero_step_3": "Generate & read aloud",
+      "output_title": "Your Bedtime Story"
+    },
+    "placeholders": {
+      "story_idea": "What should the story be about? (e.g. 'A small bunny who is afraid of the dark finds a glowing firefly friend')",
+      "child_name": "e.g. Lily, Max..."
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick story draft",
+      "standard": "Standard",
+      "standard_description": "Balanced quality and warmth",
+      "creative": "Creative",
+      "creative_description": "Most imaginative story"
+    },
+    "age_groups": {
+      "toddler": "Toddler (Ages 2–3)",
+      "preschool": "Preschool (Ages 4–5)",
+      "early_reader": "Early Reader (Ages 6–8)",
+      "middle_grade": "Middle Grade (Ages 9–12)"
+    },
+    "story_themes": {
+      "adventure": "Adventure",
+      "animals": "Animals",
+      "magic": "Magic & Fantasy",
+      "friendship": "Friendship",
+      "family": "Family & Home",
+      "nature": "Nature & Outdoors",
+      "space": "Space & Stars",
+      "underwater": "Ocean & Sea",
+      "dragons": "Dragons & Mythical Creatures",
+      "fairy_tale": "Classic Fairy Tale"
+    },
+    "story_lengths": {
+      "short": "Short (3–5 min read)",
+      "medium": "Medium (7–10 min read)",
+      "long": "Long (12–15 min read)"
+    },
+    "ending_moods": {
+      "happy": "Happy & Cheerful",
+      "calming": "Calm & Sleepy",
+      "funny": "Funny & Silly",
+      "adventurous": "Exciting Adventure Resolved",
+      "heartwarming": "Heartwarming & Sweet"
+    },
+    "moral_lessons": {
+      "none": "No specific moral",
+      "kindness": "Kindness",
+      "bravery": "Bravery & Courage",
+      "sharing": "Sharing & Generosity",
+      "honesty": "Honesty & Trust",
+      "perseverance": "Never Give Up",
+      "friendship": "Value of Friendship",
+      "curiosity": "Curiosity & Learning",
+      "gratitude": "Gratitude & Appreciation"
+    },
+    "validation": {
+      "enter_story_idea": "Please enter a story idea for the bedtime story.",
+      "select_model": "Please select an AI model."
+    },
+    "success": {
+      "random_prompt_selected": "Story idea selected!",
+      "story_generated": "Bedtime story generated successfully!",
+      "story_copied": "Story copied to clipboard!"
+    },
+    "errors": {
+      "generation_failed": "Failed to generate the story. Please try again."
+    },
+    "output": {
+      "title": "Your Bedtime Story",
+      "words": "words",
+      "copy": "Copy",
+      "generating_message": "Writing your bedtime story...",
+      "empty_message": "Your personalized bedtime story will appear here. Cozy up and get ready to read aloud!"
+    },
+    "random_prompts": [
+      "A small bunny who is afraid of the dark discovers that fireflies are the stars' tiny helpers",
+      "A little cloud who can't rain properly learns to make the most beautiful rainbow instead",
+      "A sleepy dinosaur who keeps losing his favorite blanket before bedtime",
+      "Two mice who live inside a library and go on adventures through the books at night",
+      "A young dragon who accidentally sneezes glitter instead of fire",
+      "A baby elephant who is the only one in her herd afraid of water",
+      "A friendly moon who comes down to earth one night to see what children dream about",
+      "A tiny robot who learns what it means to be a good friend",
+      "A bear cub who wants to stay awake to see the first snowflake of winter",
+      "A mermaid who wishes she could walk on land and the seahorse who helps her"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What Is a Bedtime Story Generator?",
+      "description": "A Bedtime Story Generator uses AI to create original, age-appropriate stories tailored to your child's needs — all in seconds. Instead of searching through books or repeating the same stories, this Bedtime Story Generator lets you describe any scenario, pick a theme, and instantly receive a warm, calming story ready to read aloud at bedtime.\n\nEvery story from this Bedtime Story Generator is crafted specifically for children, with vocabulary and plot complexity matched to the age group you select. You can personalize with your child's name, embed a gentle moral lesson, and choose a calming or adventurous ending — making bedtime something your child actually looks forward to.",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "Bedtime Story Generator overview"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why Use This Bedtime Story Generator",
+      "description": "Every story is original, safe, and perfectly tailored for your child.",
+      "items": [
+        {
+          "title": "Age-Appropriate Language",
+          "description": "This Bedtime Story Generator calibrates vocabulary, sentence length, and story complexity based on your child's age — from simple two-sentence paragraphs for toddlers to richer narratives for older readers.",
+          "icon": "RiUserHeartLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "Age-appropriate bedtime stories"
+          }
+        },
+        {
+          "title": "Personalized Every Night",
+          "description": "Add your child's name, pick their favorite theme, and choose a moral lesson. The Bedtime Story Generator creates a different story every time, so bedtime never feels repetitive.",
+          "icon": "RiStarSmileLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "Personalized children's bedtime stories"
+          }
+        },
+        {
+          "title": "Calming Sleep Routine",
+          "description": "Stories from this Bedtime Story Generator are designed to help children wind down. Choose the Calm & Sleepy ending mood and let the gentle narrative guide your child toward sleep.",
+          "icon": "RiMoonLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "Calming bedtime story for children"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the Bedtime Story Generator",
+      "description": "Create a personalized bedtime story for your child in three easy steps.",
+      "items": [
+        {
+          "title": "Describe Your Story Idea",
+          "description": "Type a simple story idea — it could be a character, a problem, or just a scene. Use the Surprise Me button for instant inspiration."
+        },
+        {
+          "title": "Choose Age, Theme & Mood",
+          "description": "Select your child's age group and a story theme. Optionally add a moral lesson and your child's name to personalize the story."
+        },
+        {
+          "title": "Generate and Read Aloud",
+          "description": "Click Generate and receive a complete, original bedtime story ready to read aloud. Copy and save for future bedtime use."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Use Cases",
+      "title": "Who Uses This Bedtime Story Generator",
+      "description": "Perfect for parents, grandparents, and educators who want original stories every night.",
+      "items": [
+        {
+          "title": "Parents at Bedtime",
+          "description": "Generate a fresh, original bedtime story every night without repeating the same books. The Bedtime Story Generator saves time and makes bedtime special.",
+          "icon": "RiHomeHeartLine"
+        },
+        {
+          "title": "Grandparents & Caregivers",
+          "description": "Not sure what story to tell? Use the Bedtime Story Generator to create a warm, personal story in seconds — even if you're not a natural storyteller.",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "Teachers & Educators",
+          "description": "Create classroom read-aloud stories matched to your students' reading level and current lesson theme with the Bedtime Story Generator.",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Bedtime Story Generator FAQs",
+      "description": "Common questions about using a Bedtime Story Generator for children.",
+      "items": [
+        {
+          "title": "Are the bedtime stories safe for young children?",
+          "description": "Yes. This Bedtime Story Generator is designed to produce child-safe, age-appropriate content. The AI is instructed to avoid any scary, violent, or inappropriate content. Stories are warm, gentle, and positive."
+        },
+        {
+          "title": "Can I add my child's name to the story?",
+          "description": "Yes. Enter your child's name in the optional Child's Name field and the Bedtime Story Generator will naturally weave it into the story, making the experience feel personal and magical."
+        },
+        {
+          "title": "What age groups does this Bedtime Story Generator support?",
+          "description": "The Bedtime Story Generator supports four age groups: Toddlers (2-3), Preschool (4-5), Early Readers (6-8), and Middle Grade (9-12). Each group gets stories with vocabulary and complexity matched to that age."
+        },
+        {
+          "title": "Can I teach a moral lesson through the bedtime story?",
+          "description": "Yes. The Bedtime Story Generator offers moral lessons like kindness, bravery, sharing, honesty, and more. The moral is woven naturally into the story — it is never stated outright or preachy."
+        },
+        {
+          "title": "How long are the generated bedtime stories?",
+          "description": "You can choose from three lengths: Short (3-5 min read-aloud), Medium (7-10 min), or Long (12-15 min). The Bedtime Story Generator targets the word count to match your selected reading time."
+        },
+        {
+          "title": "Is the Bedtime Story Generator free?",
+          "description": "Yes. You can use the Bedtime Story Generator for free with no account required. Generate as many stories as you need for your nightly bedtime routine."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Create Tonight's Bedtime Story",
+      "description": "Use the Bedtime Story Generator to create a warm, personalized story your child will love — in seconds.",
+      "buttons": [
+        {
+          "title": "Generate Bedtime Story",
+          "url": "/bedtime-story-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "romance_story_generate": {
+    "metadata": {
+      "title": "Free Romance Story Generator - AI Love Story Writer",
+      "description": "Generate original romance stories with AI. Choose your sub-genre, trope, and heat level — from sweet contemporary to epic fantasy romance. Free, no sign-up required.",
+      "keywords": "romance story generator, AI romance writer, love story generator, romance fiction AI, enemies to lovers generator, free romance story"
+    },
+    "ui": {
+      "title": "Romance Story Generator",
+      "subtitle": "Generate original romance stories — sweet, steamy, or everything in between — with the trope and sub-genre you love most.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Romance Story Generator",
+      "story_idea": "Story Idea",
+      "random_button": "Random Idea",
+      "ai_model": "AI Model",
+      "output_language": "Output Language",
+      "sub_genre": "Sub-Genre",
+      "trope": "Romantic Trope",
+      "heat_level": "Heat Level",
+      "setting": "Setting",
+      "advanced_options": "Advanced Options",
+      "pov": "Point of View",
+      "story_length": "Story Length",
+      "generate_button": "Generate Story",
+      "generating": "Writing your love story...",
+      "hero_step_1": "Describe the romance",
+      "hero_step_2": "Choose trope & tone",
+      "hero_step_3": "Get your story instantly",
+      "output_title": "Your Romance Story"
+    },
+    "placeholders": {
+      "story_idea": "Describe your romance story idea... (e.g. 'A cold CEO and his new rival colleague are forced to share a hotel room during a business trip')"
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick story draft",
+      "standard": "Standard",
+      "standard_description": "Balanced depth and prose",
+      "creative": "Creative",
+      "creative_description": "Most vivid and immersive"
+    },
+    "sub_genres": {
+      "modern": "Contemporary Romance",
+      "historical": "Historical Romance",
+      "fantasy": "Fantasy Romance",
+      "paranormal": "Paranormal Romance",
+      "regency": "Regency Romance",
+      "romantic_comedy": "Romantic Comedy",
+      "ceo_romance": "CEO / Billionaire Romance",
+      "time_travel": "Time Travel Romance",
+      "ancient_chinese": "Ancient Chinese Romance"
+    },
+    "tropes": {
+      "enemies_to_lovers": "Enemies to Lovers",
+      "forced_proximity": "Forced Proximity",
+      "fake_dating": "Fake Dating",
+      "second_chance": "Second Chance Romance",
+      "forbidden_love": "Forbidden Love",
+      "slow_burn": "Slow Burn",
+      "friends_to_lovers": "Friends to Lovers",
+      "love_triangle": "Love Triangle"
+    },
+    "heat_levels": {
+      "sweet": "Sweet (Family-Friendly)",
+      "mild": "Mild (Kissing & Tension)",
+      "steamy": "Steamy (Suggestive Only)"
+    },
+    "settings": {
+      "contemporary_city": "Contemporary City",
+      "small_town": "Small Town",
+      "fantasy_world": "Fantasy World",
+      "historical": "Historical Estate / Manor",
+      "workplace": "Workplace / Corporate",
+      "college": "College Campus"
+    },
+    "povs": {
+      "third_person": "Third Person (Close)",
+      "first_person": "First Person (I / Me)"
+    },
+    "story_lengths": {
+      "short": "Short — Meet-Cute Scene (~400 words)",
+      "medium": "Medium — Full Chapter (~800 words)",
+      "long": "Long — Complete Story Arc (~1500 words)"
+    },
+    "validation": {
+      "enter_story_idea": "Please enter a story idea for the romance.",
+      "select_model": "Please select an AI model."
+    },
+    "success": {
+      "random_prompt_selected": "Random idea selected!",
+      "story_generated": "Romance story generated successfully!",
+      "story_copied": "Story copied to clipboard!"
+    },
+    "errors": {
+      "generation_failed": "Failed to generate the story. Please try again."
+    },
+    "output": {
+      "title": "Your Romance Story",
+      "words": "words",
+      "copy": "Copy",
+      "generating_message": "Writing your romance story...",
+      "empty_message": "Your original romance story — characters, tension, and the perfect ending — will appear here."
+    },
+    "random_prompts": [
+      "A ruthless venture capitalist and the startup founder whose company he's trying to acquire discover they have an undeniable connection",
+      "An elven assassin sent to kill the dark mage who cursed her forest finds herself falling for the man behind the magic",
+      "A bluestocking heiress agrees to a fake engagement with a rakish duke to escape her family's matchmaking schemes",
+      "A vampire hunter falls for the immortal she was sent to stake — and discovers he has been protecting her bloodline for centuries",
+      "A modern career woman accidentally time-travels to ancient China and falls for the empire's most feared and loyal military general",
+      "A princess disguised as a servant at the imperial court catches the eye of the cold, brilliant strategist who serves the emperor",
+      "Two rival food bloggers get snowed in at a remote mountain inn, forced to share a kitchen and their long-buried feelings",
+      "Years after a painful breakup, she has just been hired as lead architect for her ex's most prestigious new headquarters",
+      "A bookworm agrees to fake-date the campus heartthrob so he can make his ex jealous — neither expecting real feelings to develop",
+      "They have been best friends for ten years, and everyone around them can see what they cannot — until a wedding forces the truth"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What Is a Romance Story Generator?",
+      "description": "A Romance Story Generator uses AI to write original love stories tailored to your favorite sub-genre, trope, and tone — in seconds. Whether you want a sweet small-town meet-cute, a steamy CEO romance, a slow-burn fantasy epic, or an ancient Chinese court drama, this Romance Story Generator gives you a fully written story with real characters, authentic tension, and the emotional payoff you're looking for.\n\nThis Romance Story Generator is designed for romance readers, fan fiction writers, creative writing students, and anyone who wants to explore a love story idea without writing from scratch. Set the heat level, pick your trope, and let the AI do the rest.",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "Romance Story Generator overview"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why Use This Romance Story Generator",
+      "description": "Every story is original, emotionally resonant, and ready to read — no writing experience needed.",
+      "items": [
+        {
+          "title": "Every Trope You Love",
+          "description": "From enemies-to-lovers and fake dating to slow burn and forbidden love — this Romance Story Generator knows every romance trope and writes them authentically. Pick the one your heart wants and get a story built around it.",
+          "icon": "RiHeartLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "Romance story tropes"
+          }
+        },
+        {
+          "title": "Heat Level You Control",
+          "description": "Sweet, mild, or steamy — you decide how far the romance goes. The Romance Story Generator strictly respects your heat level setting, making it perfect for all audiences from middle-grade to adult.",
+          "icon": "RiFlashlightLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "Heat level control for romance"
+          }
+        },
+        {
+          "title": "Western & Eastern Romance",
+          "description": "Most AI tools only write Western romance. This Romance Story Generator also supports CEO/Billionaire romance, time travel romance, and Ancient Chinese court drama — sub-genres beloved by millions of readers worldwide.",
+          "icon": "RiGlobalLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "Western and Chinese romance sub-genres"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the Romance Story Generator",
+      "description": "Get your original romance story in three simple steps.",
+      "items": [
+        {
+          "title": "Describe Your Romance",
+          "description": "Write a one-line story idea — two characters, a setting, or a situation. Or click Random Idea for instant inspiration from the Romance Story Generator."
+        },
+        {
+          "title": "Choose Your Trope & Tone",
+          "description": "Select your sub-genre, romantic trope, heat level, and setting. The Romance Story Generator tailors every element of the story to your choices."
+        },
+        {
+          "title": "Read, Copy & Enjoy",
+          "description": "Your story appears as it's written in real time. Copy it, share it, or use it as a starting point for your own writing."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Use Cases",
+      "title": "Who Uses This Romance Story Generator",
+      "description": "Perfect for romance readers, fan fiction writers, and creative writing enthusiasts.",
+      "items": [
+        {
+          "title": "Romance Readers",
+          "description": "Satisfy your craving for a specific trope or sub-genre on demand. The Romance Story Generator writes the exact story you want to read — any heat level, any setting, any pairing.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Fan Fiction Writers",
+          "description": "Use the Romance Story Generator to spark new ideas, explore tropes for your own fics, or get unstuck when writer's block hits. Generate a scene, then make it your own.",
+          "icon": "RiPenNibLine"
+        },
+        {
+          "title": "Creative Writing Students",
+          "description": "Study how AI handles romantic tension, dialogue, and pacing. Use generated stories as examples, writing prompts, or starting points for your own romance fiction craft.",
+          "icon": "RiGraduationCapLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Romance Story Generator FAQs",
+      "description": "Common questions about using the Romance Story Generator.",
+      "items": [
+        {
+          "title": "What romance sub-genres does the generator support?",
+          "description": "The Romance Story Generator supports Contemporary Romance, Historical Romance, Fantasy Romance, Paranormal Romance, Regency Romance, Romantic Comedy, CEO/Billionaire Romance, Time Travel Romance, and Ancient Chinese Romance — covering both Western and Eastern romance traditions."
+        },
+        {
+          "title": "What does the heat level setting do?",
+          "description": "Sweet stories are family-friendly with no kissing. Mild stories include romantic tension and kissing, with any intimacy implied and faded to black. Steamy stories feature suggestive tension and implied intimacy — always tasteful, never explicit. The generator strictly respects these settings."
+        },
+        {
+          "title": "Can I choose a specific romantic trope?",
+          "description": "Yes. You can choose from eight classic romance tropes: Enemies to Lovers, Forced Proximity, Fake Dating, Second Chance Romance, Forbidden Love, Slow Burn, Friends to Lovers, and Love Triangle. The trope is woven organically into the story."
+        },
+        {
+          "title": "How long are the generated romance stories?",
+          "description": "Short stories are approximately 400 words — a single scene or meet-cute. Medium stories are about 800 words — a full chapter with setup and tension. Long stories are around 1500 words — a complete romantic arc with a satisfying ending."
+        },
+        {
+          "title": "Can I use the generated stories in my own writing?",
+          "description": "Yes. The Romance Story Generator creates original stories for your personal use. You can use them as inspiration, creative writing prompts, practice material, or a starting point for your own romance fiction."
+        },
+        {
+          "title": "Is the Romance Story Generator free?",
+          "description": "Yes. You can generate as many romance stories as you want with no account required. Every story is freshly written by AI each time — no recycled plots."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Generate Your Romance Story Now",
+      "description": "Use the Romance Story Generator to write the love story you've been waiting for — your trope, your heat level, your ending.",
+      "buttons": [
+        {
+          "title": "Generate Romance Story",
+          "url": "/romance-story-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

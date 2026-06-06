@@ -92,6 +92,27 @@
               "url": "/comic-generator",
               "icon": "RiLayoutGridLine",
               "target": "_self"
+            },
+            {
+              "title": "睡前故事生成器",
+              "description": "用 AI 为孩子创作个性化的、适合年龄的睡前故事。免费无限使用。",
+              "url": "/bedtime-story-generator",
+              "icon": "RiMoonLine",
+              "target": "_self"
+            },
+            {
+              "title": "谋杀谜题生成器",
+              "description": "生成完整的谋杀谜题派对游戏剧本，包含嫌疑人、线索和解答方案。免费 AI 推理游戏生成器。",
+              "url": "/murder-mystery-generator",
+              "icon": "RiSearchEyeLine",
+              "target": "_self"
+            },
+            {
+              "title": "言情故事生成器",
+              "description": "用 AI 创作原创言情故事，支持总裁文、穿越、古风等多种类型，可选甜度和经典桥段。免费无限使用。",
+              "url": "/romance-story-generator",
+              "icon": "RiHeartLine",
+              "target": "_self"
             }
           ]
         }
@@ -827,6 +848,21 @@
             {
               "title": "漫画生成器",
               "url": "/comic-generator",
+              "target": "_self"
+            },
+            {
+              "title": "睡前故事生成器",
+              "url": "/bedtime-story-generator",
+              "target": "_self"
+            },
+            {
+              "title": "谋杀谜题生成器",
+              "url": "/murder-mystery-generator",
+              "target": "_self"
+            },
+            {
+              "title": "言情故事生成器",
+              "url": "/romance-story-generator",
               "target": "_self"
             }
           ]

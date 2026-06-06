@@ -1,0 +1,249 @@
+{
+  "bedtime_story_generate": {
+    "metadata": {
+      "title": "무료 취침 이야기 생성기 - 어린이를 위한 AI 잠자리 동화",
+      "description": "몇 초 만에 연령에 맞는 취침 이야기를 생성하세요. 연령대, 테마, 도덕적 교훈으로 맞춤화. 무료 무제한 사용.",
+      "keywords": "취침 이야기 생성기, AI 잠자리 동화, 어린이 취침 동화, 어린이 이야기 생성기"
+    },
+    "ui": {
+      "title": "취침 이야기 생성기",
+      "subtitle": "몇 초 만에 아이를 위한 맞춤형 취침 이야기를 만들어 드립니다.",
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "취침 이야기 생성기",
+      "story_idea": "이야기 아이디어",
+      "random_button": "랜덤 선택",
+      "ai_model": "AI 모델",
+      "output_language": "출력 언어",
+      "age_group": "아이 연령대",
+      "story_theme": "이야기 테마",
+      "story_length": "이야기 길이",
+      "ending_mood": "결말 분위기",
+      "moral_lesson": "도덕적 교훈",
+      "child_name": "아이 이름 (선택)",
+      "advanced_options": "고급 옵션",
+      "generate_button": "취침 이야기 생성",
+      "generating": "이야기를 만드는 중...",
+      "hero_step_1": "이야기 아이디어 입력",
+      "hero_step_2": "연령 및 테마 선택",
+      "hero_step_3": "생성 후 소리 내어 읽기",
+      "output_title": "나의 취침 이야기"
+    },
+    "placeholders": {
+      "story_idea": "이야기 내용을 입력하세요 (예: '어둠을 무서워하는 작은 토끼가 반짝이는 반딧불이 친구를 만납니다')",
+      "child_name": "예: 지민, 하은..."
+    },
+    "ai_models": {
+      "fast": "빠른",
+      "fast_description": "빠른 이야기 생성",
+      "standard": "표준",
+      "standard_description": "품질과 따뜻함의 균형",
+      "creative": "창의적",
+      "creative_description": "가장 상상력 풍부한 이야기"
+    },
+    "age_groups": {
+      "toddler": "유아 (2~3세)",
+      "preschool": "미취학 (4~5세)",
+      "early_reader": "초급 독자 (6~8세)",
+      "middle_grade": "중급 독자 (9~12세)"
+    },
+    "story_themes": {
+      "adventure": "모험",
+      "animals": "동물",
+      "magic": "마법과 판타지",
+      "friendship": "우정",
+      "family": "가족과 가정",
+      "nature": "자연과 야외",
+      "space": "우주와 별",
+      "underwater": "바다와 해양",
+      "dragons": "용과 신화 생물",
+      "fairy_tale": "클래식 동화"
+    },
+    "story_lengths": {
+      "short": "단편 (읽기 3~5분)",
+      "medium": "중편 (읽기 7~10분)",
+      "long": "장편 (읽기 12~15분)"
+    },
+    "ending_moods": {
+      "happy": "행복하고 밝게",
+      "calming": "차분하고 잠오는",
+      "funny": "재미있고 웃긴",
+      "adventurous": "모험이 해결되는",
+      "heartwarming": "따뜻하고 감동적인"
+    },
+    "moral_lessons": {
+      "none": "특별한 교훈 없음",
+      "kindness": "친절함",
+      "bravery": "용기와 담대함",
+      "sharing": "나눔과 관대함",
+      "honesty": "정직과 신뢰",
+      "perseverance": "포기하지 않기",
+      "friendship": "우정의 가치",
+      "curiosity": "호기심과 배움",
+      "gratitude": "감사와 감사함"
+    },
+    "validation": {
+      "enter_story_idea": "취침 이야기의 아이디어를 입력해 주세요.",
+      "select_model": "AI 모델을 선택해 주세요."
+    },
+    "success": {
+      "random_prompt_selected": "이야기 아이디어가 선택되었습니다!",
+      "story_generated": "취침 이야기가 성공적으로 생성되었습니다!",
+      "story_copied": "이야기가 클립보드에 복사되었습니다!"
+    },
+    "errors": {
+      "generation_failed": "이야기 생성에 실패했습니다. 다시 시도해 주세요."
+    },
+    "output": {
+      "title": "나의 취침 이야기",
+      "words": "단어",
+      "copy": "복사",
+      "generating_message": "취침 이야기를 작성 중입니다...",
+      "empty_message": "맞춤형 취침 이야기가 여기에 표시됩니다. 오늘 밤 특별한 이야기를 준비하세요!"
+    },
+    "random_prompts": [
+      "어둠을 무서워하는 작은 토끼가 반딧불이가 별의 작은 도우미라는 것을 발견합니다",
+      "비를 내릴 수 없는 작은 구름이 대신 가장 아름다운 무지개를 만드는 법을 배웁니다",
+      "자기 전에 항상 좋아하는 담요를 잃어버리는 졸린 공룡",
+      "도서관에 사는 두 마리 생쥐가 밤에 책 속에서 모험을 떠납니다",
+      "불 대신 반짝이 가루를 내뿜는 작은 용",
+      "무리 중 유일하게 물을 무서워하는 아기 코끼리",
+      "아이들이 무엇을 꿈꾸는지 보려고 땅으로 내려오는 친절한 달",
+      "진정한 친구가 무엇인지 배우는 작은 로봇",
+      "겨울의 첫 눈송이를 보려고 늦게까지 깨어있으려는 아기 곰",
+      "육지를 걷고 싶은 인어공주와 그녀를 돕는 해마"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "개요",
+      "title": "취침 이야기 생성기란?",
+      "description": "취침 이야기 생성기는 AI를 사용하여 아이의 연령에 맞는 독창적인 이야기를 몇 초 만에 만들어 드립니다. 책을 찾거나 같은 이야기를 반복할 필요가 없습니다. 장면을 설명하고 테마를 선택하면 바로 따뜻한 취침 이야기가 준비됩니다.",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "취침 이야기 생성기 개요"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "장점",
+      "title": "이 취침 이야기 생성기를 사용하는 이유",
+      "description": "모든 이야기는 독창적이고, 안전하며, 아이에게 맞춤화되어 있습니다.",
+      "items": [
+        {
+          "title": "연령에 맞는 언어",
+          "description": "연령대에 따라 어휘, 문장 길이, 복잡도를 조정합니다.",
+          "icon": "RiUserHeartLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "연령에 맞는 취침 이야기"
+          }
+        },
+        {
+          "title": "매일 밤 맞춤 설정",
+          "description": "아이의 이름을 추가하고 좋아하는 테마를 선택하여 매일 다른 이야기를 즐기세요.",
+          "icon": "RiStarSmileLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "맞춤형 어린이 취침 이야기"
+          }
+        },
+        {
+          "title": "수면 루틴 지원",
+          "description": "차분한 결말을 선택하여 아이가 편안하게 잠들 수 있도록 도와드립니다.",
+          "icon": "RiMoonLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "수면을 돕는 취침 이야기"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "사용 방법",
+      "title": "취침 이야기 생성기 사용 방법",
+      "description": "세 가지 간단한 단계로 맞춤형 취침 이야기를 만드세요.",
+      "items": [
+        {
+          "title": "이야기 아이디어 입력",
+          "description": "간단한 아이디어를 입력하거나 '랜덤 선택' 버튼으로 영감을 얻으세요."
+        },
+        {
+          "title": "연령, 테마, 분위기 선택",
+          "description": "연령대와 테마를 선택하고 선택적으로 아이 이름과 교훈을 추가하세요."
+        },
+        {
+          "title": "생성 후 소리 내어 읽기",
+          "description": "생성 버튼을 클릭하여 완성된 이야기를 받아 소리 내어 읽어주세요."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "사용 사례",
+      "title": "취침 이야기 생성기를 사용하는 사람들",
+      "description": "매일 밤 독창적인 이야기가 필요한 부모, 조부모, 교육자에게 완벽합니다.",
+      "items": [
+        {
+          "title": "취침 시간의 부모",
+          "description": "매일 밤 새롭고 독창적인 이야기를 생성하여 취침 시간을 특별하게 만드세요.",
+          "icon": "RiHomeHeartLine"
+        },
+        {
+          "title": "조부모 및 돌봄 제공자",
+          "description": "어떤 이야기를 해야 할지 모를 때도 몇 초 만에 따뜻한 이야기를 만들 수 있습니다.",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "교사 및 교육자",
+          "description": "학생의 읽기 수준과 수업 테마에 맞는 읽기용 이야기를 만드세요.",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "자주 묻는 질문",
+      "title": "취침 이야기 생성기 FAQ",
+      "description": "어린이를 위한 취침 이야기 생성기에 대한 자주 묻는 질문.",
+      "items": [
+        {
+          "title": "생성된 이야기가 어린 아이들에게 안전한가요?",
+          "description": "네. 이 생성기는 아이들에게 안전하고 연령에 적합한 콘텐츠를 생성하도록 설계되었습니다."
+        },
+        {
+          "title": "이야기에 아이 이름을 넣을 수 있나요?",
+          "description": "네. 아이 이름 필드에 이름을 입력하면 이야기 속에 자연스럽게 포함됩니다."
+        },
+        {
+          "title": "지원하는 연령대는 어떻게 되나요?",
+          "description": "유아(2-3세), 미취학(4-5세), 초급 독자(6-8세), 중급 독자(9-12세) 네 가지를 지원합니다."
+        },
+        {
+          "title": "도덕적 교훈을 넣을 수 있나요?",
+          "description": "네. 친절함, 용기, 나눔 등의 교훈을 이야기에 자연스럽게 녹여드립니다."
+        },
+        {
+          "title": "이야기 길이는 어떻게 되나요?",
+          "description": "단편(3-5분), 중편(7-10분), 장편(12-15분) 중에서 선택하실 수 있습니다."
+        },
+        {
+          "title": "취침 이야기 생성기는 무료인가요?",
+          "description": "네. 계정 가입 없이 무료로 사용하실 수 있습니다."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "오늘 밤의 취침 이야기 만들기",
+      "description": "취침 이야기 생성기로 아이가 사랑할 따뜻하고 맞춤화된 이야기를 몇 초 만에 만들어 드립니다.",
+      "buttons": [
+        {
+          "title": "취침 이야기 생성",
+          "url": "/bedtime-story-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

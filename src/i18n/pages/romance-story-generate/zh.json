@@ -1,0 +1,250 @@
+{
+  "romance_story_generate": {
+    "metadata": {
+      "title": "免费言情故事生成器 - AI 爱情故事写作",
+      "description": "用 AI 生成原创言情故事。选择子类型、经典桥段和甜度等级——从甜宠现代到古风宫廷，全部支持。免费，无需注册。",
+      "keywords": "言情故事生成器, AI言情写作, 爱情故事生成器, 总裁文生成器, 穿越故事生成器, 古风言情生成器, 免费言情故事"
+    },
+    "ui": {
+      "title": "言情故事生成器",
+      "subtitle": "生成原创言情故事——甜宠、虐心或两者兼备——选择你最爱的桥段和类型。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "言情故事生成器",
+      "story_idea": "故事想法",
+      "random_button": "随机灵感",
+      "ai_model": "AI 模型",
+      "output_language": "输出语言",
+      "sub_genre": "言情类型",
+      "trope": "经典桥段",
+      "heat_level": "甜度等级",
+      "setting": "故事背景",
+      "advanced_options": "高级选项",
+      "pov": "叙事视角",
+      "story_length": "故事篇幅",
+      "generate_button": "生成故事",
+      "generating": "正在创作你的爱情故事...",
+      "hero_step_1": "描述你的爱情故事",
+      "hero_step_2": "选择桥段和甜度",
+      "hero_step_3": "即刻获得完整故事",
+      "output_title": "你的言情故事"
+    },
+    "placeholders": {
+      "story_idea": "描述你的言情故事想法...（例如：「冷酷总裁和新来的竞争对手在商务出差时被迫同住一间酒店」）"
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "快速生成故事草稿",
+      "standard": "标准",
+      "standard_description": "深度与文笔兼顾",
+      "creative": "创意",
+      "creative_description": "最生动沉浸的故事"
+    },
+    "sub_genres": {
+      "modern": "现代都市言情",
+      "historical": "西方历史言情",
+      "fantasy": "奇幻言情",
+      "paranormal": "超自然言情",
+      "regency": "摄政时代言情",
+      "romantic_comedy": "爱情喜剧",
+      "ceo_romance": "总裁/霸道男主文",
+      "time_travel": "穿越言情",
+      "ancient_chinese": "古风/宫廷言情"
+    },
+    "tropes": {
+      "enemies_to_lovers": "欢喜冤家",
+      "forced_proximity": "同处一室",
+      "fake_dating": "假装恋爱",
+      "second_chance": "破镜重圆",
+      "forbidden_love": "禁忌之恋",
+      "slow_burn": "暗恋慢热",
+      "friends_to_lovers": "闺蜜/好友变恋人",
+      "love_triangle": "三角恋"
+    },
+    "heat_levels": {
+      "sweet": "甜宠（适合全年龄）",
+      "mild": "微甜（接吻与心动）",
+      "steamy": "暧昧（含糊其辞）"
+    },
+    "settings": {
+      "contemporary_city": "现代都市",
+      "small_town": "小镇",
+      "fantasy_world": "奇幻世界",
+      "historical": "西方庄园/历史宅邸",
+      "workplace": "职场/公司",
+      "college": "大学校园"
+    },
+    "povs": {
+      "third_person": "第三人称（他/她）",
+      "first_person": "第一人称（我）"
+    },
+    "story_lengths": {
+      "short": "短篇——初遇场景（约400字）",
+      "medium": "中篇——完整章节（约800字）",
+      "long": "长篇——完整故事弧（约1500字）"
+    },
+    "validation": {
+      "enter_story_idea": "请输入言情故事的想法。",
+      "select_model": "请选择 AI 模型。"
+    },
+    "success": {
+      "random_prompt_selected": "已选择随机灵感！",
+      "story_generated": "言情故事生成成功！",
+      "story_copied": "故事内容已复制到剪贴板！"
+    },
+    "errors": {
+      "generation_failed": "生成故事失败，请重试。"
+    },
+    "output": {
+      "title": "你的言情故事",
+      "words": "字",
+      "copy": "复制",
+      "generating_message": "正在为你创作言情故事...",
+      "empty_message": "你的原创言情故事——有血有肉的角色、缠绵的心动、完美的结局——将在这里呈现。"
+    },
+    "random_prompts": [
+      "冷酷总裁和新来的竞争对手在商务出差时被迫同住一间酒店，原本的针锋相对渐渐变了味道",
+      "被派去刺杀诅咒她家族的黑暗法师的精灵刺客，发现自己开始对那个男人心动",
+      "穿越到古代的现代女孩，不得不周旋于朝廷权谋之中，却对皇帝最信任的冷面将军动了情",
+      "宫廷中女扮男装的郡主意外成为了那位冷酷谋臣的属下，两人在明争暗斗中渐生情愫",
+      "在故乡小镇的同学聚会上，她再次遇到了当年伤她最深的人，而他似乎变了",
+      "吸血鬼猎手爱上了自己要猎杀的那个不死者，才发现他已经守护她的家族几个世纪",
+      "两个互相看不顺眼的美食博主被困在同一个山间小屋，被迫共用一个厨房和彼此的秘密",
+      "她以为自己走出了那段爱情，直到新工作的第一天，她发现老板是五年前那个让她心碎的人",
+      "好友多年，周围所有人都看出了他们之间不一样的感情，偏偏只有他们自己还蒙在鼓里",
+      "古代书院里，寒门才子与世家小姐的书信往来，在规矩与情感之间越走越近"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "概述",
+      "title": "什么是言情故事生成器？",
+      "description": "言情故事生成器利用 AI，根据你喜欢的类型、桥段和甜度等级，在几秒钟内创作出一篇量身定制的原创爱情故事。不管你想要甜宠的现代都市邂逅、虐心的欢喜冤家、古风宫廷权谋里的禁忌之恋，还是穿越时空的浪漫相遇，这款言情故事生成器都能为你创作有真实人物、有层次心动、有满足感结局的故事。\n\n这款言情故事生成器专为言情读者、同人文作者、创意写作学生以及所有想随时享受一段爱情故事的人设计。选好类型、桥段和氛围，剩下的交给 AI 完成。",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "言情故事生成器概述"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "为什么使用这款言情故事生成器",
+      "description": "每篇故事都是原创的、有情感深度的、随时可读的——无需任何写作经验。",
+      "items": [
+        {
+          "title": "所有你爱的经典桥段",
+          "description": "从欢喜冤家、假装恋爱到暗恋慢热、禁忌之恋——这款言情故事生成器精通每一个经典桥段，并将其自然地融入故事。选好桥段，AI 就会为你写出那种心动的感觉。",
+          "icon": "RiHeartLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "言情故事经典桥段"
+          }
+        },
+        {
+          "title": "甜度等级完全可控",
+          "description": "甜宠、微甜还是暧昧——你来决定故事的尺度。言情故事生成器严格遵守你设置的甜度等级，适合所有年龄段的读者，从青少年到成人均可放心使用。",
+          "icon": "RiFlashlightLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "言情故事甜度等级"
+          }
+        },
+        {
+          "title": "中西言情全部支持",
+          "description": "大多数 AI 工具只能写西方言情。这款言情故事生成器同时支持总裁文、穿越言情和古风宫廷故事——专门针对中文读者最喜爱的类型进行了深度优化。",
+          "icon": "RiGlobalLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "中西言情类型全支持"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "如何使用言情故事生成器",
+      "description": "三步获得你的原创言情故事。",
+      "items": [
+        {
+          "title": "描述你的爱情故事",
+          "description": "用一句话描述故事想法——两个角色、一个场景或一个情境。或点击「随机灵感」，让言情故事生成器给你即时启发。"
+        },
+        {
+          "title": "选择桥段和甜度",
+          "description": "选择言情类型、经典桥段、甜度等级和故事背景。言情故事生成器会将每一个元素都融入到专属于你的故事中。"
+        },
+        {
+          "title": "阅读、复制、享受",
+          "description": "故事会实时流式呈现，随写随看。可以直接复制，分享给朋友，或作为你自己创作的灵感起点。"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "使用场景",
+      "title": "谁在使用这款言情故事生成器",
+      "description": "言情读者、同人文作者和创意写作爱好者的最佳选择。",
+      "items": [
+        {
+          "title": "言情读者",
+          "description": "随时满足对某个特定桥段或类型的渴望。言情故事生成器随时写出你想看的那种故事——任何甜度、任何设定、任何 CP 组合。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "同人文作者",
+          "description": "用言情故事生成器探索桥段写法，为自己的同人文寻找灵感，或在遇到写作瓶颈时突破卡文。生成一个场景，然后把它变成你自己的故事。",
+          "icon": "RiPenNibLine"
+        },
+        {
+          "title": "创意写作学习者",
+          "description": "研究 AI 如何处理感情张力、对话节奏和心理描写。把生成的故事当作范文、写作练习素材或自己创作的出发点。",
+          "icon": "RiGraduationCapLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "言情故事生成器常见问题",
+      "description": "关于使用言情故事生成器的常见问题。",
+      "items": [
+        {
+          "title": "言情故事生成器支持哪些类型？",
+          "description": "支持现代都市言情、西方历史言情、奇幻言情、超自然言情、摄政时代言情、爱情喜剧、总裁/霸道男主文、穿越言情以及古风/宫廷言情——中西方言情类型全面覆盖。"
+        },
+        {
+          "title": "甜度等级有什么区别？",
+          "description": "甜宠是全年龄适合的，没有接吻以上的内容。微甜包含心动感、接吻以及含糊其辞的亲密暗示。暧昧包含更强的感情张力和暗示性的亲密，但始终保持克制，不含任何露骨内容。生成器会严格遵守你的甜度设定。"
+        },
+        {
+          "title": "可以选择特定的经典桥段吗？",
+          "description": "可以。你可以从八大经典桥段中选择：欢喜冤家、同处一室、假装恋爱、破镜重圆、禁忌之恋、暗恋慢热、好友变恋人和三角恋。桥段会自然融入故事，而不是生硬地点名。"
+        },
+        {
+          "title": "生成的故事有多长？",
+          "description": "短篇约400字，专注于一个场景或初遇瞬间。中篇约800字，包含完整的章节结构和情感转折。长篇约1500字，包含完整的故事弧和令人满足的结局。"
+        },
+        {
+          "title": "生成的故事可以用于我自己的写作吗？",
+          "description": "可以。言情故事生成器创作的故事供你个人使用。你可以将其作为灵感来源、写作练习素材，或作为自己言情创作的出发点。"
+        },
+        {
+          "title": "言情故事生成器是免费的吗？",
+          "description": "是的。无需注册账号即可无限生成言情故事。每篇故事都是 AI 全新创作的，不会重复使用相同的情节。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "现在就生成你的言情故事",
+      "description": "使用言情故事生成器，创作一篇专属于你的爱情故事——你的桥段、你的甜度、你的结局。",
+      "buttons": [
+        {
+          "title": "生成言情故事",
+          "url": "/romance-story-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

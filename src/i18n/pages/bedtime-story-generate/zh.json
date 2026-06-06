@@ -1,0 +1,249 @@
+{
+  "bedtime_story_generate": {
+    "metadata": {
+      "title": "免费睡前故事生成器 - AI 为孩子创作睡前故事",
+      "description": "几秒钟内为孩子生成原创的、适合年龄的睡前故事。按年龄段、主题、道德课等个性化定制。免费无限使用。",
+      "keywords": "睡前故事生成器, AI睡前故事, 儿童睡前故事, 孩子故事生成器, 睡前故事, AI儿童故事, 免费睡前故事"
+    },
+    "ui": {
+      "title": "睡前故事生成器",
+      "subtitle": "几秒钟内为您的孩子创作一个个性化的、适合年龄的睡前故事。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "睡前故事生成器",
+      "story_idea": "故事想法",
+      "random_button": "随机惊喜",
+      "ai_model": "AI 模型",
+      "output_language": "输出语言",
+      "age_group": "孩子的年龄段",
+      "story_theme": "故事主题",
+      "story_length": "故事长度",
+      "ending_mood": "结局氛围",
+      "moral_lesson": "道德寓意",
+      "child_name": "孩子的名字（可选）",
+      "advanced_options": "高级选项",
+      "generate_button": "生成睡前故事",
+      "generating": "正在创作故事...",
+      "hero_step_1": "描述故事想法",
+      "hero_step_2": "选择年龄和主题",
+      "hero_step_3": "生成后朗读给孩子听",
+      "output_title": "您的睡前故事"
+    },
+    "placeholders": {
+      "story_idea": "故事应该讲什么？（例如：'一只害怕黑暗的小兔子遇到了会发光的萤火虫朋友'）",
+      "child_name": "例如：小明、小花..."
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "快速生成故事草稿",
+      "standard": "标准",
+      "standard_description": "质量与温暖感兼顾",
+      "creative": "创意",
+      "creative_description": "最富想象力的故事"
+    },
+    "age_groups": {
+      "toddler": "幼儿（2–3岁）",
+      "preschool": "学前（4–5岁）",
+      "early_reader": "初级读者（6–8岁）",
+      "middle_grade": "中级读者（9–12岁）"
+    },
+    "story_themes": {
+      "adventure": "冒险",
+      "animals": "动物",
+      "magic": "魔法与奇幻",
+      "friendship": "友谊",
+      "family": "家庭与温馨",
+      "nature": "大自然与户外",
+      "space": "太空与星星",
+      "underwater": "海洋与大海",
+      "dragons": "龙与神话生物",
+      "fairy_tale": "经典童话"
+    },
+    "story_lengths": {
+      "short": "短篇（朗读约3–5分钟）",
+      "medium": "中篇（朗读约7–10分钟）",
+      "long": "长篇（朗读约12–15分钟）"
+    },
+    "ending_moods": {
+      "happy": "快乐愉快",
+      "calming": "平静安睡",
+      "funny": "搞笑有趣",
+      "adventurous": "冒险圆满解决",
+      "heartwarming": "温暖感人"
+    },
+    "moral_lessons": {
+      "none": "无特定寓意",
+      "kindness": "善良",
+      "bravery": "勇敢与勇气",
+      "sharing": "分享与慷慨",
+      "honesty": "诚实与信任",
+      "perseverance": "坚持不放弃",
+      "friendship": "友谊的价值",
+      "curiosity": "好奇心与学习",
+      "gratitude": "感恩与珍惜"
+    },
+    "validation": {
+      "enter_story_idea": "请输入睡前故事的想法。",
+      "select_model": "请选择一个 AI 模型。"
+    },
+    "success": {
+      "random_prompt_selected": "已选择故事想法！",
+      "story_generated": "睡前故事生成成功！",
+      "story_copied": "故事已复制到剪贴板！"
+    },
+    "errors": {
+      "generation_failed": "生成故事失败，请重试。"
+    },
+    "output": {
+      "title": "您的睡前故事",
+      "words": "字",
+      "copy": "复制",
+      "generating_message": "正在为您创作睡前故事...",
+      "empty_message": "您的个性化睡前故事将在这里出现。准备好了吗？让我们开始今晚的睡前时光！"
+    },
+    "random_prompts": [
+      "一只害怕黑暗的小兔子发现萤火虫是星星的小助手",
+      "一朵不会下雨的小云，学会了制作最美丽的彩虹",
+      "一只总是在睡觉前找不到最爱毯子的困倦小恐龙",
+      "两只住在图书馆里的小老鼠，夜里在书本里冒险",
+      "一条小龙打喷嚏时喷出的不是火焰而是彩色亮粉",
+      "一头小象是象群里唯一害怕水的孩子",
+      "一位友好的月亮决定某天晚上下来看看孩子们梦见什么",
+      "一个小机器人学会了什么是真正的友谊",
+      "一只小熊想熬夜等待冬天的第一片雪花",
+      "一条小美人鱼想走在陆地上，小海马帮助了她"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "概述",
+      "title": "什么是睡前故事生成器？",
+      "description": "睡前故事生成器利用 AI 在几秒钟内创作原创的、适合孩子年龄的故事。无需翻找书籍或重复同样的故事，只需描述一个场景，选择主题，立即获得一个温馨的、适合睡前朗读的故事。\n\n这款睡前故事生成器专为儿童设计，根据您选择的年龄段调整词汇量和情节复杂度。您可以添加孩子的名字、嵌入温和的道德寓意，并选择平静或冒险的结局——让睡前时光成为孩子每天期待的仪式。",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "睡前故事生成器概述"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "为什么使用这款睡前故事生成器",
+      "description": "每个故事都是原创的、安全的，并为您的孩子量身定制。",
+      "items": [
+        {
+          "title": "适合年龄的语言",
+          "description": "这款睡前故事生成器根据孩子的年龄段调整词汇、句子长度和故事复杂度——从适合幼儿的简单两句段落，到适合大龄读者的丰富叙事。",
+          "icon": "RiUserHeartLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "适合年龄的睡前故事"
+          }
+        },
+        {
+          "title": "每晚个性化定制",
+          "description": "添加孩子的名字，选择最喜欢的主题，设置道德寓意。睡前故事生成器每次都会创作不同的故事，让睡前时光永不重复。",
+          "icon": "RiStarSmileLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "个性化儿童睡前故事"
+          }
+        },
+        {
+          "title": "助眠睡前仪式",
+          "description": "这款睡前故事生成器的故事设计有助于孩子放松入睡。选择「平静安睡」结局模式，让温柔的叙事引导孩子进入梦乡。",
+          "icon": "RiMoonLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "帮助儿童入睡的睡前故事"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "如何使用睡前故事生成器",
+      "description": "三步轻松为孩子创作个性化睡前故事。",
+      "items": [
+        {
+          "title": "描述您的故事想法",
+          "description": "输入一个简单的故事想法——可以是一个角色、一个问题或一个场景。点击「随机惊喜」按钮获取即时灵感。"
+        },
+        {
+          "title": "选择年龄、主题和氛围",
+          "description": "选择孩子的年龄段和故事主题。可选择添加道德寓意和孩子的名字来个性化故事。"
+        },
+        {
+          "title": "生成并朗读",
+          "description": "点击生成，立即获得一个完整的原创睡前故事。复制保存，供以后睡前使用。"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "使用场景",
+      "title": "谁在使用这款睡前故事生成器",
+      "description": "非常适合每晚需要原创故事的父母、祖父母和教育工作者。",
+      "items": [
+        {
+          "title": "睡前陪伴的父母",
+          "description": "每晚生成一个新鲜的原创睡前故事，不再重复同一本书。睡前故事生成器节省时间，让睡前时光变得特别。",
+          "icon": "RiHomeHeartLine"
+        },
+        {
+          "title": "祖父母和看护人",
+          "description": "不知道讲什么故事？使用睡前故事生成器，几秒钟内创作一个温馨个人的故事——即使您不是天生的故事讲述者。",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "教师和教育工作者",
+          "description": "用睡前故事生成器创作与学生阅读水平和当前课程主题相匹配的课堂朗读故事。",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "睡前故事生成器常见问题",
+      "description": "关于为儿童使用睡前故事生成器的常见问题。",
+      "items": [
+        {
+          "title": "生成的睡前故事对幼儿安全吗？",
+          "description": "是的。这款睡前故事生成器旨在生成儿童安全、适合年龄的内容。AI 被指示避免任何恐怖、暴力或不当内容。故事温暖、温柔且积极向上。"
+        },
+        {
+          "title": "我可以在故事中加入孩子的名字吗？",
+          "description": "可以。在可选的「孩子的名字」字段中输入孩子的名字，睡前故事生成器会自然地将其融入故事中，让体验感觉个人化且神奇。"
+        },
+        {
+          "title": "这款睡前故事生成器支持哪些年龄段？",
+          "description": "睡前故事生成器支持四个年龄段：幼儿（2-3岁）、学前（4-5岁）、初级读者（6-8岁）和中级读者（9-12岁）。每个年龄段都能获得词汇量和复杂度相匹配的故事。"
+        },
+        {
+          "title": "我可以在睡前故事中加入道德寓意吗？",
+          "description": "可以。睡前故事生成器提供善良、勇气、分享、诚实等道德寓意选项。道德寓意会自然地融入故事中——从不直白地说教。"
+        },
+        {
+          "title": "生成的睡前故事有多长？",
+          "description": "您可以选择三种长度：短篇（朗读3-5分钟）、中篇（7-10分钟）或长篇（12-15分钟）。睡前故事生成器会根据您选择的朗读时间调整字数。"
+        },
+        {
+          "title": "睡前故事生成器是免费的吗？",
+          "description": "是的。无需注册账号即可免费使用睡前故事生成器。为您的每晚睡前仪式生成任意多个故事。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "创作今晚的睡前故事",
+      "description": "使用睡前故事生成器，几秒钟内创作一个孩子喜爱的温馨个性化故事。",
+      "buttons": [
+        {
+          "title": "生成睡前故事",
+          "url": "/bedtime-story-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

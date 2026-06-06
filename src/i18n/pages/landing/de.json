@@ -85,6 +85,27 @@
               "url": "/comic-generator",
               "icon": "RiLayoutGridLine",
               "target": "_self"
+            },
+            {
+              "title": "Gutenacht-Geschichten-Generator",
+              "description": "Erstellen Sie mit KI personalisierte, altersgerechte Gutenacht-Geschichten für Kinder. Kostenlos.",
+              "url": "/bedtime-story-generator",
+              "icon": "RiMoonLine",
+              "target": "_self"
+            },
+            {
+              "title": "Murder Mystery Generator",
+              "description": "Erstellen Sie vollständige Murder Mystery Partyspiel-Szenarien mit Verdächtigen, Hinweisen und Lösungen. Kostenloser KI-Generator.",
+              "url": "/murder-mystery-generator",
+              "icon": "RiSearchEyeLine",
+              "target": "_self"
+            },
+            {
+              "title": "Liebesgeschichten-Generator",
+              "description": "Generiere originelle Liebesgeschichten mit KI — Sub-Genre, Trope und Intensitätsstufe nach Wahl. Kostenlos, ohne Anmeldung.",
+              "url": "/romance-story-generator",
+              "icon": "RiHeartLine",
+              "target": "_self"
             }
           ]
         }
@@ -820,6 +841,21 @@
             {
               "title": "Comic-Generator",
               "url": "/comic-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Gutenacht-Geschichten-Generator",
+              "url": "/bedtime-story-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Murder Mystery Generator",
+              "url": "/murder-mystery-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Liebesgeschichten-Generator",
+              "url": "/romance-story-generator",
               "target": "_self"
             }
           ]

@@ -334,6 +334,18 @@
       "comic_generator": {
         "name": "AI Comic Generator",
         "desc": "Generieren Sie Comic-Dialoge, Erzählungen und Panel-Skripte für Manga, Webtoon und Comic-Storytelling."
+      },
+      "bedtime_story_generator": {
+        "name": "Gutenacht-Geschichten-Generator",
+        "desc": "Erstellen Sie mit KI personalisierte, altersgerechte Gutenacht-Geschichten für Kinder. Kostenlos."
+      },
+      "murder_mystery_generator": {
+        "name": "Murder Mystery Generator",
+        "desc": "Erstellen Sie vollständige Murder Mystery Partyspiel-Szenarien mit Verdächtigen, Hinweisen und Lösungen. Kostenloser KI-Generator."
+      },
+      "romance_story_generator": {
+        "name": "Liebesgeschichten-Generator",
+        "desc": "Generiere originelle Liebesgeschichten mit KI — Sub-Genre, Trope und Intensitätsstufe nach Wahl. Kostenlos, ohne Anmeldung."
       }
     }
   },

@@ -337,6 +337,18 @@
       "comic_generator": {
         "name": "AI漫画生成器",
         "desc": "为漫画、网漫和条漫创作生成漫画对白、旁白和逐格分镜脚本。"
+      },
+      "bedtime_story_generator": {
+        "name": "睡前故事生成器",
+        "desc": "用 AI 为孩子创作个性化的、适合年龄的睡前故事。免费无限使用。"
+      },
+      "murder_mystery_generator": {
+        "name": "谋杀谜题生成器",
+        "desc": "生成完整的谋杀谜题派对游戏剧本，包含嫌疑人、线索和解答方案。免费 AI 推理游戏生成器。"
+      },
+      "romance_story_generator": {
+        "name": "言情故事生成器",
+        "desc": "用 AI 创作原创言情故事，支持总裁文、穿越、古风等多种类型，可选甜度和经典桥段。免费无限使用。"
       }
     }
   },

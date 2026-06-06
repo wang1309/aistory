@@ -1,0 +1,249 @@
+{
+  "bedtime_story_generate": {
+    "metadata": {
+      "title": "Kostenloser Gutenacht-Geschichten-Generator - KI-Schlafgeschichten für Kinder",
+      "description": "Erstellen Sie in Sekunden altersgerechte Gutenacht-Geschichten für Kinder. Personalisierbar nach Altersgruppe, Thema und Moral. Kostenlos und unbegrenzt.",
+      "keywords": "Gutenacht-Geschichte Generator, KI Schlafgeschichte, Kindergeschichte Generator, Bettzeitgeschichte KI"
+    },
+    "ui": {
+      "title": "Gutenacht-Geschichten-Generator",
+      "subtitle": "Erstellen Sie in Sekunden eine personalisierte, altersgerechte Gutenacht-Geschichte für Ihr Kind.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Gutenacht-Geschichten-Generator",
+      "story_idea": "Geschichte-Idee",
+      "random_button": "Überrasch mich",
+      "ai_model": "KI-Modell",
+      "output_language": "Ausgabesprache",
+      "age_group": "Altersgruppe des Kindes",
+      "story_theme": "Geschichte-Thema",
+      "story_length": "Geschichtenlänge",
+      "ending_mood": "Endstimmung",
+      "moral_lesson": "Moralische Lektion",
+      "child_name": "Name des Kindes (optional)",
+      "advanced_options": "Erweiterte Optionen",
+      "generate_button": "Gutenacht-Geschichte generieren",
+      "generating": "Geschichte wird erstellt...",
+      "hero_step_1": "Geschichte-Idee beschreiben",
+      "hero_step_2": "Alter und Thema wählen",
+      "hero_step_3": "Generieren und vorlesen",
+      "output_title": "Ihre Gutenacht-Geschichte"
+    },
+    "placeholders": {
+      "story_idea": "Worum soll die Geschichte gehen? (z.B. 'Ein kleines Häschen, das Angst vor der Dunkelheit hat, findet einen leuchtenden Glühwürmchen-Freund')",
+      "child_name": "z.B. Lena, Max..."
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schneller Geschichtenentwurf",
+      "standard": "Standard",
+      "standard_description": "Ausgewogene Qualität und Wärme",
+      "creative": "Kreativ",
+      "creative_description": "Fantasievollste Geschichte"
+    },
+    "age_groups": {
+      "toddler": "Kleinkind (2–3 Jahre)",
+      "preschool": "Vorschule (4–5 Jahre)",
+      "early_reader": "Frühe Leser (6–8 Jahre)",
+      "middle_grade": "Mittelstufe (9–12 Jahre)"
+    },
+    "story_themes": {
+      "adventure": "Abenteuer",
+      "animals": "Tiere",
+      "magic": "Magie und Fantasy",
+      "friendship": "Freundschaft",
+      "family": "Familie und Zuhause",
+      "nature": "Natur und Outdoor",
+      "space": "Weltraum und Sterne",
+      "underwater": "Ozean und Meer",
+      "dragons": "Drachen und Fabelwesen",
+      "fairy_tale": "Klassisches Märchen"
+    },
+    "story_lengths": {
+      "short": "Kurz (3–5 Min. Vorlesen)",
+      "medium": "Mittel (7–10 Min. Vorlesen)",
+      "long": "Lang (12–15 Min. Vorlesen)"
+    },
+    "ending_moods": {
+      "happy": "Glücklich und fröhlich",
+      "calming": "Ruhig und schlaffördernd",
+      "funny": "Lustig und witzig",
+      "adventurous": "Aufregendes Abenteuer gelöst",
+      "heartwarming": "Herzerwärmend und süß"
+    },
+    "moral_lessons": {
+      "none": "Keine bestimmte Moral",
+      "kindness": "Freundlichkeit",
+      "bravery": "Tapferkeit und Mut",
+      "sharing": "Teilen und Großzügigkeit",
+      "honesty": "Ehrlichkeit und Vertrauen",
+      "perseverance": "Niemals aufgeben",
+      "friendship": "Wert der Freundschaft",
+      "curiosity": "Neugier und Lernen",
+      "gratitude": "Dankbarkeit und Wertschätzung"
+    },
+    "validation": {
+      "enter_story_idea": "Bitte geben Sie eine Geschichte-Idee ein.",
+      "select_model": "Bitte wählen Sie ein KI-Modell aus."
+    },
+    "success": {
+      "random_prompt_selected": "Geschichte-Idee ausgewählt!",
+      "story_generated": "Gutenacht-Geschichte erfolgreich generiert!",
+      "story_copied": "Geschichte in die Zwischenablage kopiert!"
+    },
+    "errors": {
+      "generation_failed": "Fehler beim Generieren der Geschichte. Bitte versuchen Sie es erneut."
+    },
+    "output": {
+      "title": "Ihre Gutenacht-Geschichte",
+      "words": "Wörter",
+      "copy": "Kopieren",
+      "generating_message": "Ihre Gutenacht-Geschichte wird geschrieben...",
+      "empty_message": "Ihre personalisierte Gutenacht-Geschichte erscheint hier. Machen Sie es sich gemütlich!"
+    },
+    "random_prompts": [
+      "Ein kleines Häschen, das Angst vor der Dunkelheit hat, entdeckt, dass Glühwürmchen die kleinen Helfer der Sterne sind",
+      "Eine kleine Wolke, die nicht regnen kann, lernt stattdessen den schönsten Regenbogen zu machen",
+      "Ein schläfriger Dinosaurier, der vor dem Schlafen immer seine Lieblingsdecke verliert",
+      "Zwei Mäuse, die in einer Bibliothek leben und nachts Abenteuer in Büchern erleben",
+      "Ein kleiner Drache, der versehentlich Glitzer statt Feuer niest",
+      "Ein Babyelefant, der als einziger in seiner Herde Angst vor Wasser hat",
+      "Ein freundlicher Mond, der eines Nachts auf die Erde kommt, um zu sehen, wovon Kinder träumen",
+      "Ein kleiner Roboter, der lernt, was es bedeutet, ein guter Freund zu sein",
+      "Ein Bärenjunges, das wachbleiben möchte, um die erste Schneeflocke des Winters zu sehen",
+      "Eine Meerjungfrau, die auf dem Land gehen möchte, und das Seepferdchen, das ihr hilft"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Übersicht",
+      "title": "Was ist ein Gutenacht-Geschichten-Generator?",
+      "description": "Ein Gutenacht-Geschichten-Generator verwendet KI, um in Sekunden originelle, altersgerechte Geschichten zu erstellen. Beschreiben Sie einfach eine Szene, wählen Sie ein Thema und erhalten Sie sofort eine warme Geschichte, die Sie vorlesen können.",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "Gutenacht-Geschichten-Generator Übersicht"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum diesen Gutenacht-Geschichten-Generator verwenden",
+      "description": "Jede Geschichte ist originell, sicher und perfekt auf Ihr Kind zugeschnitten.",
+      "items": [
+        {
+          "title": "Altersgerechte Sprache",
+          "description": "Wortschatz, Satzlänge und Komplexität werden an die Altersgruppe Ihres Kindes angepasst.",
+          "icon": "RiUserHeartLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "Altersgerechte Gutenacht-Geschichten"
+          }
+        },
+        {
+          "title": "Jeden Abend personalisiert",
+          "description": "Fügen Sie den Namen Ihres Kindes hinzu, wählen Sie sein Lieblingsthema und genießen Sie jeden Abend eine andere Geschichte.",
+          "icon": "RiStarSmileLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "Personalisierte Kindergeschichten"
+          }
+        },
+        {
+          "title": "Schlaffördernde Routine",
+          "description": "Wählen Sie die ruhige Endstimmung und lassen Sie die sanfte Geschichte Ihr Kind in den Schlaf begleiten.",
+          "icon": "RiMoonLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "Schlaffördernde Geschichte für Kinder"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "ANLEITUNG",
+      "title": "So verwenden Sie den Gutenacht-Geschichten-Generator",
+      "description": "Erstellen Sie in drei einfachen Schritten eine personalisierte Gutenacht-Geschichte.",
+      "items": [
+        {
+          "title": "Geschichte-Idee beschreiben",
+          "description": "Geben Sie eine einfache Idee ein oder klicken Sie auf 'Überrasch mich' für Inspiration."
+        },
+        {
+          "title": "Alter, Thema und Stimmung wählen",
+          "description": "Wählen Sie Altersgruppe und Thema. Optional: Name des Kindes und moralische Lektion hinzufügen."
+        },
+        {
+          "title": "Generieren und vorlesen",
+          "description": "Klicken Sie auf Generieren und lesen Sie die fertige Geschichte Ihrem Kind vor."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Anwendungsfälle",
+      "title": "Wer verwendet diesen Gutenacht-Geschichten-Generator",
+      "description": "Perfekt für Eltern, Großeltern und Pädagogen, die jeden Abend originelle Geschichten benötigen.",
+      "items": [
+        {
+          "title": "Eltern zur Schlafenszeit",
+          "description": "Generieren Sie jeden Abend eine neue Geschichte, ohne dieselben Bücher zu wiederholen.",
+          "icon": "RiHomeHeartLine"
+        },
+        {
+          "title": "Großeltern und Betreuer",
+          "description": "Auch ohne natürliches Geschichtentalent in Sekunden eine warme, persönliche Geschichte erstellen.",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "Lehrer und Pädagogen",
+          "description": "Geschichten passend zum Lesenniveau und Unterrichtsthema für die Klasse erstellen.",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Gutenacht-Geschichten-Generator FAQ",
+      "description": "Häufige Fragen zur Verwendung eines Gutenacht-Geschichten-Generators für Kinder.",
+      "items": [
+        {
+          "title": "Sind die Geschichten für kleine Kinder sicher?",
+          "description": "Ja. Dieser Generator erstellt kindersichere, altersgerechte Inhalte ohne beängstigende oder unangemessene Elemente."
+        },
+        {
+          "title": "Kann ich den Namen meines Kindes in die Geschichte einbauen?",
+          "description": "Ja. Geben Sie den Namen im optionalen Feld ein, und er wird natürlich in die Geschichte eingewoben."
+        },
+        {
+          "title": "Welche Altersgruppen werden unterstützt?",
+          "description": "Kleinkind (2-3), Vorschule (4-5), Frühe Leser (6-8) und Mittelstufe (9-12)."
+        },
+        {
+          "title": "Kann ich eine moralische Lektion einbauen?",
+          "description": "Ja. Freundlichkeit, Mut, Teilen und mehr werden natürlich in die Geschichte eingebaut."
+        },
+        {
+          "title": "Wie lang sind die generierten Geschichten?",
+          "description": "Kurz (3-5 Min.), Mittel (7-10 Min.) oder Lang (12-15 Min.) zur Auswahl."
+        },
+        {
+          "title": "Ist der Generator kostenlos?",
+          "description": "Ja. Ohne Konto-Registrierung kostenlos nutzbar."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Heutige Gutenacht-Geschichte erstellen",
+      "description": "Erstellen Sie mit dem Gutenacht-Geschichten-Generator in Sekunden eine Geschichte, die Ihr Kind lieben wird.",
+      "buttons": [
+        {
+          "title": "Gutenacht-Geschichte generieren",
+          "url": "/bedtime-story-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

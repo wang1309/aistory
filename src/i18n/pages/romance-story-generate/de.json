@@ -1,0 +1,250 @@
+{
+  "romance_story_generate": {
+    "metadata": {
+      "title": "Kostenloser Liebesgeschichten-Generator - KI Romantik-Autor",
+      "description": "Generiere originelle Liebesgeschichten mit KI. Wähle Sub-Genre, Trope und Intensitätsstufe — von süßer Romantik bis epischer Fantasy-Romance. Kostenlos, ohne Anmeldung.",
+      "keywords": "Liebesgeschichten-Generator, KI Romance, Liebesroman Generator, Romance AI, kostenlose Liebesgeschichte"
+    },
+    "ui": {
+      "title": "Liebesgeschichten-Generator",
+      "subtitle": "Generiere originelle Liebesgeschichten — süß, leidenschaftlich oder alles dazwischen — mit deiner Lieblins-Trope und deinem bevorzugten Genre.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Liebesgeschichten-Generator",
+      "story_idea": "Story-Idee",
+      "random_button": "Zufällige Idee",
+      "ai_model": "KI-Modell",
+      "output_language": "Ausgabesprache",
+      "sub_genre": "Sub-Genre",
+      "trope": "Romantik-Trope",
+      "heat_level": "Intensitätsstufe",
+      "setting": "Schauplatz",
+      "advanced_options": "Erweiterte Optionen",
+      "pov": "Erzählperspektive",
+      "story_length": "Storylänge",
+      "generate_button": "Geschichte generieren",
+      "generating": "Schreibe deine Liebesgeschichte...",
+      "hero_step_1": "Beschreibe die Romance",
+      "hero_step_2": "Wähle Trope & Ton",
+      "hero_step_3": "Erhalte deine Geschichte sofort",
+      "output_title": "Deine Liebesgeschichte"
+    },
+    "placeholders": {
+      "story_idea": "Beschreibe deine Liebesgeschichten-Idee...（z.B. ‚Ein kalter CEO und seine neue Rivalin-Kollegin müssen während einer Dienstreise ein Hotelzimmer teilen'）"
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schneller Story-Entwurf",
+      "standard": "Standard",
+      "standard_description": "Ausgeglichene Tiefe und Prosa",
+      "creative": "Kreativ",
+      "creative_description": "Lebendigste und eindringlichste"
+    },
+    "sub_genres": {
+      "modern": "Zeitgenössische Romance",
+      "historical": "Historische Romance",
+      "fantasy": "Fantasy-Romance",
+      "paranormal": "Paranormale Romance",
+      "regency": "Regency-Romance",
+      "romantic_comedy": "Romantische Komödie",
+      "ceo_romance": "CEO / Milliardär Romance",
+      "time_travel": "Zeitreise-Romance",
+      "ancient_chinese": "Antike Chinesische Romance"
+    },
+    "tropes": {
+      "enemies_to_lovers": "Feinde werden zu Liebenden",
+      "forced_proximity": "Erzwungene Nähe",
+      "fake_dating": "Vorgetäuschtes Dating",
+      "second_chance": "Zweite Chance",
+      "forbidden_love": "Verbotene Liebe",
+      "slow_burn": "Langsam entflammend",
+      "friends_to_lovers": "Freunde werden zu Liebenden",
+      "love_triangle": "Liebesdreieck"
+    },
+    "heat_levels": {
+      "sweet": "Süß (Familienfreundlich)",
+      "mild": "Mild (Küsse & Spannung)",
+      "steamy": "Heiß (Nur angedeutet)"
+    },
+    "settings": {
+      "contemporary_city": "Zeitgenössische Stadt",
+      "small_town": "Kleinstadt",
+      "fantasy_world": "Fantasiewelt",
+      "historical": "Historisches Anwesen",
+      "workplace": "Arbeitsplatz / Büro",
+      "college": "Universitätscampus"
+    },
+    "povs": {
+      "third_person": "Dritte Person (Er/Sie)",
+      "first_person": "Erste Person (Ich)"
+    },
+    "story_lengths": {
+      "short": "Kurz — Begegnungsszene (~400 Wörter)",
+      "medium": "Mittel — Vollständiges Kapitel (~800 Wörter)",
+      "long": "Lang — Vollständiger Story-Bogen (~1500 Wörter)"
+    },
+    "validation": {
+      "enter_story_idea": "Bitte gib eine Story-Idee für die Liebesgeschichte ein.",
+      "select_model": "Bitte wähle ein KI-Modell."
+    },
+    "success": {
+      "random_prompt_selected": "Zufällige Idee ausgewählt!",
+      "story_generated": "Liebesgeschichte erfolgreich generiert!",
+      "story_copied": "Geschichte in die Zwischenablage kopiert!"
+    },
+    "errors": {
+      "generation_failed": "Geschichte konnte nicht generiert werden. Bitte versuche es erneut."
+    },
+    "output": {
+      "title": "Deine Liebesgeschichte",
+      "words": "Wörter",
+      "copy": "Kopieren",
+      "generating_message": "Schreibe deine Liebesgeschichte...",
+      "empty_message": "Deine originelle Liebesgeschichte — lebendige Charaktere, knisternde Spannung und das perfekte Ende — wird hier erscheinen."
+    },
+    "random_prompts": [
+      "Ein rücksichtsloser Risikokapitalgeber und die Gründerin des Start-ups, das er übernehmen will, entdecken eine unwiderstehliche Anziehung",
+      "Eine elfische Attentäterin, die beauftragt ist, den dunklen Magier zu töten, der ihren Wald verfluchte, verliebt sich in den Mann hinter der Magie",
+      "Eine gelehrte Erbin stimmt einer Schein-Verlobung mit einem leichtsinnigen Herzog zu, um dem Heiratsvermitteln ihrer Familie zu entkommen",
+      "Eine Vampirjägerin verliebt sich in den Unsterblichen, den sie töten soll — und entdeckt, dass er ihr Blutgeschlecht seit Jahrhunderten beschützt",
+      "Eine moderne Karrierefrau reist versehentlich ins alte China zurück und verliebt sich in den furchtlosen und treuen General des Kaisers",
+      "Eine als Dienerin verkleidete Prinzessin am Kaiserhof erregt die Aufmerksamkeit des brillanten, kühlen Strategen des Kaisers",
+      "Zwei rivalisierende Food-Blogger werden in einer abgelegenen Berghütte von einem Schneesturm eingeschlossen und müssen Küche und Geheimnisse teilen",
+      "Jahre nach einer schmerzhaften Trennung wird sie als leitende Architektin für das prestigeträchtige neue Hauptquartier ihres Ex eingestellt",
+      "Eine Bücherwürmchen stimmt zu, mit dem Schwarm des Campus fake zu daten, damit er seine Ex eifersüchtig macht — keiner erwartet echte Gefühle",
+      "Sie sind seit zehn Jahren beste Freunde, und jeder kann sehen, was sie nicht können — bis eine Hochzeit sie zwingt, der Wahrheit ins Gesicht zu sehen"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Was ist ein Liebesgeschichten-Generator?",
+      "description": "Ein Liebesgeschichten-Generator nutzt KI, um in Sekunden originelle Liebesgeschichten zu erstellen, die auf dein bevorzugtes Sub-Genre, deine Trope und deinen Ton zugeschnitten sind. Ob süße Kleinstadt-Begegnung, heißer CEO-Roman, langsam entflammende Fantasy-Romanze oder altes chinesisches Hofadrama — dieser Liebesgeschichten-Generator liefert eine vollständig geschriebene Geschichte mit echten Charakteren, echter Spannung und dem emotionalen Ergebnis, das du dir erhoffst.\n\nDieser Liebesgeschichten-Generator ist für Romance-Leser, Fan-Fiction-Autoren, kreative Schreibschüler und alle konzipiert, die eine Liebesgeschichte erkunden möchten, ohne von vorne anzufangen.",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "Liebesgeschichten-Generator Überblick"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum diesen Liebesgeschichten-Generator verwenden",
+      "description": "Jede Geschichte ist originell, emotional berührend und sofort lesbar — keine Schreiberfahrung erforderlich.",
+      "items": [
+        {
+          "title": "Jede Trope, die du liebst",
+          "description": "Von Feinden-zu-Liebenden und vorgetäuschtem Dating bis zu langsam entflammendem Burn und verbotener Liebe — dieser Liebesgeschichten-Generator kennt jede Romance-Trope und schreibt sie authentisch. Wähle deine Lieblins-Trope und bekomme eine Geschichte, die darum aufgebaut ist.",
+          "icon": "RiHeartLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "Romance-Tropen"
+          }
+        },
+        {
+          "title": "Intensitätsstufe nach Wahl",
+          "description": "Süß, mild oder heiß — du entscheidest, wie weit die Romance geht. Der Liebesgeschichten-Generator hält sich strikt an deine Intensitätsstufe, was ihn für alle Altersgruppen geeignet macht.",
+          "icon": "RiFlashlightLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "Intensitätsstufe Kontrolle"
+          }
+        },
+        {
+          "title": "Westliche & östliche Romance",
+          "description": "Die meisten KI-Tools schreiben nur westliche Romance. Dieser Liebesgeschichten-Generator unterstützt auch CEO/Milliardär Romance, Zeitreise-Romance und antike chinesische Hofdramen.",
+          "icon": "RiGlobalLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "Westliche und chinesische Romance Sub-Genres"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "Verwendung",
+      "title": "So verwendest du den Liebesgeschichten-Generator",
+      "description": "Erhalte deine originelle Liebesgeschichte in drei einfachen Schritten.",
+      "items": [
+        {
+          "title": "Beschreibe deine Romance",
+          "description": "Schreibe eine einzeilige Story-Idee — zwei Charaktere, einen Schauplatz oder eine Situation. Oder klicke auf Zufällige Idee für sofortige Inspiration."
+        },
+        {
+          "title": "Wähle Trope & Ton",
+          "description": "Wähle Sub-Genre, Romantik-Trope, Intensitätsstufe und Schauplatz. Der Liebesgeschichten-Generator passt jeden Element der Geschichte an deine Auswahl an."
+        },
+        {
+          "title": "Lesen, Kopieren & Genießen",
+          "description": "Deine Geschichte erscheint beim Schreiben in Echtzeit. Kopiere sie, teile sie oder nutze sie als Ausgangspunkt für dein eigenes Schreiben."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Anwendungsfälle",
+      "title": "Wer verwendet diesen Liebesgeschichten-Generator",
+      "description": "Perfekt für Romance-Leser, Fan-Fiction-Autoren und Kreativschreib-Enthusiasten.",
+      "items": [
+        {
+          "title": "Romance-Leser",
+          "description": "Befriedige dein Verlangen nach einer bestimmten Trope oder einem Sub-Genre auf Abruf. Der Liebesgeschichten-Generator schreibt genau die Geschichte, die du lesen möchtest.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Fan-Fiction-Autoren",
+          "description": "Nutze den Liebesgeschichten-Generator, um Tropen zu erkunden, neue Ideen für deine eigenen Fics zu finden oder beim Schreibblock weiterzukommen.",
+          "icon": "RiPenNibLine"
+        },
+        {
+          "title": "Kreativschreib-Lernende",
+          "description": "Studiere, wie KI romantische Spannung, Dialog und Tempo behandelt. Nutze generierte Geschichten als Beispiele, Schreibübungen oder Ausgangspunkte für eigene Romance-Texte.",
+          "icon": "RiGraduationCapLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Liebesgeschichten-Generator FAQs",
+      "description": "Häufige Fragen zur Verwendung des Liebesgeschichten-Generators.",
+      "items": [
+        {
+          "title": "Welche Romance-Sub-Genres werden unterstützt?",
+          "description": "Der Liebesgeschichten-Generator unterstützt Zeitgenössische Romance, Historische Romance, Fantasy-Romance, Paranormale Romance, Regency-Romance, Romantische Komödie, CEO/Milliardär Romance, Zeitreise-Romance und Antike Chinesische Romance."
+        },
+        {
+          "title": "Was macht die Intensitätsstufe?",
+          "description": "Süß ist familienfreundlich ohne Küsse. Mild enthält romantische Spannung und Küsse, Intimität wird nur angedeutet. Heiß enthält angedeutete Intimität — immer geschmackvoll, niemals explizit. Der Generator hält sich strikt an deine Einstellung."
+        },
+        {
+          "title": "Kann ich eine bestimmte Romantik-Trope wählen?",
+          "description": "Ja. Du kannst aus acht klassischen Tropen wählen: Feinde werden zu Liebenden, Erzwungene Nähe, Vorgetäuschtes Dating, Zweite Chance, Verbotene Liebe, Langsam entflammend, Freunde werden zu Liebenden und Liebesdreieck."
+        },
+        {
+          "title": "Wie lang sind die generierten Liebesgeschichten?",
+          "description": "Kurze Geschichten sind etwa 400 Wörter — eine Szene. Mittlere etwa 800 Wörter — ein vollständiges Kapitel. Lange etwa 1500 Wörter — ein vollständiger Story-Bogen mit befriedigendem Ende."
+        },
+        {
+          "title": "Kann ich die generierten Geschichten für mein eigenes Schreiben verwenden?",
+          "description": "Ja. Der Liebesgeschichten-Generator erstellt originelle Geschichten für deinen persönlichen Gebrauch. Du kannst sie als Inspiration, Übungsmaterial oder Ausgangspunkt für deine eigene Romance-Fiktion nutzen."
+        },
+        {
+          "title": "Ist der Liebesgeschichten-Generator kostenlos?",
+          "description": "Ja. Du kannst so viele Liebesgeschichten generieren, wie du möchtest, ohne ein Konto zu benötigen. Jede Geschichte wird von KI jedes Mal frisch geschrieben."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Generiere jetzt deine Liebesgeschichte",
+      "description": "Nutze den Liebesgeschichten-Generator, um die Liebesgeschichte zu schreiben, auf die du gewartet hast — deine Trope, deine Intensität, dein Ende.",
+      "buttons": [
+        {
+          "title": "Liebesgeschichte generieren",
+          "url": "/romance-story-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

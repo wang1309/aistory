@@ -1,0 +1,250 @@
+{
+  "murder_mystery_generate": {
+    "metadata": {
+      "title": "免费谋杀谜题生成器 - AI 派对游戏剧本",
+      "description": "生成完整的谋杀谜题派对游戏剧本，包含嫌疑人、线索和解答方案。适合任何规模团体的免费 AI 谋杀谜题生成器。",
+      "keywords": "谋杀谜题生成器, AI谋杀谜题, 谋杀谜题派对游戏, 推理游戏剧本生成器, 桌游谜题, 免费谋杀谜题"
+    },
+    "ui": {
+      "title": "谋杀谜题生成器",
+      "subtitle": "生成完整的派对谋杀谜题游戏——包含嫌疑人、线索和隐藏的解答，今晚就可以开始玩。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "谋杀谜题生成器",
+      "scenario_idea": "剧情想法",
+      "random_button": "随机剧情",
+      "ai_model": "AI 模型",
+      "output_language": "输出语言",
+      "setting_type": "场景设定",
+      "time_period": "时代背景",
+      "player_count": "玩家人数",
+      "complexity": "复杂程度",
+      "mystery_type": "谜题类型",
+      "tone": "游戏基调",
+      "advanced_options": "高级选项",
+      "generate_button": "生成谜题",
+      "generating": "正在创作谜题...",
+      "hero_step_1": "描述剧情想法",
+      "hero_step_2": "设置场景和玩家",
+      "hero_step_3": "获得可立即游玩的游戏",
+      "output_title": "您的谋杀谜题"
+    },
+    "placeholders": {
+      "scenario_idea": "描述谋杀谜题的剧情…（例如：'一位著名珠宝窃贼在化妆舞会上被毒杀，在场每位宾客都有充分的作案动机'）"
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "快速生成剧情草稿",
+      "standard": "标准",
+      "standard_description": "细节与深度兼顾",
+      "creative": "创意",
+      "creative_description": "最精妙复杂的谜题"
+    },
+    "setting_types": {
+      "manor": "乡村庄园",
+      "cruise": "豪华游轮",
+      "museum": "博物馆或画廊",
+      "university": "大学或图书馆",
+      "corporate": "企业办公室",
+      "hotel": "豪华酒店",
+      "theatre": "剧院或歌剧院",
+      "small_town": "小镇",
+      "train": "东方快车式火车",
+      "masquerade": "化妆舞会"
+    },
+    "time_periods": {
+      "victorian": "维多利亚时代（1880s）",
+      "art_deco": "1920年代 装饰艺术风",
+      "fifties": "1950年代 经典",
+      "modern": "现代",
+      "future": "近未来"
+    },
+    "player_counts": {
+      "small": "4–6 名玩家",
+      "medium": "6–10 名玩家",
+      "large": "10 人以上（大型派对）"
+    },
+    "complexities": {
+      "simple": "简单（1–2小时，适合新手）",
+      "standard": "标准（2–3小时，混合团体）",
+      "complex": "复杂（3–4小时，有经验的玩家）"
+    },
+    "mystery_types": {
+      "classic_whodunit": "经典推理谜题",
+      "locked_room": "密室杀人案",
+      "poison": "毒杀谜题",
+      "heist_gone_wrong": "抢劫案意外",
+      "disappearance": "神秘失踪案"
+    },
+    "tones": {
+      "serious": "严肃黑暗",
+      "comedic": "轻松搞笑",
+      "gothic": "哥特氛围",
+      "thriller": "惊悚紧张",
+      "cozy": "温馨推理"
+    },
+    "validation": {
+      "enter_scenario": "请输入谋杀谜题的剧情想法。",
+      "select_model": "请选择 AI 模型。"
+    },
+    "success": {
+      "random_prompt_selected": "已选择随机剧情！",
+      "mystery_generated": "谋杀谜题生成成功！",
+      "mystery_copied": "谜题内容已复制到剪贴板！"
+    },
+    "errors": {
+      "generation_failed": "生成谜题失败，请重试。"
+    },
+    "output": {
+      "title": "您的谋杀谜题",
+      "words": "字",
+      "copy": "复制",
+      "generating_message": "正在创作谋杀谜题剧本...",
+      "empty_message": "您完整的谋杀谜题——嫌疑人、线索和隐藏解答——将在这里呈现。"
+    },
+    "random_prompts": [
+      "一位著名艺术评论家在失窃名画展览开幕之夜被毒杀",
+      "一家濒临破产科技公司的 CEO 在一篇重磅曝光报道发布前夕被发现死在锁着的顶层办公室",
+      "一位功成名就的厨师在自己的退休宴会上死亡，周围全是昔日竞争对手和疏远的家人",
+      "一名勒索犯在苏格兰迷雾庄园被谋杀，所有宾客事先都收到了威胁信",
+      "一位著名魔术师在表演时失踪，之后被发现死在锁着的更衣室里",
+      "一档真人秀节目的主持人在直播中被杀——凶手就是其中一位参赛选手",
+      "一名臭名昭著的珠宝大盗在豪华列车上遭人勒死，而火车上正运载着他被指控窃取的珠宝",
+      "同学聚餐的死者是唯一知道那个毁掉五个人职业生涯的20年前秘密的人",
+      "一位隐居亿万富翁在自己的遗嘱宣读仪式上被发现死亡——遗嘱甚至还未打开",
+      "一名卧底侦探正在调查一个秘密社团，却在该社团的年度化妆舞会上被杀"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "概述",
+      "title": "什么是谋杀谜题生成器？",
+      "description": "谋杀谜题生成器利用 AI 从一个剧情想法出发，生成一套完整可玩的推理派对游戏。不需要购买盒装套件，也不需要自己花几小时写剧本——这款生成器几秒钟内就能产出一套完整方案：生动的犯罪现场、一批有动机和不在场证明的嫌疑人、层层递进的线索，以及只有主持人才能看到的隐藏解答。\n\n这款谋杀谜题生成器专为派对主持人、桌游爱好者以及想要一个难忘夜晚的人设计。选择场景、时代、玩家人数和复杂程度，就能获得量身定制的推理游戏。",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "谋杀谜题生成器概述"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "为什么使用这款谋杀谜题生成器",
+      "description": "每套剧本都是原创的、公平可推理的，开箱即玩。",
+      "items": [
+        {
+          "title": "一键生成完整游戏",
+          "description": "这款谋杀谜题生成器输出您所需的一切：犯罪现场、受害者档案、完整嫌疑人列表（含动机和不在场证明）、编号线索列表、主持人提示，以及密封的解答部分——一次生成搞定。",
+          "icon": "RiGamepadLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "完整谋杀谜题派对游戏"
+          }
+        },
+        {
+          "title": "公平且可推理",
+          "description": "与随机谜题套件不同，这款谋杀谜题生成器的每套剧本都经过精心设计，凶手可以仅凭线索被逻辑推导出来。误导线索存在，但从不会不公平。",
+          "icon": "RiSearchEyeLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "公平的谋杀谜题线索"
+          }
+        },
+        {
+          "title": "适合任何团体和场合",
+          "description": "从4-6人的小团体到10人以上的大型派对，从温馨轻松到哥特紧张，这款谋杀谜题生成器可以灵活适应您的活动需求。",
+          "icon": "RiGroupLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "适合任何规模的谋杀谜题"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "如何使用谋杀谜题生成器",
+      "description": "三步创建一套可立即游玩的谋杀谜题派对游戏。",
+      "items": [
+        {
+          "title": "描述您的剧情想法",
+          "description": "写一句剧情想法——一个场景、一个受害者或一个情境。点击随机剧情从谋杀谜题生成器获取即时灵感。"
+        },
+        {
+          "title": "设置舞台",
+          "description": "选择符合您派对的场景、时代、玩家人数、复杂程度和游戏基调。谋杀谜题生成器会将整套剧本调整到最匹配您的选择。"
+        },
+        {
+          "title": "打印、分享、开始游戏",
+          "description": "复制完整谜题，打印嫌疑人卡片，就可以开始了。解答部分清晰标注为主持人专属，玩家不会意外看到。"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "使用场景",
+      "title": "谁在使用这款谋杀谜题生成器",
+      "description": "完美适用于派对主持人、桌游团体和团队活动。",
+      "items": [
+        {
+          "title": "派对主持人",
+          "description": "无需购买盒装套件就能策划谋杀谜题晚宴。谋杀谜题生成器每次都创作独特剧本——您的宾客永远没有玩过相同的游戏。",
+          "icon": "RiCalendarEventLine"
+        },
+        {
+          "title": "桌游和 RPG 团体",
+          "description": "为您的游戏团队运行一次单场推理会话。谋杀谜题生成器以桌游玩家和 DM 可以立即使用的格式输出嫌疑人、线索和主持人笔记。",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "团队活动与破冰游戏",
+          "description": "将谋杀谜题生成器用于企业团建活动、学校活动或密室逃脱式挑战，让团队需要合作才能解开谜题。",
+          "icon": "RiBriefcaseLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "谋杀谜题生成器常见问题",
+      "description": "关于使用谋杀谜题生成器举办派对或活动的常见问题。",
+      "items": [
+        {
+          "title": "谋杀谜题生成器会提供解答吗？",
+          "description": "会。每套剧本都包含清晰标注的解答部分，揭示凶手身份、动机、作案手法以及证明有罪的线索。这部分专为主持人保留。"
+        },
+        {
+          "title": "谋杀谜题生成器能适应不同的团体规模吗？",
+          "description": "能。可选择小团体（4-6人）、中型（6-10人）或大型（10人以上）。嫌疑人数量和线索复杂度会自动调整以匹配您的团体规模。"
+        },
+        {
+          "title": "谜题真的可以被推理出来吗？",
+          "description": "可以。这款谋杀谜题生成器经过设计，仔细跟随线索的玩家就能识别出凶手。误导线索制造干扰，但正确答案始终可以从证据中得到证明。"
+        },
+        {
+          "title": "我可以把谋杀谜题生成器用于主题派对吗？",
+          "description": "完全可以。选择时代背景（维多利亚、1920年代、现代等）和场景（庄园、游轮、剧院）来匹配任何派对主题。也可以在剧情字段描述主题以实现最大定制化。"
+        },
+        {
+          "title": "生成的谋杀谜题游戏需要玩多长时间？",
+          "description": "简单剧情需1-2小时，标准剧情2-3小时，复杂剧情3-4小时。谋杀谜题生成器包含主持人提示，指导如何掌控游戏节奏和分发线索。"
+        },
+        {
+          "title": "谋杀谜题生成器是免费的吗？",
+          "description": "是的。无需注册账号即可生成任意数量的谋杀谜题剧本。每套剧本都是独特的原创内容，每次重新生成。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "今晚就创作您的谋杀谜题",
+      "description": "使用谋杀谜题生成器，打造一套完整可玩的派对游戏——嫌疑人、线索和解答全部包含。",
+      "buttons": [
+        {
+          "title": "生成谋杀谜题",
+          "url": "/murder-mystery-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

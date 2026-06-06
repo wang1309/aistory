@@ -85,6 +85,27 @@
               "url": "/comic-generator",
               "icon": "RiLayoutGridLine",
               "target": "_self"
+            },
+            {
+              "title": "Генератор сказок на ночь",
+              "description": "Создавайте с ИИ персонализированные, возрастные сказки для детей. Бесплатно.",
+              "url": "/bedtime-story-generator",
+              "icon": "RiMoonLine",
+              "target": "_self"
+            },
+            {
+              "title": "Генератор детективных историй",
+              "description": "Создавайте полные сценарии детективных вечеринок с подозреваемыми, уликами и решениями. Бесплатный ИИ-генератор.",
+              "url": "/murder-mystery-generator",
+              "icon": "RiSearchEyeLine",
+              "target": "_self"
+            },
+            {
+              "title": "Генератор романтических историй",
+              "description": "Создавайте оригинальные романтические истории с ИИ — выбирайте поджанр, тропы и уровень страсти. Бесплатно.",
+              "url": "/romance-story-generator",
+              "icon": "RiHeartLine",
+              "target": "_self"
             }
           ]
         }
@@ -820,6 +841,21 @@
             {
               "title": "Генератор комиксов",
               "url": "/comic-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Генератор сказок на ночь",
+              "url": "/bedtime-story-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Генератор детективных историй",
+              "url": "/murder-mystery-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Генератор романтических историй",
+              "url": "/romance-story-generator",
               "target": "_self"
             }
           ]

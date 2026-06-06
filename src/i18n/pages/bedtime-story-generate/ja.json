@@ -1,0 +1,249 @@
+{
+  "bedtime_story_generate": {
+    "metadata": {
+      "title": "無料就寝前ストーリーメーカー - 子ども向けAIおやすみ話",
+      "description": "子ども向けの年齢に合ったおやすみ話を数秒で生成。年齢層・テーマ・教訓などをカスタマイズ。無料・無制限。",
+      "keywords": "就寝前ストーリー生成, AIおやすみ話, 子ども向け寝る前の話, 児童ストーリーメーカー"
+    },
+    "ui": {
+      "title": "就寝前ストーリーメーカー",
+      "subtitle": "お子様に合わせた個性的なおやすみ話を数秒で作成。",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "就寝前ストーリーメーカー",
+      "story_idea": "ストーリーのアイデア",
+      "random_button": "おまかせ",
+      "ai_model": "AIモデル",
+      "output_language": "出力言語",
+      "age_group": "お子様の年齢層",
+      "story_theme": "ストーリーテーマ",
+      "story_length": "ストーリーの長さ",
+      "ending_mood": "結末の雰囲気",
+      "moral_lesson": "道徳的教訓",
+      "child_name": "お子様のお名前（任意）",
+      "advanced_options": "詳細オプション",
+      "generate_button": "おやすみ話を生成",
+      "generating": "ストーリーを作成中...",
+      "hero_step_1": "アイデアを入力",
+      "hero_step_2": "年齢とテーマを選択",
+      "hero_step_3": "生成して読み聞かせ",
+      "output_title": "あなたのおやすみ話"
+    },
+    "placeholders": {
+      "story_idea": "ストーリーのアイデアを入力してください（例：暗闇を怖がる小さなウサギが光るホタルの友達を見つける）",
+      "child_name": "例：ハナ、タロウ..."
+    },
+    "ai_models": {
+      "fast": "高速",
+      "fast_description": "素早いストーリー生成",
+      "standard": "標準",
+      "standard_description": "品質と温かさのバランス",
+      "creative": "クリエイティブ",
+      "creative_description": "最も想像力豊かなストーリー"
+    },
+    "age_groups": {
+      "toddler": "幼児（2〜3歳）",
+      "preschool": "未就学（4〜5歳）",
+      "early_reader": "初期読者（6〜8歳）",
+      "middle_grade": "中級読者（9〜12歳）"
+    },
+    "story_themes": {
+      "adventure": "冒険",
+      "animals": "動物",
+      "magic": "魔法とファンタジー",
+      "friendship": "友情",
+      "family": "家族と家庭",
+      "nature": "自然と屋外",
+      "space": "宇宙と星",
+      "underwater": "海と海洋",
+      "dragons": "ドラゴンと神話の生き物",
+      "fairy_tale": "クラシック童話"
+    },
+    "story_lengths": {
+      "short": "短編（読み聞かせ3〜5分）",
+      "medium": "中編（読み聞かせ7〜10分）",
+      "long": "長編（読み聞かせ12〜15分）"
+    },
+    "ending_moods": {
+      "happy": "楽しく明るい",
+      "calming": "穏やかで眠くなる",
+      "funny": "面白くユーモラス",
+      "adventurous": "冒険が解決する",
+      "heartwarming": "温かく感動的"
+    },
+    "moral_lessons": {
+      "none": "特定の教訓なし",
+      "kindness": "優しさ",
+      "bravery": "勇気と度胸",
+      "sharing": "分かち合いと寛大さ",
+      "honesty": "誠実さと信頼",
+      "perseverance": "諦めない心",
+      "friendship": "友情の価値",
+      "curiosity": "好奇心と学び",
+      "gratitude": "感謝の気持ち"
+    },
+    "validation": {
+      "enter_story_idea": "ストーリーのアイデアを入力してください。",
+      "select_model": "AIモデルを選択してください。"
+    },
+    "success": {
+      "random_prompt_selected": "ストーリーのアイデアが選ばれました！",
+      "story_generated": "おやすみ話が生成されました！",
+      "story_copied": "ストーリーがクリップボードにコピーされました！"
+    },
+    "errors": {
+      "generation_failed": "ストーリーの生成に失敗しました。もう一度お試しください。"
+    },
+    "output": {
+      "title": "あなたのおやすみ話",
+      "words": "語",
+      "copy": "コピー",
+      "generating_message": "おやすみ話を作成中...",
+      "empty_message": "あなたの個性的なおやすみ話がここに表示されます。今夜の読み聞かせをお楽しみに！"
+    },
+    "random_prompts": [
+      "暗闇を怖がる小さなウサギが、ホタルは星の小さな助手だと発見する",
+      "雨が降れない小さな雲が、代わりに一番美しい虹を作ることを学ぶ",
+      "寝る前にお気に入りのブランケットをいつも失くしてしまう眠そうな恐竜",
+      "図書館に住む二匹のネズミが夜に本の中で冒険をする",
+      "火ではなくキラキラを噴き出す小さなドラゴン",
+      "仲間の中で唯一水を怖がる子象",
+      "子どもたちが何を夢見るかを見ようと地上に降りてくる親切な月",
+      "本当の友達とはどういうことかを学ぶ小さなロボット",
+      "冬の最初の雪片を見るために夜更かしをしようとする子グマ",
+      "陸を歩きたい人魚とそれを助けるタツノオトシゴ"
+    ],
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "就寝前ストーリーメーカーとは？",
+      "description": "就寝前ストーリーメーカーはAIを使用して、お子様の年齢に合った独自のストーリーを数秒で作成します。本を探したり同じ話を繰り返したりする必要はありません。場面を説明し、テーマを選ぶだけで、すぐに読み聞かせに適した温かいストーリーが届きます。",
+      "image": {
+        "src": "/imgs/backstory/what-is-backstory1.avif",
+        "alt": "就寝前ストーリーメーカーの概要"
+      }
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "この就寝前ストーリーメーカーを使う理由",
+      "description": "すべてのストーリーはオリジナルで、安全で、お子様に合わせて作られています。",
+      "items": [
+        {
+          "title": "年齢に合わせた言語",
+          "description": "年齢層に基づいて語彙・文の長さ・複雑さを調整します。",
+          "icon": "RiUserHeartLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory1.avif",
+            "alt": "年齢に合ったおやすみ話"
+          }
+        },
+        {
+          "title": "毎晩パーソナライズ",
+          "description": "お子様の名前を追加し、お気に入りのテーマを選んで、毎晩異なるストーリーを楽しめます。",
+          "icon": "RiStarSmileLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory2.avif",
+            "alt": "パーソナライズされた子ども向けおやすみ話"
+          }
+        },
+        {
+          "title": "眠りにつくルーティン",
+          "description": "穏やかで安心できる結末を選んで、お子様がゆっくりと眠りにつけるようサポートします。",
+          "icon": "RiMoonLine",
+          "image": {
+            "src": "/imgs/backstory/why-use-backstory3.avif",
+            "alt": "子どもの眠りを助けるおやすみ話"
+          }
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "就寝前ストーリーメーカーの使い方",
+      "description": "3つの簡単なステップでお子様へのおやすみ話を作成。",
+      "items": [
+        {
+          "title": "ストーリーのアイデアを入力",
+          "description": "シンプルなアイデアを入力するか、「おまかせ」ボタンでインスピレーションを取得。"
+        },
+        {
+          "title": "年齢・テーマ・雰囲気を選択",
+          "description": "年齢層とテーマを選択。必要に応じてお子様の名前や道徳的教訓を追加。"
+        },
+        {
+          "title": "生成して読み聞かせ",
+          "description": "生成ボタンをクリックして完成したストーリーを読み聞かせ用にコピー。"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "使用例",
+      "title": "この就寝前ストーリーメーカーを使う方々",
+      "description": "毎晩オリジナルのストーリーが必要な保護者・祖父母・教育者に最適。",
+      "items": [
+        {
+          "title": "寝かしつける保護者",
+          "description": "毎晩新鮮なオリジナルのおやすみ話を生成し、同じ本の繰り返しを卒業。",
+          "icon": "RiHomeHeartLine"
+        },
+        {
+          "title": "祖父母や介護者",
+          "description": "話すストーリーが思いつかなくても大丈夫。数秒で温かい個人的なストーリーを作成。",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "教師・教育者",
+          "description": "学習レベルと授業テーマに合った教室での読み聞かせ用ストーリーを作成。",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "よくある質問",
+      "title": "就寝前ストーリーメーカー FAQ",
+      "description": "子ども向け就寝前ストーリーメーカーについてのよくある質問。",
+      "items": [
+        {
+          "title": "生成されたストーリーは幼い子どもに安全ですか？",
+          "description": "はい。このジェネレーターは子どもに安全で年齢に適したコンテンツを生成するよう設計されています。"
+        },
+        {
+          "title": "ストーリーにお子様の名前を入れられますか？",
+          "description": "はい。お子様のお名前フィールドに名前を入力すると、ストーリーの中に自然に織り込まれます。"
+        },
+        {
+          "title": "対応している年齢層は？",
+          "description": "幼児（2-3歳）・未就学（4-5歳）・初期読者（6-8歳）・中級読者（9-12歳）の4つに対応しています。"
+        },
+        {
+          "title": "道徳的教訓を入れることはできますか？",
+          "description": "はい。優しさ・勇気・分かち合いなどを自然な形でストーリーに織り込みます。"
+        },
+        {
+          "title": "ストーリーの長さはどのくらいですか？",
+          "description": "短編（3-5分）・中編（7-10分）・長編（12-15分）から選べます。"
+        },
+        {
+          "title": "このジェネレーターは無料ですか？",
+          "description": "はい。アカウント登録不要で無料でご利用いただけます。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "今夜のおやすみ話を作成",
+      "description": "就寝前ストーリーメーカーで、お子様が大好きな温かいおやすみ話を数秒で作成。",
+      "buttons": [
+        {
+          "title": "おやすみ話を生成",
+          "url": "/bedtime-story-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}
