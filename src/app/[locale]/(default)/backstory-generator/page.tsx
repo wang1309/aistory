@@ -29,6 +29,8 @@ export async function generateMetadata({
     const section = messages.default.backstory_generate;
     const metadata = section.metadata;
 
+    const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org";
+
     return {
         title: metadata.title,
         description: metadata.description,
@@ -41,8 +43,16 @@ export async function generateMetadata({
             title: metadata.title,
             description: metadata.description,
             url: canonicalUrl,
-            siteName: "AI Story",
+            siteName: "AI Story Generator",
             type: "website",
+            images: [
+                {
+                    url: `${webUrl}/share.png`,
+                    width: 1200,
+                    height: 630,
+                    alt: metadata.title,
+                },
+            ],
         },
         twitter: {
             card: "summary_large_image",
@@ -84,7 +94,7 @@ export default async function BackstoryGeneratePage({
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Backstory Generator",
+                "name": section.ui.breadcrumb_current,
                 "item": currentUrl,
             },
         ],
@@ -94,23 +104,40 @@ export default async function BackstoryGeneratePage({
     const webAppSchema = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Backstory Generator",
-        "description": "AI-powered character backstory generator for RPGs, novels, VTubers, and chatbots",
+        "name": section.ui.title,
+        "description": section.metadata.description,
         "url": currentUrl,
-        "applicationCategory": "CreativeWork",
+        "applicationCategory": "CreativeWritingApplication",
         "offers": {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD",
         },
         "featureList": [
-            "Structured character backstory",
-            "Multiple worldview settings",
-            "Role type selection",
+            "Structured character backstory output",
+            "Multiple worldview settings (Fantasy, Sci-Fi, DND, Xianxia...)",
+            "Role type selection (Hero, Villain, NPC, VTuber...)",
             "Customizable tone and length",
             "Multi-language support",
         ],
     };
+
+    // FAQ JSON-LD
+    const faqSchema =
+        faq_section?.items?.length
+            ? {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: faq_section.items.map((item: { title: string; description: string }) => ({
+                    "@type": "Question",
+                    name: item.title,
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: item.description,
+                    },
+                })),
+            }
+            : null;
 
     return (
         <>
@@ -123,6 +150,12 @@ export default async function BackstoryGeneratePage({
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
             />
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+            )}
 
             {/* Main Component */}
             <BackstoryGenerate section={section} />
