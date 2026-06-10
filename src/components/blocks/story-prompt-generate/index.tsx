@@ -297,7 +297,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
           particleCount: 60,
           spread: 50,
           origin: { y: 0.6 },
-          colors: ["#6366f1", "#8b5cf6", "#a855f7"],
+          colors: ["#ea580c", "#f97316", "#fb923c"],
         });
         toast.success(t("toasts.prompt_generated"));
         
@@ -411,7 +411,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
       <main className="container max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
         {/* Breadcrumb Navigation */}
         <div className="mb-6 flex justify-start">
-          <div className="inline-flex items-center rounded-full border border-border/60 bg-white/80 dark:bg-slate-900/80 px-4 py-1.5 text-xs text-muted-foreground shadow-sm">
+          <div className="inline-flex items-center rounded-full border border-border/60 bg-card/80 px-4 py-1.5 text-xs text-muted-foreground shadow-sm">
             <StoryPromptBreadcrumb
               homeText={t("ui.breadcrumb_home")}
               currentText={t("ui.breadcrumb_current")}
@@ -430,7 +430,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
             <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-orange-500/10 mb-4">
               <Lightbulb className="w-8 h-8 text-orange-600 dark:text-orange-400" />
             </div>
-            <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-foreground">
+            <h1 className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-foreground">
               {t("header.title")}
             </h1>
             <p className="text-lg text-muted-foreground/80 leading-relaxed">
@@ -449,15 +449,14 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
             transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-6 max-w-3xl mx-auto"
           >
-            <div className="bg-white dark:bg-slate-950 border border-border rounded-2xl p-5 md:p-6 shadow-sm">
+            <div className="bg-card border border-border rounded-2xl p-5 md:p-6 shadow-sm">
               
               {/* Genre Selection */}
               <div className="space-y-4">
                 <Label className="text-sm font-medium text-foreground flex items-center gap-2">
-                  <span className="inline-flex h-6 px-2 items-center justify-center rounded-full bg-orange-50 text-[11px] font-semibold text-orange-700 dark:bg-orange-500/15 dark:text-orange-200 border border-orange-100/80 dark:border-orange-500/40">
-                    GENRE
+                  <span className="inline-flex h-6 px-2 items-center justify-center rounded-full bg-orange-50 text-[11px] font-medium text-orange-700 dark:bg-orange-500/15 dark:text-orange-200 border border-orange-100/80 dark:border-orange-500/40 tracking-wide">
+                    {t("ui.genre_label")}
                   </span>
-                  <span>{t("ui.genre_label")}</span>
                   <span className="text-xs text-muted-foreground font-normal ml-auto">
                     {selectedGenres.length}/3
                   </span>
@@ -474,7 +473,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                         "px-3 py-1.5 rounded-xl text-xs md:text-sm font-medium border transition-colors flex items-center",
                         selectedGenres.includes(genre.id)
                           ? "bg-gradient-to-r from-orange-100 to-slate-50 dark:from-slate-900 dark:to-slate-950 border-orange-400/90 dark:border-orange-500 text-orange-900 dark:text-orange-50 shadow-sm"
-                          : "bg-transparent border-border/60 text-muted-foreground hover:border-orange-400/60 hover:text-foreground hover:bg-orange-50/40 dark:hover:bg-slate-900/60"
+                          : "bg-transparent border-border/60 text-muted-foreground hover:border-orange-400/60 hover:text-foreground hover:bg-orange-50/40 dark:hover:bg-card/60"
                       )}
                     >
                       {t(`genres.${genre.id}`)}
@@ -489,7 +488,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
               <div className="space-y-5">
                 {/* Length */}
                 <div className="space-y-3">
-                  <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  <Label className="text-xs font-medium text-muted-foreground tracking-wide">
                     {t("ui.length_label")}
                   </Label>
                   <div className="flex bg-muted/40 p-1 rounded-xl border border-border/60">
@@ -515,7 +514,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
 
                 {/* Tone */}
                 <div className="space-y-3">
-                  <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  <Label className="text-xs font-medium text-muted-foreground tracking-wide">
                     {t("ui.tone_label")}
                   </Label>
                   <div className="flex flex-wrap gap-1.5">
@@ -542,11 +541,11 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                 {/* Language & Model */}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-2">
-                    <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    <Label className="text-xs font-medium text-muted-foreground tracking-wide">
                       {t("ui.language_label")}
                     </Label>
                     <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-                      <SelectTrigger className="h-9 bg-white/70 dark:bg-black/30 border-border/60 rounded-lg">
+                      <SelectTrigger className="h-9 bg-card/70 border-border/60 rounded-lg">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -560,11 +559,11 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    <Label className="text-xs font-medium text-muted-foreground tracking-wide">
                       AI Model
                     </Label>
                     <Select value={selectedModel} onValueChange={setSelectedModel}>
-                      <SelectTrigger className="h-9 bg-white/70 dark:bg-black/30 border-border/60 rounded-lg">
+                      <SelectTrigger className="h-9 bg-card/70 border-border/60 rounded-lg">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -610,7 +609,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                     <div className="space-y-2">
                       <Label className="text-xs text-muted-foreground">{t("ui.worldview_label")}</Label>
                       <Select value={worldview} onValueChange={setWorldview}>
-                        <SelectTrigger className="h-8 text-xs bg-white/50 dark:bg-black/20 border-border/50">
+                        <SelectTrigger className="h-8 text-xs bg-card/50 border-border/50">
                           <SelectValue placeholder={t("ui.genre_placeholder")} />
                         </SelectTrigger>
                         <SelectContent>
@@ -630,7 +629,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                         value={protagonist}
                         onChange={(e) => setProtagonist(e.target.value)}
                         placeholder={t("ui.protagonist_placeholder")}
-                        className="h-8 text-xs bg-white/50 dark:bg-black/20 border-border/50"
+                        className="h-8 text-xs bg-card/50 border-border/50"
                       />
                     </div>
 
@@ -641,7 +640,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                         value={goal}
                         onChange={(e) => setGoal(e.target.value)}
                         placeholder={t("ui.goal_placeholder")}
-                        className="h-8 text-xs bg-white/50 dark:bg-black/20 border-border/50"
+                        className="h-8 text-xs bg-card/50 border-border/50"
                       />
                     </div>
 
@@ -649,7 +648,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                     <div className="space-y-2">
                       <Label className="text-xs text-muted-foreground">{t("ui.conflict_label")}</Label>
                       <Select value={conflict} onValueChange={setConflict}>
-                        <SelectTrigger className="h-8 text-xs bg-white/50 dark:bg-black/20 border-border/50">
+                        <SelectTrigger className="h-8 text-xs bg-card/50 border-border/50">
                           <SelectValue placeholder={t("ui.conflict_placeholder")} />
                         </SelectTrigger>
                         <SelectContent>
@@ -669,7 +668,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                         value={constraints}
                         onChange={(e) => setConstraints(e.target.value)}
                         placeholder={t("ui.constraints_placeholder")}
-                        className="h-8 text-xs bg-white/50 dark:bg-black/20 border-border/50"
+                        className="h-8 text-xs bg-card/50 border-border/50"
                       />
                     </div>
 
@@ -677,7 +676,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                     <div className="space-y-2">
                       <Label className="text-xs text-muted-foreground">{t("ui.audience_label")}</Label>
                       <Select value={audience} onValueChange={setAudience}>
-                        <SelectTrigger className="h-8 text-xs bg-white/50 dark:bg-black/20 border-border/50">
+                        <SelectTrigger className="h-8 text-xs bg-card/50 border-border/50">
                           <SelectValue placeholder={t("ui.audience_placeholder")} />
                         </SelectTrigger>
                         <SelectContent>
@@ -698,7 +697,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                 <Button
                   onClick={handleGenerateClick}
                   disabled={isGenerating}
-                  className="w-full h-11 text-sm bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
+                  className="w-full h-11 text-sm bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
                 >
                   {isGenerating ? (
                     <>
@@ -730,11 +729,11 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
             <div className={cn(
               "rounded-[2rem] border border-border/60 backdrop-blur-xl overflow-hidden transition-all duration-500",
               generatedContent
-                ? "bg-white/80 dark:bg-slate-950/80 shadow-2xl shadow-orange-500/10"
-                : "bg-white/40 dark:bg-slate-900/40 shadow-xl border-dashed"
+                ? "bg-card/80 shadow-2xl shadow-orange-500/10"
+                : "bg-card/40 shadow-xl border-dashed"
             )}>
               {/* Toolbar */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-border/50 bg-white/20 dark:bg-white/5">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-border/50 bg-card/20">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400">
                     <Lightbulb className="w-5 h-5" />
@@ -791,7 +790,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                       {promptItems.map((item, index) => (
                         <div
                           key={index}
-                          className="rounded-2xl border border-border/60 bg-white/70 dark:bg-slate-900/70 p-5 shadow-sm hover:shadow-lg transition-shadow"
+                          className="card-hover-lift rounded-2xl border border-border/60 bg-card/70 p-5 shadow-sm hover:shadow-lg transition-shadow"
                         >
                           <div className="flex items-start justify-between gap-3 mb-3">
                             <div className="flex items-center gap-3">
@@ -810,7 +809,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                                 className={cn(
                                   "h-8 text-xs gap-1.5",
                                   copiedIndex === index
-                                    ? "bg-gradient-to-r from-orange-600 to-orange-600 text-white"
+                                    ? "bg-orange-600 text-white"
                                     : "text-muted-foreground hover:text-foreground"
                                 )}
                               >
@@ -819,7 +818,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                               </Button>
                               <Button
                                 size="sm"
-                                className="h-8 text-xs gap-1.5 bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white"
+                                className="h-8 text-xs gap-1.5 bg-orange-600 hover:bg-orange-700 text-white"
                                 asChild
                               >
                                 <Link
