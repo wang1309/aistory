@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/privacy-policy',
     '/terms-of-service',
     '/ai-write',
+    '/ai-write/editor',
+    '/ai-write-tool',
     '/story-generate',
     '/book-title-generator',
     '/dialogue-generator',
@@ -42,6 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route === ''
           ? 1.0
           : (route === '/ai-write'
+              || route === '/ai-write-tool'
               || route === '/story-generate'
               || route === '/book-title-generator'
               || route === '/dialogue-generator'

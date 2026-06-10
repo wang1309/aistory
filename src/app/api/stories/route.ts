@@ -1,4 +1,5 @@
 import { respData, respErr } from "@/lib/resp";
+import { resolveModelAlias } from "@/lib/model-alias";
 import { getUserUuid } from "@/services/user";
 import {
   insertStory,
@@ -136,7 +137,7 @@ export async function POST(req: Request) {
       prompt: typeof prompt === "string" ? prompt : null,
       content,
       word_count: normalizedWordCount,
-      model_used: typeof modelUsed === "string" ? modelUsed : null,
+      model_used: resolveModelAlias(modelUsed),
       settings: settings ?? null,
       status: storyStatus,
       visibility: storyVisibility,
@@ -159,7 +160,8 @@ export async function POST(req: Request) {
       console.log("update user stats failed", e);
     }
 
-    return respData(newStory);
+    const { model_used: _, ...safe } = newStory;
+    return respData(safe);
   } catch (e) {
     console.log("create story failed", e);
     return respErr("create story failed");

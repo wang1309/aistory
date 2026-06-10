@@ -3,6 +3,14 @@
 
 @plugin "tailwindcss-animate";
 
+.ai-write-review-selection::selection {
+  background-color: rgba(156, 163, 175, 0.28);
+}
+
+.ai-write-review-selection::-moz-selection {
+  background-color: rgba(156, 163, 175, 0.28);
+}
+
 @layer utilities {
   .anim-medium {
     animation-duration: 3s;

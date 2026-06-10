@@ -33,9 +33,11 @@ import SignToggle from "@/components/sign/toggle";
 import ThemeToggle from "@/components/theme/toggle";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import { buildAiWriteHeaderNav } from "@/components/ai-write/workbench/_lib";
 
 export default function Header({ header }: { header: HeaderType }) {
   const t = useTranslations();
+  const navItems = buildAiWriteHeaderNav(header.nav?.items || []);
 
   if (header.disabled) {
     return null;
@@ -69,7 +71,7 @@ export default function Header({ header }: { header: HeaderType }) {
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
-                  {header.nav?.items?.map((item, i) => {
+                  {navItems.map((item, i) => {
                     if (item.children && item.children.length > 0) {
                       return (
                         <NavigationMenuItem
@@ -237,7 +239,7 @@ export default function Header({ header }: { header: HeaderType }) {
                 </SheetHeader>
                 <div className="mb-8 mt-8 flex flex-col gap-4">
                   <Accordion type="single" collapsible className="w-full">
-                    {header.nav?.items?.map((item, i) => {
+                    {navItems.map((item, i) => {
                       if (item.children && item.children.length > 0) {
                         return (
                           <AccordionItem

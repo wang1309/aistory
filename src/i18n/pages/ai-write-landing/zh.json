@@ -1,0 +1,155 @@
+{
+  "ai_write_landing": {
+    "metadata": {
+      "title": "AI 故事写作 — 记住角色、保留风格的 AI 写作工作台",
+      "description": "用一个记住你角色、尊重你风格的 AI 搭档来写故事。不是千篇一律的通用文本，而是你的故事。免费 AI 写作工作台，支持 Story Bible 和 Style Fingerprint。",
+      "keywords": "AI 写故事, AI 写作工具, AI 小说写作, 创意写作 AI, AI 故事生成, AI 写作助手"
+    },
+    "ui": {
+      "title": "AI 故事写作",
+      "subtitle": "用一个记住你角色、尊重你风格的 AI 搭档来写故事。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "AI 写作"
+    },
+    "hero": {
+      "heading": "你的 AI 写作搭档，",
+      "highlight": "不是写作机器",
+      "description": "大多数 AI 写作工具会把你的文字磨平成通用文本。AI Write 不同 — 它记住你的角色，学习你的风格，帮你写出<strong>你的</strong>故事，而不是统计学上的平均值。",
+      "input_placeholder": "描述你想写的故事…",
+      "input_button": "开始写作",
+      "input_button_sending": "正在打开…"
+    },
+    "pain_points": {
+      "name": "pain_points",
+      "label": "为什么 AI Write 不同",
+      "title": "大多数 AI 写作工具的问题",
+      "description": "Reddit、Hacker News 和写作社区的作者们反复提到同样的痛点。AI Write 就是为解决这些问题而生的。",
+      "items": [
+        {
+          "title": "AI 会忘记你的角色",
+          "description": "大多数工具到第三章就忘了你的角色是谁。Story Bible 让角色档案、关系和世界观细节在整个写作过程中持久存在，AI 续写时自动参考。",
+          "icon": "RiBrainLine"
+        },
+        {
+          "title": "所有输出都一个味儿",
+          "description": "这就是\"语义消融\"问题：AI 天然会把你的独特声音磨平成平庸的统计平均值。Style Fingerprint 学习你真实的写作模式，在每次续写中保留你的风格。",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "只能生成，不能协作",
+          "description": "其他工具只会倒给你一堆文字。AI Write 是一个实时写作工作台 — 你编辑，AI 在行内建议，你决定接受或拒绝。这是对话，不是信息轰炸。",
+          "icon": "RiChatSmile2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "三步开始写作",
+      "description": "无需设置，无需学习。打开工作台，直接开写。",
+      "items": [
+        {
+          "title": "写下你的开头",
+          "description": "输入或粘贴你的故事第一段。或者直接描述你想写什么，从本页跳转进入。"
+        },
+        {
+          "title": "设置 Story Bible",
+          "description": "添加你的角色、人物关系和关键世界观细节。AI 会在你写作时自动参考这些信息。"
+        },
+        {
+          "title": "与 AI 协作写作",
+          "description": "获得实时行内建议、按任意方向续写，或选中文本一键改善、缩短、扩展或修正语法 — 全部在编辑器内完成。"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "features",
+      "label": "功能",
+      "title": "为认真写故事的人而设计",
+      "description": "每个功能都针对 AI 写作社区中作者反馈的真实痛点。",
+      "items": [
+        {
+          "title": "Story Bible",
+          "description": "在持久面板中维护角色档案、人物关系和世界设定。AI 续写时自动参考你的 Bible，让角色在数千字的写作中保持一致。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Style Fingerprint",
+          "description": "粘贴一段你自己的文字。AI 分析你的句式、词汇和节奏 — 然后在每次续写中镜像你的风格，而不是输出通用文本。",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "行内幽灵建议",
+          "description": "当你停顿时，AI 会以灰色文字轻柔建议接下来的 1–3 句。按 Tab 接受，Escape 取消。不打断你的写作节奏。",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "5 种文本操作",
+          "description": "选中任意文字即可一键改善、修正语法、缩短、扩展或简化 — 每项操作都由 AI 驱动，一个点击完成。",
+          "icon": "RiToolsLine"
+        },
+        {
+          "title": "3 种续写预设",
+          "description": "推进剧情、加强对话、收束段落 — 一键选择，无需自己写提示词。",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "自动保存 & 草稿恢复",
+          "description": "你的作品自动保存到云端和本地。不小心关了标签页？回来时草稿还在等你。",
+          "icon": "RiSave3Line"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "AI 写作常见问题",
+      "description": "关于 AI Write 的常见疑问。",
+      "items": [
+        {
+          "title": "AI Write 和用 ChatGPT / Claude 写故事有什么不同？",
+          "description": "AI Write 是专门的小说写作工作台，不是聊天界面。它提供富文本编辑器、Story Bible 角色一致性管理、Style Fingerprint 保留你的风格、行内建议和一键文本操作 — 全部专为小说写作设计。"
+        },
+        {
+          "title": "什么是 Story Bible？",
+          "description": "Story Bible 是一个持久面板，你可以在里面定义角色、人物关系、性格特征和关键世界观细节。AI 生成续写或建议时，会自动参考你的 Bible，确保角色在长篇写作中保持一致。"
+        },
+        {
+          "title": "什么是 Style Fingerprint？",
+          "description": "Style Fingerprint 让你粘贴一段自己的文字。AI 会分析你独特的写作模式 — 句子长度、词汇选择、节奏和语调 — 然后在生成续写时使用这个档案。结果听起来像你写的，而不是通用 AI 输出。"
+        },
+        {
+          "title": "AI Write 免费吗？",
+          "description": "是的。你可以立即开始写作，无需注册。AI 续写功能需要登录，并提供慷慨的免费额度。"
+        },
+        {
+          "title": "AI Write 适合写长篇故事和小说吗？",
+          "description": "适合。Story Bible 和自动保存的组合意味着你可以跨多个会话进行长篇创作。角色和世界观细节会持久保存，AI 永远不会\"忘记\"你的故事。"
+        },
+        {
+          "title": "AI Write 支持哪些语言？",
+          "description": "工作台界面支持英文、中文和德文。AI 生成功能支持任何语言 — 只要用你想用的语言写作，AI 就会跟随。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "准备好写你的故事了吗？",
+      "description": "打开 AI 写作工作台，开始创作听起来像你 — 而不是像所有人的小说。",
+      "buttons": [
+        {
+          "title": "免费开始写作",
+          "url": "/ai-write",
+          "target": "",
+          "icon": "RiEdit2Line"
+        },
+        {
+          "title": "浏览 AI 写作工具",
+          "url": "/ai-write-tool",
+          "target": "",
+          "icon": "RiGridLine"
+        }
+      ]
+    }
+  }
+}

@@ -3,7 +3,9 @@ import {
   getUserValidCredits,
   insertCredit,
 } from "@/models/credit";
+import { and, asc, eq, gte, sql } from "drizzle-orm";
 import { credits as creditsTable } from "@/db/schema";
+import { db } from "@/db";
 import { getIsoTimestr } from "@/lib/time";
 import { getSnowId } from "@/lib/hash";
 import { Order } from "@/types/order";
@@ -15,6 +17,7 @@ export enum CreditsTransType {
   OrderPay = "order_pay", // user pay for credits
   SystemAdd = "system_add", // system add credits
   Ping = "ping", // cost for ping api
+  ChatContinue = "chat_continue", // cost for streaming continue chat
 }
 
 export enum CreditsAmount {
@@ -65,37 +68,51 @@ export async function decreaseCredits({
   credits: number;
 }) {
   try {
-    let order_no = "";
-    let expired_at = "";
-    let left_credits = 0;
+    await db().transaction(async (tx) => {
+      await tx.execute(sql`select pg_advisory_xact_lock(hashtext(${user_uuid}))`);
 
-    const userCredits = await getUserValidCredits(user_uuid);
-    if (userCredits) {
-      for (let i = 0, l = userCredits.length; i < l; i++) {
-        const credit = userCredits[i];
+      const now = new Date();
+      const userCredits = await tx
+        .select()
+        .from(creditsTable)
+        .where(
+          and(
+            gte(creditsTable.expired_at, now),
+            eq(creditsTable.user_uuid, user_uuid)
+          )
+        )
+        .orderBy(asc(creditsTable.expired_at));
+
+      let order_no = "";
+      let expired_at: Date | null = null;
+      let left_credits = 0;
+
+      for (const credit of userCredits) {
         left_credits += credit.credits;
 
-        // credit enough for cost
         if (left_credits >= credits) {
           order_no = credit.order_no || "";
-          expired_at = credit.expired_at?.toISOString() || "";
+          expired_at = credit.expired_at || null;
           break;
         }
-
-        // look for next credit
       }
-    }
 
-    const new_credit: typeof creditsTable.$inferInsert = {
-      trans_no: getSnowId(),
-      created_at: new Date(getIsoTimestr()),
-      expired_at: new Date(expired_at),
-      user_uuid: user_uuid,
-      trans_type: trans_type,
-      credits: 0 - credits,
-      order_no: order_no,
-    };
-    await insertCredit(new_credit);
+      if (left_credits < credits) {
+        throw new Error("insufficient credits");
+      }
+
+      const new_credit: typeof creditsTable.$inferInsert = {
+        trans_no: getSnowId(),
+        created_at: new Date(getIsoTimestr()),
+        expired_at,
+        user_uuid,
+        trans_type,
+        credits: 0 - credits,
+        order_no,
+      };
+
+      await tx.insert(creditsTable).values(new_credit);
+    });
   } catch (e) {
     console.log("decrease credits failed: ", e);
     throw e;

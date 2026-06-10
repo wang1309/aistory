@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import StoryTitleEditor from "@/components/console/story-title-editor";
 import StoryDeleteButton from "@/components/console/story-delete-button";
 import StoryTagsEditor from "@/components/story/story-tags-editor";
+import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 
 interface PageProps {
   params: Promise<{ uuid: string }>;
@@ -42,6 +43,12 @@ export default async function MyStoryDetailPage({ params }: PageProps) {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <Link
+            href={buildContinueRoute({ storyUuid: uuid, source: "my-stories" }) as any}
+            className="text-sm text-primary hover:underline whitespace-nowrap"
+          >
+            AI Write
+          </Link>
           <StoryDeleteButton uuid={uuid} />
           <Link
             href="/my-stories"

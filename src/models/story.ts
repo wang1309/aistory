@@ -31,6 +31,64 @@ export async function updateStoryTitleForUser(
   return story;
 }
 
+interface UpdateStoryForUserInput {
+  title?: string | null;
+  prompt?: string | null;
+  content?: string;
+  word_count?: number;
+  model_used?: string | null;
+  settings?: Record<string, unknown> | null;
+  status?: StoryStatus;
+}
+
+export async function updateStoryForUser(
+  uuid: string,
+  user_uuid: string,
+  input: UpdateStoryForUserInput
+): Promise<typeof sg_stories.$inferSelect | undefined> {
+  const nextValues: Partial<typeof sg_stories.$inferInsert> = {
+    updated_at: new Date(),
+  };
+
+  if (input.title !== undefined) {
+    nextValues.title = input.title;
+  }
+
+  if (input.prompt !== undefined) {
+    nextValues.prompt = input.prompt;
+  }
+
+  if (input.content !== undefined) {
+    nextValues.content = input.content;
+  }
+
+  if (input.word_count !== undefined) {
+    nextValues.word_count = input.word_count;
+  }
+
+  if (input.model_used !== undefined) {
+    nextValues.model_used = input.model_used;
+  }
+
+  if (input.settings !== undefined) {
+    nextValues.settings = input.settings;
+  }
+
+  if (input.status !== undefined) {
+    nextValues.status = input.status;
+    nextValues.visibility =
+      input.status === "published" ? "public" : "private";
+  }
+
+  const [story] = await db()
+    .update(sg_stories)
+    .set(nextValues)
+    .where(and(eq(sg_stories.uuid, uuid), eq(sg_stories.user_uuid, user_uuid)))
+    .returning();
+
+  return story;
+}
+
 export async function deleteStoryForUser(
   uuid: string,
   user_uuid: string
@@ -226,4 +284,3 @@ export async function findStoryByUuidForUser(
 
   return story;
 }
-

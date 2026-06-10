@@ -4,6 +4,7 @@ import { findUserByUuid } from "@/models/user";
 import { getUserUuid } from "@/services/user";
 import { getUserCredits } from "@/services/credit";
 import { User } from "@/types/user";
+import { isAdminEmail } from "@/services/user";
 
 
 export async function POST(req: Request) {
@@ -20,12 +21,10 @@ export async function POST(req: Request) {
 
     const userCredits = await getUserCredits(user_uuid);
 
-    const admin_emails = process.env.ADMIN_EMAILS?.split(",");
-
     const user = {
       ...(dbUser as unknown as User),
       credits: userCredits,
-      is_admin: !!admin_emails?.includes(dbUser.email),
+      is_admin: isAdminEmail(dbUser.email),
     };
 
     return respData(user);

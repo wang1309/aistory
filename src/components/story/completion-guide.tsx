@@ -8,6 +8,9 @@ import { Link } from "@/i18n/navigation";
 interface CompletionGuideProps {
     onCreateAnother: () => void;
     onSave: () => void;
+    continueHref?: string;
+    continueLabel?: string;
+    onContinue?: () => void;
     isSaveDisabled?: boolean;
     translations: {
         title: string;
@@ -17,7 +20,15 @@ interface CompletionGuideProps {
     };
 }
 
-export default function CompletionGuide({ onCreateAnother, onSave, translations, isSaveDisabled }: CompletionGuideProps) {
+export default function CompletionGuide({
+    onCreateAnother,
+    onSave,
+    continueHref,
+    continueLabel,
+    onContinue,
+    translations,
+    isSaveDisabled,
+}: CompletionGuideProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -40,6 +51,32 @@ export default function CompletionGuide({ onCreateAnother, onSave, translations,
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+                    {(continueHref || onContinue) && (
+                        continueHref ? (
+                            <Button
+                                asChild
+                                size="lg"
+                                variant="outline"
+                                className="w-full sm:w-auto rounded-full h-14 px-8 text-base font-semibold border border-black/5 dark:border-white/10 bg-white/90 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10"
+                            >
+                                <Link href={continueHref as any}>
+                                    <Icon name="RiChat3Line" className="size-5 mr-2 text-orange-500" />
+                                    {continueLabel || "Continue in AI Write"}
+                                </Link>
+                            </Button>
+                        ) : (
+                            <Button
+                                onClick={onContinue}
+                                size="lg"
+                                variant="outline"
+                                className="w-full sm:w-auto rounded-full h-14 px-8 text-base font-semibold border border-black/5 dark:border-white/10 bg-white/90 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10"
+                            >
+                                <Icon name="RiChat3Line" className="size-5 mr-2 text-orange-500" />
+                                {continueLabel || "Continue in AI Write"}
+                            </Button>
+                        )
+                    )}
+
                     <Button
                         onClick={onCreateAnother}
                         size="lg"

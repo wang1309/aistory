@@ -38,6 +38,8 @@ const TurnstileInvisible = dynamic(() => import("@/components/TurnstileInvisible
 import CompletionGuide from "@/components/story/completion-guide";
 import GenerationProgress from "@/components/story/generation-progress";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
+import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 const StorySaveDialog = dynamic(() => import("@/components/story/story-save-dialog"), {
   ssr: false,
   loading: () => null,
@@ -83,6 +85,7 @@ function calculateWordCount(text: string): number {
 
 export default function StoryGenerate({ section }: { section: StoryGenerateType }) {
   const locale = useLocale(); // 获取当前语言
+  const router = useRouter();
   const { user, setShowSignModal } = useAppContext();
   const t = useTranslations("generation_progress");
 
@@ -243,6 +246,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
   const [isSavingStory, setIsSavingStory] = useState(false);
   const [hasSavedCurrentStory, setHasSavedCurrentStory] = useState(false);
+  const [savedStoryUuid, setSavedStoryUuid] = useState<string | null>(null);
 
   // Calculate word count (memoized for performance)
   const wordCount = useMemo(() => calculateWordCount(generatedStory), [generatedStory]);
@@ -843,7 +847,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           throw new Error("request failed with status: " + resp.status);
         }
 
-        const { code, message } = await resp.json();
+        const { code, message, data } = await resp.json();
 
         if (code !== 0) {
           if (message === "no auth") {
@@ -872,6 +876,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         // 标记当前故事已经成功保存，禁用 Save Story 按钮
         setHasSavedCurrentStory(true);
+        if (data?.uuid) {
+          setSavedStoryUuid(data.uuid as string);
+        }
 
         setIsSaveDialogOpen(false);
       } catch (error) {
@@ -896,6 +903,36 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       setShowSignModal,
     ]
   );
+
+  const handleContinueInAiWrite = useCallback(() => {
+    if (!generatedStory.trim()) {
+      return;
+    }
+
+    if (savedStoryUuid) {
+      router.push(
+        buildContinueRoute({
+          storyUuid: savedStoryUuid,
+          source: "generator",
+        }) as any
+      );
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(
+        "ai-write:generator-prefill",
+        JSON.stringify({
+          title: prompt.substring(0, 30) + (prompt.length > 30 ? "..." : ""),
+          content: generatedStory,
+        })
+      );
+    } catch {
+      // ignore prefill cache failures
+    }
+
+    router.push(buildContinueRoute({ source: "generator" }) as any);
+  }, [generatedStory, prompt, router, savedStoryUuid]);
 
   // ========== RENDER ==========
 
@@ -1284,6 +1321,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           <CompletionGuide
             onCreateAnother={handleCreateAnother}
             onSave={handleSaveClick}
+            onContinue={handleContinueInAiWrite}
+            continueLabel={locale === "zh" ? "继续到 AI Write" : "Continue in AI Write"}
             translations={section.completion_guide}
             isSaveDisabled={isSavingStory || hasSavedCurrentStory}
           />

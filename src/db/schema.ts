@@ -248,3 +248,52 @@ export const sg_story_tag_relations = pgTable(
     index("sg_story_tag_relations_tag_idx").on(table.tag_id),
   ]
 );
+
+// Story Bible: persistent character and world profiles per story
+export const sg_story_bibles = pgTable(
+  "sg_story_bibles",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    uuid: varchar({ length: 255 }).notNull().unique(),
+    story_uuid: varchar({ length: 255 }).notNull(),
+    user_uuid: varchar({ length: 255 }).notNull(),
+    characters: jsonb().$type<
+      Array<{
+        name: string;
+        role: string;
+        personality: string;
+        backstory: string;
+        relationships: string;
+      }>
+    >(),
+    world_lore: text(),
+    style_note: text(),
+    created_at: timestamp({ withTimezone: true }),
+    updated_at: timestamp({ withTimezone: true }),
+  },
+  (table) => [
+    uniqueIndex("sg_story_bibles_uuid_unique_idx").on(table.uuid),
+    index("sg_story_bibles_story_idx").on(table.story_uuid),
+    index("sg_story_bibles_user_idx").on(table.user_uuid),
+  ]
+);
+
+// Style Fingerprint: user writing style profiles (multiple per user, one active)
+export const sg_style_fingerprints = pgTable(
+  "sg_style_fingerprints",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    uuid: varchar({ length: 255 }).notNull().unique(),
+    user_uuid: varchar({ length: 255 }).notNull(),
+    name: varchar({ length: 100 }).notNull().default("Default"),
+    sample_text: text().notNull(),
+    style_summary: text(),
+    is_active: boolean().notNull().default(false),
+    created_at: timestamp({ withTimezone: true }),
+    updated_at: timestamp({ withTimezone: true }),
+  },
+  (table) => [
+    uniqueIndex("sg_style_fingerprints_uuid_unique_idx").on(table.uuid),
+    index("sg_style_fingerprints_user_idx").on(table.user_uuid),
+  ]
+);
