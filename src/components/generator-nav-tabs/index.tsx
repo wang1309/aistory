@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { getCenteredTabScrollLeft } from "./lib";
 
 interface NavTab {
   href: string;
@@ -54,11 +55,23 @@ export default function GeneratorNavTabs() {
     return () => ro.disconnect();
   }, [checkOverflow]);
 
-  // Scroll active tab into view on mount (non-marquee mode)
+  // Keep the active tab centered horizontally without moving the page itself.
   useEffect(() => {
-    if (!isOverflowing && activeRef.current) {
-      activeRef.current.scrollIntoView({ inline: "center", behavior: "smooth", block: "nearest" });
+    const container = scrollRef.current;
+    const active = activeRef.current;
+    if (!isOverflowing || !container || !active) {
+      return;
     }
+
+    container.scrollTo({
+      left: getCenteredTabScrollLeft({
+        containerWidth: container.clientWidth,
+        contentWidth: container.scrollWidth,
+        tabOffsetLeft: active.offsetLeft,
+        tabWidth: active.offsetWidth,
+      }),
+      behavior: "smooth",
+    });
   }, [isOverflowing, barePath]);
 
   // Marquee animation
