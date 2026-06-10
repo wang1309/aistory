@@ -106,7 +106,7 @@ export default function AiWriteHero() {
         <div className="flex flex-col items-center text-center">
           {/* Title */}
           <div className="max-w-4xl">
-            <h1 className="text-balance text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="text-balance text-5xl font-display font-bold tracking-tight sm:text-6xl lg:text-7xl">
               <span className="block text-foreground">{copy.heading}</span>
               <span className="block pb-2 text-orange-600 dark:text-orange-400">
                 {copy.highlight}
@@ -137,7 +137,7 @@ export default function AiWriteHero() {
                 <Button
                   onClick={handleStart}
                   disabled={sending}
-                  className="h-10 rounded-xl bg-orange-600 px-6 text-sm font-semibold text-white hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600"
+                  className="h-10 rounded-xl bg-orange-600 px-6 text-sm font-semibold text-white hover:bg-orange-700 active:scale-[0.97] dark:bg-orange-500 dark:hover:bg-orange-600 transition-all"
                 >
                   {sending ? (
                     copy.inputButtonSending

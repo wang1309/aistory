@@ -92,7 +92,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       id: 'standard',
       name: section.ai_models.models.standard.name,
       badge: section.ai_models.models.standard.badge,
-      badgeColor: 'bg-blue-500/10 text-blue-600 border-blue-500/30',
+      badgeColor: 'bg-amber-500/10 text-amber-600 border-amber-500/30',
       icon: <PenTool className="h-4 w-4" />,
       speed: section.ai_models.models.standard.speed,
       description: section.ai_models.models.standard.description
@@ -101,7 +101,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       id: 'creative',
       name: section.ai_models.models.creative.name,
       badge: section.ai_models.models.creative.badge,
-      badgeColor: 'bg-purple-500/10 text-purple-600 border-purple-500/30',
+      badgeColor: 'bg-orange-500/10 text-orange-600 border-orange-500/30',
       icon: <Palette className="h-4 w-4" />,
       speed: section.ai_models.models.creative.speed,
       description: section.ai_models.models.creative.description
@@ -767,7 +767,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
             <div className="p-2 rounded-xl bg-orange-500/10">
               <Icon name="feather" className="size-5 text-orange-600 dark:text-orange-400" />
             </div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
+            <h1 className="text-4xl font-display font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
               {section.header.title}
             </h1>
           </div>
@@ -818,7 +818,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
               {/* Format Options - Only shown when Format tab is selected */}
               {selectedPoemType === 'format' && (
                 <div className="space-y-3 mb-8">
-                  <Label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">{section.options.rhyme_scheme.label}</Label>
+                  <Label className="text-xs font-semibold tracking-wide text-muted-foreground">{section.options.rhyme_scheme.label}</Label>
                   <div className="flex flex-wrap gap-2">
                     {Object.entries(section.options.rhyme_scheme.format_options).map(([key, label]) => (
                       <button
@@ -874,7 +874,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
               {/* Quick Add Chips */}
               <div className="space-y-2 mb-8">
-                <Label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">{section.prompt.quick_adds_label}</Label>
+                <Label className="text-xs font-semibold tracking-wide text-muted-foreground">{section.prompt.quick_adds_label}</Label>
                 <div className="flex flex-wrap gap-2">
                   {[...QUICK_ADD_EMOTIONS, ...QUICK_ADD_IMAGERY, ...QUICK_ADD_SCENES].map((item, idx) => (
                     <button
@@ -1045,7 +1045,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating || !selectedModel}
-                  className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 transition-colors"
+                  className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 active:scale-[0.97] transition-all"
                 >
                   {isGenerating ? (
                     <div className="flex items-center gap-2">
@@ -1157,7 +1157,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                           <div className="space-y-6">
                             <div className="space-y-3">
-                              <h4 className="text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                              <h4 className="text-xs font-semibold tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
                                 <Icon name="Image" className="size-3.5" />
                                 {section.analysis.imagery.title}
                               </h4>
@@ -1174,7 +1174,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                             </div>
 
                             <div className="space-y-3">
-                              <h4 className="text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                              <h4 className="text-xs font-semibold tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
                                 <Icon name="Heart" className="size-3.5" />
                                 {section.analysis.emotion.title}
                               </h4>
@@ -1184,7 +1184,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
                           <div className="space-y-6">
                             <div className="space-y-3">
-                              <h4 className="text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                              <h4 className="text-xs font-semibold tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
                                 <Icon name="BookOpen" className="size-3.5" />
                                 {section.analysis.theme.title}
                               </h4>
@@ -1192,7 +1192,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                             </div>
 
                             <div className="space-y-3">
-                              <h4 className="text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                              <h4 className="text-xs font-semibold tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
                                 <Icon name="Sparkles" className="size-3.5" />
                                 {section.analysis.rhetoric.title}
                               </h4>

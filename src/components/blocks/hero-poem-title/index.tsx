@@ -409,7 +409,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                         <div className="p-2 rounded-xl bg-orange-500/10">
                             <Icon name="RiQuillPenLine" className="size-5 text-orange-600 dark:text-orange-400" />
                         </div>
-                        <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
+                        <h1 className="text-4xl font-display font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
                             {section.header.title}
                         </h1>
                     </div>
@@ -603,7 +603,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                 <Button
                                     onClick={handleGenerate}
                                     disabled={isGenerating}
-                                    className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 transition-colors"
+                                    className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 active:scale-[0.97] transition-all"
                                 >
                                     {isGenerating ? (
                                         <div className="flex items-center gap-2">
@@ -682,7 +682,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                             {literaryTitles.map((titleObj, index) => (
                                                 <div
                                                     key={titleObj.id}
-                                                    className="group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] transition-all duration-300"
+                                                    className="group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] card-hover-lift transition-all duration-300"
                                                     style={{ transitionDelay: `${index * 50}ms` }}
                                                 >
                                                     <div className="flex items-start justify-between gap-4">
@@ -725,7 +725,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                             {platformTitles.map((titleObj, index) => (
                                                 <div
                                                     key={titleObj.id}
-                                                    className="group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] transition-all duration-300"
+                                                    className="group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] card-hover-lift transition-all duration-300"
                                                     style={{ transitionDelay: `${index * 50}ms` }}
                                                 >
                                                     <div className="flex items-start justify-between gap-4">

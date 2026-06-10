@@ -122,7 +122,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
         name: t("ai_models.creative"),
         badge: "PRO",
         badgeColor:
-          "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+          "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
         icon: <Palette className="h-4 w-4" />,
         description: t("ai_models.creative_description"),
       },
@@ -440,7 +440,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
           />
 
           <div className="mt-8 mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
+            <h1 className="text-4xl font-display font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
               {t("ui.title")}
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -804,7 +804,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
               <Button
                 onClick={handleGenerate}
                 disabled={isGenerating}
-                className="mt-5 w-full gap-2 bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
+                className="mt-5 w-full gap-2 bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
                 size="lg"
               >
                 {isGenerating ? (
@@ -830,7 +830,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
             transition={{ duration: 0.4, delay: 0.15 }}
             className="flex flex-col"
           >
-            <div className="h-full rounded-2xl border border-border bg-card shadow-sm dark:bg-card flex flex-col">
+            <div className="h-full rounded-2xl border border-border bg-card shadow-sm card-hover-lift flex flex-col">
               {/* Output header */}
               <div className="flex items-center justify-between border-b border-border bg-orange-500/[0.03] px-5 py-3 dark:bg-orange-500/[0.05]">
                 <div className="flex items-center gap-2">

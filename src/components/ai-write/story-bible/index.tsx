@@ -272,9 +272,9 @@ export default function StoryBiblePanel({ storyUuid, onBibleChange }: StoryBible
       {/* Loading indicator */}
       {isLoading && (
         <div className="flex items-center justify-center gap-2 px-4 py-8">
-          <span className="inline-block size-1.5 animate-pulse rounded-full bg-blue-500" />
-          <span className="inline-block size-1.5 animate-pulse rounded-full bg-blue-500 [animation-delay:0.2s]" />
-          <span className="inline-block size-1.5 animate-pulse rounded-full bg-blue-500 [animation-delay:0.4s]" />
+          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500" />
+          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500 [animation-delay:0.2s]" />
+          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500 [animation-delay:0.4s]" />
         </div>
       )}
 
@@ -340,7 +340,7 @@ export default function StoryBiblePanel({ storyUuid, onBibleChange }: StoryBible
             <button
               type="button"
               onClick={addCharacter}
-              className="w-full rounded-lg border border-dashed border-border/60 py-2 text-xs text-muted-foreground transition hover:border-blue-400/60 hover:bg-blue-50/50 hover:text-blue-600 dark:hover:bg-blue-900/10"
+              className="w-full rounded-lg border border-dashed border-border/60 py-2 text-xs text-muted-foreground transition hover:border-orange-400/60 hover:bg-orange-50/50 hover:text-orange-600 dark:hover:bg-orange-900/10"
             >
               {copy.addCharacter}
             </button>
@@ -358,7 +358,7 @@ export default function StoryBiblePanel({ storyUuid, onBibleChange }: StoryBible
               }
               placeholder={copy.worldLorePlaceholder}
               rows={4}
-              className="w-full resize-none rounded-lg border border-border/50 bg-background px-3 py-2 text-xs outline-none placeholder:text-muted-foreground/50 focus:border-blue-400/60"
+              className="w-full resize-none rounded-lg border border-border/50 bg-background px-3 py-2 text-xs outline-none placeholder:text-muted-foreground/50 focus:border-orange-400/60"
             />
           </div>
 
@@ -374,7 +374,7 @@ export default function StoryBiblePanel({ storyUuid, onBibleChange }: StoryBible
               }
               placeholder={copy.styleNotePlaceholder}
               rows={3}
-              className="w-full resize-none rounded-lg border border-border/50 bg-background px-3 py-2 text-xs outline-none placeholder:text-muted-foreground/50 focus:border-blue-400/60"
+              className="w-full resize-none rounded-lg border border-border/50 bg-background px-3 py-2 text-xs outline-none placeholder:text-muted-foreground/50 focus:border-orange-400/60"
             />
           </div>
         </div>
@@ -386,7 +386,7 @@ export default function StoryBiblePanel({ storyUuid, onBibleChange }: StoryBible
           {isActive && (
             <div className="flex flex-wrap items-center gap-1.5">
               {bible.characters.length > 0 && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                <span className="inline-flex items-center gap-1 rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
                   {bible.characters.length} {copy.charCount}
                 </span>
               )}
@@ -408,7 +408,7 @@ export default function StoryBiblePanel({ storyUuid, onBibleChange }: StoryBible
               "h-8 w-full rounded-xl text-xs text-white",
               isActive
                 ? "bg-green-600 hover:bg-green-700"
-                : "bg-blue-600 hover:bg-blue-700"
+                : "bg-orange-600 hover:bg-orange-700"
             )}
             disabled={isSaving}
             onClick={handleSave}

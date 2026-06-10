@@ -90,7 +90,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       id: 'standard',
       name: t('ai_models.standard'),
       badge: 'RECOMMENDED',
-      badgeColor: 'bg-blue-500/10 text-blue-600 border-blue-500/30',
+      badgeColor: 'bg-amber-500/10 text-amber-600 border-amber-500/30',
       icon: <Sparkles className="h-4 w-4" />,
       speed: '~40s',
       description: t('ai_models.standard_description')
@@ -99,7 +99,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       id: 'creative',
       name: t('ai_models.creative'),
       badge: 'BEST',
-      badgeColor: 'bg-purple-500/10 text-purple-600 border-purple-500/30',
+      badgeColor: 'bg-orange-500/10 text-orange-600 border-orange-500/30',
       icon: <Palette className="h-4 w-4" />,
       speed: '~60s',
       description: t('ai_models.creative_description')
@@ -613,7 +613,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
         {/* Header */}
         <div className="mt-8 mx-auto max-w-3xl text-center mb-10">
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
+          <h1 className="text-4xl font-display font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
             {t('ui.title')}
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -925,7 +925,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
               <Button
                 onClick={handleGenerateClick}
                 disabled={isGenerating || !prompt.trim() || !selectedModel}
-                className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 transition-colors"
+                className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 active:scale-[0.97] transition-all"
               >
                 {isGenerating ? (
                   <div className="flex items-center justify-center gap-2">

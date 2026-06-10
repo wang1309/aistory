@@ -115,7 +115,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
         name: t("ai_models.creative"),
         badge: "PRO",
         badgeColor:
-          "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+          "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
         icon: <Palette className="h-4 w-4" />,
         description: t("ai_models.creative_description"),
       },
@@ -441,7 +441,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
 
       <main className="container max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
         <div className="mb-6 flex justify-start">
-          <div className="inline-flex items-center rounded-full border border-border/60 bg-white/80 dark:bg-slate-900/80 px-4 py-1.5 text-xs text-muted-foreground shadow-sm">
+          <div className="inline-flex items-center rounded-full border border-border/60 bg-card/80 px-4 py-1.5 text-xs text-muted-foreground shadow-sm">
             <DndBackstoryBreadcrumb
               homeText={t("ui.breadcrumb_home")}
               currentText={t("ui.breadcrumb_current")}
@@ -456,7 +456,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-foreground">
+            <h1 className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-foreground">
               {t("ui.title")}
             </h1>
             <p className="text-lg text-muted-foreground/80 leading-relaxed">{t("ui.subtitle")}</p>
@@ -494,7 +494,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
             transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-6 lg:sticky lg:top-24"
           >
-            <div className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-border rounded-3xl p-6 shadow-xl shadow-black/5 dark:shadow-black/20 ring-1 ring-black/5">
+            <div className="bg-card/60 backdrop-blur-xl border border-border rounded-3xl p-6 shadow-xl shadow-black/5 dark:shadow-black/20 ring-1 ring-black/5">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <Label className="text-sm font-semibold text-foreground flex items-center gap-2">
@@ -517,7 +517,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                     value={prompt}
                     onChange={(event) => setPrompt(event.target.value)}
                     placeholder={t("placeholders.character_concept")}
-                    className="min-h-[120px] resize-none bg-white/50 dark:bg-black/20 border-border/50 focus:border-orange-500/50 focus:ring-orange-500/20 rounded-xl p-4 text-base leading-relaxed transition-all shadow-sm"
+                    className="min-h-[120px] resize-none bg-muted/50 border-border/50 focus:border-orange-500/50 focus:ring-orange-500/20 rounded-xl p-4 text-base leading-relaxed transition-all shadow-sm"
                   />
                   {prompt && (
                     <Button
@@ -537,11 +537,11 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-2">
-                    <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    <Label className="text-xs font-medium tracking-wide text-muted-foreground">
                       {t("ui.ai_model")}
                     </Label>
                     <Select value={selectedModel} onValueChange={setSelectedModel}>
-                      <SelectTrigger className="h-9 bg-white/50 dark:bg-black/20 border-border/50 rounded-lg">
+                      <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -554,11 +554,11 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    <Label className="text-xs font-medium tracking-wide text-muted-foreground">
                       {t("ui.output_language")}
                     </Label>
                     <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-                      <SelectTrigger className="h-9 bg-white/50 dark:bg-black/20 border-border/50 rounded-lg">
+                      <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -576,7 +576,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                   <div className="space-y-2">
                     <Label>{t("ui.race")}</Label>
                     <Select value={race} onValueChange={setRace}>
-                      <SelectTrigger className="bg-white/50 dark:bg-black/20 border-border/50">
+                      <SelectTrigger className="bg-muted/50 border-border/50">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -598,7 +598,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                   <div className="space-y-2">
                     <Label>{t("ui.character_class")}</Label>
                     <Select value={characterClass} onValueChange={setCharacterClass}>
-                      <SelectTrigger className="bg-white/50 dark:bg-black/20 border-border/50">
+                      <SelectTrigger className="bg-muted/50 border-border/50">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -632,7 +632,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                   <div className="space-y-2">
                     <Label>{t("ui.campaign_tone")}</Label>
                     <Select value={campaignTone} onValueChange={setCampaignTone}>
-                      <SelectTrigger className="bg-white/50 dark:bg-black/20 border-border/50">
+                      <SelectTrigger className="bg-muted/50 border-border/50">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -647,7 +647,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                   <div className="space-y-2">
                     <Label>{t("ui.use_case")}</Label>
                     <Select value={useCase} onValueChange={setUseCase}>
-                      <SelectTrigger className="bg-white/50 dark:bg-black/20 border-border/50">
+                      <SelectTrigger className="bg-muted/50 border-border/50">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -665,7 +665,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                   <div className="space-y-2">
                     <Label>{t("ui.output_length")}</Label>
                     <Select value={length} onValueChange={setLength}>
-                      <SelectTrigger className="bg-white/50 dark:bg-black/20 border-border/50">
+                      <SelectTrigger className="bg-muted/50 border-border/50">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -680,7 +680,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                   <div className="space-y-2">
                     <Label>{t("ui.alignment")}</Label>
                     <Select value={alignment} onValueChange={setAlignment}>
-                      <SelectTrigger className="bg-white/50 dark:bg-black/20 border-border/50">
+                      <SelectTrigger className="bg-muted/50 border-border/50">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -753,7 +753,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                     <div className="space-y-2">
                       <Label>{t("ui.hook_type")}</Label>
                       <Select value={hookType} onValueChange={setHookType}>
-                        <SelectTrigger className="bg-white/50 dark:bg-black/20 border-border/50">
+                        <SelectTrigger className="bg-muted/50 border-border/50">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -814,7 +814,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
+                  className="w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
                 >
                   {isGenerating ? (
                     <>
@@ -844,13 +844,13 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
 
             <div
               className={cn(
-                "h-full rounded-[2rem] border border-border backdrop-blur-xl overflow-hidden transition-all duration-500 flex flex-col",
+                "h-full rounded-[2rem] border border-border backdrop-blur-xl overflow-hidden transition-all duration-500 flex flex-col card-hover-lift",
                 generatedBackstory
-                  ? "bg-white/80 dark:bg-slate-950/80 shadow-2xl shadow-orange-500/10"
-                  : "bg-white/40 dark:bg-slate-900/40 shadow-xl border-dashed"
+                  ? "bg-card/80 shadow-2xl shadow-orange-500/10"
+                  : "bg-card/40 shadow-xl border-dashed"
               )}
             >
-              <div className="flex items-center justify-between px-6 py-4 border-b border-border/50 bg-white/20 dark:bg-white/5">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-border/50 bg-muted/20">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400">
                     <ScrollText className="w-5 h-5" />

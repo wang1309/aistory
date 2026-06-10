@@ -123,12 +123,12 @@ function EditForm({
         value={sample}
         onChange={(e) => setSample(e.target.value)}
         rows={6}
-        className="w-full resize-none rounded-lg border border-border/40 px-3 py-2 text-xs outline-none placeholder:text-muted-foreground/50 focus:border-purple-400/60"
+        className="w-full resize-none rounded-lg border border-border/40 px-3 py-2 text-xs outline-none placeholder:text-muted-foreground/50 focus:border-orange-400/60"
       />
       <div className="flex items-center gap-2">
         <Button
           size="sm"
-          className="h-7 rounded-lg bg-purple-600 px-3 text-xs text-white hover:bg-purple-700"
+          className="h-7 rounded-lg bg-orange-600 px-3 text-xs text-white hover:bg-orange-700"
           disabled={isSaving}
           onClick={() => onSave(name, sample)}
         >
@@ -356,9 +356,9 @@ export default function StyleFingerprintPanel() {
           {/* Loading indicator */}
           {isLoading && (
             <div className="flex items-center justify-center gap-2 py-8">
-              <span className="inline-block size-1.5 animate-pulse rounded-full bg-purple-500" />
-              <span className="inline-block size-1.5 animate-pulse rounded-full bg-purple-500 [animation-delay:0.2s]" />
-              <span className="inline-block size-1.5 animate-pulse rounded-full bg-purple-500 [animation-delay:0.4s]" />
+              <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500" />
+              <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500 [animation-delay:0.2s]" />
+              <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500 [animation-delay:0.4s]" />
             </div>
           )}
 
@@ -366,7 +366,7 @@ export default function StyleFingerprintPanel() {
             <>
               {/* Create new form */}
               {isCreating && (
-                <div className="mb-3 rounded-xl border border-purple-300/50 bg-purple-50/30 p-3 dark:border-purple-600/30 dark:bg-purple-900/10">
+                <div className="mb-3 rounded-xl border border-orange-300/50 bg-orange-50/30 p-3 dark:border-orange-600/30 dark:bg-orange-900/10">
                   <EditForm
                     initName=""
                     initSample=""
@@ -398,7 +398,7 @@ export default function StyleFingerprintPanel() {
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-medium">{fp.name}</span>
                           {fp.is_active && (
-                            <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[10px] font-medium text-purple-700 dark:bg-purple-900/30 dark:text-purple-200">
+                            <span className="rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-200">
                               {copy.active}
                             </span>
                           )}
@@ -430,13 +430,13 @@ export default function StyleFingerprintPanel() {
                             type="button"
                             onClick={() => handleActivate(fp.uuid)}
                             disabled={togglingUuid === fp.uuid}
-                            className="rounded-md px-2 py-1 text-[11px] font-medium text-purple-600 transition hover:bg-purple-50 disabled:opacity-60 dark:text-purple-300 dark:hover:bg-purple-900/20"
+                            className="rounded-md px-2 py-1 text-[11px] font-medium text-orange-600 transition hover:bg-orange-50 disabled:opacity-60 dark:text-orange-300 dark:hover:bg-orange-900/20"
                           >
                             {togglingUuid === fp.uuid ? (
                               <span className="inline-flex items-center gap-1">
-                                <span className="inline-block size-1.5 animate-pulse rounded-full bg-purple-600 dark:bg-purple-300" />
-                                <span className="inline-block size-1.5 animate-pulse rounded-full bg-purple-600 [animation-delay:0.15s] dark:bg-purple-300" />
-                                <span className="inline-block size-1.5 animate-pulse rounded-full bg-purple-600 [animation-delay:0.3s] dark:bg-purple-300" />
+                                <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-600 dark:bg-orange-300" />
+                                <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-600 [animation-delay:0.15s] dark:bg-orange-300" />
+                                <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-600 [animation-delay:0.3s] dark:bg-orange-300" />
                               </span>
                             ) : copy.activate}
                           </button>
@@ -465,7 +465,7 @@ export default function StyleFingerprintPanel() {
                 <button
                   type="button"
                   onClick={() => setIsCreating(true)}
-                  className="w-full rounded-lg border border-dashed border-border/60 py-2 text-xs text-muted-foreground transition hover:border-purple-400/60 hover:bg-purple-50/50 hover:text-purple-600 dark:hover:bg-purple-900/10"
+                  className="w-full rounded-lg border border-dashed border-border/60 py-2 text-xs text-muted-foreground transition hover:border-orange-400/60 hover:bg-orange-50/50 hover:text-orange-600 dark:hover:bg-orange-900/10"
                 >
                   {copy.newStyle}
                 </button>
