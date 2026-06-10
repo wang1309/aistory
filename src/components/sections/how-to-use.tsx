@@ -27,19 +27,19 @@ export default function HowToUse({ section, accent = "orange" }: Props) {
   if (section.disabled || !section.items?.length) return null;
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24">
+    <section className="relative overflow-hidden py-16 sm:py-20">
       <div className={`absolute inset-0 ${a.sectionBg}`} />
 
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           {section.label && (
-            <p className={`text-xs font-semibold uppercase tracking-widest ${a.text}`}>
+            <p className={`text-sm font-medium tracking-wide ${a.text}`}>
               {section.label}
             </p>
           )}
           {section.title && (
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl leading-snug">
               {section.title}
             </h2>
           )}
@@ -75,7 +75,7 @@ export default function HowToUse({ section, accent = "orange" }: Props) {
                   </div>
                 </div>
 
-                <h3 className="mt-5 text-base font-bold text-foreground">{item.title}</h3>
+                <h3 className="mt-5 text-base font-medium text-foreground">{item.title}</h3>
                 {item.description && (
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
                 )}

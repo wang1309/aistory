@@ -107,7 +107,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
         </div>
         <div className="w-full flex flex-col items-center gap-1">
           {pricing.groups && pricing.groups.length > 0 && (
-            <div className="flex h-12 mb-12 items-center rounded-md bg-muted p-1 text-lg">
+            <div className="flex h-12 mb-12 items-center rounded-full bg-muted p-1 text-lg">
               <RadioGroup
                 value={group}
                 className={`h-full grid-cols-${pricing.groups.length}`}
@@ -119,7 +119,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
                   return (
                     <div
                       key={i}
-                      className='h-full rounded-md transition-all has-[button[data-state="checked"]]:bg-white'
+                      className='h-full rounded-full transition-all has-[button[data-state="checked"]]:bg-white'
                     >
                       <RadioGroupItem
                         value={item.name || ""}
@@ -161,9 +161,9 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
               return (
                 <div
                   key={index}
-                  className={`rounded-lg p-6 ${
+                  className={`rounded-2xl p-6 ${
                     item.is_featured
-                      ? "border-primary border-2 bg-card text-card-foreground"
+                      ? "border-primary border-2 bg-card text-card-foreground shadow-lg shadow-primary/10"
                       : "border-muted border"
                   }`}
                 >

@@ -9,7 +9,7 @@ import {
 
 import AutoScroll from "embla-carousel-auto-scroll";
 import { Section as SectionType } from "@/types/blocks/section";
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -57,7 +57,7 @@ export default function Testimonial({ section }: { section: SectionType }) {
           )}
 
           {section.title && (
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground leading-[1.1]">
               {section.title}
             </h2>
           )}
@@ -99,10 +99,11 @@ export default function Testimonial({ section }: { section: SectionType }) {
 
 function TestimonialCard({ item }: { item: any }) {
   return (
-    <div className="group w-[300px] sm:w-[380px] rounded-2xl border border-border bg-card hover:bg-muted/30 transition-colors duration-300">
+    <div className="card-hover-lift group w-[300px] sm:w-[380px] rounded-2xl border border-border bg-card hover:bg-muted/30 transition-colors duration-300">
       <div className="p-6 h-full flex flex-col">
         {/* Quote icon */}
-        <Quote className="size-8 text-orange-500/15 mb-4" />
+        {/* Decorative serif quotation mark */}
+        <span className="font-display text-6xl leading-none text-orange-500/15 select-none">&ldquo;</span>
 
         {/* Review text */}
         <blockquote className="flex-1 text-muted-foreground/90 leading-relaxed font-light text-sm italic mb-6">

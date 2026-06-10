@@ -17,15 +17,15 @@ export default function Benefits({ section, accent = "orange" }: Props) {
   return (
     <section className="relative overflow-hidden py-20 sm:py-24">
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mx-auto max-w-2xl text-center">
+        {/* Header — 左对齐打破全居中模板感 */}
+        <div className="max-w-2xl">
           {section.label && (
-            <p className={`text-xs font-semibold uppercase tracking-widest ${a.text}`}>
+            <p className={`text-sm font-medium tracking-wide ${a.text}`}>
               {section.label}
             </p>
           )}
           {section.title && (
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl leading-snug">
               {section.title}
             </h2>
           )}
@@ -44,7 +44,7 @@ export default function Benefits({ section, accent = "orange" }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-              className="rounded-2xl border border-border bg-card p-6 sm:p-8"
+              className="card-hover-lift rounded-2xl border border-border bg-card p-6 sm:p-8"
             >
               <div className="flex items-start gap-5">
                 {section.items[0].icon && (
@@ -53,7 +53,7 @@ export default function Benefits({ section, accent = "orange" }: Props) {
                   </div>
                 )}
                 <div>
-                  <h3 className="text-lg font-bold text-foreground">{section.items[0].title}</h3>
+                  <h3 className="text-lg font-medium text-foreground">{section.items[0].title}</h3>
                   {section.items[0].description && (
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                       {section.items[0].description}
@@ -73,14 +73,14 @@ export default function Benefits({ section, accent = "orange" }: Props) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.45, delay: (i + 1) * 0.06, ease: [0.4, 0, 0.2, 1] }}
-                  className="rounded-2xl border border-border bg-card p-5 sm:p-6"
+                  className="card-hover-lift rounded-2xl border border-border bg-card p-5 sm:p-6"
                 >
                   {item.icon && (
                     <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl ${a.iconBg}`}>
                       <Icon name={item.icon} className={`h-5 w-5 ${a.text}`} />
                     </div>
                   )}
-                  <h3 className="text-base font-bold text-foreground">{item.title}</h3>
+                  <h3 className="text-base font-medium text-foreground">{item.title}</h3>
                   {item.description && (
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
                   )}

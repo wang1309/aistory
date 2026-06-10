@@ -2,17 +2,25 @@ import "@/app/globals.css";
 
 import { getLocale, setRequestLocale } from "next-intl/server";
 import { cn } from "@/lib/utils";
-import { Open_Sans, Noto_Sans_SC } from "next/font/google";
+import { DM_Sans, Source_Serif_4, Noto_Sans_SC } from "next/font/google";
 
-// 配置 Open Sans 字体（英文）
-const openSans = Open_Sans({
+// DM Sans — 几何感温暖的无衬线字体，适合创意工具
+const dmSans = DM_Sans({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-open-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
-// 配置 Noto Sans SC 字体（简体中文）
+// Source Serif 4 — 编辑风格的衬线 display 字体
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "600", "700", "900"],
+  variable: "--font-source-serif",
+  display: "swap",
+});
+
+// Noto Sans SC — 简体中文
 const notoSansSC = Noto_Sans_SC({
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
@@ -39,7 +47,7 @@ export default async function RootLayout({
 
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={cn(openSans.variable, notoSansSC.variable, "font-sans antialiased")}>
+      <body className={cn(dmSans.variable, sourceSerif.variable, notoSansSC.variable, "font-sans antialiased")}>
         {children}
       </body>
     </html>

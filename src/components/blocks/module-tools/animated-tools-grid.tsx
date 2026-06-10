@@ -51,7 +51,7 @@ function ToolCard({ tool, badgeCategoryLabel, accent }: { tool: ToolCardData; ba
     <a
       href={tool.href}
       className={cn(
-        "group flex h-full flex-col rounded-xl border border-border bg-card p-5 sm:p-6 transition-colors",
+        "card-hover-lift group flex h-full flex-col rounded-xl border border-border bg-card p-5 sm:p-6 transition-colors",
         a.hoverBorder,
         a.hoverBg,
       )}

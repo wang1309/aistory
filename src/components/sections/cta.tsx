@@ -17,7 +17,7 @@ export default function CTA({ section, accent = "orange" }: Props) {
   if (section.disabled) return null;
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24">
+    <section className="relative overflow-hidden py-24 sm:py-32">
       {/* Tinted background */}
       <div className={`absolute inset-0 ${a.tint}`} />
 
@@ -44,7 +44,7 @@ export default function CTA({ section, accent = "orange" }: Props) {
           className="mx-auto max-w-2xl text-center"
         >
           {section.title && (
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl leading-snug">
               {section.title}
             </h2>
           )}
@@ -63,7 +63,7 @@ export default function CTA({ section, accent = "orange" }: Props) {
                     href={btn.url || "#"}
                     target={btn.target || undefined}
                     className={cn(
-                      "inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-colors",
+                      "inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold active:scale-[0.97] transition-all",
                       isPrimary
                         ? `${a.btnPrimary}`
                         : `border border-border bg-card text-foreground ${a.btnSecondary}`

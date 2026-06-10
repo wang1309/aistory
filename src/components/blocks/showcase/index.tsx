@@ -74,7 +74,7 @@ function ShowcaseCard({ item, index }: { item: any, index: number }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: index * 0.08, duration: 0.4 }}
-        className="group h-full rounded-2xl border border-border bg-card hover:border-orange-300 dark:hover:border-orange-400/40 transition-colors duration-200 overflow-hidden flex flex-col"
+        className="card-hover-lift group h-full rounded-2xl border border-border bg-card hover:border-orange-300 dark:hover:border-orange-400/40 transition-colors duration-200 overflow-hidden flex flex-col"
       >
         {/* Image */}
         <div className="relative aspect-[16/10] w-full overflow-hidden">

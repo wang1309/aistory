@@ -30,13 +30,48 @@ const Stats = nextDynamic(() => import("@/components/blocks/stats"));
 const Pricing = nextDynamic(() => import("@/components/blocks/pricing"));
 const Testimonial = nextDynamic(() => import("@/components/blocks/testimonial"));
 
-// Loading placeholder component
+// Loading placeholder components
 function SectionSkeleton() {
   return <div className="w-full h-96 bg-muted/5 animate-pulse" />;
 }
 
 function HeroSkeleton() {
-  return <SectionSkeleton />;
+  return (
+    <div className="min-h-[92vh] flex items-center justify-center">
+      <div className="container px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center gap-6">
+        <div className="h-6 w-32 rounded-full bg-muted/10 animate-pulse" />
+        <div className="h-16 w-3/4 max-w-3xl rounded-2xl bg-muted/10 animate-pulse" />
+        <div className="h-6 w-1/2 max-w-xl rounded-lg bg-muted/10 animate-pulse" />
+        <div className="flex gap-4 mt-4">
+          <div className="h-16 w-40 rounded-full bg-muted/10 animate-pulse" />
+          <div className="h-16 w-40 rounded-full bg-muted/10 animate-pulse" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CardGridSkeleton({ cols = 3 }: { cols?: number }) {
+  return (
+    <div className="w-full py-20 sm:py-24">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center space-y-4 mb-14">
+          <div className="h-5 w-24 rounded-full bg-muted/10 animate-pulse mx-auto" />
+          <div className="h-8 w-64 rounded-lg bg-muted/10 animate-pulse mx-auto" />
+          <div className="h-5 w-80 rounded-lg bg-muted/10 animate-pulse mx-auto" />
+        </div>
+        <div className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-${cols}`}>
+          {Array.from({ length: cols * 2 }).map((_, i) => (
+            <div key={i} className="rounded-2xl border border-border/30 bg-card p-6 space-y-4 animate-pulse">
+              <div className="h-10 w-10 rounded-xl bg-muted/10" />
+              <div className="h-5 w-2/3 rounded bg-muted/10" />
+              <div className="h-4 w-full rounded bg-muted/10" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function StoryGenerateSkeleton() {

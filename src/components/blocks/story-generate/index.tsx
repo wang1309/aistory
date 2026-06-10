@@ -1244,6 +1244,19 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         </div>
 
         {/* Generated Story Output */}
+        {!isGenerating && !generatedStory && (
+          <div className="mt-16 flex flex-col items-center justify-center py-16 text-center">
+            <div className="flex items-center justify-center size-16 rounded-2xl bg-muted/50 mb-6">
+              <Icon name="book-open" className="size-7 text-muted-foreground/40" />
+            </div>
+            <p className="text-lg font-medium text-muted-foreground/60">
+              {locale === 'zh' ? '你的故事将在这里呈现' : 'Your story will appear here'}
+            </p>
+            <p className="text-sm text-muted-foreground/40 mt-2">
+              {locale === 'zh' ? '填写提示词，点击生成按钮开始创作' : 'Fill in a prompt and click generate to start creating'}
+            </p>
+          </div>
+        )}
         {(isGenerating || generatedStory) && (
           <div ref={outputRef} className="mt-16 animate-fade-in-up">
             <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm">

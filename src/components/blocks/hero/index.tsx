@@ -134,7 +134,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
           {/* Title */}
           <div className="mt-8 max-w-5xl">
             {texts && texts.length > 1 ? (
-              <h1 className="text-balance text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
+              <h1 className="text-balance text-5xl font-display font-bold tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
                 <span className="block text-foreground">{texts[0]}</span>
                 <span className="block text-orange-600 dark:text-orange-400 pb-2">
                   {highlightText}
@@ -142,7 +142,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                 <span className="block text-foreground">{texts[1]}</span>
               </h1>
             ) : (
-              <h1 className="text-balance text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl text-foreground">
+              <h1 className="text-balance text-5xl font-display font-bold tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl text-foreground">
                 {hero.title}
               </h1>
             )}
@@ -172,7 +172,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                       <Button
                         size="lg"
                         className="w-full sm:w-auto h-16 sm:h-20 rounded-full px-10 text-lg font-bold
-                          bg-orange-600 hover:bg-orange-700 disabled:opacity-60
+                          bg-orange-600 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60
                           text-white shadow-md shadow-orange-600/20
                           dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600
                           transition-all duration-300 group/btn"
@@ -188,9 +188,9 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                       <Button
                         variant="outline"
                         size="lg"
-                        className="relative w-full sm:w-auto h-16 sm:h-20 rounded-full px-10 text-lg font-semibold 
+                        className="relative w-full sm:w-auto h-16 sm:h-20 rounded-full px-10 text-lg font-semibold
                           border border-border/50 bg-background/60 backdrop-blur-xl
-                          hover:border-primary/50 hover:text-primary
+                          hover:border-primary/50 hover:text-primary active:scale-[0.97]
                           transition-all duration-300"
                       >
                         <div className="relative flex items-center gap-2">
@@ -214,7 +214,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                   document.getElementById('craft_story')?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="group/quick w-full sm:w-auto h-16 sm:h-20 rounded-full px-10 text-lg font-bold
-                  bg-orange-600 hover:bg-orange-700
+                  bg-orange-600 hover:bg-orange-700 active:scale-[0.97]
                   text-white shadow-md shadow-orange-600/20
                   dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600
                   transition-all duration-300"
