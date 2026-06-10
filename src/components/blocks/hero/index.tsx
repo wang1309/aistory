@@ -3,17 +3,14 @@
 import { memo, useMemo, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import HappyUsers from "./happy-users";
-import FloatingFlowers from "@/components/effects/floating-flowers";
 
 import { Hero as HeroType } from "@/types/blocks/hero";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 
-// Lazy load Prism component (client-side only for WebGL)
 const Prism = dynamic(() => import("@/components/Prism"), {
   ssr: false,
   loading: () => (
@@ -68,13 +65,19 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
     [hero.prism_background]
   );
 
-  if (hero.disabled) {
-    return null;
-  }
+  // Staggered entry helper
+  const enter = (delay: number) =>
+    `transition-all duration-[800ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
+      isMounted
+        ? "translate-y-0 opacity-100"
+        : "translate-y-8 opacity-0"
+    }`;
+
+  if (hero.disabled) return null;
 
   return (
     <section className="min-h-[92vh] flex items-center justify-center py-24 lg:py-32 overflow-hidden">
-      {/* Background */}
+      {/* Animated background */}
       <div className="pointer-events-none absolute inset-0">
         {allowPrism && isMounted ? (
           <>
@@ -85,12 +88,37 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
           </>
         ) : (
           <>
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
-            <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
-            <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
+            {/* Base warm glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,oklch(0.96_0.03_65),transparent)] dark:bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,oklch(0.16_0.02_55),transparent)]" />
 
-            {/* Floating Flowers */}
-            <FloatingFlowers count={30} />
+            {/* Ambient orbs — slow cinematic drift */}
+            <div
+              className="absolute -left-[20%] top-[10%] h-[600px] w-[600px] rounded-full opacity-30 dark:opacity-15"
+              style={{
+                background: "radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)",
+                animation: "hero-orb-1 20s ease-in-out infinite",
+              }}
+            />
+            <div
+              className="absolute -right-[10%] bottom-[5%] h-[500px] w-[500px] rounded-full opacity-20 dark:opacity-10"
+              style={{
+                background: "radial-gradient(circle, oklch(0.88 0.04 85) 0%, transparent 70%)",
+                animation: "hero-orb-2 25s ease-in-out infinite",
+              }}
+            />
+            <div
+              className="absolute left-[40%] top-[60%] h-[400px] w-[400px] rounded-full opacity-15 dark:opacity-8"
+              style={{
+                background: "radial-gradient(circle, oklch(0.92 0.05 35) 0%, transparent 70%)",
+                animation: "hero-orb-3 18s ease-in-out infinite",
+              }}
+            />
+
+            {/* Subtle grid texture */}
+            <div
+              className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]"
+              style={{ backgroundImage: "var(--bg-grid)", backgroundSize: "48px 48px" }}
+            />
           </>
         )}
       </div>
@@ -98,69 +126,104 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
       <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Badge */}
         {hero.show_badge && (
-          <div className="flex items-center justify-center mb-12">
+          <div
+            className={`flex items-center justify-center mb-12 ${enter(0)}`}
+            style={{ transitionDelay: isMounted ? "0ms" : "0ms" }}
+          >
             <img
               src="/imgs/badges/phdaily.svg"
               alt="phdaily"
-              className="h-12 object-cover transition-transform duration-300 hover:scale-110"
+              className="h-10 object-cover transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-110"
             />
           </div>
         )}
 
-        <div className="text-center flex flex-col items-center">
-          {/* Announcement */}
-          {hero.announcement.show && (
-            <div>
-              <Link
-                href={hero.announcement.url as any}
-                className="group relative inline-flex items-center gap-2 rounded-full px-4 py-1.5 md:py-2 text-sm font-medium transition-all hover:bg-muted/50"
-              >
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 via-purple-500/20 to-blue-500/20 opacity-0 blur transition-opacity duration-500 group-hover:opacity-100" />
-                <div className="relative flex items-center gap-2 rounded-full border border-primary/20 bg-background/50 px-4 py-1.5 backdrop-blur-xl">
-                  {hero.announcement.label && (
-                    <Badge variant="secondary" className="rounded-full px-2 py-0.5 text-xs bg-primary/10 text-primary border-primary/20">
-                      {hero.announcement.label}
-                    </Badge>
-                  )}
-                  <span className="text-foreground/80 group-hover:text-foreground transition-colors">
-                    {hero.announcement.title}
+        {/* Announcement — Stagger 1 */}
+        {hero.announcement.show && (
+          <div
+            className={`flex justify-center mb-6 ${enter(100)}`}
+            style={{ transitionDelay: isMounted ? "100ms" : "0ms" }}
+          >
+            <Link
+              href={hero.announcement.url as any}
+              className="group relative inline-flex items-center gap-2 transition-all"
+            >
+              <div className="relative flex items-center gap-2 rounded-full border border-border/30 bg-background/60 px-4 py-1.5 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/50">
+                {hero.announcement.label && (
+                  <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary uppercase tracking-wider">
+                    {hero.announcement.label}
                   </span>
-                  <Icon name="arrow-right" className="size-3.5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
-                </div>
-              </Link>
-            </div>
-          )}
+                )}
+                <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors duration-300">
+                  {hero.announcement.title}
+                </span>
+                <svg viewBox="0 0 16 16" className="size-3 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" d="M6 3l5 5-5 5" />
+                </svg>
+              </div>
+            </Link>
+          </div>
+        )}
 
-          {/* Title */}
-          <div className="mt-8 max-w-5xl">
+        {/* Title — Stagger 2: mask reveal */}
+        <div
+          className={`text-center flex flex-col items-center`}
+        >
+          <div
+            className={`max-w-5xl ${enter(200)}`}
+            style={{ transitionDelay: isMounted ? "200ms" : "0ms" }}
+          >
             {texts && texts.length > 1 ? (
-              <h1 className="text-balance text-5xl font-display font-bold tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
-                <span className="block text-foreground">{texts[0]}</span>
-                <span className="block text-orange-600 dark:text-orange-400 pb-2">
+              <h1 className="text-balance font-display font-bold tracking-tight text-foreground text-[clamp(2.75rem,7vw,5.5rem)] leading-[1.05]">
+                <span className="block">{texts[0]}</span>
+                <span className="block pb-2 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
                   {highlightText}
                 </span>
-                <span className="block text-foreground">{texts[1]}</span>
+                <span className="block">{texts[1]}</span>
               </h1>
             ) : (
-              <h1 className="text-balance text-5xl font-display font-bold tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl text-foreground">
+              <h1 className="text-balance font-display font-bold tracking-tight text-foreground text-[clamp(2.75rem,7vw,5.5rem)] leading-[1.05]">
                 {hero.title}
               </h1>
             )}
           </div>
 
-          {/* Description */}
-          <div className="mt-8 max-w-3xl">
+          {/* Decorative brush stroke under highlight */}
+          <svg
+            className={`-mt-2 h-2.5 w-32 text-primary/20 ${enter(350)}`}
+            style={{ transitionDelay: isMounted ? "350ms" : "0ms" }}
+            viewBox="0 0 160 12"
+            fill="none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M2 8c30-5 60-6 90-3s40 4 66-1"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="none"
+            />
+          </svg>
+
+          {/* Description — Stagger 3 */}
+          <div
+            className={`mt-7 max-w-2xl ${enter(400)}`}
+            style={{ transitionDelay: isMounted ? "400ms" : "0ms" }}
+          >
             <p
-              className="text-lg sm:text-xl text-muted-foreground/80 leading-relaxed font-light text-balance"
+              className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light text-balance"
               dangerouslySetInnerHTML={descriptionHtml}
             />
           </div>
 
-          {/* Buttons */}
+          {/* Buttons — Stagger 4 */}
           {hero.buttons && (
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
+            <div
+              className={`mt-10 flex flex-col sm:flex-row gap-3 items-center justify-center ${enter(550)}`}
+              style={{ transitionDelay: isMounted ? "550ms" : "0ms" }}
+            >
               {hero.buttons.map((item, i) => {
-                const isPrimary = item.variant === 'default' || i === 0;
+                const isPrimary = item.variant === "default" || i === 0;
                 return (
                   <Link
                     key={i}
@@ -171,34 +234,38 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                     {isPrimary ? (
                       <Button
                         size="lg"
-                        className="w-full sm:w-auto h-16 sm:h-20 rounded-full px-10 text-lg font-bold
-                          bg-orange-600 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60
-                          text-white shadow-md shadow-orange-600/20
-                          dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600
-                          transition-all duration-300 group/btn"
+                        className="w-full sm:w-auto h-12 sm:h-14 rounded-full px-7 text-sm font-semibold
+                          bg-foreground text-background hover:bg-foreground/85 active:scale-[0.97]
+                          dark:bg-white dark:text-foreground dark:hover:bg-white/90
+                          transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                        style={{
+                          animation: isMounted ? "hero-cta-breathe 4s ease-in-out infinite" : "none",
+                          animationDelay: "1.5s",
+                        }}
                       >
-                        <div className="flex items-center gap-2">
-                          {item.icon && (
-                            <Icon name={item.icon} className="size-5 shrink-0" />
-                          )}
+                        <span className="flex items-center gap-2.5">
+                          {item.icon && <Icon name={item.icon} className="size-4 shrink-0 opacity-70" />}
                           <span>{item.title}</span>
-                        </div>
+                          <span className="inline-flex size-5 items-center justify-center rounded-full bg-background/15 dark:bg-foreground/15 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px]">
+                            <svg viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path strokeLinecap="round" d="M6 3l5 5-5 5" />
+                            </svg>
+                          </span>
+                        </span>
                       </Button>
                     ) : (
                       <Button
                         variant="outline"
                         size="lg"
-                        className="relative w-full sm:w-auto h-16 sm:h-20 rounded-full px-10 text-lg font-semibold
-                          border border-border/50 bg-background/60 backdrop-blur-xl
-                          hover:border-primary/50 hover:text-primary active:scale-[0.97]
-                          transition-all duration-300"
+                        className="w-full sm:w-auto h-12 sm:h-14 rounded-full px-7 text-sm font-semibold
+                          border border-border/30 bg-background/60 backdrop-blur-sm
+                          hover:border-border/60 active:scale-[0.97]
+                          transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
                       >
-                        <div className="relative flex items-center gap-2">
-                          {item.icon && (
-                            <Icon name={item.icon} className="size-5 shrink-0" />
-                          )}
+                        <span className="flex items-center gap-2">
+                          {item.icon && <Icon name={item.icon} className="size-4 shrink-0 opacity-60" />}
                           <span>{item.title}</span>
-                        </div>
+                        </span>
                       </Button>
                     )}
                   </Link>
@@ -209,71 +276,88 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
               <button
                 id="hero-quick-start-btn"
                 onClick={() => {
-                  const event = new CustomEvent('quick-start-story');
+                  const event = new CustomEvent("quick-start-story");
                   window.dispatchEvent(event);
-                  document.getElementById('craft_story')?.scrollIntoView({ behavior: 'smooth' });
+                  document.getElementById("craft_story")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="group/quick w-full sm:w-auto h-16 sm:h-20 rounded-full px-10 text-lg font-bold
-                  bg-orange-600 hover:bg-orange-700 active:scale-[0.97]
-                  text-white shadow-md shadow-orange-600/20
-                  dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600
-                  transition-all duration-300"
+                className="group w-full sm:w-auto h-12 sm:h-14 rounded-full px-7 text-sm font-semibold
+                  bg-foreground/5 text-foreground hover:bg-foreground/10 active:scale-[0.97]
+                  dark:bg-white/[0.06] dark:hover:bg-white/[0.12]
+                  transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
               >
-                <span className="flex items-center justify-center gap-2">
-                  <Icon name="zap" className="size-5" />
+                <span className="flex items-center justify-center gap-2.5">
+                  <svg viewBox="0 0 24 24" className="size-4 opacity-50" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                  </svg>
                   <span>
                     {({
-                      zh: '快速体验',
-                      ja: 'クイック体験',
-                      ko: '빠른 체험',
-                      de: 'Schnellstart',
-                      fr: 'Essai Rapide',
-                      es: 'Prueba Rápida',
-                      pt: 'Teste Rápido',
-                      ru: 'Быстрый старт',
-                    } as Record<string, string>)[locale] || 'Quick Try'}
+                      zh: "快速体验",
+                      ja: "クイック体験",
+                      ko: "빠른 체험",
+                      de: "Schnellstart",
+                      fr: "Essai Rapide",
+                      es: "Prueba Rápida",
+                      pt: "Teste Rápido",
+                      ru: "Быстрый старт",
+                    } as Record<string, string>)[locale] || "Quick Try"}
                   </span>
                 </span>
               </button>
             </div>
           )}
 
-          {/* Hero Image */}
+          {/* Hero Image — Stagger 5: with depth parallax hint */}
           {hero.image?.src && (
-            <div className="mt-20 relative w-full max-w-6xl">
-              <div className="relative rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
-                <Image
-                  src={hero.image.src}
-                  alt={hero.image.alt || "illustration"}
-                  width={1200}
-                  height={675}
-                  priority
-                  quality={100}
-                  className="relative w-full"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                />
+            <div
+              className={`mt-20 relative w-full max-w-6xl ${enter(700)}`}
+              style={{ transitionDelay: isMounted ? "700ms" : "0ms" }}
+            >
+              {/* Outer bezel */}
+              <div className="rounded-[1.5rem] border border-border/20 bg-foreground/[0.015] p-1.5 dark:bg-white/[0.02] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:shadow-[0_8px_48px_-12px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_8px_48px_-12px_rgba(0,0,0,0.5)]">
+                {/* Inner core */}
+                <div className="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-card shadow-[0_4px_32px_-8px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_32px_-8px_rgba(0,0,0,0.4)]">
+                  <Image
+                    src={hero.image.src}
+                    alt={hero.image.alt || "illustration"}
+                    width={1200}
+                    height={675}
+                    priority
+                    quality={100}
+                    className="relative w-full transition-transform duration-1000 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.01]"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  />
+                  {/* Top reflection highlight */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/[0.06] to-transparent dark:from-white/[0.03]" />
+                </div>
               </div>
             </div>
           )}
 
-          {/* Tip */}
+          {/* Tip — Stagger 6 */}
           {hero.tip && (
-            <div className="mt-12">
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm text-primary">
-                <span className="text-base"><Icon name="sparkles" className="size-4 text-orange-500" /></span>
+            <div
+              className={`mt-12 ${enter(850)}`}
+              style={{ transitionDelay: isMounted ? "850ms" : "0ms" }}
+            >
+              <div className="inline-flex items-center gap-2 rounded-full border border-border/20 bg-foreground/[0.02] px-4 py-1.5 text-sm text-muted-foreground/60">
+                <Icon name="sparkles" className="size-3.5 text-primary/50" />
                 {hero.tip}
               </div>
             </div>
           )}
 
-          {/* Happy Users */}
+          {/* Happy Users — Stagger 7 */}
           {hero.show_happy_users && (
-            <div className="mt-8">
+            <div
+              className={`mt-8 ${enter(950)}`}
+              style={{ transitionDelay: isMounted ? "950ms" : "0ms" }}
+            >
               <HappyUsers />
             </div>
           )}
         </div>
       </div>
+
     </section>
   );
 }, (prevProps, nextProps) => {

@@ -9,7 +9,6 @@ import {
 
 import AutoScroll from "embla-carousel-auto-scroll";
 import { Section as SectionType } from "@/types/blocks/section";
-import { Star } from "lucide-react";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -29,41 +28,32 @@ export default function Testimonial({ section }: { section: SectionType }) {
     })
   );
 
-  if (section.disabled) {
-    return null;
-  }
+  if (section.disabled) return null;
 
   return (
     <section
       ref={containerRef}
       id={section.name}
-      className="relative py-20 lg:py-28 overflow-hidden"
+      className="relative py-28 lg:py-36 overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-background" />
-      <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
-
       <div className="container relative z-10">
         {/* Header */}
         <motion.div
           style={{ opacity }}
-          className="mx-auto flex max-w-2xl flex-col items-center gap-3 mb-14 text-center"
+          className="mx-auto flex max-w-xl flex-col items-center gap-4 mb-16 text-center"
         >
           {section.label && (
-            <span className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/5 px-3 py-1 text-xs font-medium text-foreground">
-              <Star className="w-3.5 h-3.5 text-orange-500" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-border/30 bg-background/80 px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium text-muted-foreground">
               {section.label}
             </span>
           )}
-
           {section.title && (
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground leading-[1.1]">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl leading-[1.1]">
               {section.title}
             </h2>
           )}
-
           {section.description && (
-            <p className="max-w-xl text-base sm:text-lg text-muted-foreground/80 leading-relaxed font-light">
+            <p className="max-w-md text-base text-muted-foreground/70 leading-relaxed font-light">
               {section.description}
             </p>
           )}
@@ -99,46 +89,48 @@ export default function Testimonial({ section }: { section: SectionType }) {
 
 function TestimonialCard({ item }: { item: any }) {
   return (
-    <div className="card-hover-lift group w-[300px] sm:w-[380px] rounded-2xl border border-border bg-card hover:bg-muted/30 transition-colors duration-300">
-      <div className="p-6 h-full flex flex-col">
-        {/* Quote icon */}
-        {/* Decorative serif quotation mark */}
-        <span className="font-display text-6xl leading-none text-orange-500/15 select-none">&ldquo;</span>
+    <div className="w-[300px] sm:w-[380px]">
+      {/* Outer bezel */}
+      <div className="rounded-[1.25rem] border border-border/15 bg-foreground/[0.015] p-1.5 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/30 dark:bg-white/[0.02]">
+        {/* Inner core */}
+        <div className="rounded-[calc(1.25rem-0.375rem)] bg-card p-6 h-full flex flex-col">
+          {/* Decorative serif quotation mark */}
+          <span className="font-display text-5xl leading-none text-foreground/[0.06] select-none">&ldquo;</span>
 
-        {/* Review text */}
-        <blockquote className="flex-1 text-muted-foreground/90 leading-relaxed font-light text-sm italic mb-6">
-          &quot;{item.content}&quot;
-        </blockquote>
+          {/* Review text */}
+          <blockquote className="flex-1 text-muted-foreground/70 leading-relaxed font-light text-sm italic mt-2 mb-6">
+            &quot;{item.content}&quot;
+          </blockquote>
 
-        {/* Author */}
-        <div className="flex items-center gap-3 pt-4 border-t border-border">
-          <Avatar className="size-10 rounded-full ring-1 ring-border">
-            <AvatarImage
-              src={item.image?.src}
-              alt={item.image?.alt || item.title}
-              className="object-cover"
-            />
-            <div className="flex items-center justify-center w-full h-full bg-orange-500/10 font-semibold text-orange-600/60 text-sm">
-              {item.title?.[0]}
-            </div>
-          </Avatar>
-
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-foreground truncate">
-              {item.title}
-            </p>
-            <p className="text-xs text-muted-foreground/60 truncate">
-              {item.sub}
-            </p>
-          </div>
-
-          <div className="flex gap-0.5 shrink-0">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star
-                key={i}
-                className="size-3 fill-amber-500/80 text-amber-500/80"
+          {/* Author */}
+          <div className="flex items-center gap-3 pt-4 border-t border-border/15">
+            <Avatar className="size-9 rounded-full">
+              <AvatarImage
+                src={item.image?.src}
+                alt={item.image?.alt || item.title}
+                className="object-cover"
               />
-            ))}
+              <div className="flex items-center justify-center w-full h-full bg-foreground/[0.04] font-semibold text-foreground/30 text-xs">
+                {item.title?.[0]}
+              </div>
+            </Avatar>
+
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-foreground truncate">
+                {item.title}
+              </p>
+              <p className="text-xs text-muted-foreground/45 truncate">
+                {item.sub}
+              </p>
+            </div>
+
+            <div className="flex gap-0.5 shrink-0">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg key={i} viewBox="0 0 16 16" className="size-3 text-amber-500/60" fill="currentColor">
+                  <path d="M8 1.5l1.9 4.1 4.5.4-3.3 3 .8 4.5L8 11.3 4.1 13.5l.8-4.5-3.3-3 4.5-.4L8 1.5z" />
+                </svg>
+              ))}
+            </div>
           </div>
         </div>
       </div>

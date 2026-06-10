@@ -943,37 +943,36 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
-        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
-        <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.96_0.03_65),transparent)] dark:bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.16_0.02_55),transparent)]" />
+        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '48px 48px' }} />
       </div>
 
       <div className="w-full max-w-6xl mx-auto px-6 py-24 sm:py-32 relative">
 
         {/* Header */}
-        <div className="relative text-center animate-fade-in-up">
+        <div className="relative text-center">
           <div className="inline-flex items-center justify-center mb-6">
-            <div className="flex items-center justify-center size-14 rounded-2xl bg-orange-500/10">
-              <Icon name="book" className="size-7 text-orange-600 dark:text-orange-400" />
+            <div className="flex items-center justify-center size-12 rounded-2xl bg-foreground/[0.04] dark:bg-white/[0.06]">
+              <Icon name="book" className="size-6 text-foreground/40" />
             </div>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight mb-4 leading-[1.15]">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-[3rem] font-bold tracking-tight mb-4 leading-[1.15]">
             {section.header.title}
           </h2>
 
-          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto font-light">
+          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed max-w-xl mx-auto font-light">
             {section.header.subtitle}
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
-            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">1</span>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2 text-xs text-muted-foreground/50">
+            <span className="inline-flex h-4.5 w-4.5 items-center justify-center rounded-full bg-foreground/[0.04] text-[9px] font-semibold tabular-nums">1</span>
             <span>{section.prompt.label}</span>
-            <span className="text-border/60">→</span>
-            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">2</span>
+            <span className="text-border/30">·</span>
+            <span className="inline-flex h-4.5 w-4.5 items-center justify-center rounded-full bg-foreground/[0.04] text-[9px] font-semibold tabular-nums">2</span>
             <span>{section.ai_models.title}</span>
-            <span className="text-border/60">→</span>
-            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">3</span>
+            <span className="text-border/30">·</span>
+            <span className="inline-flex h-4.5 w-4.5 items-center justify-center rounded-full bg-foreground/[0.04] text-[9px] font-semibold tabular-nums">3</span>
             <span>{section.generate_button.text}</span>
           </div>
         </div>
@@ -981,9 +980,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         <GeneratorNavTabs />
 
         {/* Main Panel */}
-        <div className="relative mt-10 animate-fade-in-up animation-delay-1000">
-          <div className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+        <div className="relative mt-10">
+          <div className="rounded-[1.5rem] border border-border/15 bg-foreground/[0.015] p-1 dark:bg-white/[0.02]">
+            <div className="overflow-hidden rounded-[calc(1.5rem-0.25rem)] bg-card">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
 
               {/* Editor (8 cols) */}
               <div className="lg:col-span-8 p-5 sm:p-8 lg:border-r border-border">
@@ -994,9 +994,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   <button
                     onClick={handleRandomPrompt}
                     type="button"
-                    className="group flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/50 hover:bg-muted text-xs font-medium transition-colors"
+                    className="group flex items-center gap-2 px-3 py-1.5 rounded-full bg-foreground/[0.03] hover:bg-foreground/[0.06] text-xs font-medium transition-all duration-300"
                   >
-                    <Icon name="sparkles" className="size-3.5 text-orange-500 group-hover:rotate-12 transition-transform" />
+                    <Icon name="sparkles" className="size-3.5 text-muted-foreground/40 group-hover:text-foreground/60 transition-colors" />
                     <span className="text-muted-foreground group-hover:text-foreground transition-colors">{section.prompt.random_button}</span>
                   </button>
                 </div>
@@ -1013,7 +1013,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                       }
                     }}
                     placeholder={section.prompt.placeholder}
-                    className="min-h-[240px] text-base p-5 rounded-xl bg-background border border-border focus:border-orange-500/50 focus-visible:ring-orange-500/20 transition-all resize-none"
+                    className="min-h-[240px] text-base p-5 rounded-xl bg-background border border-border/15 focus:border-foreground/20 focus-visible:ring-foreground/5 transition-all resize-none"
                   />
                   <div className="pointer-events-none absolute bottom-3 right-4 text-xs font-medium text-muted-foreground/40">
                     {prompt.length} / 2000
@@ -1029,7 +1029,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                     <button
                       key={chip}
                       onClick={() => handleQuickAdd(chip)}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-foreground/[0.03] hover:bg-foreground/[0.06] text-muted-foreground/60 hover:text-foreground transition-all duration-300"
                     >
                       + {chip}
                     </button>
@@ -1056,11 +1056,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               </div>
 
               {/* Sidebar (4 cols) */}
-              <div className="lg:col-span-4 bg-muted/30 p-5 sm:p-8 border-t lg:border-t-0 lg:border-l border-border">
+              <div className="lg:col-span-4 bg-foreground/[0.015] dark:bg-white/[0.02] p-5 sm:p-8 border-t lg:border-t-0 lg:border-l border-border/10">
                 <div className="sticky top-20 space-y-8">
 
                   {/* History */}
-                  <div className="flex items-center justify-between pb-6 border-b border-border">
+                  <div className="flex items-center justify-between pb-6 border-b border-border/15">
                     <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                       {locale === 'zh' ? '历史记录' : 'HISTORY'}
                     </h3>
@@ -1080,10 +1080,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                         <button
                           key={preset.title}
                           onClick={() => handlePresetClick(preset)}
-                          className="group w-full text-left p-4 rounded-xl bg-background hover:bg-background/80 border border-border hover:border-orange-300 dark:hover:border-orange-400/50 transition-all duration-200"
+                          className="group w-full text-left p-4 rounded-xl bg-background hover:bg-foreground/[0.02] border border-border/10 hover:border-border/25 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
                         >
                           <div className="flex items-start gap-3">
-                            <span className="text-foreground/50 group-hover:text-orange-500 group-hover:scale-110 transition-all duration-200">
+                            <span className="text-foreground/30 group-hover:text-foreground/60 group-hover:scale-110 transition-all duration-300">
                               {preset.icon}
                             </span>
                             <div>
@@ -1101,7 +1101,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   </div>
 
                   {/* Advanced Options */}
-                  <div className="pt-6 border-t border-border">
+                  <div className="pt-6 border-t border-border/15">
                     <details className="group">
                       <summary className="list-none flex items-center justify-between cursor-pointer py-2">
                         <div className="flex items-center gap-2">
@@ -1110,7 +1110,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                             {section.advanced_options.title}
                           </span>
                         </div>
-                        <Icon name="chevron-down" className="size-3.5 text-muted-foreground group-open:rotate-180 transition-transform duration-200" />
+                        <Icon name="chevron-down" className="size-3.5 text-muted-foreground/40 group-open:rotate-180 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]" />
                       </summary>
 
                       <div className="mt-4 space-y-4">
@@ -1142,43 +1142,44 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 </div>
               </div>
             </div>
+            </div>
           </div>
         </div>
 
         {/* Model Selection */}
-        <div className="space-y-6 animate-fade-in-up animation-delay-2000">
+        <div className="space-y-6">
           <div className="flex items-center gap-3 mt-8">
             <h3 className="text-sm font-semibold text-foreground">
               {section.ai_models.title}
             </h3>
-            <div className="h-px flex-1 bg-border" />
+            <div className="h-px flex-1 bg-border/15" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {AI_MODELS.map((model) => {
               const isSelected = selectedModel === model.id;
               return (
                 <button
                   key={model.id}
                   onClick={() => setSelectedModel(model.id)}
-                  className={`group p-5 rounded-xl text-left transition-all duration-200 ${
+                  className={`group p-5 rounded-2xl text-left transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                     isSelected
-                      ? 'bg-orange-500/[0.08] border-2 border-orange-500/40'
-                      : 'bg-card border border-border hover:border-orange-300 dark:hover:border-orange-400/50 hover:bg-muted/30'
+                      ? 'bg-foreground/[0.03] border border-foreground/15'
+                      : 'bg-card border border-border/15 hover:border-border/30 hover:bg-foreground/[0.01]'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <span className={`transition-all ${isSelected ? 'text-orange-600 dark:text-orange-400' : 'text-muted-foreground opacity-60 group-hover:opacity-100'}`}>
+                    <span className={`transition-all duration-300 ${isSelected ? 'text-foreground/70' : 'text-muted-foreground/40 group-hover:text-muted-foreground/70'}`}>
                       {model.icon}
                     </span>
                     {isSelected && (
-                      <div className="size-5 rounded-full bg-orange-500 flex items-center justify-center">
-                        <Icon name="check" className="size-3 text-white" />
+                      <div className="size-5 rounded-full bg-foreground flex items-center justify-center">
+                        <Icon name="check" className="size-3 text-background dark:text-foreground" />
                       </div>
                     )}
                   </div>
 
-                  <h4 className={`text-sm font-bold tracking-tight mb-1 ${isSelected ? 'text-orange-900 dark:text-orange-100' : 'text-foreground/70 group-hover:text-foreground'}`}>
+                  <h4 className={`text-sm font-bold tracking-tight mb-1 transition-colors duration-300 ${isSelected ? 'text-foreground' : 'text-foreground/60 group-hover:text-foreground'}`}>
                     {model.name}
                   </h4>
                   <p className="text-xs text-muted-foreground leading-relaxed mb-3">
@@ -1199,11 +1200,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         </div>
 
         {/* Generate Button */}
-        <div id="generate-button" className="flex justify-center pt-6 animate-fade-in-up animation-delay-3000">
+        <div id="generate-button" className="flex justify-center pt-6">
           <div className="relative group w-full max-w-md">
             <Button
               onClick={handleGenerateClick}
-              className="w-full h-14 text-lg font-semibold bg-orange-600 hover:bg-orange-700 disabled:opacity-60 text-white shadow-md shadow-orange-600/20 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 rounded-xl border-none"
+              className="w-full h-14 text-base font-semibold bg-foreground text-background hover:bg-foreground/85 disabled:opacity-50 rounded-full border-none transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] dark:bg-white dark:text-foreground dark:hover:bg-white/90"
             >
               <div className="flex items-center justify-center gap-2">
                 {isGenerating ? (
@@ -1224,19 +1225,15 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
             {/* Usage Hints */}
             <div className="mt-6 space-y-3">
-              <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-xs text-muted-foreground">
-                <div className="flex items-center gap-1.5">
-                  <div className="size-1.5 rounded-full bg-orange-400" />
-                  <span>{locale === 'zh' ? '免费额度' : 'Free Credit'}</span>
-                </div>
-                <div className="hidden sm:block w-px h-3 bg-border" />
+              <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-xs text-muted-foreground/45">
+                <span>{locale === 'zh' ? '免费额度' : 'Free Credit'}</span>
+                <div className="hidden sm:block w-px h-3 bg-border/30" />
                 <div>{locale === 'zh' ? '预计耗时: ~10秒' : 'Estimated: ~10 seconds'}</div>
-                <div className="hidden sm:block w-px h-3 bg-border" />
-                <div className="text-emerald-600 dark:text-emerald-400 font-medium">{locale === 'zh' ? '优质内容' : 'Premium Quality'}</div>
+                <div className="hidden sm:block w-px h-3 bg-border/30" />
+                <div>{locale === 'zh' ? '优质内容' : 'Premium Quality'}</div>
               </div>
 
-              <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground/60 max-w-lg mx-auto">
-                <Icon name="lightbulb" className="size-3 text-amber-500 shrink-0" />
+              <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground/35 max-w-lg mx-auto">
                 <span>{locale === 'zh' ? '提供具体的提示词可以获得更好的结果。' : 'Be specific in your prompt for better results.'}</span>
               </div>
             </div>
@@ -1246,25 +1243,27 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         {/* Generated Story Output */}
         {!isGenerating && !generatedStory && (
           <div className="mt-16 flex flex-col items-center justify-center py-16 text-center">
-            <div className="flex items-center justify-center size-16 rounded-2xl bg-muted/50 mb-6">
-              <Icon name="book-open" className="size-7 text-muted-foreground/40" />
+            <div className="flex items-center justify-center size-14 rounded-2xl bg-foreground/[0.03] dark:bg-white/[0.04] mb-5">
+              <Icon name="book-open" className="size-6 text-muted-foreground/30" />
             </div>
-            <p className="text-lg font-medium text-muted-foreground/60">
+            <p className="text-base font-medium text-muted-foreground/45">
               {locale === 'zh' ? '你的故事将在这里呈现' : 'Your story will appear here'}
             </p>
-            <p className="text-sm text-muted-foreground/40 mt-2">
+            <p className="text-sm text-muted-foreground/30 mt-1.5">
               {locale === 'zh' ? '填写提示词，点击生成按钮开始创作' : 'Fill in a prompt and click generate to start creating'}
             </p>
           </div>
         )}
         {(isGenerating || generatedStory) && (
-          <div ref={outputRef} className="mt-16 animate-fade-in-up">
-            <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm">
+          <div ref={outputRef} className="mt-16">
+            {/* Outer bezel */}
+            <div className="rounded-[1.5rem] border border-border/15 bg-foreground/[0.015] p-1.5 dark:bg-white/[0.02]">
+              <div className="overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-card">
               {/* Header */}
-              <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-8 border-b border-border bg-orange-500/[0.03] dark:bg-orange-500/[0.05] gap-4">
+              <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-8 border-b border-border/10 gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center size-10 rounded-xl bg-orange-500/10">
-                    <Icon name="book-open" className="size-5 text-orange-600 dark:text-orange-400" />
+                  <div className="flex items-center justify-center size-10 rounded-xl bg-foreground/[0.04] dark:bg-white/[0.06]">
+                    <Icon name="book-open" className="size-5 text-foreground/40" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold tracking-tight text-foreground">{section.output.title}</h3>
@@ -1323,6 +1322,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                     </div>
                   </div>
                 )}
+              </div>
               </div>
             </div>
           </div>

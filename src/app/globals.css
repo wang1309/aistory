@@ -424,6 +424,32 @@
   .animate-music-bar {
     animation: music-bar 1.2s infinite ease-in-out alternate;
   }
+
+  /* ===== Hero Cinematic Animations ===== */
+  @keyframes hero-orb-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(8%, 12%) scale(1.05); }
+    66% { transform: translate(-5%, 5%) scale(0.97); }
+  }
+  @keyframes hero-orb-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-10%, -8%) scale(1.03); }
+    66% { transform: translate(6%, -3%) scale(0.98); }
+  }
+  @keyframes hero-orb-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(5%, -10%) scale(1.04); }
+    66% { transform: translate(-8%, 6%) scale(0.96); }
+  }
+  @keyframes hero-cta-breathe {
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.5 0 0 / 0); }
+    50% { box-shadow: 0 0 0 6px oklch(0.5 0 0 / 0.06); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [style*="hero-orb"], [style*="hero-cta-breathe"] {
+      animation: none !important;
+    }
+  }
 }
 
 @layer base {

@@ -987,7 +987,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           <Icon name="RiArrowRightSLine" className="size-3.5 shrink-0 opacity-40" />
           <button
             type="button"
-            onClick={() => router.push("/ai-write-tool")}
+            onClick={() => router.push("/ai-write")}
             className="hidden transition hover:text-foreground sm:inline"
           >
             AI Write
