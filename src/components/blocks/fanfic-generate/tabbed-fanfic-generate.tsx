@@ -653,8 +653,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
           </div>
         </div>
         
-        <h1 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-600 to-orange-600 dark:from-orange-200 dark:via-orange-200 dark:to-orange-200 animate-shimmer">
+        <h1 className="text-5xl sm:text-7xl font-display font-bold tracking-tighter mb-8 leading-[0.9]">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-400 dark:from-orange-200 dark:via-amber-300 dark:to-orange-300 animate-shimmer">
             {section.tabbed?.hero?.title || 'Fanfiction Creation'}
           </span>
         </h1>
@@ -725,7 +725,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   <div className="glass-premium rounded-[2rem] p-8 border border-white/10 space-y-8">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                       <div>
-                        <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/40">
+                        <p className="text-xs font-medium tracking-wide text-muted-foreground/50">
                           {section.source.label}
                         </p>
                         <h3 className="text-2xl font-semibold mt-3">
@@ -755,7 +755,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                     {sourceType === 'preset' ? (
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground/50 mb-4">
+                        <p className="text-xs font-medium tracking-wide text-muted-foreground/50 mb-4">
                           {tabbedForm?.popular_works_label || tabbedForm?.all_works_label || 'Popular IP Works'}
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -763,10 +763,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                             <button
                               key={work.id}
                               className={cn(
-                                "p-4 rounded-2xl border transition-all text-left",
+                                "p-4 rounded-2xl border card-hover-lift transition-all text-left",
                                 selectedPresetWork === work.id
                                   ? "border-orange-500 bg-orange-500/10"
-                                  : "border-white/10 hover:border-white/30"
+                                  : "border-border/10 hover:border-border/30"
                               )}
                               onClick={() => handlePresetWorkChange(work.id)}
                             >
@@ -782,7 +782,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                       </div>
                     ) : (
                       <div>
-                        <Label className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50 mb-2 block">
+                        <Label className="text-xs font-medium tracking-wide text-muted-foreground/50 mb-2 block">
                           {section.source.custom_label}
                         </Label>
                         <Textarea
@@ -790,7 +790,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                           value={customWorkName}
                           onChange={(e) => setCustomWorkName(e.target.value)}
                           rows={2}
-                          className="bg-white/5 border-white/10"
+                          className="bg-muted/5 border-border/10"
                         />
                       </div>
                     )}
@@ -822,10 +822,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                             setSelectedCharacters([]);
                           }}
                           className={cn(
-                            "w-full px-6 py-4 rounded-2xl border transition-all text-left",
+                            "w-full px-6 py-4 rounded-2xl border card-hover-lift transition-all text-left",
                             pairingType === option.value
                               ? "bg-orange-500 text-white border-orange-500 shadow-lg"
-                              : "bg-white/5 border-white/10 text-muted-foreground hover:text-foreground"
+                              : "bg-muted/5 border-border/10 text-muted-foreground hover:text-foreground"
                           )}
                         >
                           <div className="font-semibold text-lg">{option.label}</div>
@@ -835,7 +835,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                     {/* Preset Characters */}
                     <div className="space-y-4">
-                      <Label className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">
+                      <Label className="text-xs font-medium tracking-wide text-muted-foreground/50">
                         {section.tabbed?.form?.preset_characters_label}
                       </Label>
                       <div className="flex flex-wrap gap-3">
@@ -847,7 +847,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               "px-5 py-2 rounded-full text-sm font-semibold border transition-all",
                               selectedCharacters.includes(char.id)
                                 ? "bg-orange-500 text-white border-orange-500 shadow-lg"
-                                : "bg-white/5 border-white/10 hover:bg-white/10"
+                                : "bg-muted/5 border-border/10 hover:bg-muted/10"
                             )}
                           >
                             {getCharacterName(char, locale)}
@@ -858,7 +858,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                     {/* Custom Characters */}
                     <div className="space-y-3">
-                      <Label className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">
+                      <Label className="text-xs font-medium tracking-wide text-muted-foreground/50">
                         {section.tabbed?.form?.custom_characters_label}
                       </Label>
                       <div className="flex gap-3">
@@ -873,7 +873,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               handleAddCustomCharacter();
                             }
                           }}
-                          className="flex-1 h-12 px-4 rounded-2xl bg-white/5 border border-white/10 focus:border-orange-500/50 focus:ring-0"
+                          className="flex-1 h-12 px-4 rounded-2xl bg-muted/5 border border-border/10 focus:border-orange-500/50 focus:ring-0"
                         />
                         <Button
                           onClick={handleAddCustomCharacter}
@@ -917,7 +917,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                       {/* Plot Type */}
                       <div className="space-y-4">
-                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.tabbed?.form?.plot_type_label}</Label>
+                        <Label className="text-xs font-medium tracking-wide text-muted-foreground/50 ml-1">{section.tabbed?.form?.plot_type_label}</Label>
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                           {[
                             { value: 'canon', label: section.tabbed?.form?.canon },
@@ -933,10 +933,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               key={type.value}
                               onClick={() => setPlotType(type.value)}
                               className={cn(
-                                "py-3 px-2 rounded-xl text-sm font-medium transition-all duration-300 border",
-                                plotType === type.value 
+                                "py-3 px-2 rounded-xl text-sm font-medium card-hover-lift transition-all duration-300 border",
+                                plotType === type.value
                                   ? "bg-orange-500 text-white border-orange-500 shadow-lg"
-                                  : "bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20"
+                                  : "bg-muted/5 border-border/5 hover:bg-muted/10 hover:border-border/20"
                               )}
                             >
                               {type.label}
@@ -947,7 +947,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                       {/* Language */}
                       <div className="space-y-4">
-                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">
+                        <Label className="text-xs font-medium tracking-wide text-muted-foreground/50 ml-1">
                           {section.tabbed?.form?.language_label || section.prompt.language_label}
                         </Label>
                         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -960,8 +960,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               className={cn(
                                 "relative py-3 px-3 rounded-2xl flex flex-col items-center gap-2 border transition-all",
                                 language === code
-                                  ? "bg-white/10 border-white/30 text-foreground shadow-lg shadow-orange-500/20"
-                                  : "bg-white/5 border-white/10 text-muted-foreground hover:text-foreground"
+                                  ? "bg-muted/10 border-border/30 text-foreground shadow-lg shadow-orange-500/20"
+                                  : "bg-muted/5 border-border/10 text-muted-foreground hover:text-foreground"
                               )}
                             >
                               {language === code && (
@@ -985,8 +985,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                       {/* Prompt */}
                       <div className="space-y-4 relative group">
-                        <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/10 to-orange-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
-                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 ml-1">{section.tabbed?.form?.story_prompt_label}</Label>
+                        <div className="absolute -inset-4 bg-orange-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
+                        <Label className="text-xs font-medium tracking-wide text-muted-foreground/50 ml-1">{section.tabbed?.form?.story_prompt_label}</Label>
                         <Textarea
                           ref={promptRef}
                           placeholder={section.tabbed?.form?.story_prompt_placeholder}
@@ -1015,7 +1015,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                      <div className="space-y-10">
                        {/* AI Model Selection */}
                        <div className="space-y-4">
-                         <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">
+                         <Label className="text-xs font-medium tracking-wide text-muted-foreground/50">
                            {section.ai_models?.title || 'AI Model'}
                          </Label>
                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -1025,10 +1025,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                                type="button"
                                onClick={() => setSelectedModel(model.id)}
                                className={cn(
-                                 "w-full text-left px-5 py-4 rounded-2xl border transition-all bg-white/5 hover:bg-white/10",
+                                 "w-full text-left px-5 py-4 rounded-2xl border card-hover-lift transition-all bg-muted/5 hover:bg-muted/10",
                                  selectedModel === model.id
                                    ? "border-orange-500/70 shadow-lg shadow-orange-500/20"
-                                   : "border-white/10"
+                                   : "border-border/10"
                                )}
                              >
                                <div className="flex items-center justify-between mb-1">
@@ -1051,17 +1051,17 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                           <div className="space-y-6">
-                             <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.tabbed?.form?.advanced_options?.ooc_level}</Label>
+                             <Label className="text-xs font-medium tracking-wide text-muted-foreground/50">{section.tabbed?.form?.advanced_options?.ooc_level}</Label>
                              <div className="space-y-3">
                                 {['slight', 'moderate', 'bold'].map((opt) => (
                                   <button
                                     key={opt}
                                     onClick={() => setAdvancedOptions({...advancedOptions, ooc: opt})}
                                     className={cn(
-                                      "w-full text-left px-6 py-4 rounded-xl border transition-all",
+                                      "w-full text-left px-6 py-4 rounded-xl border card-hover-lift transition-all",
                                       advancedOptions.ooc === opt
                                         ? "bg-orange-500/10 border-orange-500/50 text-orange-400"
-                                        : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10"
+                                        : "bg-muted/5 border-border/5 text-muted-foreground hover:bg-muted/10"
                                     )}
                                   >
                                     <div className="font-bold text-sm uppercase tracking-wide">{opt}</div>
@@ -1071,17 +1071,17 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                           </div>
 
                           <div className="space-y-6">
-                             <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{section.tabbed?.form?.advanced_options?.story_length}</Label>
+                             <Label className="text-xs font-medium tracking-wide text-muted-foreground/50">{section.tabbed?.form?.advanced_options?.story_length}</Label>
                              <div className="space-y-3">
                                 {['short', 'medium', 'long'].map((opt) => (
                                   <button
                                     key={opt}
                                     onClick={() => setAdvancedOptions({...advancedOptions, length: opt})}
                                     className={cn(
-                                      "w-full text-left px-6 py-4 rounded-xl border transition-all",
+                                      "w-full text-left px-6 py-4 rounded-xl border card-hover-lift transition-all",
                                       advancedOptions.length === opt
                                         ? "bg-orange-500/10 border-orange-500/50 text-orange-400"
-                                        : "bg-white/5 border-white/5 text-muted-foreground hover:bg-white/10"
+                                        : "bg-muted/5 border-border/5 text-muted-foreground hover:bg-muted/10"
                                     )}
                                   >
                                     <div className="font-bold text-sm uppercase tracking-wide">{opt}</div>
@@ -1099,7 +1099,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                   <div className="space-y-12">
                     {!hasStartedGeneration ? (
                       <div className="text-center py-12">
-                        <div className="inline-flex p-6 rounded-full bg-white/5 mb-8 animate-pulse">
+                        <div className="inline-flex p-6 rounded-full bg-muted/5 mb-8 animate-pulse">
                           <Zap className="size-12 text-yellow-400" />
                         </div>
                         <h2 className="text-3xl font-bold mb-6">{section.tabbed?.steps?.step5?.title}</h2>
@@ -1121,7 +1121,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
                         <Button
                           onClick={handleGenerate}
-                          className="h-16 px-12 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-500 text-white text-lg font-bold shadow-[0_0_30px_rgba(236,72,153,0.4)] hover:shadow-[0_0_50px_rgba(236,72,153,0.6)] hover:scale-105 transition-all duration-500"
+                          className="h-16 px-12 rounded-full bg-orange-500 text-white text-lg font-bold shadow-md shadow-orange-500/25 hover:bg-orange-600 active:scale-[0.97] transition-all"
                         >
                           <Sparkles className="mr-2 size-5" />
                           <span>{section.tabbed?.form?.generation?.start_button}</span>
@@ -1165,7 +1165,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                             {generatedTags.length > 0 && (
                               <div className="flex flex-wrap gap-2 mb-8">
                                 {generatedTags.map(tag => (
-                                  <span key={tag} className="px-3 py-1 rounded-full bg-white/5 text-xs font-bold text-muted-foreground border border-white/5">{tag}</span>
+                                  <span key={tag} className="px-3 py-1 rounded-full bg-muted/5 text-xs font-bold text-muted-foreground border border-border/5">{tag}</span>
                                 ))}
                               </div>
                             )}
@@ -1183,7 +1183,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               </div>
                             )}
                           </div>
-                          <div className="bg-white/5 p-6 flex justify-end gap-4">
+                          <div className="bg-muted/5 p-6 flex justify-end gap-4">
                             <Button
                               variant="ghost"
                               disabled={!generatedFanfic}
