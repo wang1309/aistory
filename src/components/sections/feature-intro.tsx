@@ -27,7 +27,7 @@ export default function FeatureIntro({ section, accent = "orange" }: Props) {
             transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
           >
             {section.label && (
-              <p className={`text-xs font-semibold uppercase tracking-widest ${a.text}`}>
+              <p className={`text-sm font-medium tracking-wide ${a.text}`}>
                 {section.label}
               </p>
             )}

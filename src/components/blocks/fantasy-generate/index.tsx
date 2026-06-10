@@ -366,7 +366,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
             </div>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
+          <h1 className="text-5xl sm:text-7xl font-display font-bold tracking-tighter mb-8 leading-[0.9]">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-700 via-orange-600 to-orange-700 dark:from-white dark:via-orange-200 dark:to-orange-400 animate-shimmer">
               {section.header.title}
             </span>
@@ -542,7 +542,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                         key={key}
                         onClick={() => setWbSubgenre(key)}
                         className={cn(
-                          "p-4 rounded-xl border-2 text-center transition-all hover:border-orange-500/50",
+                          "p-4 rounded-xl border-2 text-center transition-all hover:border-orange-500/50 active:scale-95",
                           wbSubgenre === key
                             ? "border-orange-500 bg-orange-500/10"
                             : "border-border"
@@ -810,7 +810,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                 type="button"
                 onClick={() => setSelectedModel(model.id)}
                 className={cn(
-                  "p-4 rounded-xl border-2 text-left transition-all hover:border-orange-500/50 relative",
+                  "card-hover-lift p-4 rounded-xl border-2 text-left transition-all hover:border-orange-500/50 active:scale-95 relative",
                   selectedModel === model.id
                     ? "border-orange-500 bg-orange-500/10"
                     : "border-border bg-card"
@@ -841,7 +841,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         </div>
 
         {/* Generate Button */}
-        <div className="glass-premium rounded-3xl p-8 bg-gradient-to-r from-orange-50 to-orange-50 dark:from-orange-950/20 dark:to-orange-950/20 mb-8">
+        <div className="glass-premium rounded-3xl p-8 bg-orange-50 dark:bg-orange-950/20 mb-8">
           <Button
             onClick={handleGenerateClick}
             disabled={isGenerating}
