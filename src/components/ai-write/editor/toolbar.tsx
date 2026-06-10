@@ -110,7 +110,7 @@ export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete }: Toolba
 
   return (
     <TooltipProvider>
-      <div className="flex flex-wrap items-center gap-1 border-b border-border/40 px-2 py-2 sm:px-3">
+      <div className="sticky top-0 z-10 flex flex-wrap items-center gap-1 border-b border-border/40 bg-background px-2 py-2 sm:px-3">
         <ToolbarButton
           command={() => editor.chain().focus().toggleBold().run()}
           icon={RiBold}
