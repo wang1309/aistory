@@ -533,7 +533,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
         {/* Header */}
         <div className="mt-8 mx-auto max-w-3xl text-center mb-10">
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
+          <h1 className="text-4xl font-display font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
             {section.header.title}
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -586,7 +586,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                               {examplePrompts.map((category, index) => (
                                 <div key={index} className="space-y-2">
-                                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{category.category}</div>
+                                  <div className="text-xs font-medium tracking-wide text-muted-foreground/50">{category.category}</div>
                                   <div className="space-y-1">
                                     {category.prompts.map((prompt, promptIndex) => (
                                       <button
@@ -682,7 +682,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                   <Button
                     onClick={handleGenerate}
                     disabled={isGenerating}
-                    className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 transition-colors"
+                    className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 shadow-md shadow-orange-600/20 active:scale-[0.97] transition-all"
                   >
                     {isGenerating ? (
                       <div className="flex items-center gap-2">
@@ -768,7 +768,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                   <div
                     key={titleObj.id}
                     className={cn(
-                      "group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] transition-all duration-300",
+                      "group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] card-hover-lift transition-all duration-300",
                       titleObj.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
                     )}
                     style={{ transitionDelay: `${index * 80}ms` }}
