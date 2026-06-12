@@ -7,7 +7,7 @@ import { AnimatedContainer } from "@/components/ui/animated-container"
 import { cn } from "@/lib/utils"
 import { useLocale } from "next-intl"
 import { PRESET_WORKS, getWorkById, getCharacterName, getCharacterById, getWorkName } from "@/lib/preset-works"
-import { BookOpen, Heart, Sparkles } from "lucide-react"
+import { BookOpen, Heart, Sparkles, Tv, Gamepad2, Film } from "lucide-react"
 
 interface SourceWorkSelectorProps {
   sourceType: 'preset' | 'custom'
@@ -132,10 +132,11 @@ export function SourceWorkSelector({
                     onClick={() => onPresetWorkChange(work.id)}
                   >
                     <div className="text-center">
-                      <div className="text-2xl mb-2">
-                        {work.category === 'anime' ? '🎌' :
-                         work.category === 'novel' ? '📚' :
-                         work.category === 'movie' ? '🎬' : '🎮'}
+                      <div className="mb-2 flex justify-center">
+                        {work.category === 'anime' ? <Tv className="h-6 w-6 text-primary/60" /> :
+                         work.category === 'novel' ? <BookOpen className="h-6 w-6 text-primary/60" /> :
+                         work.category === 'movie' ? <Film className="h-6 w-6 text-primary/60" /> :
+                         <Gamepad2 className="h-6 w-6 text-primary/60" />}
                       </div>
                       <div className="font-medium text-sm">
                         {getWorkName(work, locale)}

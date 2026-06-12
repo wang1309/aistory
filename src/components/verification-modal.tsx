@@ -116,7 +116,7 @@ export default function VerificationModal({
             </div>
           ) : (
             <div className="p-3 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 rounded-md text-sm text-center">
-              ⚠️ {t("verification.not_configured")}
+              {t("verification.not_configured")}
             </div>
           )}
         </div>

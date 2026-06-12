@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { useLocale } from "next-intl";
 import confetti from "canvas-confetti";
 import { cn } from "@/lib/utils";
+import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { StoryStorage } from "@/lib/story-storage";
 import { ChevronDown, Settings2, Sparkles, Zap, Palette, Copy, RefreshCw, Wand2, BookOpen, Eraser, Castle, Rocket, Building2, Landmark, Scroll, Bot, Star, Skull, User } from "lucide-react";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
@@ -27,6 +28,8 @@ import type { StoryStatus } from "@/models/story";
 import type { BackstoryGenerate as BackstoryGenerateType } from "@/types/blocks/backstory-generate";
 import type { SavedStory } from "@/lib/story-storage";
 import BackstoryBreadcrumb from "./breadcrumb";
+import { useRouter } from "@/i18n/navigation";
+import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -52,6 +55,7 @@ interface BackstoryGenerateProps {
 export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     const locale = useLocale();
     const { user, setShowSignModal } = useAppContext();
+    const router = useRouter();
 
     // Helper function to get nested translations
     const t = (path: string) => {
@@ -91,21 +95,6 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
         }
     ], [section]);
 
-    // ========== LANGUAGE OPTIONS ==========
-    const LANGUAGE_OPTIONS = useMemo(() => [
-        { code: 'en', name: 'English', flag: '\ud83c\uddfa\ud83c\uddf8' },
-        { code: 'zh', name: '\u4e2d\u6587', flag: '\ud83c\udde8\ud83c\uddf3' },
-        { code: 'ja', name: '\u65e5\u672c\u8a9e', flag: '\ud83c\uddef\ud83c\uddf5' },
-        { code: 'ko', name: '\ud55c\uad6d\uc5b4', flag: '\ud83c\uddf0\ud83c\uddf7' },
-        { code: 'es', name: 'Espa\u00f1ol', flag: '\ud83c\uddea\ud83c\uddf8' },
-        { code: 'fr', name: 'Fran\u00e7ais', flag: '\ud83c\uddeb\ud83c\uddf7' },
-        { code: 'de', name: 'Deutsch', flag: '\ud83c\udde9\ud83c\uddea' },
-        { code: 'pt', name: 'Portugu\u00eas', flag: '\ud83c\uddf5\ud83c\uddf9' },
-        { code: 'ru', name: '\u0420\u0443\u0441\u0441\u043a\u0438\u0439', flag: '\ud83c\uddf7\ud83c\uddfa' },
-        { code: 'ar', name: '\u0627\u0644\u0639\u0631\u0628\u064a\u0629', flag: '\ud83c\udde6\ud83c\uddea' },
-        { code: 'hi', name: '\u0939\u093f\u0928\u094d\u0926\u0940', flag: '\ud83c\uddee\ud83c\uddf3' },
-        { code: 'it', name: 'Italiano', flag: '\ud83c\uddee\ud83c\uddf9' },
-    ], []);
 
     // ========== WORLDVIEW OPTIONS ==========
     const WORLDVIEW_OPTIONS = useMemo(() => [
@@ -544,10 +533,10 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                 onError={handleTurnstileError}
             />
 
-            <main className="container max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
+            <main className="container max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
                 {/* Breadcrumb Navigation */}
-                <div className="mb-6 flex justify-start">
-                    <div className="inline-flex items-center rounded-full border border-border/60 bg-card/80 px-4 py-1.5 text-xs text-muted-foreground shadow-sm">
+                <div className="mb-10 flex justify-start">
+                    <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
                         <BackstoryBreadcrumb
                             homeText={t('ui.breadcrumb_home')}
                             currentText={t('ui.breadcrumb_current')}
@@ -555,21 +544,52 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                     </div>
                 </div>
 
-                {/* Minimal Header */}
-                <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
-                    <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="space-y-4"
-                    >
-                        <h1 className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-foreground">
-                            {t('ui.title')}
-                        </h1>
-                        <p className="text-lg text-muted-foreground/80 leading-relaxed">
-                            {t('ui.subtitle')}
-                        </p>
-                    </motion.div>
+                {/* Header */}
+                <div className="mx-auto max-w-2xl text-center mb-14 sm:mb-18">
+                    {/* Double-bezel icon container */}
+                    <div className="flex justify-center mb-6">
+                        <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
+                            <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
+                                <User className="size-6 text-orange-600 dark:text-orange-400" />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Eyebrow badge */}
+                    <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+                        <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+                        AI Character Builder
+                    </span>
+
+                    {/* Title with gradient split */}
+                    <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+                        Free{" "}
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+                            Backstory
+                        </span>
+                        {" "}Generator
+                    </h1>
+
+                    {/* Decorative brush stroke */}
+                    <div className="flex justify-center">
+                        <svg
+                            className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
+                            viewBox="0 0 160 12"
+                            fill="none"
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                                d="M2 8c30-5 60-6 90-3s40 4 66-1"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
+                        {t('ui.subtitle')}
+                    </p>
                 </div>
 
                 <GeneratorNavTabs />
@@ -653,7 +673,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                             </SelectTrigger>
                                             <SelectContent>
                                                 {LANGUAGE_OPTIONS.map(l => (
-                                                    <SelectItem key={l.code} value={l.code}>{l.name}</SelectItem>
+                                                    <SelectItem key={l.code} value={l.code}><span className="mr-2">{l.flag}</span>{l.name}</SelectItem>
                                                 ))}
                                             </SelectContent>
                                         </Select>
@@ -876,6 +896,13 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                             translations={completionGuideTranslations}
                             onCreateAnother={handleCreateAnother}
                             onSave={handleSaveClick}
+                            onContinue={() => {
+                                try {
+                                    window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedBackstory }));
+                                } catch {}
+                                router.push(buildContinueRoute({ source: "backstory-generator" }) as any);
+                            }}
+                            continueLabel={locale === "zh" ? "续写" : "Continue in AI Write"}
                             isSaveDisabled={isSavingStory}
                         />
                     </motion.div>

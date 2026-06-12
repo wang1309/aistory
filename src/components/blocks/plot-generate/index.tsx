@@ -23,6 +23,7 @@ import PlotToStoryDialog from "./plot-to-story-dialog";
 import PlotHistoryDropdown from "@/components/plot-history-dropdown";
 import PlotBreadcrumb from "./breadcrumb";
 import { cn } from "@/lib/utils";
+import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { ChevronDown, Settings, Zap, Sparkles, Palette, BookOpen } from "lucide-react";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import CompletionGuide from "@/components/story/completion-guide";
@@ -32,6 +33,8 @@ import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import type { StoryStatus } from "@/models/story";
 import { useAppContext } from "@/contexts/app";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
+import { useRouter } from "@/i18n/navigation";
+import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -64,6 +67,7 @@ interface PlotGenerateProps {
 export default function PlotGenerate({ section }: PlotGenerateProps) {
   const locale = useLocale();
   const { user, setShowSignModal } = useAppContext();
+  const router = useRouter();
 
   // Helper function to get nested translations from section data
   const t = (path: string) => {
@@ -105,22 +109,6 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       description: t('ai_models.creative_description')
     }
   ], [section]);
-
-  // ========== LANGUAGE OPTIONS ==========
-  const LANGUAGE_OPTIONS = useMemo(() => [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'zh', name: '中文', flag: '🇨🇳' },
-    { code: 'ja', name: '日本語', flag: '🇯🇵' },
-    { code: 'ko', name: '한국어', flag: '🇰🇷' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-    { code: 'pt', name: 'Português', flag: '🇵🇹' },
-    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-    { code: 'ar', name: 'العربية', flag: '🇸🇦' },
-    { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
-    { code: 'it', name: 'Italiano', flag: '🇮🇹' }
-  ], []);
 
   // ========== SAMPLE PROMPTS ==========
   const SAMPLE_PROMPTS = useMemo(() => {
@@ -602,21 +590,60 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
         <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
 
-      <div className="relative mx-auto w-full max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="relative mx-auto w-full max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <div className="mb-8">
-          <PlotBreadcrumb
-            homeText={t('ui.breadcrumb_home')}
-            currentText={t('ui.breadcrumb_current')}
-          />
+        <div className="mb-10">
+          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5">
+            <PlotBreadcrumb
+              homeText={t('ui.breadcrumb_home')}
+              currentText={t('ui.breadcrumb_current')}
+            />
+          </div>
         </div>
 
         {/* Header */}
-        <div className="mt-8 mx-auto max-w-3xl text-center mb-10">
-          <h1 className="text-4xl font-display font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-            {t('ui.title')}
+        <div className="mx-auto max-w-2xl text-center mb-14">
+          {/* Double-bezel icon container */}
+          <div className="flex justify-center mb-6">
+            <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
+                <Icon name="RiMapLine" className="size-6 text-orange-600 dark:text-orange-400" />
+              </div>
+            </div>
+          </div>
+
+          {/* Eyebrow badge */}
+          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            AI Writing Tool
+          </span>
+
+          {/* Title with gradient split */}
+          <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+              Plot
+            </span>
+            {" "}Generator
           </h1>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+
+          {/* Decorative brush stroke */}
+          <div className="flex justify-center">
+            <svg
+              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
+              viewBox="0 0 160 12"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M2 8c30-5 60-6 90-3s40 4 66-1"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+
+          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
             {t('ui.subtitle')}
           </p>
         </div>
@@ -1025,6 +1052,16 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
             <CompletionGuide
               onCreateAnother={handleCreateAnother}
               onSave={handleSaveClick}
+              onContinue={() => {
+                try {
+                  window.localStorage.setItem(
+                    "ai-write:generator-prefill",
+                    JSON.stringify({ title: prompt.substring(0, 30), content: generatedPlot })
+                  );
+                } catch {}
+                router.push(buildContinueRoute({ source: "plot-generator" }) as any);
+              }}
+              continueLabel={locale === "zh" ? "续写" : "Continue in AI Write"}
               isSaveDisabled={hasSavedCurrentStory}
               translations={completionGuideTranslations}
             />

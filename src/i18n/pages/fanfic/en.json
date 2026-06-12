@@ -215,7 +215,7 @@
       "rating": {
         "label": "Content Rating",
         "placeholder": "Select rating",
-        "warning": "⚠️ Selecting Mature or Explicit indicates you are 18 years or older",
+        "warning": "Selecting Mature or Explicit indicates you are 18 years or older",
         "options": {
           "none": "Any",
           "general": "General Audience (G)",
@@ -258,7 +258,7 @@
         "time": "Est. Time",
         "quality": "Quality"
       },
-      "tip": "💡 Tip: Detailed story prompts yield better results"
+      "tip": "Tip: Detailed story prompts yield better results"
     },
     "output": {
       "title": "Generated Fanfic",
@@ -270,6 +270,8 @@
       "button_export_pdf": "Export PDF",
       "button_exporting_pdf": "Exporting...",
       "button_regenerate": "Regenerate",
+      "button_continue": "Continue Writing",
+      "toast_login_required": "Please log in first to continue writing",
       "loading": "Loading..."
     },
     "pdf": {
@@ -329,7 +331,7 @@
     },
     "ui": {
       "pairing_separator": " × ",
-      "speed_icon": "⚡"
+      "speed_icon": ""
     },
     "tabbed": {
       "hero": {
@@ -610,7 +612,7 @@
       "fanfic_what": {
         "label": "What is Fanfic Generator",
         "title": "What is AI Fanfic Generator?",
-        "content": "AI Fanfic Generator is an advanced artificial intelligence tool designed to create original fanfiction stories based on your favorite books, movies, games, or TV series. Using powerful natural language models, it can generate creative plots, engaging dialogues, and emotionally resonant character interactions — all tailored to your input.\n\nHow It Works\n\nYou simply choose a fandom, specify characters, and describe your desired scenario. The AI then crafts a complete fanfic narrative that fits the tone and style of the original universe — from romantic crossovers to thrilling adventures.\n\nKey Features\n\n✨ AI-Powered Storytelling: Generates natural, high-quality fanfiction instantly.\n💬 Customizable Prompts: Control plot, genre, and relationship dynamics.\n🔁 Multiple Styles: Write in the voice of your favorite authors or fandoms.\n💡 Free Fanfic Generator Online: No downloads required — just type and create."
+        "content": "AI Fanfic Generator is an advanced artificial intelligence tool designed to create original fanfiction stories based on your favorite books, movies, games, or TV series. Using powerful natural language models, it can generate creative plots, engaging dialogues, and emotionally resonant character interactions — all tailored to your input.\n\nHow It Works\n\nYou simply choose a fandom, specify characters, and describe your desired scenario. The AI then crafts a complete fanfic narrative that fits the tone and style of the original universe — from romantic crossovers to thrilling adventures.\n\nKey Features\n\nAI-Powered Storytelling: Generates natural, high-quality fanfiction instantly.\nCustomizable Prompts: Control plot, genre, and relationship dynamics.\nMultiple Styles: Write in the voice of your favorite authors or fandoms.\nFree Fanfic Generator Online: No downloads required — just type and create."
       },
       "faq": {
         "title": "Frequently Asked Questions",

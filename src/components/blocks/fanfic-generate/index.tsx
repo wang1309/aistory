@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles, Zap, Palette, User, Drama } from "lucide-react";
+import { Sparkles, Zap, Palette, User, Drama, AlertTriangle, Lightbulb } from "lucide-react";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -20,6 +20,8 @@ import { cn } from "@/lib/utils";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
+import { useRouter } from "@/i18n/navigation";
+import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 
 const isDev = process.env.NODE_ENV === "development";
 const devLog = (...args: any[]) => {
@@ -101,7 +103,8 @@ function generateTags(params: {
 
 export default function FanficGenerate({ section }: { section: FanficGenerateType }) {
   const locale = useLocale();
-  const { user, setShowVerificationModal, setVerificationCallback } = useAppContext();
+  const { user, setShowVerificationModal, setVerificationCallback, setShowSignModal } = useAppContext();
+  const router = useRouter();
 
   // ========== STATE MANAGEMENT ==========
 
@@ -869,7 +872,8 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
                         </SelectContent>
                       </Select>
                       {(selectedRating === 'mature' || selectedRating === 'explicit') && (
-                        <p className="text-xs text-orange-600 mt-1">
+                        <p className="text-xs text-orange-600 mt-1 flex items-center gap-1">
+                          <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
                           {section.advanced_options.rating.warning}
                         </p>
                       )}
@@ -956,7 +960,7 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
 
                     {/* Speed */}
                     <div className="text-xs text-muted-foreground">
-                      {section.ui.speed_icon} {model.speed}
+                      <Zap className="h-3.5 w-3.5 inline mr-1" />{model.speed}
                     </div>
 
                     {/* Selected Indicator */}
@@ -993,7 +997,8 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
 
               <GeneratorShortcutHints />
 
-              <p className="text-xs text-center text-muted-foreground mt-3">
+              <p className="text-xs text-center text-muted-foreground mt-3 flex items-center justify-center gap-1.5">
+                <Lightbulb className="h-3.5 w-3.5" />
                 {section.generate_button.tip}
               </p>
             </div>
@@ -1052,6 +1057,28 @@ export default function FanficGenerate({ section }: { section: FanficGenerateTyp
                     <Icon name="mdi:refresh" className="w-4 h-4 mr-1" />
                     {section.output.button_regenerate}
                   </Button>
+                  {!isGenerating && (
+                    <Button
+                      size="sm"
+                      onClick={() => {
+                        try {
+                          window.localStorage.setItem(
+                            "ai-write:generator-prefill",
+                            JSON.stringify({
+                              title: prompt.substring(0, 30) + (prompt.length > 30 ? "..." : ""),
+                              content: generatedFanfic,
+                            })
+                          );
+                        } catch {
+                          // ignore prefill cache failures
+                        }
+                        router.push(buildContinueRoute({ source: "fanfic-generator" }) as any);
+                      }}
+                    >
+                      <Icon name="mdi:pencil-plus" className="w-4 h-4 mr-1" />
+                      {section.output.button_continue}
+                    </Button>
+                  )}
                 </div>
               </div>
             )}

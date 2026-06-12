@@ -171,6 +171,31 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
   const outputScrollRef = useRef<HTMLDivElement | null>(null);
+
+  // Scroll-reveal animation system
+  const [sectionVisible, setSectionVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSectionVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.08 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const sgEnter = (delayMs: number) =>
+    `transition-all duration-[800ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
+      sectionVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+    }`;
   const [selectedLength, setSelectedLength] = useState("none");
   const [selectedGenre, setSelectedGenre] = useState("none");
   const [selectedPerspective, setSelectedPerspective] = useState("none");
@@ -202,37 +227,37 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // Wrapped setters with debug logging
   const handleFormatChange = useCallback((value: string) => {
-    devLog(`📝 Format changed: "${selectedFormat}" → "${value}"`);
+    devLog(`Format changed: "${selectedFormat}" → "${value}"`);
     setSelectedFormat(value);
   }, [selectedFormat]);
 
   const handleLengthChange = useCallback((value: string) => {
-    devLog(`📏 Length changed: "${selectedLength}" → "${value}"`);
+    devLog(`Length changed: "${selectedLength}" → "${value}"`);
     setSelectedLength(value);
   }, [selectedLength]);
 
   const handleGenreChange = useCallback((value: string) => {
-    devLog(`🎭 Genre changed: "${selectedGenre}" → "${value}"`);
+    devLog(`Genre changed: "${selectedGenre}" → "${value}"`);
     setSelectedGenre(value);
   }, [selectedGenre]);
 
   const handlePerspectiveChange = useCallback((value: string) => {
-    devLog(`👁️ Perspective changed: "${selectedPerspective}" → "${value}"`);
+    devLog(`Perspective changed: "${selectedPerspective}" → "${value}"`);
     setSelectedPerspective(value);
   }, [selectedPerspective]);
 
   const handleAudienceChange = useCallback((value: string) => {
-    devLog(`👥 Audience changed: "${selectedAudience}" → "${value}"`);
+    devLog(`Audience changed: "${selectedAudience}" → "${value}"`);
     setSelectedAudience(value);
   }, [selectedAudience]);
 
   const handleToneChange = useCallback((value: string) => {
-    devLog(`🎨 Tone changed: "${selectedTone}" → "${value}"`);
+    devLog(`Tone changed: "${selectedTone}" → "${value}"`);
     setSelectedTone(value);
   }, [selectedTone]);
 
   const handleLanguageChange = useCallback((value: string) => {
-    devLog(`🌐 Language changed: "${selectedLanguage}" → "${value}"`);
+    devLog(`Language changed: "${selectedLanguage}" → "${value}"`);
     setSelectedLanguage(value);
   }, [selectedLanguage]);
 
@@ -445,7 +470,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       locale,
       turnstileToken: `Present (${turnstileToken.length} chars)`
     });
-    devLog("⚠️ Note: If all advancedOptions are 'none', they won't affect the generated prompt");
+    devLog("Note: If all advancedOptions are 'none', they won't affect the generated prompt");
 
     try {
       // 开始新一轮生成时，认为是一个全新的故事，清除上一轮的“已保存”状态
@@ -572,7 +597,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         if (isFirstTime) {
           // Special celebration message for first-time success
-          toast.success('🎉 ' + section.toasts.success_generated, {
+          toast.success(section.toasts.success_generated, {
             duration: 5000,
             description: locale === 'zh' ? '你的第一个AI故事诞生了!' :
               locale === 'ja' ? '最初のAIストーリーが誕生しました!' :
@@ -607,7 +632,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // Handle Turnstile error
   const handleTurnstileError = useCallback(() => {
-    console.error("❌ Turnstile verification failed");
+    console.error("Turnstile verification failed");
     setIsGenerating(false);
     toast.error(section.toasts.error_verification_failed);
   }, [section]);
@@ -615,7 +640,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   // Listen for Quick Start event from Hero
   useEffect(() => {
     const handleQuickStart = () => {
-      devLog("⚡ Quick Start triggered!");
+      devLog("Quick Start triggered!");
 
       // 1. Select Standard Model if not selected
       if (selectedModel !== 'standard') {
@@ -943,44 +968,130 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.96_0.03_65),transparent)] dark:bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.16_0.02_55),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,oklch(0.95_0.04_65),transparent)] dark:bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,oklch(0.18_0.03_55),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_30%_at_80%_20%,oklch(0.94_0.03_45),transparent)] dark:bg-[radial-gradient(ellipse_40%_30%_at_80%_20%,oklch(0.15_0.02_45),transparent)] opacity-60" />
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '48px 48px' }} />
+        <div
+          className="absolute -left-[15%] top-[5%] h-[500px] w-[500px] rounded-full opacity-25 dark:opacity-[0.12]"
+          style={{
+            background: "radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)",
+            animation: "sg-orb-a 22s ease-in-out infinite",
+          }}
+        />
+        <div
+          className="absolute -right-[8%] bottom-[8%] h-[420px] w-[420px] rounded-full opacity-[0.18] dark:opacity-[0.08]"
+          style={{
+            background: "radial-gradient(circle, oklch(0.88 0.04 80) 0%, transparent 70%)",
+            animation: "sg-orb-b 28s ease-in-out infinite",
+          }}
+        />
       </div>
 
-      <div className="w-full max-w-6xl mx-auto px-6 py-24 sm:py-32 relative">
+      <div ref={sectionRef} className="w-full max-w-6xl mx-auto px-6 py-24 sm:py-32 relative">
 
         {/* Header */}
-        <div className="relative text-center">
-          <div className="inline-flex items-center justify-center mb-6">
-            <div className="flex items-center justify-center size-12 rounded-2xl bg-foreground/[0.04] dark:bg-white/[0.06]">
-              <Icon name="book" className="size-6 text-foreground/40" />
+        <div className="relative text-center mb-16">
+
+          {/* Eyebrow badge */}
+          <div
+            className={`inline-flex items-center justify-center mb-6 ${sgEnter(0)}`}
+            style={{ transitionDelay: sectionVisible ? "0ms" : "0ms" }}
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider">
+              <svg viewBox="0 0 16 16" className="size-3 opacity-70" fill="currentColor">
+                <path d="M8 1.5a.5.5 0 0 1 .447.276l1.506 3.052 3.366.489a.5.5 0 0 1 .277.853L11.1 8.566l.575 3.353a.5.5 0 0 1-.725.527L8 10.807l-2.95 1.64a.5.5 0 0 1-.725-.528l.575-3.352-2.496-2.432a.5.5 0 0 1 .277-.853l3.366-.49L7.553 1.776A.5.5 0 0 1 8 1.5z"/>
+              </svg>
+              AI Story Generator
+            </span>
+          </div>
+
+          {/* Double-bezel icon container */}
+          <div
+            className={`inline-flex items-center justify-center mb-8 ${sgEnter(0)}`}
+            style={{ transitionDelay: sectionVisible ? "0ms" : "0ms" }}
+          >
+            <div className="rounded-2xl border border-border/15 bg-foreground/[0.015] dark:bg-white/[0.02] p-1.5">
+              <div className="flex items-center justify-center size-12 rounded-xl bg-foreground/[0.04] dark:bg-white/[0.06] border border-border/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                <Icon name="book" className="size-6 text-primary/60" />
+              </div>
             </div>
           </div>
 
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-[3rem] font-bold tracking-tight mb-4 leading-[1.15]">
-            {section.header.title}
-          </h2>
-
-          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed max-w-xl mx-auto font-light">
-            {section.header.subtitle}
-          </p>
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2 text-xs text-muted-foreground/50">
-            <span className="inline-flex h-4.5 w-4.5 items-center justify-center rounded-full bg-foreground/[0.04] text-[9px] font-semibold tabular-nums">1</span>
-            <span>{section.prompt.label}</span>
-            <span className="text-border/30">·</span>
-            <span className="inline-flex h-4.5 w-4.5 items-center justify-center rounded-full bg-foreground/[0.04] text-[9px] font-semibold tabular-nums">2</span>
-            <span>{section.ai_models.title}</span>
-            <span className="text-border/30">·</span>
-            <span className="inline-flex h-4.5 w-4.5 items-center justify-center rounded-full bg-foreground/[0.04] text-[9px] font-semibold tabular-nums">3</span>
-            <span>{section.generate_button.text}</span>
+          {/* Title */}
+          <div
+            className={`${sgEnter(100)}`}
+            style={{ transitionDelay: sectionVisible ? "100ms" : "0ms" }}
+          >
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-[3rem] font-bold tracking-tight mb-1 leading-[1.15]">
+              {section.header.title}
+            </h2>
           </div>
+
+          {/* Decorative brush stroke */}
+          <div
+            className={`flex justify-center ${sgEnter(200)}`}
+            style={{ transitionDelay: sectionVisible ? "200ms" : "0ms" }}
+          >
+            <svg
+              className="mt-1 mb-6 h-3 w-36 text-primary/30"
+              viewBox="0 0 160 12"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M2 8c30-5 60-6 90-3s40 4 66-1"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+          </div>
+
+          {/* Subtitle */}
+          <div
+            className={`${sgEnter(250)}`}
+            style={{ transitionDelay: sectionVisible ? "250ms" : "0ms" }}
+          >
+            <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed max-w-xl mx-auto font-light">
+              {section.header.subtitle}
+            </p>
+          </div>
+
+          {/* Step indicators */}
+          <div
+            className={`mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-3 ${sgEnter(350)}`}
+            style={{ transitionDelay: sectionVisible ? "350ms" : "0ms" }}
+          >
+            <div className="flex items-center gap-2">
+              <span className="inline-flex size-6 items-center justify-center rounded-full border border-border/25 bg-foreground/[0.04] text-[10px] font-bold tabular-nums text-foreground/60">1</span>
+              <span className="text-xs font-medium text-muted-foreground/60">{section.prompt.label}</span>
+            </div>
+            <svg viewBox="0 0 24 4" className="w-6 text-border/30" fill="none">
+              <path d="M0 2 Q6 0 12 2 Q18 4 24 2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+            </svg>
+            <div className="flex items-center gap-2">
+              <span className="inline-flex size-6 items-center justify-center rounded-full border border-border/25 bg-foreground/[0.04] text-[10px] font-bold tabular-nums text-foreground/60">2</span>
+              <span className="text-xs font-medium text-muted-foreground/60">{section.ai_models.title}</span>
+            </div>
+            <svg viewBox="0 0 24 4" className="w-6 text-border/30" fill="none">
+              <path d="M0 2 Q6 0 12 2 Q18 4 24 2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+            </svg>
+            <div className="flex items-center gap-2">
+              <span className="inline-flex size-6 items-center justify-center rounded-full border border-primary/30 bg-primary/[0.06] text-[10px] font-bold tabular-nums text-primary/70">3</span>
+              <span className="text-xs font-medium text-muted-foreground/60">{section.generate_button.text}</span>
+            </div>
+          </div>
+
         </div>
 
         <GeneratorNavTabs />
 
         {/* Main Panel */}
-        <div className="relative mt-10">
+        <div
+          className={`relative mt-10 ${sgEnter(400)}`}
+          style={{ transitionDelay: sectionVisible ? "400ms" : "0ms" }}
+        >
           <div className="rounded-[1.5rem] border border-border/15 bg-foreground/[0.015] p-1 dark:bg-white/[0.02]">
             <div className="overflow-hidden rounded-[calc(1.5rem-0.25rem)] bg-card">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
@@ -1147,7 +1258,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         </div>
 
         {/* Model Selection */}
-        <div className="space-y-6">
+        <div
+          className={`space-y-6 ${sgEnter(500)}`}
+          style={{ transitionDelay: sectionVisible ? "500ms" : "0ms" }}
+        >
           <div className="flex items-center gap-3 mt-8">
             <h3 className="text-sm font-semibold text-foreground">
               {section.ai_models.title}
@@ -1156,27 +1270,45 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {AI_MODELS.map((model) => {
+            {AI_MODELS.map((model, idx) => {
               const isSelected = selectedModel === model.id;
               return (
                 <button
                   key={model.id}
                   onClick={() => setSelectedModel(model.id)}
-                  className={`group p-5 rounded-2xl text-left transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                  className={`group relative overflow-hidden p-5 rounded-2xl text-left transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                     isSelected
-                      ? 'bg-foreground/[0.03] border border-foreground/15'
-                      : 'bg-card border border-border/15 hover:border-border/30 hover:bg-foreground/[0.01]'
+                      ? 'bg-foreground/[0.035] border border-foreground/20 ring-2 ring-primary/15 ring-offset-0'
+                      : 'bg-card border border-border/15 hover:border-border/30 hover:bg-foreground/[0.015]'
                   }`}
+                  style={{
+                    transitionDelay: sectionVisible ? `${550 + idx * 80}ms` : "0ms",
+                  }}
                 >
+                  {/* Top gradient highlight line */}
+                  <div
+                    className={`absolute inset-x-0 top-0 h-px transition-opacity duration-500 ${isSelected ? 'opacity-100' : 'opacity-0'}`}
+                    style={{ background: 'linear-gradient(90deg, transparent, oklch(0.72 0.16 55 / 0.5), transparent)' }}
+                  />
+
                   <div className="flex items-start justify-between mb-4">
-                    <span className={`transition-all duration-300 ${isSelected ? 'text-foreground/70' : 'text-muted-foreground/40 group-hover:text-muted-foreground/70'}`}>
-                      {model.icon}
-                    </span>
-                    {isSelected && (
+                    {/* Double-bezel icon */}
+                    <div className={`rounded-xl border p-0.5 transition-all duration-300 ${
+                      isSelected ? 'border-primary/20 bg-primary/[0.04]' : 'border-border/10 bg-foreground/[0.02] group-hover:border-border/20'
+                    }`}>
+                      <div className={`flex items-center justify-center size-8 rounded-lg transition-colors duration-300 ${
+                        isSelected ? 'text-primary/70' : 'text-muted-foreground/40 group-hover:text-muted-foreground/70'
+                      }`}>
+                        {model.icon}
+                      </div>
+                    </div>
+
+                    {/* Selection checkmark with smooth transition */}
+                    <div className={`transition-all duration-300 ${isSelected ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
                       <div className="size-5 rounded-full bg-foreground flex items-center justify-center">
                         <Icon name="check" className="size-3 text-background dark:text-foreground" />
                       </div>
-                    )}
+                    </div>
                   </div>
 
                   <h4 className={`text-sm font-bold tracking-tight mb-1 transition-colors duration-300 ${isSelected ? 'text-foreground' : 'text-foreground/60 group-hover:text-foreground'}`}>
@@ -1186,7 +1318,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                     {model.description}
                   </p>
                   <div className="flex items-center gap-2">
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${model.badgeColor}`}>
+                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${model.badgeColor}`}>
                       {model.badge}
                     </span>
                     <span className="text-[10px] text-muted-foreground/60 font-medium">
@@ -1200,26 +1332,39 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         </div>
 
         {/* Generate Button */}
-        <div id="generate-button" className="flex justify-center pt-6">
+        <div
+          id="generate-button"
+          className={`flex justify-center pt-6 ${sgEnter(750)}`}
+          style={{ transitionDelay: sectionVisible ? "750ms" : "0ms" }}
+        >
           <div className="relative group w-full max-w-md">
-            <Button
-              onClick={handleGenerateClick}
-              className="w-full h-14 text-base font-semibold bg-foreground text-background hover:bg-foreground/85 disabled:opacity-50 rounded-full border-none transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] dark:bg-white dark:text-foreground dark:hover:bg-white/90"
-            >
-              <div className="flex items-center justify-center gap-2">
-                {isGenerating ? (
-                  <>
-                    <div className="size-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    <span className="animate-pulse">{section.generate_button.generating}</span>
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className="size-5" />
-                    <span>{section.generate_button.text}</span>
-                  </>
-                )}
-              </div>
-            </Button>
+            {/* Double-bezel outer shell */}
+            <div className="rounded-full border border-border/20 bg-foreground/[0.015] dark:bg-white/[0.02] p-1">
+              <Button
+                onClick={handleGenerateClick}
+                className="w-full h-14 text-base font-semibold bg-foreground text-background hover:bg-foreground/85 disabled:opacity-50 rounded-full border-none transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] dark:bg-white dark:text-foreground dark:hover:bg-white/90"
+                style={{
+                  animation: sectionVisible ? "hero-cta-breathe 4s ease-in-out infinite" : "none",
+                  animationDelay: "1s",
+                }}
+              >
+                <div className="flex items-center justify-center gap-3">
+                  {isGenerating ? (
+                    <>
+                      <div className="size-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span className="animate-pulse">{section.generate_button.generating}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="inline-flex size-7 items-center justify-center rounded-full bg-background/15 dark:bg-foreground/15">
+                        <Sparkles className="size-4" />
+                      </span>
+                      <span>{section.generate_button.text}</span>
+                    </>
+                  )}
+                </div>
+              </Button>
+            </div>
 
             <GeneratorShortcutHints showQuickSave />
 

@@ -15,31 +15,19 @@ import { Link } from "@/i18n/navigation";
 import { User } from "@/types/user";
 import { signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
-import { NavItem } from "@/types/blocks/base";
+import { buildUserDropdownItems } from "./user-menu";
 
 export default function SignUser({ user }: { user: User }) {
   const t = useTranslations();
 
-  const dropdownItems: NavItem[] = [
-    {
-      title: user.nickname,
+  const dropdownItems = buildUserDropdownItems({
+    user,
+    labels: {
+      userCenter: t("user.user_center"),
+      adminSystem: t("user.admin_system"),
+      signOut: t("user.sign_out"),
+      credits: t("user.credits"),
     },
-    {
-      title: t("user.user_center"),
-      url: "/creator-dashboard",
-    },
-  ];
-
-  if (user.is_admin) {
-    dropdownItems.push({
-      title: t("user.admin_system"),
-      url: "/admin/users",
-    });
-  }
-
-  dropdownItems.push({
-    title: t("user.sign_out"),
-    onClick: () => signOut(),
   });
 
   return (
@@ -58,11 +46,18 @@ export default function SignUser({ user }: { user: User }) {
               className="flex justify-center cursor-pointer"
             >
               {item.url ? (
-                <Link href={item.url as any} target={item.target}>
+                <Link href={item.url as any} target={item.target} className="w-full">
                   {item.title}
                 </Link>
+              ) : index === dropdownItems.length - 1 ? (
+                <button
+                  className="w-full text-center"
+                  onClick={() => signOut()}
+                >
+                  {item.title}
+                </button>
               ) : (
-                <button onClick={item.onClick}>{item.title}</button>
+                <span className="w-full text-center">{item.title}</span>
               )}
             </DropdownMenuItem>
             {index !== dropdownItems.length - 1 && <DropdownMenuSeparator />}

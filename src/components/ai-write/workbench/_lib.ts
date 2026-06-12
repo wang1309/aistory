@@ -138,3 +138,13 @@ export function shouldAutoScrollEditor({
   const distanceFromBottom = scrollHeight - (scrollTop + clientHeight);
   return distanceFromBottom <= threshold;
 }
+
+export function shouldOpenSignInForSave({
+  hasUser,
+  isManualSave,
+}: {
+  hasUser: boolean;
+  isManualSave: boolean;
+}) {
+  return !hasUser && isManualSave;
+}

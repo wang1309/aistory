@@ -13,6 +13,8 @@ import { toast } from "sonner";
 import { FantasyGenerate as FantasyGenerateType } from "@/types/blocks/fantasy-generate";
 import { useLocale } from "next-intl";
 import { useAppContext } from "@/contexts/app";
+import { useRouter } from "@/i18n/navigation";
+import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 import confetti from "canvas-confetti";
 import { cn } from "@/lib/utils";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
@@ -36,6 +38,7 @@ function calculateWordCount(text: string): number {
 
 export default function FantasyGenerate({ section }: { section: FantasyGenerateType }) {
   const locale = useLocale();
+  const router = useRouter();
   const { user, setShowSignModal } = useAppContext();
 
   // Mode state
@@ -357,22 +360,49 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
 
       <div className="w-full max-w-6xl mx-auto px-6 py-24 sm:py-32 relative">
         {/* Header */}
-        <div className="relative text-center animate-fade-in-up mb-12">
-          <div className="inline-flex items-center justify-center mb-8">
-            <div className="p-px bg-gradient-to-br from-orange-500/20 to-transparent rounded-2xl">
-              <div className="glass-premium rounded-2xl p-4 bg-background/50">
-                <Wand2 className="size-8 text-orange-600 dark:text-orange-400" />
+        <div className="relative text-center mb-14 sm:mb-18">
+          {/* Double-bezel icon container */}
+          <div className="flex justify-center mb-6">
+            <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
+                <Wand2 className="size-6 text-orange-600 dark:text-orange-400" />
               </div>
             </div>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl font-display font-bold tracking-tighter mb-8 leading-[0.9]">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-700 via-orange-600 to-orange-700 dark:from-white dark:via-orange-200 dark:to-orange-400 animate-shimmer">
-              {section.header.title}
+          {/* Eyebrow badge */}
+          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            AI Fantasy Writer
+          </span>
+
+          {/* Title with gradient split */}
+          <h1 className="font-display text-5xl sm:text-7xl font-bold tracking-tighter leading-[0.9] mt-4">
+            <span className="text-foreground">Fantasy{" "}</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+              Story
             </span>
+            <span className="text-foreground"> Generator</span>
           </h1>
 
-          <p className="text-xl sm:text-2xl text-muted-foreground/80 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
+          {/* Decorative brush stroke */}
+          <div className="flex justify-center">
+            <svg
+              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
+              viewBox="0 0 160 12"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M2 8c30-5 60-6 90-3s40 4 66-1"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+
+          <p className="text-lg sm:text-xl text-muted-foreground/65 max-w-xl mx-auto font-light leading-relaxed">
             {section.header.subtitle}
           </p>
         </div>
@@ -828,7 +858,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                 <div className="font-semibold mb-1">{model.name}</div>
                 <div className="text-sm text-muted-foreground mb-2">{model.description}</div>
                 <div className="text-xs text-muted-foreground">
-                  {section.ui.speed_icon} {model.speed}
+                  <Zap className="h-3.5 w-3.5 inline mr-1" />{model.speed}
                 </div>
                 {selectedModel === model.id && (
                   <div className="absolute bottom-2 right-2">
@@ -906,6 +936,18 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                   >
                     <Icon name="mdi:refresh" className="w-4 h-4 mr-2" />
                     {section.output.button_regenerate}
+                  </Button>
+                  <Button
+                    size="sm"
+                    onClick={() => {
+                      try {
+                        window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedStory }));
+                      } catch {}
+                      router.push(buildContinueRoute({ source: "fantasy-generator" }) as any);
+                    }}
+                  >
+                    <Icon name="mdi:pencil-plus" className="w-4 h-4 mr-2" />
+                    {locale === "zh" ? "续写" : "Continue"}
                   </Button>
                 </div>
               </>

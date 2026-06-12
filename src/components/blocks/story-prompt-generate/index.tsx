@@ -28,6 +28,7 @@ import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import type { StoryPromptGenerate as StoryPromptGenerateType } from "@/types/blocks/story-prompt-generate";
+import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import Link from "next/link";
 import StoryPromptBreadcrumb from "./breadcrumb";
 
@@ -109,22 +110,6 @@ const AUDIENCE_OPTIONS = [
   "adult",
   "mature",
   "all_ages",
-];
-
-// Language options
-const LANGUAGE_OPTIONS = [
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "zh", name: "中文", flag: "🇨🇳" },
-  { code: "ja", name: "日本語", flag: "🇯🇵" },
-  { code: "ko", name: "한국어", flag: "🇰🇷" },
-  { code: "es", name: "Español", flag: "🇪🇸" },
-  { code: "fr", name: "Français", flag: "🇫🇷" },
-  { code: "de", name: "Deutsch", flag: "🇩🇪" },
-  { code: "pt", name: "Português", flag: "🇵🇹" },
-  { code: "ru", name: "Русский", flag: "🇷🇺" },
-  { code: "ar", name: "العربية", flag: "🇸🇦" },
-  { code: "hi", name: "हिन्दी", flag: "🇮🇳" },
-  { code: "it", name: "Italiano", flag: "🇮🇹" },
 ];
 
 export default function StoryPromptGenerate({ section }: StoryPromptGenerateProps) {
@@ -410,30 +395,69 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
 
       <main className="container max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
         {/* Breadcrumb Navigation */}
-        <div className="mb-6 flex justify-start">
-          <div className="inline-flex items-center rounded-full border border-border/60 bg-card/80 px-4 py-1.5 text-xs text-muted-foreground shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+          className="mb-8 flex justify-start"
+        >
+          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
             <StoryPromptBreadcrumb
               homeText={t("ui.breadcrumb_home")}
               currentText={t("ui.breadcrumb_current")}
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-14 sm:mb-18 max-w-2xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-4"
+            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+            className="space-y-0"
           >
-            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-orange-500/10 mb-4">
-              <Lightbulb className="w-8 h-8 text-orange-600 dark:text-orange-400" />
+            {/* Double-bezel icon container */}
+            <div className="flex justify-center mb-6">
+              <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
+                <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
+                  <Lightbulb className="size-6 text-orange-600 dark:text-orange-400" />
+                </div>
+              </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-foreground">
-              {t("header.title")}
+
+            {/* Eyebrow badge */}
+            <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+              <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+              AI Story Tool
+            </span>
+
+            <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+              Story{" "}
+              <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 bg-clip-text text-transparent dark:from-orange-400 dark:via-orange-500 dark:to-orange-300">
+                Prompt
+              </span>{" "}
+              Generator
             </h1>
-            <p className="text-lg text-muted-foreground/80 leading-relaxed">
+
+            {/* Decorative brush stroke */}
+            <div className="flex justify-center">
+              <svg
+                className="mt-3 mb-4 h-2.5 w-28 text-orange-500/20"
+                viewBox="0 0 160 12"
+                fill="none"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M2 8c30-5 60-6 90-3s40 4 66-1"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+
+            <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
               {t("header.subtitle")}
             </p>
           </motion.div>

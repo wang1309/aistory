@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { ModernCard } from "@/components/ui/modern-card"
 import { AnimatedContainer } from "@/components/ui/animated-container"
-import { Search, X, Clock, TrendingUp } from "lucide-react"
+import { Search, X, Clock, TrendingUp, Flame } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface SearchResult {
@@ -196,7 +196,7 @@ export function SearchBar({
                       className="w-full justify-start h-auto p-2 text-sm text-muted-foreground hover:text-foreground"
                       onClick={() => handleSearch(search)}
                     >
-                      <span className="mr-2">🔥</span>
+                      <Flame className="w-4 h-4 mr-2 text-red-500 shrink-0" />
                       {search}
                     </Button>
                   ))}

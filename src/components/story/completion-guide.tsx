@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
+import { PartyPopper } from "lucide-react";
 
 interface CompletionGuideProps {
     onCreateAnother: () => void;
@@ -43,7 +44,7 @@ export default function CompletionGuide({
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="text-center md:text-left">
                     <h3 className="text-2xl font-bold text-foreground mb-2 flex items-center justify-center md:justify-start gap-2">
-                        <span>🎉</span> {translations.title}
+                        <PartyPopper className="w-6 h-6" /> {translations.title}
                     </h3>
                     <p className="text-muted-foreground/80 text-lg font-light">
                         {translations.subtitle}

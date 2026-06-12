@@ -6,6 +6,7 @@ import { getTagsForStory } from "@/models/storyTags";
 import StoryLikeButton from "@/components/story/story-like-button";
 import StoryPreviewButton from "@/components/community/story-preview-button";
 import { buildLanguageAlternates } from "@/lib/seo";
+import { Sparkles, BookOpen } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -125,7 +126,7 @@ export default async function CommunityPage({
         <div className="inline-flex items-center justify-center mb-6 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 blur-2xl opacity-20 rounded-full" />
           <div className="relative bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-xl rounded-2xl p-4 transform hover:scale-105 transition-transform duration-500">
-            <span className="text-4xl select-none">✨</span>
+            <Sparkles className="text-4xl text-indigo-500 select-none" />
           </div>
         </div>
         
@@ -264,7 +265,7 @@ export default async function CommunityPage({
           <div className="relative mb-6">
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 blur-2xl opacity-10 rounded-full" />
             <div className="relative bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-lg rounded-2xl p-6">
-              <span className="text-5xl select-none">📚</span>
+              <BookOpen className="text-5xl text-indigo-400 select-none" />
             </div>
           </div>
           <p className="text-lg text-muted-foreground/80 font-light">

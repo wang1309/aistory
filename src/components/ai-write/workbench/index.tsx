@@ -13,6 +13,7 @@ import { toast } from "sonner";
 import { useAppContext } from "@/contexts/app";
 import {
   buildContinueRoute,
+  shouldOpenSignInForSave,
   shouldAutoScrollEditor,
   shouldRestoreBlankDraft,
 } from "./_lib";
@@ -20,6 +21,7 @@ import { RichTextEditor } from "../editor";
 import { setInlineSuggestion } from "../editor/inline-suggestion";
 import StoryBiblePanel from "../story-bible";
 import StyleFingerprintPanel from "../style-fingerprint";
+import SignToggle from "@/components/sign/toggle";
 import type { Editor } from "@tiptap/react";
 import type { StoryStatus } from "@/models/story";
 
@@ -444,12 +446,18 @@ export default function AiWriteWorkbench({
   const saveStory = useCallback(
     async (options?: {
       createIfNeeded?: boolean;
+      manual?: boolean;
       nextStatus?: StoryStatus;
     }) => {
       if (!plainText.trim()) return;
 
       if (!user) {
-        if (options?.createIfNeeded) {
+        if (
+          shouldOpenSignInForSave({
+            hasUser: false,
+            isManualSave: options?.manual ?? false,
+          })
+        ) {
           setShowSignModal(true);
           toast.error(copy.storyCreatedNeedLogin);
         }
@@ -693,7 +701,7 @@ export default function AiWriteWorkbench({
         toast.success(copy.appended);
       }
 
-    setInstruction("");
+      setInstruction("");
     } catch (error) {
       console.log("ai write continue failed", error);
       toast.error(copy.continueFailed);
@@ -701,7 +709,6 @@ export default function AiWriteWorkbench({
       setIsStreaming(false);
     }
   }, [
-    content,
     copy.appended,
     copy.continueFailed,
     copy.emptyContent,
@@ -975,8 +982,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
   return (
     <section className="fixed inset-0 z-[60] flex flex-col overflow-hidden bg-background">
       {/* Breadcrumb bar */}
-      <div className="flex h-12 items-center justify-between border-b border-border/40 px-4">
-        <div className="flex min-w-0 items-center gap-2 text-sm text-muted-foreground">
+      <div className="flex min-h-12 flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-border/40 px-4 py-2">
+        <div className="flex min-w-0 flex-1 items-center gap-2 text-sm text-muted-foreground">
           <button
             type="button"
             onClick={() => router.push("/")}
@@ -1010,12 +1017,12 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex w-full flex-wrap items-center justify-end gap-2 sm:w-auto sm:flex-nowrap">
           <button
             type="button"
             onClick={() => void handleConsistencyCheck()}
             disabled={isChecking || isStreaming}
-            className="flex items-center gap-1 rounded-full px-2.5 py-1 text-xs text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:opacity-50"
+            className="flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-xs text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:opacity-50"
             title={copy.consistencyCheck}
           >
             <Icon name="RiShieldCheckLine" className="size-3.5" />
@@ -1024,10 +1031,14 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           <Button
             variant={isDirty ? "outline" : "ghost"}
             size="sm"
-            className="h-7 rounded-full text-xs"
+            className="h-7 shrink-0 rounded-full text-xs"
             disabled={isSaving}
             onClick={() => {
-              void saveStory({ createIfNeeded: !storyUuid, nextStatus: "saved" });
+              void saveStory({
+                createIfNeeded: !storyUuid,
+                manual: true,
+                nextStatus: "saved",
+              });
             }}
           >
             {isSaving
@@ -1036,11 +1047,14 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               ? copy.save
               : copy.saveToCreate}
           </Button>
+          <div className="shrink-0">
+            <SignToggle />
+          </div>
           {!chatVisible && (
             <button
               type="button"
               onClick={() => setChatVisible(true)}
-              className="flex items-center gap-1.5 rounded-full bg-orange-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-orange-500"
+              className="flex shrink-0 items-center gap-1.5 rounded-full bg-orange-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-orange-500"
             >
               <Icon name="RiChatSmile2Line" className="size-3.5" />
               <span className="hidden sm:inline">Chat</span>

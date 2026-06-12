@@ -445,8 +445,57 @@
     0%, 100% { box-shadow: 0 0 0 0 oklch(0.5 0 0 / 0); }
     50% { box-shadow: 0 0 0 6px oklch(0.5 0 0 / 0.06); }
   }
+
+  /* Hero Story Image Cascade */
+  @keyframes hero-story-cascade {
+    0% {
+      transform: translateY(-130%) translateX(-15%) scale(0.8) rotate(-1.5deg);
+      opacity: 0;
+    }
+    14% {
+      transform: translateY(-54%) translateX(0%) scale(0.98) rotate(-0.3deg);
+      opacity: 0.8;
+    }
+    20% {
+      transform: translateY(-50%) translateX(0%) scale(1) rotate(0deg);
+      opacity: 1;
+    }
+    54% {
+      transform: translateY(-50%) translateX(0%) scale(1) rotate(0deg);
+      opacity: 1;
+    }
+    76% {
+      transform: translateY(-44%) translateX(55%) scale(0.93) rotate(1.2deg);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-40%) translateX(120%) scale(0.85) rotate(2deg);
+      opacity: 0;
+    }
+  }
+  .animate-hero-story-cascade {
+    animation-name: hero-story-cascade;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    will-change: transform, opacity;
+  }
+
+  @keyframes sg-orb-a {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    40% { transform: translate(6%, 10%) scale(1.06); }
+    70% { transform: translate(-4%, 4%) scale(0.96); }
+  }
+  @keyframes sg-orb-b {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    35% { transform: translate(-8%, -6%) scale(1.04); }
+    65% { transform: translate(5%, -2%) scale(0.97); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    [style*="hero-orb"], [style*="hero-cta-breathe"] {
+    [style*="hero-orb"], [style*="hero-cta-breathe"],
+    [style*="sg-orb"],
+    .animate-hero-story-cascade {
       animation: none !important;
     }
   }
@@ -457,7 +506,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
 }
 

@@ -4,7 +4,7 @@ import { ModernCard, ModernCardContent, ModernCardHeader, ModernCardTitle, Moder
 import { Button } from "@/components/ui/button"
 import { EnhancedBadge } from "@/components/ui/enhanced-badge"
 import { AnimatedContainer } from "@/components/ui/animated-container"
-import { Heart, Star, TrendingUp, Sparkles, BookOpen } from "lucide-react"
+import { Heart, Star, TrendingUp, Sparkles, BookOpen, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface Recommendation {
@@ -86,7 +86,7 @@ export function SmartRecommendations({
               >
                 <div className="flex items-center justify-between w-full">
                   <div className="flex items-center gap-2">
-                    <span className="text-xl">{rec.icon}</span>
+                    <span className="text-xl">{rec.icon === 'Zap' ? <Zap className="w-5 h-5 text-yellow-500" /> : rec.icon}</span>
                     <EnhancedBadge
                       variant={getTypeBadgeVariant(rec.type)}
                       size="sm"
@@ -131,7 +131,7 @@ export const POPULAR_RECOMMENDATIONS: Recommendation[] = [
     id: "hp-hermione",
     title: "哈利波特 × 赫敏",
     description: "最受欢迎的CP之一，智慧与勇气的结合",
-    icon: "⚡",
+    icon: "Zap",
     type: "pairing",
     confidence: 98,
     category: "魔法世界",

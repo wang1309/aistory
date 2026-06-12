@@ -19,6 +19,7 @@ import {
   Stars,
   Wand2,
   Zap,
+  PenLine,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -31,9 +32,12 @@ import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { StoryStorage } from "@/lib/story-storage";
+import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { cn } from "@/lib/utils";
 import type { MurderMysteryGenerate as MurderMysteryGenerateType } from "@/types/blocks/murder-mystery-generate";
 import MurderMysteryBreadcrumb from "./breadcrumb";
+import { useRouter } from "@/i18n/navigation";
+import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 
 const DRAFT_KEY = "murder-mystery-generator:prompt";
 
@@ -64,6 +68,7 @@ type GeneratorOptions = {
 
 export default function MurderMysteryGenerate({ section }: MurderMysteryGenerateProps) {
   const locale = useLocale();
+  const router = useRouter();
 
   const t = useCallback(
     (path: string) => {
@@ -107,17 +112,6 @@ export default function MurderMysteryGenerate({ section }: MurderMysteryGenerate
     [t]
   );
 
-  const LANGUAGE_OPTIONS = useMemo(
-    () => [
-      { code: "en", name: "English" },
-      { code: "zh", name: "中文" },
-      { code: "ja", name: "日本語" },
-      { code: "ko", name: "한국어" },
-      { code: "de", name: "Deutsch" },
-      { code: "ru", name: "Русский" },
-    ],
-    []
-  );
 
   const settingTypes = useMemo(() => Object.entries(section?.setting_types || {}), [section]);
   const timePeriods = useMemo(() => Object.entries(section?.time_periods || {}), [section]);
@@ -325,9 +319,9 @@ export default function MurderMysteryGenerate({ section }: MurderMysteryGenerate
         onError={handleTurnstileError}
       />
 
-      <main className="container max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
-        <div className="mb-6 flex justify-start">
-          <div className="inline-flex items-center rounded-full border border-border/60 bg-card/80 px-4 py-1.5 text-xs text-muted-foreground shadow-sm">
+      <main className="container max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
+        <div className="mb-10 flex justify-start">
+          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
             <MurderMysteryBreadcrumb
               homeText={t("ui.breadcrumb_home")}
               currentText={t("ui.breadcrumb_current")}
@@ -335,50 +329,88 @@ export default function MurderMysteryGenerate({ section }: MurderMysteryGenerate
           </div>
         </div>
 
-        <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-4"
-          >
-            <h1 className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-foreground">
-              {t("ui.title")}
-            </h1>
-            <p className="text-lg text-muted-foreground/80 leading-relaxed">{t("ui.subtitle")}</p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5">
-                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">
-                  1
-                </span>
-                {t("ui.hero_step_1")}
-              </span>
-              <span className="text-border/60">→</span>
-              <span className="inline-flex items-center gap-1.5">
-                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">
-                  2
-                </span>
-                {t("ui.hero_step_2")}
-              </span>
-              <span className="text-border/60">→</span>
-              <span className="inline-flex items-center gap-1.5">
-                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">
-                  3
-                </span>
-                {t("ui.hero_step_3")}
-              </span>
+        <div className="mx-auto max-w-2xl text-center mb-14 sm:mb-18">
+          {/* Double-bezel icon container */}
+          <div className="flex justify-center mb-6">
+            <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
+                <Search className="size-6 text-orange-600 dark:text-orange-400" />
+              </div>
             </div>
-          </motion.div>
+          </div>
+
+          {/* Eyebrow badge */}
+          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            AI Mystery Writer
+          </span>
+
+          {/* Title with gradient split */}
+          <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+              Murder Mystery
+            </span>
+            {" "}Generator
+          </h1>
+
+          {/* Decorative brush stroke */}
+          <div className="flex justify-center">
+            <svg
+              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
+              viewBox="0 0 160 12"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M2 8c30-5 60-6 90-3s40 4 66-1"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+
+          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
+            {t("ui.subtitle")}
+          </p>
+
+          {/* Step indicators */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground/60">
+            <span className="inline-flex items-center gap-2">
+              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
+                01
+              </span>
+              <span className="font-medium">{t("ui.hero_step_1")}</span>
+            </span>
+            <svg viewBox="0 0 16 16" className="size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" d="M5 3l6 5-6 5" />
+            </svg>
+            <span className="inline-flex items-center gap-2">
+              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
+                02
+              </span>
+              <span className="font-medium">{t("ui.hero_step_2")}</span>
+            </span>
+            <svg viewBox="0 0 16 16" className="size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" d="M5 3l6 5-6 5" />
+            </svg>
+            <span className="inline-flex items-center gap-2">
+              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
+                03
+              </span>
+              <span className="font-medium">{t("ui.hero_step_3")}</span>
+            </span>
+          </div>
         </div>
 
         <GeneratorNavTabs />
 
-        <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] xl:grid-cols-[440px_1fr] gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] xl:grid-cols-[480px_1fr] gap-8 lg:gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-6 lg:sticky lg:top-24"
+            className="space-y-6 lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:pr-1"
           >
             <div className="bg-card/60 backdrop-blur-xl border border-border rounded-3xl p-6 shadow-xl shadow-black/5 dark:shadow-black/20 ring-1 ring-black/5">
               <div className="space-y-4">
@@ -420,7 +452,7 @@ export default function MurderMysteryGenerate({ section }: MurderMysteryGenerate
 
               <div className="h-px bg-border/50 my-6" />
 
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-2">
                     <Label className="text-xs font-medium tracking-wide text-muted-foreground">
@@ -450,7 +482,7 @@ export default function MurderMysteryGenerate({ section }: MurderMysteryGenerate
                       <SelectContent>
                         {LANGUAGE_OPTIONS.map((item) => (
                           <SelectItem key={item.code} value={item.code}>
-                            {item.name}
+                            <span className="mr-2">{item.flag}</span>{item.name}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -458,11 +490,13 @@ export default function MurderMysteryGenerate({ section }: MurderMysteryGenerate
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-2">
-                    <Label>{t("ui.setting_type")}</Label>
+                    <Label className="text-xs font-medium tracking-wide text-muted-foreground">
+                      {t("ui.setting_type")}
+                    </Label>
                     <Select value={settingType} onValueChange={setSettingType}>
-                      <SelectTrigger className="bg-muted/50 border-border/50">
+                      <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -475,46 +509,15 @@ export default function MurderMysteryGenerate({ section }: MurderMysteryGenerate
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label>{t("ui.time_period")}</Label>
+                    <Label className="text-xs font-medium tracking-wide text-muted-foreground">
+                      {t("ui.time_period")}
+                    </Label>
                     <Select value={timePeriod} onValueChange={setTimePeriod}>
-                      <SelectTrigger className="bg-muted/50 border-border/50">
+                      <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         {timePeriods.map(([key, label]) => (
-                          <SelectItem key={key} value={key}>
-                            {label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label>{t("ui.player_count")}</Label>
-                    <Select value={playerCount} onValueChange={setPlayerCount}>
-                      <SelectTrigger className="bg-muted/50 border-border/50">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {playerCounts.map(([key, label]) => (
-                          <SelectItem key={key} value={key}>
-                            {label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label>{t("ui.complexity")}</Label>
-                    <Select value={complexity} onValueChange={setComplexity}>
-                      <SelectTrigger className="bg-muted/50 border-border/50">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {complexities.map(([key, label]) => (
                           <SelectItem key={key} value={key}>
                             {label}
                           </SelectItem>
@@ -539,11 +542,47 @@ export default function MurderMysteryGenerate({ section }: MurderMysteryGenerate
                       />
                     </Button>
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="pt-4 space-y-4 data-[state=open]:animate-slide-down data-[state=closed]:animate-slide-up overflow-hidden">
+                  <CollapsibleContent className="pt-4 space-y-3 data-[state=open]:animate-slide-down data-[state=closed]:animate-slide-up overflow-hidden">
                     <div className="space-y-2">
-                      <Label>{t("ui.mystery_type")}</Label>
+                      <Label className="text-xs font-medium tracking-wide text-muted-foreground">
+                        {t("ui.player_count")}
+                      </Label>
+                      <Select value={playerCount} onValueChange={setPlayerCount}>
+                        <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {playerCounts.map(([key, label]) => (
+                            <SelectItem key={key} value={key}>
+                              {label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-xs font-medium tracking-wide text-muted-foreground">
+                        {t("ui.complexity")}
+                      </Label>
+                      <Select value={complexity} onValueChange={setComplexity}>
+                        <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {complexities.map(([key, label]) => (
+                            <SelectItem key={key} value={key}>
+                              {label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-xs font-medium tracking-wide text-muted-foreground">
+                        {t("ui.mystery_type")}
+                      </Label>
                       <Select value={mysteryType} onValueChange={setMysteryType}>
-                        <SelectTrigger className="bg-muted/50 border-border/50">
+                        <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -556,9 +595,11 @@ export default function MurderMysteryGenerate({ section }: MurderMysteryGenerate
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label>{t("ui.tone")}</Label>
+                      <Label className="text-xs font-medium tracking-wide text-muted-foreground">
+                        {t("ui.tone")}
+                      </Label>
                       <Select value={tone} onValueChange={setTone}>
-                        <SelectTrigger className="bg-muted/50 border-border/50">
+                        <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -629,15 +670,30 @@ export default function MurderMysteryGenerate({ section }: MurderMysteryGenerate
                   </div>
                 </div>
                 {generatedMystery && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={handleCopy}
-                    className="h-8 text-xs gap-1.5 text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10"
-                  >
-                    <Copy className="w-3.5 h-3.5" />
-                    {t("output.copy")}
-                  </Button>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleCopy}
+                      className="h-8 text-xs gap-1.5 text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      {t("output.copy")}
+                    </Button>
+                    <Button
+                      size="sm"
+                      onClick={() => {
+                        try {
+                          window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedMystery }));
+                        } catch {}
+                        router.push(buildContinueRoute({ source: "murder-mystery-generator" }) as any);
+                      }}
+                      className="h-8 text-xs gap-1.5 rounded-full bg-orange-600 px-3 text-white hover:bg-orange-500"
+                    >
+                      <PenLine className="w-3.5 h-3.5" />
+                      {locale === "zh" ? "续写" : "Continue"}
+                    </Button>
+                  </div>
                 )}
               </div>
 

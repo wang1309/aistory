@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Loader } from "lucide-react";
+import { Check, Loader, ArrowRight } from "lucide-react";
 import { PricingItem, Pricing as PricingType } from "@/types/blocks/pricing";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useEffect, useState } from "react";
@@ -228,7 +228,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
                     <div className="flex flex-col gap-2">
                       {item.cn_amount && item.cn_amount > 0 ? (
                         <div className="flex items-center gap-x-2 mt-2">
-                          <span className="text-sm">人民币支付 👉</span>
+                          <span className="text-sm inline-flex items-center gap-1">人民币支付 <ArrowRight className="h-4 w-4" /></span>
                           <div
                             className="inline-block p-2 hover:cursor-pointer hover:bg-base-200 rounded-md"
                             onClick={() => {

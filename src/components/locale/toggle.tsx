@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/select";
 import { useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
-import { MdLanguage } from "react-icons/md";
+import { Globe } from "lucide-react";
 import { localeNames, localeFlags } from "@/i18n/locale";
 import { useEffect, useState } from "react";
 
@@ -41,7 +41,7 @@ export default function LocaleToggle({ isIcon = false }: { isIcon?: boolean }) {
         aria-label={accessibleLabel}
         className="flex items-center gap-2 border-none text-muted-foreground outline-hidden hover:bg-transparent focus:ring-0 focus:ring-offset-0"
       >
-        <span className="text-xl">{localeFlags[currentLocale] || '🌐'}</span>
+        <span className="text-xl">{localeFlags[currentLocale] || <Globe className="h-5 w-5" />}</span>
         {!isIcon && (
           <span className="hidden md:block">{localeNames[currentLocale] || 'Language'}</span>
         )}

@@ -394,26 +394,61 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                 onError={handleTurnstileError}
             />
 
-            <div className="relative mx-auto w-full max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
+            <div className="relative mx-auto w-full max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 {/* Breadcrumb */}
-                <div className="mb-8">
-                    <PoemTitleBreadcrumb
-                        homeText={section.breadcrumb.home}
-                        currentText={section.breadcrumb.current}
-                    />
+                <div className="mb-10">
+                    <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5">
+                        <PoemTitleBreadcrumb
+                            homeText={section.breadcrumb.home}
+                            currentText={section.breadcrumb.current}
+                        />
+                    </div>
                 </div>
 
                 {/* Header */}
-                <div className="mb-10 text-center">
-                    <div className="flex items-center justify-center gap-3 mb-4">
-                        <div className="p-2 rounded-xl bg-orange-500/10">
-                            <Icon name="RiQuillPenLine" className="size-5 text-orange-600 dark:text-orange-400" />
+                <div className="mx-auto max-w-2xl text-center mb-14">
+                    {/* Double-bezel icon container */}
+                    <div className="flex justify-center mb-6">
+                        <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
+                            <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
+                                <Icon name="RiStarLine" className="size-6 text-orange-600 dark:text-orange-400" />
+                            </div>
                         </div>
-                        <h1 className="text-4xl font-display font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-                            {section.header.title}
-                        </h1>
                     </div>
-                    <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-6">
+
+                    {/* Eyebrow badge */}
+                    <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+                        <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+                        AI Poetry Tool
+                    </span>
+
+                    {/* Title with gradient split */}
+                    <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
+                        AI Poem{" "}
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+                            Title
+                        </span>
+                        {" "}Generator
+                    </h1>
+
+                    {/* Decorative brush stroke */}
+                    <div className="flex justify-center">
+                        <svg
+                            className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
+                            viewBox="0 0 160 12"
+                            fill="none"
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                                d="M2 8c30-5 60-6 90-3s40 4 66-1"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto mb-6">
                         {section.header.subtitle}
                     </p>
                     <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />

@@ -198,6 +198,8 @@ export interface FanficGenerate {
     button_export_pdf: string;
     button_exporting_pdf: string;
     button_regenerate: string;
+    button_continue: string;
+    toast_login_required: string;
     loading: string;
   };
   pdf: {

@@ -39,7 +39,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/icon";
 import DialogueBreadcrumb from "./breadcrumb";
+import { useRouter } from "@/i18n/navigation";
+import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 import { DialogueGenerate as DialogueGenerateType } from "@/types/blocks/dialogue-generate";
+import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { DialogueCharacter } from "@/types/dialogue";
 
 interface DialogueGenerateProps {
@@ -67,6 +70,7 @@ function RequiredLabel({ children, htmlFor }: { children: ReactNode; htmlFor?: s
 
 export default function DialogueGenerate({ section }: DialogueGenerateProps) {
   const locale = useLocale();
+  const router = useRouter();
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const outputScrollRef = useRef<HTMLDivElement | null>(null);
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
@@ -218,23 +222,6 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
     [t]
   );
 
-  const LANGUAGE_OPTIONS = useMemo(
-    () => [
-      { id: "en", name: "English", flag: "🇺🇸" },
-      { id: "zh", name: "中文", flag: "🇨🇳" },
-      { id: "ja", name: "日本語", flag: "🇯🇵" },
-      { id: "ko", name: "한국어", flag: "🇰🇷" },
-      { id: "es", name: "Español", flag: "🇪🇸" },
-      { id: "fr", name: "Français", flag: "🇫🇷" },
-      { id: "de", name: "Deutsch", flag: "🇩🇪" },
-      { id: "pt", name: "Português", flag: "🇵🇹" },
-      { id: "ru", name: "Русский", flag: "🇷🇺" },
-      { id: "ar", name: "العربية", flag: "🇸🇦" },
-      { id: "hi", name: "हिन्दी", flag: "🇮🇳" },
-      { id: "it", name: "Italiano", flag: "🇮🇹" },
-    ],
-    []
-  );
 
   const DIALOGUE_TYPE_OPTIONS = useMemo(
     () => [
@@ -507,27 +494,62 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
 
       <div className="container relative px-4 md:px-6 mx-auto">
         {/* Breadcrumb */}
-        <div className="mb-8">
-          <DialogueBreadcrumb
-            homeText={t("ui.breadcrumb_home")}
-            currentText={t("ui.breadcrumb_current")}
-          />
+        <div className="mb-10">
+          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5">
+            <DialogueBreadcrumb
+              homeText={t("ui.breadcrumb_home")}
+              currentText={t("ui.breadcrumb_current")}
+            />
+          </div>
         </div>
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-            {t("ui.title")}
+        <div className="mx-auto max-w-2xl text-center mb-14">
+          {/* Double-bezel icon container */}
+          <div className="flex justify-center mb-6">
+            <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
+                <Icon name="RiChat3Line" className="size-6 text-orange-600 dark:text-orange-400" />
+              </div>
+            </div>
+          </div>
+
+          {/* Eyebrow badge */}
+          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            AI Writing Tool
+          </span>
+
+          {/* Title with gradient split */}
+          <h1 className="font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+            AI{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+              Dialogue
+            </span>
+            {" "}Generator
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+
+          {/* Decorative brush stroke */}
+          <div className="flex justify-center">
+            <svg
+              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
+              viewBox="0 0 160 12"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M2 8c30-5 60-6 90-3s40 4 66-1"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+
+          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
             {t("ui.subtitle")}
           </p>
-        </motion.div>
+        </div>
 
         <GeneratorNavTabs />
 
@@ -707,8 +729,8 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                     </SelectTrigger>
                     <SelectContent>
                       {LANGUAGE_OPTIONS.map((lang) => (
-                        <SelectItem key={lang.id} value={lang.id}>
-                          {lang.flag} {lang.name}
+                        <SelectItem key={lang.code} value={lang.code}>
+                          <span className="mr-2">{lang.flag}</span>{lang.name}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -871,6 +893,19 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                       >
                         <Icon name="RiFileCopyLine" className="w-4 h-4 mr-2" />
                         {t("output.copy")}
+                      </Button>
+                      <Button
+                        size="sm"
+                        onClick={() => {
+                          try {
+                            window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedDialogue }));
+                          } catch {}
+                          router.push(buildContinueRoute({ source: "dialogue-generator" }) as any);
+                        }}
+                        className="rounded-full bg-orange-600 px-4 text-white hover:bg-orange-500"
+                      >
+                        <Icon name="mdi:pencil-plus" className="w-4 h-4 mr-2" />
+                        {locale === "zh" ? "续写" : "Continue"}
                       </Button>
                     </div>
                   )}

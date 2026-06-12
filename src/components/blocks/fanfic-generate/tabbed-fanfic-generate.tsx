@@ -37,6 +37,8 @@ import { useAppContext } from "@/contexts/app";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
+import { useRouter } from "@/i18n/navigation";
+import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -59,6 +61,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const t = useTranslations();
   const tabbedForm = section.tabbed?.form as any;
   const { user, setShowSignModal } = useAppContext();
+  const router = useRouter();
 
   // ========== STATE MANAGEMENT ==========
 
@@ -634,8 +637,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
     <div className="w-full max-w-6xl mx-auto px-6 py-16 sm:py-20 relative">
       {/* Breadcrumb */}
-      <div className="mb-8 flex justify-start animate-fade-in-up">
-        <div className="glass-premium px-6 py-2 rounded-full">
+      <div className="mb-10 flex justify-start">
+        <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5">
           <FanficBreadcrumb
             homeText={section.breadcrumb?.home || 'Home'}
             currentText={section.breadcrumb?.current || 'AI Fanfic Generator'}
@@ -644,21 +647,49 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       </div>
 
       {/* Header */}
-      <div className="text-center mb-20 animate-fade-in-up animation-delay-1000">
-        <div className="inline-flex items-center justify-center mb-8">
-          <div className="p-px bg-gradient-to-br from-orange-500/20 to-transparent rounded-2xl">
-            <div className="glass-premium rounded-2xl p-4 bg-background/50">
-               <Sparkles className="size-8 text-orange-600 dark:text-orange-400" />
+      <div className="text-center mb-16">
+        {/* Double-bezel icon container */}
+        <div className="flex justify-center mb-6">
+          <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
+            <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
+              <Sparkles className="size-6 text-orange-600 dark:text-orange-400" />
             </div>
           </div>
         </div>
-        
-        <h1 className="text-5xl sm:text-7xl font-display font-bold tracking-tighter mb-8 leading-[0.9]">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-400 dark:from-orange-200 dark:via-amber-300 dark:to-orange-300 animate-shimmer">
-            {section.tabbed?.hero?.title || 'Fanfiction Creation'}
+
+        {/* Eyebrow badge */}
+        <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+          <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+          AI Fanfiction Writer
+        </span>
+
+        {/* Title with gradient split */}
+        <h1 className="font-display text-5xl sm:text-7xl font-bold tracking-tighter leading-[0.9] mt-4">
+          <span className="text-foreground">Free{" "}</span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-400 dark:from-orange-300 dark:via-amber-300 dark:to-orange-200">
+            Fanfiction
           </span>
+          <span className="text-foreground"> Generator</span>
         </h1>
-        <p className="text-xl sm:text-2xl text-muted-foreground/80 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
+
+        {/* Decorative brush stroke */}
+        <div className="flex justify-center">
+          <svg
+            className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
+            viewBox="0 0 160 12"
+            fill="none"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M2 8c30-5 60-6 90-3s40 4 66-1"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
+        </div>
+
+        <p className="text-lg sm:text-xl text-muted-foreground/65 max-w-xl mx-auto font-light leading-relaxed">
           {section.tabbed?.hero?.subtitle || 'Craft your own stories in your favorite universes.'}
         </p>
       </div>
@@ -1025,10 +1056,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                                type="button"
                                onClick={() => setSelectedModel(model.id)}
                                className={cn(
-                                 "w-full text-left px-5 py-4 rounded-2xl border card-hover-lift transition-all bg-muted/5 hover:bg-muted/10",
+                                 "w-full text-left px-5 py-4 rounded-2xl border card-hover-lift transition-all",
                                  selectedModel === model.id
-                                   ? "border-orange-500/70 shadow-lg shadow-orange-500/20"
-                                   : "border-border/10"
+                                   ? "border-orange-500/70 bg-orange-500/10 shadow-lg shadow-orange-500/20"
+                                   : "border-border/10 bg-muted/5 hover:bg-muted/10"
                                )}
                              >
                                <div className="flex items-center justify-between mb-1">
@@ -1199,6 +1230,27 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               <Icon name="refresh" className="mr-2 size-4" />
                               {section.tabbed?.form?.generation?.start_button || 'Regenerate'}
                             </Button>
+                            {generatedFanfic && !isGenerating && (
+                              <Button
+                                onClick={() => {
+                                  try {
+                                    window.localStorage.setItem(
+                                      "ai-write:generator-prefill",
+                                      JSON.stringify({
+                                        title: prompt.substring(0, 30) + (prompt.length > 30 ? "..." : ""),
+                                        content: generatedFanfic,
+                                      })
+                                    );
+                                  } catch {
+                                    // ignore prefill cache failures
+                                  }
+                                  router.push(buildContinueRoute({ source: "fanfic-generator" }) as any);
+                                }}
+                              >
+                                <Icon name="mdi:pencil-plus" className="mr-2 size-4" />
+                                {section.output.button_continue}
+                              </Button>
+                            )}
                           </div>
                         </div>
                         {generatedFanfic && !isGenerating && (

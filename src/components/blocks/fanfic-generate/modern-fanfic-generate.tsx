@@ -25,7 +25,7 @@ import { FanficStorage } from "@/lib/fanfic-storage";
 import { PRESET_WORKS, getWorkById, getCharacterName, getCharacterById, getWorkName } from "@/lib/preset-works";
 import { cn } from "@/lib/utils";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
-import { ChevronDown, ChevronLeft, ChevronRight, Sparkles, Zap, Heart, BookOpen, Wand2 } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Sparkles, Zap, Heart, BookOpen, Wand2, Tv, Gamepad2, Film } from "lucide-react";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -473,10 +473,11 @@ export default function ModernFanficGenerate({ section }: { section: FanficGener
                           }}
                         >
                           <div className="text-center">
-                            <div className="text-2xl mb-2">
-                              {work.category === 'anime' ? '🎌' :
-                               work.category === 'novel' ? '📚' :
-                               work.category === 'movie' ? '🎬' : '🎮'}
+                            <div className="mb-2 flex justify-center">
+                              {work.category === 'anime' ? <Tv className="h-6 w-6 text-primary/60" /> :
+                               work.category === 'novel' ? <BookOpen className="h-6 w-6 text-primary/60" /> :
+                               work.category === 'movie' ? <Film className="h-6 w-6 text-primary/60" /> :
+                               <Gamepad2 className="h-6 w-6 text-primary/60" />}
                             </div>
                             <div className="font-medium text-sm">
                               {getWorkName(work, locale)}

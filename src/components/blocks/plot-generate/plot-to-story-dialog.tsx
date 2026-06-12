@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/icon";
+import { Zap, Sparkles, Palette } from "lucide-react";
 import { toast } from "sonner";
 import { useAppContext } from "@/contexts/app";
 import { PlotStorage } from "@/lib/plot-storage";
@@ -230,9 +231,9 @@ export default function PlotToStoryDialog({
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="fast">⚡ {t('ai_models.fast')}</SelectItem>
-                    <SelectItem value="standard">✨ {t('ai_models.standard')} (Recommended)</SelectItem>
-                    <SelectItem value="creative">🎨 {t('ai_models.creative')}</SelectItem>
+                    <SelectItem value="fast"><Zap className="h-4 w-4 inline mr-1" />{t('ai_models.fast')}</SelectItem>
+                    <SelectItem value="standard"><Sparkles className="h-4 w-4 inline mr-1" />{t('ai_models.standard')} (Recommended)</SelectItem>
+                    <SelectItem value="creative"><Palette className="h-4 w-4 inline mr-1" />{t('ai_models.creative')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -328,7 +329,7 @@ export default function PlotToStoryDialog({
                   </>
                 ) : (
                   <>
-                    ✨ {t('dialog.generate_story')}
+                    <Sparkles className="h-4 w-4 mr-1 inline" /> {t('dialog.generate_story')}
                   </>
                 )}
               </Button>

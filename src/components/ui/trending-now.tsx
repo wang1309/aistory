@@ -4,7 +4,7 @@ import { ModernCard, ModernCardHeader, ModernCardTitle, ModernCardContent } from
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AnimatedContainer } from "@/components/ui/animated-container"
-import { TrendingUp, Crown, Flame } from "lucide-react"
+import { TrendingUp, Crown, Flame, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface TrendingItem {
@@ -25,7 +25,7 @@ interface TrendingNowProps {
 }
 
 export function TrendingNow({
-  title = "🔥 热门趋势",
+  title = "热门趋势",
   items,
   className,
 }: TrendingNowProps) {
@@ -95,7 +95,7 @@ export function TrendingNow({
                   )}
 
                   {/* Icon */}
-                  <span className="text-xl">{item.icon}</span>
+                  <span className="text-xl">{item.icon === 'Zap' ? <Zap className="w-5 h-5 text-yellow-500" /> : item.icon === 'Flame' ? <Flame className="w-5 h-5 text-red-500" /> : item.icon}</span>
 
                   {/* Content */}
                   <div className="flex-1 text-left">
@@ -138,7 +138,7 @@ export const FANFIC_TRENDING_ITEMS: TrendingItem[] = [
     id: "hp-new",
     title: "哈利波特：时间旅行",
     subtitle: "最近新增的热门设定",
-    icon: "⚡",
+    icon: "Zap",
     trend: "new",
     rank: 1,
     type: "work",
@@ -185,7 +185,7 @@ export const FANFIC_TRENDING_ITEMS: TrendingItem[] = [
     id: "demon-slayer-hot",
     title: "鬼灭之刃 × 煉獄杏寿郎",
     subtitle: "本周最受欢迎",
-    icon: "🔥",
+    icon: "Flame",
     trend: "hot",
     type: "pairing",
     onClick: () => {

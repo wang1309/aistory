@@ -187,7 +187,7 @@ export default function Feedback({
 
           {!siteKey && (
             <div className="mt-4 p-3 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 rounded-md text-sm">
-              ⚠️ Turnstile not configured - NEXT_PUBLIC_TURNSTILE_SITE_KEY missing
+              Turnstile not configured - NEXT_PUBLIC_TURNSTILE_SITE_KEY missing
             </div>
           )}
 
