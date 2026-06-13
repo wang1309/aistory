@@ -6,6 +6,10 @@
     "description": "창작 니즈에 맞는 플랜을 선택하세요. AI로 무제한 스토리를 생성하세요.",
     "groups": [
       {
+        "name": "trial",
+        "title": "체험"
+      },
+      {
         "name": "monthly",
         "title": "월간"
       },
@@ -17,6 +21,31 @@
       }
     ],
     "items": [
+      {
+        "title": "체험 팩",
+        "description": "첫 체험. AI 창작 여정을 쉽게 시작하세요.",
+        "features_title": "포함 사항",
+        "features": [
+          "300 크레딧, 유효기간 없음"
+        ],
+        "interval": "one-time",
+        "amount": 100,
+        "currency": "USD",
+        "price": "$1",
+        "unit": "/ 1회",
+        "is_featured": false,
+        "tip": "첫 구매 전용",
+        "button": {
+          "title": "지금 구매",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "trial-one-time",
+        "product_name": "Story Generator 체험 팩",
+        "credits": 300,
+        "valid_months": 0,
+        "group": "trial"
+      },
       {
         "title": "Basic",
         "description": "짧은 이야기와 간단한 아이디어를 즐기는 라이트 유저를 위한 플랜.",

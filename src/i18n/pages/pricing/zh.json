@@ -6,6 +6,10 @@
     "description": "选择适合你创作需求的方案，用 AI 生成无限故事。",
     "groups": [
       {
+        "name": "trial",
+        "title": "试用"
+      },
+      {
         "name": "monthly",
         "title": "月付"
       },
@@ -17,6 +21,31 @@
       }
     ],
     "items": [
+      {
+        "title": "试用套餐",
+        "description": "首次体验，轻松开启你的 AI 创作之旅。",
+        "features_title": "包含功能",
+        "features": [
+          "300 积分，永不过期"
+        ],
+        "interval": "one-time",
+        "amount": 100,
+        "currency": "USD",
+        "price": "$1",
+        "unit": "/ 次",
+        "is_featured": false,
+        "tip": "仅限首次购买",
+        "button": {
+          "title": "立即购买",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "trial-one-time",
+        "product_name": "故事生成器 试用套餐",
+        "credits": 300,
+        "valid_months": 0,
+        "group": "trial"
+      },
       {
         "title": "Basic",
         "description": "适合轻度创作者，喜欢写短篇故事和随手记录灵感。",

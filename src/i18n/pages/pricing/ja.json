@@ -6,6 +6,10 @@
     "description": "あなたの創作ニーズに合ったプランを選びましょう。AIで無限のストーリーを生成できます。",
     "groups": [
       {
+        "name": "trial",
+        "title": "トライアル"
+      },
+      {
         "name": "monthly",
         "title": "月額"
       },
@@ -17,6 +21,31 @@
       }
     ],
     "items": [
+      {
+        "title": "トライアルパック",
+        "description": "初めてのお試し。AIクリエイティブの旅を簡単に始められます。",
+        "features_title": "含まれるもの",
+        "features": [
+          "300クレジット、有効期限なし"
+        ],
+        "interval": "one-time",
+        "amount": 100,
+        "currency": "USD",
+        "price": "$1",
+        "unit": "/ 回",
+        "is_featured": false,
+        "tip": "初回購入のみ",
+        "button": {
+          "title": "今すぐ購入",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "trial-one-time",
+        "product_name": "Story Generator トライアルパック",
+        "credits": 300,
+        "valid_months": 0,
+        "group": "trial"
+      },
       {
         "title": "Basic",
         "description": "短編やちょっとしたアイデアを楽しむライトユーザー向け。",
