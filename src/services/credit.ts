@@ -3,7 +3,7 @@ import {
   getUserValidCredits,
   insertCredit,
 } from "@/models/credit";
-import { and, asc, eq, gte, sql } from "drizzle-orm";
+import { and, asc, eq, gte, isNull, or, sql } from "drizzle-orm";
 import { credits as creditsTable } from "@/db/schema";
 import { db } from "@/db";
 import { getIsoTimestr } from "@/lib/time";
@@ -11,6 +11,11 @@ import { getSnowId } from "@/lib/hash";
 import { Order } from "@/types/order";
 import { UserCredits } from "@/types/user";
 import { getFirstPaidOrderByUserUuid } from "@/models/order";
+import {
+  findCoveringCredit,
+  isCreditExpired,
+  sumAvailableCredits,
+} from "@/services/credit-utils";
 
 export enum CreditsTransType {
   NewUser = "new_user", // initial credits for new user
@@ -38,9 +43,7 @@ export async function getUserCredits(user_uuid: string): Promise<UserCredits> {
 
     const credits = await getUserValidCredits(user_uuid);
     if (credits) {
-      credits.forEach((v) => {
-        user_credits.left_credits += v.credits || 0;
-      });
+      user_credits.left_credits = sumAvailableCredits(credits);
     }
 
     if (user_credits.left_credits < 0) {
@@ -77,38 +80,26 @@ export async function decreaseCredits({
         .from(creditsTable)
         .where(
           and(
-            gte(creditsTable.expired_at, now),
-            eq(creditsTable.user_uuid, user_uuid)
+            eq(creditsTable.user_uuid, user_uuid),
+            or(isNull(creditsTable.expired_at), gte(creditsTable.expired_at, now))
           )
         )
         .orderBy(asc(creditsTable.expired_at));
 
-      let order_no = "";
-      let expired_at: Date | null = null;
-      let left_credits = 0;
+      const selectedCredit = findCoveringCredit(userCredits, credits, now);
 
-      for (const credit of userCredits) {
-        left_credits += credit.credits;
-
-        if (left_credits >= credits) {
-          order_no = credit.order_no || "";
-          expired_at = credit.expired_at || null;
-          break;
-        }
-      }
-
-      if (left_credits < credits) {
+      if (!selectedCredit) {
         throw new Error("insufficient credits");
       }
 
       const new_credit: typeof creditsTable.$inferInsert = {
         trans_no: getSnowId(),
         created_at: new Date(getIsoTimestr()),
-        expired_at,
+        expired_at: selectedCredit.expired_at,
         user_uuid,
         trans_type,
         credits: 0 - credits,
-        order_no,
+        order_no: selectedCredit.order_no,
       };
 
       await tx.insert(creditsTable).values(new_credit);

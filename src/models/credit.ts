@@ -1,6 +1,6 @@
 import { credits } from "@/db/schema";
 import { db } from "@/db";
-import { desc, eq, and, gte, asc } from "drizzle-orm";
+import { desc, eq, and, gte, asc, or, isNull } from "drizzle-orm";
 
 export async function insertCredit(
   data: typeof credits.$inferInsert
@@ -50,8 +50,8 @@ export async function getUserValidCredits(
     .from(credits)
     .where(
       and(
-        gte(credits.expired_at, new Date(now)),
-        eq(credits.user_uuid, user_uuid)
+        eq(credits.user_uuid, user_uuid),
+        or(isNull(credits.expired_at), gte(credits.expired_at, new Date(now)))
       )
     )
     .orderBy(asc(credits.expired_at));
