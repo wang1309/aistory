@@ -1,13 +1,13 @@
 {
   "romance_story_generate": {
     "metadata": {
-      "title": "Free Romance Story Generator - AI Love Story Writer",
-      "description": "Generate original romance stories with AI. Choose your sub-genre, trope, and heat level — from sweet contemporary to epic fantasy romance. Free, no sign-up required.",
-      "keywords": "romance story generator, AI romance writer, love story generator, romance fiction AI, enemies to lovers generator, free romance story"
+      "title": "Free AI Romance Story Generator | Short Romance Stories",
+      "description": "Generate free romance stories instantly with our AI romance story generator. Pick your trope, heat level, and length — try it now, no sign-up needed.",
+      "keywords": "ai romance story generator, short stories romance, free romance stories, romance story generator, love story generator, enemies to lovers generator, romance fiction AI"
     },
     "ui": {
-      "title": "Romance Story Generator",
-      "subtitle": "Generate original romance stories — sweet, steamy, or everything in between — with the trope and sub-genre you love most.",
+      "title": "Free AI Romance Story Generator",
+      "subtitle": "Create free romance stories instantly — short stories romance readers adore, from sweet meet-cutes to steamy slow burns, with the trope and sub-genre you love most.",
       "breadcrumb_home": "Home",
       "breadcrumb_current": "Romance Story Generator",
       "story_idea": "Story Idea",
@@ -116,11 +116,11 @@
     "feature_intro": {
       "name": "feature_intro",
       "label": "Overview",
-      "title": "What Is a Romance Story Generator?",
-      "description": "A Romance Story Generator uses AI to write original love stories tailored to your favorite sub-genre, trope, and tone — in seconds. Whether you want a sweet small-town meet-cute, a steamy CEO romance, a slow-burn fantasy epic, or an ancient Chinese court drama, this Romance Story Generator gives you a fully written story with real characters, authentic tension, and the emotional payoff you're looking for.\n\nThis Romance Story Generator is designed for romance readers, fan fiction writers, creative writing students, and anyone who wants to explore a love story idea without writing from scratch. Set the heat level, pick your trope, and let the AI do the rest.",
+      "title": "What Is an AI Romance Story Generator?",
+      "description": "An AI romance story generator creates original short stories romance fans can enjoy instantly — tailored to your favorite sub-genre, trope, and tone. Whether you want a sweet small-town meet-cute, a steamy CEO romance, a slow-burn fantasy epic, or an ancient Chinese court drama, this AI romance story generator delivers a fully written story with real characters, authentic tension, and the emotional payoff you're looking for.\n\nLooking for free romance stories without digging through endless archives? This tool is designed for romance readers, fan fiction writers, creative writing students, and anyone who wants to explore a love story idea without writing from scratch. Set the heat level, pick your trope, and let the AI do the rest.",
       "image": {
         "src": "/imgs/backstory/what-is-backstory1.avif",
-        "alt": "Romance Story Generator overview"
+        "alt": "AI romance story generator interface with trope and heat level options"
       }
     },
     "feature_benefits": {
@@ -135,7 +135,7 @@
           "icon": "RiHeartLine",
           "image": {
             "src": "/imgs/backstory/why-use-backstory1.avif",
-            "alt": "Romance story tropes"
+            "alt": "Short stories romance tropes like enemies to lovers and slow burn"
           }
         },
         {
@@ -144,7 +144,7 @@
           "icon": "RiFlashlightLine",
           "image": {
             "src": "/imgs/backstory/why-use-backstory2.avif",
-            "alt": "Heat level control for romance"
+            "alt": "Heat level control for free romance stories from sweet to steamy"
           }
         },
         {
@@ -153,7 +153,7 @@
           "icon": "RiGlobalLine",
           "image": {
             "src": "/imgs/backstory/why-use-backstory3.avif",
-            "alt": "Western and Chinese romance sub-genres"
+            "alt": "Western and Chinese romance sub-genres including CEO and ancient court drama"
           }
         }
       ]
@@ -229,14 +229,14 @@
         },
         {
           "title": "Is the Romance Story Generator free?",
-          "description": "Yes. You can generate as many romance stories as you want with no account required. Every story is freshly written by AI each time — no recycled plots."
+          "description": "Yes. This is a completely free romance stories tool — generate as many short stories romance fans love with no account required. Every story is freshly written by our AI romance story generator each time — no recycled plots, no paywalls."
         }
       ]
     },
     "cta_section": {
       "name": "cta",
-      "title": "Generate Your Romance Story Now",
-      "description": "Use the Romance Story Generator to write the love story you've been waiting for — your trope, your heat level, your ending.",
+      "title": "Start Writing Free Romance Stories Now",
+      "description": "Use our AI romance story generator to create the short stories romance readers dream about — your trope, your heat level, your perfect ending.",
       "buttons": [
         {
           "title": "Generate Romance Story",

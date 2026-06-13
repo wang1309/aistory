@@ -32,11 +32,18 @@ export interface PricingItem {
   group?: string;
 }
 
+export interface PricingFAQ {
+  question: string;
+  answer: string;
+}
+
 export interface Pricing {
   disabled?: boolean;
   name?: string;
+  label?: string;
   title?: string;
   description?: string;
   items?: PricingItem[];
   groups?: PricingGroup[];
+  faq?: PricingFAQ[];
 }

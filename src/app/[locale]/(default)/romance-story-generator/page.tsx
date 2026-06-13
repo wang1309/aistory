@@ -107,6 +107,9 @@ export default async function RomanceStoryGeneratorPage({
       priceCurrency: "USD",
     },
     featureList: [
+      "AI romance story generator",
+      "Free romance stories on demand",
+      "Short stories romance readers love",
       "Multiple romance sub-genres",
       "Classic romance tropes",
       "Heat level control",

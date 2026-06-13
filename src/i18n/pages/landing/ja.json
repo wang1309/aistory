@@ -94,13 +94,6 @@
               "target": "_self"
             },
             {
-              "title": "マーダーミステリージェネレーター",
-              "description": "容疑者・手がかり・解決策を含む完全なマーダーミステリーパーティーゲームシナリオを生成。無料AIジェネレーター。",
-              "url": "/murder-mystery-generator",
-              "icon": "RiSearchEyeLine",
-              "target": "_self"
-            },
-            {
               "title": "ロマンス小説ジェネレーター",
               "description": "好みのサブジャンル・トロープ・甘さレベルでオリジナルのロマンス小説をAIで生成。無料・無制限。",
               "url": "/romance-story-generator",
@@ -846,11 +839,6 @@
             {
               "title": "おやすみ話ジェネレーター",
               "url": "/bedtime-story-generator",
-              "target": "_self"
-            },
-            {
-              "title": "マーダーミステリージェネレーター",
-              "url": "/murder-mystery-generator",
               "target": "_self"
             },
             {

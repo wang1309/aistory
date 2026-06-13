@@ -23,6 +23,10 @@ type RichTextEditorProps = {
   onProcessText?: (text: string, prompt: string) => Promise<string>;
   autocompleteOn?: boolean;
   onToggleAutocomplete?: () => void;
+  title?: string;
+  plainText?: string;
+  isAuthenticated?: boolean;
+  onSignIn?: () => void;
   reviewLabels?: {
     processing?: string;
     accept?: string;
@@ -40,6 +44,10 @@ export function RichTextEditor({
   onProcessText,
   autocompleteOn,
   onToggleAutocomplete,
+  title,
+  plainText,
+  isAuthenticated,
+  onSignIn,
   reviewLabels,
 }: RichTextEditorProps) {
   const editor = useEditor({
@@ -89,6 +97,10 @@ export function RichTextEditor({
         editor={editor}
         autocompleteOn={autocompleteOn}
         onToggleAutocomplete={onToggleAutocomplete}
+        title={title}
+        plainText={plainText}
+        isAuthenticated={isAuthenticated}
+        onSignIn={onSignIn}
       />
       <EditorContent editor={editor} />
       {selectionActions && onProcessText && (

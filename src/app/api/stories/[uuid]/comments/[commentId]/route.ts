@@ -13,8 +13,7 @@ export async function DELETE(
       return respErr("no auth");
     }
 
-    const uuid = context.params?.uuid;
-    const commentIdParam = context.params?.commentId;
+    const { uuid, commentId: commentIdParam } = await context.params;
 
     if (!uuid || !commentIdParam) {
       return respErr("invalid params");

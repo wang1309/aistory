@@ -14,6 +14,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 interface StoryDeleteButtonProps {
   uuid: string;
@@ -56,9 +57,9 @@ export default function StoryDeleteButton({ uuid }: StoryDeleteButtonProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="destructive" size="sm">
-          {t("my_stories.delete_story")}
-        </Button>
+        <button className="flex size-9 items-center justify-center rounded-full border border-border/30 text-muted-foreground/40 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-destructive/30 hover:bg-destructive/5 hover:text-destructive">
+          <RiDeleteBinLine className="size-3.5" />
+        </button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

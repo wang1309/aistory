@@ -4,6 +4,7 @@ import { memo, useMemo, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import HappyUsers from "./happy-users";
+import { getHeroCtaAnimationStyle } from "./animation-style";
 
 import { Hero as HeroType } from "@/types/blocks/hero";
 import Icon from "@/components/icon";
@@ -238,10 +239,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                             bg-foreground text-background hover:bg-foreground/85 active:scale-[0.97]
                             dark:bg-white dark:text-foreground dark:hover:bg-white/90
                             transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
-                          style={{
-                            animation: isMounted ? "hero-cta-breathe 4s ease-in-out infinite" : "none",
-                            animationDelay: "1.5s",
-                          }}
+                          style={getHeroCtaAnimationStyle(isMounted)}
                         >
                           <span className="flex items-center gap-2.5">
                             {item.icon && <Icon name={item.icon} className="size-4 shrink-0 opacity-70" />}

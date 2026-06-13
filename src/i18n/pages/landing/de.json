@@ -94,13 +94,6 @@
               "target": "_self"
             },
             {
-              "title": "Murder Mystery Generator",
-              "description": "Erstellen Sie vollständige Murder Mystery Partyspiel-Szenarien mit Verdächtigen, Hinweisen und Lösungen. Kostenloser KI-Generator.",
-              "url": "/murder-mystery-generator",
-              "icon": "RiSearchEyeLine",
-              "target": "_self"
-            },
-            {
               "title": "Liebesgeschichten-Generator",
               "description": "Generiere originelle Liebesgeschichten mit KI — Sub-Genre, Trope und Intensitätsstufe nach Wahl. Kostenlos, ohne Anmeldung.",
               "url": "/romance-story-generator",
@@ -846,11 +839,6 @@
             {
               "title": "Gutenacht-Geschichten-Generator",
               "url": "/bedtime-story-generator",
-              "target": "_self"
-            },
-            {
-              "title": "Murder Mystery Generator",
-              "url": "/murder-mystery-generator",
               "target": "_self"
             },
             {

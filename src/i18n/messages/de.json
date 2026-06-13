@@ -14,6 +14,9 @@
     "user_center": "Benutzerzentrum",
     "admin_system": "Admin-System"
   },
+  "common": {
+    "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut."
+  },
   "sign_modal": {
     "sign_in_title": "Anmelden",
     "sign_in_description": "Bei Ihrem Konto anmelden",
@@ -129,6 +132,9 @@
     "all": "Alle",
     "category": "Kategorie",
     "author": "Autor"
+  },
+  "pricing": {
+    "title": "Preise"
   },
   "community": {
     "title": "Story Square",

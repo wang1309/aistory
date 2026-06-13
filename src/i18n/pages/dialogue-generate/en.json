@@ -7,6 +7,8 @@
   "ui": {
     "title": "AI Dialogue Generator",
     "subtitle": "Create compelling, realistic conversations between characters with AI",
+    "eyebrow": "AI Writing Tool",
+    "continue_writing": "Continue",
     "breadcrumb_home": "Home",
     "breadcrumb_current": "Dialogue Generator",
     "scenario_prompt": "Scenario / Context",

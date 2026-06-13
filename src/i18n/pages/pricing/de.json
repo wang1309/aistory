@@ -1,0 +1,196 @@
+{
+  "pricing": {
+    "name": "pricing",
+    "label": "Preise",
+    "title": "Preise",
+    "description": "Wählen Sie den Plan, der zu Ihren kreativen Bedürfnissen passt. Generieren Sie unbegrenzte AI-Geschichten.",
+    "groups": [
+      {
+        "name": "monthly",
+        "title": "Monatlich"
+      },
+      {
+        "name": "yearly",
+        "title": "Jährlich",
+        "is_featured": true,
+        "label": "Bis zu 40% sparen"
+      }
+    ],
+    "items": [
+      {
+        "title": "Basic",
+        "description": "Für Gelegenheitsnutzer, die Kurzgeschichten und schnelle Ideen mögen.",
+        "features_title": "Enthält",
+        "features": [
+          "7.500 Credits, gültig für 1 Monat"
+        ],
+        "interval": "month",
+        "amount": 1500,
+        "currency": "USD",
+        "price": "$15",
+        "original_price": "$30",
+        "unit": "/ Monat",
+        "is_featured": false,
+        "tip": "Jederzeit kündbar",
+        "button": {
+          "title": "Jetzt starten",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "starter-monthly",
+        "product_name": "Story Generator Basic Monatlich",
+        "credits": 7500,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "Pro",
+        "description": "Für aktive Autoren, die Kurzgeschichten und Novellen schreiben.",
+        "label": "Beliebt",
+        "features_title": "Alles in Basic, plus",
+        "features": [
+          "22.500 Credits, gültig für 1 Monat",
+          "3x mehr Credits als Basic, bester Wert!"
+        ],
+        "interval": "month",
+        "amount": 2500,
+        "currency": "USD",
+        "price": "$25",
+        "original_price": "$50",
+        "unit": "/ Monat",
+        "is_featured": true,
+        "tip": "Jederzeit kündbar",
+        "button": {
+          "title": "Jetzt starten",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "standard-monthly",
+        "product_name": "Story Generator Pro Monatlich",
+        "credits": 22500,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "Max",
+        "description": "Für Vielschreiber, die Romane und Serien verfassen.",
+        "features_title": "Alles in Pro, plus",
+        "features": [
+          "45.000 Credits, gültig für 1 Monat"
+        ],
+        "interval": "month",
+        "amount": 5500,
+        "currency": "USD",
+        "price": "$55",
+        "original_price": "$110",
+        "unit": "/ Monat",
+        "is_featured": false,
+        "tip": "Jederzeit kündbar",
+        "button": {
+          "title": "Jetzt starten",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "premium-monthly",
+        "product_name": "Story Generator Max Monatlich",
+        "credits": 45000,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "Basic",
+        "description": "Für Gelegenheitsnutzer, die Kurzgeschichten und schnelle Ideen mögen.",
+        "features_title": "Enthält",
+        "features": [
+          "7.500 Credits/Monat, gültig für 1 Jahr"
+        ],
+        "interval": "year",
+        "amount": 10800,
+        "currency": "USD",
+        "price": "$9",
+        "original_price": "$18",
+        "unit": "/ Monat",
+        "is_featured": false,
+        "tip": "Jederzeit kündbar",
+        "button": {
+          "title": "Jetzt starten",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "starter-yearly",
+        "product_name": "Story Generator Basic Jährlich",
+        "credits": 90000,
+        "valid_months": 12,
+        "group": "yearly"
+      },
+      {
+        "title": "Pro",
+        "description": "Für aktive Autoren, die Kurzgeschichten und Novellen schreiben.",
+        "label": "Beliebt",
+        "features_title": "Alles in Basic, plus",
+        "features": [
+          "22.500 Credits/Monat, gültig für 1 Jahr",
+          "3x mehr Credits als Basic, bester Wert!"
+        ],
+        "interval": "year",
+        "amount": 22800,
+        "currency": "USD",
+        "price": "$19",
+        "original_price": "$38",
+        "unit": "/ Monat",
+        "is_featured": true,
+        "tip": "Jederzeit kündbar",
+        "button": {
+          "title": "Jetzt starten",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "standard-yearly",
+        "product_name": "Story Generator Pro Jährlich",
+        "credits": 270000,
+        "valid_months": 12,
+        "group": "yearly"
+      },
+      {
+        "title": "Max",
+        "description": "Für Vielschreiber, die Romane und Serien verfassen.",
+        "features_title": "Alles in Pro, plus",
+        "features": [
+          "45.000 Credits/Monat, gültig für 1 Jahr"
+        ],
+        "interval": "year",
+        "amount": 58800,
+        "currency": "USD",
+        "price": "$49",
+        "original_price": "$98",
+        "unit": "/ Monat",
+        "is_featured": false,
+        "tip": "Jederzeit kündbar",
+        "button": {
+          "title": "Jetzt starten",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "premium-yearly",
+        "product_name": "Story Generator Max Jährlich",
+        "credits": 540000,
+        "valid_months": 12,
+        "group": "yearly"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Wie funktioniert die Abrechnung?",
+        "answer": "Credits werden basierend auf dem tatsächlichen Token-Verbrauch abgezogen. Jede AI-Generierung verbraucht Credits proportional zu den Input- und Output-Tokens. Sie sehen immer die Credit-Kosten, bevor Sie eine Generierung bestätigen."
+      },
+      {
+        "question": "Kann ich mein Abonnement jederzeit kündigen?",
+        "answer": "Ja! Sie können Ihr Abonnement jederzeit unter Benutzerzentrum > Meine Bestellungen kündigen. Ihre Credits bleiben bis zum Ende des aktuellen Abrechnungszeitraums verfügbar."
+      },
+      {
+        "question": "Werden meine Daten für Training verwendet oder mit Dritten geteilt?",
+        "answer": "Niemals. Ihre Geschichten und Daten werden nie für Modelltraining verwendet oder mit Dritten geteilt. Sie können Ihre Arbeit jederzeit in Markdown und anderen Formaten exportieren und alle Daten löschen, wann immer Sie möchten. Online-Speicherung ist optional."
+      }
+    ]
+  }
+}

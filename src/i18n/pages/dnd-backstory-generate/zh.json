@@ -1,8 +1,8 @@
 {
   "dnd_backstory_generate": {
     "metadata": {
-      "title": "Free DnD 背景故事生成器 - 生成可直接跑团的 D&D 角色设定",
-      "description": "DnD 背景故事生成器，面向 D&D 5e / 5.5e 玩家与 DM，快速生成可玩角色背景，包含性格、羁绊、缺陷、秘密与 DM 剧情钩子。",
+      "title": "DnD 背景故事生成器 | 免费 D&D 5e 角色设定工具",
+      "description": "面向 D&D 5e / 5.5e 玩家与 DM 的背景故事生成器。快速生成可直接跑团使用的角色背景，包含性格特征、理想、羁绊、缺陷、秘密与 DM 剧情钩子，支持多种战役风格。",
       "keywords": "DnD Backstory Generator,D&D背景故事生成器,DnD角色背景,D&D 5e角色设定,NPC背景故事,DM剧情钩子"
     },
     "ui": {

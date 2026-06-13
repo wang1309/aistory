@@ -14,6 +14,9 @@
     "user_center": "ユーザーセンター",
     "admin_system": "管理システム"
   },
+  "common": {
+    "error": "エラーが発生しました。しばらくしてからもう一度お試しください。"
+  },
   "sign_modal": {
     "sign_in_title": "ログイン",
     "sign_in_description": "アカウントにログイン",
@@ -129,6 +132,9 @@
     "all": "すべて",
     "category": "カテゴリー",
     "author": "著者"
+  },
+  "pricing": {
+    "title": "料金プラン"
   },
   "community": {
     "title": "ストーリースクエア",

@@ -101,13 +101,6 @@
               "target": "_self"
             },
             {
-              "title": "Murder Mystery Generator",
-              "description": "Generate complete murder mystery party game scenarios with suspects, clues, and solutions. Free AI whodunit generator.",
-              "url": "/murder-mystery-generator",
-              "icon": "RiSearchEyeLine",
-              "target": "_self"
-            },
-            {
               "title": "Romance Story Generator",
               "description": "Generate original romance stories with your favorite trope, sub-genre, and heat level. Free AI romance writer.",
               "url": "/romance-story-generator",
@@ -853,11 +846,6 @@
             {
               "title": "Bedtime Story Generator",
               "url": "/bedtime-story-generator",
-              "target": "_self"
-            },
-            {
-              "title": "Murder Mystery Generator",
-              "url": "/murder-mystery-generator",
               "target": "_self"
             },
             {

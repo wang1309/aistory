@@ -330,7 +330,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
           </div>
         </div>
 
-        <div className="mx-auto max-w-2xl text-center mb-14 sm:mb-18">
+        <div className="mx-auto max-w-2xl text-center mb-10 sm:mb-14 lg:mb-18">
           {/* Double-bezel icon container */}
           <div className="flex justify-center mb-6">
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
@@ -638,7 +638,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             ref={resultRef}
-            className="relative h-[720px] max-h-[75vh] min-h-[520px] lg:sticky lg:top-24"
+            className="relative h-[720px] max-h-[75vh] md:max-h-[60vh] lg:max-h-[75vh] min-h-[380px] sm:min-h-[520px] lg:sticky lg:top-24"
           >
             <div className="absolute inset-0 bg-orange-500/5 rounded-[2rem] blur-2xl -z-10" />
 
@@ -673,7 +673,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                       className="h-8 text-xs gap-1.5 text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10"
                     >
                       <Copy className="w-3.5 h-3.5" />
-                      {t("output.copy")}
+                      <span className="hidden sm:inline">{t("output.copy")}</span>
                     </Button>
                     <Button
                       size="sm"
@@ -686,7 +686,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                       className="h-8 text-xs gap-1.5 rounded-full bg-orange-600 px-3 text-white hover:bg-orange-500"
                     >
                       <PenLine className="w-3.5 h-3.5" />
-                      {locale === "zh" ? "续写" : "Continue"}
+                      <span className="hidden sm:inline">{locale === "zh" ? "续写" : "Continue"}</span>
                     </Button>
                   </div>
                 )}

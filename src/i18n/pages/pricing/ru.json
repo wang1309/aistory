@@ -1,0 +1,196 @@
+{
+  "pricing": {
+    "name": "pricing",
+    "label": "Цены",
+    "title": "Цены",
+    "description": "Выберите план, соответствующий вашим творческим потребностям. Генерируйте неограниченные AI-истории.",
+    "groups": [
+      {
+        "name": "monthly",
+        "title": "Ежемесячно"
+      },
+      {
+        "name": "yearly",
+        "title": "Ежегодно",
+        "is_featured": true,
+        "label": "Экономия до 40%"
+      }
+    ],
+    "items": [
+      {
+        "title": "Basic",
+        "description": "Для тех, кто пишет короткие истории и быстрые идеи.",
+        "features_title": "Включает",
+        "features": [
+          "7 500 кредитов, действительны 1 месяц"
+        ],
+        "interval": "month",
+        "amount": 1500,
+        "currency": "USD",
+        "price": "$15",
+        "original_price": "$30",
+        "unit": "/ месяц",
+        "is_featured": false,
+        "tip": "Отмена в любое время",
+        "button": {
+          "title": "Начать",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "starter-monthly",
+        "product_name": "Story Generator Basic Ежемесячно",
+        "credits": 7500,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "Pro",
+        "description": "Для активных авторов, пишущих рассказы и повести.",
+        "label": "Популярный",
+        "features_title": "Всё из Basic, плюс",
+        "features": [
+          "22 500 кредитов, действительны 1 месяц",
+          "В 3 раза больше кредитов, чем Basic — лучшая цена!"
+        ],
+        "interval": "month",
+        "amount": 2500,
+        "currency": "USD",
+        "price": "$25",
+        "original_price": "$50",
+        "unit": "/ месяц",
+        "is_featured": true,
+        "tip": "Отмена в любое время",
+        "button": {
+          "title": "Начать",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "standard-monthly",
+        "product_name": "Story Generator Pro Ежемесячно",
+        "credits": 22500,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "Max",
+        "description": "Для тех, кто пишет романы и сериалы.",
+        "features_title": "Всё из Pro, плюс",
+        "features": [
+          "45 000 кредитов, действительны 1 месяц"
+        ],
+        "interval": "month",
+        "amount": 5500,
+        "currency": "USD",
+        "price": "$55",
+        "original_price": "$110",
+        "unit": "/ месяц",
+        "is_featured": false,
+        "tip": "Отмена в любое время",
+        "button": {
+          "title": "Начать",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "premium-monthly",
+        "product_name": "Story Generator Max Ежемесячно",
+        "credits": 45000,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "Basic",
+        "description": "Для тех, кто пишет короткие истории и быстрые идеи.",
+        "features_title": "Включает",
+        "features": [
+          "7 500 кредитов/месяц, действительны 1 год"
+        ],
+        "interval": "year",
+        "amount": 10800,
+        "currency": "USD",
+        "price": "$9",
+        "original_price": "$18",
+        "unit": "/ месяц",
+        "is_featured": false,
+        "tip": "Отмена в любое время",
+        "button": {
+          "title": "Начать",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "starter-yearly",
+        "product_name": "Story Generator Basic Ежегодно",
+        "credits": 90000,
+        "valid_months": 12,
+        "group": "yearly"
+      },
+      {
+        "title": "Pro",
+        "description": "Для активных авторов, пишущих рассказы и повести.",
+        "label": "Популярный",
+        "features_title": "Всё из Basic, плюс",
+        "features": [
+          "22 500 кредитов/месяц, действительны 1 год",
+          "В 3 раза больше кредитов, чем Basic — лучшая цена!"
+        ],
+        "interval": "year",
+        "amount": 22800,
+        "currency": "USD",
+        "price": "$19",
+        "original_price": "$38",
+        "unit": "/ месяц",
+        "is_featured": true,
+        "tip": "Отмена в любое время",
+        "button": {
+          "title": "Начать",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "standard-yearly",
+        "product_name": "Story Generator Pro Ежегодно",
+        "credits": 270000,
+        "valid_months": 12,
+        "group": "yearly"
+      },
+      {
+        "title": "Max",
+        "description": "Для тех, кто пишет романы и сериалы.",
+        "features_title": "Всё из Pro, плюс",
+        "features": [
+          "45 000 кредитов/месяц, действительны 1 год"
+        ],
+        "interval": "year",
+        "amount": 58800,
+        "currency": "USD",
+        "price": "$49",
+        "original_price": "$98",
+        "unit": "/ месяц",
+        "is_featured": false,
+        "tip": "Отмена в любое время",
+        "button": {
+          "title": "Начать",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "premium-yearly",
+        "product_name": "Story Generator Max Ежегодно",
+        "credits": 540000,
+        "valid_months": 12,
+        "group": "yearly"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Как работает оплата?",
+        "answer": "Кредиты списываются на основе фактического использования токенов. Каждая AI-генерация потребляет кредиты пропорционально входным и выходным токенам. Вы всегда видите стоимость в кредитах перед подтверждением генерации."
+      },
+      {
+        "question": "Могу ли я отменить подписку в любое время?",
+        "answer": "Да! Вы можете отменить подписку в любое время в Личном кабинете > Мои заказы. Ваши кредиты будут доступны до конца текущего расчётного периода."
+      },
+      {
+        "question": "Будут ли мои данные использоваться для обучения или переданы третьим лицам?",
+        "answer": "Никогда. Ваши истории и данные никогда не используются для обучения моделей и не передаются третьим лицам. Вы можете экспортировать свои работы в Markdown и других форматах в любое время, а также удалить все данные. Онлайн-сохранение необязательно."
+      }
+    ]
+  }
+}

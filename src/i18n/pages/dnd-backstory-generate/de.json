@@ -1,8 +1,8 @@
 {
   "dnd_backstory_generate": {
     "metadata": {
-      "title": "Free DnD-Hintergrundgeschichten-Generator - Spielbare D&D 5e Hintergründe erstellen",
-      "description": "Der DnD-Hintergrundgeschichten-Generator erstellt für D&D 5e und 5.5e spielbare Hintergründe mit Makeln, Bindungen, Geheimnissen und DM Hooks.",
+      "title": "DnD-Hintergrundgeschichten-Generator | D&D 5e Charakter-Lore",
+      "description": "Kostenloser DnD-Hintergrundgeschichten-Generator für D&D 5e und 5.5e Spieler und DMs. Erstelle spielbare Charakterhintergründe mit Eigenschaften, Idealen, Bindungen, Makeln, Geheimnissen und drei DM Hooks pro Ausgabe.",
       "keywords": "DnD Backstory Generator,D&D backstory generator,D&D character backstory,5e backstory,NPC backstory,DM hooks"
     },
     "ui": {

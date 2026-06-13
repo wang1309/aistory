@@ -7,6 +7,8 @@
   "ui": {
     "title": "AI 对话生成器",
     "subtitle": "使用 AI 创建引人入胜、逼真的角色对话",
+    "eyebrow": "AI 写作工具",
+    "continue_writing": "续写",
     "breadcrumb_home": "首页",
     "breadcrumb_current": "对话生成器",
     "scenario_prompt": "场景 / 背景",

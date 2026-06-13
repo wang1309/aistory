@@ -72,6 +72,7 @@ export default function FAQ({ section, accent = "orange" }: Props) {
               viewBox="0 0 160 12"
               fill="none"
               preserveAspectRatio="none"
+              aria-hidden="true"
             >
               <path
                 d="M2 8c30-5 60-6 90-3s40 4 66-1"
@@ -115,7 +116,7 @@ export default function FAQ({ section, accent = "orange" }: Props) {
 
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
-                    className="flex w-full items-center gap-4 px-6 py-5 text-left"
+                    className="flex w-full min-h-[44px] items-center gap-4 px-6 py-4 text-left focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
                   >
                     {/* Double-bezel number badge */}
                     <div className={`shrink-0 rounded-lg border p-0.5 transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? "border-primary/20" : "border-border/15 bg-foreground/[0.02]"}`}>

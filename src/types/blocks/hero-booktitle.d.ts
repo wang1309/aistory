@@ -6,6 +6,11 @@ export interface HeroBooktitle {
   header: {
     title: string;
     subtitle: string;
+    meta_title?: string;
+    meta_description?: string;
+    h1_prefix?: string;
+    h1_highlight?: string;
+    h1_suffix?: string;
   };
   form: {
     description: {

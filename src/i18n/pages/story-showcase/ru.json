@@ -1,0 +1,70 @@
+{
+  "story_showcase": {
+    "name": "story_showcase",
+    "title": "Примеры историй, созданных AI",
+    "label": "Примеры",
+    "description": "Откройте для себя удивительные истории, созданные нашим AI генератором в разных жанрах и стилях",
+    "items": [
+      {
+        "title": "Дракон Забытой Горы",
+        "description": "Юная ученица обнаруживает легендарного дракона и должна решить, стоит ли его разбудить, чтобы спасти деревню.",
+        "url": "/stories/fantasy-quest-dragon-mountain",
+        "target": "_self",
+        "label": "Фэнтези Квест",
+        "image": {
+          "src": "/imgs/stories/fantasy-1.png"
+        }
+      },
+      {
+        "title": "Последний Сигнал с Европы",
+        "description": "Команда исследователей глубокого космоса получает загадочный сигнал, ведущий к ужасающему открытию.",
+        "url": "/stories/scifi-thriller-europa-signal",
+        "target": "_self",
+        "label": "Научная Фантастика",
+        "image": {
+          "src": "/imgs/stories/scifi-1.png"
+        }
+      },
+      {
+        "title": "Кофе в Полночь",
+        "description": "Двое незнакомцев встречаются каждую ночь в кафе, делясь историями, но никогда не называя имён.",
+        "url": "/stories/romance-coffee-midnight",
+        "target": "_self",
+        "label": "Романтика",
+        "image": {
+          "src": "/imgs/stories/romance-1.png"
+        }
+      },
+      {
+        "title": "Исчезнувший Художник",
+        "description": "Известный художник исчезает, оставляя картины со скрытыми подсказками о своём местонахождении.",
+        "url": "/stories/mystery-vanishing-painter",
+        "target": "_self",
+        "label": "Детектив",
+        "image": {
+          "src": "/imgs/stories/mystery-1.png"
+        }
+      },
+      {
+        "title": "Зеркало в Комнате 42",
+        "description": "Гость отеля обнаруживает, что старинное зеркало в номере показывает отражения из другого времени.",
+        "url": "/stories/horror-mirror-room-42",
+        "target": "_self",
+        "label": "Ужасы",
+        "image": {
+          "src": "/imgs/stories/horror-1.png"
+        }
+      },
+      {
+        "title": "Звёздный Сад Луны",
+        "description": "Любопытная девочка сажает волшебные звёздные семена и выращивает сад, светящийся ночью.",
+        "url": "/stories/kids-story-lunas-star-garden",
+        "target": "_self",
+        "label": "Детская История",
+        "image": {
+          "src": "/imgs/stories/kids-1.png"
+        }
+      }
+    ]
+  }
+}

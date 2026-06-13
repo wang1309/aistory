@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { getUserUuid } from "@/services/user";
 import { getUserStats } from "@/models/userStats";
 import { getDailyStoryStatsByUser } from "@/models/storyAnalytics";
-import CreationActivity from "@/components/stats/creation-activity";
+import DashboardView from "@/components/console/dashboard-view";
 
 export default async function CreatorDashboardPage() {
   const t = await getTranslations();
@@ -56,39 +56,25 @@ export default async function CreatorDashboardPage() {
     },
   ];
 
+  const activityLabels = {
+    title: t("creation_dashboard.activity.title"),
+    description: t("creation_dashboard.activity.description"),
+    weekdays: Array.from({ length: 7 }).map((_, i) =>
+      t(`creation_dashboard.activity.weekdays.${i}`)
+    ),
+    tooltip: t("creation_dashboard.activity.tooltip"),
+    trend_title: t("creation_dashboard.activity.trend_title"),
+    trend_hint: t("creation_dashboard.activity.trend_hint"),
+    empty: t("creation_dashboard.activity.empty"),
+  };
+
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">
-          {t("creation_dashboard.title")}
-        </h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          {t("creation_dashboard.description")}
-        </p>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {cards.map((card) => (
-          <div
-            key={card.key}
-            className="rounded-xl border bg-card text-card-foreground p-4 shadow-sm flex flex-col gap-1"
-          >
-            <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-              {card.title}
-            </div>
-            <div className="text-2xl font-semibold leading-tight">
-              {card.value}
-            </div>
-            <div className="text-xs text-muted-foreground mt-1">
-              {card.description}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="rounded-xl border bg-card text-card-foreground p-4 shadow-sm">
-        <CreationActivity data={dailyStats} />
-      </div>
-    </div>
+    <DashboardView
+      title={t("creation_dashboard.title")}
+      description={t("creation_dashboard.description")}
+      stats={cards}
+      dailyStats={dailyStats}
+      activityLabels={activityLabels}
+    />
   );
 }

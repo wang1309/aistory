@@ -14,6 +14,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { RiPencilLine } from "react-icons/ri";
 
 interface StoryTitleEditorProps {
   uuid: string;
@@ -33,6 +34,7 @@ export default function StoryTitleEditor({
   const [isPending, startTransition] = useTransition();
 
   const displayTitle = currentTitle.trim() || untitledLabel;
+  const isUntitled = !currentTitle.trim();
 
   const handleOpenChange = (next: boolean) => {
     setOpen(next);
@@ -79,15 +81,19 @@ export default function StoryTitleEditor({
   };
 
   return (
-    <div className="flex items-center gap-2">
-      <h1 className="text-2xl font-semibold tracking-tight break-words">
+    <div className="flex items-start gap-3">
+      <h1
+        className={`font-display text-2xl font-bold tracking-tight break-words md:text-3xl ${
+          isUntitled ? "text-muted-foreground/40 italic" : ""
+        }`}
+      >
         {displayTitle}
       </h1>
       <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogTrigger asChild>
-          <Button variant="outline" size="sm">
-            {t("my_stories.edit_title")}
-          </Button>
+          <button className="mt-1 flex size-8 shrink-0 items-center justify-center rounded-full text-muted-foreground/30 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-muted hover:text-muted-foreground">
+            <RiPencilLine className="size-3.5" />
+          </button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

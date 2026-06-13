@@ -517,16 +517,12 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
           {/* Eyebrow badge */}
           <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
             <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
-            AI Writing Tool
+            {t("ui.eyebrow")}
           </span>
 
           {/* Title with gradient split */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-            AI{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
-              Dialogue
-            </span>
-            {" "}Generator
+            {t("ui.title")}
           </h1>
 
           {/* Decorative brush stroke */}
@@ -663,7 +659,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                   <RequiredLabel>{t("ui.characters")}</RequiredLabel>
                   {characters.map((char, index) => (
                     <div key={index} className="flex gap-2 items-start">
-                      <div className="flex-1 grid grid-cols-3 gap-2">
+                      <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-2">
                         <Input
                           placeholder={t("placeholders.character_name")}
                           value={char.name}
@@ -701,7 +697,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                 {/* AI Model */}
                 <div className="space-y-2">
                   <RequiredLabel>{t("ui.ai_model")}</RequiredLabel>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {AI_MODELS.map((model) => (
                       <button
                         key={model.id}
@@ -856,7 +852,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-xl font-semibold">{t("output.title")}</h2>
                   {generatedDialogue && (
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <span className="text-sm text-muted-foreground">
                         {wordCount} {t("output.words")}
                       </span>
@@ -905,7 +901,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                         className="rounded-full bg-orange-600 px-4 text-white hover:bg-orange-500"
                       >
                         <Icon name="mdi:pencil-plus" className="w-4 h-4 mr-2" />
-                        {locale === "zh" ? "续写" : "Continue"}
+                        {t("ui.continue_writing")}
                       </Button>
                     </div>
                   )}

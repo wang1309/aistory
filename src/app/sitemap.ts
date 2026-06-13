@@ -3,6 +3,7 @@ import { locales } from '@/i18n/locale'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org"
+  const lastModified = new Date("2026-06-13")
 
   // 主要路由列表
   const routes = [
@@ -39,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       return {
         url: url,
-        lastModified: new Date(),
+        lastModified,
         changeFrequency: 'daily' as const,
         priority: route === ''
           ? 1.0
@@ -69,7 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
               : `${webUrl}/${lang}${route}`
             acc[lang] = langUrl
             return acc
-          }, {} as Record<string, string>)
+          }, { "x-default": `${webUrl}${route}` } as Record<string, string>)
         }
       }
     })

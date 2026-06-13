@@ -1,8 +1,8 @@
 {
   "dnd_backstory_generate": {
     "metadata": {
-      "title": "Free DnD генератор предысторий - создайте играбельную предысторию D&D 5e",
-      "description": "DnD генератор предысторий для игроков и ДМов D&D 5e и 5.5e. Создавайте играбельные предыстории с изъянами, связями, секретами и DM hooks.",
+      "title": "DnD генератор предысторий | D&D 5e персонаж бесплатно",
+      "description": "Бесплатный DnD генератор предысторий для игроков и ДМов D&D 5e и 5.5e. Создавайте играбельные предыстории персонажей с чертами, идеалами, связями, изъянами, секретами и тремя DM-зацепками в каждом результате.",
       "keywords": "DnD Backstory Generator,D&D backstory generator,D&D character backstory,5e backstory,NPC backstory,DM hooks"
     },
     "ui": {

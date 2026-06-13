@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback } from "react";
 import type { Editor } from "@tiptap/react";
 import { useLocale } from "next-intl";
 import { Toggle } from "@/components/ui/toggle";
@@ -9,6 +10,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   RiBold,
   RiItalic,
@@ -24,8 +31,13 @@ import {
   RiArrowGoBackLine,
   RiArrowGoForwardLine,
   RiMagicLine,
+  RiDownload2Line,
+  RiFileTextLine,
+  RiMarkdownLine,
+  RiFilePdf2Line,
 } from "react-icons/ri";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 function getCopy(locale: string) {
   if (locale.startsWith("zh")) {
@@ -44,6 +56,12 @@ function getCopy(locale: string) {
       autocomplete: "自动补全 · Tab 接受 · Esc 取消",
       undo: "撤销",
       redo: "重做",
+      exportMarkdown: "Export Markdown",
+      exportTxt: "Export TXT",
+      exportPdf: "Export PDF",
+      exported: "导出成功",
+      exportEmpty: "没有可导出的内容",
+      exportFailed: "导出失败",
     };
   }
   return {
@@ -61,13 +79,40 @@ function getCopy(locale: string) {
     autocomplete: "Autocomplete · Tab to accept · Esc to dismiss",
     undo: "Undo",
     redo: "Redo",
+    exportMarkdown: "Export Markdown",
+    exportTxt: "Export TXT",
+    exportPdf: "Export PDF",
+    exported: "Exported",
+    exportEmpty: "Nothing to export",
+    exportFailed: "Export failed",
   };
+}
+
+function downloadFile(content: string, filename: string, mimeType: string) {
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function getExportFilename(title: string, ext: string) {
+  const safe = (title || "untitled").replace(/[^\w一-鿿]/g, "_").substring(0, 40);
+  return `${safe}.${ext}`;
 }
 
 type ToolbarProps = {
   editor: Editor;
   autocompleteOn?: boolean;
   onToggleAutocomplete?: () => void;
+  title?: string;
+  plainText?: string;
+  isAuthenticated?: boolean;
+  onSignIn?: () => void;
 };
 
 function ToolbarButton({
@@ -104,9 +149,56 @@ function Divider() {
   return <div className="mx-1 h-5 w-px bg-border/60" />;
 }
 
-export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete }: ToolbarProps) {
+export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete, title, plainText, isAuthenticated, onSignIn }: ToolbarProps) {
   const locale = useLocale();
   const copy = getCopy(locale);
+
+  const needLogin = locale.startsWith("zh") ? "请先登录后再导出" : "Please sign in to export";
+
+  const handleExport = useCallback(async (format: "markdown" | "txt" | "pdf") => {
+    if (!isAuthenticated) {
+      onSignIn?.();
+      toast.error(needLogin);
+      return;
+    }
+
+    const text = plainText ?? editor.getText();
+    if (!text.trim()) {
+      toast.error(copy.exportEmpty);
+      return;
+    }
+    const t = title ?? "";
+
+    try {
+      if (format === "markdown") {
+        const md = editor.getHTML();
+        downloadFile(md, getExportFilename(t, "md"), "text/markdown;charset=utf-8");
+      } else if (format === "txt") {
+        downloadFile(text, getExportFilename(t, "txt"), "text/plain;charset=utf-8");
+      } else if (format === "pdf") {
+        const { exportStoryToPdf } = await import("@/lib/pdf-export");
+        await exportStoryToPdf(text, {
+          title: t || "Untitled",
+          prompt: "",
+          wordCount: text.length,
+          generatedAt: new Date(),
+        }, locale.startsWith("zh") ? "zh" : "en", {
+          generated_at: locale.startsWith("zh") ? "生成时间" : "Generated at",
+          word_count_label: locale.startsWith("zh") ? "字数" : "Words",
+          ai_model: locale.startsWith("zh") ? "AI 模型" : "AI Model",
+          story_format: locale.startsWith("zh") ? "格式" : "Format",
+          story_genre: locale.startsWith("zh") ? "类型" : "Genre",
+          story_tone: locale.startsWith("zh") ? "语气" : "Tone",
+          prompt: locale.startsWith("zh") ? "提示词" : "Prompt",
+          footer_text: "AI Story Generator",
+          page_indicator: locale.startsWith("zh") ? "第 {current} 页 / 共 {total} 页" : "Page {current} / {total}",
+        });
+      }
+      toast.success(copy.exported);
+    } catch {
+      toast.error(copy.exportFailed);
+    }
+  }, [copy, editor, plainText, title, locale, isAuthenticated, onSignIn, needLogin]);
 
   return (
     <TooltipProvider>
@@ -194,6 +286,40 @@ export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete }: Toolba
         />
 
         <div className="flex-1" />
+
+        <DropdownMenu>
+          <Tooltip delayDuration={200}>
+            <TooltipTrigger asChild>
+              <DropdownMenuTrigger asChild>
+                <button
+                  type="button"
+                  className="inline-flex size-9 items-center justify-center rounded-md text-sm text-muted-foreground transition hover:bg-muted sm:size-8"
+                >
+                  <RiDownload2Line className="size-4" />
+                </button>
+              </DropdownMenuTrigger>
+            </TooltipTrigger>
+            <TooltipContent side="top" className="text-xs z-[100]">
+              {copy.exportMarkdown.replace("Markdown", "")}
+            </TooltipContent>
+          </Tooltip>
+          <DropdownMenuContent align="end" className="min-w-[180px]">
+            <DropdownMenuItem onClick={() => void handleExport("markdown")}>
+              <RiMarkdownLine className="mr-2 size-4" />
+              {copy.exportMarkdown}
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => void handleExport("txt")}>
+              <RiFileTextLine className="mr-2 size-4" />
+              {copy.exportTxt}
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => void handleExport("pdf")}>
+              <RiFilePdf2Line className="mr-2 size-4" />
+              {copy.exportPdf}
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <Divider />
 
         {onToggleAutocomplete && (
           <>

@@ -43,11 +43,20 @@ export async function generateMetadata({
       url: canonicalUrl,
       siteName: "AI Story",
       type: "website",
+      images: [
+        {
+          url: `${process.env.NEXT_PUBLIC_WEB_URL}/story.png`,
+          width: 1200,
+          height: 630,
+          alt: metadata.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: metadata.title,
       description: metadata.description,
+      images: [`${process.env.NEXT_PUBLIC_WEB_URL}/story.png`],
     },
   };
 }

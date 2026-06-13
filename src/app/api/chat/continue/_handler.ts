@@ -4,7 +4,7 @@ import {
   decreaseCredits,
   getUserCredits,
 } from "@/services/credit";
-import { getUserUuid, isCurrentUserAdmin } from "@/services/user";
+import { getUserUuid } from "@/services/user";
 import {
   buildAgnesChatRequest,
   createAgnesHeaders,
@@ -26,7 +26,6 @@ type Usage = {
 
 export type ContinueChatDependencies = {
   getUserUuid: typeof getUserUuid;
-  isCurrentUserAdmin: typeof isCurrentUserAdmin;
   getUserCredits: typeof getUserCredits;
   decreaseCredits: typeof decreaseCredits;
   fetchAgnes: (payload: AgnesChatRequestInput) => Promise<Response>;
@@ -35,7 +34,6 @@ export type ContinueChatDependencies = {
 function getDefaultDependencies(): ContinueChatDependencies {
   return {
     getUserUuid,
-    isCurrentUserAdmin,
     getUserCredits,
     decreaseCredits,
     fetchAgnes: async (payload) => {
@@ -101,17 +99,14 @@ export function createContinueChatHandler(
         return respErr("no auth");
       }
 
-      const isAdmin = await deps.isCurrentUserAdmin();
-      if (!isAdmin) {
-        const estimatedMaxCredits = estimateMaxContinueChatCredits({
-          messages: body.messages,
-          maxTokens: body.max_tokens,
-        });
+      const estimatedMaxCredits = estimateMaxContinueChatCredits({
+        messages: body.messages,
+        maxTokens: body.max_tokens,
+      });
 
-        const userCredits = await deps.getUserCredits(user_uuid);
-        if ((userCredits.left_credits || 0) < estimatedMaxCredits) {
-          return respErr("insufficient credits");
-        }
+      const userCredits = await deps.getUserCredits(user_uuid);
+      if ((userCredits.left_credits || 0) < estimatedMaxCredits) {
+        return respErr("insufficient credits");
       }
 
       const upstreamPayload = buildAgnesChatRequest({
@@ -169,7 +164,6 @@ export function createContinueChatHandler(
             }
 
             if (
-              !isAdmin &&
               finalUsage?.prompt_tokens !== undefined &&
               finalUsage.completion_tokens !== undefined
             ) {

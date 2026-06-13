@@ -642,7 +642,7 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             ref={resultRef}
-            className="relative h-[720px] max-h-[75vh] min-h-[520px] lg:sticky lg:top-24"
+            className="relative h-[520px] sm:h-[720px] max-h-[75vh] min-h-[400px] sm:min-h-[520px] lg:sticky lg:top-24"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 to-orange-500/5 rounded-[2rem] blur-2xl -z-10" />
 
@@ -654,7 +654,7 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
                   : "bg-card/40 shadow-xl border-dashed"
               )}
             >
-              <div className="flex items-center justify-between px-6 py-4 border-b border-border/50 bg-muted/20">
+              <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-4 border-b border-border/50 bg-muted/20">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400">
                     <Heart className="w-5 h-5" />

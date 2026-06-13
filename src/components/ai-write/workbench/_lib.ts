@@ -40,6 +40,7 @@ export function buildAiWriteHeaderNav(items: NavItem[] = []) {
 
     const toolHub: NavItem = {
       ...item,
+      icon: "RiMagicLine",
       children: item.children.map((child) => {
         if (child.url === "/ai-write") {
           return {
@@ -58,7 +59,7 @@ export function buildAiWriteHeaderNav(items: NavItem[] = []) {
           : "AI Write Tool",
     };
 
-    return [directEntry, toolHub];
+    return [toolHub, directEntry];
   });
 }
 

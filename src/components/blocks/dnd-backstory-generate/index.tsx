@@ -496,7 +496,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
               </span>
               <span className="font-medium">{t("ui.hero_step_1")}</span>
             </span>
-            <svg viewBox="0 0 16 16" className="size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg viewBox="0 0 16 16" className="hidden sm:block size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" d="M5 3l6 5-6 5" />
             </svg>
             <span className="inline-flex items-center gap-2">
@@ -505,7 +505,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
               </span>
               <span className="font-medium">{t("ui.hero_step_2")}</span>
             </span>
-            <svg viewBox="0 0 16 16" className="size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg viewBox="0 0 16 16" className="hidden sm:block size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" d="M5 3l6 5-6 5" />
             </svg>
             <span className="inline-flex items-center gap-2">
@@ -519,12 +519,12 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
 
         <GeneratorNavTabs />
 
-        <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] xl:grid-cols-[440px_1fr] gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[360px_1fr] lg:grid-cols-[400px_1fr] xl:grid-cols-[440px_1fr] gap-8 lg:gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-6 lg:sticky lg:top-24"
+            className="space-y-6 md:sticky md:top-24"
           >
             <div className="bg-card/60 backdrop-blur-xl border border-border rounded-3xl p-6 shadow-xl shadow-black/5 dark:shadow-black/20 ring-1 ring-black/5">
               <div className="space-y-4">
@@ -567,7 +567,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
               <div className="h-px bg-border/50 my-6" />
 
               <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="space-y-2">
                     <Label className="text-xs font-medium tracking-wide text-muted-foreground">
                       {t("ui.ai_model")}
@@ -870,7 +870,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             ref={resultRef}
-            className="relative h-[720px] max-h-[75vh] min-h-[520px] lg:sticky lg:top-24"
+            className="relative h-[720px] max-h-[75vh] min-h-[400px] sm:min-h-[520px] md:sticky md:top-24"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 to-orange-500/5 rounded-[2rem] blur-2xl -z-10" />
 
@@ -882,7 +882,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                   : "bg-card/40 shadow-xl border-dashed"
               )}
             >
-              <div className="flex items-center justify-between px-6 py-4 border-b border-border/50 bg-muted/20">
+              <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-4 border-b border-border/50 bg-muted/20">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400">
                     <ScrollText className="w-5 h-5" />
@@ -905,7 +905,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                       className="h-8 text-xs gap-1.5 text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10"
                     >
                       <Copy className="w-3.5 h-3.5" />
-                      {t("output.copy")}
+                      <span className="hidden sm:inline">{t("output.copy")}</span>
                     </Button>
                     <Button
                       size="sm"
@@ -918,7 +918,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                       className="h-8 text-xs gap-1.5 rounded-full bg-orange-600 px-3 text-white hover:bg-orange-500"
                     >
                       <PenLine className="w-3.5 h-3.5" />
-                      {locale === "zh" ? "续写" : "Continue"}
+                      <span className="hidden sm:inline">{locale === "zh" ? "续写" : "Continue"}</span>
                     </Button>
                   </div>
                 )}

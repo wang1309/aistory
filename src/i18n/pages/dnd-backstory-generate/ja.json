@@ -1,8 +1,8 @@
 {
   "dnd_backstory_generate": {
     "metadata": {
-      "title": "Free DnD バックストーリージェネレーター - D&D 5e キャラクター背景を作成",
-      "description": "DnD バックストーリージェネレーターは、D&D 5e / 5.5e のプレイヤーと DM 向けに、絆、欠点、秘密、DM hooks を含む実用的な背景を生成します。",
+      "title": "DnD バックストーリージェネレーター | D&D 5e キャラ背景無料作成",
+      "description": "D&D 5e / 5.5e プレイヤーと DM 向け無料バックストーリージェネレーター。性格特徴、理想、絆、欠点、秘密、そして DM hooks を含む実用的なキャラクター背景を即座に生成します。",
       "keywords": "DnD Backstory Generator,D&D backstory generator,D&D character backstory,5e backstory,NPC backstory,DM hooks"
     },
     "ui": {

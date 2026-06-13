@@ -7,6 +7,8 @@
   "ui": {
     "title": "AI 대화 생성기",
     "subtitle": "AI로 매력적이고 사실적인 캐릭터 대화 만들기",
+    "eyebrow": "AI 글쓰기 도구",
+    "continue_writing": "이어쓰기",
     "breadcrumb_home": "홈",
     "breadcrumb_current": "대화 생성기",
     "scenario_prompt": "시나리오 / 배경",

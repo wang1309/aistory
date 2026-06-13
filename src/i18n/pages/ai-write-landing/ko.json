@@ -1,0 +1,155 @@
+{
+  "ai_write_landing": {
+    "metadata": {
+      "title": "AI 스토리 라이터 — 캐릭터를 기억하는 AI로 이야기를 쓰세요",
+      "description": "캐릭터를 기억하고, 당신의 목소리를 존중하며, 더 나은 소설을 쓰도록 돕는 AI 파트너와 함께 이야기를 쓰세요. Story Bible과 Style Fingerprint가 탑재된 무료 AI 집필 워크벤치.",
+      "keywords": "AI 스토리 라이터, AI 집필 도구, AI 소설 작가, 이야기 쓰기 어시스턴트, AI 소설 집필, 창작 AI, AI 집필 파트너"
+    },
+    "ui": {
+      "title": "AI 스토리 라이터",
+      "subtitle": "캐릭터를 기억하고, 당신의 목소리를 존중하며, 더 나은 소설을 쓰도록 돕는 AI 파트너와 함께 이야기를 쓰세요.",
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "AI Write"
+    },
+    "hero": {
+      "heading": "당신의 AI 집필 파트너,",
+      "highlight": "글쓰기 기계가 아닙니다",
+      "description": "대부분의 AI 도구는 당신의 목소리를 일반적인 텍스트로 평탄화합니다. AI Write는 다릅니다 — 캐릭터를 기억하고, 스타일을 학습하며, <strong>당신의</strong> 이야기를 쓰도록 돕습니다. 통계적 평균이 아닙니다.",
+      "input_placeholder": "쓰고 싶은 이야기를 설명하세요…",
+      "input_button": "집필 시작",
+      "input_button_sending": "여는 중…"
+    },
+    "pain_points": {
+      "name": "pain_points",
+      "label": "AI Write가 다른 이유",
+      "title": "대부분의 AI 집필 도구의 문제점",
+      "description": "Reddit, Hacker News, 작가 커뮤니티에서 작가들이 일관되게 보고하는 같은 불만. AI Write는 이를 해결하기 위해 만들어졌습니다.",
+      "items": [
+        {
+          "title": "AI가 캐릭터를 잊어버림",
+          "description": "대부분의 도구는 3장 즈음이면 캐릭터를 놓칩니다. Story Bible은 캐릭터 프로필, 관계, 세계관 디테일을 전체 집필 세션에 걸쳐 지속적으로 유지합니다.",
+          "icon": "RiBrainLine"
+        },
+        {
+          "title": "모든 것이 같게 들림",
+          "description": "\"시맨틱 삭마\" 문제: AI는 자연스럽게 당신의 고유한 목소리를 무미건조한 평균으로 매끄럽게 만듭니다. Style Fingerprint가 당신의 실제 집필 패턴을 학습하고 모든 이어쓰기에서 보존합니다.",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "생성이 아닌 협업",
+          "description": "다른 도구는 텍스트를 쏟아붓기만 합니다. AI Write는 실시간 집필 워크벤치입니다 — 당신이 편집하고, AI가 인라인으로 제안하고, 당신이 수락하거나 거부합니다. 대화이지 소방호스가 아닙니다.",
+          "icon": "RiChatSmile2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "사용법",
+      "title": "3단계로 집필 시작",
+      "description": "설정 불필요, 학습 곡선 없음. 워크벤치를 열고 바로 쓰세요.",
+      "items": [
+        {
+          "title": "첫 문단 쓰기",
+          "description": "이야기의 첫 문단을 입력하거나 붙여넣으세요. 또는 쓰고 싶은 내용을 설명하고 이 페이지에서 바로 시작하세요."
+        },
+        {
+          "title": "Story Bible 설정",
+          "description": "캐릭터, 관계, 핵심 세계관 디테일을 추가하세요. AI가 집필 중 자동으로 참조합니다."
+        },
+        {
+          "title": "AI와 함께 쓰기",
+          "description": "실시간 인라인 제안을 받고, 원하는 방향으로 이어쓰기를 요청하고, 텍스트를 선택해 개선, 축약, 확장, 문법 수정이 가능합니다 — 모두 에디터를 떠나지 않고."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "features",
+      "label": "기능",
+      "title": "진지한 스토리텔러를 위해 제작",
+      "description": "모든 기능이 AI 집필 커뮤니티에서 작가들이 보고하는 실제 문제점을 해결합니다.",
+      "items": [
+        {
+          "title": "Story Bible",
+          "description": "캐릭터 프로필, 관계, 세계 설정을 지속 패널에서 관리하세요. AI가 이어쓰기 시 자동으로 Bible을 참조하여 수천 단어에 걸쳐 캐릭터 일관성을 유지합니다.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Style Fingerprint",
+          "description": "자신의 글쓰기 샘플을 붙여넣으세요. AI가 문장 패턴, 어휘, 리듬을 분석하여 일반적인 출력이 아닌 당신의 목소리로 이어쓰기를 생성합니다.",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "인라인 고스트 제안",
+          "description": "입력을 멈추면 AI가 회색으로 다음 1-3문장을 부드럽게 제안합니다. Tab으로 수락, Escape로 무시. 플로우를 방해하지 않습니다.",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "5가지 텍스트 작업",
+          "description": "텍스트를 선택하고 즉시 개선, 문법 수정, 축약, 확장, 간소화 — 각각 원클릭으로 AI가 실행합니다.",
+          "icon": "RiToolsLine"
+        },
+        {
+          "title": "3가지 이어쓰기 프리셋",
+          "description": "Push Scene으로 추진력을, Sharpen Dialogue로 긴장감을, Close Beat으로 깔끔한 마무리를. 원클릭, 프롬프트 엔지니어링 불필요.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "자동 저장 & 초안 복구",
+          "description": "작업은 클라우드와 로컬에 자동 저장됩니다. 실수로 탭을 닫아도 초안이 기다리고 있습니다.",
+          "icon": "RiSave3Line"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "AI 스토리 라이터 FAQ",
+      "description": "AI Write에 관한 자주 묻는 질문.",
+      "items": [
+        {
+          "title": "AI Write는 ChatGPT나 Claude로 이야기 쓰기와 무엇이 다른가요?",
+          "description": "AI Write는 전용 이야기 집필 워크벤치이지 채팅 인터페이스가 아닙니다. 리치 텍스트 에디터, 캐릭터 일관성을 위한 Story Bible, 목소리를 보존하는 Style Fingerprint, 인라인 제안, 원클릭 텍스트 작업을 제공합니다."
+        },
+        {
+          "title": "Story Bible이 뭔가요?",
+          "description": "Story Bible은 캐릭터, 관계, 성격 특성, 핵심 세계관 디테일을 정의하는 지속 패널입니다. AI가 이어쓰기나 제안을 생성할 때 자동으로 Bible을 참조합니다."
+        },
+        {
+          "title": "Style Fingerprint가 뭔가요?",
+          "description": "Style Fingerprint는 자신의 글쓰기 샘플을 붙여넣을 수 있게 합니다. AI가 고유 패턴 — 문장 길이, 어휘 선택, 리듬, 톤 — 을 분석하고 이어쓰기 생성 시 그 프로필을 사용합니다."
+        },
+        {
+          "title": "AI Write는 무료인가요?",
+          "description": "네. 계정 없이 바로 쓸 수 있습니다. AI 이어쓰기 기능은 로그인 사용자에게 넉넉한 무료 크레딧으로 제공됩니다."
+        },
+        {
+          "title": "AI Write는 장편 소설에도 사용할 수 있나요?",
+          "description": "네. Story Bible과 자동 저장의 조합으로 여러 세션에 걸쳐 장편 소설 작업이 가능합니다. 캐릭터와 세계관 디테일이 유지됩니다."
+        },
+        {
+          "title": "AI Write는 어떤 언어를 지원하나요?",
+          "description": "워크벤치 인터페이스는 영어, 중국어, 독일어를 지원합니다. AI 생성은 어떤 언어에서든 작동합니다 — 원하는 언어로 쓰면 AI가 따릅니다."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "당신의 이야기를 쓸 준비가 되셨나요?",
+      "description": "AI 집필 워크벤치를 열고 다른 사람이 아닌 당신처럼 들리는 소설을 쓰기 시작하세요.",
+      "buttons": [
+        {
+          "title": "무료로 쓰기 시작",
+          "url": "/ai-write",
+          "target": "",
+          "icon": "RiEdit2Line"
+        },
+        {
+          "title": "AI 집필 도구 둘러보기",
+          "url": "/ai-write-tool",
+          "target": "",
+          "icon": "RiGridLine"
+        }
+      ]
+    }
+  }
+}

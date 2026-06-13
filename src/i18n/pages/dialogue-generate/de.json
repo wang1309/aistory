@@ -7,6 +7,8 @@
   "ui": {
     "title": "KI-Dialoggenerator",
     "subtitle": "Erstellen Sie mit KI überzeugende, realistische Gespräche zwischen Charakteren",
+    "eyebrow": "KI-Schreibwerkzeug",
+    "continue_writing": "Weiterschreiben",
     "breadcrumb_home": "Startseite",
     "breadcrumb_current": "Dialoggenerator",
     "scenario_prompt": "Szenario / Kontext",

@@ -70,6 +70,7 @@ export default function FeatureIntro({ section, accent = "orange" }: Props) {
               viewBox="0 0 160 12"
               fill="none"
               preserveAspectRatio="none"
+              aria-hidden="true"
             >
               <path
                 d="M2 8c30-5 60-6 90-3s40 4 66-1"
@@ -82,9 +83,11 @@ export default function FeatureIntro({ section, accent = "orange" }: Props) {
 
             {/* Description */}
             {section.description && (
-              <p className="max-w-lg text-[1.05rem] leading-[1.8] text-muted-foreground/70">
-                {section.description}
-              </p>
+              <div className="max-w-lg space-y-4 text-[1.05rem] leading-[1.8] text-muted-foreground/70">
+                {section.description.split("\n\n").map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
             )}
 
             {/* Divider */}

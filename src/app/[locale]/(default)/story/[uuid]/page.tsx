@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { findPublicStoryByUuid } from "@/models/story";
 import StoryLikeButton from "@/components/story/story-like-button";
 import StoryComments from "@/components/story/story-comments";
+import Markdown from "@/components/markdown";
 
 interface PageProps {
   params: Promise<{ uuid: string; locale: string }>;
@@ -72,7 +73,7 @@ export default async function PublicStoryPage({ params }: PageProps) {
             {t("community.back_to_community")}
           </Link>
           <Link
-            href={`/${locale}/#craft_story` as any}
+            href={"/ai-write" as any}
             className="text-sm text-primary hover:underline"
           >
             {t("story_page.start_creating")}
@@ -99,10 +100,10 @@ export default async function PublicStoryPage({ params }: PageProps) {
           </p>
         </header>
 
-        <div className="rounded-lg border bg-background p-4 md:p-6">
-          <pre className="whitespace-pre-wrap text-sm leading-relaxed text-foreground">
-            {story.content}
-          </pre>
+        <div className="rounded-2xl border border-border/40 bg-black/[0.02] p-1.5 dark:bg-white/[0.02]">
+          <div className="rounded-[1.125rem] border border-border/30 bg-card p-5 md:p-8">
+            <Markdown content={story.content} />
+          </div>
         </div>
 
         <StoryComments storyUuid={story.uuid} />

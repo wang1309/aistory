@@ -1,14 +1,9 @@
 import { getOrdersByPaidEmail, getOrdersByUserUuid } from "@/models/order";
 import { getUserEmail, getUserUuid } from "@/services/user";
-
-import { TableColumn } from "@/types/blocks/table";
-import TableSlot from "@/components/console/slots/table";
-import { Table as TableSlotType } from "@/types/slots/table";
 import { getTranslations } from "next-intl/server";
-import moment from "moment";
 import { redirect } from "next/navigation";
-import Link from "next/link";
 import { getStripeBilling } from "@/services/order";
+import OrdersList from "@/components/console/orders-list";
 
 
 export default async function MyOrdersPage() {
@@ -27,89 +22,52 @@ export default async function MyOrdersPage() {
     orders = await getOrdersByPaidEmail(user_email);
   }
 
-  const columns: TableColumn[] = [
-    { name: "order_no", title: t("my_orders.table.order_no") },
-    { name: "paid_email", title: t("my_orders.table.email") },
-    { name: "product_name", title: t("my_orders.table.product_name") },
-    {
-      name: "amount",
-      title: t("my_orders.table.amount"),
-      callback: (item: any) =>
-        `${item.currency.toUpperCase() === "CNY" ? "¥" : "$"} ${
-          item.amount / 100
-        }`,
-    },
-    {
-      name: "interval",
-      title: t("my_orders.table.interval"),
-      callback: async (item: any) => {
-        if (item.interval === "month") {
-          return t("my_orders.table.interval_month");
-        }
+  const ordersWithBilling = await Promise.all(
+    (orders || []).map(async (order) => {
+      let billing_url: string | undefined;
 
-        if (item.interval === "year") {
-          return t("my_orders.table.interval_year");
-        }
-
-        return t("my_orders.table.interval_one_time");
-      },
-    },
-    {
-      name: "paid_at",
-      title: t("my_orders.table.paid_at"),
-      callback: (item: any) =>
-        moment(item.paid_at).format("YYYY-MM-DD HH:mm:ss"),
-    },
-    {
-      callback: async (item: any) => {
-        if (
-          !item.stripe_session_id ||
-          !item.stripe_session_id.startsWith("cs_")
-        ) {
-          return "";
-        }
-
-        let sub_id = item.sub_id;
-        if (!sub_id && item.paid_detail) {
+      if (
+        order.stripe_session_id &&
+        order.stripe_session_id.startsWith("cs_")
+      ) {
+        let sub_id = order.sub_id;
+        if (!sub_id && order.paid_detail) {
           try {
-            const paid_detail = JSON.parse(item.paid_detail);
+            const paid_detail = JSON.parse(order.paid_detail);
             sub_id = paid_detail.subscription;
-          } catch (e) {
-            console.log("parse paid_detail failed: ", e);
-          }
+          } catch {}
         }
         if (sub_id) {
-          const billing = await getStripeBilling(sub_id);
-
-          return (
-            <Link href={billing.url} target="_blank">
-              {t("my_orders.table.manage_billing")}
-            </Link>
-          );
+          try {
+            const billing = await getStripeBilling(sub_id);
+            billing_url = billing.url;
+          } catch {}
         }
+      }
 
-        return "";
-      },
-    },
-  ];
+      return { ...order, billing_url };
+    })
+  );
 
-  const table: TableSlotType = {
-    title: t("my_orders.title"),
-    toolbar: {
-      items: [
-        {
-          title: t("my_orders.read_docs"),
-          icon: "RiBookLine",
-          url: "https://docs.shipany.ai",
-          target: "_blank",
-          variant: "default",
-        },
-      ],
-    },
-    columns: columns,
-    data: orders,
-    empty_message: t("my_orders.no_orders"),
+  const labels = {
+    order_no: t("my_orders.table.order_no"),
+    email: t("my_orders.table.email"),
+    product_name: t("my_orders.table.product_name"),
+    amount: t("my_orders.table.amount"),
+    interval: t("my_orders.table.interval"),
+    paid_at: t("my_orders.table.paid_at"),
+    manage_billing: t("my_orders.table.manage_billing"),
+    interval_month: t("my_orders.table.interval_month"),
+    interval_year: t("my_orders.table.interval_year"),
+    interval_one_time: t("my_orders.table.interval_one_time"),
   };
 
-  return <TableSlot {...table} />;
+  return (
+    <OrdersList
+      orders={ordersWithBilling}
+      title={t("my_orders.title")}
+      emptyMessage={t("my_orders.no_orders")}
+      labels={labels}
+    />
+  );
 }

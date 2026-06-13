@@ -28,9 +28,33 @@ export async function generateMetadata({
     canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/book-title-generator`;
   }
 
+  const ogImageUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/og-book-title-generator.png`;
+
   return {
     title: section.header.meta_title,
     description: section.header.meta_description,
+    openGraph: {
+      title: section.header.meta_title,
+      description: section.header.meta_description,
+      url: canonicalUrl,
+      siteName: "AI Story Generator",
+      locale: locale,
+      type: "website",
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: section.header.meta_title
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: section.header.meta_title,
+      description: section.header.meta_description,
+      images: [ogImageUrl]
+    },
     alternates: {
       canonical: canonicalUrl,
       languages: buildLanguageAlternates("/book-title-generator"),
@@ -80,13 +104,55 @@ export default async function BookTitlePage({
     ]
   };
 
+  // FAQPage structured data for rich results
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.items.map((item: { title: string; description: string }) => ({
+      "@type": "Question",
+      "name": item.title,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.description
+      }
+    }))
+  };
+
+  // WebApplication structured data
+  const webAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": section.header.meta_title,
+    "description": section.header.meta_description,
+    "url": currentUrl,
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "feature": [
+      "AI-powered title generation",
+      "Multiple genre support",
+      "Tone and style customization",
+      "Free unlimited usage"
+    ]
+  };
+
+  // Combine all structured data
+  const structuredData = [breadcrumbSchema, faqSchema, webAppSchema];
+
   return (
     <>
       {/* JSON-LD Structured Data for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      {structuredData.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <HeroBooktitle section={section} />
       <FeatureIntro section={featureIntro} accent="orange" />
       <Benefits section={featureBenefits} accent="orange" />

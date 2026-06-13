@@ -63,7 +63,7 @@ export default function Header({ header }: { header: HeaderType }) {
                 />
               )}
               {header.brand?.title && (
-                <span className="text-xl font-black tracking-tight text-orange-600 dark:text-orange-400">
+                <span className="text-[1.3rem] font-display font-bold tracking-tight bg-gradient-to-r from-stone-600 via-amber-700 to-amber-600 dark:from-amber-200 dark:via-amber-300/90 dark:to-amber-200 bg-clip-text text-transparent transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
                   {header.brand?.title || ""}
                 </span>
               )}
@@ -153,7 +153,23 @@ export default function Header({ header }: { header: HeaderType }) {
                       )}
                       href={"/community" as any}
                     >
+                      <Icon name="RiCommunityLine" className="size-4 shrink-0 mr-0" />
                       {t("community.title")}
+                    </Link>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <Link
+                      className={cn(
+                        "text-muted-foreground",
+                        navigationMenuTriggerStyle,
+                        buttonVariants({
+                          variant: "ghost",
+                        })
+                      )}
+                      href={"/pricing" as any}
+                    >
+                      <Icon name="RiPriceTag3Line" className="size-4 shrink-0 mr-0" />
+                      {t("pricing.title")}
                     </Link>
                   </NavigationMenuItem>
                 </NavigationMenuList>
@@ -201,7 +217,7 @@ export default function Header({ header }: { header: HeaderType }) {
                 />
               )}
               {header.brand?.title && (
-                <span className="text-xl font-black tracking-tight text-orange-600 dark:text-orange-400">
+                <span className="text-[1.3rem] font-display font-bold tracking-tight bg-gradient-to-r from-stone-600 via-amber-700 to-amber-600 dark:from-amber-200 dark:via-amber-300/90 dark:to-amber-200 bg-clip-text text-transparent">
                   {header.brand?.title || ""}
                 </span>
               )}
@@ -230,7 +246,7 @@ export default function Header({ header }: { header: HeaderType }) {
                         />
                       )}
                       {header.brand?.title && (
-                        <span className="text-xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 dark:from-white dark:via-indigo-200 dark:to-indigo-400 animate-gradient drop-shadow-sm">
+                        <span className="text-[1.3rem] font-display font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-stone-600 via-amber-700 to-amber-600 dark:from-amber-200 dark:via-amber-300/90 dark:to-amber-200">
                           {header.brand?.title || ""}
                         </span>
                       )}
@@ -297,7 +313,15 @@ export default function Header({ header }: { header: HeaderType }) {
                     href={"/community" as any}
                     className="font-semibold my-4 flex items-center gap-2 px-4"
                   >
+                    <Icon name="RiCommunityLine" className="size-4 shrink-0" />
                     {t("community.title")}
+                  </Link>
+                  <Link
+                    href={"/pricing" as any}
+                    className="font-semibold my-4 flex items-center gap-2 px-4"
+                  >
+                    <Icon name="RiPriceTag3Line" className="size-4 shrink-0" />
+                    {t("pricing.title")}
                   </Link>
                 </div>
                 <div className="flex-1"></div>

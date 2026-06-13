@@ -14,6 +14,9 @@
     "user_center": "Личный Кабинет",
     "admin_system": "Админ Панель"
   },
+  "common": {
+    "error": "Что-то пошло не так. Пожалуйста, попробуйте позже."
+  },
   "sign_modal": {
     "sign_in_title": "Вход в систему",
     "sign_in_description": "Войдите в свой аккаунт",
@@ -129,6 +132,9 @@
     "all": "Все",
     "category": "Категория",
     "author": "Автор"
+  },
+  "pricing": {
+    "title": "Цены"
   },
   "community": {
     "title": "Площадь историй",

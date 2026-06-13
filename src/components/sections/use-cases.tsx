@@ -73,6 +73,7 @@ export default function UseCases({ section, accent = "orange" }: Props) {
               viewBox="0 0 160 12"
               fill="none"
               preserveAspectRatio="none"
+              aria-hidden="true"
             >
               <path
                 d="M2 8c30-5 60-6 90-3s40 4 66-1"

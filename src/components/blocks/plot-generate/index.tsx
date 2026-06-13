@@ -972,8 +972,8 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
           {/* RIGHT COLUMN: Preview */}
           <div className="space-y-4">
-            <div className="relative h-[700px] flex flex-col">
-               <div className="relative flex-1 flex flex-col rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
+            <div className="relative flex lg:sticky lg:top-24 lg:self-start flex-col">
+               <div className="relative flex flex-col rounded-2xl border border-border bg-card shadow-sm overflow-hidden min-h-[400px] lg:min-h-[600px] max-h-[700px]">
                 {generatedPlot ? (
                   <>
                     {/* Toolbar */}

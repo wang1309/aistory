@@ -5,6 +5,7 @@ import { Zap, Sparkles, Palette, Castle, Rocket, Heart, Search, PenTool } from "
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
+import { getCtaBreatheAnimationStyle } from "@/components/blocks/hero/animation-style";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/icon";
@@ -1343,10 +1344,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
               <Button
                 onClick={handleGenerateClick}
                 className="w-full h-14 text-base font-semibold bg-foreground text-background hover:bg-foreground/85 disabled:opacity-50 rounded-full border-none transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] dark:bg-white dark:text-foreground dark:hover:bg-white/90"
-                style={{
-                  animation: sectionVisible ? "hero-cta-breathe 4s ease-in-out infinite" : "none",
-                  animationDelay: "1s",
-                }}
+                style={getCtaBreatheAnimationStyle({
+                  isActive: sectionVisible,
+                  delay: "1s",
+                })}
               >
                 <div className="flex items-center justify-center gap-3">
                   {isGenerating ? (

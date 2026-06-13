@@ -1,8 +1,8 @@
 {
   "dnd_backstory_generate": {
     "metadata": {
-      "title": "Free DnD 백스토리 생성기 - D&D 5e 캐릭터 배경 생성",
-      "description": "DnD 백스토리 생성기는 D&D 5e / 5.5e 플레이어와 DM을 위해 결함, 유대, 비밀, DM hooks를 포함한 플레이 가능한 배경을 생성합니다.",
+      "title": "DnD 백스토리 생성기 | D&D 5e 캐릭터 배경 무료 생성",
+      "description": "D&D 5e / 5.5e 플레이어와 DM을 위한 무료 DnD 백스토리 생성기. 성격 특성, 이상, 유대, 결함, 비밀, 그리고 세 가지 DM 훅을 포함한 플레이 가능한 캐릭터 배경을 즉시 생성하세요.",
       "keywords": "DnD Backstory Generator,D&D backstory generator,D&D character backstory,5e backstory,NPC backstory,DM hooks"
     },
     "ui": {

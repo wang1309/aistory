@@ -110,10 +110,13 @@
       "current": "Book Title Generator"
     },
     "header": {
-      "title": "FREE AI BOOK TITLE GENERATOR",
+      "title": "Free AI Book Title Generator",
       "subtitle": "Find the perfect title for your book with AI-powered creativity.",
-      "meta_title": "Free Book Title Generator ｜ AI Story Generator",
-      "meta_description": "Find the perfect name for your next bestseller! Our AI book title generator creates creative, SEO-friendly titles for every genre — fast and free."
+      "meta_title": "Free AI Book Title Generator | Creative Title Ideas for All Genres",
+      "meta_description": "Generate catchy, SEO-optimized book titles in seconds with our free AI tool. Perfect for fantasy, romance, mystery, self-help & more. No signup required.",
+      "h1_prefix": "Free AI",
+      "h1_highlight": "Book Title Generator",
+      "h1_suffix": "for Authors & Publishers"
     },
     "form": {
       "description": {

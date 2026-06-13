@@ -485,7 +485,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                 </span>
                 <span className="font-medium">{t("ui.hero_step_1")}</span>
               </span>
-              <svg viewBox="0 0 16 16" className="size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg viewBox="0 0 16 16" className="hidden sm:block size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" d="M5 3l6 5-6 5" />
               </svg>
               <span className="inline-flex items-center gap-2">
@@ -494,7 +494,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                 </span>
                 <span className="font-medium">{t("ui.hero_step_2")}</span>
               </span>
-              <svg viewBox="0 0 16 16" className="size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg viewBox="0 0 16 16" className="hidden sm:block size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" d="M5 3l6 5-6 5" />
               </svg>
               <span className="inline-flex items-center gap-2">
@@ -513,14 +513,14 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
         <GeneratorNavTabs />
 
         {/* Main layout: sidebar + content */}
-        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[400px_1fr] xl:grid-cols-[440px_1fr]">
+        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(360px,2fr)_3fr] xl:grid-cols-[440px_1fr]">
           {/* ===== LEFT: Control panel ===== */}
           <motion.div
             ref={leftPanelRef}
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="lg:sticky lg:top-20 lg:self-start"
+            className="lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto"
           >
             <div className="rounded-2xl border border-border bg-card p-5 shadow-sm dark:bg-card">
               {/* Story Prompt */}
@@ -542,7 +542,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                         {t("ui.prompt_history")}
                       </Button>
                       {showHistory && promptHistory.length > 0 && (
-                        <div className="absolute right-0 top-8 z-50 w-72 rounded-xl border border-border bg-background shadow-xl">
+                        <div className="absolute right-0 top-8 z-50 w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-border bg-background shadow-xl">
                           <div className="flex items-center justify-between px-3 py-2 text-xs font-medium text-muted-foreground">
                             <span>{t("ui.prompt_history_recent")}</span>
                             <button
@@ -826,7 +826,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                         key={m.id}
                         onClick={() => setSelectedModel(m.id)}
                         className={cn(
-                          "flex flex-col items-center rounded-xl border p-2.5 text-center text-xs transition-all",
+                          "flex flex-col items-center rounded-xl border p-2 sm:p-2.5 text-center text-xs transition-all min-w-0",
                           selectedModel === m.id
                             ? "border-orange-500/50 bg-orange-500/10 text-orange-600 dark:border-orange-400/50 dark:text-orange-400"
                             : "border-border hover:border-orange-300 hover:bg-orange-50/50 dark:hover:bg-orange-950/20"
@@ -872,7 +872,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
           >
             <div className="h-full rounded-2xl border border-border bg-card shadow-sm card-hover-lift flex flex-col">
               {/* Output header */}
-              <div className="flex items-center justify-between border-b border-border bg-orange-500/[0.03] px-5 py-3 dark:bg-orange-500/[0.05]">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border bg-orange-500/[0.03] px-4 py-3 sm:px-5 dark:bg-orange-500/[0.05]">
                 <div className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4 text-orange-500" />
                   <span className="text-sm font-semibold">{t("ui.output_title")}</span>
@@ -891,7 +891,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                       onClick={handleCopy}
                     >
                       <Copy className="h-3 w-3" />
-                      {t("ui.copy_button")}
+                      <span className="hidden sm:inline">{t("ui.copy_button")}</span>
                     </Button>
                     <Button
                       size="sm"
@@ -904,7 +904,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                       className="gap-1.5 text-xs rounded-full bg-orange-600 px-3 text-white hover:bg-orange-500"
                     >
                       <PenLine className="h-3 w-3" />
-                      {locale === "zh" ? "续写" : "Continue"}
+                      <span className="hidden sm:inline">{locale === "zh" ? "续写" : "Continue"}</span>
                     </Button>
                   </div>
                 )}

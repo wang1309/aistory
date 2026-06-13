@@ -29,8 +29,10 @@ export async function generateMetadata({
   const section = messages.default.plot_generate;
   const metadata = section.metadata;
 
+  const baseUrl = process.env.NEXT_PUBLIC_WEB_URL || "";
+
   return {
-    title: metadata.title,
+    title: `${metadata.title} | StoriesGenerator`,
     description: metadata.description,
     keywords: metadata.keywords,
     alternates: {
@@ -43,11 +45,20 @@ export async function generateMetadata({
       url: canonicalUrl,
       siteName: "AI Story",
       type: "website",
+      images: [
+        {
+          url: `${baseUrl}/share.png`,
+          width: 1200,
+          height: 630,
+          alt: "AI Plot Generator - Create Story Outlines",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
-      title: metadata.title ,
+      title: metadata.title,
       description: metadata.description,
+      images: [`${baseUrl}/share.png`],
     },
   };
 }
@@ -98,6 +109,8 @@ export default async function PlotGeneratePage({
     "description": "AI-powered tool for generating detailed story outlines with characters, plot points, and narrative structure",
     "url": currentUrl,
     "applicationCategory": "CreativeWork",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -113,6 +126,34 @@ export default async function PlotGeneratePage({
     ],
   };
 
+  // FAQPage JSON-LD
+  const faqSchema = faq_section ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq_section.items.map((item: { title: string; description: string }) => ({
+      "@type": "Question",
+      "name": item.title,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.description,
+      },
+    })),
+  } : null;
+
+  // HowTo JSON-LD
+  const howToSchema = feature3_section ? {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": feature3_section.title,
+    "description": feature3_section.description,
+    "step": feature3_section.items.map((item: { title: string; description: string }, index: number) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": item.title,
+      "text": item.description,
+    })),
+  } : null;
+
   return (
     <>
       {/* Structured Data */}
@@ -124,6 +165,18 @@ export default async function PlotGeneratePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {howToSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        />
+      )}
 
       <PlotGenerate section={section} />
 

@@ -28,6 +28,8 @@ export async function generateMetadata({
     const messages = await import(`@/i18n/pages/comic-generate/${locale}.json`);
     const metadata = messages.default.metadata;
 
+    const ogImage = `${process.env.NEXT_PUBLIC_WEB_URL}/imgs/showcases/1.png`;
+
     return {
         title: metadata.title,
         description: metadata.description,
@@ -42,11 +44,20 @@ export async function generateMetadata({
             url: canonicalUrl,
             siteName: "AI Story",
             type: "website",
+            images: [
+                {
+                    url: ogImage,
+                    width: 1200,
+                    height: 630,
+                    alt: metadata.title,
+                },
+            ],
         },
         twitter: {
             card: "summary_large_image",
             title: metadata.title,
             description: metadata.description,
+            images: [ogImage],
         },
     };
 }
@@ -82,13 +93,13 @@ export default async function ComicGeneratorPage({
             {
                 "@type": "ListItem",
                 position: 1,
-                name: "Home",
+                name: section.ui.breadcrumb_home,
                 item: homeUrl,
             },
             {
                 "@type": "ListItem",
                 position: 2,
-                name: "AI Comic Generator",
+                name: section.ui.breadcrumb_current,
                 item: currentUrl,
             },
         ],

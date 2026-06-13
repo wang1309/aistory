@@ -43,6 +43,14 @@ export async function generateMetadata({
       url: canonicalUrl,
       siteName: "AI Story",
       type: "website",
+      images: [
+        {
+          url: `${process.env.NEXT_PUBLIC_WEB_URL}/share.png`,
+          width: 1200,
+          height: 630,
+          alt: "Bedtime Story Generator - Short Bedtime Stories for Kids",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -101,17 +109,18 @@ export default async function BedtimeStoryGeneratorPage({
     description: section.metadata.description,
     url: currentUrl,
     applicationCategory: "EducationalApplication",
+    operatingSystem: "All",
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
     },
     featureList: [
-      "Age-appropriate bedtime story generation",
-      "Personalization with child's name",
-      "Multiple story themes and lengths",
-      "Moral lesson integration",
-      "Calming sleep-ready endings",
+      "Short bedtime stories for kids generated instantly",
+      "5 minute bedtime stories with calming endings",
+      "Quick bedtime stories personalized with child's name",
+      "Age-appropriate bedtime stories for kids ages 2-12",
+      "Multiple story themes, moral lessons, and lengths",
       "Multi-language support",
     ],
   };

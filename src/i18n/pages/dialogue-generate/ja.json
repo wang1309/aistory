@@ -7,6 +7,8 @@
   "ui": {
     "title": "AI対話ジェネレーター",
     "subtitle": "AIでキャラクター間の魅力的でリアルな会話を作成",
+    "eyebrow": "AIライティングツール",
+    "continue_writing": "続きを書く",
     "breadcrumb_home": "ホーム",
     "breadcrumb_current": "対話ジェネレーター",
     "scenario_prompt": "シナリオ / コンテキスト",

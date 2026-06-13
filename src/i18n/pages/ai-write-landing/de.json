@@ -1,0 +1,155 @@
+{
+  "ai_write_landing": {
+    "metadata": {
+      "title": "AI Story Writer — Schreiben Sie Geschichten mit AI, die sich an Ihre Charaktere erinnert",
+      "description": "Schreiben Sie Geschichten mit einem AI-Partner, der sich an Ihre Charaktere erinnert, Ihren Stil respektiert und Ihnen hilft, bessere Fiktion zu schreiben — kein generischer Text. Kostenloses AI-Schreibwerkzeug mit Story Bible und Style Fingerprint.",
+      "keywords": "AI Story Writer, AI-Schreibwerkzeug, AI-Fiktionsautor, Geschichtenschreib-Assistent, AI-Romanschreiben, kreatives Schreiben AI, AI-Schreibpartner"
+    },
+    "ui": {
+      "title": "AI Story Writer",
+      "subtitle": "Schreiben Sie Geschichten mit einem AI-Partner, der sich an Ihre Charaktere erinnert, Ihren Stil respektiert und Ihnen hilft, bessere Fiktion zu schreiben.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "AI Write"
+    },
+    "hero": {
+      "heading": "Ihr AI-Schreibpartner,",
+      "highlight": "Keine Schreibmaschine",
+      "description": "Die meisten AI-Tools verwässern Ihren Stil zu generischem Text. AI Write ist anders — es erinnert sich an Ihre Charaktere, lernt Ihren Stil und hilft Ihnen, <strong>Ihre</strong> Geschichte zu schreiben, nicht einen statistischen Durchschnitt.",
+      "input_placeholder": "Beschreiben Sie die Geschichte, die Sie schreiben möchten…",
+      "input_button": "Schreiben beginnen",
+      "input_button_sending": "Wird geöffnet…"
+    },
+    "pain_points": {
+      "name": "pain_points",
+      "label": "Warum AI Write anders ist",
+      "title": "Das Problem mit den meisten AI-Schreibtools",
+      "description": "Autoren auf Reddit, Hacker News und in Schreibgemeinschaften berichten immer wieder über dieselben Frustrationen. AI Write wurde entwickelt, um sie zu lösen.",
+      "items": [
+        {
+          "title": "AI vergisst Ihre Charaktere",
+          "description": "Die meisten Tools verlieren ab Kapitel 3 den Überblick. Unsere Story Bible speichert Charakterprofile, Beziehungen und Weltdetails persistent über Ihre gesamte Schreibsitzung.",
+          "icon": "RiBrainLine"
+        },
+        {
+          "title": "Alles klingt gleich",
+          "description": "Das Problem der \"semantischen Ablation\": AI glättet Ihren einzigartigen Stil zu langweiligen Durchschnitten. Style Fingerprint lernt Ihre echten Schreibmuster und bewahrt sie in jeder Fortsetzung.",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "Zusammenarbeit statt nur Generierung",
+          "description": "Andere Tools überschütten Sie mit Text. AI Write ist eine Echtzeit-Schreibwerkbank — Sie bearbeiten, die AI schlägt inline vor, Sie akzeptieren oder lehnen ab. Es ist ein Gespräch, kein Feuerwehrschlauch.",
+          "icon": "RiChatSmile2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "SO FUNKTIONIERT ES",
+      "title": "In 3 Schritten schreiben",
+      "description": "Kein Setup, keine Lernkurve. Öffnen Sie die Werkbank und beginnen Sie zu schreiben.",
+      "items": [
+        {
+          "title": "Schreiben Sie Ihren Anfang",
+          "description": "Tippen oder fügen Sie den ersten Absatz Ihrer Geschichte ein. Oder beschreiben Sie, was Sie schreiben möchten, und starten Sie direkt von dieser Seite."
+        },
+        {
+          "title": "Story Bible einrichten",
+          "description": "Fügen Sie Ihre Charaktere, ihre Beziehungen und wichtige Weltdetails hinzu. Die AI wird sie automatisch referenzieren, während Sie schreiben."
+        },
+        {
+          "title": "Mit AI an Ihrer Seite schreiben",
+          "description": "Erhalten Sie Echtzeit-Inline-Vorschläge, fordern Sie Fortsetzungen in jede Richtung an, oder markieren Sie Text zum Verbessern, Kürzen, Erweitern oder zur Grammatikkorrektur — alles ohne den Editor zu verlassen."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "features",
+      "label": "Funktionen",
+      "title": "Für ernsthafte Geschichtenerzähler entwickelt",
+      "description": "Jede Funktion adressiert einen echten Schmerzpunkt, den Autoren in AI-Schreibgemeinschaften berichten.",
+      "items": [
+        {
+          "title": "Story Bible",
+          "description": "Pflegen Sie Charakterprofile, Beziehungen und Weltlore in einem persistenten Panel. Die AI referenziert Ihre Bible automatisch bei Fortsetzungen, damit Ihre Charaktere über Tausende von Worten konsistent bleiben.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Style Fingerprint",
+          "description": "Fügen Sie eine Probe Ihres eigenen Schreibens ein. Die AI analysiert Ihre Satzmuster, Ihren Wortschatz und Rhythmus — und spiegelt dann Ihre Stimme in jeder Fortsetzung wider.",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "Inline-Ghost-Vorschläge",
+          "description": "Wenn Sie pausieren, schlägt die AI sanft die nächsten 1–3 Sätze in Grau vor. Tab zum Annehmen, Escape zum Verwerfen. Keine Unterbrechung Ihres Flows.",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "5 Textoperationen",
+          "description": "Markieren Sie Text und verbessern, korrigieren, kürzen, erweitern oder vereinfachen Sie ihn sofort — jede Operation AI-gestützt mit einem Klick.",
+          "icon": "RiToolsLine"
+        },
+        {
+          "title": "3 Fortsetzungs-Presets",
+          "description": "Push Scene für Dynamik, Sharpen Dialogue für Spannung oder Close Beat für ein sauberes Ende. Ein Klick, kein Prompt-Engineering nötig.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "Auto-Save & Entwurfswiederherstellung",
+          "description": "Ihre Arbeit wird automatisch in der Cloud und lokal gespeichert. Tab aus Versehen geschlossen? Ihr Entwurf wartet, wenn Sie zurückkommen.",
+          "icon": "RiSave3Line"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "AI Story Writer FAQ",
+      "description": "Häufige Fragen zu AI Write.",
+      "items": [
+        {
+          "title": "Was unterscheidet AI Write von ChatGPT oder Claude zum Geschichtenschreiben?",
+          "description": "AI Write ist eine dedizierte Schreibwerkbank, keine Chat-Oberfläche. Es bietet einen Rich-Text-Editor, Story Bible für Charakterkonsistenz, Style Fingerprint zur Bewahrung Ihrer Stimme, Inline-Vorschläge und Ein-Klick-Textoperationen — alles speziell für Fiktionsschreiben konzipiert."
+        },
+        {
+          "title": "Was ist Story Bible?",
+          "description": "Story Bible ist ein persistentes Panel, in dem Sie Ihre Charaktere, ihre Beziehungen, Persönlichkeitsmerkmale und wichtige Weltdetails definieren. Wenn die AI Fortsetzungen oder Vorschläge generiert, referenziert sie automatisch Ihre Bible."
+        },
+        {
+          "title": "Was ist Style Fingerprint?",
+          "description": "Style Fingerprint ermöglicht es Ihnen, eine Probe Ihres eigenen Schreibens einzufügen. Die AI analysiert Ihre einzigartigen Muster — Satzlänge, Wortwahl, Rhythmus und Ton — und nutzt dann dieses Profil bei der Generierung von Fortsetzungen."
+        },
+        {
+          "title": "Ist AI Write kostenlos?",
+          "description": "Ja. Sie können sofort ohne Konto schreiben. AI-Fortsetzungsfunktionen sind für angemeldete Benutzer mit großzügigem kostenlosen Kreditkontingent verfügbar."
+        },
+        {
+          "title": "Funktioniert AI Write für lange Geschichten und Romane?",
+          "description": "Ja. Die Kombination aus Story Bible und Auto-Save bedeutet, dass Sie über mehrere Sitzungen an langer Prosa arbeiten können. Charaktere und Weltdetails bleiben erhalten."
+        },
+        {
+          "title": "Welche Sprachen unterstützt AI Write?",
+          "description": "Die Werkbank-Oberfläche unterstützt Englisch, Chinesisch und Deutsch. AI-Generierung funktioniert in jeder Sprache — schreiben Sie einfach in der gewünschten Sprache und die AI folgt."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Bereit, Ihre Geschichte zu schreiben?",
+      "description": "Öffnen Sie die AI-Schreibwerkbank und beginnen Sie, Fiktion zu schreiben, die nach Ihnen klingt — nicht nach allen anderen.",
+      "buttons": [
+        {
+          "title": "Kostenlos schreiben",
+          "url": "/ai-write",
+          "target": "",
+          "icon": "RiEdit2Line"
+        },
+        {
+          "title": "AI-Schreibtools entdecken",
+          "url": "/ai-write-tool",
+          "target": "",
+          "icon": "RiGridLine"
+        }
+      ]
+    }
+  }
+}

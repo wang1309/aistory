@@ -1,0 +1,155 @@
+{
+  "ai_write_landing": {
+    "metadata": {
+      "title": "AIストーリーライター — キャラクターを覚えるAIで物語を書く",
+      "description": "キャラクターを覚え、あなたの声を尊重し、より良いフィクションを書く手助けをするAIパートナーで物語を書きましょう。Story BibleとStyle Fingerprint搭載の無料AI執筆ワークベンチ。",
+      "keywords": "AIストーリーライター, AI執筆ツール, AIフィクションライター, 物語執筆アシスタント, AI小説執筆, 創作AI, AI執筆パートナー"
+    },
+    "ui": {
+      "title": "AIストーリーライター",
+      "subtitle": "キャラクターを覚え、あなたの声を尊重し、より良いフィクションを書く手助けをするAIパートナーで物語を書きましょう。",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "AI Write"
+    },
+    "hero": {
+      "heading": "あなたのAI執筆パートナー、",
+      "highlight": "執筆マシンではなく",
+      "description": "ほとんどのAIツールはあなたの声を一般的なテキストに平坦化します。AI Writeは違います — あなたのキャラクターを覚え、スタイルを学び、<strong>あなたの</strong>物語を書く手助けをします。統計的な平均ではありません。",
+      "input_placeholder": "書きたい物語を説明してください…",
+      "input_button": "執筆開始",
+      "input_button_sending": "開いています…"
+    },
+    "pain_points": {
+      "name": "pain_points",
+      "label": "AI Writeが違う理由",
+      "title": "ほとんどのAI執筆ツールの問題点",
+      "description": "Reddit、Hacker News、作家コミュニティの作家が一貫して報告している同じ不満。AI Writeはそれらを解決するために作られました。",
+      "items": [
+        {
+          "title": "AIがキャラクターを忘れる",
+          "description": "ほとんどのツールは第3章までにキャラクターを見失います。Story Bibleはキャラクタープロフィール、関係性、世界の詳細を執筆セッション全体で持続的に保持します。",
+          "icon": "RiBrainLine"
+        },
+        {
+          "title": "すべてが同じに聞こえる",
+          "description": "「セマンティック・アブレーション」問題：AIは自然にあなたのユニークな声を無味乾燥な平均に滑らかにします。Style Fingerprintがあなたの実際の執筆パターンを学習し、すべての続きで保持します。",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "生成だけでなくコラボレーション",
+          "description": "他のツールはテキストを投げつけるだけ。AI Writeはリアルタイム執筆ワークベンチです — あなたが編集し、AIがインラインで提案し、あなたが受け入れるか拒否するか。会話であり、消火ホースではありません。",
+          "icon": "RiChatSmile2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "3ステップで執筆開始",
+      "description": "セットアップ不要、学習曲線なし。ワークベンチを開いて書き始めましょう。",
+      "items": [
+        {
+          "title": "冒頭を書く",
+          "description": "物語の最初の段落を入力するか貼り付けます。または書きたい内容を説明して、このページから直接始めましょう。"
+        },
+        {
+          "title": "Story Bibleを設定",
+          "description": "キャラクター、関係性、重要な世界の詳細を追加します。AIは執筆中に自動的にそれらを参照します。"
+        },
+        {
+          "title": "AIと一緒に書く",
+          "description": "リアルタイムのインライン提案を受け取り、任意の方向への続きを依頼し、テキストを選択して改善、短縮、拡張、文法修正ができます — すべてエディタを離れることなく。"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "features",
+      "label": "機能",
+      "title": "本気の物語作家のために作られた",
+      "description": "すべての機能がAI執筆コミュニティで作家が報告する実際の課題に対応しています。",
+      "items": [
+        {
+          "title": "Story Bible",
+          "description": "キャラクタープロフィール、関係性、世界の設定を持続パネルで管理。AIは続きを生成する際に自動的にBibleを参照し、数千語にわたってキャラクターの一貫性を保ちます。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Style Fingerprint",
+          "description": "自分の執筆サンプルを貼り付けます。AIが文パターン、語彙、リズムを分析し、一般的な出力ではなくあなたの声で続きを生成します。",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "インラインゴースト提案",
+          "description": "入力を止めると、AIがグレーで次の1〜3文を穏やかに提案します。Tabで受け入れ、Escapeで却下。フローを中断しません。",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "5つのテキスト操作",
+          "description": "テキストを選択して即座に改善、文法修正、短縮、拡張、簡略化 — それぞれワンクリックでAIが実行します。",
+          "icon": "RiToolsLine"
+        },
+        {
+          "title": "3つの続きプリセット",
+          "description": "Push Sceneで勢いを、Sharpen Dialogueで緊張感を、Close Beatできれいな終わりを。ワンクリック、プロンプトエンジニアリング不要。",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "自動保存と下書き復元",
+          "description": "作業はクラウドとローカルに自動保存されます。うっかりタブを閉じても、下書きが待っています。",
+          "icon": "RiSave3Line"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "AIストーリーライター FAQ",
+      "description": "AI Writeに関するよくある質問。",
+      "items": [
+        {
+          "title": "AI WriteはChatGPTやClaudeでの物語執筆と何が違いますか？",
+          "description": "AI Writeは専用の物語執筆ワークベンチであり、チャットインターフェースではありません。リッチテキストエディタ、キャラクター一貫性のためのStory Bible、声を保つStyle Fingerprint、インライン提案、ワンクリックテキスト操作を提供します。"
+        },
+        {
+          "title": "Story Bibleとは？",
+          "description": "Story Bibleは、キャラクター、関係性、性格特性、世界の詳細を定義する持続パネルです。AIが続きや提案を生成する際に自動的にBibleを参照します。"
+        },
+        {
+          "title": "Style Fingerprintとは？",
+          "description": "Style Fingerprintでは自分の執筆サンプルを貼り付けられます。AIがユニークなパターン — 文の長さ、語彙、リズム、トーン — を分析し、続きの生成時にそのプロフィールを使用します。"
+        },
+        {
+          "title": "AI Writeは無料ですか？",
+          "description": "はい。アカウント不要ですぐに書き始められます。AI続き機能はログインユーザーに寛大な無料クレジットで提供されます。"
+        },
+        {
+          "title": "AI Writeは長編小説に対応していますか？",
+          "description": "はい。Story Bibleと自動保存の組み合わせにより、複数セッションにわたって長編フィクションに取り組めます。キャラクターと世界の詳細は持続します。"
+        },
+        {
+          "title": "AI Writeはどの言語をサポートしていますか？",
+          "description": "ワークベンチインターフェースは英語、中国語、ドイツ語をサポートしています。AI生成はどの言語でも動作します — 書きたい言語で書くだけでAIが従います。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "あなたの物語を書く準備はできましたか？",
+      "description": "AI執筆ワークベンチを開いて、他の誰とも違うあなたらしいフィクションを書き始めましょう。",
+      "buttons": [
+        {
+          "title": "無料で書き始める",
+          "url": "/ai-write",
+          "target": "",
+          "icon": "RiEdit2Line"
+        },
+        {
+          "title": "AI執筆ツールを見る",
+          "url": "/ai-write-tool",
+          "target": "",
+          "icon": "RiGridLine"
+        }
+      ]
+    }
+  }
+}

@@ -112,6 +112,18 @@ class TitleHistoryStorage {
 
 export default function HeroBooktitle({ section }: { section: HeroBooktitleType }) {
   const locale = useLocale();
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      setPrefersReducedMotion(mediaQuery.matches);
+      const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+      mediaQuery.addEventListener("change", handler);
+      return () => mediaQuery.removeEventListener("change", handler);
+    }
+  }, []);
+
   const toastMessages = useMemo<ToastMessages>(
     () => ({
       ...defaultToastMessages,
@@ -524,14 +536,14 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
       <div className="relative mx-auto w-full max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <div className="mb-10">
+        <nav className="mb-10" aria-label="Breadcrumb">
           <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5">
             <BookTitleBreadcrumb
               homeText={section.breadcrumb.home}
               currentText={section.breadcrumb.current}
             />
           </div>
-        </div>
+        </nav>
 
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center mb-14">
@@ -552,11 +564,11 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
           {/* Title with gradient split */}
           <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
-            Free AI{" "}
+            {section.header.h1_prefix || "Free AI"}{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
-              Book Title
+              {section.header.h1_highlight || "Book Title"}
             </span>
-            {" "}Generator
+            {" "}{section.header.h1_suffix || "Generator"}
           </h1>
 
           {/* Decorative brush stroke */}
@@ -566,6 +578,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
               viewBox="0 0 160 12"
               fill="none"
               preserveAspectRatio="none"
+              aria-hidden="true"
             >
               <path
                 d="M2 8c30-5 60-6 90-3s40 4 66-1"
@@ -617,13 +630,13 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                     <div className="mt-4">
                       <Collapsible open={isExamplesExpanded} onOpenChange={setIsExamplesExpanded}>
                         <CollapsibleTrigger asChild>
-                          <Button variant="ghost" className="text-xs font-medium text-orange-600 dark:text-orange-400 hover:bg-orange-500/10 gap-2 px-0">
-                            <Icon name="RiLightbulbLine" className="size-3" />
+                          <Button variant="ghost" className="h-11 text-xs font-medium text-orange-600 dark:text-orange-400 hover:bg-orange-500/10 gap-2 px-3 focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2">
+                            <Icon name="RiLightbulbLine" className="size-4" />
                             {section.form.examples?.title || "Need inspiration?"}
                           </Button>
                         </CollapsibleTrigger>
                         <CollapsibleContent className="mt-4 animate-slide-down">
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                               {examplePrompts.map((category, index) => (
                                 <div key={index} className="space-y-2">
                                   <div className="text-xs font-medium tracking-wide text-muted-foreground/50">{category.category}</div>
@@ -635,7 +648,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                                           setExamplePrompt(prompt);
                                           setTimeout(() => setIsExamplesExpanded(false), 300);
                                         }}
-                                        className="w-full text-left p-3 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-all text-sm text-muted-foreground hover:text-foreground line-clamp-2"
+                                        className="min-h-[44px] w-full text-left p-3 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-all text-sm text-muted-foreground hover:text-foreground line-clamp-2 focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2"
                                       >
                                         {prompt}
                                       </button>
@@ -722,16 +735,17 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                   <Button
                     onClick={handleGenerate}
                     disabled={isGenerating}
-                    className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 shadow-md shadow-orange-600/20 active:scale-[0.97] transition-all"
+                    aria-busy={isGenerating}
+                    className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 shadow-md shadow-orange-600/20 active:scale-[0.97] transition-all focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2"
                   >
                     {isGenerating ? (
                       <div className="flex items-center gap-2">
-                        <div className="size-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                        <div className="size-4 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden="true" />
                         <span>{section.generate_button.generating}</span>
                       </div>
                     ) : (
                       <div className="flex items-center gap-2">
-                        <Icon name="RiSparklingLine" className="size-4" />
+                        <Icon name="RiSparklingLine" className="size-4" aria-hidden="true" />
                         <span>{section.generate_button.text}</span>
                       </div>
                     )}
@@ -759,7 +773,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                         {lastError}
                       </span>
                       {retryCount < 3 && (
-                        <Button onClick={handleRetry} variant="ghost" size="sm" className="h-8 text-xs text-red-500 hover:text-red-600 hover:bg-red-500/10">
+                        <Button onClick={handleRetry} variant="ghost" size="sm" className="h-11 px-4 text-xs text-red-500 hover:text-red-600 hover:bg-red-500/10 focus-visible:ring-2 focus-visible:ring-red-500/50 focus-visible:ring-offset-2">
                           Retry
                         </Button>
                       )}
@@ -788,9 +802,9 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                   onClick={handleClearTitles}
                   variant="ghost"
                   size="sm"
-                  className="text-muted-foreground hover:text-red-500 hover:bg-red-500/10 gap-1.5 text-xs"
+                  className="h-11 px-4 text-muted-foreground hover:text-red-500 hover:bg-red-500/10 gap-1.5 text-xs focus-visible:ring-2 focus-visible:ring-red-500/50 focus-visible:ring-offset-2"
                 >
-                  <Icon name="RiCloseLine" className="size-3.5" />
+                  <Icon name="RiCloseLine" className="size-4" />
                   {section.output.clear_button}
                 </Button>
               )}
@@ -826,14 +840,15 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                         onClick={() => handleCopyTitle(titleObj.id, titleObj.title)}
                         variant="ghost"
                         size="icon"
+                        aria-label={titleObj.copied ? "Copied" : "Copy title"}
                         className={cn(
-                          "flex-shrink-0 h-8 w-8 rounded-lg transition-all duration-200",
+                          "flex-shrink-0 h-11 w-11 rounded-lg transition-all duration-200 focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2",
                           titleObj.copied
                             ? "bg-green-500 text-white"
                             : "text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-500/10 opacity-0 group-hover:opacity-100"
                         )}
                       >
-                        {titleObj.copied ? <Icon name="RiCheckLine" className="size-4" /> : <Icon name="RiFileCopyLine" className="size-4" />}
+                        {titleObj.copied ? <Icon name="RiCheckLine" className="size-5" /> : <Icon name="RiFileCopyLine" className="size-5" />}
                       </Button>
                     </div>
                   </div>

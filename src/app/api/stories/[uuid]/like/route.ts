@@ -13,7 +13,7 @@ export async function GET(
   context: any
 ) {
   try {
-    const uuid = context.params?.uuid;
+    const { uuid } = await context.params;
     if (!uuid) {
       return respErr("invalid params");
     }
@@ -52,7 +52,7 @@ export async function POST(
       return respErr("no auth");
     }
 
-    const uuid = context.params?.uuid;
+    const { uuid } = await context.params;
     if (!uuid) {
       return respErr("invalid params");
     }
@@ -81,7 +81,7 @@ export async function DELETE(
       return respErr("no auth");
     }
 
-    const uuid = context.params?.uuid;
+    const { uuid } = await context.params;
     if (!uuid) {
       return respErr("invalid params");
     }

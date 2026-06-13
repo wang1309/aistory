@@ -987,7 +987,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           <button
             type="button"
             onClick={() => router.push("/")}
-            className="transition hover:text-foreground"
+            className="cursor-pointer transition hover:text-foreground"
           >
             <Icon name="RiHome4Line" className="size-4" />
           </button>
@@ -995,7 +995,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           <button
             type="button"
             onClick={() => router.push("/ai-write")}
-            className="hidden transition hover:text-foreground sm:inline"
+            className="hidden cursor-pointer transition hover:text-foreground sm:inline"
           >
             AI Write
           </button>
@@ -1113,6 +1113,10 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               onProcessText={handleProcessText}
               autocompleteOn={autocompleteOn}
               onToggleAutocomplete={toggleAutocomplete}
+              title={title}
+              plainText={plainText}
+              isAuthenticated={!!user}
+              onSignIn={() => setShowSignModal(true)}
               reviewLabels={copy.reviewLabels}
             />
           </div>

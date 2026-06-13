@@ -1,0 +1,196 @@
+{
+  "pricing": {
+    "name": "pricing",
+    "label": "料金プラン",
+    "title": "料金プラン",
+    "description": "あなたの創作ニーズに合ったプランを選びましょう。AIで無限のストーリーを生成できます。",
+    "groups": [
+      {
+        "name": "monthly",
+        "title": "月額"
+      },
+      {
+        "name": "yearly",
+        "title": "年額",
+        "is_featured": true,
+        "label": "最大40%お得"
+      }
+    ],
+    "items": [
+      {
+        "title": "Basic",
+        "description": "短編やちょっとしたアイデアを楽しむライトユーザー向け。",
+        "features_title": "含まれるもの",
+        "features": [
+          "7,500クレジット、有効期間1ヶ月"
+        ],
+        "interval": "month",
+        "amount": 1500,
+        "currency": "USD",
+        "price": "$15",
+        "original_price": "$30",
+        "unit": "/ 月",
+        "is_featured": false,
+        "tip": "いつでもキャンセル可能",
+        "button": {
+          "title": "始める",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "starter-monthly",
+        "product_name": "Story Generator Basic 月額",
+        "credits": 7500,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "Pro",
+        "description": "短編や中編を書くアクティブなクリエイター向け。",
+        "label": "人気",
+        "features_title": "Basicの全機能に加えて",
+        "features": [
+          "22,500クレジット、有効期間1ヶ月",
+          "Basicの3倍のクレジット、最もお得！"
+        ],
+        "interval": "month",
+        "amount": 2500,
+        "currency": "USD",
+        "price": "$25",
+        "original_price": "$50",
+        "unit": "/ 月",
+        "is_featured": true,
+        "tip": "いつでもキャンセル可能",
+        "button": {
+          "title": "始める",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "standard-monthly",
+        "product_name": "Story Generator Pro 月額",
+        "credits": 22500,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "Max",
+        "description": "長編小説やシリーズを書くヘビークリエイター向け。",
+        "features_title": "Proの全機能に加えて",
+        "features": [
+          "45,000クレジット、有効期間1ヶ月"
+        ],
+        "interval": "month",
+        "amount": 5500,
+        "currency": "USD",
+        "price": "$55",
+        "original_price": "$110",
+        "unit": "/ 月",
+        "is_featured": false,
+        "tip": "いつでもキャンセル可能",
+        "button": {
+          "title": "始める",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "premium-monthly",
+        "product_name": "Story Generator Max 月額",
+        "credits": 45000,
+        "valid_months": 1,
+        "group": "monthly"
+      },
+      {
+        "title": "Basic",
+        "description": "短編やちょっとしたアイデアを楽しむライトユーザー向け。",
+        "features_title": "含まれるもの",
+        "features": [
+          "7,500クレジット/月、有効期間1年"
+        ],
+        "interval": "year",
+        "amount": 10800,
+        "currency": "USD",
+        "price": "$9",
+        "original_price": "$18",
+        "unit": "/ 月",
+        "is_featured": false,
+        "tip": "いつでもキャンセル可能",
+        "button": {
+          "title": "始める",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "starter-yearly",
+        "product_name": "Story Generator Basic 年額",
+        "credits": 90000,
+        "valid_months": 12,
+        "group": "yearly"
+      },
+      {
+        "title": "Pro",
+        "description": "短編や中編を書くアクティブなクリエイター向け。",
+        "label": "人気",
+        "features_title": "Basicの全機能に加えて",
+        "features": [
+          "22,500クレジット/月、有効期間1年",
+          "Basicの3倍のクレジット、最もお得！"
+        ],
+        "interval": "year",
+        "amount": 22800,
+        "currency": "USD",
+        "price": "$19",
+        "original_price": "$38",
+        "unit": "/ 月",
+        "is_featured": true,
+        "tip": "いつでもキャンセル可能",
+        "button": {
+          "title": "始める",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "standard-yearly",
+        "product_name": "Story Generator Pro 年額",
+        "credits": 270000,
+        "valid_months": 12,
+        "group": "yearly"
+      },
+      {
+        "title": "Max",
+        "description": "長編小説やシリーズを書くヘビークリエイター向け。",
+        "features_title": "Proの全機能に加えて",
+        "features": [
+          "45,000クレジット/月、有効期間1年"
+        ],
+        "interval": "year",
+        "amount": 58800,
+        "currency": "USD",
+        "price": "$49",
+        "original_price": "$98",
+        "unit": "/ 月",
+        "is_featured": false,
+        "tip": "いつでもキャンセル可能",
+        "button": {
+          "title": "始める",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "premium-yearly",
+        "product_name": "Story Generator Max 年額",
+        "credits": 540000,
+        "valid_months": 12,
+        "group": "yearly"
+      }
+    ],
+    "faq": [
+      {
+        "question": "課金の仕組みは？",
+        "answer": "クレジットは実際のトークン使用量に基づいて差し引かれます。各AI生成は入力と出力のトークンに比例したクレジットを消費します。生成を確認する前に、常にクレジットコストが表示されます。"
+      },
+      {
+        "question": "いつでもサブスクリプションをキャンセルできますか？",
+        "answer": "はい！ユーザーセンター > 注文履歴からいつでもサブスクリプションをキャンセルできます。クレジットは現在の請求期間の終了まで引き続き利用可能です。"
+      },
+      {
+        "question": "データがトレーニングに使用されたり、第三者と共有されますか？",
+        "answer": "一切ありません。あなたのストーリーやデータがモデルトレーニングに使用されたり、第三者と共有されることはありません。いつでもMarkdownなどの形式でエクスポートでき、いつでもすべてのデータを削除できます。オンライン保存は任意です。"
+      }
+    ]
+  }
+}
