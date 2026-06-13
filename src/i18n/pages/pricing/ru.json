@@ -26,12 +26,12 @@
         "description": "Первый опыт. Легко начните своё творческое путешествие с ИИ.",
         "features_title": "Включает",
         "features": [
-          "300 кредитов, без срока действия"
+          "500 кредитов, без срока действия"
         ],
         "interval": "one-time",
-        "amount": 100,
+        "amount": 200,
         "currency": "USD",
-        "price": "$1",
+        "price": "$2",
         "unit": "/ разово",
         "is_featured": false,
         "tip": "Только для первой покупки",
@@ -42,7 +42,7 @@
         },
         "product_id": "trial-one-time",
         "product_name": "Story Generator Пробный пакет",
-        "credits": 300,
+        "credits": 500,
         "valid_months": 0,
         "group": "trial"
       },

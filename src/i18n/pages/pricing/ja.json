@@ -26,12 +26,12 @@
         "description": "初めてのお試し。AIクリエイティブの旅を簡単に始められます。",
         "features_title": "含まれるもの",
         "features": [
-          "300クレジット、有効期限なし"
+          "500クレジット、有効期限なし"
         ],
         "interval": "one-time",
-        "amount": 100,
+        "amount": 200,
         "currency": "USD",
-        "price": "$1",
+        "price": "$2",
         "unit": "/ 回",
         "is_featured": false,
         "tip": "初回購入のみ",
@@ -42,7 +42,7 @@
         },
         "product_id": "trial-one-time",
         "product_name": "Story Generator トライアルパック",
-        "credits": 300,
+        "credits": 500,
         "valid_months": 0,
         "group": "trial"
       },
