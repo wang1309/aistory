@@ -6,6 +6,20 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.13",
+        "date": "2026-06-13",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Launched AI Write with story continuation feature for intelligently extending existing stories",
+              "Launched Bedtime Story Generator designed for children and parents",
+              "Launched Romance Story Generator focused on romantic themes"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.12",
         "date": "2026-05-23",
         "changes": [

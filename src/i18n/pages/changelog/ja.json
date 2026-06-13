@@ -6,6 +6,20 @@
     "description": "最新の機能、改善、バグ修正、セキュリティアップデートをご確認ください",
     "items": [
       {
+        "version": "v1.3.13",
+        "date": "2026-06-13",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "AI Write 続き書き機能が登場。既存のストーリーをインテリジェントに継続・拡張可能",
+              "Bedtime Story Generator 寝かしつけストーリージェネレーターが登場。子供と保護者向けに設計",
+              "Romance Story Generator ロマンスストーリージェネレーターが登場。恋愛作品に特化"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.12",
         "date": "2026-05-23",
         "changes": [

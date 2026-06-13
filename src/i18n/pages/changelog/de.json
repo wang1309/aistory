@@ -6,6 +6,20 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.13",
+        "date": "2026-06-13",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "AI Write mit Fortsetzungsfunktion gestartet für intelligentes Erweitern vorhandener Geschichten",
+              "Bedtime Story Generator gestartet, speziell für Kinder und Eltern entwickelt",
+              "Romance Story Generator gestartet, fokussiert auf Liebesgeschichten"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.12",
         "date": "2026-05-23",
         "changes": [

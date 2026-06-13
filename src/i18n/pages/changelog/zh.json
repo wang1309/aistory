@@ -6,6 +6,20 @@
     "description": "了解我们最新的功能改进、问题修复和安全更新",
     "items": [
       {
+        "version": "v1.3.13",
+        "date": "2026-06-13",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "AI Write 续写功能上线，支持对已有故事进行智能续写",
+              "Bedtime Story Generator 睡前故事生成器上线，专为儿童和家长设计",
+              "Romance Story Generator 浪漫故事生成器上线，专注于爱情题材"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.12",
         "date": "2026-05-23",
         "changes": [
