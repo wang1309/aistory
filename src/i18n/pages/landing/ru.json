@@ -926,6 +926,14 @@
             "src": "https://startupfa.me/badges/featured-badge-small.webp",
             "alt": "Генератор историй - Рекомендовано Startup Fame"
           }
+        },
+        {
+          "title": "Twelve Tools",
+          "url": "https://twelve.tools",
+          "image": {
+            "src": "https://twelve.tools/badge0-white.svg",
+            "alt": "Featured on Twelve Tools"
+          }
         }
       ]
     }

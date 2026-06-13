@@ -925,6 +925,14 @@
             "src": "https://findly.tools/badges/findly-tools-badge-light.svg",
             "alt": "Featured on findly.tools"
           }
+        },
+        {
+          "title": "Twelve Tools",
+          "url": "https://twelve.tools",
+          "image": {
+            "src": "https://twelve.tools/badge0-white.svg",
+            "alt": "Featured on Twelve Tools"
+          }
         }
       ]
     }
