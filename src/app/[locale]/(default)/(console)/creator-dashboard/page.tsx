@@ -4,6 +4,7 @@ import { getUserUuid } from "@/services/user";
 import { getUserStats } from "@/models/userStats";
 import { getDailyStoryStatsByUser } from "@/models/storyAnalytics";
 import DashboardView from "@/components/console/dashboard-view";
+import { buildCreatorDashboardActivityLabels } from "@/components/console/creator-dashboard-lib";
 
 export default async function CreatorDashboardPage() {
   const t = await getTranslations();
@@ -56,17 +57,7 @@ export default async function CreatorDashboardPage() {
     },
   ];
 
-  const activityLabels = {
-    title: t("creation_dashboard.activity.title"),
-    description: t("creation_dashboard.activity.description"),
-    weekdays: Array.from({ length: 7 }).map((_, i) =>
-      t(`creation_dashboard.activity.weekdays.${i}`)
-    ),
-    tooltip: t("creation_dashboard.activity.tooltip"),
-    trend_title: t("creation_dashboard.activity.trend_title"),
-    trend_hint: t("creation_dashboard.activity.trend_hint"),
-    empty: t("creation_dashboard.activity.empty"),
-  };
+  const activityLabels = buildCreatorDashboardActivityLabels(t);
 
   return (
     <DashboardView

@@ -13,6 +13,7 @@ import { toast } from "sonner";
 import { useAppContext } from "@/contexts/app";
 import {
   buildContinueRoute,
+  createQueuedAsyncAction,
   shouldOpenSignInForSave,
   shouldAutoScrollEditor,
   shouldRestoreBlankDraft,
@@ -267,7 +268,7 @@ export default function AiWriteWorkbench({
 }: WorkbenchProps) {
   const locale = useLocale();
   const router = useRouter();
-  const { user, setShowSignModal } = useAppContext();
+  const { user, setShowSignModal, refreshUser } = useAppContext();
   const copy = useMemo(() => getCopy(locale), [locale]);
   const [title, setTitle] = useState(initialTitle);
   const [content, setContent] = useState(initialContent);
@@ -306,6 +307,13 @@ export default function AiWriteWorkbench({
   }, [copy, source]);
 
   const wordCount = useMemo(() => getWordCount(plainText), [plainText]);
+  const refreshUserCredits = useMemo(
+    () =>
+      createQueuedAsyncAction(async () => {
+        await refreshUser();
+      }),
+    [refreshUser]
+  );
 
   useEffect(() => {
     setIsHydrated(true);
@@ -702,6 +710,7 @@ export default function AiWriteWorkbench({
       }
 
       setInstruction("");
+      void refreshUserCredits();
     } catch (error) {
       console.log("ai write continue failed", error);
       toast.error(copy.continueFailed);
@@ -720,6 +729,7 @@ export default function AiWriteWorkbench({
     source,
     storyUuid,
     title,
+    refreshUserCredits,
     scrollEditorToBottom,
     updateEditorStickiness,
     user,
@@ -789,9 +799,10 @@ export default function AiWriteWorkbench({
         }
       }
 
+      void refreshUserCredits();
       return result.trim() || text;
     },
-    [user, copy.needLogin, setShowSignModal]
+    [user, copy.needLogin, refreshUserCredits, setShowSignModal]
   );
 
   const handleConsistencyCheck = useCallback(async () => {
@@ -883,6 +894,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
         }
       }
 
+      void refreshUserCredits();
+
       // Try to parse as JSON, fallback to raw text
       let displayText = result.trim();
       try {
@@ -907,7 +920,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
     } finally {
       setIsChecking(false);
     }
-  }, [copy, plainText, setShowSignModal, storyUuid, user]);
+  }, [copy, plainText, refreshUserCredits, setShowSignModal, storyUuid, user]);
 
   // Debounced inline AI suggestion
   useEffect(() => {
@@ -964,6 +977,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           }
         }
 
+        void refreshUserCredits();
+
         if (
           suggestion.trim() &&
           editorRef.current &&
@@ -977,7 +992,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, [plainText, user, isStreaming, autocompleteOn]);
+  }, [autocompleteOn, isStreaming, plainText, refreshUserCredits, user]);
 
   return (
     <section className="fixed inset-0 z-[60] flex flex-col overflow-hidden bg-background">

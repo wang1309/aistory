@@ -4,7 +4,9 @@ import {
   ReactNode,
   createContext,
   useContext,
+  useCallback,
   useEffect,
+  useMemo,
   useState,
 } from "react";
 import { cacheGet, cacheRemove } from "@/lib/cache";
@@ -61,30 +63,7 @@ function AppContextProviderInner({
     }
   }, [showVerificationModal, verificationCallback]);
 
-  const fetchUserInfo = async function () {
-    try {
-      const resp = await fetch("/api/get-user-info", {
-        method: "POST",
-      });
-
-      if (!resp.ok) {
-        throw new Error("fetch user info failed with status: " + resp.status);
-      }
-
-      const { code, message, data } = await resp.json();
-      if (code !== 0) {
-        throw new Error(message);
-      }
-
-      setUser(data);
-
-      updateInvite(data);
-    } catch (e) {
-      console.log("fetch user info failed");
-    }
-  };
-
-  const updateInvite = async (user: User) => {
+  const updateInvite = useCallback(async (user: User) => {
     try {
       if (user.invited_by) {
         // user already been invited
@@ -134,29 +113,63 @@ function AppContextProviderInner({
     } catch (e) {
       console.log("update invite failed: ", e);
     }
-  };
+  }, []);
+
+  const fetchUserInfo = useCallback(async () => {
+    try {
+      const resp = await fetch("/api/get-user-info", {
+        method: "POST",
+      });
+
+      if (!resp.ok) {
+        throw new Error("fetch user info failed with status: " + resp.status);
+      }
+
+      const { code, message, data } = await resp.json();
+      if (code !== 0) {
+        throw new Error(message);
+      }
+
+      setUser(data);
+
+      updateInvite(data);
+    } catch (e) {
+      console.log("fetch user info failed");
+    }
+  }, [updateInvite]);
+
+  const contextValue = useMemo(
+    () => ({
+      showSignModal,
+      setShowSignModal,
+      user,
+      setUser,
+      refreshUser: fetchUserInfo,
+      showFeedback,
+      setShowFeedback,
+      showVerificationModal,
+      setShowVerificationModal,
+      verificationCallback,
+      setVerificationCallback,
+    }),
+    [
+      fetchUserInfo,
+      showSignModal,
+      user,
+      showFeedback,
+      showVerificationModal,
+      verificationCallback,
+    ]
+  );
 
   useEffect(() => {
     if (session && session.user) {
-      fetchUserInfo();
+      void fetchUserInfo();
     }
-  }, [session]);
+  }, [fetchUserInfo, session]);
 
   return (
-    <AppContext.Provider
-      value={{
-        showSignModal,
-        setShowSignModal,
-        user,
-        setUser,
-        showFeedback,
-        setShowFeedback,
-        showVerificationModal,
-        setShowVerificationModal,
-        verificationCallback,
-        setVerificationCallback,
-      }}
-    >
+    <AppContext.Provider value={contextValue}>
       {children}
     </AppContext.Provider>
   );

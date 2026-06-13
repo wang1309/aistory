@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { useEffect, useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import {
   RiBookOpenLine,
   RiFileTextLine,
@@ -31,7 +32,6 @@ interface DashboardViewProps {
     title: string;
     description: string;
     weekdays: string[];
-    tooltip: string;
     trend_title: string;
     trend_hint: string;
     empty: string;
@@ -110,6 +110,7 @@ function StatCardComponent({
 
 function ActivityHeatmap({ data, labels }: { data: DailyStoryStat[]; labels: DashboardViewProps["activityLabels"] }) {
   const [visible, setVisible] = useState(false);
+  const t = useTranslations("creation_dashboard.activity");
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 500);
@@ -199,13 +200,15 @@ function ActivityHeatmap({ data, labels }: { data: DailyStoryStat[]; labels: Das
                 <div className="grid grid-cols-7 gap-1.5">
                   {dayList.map((day) => {
                     const count = day.stat?.story_count ?? 0;
+                    const title = t("tooltip", {
+                      date: day.key,
+                      stories: count,
+                      words: day.stat?.total_words ?? 0,
+                    });
                     return (
                       <div
                         key={day.key}
-                        title={labels.tooltip
-                          .replace("{date}", day.key)
-                          .replace("{stories}", String(count))
-                          .replace("{words}", String(day.stat?.total_words ?? 0))}
+                        title={title}
                         className={cn(
                           "aspect-square rounded-lg border border-transparent transition-all duration-300",
                           getIntensityClass(count),
@@ -230,15 +233,17 @@ function ActivityHeatmap({ data, labels }: { data: DailyStoryStat[]; labels: Das
                     const ratio = value > 0 ? Math.max(value / maxWords, 0.08) : 0;
                     const heightPx = Math.round(ratio * 80);
                     const showLabel = index % 7 === 0 || index === dayList.length - 1;
+                    const title = t("tooltip", {
+                      date: day.key,
+                      stories: day.stat?.story_count ?? 0,
+                      words: value,
+                    });
 
                     return (
                       <div
                         key={day.key}
                         className="flex flex-1 flex-col items-center justify-end gap-1 min-w-[3px]"
-                        title={labels.tooltip
-                          .replace("{date}", day.key)
-                          .replace("{stories}", String(day.stat?.story_count ?? 0))
-                          .replace("{words}", String(value))}
+                        title={title}
                       >
                         <div
                           className={cn(

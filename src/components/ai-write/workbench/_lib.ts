@@ -149,3 +149,32 @@ export function shouldOpenSignInForSave({
 }) {
   return !hasUser && isManualSave;
 }
+
+export function createQueuedAsyncAction(action: () => Promise<void>) {
+  let inFlight: Promise<void> | null = null;
+  let rerunRequested = false;
+
+  const run = async (): Promise<void> => {
+    if (inFlight) {
+      rerunRequested = true;
+      return inFlight;
+    }
+
+    inFlight = (async () => {
+      try {
+        await action();
+      } finally {
+        inFlight = null;
+
+        if (rerunRequested) {
+          rerunRequested = false;
+          await run();
+        }
+      }
+    })();
+
+    return inFlight;
+  };
+
+  return run;
+}

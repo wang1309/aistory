@@ -6,6 +6,7 @@ export interface ContextValue {
   setShowSignModal: (show: boolean) => void;
   user: User | null;
   setUser: (user: User | null) => void;
+  refreshUser: () => Promise<void>;
   showFeedback: boolean;
   setShowFeedback: (show: boolean) => void;
   showVerificationModal: boolean;
