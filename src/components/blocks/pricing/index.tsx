@@ -18,8 +18,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
   const { user, setShowSignModal } = useAppContext();
 
   const [group, setGroup] = useState(() => {
-    const featuredGroup = pricing.groups?.find((g) => g.is_featured);
-    return featuredGroup?.name || pricing.groups?.[0]?.name;
+    return pricing.groups?.[1]?.name;
   });
   const [isLoading, setIsLoading] = useState(false);
   const [productId, setProductId] = useState<string | null>(null);
