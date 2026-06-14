@@ -3,8 +3,9 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
+import Image from "@tiptap/extension-image";
 import Placeholder from "@tiptap/extension-placeholder";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Toolbar } from "./toolbar";
 import { InlineSuggestion } from "./inline-suggestion";
 import { clearInlineSuggestion } from "./inline-suggestion";
@@ -50,18 +51,30 @@ export function RichTextEditor({
   onSignIn,
   reviewLabels,
 }: RichTextEditorProps) {
-  const editor = useEditor({
-    extensions: [
+  const extensions = useMemo(
+    () => [
       StarterKit.configure({
         heading: { levels: [1, 2, 3] },
       }),
       Underline,
+      Image.configure({
+        inline: false,
+        allowBase64: true,
+        HTMLAttributes: {
+          class: "rounded-lg max-w-full h-auto my-2",
+        },
+      }),
       Placeholder.configure({
         placeholder: placeholder || "Start writing...",
       }),
       InlineSuggestion,
       ReviewHighlight,
     ],
+    [placeholder]
+  );
+
+  const editor = useEditor({
+    extensions,
     content,
     editorProps: {
       attributes: {
@@ -75,7 +88,7 @@ export function RichTextEditor({
     onBlur: () => {
       if (editor) clearInlineSuggestion(editor);
     },
-  });
+  }, [extensions]);
 
   useEffect(() => {
     if (editorRef && editor) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useRef, useState } from "react";
 import type { Editor } from "@tiptap/react";
 import { useLocale } from "next-intl";
 import { Toggle } from "@/components/ui/toggle";
@@ -16,6 +16,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
   RiBold,
   RiItalic,
@@ -35,6 +45,9 @@ import {
   RiFileTextLine,
   RiMarkdownLine,
   RiFilePdf2Line,
+  RiImageLine,
+  RiLink,
+  RiUpload2Line,
 } from "react-icons/ri";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -62,6 +75,21 @@ function getCopy(locale: string) {
       exported: "导出成功",
       exportEmpty: "没有可导出的内容",
       exportFailed: "导出失败",
+      image: "插入图片",
+      imageByUrl: "通过链接插入",
+      imageUpload: "本地上传",
+      imageDialogUrlTitle: "插入图片",
+      imageDialogUrlDesc: "粘贴图片地址（https:// 或 data:）",
+      imageUrlLabel: "图片地址",
+      imageAltLabel: "替代文本（可选）",
+      imageInsertBtn: "插入",
+      imageCancelBtn: "取消",
+      imageEmptyUrl: "请填写图片地址",
+      imageInvalidUrl: "图片地址不合法",
+      imageUploadFailed: "图片读取失败",
+      imageTooLarge: "图片过大，请选择小于 5MB 的图片",
+      imageInserted: "图片已插入",
+      imageReloadNeeded: "图片扩展未生效，请刷新页面后重试",
     };
   }
   return {
@@ -85,6 +113,21 @@ function getCopy(locale: string) {
     exported: "Exported",
     exportEmpty: "Nothing to export",
     exportFailed: "Export failed",
+    image: "Insert Image",
+    imageByUrl: "Insert from URL",
+    imageUpload: "Upload from device",
+    imageDialogUrlTitle: "Insert Image",
+    imageDialogUrlDesc: "Paste an image URL (https:// or data:)",
+    imageUrlLabel: "Image URL",
+    imageAltLabel: "Alt text (optional)",
+    imageInsertBtn: "Insert",
+    imageCancelBtn: "Cancel",
+    imageEmptyUrl: "Please enter an image URL",
+    imageInvalidUrl: "Invalid image URL",
+    imageUploadFailed: "Failed to read image",
+    imageTooLarge: "Image too large (max 5MB)",
+    imageInserted: "Image inserted",
+    imageReloadNeeded: "Image extension not active. Please reload the page.",
   };
 }
 
@@ -149,11 +192,86 @@ function Divider() {
   return <div className="mx-1 h-5 w-px bg-border/60" />;
 }
 
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+
 export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete, title, plainText, isAuthenticated, onSignIn }: ToolbarProps) {
   const locale = useLocale();
   const copy = getCopy(locale);
 
   const needLogin = locale.startsWith("zh") ? "请先登录后再导出" : "Please sign in to export";
+
+  const [imageDialogOpen, setImageDialogOpen] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+  const [imageAlt, setImageAlt] = useState("");
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const insertImage = useCallback(
+    (src: string, alt?: string) => {
+      const chain = editor.chain().focus();
+      const hasImageSchema = Boolean(
+        (editor.schema.nodes as any)?.image
+      );
+      if (!hasImageSchema) {
+        toast.error(copy.imageReloadNeeded);
+        return;
+      }
+      if (typeof (chain as any).setImage === "function") {
+        (chain as any)
+          .setImage({ src, alt: alt || undefined })
+          .run();
+      } else {
+        chain
+          .insertContent({
+            type: "image",
+            attrs: { src, alt: alt || null, title: alt || null },
+          })
+          .run();
+      }
+      toast.success(copy.imageInserted);
+    },
+    [editor, copy.imageInserted, copy.imageReloadNeeded]
+  );
+
+  const handleConfirmImageUrl = useCallback(() => {
+    const trimmed = imageUrl.trim();
+    if (!trimmed) {
+      toast.error(copy.imageEmptyUrl);
+      return;
+    }
+    const isHttp = /^https?:\/\//i.test(trimmed);
+    const isData = /^data:image\//i.test(trimmed);
+    if (!isHttp && !isData) {
+      toast.error(copy.imageInvalidUrl);
+      return;
+    }
+    insertImage(trimmed, imageAlt);
+    setImageUrl("");
+    setImageAlt("");
+    setImageDialogOpen(false);
+  }, [imageUrl, imageAlt, copy.imageEmptyUrl, copy.imageInvalidUrl, insertImage]);
+
+  const handleFileChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      if (file.size > MAX_IMAGE_SIZE) {
+        toast.error(copy.imageTooLarge);
+        e.target.value = "";
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result;
+        if (typeof result === "string") {
+          insertImage(result, file.name);
+        }
+      };
+      reader.onerror = () => toast.error(copy.imageUploadFailed);
+      reader.readAsDataURL(file);
+      e.target.value = "";
+    },
+    [copy.imageTooLarge, copy.imageUploadFailed, insertImage]
+  );
 
   const handleExport = useCallback(async (format: "markdown" | "txt" | "pdf") => {
     if (!isAuthenticated) {
@@ -285,6 +403,34 @@ export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete, title, p
           label={copy.divider}
         />
 
+        <DropdownMenu>
+          <Tooltip delayDuration={200}>
+            <TooltipTrigger asChild>
+              <DropdownMenuTrigger asChild>
+                <button
+                  type="button"
+                  className="inline-flex size-9 items-center justify-center rounded-md text-sm text-muted-foreground transition hover:bg-muted sm:size-8"
+                >
+                  <RiImageLine className="size-4" />
+                </button>
+              </DropdownMenuTrigger>
+            </TooltipTrigger>
+            <TooltipContent side="top" className="text-xs z-[100]">
+              {copy.image}
+            </TooltipContent>
+          </Tooltip>
+          <DropdownMenuContent align="start" className="min-w-[180px]">
+            <DropdownMenuItem onClick={() => setImageDialogOpen(true)}>
+              <RiLink className="mr-2 size-4" />
+              {copy.imageByUrl}
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => fileInputRef.current?.click()}>
+              <RiUpload2Line className="mr-2 size-4" />
+              {copy.imageUpload}
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
         <div className="flex-1" />
 
         <DropdownMenu>
@@ -358,6 +504,77 @@ export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete, title, p
           label={copy.redo}
         />
       </div>
+
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={handleFileChange}
+      />
+
+      <Dialog
+        open={imageDialogOpen}
+        onOpenChange={(open) => {
+          setImageDialogOpen(open);
+          if (!open) {
+            setImageUrl("");
+            setImageAlt("");
+          }
+        }}
+      >
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>{copy.imageDialogUrlTitle}</DialogTitle>
+            <p className="text-sm text-muted-foreground">
+              {copy.imageDialogUrlDesc}
+            </p>
+          </DialogHeader>
+          <div className="grid gap-3 py-2">
+            <div className="grid gap-1.5">
+              <Label htmlFor="image-url-input">{copy.imageUrlLabel}</Label>
+              <Input
+                id="image-url-input"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                placeholder="https://..."
+                autoFocus
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleConfirmImageUrl();
+                  }
+                }}
+              />
+            </div>
+            <div className="grid gap-1.5">
+              <Label htmlFor="image-alt-input">{copy.imageAltLabel}</Label>
+              <Input
+                id="image-alt-input"
+                value={imageAlt}
+                onChange={(e) => setImageAlt(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleConfirmImageUrl();
+                  }
+                }}
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setImageDialogOpen(false)}
+            >
+              {copy.imageCancelBtn}
+            </Button>
+            <Button onClick={handleConfirmImageUrl}>
+              {copy.imageInsertBtn}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </TooltipProvider>
   );
 }
