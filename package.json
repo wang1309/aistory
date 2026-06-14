@@ -65,6 +65,7 @@
     "@radix-ui/react-tooltip": "^1.1.6",
     "@stripe/stripe-js": "^5.4.0",
     "@tabler/icons-react": "^3.31.0",
+    "@tailwindcss/typography": "^0.5.20",
     "@tanstack/react-table": "^8.21.3",
     "@tiptap/extension-bubble-menu": "^3.26.0",
     "@tiptap/extension-image": "^3.26.1",

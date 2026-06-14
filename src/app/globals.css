@@ -2,6 +2,7 @@
 @import "./theme.css";
 
 @plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 
 .ai-write-review-selection::selection {
   background-color: rgba(156, 163, 175, 0.28);
