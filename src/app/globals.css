@@ -528,3 +528,15 @@ button {
 pre {
   @apply px-4;
 }
+
+.ProseMirror .is-empty::before {
+  content: attr(data-placeholder);
+  color: oklch(0.75 0.012 75);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.dark .ProseMirror .is-empty::before {
+  color: oklch(0.55 0.012 75);
+}

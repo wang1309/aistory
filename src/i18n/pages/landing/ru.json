@@ -934,6 +934,14 @@
             "src": "https://twelve.tools/badge0-white.svg",
             "alt": "Featured on Twelve Tools"
           }
+        },
+        {
+          "title": "PitchWall",
+          "url": "https://pitchwall.co/product/a-i-story-generator?utm_source=badge",
+          "image": {
+            "src": "https://pitchwall.co/images/featured/pitchwall-light.png",
+            "alt": "Featured on PitchWall"
+          }
         }
       ]
     }

@@ -1,11 +1,14 @@
 "use client";
 
 import { EditorContent, useEditor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import Image from "@tiptap/extension-image";
 import Placeholder from "@tiptap/extension-placeholder";
+import type { Node as PmNode } from "@tiptap/pm/model";
 import { useEffect, useMemo } from "react";
+import { useLocale } from "next-intl";
 import { Toolbar } from "./toolbar";
 import { InlineSuggestion } from "./inline-suggestion";
 import { clearInlineSuggestion } from "./inline-suggestion";
@@ -14,6 +17,8 @@ import {
   SelectionToolbar,
   type SelectionAction,
 } from "./selection-toolbar";
+import { SlashCommand } from "./slash-command";
+import { SlashCommandMenu } from "./slash-command-menu";
 
 type RichTextEditorProps = {
   content: string;
@@ -51,6 +56,14 @@ export function RichTextEditor({
   onSignIn,
   reviewLabels,
 }: RichTextEditorProps) {
+  const locale = useLocale();
+  const mainPlaceholder = placeholder || "Start writing...";
+  const slashHint = useMemo(() => {
+    if (locale.startsWith("zh")) return "输入 “/” 唤起命令菜单";
+    if (locale.startsWith("de")) return "Tippe “/” fuer Befehle";
+    return "Type “/” for commands";
+  }, [locale]);
+
   const extensions = useMemo(
     () => [
       StarterKit.configure({
@@ -65,12 +78,16 @@ export function RichTextEditor({
         },
       }),
       Placeholder.configure({
-        placeholder: placeholder || "Start writing...",
+        placeholder: ({ editor }: { editor: Editor; node: PmNode; pos: number; hasAnchor: boolean }) => {
+          if (editor.isEmpty) return mainPlaceholder;
+          return slashHint;
+        },
       }),
       InlineSuggestion,
       ReviewHighlight,
+      SlashCommand,
     ],
-    [placeholder]
+    [mainPlaceholder, slashHint]
   );
 
   const editor = useEditor({
@@ -105,7 +122,7 @@ export function RichTextEditor({
   if (!editor) return null;
 
   return (
-    <div>
+    <div className="relative">
       <Toolbar
         editor={editor}
         autocompleteOn={autocompleteOn}
@@ -116,6 +133,7 @@ export function RichTextEditor({
         onSignIn={onSignIn}
       />
       <EditorContent editor={editor} />
+      <SlashCommandMenu editor={editor} />
       {selectionActions && onProcessText && (
         <SelectionToolbar
           editor={editor}
