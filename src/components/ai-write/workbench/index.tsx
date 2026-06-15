@@ -28,6 +28,10 @@ import type { StoryStatus } from "@/models/story";
 
 const GENERATOR_PREFILL_KEY = "ai-write:generator-prefill";
 const BLANK_DRAFT_KEY = "ai-write:blank";
+const PANEL_WIDTH_KEY = "ai-write:panel-width";
+const MIN_PANEL_WIDTH = 280;
+const MAX_PANEL_WIDTH = 600;
+const DEFAULT_PANEL_WIDTH = 380;
 
 type WorkbenchStory = {
   uuid: string;
@@ -286,6 +290,9 @@ export default function AiWriteWorkbench({
   const [isDirty, setIsDirty] = useState(false);
   const [chatVisible, setChatVisible] = useState(true);
   const [rightPanelTab, setRightPanelTab] = useState<"chat" | "bible" | "fingerprint">("chat");
+  const [rightPanelWidth, setRightPanelWidth] = useState(DEFAULT_PANEL_WIDTH);
+  const [isResizing, setIsResizing] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const [bibleActive, setBibleActive] = useState(false);
   const [autocompleteOn, setAutocompleteOn] = useState(() => {
     if (typeof window === "undefined") return false;
@@ -318,6 +325,82 @@ export default function AiWriteWorkbench({
   useEffect(() => {
     setIsHydrated(true);
   }, []);
+
+  useEffect(() => {
+    try {
+      const stored = window.localStorage.getItem(PANEL_WIDTH_KEY);
+      if (!stored) return;
+      const parsed = parseInt(stored, 10);
+      if (Number.isNaN(parsed)) return;
+      setRightPanelWidth(
+        Math.min(MAX_PANEL_WIDTH, Math.max(MIN_PANEL_WIDTH, parsed))
+      );
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const startResize = useCallback(
+    (event: React.MouseEvent) => {
+      event.preventDefault();
+      setIsResizing(true);
+
+      const startX = event.clientX;
+      const startWidth = rightPanelWidth;
+      let latestWidth = startWidth;
+
+      const onMouseMove = (moveEvent: MouseEvent) => {
+        const delta = startX - moveEvent.clientX;
+        const next = Math.min(
+          MAX_PANEL_WIDTH,
+          Math.max(MIN_PANEL_WIDTH, startWidth + delta)
+        );
+        latestWidth = next;
+        setRightPanelWidth(next);
+      };
+
+      const onMouseUp = () => {
+        setIsResizing(false);
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+        try {
+          window.localStorage.setItem(PANEL_WIDTH_KEY, String(latestWidth));
+        } catch {
+          // ignore
+        }
+      };
+
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseup", onMouseUp);
+    },
+    [rightPanelWidth]
+  );
+
+  useEffect(() => {
+    if (!isResizing) return;
+    const prevCursor = document.body.style.cursor;
+    const prevUserSelect = document.body.style.userSelect;
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+    return () => {
+      document.body.style.cursor = prevCursor;
+      document.body.style.userSelect = prevUserSelect;
+    };
+  }, [isResizing]);
+
+  const gridTemplate =
+    !chatVisible || !isDesktop
+      ? "1fr 0px"
+      : `1fr 1px ${rightPanelWidth}px`;
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -1087,12 +1170,14 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             onClick={() => setChatVisible(false)}
           />
         )}
-      <div className={cn(
-        "grid h-full divide-x divide-border/40 overflow-hidden transition-[grid-template-columns] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
-        chatVisible
-          ? "grid-cols-[1fr_0px] md:grid-cols-[1fr_380px]"
-          : "grid-cols-[1fr_0px]"
-      )}>
+      <div
+        className={cn(
+          "grid h-full overflow-hidden",
+          !isResizing &&
+            "transition-[grid-template-columns] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        )}
+        style={{ gridTemplateColumns: gridTemplate }}
+      >
         {/* Editor column */}
         <div className="flex flex-col overflow-hidden">
           <div className="border-b border-border/30 px-3 py-2 sm:px-5 sm:py-3">
@@ -1136,6 +1221,35 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             />
           </div>
         </div>
+
+        {/* Resize handle (desktop only) */}
+        {chatVisible && isDesktop && (
+          <div
+            role="separator"
+            aria-orientation="vertical"
+            onMouseDown={startResize}
+            onDoubleClick={() => setRightPanelWidth(DEFAULT_PANEL_WIDTH)}
+            className={cn(
+              "group relative z-20 hidden w-px cursor-col-resize bg-border/40 md:block",
+              isResizing && "bg-orange-500/60"
+            )}
+          >
+            <div className="absolute inset-y-0 -left-1.5 -right-1.5" />
+            <div
+              className={cn(
+                "absolute inset-y-0 left-1/2 hidden -translate-x-1/2 items-center",
+                isResizing ? "flex" : "group-hover:flex"
+              )}
+            >
+              <div className="flex size-5 items-center justify-center rounded-full border border-border bg-background shadow-sm transition group-hover:border-orange-300">
+                <Icon
+                  name="RiArrowLeftRightLine"
+                  className="size-3 text-muted-foreground"
+                />
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Right: Chat / Story Bible / Style Fingerprint */}
         <aside className={cn(
