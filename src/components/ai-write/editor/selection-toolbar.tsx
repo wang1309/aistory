@@ -3,6 +3,7 @@
 import { BubbleMenu } from "@tiptap/react/menus";
 import type { Editor } from "@tiptap/react";
 import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
+import { cn } from "@/lib/utils";
 import { computeDiffRanges } from "./text-diff";
 import {
   setReviewHighlights,
@@ -34,6 +35,8 @@ type SelectionToolbarProps = {
     retry?: string;
     reject?: string;
   };
+  isAuthenticated?: boolean;
+  needLoginLabel?: string;
 };
 
 export function SelectionToolbar({
@@ -41,6 +44,8 @@ export function SelectionToolbar({
   actions,
   onProcess,
   labels,
+  isAuthenticated = true,
+  needLoginLabel = "Sign in required",
 }: SelectionToolbarProps) {
   const [review, setReview] = useState<ReviewState | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -61,24 +66,6 @@ export function SelectionToolbar({
       transitioningRef.current = false;
     });
   }, [editor, review]);
-
-  // Auto-accept when user clicks away from the review range
-  useEffect(() => {
-    if (!review || review.phase !== "reviewing") return;
-
-    const handler = () => {
-      if (transitioningRef.current) return;
-      const { from } = editor.state.selection;
-      if (from < review.from || from > review.to) {
-        doAccept();
-      }
-    };
-
-    editor.on("selectionUpdate", handler);
-    return () => {
-      editor.off("selectionUpdate", handler);
-    };
-  }, [editor, review, doAccept]);
 
   // Reset transition flag once React has committed the reviewing state
   useEffect(() => {
@@ -153,6 +140,21 @@ export function SelectionToolbar({
       transitioningRef.current = false;
     });
   }, [editor, review]);
+
+  // Esc = reject when in reviewing phase
+  useEffect(() => {
+    if (!review || review.phase !== "reviewing") return;
+
+    const handler = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        doReject();
+      }
+    };
+
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [review, doReject]);
 
   const doRetry = useCallback(async () => {
     if (!review) return;
@@ -241,9 +243,30 @@ export function SelectionToolbar({
             type="button"
             onMouseDown={preventButtonMouseDown}
             onClick={() => void handleAction(action)}
-            className="whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:bg-orange-50 hover:text-orange-700 dark:hover:bg-orange-900/20 dark:hover:text-orange-300"
+            title={isAuthenticated ? action.label : needLoginLabel}
+            className={cn(
+              "flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-medium transition",
+              isAuthenticated
+                ? "text-muted-foreground hover:bg-orange-50 hover:text-orange-700 dark:hover:bg-orange-900/20 dark:hover:text-orange-300"
+                : "cursor-not-allowed text-muted-foreground/50 hover:bg-muted"
+            )}
           >
             {action.label}
+            {!isAuthenticated && (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-3"
+                aria-hidden
+              >
+                <rect x="3" y="11" width="18" height="11" rx="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            )}
           </button>
         ))
       ) : review.phase === "processing" ? (
@@ -276,6 +299,9 @@ export function SelectionToolbar({
             className="whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-medium text-red-600 transition hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
           >
             {labels?.reject || "Reject"}
+            <kbd className="ml-1 rounded bg-red-100 px-1 text-[10px] font-normal text-red-600 dark:bg-red-900/30 dark:text-red-300">
+              Esc
+            </kbd>
           </button>
         </>
       )}

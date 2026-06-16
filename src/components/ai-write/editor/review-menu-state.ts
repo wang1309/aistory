@@ -26,7 +26,7 @@ export function shouldShowReviewMenu({
   if (!isEditable) return false;
 
   if (review) {
-    return selectionFrom === review.from && selectionTo === review.to;
+    return hasEditorFocus || isChildOfMenu;
   }
 
   const hasEditorContext = hasEditorFocus || isChildOfMenu;

@@ -446,7 +446,7 @@ export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete, title, p
               </DropdownMenuTrigger>
             </TooltipTrigger>
             <TooltipContent side="top" className="text-xs z-[100]">
-              {copy.exportMarkdown.replace("Markdown", "")}
+              {copy.exportMarkdown}
             </TooltipContent>
           </Tooltip>
           <DropdownMenuContent align="end" className="min-w-[180px]">

@@ -72,6 +72,16 @@ function getWordCount(text: string) {
   return cjkCount + englishWords.length;
 }
 
+function formatSavedTime(iso: string) {
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "";
+    return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+  } catch {
+    return "";
+  }
+}
+
 function normalizeLocale(locale: string) {
   if (locale.startsWith("zh")) return "zh";
   if (locale.startsWith("de")) return "de";
@@ -140,6 +150,20 @@ function getCopy(locale: string) {
         retry: "重试",
         reject: "拒绝",
       },
+      stopped: "已停止生成",
+      autocompleteHint: (n: number) => `再写 ${n} 字开启 AI 补全`,
+      autocompleteReady: "AI 补全已开启",
+      unsavedTip: "未保存修改",
+      lastSavedAtLabel: (time: string) => `已保存 · ${time}`,
+      resizeHint: "拖动调整宽度，双击恢复默认",
+      needLoginAction: "登录后可用",
+      presetFilled: "已填入指令，可在发送前修改",
+      copied: "已复制到剪贴板",
+      msgCopy: "复制",
+      msgInsert: "插入到光标",
+      msgDelete: "删除",
+      aiWriting: "AI 正在写作...",
+      signedOut: "已退出登录，请重新登录后继续保存",
     };
   }
 
@@ -201,6 +225,20 @@ function getCopy(locale: string) {
         retry: "Erneut versuchen",
         reject: "Ablehnen",
       },
+      stopped: "Angehalten",
+      autocompleteHint: (n: number) => `${n} weitere Zeichen fuer AI-Vorschlaege`,
+      autocompleteReady: "AI-Vorschlaege aktiv",
+      unsavedTip: "Nicht gespeichert",
+      lastSavedAtLabel: (time: string) => `Gespeichert · ${time}`,
+      resizeHint: "Ziehen zum Anpassen, Doppelklick zum Zuruecksetzen",
+      needLoginAction: "Nach Anmeldung verfuegbar",
+      presetFilled: "Befehl ausgefuellt, vor dem Senden anpassbar",
+      copied: "In Zwischenablage kopiert",
+      msgCopy: "Kopieren",
+      msgInsert: "Am Cursor einfuegen",
+      msgDelete: "Loeschen",
+      aiWriting: "KI schreibt...",
+      signedOut: "Abgemeldet — bitte neu anmelden, um zu speichern",
     };
   }
 
@@ -261,6 +299,20 @@ function getCopy(locale: string) {
       retry: "Retry",
       reject: "Reject",
     },
+    stopped: "Stopped",
+    autocompleteHint: (n: number) => `${n} more characters to enable AI suggestions`,
+    autocompleteReady: "AI suggestions enabled",
+    unsavedTip: "Unsaved changes",
+    lastSavedAtLabel: (time: string) => `Saved · ${time}`,
+    resizeHint: "Drag to resize, double-click to reset",
+    needLoginAction: "Available after sign-in",
+    presetFilled: "Prefilled — edit before sending",
+    copied: "Copied to clipboard",
+    msgCopy: "Copy",
+    msgInsert: "Insert at cursor",
+    msgDelete: "Delete",
+    aiWriting: "AI is writing...",
+    signedOut: "Signed out — sign in again to save",
   };
 }
 
@@ -283,6 +335,7 @@ export default function AiWriteWorkbench({
     Array<{ role: "user" | "assistant"; content: string }>
   >([]);
   const [isStreaming, setIsStreaming] = useState(false);
+  const [streamingText, setStreamingText] = useState("");
   const [isChecking, setIsChecking] = useState(false);
   const [isSaving, startSaving] = useTransition();
   const [lastSavedAt, setLastSavedAt] = useState<string>("");
@@ -290,6 +343,7 @@ export default function AiWriteWorkbench({
   const [isDirty, setIsDirty] = useState(false);
   const [chatVisible, setChatVisible] = useState(true);
   const [rightPanelTab, setRightPanelTab] = useState<"chat" | "bible" | "fingerprint">("chat");
+  const [isMobileFullscreen, setIsMobileFullscreen] = useState(false);
   const [rightPanelWidth, setRightPanelWidth] = useState(DEFAULT_PANEL_WIDTH);
   const [isResizing, setIsResizing] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -305,6 +359,9 @@ export default function AiWriteWorkbench({
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const streamingContentRef = useRef("");
   const shouldStickEditorToBottomRef = useRef(true);
+  const abortRef = useRef<AbortController | null>(null);
+  const pendingSaveAfterSignInRef = useRef(false);
+  const isProgrammaticChangeRef = useRef(false);
 
   const sourceLabel = useMemo(() => {
     if (source === "generator") return copy.sourceGenerator;
@@ -415,16 +472,6 @@ export default function AiWriteWorkbench({
       scrollTop: container.scrollTop,
       clientHeight: container.clientHeight,
       scrollHeight: container.scrollHeight,
-    });
-  }, []);
-
-  const scrollEditorToBottom = useCallback((behavior: ScrollBehavior = "auto") => {
-    const container = editorScrollRef.current;
-    if (!container) return;
-
-    container.scrollTo({
-      top: container.scrollHeight,
-      behavior,
     });
   }, []);
 
@@ -549,6 +596,7 @@ export default function AiWriteWorkbench({
             isManualSave: options?.manual ?? false,
           })
         ) {
+          pendingSaveAfterSignInRef.current = true;
           setShowSignModal(true);
           toast.error(copy.storyCreatedNeedLogin);
         }
@@ -653,10 +701,14 @@ export default function AiWriteWorkbench({
       return;
     }
 
-    updateEditorStickiness();
     setIsStreaming(true);
     setMessages((prev) => [...prev, { role: "user", content: instruction }]);
     streamingContentRef.current = "";
+    setStreamingText("");
+
+    const controller = new AbortController();
+    abortRef.current = controller;
+    let appended = "";
 
     try {
       // Build context from Story Bible and Style Fingerprint
@@ -665,7 +717,9 @@ export default function AiWriteWorkbench({
       // Fetch bible data for the current story
       if (storyUuid) {
         try {
-          const bibleResp = await fetch(`/api/story-bible?story=${storyUuid}`);
+          const bibleResp = await fetch(`/api/story-bible?story=${storyUuid}`, {
+            signal: controller.signal,
+          });
           const bibleJson = await bibleResp.json();
           if (bibleJson.code === 0 && bibleJson.data) {
             const bible = bibleJson.data;
@@ -675,13 +729,16 @@ export default function AiWriteWorkbench({
               if (bibleText) contextParts.push(bibleText);
             }
           }
-        } catch {
+        } catch (err) {
+          if ((err as Error)?.name === "AbortError") throw err;
           // ignore bible fetch errors
         }
       }
 
       try {
-        const fpResp = await fetch("/api/style-fingerprint");
+        const fpResp = await fetch("/api/style-fingerprint", {
+          signal: controller.signal,
+        });
         const fpJson = await fpResp.json();
         if (fpJson.code === 0 && fpJson.data?.activeUuid) {
           const active = (fpJson.data.fingerprints || []).find(
@@ -694,7 +751,8 @@ export default function AiWriteWorkbench({
             );
           }
         }
-      } catch {
+      } catch (err) {
+        if ((err as Error)?.name === "AbortError") throw err;
         // ignore fingerprint fetch errors
       }
 
@@ -724,6 +782,7 @@ export default function AiWriteWorkbench({
           storyId: storyUuid || undefined,
           metadata: { source: source || null },
         }),
+        signal: controller.signal,
       });
 
       if (!response.ok || !response.body) {
@@ -733,9 +792,6 @@ export default function AiWriteWorkbench({
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let buffer = "";
-      let appended = "";
-      const baseContent =
-        plainText && !plainText.endsWith("\n") ? `${plainText}\n` : plainText;
 
       while (true) {
         const { done, value } = await reader.read();
@@ -758,25 +814,7 @@ export default function AiWriteWorkbench({
             if (!delta) continue;
 
             appended += delta;
-
-            const shouldFollow =
-              shouldStickEditorToBottomRef.current ||
-              shouldAutoScrollEditor({
-                isStreaming: true,
-                scrollTop: editorScrollRef.current?.scrollTop ?? 0,
-                clientHeight: editorScrollRef.current?.clientHeight ?? 0,
-                scrollHeight: editorScrollRef.current?.scrollHeight ?? 0,
-              });
-
-            if (editorRef.current) {
-              editorRef.current.chain().focus().insertContent(delta).run();
-            }
-
-            if (shouldFollow) {
-              requestAnimationFrame(() => {
-                scrollEditorToBottom();
-              });
-            }
+            setStreamingText((prev) => prev + delta);
           } catch {
             // ignore malformed chunks
           }
@@ -789,23 +827,38 @@ export default function AiWriteWorkbench({
           ...prev,
           { role: "assistant", content: appended.trim() },
         ]);
-        toast.success(copy.appended);
       }
 
       setInstruction("");
+      setStreamingText("");
       void refreshUserCredits();
     } catch (error) {
-      console.log("ai write continue failed", error);
-      toast.error(copy.continueFailed);
+      const isAbort = (error as Error)?.name === "AbortError";
+
+      if (isAbort) {
+        if (appended.trim()) {
+          streamingContentRef.current = appended.trim();
+          setMessages((prev) => [
+            ...prev,
+            { role: "assistant", content: appended.trim() },
+          ]);
+        }
+        toast.success(copy.stopped);
+      } else {
+        console.log("ai write continue failed", error);
+        toast.error(copy.continueFailed, { duration: 6000 });
+      }
     } finally {
+      abortRef.current = null;
+      setStreamingText("");
       setIsStreaming(false);
     }
   }, [
-    copy.appended,
     copy.continueFailed,
     copy.emptyContent,
     copy.emptyPrompt,
     copy.needLogin,
+    copy.stopped,
     instruction,
     plainText,
     setShowSignModal,
@@ -813,16 +866,57 @@ export default function AiWriteWorkbench({
     storyUuid,
     title,
     refreshUserCredits,
-    scrollEditorToBottom,
-    updateEditorStickiness,
     user,
   ]);
+
+  const stopStreaming = useCallback(() => {
+    if (abortRef.current) {
+      abortRef.current.abort();
+      abortRef.current = null;
+    }
+  }, []);
 
   const handleEditorChange = useCallback((html: string, text: string) => {
     setContent(html);
     setPlainText(text);
-    if (isHydrated) setIsDirty(true);
+    if (isHydrated && !isProgrammaticChangeRef.current) setIsDirty(true);
   }, [isHydrated]);
+
+  useEffect(() => {
+    const handler = (event: KeyboardEvent) => {
+      const isSaveShortcut =
+        (event.metaKey || event.ctrlKey) &&
+        (event.key === "s" || event.key === "S");
+      if (!isSaveShortcut) return;
+      event.preventDefault();
+      void saveStory({
+        createIfNeeded: !storyUuid,
+        manual: true,
+        nextStatus: "saved",
+      });
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [saveStory, storyUuid]);
+
+  useEffect(() => {
+    if (!user || !pendingSaveAfterSignInRef.current) return;
+    if (!plainText.trim()) {
+      pendingSaveAfterSignInRef.current = false;
+      return;
+    }
+    pendingSaveAfterSignInRef.current = false;
+    void saveStory({ createIfNeeded: !storyUuid, manual: true });
+  }, [user, plainText, storyUuid, saveStory]);
+
+  const prevUserRef = useRef(user);
+  useEffect(() => {
+    if (!isHydrated) return;
+    if (prevUserRef.current && !user && storyUuid) {
+      toast.error(copy.signedOut);
+    }
+    prevUserRef.current = user;
+  }, [user, storyUuid, isHydrated, copy.signedOut]);
 
   const toggleAutocomplete = useCallback(() => {
     setAutocompleteOn((prev) => {
@@ -1010,12 +1104,13 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
     if (!autocompleteOn || !plainText.trim() || !user || isStreaming || !editorRef.current) return;
     if (plainText.length < 80) return;
 
+    const controller = new AbortController();
+    const contextText = plainText.slice(-600);
+
     const timer = setTimeout(async () => {
       if (!editorRef.current?.isFocused) return;
 
       try {
-        const contextText = plainText.slice(-600);
-
         const response = await fetch("/api/chat/continue", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -1030,6 +1125,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             ],
             max_tokens: 80,
           }),
+          signal: controller.signal,
         });
 
         if (!response.ok || !response.body) return;
@@ -1062,19 +1158,32 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
 
         void refreshUserCredits();
 
+        // Validate that the editor's current tail still matches the context
+        // we asked for; otherwise discard the suggestion to avoid inserting
+        // completions that belong to an older cursor position.
+        const currentPlainText = editorRef.current?.getText() ?? "";
+        const isStillRelevant = currentPlainText.endsWith(contextText.trim()) ||
+          contextText.trim().endsWith(currentPlainText.slice(-contextText.length).trim());
+
         if (
+          !controller.signal.aborted &&
+          isStillRelevant &&
           suggestion.trim() &&
           editorRef.current &&
           editorRef.current.isFocused
         ) {
           setInlineSuggestion(editorRef.current, suggestion.trim());
         }
-      } catch {
+      } catch (err) {
+        if ((err as Error)?.name === "AbortError") return;
         // ignore suggestion failures
       }
     }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      controller.abort();
+      clearTimeout(timer);
+    };
   }, [autocompleteOn, isStreaming, plainText, refreshUserCredits, user]);
 
   return (
@@ -1084,6 +1193,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
         <div className="flex min-w-0 flex-1 items-center gap-2 text-sm text-muted-foreground">
           <button
             type="button"
+            aria-label="Home"
             onClick={() => router.push("/")}
             className="cursor-pointer transition hover:text-foreground"
           >
@@ -1105,13 +1215,18 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           <span className="ml-2 hidden text-xs text-muted-foreground/70 sm:inline">
             {copy.wordCount}: {wordCount}
           </span>
-          {isDirty && !lastSavedAt && storyUuid && (
-            <span className="flex items-center gap-1 text-xs text-orange-600 dark:text-orange-400">
+          {isDirty && storyUuid && (
+            <span
+              title={copy.unsavedTip}
+              className="flex items-center gap-1 text-xs text-orange-600 dark:text-orange-400"
+            >
               <span className="size-1.5 rounded-full bg-orange-500" />
             </span>
           )}
           {lastSavedAt && !isDirty && (
-            <span className="hidden text-xs text-muted-foreground/70 sm:inline">{copy.autosave}</span>
+            <span className="hidden text-xs text-muted-foreground/70 sm:inline">
+              {copy.lastSavedAtLabel(formatSavedTime(lastSavedAt))}
+            </span>
           )}
         </div>
 
@@ -1119,12 +1234,18 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           <button
             type="button"
             onClick={() => void handleConsistencyCheck()}
-            disabled={isChecking || isStreaming}
-            className="flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-xs text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:opacity-50"
-            title={copy.consistencyCheck}
+            disabled={isChecking || isStreaming || wordCount < 500}
+            className="flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-xs text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            title={wordCount < 500 ? copy.checkTooShort : copy.consistencyCheck}
           >
             <Icon name="RiShieldCheckLine" className="size-3.5" />
-            <span className="hidden sm:inline">{isChecking ? copy.checking : copy.consistencyCheck}</span>
+            <span className="hidden sm:inline">
+              {isChecking
+                ? copy.checking
+                : wordCount < 500
+                ? `${copy.consistencyCheck} (${Math.max(0, 500 - wordCount)})`
+                : copy.consistencyCheck}
+            </span>
           </button>
           <Button
             variant={isDirty ? "outline" : "ghost"}
@@ -1149,14 +1270,41 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             <SignToggle />
           </div>
           {!chatVisible && (
-            <button
-              type="button"
-              onClick={() => setChatVisible(true)}
-              className="flex shrink-0 items-center gap-1.5 rounded-full bg-orange-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-orange-500"
-            >
-              <Icon name="RiChatSmile2Line" className="size-3.5" />
-              <span className="hidden sm:inline">Chat</span>
-            </button>
+            <div className="flex shrink-0 items-center gap-0.5 rounded-full border border-border/60 bg-background p-0.5">
+              <button
+                type="button"
+                onClick={() => {
+                  setRightPanelTab("chat");
+                  setChatVisible(true);
+                }}
+                className="flex size-7 items-center justify-center rounded-full bg-orange-600 text-white transition hover:bg-orange-500"
+                title="Chat"
+              >
+                <Icon name="RiChatSmile2Line" className="size-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setRightPanelTab("bible");
+                  setChatVisible(true);
+                }}
+                className="flex size-7 items-center justify-center rounded-full text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                title="Story Bible"
+              >
+                <Icon name="RiBookOpenLine" className="size-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setRightPanelTab("fingerprint");
+                  setChatVisible(true);
+                }}
+                className="flex size-7 items-center justify-center rounded-full text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                title="Style"
+              >
+                <Icon name="RiFingerprint2Line" className="size-3.5" />
+              </button>
+            </div>
           )}
         </div>
       </div>
@@ -1179,7 +1327,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
         style={{ gridTemplateColumns: gridTemplate }}
       >
         {/* Editor column */}
-        <div className="flex flex-col overflow-hidden">
+        <div className="relative flex flex-col overflow-hidden">
           <div className="border-b border-border/30 px-3 py-2 sm:px-5 sm:py-3">
             <Input
               value={title}
@@ -1218,7 +1366,22 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               isAuthenticated={!!user}
               onSignIn={() => setShowSignModal(true)}
               reviewLabels={copy.reviewLabels}
+              needLoginLabel={copy.needLoginAction}
             />
+          </div>
+          <div className="pointer-events-none absolute bottom-3 right-3 z-20 flex w-fit items-center gap-2 rounded-full border border-border/60 bg-background/95 px-3 py-1 text-xs text-muted-foreground shadow-sm backdrop-blur sm:right-5">
+            {autocompleteOn && user && plainText.length < 80 && (
+              <span className="flex items-center gap-1.5">
+                <Icon name="RiMagicLine" className="size-3 text-orange-500" />
+                {copy.autocompleteHint(80 - plainText.length)}
+              </span>
+            )}
+            <span className="flex items-center gap-1">
+              <span className="text-muted-foreground/60">·</span>
+              <span>
+                {wordCount} {copy.wordCount.toLowerCase()}
+              </span>
+            </span>
           </div>
         </div>
 
@@ -1227,24 +1390,27 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           <div
             role="separator"
             aria-orientation="vertical"
+            title={copy.resizeHint}
             onMouseDown={startResize}
             onDoubleClick={() => setRightPanelWidth(DEFAULT_PANEL_WIDTH)}
             className={cn(
-              "group relative z-20 hidden w-px cursor-col-resize bg-border/40 md:block",
-              isResizing && "bg-orange-500/60"
+              "group relative z-20 hidden w-1 cursor-col-resize bg-border/60 transition-colors hover:bg-orange-500/50 md:block",
+              isResizing && "bg-orange-500"
             )}
           >
             <div className="absolute inset-y-0 -left-1.5 -right-1.5" />
-            <div
-              className={cn(
-                "absolute inset-y-0 left-1/2 hidden -translate-x-1/2 items-center",
-                isResizing ? "flex" : "group-hover:flex"
-              )}
-            >
-              <div className="flex size-5 items-center justify-center rounded-full border border-border bg-background shadow-sm transition group-hover:border-orange-300">
+            <div className="absolute inset-y-0 left-1/2 flex -translate-x-1/2 items-center">
+              <div
+                className={cn(
+                  "flex size-5 items-center justify-center rounded-full border bg-background shadow-sm transition",
+                  isResizing
+                    ? "border-orange-500 text-orange-600"
+                    : "border-border/70 text-muted-foreground/60 group-hover:border-orange-300 group-hover:text-orange-600"
+                )}
+              >
                 <Icon
                   name="RiArrowLeftRightLine"
-                  className="size-3 text-muted-foreground"
+                  className="size-3"
                 />
               </div>
             </div>
@@ -1255,13 +1421,20 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
         <aside className={cn(
           "flex flex-col overflow-hidden bg-muted/30 transition-[opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] md:relative",
           chatVisible
-            ? "opacity-100 fixed inset-y-0 right-0 z-20 w-[85vw] max-w-[400px] md:w-auto md:max-w-none shadow-2xl md:shadow-none"
+            ? cn(
+                "opacity-100 fixed inset-y-0 right-0 z-20 shadow-2xl md:shadow-none",
+                isMobileFullscreen
+                  ? "w-screen max-w-none"
+                  : "w-[85vw] max-w-[400px] md:w-auto md:max-w-none"
+              )
             : "pointer-events-none opacity-0 overflow-hidden"
         )}>
           {/* Tab bar header */}
           <div className="flex items-center gap-1 overflow-x-auto border-b border-border/40 px-2 py-2">
             <button
               type="button"
+              aria-label="Chat tab"
+              aria-pressed={rightPanelTab === "chat"}
               onClick={() => setRightPanelTab("chat")}
               className={cn(
                 "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs transition",
@@ -1275,6 +1448,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             </button>
             <button
               type="button"
+              aria-label="Story Bible tab"
+              aria-pressed={rightPanelTab === "bible"}
               onClick={() => setRightPanelTab("bible")}
               className={cn(
                 "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs transition",
@@ -1288,6 +1463,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             </button>
             <button
               type="button"
+              aria-label="Style Fingerprint tab"
+              aria-pressed={rightPanelTab === "fingerprint"}
               onClick={() => setRightPanelTab("fingerprint")}
               className={cn(
                 "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs transition",
@@ -1302,6 +1479,18 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             <div className="flex-1" />
             <button
               type="button"
+              aria-label={isMobileFullscreen ? "Exit fullscreen" : "Fullscreen"}
+              onClick={() => setIsMobileFullscreen((v) => !v)}
+              className="flex size-7 items-center justify-center rounded-lg text-muted-foreground transition hover:bg-muted hover:text-foreground md:hidden"
+            >
+              <Icon
+                name={isMobileFullscreen ? "RiFullscreenExitLine" : "RiFullscreenLine"}
+                className="size-4"
+              />
+            </button>
+            <button
+              type="button"
+              aria-label="Close panel"
               onClick={() => setChatVisible(false)}
               className="flex size-7 items-center justify-center rounded-lg text-muted-foreground transition hover:bg-muted hover:text-foreground"
             >
@@ -1337,7 +1526,11 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                       <button
                         key={preset.id}
                         type="button"
-                        onClick={() => setInstruction(preset.prompt)}
+                        title={preset.prompt}
+                        onClick={() => {
+                          setInstruction(preset.prompt);
+                          toast.success(copy.presetFilled);
+                        }}
                         className="rounded-full border border-border/60 bg-background px-2.5 py-1 text-xs transition hover:border-orange-300 hover:bg-orange-50 dark:hover:border-orange-600/40 dark:hover:bg-orange-900/20"
                       >
                         {preset.label}
@@ -1352,7 +1545,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                   <div
                     key={`${message.role}-${index}`}
                     className={cn(
-                      "flex gap-2.5",
+                      "group flex gap-2.5",
                       message.role === "user" ? "justify-end" : "justify-start"
                     )}
                   >
@@ -1370,6 +1563,49 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                       )}
                     >
                       <div className="whitespace-pre-wrap">{message.content}</div>
+                      {message.role === "assistant" && (
+                        <div className="mt-2 flex items-center gap-1 border-t border-orange-200/30 pt-2 text-muted-foreground opacity-0 transition group-hover:opacity-100 dark:border-orange-700/20">
+                          <button
+                            type="button"
+                            title={copy.msgCopy}
+                            onClick={() => {
+                              try {
+                                void navigator.clipboard?.writeText(message.content);
+                                toast.success(copy.copied);
+                              } catch {
+                                // ignore clipboard errors
+                              }
+                            }}
+                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-orange-100 hover:text-orange-700 dark:hover:bg-orange-900/30 dark:hover:text-orange-200"
+                          >
+                            <Icon name="RiFileCopyLine" className="size-3.5" />
+                          </button>
+                          <button
+                            type="button"
+                            title={copy.msgInsert}
+                            onClick={() => {
+                              const ed = editorRef.current;
+                              if (!ed) return;
+                              const { from } = ed.state.selection;
+                              ed.chain().focus().insertContentAt(from, message.content).run();
+                              toast.success(copy.appended);
+                            }}
+                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-orange-100 hover:text-orange-700 dark:hover:bg-orange-900/30 dark:hover:text-orange-200"
+                          >
+                            <Icon name="RiArrowDownLine" className="size-3.5" />
+                          </button>
+                          <button
+                            type="button"
+                            title={copy.msgDelete}
+                            onClick={() => {
+                              setMessages((prev) => prev.filter((_, i) => i !== index));
+                            }}
+                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-300"
+                          >
+                            <Icon name="RiDeleteBin6Line" className="size-3.5" />
+                          </button>
+                        </div>
+                      )}
                     </div>
                     {message.role === "user" && (
                       <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-muted">
@@ -1385,11 +1621,18 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                       <Icon name="RiSparkling2Line" className="size-3.5" />
                     </div>
                     <div className="max-w-[85%] rounded-2xl bg-orange-50/60 px-3.5 py-2.5 shadow-sm border border-orange-200/40 dark:bg-orange-900/10 dark:border-orange-700/20">
-                      <div className="flex items-center gap-1.5">
-                        <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500" />
-                        <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500 [animation-delay:0.2s]" />
-                        <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500 [animation-delay:0.4s]" />
-                      </div>
+                      {streamingText ? (
+                        <p className="whitespace-pre-wrap text-sm leading-6 text-foreground/90">
+                          {streamingText}
+                          <span className="ml-1 inline-block w-1.5 animate-pulse text-orange-500">▍</span>
+                        </p>
+                      ) : (
+                        <div className="flex items-center gap-1.5">
+                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500" />
+                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500 [animation-delay:0.2s]" />
+                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500 [animation-delay:0.4s]" />
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
@@ -1411,19 +1654,35 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                     if (!isStreaming) void handleContinue();
                   }
                 }}
-                placeholder={copy.promptPlaceholder}
+                placeholder={isStreaming ? copy.aiWriting : copy.promptPlaceholder}
                 rows={3}
-                className="flex-1 resize-none bg-transparent px-2 py-1.5 text-sm outline-none placeholder:text-muted-foreground/50"
+                className={cn(
+                  "flex-1 resize-none bg-transparent px-2 py-1.5 text-sm outline-none transition placeholder:text-muted-foreground/50",
+                  isStreaming && "opacity-50"
+                )}
               />
               <Button
                 size="sm"
-                className="h-8 w-8 shrink-0 rounded-xl bg-orange-600 p-0 text-white hover:bg-orange-500"
-                disabled={isStreaming || !instruction.trim()}
+                className={cn(
+                  "h-8 w-8 shrink-0 rounded-xl p-0 text-white",
+                  isStreaming
+                    ? "bg-neutral-800 hover:bg-neutral-700 dark:bg-neutral-200 dark:text-neutral-900 dark:hover:bg-neutral-300"
+                    : "bg-orange-600 hover:bg-orange-500"
+                )}
+                disabled={!isStreaming && !instruction.trim()}
                 onClick={() => {
-                  if (!isStreaming) void handleContinue();
+                  if (isStreaming) {
+                    stopStreaming();
+                  } else {
+                    void handleContinue();
+                  }
                 }}
+                title={isStreaming ? copy.stopped : copy.send}
               >
-                <Icon name="RiSendPlane2Fill" className="size-4" />
+                <Icon
+                  name={isStreaming ? "RiStopFill" : "RiSendPlane2Fill"}
+                  className="size-4"
+                />
               </Button>
             </div>
           </div>}

@@ -25,7 +25,8 @@ const INACTIVE_STATE: SlashState = {
   query: "",
 };
 
-const TRAILING_SLASH_RE = /(?:^|\s)\/([^\s/]{0,20})$/;
+const TRAILING_SLASH_RE =
+  /(?:^|[\s　]|[一-鿿㐀-䶿぀-ヿ가-힯])\/([^\s/]{0,20})$/;
 
 function getSlashStorage(editor: Editor): SlashStorage {
   const storage = (editor.storage as unknown) as Record<string, unknown>;
