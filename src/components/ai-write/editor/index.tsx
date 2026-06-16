@@ -6,10 +6,22 @@ import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import Image from "@tiptap/extension-image";
 import Placeholder from "@tiptap/extension-placeholder";
+import { Color } from "@tiptap/extension-color";
+import { TextStyle } from "@tiptap/extension-text-style";
+import { Highlight } from "@tiptap/extension-highlight";
+import { TextAlign } from "@tiptap/extension-text-align";
+import { Link } from "@tiptap/extension-link";
+import { Table } from "@tiptap/extension-table";
+import { TableRow } from "@tiptap/extension-table-row";
+import { TableCell } from "@tiptap/extension-table-cell";
+import { TableHeader } from "@tiptap/extension-table-header";
+import { TaskList } from "@tiptap/extension-task-list";
+import { TaskItem } from "@tiptap/extension-task-item";
 import type { Node as PmNode } from "@tiptap/pm/model";
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 import { Toolbar } from "./toolbar";
 import { InlineSuggestion } from "./inline-suggestion";
 import { clearInlineSuggestion } from "./inline-suggestion";
@@ -20,6 +32,8 @@ import {
 } from "./selection-toolbar";
 import { SlashCommand } from "./slash-command";
 import { SlashCommandMenu } from "./slash-command-menu";
+import { SearchReplace } from "./search-replace";
+import { DragHandle } from "./drag-handle";
 
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 
@@ -80,6 +94,9 @@ type RichTextEditorProps = {
   onProcessText?: (text: string, prompt: string) => Promise<string>;
   autocompleteOn?: boolean;
   onToggleAutocomplete?: () => void;
+  focusMode?: boolean;
+  onToggleFocusMode?: () => void;
+  onSlashAI?: (action: "continue" | "improve" | "expand" | "summarize") => void;
   title?: string;
   plainText?: string;
   isAuthenticated?: boolean;
@@ -102,6 +119,9 @@ export function RichTextEditor({
   onProcessText,
   autocompleteOn,
   onToggleAutocomplete,
+  focusMode,
+  onToggleFocusMode,
+  onSlashAI,
   title,
   plainText,
   isAuthenticated,
@@ -122,6 +142,38 @@ export function RichTextEditor({
         heading: { levels: [1, 2, 3] },
       }),
       Underline,
+      TextStyle,
+      Color,
+      Highlight.configure({ multicolor: true }),
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
+      Link.configure({
+        openOnClick: false,
+        HTMLAttributes: {
+          class: "text-orange-600 underline underline-offset-2 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 cursor-pointer",
+        },
+      }),
+      Table.configure({
+        resizable: true,
+        HTMLAttributes: {
+          class: "border-collapse table-auto w-full my-4",
+        },
+      }),
+      TableRow,
+      TableHeader,
+      TableCell,
+      TaskList.configure({
+        HTMLAttributes: {
+          class: "not-prose pl-0 list-none",
+        },
+      }),
+      TaskItem.configure({
+        nested: true,
+        HTMLAttributes: {
+          class: "flex items-start gap-2 my-1",
+        },
+      }),
       Image.configure({
         inline: false,
         allowBase64: true,
@@ -135,6 +187,7 @@ export function RichTextEditor({
       InlineSuggestion,
       ReviewHighlight,
       SlashCommand,
+      DragHandle,
     ],
     [slashHint]
   );
@@ -208,21 +261,65 @@ export function RichTextEditor({
     }
   }, [content, editor]);
 
+  const [showSearch, setShowSearch] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "f") {
+        e.preventDefault();
+        setShowSearch(true);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    if (!editor || !focusMode) {
+      const existing = editor?.view.dom.querySelectorAll(".has-focus");
+      existing?.forEach((el) => el.classList.remove("has-focus"));
+      return;
+    }
+    const updateFocus = () => {
+      const dom = editor.view.dom;
+      dom.querySelectorAll(".has-focus").forEach((el) => el.classList.remove("has-focus"));
+      const { $from } = editor.state.selection;
+      const depth = $from.depth;
+      if (depth < 1) return;
+      const resolvedPos = editor.state.doc.resolve($from.before(1));
+      const domNode = editor.view.nodeDOM(resolvedPos.pos);
+      if (domNode instanceof HTMLElement) {
+        domNode.classList.add("has-focus");
+      }
+    };
+    editor.on("selectionUpdate", updateFocus);
+    updateFocus();
+    return () => {
+      editor.off("selectionUpdate", updateFocus);
+      editor.view.dom.querySelectorAll(".has-focus").forEach((el) => el.classList.remove("has-focus"));
+    };
+  }, [editor, focusMode]);
+
   if (!editor) return null;
 
   return (
-    <div className="relative">
+    <div className={cn("relative", focusMode && "focus-mode")}>
       <Toolbar
         editor={editor}
         autocompleteOn={autocompleteOn}
         onToggleAutocomplete={onToggleAutocomplete}
+        focusMode={focusMode}
+        onToggleFocusMode={onToggleFocusMode}
         title={title}
         plainText={plainText}
         isAuthenticated={isAuthenticated}
         onSignIn={onSignIn}
       />
+      {showSearch && (
+        <SearchReplace editor={editor} onClose={() => setShowSearch(false)} />
+      )}
       <EditorContent editor={editor} />
-      <SlashCommandMenu editor={editor} />
+      <SlashCommandMenu editor={editor} onAIAction={onSlashAI} />
       {selectionActions && onProcessText && (
         <SelectionToolbar
           editor={editor}

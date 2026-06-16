@@ -72,6 +72,17 @@ function getWordCount(text: string) {
   return cjkCount + englishWords.length;
 }
 
+function getParagraphCount(text: string) {
+  if (!text.trim()) return 0;
+  return text.split(/\n\s*\n|\n/).filter((p) => p.trim().length > 0).length;
+}
+
+function getReadingTime(words: number, locale: string) {
+  const wpm = locale.startsWith("zh") ? 400 : 200;
+  const minutes = Math.ceil(words / wpm);
+  return minutes < 1 ? 1 : minutes;
+}
+
 function formatSavedTime(iso: string) {
   try {
     const d = new Date(iso);
@@ -140,6 +151,8 @@ function getCopy(locale: string) {
       sourceGenerator: "故事生成器",
       sourceUnknown: "直接进入",
       wordCount: "字数",
+      paragraphs: "段落",
+      readingTime: (min: number) => `约 ${min} 分钟阅读`,
       consistencyCheck: "检查一致性",
       checking: "检查中…",
       checkFailed: "一致性检查失败，请稍后重试。",
@@ -215,6 +228,8 @@ function getCopy(locale: string) {
       sourceGenerator: "Story Generator",
       sourceUnknown: "Direkteinstieg",
       wordCount: "Woerter",
+      paragraphs: "Absaetze",
+      readingTime: (min: number) => `~${min} Min. Lesezeit`,
       consistencyCheck: "Konsistenz prüfen",
       checking: "Prüfe…",
       checkFailed: "Konsistenzprüfung fehlgeschlagen. Bitte spaeter erneut versuchen.",
@@ -289,6 +304,8 @@ function getCopy(locale: string) {
     sourceGenerator: "Story generator",
     sourceUnknown: "Direct entry",
     wordCount: "Words",
+    paragraphs: "Paragraphs",
+    readingTime: (min: number) => `~${min} min read`,
     consistencyCheck: "Check Consistency",
     checking: "Checking…",
     checkFailed: "Consistency check failed. Please try again later.",
@@ -352,6 +369,7 @@ export default function AiWriteWorkbench({
     if (typeof window === "undefined") return false;
     return localStorage.getItem("ai-write:autocomplete") === "on";
   });
+  const [focusMode, setFocusMode] = useState(false);
   const restorePrefillRef = useRef(false);
   const restoredBlankDraftRef = useRef(false);
   const editorRef = useRef<Editor | null>(null);
@@ -371,6 +389,8 @@ export default function AiWriteWorkbench({
   }, [copy, source]);
 
   const wordCount = useMemo(() => getWordCount(plainText), [plainText]);
+  const paragraphCount = useMemo(() => getParagraphCount(plainText), [plainText]);
+  const readingMin = useMemo(() => getReadingTime(wordCount, locale), [wordCount, locale]);
   const refreshUserCredits = useMemo(
     () =>
       createQueuedAsyncAction(async () => {
@@ -982,6 +1002,30 @@ export default function AiWriteWorkbench({
     [user, copy.needLogin, refreshUserCredits, setShowSignModal]
   );
 
+  const handleSlashAI = useCallback(
+    (action: "continue" | "improve" | "expand" | "summarize") => {
+      if (!user) {
+        setShowSignModal(true);
+        toast.error(copy.needLogin);
+        return;
+      }
+      if (!plainText.trim()) {
+        toast.error(copy.emptyContent);
+        return;
+      }
+      const prompts: Record<string, string> = {
+        continue: copy.presets[0].prompt,
+        improve: copy.selectionActions[0].prompt,
+        expand: copy.selectionActions[3].prompt,
+        summarize: locale.startsWith("zh")
+          ? "请总结以下内容的要点，用简洁的列表形式呈现。"
+          : "Summarize the key points of the following content in a concise bullet list.",
+      };
+      setInstruction(prompts[action]);
+    },
+    [user, plainText, copy, locale, setShowSignModal]
+  );
+
   const handleConsistencyCheck = useCallback(async () => {
     if (!user) {
       setShowSignModal(true);
@@ -1213,7 +1257,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           </span>
 
           <span className="ml-2 hidden text-xs text-muted-foreground/70 sm:inline">
-            {copy.wordCount}: {wordCount}
+            {copy.wordCount}: {wordCount} · {copy.paragraphs}: {paragraphCount} · {copy.readingTime(readingMin)}
           </span>
           {isDirty && storyUuid && (
             <span
@@ -1361,6 +1405,9 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               onProcessText={handleProcessText}
               autocompleteOn={autocompleteOn}
               onToggleAutocomplete={toggleAutocomplete}
+              focusMode={focusMode}
+              onToggleFocusMode={() => setFocusMode((v) => !v)}
+              onSlashAI={handleSlashAI}
               title={title}
               plainText={plainText}
               isAuthenticated={!!user}

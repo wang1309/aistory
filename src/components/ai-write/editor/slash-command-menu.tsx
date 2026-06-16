@@ -17,6 +17,12 @@ import {
   RiDoubleQuotesL,
   RiCodeLine,
   RiSeparator,
+  RiTableLine,
+  RiListCheck2,
+  RiMagicLine,
+  RiEditLine,
+  RiExpandDiagonalLine,
+  RiFileReduceLine,
 } from "react-icons/ri";
 import { cn } from "@/lib/utils";
 import {
@@ -54,6 +60,18 @@ type SlashCopy = {
   codeBlockDesc: string;
   dividerTitle: string;
   dividerDesc: string;
+  tableTitle: string;
+  tableDesc: string;
+  taskListTitle: string;
+  taskListDesc: string;
+  aiContinueTitle: string;
+  aiContinueDesc: string;
+  aiImproveTitle: string;
+  aiImproveDesc: string;
+  aiExpandTitle: string;
+  aiExpandDesc: string;
+  aiSummarizeTitle: string;
+  aiSummarizeDesc: string;
 };
 
 function getCopy(locale: string): SlashCopy {
@@ -85,6 +103,18 @@ function getCopy(locale: string): SlashCopy {
       codeBlockDesc: "等宽代码片段",
       dividerTitle: "分割线",
       dividerDesc: "水平分隔线",
+      tableTitle: "表格",
+      tableDesc: "插入 3×3 表格",
+      taskListTitle: "任务列表",
+      taskListDesc: "带勾选框的列表",
+      aiContinueTitle: "AI 续写",
+      aiContinueDesc: "让 AI 继续写下去",
+      aiImproveTitle: "AI 润色",
+      aiImproveDesc: "优化当前内容的表达",
+      aiExpandTitle: "AI 扩写",
+      aiExpandDesc: "扩展当前内容，增加细节",
+      aiSummarizeTitle: "AI 总结",
+      aiSummarizeDesc: "总结当前内容要点",
     };
   }
   return {
@@ -114,10 +144,26 @@ function getCopy(locale: string): SlashCopy {
     codeBlockDesc: "Monospaced code snippet",
     dividerTitle: "Divider",
     dividerDesc: "Horizontal rule",
+    tableTitle: "Table",
+    tableDesc: "Insert a 3×3 table",
+    taskListTitle: "Task List",
+    taskListDesc: "Checklist with checkboxes",
+    aiContinueTitle: "AI Continue",
+    aiContinueDesc: "Let AI continue writing",
+    aiImproveTitle: "AI Improve",
+    aiImproveDesc: "Polish and refine the content",
+    aiExpandTitle: "AI Expand",
+    aiExpandDesc: "Add more details and depth",
+    aiSummarizeTitle: "AI Summarize",
+    aiSummarizeDesc: "Summarize the key points",
   };
 }
 
 type Icon = React.ComponentType<{ className?: string }>;
+
+type SlashContext = {
+  onAIAction?: (action: "continue" | "improve" | "expand" | "summarize") => void;
+};
 
 type SlashItem = {
   id: string;
@@ -125,7 +171,7 @@ type SlashItem = {
   title: string;
   description: string;
   keywords: string[];
-  run: (editor: Editor) => void;
+  run: (editor: Editor, ctx?: SlashContext) => void;
 };
 
 function buildItems(copy: SlashCopy): SlashItem[] {
@@ -237,6 +283,54 @@ function buildItems(copy: SlashCopy): SlashItem[] {
       keywords: ["divider", "hr", "rule", "separator", "分割线", "分隔线"],
       run: (editor) => editor.chain().focus().setHorizontalRule().run(),
     },
+    {
+      id: "table",
+      icon: RiTableLine,
+      title: copy.tableTitle,
+      description: copy.tableDesc,
+      keywords: ["table", "grid", "表格"],
+      run: (editor) => editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run(),
+    },
+    {
+      id: "taskList",
+      icon: RiListCheck2,
+      title: copy.taskListTitle,
+      description: copy.taskListDesc,
+      keywords: ["task", "todo", "check", "checkbox", "任务", "待办", "清单"],
+      run: (editor) => editor.chain().focus().toggleTaskList().run(),
+    },
+    {
+      id: "ai-continue",
+      icon: RiMagicLine,
+      title: copy.aiContinueTitle,
+      description: copy.aiContinueDesc,
+      keywords: ["ai", "continue", "write", "续写", "继续", "生成"],
+      run: (_editor, ctx) => ctx?.onAIAction?.("continue"),
+    },
+    {
+      id: "ai-improve",
+      icon: RiEditLine,
+      title: copy.aiImproveTitle,
+      description: copy.aiImproveDesc,
+      keywords: ["ai", "improve", "polish", "润色", "优化", "改善"],
+      run: (_editor, ctx) => ctx?.onAIAction?.("improve"),
+    },
+    {
+      id: "ai-expand",
+      icon: RiExpandDiagonalLine,
+      title: copy.aiExpandTitle,
+      description: copy.aiExpandDesc,
+      keywords: ["ai", "expand", "detail", "扩写", "扩展", "详细"],
+      run: (_editor, ctx) => ctx?.onAIAction?.("expand"),
+    },
+    {
+      id: "ai-summarize",
+      icon: RiFileReduceLine,
+      title: copy.aiSummarizeTitle,
+      description: copy.aiSummarizeDesc,
+      keywords: ["ai", "summarize", "summary", "总结", "摘要", "概括"],
+      run: (_editor, ctx) => ctx?.onAIAction?.("summarize"),
+    },
   ];
 }
 
@@ -250,16 +344,19 @@ function filterItems(items: SlashItem[], query: string): SlashItem[] {
   });
 }
 
-function applyItem(editor: Editor, range: SlashRange, item: SlashItem) {
+function applyItem(editor: Editor, range: SlashRange, item: SlashItem, ctx?: SlashContext) {
   editor.chain().focus().deleteRange(range).run();
-  item.run(editor);
+  item.run(editor, ctx);
 }
 
 type MenuPos = { left: number; top: number };
 
-type Props = { editor: Editor };
+type Props = {
+  editor: Editor;
+  onAIAction?: (action: "continue" | "improve" | "expand" | "summarize") => void;
+};
 
-export function SlashCommandMenu({ editor }: Props) {
+export function SlashCommandMenu({ editor, onAIAction }: Props) {
   const locale = useLocale();
   const copy = useMemo(() => getCopy(locale), [locale]);
   const items = useMemo(() => buildItems(copy), [copy]);
@@ -334,7 +431,7 @@ export function SlashCommandMenu({ editor }: Props) {
       onEnter: () => {
         const item = filtered[highlightedRef.current];
         if (!item) return;
-        applyItem(editor, range, item);
+        applyItem(editor, range, item, { onAIAction });
       },
       onEscape: handleClose,
     });
@@ -342,7 +439,7 @@ export function SlashCommandMenu({ editor }: Props) {
     return () => {
       setSlashStorage(editor, {});
     };
-  }, [editor, active, range, filtered, handleClose]);
+  }, [editor, active, range, filtered, handleClose, onAIAction]);
 
   if (!active || filtered.length === 0) return null;
 
@@ -359,7 +456,7 @@ export function SlashCommandMenu({ editor }: Props) {
             tabIndex={-1}
             onMouseDown={(e) => e.preventDefault()}
             onMouseEnter={() => setHighlighted(i)}
-            onClick={() => applyItem(editor, range, item)}
+            onClick={() => applyItem(editor, range, item, { onAIAction })}
             className={cn(
               "flex w-full items-start gap-3 rounded-md px-2.5 py-2 text-left transition",
               i === highlighted
