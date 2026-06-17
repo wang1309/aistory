@@ -29,6 +29,8 @@ import type { StoryStatus } from "@/models/story";
 const GENERATOR_PREFILL_KEY = "ai-write:generator-prefill";
 const BLANK_DRAFT_KEY = "ai-write:blank";
 const PANEL_WIDTH_KEY = "ai-write:panel-width";
+const CHAT_MESSAGES_PREFIX = "ai-write:chat-messages";
+const MAX_PERSISTED_MESSAGES = 50;
 const MIN_PANEL_WIDTH = 280;
 const MAX_PANEL_WIDTH = 600;
 const DEFAULT_PANEL_WIDTH = 380;
@@ -47,6 +49,12 @@ type ContinuePreset = {
   id: string;
   label: string;
   prompt: string;
+};
+
+type ContinuePresetGroup = {
+  id: string;
+  label: string;
+  presets: ContinuePreset[];
 };
 
 type WorkbenchProps = {
@@ -137,7 +145,45 @@ function getCopy(locale: string) {
         { id: "continue-scene", label: "推进剧情", prompt: "请直接续写下去，保持当前语气和节奏，并自然推进剧情。" },
         { id: "sharpen-dialogue", label: "加强对白", prompt: "请续写下一段，并让人物对白更有张力，保留现有角色关系。" },
         { id: "end-beat", label: "收束段落", prompt: "请在现有内容后续写一个更完整的小结尾，保留余味但不要彻底完结。" },
+        { id: "add-tension", label: "制造悬念", prompt: "请在续写中引入一个未解的悬念或伏笔，让读者产生好奇。" },
+        { id: "twist", label: "加入反转", prompt: "请在续写中加入一个出人意料的情节转折，但必须与已有线索一致。" },
       ] satisfies ContinuePreset[],
+      presetGroups: [
+        {
+          id: "plot",
+          label: "情节推进",
+          presets: [
+            { id: "continue-scene", label: "推进剧情", prompt: "请直接续写下去，保持当前语气和节奏，并自然推进剧情。" },
+            { id: "end-beat", label: "收束段落", prompt: "请在现有内容后续写一个更完整的小结尾，保留余味但不要彻底完结。" },
+            { id: "add-tension", label: "制造悬念", prompt: "请在续写中引入一个未解的悬念或伏笔，让读者产生好奇。" },
+            { id: "twist", label: "加入反转", prompt: "请在续写中加入一个出人意料的情节转折，但必须与已有线索一致。" },
+            { id: "speed-up", label: "加快节奏", prompt: "请用更紧凑的句子和更密集的事件推进剧情，提升紧迫感。" },
+            { id: "slow-down", label: "放慢节奏", prompt: "请放慢叙事节奏，用更多细节描写和内心活动让此刻更立体。" },
+          ],
+        },
+        {
+          id: "character",
+          label: "角色深化",
+          presets: [
+            { id: "sharpen-dialogue", label: "加强对白", prompt: "请续写下一段，并让人物对白更有张力，保留现有角色关系。" },
+            { id: "inner-monologue", label: "内心独白", prompt: "请以主角视角写一段内心独白，展示其当下的情绪和犹豫。" },
+            { id: "character-detail", label: "细节刻画", prompt: "请续写时增加对人物动作、表情、习惯性小动作的细节描写。" },
+            { id: "reveal-motivation", label: "揭示动机", prompt: "请在续写中暗示或揭示一个角色的真实动机，不要直白说明。" },
+            { id: "conflict", label: "制造冲突", prompt: "请在续写中引入两个角色之间的冲突或立场对立，加强戏剧张力。" },
+          ],
+        },
+        {
+          id: "style",
+          label: "风格优化",
+          presets: [
+            { id: "cinematic", label: "电影感", prompt: "请用更具画面感的镜头语言续写，强调视觉、声音、气味等感官细节。" },
+            { id: "poetic", label: "诗意化", prompt: "请在续写中使用更抒情、更富韵律的语言，提升文学性。" },
+            { id: "minimal", label: "极简白描", prompt: "请用极简、克制的笔触续写，去除修饰，保留核心意象。" },
+            { id: "humor", label: "幽默点缀", prompt: "请在续写中适度加入幽默或自嘲的笔调，但不要破坏整体氛围。" },
+            { id: "sensory", label: "感官描写", prompt: "请在续写中强化五种感官的描写，让场景更具沉浸感。" },
+          ],
+        },
+      ] satisfies ContinuePresetGroup[],
       selectionActions: [
         { id: "improve", label: "改善", prompt: "你是一个文本优化助手。改善以下文本，使其更有表现力、更流畅、更精致。保持原意和语气不变。只返回改善后的文本，不要任何解释。" },
         { id: "grammar", label: "语法检查", prompt: "你是一个语法检查助手。修正以下文本中的所有语法、拼写或标点错误。只返回修正后的文本，不要任何解释。" },
@@ -175,6 +221,28 @@ function getCopy(locale: string) {
       msgCopy: "复制",
       msgInsert: "插入到光标",
       msgDelete: "删除",
+      msgRegenerate: "换一种写法",
+      msgContinue: "继续展开",
+      msgInsertContinue: "插入并续写",
+      regenerated: "已重新生成",
+      askAi: "问 AI",
+      quotePrefix: "引用所选文本：",
+      messagesRestored: "已恢复上次对话",
+      msgReply: "引用追问",
+      replyTo: "回复",
+      replyCancel: "取消引用",
+      modeChat: "对话",
+      modeEdit: "编辑",
+      modeAnalyze: "分析",
+      modeChatHint: "自由对话，AI 帮你续写或讨论",
+      modeEditHint: "AI 回复更聚焦于可替换的改写建议",
+      modeAnalyzeHint: "AI 对当前草稿做结构化分析",
+      streamFailed: "生成中断，可点击重试",
+      retry: "重试",
+      retryContinue: "从断点继续",
+      newConversation: "开启新对话",
+      newConversationHint: "清空当前对话，从头开始",
+      conversationCleared: "已开启新对话",
       aiWriting: "AI 正在写作...",
       signedOut: "已退出登录，请重新登录后继续保存",
     };
@@ -214,7 +282,45 @@ function getCopy(locale: string) {
         { id: "continue-scene", label: "Szene weiter", prompt: "Schreibe direkt weiter, halte Ton und Rhythmus und fuehre die Szene natuerlich fort." },
         { id: "sharpen-dialogue", label: "Dialog schaerfen", prompt: "Setze den Text fort und gib dem Dialog mehr Spannung, ohne die Figurenbeziehungen zu veraendern." },
         { id: "end-beat", label: "Abschluss", prompt: "Schreibe einen staerkeren Abschluss fuer diesen Abschnitt, ohne die ganze Geschichte zu beenden." },
+        { id: "add-tension", label: "Spannung", prompt: "Fuehre ein ungeloestes Geheimnis oder einen Hinweis ein, der Neugier weckt." },
+        { id: "twist", label: "Wendepunkt", prompt: "Fuege eine unerwartete Wendung hinzu, die aber mit den bisherigen Hinweisen konsistent bleibt." },
       ] satisfies ContinuePreset[],
+      presetGroups: [
+        {
+          id: "plot",
+          label: "Handlung",
+          presets: [
+            { id: "continue-scene", label: "Szene weiter", prompt: "Schreibe direkt weiter, halte Ton und Rhythmus und fuehre die Szene natuerlich fort." },
+            { id: "end-beat", label: "Abschluss", prompt: "Schreibe einen staerkeren Abschluss fuer diesen Abschnitt, ohne die ganze Geschichte zu beenden." },
+            { id: "add-tension", label: "Spannung", prompt: "Fuehre ein ungeloestes Geheimnis oder einen Hinweis ein, der Neugier weckt." },
+            { id: "twist", label: "Wendepunkt", prompt: "Fuege eine unerwartete Wendung hinzu, die aber mit den bisherigen Hinweisen konsistent bleibt." },
+            { id: "speed-up", label: "Tempo", prompt: "Verwende kompakte Saetze und dichtere Ereignisse, um Dringlichkeit zu erzeugen." },
+            { id: "slow-down", label: "Entschleunigen", prompt: "Verlangsame das Erzaehltempo mit mehr Details und inneren Monologen." },
+          ],
+        },
+        {
+          id: "character",
+          label: "Figuren",
+          presets: [
+            { id: "sharpen-dialogue", label: "Dialog schaerfen", prompt: "Setze den Text fort und gib dem Dialog mehr Spannung, ohne die Figurenbeziehungen zu veraendern." },
+            { id: "inner-monologue", label: "Innerer Monolog", prompt: "Schreibe aus der Sicht des Protagonisten einen inneren Monolog ueber die aktuellen Gefuehle." },
+            { id: "character-detail", label: "Detail", prompt: "Fuege feine Details zu Mimik, Gestik oder Gewohnheiten der Figur hinzu." },
+            { id: "reveal-motivation", label: "Motivation", prompt: "Deute unauffaellig die wahre Motivation einer Figur an, ohne sie direkt zu nennen." },
+            { id: "conflict", label: "Konflikt", prompt: "Erzeuge einen Konflikt oder Meinungsverschiedenheit zwischen zwei Figuren." },
+          ],
+        },
+        {
+          id: "style",
+          label: "Stil",
+          presets: [
+            { id: "cinematic", label: "Filmisch", prompt: "Schreibe mit bildhafter Kamerafuehrung und betone visuelle, akustische und olfaktorische Details." },
+            { id: "poetic", label: "Lyrisch", prompt: "Verwende eine melodiösere, rhythmischere Sprache, um die Literaritaet zu erhoehen." },
+            { id: "minimal", label: "Minimal", prompt: "Schreibe extrem reduziert und verzichte auf jeglichen Zierrat." },
+            { id: "humor", label: "Humor", prompt: "Fuege behutsam Humor oder Selbstironie hinzu, ohne die Stimmung zu brechen." },
+            { id: "sensory", label: "Sinne", prompt: "Verstaerke die Beschreibung aller fuenf Sinne fuer mehr Immersion." },
+          ],
+        },
+      ] satisfies ContinuePresetGroup[],
       selectionActions: [
         { id: "improve", label: "Verbessern", prompt: "Du bist ein Textverbesserungs-Assistent. Verbessere den folgenden Text, um ihn ausdrucksstärker, flüssiger und eleganter zu machen. Behalte die ursprüngliche Bedeutung und den Ton bei. Gib NUR den verbesserten Text zurück." },
         { id: "grammar", label: "Grammatik", prompt: "Du bist ein Grammatikprüfer. Korrigiere alle Grammatik-, Rechtschreib- oder Zeichensetzungsfehler im folgenden Text. Gib NUR den korrigierten Text zurück." },
@@ -252,6 +358,28 @@ function getCopy(locale: string) {
       msgCopy: "Kopieren",
       msgInsert: "Am Cursor einfuegen",
       msgDelete: "Loeschen",
+      msgRegenerate: "Neu schreiben",
+      msgContinue: "Weiter ausbauen",
+      msgInsertContinue: "Einfuegen und fortfahren",
+      regenerated: "Neu generiert",
+      askAi: "AI fragen",
+      quotePrefix: "Ausgewaehlter Text:",
+      messagesRestored: "Letzte Unterhaltung wiederhergestellt",
+      msgReply: "Antworten",
+      replyTo: "Antwort auf",
+      replyCancel: "Abbrechen",
+      modeChat: "Chat",
+      modeEdit: "Bearbeiten",
+      modeAnalyze: "Analyse",
+      modeChatHint: "Freie Unterhaltung, AI hilft beim Weiterschreiben",
+      modeEditHint: "AI fokussiert auf austauschbare Umschreibungen",
+      modeAnalyzeHint: "AI analysiert den Entwurf strukturiert",
+      streamFailed: "Abgebrochen — erneut versuchen",
+      retry: "Erneut",
+      retryContinue: "Fortsetzen",
+      newConversation: "Neues Gespräch",
+      newConversationHint: "Aktuelles Gespräch löschen und neu beginnen",
+      conversationCleared: "Neues Gespräch gestartet",
       aiWriting: "KI schreibt...",
       signedOut: "Abgemeldet — bitte neu anmelden, um zu speichern",
     };
@@ -290,7 +418,45 @@ function getCopy(locale: string) {
       { id: "continue-scene", label: "Push scene", prompt: "Continue directly from the current ending, keep the same voice, and move the scene forward." },
       { id: "sharpen-dialogue", label: "Sharpen dialogue", prompt: "Write the next passage with stronger dialogue tension while preserving the current character dynamic." },
       { id: "end-beat", label: "Close beat", prompt: "Add a more satisfying ending beat to this section without fully ending the whole story." },
+      { id: "add-tension", label: "Add tension", prompt: "Introduce an unresolved mystery or foreshadowing in the continuation to spark curiosity." },
+      { id: "twist", label: "Add twist", prompt: "Introduce an unexpected plot twist that remains consistent with the existing clues." },
     ] satisfies ContinuePreset[],
+    presetGroups: [
+      {
+        id: "plot",
+        label: "Plot",
+        presets: [
+          { id: "continue-scene", label: "Push scene", prompt: "Continue directly from the current ending, keep the same voice, and move the scene forward." },
+          { id: "end-beat", label: "Close beat", prompt: "Add a more satisfying ending beat to this section without fully ending the whole story." },
+          { id: "add-tension", label: "Add tension", prompt: "Introduce an unresolved mystery or foreshadowing in the continuation to spark curiosity." },
+          { id: "twist", label: "Add twist", prompt: "Introduce an unexpected plot twist that remains consistent with the existing clues." },
+          { id: "speed-up", label: "Speed up", prompt: "Use tighter sentences and denser events to raise urgency in the continuation." },
+          { id: "slow-down", label: "Slow down", prompt: "Slow the narrative pace with more detail and inner monologue to deepen this moment." },
+        ],
+      },
+      {
+        id: "character",
+        label: "Character",
+        presets: [
+          { id: "sharpen-dialogue", label: "Sharpen dialogue", prompt: "Write the next passage with stronger dialogue tension while preserving the current character dynamic." },
+          { id: "inner-monologue", label: "Inner monologue", prompt: "Write an inner monologue from the protagonist's point of view revealing current emotions and hesitation." },
+          { id: "character-detail", label: "Character detail", prompt: "Add finer detail to the character's gestures, micro-expressions, and habitual tics." },
+          { id: "reveal-motivation", label: "Reveal motivation", prompt: "Hint at a character's true motivation without spelling it out directly." },
+          { id: "conflict", label: "Add conflict", prompt: "Introduce a conflict or opposing stance between two characters to heighten drama." },
+        ],
+      },
+      {
+        id: "style",
+        label: "Style",
+        presets: [
+          { id: "cinematic", label: "Cinematic", prompt: "Continue with cinematic language, emphasizing visual, auditory, and olfactory details." },
+          { id: "poetic", label: "Poetic", prompt: "Use more lyrical, rhythmic language in the continuation to raise literary quality." },
+          { id: "minimal", label: "Minimal", prompt: "Continue with extreme restraint — strip modifiers, keep only core images." },
+          { id: "humor", label: "Humor", prompt: "Add gentle humor or self-deprecation without breaking the overall mood." },
+          { id: "sensory", label: "Sensory", prompt: "Strengthen all five senses in the continuation for deeper immersion." },
+        ],
+      },
+    ] satisfies ContinuePresetGroup[],
     selectionActions: [
       { id: "improve", label: "Improve", prompt: "You are a text improvement assistant. Improve the following text to be more engaging, clear, and polished. Keep the original meaning and tone. Return ONLY the improved text, nothing else." },
       { id: "grammar", label: "Grammar", prompt: "You are a grammar checker. Fix any grammar, spelling, or punctuation errors in the following text. Return ONLY the corrected text, nothing else." },
@@ -328,6 +494,28 @@ function getCopy(locale: string) {
     msgCopy: "Copy",
     msgInsert: "Insert at cursor",
     msgDelete: "Delete",
+    msgRegenerate: "Rewrite",
+    msgContinue: "Continue",
+    msgInsertContinue: "Insert & continue",
+    regenerated: "Regenerated",
+    askAi: "Ask AI",
+    quotePrefix: "Selected text:",
+    messagesRestored: "Previous conversation restored",
+    msgReply: "Reply",
+    replyTo: "Replying to",
+    replyCancel: "Cancel",
+    modeChat: "Chat",
+    modeEdit: "Edit",
+    modeAnalyze: "Analyze",
+    modeChatHint: "Free conversation, AI helps with continuation",
+    modeEditHint: "AI focuses on replaceable rewrites",
+    modeAnalyzeHint: "AI gives structured analysis of the draft",
+    streamFailed: "Interrupted — retry",
+    retry: "Retry",
+    retryContinue: "Continue",
+    newConversation: "New chat",
+    newConversationHint: "Clear current conversation and start fresh",
+    conversationCleared: "Started a new conversation",
     aiWriting: "AI is writing...",
     signedOut: "Signed out — sign in again to save",
   };
@@ -370,6 +558,10 @@ export default function AiWriteWorkbench({
     return localStorage.getItem("ai-write:autocomplete") === "on";
   });
   const [focusMode, setFocusMode] = useState(false);
+  const [expandedPresetGroup, setExpandedPresetGroup] = useState<string | null>("plot");
+  const [replyToIndex, setReplyToIndex] = useState<number | null>(null);
+  const [chatMode, setChatMode] = useState<"chat" | "edit" | "analyze">("chat");
+  const [failedStream, setFailedStream] = useState<{ instruction: string; partial: string; draftContext?: string } | null>(null);
   const restorePrefillRef = useRef(false);
   const restoredBlankDraftRef = useRef(false);
   const editorRef = useRef<Editor | null>(null);
@@ -380,6 +572,7 @@ export default function AiWriteWorkbench({
   const abortRef = useRef<AbortController | null>(null);
   const pendingSaveAfterSignInRef = useRef(false);
   const isProgrammaticChangeRef = useRef(false);
+  const chatKeyRestoredRef = useRef<string | null>(null);
 
   const sourceLabel = useMemo(() => {
     if (source === "generator") return copy.sourceGenerator;
@@ -402,6 +595,44 @@ export default function AiWriteWorkbench({
   useEffect(() => {
     setIsHydrated(true);
   }, []);
+
+  const chatKey = storyUuid || "blank";
+
+  useEffect(() => {
+    if (!isHydrated || chatKeyRestoredRef.current === chatKey) return;
+    chatKeyRestoredRef.current = chatKey;
+    try {
+      const raw = window.localStorage.getItem(`${CHAT_MESSAGES_PREFIX}:${chatKey}`);
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as Array<{ role: "user" | "assistant"; content: string }> | null;
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        setMessages(parsed.slice(-MAX_PERSISTED_MESSAGES));
+        toast.success(copy.messagesRestored);
+      }
+    } catch {
+      // ignore corrupted chat history
+    }
+  }, [isHydrated, chatKey, copy.messagesRestored]);
+
+  useEffect(() => {
+    if (!isHydrated || chatKeyRestoredRef.current !== chatKey) return;
+    if (messages.length === 0) {
+      try {
+        window.localStorage.removeItem(`${CHAT_MESSAGES_PREFIX}:${chatKey}`);
+      } catch {
+        // ignore
+      }
+      return;
+    }
+    try {
+      window.localStorage.setItem(
+        `${CHAT_MESSAGES_PREFIX}:${chatKey}`,
+        JSON.stringify(messages.slice(-MAX_PERSISTED_MESSAGES))
+      );
+    } catch {
+      // ignore quota errors
+    }
+  }, [messages, isHydrated, chatKey]);
 
   useEffect(() => {
     try {
@@ -704,6 +935,191 @@ export default function AiWriteWorkbench({
     return () => window.clearTimeout(timer);
   }, [content, isHydrated, saveStory, storyUuid, title]);
 
+  const performStream = useCallback(
+    async (
+      instructionText: string,
+      options?: {
+        draftContext?: string;
+        mode?: "chat" | "edit" | "analyze";
+        existingPartial?: string;
+        captureFailure?: boolean;
+      }
+    ): Promise<string> => {
+      const mode = options?.mode ?? chatMode;
+      const effectiveDraft = options?.draftContext ?? plainText;
+      const existingPartial = options?.existingPartial ?? "";
+      const captureFailure = options?.captureFailure ?? true;
+
+      setIsStreaming(true);
+      setFailedStream(null);
+      streamingContentRef.current = "";
+      setStreamingText("");
+
+      const controller = new AbortController();
+      abortRef.current = controller;
+      let appended = existingPartial;
+
+      if (existingPartial) {
+        setStreamingText(existingPartial);
+      }
+
+      try {
+        const contextParts: string[] = [];
+
+        if (storyUuid) {
+          try {
+            const bibleResp = await fetch(`/api/story-bible?story=${storyUuid}`, {
+              signal: controller.signal,
+            });
+            const bibleJson = await bibleResp.json();
+            if (bibleJson.code === 0 && bibleJson.data) {
+              const bible = bibleJson.data;
+              if (bible.characters?.length || bible.world_lore) {
+                const { formatBibleForPrompt } = await import("@/lib/bible-format");
+                const bibleText = formatBibleForPrompt(bible);
+                if (bibleText) contextParts.push(bibleText);
+              }
+            }
+          } catch (err) {
+            if ((err as Error)?.name === "AbortError") throw err;
+          }
+        }
+
+        try {
+          const fpResp = await fetch("/api/style-fingerprint", {
+            signal: controller.signal,
+          });
+          const fpJson = await fpResp.json();
+          if (fpJson.code === 0 && fpJson.data?.activeUuid) {
+            const active = (fpJson.data.fingerprints || []).find(
+              (fp: any) => fp.uuid === fpJson.data.activeUuid
+            );
+            if (active?.sample_text && active.sample_text.length > 1) {
+              contextParts.push(
+                "== Author's Writing Style ==\nMirror the following writing style in your continuation. Match the sentence rhythm, vocabulary level, and tone:\n" +
+                  active.sample_text.slice(0, 800)
+              );
+            }
+          }
+        } catch (err) {
+          if ((err as Error)?.name === "AbortError") throw err;
+        }
+
+        const contextBlock = contextParts.length
+          ? "\n\n" + contextParts.join("\n\n")
+          : "";
+
+        const baseContextSuffix = contextParts.length
+          ? " Reference the provided character profiles, world lore, and style guidance to maintain consistency."
+          : "";
+
+        let systemPrompt: string;
+        if (mode === "analyze") {
+          systemPrompt =
+            "You are a writing analysis assistant. Analyze the user's draft for consistency, pacing, character development, and plot coherence. Provide structured feedback with specific examples. Use clear headings and bullet points. Do NOT write new story content — only analyze what exists." +
+            baseContextSuffix;
+        } else if (mode === "edit") {
+          systemPrompt =
+            "You are a creative editing assistant. Provide a polished rewrite of the text based on the user's instruction. Return only the rewritten text — it should be a direct replacement for the referenced passage, not an addition." +
+            baseContextSuffix;
+        } else {
+          systemPrompt =
+            "You are a creative writing continuation assistant. Continue the draft according to the user's instruction and return only the text that should be appended next." +
+            baseContextSuffix;
+        }
+
+        let userContent = `Current title: ${title || "Untitled"}\n\nCurrent draft:\n${effectiveDraft}${contextBlock}\n\nInstruction:\n${instructionText}`;
+
+        if (existingPartial) {
+          userContent += `\n\n== Previously generated (continue seamlessly from where this text ends) ==\n${existingPartial}`;
+        }
+
+        const response = await fetch("/api/chat/continue", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: "system",
+                content: systemPrompt,
+              },
+              {
+                role: "user",
+                content: userContent,
+              },
+            ],
+            max_tokens: 1200,
+            storyId: storyUuid || undefined,
+            metadata: { source: source || null },
+          }),
+          signal: controller.signal,
+        });
+
+        if (!response.ok || !response.body) {
+          throw new Error(`request failed with status: ${response.status}`);
+        }
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop() || "";
+
+          for (const line of lines) {
+            if (!line.startsWith("data: ")) continue;
+            const raw = line.slice(6);
+            if (raw === "[DONE]") continue;
+
+            try {
+              const parsed = JSON.parse(raw) as {
+                choices?: Array<{ delta?: { content?: string } }>;
+              };
+              const delta = parsed.choices?.[0]?.delta?.content;
+              if (!delta) continue;
+
+              appended += delta;
+              setStreamingText((prev) => prev + delta);
+            } catch {
+              // ignore malformed chunks
+            }
+          }
+        }
+
+        streamingContentRef.current = appended.trim();
+        void refreshUserCredits();
+        return appended.trim();
+      } catch (error) {
+        const isAbort = (error as Error)?.name === "AbortError";
+        if (isAbort) {
+          streamingContentRef.current = appended.trim();
+          toast.success(copy.stopped);
+          return appended.trim();
+        }
+        console.log("ai write stream failed", error);
+        if (captureFailure && appended.trim()) {
+          setFailedStream({
+            instruction: instructionText,
+            partial: appended.trim(),
+            draftContext: options?.draftContext,
+          });
+        }
+        toast.error(copy.continueFailed, { duration: 6000 });
+        return "";
+      } finally {
+        abortRef.current = null;
+        setStreamingText("");
+        setIsStreaming(false);
+      }
+    },
+    [chatMode, copy.continueFailed, copy.stopped, plainText, refreshUserCredits, source, storyUuid, title]
+  );
+
   const handleContinue = useCallback(async () => {
     if (!instruction.trim()) {
       toast.error(copy.emptyPrompt);
@@ -721,173 +1137,112 @@ export default function AiWriteWorkbench({
       return;
     }
 
-    setIsStreaming(true);
-    setMessages((prev) => [...prev, { role: "user", content: instruction }]);
-    streamingContentRef.current = "";
-    setStreamingText("");
+    let userMsg = instruction;
+    let draftOverride: string | undefined;
 
-    const controller = new AbortController();
-    abortRef.current = controller;
-    let appended = "";
-
-    try {
-      // Build context from Story Bible and Style Fingerprint
-      const contextParts: string[] = [];
-
-      // Fetch bible data for the current story
-      if (storyUuid) {
-        try {
-          const bibleResp = await fetch(`/api/story-bible?story=${storyUuid}`, {
-            signal: controller.signal,
-          });
-          const bibleJson = await bibleResp.json();
-          if (bibleJson.code === 0 && bibleJson.data) {
-            const bible = bibleJson.data;
-            if (bible.characters?.length || bible.world_lore) {
-              const { formatBibleForPrompt } = await import("@/lib/bible-format");
-              const bibleText = formatBibleForPrompt(bible);
-              if (bibleText) contextParts.push(bibleText);
-            }
-          }
-        } catch (err) {
-          if ((err as Error)?.name === "AbortError") throw err;
-          // ignore bible fetch errors
-        }
+    if (replyToIndex !== null && messages[replyToIndex]) {
+      const target = messages[replyToIndex];
+      const quoteSnippet = target.content.length > 300 ? target.content.slice(0, 300) + "…" : target.content;
+      userMsg = `${copy.replyTo}:\n${quoteSnippet}\n\n${instruction}`;
+      if (target.role === "assistant") {
+        draftOverride = plainText + "\n\n" + target.content;
       }
-
-      try {
-        const fpResp = await fetch("/api/style-fingerprint", {
-          signal: controller.signal,
-        });
-        const fpJson = await fpResp.json();
-        if (fpJson.code === 0 && fpJson.data?.activeUuid) {
-          const active = (fpJson.data.fingerprints || []).find(
-            (fp: any) => fp.uuid === fpJson.data.activeUuid
-          );
-          if (active?.sample_text && active.sample_text.length > 1) {
-            contextParts.push(
-              "== Author's Writing Style ==\nMirror the following writing style in your continuation. Match the sentence rhythm, vocabulary level, and tone:\n" +
-                active.sample_text.slice(0, 800)
-            );
-          }
-        }
-      } catch (err) {
-        if ((err as Error)?.name === "AbortError") throw err;
-        // ignore fingerprint fetch errors
-      }
-
-      const contextBlock = contextParts.length
-        ? "\n\n" + contextParts.join("\n\n")
-        : "";
-
-      const systemPrompt = contextParts.length
-        ? "You are a creative writing continuation assistant. Continue the draft according to the user's instruction and return only the text that should be appended next. Reference the provided character profiles, world lore, and style guidance to maintain consistency."
-        : "You are a creative writing continuation assistant. Continue the draft according to the user's instruction and return only the text that should be appended next.";
-
-      const response = await fetch("/api/chat/continue", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [
-            {
-              role: "system",
-              content: systemPrompt,
-            },
-            {
-              role: "user",
-              content: `Current title: ${title || "Untitled"}\n\nCurrent draft:\n${plainText}${contextBlock}\n\nInstruction:\n${instruction}`,
-            },
-          ],
-          max_tokens: 1200,
-          storyId: storyUuid || undefined,
-          metadata: { source: source || null },
-        }),
-        signal: controller.signal,
-      });
-
-      if (!response.ok || !response.body) {
-        throw new Error(`request failed with status: ${response.status}`);
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() || "";
-
-        for (const line of lines) {
-          if (!line.startsWith("data: ")) continue;
-          const raw = line.slice(6);
-          if (raw === "[DONE]") continue;
-
-          try {
-            const parsed = JSON.parse(raw) as {
-              choices?: Array<{ delta?: { content?: string } }>;
-            };
-            const delta = parsed.choices?.[0]?.delta?.content;
-            if (!delta) continue;
-
-            appended += delta;
-            setStreamingText((prev) => prev + delta);
-          } catch {
-            // ignore malformed chunks
-          }
-        }
-      }
-
-      if (appended.trim()) {
-        streamingContentRef.current = appended.trim();
-        setMessages((prev) => [
-          ...prev,
-          { role: "assistant", content: appended.trim() },
-        ]);
-      }
-
-      setInstruction("");
-      setStreamingText("");
-      void refreshUserCredits();
-    } catch (error) {
-      const isAbort = (error as Error)?.name === "AbortError";
-
-      if (isAbort) {
-        if (appended.trim()) {
-          streamingContentRef.current = appended.trim();
-          setMessages((prev) => [
-            ...prev,
-            { role: "assistant", content: appended.trim() },
-          ]);
-        }
-        toast.success(copy.stopped);
-      } else {
-        console.log("ai write continue failed", error);
-        toast.error(copy.continueFailed, { duration: 6000 });
-      }
-    } finally {
-      abortRef.current = null;
-      setStreamingText("");
-      setIsStreaming(false);
     }
+
+    setMessages((prev) => [...prev, { role: "user", content: userMsg }]);
+    setReplyToIndex(null);
+
+    const result = await performStream(userMsg, { draftContext: draftOverride });
+    if (result) {
+      setMessages((prev) => [...prev, { role: "assistant", content: result }]);
+    }
+    setInstruction("");
   }, [
-    copy.continueFailed,
     copy.emptyContent,
     copy.emptyPrompt,
     copy.needLogin,
-    copy.stopped,
+    copy.replyTo,
     instruction,
+    messages,
+    performStream,
     plainText,
+    replyToIndex,
     setShowSignModal,
-    source,
-    storyUuid,
-    title,
-    refreshUserCredits,
     user,
   ]);
+
+  const handleRegenerate = useCallback(
+    async (assistantIndex: number) => {
+      if (!user) {
+        setShowSignModal(true);
+        toast.error(copy.needLogin);
+        return;
+      }
+
+      const userMsgIndex = assistantIndex - 1;
+      const userMsg = messages[userMsgIndex];
+      if (!userMsg || userMsg.role !== "user") return;
+
+      const instructionText = userMsg.content;
+      setMessages((prev) => prev.slice(0, userMsgIndex));
+
+      const result = await performStream(instructionText, { captureFailure: false });
+      if (result) {
+        setMessages((prev) => [
+          ...prev,
+          { role: "user", content: instructionText },
+          { role: "assistant", content: result },
+        ]);
+        toast.success(copy.regenerated);
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          { role: "user", content: instructionText },
+        ]);
+      }
+    },
+    [copy.needLogin, copy.regenerated, messages, performStream, setShowSignModal, user]
+  );
+
+  const handleContinueMessage = useCallback(
+    async (assistantIndex: number) => {
+      if (!user) {
+        setShowSignModal(true);
+        toast.error(copy.needLogin);
+        return;
+      }
+
+      const assistantMsg = messages[assistantIndex];
+      if (!assistantMsg || assistantMsg.role !== "assistant") return;
+
+      const combinedDraft = plainText + "\n\n" + assistantMsg.content;
+      const instructionText = copy.msgContinue + " — " + assistantMsg.content.slice(0, 200);
+
+      setMessages((prev) => [
+        ...prev,
+        { role: "user", content: copy.msgContinue },
+      ]);
+
+      const result = await performStream(instructionText, { draftContext: combinedDraft });
+      if (result) {
+        setMessages((prev) => [...prev, { role: "assistant", content: result }]);
+      }
+    },
+    [copy.msgContinue, copy.needLogin, messages, performStream, plainText, setShowSignModal, user]
+  );
+
+  const handleRetryStream = useCallback(async () => {
+    if (!failedStream || !user) return;
+    const { instruction: failInstruction, partial, draftContext } = failedStream;
+    setFailedStream(null);
+    const result = await performStream(failInstruction, {
+      draftContext,
+      existingPartial: partial,
+    });
+    if (result) {
+      setMessages((prev) => [...prev, { role: "assistant", content: result }]);
+    }
+  }, [failedStream, performStream, user]);
 
   const stopStreaming = useCallback(() => {
     if (abortRef.current) {
@@ -895,6 +1250,22 @@ export default function AiWriteWorkbench({
       abortRef.current = null;
     }
   }, []);
+
+  const handleNewConversation = useCallback(() => {
+    if (isStreaming) {
+      stopStreaming();
+    }
+    setMessages([]);
+    setReplyToIndex(null);
+    setFailedStream(null);
+    setInstruction("");
+    try {
+      window.localStorage.removeItem(`${CHAT_MESSAGES_PREFIX}:${chatKey}`);
+    } catch {
+      // ignore
+    }
+    toast.success(copy.conversationCleared);
+  }, [chatKey, copy.conversationCleared, isStreaming, stopStreaming]);
 
   const handleEditorChange = useCallback((html: string, text: string) => {
     setContent(html);
@@ -1024,6 +1395,25 @@ export default function AiWriteWorkbench({
       setInstruction(prompts[action]);
     },
     [user, plainText, copy, locale, setShowSignModal]
+  );
+
+  const handleAskAi = useCallback(
+    (selectedText: string) => {
+      if (!user) {
+        setShowSignModal(true);
+        toast.error(copy.needLogin);
+        return;
+      }
+      setRightPanelTab("chat");
+      setChatVisible(true);
+      const quoted = selectedText.length > 300 ? selectedText.slice(0, 300) + "…" : selectedText;
+      setInstruction((prev) => {
+        const base = prev.trim();
+        const quoteBlock = `${copy.quotePrefix}\n${quoted}`;
+        return base ? `${base}\n\n${quoteBlock}` : quoteBlock;
+      });
+    },
+    [copy.needLogin, copy.quotePrefix, setShowSignModal, user]
   );
 
   const handleConsistencyCheck = useCallback(async () => {
@@ -1403,6 +1793,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               editorRef={editorRef}
               selectionActions={copy.selectionActions}
               onProcessText={handleProcessText}
+              onAskAi={handleAskAi}
+              askAiLabel={copy.askAi}
               autocompleteOn={autocompleteOn}
               onToggleAutocomplete={toggleAutocomplete}
               focusMode={focusMode}
@@ -1441,15 +1833,15 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             onMouseDown={startResize}
             onDoubleClick={() => setRightPanelWidth(DEFAULT_PANEL_WIDTH)}
             className={cn(
-              "group relative z-20 hidden w-1 cursor-col-resize bg-border/60 transition-colors hover:bg-orange-500/50 md:block",
+              "group relative z-30 hidden w-1 cursor-col-resize bg-border/60 transition-colors hover:bg-orange-500/50 md:block",
               isResizing && "bg-orange-500"
             )}
           >
             <div className="absolute inset-y-0 -left-1.5 -right-1.5" />
-            <div className="absolute inset-y-0 left-1/2 flex -translate-x-1/2 items-center">
+            <div className="absolute inset-y-0 left-1/2 z-30 flex -translate-x-1/2 items-center">
               <div
                 className={cn(
-                  "flex size-5 items-center justify-center rounded-full border bg-background shadow-sm transition",
+                  "flex size-5 items-center justify-center rounded-full border bg-background shadow-md transition",
                   isResizing
                     ? "border-orange-500 text-orange-600"
                     : "border-border/70 text-muted-foreground/60 group-hover:border-orange-300 group-hover:text-orange-600"
@@ -1466,7 +1858,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
 
         {/* Right: Chat / Story Bible / Style Fingerprint */}
         <aside className={cn(
-          "flex flex-col overflow-hidden bg-muted/30 transition-[opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] md:relative",
+          "flex flex-col overflow-hidden bg-muted/20 backdrop-blur-sm transition-[opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] md:relative",
           chatVisible
             ? cn(
                 "opacity-100 fixed inset-y-0 right-0 z-20 shadow-2xl md:shadow-none",
@@ -1477,17 +1869,17 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             : "pointer-events-none opacity-0 overflow-hidden"
         )}>
           {/* Tab bar header */}
-          <div className="flex items-center gap-1 overflow-x-auto border-b border-border/40 px-2 py-2">
+          <div className="flex items-center gap-0.5 overflow-x-auto border-b border-border/30 bg-background/50 px-2 py-1.5">
             <button
               type="button"
               aria-label="Chat tab"
               aria-pressed={rightPanelTab === "chat"}
               onClick={() => setRightPanelTab("chat")}
               className={cn(
-                "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs transition",
+                "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition",
                 rightPanelTab === "chat"
-                  ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-200"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  ? "bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/20 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/20"
+                  : "text-muted-foreground/70 hover:bg-muted/60 hover:text-foreground"
               )}
             >
               <Icon name="RiChatSmile2Line" className="size-3.5" />
@@ -1499,10 +1891,10 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               aria-pressed={rightPanelTab === "bible"}
               onClick={() => setRightPanelTab("bible")}
               className={cn(
-                "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs transition",
+                "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition",
                 rightPanelTab === "bible"
-                  ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-200"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  ? "bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/20 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/20"
+                  : "text-muted-foreground/70 hover:bg-muted/60 hover:text-foreground"
               )}
             >
               <Icon name="RiBookOpenLine" className="size-3.5" />
@@ -1514,10 +1906,10 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               aria-pressed={rightPanelTab === "fingerprint"}
               onClick={() => setRightPanelTab("fingerprint")}
               className={cn(
-                "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs transition",
+                "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition",
                 rightPanelTab === "fingerprint"
-                  ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-200"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  ? "bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/20 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/20"
+                  : "text-muted-foreground/70 hover:bg-muted/60 hover:text-foreground"
               )}
             >
               <Icon name="RiFingerprint2Line" className="size-3.5" />
@@ -1558,36 +1950,66 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           )}
 
           {/* Messages area — only in chat tab */}
-          {rightPanelTab === "chat" && <div className="flex-1 overflow-auto px-4 py-4">
+          {rightPanelTab === "chat" && <div className="flex-1 overflow-auto px-4 py-5">
             {messages.length === 0 && !isStreaming ? (
-              <div className="flex h-full items-center justify-center">
-                <div className="max-w-[260px] text-center">
-                  <div className="mx-auto mb-3 flex size-12 items-center justify-center rounded-2xl bg-orange-500/8">
-                    <Icon name="RiChatSmile2Line" className="size-6 text-orange-600/60" />
+              <div className="flex h-full flex-col">
+                <div className="flex flex-col items-center justify-center pb-8 pt-6 text-center">
+                  <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-orange-500/8 ring-1 ring-orange-500/10">
+                    <Icon name="RiChatSmile2Line" className="size-7 text-orange-600/70" />
                   </div>
-                  <p className="text-sm leading-6 text-muted-foreground">
+                  <p className="max-w-[240px] text-[13px] leading-6 text-muted-foreground/80">
                     {copy.messagesEmpty}
                   </p>
-                  <div className="mt-4 flex flex-wrap justify-center gap-1.5">
-                    {copy.presets.map((preset) => (
-                      <button
-                        key={preset.id}
-                        type="button"
-                        title={preset.prompt}
-                        onClick={() => {
-                          setInstruction(preset.prompt);
-                          toast.success(copy.presetFilled);
-                        }}
-                        className="rounded-full border border-border/60 bg-background px-2.5 py-1 text-xs transition hover:border-orange-300 hover:bg-orange-50 dark:hover:border-orange-600/40 dark:hover:bg-orange-900/20"
-                      >
-                        {preset.label}
-                      </button>
-                    ))}
-                  </div>
+                </div>
+                <div className="space-y-2">
+                  {copy.presetGroups.map((group) => {
+                    const isOpen = expandedPresetGroup === group.id;
+                    return (
+                      <div key={group.id} className={cn(
+                        "rounded-xl border overflow-hidden transition-colors",
+                        isOpen
+                          ? "border-orange-200/60 bg-orange-50/30 dark:border-orange-700/30 dark:bg-orange-900/10"
+                          : "border-border/30 bg-background/40 hover:border-border/50"
+                      )}>
+                        <button
+                          type="button"
+                          onClick={() => setExpandedPresetGroup(isOpen ? null : group.id)}
+                          className="flex w-full items-center justify-between px-3.5 py-2.5 text-xs font-medium text-foreground/75 transition hover:text-foreground"
+                        >
+                          <span>{group.label}</span>
+                          <Icon
+                            name="RiArrowDownSLine"
+                            className={cn(
+                              "size-4 text-muted-foreground/60 transition-transform duration-200",
+                              isOpen && "rotate-180"
+                            )}
+                          />
+                        </button>
+                        {isOpen && (
+                          <div className="flex flex-wrap gap-1.5 px-3.5 pb-3 pt-0.5">
+                            {group.presets.map((preset) => (
+                              <button
+                                key={preset.id}
+                                type="button"
+                                title={preset.prompt}
+                                onClick={() => {
+                                  setInstruction(preset.prompt);
+                                  toast.success(copy.presetFilled);
+                                }}
+                                className="rounded-lg border border-border/40 bg-background px-2.5 py-1 text-[11px] font-medium text-foreground/70 transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-700 dark:hover:border-orange-600/40 dark:hover:bg-orange-900/20 dark:hover:text-orange-300"
+                              >
+                                {preset.label}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {messages.map((message, index) => (
                   <div
                     key={`${message.role}-${index}`}
@@ -1597,21 +2019,34 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                     )}
                   >
                     {message.role === "assistant" && (
-                      <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-orange-500/12 text-orange-700 dark:bg-orange-400/12 dark:text-orange-200">
-                        <Icon name="RiSparkling2Line" className="size-3.5" />
+                      <div className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/10 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/15">
+                        <Icon name="RiSparkling2Line" className="size-4" />
                       </div>
                     )}
                     <div
                       className={cn(
-                        "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-6",
+                        "min-w-0 max-w-[85%] rounded-2xl px-3.5 py-2.5 text-[13px] leading-relaxed",
                         message.role === "user"
-                          ? "bg-muted text-foreground border border-border/40"
-                          : "bg-orange-50/60 shadow-sm border border-orange-200/40 dark:bg-orange-900/10 dark:border-orange-700/20"
+                          ? "bg-foreground/[0.04] text-foreground ring-1 ring-inset ring-border/30 dark:bg-foreground/[0.06]"
+                          : "bg-background text-foreground ring-1 ring-border/40 shadow-[0_1px_3px_-1px_rgba(0,0,0,0.06)] dark:ring-border/30"
                       )}
                     >
-                      <div className="whitespace-pre-wrap">{message.content}</div>
+                      <div className="whitespace-pre-wrap break-words">{message.content}</div>
+                      {message.role === "user" && (
+                        <div className="mt-1.5 flex items-center justify-end gap-0.5 opacity-0 transition group-hover:opacity-100">
+                          <button
+                            type="button"
+                            title={copy.msgReply}
+                            disabled={isStreaming}
+                            onClick={() => setReplyToIndex(index)}
+                            className="flex size-5 items-center justify-center rounded-md text-muted-foreground/50 transition hover:bg-muted hover:text-foreground disabled:opacity-40"
+                          >
+                            <Icon name="RiReplyLine" className="size-3" />
+                          </button>
+                        </div>
+                      )}
                       {message.role === "assistant" && (
-                        <div className="mt-2 flex items-center gap-1 border-t border-orange-200/30 pt-2 text-muted-foreground opacity-0 transition group-hover:opacity-100 dark:border-orange-700/20">
+                        <div className="mt-2.5 flex items-center gap-0.5 border-t border-border/20 pt-2 text-muted-foreground/60 opacity-0 transition group-hover:opacity-100">
                           <button
                             type="button"
                             title={copy.msgCopy}
@@ -1623,7 +2058,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                                 // ignore clipboard errors
                               }
                             }}
-                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-orange-100 hover:text-orange-700 dark:hover:bg-orange-900/30 dark:hover:text-orange-200"
+                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-muted hover:text-foreground"
                           >
                             <Icon name="RiFileCopyLine" className="size-3.5" />
                           </button>
@@ -1637,9 +2072,38 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                               ed.chain().focus().insertContentAt(from, message.content).run();
                               toast.success(copy.appended);
                             }}
-                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-orange-100 hover:text-orange-700 dark:hover:bg-orange-900/30 dark:hover:text-orange-200"
+                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-muted hover:text-foreground"
                           >
                             <Icon name="RiArrowDownLine" className="size-3.5" />
+                          </button>
+                          <button
+                            type="button"
+                            title={copy.msgRegenerate}
+                            disabled={isStreaming}
+                            onClick={() => void handleRegenerate(index)}
+                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-muted hover:text-foreground disabled:opacity-40"
+                          >
+                            <Icon name="RiRefreshLine" className="size-3.5" />
+                          </button>
+                          {index === messages.length - 1 && (
+                            <button
+                              type="button"
+                              title={copy.msgContinue}
+                              disabled={isStreaming}
+                              onClick={() => void handleContinueMessage(index)}
+                              className="flex size-6 items-center justify-center rounded-md transition hover:bg-muted hover:text-foreground disabled:opacity-40"
+                            >
+                              <Icon name="RiQuillPenLine" className="size-3.5" />
+                            </button>
+                          )}
+                          <button
+                            type="button"
+                            title={copy.msgReply}
+                            disabled={isStreaming}
+                            onClick={() => setReplyToIndex(index)}
+                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-muted hover:text-foreground disabled:opacity-40"
+                          >
+                            <Icon name="RiReplyLine" className="size-3.5" />
                           </button>
                           <button
                             type="button"
@@ -1647,7 +2111,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                             onClick={() => {
                               setMessages((prev) => prev.filter((_, i) => i !== index));
                             }}
-                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-300"
+                            className="flex size-6 items-center justify-center rounded-md transition hover:bg-red-500/10 hover:text-red-600 dark:hover:bg-red-500/15 dark:hover:text-red-400"
                           >
                             <Icon name="RiDeleteBin6Line" className="size-3.5" />
                           </button>
@@ -1655,8 +2119,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                       )}
                     </div>
                     {message.role === "user" && (
-                      <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-muted">
-                        <Icon name="RiUser3Line" className="size-3.5 text-muted-foreground" />
+                      <div className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-muted text-muted-foreground ring-1 ring-inset ring-border/30 dark:bg-muted/50">
+                        <Icon name="RiUser3Line" className="size-4" />
                       </div>
                     )}
                   </div>
@@ -1664,20 +2128,20 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
 
                 {isStreaming && (
                   <div className="flex gap-2.5">
-                    <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-orange-500/12 text-orange-700 dark:bg-orange-400/12 dark:text-orange-200">
-                      <Icon name="RiSparkling2Line" className="size-3.5" />
+                    <div className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/10 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/15">
+                      <Icon name="RiSparkling2Line" className="size-4" />
                     </div>
-                    <div className="max-w-[85%] rounded-2xl bg-orange-50/60 px-3.5 py-2.5 shadow-sm border border-orange-200/40 dark:bg-orange-900/10 dark:border-orange-700/20">
+                    <div className="min-w-0 max-w-[85%] rounded-2xl bg-background px-3.5 py-2.5 ring-1 ring-border/40 shadow-[0_1px_3px_-1px_rgba(0,0,0,0.06)] dark:ring-border/30">
                       {streamingText ? (
-                        <p className="whitespace-pre-wrap text-sm leading-6 text-foreground/90">
+                        <p className="whitespace-pre-wrap break-words text-[13px] leading-relaxed text-foreground/90">
                           {streamingText}
-                          <span className="ml-1 inline-block w-1.5 animate-pulse text-orange-500">▍</span>
+                          <span className="ml-0.5 inline-block w-[2px] animate-pulse bg-orange-500 text-transparent">|</span>
                         </p>
                       ) : (
-                        <div className="flex items-center gap-1.5">
-                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500" />
-                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500 [animation-delay:0.2s]" />
-                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500 [animation-delay:0.4s]" />
+                        <div className="flex items-center gap-1 py-0.5">
+                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500/70" />
+                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500/70 [animation-delay:0.15s]" />
+                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500/70 [animation-delay:0.3s]" />
                         </div>
                       )}
                     </div>
@@ -1690,8 +2154,57 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           </div>}
 
           {/* Chat input area */}
-          {rightPanelTab === "chat" && <div className="border-t border-border/40 p-3">
-            <div className="flex items-end gap-2 rounded-2xl border border-border/60 bg-background p-2">
+          {rightPanelTab === "chat" && <div className="relative border-t border-border/30 bg-background/50 p-3">
+            {messages.length > 0 && !isStreaming && (
+              <button
+                type="button"
+                title={copy.newConversation}
+                onClick={handleNewConversation}
+                className="absolute right-2.5 top-2.5 z-10 flex size-7 items-center justify-center rounded-lg border border-border/40 bg-background/80 text-muted-foreground/70 shadow-sm backdrop-blur-sm transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 dark:hover:border-orange-600/40 dark:hover:bg-orange-900/20 dark:hover:text-orange-300"
+              >
+                <Icon name="RiAddLine" className="size-4" />
+              </button>
+            )}
+            {failedStream && (
+              <div className="mb-2 flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs dark:border-amber-700/40 dark:bg-amber-900/20">
+                <Icon name="RiErrorWarningLine" className="size-4 shrink-0 text-amber-600 dark:text-amber-400" />
+                <span className="flex-1 text-amber-700 dark:text-amber-300">{copy.streamFailed}</span>
+                <button
+                  type="button"
+                  onClick={() => void handleRetryStream()}
+                  className="rounded-md bg-amber-600 px-2.5 py-1 text-xs font-medium text-white transition hover:bg-amber-500"
+                >
+                  {copy.retryContinue}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFailedStream(null)}
+                  className="text-amber-600 transition hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-200"
+                >
+                  <Icon name="RiCloseLine" className="size-4" />
+                </button>
+              </div>
+            )}
+            {replyToIndex !== null && messages[replyToIndex] && (
+              <div className="mb-2 flex items-start gap-2 rounded-lg border border-orange-200 bg-orange-50/60 px-3 py-2 text-xs dark:border-orange-700/30 dark:bg-orange-900/15">
+                <Icon name="RiReplyLine" className="size-3.5 shrink-0 mt-0.5 text-orange-600 dark:text-orange-400" />
+                <div className="flex-1 min-w-0">
+                  <span className="text-orange-700 dark:text-orange-300 font-medium">{copy.replyTo}</span>
+                  <p className="mt-0.5 text-muted-foreground line-clamp-2 whitespace-pre-wrap">
+                    {messages[replyToIndex].content}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  title={copy.replyCancel}
+                  onClick={() => setReplyToIndex(null)}
+                  className="text-muted-foreground transition hover:text-foreground"
+                >
+                  <Icon name="RiCloseLine" className="size-4" />
+                </button>
+              </div>
+            )}
+            <div className="flex items-end gap-2 rounded-2xl border border-border/40 bg-background/60 p-2 shadow-sm transition focus-within:border-orange-300/60 focus-within:bg-background focus-within:ring-2 focus-within:ring-orange-500/10 dark:focus-within:border-orange-500/30">
               <textarea
                 value={instruction}
                 onChange={(e) => setInstruction(e.target.value)}
@@ -1704,17 +2217,17 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                 placeholder={isStreaming ? copy.aiWriting : copy.promptPlaceholder}
                 rows={3}
                 className={cn(
-                  "flex-1 resize-none bg-transparent px-2 py-1.5 text-sm outline-none transition placeholder:text-muted-foreground/50",
+                  "flex-1 resize-none bg-transparent px-2 py-1.5 text-[13px] leading-relaxed outline-none transition placeholder:text-muted-foreground/40",
                   isStreaming && "opacity-50"
                 )}
               />
               <Button
                 size="sm"
                 className={cn(
-                  "h-8 w-8 shrink-0 rounded-xl p-0 text-white",
+                  "h-8 w-8 shrink-0 rounded-xl p-0 text-white transition active:scale-95",
                   isStreaming
                     ? "bg-neutral-800 hover:bg-neutral-700 dark:bg-neutral-200 dark:text-neutral-900 dark:hover:bg-neutral-300"
-                    : "bg-orange-600 hover:bg-orange-500"
+                    : "bg-orange-600 hover:bg-orange-500 shadow-sm shadow-orange-500/20"
                 )}
                 disabled={!isStreaming && !instruction.trim()}
                 onClick={() => {

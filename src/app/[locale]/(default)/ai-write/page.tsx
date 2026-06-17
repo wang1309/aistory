@@ -131,7 +131,10 @@ export default async function AiWriteLandingPage({
       "Style Fingerprint to preserve your voice",
       "Inline ghost suggestions",
       "5 AI-powered text operations",
-      "3 continuation presets",
+      "16 categorized continuation presets",
+      "Chat history persistence across sessions",
+      "Ask AI from text selection",
+      "Rewrite, continue, and reply to messages",
       "Auto-save and draft recovery",
     ],
   };

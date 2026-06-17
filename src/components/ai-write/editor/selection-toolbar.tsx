@@ -29,6 +29,8 @@ type SelectionToolbarProps = {
   editor: Editor;
   actions: SelectionAction[];
   onProcess: (text: string, prompt: string) => Promise<string>;
+  onAskAi?: (selectedText: string) => void;
+  askAiLabel?: string;
   labels?: {
     processing?: string;
     accept?: string;
@@ -43,6 +45,8 @@ export function SelectionToolbar({
   editor,
   actions,
   onProcess,
+  onAskAi,
+  askAiLabel = "Ask AI",
   labels,
   isAuthenticated = true,
   needLoginLabel = "Sign in required",
@@ -237,7 +241,8 @@ export function SelectionToolbar({
       className="flex items-center gap-0.5 rounded-lg border border-border/60 bg-background px-1 py-1 shadow-lg"
     >
       {!review ? (
-        actions.map((action) => (
+        <>
+        {actions.map((action) => (
           <button
             key={action.id}
             type="button"
@@ -268,7 +273,41 @@ export function SelectionToolbar({
               </svg>
             )}
           </button>
-        ))
+        ))}
+        {onAskAi && (
+          <>
+            <span className="mx-0.5 h-4 w-px bg-border/50" aria-hidden />
+            <button
+              type="button"
+              onMouseDown={preventButtonMouseDown}
+              title={askAiLabel}
+              onClick={() => {
+                const { from, to } = editor.state.selection;
+                const selectedText = editor.state.doc.textBetween(from, to, "\n");
+                if (selectedText.trim()) {
+                  onAskAi(selectedText);
+                }
+              }}
+              className="flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-medium text-orange-700 transition hover:bg-orange-100 dark:text-orange-300 dark:hover:bg-orange-900/30"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-3.5"
+                aria-hidden
+              >
+                <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z" />
+                <path d="M19 14l.7 2.1L22 17l-2.3.9L19 20l-.7-2.1L16 17l2.3-.9z" />
+              </svg>
+              {askAiLabel}
+            </button>
+          </>
+        )}
+        </>
       ) : review.phase === "processing" ? (
         <div className="flex items-center gap-2 px-2 py-1">
           <span className="inline-block size-3 animate-spin rounded-full border-2 border-orange-500 border-t-transparent" />

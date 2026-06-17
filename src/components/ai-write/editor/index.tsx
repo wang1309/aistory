@@ -92,6 +92,8 @@ type RichTextEditorProps = {
   editorRef?: React.MutableRefObject<import("@tiptap/react").Editor | null>;
   selectionActions?: SelectionAction[];
   onProcessText?: (text: string, prompt: string) => Promise<string>;
+  onAskAi?: (selectedText: string) => void;
+  askAiLabel?: string;
   autocompleteOn?: boolean;
   onToggleAutocomplete?: () => void;
   focusMode?: boolean;
@@ -117,6 +119,8 @@ export function RichTextEditor({
   editorRef,
   selectionActions,
   onProcessText,
+  onAskAi,
+  askAiLabel,
   autocompleteOn,
   onToggleAutocomplete,
   focusMode,
@@ -325,6 +329,8 @@ export function RichTextEditor({
           editor={editor}
           actions={selectionActions}
           onProcess={onProcessText}
+          onAskAi={onAskAi}
+          askAiLabel={askAiLabel}
           labels={reviewLabels}
           isAuthenticated={isAuthenticated}
           needLoginLabel={needLoginLabel}
