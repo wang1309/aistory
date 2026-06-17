@@ -290,10 +290,69 @@ export const sg_style_fingerprints = pgTable(
     style_summary: text(),
     is_active: boolean().notNull().default(false),
     created_at: timestamp({ withTimezone: true }),
-    updated_at: timestamp({ withTimezone: true }),
+    updated_at: timestamp({ withTimeZone: true }),
   },
   (table) => [
     uniqueIndex("sg_style_fingerprints_uuid_unique_idx").on(table.uuid),
     index("sg_style_fingerprints_user_idx").on(table.user_uuid),
+  ]
+);
+
+// Chat Conversation: one per "new chat" action, linked to a story
+export const sg_chat_conversations = pgTable(
+  "sg_chat_conversations",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    uuid: varchar({ length: 255 }).notNull().unique(),
+    story_uuid: varchar({ length: 255 }).notNull(),
+    user_uuid: varchar({ length: 255 }).notNull(),
+    title: varchar({ length: 500 }),
+    message_count: integer().notNull().default(0),
+    created_at: timestamp({ withTimezone: true }),
+    updated_at: timestamp({ withTimezone: true }),
+  },
+  (table) => [
+    uniqueIndex("sg_chat_conversations_uuid_unique_idx").on(table.uuid),
+    index("sg_chat_conversations_story_user_idx").on(table.story_uuid, table.user_uuid, table.created_at),
+  ]
+);
+
+// Chat Message: individual user/assistant messages within a conversation
+export const sg_chat_messages = pgTable(
+  "sg_chat_messages",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    uuid: varchar({ length: 255 }).notNull().unique(),
+    conversation_uuid: varchar({ length: 255 }).notNull(),
+    user_uuid: varchar({ length: 255 }).notNull(),
+    story_uuid: varchar({ length: 255 }).notNull(),
+    role: varchar({ length: 20 }).notNull(),
+    content: text().notNull(),
+    metadata: jsonb().$type<Record<string, unknown>>(),
+    created_at: timestamp({ withTimezone: true }),
+  },
+  (table) => [
+    uniqueIndex("sg_chat_messages_uuid_unique_idx").on(table.uuid),
+    index("sg_chat_messages_conversation_idx").on(table.conversation_uuid, table.created_at),
+    index("sg_chat_messages_story_idx").on(table.story_uuid, table.user_uuid, table.created_at),
+  ]
+);
+
+// Chat Summary: one per story (spans all conversations), for long-term context
+export const sg_chat_summaries = pgTable(
+  "sg_chat_summaries",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    uuid: varchar({ length: 255 }).notNull().unique(),
+    story_uuid: varchar({ length: 255 }).notNull(),
+    user_uuid: varchar({ length: 255 }).notNull(),
+    summary: text().notNull(),
+    summarized_message_count: integer().notNull().default(0),
+    created_at: timestamp({ withTimezone: true }),
+    updated_at: timestamp({ withTimezone: true }),
+  },
+  (table) => [
+    uniqueIndex("sg_chat_summaries_uuid_unique_idx").on(table.uuid),
+    uniqueIndex("sg_chat_summaries_story_user_unique_idx").on(table.story_uuid, table.user_uuid),
   ]
 );

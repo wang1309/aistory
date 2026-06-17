@@ -10,7 +10,7 @@ import {
   createAgnesHeaders,
   type AgnesChatRequestInput,
 } from "../_lib";
-import { calculateContinueChatCredits, estimateMaxContinueChatCredits } from "./_lib";
+import { calculateContinueChatCredits, estimateMaxContinueChatCredits, estimateMessageTokens } from "./_lib";
 
 type ContinueChatRequest = AgnesChatRequestInput & {
   max_tokens: number;
@@ -92,6 +92,11 @@ export function createContinueChatHandler(
         body.max_tokens > 4000
       ) {
         return respErr("invalid max_tokens");
+      }
+
+      const inputTokens = estimateMessageTokens(body.messages);
+      if (inputTokens > 250_000) {
+        return respErr("context too large; trim and retry");
       }
 
       const user_uuid = await deps.getUserUuid();

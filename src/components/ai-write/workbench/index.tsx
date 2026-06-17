@@ -30,7 +30,9 @@ const GENERATOR_PREFILL_KEY = "ai-write:generator-prefill";
 const BLANK_DRAFT_KEY = "ai-write:blank";
 const PANEL_WIDTH_KEY = "ai-write:panel-width";
 const CHAT_MESSAGES_PREFIX = "ai-write:chat-messages";
+const CHAT_SUMMARY_PREFIX = "ai-write:chat-summary";
 const MAX_PERSISTED_MESSAGES = 50;
+const SUMMARY_TRIGGER_THRESHOLD = 10;
 const MIN_PANEL_WIDTH = 280;
 const MAX_PANEL_WIDTH = 600;
 const DEFAULT_PANEL_WIDTH = 380;
@@ -243,6 +245,16 @@ function getCopy(locale: string) {
       newConversation: "开启新对话",
       newConversationHint: "清空当前对话，从头开始",
       conversationCleared: "已开启新对话",
+      summaryGenerated: "已生成对话摘要，AI 将记住早期讨论",
+      summaryFailed: "摘要生成失败，不影响当前对话",
+      historyTab: "历史",
+      historyEmpty: "还没有历史对话",
+      historyLoad: "加载此对话",
+      historyDelete: "删除",
+      historyDeleteConfirm: "确定删除此对话？",
+      historyDeleted: "对话已删除",
+      historyLoaded: "已加载历史对话",
+      historyMessages: (n: number) => `${n} 条消息`,
       aiWriting: "AI 正在写作...",
       signedOut: "已退出登录，请重新登录后继续保存",
     };
@@ -380,6 +392,16 @@ function getCopy(locale: string) {
       newConversation: "Neues Gespräch",
       newConversationHint: "Aktuelles Gespräch löschen und neu beginnen",
       conversationCleared: "Neues Gespräch gestartet",
+      summaryGenerated: "Gesprächszusammenfassung erstellt — AI behält frühere Themen",
+      summaryFailed: "Zusammenfassung fehlgeschlagen — Gespräch läuft normal weiter",
+      historyTab: "Verlauf",
+      historyEmpty: "Noch keine vergangenen Gespräche",
+      historyLoad: "Gespräch laden",
+      historyDelete: "Löschen",
+      historyDeleteConfirm: "Dieses Gespräch wirklich löschen?",
+      historyDeleted: "Gespräch gelöscht",
+      historyLoaded: "Vergangenes Gespräch geladen",
+      historyMessages: (n: number) => `${n} Nachrichten`,
       aiWriting: "KI schreibt...",
       signedOut: "Abgemeldet — bitte neu anmelden, um zu speichern",
     };
@@ -516,6 +538,16 @@ function getCopy(locale: string) {
     newConversation: "New chat",
     newConversationHint: "Clear current conversation and start fresh",
     conversationCleared: "Started a new conversation",
+    summaryGenerated: "Conversation summary created — AI remembers earlier topics",
+    summaryFailed: "Summary generation failed — conversation continues normally",
+    historyTab: "History",
+    historyEmpty: "No past conversations yet",
+    historyLoad: "Load conversation",
+    historyDelete: "Delete",
+    historyDeleteConfirm: "Delete this conversation?",
+    historyDeleted: "Conversation deleted",
+    historyLoaded: "Loaded past conversation",
+    historyMessages: (n: number) => `${n} messages`,
     aiWriting: "AI is writing...",
     signedOut: "Signed out — sign in again to save",
   };
@@ -547,7 +579,7 @@ export default function AiWriteWorkbench({
   const [isHydrated, setIsHydrated] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
   const [chatVisible, setChatVisible] = useState(true);
-  const [rightPanelTab, setRightPanelTab] = useState<"chat" | "bible" | "fingerprint">("chat");
+  const [rightPanelTab, setRightPanelTab] = useState<"chat" | "bible" | "fingerprint" | "history">("chat");
   const [isMobileFullscreen, setIsMobileFullscreen] = useState(false);
   const [rightPanelWidth, setRightPanelWidth] = useState(DEFAULT_PANEL_WIDTH);
   const [isResizing, setIsResizing] = useState(false);
@@ -562,12 +594,31 @@ export default function AiWriteWorkbench({
   const [replyToIndex, setReplyToIndex] = useState<number | null>(null);
   const [chatMode, setChatMode] = useState<"chat" | "edit" | "analyze">("chat");
   const [failedStream, setFailedStream] = useState<{ instruction: string; partial: string; draftContext?: string } | null>(null);
+  const [chatSummary, setChatSummary] = useState<string>("");
+  const [summarizedUpTo, setSummarizedUpTo] = useState<number>(0);
+  const [conversationUuid, setConversationUuid] = useState<string | null>(null);
+  const [pendingNewConversation, setPendingNewConversation] = useState(false);
+  const [conversationList, setConversationList] = useState<Array<{
+    uuid: string;
+    title: string | null;
+    message_count: number;
+    created_at: string | null;
+    updated_at: string | null;
+  }>>([]);
+  const summaryGeneratingRef = useRef(false);
+  const conversationUuidRef = useRef<string | null>(null);
+  const pendingNewConversationRef = useRef(false);
+  const dbSyncedForChatKeyRef = useRef<string | null>(null);
+  const bibleCacheRef = useRef<{ text: string; characters: Array<{ name: string; block: string }>; storyUuid: string; version: number } | null>(null);
+  const fingerprintCacheRef = useRef<{ text: string; fetchedAt: number } | null>(null);
+  const bibleVersionRef = useRef(0);
   const restorePrefillRef = useRef(false);
   const restoredBlankDraftRef = useRef(false);
   const editorRef = useRef<Editor | null>(null);
   const editorScrollRef = useRef<HTMLDivElement | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const streamingContentRef = useRef("");
+  const messagesRef = useRef<Array<{ role: "user" | "assistant"; content: string }>>([]);
   const shouldStickEditorToBottomRef = useRef(true);
   const abortRef = useRef<AbortController | null>(null);
   const pendingSaveAfterSignInRef = useRef(false);
@@ -603,16 +654,113 @@ export default function AiWriteWorkbench({
     chatKeyRestoredRef.current = chatKey;
     try {
       const raw = window.localStorage.getItem(`${CHAT_MESSAGES_PREFIX}:${chatKey}`);
-      if (!raw) return;
-      const parsed = JSON.parse(raw) as Array<{ role: "user" | "assistant"; content: string }> | null;
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        setMessages(parsed.slice(-MAX_PERSISTED_MESSAGES));
-        toast.success(copy.messagesRestored);
+      if (raw) {
+        const parsed = JSON.parse(raw) as Array<{ role: "user" | "assistant"; content: string }> | null;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setMessages(parsed.slice(-MAX_PERSISTED_MESSAGES));
+          toast.success(copy.messagesRestored);
+        }
+      }
+      const sumRaw = window.localStorage.getItem(`${CHAT_SUMMARY_PREFIX}:${chatKey}`);
+      if (sumRaw) {
+        const sumParsed = JSON.parse(sumRaw) as { summary?: string; summarizedUpTo?: number } | null;
+        if (sumParsed?.summary) setChatSummary(sumParsed.summary);
+        if (typeof sumParsed?.summarizedUpTo === "number") setSummarizedUpTo(sumParsed.summarizedUpTo);
       }
     } catch {
-      // ignore corrupted chat history
+      // ignore corrupted data
     }
   }, [isHydrated, chatKey, copy.messagesRestored]);
+
+  useEffect(() => {
+    if (!isHydrated || !user || !storyUuid) return;
+    if (dbSyncedForChatKeyRef.current === chatKey) return;
+    dbSyncedForChatKeyRef.current = chatKey;
+
+    let cancelled = false;
+    (async () => {
+      try {
+        const convResp = await fetch(`/api/chat/conversations?story=${storyUuid}`);
+        const convJson = await convResp.json();
+        if (cancelled || convJson.code !== 0 || !Array.isArray(convJson.data)) return;
+
+        const conversations = convJson.data as Array<{ uuid: string }>;
+        if (conversations.length === 0) {
+          setConversationUuid(null);
+          return;
+        }
+
+        const latest = conversations[0];
+        setConversationUuid(latest.uuid);
+
+        const detailResp = await fetch(`/api/chat/conversations/${latest.uuid}`);
+        const detailJson = await detailResp.json();
+        if (cancelled || detailJson.code !== 0) return;
+
+        const dbMessages = (detailJson.data?.messages ?? []).map((m: any) => ({
+          role: m.role as "user" | "assistant",
+          content: m.content as string,
+        }));
+
+        if (dbMessages.length > 0) {
+          setMessages(dbMessages.slice(-MAX_PERSISTED_MESSAGES));
+          try {
+            window.localStorage.setItem(
+              `${CHAT_MESSAGES_PREFIX}:${chatKey}`,
+              JSON.stringify(dbMessages.slice(-MAX_PERSISTED_MESSAGES))
+            );
+          } catch {
+            // ignore
+          }
+        }
+
+        const sumCacheKey = `${CHAT_SUMMARY_PREFIX}:${chatKey}`;
+        let shouldFetchSummary = true;
+        try {
+          const cached = window.localStorage.getItem(sumCacheKey);
+          if (cached) {
+            const parsed = JSON.parse(cached) as {
+              summary?: string;
+              summarizedUpTo?: number;
+              noSummary?: boolean;
+              checkedAt?: number;
+            } | null;
+            if (parsed?.summary) {
+              setChatSummary(parsed.summary);
+              if (typeof parsed.summarizedUpTo === "number") setSummarizedUpTo(parsed.summarizedUpTo);
+              shouldFetchSummary = false;
+            } else if (parsed?.noSummary && parsed.checkedAt && Date.now() - parsed.checkedAt < 86400000) {
+              shouldFetchSummary = false;
+            }
+          }
+        } catch {
+          // ignore corrupted cache
+        }
+
+        if (!shouldFetchSummary) return;
+
+        const sumResp = await fetch(`/api/chat-summary?story=${storyUuid}`);
+        const sumJson = await sumResp.json();
+        if (cancelled || sumJson.code !== 0) return;
+        if (sumJson.data?.summary) {
+          setChatSummary(sumJson.data.summary);
+          setSummarizedUpTo(sumJson.data.summarized_message_count ?? 0);
+        } else {
+          try {
+            window.localStorage.setItem(
+              sumCacheKey,
+              JSON.stringify({ summary: "", summarizedUpTo: 0, noSummary: true, checkedAt: Date.now() })
+            );
+          } catch {
+            // ignore
+          }
+        }
+      } catch {
+        // silent fallback to localStorage
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [isHydrated, chatKey, storyUuid, user]);
 
   useEffect(() => {
     if (!isHydrated || chatKeyRestoredRef.current !== chatKey) return;
@@ -713,6 +861,18 @@ export default function AiWriteWorkbench({
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isStreaming]);
+
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
+
+  useEffect(() => {
+    conversationUuidRef.current = conversationUuid;
+  }, [conversationUuid]);
+
+  useEffect(() => {
+    pendingNewConversationRef.current = pendingNewConversation;
+  }, [pendingNewConversation]);
 
   const updateEditorStickiness = useCallback(() => {
     const container = editorScrollRef.current;
@@ -935,6 +1095,103 @@ export default function AiWriteWorkbench({
     return () => window.clearTimeout(timer);
   }, [content, isHydrated, saveStory, storyUuid, title]);
 
+  const generateSummary = useCallback(
+    async (droppedMessages: Array<{ role: "user" | "assistant"; content: string }>) => {
+      if (summaryGeneratingRef.current || droppedMessages.length === 0 || !user) return;
+      summaryGeneratingRef.current = true;
+
+      try {
+        const { buildSummaryPrompt } = await import("@/lib/ai-write-context");
+        const oldSummary = chatSummary;
+        const summaryPrompt = buildSummaryPrompt(oldSummary, droppedMessages);
+
+        const response = await fetch("/api/chat/continue", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: "system",
+                content: "You are a conversation summarizer for a creative writing assistant. Compress the conversation into a concise summary that preserves key decisions, story direction, character details, style preferences, and unresolved questions.",
+              },
+              { role: "user", content: summaryPrompt },
+            ],
+            max_tokens: 500,
+            storyId: storyUuid || undefined,
+            metadata: { source: "summary" },
+          }),
+        });
+
+        if (!response.ok || !response.body) return;
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let summaryText = "";
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop() || "";
+          for (const line of lines) {
+            if (!line.startsWith("data: ")) continue;
+            const raw = line.slice(6);
+            if (raw === "[DONE]") continue;
+            try {
+              const parsed = JSON.parse(raw) as { choices?: Array<{ delta?: { content?: string } }> };
+              const delta = parsed.choices?.[0]?.delta?.content;
+              if (delta) summaryText += delta;
+            } catch {
+              // ignore
+            }
+          }
+        }
+
+        const trimmed = summaryText.trim();
+        if (trimmed) {
+          setChatSummary(trimmed);
+          const newSummarizedUpTo = summarizedUpTo + droppedMessages.length;
+          setSummarizedUpTo(newSummarizedUpTo);
+
+          if (storyUuid && user) {
+            try {
+              await fetch("/api/chat-summary", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  story_uuid: storyUuid,
+                  summary: trimmed,
+                  summarized_message_count: newSummarizedUpTo,
+                }),
+              });
+            } catch {
+              // non-blocking
+            }
+          }
+
+          try {
+            window.localStorage.setItem(
+              `${CHAT_SUMMARY_PREFIX}:${chatKey}`,
+              JSON.stringify({ summary: trimmed, summarizedUpTo: newSummarizedUpTo, updatedAt: new Date().toISOString() })
+            );
+          } catch {
+            // ignore quota errors
+          }
+          toast.success(copy.summaryGenerated, { duration: 3000 });
+          void refreshUserCredits();
+        }
+      } catch (err) {
+        console.log("summary generation failed", err);
+        toast.error(copy.summaryFailed, { duration: 4000 });
+      } finally {
+        summaryGeneratingRef.current = false;
+      }
+    },
+    [chatKey, chatSummary, copy.summaryFailed, copy.summaryGenerated, refreshUserCredits, summarizedUpTo, storyUuid, user]
+  );
+
   const performStream = useCallback(
     async (
       instructionText: string,
@@ -964,9 +1221,22 @@ export default function AiWriteWorkbench({
       }
 
       try {
-        const contextParts: string[] = [];
+        const {
+          tokenEstimate,
+          planBudget,
+          truncateHistory,
+          truncateEditorContent,
+          truncateBible,
+        } = await import("@/lib/ai-write-context");
 
-        if (storyUuid) {
+        let bibleText = "";
+        let bibleCharacters: Array<{ name: string; block: string }> = [];
+
+        const bibleCache = bibleCacheRef.current;
+        if (bibleCache && bibleCache.storyUuid === storyUuid && bibleCache.version === bibleVersionRef.current) {
+          bibleText = bibleCache.text;
+          bibleCharacters = bibleCache.characters;
+        } else if (storyUuid) {
           try {
             const bibleResp = await fetch(`/api/story-bible?story=${storyUuid}`, {
               signal: controller.signal,
@@ -976,8 +1246,22 @@ export default function AiWriteWorkbench({
               const bible = bibleJson.data;
               if (bible.characters?.length || bible.world_lore) {
                 const { formatBibleForPrompt } = await import("@/lib/bible-format");
-                const bibleText = formatBibleForPrompt(bible);
-                if (bibleText) contextParts.push(bibleText);
+                bibleText = formatBibleForPrompt(bible);
+                bibleCharacters = (bible.characters || [])
+                  .filter((c: any) => c.name?.trim())
+                  .map((c: any) => {
+                    const lines = [`- ${c.name}${c.role ? ` (${c.role})` : ""}`];
+                    if (c.personality?.trim()) lines.push(`  Personality: ${c.personality}`);
+                    if (c.backstory?.trim()) lines.push(`  Backstory: ${c.backstory}`);
+                    if (c.relationships?.trim()) lines.push(`  Relationships: ${c.relationships}`);
+                    return { name: c.name, block: lines.join("\n") };
+                  });
+                bibleCacheRef.current = {
+                  text: bibleText,
+                  characters: bibleCharacters,
+                  storyUuid,
+                  version: bibleVersionRef.current,
+                };
               }
             }
           } catch (err) {
@@ -985,69 +1269,112 @@ export default function AiWriteWorkbench({
           }
         }
 
-        try {
-          const fpResp = await fetch("/api/style-fingerprint", {
-            signal: controller.signal,
-          });
-          const fpJson = await fpResp.json();
-          if (fpJson.code === 0 && fpJson.data?.activeUuid) {
-            const active = (fpJson.data.fingerprints || []).find(
-              (fp: any) => fp.uuid === fpJson.data.activeUuid
-            );
-            if (active?.sample_text && active.sample_text.length > 1) {
-              contextParts.push(
-                "== Author's Writing Style ==\nMirror the following writing style in your continuation. Match the sentence rhythm, vocabulary level, and tone:\n" +
-                  active.sample_text.slice(0, 800)
+        let fingerprintText = "";
+        const fpCache = fingerprintCacheRef.current;
+        if (fpCache && Date.now() - fpCache.fetchedAt < 300000) {
+          fingerprintText = fpCache.text;
+        } else {
+          try {
+            const fpResp = await fetch("/api/style-fingerprint", {
+              signal: controller.signal,
+            });
+            const fpJson = await fpResp.json();
+            if (fpJson.code === 0 && fpJson.data?.activeUuid) {
+              const active = (fpJson.data.fingerprints || []).find(
+                (fp: any) => fp.uuid === fpJson.data.activeUuid
               );
+              if (active?.sample_text && active.sample_text.length > 1) {
+                fingerprintText = active.sample_text.slice(0, 800);
+                fingerprintCacheRef.current = { text: fingerprintText, fetchedAt: Date.now() };
+              }
             }
+          } catch (err) {
+            if ((err as Error)?.name === "AbortError") throw err;
           }
-        } catch (err) {
-          if ((err as Error)?.name === "AbortError") throw err;
         }
 
-        const contextBlock = contextParts.length
-          ? "\n\n" + contextParts.join("\n\n")
-          : "";
-
-        const baseContextSuffix = contextParts.length
+        const baseContextSuffix = (bibleText || fingerprintText)
           ? " Reference the provided character profiles, world lore, and style guidance to maintain consistency."
           : "";
 
-        let systemPrompt: string;
+        let systemPromptBase: string;
         if (mode === "analyze") {
-          systemPrompt =
+          systemPromptBase =
             "You are a writing analysis assistant. Analyze the user's draft for consistency, pacing, character development, and plot coherence. Provide structured feedback with specific examples. Use clear headings and bullet points. Do NOT write new story content — only analyze what exists." +
             baseContextSuffix;
         } else if (mode === "edit") {
-          systemPrompt =
+          systemPromptBase =
             "You are a creative editing assistant. Provide a polished rewrite of the text based on the user's instruction. Return only the rewritten text — it should be a direct replacement for the referenced passage, not an addition." +
             baseContextSuffix;
         } else {
-          systemPrompt =
+          systemPromptBase =
             "You are a creative writing continuation assistant. Continue the draft according to the user's instruction and return only the text that should be appended next." +
             baseContextSuffix;
         }
 
-        let userContent = `Current title: ${title || "Untitled"}\n\nCurrent draft:\n${effectiveDraft}${contextBlock}\n\nInstruction:\n${instructionText}`;
-
-        if (existingPartial) {
-          userContent += `\n\n== Previously generated (continue seamlessly from where this text ends) ==\n${existingPartial}`;
+        let systemPrompt = systemPromptBase;
+        if (chatSummary) {
+          systemPrompt += `\n\n== Previous conversation summary ==\n${chatSummary}`;
         }
+
+        const plan = planBudget({
+          system: tokenEstimate(systemPrompt),
+          fingerprint: tokenEstimate(fingerprintText),
+          instruction: tokenEstimate(instructionText),
+        });
+
+        const cursorOffset = editorRef.current?.state.selection.from ?? effectiveDraft.length;
+
+        const editorRes = truncateEditorContent({
+          text: effectiveDraft,
+          tokenBudget: plan.editor,
+          cursorOffset,
+        });
+
+        const bibleRes = bibleText
+          ? truncateBible({
+              bibleText,
+              tokenBudget: plan.bible,
+              instruction: instructionText,
+              characters: bibleCharacters,
+            })
+          : { text: "", truncated: false };
+
+        const compactHistory = messagesRef.current.map((m) => {
+          if (m.role === "user") {
+            const instrMatch = m.content.match(/Instruction:\s*([\s\S]*?)$/);
+            return { role: m.role, content: instrMatch ? instrMatch[1].trim() : m.content.slice(-500) };
+          }
+          return { role: m.role, content: m.content };
+        });
+
+        const historyRes = truncateHistory(compactHistory, plan.history);
+        const droppedMessages = historyRes.droppedCount > 0
+          ? compactHistory.slice(0, historyRes.droppedCount)
+          : [];
+
+        const contextBlock = [bibleRes.text, fingerprintText ? `== Author's Writing Style ==\n${fingerprintText}` : ""]
+          .filter(Boolean)
+          .join("\n\n");
+
+        let currentUserContent = `Current title: ${title || "Untitled"}\n\nCurrent draft:\n${editorRes.text}`;
+        if (contextBlock) currentUserContent += `\n\n${contextBlock}`;
+        currentUserContent += `\n\nInstruction:\n${instructionText}`;
+        if (existingPartial) {
+          currentUserContent += `\n\n== Previously generated (continue seamlessly from where this text ends) ==\n${existingPartial}`;
+        }
+
+        const finalMessages: Array<{ role: "system" | "user" | "assistant"; content: string }> = [
+          { role: "system", content: systemPrompt },
+          ...historyRes.messages,
+          { role: "user", content: currentUserContent },
+        ];
 
         const response = await fetch("/api/chat/continue", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            messages: [
-              {
-                role: "system",
-                content: systemPrompt,
-              },
-              {
-                role: "user",
-                content: userContent,
-              },
-            ],
+            messages: finalMessages,
             max_tokens: 1200,
             storyId: storyUuid || undefined,
             metadata: { source: source || null },
@@ -1093,6 +1420,15 @@ export default function AiWriteWorkbench({
 
         streamingContentRef.current = appended.trim();
         void refreshUserCredits();
+
+        if (
+          droppedMessages.length >= SUMMARY_TRIGGER_THRESHOLD &&
+          droppedMessages.length > summarizedUpTo &&
+          user
+        ) {
+          void generateSummary(droppedMessages.slice(summarizedUpTo));
+        }
+
         return appended.trim();
       } catch (error) {
         const isAbort = (error as Error)?.name === "AbortError";
@@ -1117,7 +1453,7 @@ export default function AiWriteWorkbench({
         setIsStreaming(false);
       }
     },
-    [chatMode, copy.continueFailed, copy.stopped, plainText, refreshUserCredits, source, storyUuid, title]
+    [chatMode, chatSummary, copy.continueFailed, copy.stopped, generateSummary, plainText, refreshUserCredits, source, storyUuid, summarizedUpTo, title, user]
   );
 
   const handleContinue = useCallback(async () => {
@@ -1149,12 +1485,56 @@ export default function AiWriteWorkbench({
       }
     }
 
+    let activeConversationUuid = conversationUuidRef.current;
+
+    if (
+      storyUuid &&
+      user &&
+      (!activeConversationUuid || pendingNewConversationRef.current)
+    ) {
+      try {
+        const resp = await fetch("/api/chat/conversations", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            story_uuid: storyUuid,
+            title: userMsg.slice(0, 100),
+          }),
+        });
+        const json = await resp.json();
+        if (json.code === 0 && json.data?.uuid) {
+          activeConversationUuid = json.data.uuid;
+          setConversationUuid(activeConversationUuid);
+        }
+      } catch {
+        // non-blocking; messages still work via localStorage
+      }
+      setPendingNewConversation(false);
+    }
+
     setMessages((prev) => [...prev, { role: "user", content: userMsg }]);
     setReplyToIndex(null);
 
     const result = await performStream(userMsg, { draftContext: draftOverride });
     if (result) {
       setMessages((prev) => [...prev, { role: "assistant", content: result }]);
+
+      if (activeConversationUuid && storyUuid && user) {
+        try {
+          await fetch(`/api/chat/conversations/${activeConversationUuid}/messages`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              messages: [
+                { role: "user", content: userMsg },
+                { role: "assistant", content: result },
+              ],
+            }),
+          });
+        } catch {
+          // non-blocking; localStorage cache still holds the data
+        }
+      }
     }
     setInstruction("");
   }, [
@@ -1168,6 +1548,7 @@ export default function AiWriteWorkbench({
     plainText,
     replyToIndex,
     setShowSignModal,
+    storyUuid,
     user,
   ]);
 
@@ -1258,6 +1639,8 @@ export default function AiWriteWorkbench({
     setMessages([]);
     setReplyToIndex(null);
     setFailedStream(null);
+    setConversationUuid(null);
+    setPendingNewConversation(true);
     setInstruction("");
     try {
       window.localStorage.removeItem(`${CHAT_MESSAGES_PREFIX}:${chatKey}`);
@@ -1266,6 +1649,77 @@ export default function AiWriteWorkbench({
     }
     toast.success(copy.conversationCleared);
   }, [chatKey, copy.conversationCleared, isStreaming, stopStreaming]);
+
+  const refreshConversationList = useCallback(async () => {
+    if (!storyUuid || !user) return;
+    try {
+      const resp = await fetch(`/api/chat/conversations?story=${storyUuid}`);
+      const json = await resp.json();
+      if (json.code === 0 && Array.isArray(json.data)) {
+        setConversationList(json.data);
+      }
+    } catch {
+      // ignore
+    }
+  }, [storyUuid, user]);
+
+  const handleLoadConversation = useCallback(
+    async (uuid: string) => {
+      if (isStreaming) {
+        stopStreaming();
+      }
+      try {
+        const resp = await fetch(`/api/chat/conversations/${uuid}`);
+        const json = await resp.json();
+        if (json.code === 0 && json.data?.messages) {
+          const msgs = (json.data.messages as Array<any>).map((m) => ({
+            role: m.role as "user" | "assistant",
+            content: m.content as string,
+          }));
+          setMessages(msgs);
+          setConversationUuid(uuid);
+          setPendingNewConversation(false);
+          setReplyToIndex(null);
+          setFailedStream(null);
+          try {
+            window.localStorage.setItem(
+              `${CHAT_MESSAGES_PREFIX}:${chatKey}`,
+              JSON.stringify(msgs.slice(-MAX_PERSISTED_MESSAGES))
+            );
+          } catch {
+            // ignore
+          }
+          setRightPanelTab("chat");
+          toast.success(copy.historyLoaded);
+        }
+      } catch {
+        toast.error(copy.continueFailed);
+      }
+    },
+    [chatKey, copy.continueFailed, copy.historyLoaded, isStreaming, stopStreaming]
+  );
+
+  const handleDeleteConversation = useCallback(
+    async (uuid: string) => {
+      if (!window.confirm(copy.historyDeleteConfirm)) return;
+      try {
+        const resp = await fetch(`/api/chat/conversations/${uuid}`, { method: "DELETE" });
+        const json = await resp.json();
+        if (json.code === 0) {
+          setConversationList((prev) => prev.filter((c) => c.uuid !== uuid));
+          if (conversationUuidRef.current === uuid) {
+            setConversationUuid(null);
+            setPendingNewConversation(true);
+            setMessages([]);
+          }
+          toast.success(copy.historyDeleted);
+        }
+      } catch {
+        toast.error(copy.continueFailed);
+      }
+    },
+    [copy.continueFailed, copy.historyDeleteConfirm, copy.historyDeleted]
+  );
 
   const handleEditorChange = useCallback((html: string, text: string) => {
     setContent(html);
@@ -1436,19 +1890,24 @@ export default function AiWriteWorkbench({
     ]);
 
     try {
-      // Build bible context
+      // Build bible context (use cache if available)
       let bibleContext = "";
       if (storyUuid) {
-        try {
-          const bibleResp = await fetch(`/api/story-bible?story=${storyUuid}`);
-          const bibleJson = await bibleResp.json();
-          if (bibleJson.code === 0 && bibleJson.data) {
-            const { formatBibleForPrompt } = await import("@/lib/bible-format");
-            const text = formatBibleForPrompt(bibleJson.data);
-            if (text) bibleContext = `\n\n== Character Profiles & World Lore ==\n${text}`;
+        const cached = bibleCacheRef.current;
+        if (cached && cached.storyUuid === storyUuid && cached.version === bibleVersionRef.current && cached.text) {
+          bibleContext = `\n\n== Character Profiles & World Lore ==\n${cached.text}`;
+        } else {
+          try {
+            const bibleResp = await fetch(`/api/story-bible?story=${storyUuid}`);
+            const bibleJson = await bibleResp.json();
+            if (bibleJson.code === 0 && bibleJson.data) {
+              const { formatBibleForPrompt } = await import("@/lib/bible-format");
+              const text = formatBibleForPrompt(bibleJson.data);
+              if (text) bibleContext = `\n\n== Character Profiles & World Lore ==\n${text}`;
+            }
+          } catch {
+            // ignore
           }
-        } catch {
-          // ignore
         }
       }
 
@@ -1915,6 +2374,26 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               <Icon name="RiFingerprint2Line" className="size-3.5" />
               <span className="hidden sm:inline">Style</span>
             </button>
+            {user && storyUuid && (
+              <button
+                type="button"
+                aria-label="History tab"
+                aria-pressed={rightPanelTab === "history"}
+                onClick={() => {
+                  setRightPanelTab("history");
+                  void refreshConversationList();
+                }}
+                className={cn(
+                  "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition",
+                  rightPanelTab === "history"
+                    ? "bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/20 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/20"
+                    : "text-muted-foreground/70 hover:bg-muted/60 hover:text-foreground"
+                )}
+              >
+                <Icon name="RiHistoryLine" className="size-3.5" />
+                <span className="hidden sm:inline">{copy.historyTab}</span>
+              </button>
+            )}
             <div className="flex-1" />
             <button
               type="button"
@@ -1940,12 +2419,84 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           {/* Story Bible / Style Fingerprint panels */}
           {rightPanelTab === "bible" && (
             <div key="bible" className="animate-fade-in-up flex-1 overflow-auto">
-              <StoryBiblePanel storyUuid={storyUuid} onBibleChange={setBibleActive} />
+              <StoryBiblePanel
+                storyUuid={storyUuid}
+                onBibleChange={(active) => {
+                  setBibleActive(active);
+                  bibleVersionRef.current++;
+                  bibleCacheRef.current = null;
+                }}
+              />
             </div>
           )}
           {rightPanelTab === "fingerprint" && (
             <div key="fingerprint" className="animate-fade-in-up flex-1 overflow-auto">
               <StyleFingerprintPanel />
+            </div>
+          )}
+
+          {/* History panel */}
+          {rightPanelTab === "history" && (
+            <div key="history" className="animate-fade-in-up flex-1 overflow-auto px-4 py-4">
+              {conversationList.length === 0 ? (
+                <div className="flex h-full flex-col items-center justify-center text-center">
+                  <div className="mx-auto mb-3 flex size-12 items-center justify-center rounded-2xl bg-orange-500/8 ring-1 ring-orange-500/10">
+                    <Icon name="RiHistoryLine" className="size-6 text-orange-600/60" />
+                  </div>
+                  <p className="max-w-[220px] text-[13px] leading-6 text-muted-foreground/70">
+                    {copy.historyEmpty}
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {conversationList.map((conv) => {
+                    const isActive = conv.uuid === conversationUuid;
+                    const dateStr = conv.created_at
+                      ? new Date(conv.created_at).toLocaleString(locale.startsWith("zh") ? "zh-CN" : "en-US", {
+                          month: "short",
+                          day: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })
+                      : "";
+                    return (
+                      <div
+                        key={conv.uuid}
+                        className={cn(
+                          "group rounded-xl border p-3 transition",
+                          isActive
+                            ? "border-orange-300 bg-orange-50/40 dark:border-orange-700/30 dark:bg-orange-900/10"
+                            : "border-border/30 bg-background/40 hover:border-border/50 hover:bg-muted/30"
+                        )}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => void handleLoadConversation(conv.uuid)}
+                          className="block w-full text-left"
+                        >
+                          <p className="line-clamp-1 text-[13px] font-medium text-foreground/90">
+                            {conv.title || copy.historyLoad}
+                          </p>
+                          <div className="mt-1.5 flex items-center gap-2 text-[11px] text-muted-foreground/60">
+                            <span>{copy.historyMessages(conv.message_count)}</span>
+                            <span>·</span>
+                            <span>{dateStr}</span>
+                          </div>
+                        </button>
+                        <button
+                          type="button"
+                          title={copy.historyDelete}
+                          onClick={() => void handleDeleteConversation(conv.uuid)}
+                          className="mt-2 flex items-center gap-1 text-[11px] text-muted-foreground/40 opacity-0 transition hover:text-red-500 group-hover:opacity-100"
+                        >
+                          <Icon name="RiDeleteBin6Line" className="size-3" />
+                          {copy.historyDelete}
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           )}
 
