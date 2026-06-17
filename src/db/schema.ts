@@ -290,7 +290,7 @@ export const sg_style_fingerprints = pgTable(
     style_summary: text(),
     is_active: boolean().notNull().default(false),
     created_at: timestamp({ withTimezone: true }),
-    updated_at: timestamp({ withTimeZone: true }),
+    updated_at: timestamp({ withTimezone: true }),
   },
   (table) => [
     uniqueIndex("sg_style_fingerprints_uuid_unique_idx").on(table.uuid),
