@@ -163,17 +163,6 @@ export const tools: Tool[] = [
     priority: 88,
   },
   {
-    slug: "murder-mystery-generator",
-    nameKey: "ai_tools.tools.murder_mystery_generator.name",
-    shortDescKey: "ai_tools.tools.murder_mystery_generator.desc",
-    module: "ai-write",
-    category: "story",
-    href: "/murder-mystery-generator",
-    icon: "RiSearchEyeLine",
-    badges: ["new"],
-    priority: 87,
-  },
-  {
     slug: "romance-story-generator",
     nameKey: "ai_tools.tools.romance_story_generator.name",
     shortDescKey: "ai_tools.tools.romance_story_generator.desc",

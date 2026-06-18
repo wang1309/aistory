@@ -25,7 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/dnd-backstory-generator',
     '/comic-generator',
     '/bedtime-story-generator',
-    '/murder-mystery-generator',
     '/fantasy-generator',
     '/romance-story-generator',
     '/changelog'
@@ -58,7 +57,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
               || route === '/dnd-backstory-generator'
               || route === '/comic-generator'
               || route === '/bedtime-story-generator'
-              || route === '/murder-mystery-generator'
               || route === '/fantasy-generator'
               || route === '/romance-story-generator')
             ? 0.9
