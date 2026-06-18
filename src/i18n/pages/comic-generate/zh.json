@@ -43,9 +43,7 @@
       "prompt_history_recent": "最近输入",
       "prompt_history_empty": "暂无历史记录",
       "prompt_history_clear": "清空历史",
-      "hero_step_1": "描述场景",
-      "hero_step_2": "选择风格",
-      "hero_step_3": "生成脚本"
+      "theme_pills": ["日漫", "韩式网漫", "超英漫画", "日常"]
     },
     "comic_styles": {
       "manga": "日漫风格",

@@ -137,6 +137,20 @@
     50% { opacity: 1; transform: scale(1); }
   }
 
+  /* Comic burst pulse for comic-generate button hover (punchy double-tap) */
+  @keyframes comic-burst {
+    0%, 100% { opacity: 0; transform: scale(0.9); }
+    20% { opacity: 0.7; transform: scale(1.1); }
+    40% { opacity: 0; transform: scale(1); }
+    60% { opacity: 0.5; transform: scale(1.08); }
+    80% { opacity: 0; transform: scale(1); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .group:hover .group-hover\:animate-comic-burst {
+      animation: comic-burst 1.5s ease-in-out infinite;
+    }
+  }
+
   :root {
     --meteor-color: 251 191 36;
     --meteor-glow: rgba(251, 191, 36, 0.8);

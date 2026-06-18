@@ -43,9 +43,7 @@
       "prompt_history_recent": "Letzte Eingaben",
       "prompt_history_empty": "Kein Verlauf",
       "prompt_history_clear": "Verlauf löschen",
-      "hero_step_1": "Szene beschreiben",
-      "hero_step_2": "Stil wählen",
-      "hero_step_3": "Skript erstellen"
+      "theme_pills": ["Manga", "Webtoon", "Superheld", "Alltags-Comic"]
     },
     "comic_styles": {
       "manga": "Manga",
@@ -158,7 +156,7 @@
       "items": [
         {
           "title": "Comic-Skripte schneller erstellen",
-          "description": "Von der groben Idee zum fertigen Entwurf in Minuten – mit bereits organisierten Dialogen, Untertiteln und Panel-Struktur.",
+          "description": "Von der groben Idee zum fertigen Entwurf in Minuten, mit bereits organisierten Dialogen, Untertiteln und Panel-Struktur.",
           "icon": "RiSpeedLine",
           "image": {
             "src": "/imgs/features/story3.avif",
@@ -189,11 +187,11 @@
       "name": "applications",
       "label": "Anwendungsfälle",
       "title": "Wer sollte diesen AI Comic Generator nutzen?",
-      "description": "Entwickelt für Kreative, die strukturiertes Comic-Schreiben und storyzentrierte Dialoge brauchen – keine Bildgenerierung.",
+      "description": "Entwickelt für Kreative, die strukturiertes Comic-Schreiben und storyzentrierte Dialoge brauchen, keine Bildgenerierung.",
       "items": [
         {
           "title": "Comicautoren",
-          "description": "Szenen, Untertitel und Dialoge schnell entwerfen – für Comic-Seiten, Kurzstrips oder serialisierte Storys.",
+          "description": "Szenen, Untertitel und Dialoge schnell entwerfen, für Comic-Seiten, Kurzstrips oder serialisierte Storys.",
           "icon": "RiPenNibLine"
         },
         {
@@ -226,16 +224,16 @@
     "faq_section": {
       "name": "faq",
       "label": "FAQ",
-      "title": "AI Comic Generator – Häufig gestellte Fragen",
+      "title": "AI Comic Generator: Häufig gestellte Fragen",
       "description": "Häufige Fragen zu unserem AI Comic Generator, seinen Ausgaben und dem kreativen Workflow.",
       "items": [
         {
           "title": "Was ist ein AI Comic Generator?",
-          "description": "Ein AI Comic Generator ist ein Tool, das Story-Ideen in Comic-artige Inhalte umwandelt. Unser AI Comic Generator konzentriert sich auf Textausgaben – Comic-Dialoge, Erzählungen und Panel-Skripte."
+          "description": "Ein AI Comic Generator ist ein Tool, das Story-Ideen in Comic-artige Inhalte umwandelt. Unser AI Comic Generator konzentriert sich auf Textausgaben: Comic-Dialoge, Erzählungen und Panel-Skripte."
         },
         {
           "title": "Erstellt dieser AI Comic Generator Comic-Bilder?",
-          "description": "Nein. Dieser AI Comic Generator ist für das Schreiben von Comic-Dialogen, Untertiteln und strukturierten Skripten konzipiert – nicht für die Bildgenerierung."
+          "description": "Nein. Dieser AI Comic Generator ist für das Schreiben von Comic-Dialogen, Untertiteln und strukturierten Skripten konzipiert, nicht für die Bildgenerierung."
         },
         {
           "title": "Kann ich ihn für Manga und Webtoons verwenden?",

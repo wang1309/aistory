@@ -43,9 +43,7 @@
       "prompt_history_recent": "Recent inputs",
       "prompt_history_empty": "No history yet",
       "prompt_history_clear": "Clear history",
-      "hero_step_1": "Describe your scene",
-      "hero_step_2": "Choose a style",
-      "hero_step_3": "Generate script"
+      "theme_pills": ["Manga", "Webtoon", "Superhero", "Slice of Life"]
     },
     "comic_styles": {
       "manga": "Manga",
@@ -127,7 +125,7 @@
       "name": "feature_intro",
       "label": "Overview",
       "title": "What Is an AI Comic Generator?",
-      "description": "An AI Comic Generator is a writing tool that helps you turn ideas into comic-style scenes, character dialogue, narration, and structured panel scripts. Instead of generating images, our AI Comic Generator focuses on the story side of comic creation—helping writers, manga creators, and webtoon storytellers plan scenes, craft dialogue, and organize panel flow before illustration begins.",
+      "description": "An AI Comic Generator is a writing tool that helps you turn ideas into comic-style scenes, character dialogue, narration, and structured panel scripts. Instead of generating images, our AI Comic Generator focuses on the story side of comic creation, helping writers, manga creators, and webtoon storytellers plan scenes, craft dialogue, and organize panel flow before illustration begins.",
       "image": {
         "src": "/imgs/features/story3.avif",
         "alt": "What is an AI Comic Generator"
@@ -145,7 +143,7 @@
         },
         {
           "title": "Built for Storytellers",
-          "description": "Shape manga, webtoon, and comic strip scenes around character voice, pacing, and emotional beats—not just raw dialogue.",
+          "description": "Shape manga, webtoon, and comic strip scenes around character voice, pacing, and emotional beats, not just raw dialogue.",
           "icon": "RiBookOpenLine"
         }
       ]
@@ -231,7 +229,7 @@
       "items": [
         {
           "title": "What is an AI Comic Generator?",
-          "description": "An AI Comic Generator is a tool that turns your story ideas into comic-style content. Our AI Comic Generator focuses on text output—comic dialogue, narration, and panel-by-panel scripts—for writers and storytellers who need structured creative output."
+          "description": "An AI Comic Generator is a tool that turns your story ideas into comic-style content. Our AI Comic Generator focuses on text output: comic dialogue, narration, and panel-by-panel scripts, for writers and storytellers who need structured creative output."
         },
         {
           "title": "Does this AI Comic Generator create comic images?",

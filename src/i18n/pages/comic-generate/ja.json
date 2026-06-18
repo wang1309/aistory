@@ -43,9 +43,7 @@
       "prompt_history_recent": "最近の入力",
       "prompt_history_empty": "履歴なし",
       "prompt_history_clear": "履歴を削除",
-      "hero_step_1": "シーンを記述",
-      "hero_step_2": "スタイルを選択",
-      "hero_step_3": "スクリプト生成"
+      "theme_pills": ["マンガ", "ウェブトゥーン", "スーパーヒーロー", "日常系"]
     },
     "comic_styles": {
       "manga": "マンガ",

@@ -43,9 +43,7 @@
       "prompt_history_recent": "최근 입력",
       "prompt_history_empty": "기록 없음",
       "prompt_history_clear": "기록 삭제",
-      "hero_step_1": "장면 설명",
-      "hero_step_2": "스타일 선택",
-      "hero_step_3": "스크립트 생성"
+      "theme_pills": ["망가", "웹툰", "슈퍼히어로", "일상계"]
     },
     "comic_styles": {
       "manga": "망가",

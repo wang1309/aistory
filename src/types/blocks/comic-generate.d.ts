@@ -44,9 +44,7 @@ export interface ComicGenerate {
     prompt_history_recent: string;
     prompt_history_empty: string;
     prompt_history_clear: string;
-    hero_step_1: string;
-    hero_step_2: string;
-    hero_step_3: string;
+    theme_pills?: string[];
   };
   comic_styles: Record<string, string>;
   panel_counts: Record<string, string>;

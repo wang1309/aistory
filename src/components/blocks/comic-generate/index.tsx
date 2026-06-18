@@ -43,7 +43,7 @@ import TurnstileInvisible, {
 } from "@/components/TurnstileInvisible";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import ReactMarkdown from "react-markdown";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ComicGenerate as ComicGenerateType } from "@/types/blocks/comic-generate";
 import type { ComicCharacter } from "@/types/comic";
 import ComicBreadcrumb from "./breadcrumb";
@@ -89,6 +89,7 @@ interface ComicGenerateProps {
 export default function ComicGenerate({ section }: ComicGenerateProps) {
   const locale = useLocale();
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
 
   const t = useCallback(
     (path: string) => {
@@ -430,9 +431,88 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
         </div>
 
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center mb-14">
-          {/* Double-bezel icon container */}
-          <div className="flex justify-center mb-6">
+        <div className="relative mx-auto max-w-2xl text-center mb-14">
+          {/* Halftone dot breathing layer (ambient comic print texture) */}
+          {!reduceMotion && (
+            <div className="pointer-events-none absolute inset-0 overflow-visible z-0" aria-hidden="true">
+              {[
+                { left: "5%", top: "15%", size: 6, delay: 0, dur: 9, peak: 0.18 },
+                { left: "92%", top: "10%", size: 9, delay: 1.5, dur: 11, peak: 0.22 },
+                { left: "12%", top: "75%", size: 5, delay: 3, dur: 10, peak: 0.16 },
+                { left: "85%", top: "70%", size: 7, delay: 2, dur: 12, peak: 0.2 },
+                { left: "30%", top: "20%", size: 4, delay: 4, dur: 8, peak: 0.14 },
+                { left: "70%", top: "85%", size: 6, delay: 5, dur: 11, peak: 0.18 },
+                { left: "20%", top: "50%", size: 8, delay: 6, dur: 13, peak: 0.2 },
+                { left: "78%", top: "35%", size: 5, delay: 1, dur: 9, peak: 0.16 },
+              ].map((d, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                  transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Speech bubble floating accents */}
+          {!reduceMotion && (
+            <>
+              <motion.div
+                className="pointer-events-none absolute z-[1]"
+                style={{ left: "2%", top: "55%" }}
+                initial={{ opacity: 0, y: 0, rotate: -4 }}
+                animate={{ opacity: [0, 0.5, 0.5, 0], y: [0, -6, 0], rotate: [-4, -1, -4] }}
+                transition={{ duration: 6, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="38" height="34" viewBox="0 0 38 34" fill="none">
+                  <path d="M6 4h26a4 4 0 014 4v12a4 4 0 01-4 4H16l-7 6v-6H6a4 4 0 01-4-4V8a4 4 0 014-4z" fill="rgb(251 146 60 / 0.55)" stroke="rgb(251 146 60 / 0.8)" strokeWidth="1.5" />
+                  <text x="19" y="19" fontSize="14" fontWeight="700" fill="white" textAnchor="middle" fontStyle="italic">?</text>
+                </svg>
+              </motion.div>
+              <motion.div
+                className="pointer-events-none absolute z-[1]"
+                style={{ right: "4%", top: "48%" }}
+                initial={{ opacity: 0, y: 0, rotate: 4 }}
+                animate={{ opacity: [0, 0.5, 0.5, 0], y: [0, -6, 0], rotate: [4, 1, 4] }}
+                transition={{ duration: 7, delay: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="34" height="30" viewBox="0 0 34 30" fill="none">
+                  <path d="M5 3h24a4 4 0 014 4v10a4 4 0 01-4 4h-7l-6 5v-5H5a4 4 0 01-4-4V7a4 4 0 014-4z" fill="rgb(251 191 36 / 0.55)" stroke="rgb(251 191 36 / 0.8)" strokeWidth="1.5" />
+                  <text x="17" y="17" fontSize="13" fontWeight="700" fill="white" textAnchor="middle" fontStyle="italic">!</text>
+                </svg>
+              </motion.div>
+            </>
+          )}
+
+          {/* POW burst star pulse */}
+          {!reduceMotion && (
+            <motion.div
+              className="pointer-events-none absolute z-[1]"
+              style={{ right: "8%", top: "5%" }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: [0, 0.45, 0], scale: [0.8, 1.15, 0.8] }}
+              transition={{ duration: 4, delay: 0.5, repeat: Infinity, ease: "easeInOut" }}
+              aria-hidden="true"
+            >
+              <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                <path d="M21 1l3 9 8-5-2 9 9 1-7 6 4 9-9-2-3 9-3-9-9 2 4-9-7-6 9-1-2-9 8 5z" fill="rgb(251 146 60 / 0.75)" />
+              </svg>
+            </motion.div>
+          )}
+
+          {/* Double-bezel icon container with hover speech bubble pop */}
+          <div className="group relative z-10 flex justify-center mb-6">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+              ?
+            </span>
+            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+              !
+            </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
               <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
                 <Wand2 className="size-6 text-orange-600 dark:text-orange-400" />
@@ -441,70 +521,47 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
           </div>
 
           {/* Eyebrow badge */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+          <span className="relative z-10 inline-flex items-center rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
             AI Creative Tool
           </span>
 
-          {/* Title with gradient split */}
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+          {/* Title with italic gradient emphasis on "Comic" */}
+          <h1 className="relative z-10 font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.08] mt-4">
             AI{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
               Comic
             </span>
             {" "}Generator
           </h1>
 
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
+          {/* Halftone dot cluster + POW burst decorative anchor */}
+          <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={i} className="inline-block rounded-full bg-orange-500/30 dark:bg-orange-400/35" style={{ width: s, height: s }} />
+            ))}
+            <svg className="size-3 text-orange-500/55 dark:text-orange-400/55" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 1l2 7 7-3-3 7 7 2-7 2 3 7-7-3-2 7-2-7-7 3 3-7-7-2 7-2-3-7 7 3z" />
             </svg>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={i} className="inline-block rounded-full bg-orange-500/30 dark:bg-orange-400/35" style={{ width: s, height: s }} />
+            ))}
           </div>
 
-          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
+          <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
             {t("ui.subtitle")}
           </p>
 
-          {/* Step indicators */}
-          {section?.ui && (
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground/60">
-              <span className="inline-flex items-center gap-2">
-                <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                  01
+          {/* Theme pills */}
+          {section?.ui?.theme_pills?.length ? (
+            <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
+              {section.ui.theme_pills.map((pill: string, i: number) => (
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
+                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  {pill}
                 </span>
-                <span className="font-medium">{t("ui.hero_step_1")}</span>
-              </span>
-              <svg viewBox="0 0 16 16" className="hidden sm:block size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" d="M5 3l6 5-6 5" />
-              </svg>
-              <span className="inline-flex items-center gap-2">
-                <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                  02
-                </span>
-                <span className="font-medium">{t("ui.hero_step_2")}</span>
-              </span>
-              <svg viewBox="0 0 16 16" className="hidden sm:block size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" d="M5 3l6 5-6 5" />
-              </svg>
-              <span className="inline-flex items-center gap-2">
-                <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                  03
-                </span>
-                <span className="font-medium">{t("ui.hero_step_3")}</span>
-              </span>
+              ))}
             </div>
-          )}
+          ) : null}
         </div>
 
         {/* Hero → Tool transition */}
@@ -844,7 +901,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
               <Button
                 onClick={handleGenerate}
                 disabled={isGenerating}
-                className="mt-5 w-full gap-2 bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
+                className="group mt-5 w-full gap-2 bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
                 size="lg"
               >
                 {isGenerating ? (
@@ -854,7 +911,19 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                   </>
                 ) : (
                   <>
-                    <Wand2 className="h-4 w-4" />
+                    <span className="relative inline-flex items-center justify-center">
+                      <Wand2 className="h-4 w-4 relative z-10" />
+                      {!reduceMotion && (
+                        <svg
+                          className="pointer-events-none absolute -inset-1.5 size-7 text-white/0 group-hover:animate-comic-burst"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path d="M12 1l2 7 7-3-3 7 7 2-7 2 3 7-7-3-2 7-2-7-7 3 3-7-7-2 7-2-3-7 7 3z" />
+                        </svg>
+                      )}
+                    </span>
                     {t("ui.generate_button")}
                   </>
                 )}
@@ -911,14 +980,37 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
               </div>
 
               {/* Output content */}
-              <div className="relative min-h-[480px] flex-1 p-5">
+              <div className="relative min-h-[480px] flex-1 p-5 overflow-hidden">
                 {generatedScript ? (
                   <div className="prose prose-sm dark:prose-invert max-w-none">
                     <ReactMarkdown>{generatedScript}</ReactMarkdown>
                   </div>
                 ) : (
                   <div className="relative flex h-full flex-col items-center justify-center gap-4 text-center">
-                    {/* Comic panel grid decoration */}
+                    {/* Halftone overlay (subtle comic print texture) */}
+                    {!reduceMotion && (
+                      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+                        {[
+                          { left: "8%", top: "20%", size: 5, delay: 0, dur: 7, peak: 0.14 },
+                          { left: "82%", top: "15%", size: 7, delay: 1.5, dur: 9, peak: 0.18 },
+                          { left: "15%", top: "75%", size: 4, delay: 3, dur: 8, peak: 0.12 },
+                          { left: "88%", top: "70%", size: 6, delay: 2, dur: 10, peak: 0.16 },
+                          { left: "50%", top: "10%", size: 4, delay: 4, dur: 8, peak: 0.12 },
+                          { left: "45%", top: "85%", size: 5, delay: 5, dur: 9, peak: 0.14 },
+                        ].map((d, i) => (
+                          <motion.span
+                            key={i}
+                            className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                            style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: [0, d.peak, 0] }}
+                            transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                          />
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Comic panel grid decoration (preserved) */}
                     <div className="pointer-events-none absolute inset-0 grid grid-cols-3 grid-rows-3 gap-2 p-4 opacity-[0.05]">
                       <div className="col-span-2 rounded border border-current" />
                       <div className="row-span-2 rounded border border-current" />
@@ -927,11 +1019,34 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                       <div className="col-span-2 rounded border border-current" />
                       <div className="rounded border border-current" />
                     </div>
+
+                    {/* POW burst accent */}
+                    {!reduceMotion && (
+                      <motion.div
+                        className="pointer-events-none absolute z-[1] top-[12%] right-[10%]"
+                        initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
+                        animate={{ opacity: [0, 0.4, 0], scale: [0.8, 1.1, 0.8], rotate: [-8, -4, -8] }}
+                        transition={{ duration: 5, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+                        aria-hidden="true"
+                      >
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                          <path d="M12 1l2 7 7-3-3 7 7 2-7 2 3 7-7-3-2 7-2-7-7 3 3-7-7-2 7-2-3-7 7 3z" fill="rgb(251 146 60 / 0.7)" />
+                        </svg>
+                      </motion.div>
+                    )}
+
                     {isGenerating ? (
                       <div className="relative z-10 flex flex-col items-center gap-4">
-                        <div className="relative h-14 w-14">
-                          <div className="absolute inset-0 animate-spin rounded-full border-2 border-orange-200 border-t-orange-500" />
-                          <Sparkles className="absolute inset-0 m-auto h-6 w-6 text-orange-500" />
+                        {/* Typing dots (3 halftone dots pulse sequentially) */}
+                        <div className="flex gap-1.5">
+                          {[0, 1, 2].map((i) => (
+                            <motion.span
+                              key={i}
+                              className="size-2.5 rounded-full bg-orange-500 dark:bg-orange-400"
+                              animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.15, 0.8] }}
+                              transition={{ duration: 1.4, delay: i * 0.2, repeat: Infinity, ease: "easeInOut" }}
+                            />
+                          ))}
                         </div>
                         <p className="text-sm text-muted-foreground">
                           {t("output.generating_message")}
@@ -939,8 +1054,12 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                       </div>
                     ) : (
                       <div className="relative z-10 flex flex-col items-center gap-4">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
+                        <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
                           <BookOpen className="h-7 w-7 text-orange-500" />
+                          {/* Speech bubble accent */}
+                          <span className="absolute -top-1.5 -right-1.5 flex size-5 items-center justify-center rounded-full bg-amber-400 text-[10px] font-bold italic text-white shadow-sm">
+                            ?
+                          </span>
                         </div>
                         <div className="space-y-1">
                           <p className="font-medium text-foreground/80">
