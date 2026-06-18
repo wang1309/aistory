@@ -23,9 +23,12 @@
       "advanced_options": "Erweiterte Optionen",
       "generate_button": "Gutenacht-Geschichte generieren",
       "generating": "Geschichte wird erstellt...",
-      "hero_step_1": "Geschichte-Idee beschreiben",
-      "hero_step_2": "Alter und Thema wählen",
-      "hero_step_3": "Generieren und vorlesen",
+      "theme_pills": [
+        "Abenteuer",
+        "Tiere",
+        "Magie",
+        "Märchen"
+      ],
       "output_title": "Ihre Gutenacht-Geschichte"
     },
     "placeholders": {

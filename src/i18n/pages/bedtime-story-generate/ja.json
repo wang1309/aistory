@@ -23,9 +23,12 @@
       "advanced_options": "詳細オプション",
       "generate_button": "おやすみ話を生成",
       "generating": "ストーリーを作成中...",
-      "hero_step_1": "アイデアを入力",
-      "hero_step_2": "年齢とテーマを選択",
-      "hero_step_3": "生成して読み聞かせ",
+      "theme_pills": [
+        "冒険",
+        "動物",
+        "魔法",
+        "童話"
+      ],
       "output_title": "あなたのおやすみ話"
     },
     "placeholders": {

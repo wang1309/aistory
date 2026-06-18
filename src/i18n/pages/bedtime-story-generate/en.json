@@ -2,12 +2,12 @@
   "bedtime_story_generate": {
     "metadata": {
       "title": "Free Bedtime Story Generator - Short Bedtime Stories for Kids in Minutes",
-      "description": "Generate short bedtime stories for kids in seconds. Create personalized 5 minute bedtime stories by age and theme. Quick bedtime stories — free and unlimited.",
+      "description": "Generate short bedtime stories for kids in seconds. Create personalized 5 minute bedtime stories by age and theme. Quick bedtime stories, free and unlimited.",
       "keywords": "bedtime story generator, bedtime stories for kids, short bedtime stories, 5 minute bedtime stories, quick bedtime stories, AI bedtime story, kids bedtime story, children's story generator, free bedtime story"
     },
     "ui": {
       "title": "Bedtime Story Generator",
-      "subtitle": "Create short bedtime stories for kids — personalized, age-appropriate, and ready to read in just 5 minutes.",
+      "subtitle": "Personalized bedtime stories for kids, ready to read aloud in 5 minutes.",
       "breadcrumb_home": "Home",
       "breadcrumb_current": "Bedtime Story Generator",
       "story_idea": "Story Idea",
@@ -23,9 +23,12 @@
       "advanced_options": "Advanced Options",
       "generate_button": "Generate Bedtime Story",
       "generating": "Crafting your story...",
-      "hero_step_1": "Describe the story idea",
-      "hero_step_2": "Choose age & theme",
-      "hero_step_3": "Generate & read aloud",
+      "theme_pills": [
+        "Adventure",
+        "Animals",
+        "Magic",
+        "Fairy Tale"
+      ],
       "output_title": "Your Bedtime Story"
     },
     "placeholders": {
@@ -116,7 +119,7 @@
       "name": "feature_intro",
       "label": "Overview",
       "title": "What Is a Bedtime Story Generator?",
-      "description": "A Bedtime Story Generator creates short bedtime stories for kids — original, age-appropriate tales tailored to your child's needs in seconds. Instead of searching through books or repeating the same stories, describe any scenario, pick a theme, and instantly receive quick bedtime stories ready to read aloud.\n\nWhether you need 5 minute bedtime stories for a busy weeknight or longer adventures for the weekend, every story is crafted specifically for children with vocabulary and plot complexity matched to the age group you select. Personalize with your child's name, embed a gentle moral lesson, and choose a calming or adventurous ending — making bedtime stories for kids something your child actually looks forward to.",
+      "description": "A Bedtime Story Generator creates short bedtime stories for kids, original, age-appropriate tales tailored to your child's needs in seconds. Instead of searching through books or repeating the same stories, describe any scenario, pick a theme, and instantly receive quick bedtime stories ready to read aloud.\n\nWhether you need 5 minute bedtime stories for a busy weeknight or longer adventures for the weekend, every story is crafted specifically for children with vocabulary and plot complexity matched to the age group you select. Personalize with your child's name, embed a gentle moral lesson, and choose a calming or adventurous ending, making bedtime stories for kids something your child actually looks forward to.",
       "image": {
         "src": "/imgs/backstory/what-is-backstory1.avif",
         "alt": "Bedtime Story Generator overview"
@@ -130,7 +133,7 @@
       "items": [
         {
           "title": "Quick Bedtime Stories on Demand",
-          "description": "Need a story fast? Generate quick bedtime stories in seconds — perfect for busy parents who want short bedtime stories without sacrificing quality or warmth.",
+          "description": "Need a story fast? Generate quick bedtime stories in seconds, perfect for busy parents who want short bedtime stories without sacrificing quality or warmth.",
           "icon": "RiUserHeartLine",
           "image": {
             "src": "/imgs/backstory/why-use-backstory1.avif",
@@ -161,11 +164,11 @@
       "name": "how_to_use",
       "label": "HOW TO USE",
       "title": "How to Create Bedtime Stories for Kids in 3 Steps",
-      "description": "Generate short bedtime stories your child will love — no writing skills needed.",
+      "description": "Generate short bedtime stories your child will love, no writing skills needed.",
       "items": [
         {
           "title": "Describe Your Story Idea",
-          "description": "Type a simple story idea — a character, a problem, or just a scene. Use the Surprise Me button for instant inspiration for tonight's bedtime story."
+          "description": "Type a simple story idea, a character, a problem, or just a scene. Use the Surprise Me button for instant inspiration for tonight's bedtime story."
         },
         {
           "title": "Choose Age, Theme & Length",
@@ -190,7 +193,7 @@
         },
         {
           "title": "Grandparents & Caregivers",
-          "description": "Not sure what story to tell? Create warm, personalized bedtime stories for kids in seconds — even if you're not a natural storyteller. Perfect 5 minute bedtime stories for visits.",
+          "description": "Not sure what story to tell? Create warm, personalized bedtime stories for kids in seconds, even if you're not a natural storyteller. Perfect 5 minute bedtime stories for visits.",
           "icon": "RiGroupLine"
         },
         {
@@ -235,7 +238,7 @@
     "cta_section": {
       "name": "cta",
       "title": "Create Tonight's Bedtime Story for Kids",
-      "description": "Generate a quick bedtime story your child will love — short bedtime stories ready in seconds, perfect for a calming 5 minute wind-down.",
+      "description": "Generate a quick bedtime story your child will love, short bedtime stories ready in seconds, perfect for a calming 5 minute wind-down.",
       "buttons": [
         {
           "title": "Generate Bedtime Story",

@@ -3,7 +3,7 @@
 import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import {
@@ -15,7 +15,6 @@ import {
   RefreshCw,
   Settings2,
   Sparkles,
-  Stars,
   Wand2,
   Zap,
   Palette,
@@ -71,6 +70,7 @@ type GeneratorOptions = {
 export default function BedtimeStoryGenerate({ section }: BedtimeStoryGenerateProps) {
   const locale = useLocale();
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
 
   const t = useCallback(
     (path: string) => {
@@ -320,7 +320,106 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
         onError={handleTurnstileError}
       />
 
-      <main className="container max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
+      <main className="container max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24 relative z-10">
+        {/* Twinkle starfield */}
+        {!reduceMotion && (
+          <div className="pointer-events-none absolute inset-0 overflow-hidden z-[1]" aria-hidden="true">
+            {[
+              { left: "6%", top: "14%", delay: 0, size: 22, duration: 5, peak: 0.85, glow: true },
+              { left: "92%", top: "8%", delay: 1.2, size: 18, duration: 6, peak: 0.75, glow: true },
+              { left: "24%", top: "28%", delay: 2.8, size: 14, duration: 7, peak: 0.7, glow: false },
+              { left: "78%", top: "32%", delay: 0.6, size: 20, duration: 5.5, peak: 0.8, glow: true },
+              { left: "42%", top: "6%", delay: 3.5, size: 16, duration: 6.5, peak: 0.7, glow: false },
+              { left: "60%", top: "48%", delay: 2.1, size: 18, duration: 5.8, peak: 0.75, glow: true },
+              { left: "12%", top: "62%", delay: 4.2, size: 14, duration: 7.2, peak: 0.7, glow: false },
+              { left: "88%", top: "58%", delay: 1.8, size: 16, duration: 6.2, peak: 0.75, glow: true },
+              { left: "48%", top: "76%", delay: 3.0, size: 12, duration: 7.5, peak: 0.65, glow: false },
+            ].map((s, i) => (
+              <motion.svg
+                key={i}
+                className="absolute text-orange-500 dark:text-orange-300"
+                style={{
+                  left: s.left,
+                  top: s.top,
+                  width: s.size,
+                  height: s.size,
+                  filter: s.glow ? "drop-shadow(0 0 6px currentColor)" : "none",
+                }}
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                initial={{ opacity: 0, scale: 0.4 }}
+                animate={{ opacity: [0, s.peak, s.peak * 0.4, 0], scale: [0.4, 1.1, 0.85, 0.4] }}
+                transition={{ duration: s.duration, delay: s.delay, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <path d="M12 2c.4 3.6 1.4 6.4 5 7-3.6.6-4.6 3.4-5 7-.4-3.6-1.4-6.4-5-7 3.6-.6 4.6-3.4 5-7z" />
+              </motion.svg>
+            ))}
+
+            {/* Shooting star 1: from upper-right to lower-left */}
+            <motion.div
+              className="absolute"
+              style={{ top: "10%", left: "65%" }}
+              initial={{ opacity: 0, x: 0, y: 0 }}
+              animate={{
+                opacity: [0, 0.85, 0.85, 0],
+                x: [0, -200, -700],
+                y: [0, 100, 350],
+              }}
+              transition={{
+                duration: 1.4,
+                delay: 5,
+                repeatDelay: 13,
+                repeat: Infinity,
+                ease: "easeIn",
+                times: [0, 0.1, 0.9, 1],
+              }}
+            >
+              <svg width="100" height="50" viewBox="0 0 100 50" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bedtime-meteor-tail-1" x1="0.95" y1="0.05" x2="0.25" y2="0.75">
+                    <stop offset="0%" stopColor="rgb(var(--meteor-color))" stopOpacity="0" />
+                    <stop offset="100%" stopColor="rgb(var(--meteor-color))" stopOpacity="0.95" />
+                  </linearGradient>
+                </defs>
+                <line x1="95" y1="5" x2="25" y2="40" stroke="url(#bedtime-meteor-tail-1)" strokeWidth="1.5" strokeLinecap="round" />
+                <circle cx="25" cy="40" r="2.5" fill="rgb(var(--meteor-color))" style={{ filter: "drop-shadow(0 0 4px var(--meteor-glow))" }} />
+              </svg>
+            </motion.div>
+
+            {/* Shooting star 2: offset timing, smaller, from upper-right */}
+            <motion.div
+              className="absolute"
+              style={{ top: "22%", left: "88%" }}
+              initial={{ opacity: 0, x: 0, y: 0 }}
+              animate={{
+                opacity: [0, 0.7, 0.7, 0],
+                x: [0, -160, -550],
+                y: [0, 80, 280],
+              }}
+              transition={{
+                duration: 1.2,
+                delay: 12,
+                repeatDelay: 15,
+                repeat: Infinity,
+                ease: "easeIn",
+                times: [0, 0.1, 0.9, 1],
+              }}
+            >
+              <svg width="80" height="40" viewBox="0 0 100 50" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bedtime-meteor-tail-2" x1="0.95" y1="0.05" x2="0.25" y2="0.75">
+                    <stop offset="0%" stopColor="rgb(var(--meteor-color))" stopOpacity="0" />
+                    <stop offset="100%" stopColor="rgb(var(--meteor-color))" stopOpacity="0.9" />
+                  </linearGradient>
+                </defs>
+                <line x1="95" y1="5" x2="25" y2="40" stroke="url(#bedtime-meteor-tail-2)" strokeWidth="1.2" strokeLinecap="round" />
+                <circle cx="25" cy="40" r="2" fill="rgb(var(--meteor-color))" style={{ filter: "drop-shadow(0 0 3px var(--meteor-glow))" }} />
+              </svg>
+            </motion.div>
+          </div>
+        )}
+
         <div className="mb-10 flex justify-start">
           <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
             <BedtimeStoryBreadcrumb
@@ -331,77 +430,49 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
         </div>
 
         <div className="mx-auto max-w-2xl text-center mb-10 sm:mb-14 lg:mb-18">
-          {/* Double-bezel icon container */}
-          <div className="flex justify-center mb-6">
-            <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Moon className="size-6 text-orange-600 dark:text-orange-400" />
+          {/* Double-bezel icon container with breathing glow */}
+          <div className="group flex justify-center mb-6">
+            <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10 relative">
+                {!reduceMotion && (
+                  <div className="absolute inset-0 rounded-xl bg-orange-500/20 blur-md group-hover:animate-moon-glow" aria-hidden="true" />
+                )}
+                <Moon className="size-6 text-orange-600 dark:text-orange-400 relative" />
               </div>
             </div>
           </div>
 
-          {/* Eyebrow badge */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+          {/* Eyebrow badge (no status dot) */}
+          <span className="inline-flex items-center rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
             AI Storyteller
           </span>
 
-          {/* Title with gradient split */}
-          <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+          {/* Title with italic gradient on "Bedtime Story" */}
+          <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4 pb-1">
+            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
               Bedtime Story
             </span>
             {" "}Generator
           </h1>
 
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-
-          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto mt-5">
             {t("ui.subtitle")}
           </p>
 
-          {/* Step indicators */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground/60">
-            <span className="inline-flex items-center gap-2">
-              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                01
-              </span>
-              <span className="font-medium">{t("ui.hero_step_1")}</span>
-            </span>
-            <svg viewBox="0 0 16 16" className="size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path strokeLinecap="round" d="M5 3l6 5-6 5" />
-            </svg>
-            <span className="inline-flex items-center gap-2">
-              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                02
-              </span>
-              <span className="font-medium">{t("ui.hero_step_2")}</span>
-            </span>
-            <svg viewBox="0 0 16 16" className="size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path strokeLinecap="round" d="M5 3l6 5-6 5" />
-            </svg>
-            <span className="inline-flex items-center gap-2">
-              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                03
-              </span>
-              <span className="font-medium">{t("ui.hero_step_3")}</span>
-            </span>
-          </div>
+          {/* Theme pills */}
+          {section?.ui?.theme_pills?.length ? (
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
+              {section.ui.theme_pills.map((pill: string, i: number) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                >
+                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         <GeneratorNavTabs />
@@ -614,7 +685,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
+                  className="group w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
                 >
                   {isGenerating ? (
                     <>
@@ -623,7 +694,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                     </>
                   ) : (
                     <>
-                      <Moon className="w-5 h-5 mr-2" />
+                      <Moon className="w-5 h-5 mr-2 group-hover:animate-moon-glow" />
                       {t("ui.generate_button")}
                     </>
                   )}
@@ -707,16 +778,51 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                     {isGenerating ? (
                       <div className="space-y-6">
                         <div className="relative mx-auto w-16 h-16">
-                          <div className="absolute inset-0 rounded-full border-4 border-orange-500/20" />
-                          <div className="absolute inset-0 rounded-full border-4 border-t-orange-500 animate-spin" />
-                          <Moon className="absolute inset-0 m-auto w-6 h-6 text-orange-500 animate-pulse" />
+                          {!reduceMotion && (
+                            <motion.div
+                              className="absolute inset-0 rounded-full bg-orange-500/15 blur-md"
+                              animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.9, 1.1, 0.9] }}
+                              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            />
+                          )}
+                          <Moon className="absolute inset-0 m-auto w-7 h-7 text-orange-500" />
                         </div>
-                        <p className="text-sm font-medium animate-pulse">{t("output.generating_message")}</p>
+                        <p className="text-sm font-medium">{t("output.generating_message")}</p>
                       </div>
                     ) : (
                       <div className="space-y-4 max-w-xs mx-auto">
-                        <div className="w-16 h-16 mx-auto bg-orange-500/5 rounded-2xl flex items-center justify-center rotate-3">
-                          <Stars className="w-8 h-8 text-orange-400/50" />
+                        <div className="relative w-20 h-20 mx-auto">
+                          {!reduceMotion && (
+                            <>
+                              <motion.svg
+                                className="absolute text-orange-400/40"
+                                style={{ left: "8%", top: "5%", width: 14, height: 14 }}
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                animate={{ opacity: [0.2, 0.7, 0.2], scale: [0.7, 1, 0.7] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                              >
+                                <path d="M12 2c.4 3.6 1.4 6.4 5 7-3.6.6-4.6 3.4-5 7-.4-3.6-1.4-6.4-5-7 3.6-.6 4.6-3.4 5-7z" />
+                              </motion.svg>
+                              <motion.svg
+                                className="absolute text-orange-400/40"
+                                style={{ right: "10%", top: "20%", width: 10, height: 10 }}
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                animate={{ opacity: [0.3, 0.6, 0.3], scale: [0.7, 1, 0.7] }}
+                                transition={{ duration: 5, delay: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                              >
+                                <path d="M12 2c.4 3.6 1.4 6.4 5 7-3.6.6-4.6 3.4-5 7-.4-3.6-1.4-6.4-5-7 3.6-.6 4.6-3.4 5-7z" />
+                              </motion.svg>
+                            </>
+                          )}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-14 h-14 bg-orange-500/5 rounded-2xl flex items-center justify-center rotate-3">
+                              <Moon className="w-7 h-7 text-orange-400/70" />
+                            </div>
+                          </div>
                         </div>
                         <p className="text-muted-foreground text-sm">{t("output.empty_message")}</p>
                       </div>

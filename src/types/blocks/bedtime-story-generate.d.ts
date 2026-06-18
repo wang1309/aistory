@@ -24,9 +24,7 @@ export interface BedtimeStoryGenerate {
     advanced_options: string;
     generate_button: string;
     generating: string;
-    hero_step_1: string;
-    hero_step_2: string;
-    hero_step_3: string;
+    theme_pills?: string[];
     output_title: string;
   };
   placeholders: {

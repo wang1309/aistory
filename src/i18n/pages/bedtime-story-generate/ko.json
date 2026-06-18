@@ -23,9 +23,12 @@
       "advanced_options": "고급 옵션",
       "generate_button": "취침 이야기 생성",
       "generating": "이야기를 만드는 중...",
-      "hero_step_1": "이야기 아이디어 입력",
-      "hero_step_2": "연령 및 테마 선택",
-      "hero_step_3": "생성 후 소리 내어 읽기",
+      "theme_pills": [
+        "모험",
+        "동물",
+        "마법",
+        "동화"
+      ],
       "output_title": "나의 취침 이야기"
     },
     "placeholders": {

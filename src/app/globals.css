@@ -122,6 +122,30 @@
     }
   }
 
+  @keyframes moon-glow {
+    0%, 100% { opacity: 0; transform: scale(0.85); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .group:hover .group-hover\:animate-moon-glow {
+      animation: moon-glow 2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  :root {
+    --meteor-color: 251 191 36;
+    --meteor-glow: rgba(251, 191, 36, 0.8);
+  }
+  .dark {
+    --meteor-color: 255 255 255;
+    --meteor-glow: rgba(255, 255, 255, 0.8);
+  }
+
   /* Skeleton Loading */
   @keyframes shimmer {
     0% {
