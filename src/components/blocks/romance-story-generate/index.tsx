@@ -3,13 +3,14 @@
 import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import {
   ChevronDown,
   Copy,
   Eraser,
+  Flame,
   Heart,
   Palette,
   RefreshCw,
@@ -68,6 +69,7 @@ type GeneratorOptions = {
 export default function RomanceStoryGenerate({ section }: RomanceStoryGenerateProps) {
   const locale = useLocale();
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
 
   const t = useCallback(
     (path: string) => {
@@ -312,13 +314,44 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
         />
       </div>
 
+      {/* Floating romance petals (ambient atmosphere). Honors prefers-reduced-motion. */}
+      {!reduceMotion && (
+        <div className="pointer-events-none absolute inset-0 overflow-hidden z-[1]" aria-hidden="true">
+          {[
+            { left: "6%", delay: 0, duration: 16, size: 26, rotate: -12, opacity: 0.55 },
+            { left: "84%", delay: 3, duration: 19, size: 22, rotate: 18, opacity: 0.5 },
+            { left: "22%", delay: 7, duration: 22, size: 18, rotate: -22, opacity: 0.45 },
+            { left: "70%", delay: 11, duration: 17, size: 24, rotate: 8, opacity: 0.5 },
+            { left: "46%", delay: 14, duration: 24, size: 20, rotate: -15, opacity: 0.4 },
+          ].map((p, i) => (
+            <motion.svg
+              key={i}
+              className="absolute top-[-60px] text-orange-500 dark:text-orange-400"
+              style={{ left: p.left, width: p.size, height: p.size }}
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              initial={{ y: -60, opacity: 0, rotate: p.rotate }}
+              animate={{ y: 1400, opacity: [0, p.opacity, p.opacity, 0], rotate: p.rotate + 120 }}
+              transition={{
+                duration: p.duration,
+                delay: p.delay,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              <path d="M12 2c-2.5 4-5 7-5 11 0 4 2.2 7 5 7s5-3 5-7c0-4-2.5-7-5-11z" />
+            </motion.svg>
+          ))}
+        </div>
+      )}
+
       <TurnstileInvisible
         ref={turnstileRef}
         onSuccess={handleTurnstileSuccess}
         onError={handleTurnstileError}
       />
 
-      <main className="container max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
+      <main className="relative z-10 container max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
         <div className="mb-10 flex justify-start">
           <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
             <RomanceStoryBreadcrumb
@@ -329,42 +362,79 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
         </div>
 
         <div className="mx-auto max-w-2xl text-center mb-14 sm:mb-18">
-          {/* Double-bezel icon container */}
+          {/* Double-bezel icon container with Cupid's arrow */}
           <div className="flex justify-center mb-6">
-            <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
+            <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
               <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
                 <Heart className="size-6 text-orange-600 dark:text-orange-400" />
               </div>
+              {/* Cupid's arrow piercing the heart container */}
+              <svg
+                className="pointer-events-none absolute -right-3 -top-2 size-6 text-orange-500/45 rotate-[20deg]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 21 L21 3" />
+                <path d="M21 3 L15 3 M21 3 L21 9" />
+                <path d="M3 21 L9 21 M3 21 L3 15" opacity="0.6" />
+              </svg>
             </div>
           </div>
 
-          {/* Eyebrow badge */}
+          {/* Eyebrow badge (status dot removed per design-taste-frontend §9.F) */}
           <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
             AI Romance Writer
           </span>
 
-          {/* Title with gradient split */}
-          <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
-              Romance Story
-            </span>
-            {" "}Generator
+          {/* Title: Romance in italic serif, Story Generator in roman */}
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+              Romance
+            </span>{" "}
+            <span>Story Generator</span>
           </h1>
 
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
+          {/* Heart-with-arrow decorative SVG (Cupid motif, replaces brush stroke) */}
+          <div className="flex justify-center" aria-hidden="true">
             <svg
-              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-              viewBox="0 0 160 12"
+              className="mt-4 mb-5 h-3 w-32 text-orange-500/40"
+              viewBox="0 0 160 16"
               fill="none"
               preserveAspectRatio="none"
             >
               <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
+                d="M14 9.5c-1.2 1.8-3 3-4.5 3.5-1.5-.5-3.3-1.7-4.5-3.5-1-1.5-1-3.2 0-4.3 1-1 2.5-1 3.5 0l1 .8 1-.8c1-1 2.5-1 3.5 0 1 1.1 1 2.8 0 4.3z"
+                fill="currentColor"
+                opacity="0.85"
+                transform="rotate(-8 9.5 8.5)"
+              />
+              <path
+                d="M22 8.5 L132 8.5"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="1.5"
                 strokeLinecap="round"
+              />
+              <path
+                d="M126 4.5 L134 8.5 L126 12.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+              <path
+                d="M28 5 L22 8.5 L28 12"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+                opacity="0.6"
               />
             </svg>
           </div>
@@ -373,33 +443,20 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
             {t("ui.subtitle")}
           </p>
 
-          {/* Step indicators */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground/60">
-            <span className="inline-flex items-center gap-2">
-              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                01
-              </span>
-              <span className="font-medium">{t("ui.hero_step_1")}</span>
-            </span>
-            <svg viewBox="0 0 16 16" className="size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path strokeLinecap="round" d="M5 3l6 5-6 5" />
-            </svg>
-            <span className="inline-flex items-center gap-2">
-              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                02
-              </span>
-              <span className="font-medium">{t("ui.hero_step_2")}</span>
-            </span>
-            <svg viewBox="0 0 16 16" className="size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path strokeLinecap="round" d="M5 3l6 5-6 5" />
-            </svg>
-            <span className="inline-flex items-center gap-2">
-              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                03
-              </span>
-              <span className="font-medium">{t("ui.hero_step_3")}</span>
-            </span>
-          </div>
+          {/* Trope pills (romance signature element) */}
+          {section?.ui?.trope_pills?.length ? (
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
+              {section.ui.trope_pills.map((pill: string, i: number) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                >
+                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         <GeneratorNavTabs />
@@ -526,6 +583,31 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
                   </div>
                 </div>
 
+                {/* Heat Level: promoted to main form (romance core control, flame icon as romance motif) */}
+                <div className="space-y-2">
+                  <Label className="text-xs font-medium tracking-wide text-muted-foreground flex items-center gap-1.5">
+                    <Flame
+                      className={cn(
+                        "size-4 text-orange-500",
+                        heatLevel === "steamy" && !reduceMotion && "animate-pulse"
+                      )}
+                    />
+                    {t("ui.heat_level")}
+                  </Label>
+                  <Select value={heatLevel} onValueChange={setHeatLevel}>
+                    <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {heatLevels.map(([key, label]) => (
+                        <SelectItem key={key} value={key}>
+                          {label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
                 <Collapsible open={showAdvanced} onOpenChange={setShowAdvanced}>
                   <CollapsibleTrigger asChild>
                     <Button
@@ -542,23 +624,6 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
                     </Button>
                   </CollapsibleTrigger>
                   <CollapsibleContent className="pt-4 space-y-3 data-[state=open]:animate-slide-down data-[state=closed]:animate-slide-up overflow-hidden">
-                    <div className="space-y-2">
-                      <Label className="text-xs font-medium tracking-wide text-muted-foreground">
-                        {t("ui.heat_level")}
-                      </Label>
-                      <Select value={heatLevel} onValueChange={setHeatLevel}>
-                        <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {heatLevels.map(([key, label]) => (
-                            <SelectItem key={key} value={key}>
-                              {label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
                     <div className="space-y-2">
                       <Label className="text-xs font-medium tracking-wide text-muted-foreground">
                         {t("ui.setting")}
@@ -618,7 +683,7 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
+                  className="group w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
                 >
                   {isGenerating ? (
                     <>
@@ -627,7 +692,7 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
                     </>
                   ) : (
                     <>
-                      <Heart className="w-5 h-5 mr-2" />
+                      <Heart className="w-5 h-5 mr-2 group-hover:animate-heartbeat" />
                       {t("ui.generate_button")}
                     </>
                   )}

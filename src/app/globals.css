@@ -108,6 +108,20 @@
     animation: float 3s ease-in-out infinite;
   }
 
+  /* Heartbeat pulse for romance generate button hover */
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.18); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.14); }
+    56% { transform: scale(1); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .group:hover .group-hover\:animate-heartbeat {
+      animation: heartbeat 1s ease-in-out;
+    }
+  }
+
   /* Skeleton Loading */
   @keyframes shimmer {
     0% {

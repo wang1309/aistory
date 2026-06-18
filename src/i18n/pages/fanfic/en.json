@@ -611,56 +611,137 @@
       },
       "fanfic_what": {
         "label": "What is Fanfic Generator",
-        "title": "What is AI Fanfic Generator?",
+        "title": "What is an AI Fanfic Generator?",
+        "description": "An AI fanfic generator is a writing tool that uses large language models to craft original fanfiction from your favorite books, movies, anime, games, and TV shows. Pick a fandom, choose characters, and describe the scene — the AI handles plot, dialogue, and emotional beats while staying true to the source material.",
+        "items": [
+          {
+            "title": "AI-Powered Storytelling",
+            "description": "The fanfic generator produces natural, in-character fanfiction in seconds — no writing experience needed.",
+            "icon": "RiMagicLine"
+          },
+          {
+            "title": "Customizable Prompts",
+            "description": "Control plot type, pairing, OOC level, length, perspective, and rating to match your creative vision.",
+            "icon": "RiSettings3Line"
+          },
+          {
+            "title": "Fandom-Aware Writing",
+            "description": "AI recognizes popular works, characters, and relationships to keep your story canon-compliant when you want it to be.",
+            "icon": "RiBookMarkedLine"
+          }
+        ],
         "content": "AI Fanfic Generator is an advanced artificial intelligence tool designed to create original fanfiction stories based on your favorite books, movies, games, or TV series. Using powerful natural language models, it can generate creative plots, engaging dialogues, and emotionally resonant character interactions — all tailored to your input.\n\nHow It Works\n\nYou simply choose a fandom, specify characters, and describe your desired scenario. The AI then crafts a complete fanfic narrative that fits the tone and style of the original universe — from romantic crossovers to thrilling adventures.\n\nKey Features\n\nAI-Powered Storytelling: Generates natural, high-quality fanfiction instantly.\nCustomizable Prompts: Control plot, genre, and relationship dynamics.\nMultiple Styles: Write in the voice of your favorite authors or fandoms.\nFree Fanfic Generator Online: No downloads required — just type and create."
       },
       "faq": {
         "title": "Frequently Asked Questions",
         "description": "Everything you need to know about the AI Fanfic Generator",
-        "faqs": [
-          {
-            "question": "What is an AI fanfic generator?",
-            "answer": "An AI tool that creates fanfiction using NLP. Select fandom, characters, plot—AI writes story."
-          },
-          {
-            "question": "Is this AI fanfic generator free to use?",
-            "answer": "Yes! Free for new users. No download/card needed. Generate 300-3000 word fanfics instantly."
-          },
-          {
-            "question": "Can I generate fanfic prompts, story ideas, and plot outlines?",
-            "answer": "Yes! All-in-one toolkit. Generate complete stories, prompts, plots, ideas, and titles in seconds."
-          },
-          {
-            "question": "Does it support fanfic title generation?",
-            "answer": "Yes! Built-in title generator suggests creative, genre-appropriate titles for your fanfics."
-          },
-          {
-            "question": "What fandoms, characters, and tropes are supported?",
-            "answer": "20+ fandoms (Harry Potter, Marvel, Genshin), 120+ characters, popular tropes (slow burn, AU)."
-          },
-          {
-            "question": "How does the AI fanfic story generator work?",
-            "answer": "Select work→characters & pairing→plot type→prompt→options→AI generates fanfic."
-          },
-          {
-            "question": "Can I generate different types of fanfic like AU, crossover, or specific genres?",
-            "answer": "Yes! Modern AU, fantasy AU, crossover, romance, angst, fluff, hurt/comfort, action, mystery."
-          },
-          {
-            "question": "What makes this the best AI fanfic generator?",
-            "answer": "20+ fandoms, 12 languages, free, 300-3000 words, precise control, 3 AI models. 10K+ users."
-          },
-          {
-            "question": "What languages does the AI fanfic generator support?",
-            "answer": "12 languages: EN, ZH, JA, KO, DE, FR, ES, IT, PT, RU, AR, HI."
-          }
-        ],
         "cta": {
           "title": "Still have questions?",
           "description": "Can't find the answer you're looking for? Feel free to contact our team, we're happy to help.",
           "button": "Get in touch"
-        }
+        },
+        "items": [
+          {
+            "title": "What is an AI fanfic generator?",
+            "description": "An AI tool that creates fanfiction using NLP. Select fandom, characters, plot—AI writes story."
+          },
+          {
+            "title": "Is this AI fanfic generator free to use?",
+            "description": "Yes! Free for new users. No download/card needed. Generate 300-3000 word fanfics instantly."
+          },
+          {
+            "title": "Can I generate fanfic prompts, story ideas, and plot outlines?",
+            "description": "Yes! The fanfic generator is an all-in-one toolkit — spin up complete stories, prompts, plot outlines, ideas, and titles in seconds."
+          },
+          {
+            "title": "Does it support fanfic title generation?",
+            "description": "Yes! Built-in title generator suggests creative, genre-appropriate titles for your fanfics."
+          },
+          {
+            "title": "What fandoms, characters, and tropes are supported?",
+            "description": "20+ fandoms (Harry Potter, Marvel, Genshin), 120+ characters, popular tropes (slow burn, AU)."
+          },
+          {
+            "title": "How does the AI fanfic story generator work?",
+            "description": "Select work→characters & pairing→plot type→prompt→options→AI generates fanfic."
+          },
+          {
+            "title": "Can I generate different types of fanfic like AU, crossover, or specific genres?",
+            "description": "Yes! Modern AU, fantasy AU, crossover, romance, angst, fluff, hurt/comfort, action, mystery."
+          },
+          {
+            "title": "What makes this the best AI fanfic generator?",
+            "description": "20+ fandoms, 12 languages, free, 300-3000 words, precise control, 3 AI models. 10K+ users."
+          },
+          {
+            "title": "What languages does the AI fanfic generator support?",
+            "description": "12 languages: EN, ZH, JA, KO, DE, FR, ES, IT, PT, RU, AR, HI."
+          }
+        ]
+      },
+      "how_to_use": {
+        "name": "how_to_use",
+        "label": "HOW TO USE",
+        "title": "How to Use the AI Fanfic Generator",
+        "description": "The fanfic generator turns your idea into a finished story in three simple steps — no writing experience required.",
+        "items": [
+          {
+            "title": "Choose Your Fandom",
+            "description": "Pick from 20+ preset works like Harry Potter, Marvel, or Genshin Impact, or enter your own source material and characters."
+          },
+          {
+            "title": "Shape Your Story",
+            "description": "Select a pairing, plot type (canon, AU, crossover), and write a short prompt describing the scene or conflict you want."
+          },
+          {
+            "title": "Generate and Refine",
+            "description": "Hit generate and the AI writes a complete 300-3000 word fanfic. Copy, export as PDF, or regenerate with new options."
+          }
+        ]
+      },
+      "use_cases": {
+        "name": "use_cases",
+        "label": "Applications",
+        "title": "Who Should Use This AI Fanfic Generator",
+        "description": "Built for fanfiction writers, roleplayers, and creative fans who want to turn ideas into polished stories — fast.",
+        "items": [
+          {
+            "title": "Fanfiction Writers",
+            "description": "Break through writer's block with AI-generated drafts, prompts, and plot ideas for your favorite fandoms.",
+            "icon": "RiPenNibLine"
+          },
+          {
+            "title": "Shipping & Pairing Fans",
+            "description": "Bring your favorite character pairings to life with AI-crafted romantic, gen, or poly storylines.",
+            "icon": "RiHeartLine"
+          },
+          {
+            "title": "Roleplayers & Cosplayers",
+            "description": "Generate in-character scenarios, dialogue, and backstories to enrich your roleplay and cosplay projects.",
+            "icon": "RiGroupLine"
+          },
+          {
+            "title": "AU & Crossover Creators",
+            "description": "Explore modern AUs, school AUs, fantasy worlds, and crossover events with characters from different works.",
+            "icon": "RiPlanetLine"
+          },
+          {
+            "title": "Aspiring Novelists",
+            "description": "Practice character voice, pacing, and emotional arcs by writing fanfiction before tackling original fiction.",
+            "icon": "RiBookOpenLine"
+          },
+          {
+            "title": "Fandom Communities",
+            "description": "Spark discussions, fan challenges, and collaborative stories with fresh AI-generated prompts and ideas.",
+            "icon": "RiDiscussLine"
+          }
+        ]
       }
     }
+  },
+  "metadata": {
+    "title": "AI Fanfic Generator - Free Online Fanfiction Writing Tool",
+    "description": "Free AI fanfic generator: create 300-3000 word fanfiction in seconds. Harry Potter, Marvel, Genshin Impact & 20+ fandoms. No signup—start writing now!",
+    "keywords": "fanfiction generator, ai fanfiction generator, ai fanfiction generator free, fanfic generator, ai fanfic generator, free fanfic writer, fanfic maker online, fanfiction ideas generator, fanfic prompt generator"
   }
 }
