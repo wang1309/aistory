@@ -297,6 +297,7 @@ export interface FantasyGenerate {
     required: string;
     optional: string;
     speed_icon: string;
+    theme_pills?: string[];
   };
 }
 

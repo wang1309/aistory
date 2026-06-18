@@ -35,10 +35,8 @@
       "extra_constraints": "追加条件",
       "generate_button": "DnD 背景を生成",
       "generating": "生成中...",
-      "hero_step_1": "キャラクターを定義",
-      "hero_step_2": "卓向け詳細を追加",
-      "hero_step_3": "フックを生成",
-      "output_title": "生成された DnD 背景"
+      "output_title": "生成された DnD 背景",
+      "theme_pills": ["英雄譚", "シリアス", "政治劇", "ダークファンタジー"]
     },
     "placeholders": {
       "character_concept": "作りたい D&D キャラクターを説明してください",

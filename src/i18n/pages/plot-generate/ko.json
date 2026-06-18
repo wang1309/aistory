@@ -39,7 +39,8 @@
       "max": "최대",
       "optional": "선택 사항",
       "none": "없음",
-      "words": "단어"
+      "words": "단어",
+      "theme_pills": ["판타지", "공상과학", "스릴러", "미스터리"]
     },
     "complexity": {
       "simple": "단순",

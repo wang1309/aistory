@@ -264,6 +264,9 @@
       "success_copied": "标题已复制到剪贴板！",
       "success_saved": "已保存到历史记录！",
       "success_cleared": "历史记录已清除！"
+    },
+    "ui": {
+      "theme_pills": ["小说", "非虚构", "悬疑", "言情"]
     }
   }
 }

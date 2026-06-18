@@ -233,7 +233,8 @@
       "clear_button": "清空",
       "output_title": "生成的灵感",
       "output_empty": "你的创意灵感将在这里显示。选择偏好后点击生成！",
-      "prompt_count": "条灵感"
+      "prompt_count": "条灵感",
+      "theme_pills": ["快速灵感", "详细提示词", "AI友好", "类型专属"]
     },
     "genres": {
       "fantasy": "奇幻",

@@ -267,6 +267,9 @@
       "success_copied": "Title copied to clipboard!",
       "success_saved": "Saved to history!",
       "success_cleared": "History cleared!"
+    },
+    "ui": {
+      "theme_pills": ["Fiction", "Non-Fiction", "Mystery", "Romance"]
     }
   }
 }

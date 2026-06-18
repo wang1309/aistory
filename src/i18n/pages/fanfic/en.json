@@ -331,7 +331,8 @@
     },
     "ui": {
       "pairing_separator": " × ",
-      "speed_icon": ""
+      "speed_icon": "",
+      "theme_pills": ["Slow Burn", "Enemies to Lovers", "Modern AU", "Fluff"]
     },
     "tabbed": {
       "hero": {

@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import type { StoryPromptGenerate as StoryPromptGenerateType } from "@/types/blocks/story-prompt-generate";
 import { LANGUAGE_OPTIONS } from "@/lib/language-options";
@@ -114,6 +114,7 @@ const AUDIENCE_OPTIONS = [
 
 export default function StoryPromptGenerate({ section }: StoryPromptGenerateProps) {
   const locale = useLocale();
+  const reduceMotion = useReducedMotion();
 
   // Helper function to get nested translations
   const t = (path: string) => {
@@ -379,7 +380,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
   }, [generatedContent, promptList]);
 
   return (
-    <div id="story_prompt_generator" className="min-h-screen bg-background text-foreground selection:bg-orange-500/20">
+    <div id="story_prompt_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-orange-500/20">
       {/* Subtle warm top glow + dot texture */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
@@ -393,7 +394,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
         onError={handleTurnstileError}
       />
 
-      <main className="container max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
+      <main className="container relative max-w-7xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
         {/* Breadcrumb Navigation */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -410,12 +411,177 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
         </motion.div>
 
         {/* Header */}
-        <div className="text-center mb-14 sm:mb-18 max-w-2xl mx-auto">
+        <div className="relative text-center mb-14 sm:mb-18">
+          {/* Ambient: idea bulb / filament forge motif */}
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-visible" aria-hidden>
+            {/* Central incandescent bulb with filament + radial rays + halo rings (gentle glow pulse) */}
+            {!reduceMotion && (
+              <motion.svg
+                className="absolute left-1/2 top-1/2 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 text-orange-500/[0.07] dark:text-orange-400/[0.05]"
+                viewBox="0 0 200 200"
+                fill="none"
+                aria-hidden
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: [0.65, 1, 0.65], scale: [0.98, 1, 0.98] }}
+                transition={{ duration: 8, repeat: Infinity, ease: [0.32, 0.72, 0, 1] }}
+              >
+                {/* Halo rings */}
+                <circle cx="100" cy="100" r="92" stroke="currentColor" strokeWidth="0.4" strokeDasharray="1 4" />
+                <circle cx="100" cy="100" r="74" stroke="currentColor" strokeWidth="0.3" strokeDasharray="0.5 2.5" />
+                <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="0.3" />
+
+                {/* 11 radial light rays */}
+                <g stroke="currentColor" strokeWidth="0.55" strokeLinecap="round" opacity="0.75">
+                  <line x1="100" y1="14" x2="100" y2="30" />
+                  <line x1="140" y1="24" x2="133" y2="38" />
+                  <line x1="176" y1="60" x2="162" y2="67" />
+                  <line x1="186" y1="100" x2="170" y2="100" />
+                  <line x1="176" y1="140" x2="162" y2="133" />
+                  <line x1="140" y1="176" x2="133" y2="162" />
+                  <line x1="60" y1="176" x2="67" y2="162" />
+                  <line x1="24" y1="140" x2="38" y2="133" />
+                  <line x1="14" y1="100" x2="30" y2="100" />
+                  <line x1="24" y1="60" x2="38" y2="67" />
+                  <line x1="60" y1="24" x2="67" y2="38" />
+                </g>
+
+                {/* Bulb glass envelope */}
+                <path
+                  d="M 68 72 A 34 34 0 1 1 132 72 Q 134 86 130 96 L 70 96 Q 66 86 68 72 Z"
+                  stroke="currentColor"
+                  strokeWidth="0.7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+
+                {/* Base — screw threads */}
+                <path
+                  d="M 72 100 Q 72 98 74 98 L 126 98 Q 128 98 128 100 L 128 106 L 72 106 Z"
+                  stroke="currentColor"
+                  strokeWidth="0.5"
+                  strokeLinejoin="round"
+                />
+                <line x1="74" y1="111" x2="126" y2="111" stroke="currentColor" strokeWidth="0.4" />
+                <line x1="76" y1="116" x2="124" y2="116" stroke="currentColor" strokeWidth="0.4" />
+                <path d="M 80 121 L 120 121 L 116 126 L 84 126 Z" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
+                <path d="M 86 129 L 114 129 L 110 133 L 90 133 Z" stroke="currentColor" strokeWidth="0.5" fill="currentColor" fillOpacity="0.25" strokeLinejoin="round" />
+
+                {/* Filament — zigzag W shape */}
+                <path
+                  d="M 82 86 L 88 70 L 92 86 L 96 70 L 100 86 L 104 70 L 108 86 L 112 70 L 118 86"
+                  stroke="currentColor"
+                  strokeWidth="0.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+                <line x1="82" y1="86" x2="82" y2="96" stroke="currentColor" strokeWidth="0.55" />
+                <line x1="118" y1="86" x2="118" y2="96" stroke="currentColor" strokeWidth="0.55" />
+
+                {/* Central glow core */}
+                <circle cx="100" cy="80" r="7" fill="currentColor" opacity="0.25" />
+                <circle cx="100" cy="80" r="3.2" fill="currentColor" opacity="0.7" />
+              </motion.svg>
+            )}
+
+            {/* Floating question mark glyph — left (prompts are questions) */}
+            {!reduceMotion && (
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/40 dark:text-orange-400/40"
+                style={{ left: "8%", top: "28%" }}
+                initial={{ opacity: 0, y: 0, rotate: -6 }}
+                animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -10, 0], rotate: [-6, -2, -6] }}
+                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <span className="block font-display text-4xl italic">?</span>
+              </motion.div>
+            )}
+
+            {/* Floating 4-pointed spark SVG — right */}
+            {!reduceMotion && (
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/35 dark:text-orange-400/35"
+                style={{ right: "10%", top: "34%" }}
+                initial={{ opacity: 0, y: 0, rotate: 0 }}
+                animate={{ opacity: [0, 0.5, 0.5, 0], y: [0, 8, 0], rotate: [0, 12, 0] }}
+                transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+                  <path d="M 16 2 L 18 14 L 30 16 L 18 18 L 16 30 L 14 18 L 2 16 L 14 14 Z" fill="currentColor" />
+                </svg>
+              </motion.div>
+            )}
+
+            {/* Floating question mark — right bottom */}
+            {!reduceMotion && (
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/30 dark:text-orange-400/30"
+                style={{ right: "20%", bottom: "18%" }}
+                initial={{ opacity: 0, y: 0, rotate: 4 }}
+                animate={{ opacity: [0, 0.45, 0.45, 0], y: [0, -7, 0], rotate: [4, 8, 4] }}
+                transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <span className="block font-display text-3xl italic">?</span>
+              </motion.div>
+            )}
+
+            {/* Floating spark — left bottom */}
+            {!reduceMotion && (
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/30 dark:text-orange-400/30"
+                style={{ left: "14%", bottom: "22%" }}
+                initial={{ opacity: 0, y: 0, rotate: 0 }}
+                animate={{ opacity: [0, 0.4, 0.4, 0], y: [0, 6, 0], rotate: [0, -10, 0] }}
+                transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+                  <path d="M 16 2 L 18 14 L 30 16 L 18 18 L 16 30 L 14 18 L 2 16 L 14 14 Z" fill="currentColor" />
+                </svg>
+              </motion.div>
+            )}
+
+            {/* Warm dust motes */}
+            {!reduceMotion &&
+              [
+                { left: "12%", top: "18%", size: 4, delay: 0, dur: 10, peak: 0.22 },
+                { left: "84%", top: "22%", size: 5, delay: 1.4, dur: 12, peak: 0.2 },
+                { left: "22%", top: "72%", size: 4, delay: 2.8, dur: 9, peak: 0.18 },
+                { left: "78%", top: "68%", size: 5, delay: 1.8, dur: 11, peak: 0.2 },
+                { left: "32%", top: "12%", size: 4, delay: 3.5, dur: 8, peak: 0.16 },
+                { left: "68%", top: "82%", size: 5, delay: 4.2, dur: 13, peak: 0.2 },
+                { left: "8%", top: "52%", size: 4, delay: 2.2, dur: 9, peak: 0.18 },
+                { left: "90%", top: "48%", size: 5, delay: 5, dur: 11, peak: 0.2 },
+              ].map((d, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                  transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                />
+              ))}
+
+            {/* Editorial watermark: question + reference + floral spark (scattered glyphs) */}
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
+              <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">?</span>
+              <span className="absolute right-[7%] top-[14%] font-display italic font-bold text-xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">※</span>
+              <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.07] dark:text-orange-400/[0.07]">✺</span>
+              <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">?</span>
+              <span className="absolute left-[28%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.06] dark:text-orange-400/[0.06]">※</span>
+              <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">✺</span>
+            </div>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-            className="space-y-0"
+            className="relative z-10 space-y-0"
           >
             {/* Double-bezel icon container */}
             <div className="flex justify-center mb-6">
@@ -432,34 +598,69 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
               AI Story Tool
             </span>
 
-            <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+            <h1 className="group relative font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+              <span
+                className="pointer-events-none absolute -top-6 left-[18%] hidden md:block font-display text-2xl italic text-orange-500/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-orange-500/60 dark:group-hover:text-orange-400/60"
+                aria-hidden
+              >
+                ?
+              </span>
               Story{" "}
-              <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 bg-clip-text text-transparent dark:from-orange-400 dark:via-orange-500 dark:to-orange-300">
+              <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 bg-clip-text italic text-transparent dark:from-orange-400 dark:via-orange-500 dark:to-orange-300">
                 Prompt
               </span>{" "}
               Generator
+              <span
+                className="pointer-events-none absolute -top-6 right-[18%] hidden md:block font-display text-2xl text-orange-500/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-orange-500/60 dark:group-hover:text-orange-400/60"
+                aria-hidden
+              >
+                ※
+              </span>
             </h1>
 
-            {/* Decorative brush stroke */}
-            <div className="flex justify-center">
-              <svg
-                className="mt-3 mb-4 h-2.5 w-28 text-orange-500/20"
-                viewBox="0 0 160 12"
-                fill="none"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
+            {/* Editorial decorative anchor: question + halftone + reference + halftone + spark */}
+            <div className="mt-4 mb-5 flex items-center justify-center gap-3 text-orange-500/40 dark:text-orange-400/30">
+              <span className="font-display text-lg italic">?</span>
+              <span className="flex h-3 items-center gap-[2px]" aria-hidden>
+                <span className="size-[3px] rounded-full bg-current opacity-90" />
+                <span className="size-[3px] rounded-full bg-current opacity-70" />
+                <span className="size-[3px] rounded-full bg-current opacity-50" />
+                <span className="size-[3px] rounded-full bg-current opacity-30" />
+              </span>
+              <span className="text-base leading-none">※</span>
+              <span className="flex h-3 items-center gap-[2px]" aria-hidden>
+                <span className="size-[3px] rounded-full bg-current opacity-30" />
+                <span className="size-[3px] rounded-full bg-current opacity-50" />
+                <span className="size-[3px] rounded-full bg-current opacity-70" />
+                <span className="size-[3px] rounded-full bg-current opacity-90" />
+              </span>
+              <svg className="h-3 w-3" viewBox="0 0 16 16" fill="currentColor" aria-hidden>
+                <path d="M 8 0 L 9 6 L 16 8 L 9 10 L 8 16 L 7 10 L 0 8 L 7 6 Z" />
               </svg>
             </div>
 
             <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
               {t("header.subtitle")}
             </p>
+
+            {/* Theme pills: prompt archetypes */}
+            {section?.ui?.theme_pills?.length ? (
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                className="mt-6 flex flex-wrap items-center justify-center gap-1.5"
+              >
+                {section.ui.theme_pills.map((pill: string, i: number) => (
+                  <span
+                    key={`${pill}-${i}`}
+                    className="rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-orange-700/80 dark:text-orange-200/70"
+                  >
+                    {pill}
+                  </span>
+                ))}
+              </motion.div>
+            ) : null}
           </motion.div>
         </div>
 

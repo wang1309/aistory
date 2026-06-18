@@ -278,7 +278,8 @@
     "ui": {
       "required": "*",
       "optional": "可选",
-      "speed_icon": "⏱️"
+      "speed_icon": "⏱️",
+      "theme_pills": ["高魔奇幻", "都市奇幻", "黑暗奇幻", "仙侠"]
     }
   },
   "feature_intro": {

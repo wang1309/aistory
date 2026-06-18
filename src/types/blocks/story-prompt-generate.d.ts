@@ -41,6 +41,7 @@ export interface StoryPromptGenerate {
     output_title: string;
     output_empty: string;
     prompt_count: string;
+    theme_pills?: string[];
   };
   
   // Genre options

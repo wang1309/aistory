@@ -15,6 +15,7 @@ export interface BackstoryGenerate {
         tone: string;
         generate_button: string;
         generating: string;
+        theme_pills?: string[];
     };
     placeholders: {
         character_concept: string;

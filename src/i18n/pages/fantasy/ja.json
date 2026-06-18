@@ -278,7 +278,8 @@
     "ui": {
       "required": "*",
       "optional": "Optional",
-      "speed_icon": "⏱️"
+      "speed_icon": "⏱️",
+      "theme_pills": ["ハイファンタジー", "アーバンファンタジー", "ダークファンタジー", "仙侠"]
     }
   },
   "feature_intro": {

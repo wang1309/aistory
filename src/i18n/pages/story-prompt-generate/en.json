@@ -233,7 +233,8 @@
       "clear_button": "Clear All",
       "output_title": "Generated Prompts",
       "output_empty": "Your creative prompts will appear here. Select your preferences and click Generate!",
-      "prompt_count": "prompts"
+      "prompt_count": "prompts",
+      "theme_pills": ["Quick Ideas", "Detailed Prompts", "AI-Ready", "Genre-Specific"]
     },
     "genres": {
       "fantasy": "Fantasy",

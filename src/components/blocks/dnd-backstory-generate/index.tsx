@@ -3,7 +3,7 @@
 import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import {
@@ -83,6 +83,7 @@ type GeneratorOptions = {
 export default function DndBackstoryGenerate({ section }: DndBackstoryGenerateProps) {
   const locale = useLocale();
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
 
   const t = useCallback(
     (path: string) => {
@@ -443,9 +444,107 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
           </div>
         </div>
 
-        <div className="mx-auto max-w-2xl text-center mb-14 sm:mb-18">
-          {/* Double-bezel icon container */}
-          <div className="flex justify-center mb-6">
+        <div className="relative mx-auto max-w-2xl text-center mb-14 sm:mb-18">
+          {/* Ambient arcane particle layer (slow drifting motes) */}
+          {!reduceMotion && (
+            <div className="pointer-events-none absolute inset-0 overflow-visible z-0" aria-hidden="true">
+              {[
+                { left: "8%", top: "18%", size: 4, delay: 0, dur: 9, peak: 0.18 },
+                { left: "90%", top: "12%", size: 6, delay: 1.5, dur: 11, peak: 0.22 },
+                { left: "14%", top: "72%", size: 5, delay: 3, dur: 10, peak: 0.16 },
+                { left: "85%", top: "68%", size: 7, delay: 2, dur: 12, peak: 0.2 },
+                { left: "32%", top: "22%", size: 4, delay: 4, dur: 8, peak: 0.14 },
+                { left: "68%", top: "82%", size: 6, delay: 5, dur: 11, peak: 0.18 },
+                { left: "22%", top: "50%", size: 5, delay: 6, dur: 13, peak: 0.2 },
+                { left: "78%", top: "38%", size: 4, delay: 1, dur: 9, peak: 0.16 },
+              ].map((d, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                  transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Floating D20 dice accents (left & right) */}
+          {!reduceMotion && (
+            <>
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/45 dark:text-orange-400/45"
+                style={{ left: "3%", top: "52%" }}
+                initial={{ opacity: 0, y: 0, rotate: -10 }}
+                animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -8, 0], rotate: [-10, -4, -10] }}
+                transition={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <path d="M20 2 L36 11 L36 29 L20 38 L4 29 L4 11 Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+                  <path d="M20 2 L20 13 M4 11 L13 17 M36 11 L27 17 M20 38 L13 17 M20 38 L27 17 M13 17 L27 17" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinejoin="round" />
+                  <text x="20" y="25" fontSize="9" fontWeight="700" fill="currentColor" textAnchor="middle" fontStyle="italic">20</text>
+                </svg>
+              </motion.div>
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-amber-500/45 dark:text-amber-400/45"
+                style={{ right: "5%", top: "44%" }}
+                initial={{ opacity: 0, y: 0, rotate: 12 }}
+                animate={{ opacity: [0, 0.5, 0.5, 0], y: [0, -6, 0], rotate: [12, 5, 12] }}
+                transition={{ duration: 8, delay: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                  <path d="M20 2 L36 11 L36 29 L20 38 L4 29 L4 11 Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+                  <path d="M20 2 L20 13 M4 11 L13 17 M36 11 L27 17 M20 38 L13 17 M20 38 L27 17 M13 17 L27 17" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinejoin="round" />
+                  <text x="20" y="25" fontSize="9" fontWeight="700" fill="currentColor" textAnchor="middle" fontStyle="italic">d20</text>
+                </svg>
+              </motion.div>
+            </>
+          )}
+
+          {/* Slowly rotating arcane rune ring */}
+          {!reduceMotion && (
+            <motion.div
+              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/30 dark:text-orange-400/30"
+              initial={{ opacity: 0, rotate: 0 }}
+              animate={{ opacity: [0, 0.55, 0.4], rotate: 360 }}
+              transition={{ opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 60, repeat: Infinity, ease: "linear" } }}
+              aria-hidden="true"
+            >
+              <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+                <circle cx="180" cy="180" r="170" stroke="currentColor" strokeWidth="0.6" strokeDasharray="2 6" />
+                <circle cx="180" cy="180" r="140" stroke="currentColor" strokeWidth="0.4" />
+                <circle cx="180" cy="180" r="110" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 3" />
+                <path d="M180 14 L180 30 M180 330 L180 346 M14 180 L30 180 M330 180 L346 180" stroke="currentColor" strokeWidth="1" />
+                <path d="M65 65 L75 75 M295 65 L285 75 M65 295 L75 285 M295 295 L285 285" stroke="currentColor" strokeWidth="0.8" />
+                <text x="180" y="48" fontSize="10" fill="currentColor" textAnchor="middle" fontStyle="italic">✦</text>
+                <text x="180" y="322" fontSize="10" fill="currentColor" textAnchor="middle" fontStyle="italic">✦</text>
+                <text x="48" y="184" fontSize="10" fill="currentColor" textAnchor="middle" fontStyle="italic">✧</text>
+                <text x="312" y="184" fontSize="10" fill="currentColor" textAnchor="middle" fontStyle="italic">✧</text>
+              </svg>
+            </motion.div>
+          )}
+
+          {/* Stat block number watermark (STR/DEX/CON/INT/WIS/CHA style numerals) */}
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
+            <span className="absolute left-[6%] top-[22%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07] tabular-nums">18</span>
+            <span className="absolute right-[7%] top-[16%] font-display italic font-bold text-xl text-amber-500/[0.07] dark:text-amber-400/[0.07] tabular-nums">14</span>
+            <span className="absolute left-[10%] bottom-[14%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06] tabular-nums">16</span>
+            <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-amber-500/[0.07] dark:text-amber-400/[0.07] tabular-nums">12</span>
+            <span className="absolute left-[28%] top-[10%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05] tabular-nums">10</span>
+            <span className="absolute right-[26%] bottom-[8%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06] tabular-nums">8</span>
+          </div>
+
+          {/* Double-bezel icon container with arcane hover flare */}
+          <div className="group relative z-10 flex justify-center mb-6">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+              ✦
+            </span>
+            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+              ✧
+            </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
               <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
                 <Sword className="size-6 text-orange-600 dark:text-orange-400" />
@@ -454,67 +553,47 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
           </div>
 
           {/* Eyebrow badge */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+          <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
             <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
             D&D Character Builder
           </span>
 
-          {/* Title with gradient split */}
-          <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+          {/* Title with italic gradient emphasis on "DnD Backstory" */}
+          <h1 className="relative z-10 font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
               DnD Backstory
             </span>
             {" "}Generator
           </h1>
 
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+          {/* Arcane rune cluster decorative anchor */}
+          <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
+            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">✦</span>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+            ))}
+            <span className="text-amber-500/45 dark:text-amber-400/45 text-base">⚔</span>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+            ))}
+            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">✧</span>
           </div>
 
-          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
+          <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
             {t("ui.subtitle")}
           </p>
 
-          {/* Step indicators */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground/60">
-            <span className="inline-flex items-center gap-2">
-              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                01
-              </span>
-              <span className="font-medium">{t("ui.hero_step_1")}</span>
-            </span>
-            <svg viewBox="0 0 16 16" className="hidden sm:block size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path strokeLinecap="round" d="M5 3l6 5-6 5" />
-            </svg>
-            <span className="inline-flex items-center gap-2">
-              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                02
-              </span>
-              <span className="font-medium">{t("ui.hero_step_2")}</span>
-            </span>
-            <svg viewBox="0 0 16 16" className="hidden sm:block size-3 text-border/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path strokeLinecap="round" d="M5 3l6 5-6 5" />
-            </svg>
-            <span className="inline-flex items-center gap-2">
-              <span className="inline-flex size-6 items-center justify-center rounded-lg border border-border/15 bg-foreground/[0.02] text-[10px] font-semibold tabular-nums text-orange-600 dark:text-orange-400">
-                03
-              </span>
-              <span className="font-medium">{t("ui.hero_step_3")}</span>
-            </span>
-          </div>
+          {/* Theme pills */}
+          {section?.ui?.theme_pills?.length ? (
+            <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
+              {section.ui.theme_pills.map((pill: string, i: number) => (
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
+                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         <GeneratorNavTabs />
@@ -846,7 +925,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
+                  className="group w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
                 >
                   {isGenerating ? (
                     <>
@@ -855,7 +934,20 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                     </>
                   ) : (
                     <>
-                      <Sword className="w-5 h-5 mr-2" />
+                      <span className="relative inline-flex items-center justify-center mr-2">
+                        <Sword className="w-5 h-5 relative z-10" />
+                        {!reduceMotion && (
+                          <svg
+                            className="pointer-events-none absolute -inset-2 size-9 text-white/0 group-hover:animate-arcane-pulse"
+                            viewBox="0 0 40 40"
+                            fill="none"
+                            aria-hidden="true"
+                          >
+                            <path d="M20 2 L36 11 L36 29 L20 38 L4 29 L4 11 Z" stroke="rgb(255 255 255 / 0.9)" strokeWidth="1.5" fill="rgb(255 255 255 / 0.18)" strokeLinejoin="round" />
+                            <path d="M20 2 L20 13 M4 11 L13 17 M36 11 L27 17 M20 38 L13 17 M20 38 L27 17 M13 17 L27 17" stroke="rgb(255 255 255 / 0.7)" strokeWidth="1" />
+                          </svg>
+                        )}
+                      </span>
                       {t("ui.generate_button")}
                     </>
                   )}

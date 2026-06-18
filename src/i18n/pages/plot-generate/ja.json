@@ -39,7 +39,8 @@
       "max": "最大",
       "optional": "オプション",
       "none": "なし",
-      "words": "語"
+      "words": "語",
+      "theme_pills": ["ファンタジー", "SF", "スリラー", "ミステリー"]
     },
     "complexity": {
       "simple": "シンプル",

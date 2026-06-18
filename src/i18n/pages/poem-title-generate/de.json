@@ -8,7 +8,8 @@
             "title": "KI GEDICHTTITEL-GENERATOR",
             "subtitle": "Generieren Sie den perfekten Titel für Ihr Gedicht mit KI-Kreativität",
             "meta_title": "Kostenloser KI Gedichttitel-Generator | AI Story Generator",
-            "meta_description": "Kostenloser KI Gedichttitel-Generator, der in Sekunden starke, klickstarke Titel für Gedichte, Social-Media-Posts und Einsendungen erstellt – perfekt für Dichter und Verlage."
+            "meta_description": "Kostenloser KI Gedichttitel-Generator, der in Sekunden starke, klickstarke Titel für Gedichte, Social-Media-Posts und Einsendungen erstellt – perfekt für Dichter und Verlage.",
+            "theme_pills": ["Klassisch", "Modern", "Imagistisch", "Romantisch"]
         },
         "form": {
             "poem_content": {

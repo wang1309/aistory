@@ -2,6 +2,7 @@
 
 import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { Zap, Sparkles, Palette, PenTool } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -62,6 +63,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const locale = useLocale();
   const { user, setShowSignModal } = useAppContext();
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
 
   // Helper function to get nested translations from section data
   const t = (path: string) => {
@@ -767,9 +769,111 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
         </div>
 
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center mb-14">
-          {/* Double-bezel icon container */}
-          <div className="flex justify-center mb-6">
+        <div className="relative mx-auto max-w-2xl text-center mb-14">
+          {/* Ambient ink-mote particle layer */}
+          {!reduceMotion && (
+            <div className="pointer-events-none absolute inset-0 overflow-visible z-0" aria-hidden="true">
+              {[
+                { left: "8%", top: "16%", size: 4, delay: 0, dur: 9, peak: 0.18 },
+                { left: "90%", top: "14%", size: 6, delay: 1.5, dur: 11, peak: 0.22 },
+                { left: "14%", top: "74%", size: 5, delay: 3, dur: 10, peak: 0.16 },
+                { left: "85%", top: "70%", size: 7, delay: 2, dur: 12, peak: 0.2 },
+                { left: "30%", top: "20%", size: 4, delay: 4, dur: 8, peak: 0.14 },
+                { left: "70%", top: "84%", size: 6, delay: 5, dur: 11, peak: 0.18 },
+                { left: "20%", top: "48%", size: 5, delay: 6, dur: 13, peak: 0.2 },
+                { left: "78%", top: "36%", size: 4, delay: 1, dur: 9, peak: 0.16 },
+              ].map((d, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                  transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Drifting ink-wash cloud blobs (ink diffusing through paper, distinct from rings) */}
+          {!reduceMotion && (
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+              <motion.div
+                className="absolute rounded-full bg-orange-500/8 dark:bg-orange-400/8 blur-3xl"
+                style={{ width: 280, height: 280, left: "10%", top: "10%" }}
+                initial={{ x: 0, y: 0, opacity: 0 }}
+                animate={{ x: [0, 30, -20, 0], y: [0, -20, 25, 0], opacity: [0, 0.55, 0.35, 0] }}
+                transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute rounded-full bg-amber-500/8 dark:bg-amber-400/8 blur-3xl"
+                style={{ width: 220, height: 220, right: "8%", top: "20%" }}
+                initial={{ x: 0, y: 0, opacity: 0 }}
+                animate={{ x: [0, -25, 18, 0], y: [0, 22, -15, 0], opacity: [0, 0.5, 0.3, 0] }}
+                transition={{ duration: 22, delay: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute rounded-full bg-orange-500/6 dark:bg-orange-400/6 blur-3xl"
+                style={{ width: 200, height: 200, left: "40%", bottom: "5%" }}
+                initial={{ x: 0, y: 0, opacity: 0 }}
+                animate={{ x: [0, 20, -25, 0], y: [0, -18, 12, 0], opacity: [0, 0.45, 0.25, 0] }}
+                transition={{ duration: 20, delay: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
+          )}
+
+          {/* Floating calligraphy brush (left) & rolled scroll (right) — writer's atelier motif */}
+          {!reduceMotion && (
+            <>
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/45 dark:text-orange-400/45"
+                style={{ left: "3%", top: "50%" }}
+                initial={{ opacity: 0, y: 0, rotate: -12 }}
+                animate={{ opacity: [0, 0.6, 0.6, 0], y: [0, -8, 0], rotate: [-12, -6, -12] }}
+                transition={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="38" height="38" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 21c0-4 2-8 6-12 2-2 4-3.5 7-5-1 3.5-2.5 6.5-5 9-4 4-7 6-8 8z" fill="currentColor" opacity="0.35" />
+                  <path d="M3 21l9-9 M12 12c2-2 4-3.5 6-5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                  <circle cx="18.5" cy="5.5" r="1.2" fill="currentColor" />
+                </svg>
+              </motion.div>
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-amber-500/45 dark:text-amber-400/45"
+                style={{ right: "4%", top: "44%" }}
+                initial={{ opacity: 0, y: 0, rotate: 10 }}
+                animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -6, 0], rotate: [10, 4, 10] }}
+                transition={{ duration: 8, delay: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 7c4-1.5 10-1.5 14 0v10c-4 1.5-10 1.5-14 0z" stroke="currentColor" strokeWidth="1.3" fill="currentColor" fillOpacity="0.18" />
+                  <path d="M5 7c-1.5-0.8-2-2-1.5-3 0.5-1 2-1 3-0.5 M19 7c1.5-0.8 2-2 1.5-3-0.5-1-2-1-3-0.5 M5 17c-1.5 0.8-2 2-1.5 3 0.5 1 2 1 3 0.5 M19 17c1.5 0.8 2 2 1.5 3-0.5 1-2 1-3 0.5" stroke="currentColor" strokeWidth="1.1" fill="none" />
+                  <path d="M9 9h6 M9 12h6 M9 15h4" stroke="currentColor" strokeWidth="0.8" opacity="0.7" />
+                </svg>
+              </motion.div>
+            </>
+          )}
+
+          {/* Calligraphic stroke watermark (丶丿一丨乙 — basic strokes, distinct from punctuation) */}
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
+            <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">丶</span>
+            <span className="absolute right-[7%] top-[14%] font-display italic font-bold text-xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">丿</span>
+            <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06]">一</span>
+            <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">丨</span>
+            <span className="absolute left-[28%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05]">乙</span>
+            <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06]">丶</span>
+          </div>
+
+          {/* Double-bezel icon container with brush-stroke hover flare */}
+          <div className="group relative z-10 flex justify-center mb-6">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+              丶
+            </span>
+            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+              丿
+            </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
               <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
                 <Icon name="RiQuillPenLine" className="size-6 text-orange-600 dark:text-orange-400" />
@@ -778,42 +882,51 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
           </div>
 
           {/* Eyebrow badge */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+          <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
             <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
             AI Poetry Writer
           </span>
 
-          {/* Title with gradient split */}
-          <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
-              AI Poem
+          {/* Title with italic gradient emphasis on "Poem" */}
+          <h1 className="relative z-10 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
+            AI{" "}
+            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+              Poem
             </span>
             {" "}Generator
           </h1>
 
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+          {/* Editorial decorative anchor: brush stroke + halftone + sparkle + halftone + brush stroke */}
+          <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
+            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm font-display italic">丶</span>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+            ))}
+            <span className="text-amber-500/45 dark:text-amber-400/45 text-base">✦</span>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+            ))}
+            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm font-display italic">丿</span>
           </div>
 
-          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto mb-6">
+          <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto mb-6">
             {section.header.subtitle}
           </p>
 
-          <div className="mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-          <div className="flex items-center justify-center gap-3">
+          {/* Theme pills */}
+          {section.header.theme_pills?.length ? (
+            <div className="relative z-10 mb-6 flex flex-wrap items-center justify-center gap-2">
+              {section.header.theme_pills.map((pill: string, i: number) => (
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
+                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          ) : null}
+
+          <div className="relative z-10 mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div className="relative z-10 flex items-center justify-center gap-3">
             <ModeToggle
               advancedMode={advancedMode}
               onToggle={setAdvancedMode}

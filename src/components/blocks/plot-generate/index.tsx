@@ -25,6 +25,7 @@ import PlotBreadcrumb from "./breadcrumb";
 import { cn } from "@/lib/utils";
 import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { ChevronDown, Settings, Zap, Sparkles, Palette, BookOpen } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
@@ -68,6 +69,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   const locale = useLocale();
   const { user, setShowSignModal } = useAppContext();
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
 
   // Helper function to get nested translations from section data
   const t = (path: string) => {
@@ -602,9 +604,111 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
         </div>
 
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center mb-14">
-          {/* Double-bezel icon container */}
-          <div className="flex justify-center mb-6">
+        <div className="relative mx-auto max-w-2xl text-center mb-14">
+          {/* Ambient: warm constellation motes */}
+          {!reduceMotion && (
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-visible">
+              {[
+                { left: "12%", top: "18%", size: 5, delay: 0, dur: 10, peak: 0.22 },
+                { left: "88%", top: "22%", size: 6, delay: 1.4, dur: 12, peak: 0.2 },
+                { left: "22%", top: "78%", size: 4, delay: 2.8, dur: 9, peak: 0.16 },
+                { left: "78%", top: "74%", size: 5, delay: 1.8, dur: 11, peak: 0.18 },
+                { left: "32%", top: "12%", size: 4, delay: 3.5, dur: 8, peak: 0.14 },
+                { left: "68%", top: "84%", size: 6, delay: 4.2, dur: 13, peak: 0.2 },
+                { left: "8%", top: "52%", size: 4, delay: 2.2, dur: 9, peak: 0.16 },
+                { left: "92%", top: "48%", size: 5, delay: 5, dur: 11, peak: 0.18 },
+              ].map((d, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                  transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Floating map pin & route-dash accents (cartographer motif) */}
+          {!reduceMotion && (
+            <>
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/50 dark:text-orange-400/50"
+                style={{ left: "4%", top: "48%" }}
+                initial={{ opacity: 0, y: 0, rotate: -10 }}
+                animate={{ opacity: [0, 0.6, 0.6, 0], y: [0, -10, 0], rotate: [-10, -4, -10] }}
+                transition={{ duration: 7.5, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 22s-7-7.5-7-13a7 7 0 1 1 14 0c0 5.5-7 13-7 13z" stroke="currentColor" strokeWidth="1.2" fill="currentColor" fillOpacity="0.25" strokeLinejoin="round" />
+                  <circle cx="12" cy="9" r="2.5" stroke="currentColor" strokeWidth="1" fill="none" />
+                </svg>
+              </motion.div>
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-amber-500/50 dark:text-amber-400/50"
+                style={{ right: "5%", top: "44%" }}
+                initial={{ opacity: 0, y: 0, rotate: 8 }}
+                animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -7, 0], rotate: [8, 3, 8] }}
+                transition={{ duration: 8.5, delay: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="48" height="32" viewBox="0 0 48 32" fill="none">
+                  <path d="M3 26 Q14 6 24 16 T44 8" stroke="currentColor" strokeWidth="1.2" strokeDasharray="3 3" fill="none" strokeLinecap="round" />
+                  <circle cx="3" cy="26" r="2.4" fill="currentColor" />
+                  <circle cx="44" cy="8" r="3" fill="currentColor" />
+                  <circle cx="44" cy="8" r="6.5" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.5" />
+                </svg>
+              </motion.div>
+            </>
+          )}
+
+          {/* Slowly drifting 6-node constellation network (narrative map) */}
+          {!reduceMotion && (
+            <motion.div
+              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/35 dark:text-orange-400/35"
+              initial={{ opacity: 0, x: 0, y: 0 }}
+              animate={{ opacity: [0, 0.6, 0.45], x: [0, 8, 0], y: [0, -6, 0] }}
+              transition={{ opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }, x: { duration: 18, repeat: Infinity, ease: "easeInOut" }, y: { duration: 14, repeat: Infinity, ease: "easeInOut" } }}
+              aria-hidden="true"
+            >
+              <svg width="420" height="280" viewBox="0 0 420 280" fill="none">
+                <path d="M40 70 L150 40 L260 90 L370 60" stroke="currentColor" strokeWidth="0.6" strokeDasharray="2 5" />
+                <path d="M40 70 L80 200 L220 220 L260 90" stroke="currentColor" strokeWidth="0.6" strokeDasharray="2 5" />
+                <path d="M150 40 L220 220" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 5" />
+                <path d="M370 60 L320 180 L220 220" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 5" />
+                <circle cx="40" cy="70" r="3" fill="currentColor" />
+                <circle cx="150" cy="40" r="4.5" fill="currentColor" />
+                <circle cx="260" cy="90" r="3" fill="currentColor" />
+                <circle cx="370" cy="60" r="3" fill="currentColor" />
+                <circle cx="80" cy="200" r="3" fill="currentColor" />
+                <circle cx="220" cy="220" r="4.5" fill="currentColor" />
+                <circle cx="320" cy="180" r="2.5" fill="currentColor" />
+                <circle cx="150" cy="40" r="10" stroke="currentColor" strokeWidth="0.4" fill="none" />
+                <circle cx="220" cy="220" r="11" stroke="currentColor" strokeWidth="0.4" fill="none" />
+              </svg>
+            </motion.div>
+          )}
+
+          {/* Editorial watermark: paragraph & section marks */}
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
+            <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">¶</span>
+            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">§</span>
+            <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06]">§</span>
+            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">¶</span>
+            <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05]">§</span>
+            <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06]">¶</span>
+          </div>
+
+          {/* Double-bezel icon container with cartographer hover flare */}
+          <div className="group relative z-10 flex justify-center mb-6">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+              ¶
+            </span>
+            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+              §
+            </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
               <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
                 <Icon name="RiMapLine" className="size-6 text-orange-600 dark:text-orange-400" />
@@ -613,39 +717,47 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           </div>
 
           {/* Eyebrow badge */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+          <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
             <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
             AI Writing Tool
           </span>
 
-          {/* Title with gradient split */}
-          <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+          {/* Title with italic gradient emphasis on "Plot" */}
+          <h1 className="relative z-10 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
+            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
               Plot
             </span>
             {" "}Generator
           </h1>
 
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+          {/* Editorial decorative anchor: ¶ + halftone + ✦ + halftone + § */}
+          <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
+            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">¶</span>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+            ))}
+            <span className="text-amber-500/45 dark:text-amber-400/45 text-base">✦</span>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+            ))}
+            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">§</span>
           </div>
 
-          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
+          <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
             {t('ui.subtitle')}
           </p>
+
+          {/* Theme pills */}
+          {section?.ui?.theme_pills?.length ? (
+            <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
+              {section.ui.theme_pills.map((pill: string, i: number) => (
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
+                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         {/* Hero → Tool transition */}

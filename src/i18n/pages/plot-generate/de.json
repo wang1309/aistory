@@ -39,7 +39,8 @@
       "max": "Max",
       "optional": "Optional",
       "none": "Keine",
-      "words": "Wörter"
+      "words": "Wörter",
+      "theme_pills": ["Fantasy", "Science Fiction", "Thriller", "Mystery"]
     },
     "complexity": {
       "simple": "Einfach",

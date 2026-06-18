@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import Icon from "@/components/icon";
 import { toast } from "sonner";
+import { motion, useReducedMotion } from "framer-motion";
 import { HeroPoemTitle as HeroPoemTitleType } from "@/types/blocks/hero-poem-title";
 import { useLocale } from "next-intl";
 import PoemTitleBreadcrumb from "./breadcrumb";
@@ -91,6 +92,7 @@ class TitleHistoryStorage {
 
 export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType }) {
     const locale = useLocale();
+    const reduceMotion = useReducedMotion();
 
     // Form state
     const [poemContent, setPoemContent] = useState("");
@@ -406,9 +408,97 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                 </div>
 
                 {/* Header */}
-                <div className="mx-auto max-w-2xl text-center mb-14">
-                    {/* Double-bezel icon container */}
-                    <div className="flex justify-center mb-6">
+                <div className="relative mx-auto max-w-2xl text-center mb-14">
+                    {/* Ambient ink-mote particle layer */}
+                    {!reduceMotion && (
+                        <div className="pointer-events-none absolute inset-0 overflow-visible z-0" aria-hidden="true">
+                            {[
+                                { left: "8%", top: "16%", size: 4, delay: 0, dur: 9, peak: 0.18 },
+                                { left: "90%", top: "14%", size: 6, delay: 1.5, dur: 11, peak: 0.22 },
+                                { left: "14%", top: "74%", size: 5, delay: 3, dur: 10, peak: 0.16 },
+                                { left: "85%", top: "70%", size: 7, delay: 2, dur: 12, peak: 0.2 },
+                                { left: "30%", top: "20%", size: 4, delay: 4, dur: 8, peak: 0.14 },
+                                { left: "70%", top: "84%", size: 6, delay: 5, dur: 11, peak: 0.18 },
+                                { left: "20%", top: "48%", size: 5, delay: 6, dur: 13, peak: 0.2 },
+                                { left: "78%", top: "36%", size: 4, delay: 1, dur: 9, peak: 0.16 },
+                            ].map((d, i) => (
+                                <motion.span
+                                    key={i}
+                                    className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                                    style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                                    transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                                />
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Floating decorative quote marks (literary salon motif) */}
+                    {!reduceMotion && (
+                        <>
+                            <motion.div
+                                className="pointer-events-none absolute z-[1] text-orange-500/45 dark:text-orange-400/45 font-display italic"
+                                style={{ left: "4%", top: "48%", fontSize: "3rem", lineHeight: 1 }}
+                                initial={{ opacity: 0, y: 0, rotate: -6 }}
+                                animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -8, 0], rotate: [-6, -2, -6] }}
+                                transition={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+                                aria-hidden="true"
+                            >
+                                ❝
+                            </motion.div>
+                            <motion.div
+                                className="pointer-events-none absolute z-[1] text-amber-500/45 dark:text-amber-400/45 font-display italic"
+                                style={{ right: "5%", top: "40%", fontSize: "3rem", lineHeight: 1 }}
+                                initial={{ opacity: 0, y: 0, rotate: 6 }}
+                                animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -6, 0], rotate: [6, 2, 6] }}
+                                transition={{ duration: 8, delay: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                                aria-hidden="true"
+                            >
+                                ❞
+                            </motion.div>
+                        </>
+                    )}
+
+                    {/* Pulsing concentric ink-ripple (ink-drop-on-paper, distinct from rotating rings) */}
+                    {!reduceMotion && (
+                        <div className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
+                            {[0, 1, 2, 3].map((ringIdx) => (
+                                <motion.div
+                                    key={ringIdx}
+                                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/55 dark:text-orange-400/55"
+                                    initial={{ opacity: 0, scale: 0.32 }}
+                                    animate={{ opacity: [0, 0.85, 0.45, 0], scale: [0.32, 1.0, 1.4, 1.75] }}
+                                    transition={{ duration: 7, delay: ringIdx * 1.75, repeat: Infinity, ease: "easeOut" }}
+                                >
+                                    <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+                                        <circle cx="180" cy="180" r="172" stroke="currentColor" strokeWidth="1.6" fill="none" />
+                                        <circle cx="180" cy="180" r="138" stroke="currentColor" strokeWidth="1.1" fill="none" strokeDasharray="3 6" />
+                                        <circle cx="180" cy="180" r="104" stroke="currentColor" strokeWidth="0.9" fill="none" />
+                                    </svg>
+                                </motion.div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Italic punctuation watermark (poetic punctuation sprinkled) */}
+                    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
+                        <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">。</span>
+                        <span className="absolute right-[7%] top-[14%] font-display italic font-bold text-xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">、</span>
+                        <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06]">；</span>
+                        <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">！</span>
+                        <span className="absolute left-[28%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05]">？</span>
+                        <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06]">…</span>
+                    </div>
+
+                    {/* Double-bezel icon container with quote-mark hover flare */}
+                    <div className="group relative z-10 flex justify-center mb-6">
+                        <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+                            ❝
+                        </span>
+                        <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+                            ❞
+                        </span>
                         <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
                             <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
                                 <Icon name="RiStarLine" className="size-6 text-orange-600 dark:text-orange-400" />
@@ -417,41 +507,50 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                     </div>
 
                     {/* Eyebrow badge */}
-                    <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+                    <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
                         <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
                         AI Poetry Tool
                     </span>
 
-                    {/* Title with gradient split */}
-                    <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
-                        AI Poem{" "}
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
-                            Title
+                    {/* Title with italic gradient emphasis on "Poem" */}
+                    <h1 className="relative z-10 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
+                        AI{" "}
+                        <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+                            Poem
                         </span>
-                        {" "}Generator
+                        {" "}Title Generator
                     </h1>
 
-                    {/* Decorative brush stroke */}
-                    <div className="flex justify-center">
-                        <svg
-                            className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-                            viewBox="0 0 160 12"
-                            fill="none"
-                            preserveAspectRatio="none"
-                        >
-                            <path
-                                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                            />
-                        </svg>
+                    {/* Editorial decorative anchor: open-quote + halftone + close-quote */}
+                    <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
+                        <span className="text-orange-500/35 dark:text-orange-400/35 text-sm font-display italic">❝</span>
+                        {[3, 5, 7, 5, 3].map((s, i) => (
+                            <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+                        ))}
+                        <span className="text-amber-500/45 dark:text-amber-400/45 text-base">✦</span>
+                        {[3, 5, 7, 5, 3].map((s, i) => (
+                            <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+                        ))}
+                        <span className="text-orange-500/35 dark:text-orange-400/35 text-sm font-display italic">❞</span>
                     </div>
 
-                    <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto mb-6">
+                    <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto mb-6">
                         {section.header.subtitle}
                     </p>
-                    <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+                    {/* Theme pills */}
+                    {section.header.theme_pills?.length ? (
+                        <div className="relative z-10 mb-6 flex flex-wrap items-center justify-center gap-2">
+                            {section.header.theme_pills.map((pill: string, i: number) => (
+                                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
+                                    <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                                    {pill}
+                                </span>
+                            ))}
+                        </div>
+                    ) : null}
+
+                    <div className="relative z-10 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
                 </div>
 
                 <GeneratorNavTabs />
@@ -638,7 +737,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                 <Button
                                     onClick={handleGenerate}
                                     disabled={isGenerating}
-                                    className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 active:scale-[0.97] transition-all"
+                                    className="group w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 active:scale-[0.97] transition-all"
                                 >
                                     {isGenerating ? (
                                         <div className="flex items-center gap-2">
@@ -647,7 +746,20 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                         </div>
                                     ) : (
                                         <div className="flex items-center gap-2">
-                                            <Icon name="RiSparklingLine" className="size-4" />
+                                            <span className="relative inline-flex items-center justify-center">
+                                                <Icon name="RiSparklingLine" className="size-4 relative z-10" />
+                                                {!reduceMotion && (
+                                                    <svg
+                                                        className="pointer-events-none absolute -inset-2 size-8 text-white/0 group-hover:animate-ink-stroke"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <path d="M3 17c5-3 11-8 14-12 1-1.5 2-3 3-3.5-0.5 4-3 9-7 13-3 3-7 4-10 3.5z" fill="rgb(255 255 255 / 0.85)" />
+                                                        <path d="M3 17c5-3 11-8 14-12" stroke="rgb(255 255 255 / 0.9)" strokeWidth="1" strokeLinecap="round" fill="none" />
+                                                    </svg>
+                                                )}
+                                            </span>
                                             <span>{section.generate_button.text}</span>
                                         </div>
                                     )}

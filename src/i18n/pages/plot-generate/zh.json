@@ -39,7 +39,8 @@
       "max": "最大",
       "optional": "可选",
       "none": "无",
-      "words": "字"
+      "words": "字",
+      "theme_pills": ["奇幻", "科幻", "惊悚", "悬疑"]
     },
     "complexity": {
       "simple": "简单",

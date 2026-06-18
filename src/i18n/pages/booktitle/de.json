@@ -264,6 +264,9 @@
       "success_copied": "Titel in Zwischenablage kopiert!",
       "success_saved": "Im Verlauf gespeichert!",
       "success_cleared": "Verlauf gelöscht!"
+    },
+    "ui": {
+      "theme_pills": ["Belletristik", "Sachbuch", "Krimi", "Liebesroman"]
     }
   }
 }

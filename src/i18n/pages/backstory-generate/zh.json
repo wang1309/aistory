@@ -20,7 +20,8 @@
             "advanced_options": "高级选项",
             "tone": "故事基调",
             "generate_button": "生成背景故事",
-            "generating": "生成中..."
+            "generating": "生成中...",
+            "theme_pills": ["奇幻", "科幻", "都市", "仙侠"]
         },
         "placeholders": {
             "character_concept": "描述你的角色概念... (例如: '一名寻求救赎的刺客，在一次命运般的相遇后决定改变人生')",

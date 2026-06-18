@@ -35,10 +35,8 @@
       "extra_constraints": "추가 조건",
       "generate_button": "DnD 배경 생성",
       "generating": "생성 중...",
-      "hero_step_1": "캐릭터 정의",
-      "hero_step_2": "플레이 가능한 정보 추가",
-      "hero_step_3": "훅 생성",
-      "output_title": "생성된 DnD 배경"
+      "output_title": "생성된 DnD 배경",
+      "theme_pills": ["영웅 판타지", "암울한 모험", "정치적 음모", "다크 판타지"]
     },
     "placeholders": {
       "character_concept": "만들고 싶은 D&D 캐릭터를 설명하세요",

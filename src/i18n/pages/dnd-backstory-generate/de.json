@@ -35,10 +35,8 @@
       "extra_constraints": "Zusätzliche Vorgaben",
       "generate_button": "DnD Hintergrund generieren",
       "generating": "Wird generiert...",
-      "hero_step_1": "Charakter definieren",
-      "hero_step_2": "Spielbare Details ergänzen",
-      "hero_step_3": "Hooks erzeugen",
-      "output_title": "Generierter DnD Hintergrund"
+      "output_title": "Generierter DnD Hintergrund",
+      "theme_pills": ["Heroische Fantasy", "Düsteres Abenteuer", "Politische Intrige", "Dark Fantasy"]
     },
     "placeholders": {
       "character_concept": "Beschreibe den D&D-Charakter, den du erstellen willst",

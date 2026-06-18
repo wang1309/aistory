@@ -30,6 +30,7 @@ import {
   Sparkles,
   Settings
 } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
 import type { StoryStatus } from "@/models/story";
@@ -62,6 +63,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const tabbedForm = section.tabbed?.form as any;
   const { user, setShowSignModal } = useAppContext();
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
 
   // ========== STATE MANAGEMENT ==========
 
@@ -647,51 +649,153 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       </div>
 
       {/* Header */}
-      <div className="text-center mb-16">
-        {/* Double-bezel icon container */}
-        <div className="flex justify-center mb-6">
+      <div className="relative text-center mb-16">
+        {/* Ambient: warm heart motes */}
+        {!reduceMotion && (
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-visible">
+            {[
+              { left: "12%", top: "18%", size: 5, delay: 0, dur: 10, peak: 0.22 },
+              { left: "88%", top: "22%", size: 6, delay: 1.4, dur: 12, peak: 0.2 },
+              { left: "22%", top: "78%", size: 4, delay: 2.8, dur: 9, peak: 0.16 },
+              { left: "78%", top: "74%", size: 5, delay: 1.8, dur: 11, peak: 0.18 },
+              { left: "32%", top: "12%", size: 4, delay: 3.5, dur: 8, peak: 0.14 },
+              { left: "68%", top: "84%", size: 6, delay: 4.2, dur: 13, peak: 0.2 },
+              { left: "8%", top: "52%", size: 4, delay: 2.2, dur: 9, peak: 0.16 },
+              { left: "92%", top: "48%", size: 5, delay: 5, dur: 11, peak: 0.18 },
+            ].map((d, i) => (
+              <motion.span
+                key={i}
+                className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Floating kudos heart & bookmark corner (archive of affection motif) */}
+        {!reduceMotion && (
+          <>
+            <motion.div
+              className="pointer-events-none absolute z-[1] text-orange-500/55 dark:text-orange-400/55"
+              style={{ left: "3%", top: "44%" }}
+              initial={{ opacity: 0, y: 0, rotate: -8 }}
+              animate={{ opacity: [0, 0.7, 0.7, 0], y: [0, -10, 0], rotate: [-8, -2, -8] }}
+              transition={{ duration: 7.5, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+              aria-hidden="true"
+            >
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s-7-4.5-9-9c-1-2.5 0-6 3.5-7c2-0.5 4 0.5 5.5 2.5c1.5-2 3.5-3 5.5-2.5c3.5 1 4.5 4.5 3.5 7c-2 4.5-9 9-9 9z" stroke="currentColor" strokeWidth="1.2" fill="currentColor" fillOpacity="0.25" strokeLinejoin="round" />
+              </svg>
+            </motion.div>
+            <motion.div
+              className="pointer-events-none absolute z-[1] text-amber-500/55 dark:text-amber-400/55"
+              style={{ right: "4%", top: "40%" }}
+              initial={{ opacity: 0, y: 0, rotate: 10 }}
+              animate={{ opacity: [0, 0.65, 0.65, 0], y: [0, -7, 0], rotate: [10, 4, 10] }}
+              transition={{ duration: 8.5, delay: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              aria-hidden="true"
+            >
+              <svg width="32" height="36" viewBox="0 0 24 28" fill="none">
+                <path d="M5 2h14v24l-7-5-7 5V2z" stroke="currentColor" strokeWidth="1.2" fill="currentColor" fillOpacity="0.2" strokeLinejoin="round" />
+              </svg>
+            </motion.div>
+          </>
+        )}
+
+        {/* Slowly swaying intertwined relationship threads (pairing / CP bond metaphor) */}
+        {!reduceMotion && (
+          <motion.div
+            className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/35 dark:text-orange-400/35"
+            initial={{ opacity: 0, rotate: 0 }}
+            animate={{ opacity: [0, 0.6, 0.45], rotate: [0, 2, 0, -2, 0] }}
+            transition={{ opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 16, repeat: Infinity, ease: "easeInOut" } }}
+            aria-hidden="true"
+          >
+            <svg width="420" height="220" viewBox="0 0 420 220" fill="none">
+              <path d="M30 110 Q120 30 210 110 T390 110" stroke="currentColor" strokeWidth="1.2" fill="none" />
+              <path d="M30 110 Q120 190 210 110 T390 110" stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.7" />
+              <circle cx="210" cy="110" r="48" stroke="currentColor" strokeWidth="0.4" fill="none" strokeDasharray="2 5" opacity="0.5" />
+              <circle cx="210" cy="110" r="90" stroke="currentColor" strokeWidth="0.3" fill="none" strokeDasharray="1 6" opacity="0.3" />
+              <path d="M210 102c-2-4-9-4-9 2.5c0 5 9 11.5 9 11.5s9-6.5 9-11.5c0-6.5-7-6.5-9-2.5z" fill="currentColor" opacity="0.6" />
+              <circle cx="30" cy="110" r="4.5" fill="currentColor" />
+              <circle cx="390" cy="110" r="4.5" fill="currentColor" />
+              <circle cx="30" cy="110" r="10" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.5" />
+              <circle cx="390" cy="110" r="10" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.5" />
+            </svg>
+          </motion.div>
+        )}
+
+        {/* Editorial watermark: hearts, stars, sparks (kudos / favorite / spark culture) */}
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
+          <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">♥</span>
+          <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-amber-500/[0.08] dark:text-amber-400/[0.08]">★</span>
+          <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.07] dark:text-orange-400/[0.07]">✦</span>
+          <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-amber-500/[0.08] dark:text-amber-400/[0.08]">♥</span>
+          <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.06] dark:text-orange-400/[0.06]">★</span>
+          <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">✦</span>
+        </div>
+
+        {/* Double-bezel icon container with archive hover flare */}
+        <div className="group relative z-10 flex justify-center mb-6">
+          <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+            ♥
+          </span>
+          <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+            ★
+          </span>
           <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
             <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-              <Sparkles className="size-6 text-orange-600 dark:text-orange-400" />
+              <Icon name="RiBookmarkLine" className="size-6 text-orange-600 dark:text-orange-400" />
             </div>
           </div>
         </div>
 
         {/* Eyebrow badge */}
-        <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+        <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
           <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
           AI Fanfiction Writer
         </span>
 
-        {/* Title with gradient split */}
-        <h1 className="font-display text-5xl sm:text-7xl font-bold tracking-tighter leading-[0.9] mt-4">
+        {/* Title with italic gradient emphasis on "Fanfiction" */}
+        <h1 className="relative z-10 font-display text-5xl sm:text-7xl font-bold tracking-tighter leading-[0.9] mt-4">
           <span className="text-foreground">Free{" "}</span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-400 dark:from-orange-300 dark:via-amber-300 dark:to-orange-200">
+          <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-400 dark:from-orange-300 dark:via-amber-300 dark:to-orange-200">
             Fanfiction
           </span>
           <span className="text-foreground"> Generator</span>
         </h1>
 
-        {/* Decorative brush stroke */}
-        <div className="flex justify-center">
-          <svg
-            className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-            viewBox="0 0 160 12"
-            fill="none"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M2 8c30-5 60-6 90-3s40 4 66-1"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
+        {/* Editorial decorative anchor: heart + halftone + sparkle + halftone + star */}
+        <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
+          <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">♥</span>
+          {[3, 5, 7, 5, 3].map((s, i) => (
+            <span key={`a-${i}`} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+          ))}
+          <span className="text-amber-500/45 dark:text-amber-400/45 text-base">✦</span>
+          {[3, 5, 7, 5, 3].map((s, i) => (
+            <span key={`b-${i}`} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+          ))}
+          <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">★</span>
         </div>
 
-        <p className="text-lg sm:text-xl text-muted-foreground/65 max-w-xl mx-auto font-light leading-relaxed">
+        <p className="relative z-10 text-lg sm:text-xl text-muted-foreground/65 max-w-xl mx-auto font-light leading-relaxed">
           {section.tabbed?.hero?.subtitle || 'Craft your own stories in your favorite universes.'}
         </p>
+
+        {/* Theme pills */}
+        {section?.ui?.theme_pills?.length ? (
+          <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
+            {section.ui.theme_pills.map((pill: string, i: number) => (
+              <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
+                <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                {pill}
+              </span>
+            ))}
+          </div>
+        ) : null}
       </div>
 
       <GeneratorNavTabs />

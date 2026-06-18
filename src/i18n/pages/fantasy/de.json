@@ -278,7 +278,8 @@
     "ui": {
       "required": "*",
       "optional": "Optional",
-      "speed_icon": "⏱️"
+      "speed_icon": "⏱️",
+      "theme_pills": ["High Fantasy", "Urban Fantasy", "Dark Fantasy", "Xianxia"]
     }
   },
   "feature_intro": {

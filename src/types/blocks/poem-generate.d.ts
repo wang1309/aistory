@@ -4,6 +4,7 @@ export interface PoemGenerate {
   header: {
     title: string;
     subtitle: string;
+    theme_pills?: string[];
   };
   mode: {
     simple: string;

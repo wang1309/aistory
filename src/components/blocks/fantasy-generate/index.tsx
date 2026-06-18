@@ -19,6 +19,7 @@ import confetti from "canvas-confetti";
 import { cn } from "@/lib/utils";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import { Wand2, Sparkles, Zap, Palette, PenTool, BookOpen, Globe, Users, Scroll } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -39,6 +40,7 @@ function calculateWordCount(text: string): number {
 export default function FantasyGenerate({ section }: { section: FantasyGenerateType }) {
   const locale = useLocale();
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
   const { user, setShowSignModal } = useAppContext();
 
   // Mode state
@@ -361,50 +363,173 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
       <div className="w-full max-w-6xl mx-auto px-6 py-24 sm:py-32 relative">
         {/* Header */}
         <div className="relative text-center mb-14 sm:mb-18">
-          {/* Double-bezel icon container */}
-          <div className="flex justify-center mb-6">
+          {/* Ambient: warm crystal motes */}
+          {!reduceMotion && (
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-visible">
+              {[
+                { left: "12%", top: "18%", size: 5, delay: 0, dur: 10, peak: 0.22 },
+                { left: "88%", top: "22%", size: 6, delay: 1.4, dur: 12, peak: 0.2 },
+                { left: "22%", top: "78%", size: 4, delay: 2.8, dur: 9, peak: 0.16 },
+                { left: "78%", top: "74%", size: 5, delay: 1.8, dur: 11, peak: 0.18 },
+                { left: "32%", top: "12%", size: 4, delay: 3.5, dur: 8, peak: 0.14 },
+                { left: "68%", top: "84%", size: 6, delay: 4.2, dur: 13, peak: 0.2 },
+                { left: "8%", top: "52%", size: 4, delay: 2.2, dur: 9, peak: 0.16 },
+                { left: "92%", top: "48%", size: 5, delay: 5, dur: 11, peak: 0.18 },
+              ].map((d, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                  transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Floating crystal shards (mystical realm motif) */}
+          {!reduceMotion && (
+            <>
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/55 dark:text-orange-400/55"
+                style={{ left: "3%", top: "44%" }}
+                initial={{ opacity: 0, y: 0, rotate: -10 }}
+                animate={{ opacity: [0, 0.7, 0.7, 0], y: [0, -10, 0], rotate: [-10, -3, -10] }}
+                transition={{ duration: 7.5, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="32" height="36" viewBox="0 0 24 28" fill="none">
+                  <path d="M12 2 L20 9 L12 26 L4 9 Z" stroke="currentColor" strokeWidth="1.2" fill="currentColor" fillOpacity="0.22" strokeLinejoin="round" />
+                  <path d="M12 2 L20 9 L12 11 L4 9 Z" stroke="currentColor" strokeWidth="0.7" fill="currentColor" fillOpacity="0.32" strokeLinejoin="round" />
+                  <path d="M4 9 L12 11 L12 26" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                  <path d="M20 9 L12 11 L12 26" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                </svg>
+              </motion.div>
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-amber-500/55 dark:text-amber-400/55"
+                style={{ right: "4%", top: "40%" }}
+                initial={{ opacity: 0, y: 0, rotate: 12 }}
+                animate={{ opacity: [0, 0.65, 0.65, 0], y: [0, -7, 0], rotate: [12, 5, 12] }}
+                transition={{ duration: 8.5, delay: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <svg width="28" height="32" viewBox="0 0 24 28" fill="none">
+                  <path d="M12 2 L19 8 L12 26 L5 8 Z" stroke="currentColor" strokeWidth="1.1" fill="currentColor" fillOpacity="0.2" strokeLinejoin="round" />
+                  <path d="M12 2 L19 8 L12 10 L5 8 Z" stroke="currentColor" strokeWidth="0.6" fill="currentColor" fillOpacity="0.3" strokeLinejoin="round" />
+                </svg>
+              </motion.div>
+            </>
+          )}
+
+          {/* Slowly rotating central crystal cluster with light refractions */}
+          {!reduceMotion && (
+            <motion.div
+              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/35 dark:text-orange-400/35"
+              initial={{ opacity: 0, rotate: 0 }}
+              animate={{ opacity: [0, 0.6, 0.45], rotate: 360 }}
+              transition={{ opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 90, repeat: Infinity, ease: "linear" } }}
+              aria-hidden="true"
+            >
+              <svg width="420" height="280" viewBox="0 0 420 280" fill="none">
+                <line x1="210" y1="140" x2="40" y2="40" stroke="currentColor" strokeWidth="0.4" strokeDasharray="1 6" opacity="0.4" />
+                <line x1="210" y1="140" x2="380" y2="40" stroke="currentColor" strokeWidth="0.4" strokeDasharray="1 6" opacity="0.4" />
+                <line x1="210" y1="140" x2="40" y2="240" stroke="currentColor" strokeWidth="0.4" strokeDasharray="1 6" opacity="0.4" />
+                <line x1="210" y1="140" x2="380" y2="240" stroke="currentColor" strokeWidth="0.4" strokeDasharray="1 6" opacity="0.4" />
+                <line x1="210" y1="140" x2="20" y2="140" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 5" opacity="0.3" />
+                <line x1="210" y1="140" x2="400" y2="140" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 5" opacity="0.3" />
+                <circle cx="210" cy="140" r="105" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 8" fill="none" opacity="0.3" />
+                <circle cx="210" cy="140" r="62" stroke="currentColor" strokeWidth="0.4" strokeDasharray="2 6" fill="none" opacity="0.4" />
+                <g transform="translate(210 140)">
+                  <path d="M0 -52 L32 -16 L19 48 L-19 48 L-32 -16 Z" stroke="currentColor" strokeWidth="1.2" fill="currentColor" fillOpacity="0.15" strokeLinejoin="round" />
+                  <path d="M0 -52 L32 -16 L0 -8 L-32 -16 Z" stroke="currentColor" strokeWidth="0.8" fill="currentColor" fillOpacity="0.22" strokeLinejoin="round" />
+                  <path d="M-32 -16 L0 -8 L-19 48 Z" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                  <path d="M32 -16 L0 -8 L19 48 Z" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                </g>
+                <g transform="translate(54 58)">
+                  <path d="M0 -12 L7 -3 L5 12 L-5 12 L-7 -3 Z" stroke="currentColor" strokeWidth="0.7" fill="currentColor" fillOpacity="0.22" strokeLinejoin="round" />
+                </g>
+                <g transform="translate(366 58)">
+                  <path d="M0 -14 L8 -4 L6 14 L-6 14 L-8 -4 Z" stroke="currentColor" strokeWidth="0.7" fill="currentColor" fillOpacity="0.22" strokeLinejoin="round" />
+                </g>
+                <g transform="translate(54 222)">
+                  <path d="M0 -10 L6 -2 L4 10 L-4 10 L-6 -2 Z" stroke="currentColor" strokeWidth="0.6" fill="currentColor" fillOpacity="0.2" strokeLinejoin="round" />
+                </g>
+                <g transform="translate(366 222)">
+                  <path d="M0 -13 L7 -3 L5 13 L-5 13 L-7 -3 Z" stroke="currentColor" strokeWidth="0.6" fill="currentColor" fillOpacity="0.2" strokeLinejoin="round" />
+                </g>
+              </svg>
+            </motion.div>
+          )}
+
+          {/* Editorial watermark: crystal facets, sparks, diamonds */}
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
+            <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">❖</span>
+            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-amber-500/[0.08] dark:text-amber-400/[0.08]">✦</span>
+            <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.07] dark:text-orange-400/[0.07]">✧</span>
+            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-amber-500/[0.08] dark:text-amber-400/[0.08]">❖</span>
+            <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.06] dark:text-orange-400/[0.06]">✦</span>
+            <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">✧</span>
+          </div>
+
+          {/* Double-bezel icon container with crystal hover flare */}
+          <div className="group relative z-10 flex justify-center mb-6">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+              ❖
+            </span>
+            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+              ✦
+            </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
               <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Wand2 className="size-6 text-orange-600 dark:text-orange-400" />
+                <Icon name="RiGemLine" className="size-6 text-orange-600 dark:text-orange-400" />
               </div>
             </div>
           </div>
 
           {/* Eyebrow badge */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+          <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
             <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
             AI Fantasy Writer
           </span>
 
-          {/* Title with gradient split */}
-          <h1 className="font-display text-5xl sm:text-7xl font-bold tracking-tighter leading-[0.9] mt-4">
+          {/* Title with italic gradient emphasis on "Story" */}
+          <h1 className="relative z-10 font-display text-5xl sm:text-7xl font-bold tracking-tighter leading-[0.9] mt-4">
             <span className="text-foreground">Fantasy{" "}</span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
               Story
             </span>
             <span className="text-foreground"> Generator</span>
           </h1>
 
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+          {/* Editorial decorative anchor: diamond + halftone + spark + halftone + four-star */}
+          <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
+            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">❖</span>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={`a-${i}`} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+            ))}
+            <span className="text-amber-500/45 dark:text-amber-400/45 text-base">✧</span>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={`b-${i}`} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+            ))}
+            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">✦</span>
           </div>
 
-          <p className="text-lg sm:text-xl text-muted-foreground/65 max-w-xl mx-auto font-light leading-relaxed">
+          <p className="relative z-10 text-lg sm:text-xl text-muted-foreground/65 max-w-xl mx-auto font-light leading-relaxed">
             {section.header.subtitle}
           </p>
+
+          {/* Theme pills */}
+          {section?.ui?.theme_pills?.length ? (
+            <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
+              {section.ui.theme_pills.map((pill: string, i: number) => (
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
+                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         <GeneratorNavTabs />

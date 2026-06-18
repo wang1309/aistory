@@ -7,7 +7,8 @@
   "poemGenerate": {
     "header": {
       "title": "AI Gedichtgenerator",
-      "subtitle": "Erstellen Sie einzigartige Poesie mit KI - Modern, Klassisch, Haiku, Sonett & Liebesgedicht-Generator"
+      "subtitle": "Erstellen Sie einzigartige Poesie mit KI - Modern, Klassisch, Haiku, Sonett & Liebesgedicht-Generator",
+      "theme_pills": ["Haiku", "Sonett", "Freie Verse", "Liebesgedicht"]
     },
     "mode": {
       "simple": "Einfacher Modus",

@@ -205,7 +205,8 @@
       "clear_button": "クリア",
       "output_title": "生成されたプロンプト",
       "output_empty": "クリエイティブなプロンプトがここに表示されます。設定を選択して生成をクリック！",
-      "prompt_count": "プロンプト"
+      "prompt_count": "プロンプト",
+      "theme_pills": ["クイックアイデア", "詳細プロンプト", "AI対応", "ジャンル別"]
     },
     "genres": {
       "fantasy": "ファンタジー",

@@ -264,6 +264,9 @@
       "success_copied": "제목이 클립보드에 복사되었습니다!",
       "success_saved": "기록에 저장되었습니다!",
       "success_cleared": "기록이 삭제되었습니다!"
+    },
+    "ui": {
+      "theme_pills": ["소설", "논픽션", "미스터리", "로맨스"]
     }
   }
 }

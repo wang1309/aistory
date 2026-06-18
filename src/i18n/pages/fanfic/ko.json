@@ -331,7 +331,8 @@
     },
     "ui": {
       "pairing_separator": " × ",
-      "speed_icon": ""
+      "speed_icon": "",
+      "theme_pills": ["슬로우 번", "라이벌에서 연인으로", "현대 AU", "허그"]
     },
     "tabbed": {
       "hero": {

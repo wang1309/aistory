@@ -16,6 +16,7 @@ import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/Turns
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
+import { motion, useReducedMotion } from "framer-motion";
 
 const isDev = process.env.NODE_ENV === "development";
 const devLog = (...args: any[]) => {
@@ -112,6 +113,7 @@ class TitleHistoryStorage {
 
 export default function HeroBooktitle({ section }: { section: HeroBooktitleType }) {
   const locale = useLocale();
+  const reduceMotion = useReducedMotion();
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -546,52 +548,158 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
         </nav>
 
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center mb-14">
-          {/* Double-bezel icon container */}
-          <div className="flex justify-center mb-6">
+        <div className="relative mx-auto max-w-2xl text-center mb-14">
+          {/* Ambient: warm motes */}
+          {!reduceMotion && (
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-visible">
+              {[
+                { left: "12%", top: "18%", size: 5, delay: 0, dur: 10, peak: 0.22 },
+                { left: "88%", top: "22%", size: 6, delay: 1.4, dur: 12, peak: 0.2 },
+                { left: "22%", top: "78%", size: 4, delay: 2.8, dur: 9, peak: 0.16 },
+                { left: "78%", top: "74%", size: 5, delay: 1.8, dur: 11, peak: 0.18 },
+                { left: "32%", top: "12%", size: 4, delay: 3.5, dur: 8, peak: 0.14 },
+                { left: "68%", top: "84%", size: 6, delay: 4.2, dur: 13, peak: 0.2 },
+                { left: "8%", top: "52%", size: 4, delay: 2.2, dur: 9, peak: 0.16 },
+                { left: "92%", top: "48%", size: 5, delay: 5, dur: 11, peak: 0.18 },
+              ].map((d, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                  transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Floating floriated ornaments (typographer's atelier motif) */}
+          {!reduceMotion && (
+            <>
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/55 dark:text-orange-400/55"
+                style={{ left: "4%", top: "44%" }}
+                initial={{ opacity: 0, y: 0, rotate: -8 }}
+                animate={{ opacity: [0, 0.7, 0.7, 0], y: [0, -10, 0], rotate: [-8, -2, -8] }}
+                transition={{ duration: 7.5, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <span className="font-display italic text-4xl leading-none">❦</span>
+              </motion.div>
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-amber-500/55 dark:text-amber-400/55"
+                style={{ right: "5%", top: "40%" }}
+                initial={{ opacity: 0, y: 0, rotate: 10 }}
+                animate={{ opacity: [0, 0.65, 0.65, 0], y: [0, -7, 0], rotate: [10, 4, 10] }}
+                transition={{ duration: 8.5, delay: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <span className="font-display italic text-4xl leading-none">❧</span>
+              </motion.div>
+            </>
+          )}
+
+          {/* Slowly swaying open book with title-lines (manuscript motif) */}
+          {!reduceMotion && (
+            <motion.div
+              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/35 dark:text-orange-400/35"
+              initial={{ opacity: 0, rotate: 0 }}
+              animate={{ opacity: [0, 0.6, 0.45], rotate: [0, 1.5, 0, -1.5, 0] }}
+              transition={{ opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 18, repeat: Infinity, ease: "easeInOut" } }}
+              aria-hidden="true"
+            >
+              <svg width="420" height="280" viewBox="0 0 420 280" fill="none">
+                <path d="M30 80 Q30 60 50 60 L195 60 L210 75 L225 60 L370 60 Q390 60 390 80 L390 230 Q390 250 370 250 L225 250 L210 235 L195 250 L50 250 Q30 250 30 230 Z" stroke="currentColor" strokeWidth="1" fill="currentColor" fillOpacity="0.06" strokeLinejoin="round" />
+                <line x1="210" y1="75" x2="210" y2="235" stroke="currentColor" strokeWidth="0.8" />
+                <line x1="55" y1="100" x2="195" y2="100" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.6" />
+                <line x1="55" y1="125" x2="195" y2="125" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.5" />
+                <line x1="55" y1="150" x2="185" y2="150" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.5" />
+                <line x1="55" y1="175" x2="195" y2="175" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.5" />
+                <line x1="55" y1="200" x2="180" y2="200" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.4" />
+                <line x1="225" y1="100" x2="365" y2="100" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.6" />
+                <line x1="225" y1="125" x2="365" y2="125" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.5" />
+                <line x1="235" y1="150" x2="365" y2="150" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.5" />
+                <line x1="225" y1="175" x2="365" y2="175" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.5" />
+                <line x1="240" y1="200" x2="365" y2="200" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.4" />
+                <rect x="80" y="92" width="90" height="3" fill="currentColor" opacity="0.8" />
+                <rect x="250" y="92" width="90" height="3" fill="currentColor" opacity="0.8" />
+                <path d="M30 60 L30 40 L50 40" stroke="currentColor" strokeWidth="0.8" fill="none" />
+                <path d="M390 60 L390 40 L370 40" stroke="currentColor" strokeWidth="0.8" fill="none" />
+                <path d="M30 250 L30 270 L50 270" stroke="currentColor" strokeWidth="0.8" fill="none" />
+                <path d="M390 250 L390 270 L370 270" stroke="currentColor" strokeWidth="0.8" fill="none" />
+              </svg>
+            </motion.div>
+          )}
+
+          {/* Editorial watermark: floriated ornaments, sparks, diamonds */}
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
+            <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">❦</span>
+            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-amber-500/[0.08] dark:text-amber-400/[0.08]">✦</span>
+            <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.07] dark:text-orange-400/[0.07]">❧</span>
+            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-amber-500/[0.08] dark:text-amber-400/[0.08]">❦</span>
+            <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.06] dark:text-orange-400/[0.06]">✦</span>
+            <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">❧</span>
+          </div>
+
+          {/* Double-bezel icon container with atelier hover flare */}
+          <div className="group relative z-10 flex justify-center mb-6">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+              ❦
+            </span>
+            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+              ✦
+            </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
               <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Icon name="RiQuillPenLine" className="size-6 text-orange-600 dark:text-orange-400" />
+                <Icon name="RiBookOpenLine" className="size-6 text-orange-600 dark:text-orange-400" />
               </div>
             </div>
           </div>
 
           {/* Eyebrow badge */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+          <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
             <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
             AI Writing Tool
           </span>
 
-          {/* Title with gradient split */}
-          <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
+          {/* Title with italic gradient emphasis on highlight */}
+          <h1 className="relative z-10 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
             {section.header.h1_prefix || "Free AI"}{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
               {section.header.h1_highlight || "Book Title"}
             </span>
             {" "}{section.header.h1_suffix || "Generator"}
           </h1>
 
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+          {/* Editorial decorative anchor: floriated + halftone + spark + halftone + rotated floral */}
+          <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
+            <span className="text-orange-500/40 dark:text-orange-400/40 text-base">❦</span>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={`a-${i}`} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+            ))}
+            <span className="text-amber-500/50 dark:text-amber-400/50 text-sm">✦</span>
+            {[3, 5, 7, 5, 3].map((s, i) => (
+              <span key={`b-${i}`} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+            ))}
+            <span className="text-orange-500/40 dark:text-orange-400/40 text-base">❧</span>
           </div>
 
-          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
+          <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
             {section.header.subtitle}
           </p>
+
+          {/* Theme pills */}
+          {section?.ui?.theme_pills?.length ? (
+            <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
+              {section.ui.theme_pills.map((pill: string, i: number) => (
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
+                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         {/* Hero → Tool transition */}

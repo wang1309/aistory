@@ -20,7 +20,8 @@
             "advanced_options": "Erweiterte Optionen",
             "tone": "Ton der Geschichte",
             "generate_button": "Backstory generieren",
-            "generating": "Wird generiert..."
+            "generating": "Wird generiert...",
+            "theme_pills": ["Fantasy", "Sci-Fi", "Moderne Großstadt", "Xianxia"]
         },
         "placeholders": {
             "character_concept": "Beschreiben Sie Ihr Charakterkonzept... (z. B. 'Ein Schurken-Assassine, der nach einer schicksalhaften Begegnung Erlösung sucht')",

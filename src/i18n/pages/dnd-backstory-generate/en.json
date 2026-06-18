@@ -35,10 +35,8 @@
       "extra_constraints": "Extra Constraints",
       "generate_button": "Generate DnD Backstory",
       "generating": "Generating...",
-      "hero_step_1": "Define the character",
-      "hero_step_2": "Add playable details",
-      "hero_step_3": "Generate hooks",
-      "output_title": "Generated DnD Backstory"
+      "output_title": "Generated DnD Backstory",
+      "theme_pills": ["Heroic Fantasy", "Grim Adventure", "Political Intrigue", "Dark Fantasy"]
     },
     "placeholders": {
       "character_concept": "Describe the D&D character you want to build... (e.g. 'A tiefling warlock hiding a pact debt from the party')",

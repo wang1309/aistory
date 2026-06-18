@@ -8,7 +8,8 @@
             "title": "AI POEM TITLE GENERATOR",
             "subtitle": "Generate the perfect title for your poem with AI-powered creativity",
             "meta_title": "Free AI Poem Title Generator | AI Story Generator",
-            "meta_description": "Free AI poem title generator and poem titles generator that instantly creates powerful, click-worthy titles for your poems, social posts, and submissions."
+            "meta_description": "Free AI poem title generator and poem titles generator that instantly creates powerful, click-worthy titles for your poems, social posts, and submissions.",
+            "theme_pills": ["Classical", "Modern", "Imagist", "Romantic"]
         },
         "form": {
             "poem_content": {

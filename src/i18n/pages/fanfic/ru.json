@@ -331,7 +331,8 @@
     },
     "ui": {
       "pairing_separator": " × ",
-      "speed_icon": ""
+      "speed_icon": "",
+      "theme_pills": ["Медленное развитие", "От врагов к возлюбленным", "Современная AU", "Флафф"]
     },
     "tabbed": {
       "hero": {

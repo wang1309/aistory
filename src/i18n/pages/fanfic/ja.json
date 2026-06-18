@@ -331,7 +331,8 @@
     },
     "ui": {
       "pairing_separator": " × ",
-      "speed_icon": ""
+      "speed_icon": "",
+      "theme_pills": ["スローバーン", "敵から恋人へ", "現代パラレル", "ほのぼの"]
     },
     "tabbed": {
       "hero": {

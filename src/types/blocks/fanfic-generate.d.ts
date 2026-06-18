@@ -266,6 +266,7 @@ export interface FanficGenerate {
   ui: {
     pairing_separator: string;
     speed_icon: string;
+    theme_pills?: string[];
   };
   tabbed?: {
     hero?: {

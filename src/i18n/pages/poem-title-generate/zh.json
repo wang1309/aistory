@@ -8,7 +8,8 @@
             "title": "AI 诗歌标题生成器",
             "subtitle": "用 AI 为你的诗歌创作完美的标题",
             "meta_title": "免费 AI 诗歌标题生成器 | AI Story Generator",
-            "meta_description": "免费 AI 诗歌标题生成器，几秒生成富有诗意又吸睛的诗歌标题，支持文学向与社媒向双版本，让你的作品更容易被点击与分享。"
+            "meta_description": "免费 AI 诗歌标题生成器，几秒生成富有诗意又吸睛的诗歌标题，支持文学向与社媒向双版本，让你的作品更容易被点击与分享。",
+            "theme_pills": ["古风", "现代", "意象派", "浪漫"]
         },
         "form": {
             "poem_content": {

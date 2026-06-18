@@ -205,7 +205,8 @@
       "clear_button": "Löschen",
       "output_title": "Generierte Prompts",
       "output_empty": "Ihre kreativen Prompts werden hier angezeigt. Wählen Sie Ihre Einstellungen und klicken Sie auf Generieren!",
-      "prompt_count": "Prompts"
+      "prompt_count": "Prompts",
+      "theme_pills": ["Schnelle Ideen", "Detaillierte Prompts", "AI-Bereit", "Genrespezifisch"]
     },
     "genres": {
       "fantasy": "Fantasy",

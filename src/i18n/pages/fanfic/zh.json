@@ -331,7 +331,8 @@
     },
     "ui": {
       "pairing_separator": " × ",
-      "speed_icon": ""
+      "speed_icon": "",
+      "theme_pills": ["慢热", "宿敌变恋人", "现代AU", "甜文"]
     },
     "tabbed": {
       "hero": {

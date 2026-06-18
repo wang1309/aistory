@@ -22,7 +22,7 @@ import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import ReactMarkdown from "react-markdown";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useAppContext } from "@/contexts/app";
 import type { StoryStatus } from "@/models/story";
 import type { BackstoryGenerate as BackstoryGenerateType } from "@/types/blocks/backstory-generate";
@@ -56,6 +56,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     const locale = useLocale();
     const { user, setShowSignModal } = useAppContext();
     const router = useRouter();
+    const reduceMotion = useReducedMotion();
 
     // Helper function to get nested translations
     const t = (path: string) => {
@@ -545,9 +546,101 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                 </div>
 
                 {/* Header */}
-                <div className="mx-auto max-w-2xl text-center mb-14 sm:mb-18">
-                    {/* Double-bezel icon container */}
-                    <div className="flex justify-center mb-6">
+                <div className="relative mx-auto max-w-2xl text-center mb-14 sm:mb-18">
+                    {/* Ambient ink-mote particle layer */}
+                    {!reduceMotion && (
+                        <div className="pointer-events-none absolute inset-0 overflow-visible z-0" aria-hidden="true">
+                            {[
+                                { left: "8%", top: "16%", size: 4, delay: 0, dur: 9, peak: 0.18 },
+                                { left: "90%", top: "14%", size: 6, delay: 1.5, dur: 11, peak: 0.22 },
+                                { left: "14%", top: "74%", size: 5, delay: 3, dur: 10, peak: 0.16 },
+                                { left: "85%", top: "70%", size: 7, delay: 2, dur: 12, peak: 0.2 },
+                                { left: "30%", top: "20%", size: 4, delay: 4, dur: 8, peak: 0.14 },
+                                { left: "70%", top: "84%", size: 6, delay: 5, dur: 11, peak: 0.18 },
+                                { left: "20%", top: "48%", size: 5, delay: 6, dur: 13, peak: 0.2 },
+                                { left: "78%", top: "36%", size: 4, delay: 1, dur: 9, peak: 0.16 },
+                            ].map((d, i) => (
+                                <motion.span
+                                    key={i}
+                                    className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                                    style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                                    transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                                />
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Floating quill & open-book accents (writer's atelier motif) */}
+                    {!reduceMotion && (
+                        <>
+                            <motion.div
+                                className="pointer-events-none absolute z-[1] text-orange-500/50 dark:text-orange-400/50"
+                                style={{ left: "3%", top: "50%" }}
+                                initial={{ opacity: 0, y: 0, rotate: -8 }}
+                                animate={{ opacity: [0, 0.6, 0.6, 0], y: [0, -8, 0], rotate: [-8, -3, -8] }}
+                                transition={{ duration: 7, delay: 1, repeat: Infinity, ease: "easeInOut" }}
+                                aria-hidden="true"
+                            >
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 21c0-5 2-9 6-13 2.5-2.5 5-4 8-5-1 3-2.5 5.5-5 8-4 4-8 6-9 10z" fill="currentColor" opacity="0.4" />
+                                    <path d="M3 21l8-8 M11 13c2-2 4-3.5 6-5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                                </svg>
+                            </motion.div>
+                            <motion.div
+                                className="pointer-events-none absolute z-[1] text-amber-500/50 dark:text-amber-400/50"
+                                style={{ right: "5%", top: "42%" }}
+                                initial={{ opacity: 0, y: 0, rotate: 10 }}
+                                animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -6, 0], rotate: [10, 4, 10] }}
+                                transition={{ duration: 8, delay: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                                aria-hidden="true"
+                            >
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 6c-2.5-1.5-5.5-2-9-1.5v13c3.5-0.5 6.5 0 9 1.5 2.5-1.5 5.5-2 9-1.5v-13c-3.5-0.5-6.5 0-9 1.5z" stroke="currentColor" strokeWidth="1.2" fill="currentColor" fillOpacity="0.25" strokeLinejoin="round" />
+                                    <path d="M12 6v13" stroke="currentColor" strokeWidth="1" />
+                                </svg>
+                            </motion.div>
+                        </>
+                    )}
+
+                    {/* Slowly rotating writer's compass ring (concentric circles + radial ticks) */}
+                    {!reduceMotion && (
+                        <motion.div
+                            className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/30 dark:text-orange-400/30"
+                            initial={{ opacity: 0, rotate: 0 }}
+                            animate={{ opacity: [0, 0.55, 0.4], rotate: -360 }}
+                            transition={{ opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 80, repeat: Infinity, ease: "linear" } }}
+                            aria-hidden="true"
+                        >
+                            <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+                                <circle cx="180" cy="180" r="170" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 5" />
+                                <circle cx="180" cy="180" r="138" stroke="currentColor" strokeWidth="0.4" />
+                                <circle cx="180" cy="180" r="108" stroke="currentColor" strokeWidth="0.5" strokeDasharray="0.5 4" />
+                                <path d="M180 8 L180 24 M180 336 L180 352 M8 180 L24 180 M336 180 L352 180" stroke="currentColor" strokeWidth="1" />
+                                <path d="M127 127 L138 138 M233 127 L222 138 M127 233 L138 222 M233 233 L222 222" stroke="currentColor" strokeWidth="0.6" />
+                            </svg>
+                        </motion.div>
+                    )}
+
+                    {/* Chapter numerals watermark (editorial italic Roman numerals) */}
+                    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
+                        <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">I</span>
+                        <span className="absolute right-[7%] top-[14%] font-display italic font-bold text-xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">II</span>
+                        <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06]">III</span>
+                        <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">IV</span>
+                        <span className="absolute left-[28%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05]">V</span>
+                        <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06]">VI</span>
+                    </div>
+
+                    {/* Double-bezel icon container with creative hover flare */}
+                    <div className="group relative z-10 flex justify-center mb-6">
+                        <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+                            ✦
+                        </span>
+                        <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+                            ✒
+                        </span>
                         <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
                             <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
                                 <User className="size-6 text-orange-600 dark:text-orange-400" />
@@ -556,40 +649,48 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                     </div>
 
                     {/* Eyebrow badge */}
-                    <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+                    <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
                         <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
                         AI Character Builder
                     </span>
 
-                    {/* Title with gradient split */}
-                    <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+                    {/* Title with italic gradient emphasis on "Backstory" */}
+                    <h1 className="relative z-10 font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
                         Free{" "}
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+                        <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
                             Backstory
                         </span>
                         {" "}Generator
                     </h1>
 
-                    {/* Decorative brush stroke */}
-                    <div className="flex justify-center">
-                        <svg
-                            className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-                            viewBox="0 0 160 12"
-                            fill="none"
-                            preserveAspectRatio="none"
-                        >
-                            <path
-                                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                            />
-                        </svg>
+                    {/* Editorial decorative anchor: rune + halftone + quill + halftone + rune */}
+                    <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
+                        <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">✦</span>
+                        {[3, 5, 7, 5, 3].map((s, i) => (
+                            <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+                        ))}
+                        <span className="text-amber-500/45 dark:text-amber-400/45 text-base">✒</span>
+                        {[3, 5, 7, 5, 3].map((s, i) => (
+                            <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+                        ))}
+                        <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">✧</span>
                     </div>
 
-                    <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
+                    <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
                         {t('ui.subtitle')}
                     </p>
+
+                    {/* Theme pills */}
+                    {section?.ui?.theme_pills?.length ? (
+                        <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
+                            {section.ui.theme_pills.map((pill: string, i: number) => (
+                                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
+                                    <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                                    {pill}
+                                </span>
+                            ))}
+                        </div>
+                    ) : null}
                 </div>
 
                 <GeneratorNavTabs />
@@ -779,7 +880,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                 <Button
                                     onClick={handleGenerateClick}
                                     disabled={isGenerating}
-                                    className="w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
+                                    className="group w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
                                 >
                                     {isGenerating ? (
                                         <>
@@ -788,7 +889,19 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                         </>
                                     ) : (
                                         <>
-                                            <Sparkles className="w-5 h-5 mr-2 fill-white/20" />
+                                            <span className="relative inline-flex items-center justify-center mr-2">
+                                                <Sparkles className="w-5 h-5 relative z-10 fill-white/20" />
+                                                {!reduceMotion && (
+                                                    <svg
+                                                        className="pointer-events-none absolute -inset-2 size-9 text-white/0 group-hover:animate-spark-bloom"
+                                                        viewBox="0 0 24 24"
+                                                        fill="currentColor"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <path d="M12 0 L13.5 9.5 L22 4 L17 12 L24 12 L17 13.5 L22 22 L13.5 16 L12 24 L10.5 16 L2 22 L7 13.5 L0 12 L7 12 L2 4 L10.5 9.5 Z" fill="rgb(255 255 255 / 0.85)" />
+                                                    </svg>
+                                                )}
+                                            </span>
                                             {t('ui.generate_button')}
                                         </>
                                     )}

@@ -8,6 +8,7 @@ export interface HeroPoemTitle {
         subtitle: string;
         meta_title: string;
         meta_description: string;
+        theme_pills?: string[];
     };
     form: {
         poem_content: {

@@ -35,10 +35,8 @@
       "extra_constraints": "额外约束",
       "generate_button": "生成 DnD 背景故事",
       "generating": "生成中...",
-      "hero_step_1": "定义角色",
-      "hero_step_2": "补充可玩细节",
-      "hero_step_3": "生成剧情钩子",
-      "output_title": "生成的 DnD 背景故事"
+      "output_title": "生成的 DnD 背景故事",
+      "theme_pills": ["英雄奇幻", "严峻冒险", "政治阴谋", "黑暗奇幻"]
     },
     "placeholders": {
       "character_concept": "描述你想创建的 D&D 角色，例如：'向邪精灵欠下契约债务并对队友隐瞒真相的提夫林术士'",

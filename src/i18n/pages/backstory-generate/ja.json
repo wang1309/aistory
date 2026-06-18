@@ -20,7 +20,8 @@
             "advanced_options": "詳細オプション",
             "tone": "物語のトーン",
             "generate_button": "バックストーリーを生成",
-            "generating": "生成中..."
+            "generating": "生成中...",
+            "theme_pills": ["ファンタジー", "SF", "現代都市", "仙侠"]
         },
         "placeholders": {
             "character_concept": "キャラクターのコンセプトを説明してください...（例：『運命的な出会いをきっかけに贖罪を求める暗殺者』）",

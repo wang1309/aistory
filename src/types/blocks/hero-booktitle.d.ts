@@ -153,4 +153,8 @@ export interface HeroBooktitle {
     success_saved: string;
     success_cleared: string;
   };
+  ui?: {
+    theme_pills?: string[];
+    [key: string]: unknown;
+  };
 }

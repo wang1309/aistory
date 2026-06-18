@@ -205,7 +205,8 @@
       "clear_button": "지우기",
       "output_title": "생성된 프롬프트",
       "output_empty": "창의적인 프롬프트가 여기에 표시됩니다. 설정을 선택하고 생성을 클릭하세요!",
-      "prompt_count": "프롬프트"
+      "prompt_count": "프롬프트",
+      "theme_pills": ["빠른 아이디어", "상세 프롬프트", "AI 최적화", "장르별"]
     },
     "genres": {
       "fantasy": "판타지",

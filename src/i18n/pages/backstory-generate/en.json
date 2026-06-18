@@ -20,7 +20,8 @@
             "advanced_options": "Advanced Options",
             "tone": "Story Tone",
             "generate_button": "Generate Backstory",
-            "generating": "Generating..."
+            "generating": "Generating...",
+            "theme_pills": ["Fantasy", "Sci-Fi", "Modern Urban", "Xianxia"]
         },
         "placeholders": {
             "character_concept": "Describe your character concept... (e.g., 'A rogue assassin seeking redemption after a fateful encounter')",

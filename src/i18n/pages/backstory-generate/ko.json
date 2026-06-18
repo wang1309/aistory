@@ -20,7 +20,8 @@
             "advanced_options": "고급 옵션",
             "tone": "스토리 톤",
             "generate_button": "백스토리 생성",
-            "generating": "생성 중..."
+            "generating": "생성 중...",
+            "theme_pills": ["판타지", "SF", "현대 도시", "선협"]
         },
         "placeholders": {
             "character_concept": "캐릭터 컨셉을 설명하세요... (예: '운명적인 만남 이후 속죄를 찾는 암살자')",
