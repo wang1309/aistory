@@ -24,6 +24,7 @@ const TABS: NavTab[] = [
   { href: "/book-title-generator", labelKey: "ai_tools.tools.book_title_generator.name" },
   { href: "/poem-title-generator", labelKey: "ai_tools.tools.poem_title_generator.name" },
   { href: "/dialogue-generator", labelKey: "ai_tools.tools.dialogue_generator.name" },
+  { href: "/incorrect-quote-generator", labelKey: "ai_tools.tools.incorrect_quote_generator.name" },
 ];
 
 export default function GeneratorNavTabs() {

@@ -6,6 +6,7 @@
   },
   "ui": {
     "title": "AI対話ジェネレーター",
+    "title_highlight": "対話",
     "subtitle": "AIでキャラクター間の魅力的でリアルな会話を作成",
     "eyebrow": "AIライティングツール",
     "continue_writing": "続きを書く",
@@ -33,7 +34,8 @@
     "remove_character": "削除",
     "advanced_options": "詳細オプション",
     "generate_button": "対話を生成",
-    "generating": "生成中..."
+    "generating": "生成中...",
+    "theme_pills": ["会話", "議論", "告白", "インタビュー"]
   },
   "placeholders": {
     "scenario_prompt": "対話のシナリオやコンテキストを説明してください... (例: '10年ぶりにカフェで再会した2人の旧友')",

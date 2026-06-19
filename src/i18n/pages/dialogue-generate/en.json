@@ -6,6 +6,7 @@
   },
   "ui": {
     "title": "AI Dialogue Generator",
+    "title_highlight": "Dialogue",
     "subtitle": "Create compelling, realistic conversations between characters with AI",
     "eyebrow": "AI Writing Tool",
     "continue_writing": "Continue",
@@ -33,7 +34,8 @@
     "remove_character": "Remove",
     "advanced_options": "Advanced Options",
     "generate_button": "Generate Dialogue",
-    "generating": "Generating..."
+    "generating": "Generating...",
+    "theme_pills": ["Conversation", "Argument", "Confession", "Interview"]
   },
   "placeholders": {
     "scenario_prompt": "Describe the scenario or context for the dialogue... (e.g., 'Two old friends meet after 10 years at a coffee shop')",

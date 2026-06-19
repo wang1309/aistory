@@ -1,0 +1,249 @@
+{
+  "incorrect_quote_generate": {
+    "metadata": {
+      "title": "Free Incorrect Quote Generator | Story Generator",
+      "description": "Generate funny, intentionally wrong quote exchanges for fandom characters, OCs, and roleplay groups. Fast, free, short-form, and easy to share.",
+      "keywords": "incorrect quote generator, fandom quote generator, funny dialogue generator, character quote generator, fanfic prompt tool, incorrect quotes"
+    },
+    "ui": {
+      "title": "Incorrect Quote Generator",
+      "title_highlight": "Incorrect Quote",
+      "subtitle": "Generate short, intentionally wrong quote exchanges with up to six characters, or let the prompt imply the cast.",
+      "eyebrow": "AI Quote Tool",
+      "theme_pills": ["Fandom", "OC banter", "Wrong context", "Quick gag"],
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Incorrect Quote Generator",
+      "prompt_label": "Prompt",
+      "prompt_placeholder": "Describe the setup, misunderstanding, or joke you want the quote to twist.",
+      "random_button": "Random preset",
+      "characters_label": "Characters (optional)",
+      "character_placeholder": "Character name",
+      "add_character": "Add character",
+      "remove_character": "Remove",
+      "options_title": "Generator settings",
+      "relationship_label": "Relationship",
+      "tone_label": "Tone",
+      "length_label": "Length",
+      "mode_label": "AI model",
+      "advanced_options": "Advanced options",
+      "output_language": "Output language",
+      "safety_title": "Safety options",
+      "no_romance": "No romance",
+      "avoid_shipping": "Avoid shipping",
+      "keep_it_clean": "Keep it clean",
+      "generate_button": "Generate incorrect quote",
+      "generating_button": "Generating...",
+      "regenerate_button": "Regenerate",
+      "copy_button": "Copy",
+      "continue_button": "Continue in AI Write",
+      "output_title": "Output",
+      "empty_output": "Your generated quote will appear here.",
+      "generating_output": "Generating your incorrect quote..."
+    },
+    "validation": {
+      "prompt_required": "Enter a prompt first."
+    },
+    "success": {
+      "copied": "Copied to clipboard.",
+      "generated": "Incorrect quote generated.",
+      "continued": "Draft sent to AI Write.",
+      "random_prompt_selected": "Random preset selected."
+    },
+    "errors": {
+      "generate_failed": "Failed to generate incorrect quote.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quickest quote iteration",
+      "standard": "Standard",
+      "standard_description": "Balanced quality and speed",
+      "creative": "Creative",
+      "creative_description": "Looser and punchier output"
+    },
+    "relationship_mode": {
+      "platonic": "Platonic",
+      "rivals": "Rivals",
+      "found_family": "Found family",
+      "chaotic_team": "Chaotic team"
+    },
+    "tone": {
+      "absurd": "Absurd",
+      "dry": "Dry",
+      "sarcastic": "Sarcastic",
+      "wholesome": "Wholesome",
+      "dramatic": "Dramatic"
+    },
+    "length": {
+      "one_liner": "One-liner",
+      "mini_exchange": "Mini exchange",
+      "extended_exchange": "Extended exchange"
+    },
+    "mode": {
+      "fast": "Fast",
+      "standard": "Standard",
+      "creative": "Creative"
+    },
+    "random_prompts": [
+      {
+        "prompt": "The team is trying to explain why the kitchen fire definitely counts as a tactical success.",
+        "characters": ["Avery", "Kai", "Mina"]
+      },
+      {
+        "prompt": "Two rivals are forced to co-host a school announcement and neither agrees on the script.",
+        "characters": ["Rin", "Sol"]
+      },
+      {
+        "prompt": "The healer has been banned from motivational speeches after one very specific incident.",
+        "characters": ["Noor", "Bea", "Ilan"]
+      },
+      {
+        "prompt": "A found-family crew is trying to look normal in public for exactly thirty seconds.",
+        "characters": ["Jules", "Nia", "Pax", "Ivy"]
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What This Incorrect Quote Generator Is Good At",
+      "description": "This tool is built for the moment when you want a fast, funny exchange instead of a full fanfic chapter. It takes a simple setup, your character names, and a few safety constraints, then returns a short speaker-labelled quote that feels easy to post, remix, or use as a writing warmup.\n\nThe focus is speed and shareability. Instead of overbuilding lore, pairings, or long scene structure, it aims for a clean wrong-context joke that fans, roleplayers, and OC creators can iterate on quickly. Treat each run as a prompt to riff on, not a finished scene.",
+      "items": [
+        {
+          "title": "Short-form by default",
+          "description": "Generates compact quote exchanges instead of long prose, which matches how people actually use incorrect quote tools — short, postable, easy to remix into something larger.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "Works for fandoms and OCs",
+          "description": "Use canon characters, original characters, tabletop parties, or friend groups without needing a preset universe.",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "Safe enough for broad sharing",
+          "description": "Quick toggles help avoid romance, shipping cues, or explicit language when you need cleaner outputs.",
+          "icon": "RiShieldCheckLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why People Reach for Short Quotes Before Full Scenes",
+      "description": "The main job is to reduce friction between a funny idea and a usable quote. When a joke lives or dies on the first line, this incorrect quote generator beats opening a blank doc and waiting for a full scene to come together.",
+      "items": [
+        {
+          "title": "Fast joke exploration",
+          "description": "Try a premise, regenerate, and compare variations without waiting for a full scene to develop.",
+          "icon": "RiRepeat2Line"
+        },
+        {
+          "title": "Better character chemistry testing",
+          "description": "See how a group dynamic lands in a few lines before investing in a larger story or roleplay thread.",
+          "icon": "RiChatQuoteLine"
+        },
+        {
+          "title": "Easy handoff into longer writing",
+          "description": "If a quote works, send it straight into AI Write and turn the joke into a longer draft.",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Best Uses: Fandom, OC, and Roleplay Banter",
+      "description": "Best for lightweight creative moments where speed matters more than deep configuration. Drop a setup into the incorrect quote generator, pick a tone, and let the tool handle the dialogue shape.",
+      "items": [
+        {
+          "title": "Fandom creators",
+          "description": "Spin up quick incorrect quotes for ships, gen dynamics, found family groups, or cast-wide chaos.",
+          "icon": "RiBookMarkedLine"
+        },
+        {
+          "title": "OC and roleplay writers",
+          "description": "Stress-test personalities and banter before writing longer scenes or public roleplay intros.",
+          "icon": "RiUserVoiceLine"
+        },
+        {
+          "title": "Social posting and prompts",
+          "description": "Generate compact, readable exchanges that are easy to post in communities, chats, or prompt threads.",
+          "icon": "RiShareForwardLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the Incorrect Quote Generator in 3 Steps",
+      "description": "From blank prompt to postable quote in under a minute — no signup, no setup.",
+      "items": [
+        {
+          "title": "Describe the setup",
+          "description": "Type the situation, misunderstanding, or joke you want the characters to fumble. Add two to six character names, or leave it blank and let the tool fill in generic speakers.",
+          "icon": "RiPencilLine"
+        },
+        {
+          "title": "Pick tone, length, and safety",
+          "description": "Choose a tone (absurd, dry, sarcastic), a length (one-liner to extended exchange), and toggle clean-output safety options for public-friendly posts.",
+          "icon": "RiSlidersLine"
+        },
+        {
+          "title": "Generate, copy, or expand",
+          "description": "Hit generate, copy the quote for sharing, or send it to AI Write to grow a one-liner into a longer scene or roleplay intro.",
+          "icon": "RiRocketLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Incorrect Quote Generator FAQ",
+      "description": "Short answers to the main scope and usage questions.",
+      "items": [
+        {
+          "title": "What makes an incorrect quote different from normal dialogue generation?",
+          "description": "An incorrect quote is intentionally compressed and out-of-context. The goal is a fast punchline or character dynamic, not a natural full scene — closer to a meme caption with named speakers than a polished chapter."
+        },
+        {
+          "title": "Can I use original characters instead of fandom characters?",
+          "description": "Yes. The tool only needs names and a setup prompt, so it works for OCs, roleplay parties, or mixed groups."
+        },
+        {
+          "title": "Can I keep the result non-romantic or cleaner for public posting?",
+          "description": "Yes. The built-in safety toggles can avoid romance, avoid shipping implications, and keep the output clean."
+        },
+        {
+          "title": "What should I do if I want to expand a quote into a full scene?",
+          "description": "Use Continue in AI Write. That sends the generated quote into the writing workspace so you can develop it into a larger draft."
+        },
+        {
+          "title": "Is the incorrect quote generator free to use?",
+          "description": "Yes. You can generate, copy, and continue quotes without signing up. AI Write expansion is also available from the same workflow."
+        },
+        {
+          "title": "How many characters can I add to a single quote?",
+          "description": "Between two and six named characters. If you leave the character fields blank, the generator will assign generic speakers based on your prompt."
+        },
+        {
+          "title": "What output languages does the tool support?",
+          "description": "English, Chinese, German, Korean, Japanese, and Russian. Pick an output language in the form before you generate, and the quote will be written in that language."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Spin Up Your First Misread Quote",
+      "description": "Run the incorrect quote generator now, keep the funny ones, and send the best lines to AI Write when you want to expand them into a larger draft.",
+      "buttons": [
+        {
+          "title": "Try it now",
+          "url": "#incorrect_quote_generator"
+        },
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    }
+  }
+}

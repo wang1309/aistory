@@ -8,6 +8,7 @@ export interface DialogueGenerate {
   };
   ui: {
     title: string;
+    title_highlight?: string;
     subtitle: string;
     breadcrumb_home: string;
     breadcrumb_current: string;
@@ -29,6 +30,7 @@ export interface DialogueGenerate {
     advanced_options: string;
     generate_button: string;
     generating: string;
+    theme_pills?: string[];
   };
   placeholders: {
     scenario_prompt: string;

@@ -21,84 +21,104 @@
               "description": "AI로 몰입감 있는 판타지 스토리 생성",
               "url": "/fantasy-generator",
               "icon": "RiSparkling2Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "책 제목 생성기",
               "description": "AI로 창의적인 책 제목 생성",
               "url": "/book-title-generator",
               "icon": "RiBookOpenLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "팬픽 생성기",
               "description": "AI로 팬픽션 작성 - 캐릭터 페어링, 플롯 제어, 프리셋 작품 지원",
               "url": "/fanfic-generator",
               "icon": "RiBookMarkedLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "플롯 생성기",
               "description": "상세한 스토리 아웃라인과 플롯 구조 생성",
               "url": "/plot-generator",
               "icon": "RiMapLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "시 생성기",
               "description": "AI 기반 시 창작 - 현대시, 고전시, 하이쿠 등 다양한 형식 지원",
               "url": "/poem-generator",
               "icon": "RiQuillPenLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "시 제목 생성기",
               "description": "시의 문학적 또는 플랫폼용 제목 생성",
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "백스토리 생성기",
               "description": "RPG, 소설, VTuber를 위한 구조화된 캐릭터 배경 생성",
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "DnD 백스토리 생성기",
               "description": "종족, 클래스, 목표, 약점, DM 훅을 포함한 플레이용 DnD 배경 설정 생성",
               "url": "/dnd-backstory-generator",
               "icon": "RiSwordLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "대화 생성기",
               "description": "스토리, 대본, 게임을 위한 사실적인 캐릭터 대화 생성",
               "url": "/dialogue-generator",
               "icon": "RiChat3Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "만화 생성기",
               "description": "만화 대사, 나레이션, 컷별 스크립트를 생성하는 AI 도구",
               "url": "/comic-generator",
               "icon": "RiLayoutGridLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "취침 이야기 생성기",
               "description": "AI로 어린이를 위한 연령에 맞는 취침 이야기를 만드세요. 무료 무제한.",
               "url": "/bedtime-story-generator",
               "icon": "RiMoonLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "로맨스 소설 생성기",
               "description": "원하는 서브장르, 트로프, 달콤함 수준으로 오리지널 로맨스 소설을 AI로 생성하세요. 무료 무제한.",
               "url": "/romance-story-generator",
               "icon": "RiHeartLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
+            },
+            {
+              "title": "잘못된 인용 생성기",
+              "description": "팬덤 캐릭터, OC, 그룹 조합을 위한 짧고 일부러 어긋난 인용 대사를 빠르게 생성합니다.",
+              "url": "/incorrect-quote-generator",
+              "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -845,6 +865,19 @@
               "title": "로맨스 소설 생성기",
               "url": "/romance-story-generator",
               "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "크리에이티브",
+          "children": [
+            {
+              "title": "잘못된 인용 생성기",
+              "description": "팬덤 캐릭터와 그룹을 위한 짧고 일부러 어긋난 인용 대사 생성.",
+              "url": "/incorrect-quote-generator",
+              "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         },

@@ -21,91 +21,112 @@
               "description": "Generate creative story prompts and ideas instantly",
               "url": "/story-prompt-generator",
               "icon": "RiLightbulbLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Fantasy Story Generator",
               "description": "Create immersive fantasy stories with AI – epic quests, xianxia and more",
               "url": "/fantasy-generator",
               "icon": "RiSparkling2Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Book Title Generator",
               "description": "Generate creative book titles with AI",
               "url": "/book-title-generator",
               "icon": "RiBookOpenLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Fanfic Generator",
               "description": "Create fanfiction with AI - character pairings, plot control, and preset works",
               "url": "/fanfic-generator",
               "icon": "RiBookMarkedLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Plot Generator",
               "description": "Generate detailed story outlines and plot structures",
               "url": "/plot-generator",
               "icon": "RiMapLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Poem Generator",
               "description": "AI-powered poetry creation - support modern poetry, classical poems, haiku and more",
               "url": "/poem-generator",
               "icon": "RiQuillPenLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Poem Title Generator",
               "description": "Generate creative, evocative titles for your poems – literary or viral-ready",
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Backstory Generator",
               "description": "Create rich, structured character backstories for RPGs, novels, and VTubers",
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "DnD Backstory Generator",
               "description": "Generate playable DnD character backstories with class, race, goals, flaws, and DM hooks",
               "url": "/dnd-backstory-generator",
               "icon": "RiSwordLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Dialogue Generator",
               "description": "Generate realistic character dialogues for stories, scripts, and games",
               "url": "/dialogue-generator",
               "icon": "RiChat3Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Comic Generator",
               "description": "Generate comic dialogue, narration, and panel-by-panel scripts for manga and webtoon",
               "url": "/comic-generator",
               "icon": "RiLayoutGridLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Bedtime Story Generator",
               "description": "Create personalized, age-appropriate bedtime stories for children with AI. Free and unlimited.",
               "url": "/bedtime-story-generator",
               "icon": "RiMoonLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Romance Story Generator",
               "description": "Generate original romance stories with your favorite trope, sub-genre, and heat level. Free AI romance writer.",
               "url": "/romance-story-generator",
               "icon": "RiHeartLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
+            },
+            {
+              "title": "Incorrect Quote Generator",
+              "description": "Generate funny, intentionally wrong quote exchanges for fandom characters, OCs, and roleplay groups.",
+              "url": "/incorrect-quote-generator",
+              "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -852,6 +873,19 @@
               "title": "Romance Story Generator",
               "url": "/romance-story-generator",
               "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Creative",
+          "children": [
+            {
+              "title": "Incorrect Quote Generator",
+              "description": "Funny, intentionally wrong quote exchanges for fandom characters and groups.",
+              "url": "/incorrect-quote-generator",
+              "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         },

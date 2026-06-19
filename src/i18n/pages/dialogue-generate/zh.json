@@ -6,6 +6,7 @@
   },
   "ui": {
     "title": "AI 对话生成器",
+    "title_highlight": "对话",
     "subtitle": "使用 AI 创建引人入胜、逼真的角色对话",
     "eyebrow": "AI 写作工具",
     "continue_writing": "续写",
@@ -33,7 +34,8 @@
     "remove_character": "移除",
     "advanced_options": "高级选项",
     "generate_button": "生成对话",
-    "generating": "生成中..."
+    "generating": "生成中...",
+    "theme_pills": ["日常对话", "激烈争论", "深情告白", "访谈问答"]
   },
   "placeholders": {
     "scenario_prompt": "描述对话的场景或背景... (例如：'两个老朋友在咖啡店相遇，已经10年没见了')",

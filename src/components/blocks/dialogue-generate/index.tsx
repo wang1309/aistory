@@ -4,7 +4,7 @@ import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect, ReactNode } from "react";
 import { useLocale } from "next-intl";
 import { toast } from "sonner";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import TurnstileInvisible, {
@@ -71,6 +71,7 @@ function RequiredLabel({ children, htmlFor }: { children: ReactNode; htmlFor?: s
 export default function DialogueGenerate({ section }: DialogueGenerateProps) {
   const locale = useLocale();
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const outputScrollRef = useRef<HTMLDivElement | null>(null);
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
@@ -504,47 +505,245 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
         </div>
 
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center mb-14">
-          {/* Double-bezel icon container */}
-          <div className="flex justify-center mb-6">
+        <div className="relative mx-auto text-center mb-14">
+          {/* Ambient: speech exchange / twin voices motif */}
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-visible" aria-hidden>
+            {/* Central twin speech bubbles with resonance arcs (gentle breathe) */}
+            {!reduceMotion && (
+              <motion.svg
+                className="absolute left-1/2 top-1/2 h-[440px] w-[520px] -translate-x-1/2 -translate-y-1/2 text-orange-500/[0.07] dark:text-orange-400/[0.05]"
+                viewBox="0 0 260 220"
+                fill="none"
+                aria-hidden
+                initial={{ opacity: 0, scale: 0.94 }}
+                animate={{ opacity: [0.65, 1, 0.65], scale: [0.99, 1, 0.99] }}
+                transition={{ duration: 7, repeat: Infinity, ease: [0.32, 0.72, 0, 1] }}
+              >
+                {/* Resonance arcs between bubbles (sound waves) */}
+                <g stroke="currentColor" strokeWidth="0.5" fill="none" strokeLinecap="round">
+                  <path d="M 125 88 Q 132 110 125 132" opacity="0.5" />
+                  <path d="M 117 82 Q 128 110 117 138" opacity="0.35" />
+                  <path d="M 109 76 Q 124 110 109 144" opacity="0.22" />
+                </g>
+
+                {/* Left speech bubble (rotated -3deg, tail pointing right-down) */}
+                <g transform="rotate(-3 68 78)">
+                  <path
+                    d="M 30 46 Q 30 38 38 38 L 98 38 Q 106 38 106 46 L 106 88 Q 106 96 98 96 L 64 96 L 50 110 L 54 96 L 38 96 Q 30 96 30 88 Z"
+                    stroke="currentColor"
+                    strokeWidth="0.7"
+                    strokeLinejoin="round"
+                    fill="currentColor"
+                    fillOpacity="0.06"
+                  />
+                  <circle cx="52" cy="67" r="1.8" fill="currentColor" opacity="0.6" />
+                  <circle cx="68" cy="67" r="1.8" fill="currentColor" opacity="0.6" />
+                  <circle cx="84" cy="67" r="1.8" fill="currentColor" opacity="0.6" />
+                </g>
+
+                {/* Right speech bubble (rotated +3deg, tail pointing left-down) */}
+                <g transform="rotate(3 192 134)">
+                  <path
+                    d="M 154 102 Q 154 94 162 94 L 222 94 Q 230 94 230 102 L 230 144 Q 230 152 222 152 L 196 152 L 210 166 L 182 152 L 162 152 Q 154 152 154 144 Z"
+                    stroke="currentColor"
+                    strokeWidth="0.7"
+                    strokeLinejoin="round"
+                    fill="currentColor"
+                    fillOpacity="0.06"
+                  />
+                  <circle cx="176" cy="123" r="1.8" fill="currentColor" opacity="0.6" />
+                  <circle cx="192" cy="123" r="1.8" fill="currentColor" opacity="0.6" />
+                  <circle cx="208" cy="123" r="1.8" fill="currentColor" opacity="0.6" />
+                </g>
+
+                {/* Halo rings around the exchange */}
+                <circle cx="130" cy="110" r="102" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 5" opacity="0.4" />
+                <circle cx="130" cy="110" r="80" stroke="currentColor" strokeWidth="0.3" strokeDasharray="0.5 3" opacity="0.3" />
+              </motion.svg>
+            )}
+
+            {/* Floating quote mark glyph — left */}
+            {!reduceMotion && (
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/40 dark:text-orange-400/40"
+                style={{ left: "8%", top: "26%" }}
+                initial={{ opacity: 0, y: 0, rotate: -8 }}
+                animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -10, 0], rotate: [-8, -3, -8] }}
+                transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <span className="block font-display text-5xl italic font-bold">&ldquo;</span>
+              </motion.div>
+            )}
+
+            {/* Floating ellipsis glyph — right */}
+            {!reduceMotion && (
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/35 dark:text-orange-400/35"
+                style={{ right: "10%", top: "36%" }}
+                initial={{ opacity: 0, y: 0 }}
+                animate={{ opacity: [0, 0.5, 0.5, 0], y: [0, 8, 0] }}
+                transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <span className="block font-display text-4xl font-bold tracking-[0.1em]">&hellip;</span>
+              </motion.div>
+            )}
+
+            {/* Floating guillemet — right bottom */}
+            {!reduceMotion && (
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/30 dark:text-orange-400/30"
+                style={{ right: "20%", bottom: "18%" }}
+                initial={{ opacity: 0, y: 0, rotate: 6 }}
+                animate={{ opacity: [0, 0.45, 0.45, 0], y: [0, -7, 0], rotate: [6, 10, 6] }}
+                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <span className="block font-display text-3xl italic font-bold">&laquo;</span>
+              </motion.div>
+            )}
+
+            {/* Floating closing quote — left bottom */}
+            {!reduceMotion && (
+              <motion.div
+                className="pointer-events-none absolute z-[1] text-orange-500/30 dark:text-orange-400/30"
+                style={{ left: "14%", bottom: "22%" }}
+                initial={{ opacity: 0, y: 0, rotate: 0 }}
+                animate={{ opacity: [0, 0.4, 0.4, 0], y: [0, 6, 0], rotate: [0, -8, 0] }}
+                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <span className="block font-display text-3xl italic font-bold">&rdquo;</span>
+              </motion.div>
+            )}
+
+            {/* Warm dust motes */}
+            {!reduceMotion &&
+              [
+                { left: "12%", top: "16%", size: 4, delay: 0, dur: 10, peak: 0.22 },
+                { left: "84%", top: "20%", size: 5, delay: 1.4, dur: 12, peak: 0.2 },
+                { left: "22%", top: "72%", size: 4, delay: 2.8, dur: 9, peak: 0.18 },
+                { left: "78%", top: "68%", size: 5, delay: 1.8, dur: 11, peak: 0.2 },
+                { left: "32%", top: "10%", size: 4, delay: 3.5, dur: 8, peak: 0.16 },
+                { left: "68%", top: "82%", size: 5, delay: 4.2, dur: 13, peak: 0.2 },
+                { left: "8%", top: "52%", size: 4, delay: 2.2, dur: 9, peak: 0.18 },
+                { left: "90%", top: "48%", size: 5, delay: 5, dur: 11, peak: 0.2 },
+              ].map((d, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
+                  transition={{ duration: d.dur, delay: d.delay, repeat: Infinity, ease: "easeInOut" }}
+                />
+              ))}
+
+            {/* Editorial watermark: quote + ellipsis + guillemet (scattered glyphs) */}
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
+              <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">&ldquo;</span>
+              <span className="absolute right-[7%] top-[14%] font-display font-bold text-xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">&hellip;</span>
+              <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.07] dark:text-orange-400/[0.07]">&laquo;</span>
+              <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">&rdquo;</span>
+              <span className="absolute left-[28%] top-[8%] font-display font-bold text-base text-orange-500/[0.06] dark:text-orange-400/[0.06]">&hellip;</span>
+              <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">&raquo;</span>
+            </div>
+          </div>
+
+          {/* Double-bezel icon container with quote hover flare */}
+          <div className="group relative z-10 flex justify-center mb-6">
+            <span className="pointer-events-none absolute left-[calc(50%-2.5rem)] top-0 font-display text-2xl italic font-bold text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110" aria-hidden>
+              &ldquo;
+            </span>
+            <span className="pointer-events-none absolute right-[calc(50%-2.5rem)] top-0 font-display text-2xl italic font-bold text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110" aria-hidden>
+              &laquo;
+            </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
               <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Icon name="RiChat3Line" className="size-6 text-orange-600 dark:text-orange-400" />
+                <Icon name="RiDoubleQuotesL" className="size-6 text-orange-600 dark:text-orange-400" />
               </div>
             </div>
           </div>
 
           {/* Eyebrow badge */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
+          <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
             <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
             {t("ui.eyebrow")}
           </span>
 
-          {/* Title with gradient split */}
-          <h1 className="font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-            {t("ui.title")}
+          {/* Title */}
+          <h1 className="relative z-10 font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.08] mt-4">
+            <span className="group relative inline-block">
+              <span
+                className="pointer-events-none absolute -top-5 left-0 hidden md:block font-display text-xl italic font-bold text-orange-500/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-orange-500/60 dark:group-hover:text-orange-400/60"
+                aria-hidden
+              >
+                &ldquo;
+              </span>
+              {(() => {
+                const titleText = t("ui.title");
+                const highlight = section?.ui?.title_highlight;
+                if (!highlight || !titleText.includes(highlight)) {
+                  return titleText;
+                }
+                const idx = titleText.indexOf(highlight);
+                return (
+                  <>
+                    {titleText.slice(0, idx)}
+                    <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 bg-clip-text italic text-transparent dark:from-orange-400 dark:via-orange-500 dark:to-orange-300">
+                      {highlight}
+                    </span>
+                    {titleText.slice(idx + highlight.length)}
+                  </>
+                );
+              })()}
+              <span
+                className="pointer-events-none absolute -top-5 right-0 hidden md:block font-display text-xl italic font-bold text-orange-500/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-orange-500/60 dark:group-hover:text-orange-400/60"
+                aria-hidden
+              >
+                &laquo;
+              </span>
+            </span>
           </h1>
 
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-3 mb-5 h-2.5 w-28 text-orange-500/20"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+          {/* Editorial decorative anchor: quote + halftone + ellipsis + halftone + guillemet */}
+          <div className="relative z-10 mt-4 mb-5 flex items-center justify-center gap-3 text-orange-500/40 dark:text-orange-400/30">
+            <span className="font-display text-lg italic font-bold">&ldquo;</span>
+            <span className="flex h-3 items-center gap-[2px]" aria-hidden>
+              <span className="size-[3px] rounded-full bg-current opacity-90" />
+              <span className="size-[3px] rounded-full bg-current opacity-70" />
+              <span className="size-[3px] rounded-full bg-current opacity-50" />
+              <span className="size-[3px] rounded-full bg-current opacity-30" />
+            </span>
+            <span className="text-base leading-none font-bold tracking-[0.1em]">&hellip;</span>
+            <span className="flex h-3 items-center gap-[2px]" aria-hidden>
+              <span className="size-[3px] rounded-full bg-current opacity-30" />
+              <span className="size-[3px] rounded-full bg-current opacity-50" />
+              <span className="size-[3px] rounded-full bg-current opacity-70" />
+              <span className="size-[3px] rounded-full bg-current opacity-90" />
+            </span>
+            <span className="font-display text-base italic font-bold">&laquo;</span>
           </div>
 
-          <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
+          <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
             {t("ui.subtitle")}
           </p>
+
+          {/* Theme pills: dialogue archetypes */}
+          {section?.ui?.theme_pills?.length ? (
+            <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
+              {section.ui.theme_pills.map((pill: string, i: number) => (
+                <span
+                  key={`${pill}-${i}`}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                >
+                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         <GeneratorNavTabs />

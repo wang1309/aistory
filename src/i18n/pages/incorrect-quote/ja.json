@@ -1,0 +1,237 @@
+{
+  "incorrect_quote_generate": {
+    "metadata": {
+      "title": "無料誤引用ジェネレーター | Story Generator",
+      "description": "ファンダムキャラ、OC、グループ向けに、わざとズレた短い quote 会話をすばやく生成します。無料で使えて共有もしやすいです。",
+      "keywords": "incorrect quote generator, ファンダム 会話生成, キャラクター quote, 短文 会話ツール"
+    },
+    "ui": {
+      "title": "誤引用ジェネレーター",
+      "title_highlight": "誤引用",
+      "subtitle": "最大6人までのキャラで、わざとズレた短い会話を生成できます。キャラ名なしで状況だけから作ることもできます。",
+      "eyebrow": "AI セリフツール",
+      "theme_pills": ["ファンダム", "OC掛け合い", "すれ違い", "ショートネタ"],
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "誤引用ジェネレーター",
+      "prompt_label": "プロンプト",
+      "prompt_placeholder": "誤解、ネタ、すれ違いの状況を入力してください。",
+      "random_button": "ランダム体験",
+      "characters_label": "キャラクター（任意）",
+      "character_placeholder": "キャラクター",
+      "add_character": "キャラを追加",
+      "remove_character": "削除",
+      "options_title": "生成設定",
+      "relationship_label": "関係性",
+      "tone_label": "トーン",
+      "length_label": "長さ",
+      "mode_label": "AIモデル",
+      "advanced_options": "詳細オプション",
+      "output_language": "出力言語",
+      "safety_title": "安全設定",
+      "no_romance": "恋愛なし",
+      "avoid_shipping": "カップリング回避",
+      "keep_it_clean": "クリーンにする",
+      "generate_button": "誤引用を生成",
+      "generating_button": "生成中...",
+      "regenerate_button": "再生成",
+      "copy_button": "コピー",
+      "continue_button": "AI Write で続ける",
+      "output_title": "出力",
+      "empty_output": "生成結果はここに表示されます。",
+      "generating_output": "誤引用を生成しています..."
+    },
+    "validation": {
+      "prompt_required": "まずプロンプトを入力してください。"
+    },
+    "success": {
+      "copied": "クリップボードにコピーしました。",
+      "generated": "誤引用を生成しました。",
+      "continued": "下書きを AI Write に送りました。",
+      "random_prompt_selected": "ランダムな体験用プリセットを入れました。"
+    },
+    "errors": {
+      "generate_failed": "生成に失敗しました。",
+      "verification_failed": "認証に失敗しました。再試行してください。"
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "素早く何度も試したいとき向け",
+      "standard": "Standard",
+      "standard_description": "品質と速度のバランス型",
+      "creative": "Creative",
+      "creative_description": "より自由でパンチのある出力"
+    },
+    "relationship_mode": {
+      "platonic": "友情",
+      "rivals": "ライバル",
+      "found_family": "疑似家族",
+      "chaotic_team": "カオスなチーム"
+    },
+    "tone": {
+      "absurd": "不条理",
+      "dry": "ドライ",
+      "sarcastic": "皮肉",
+      "wholesome": "ほのぼの",
+      "dramatic": "ドラマチック"
+    },
+    "length": {
+      "one_liner": "一言ネタ",
+      "mini_exchange": "短いやり取り",
+      "extended_exchange": "少し長めのやり取り"
+    },
+    "mode": {
+      "fast": "Fast",
+      "standard": "Standard",
+      "creative": "Creative"
+    },
+    "random_prompts": [
+      {
+        "prompt": "チームは、なぜキッチン火災が戦術的成功なのか説明しようとしている。",
+        "characters": ["アヴェリー", "カイ", "ミナ"]
+      },
+      {
+        "prompt": "犬猿の仲の二人が校内放送を共同で担当することになったが、台本でまったく折り合わない。",
+        "characters": ["リン", "ソル"]
+      },
+      {
+        "prompt": "ヒーラーは、ある事件のせいで人を励ますスピーチを禁止された。",
+        "characters": ["ノア", "ベア", "イラン"]
+      },
+      {
+        "prompt": "疑似家族っぽいクルーが、三十秒だけ公共の場で普通に振る舞おうとしている。",
+        "characters": ["ジュールズ", "ニア", "パックス", "アイヴィ"]
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "この誤引用ジェネレーターが向いていること",
+      "description": "このツールは長い二次創作を書くためではなく、ちょっとした面白い発想を数行の quote に圧縮するためのものです。状況、キャラ名、簡単な制約を入れると、共有しやすい短い会話が返ってきます。\n\n重要なのは速さと軽さです。重い設定づくりではなく、キャラ同士の空気感やネタの当たりをすぐ試せます。",
+      "items": [
+        {
+          "title": "最初から短文向き",
+          "description": "長文シーンではなく、投稿しやすい短い quote 会話を返します。",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "ファンダムにも OC にも使える",
+          "description": "版権キャラでもオリジナルキャラでも、TRPG パーティでも使えます。",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "公開向けに調整しやすい",
+          "description": "恋愛要素、カップリング示唆、表現の強さを簡単に抑えられます。",
+          "icon": "RiShieldCheckLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "利点",
+      "title": "なぜ長文ツールより先に誤引用を使うのか",
+      "description": "面白い発想をすぐ使える形にすることが主な価値です。",
+      "items": [
+        {
+          "title": "ネタを素早く試せる",
+          "description": "同じ設定で何度か再生成し、どの方向が一番面白いか比較できます。",
+          "icon": "RiRepeat2Line"
+        },
+        {
+          "title": "キャラ相性の確認に向く",
+          "description": "長いシーンを書く前に、数行で会話の温度感を確認できます。",
+          "icon": "RiChatQuoteLine"
+        },
+        {
+          "title": "長文へつなげやすい",
+          "description": "気に入った quote は AI Write に送ってそのまま拡張できます。",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "用途",
+      "title": "この誤引用ジェネレーターを使う人",
+      "description": "深い設定よりも、素早い短文アウトプットがほしい人向けです。",
+      "items": [
+        {
+          "title": "ファンダム創作者",
+          "description": "キャラ集合、友情組、カオスなメンバー構成のネタ出しに向いています。",
+          "icon": "RiBookMarkedLine"
+        },
+        {
+          "title": "OC とロールプレイ書き手",
+          "description": "本格的に書く前に、口調や掛け合いを短く試せます。",
+          "icon": "RiUserVoiceLine"
+        },
+        {
+          "title": "コミュニティ投稿用",
+          "description": "掲示板、チャット、プロンプト投稿に載せやすい短い会話を作れます。",
+          "icon": "RiShareForwardLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "誤引用ジェネレーターを3ステップで使う",
+      "description": "プロンプトから投稿用セリフまで1分以内。登録も設定も不要です。",
+      "items": [
+        {
+          "title": "状況を書く",
+          "description": "キャラがしくじる状況、誤解、ネタを書き、2〜6人のキャラ名を入れます。空欄でもOK。ツールがプロンプトに合う話し手を補います。",
+          "icon": "RiPencilLine"
+        },
+        {
+          "title": "トーン・長さ・安全設定",
+          "description": "トーン（不条理、ドライ、皮肉）と長さ（一言ネタから長めのやり取り）を選び、公開向けにクリーン出力オプションをオンにします。",
+          "icon": "RiSlidersLine"
+        },
+        {
+          "title": "生成・コピー・拡張",
+          "description": "生成ボタンを押し、セリフをコピーして共有するか、AI Write に送って一言ネタを長いシーンやロールプレイ導入に広げます。",
+          "icon": "RiRocketLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "誤引用ジェネレーター FAQ",
+      "description": "使い方と範囲についての基本情報です。",
+      "items": [
+        {
+          "title": "通常の会話生成との違いは何ですか？",
+          "description": "通常の会話生成は自然なシーン寄りですが、こちらは短く、文脈ズレの面白さを優先します。"
+        },
+        {
+          "title": "オリジナルキャラでも使えますか？",
+          "description": "はい。キャラ名と状況があれば使えます。"
+        },
+        {
+          "title": "恋愛要素や強い表現を避けられますか？",
+          "description": "はい。恋愛なし、カップリング回避、クリーン表現の設定があります。"
+        },
+        {
+          "title": "気に入った quote を長いシーンにできますか？",
+          "description": "できます。AI Write に送ってそのまま続きを書けます。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "まずはズレた一言から始める",
+      "description": "短い quote を作って、良かったものだけ後で長い文章に広げてください。",
+      "buttons": [
+        {
+          "title": "今すぐ試す",
+          "url": "#incorrect_quote_generator"
+        },
+        {
+          "title": "AI Write を開く",
+          "url": "/ai-write"
+        }
+      ]
+    }
+  }
+}

@@ -5,9 +5,17 @@ export type ToolCategory =
   | "title"
   | "fanfic"
   | "plot"
-  | "poem";
+  | "poem"
+  | "dialogue";
 
 export type ToolBadge = "hot" | "new";
+
+/**
+ * Top-level grouping used to split a module's tool list into tabs.
+ * - "story"  — core writing tools (default)
+ * - "creative" — genre play / format-specific creative tools
+ */
+export type ToolTab = "story" | "creative";
 
 export interface Tool {
   slug: string;
@@ -21,6 +29,7 @@ export interface Tool {
   shortDescKey: string;
   module: ModuleId;
   category: ToolCategory;
+  tab?: ToolTab;
   /**
    * Absolute path (without locale prefix), e.g. "/book-title-generator".
    */
@@ -85,10 +94,22 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.dialogue_generator.name",
     shortDescKey: "ai_tools.tools.dialogue_generator.desc",
     module: "ai-write",
-    category: "story",
+    category: "dialogue",
     href: "/dialogue-generator",
     icon: "RiChat3Line",
     priority: 78,
+  },
+  {
+    slug: "incorrect-quote-generator",
+    nameKey: "ai_tools.tools.incorrect_quote_generator.name",
+    shortDescKey: "ai_tools.tools.incorrect_quote_generator.desc",
+    module: "ai-write",
+    category: "dialogue",
+    tab: "creative",
+    href: "/incorrect-quote-generator",
+    icon: "RiDoubleQuotesL",
+    badges: ["new"],
+    priority: 77,
   },
   {
     slug: "comic-generator",

@@ -21,84 +21,104 @@
               "description": "Создавайте с ИИ атмосферные фэнтези‑истории",
               "url": "/fantasy-generator",
               "icon": "RiSparkling2Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Генератор названий книг",
               "description": "Создавайте креативные названия книг с помощью ИИ",
               "url": "/book-title-generator",
               "icon": "RiBookOpenLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Генератор фанфиков",
               "description": "Создавайте фанфики с ИИ - парings персонажей, контроль сюжета и готовые работы",
               "url": "/fanfic-generator",
               "icon": "RiBookMarkedLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Генератор сюжетов",
               "description": "Создавайте подробные описания историй и сюжетные структуры",
               "url": "/plot-generator",
               "icon": "RiMapLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Генератор стихов",
               "description": "Создание стихов с помощью ИИ - поддержка современной поэзии, классических стихов, хайку и многого другого",
               "url": "/poem-generator",
               "icon": "RiQuillPenLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Генератор названий стихов",
               "description": "Создавайте литературные или вирусные названия для стихов",
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Генератор предысторий",
               "description": "Создавайте структурированные предыстории персонажей для RPG, романов и VTuber",
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "DnD генератор предысторий",
               "description": "Создавайте игровые DnD-предыстории с расой, классом, целями, слабостями и зацепками для DM",
               "url": "/dnd-backstory-generator",
               "icon": "RiSwordLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Генератор диалогов",
               "description": "Создавайте реалистичные диалоги персонажей для историй, сценариев и игр",
               "url": "/dialogue-generator",
               "icon": "RiChat3Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Генератор комиксов",
               "description": "Создавайте диалоги, текст и панельные сценарии для манги и вебтунов",
               "url": "/comic-generator",
               "icon": "RiLayoutGridLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Генератор сказок на ночь",
               "description": "Создавайте с ИИ персонализированные, возрастные сказки для детей. Бесплатно.",
               "url": "/bedtime-story-generator",
               "icon": "RiMoonLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Генератор романтических историй",
               "description": "Создавайте оригинальные романтические истории с ИИ — выбирайте поджанр, тропы и уровень страсти. Бесплатно.",
               "url": "/romance-story-generator",
               "icon": "RiHeartLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
+            },
+            {
+              "title": "Генератор неверных цитат",
+              "description": "Быстро создавайте короткие намеренно неправильные quote-диалоги для фандомных персонажей и групп.",
+              "url": "/incorrect-quote-generator",
+              "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -845,6 +865,19 @@
               "title": "Генератор романтических историй",
               "url": "/romance-story-generator",
               "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Творчество",
+          "children": [
+            {
+              "title": "Генератор неверных цитат",
+              "description": "Короткие намеренно неправильные диалоги для фандомных персонажей и групп.",
+              "url": "/incorrect-quote-generator",
+              "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         },

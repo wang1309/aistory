@@ -17,6 +17,7 @@ const GENERATOR_IDS = [
   "poem_generator",        // Poem Generator
   "poem_title_generator",  // Poem Title Generator
   "story_prompt_generator", // Story Prompt Generator
+  "incorrect_quote_generator", // Incorrect Quote Generator
 ];
 
 interface ScrollToGeneratorProps {

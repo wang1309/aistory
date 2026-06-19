@@ -1,0 +1,237 @@
+{
+  "incorrect_quote_generate": {
+    "metadata": {
+      "title": "Kostenloser Falsch-Zitat-Generator | Story Generator",
+      "description": "Erzeuge kurze, absichtlich falsche Quote-Dialoge für Fandom-Charaktere, OCs und Gruppen. Schnell, kostenlos und leicht zu teilen.",
+      "keywords": "incorrect quote generator, fandom dialog generator, character quote tool, kurzer dialog generator"
+    },
+    "ui": {
+      "title": "Falsch-Zitat-Generator",
+      "title_highlight": "Falsch-Zitat",
+      "subtitle": "Erzeuge kurze, absichtlich falsche Dialoge mit bis zu sechs Charakteren oder lass den Prompt die Figuren vorgeben.",
+      "eyebrow": "KI-Zitat-Tool",
+      "theme_pills": ["Fandom", "OC-Banter", "Falscher Kontext", "Schneller Gag"],
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Falsch-Zitat-Generator",
+      "prompt_label": "Prompt",
+      "prompt_placeholder": "Beschreibe das Missverständnis, den Witz oder die verdrehte Situation.",
+      "random_button": "Zufalls-Start",
+      "characters_label": "Charaktere (optional)",
+      "character_placeholder": "Charakter",
+      "add_character": "Charakter hinzufügen",
+      "remove_character": "Entfernen",
+      "options_title": "Generator-Einstellungen",
+      "relationship_label": "Beziehung",
+      "tone_label": "Ton",
+      "length_label": "Länge",
+      "mode_label": "AI-Modell",
+      "advanced_options": "Erweiterte Optionen",
+      "output_language": "Ausgabesprache",
+      "safety_title": "Sicherheitsoptionen",
+      "no_romance": "Keine Romantik",
+      "avoid_shipping": "Kein Shipping",
+      "keep_it_clean": "Sauber halten",
+      "generate_button": "Falsch-Zitat erzeugen",
+      "generating_button": "Wird erzeugt...",
+      "regenerate_button": "Neu erzeugen",
+      "copy_button": "Kopieren",
+      "continue_button": "In AI Write fortsetzen",
+      "output_title": "Ausgabe",
+      "empty_output": "Hier erscheint dein generiertes Quote.",
+      "generating_output": "Dein Falsch-Zitat wird erzeugt..."
+    },
+    "validation": {
+      "prompt_required": "Bitte zuerst einen Prompt eingeben."
+    },
+    "success": {
+      "copied": "In die Zwischenablage kopiert.",
+      "generated": "Falsch-Zitat erzeugt.",
+      "continued": "Entwurf an AI Write gesendet.",
+      "random_prompt_selected": "Ein zufälliges Erlebnis-Preset wurde eingefügt."
+    },
+    "errors": {
+      "generate_failed": "Erzeugung fehlgeschlagen.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Für schnelle Iterationen und viele Versuche",
+      "standard": "Standard",
+      "standard_description": "Ausgewogen zwischen Qualität und Tempo",
+      "creative": "Kreativ",
+      "creative_description": "Freier, pointierter und verspielter"
+    },
+    "relationship_mode": {
+      "platonic": "Platonisch",
+      "rivals": "Rivalen",
+      "found_family": "Gefundene Familie",
+      "chaotic_team": "Chaotisches Team"
+    },
+    "tone": {
+      "absurd": "Absurd",
+      "dry": "Trocken",
+      "sarcastic": "Sarkastisch",
+      "wholesome": "Herzlich",
+      "dramatic": "Dramatisch"
+    },
+    "length": {
+      "one_liner": "Einzeiler",
+      "mini_exchange": "Kurzer Austausch",
+      "extended_exchange": "Längerer Austausch"
+    },
+    "mode": {
+      "fast": "Schnell",
+      "standard": "Standard",
+      "creative": "Kreativ"
+    },
+    "random_prompts": [
+      {
+        "prompt": "Das Team versucht zu erklären, warum der Küchenbrand eindeutig als taktischer Erfolg zählt.",
+        "characters": ["Avery", "Kai", "Mina"]
+      },
+      {
+        "prompt": "Zwei Rivalen müssen gemeinsam eine Schulansage moderieren und sind sich beim Skript in nichts einig.",
+        "characters": ["Rin", "Sol"]
+      },
+      {
+        "prompt": "Der Heiler darf nach einem ganz bestimmten Vorfall keine motivierenden Reden mehr halten.",
+        "characters": ["Noor", "Bea", "Ilan"]
+      },
+      {
+        "prompt": "Eine Found-Family-Crew versucht genau dreißig Sekunden lang, in der Öffentlichkeit normal zu wirken.",
+        "characters": ["Jules", "Nia", "Pax", "Ivy"]
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Wofür dieser Falsch-Zitat-Generator gut ist",
+      "description": "Dieses Tool ist nicht dafür gedacht, komplette Fanfiction zu schreiben. Es verdichtet eine lustige Idee in wenige Zeilen, die schnell lesbar und teilbar sind. Du gibst eine Situation, Namen und einfache Grenzen vor, und bekommst ein kurzes, sprecherbasiertes Quote zurück.\n\nDer Schwerpunkt liegt auf Geschwindigkeit und Leichtigkeit. Statt tiefer Weltlogik testest du schnell Dynamik, Timing und Running Gags.",
+      "items": [
+        {
+          "title": "Von Haus aus kurz",
+          "description": "Erzeugt kompakte, gut teilbare Dialoge statt langer Szenen.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "Für Fandoms und OCs",
+          "description": "Funktioniert mit Canon-Charakteren, Originalfiguren, RPG-Gruppen oder gemischten Teams.",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "Besser für öffentliches Teilen",
+          "description": "Mit Sicherheitsoptionen lassen sich Romantik, Shipping-Hinweise und härtere Sprache begrenzen.",
+          "icon": "RiShieldCheckLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum Leute zuerst Falsch-Zitate statt großer Schreibtools nutzen",
+      "description": "Der Hauptnutzen ist, eine lustige Idee ohne Reibung in ein verwendbares Format zu bringen.",
+      "items": [
+        {
+          "title": "Schnelles Testen von Gags",
+          "description": "Ein Prompt kann mehrfach variiert werden, bis die beste Version sitzt.",
+          "icon": "RiRepeat2Line"
+        },
+        {
+          "title": "Chemie zwischen Figuren prüfen",
+          "description": "Bevor du eine lange Szene schreibst, kannst du mit wenigen Zeilen die Dynamik prüfen.",
+          "icon": "RiChatQuoteLine"
+        },
+        {
+          "title": "Einfach in längeres Schreiben überführen",
+          "description": "Gute Ergebnisse lassen sich direkt in AI Write weiterentwickeln.",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Einsatz",
+      "title": "Für wen dieser Falsch-Zitat-Generator gedacht ist",
+      "description": "Ideal für leichte kreative Workflows, in denen Tempo wichtiger ist als tiefe Konfiguration.",
+      "items": [
+        {
+          "title": "Fandom-Creator",
+          "description": "Perfekt für Gruppendynamiken, Chaos-Casts, Freundesgruppen oder kurze Meme-Dialoge.",
+          "icon": "RiBookMarkedLine"
+        },
+        {
+          "title": "OC- und Rollenspiel-Autor:innen",
+          "description": "Teste Stimme und Banter, bevor daraus eine längere Szene wird.",
+          "icon": "RiUserVoiceLine"
+        },
+        {
+          "title": "Community-Posts und Prompt-Threads",
+          "description": "Erstellt kurze, gut lesbare Inhalte für Posts, Chats und Community-Antworten.",
+          "icon": "RiShareForwardLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "ANLEITUNG",
+      "title": "Den Falsch-Zitat-Generator in 3 Schritten nutzen",
+      "description": "Vom Prompt zum postbaren Zitat in unter einer Minute — ohne Anmeldung, ohne Setup.",
+      "items": [
+        {
+          "title": "Setup beschreiben",
+          "description": "Beschreibe die Situation, das Missverständnis oder den Witz, den die Charaktere vermasseln sollen. Füge zwei bis sechs Namen hinzu oder lass die Felder leer, dann wählt das Tool generische Sprecher.",
+          "icon": "RiPencilLine"
+        },
+        {
+          "title": "Ton, Länge, Sicherheit",
+          "description": "Wähle einen Ton (absurd, trocken, sarkastisch), eine Länge (One-Liner bis Extended Exchange) und schalte die Clean-Output-Optionen für öffentliche Posts ein.",
+          "icon": "RiSlidersLine"
+        },
+        {
+          "title": "Erzeugen, kopieren, erweitern",
+          "description": "Drück auf Erzeugen, kopier das Zitat zum Teilen oder schick es an AI Write, um einen One-Liner zu einer längeren Szene auszubauen.",
+          "icon": "RiRocketLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Falsch-Zitat-Generator FAQ",
+      "description": "Kurze Antworten zu Nutzung und Umfang.",
+      "items": [
+        {
+          "title": "Was unterscheidet Falsch-Zitate von normaler Dialoggenerierung?",
+          "description": "Falsch-Zitate sind absichtlich komprimiert und kontextverschoben. Ziel ist ein schneller Gag, nicht eine natürliche komplette Szene."
+        },
+        {
+          "title": "Kann ich originale Charaktere statt Fandom-Figuren verwenden?",
+          "description": "Ja. Namen und ein kurzer Setup-Prompt reichen aus."
+        },
+        {
+          "title": "Kann ich romantische oder heiklere Inhalte vermeiden?",
+          "description": "Ja. Die Sicherheitsoptionen helfen, Romantik, Shipping-Hinweise und explizitere Formulierungen zu reduzieren."
+        },
+        {
+          "title": "Wie erweitere ich ein gutes Quote zu einer längeren Szene?",
+          "description": "Schicke es an AI Write und entwickle die Idee dort weiter."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Beginne mit einem absichtlich falschen Quote",
+      "description": "Erzeuge zuerst einen kurzen Austausch und baue die besten Ideen danach zu etwas Größerem aus.",
+      "buttons": [
+        {
+          "title": "Jetzt ausprobieren",
+          "url": "#incorrect_quote_generator"
+        },
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write"
+        }
+      ]
+    }
+  }
+}

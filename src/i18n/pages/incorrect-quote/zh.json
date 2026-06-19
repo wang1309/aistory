@@ -1,0 +1,237 @@
+{
+  "incorrect_quote_generate": {
+    "metadata": {
+      "title": "免费错位对白生成器 | Story Generator",
+      "description": "为同人角色、原创角色和小队组合快速生成“错误引用”风格对白。免费、短格式、适合分享与二创。",
+      "keywords": "incorrect quote generator, 错误引用生成器, 同人对白生成器, 搞笑对白生成器, 角色对白工具"
+    },
+    "ui": {
+      "title": "错位对白生成器",
+      "title_highlight": "错位对白",
+      "subtitle": "为最多 6 个角色生成短小、故意错位的搞笑对白，也可以只写场景让模型自行补足角色。",
+      "eyebrow": "AI 对白工具",
+      "theme_pills": ["同人", "原创互动", "错位梗", "短打段子"],
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "错位对白生成器",
+      "prompt_label": "提示词",
+      "prompt_placeholder": "描述你想要误读、错位或反转的场景、梗或误会。",
+      "random_button": "随机体验",
+      "characters_label": "角色（可选）",
+      "character_placeholder": "角色",
+      "add_character": "添加角色",
+      "remove_character": "删除",
+      "options_title": "生成设置",
+      "relationship_label": "关系",
+      "tone_label": "语气",
+      "length_label": "长度",
+      "mode_label": "AI 模型",
+      "advanced_options": "高级选项",
+      "output_language": "输出语言",
+      "safety_title": "安全选项",
+      "no_romance": "不要恋爱向",
+      "avoid_shipping": "避免 CP 暗示",
+      "keep_it_clean": "保持干净",
+      "generate_button": "生成错误引用",
+      "generating_button": "生成中...",
+      "regenerate_button": "重新生成",
+      "copy_button": "复制",
+      "continue_button": "续写",
+      "output_title": "输出结果",
+      "empty_output": "生成结果会显示在这里。",
+      "generating_output": "正在生成你的错误引用..."
+    },
+    "validation": {
+      "prompt_required": "请先输入提示词。"
+    },
+    "success": {
+      "copied": "已复制到剪贴板。",
+      "generated": "已生成错误引用。",
+      "continued": "草稿已发送到 AI Write。",
+      "random_prompt_selected": "已填入一组随机体验预设。"
+    },
+    "errors": {
+      "generate_failed": "生成失败，请重试。",
+      "verification_failed": "验证失败，请重试。"
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "适合高频试梗和快速重生成",
+      "standard": "标准",
+      "standard_description": "质量与速度更平衡",
+      "creative": "创意",
+      "creative_description": "更放飞，也更容易出反差梗"
+    },
+    "relationship_mode": {
+      "platonic": "友情向",
+      "rivals": "死对头",
+      "found_family": "家人感",
+      "chaotic_team": "混乱小队"
+    },
+    "tone": {
+      "absurd": "荒诞",
+      "dry": "冷面",
+      "sarcastic": "讽刺",
+      "wholesome": "温暖",
+      "dramatic": "戏剧化"
+    },
+    "length": {
+      "one_liner": "一句梗",
+      "mini_exchange": "短对白",
+      "extended_exchange": "延长对白"
+    },
+    "mode": {
+      "fast": "快速",
+      "standard": "标准",
+      "creative": "创意"
+    },
+    "random_prompts": [
+      {
+        "prompt": "小队正在解释为什么厨房起火也算一次战术成功。",
+        "characters": ["艾薇", "凯", "米娜"]
+      },
+      {
+        "prompt": "两位死对头被迫一起主持校园广播，但谁都不肯按对方的稿子来。",
+        "characters": ["凛", "索尔"]
+      },
+      {
+        "prompt": "治疗者因为某次事故，被禁止再发表鼓舞人心的演讲。",
+        "characters": ["诺尔", "贝娅", "伊兰"]
+      },
+      {
+        "prompt": "一个临时家庭感很强的小队，正努力在公共场合假装自己非常正常。",
+        "characters": ["朱尔斯", "妮娅", "帕克斯", "艾薇"]
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概览",
+      "title": "这个错位对白生成器适合做什么",
+      "description": "这个工具不是为了写完整同人文，而是为了把一个好笑的设定快速压缩成几句可分享的对白。你给出场景、角色名和基础限制，它会返回一段短小、带说话人标签的“错误引用”式输出。\n\n重点是快和好玩。它不追求复杂世界观或长篇结构，而是帮助你快速测试角色化学反应、玩梗方向和群像笑点。",
+      "items": [
+        {
+          "title": "默认就是短格式",
+          "description": "直接输出可读、可贴、可继续二创的短对白，而不是长段落。",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "同人和原创都能用",
+          "description": "既能写已有 IP 角色，也能写 OC、跑团小队或朋友群像。",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "更适合公开分享",
+          "description": "通过安全选项快速控制恋爱暗示、CP 倾向和用语尺度。",
+          "icon": "RiShieldCheckLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "价值",
+      "title": "为什么很多人先用错误引用工具而不是完整写作工具",
+      "description": "核心价值是把一个好笑想法更快变成可用内容。",
+      "items": [
+        {
+          "title": "快速试梗",
+          "description": "一个设定可以连续重生成多个版本，快速比较哪种更好笑。",
+          "icon": "RiRepeat2Line"
+        },
+        {
+          "title": "测试角色互动",
+          "description": "先用几句对白看角色关系是否成立，再决定要不要扩成完整故事。",
+          "icon": "RiChatQuoteLine"
+        },
+        {
+          "title": "方便继续扩写",
+          "description": "如果某条结果不错，可以一键送到 AI Write 继续写成长一点的内容。",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "适用场景",
+      "title": "谁最适合用这个错位对白生成器",
+      "description": "适合需要快速产出短内容，而不是深度配置的大多数轻创作场景。",
+      "items": [
+        {
+          "title": "同人创作者",
+          "description": "快速生成角色群像、友情组、混乱小队或各种轻松梗图对白。",
+          "icon": "RiBookMarkedLine"
+        },
+        {
+          "title": "OC 与角色扮演写手",
+          "description": "用短对白先测试人设和语气，再决定是否扩写成长场景。",
+          "icon": "RiUserVoiceLine"
+        },
+        {
+          "title": "社区发帖与提示玩法",
+          "description": "产出适合发在社区、群聊、评论区或 prompt 楼的紧凑内容。",
+          "icon": "RiShareForwardLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "三步用错位对白生成器",
+      "description": "从提示词到可分享的对白不到一分钟，无需注册、无需配置。",
+      "items": [
+        {
+          "title": "描述场景",
+          "description": "写下你想让角色搞砸的情境、误会或梗，再填 2–6 个角色名；不填也可以，工具会按提示词补默认说话人。",
+          "icon": "RiPencilLine"
+        },
+        {
+          "title": "选择语气、长度与安全",
+          "description": "挑一个语气（荒诞、冷面、讽刺）、一个长度（从一句梗到延长对白），并按需开启干净输出选项，方便公开分享。",
+          "icon": "RiSlidersLine"
+        },
+        {
+          "title": "生成、复制或扩写",
+          "description": "点击生成，复制对白用于分享，或一键送入 AI Write，把短梗扩成长场景或角色扮演开场。",
+          "icon": "RiRocketLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "错位对白生成器常见问题",
+      "description": "关于范围、用法和输出控制的核心问题。",
+      "items": [
+        {
+          "title": "它和普通对白生成器有什么区别？",
+          "description": "普通对白更像完整场景，这个工具更强调短、错位、可分享的梗感输出。"
+        },
+        {
+          "title": "可以写原创角色吗？",
+          "description": "可以。只要给出角色名和场景提示词，就能生成。"
+        },
+        {
+          "title": "能避免恋爱向和不适合公开的内容吗？",
+          "description": "可以。安全选项支持关闭恋爱感、避免 CP 暗示并保持表达更干净。"
+        },
+        {
+          "title": "如果我想把结果扩成完整片段怎么办？",
+          "description": "点击 Continue in AI Write，就能把当前结果带入写作工作区继续扩写。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "先从一句错位对白开始",
+      "description": "先生成一个短梗，保留最好笑的版本，再把它扩写成更完整的故事。",
+      "buttons": [
+        {
+          "title": "立即体验",
+          "url": "#incorrect_quote_generator"
+        },
+        {
+          "title": "打开 AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    }
+  }
+}

@@ -21,91 +21,112 @@
               "description": "一键生成创意故事提示词，帮助突破写作瓶颈",
               "url": "/story-prompt-generator",
               "icon": "RiLightbulbLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "奇幻故事生成器",
               "description": "用 AI 创作沉浸式奇幻世界，支持高魔、西幻、玄幻、仙侠等多种风格",
               "url": "/fantasy-generator",
               "icon": "RiSparkling2Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "书名生成器",
               "description": "用 AI 生成创意书名",
               "url": "/book-title-generator",
               "icon": "RiBookOpenLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "同人文生成器",
               "description": "AI 创作同人小说 - 支持 CP 配对、剧情控制和预置作品",
               "url": "/fanfic-generator",
               "icon": "RiBookMarkedLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "情节生成器",
               "description": "生成详细的故事大纲和情节结构",
               "url": "/plot-generator",
               "icon": "RiMapLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "诗歌生成器",
               "description": "AI 智能诗歌创作 - 支持现代诗、古典诗词、俳句等多种形式",
               "url": "/poem-generator",
               "icon": "RiQuillPenLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "诗歌标题生成器",
               "description": "为诗歌生成文学向或平台向标题，支持多语言输出",
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "角色背景生成器",
               "description": "为RPG、小说、虚拟人生成结构化的角色背景故事",
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "DnD 背景故事生成器",
               "description": "生成适用于 DnD 跑团的角色背景，包含种族、职业、目标、缺陷和 DM 钩子",
               "url": "/dnd-backstory-generator",
               "icon": "RiSwordLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "对话生成器",
               "description": "为故事、剧本和游戏生成逼真的角色对话",
               "url": "/dialogue-generator",
               "icon": "RiChat3Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "漫画生成器",
               "description": "为漫画、网漫和条漫创作生成漫画对白、旁白和逐格分镜脚本",
               "url": "/comic-generator",
               "icon": "RiLayoutGridLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "睡前故事生成器",
               "description": "用 AI 为孩子创作个性化的、适合年龄的睡前故事。免费无限使用。",
               "url": "/bedtime-story-generator",
               "icon": "RiMoonLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "言情故事生成器",
               "description": "用 AI 创作原创言情故事，支持总裁文、穿越、古风等多种类型，可选甜度和经典桥段。免费无限使用。",
               "url": "/romance-story-generator",
               "icon": "RiHeartLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
+            },
+            {
+              "title": "错位对白生成器",
+              "description": "为同人角色、原创角色和小队组合快速生成\"错误引用\"风格对白。",
+              "url": "/incorrect-quote-generator",
+              "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -852,6 +873,19 @@
               "title": "言情故事生成器",
               "url": "/romance-story-generator",
               "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "创意",
+          "children": [
+            {
+              "title": "错位对白生成器",
+              "description": "为同人角色和小队组合生成\"错误引用\"风格对白。",
+              "url": "/incorrect-quote-generator",
+              "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         },

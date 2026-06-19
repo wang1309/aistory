@@ -39,6 +39,8 @@ export interface Brand {
   target?: string;
 }
 
+export type NavItemCategory = "writing" | "creative" | "featured" | string;
+
 export interface NavItem {
   name?: string;
   title?: string;
@@ -50,6 +52,7 @@ export interface NavItem {
   is_active?: boolean;
   is_expand?: boolean;
   className?: string;
+  category?: NavItemCategory;
   children?: NavItem[];
   onClick?: () => void;
 }

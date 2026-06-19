@@ -24,6 +24,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+import type { NavItem } from "@/types/blocks/base";
 import { Header as HeaderType } from "@/types/blocks/header";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
@@ -35,6 +36,63 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { buildAiWriteHeaderNav } from "@/components/ai-write/workbench/_lib";
 
+type GroupedNavCategory = {
+  key: "featured" | "writing" | "creative" | "other";
+  label?: string;
+  description?: string;
+  icon?: string;
+  items: NavItem[];
+};
+
+function groupNavChildren(children: NavItem[] = []): GroupedNavCategory[] {
+  const buckets: Record<GroupedNavCategory["key"], NavItem[]> = {
+    featured: [],
+    writing: [],
+    creative: [],
+    other: [],
+  };
+
+  for (const child of children) {
+    const key = (child.category as GroupedNavCategory["key"] | undefined) ?? "other";
+    if (key === "featured" || key === "writing" || key === "creative") {
+      buckets[key].push(child);
+    } else {
+      buckets.other.push(child);
+    }
+  }
+
+  const groups: GroupedNavCategory[] = [];
+  if (buckets.featured.length) {
+    groups.push({
+      key: "featured",
+      icon: "RiCompassesFill",
+      items: buckets.featured,
+    });
+  }
+  if (buckets.writing.length) {
+    groups.push({
+      key: "writing",
+      icon: "RiQuillPenLine",
+      items: buckets.writing,
+    });
+  }
+  if (buckets.creative.length) {
+    groups.push({
+      key: "creative",
+      icon: "RiSparkling2Line",
+      items: buckets.creative,
+    });
+  }
+  if (buckets.other.length) {
+    groups.push({
+      key: "other",
+      items: buckets.other,
+    });
+  }
+
+  return groups;
+}
+
 export default function Header({ header }: { header: HeaderType }) {
   const t = useTranslations();
   const navItems = buildAiWriteHeaderNav(header.nav?.items || []);
@@ -42,6 +100,31 @@ export default function Header({ header }: { header: HeaderType }) {
   if (header.disabled) {
     return null;
   }
+
+  const renderCategoryHeader = (group: GroupedNavCategory) => {
+    if (group.key === "other") {
+      return null;
+    }
+    const labelKey =
+      group.key === "featured"
+        ? "ai_tools.category_featured"
+        : group.key === "writing"
+        ? "ai_tools.category_writing"
+        : "ai_tools.category_creative";
+
+    return (
+      <div className="flex items-center gap-2 px-2 pb-2 pt-1">
+        {group.icon && (
+          <span className="flex size-6 items-center justify-center rounded-full bg-amber-500/10 text-amber-600 ring-1 ring-amber-500/20 dark:bg-amber-400/10 dark:text-amber-300 dark:ring-amber-400/20">
+            <Icon name={group.icon} className="size-3.5" />
+          </span>
+        )}
+        <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
+          {t(labelKey)}
+        </span>
+      </div>
+    );
+  };
 
   return (
     <section className="py-3 relative z-50">
@@ -73,6 +156,14 @@ export default function Header({ header }: { header: HeaderType }) {
                 <NavigationMenuList>
                   {navItems.map((item, i) => {
                     if (item.children && item.children.length > 0) {
+                      const groups = groupNavChildren(item.children);
+                      const featured =
+                        groups.find((g) => g.key === "featured")?.items[0] ?? null;
+                      const columnGroups = groups.filter(
+                        (g) => g.key !== "featured"
+                      );
+                      const hasSingleColumn = columnGroups.length <= 1;
+
                       return (
                         <NavigationMenuItem
                           key={i}
@@ -88,31 +179,91 @@ export default function Header({ header }: { header: HeaderType }) {
                             <span>{item.title}</span>
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
-                            <ul className="w-80 p-3">
-                              {item.children.map((iitem, ii) => (
-                                <li key={ii}>
-                                  <NavigationMenuLink asChild>
-                                    <Link
-                                      className={cn(
-                                        "flex select-none gap-4 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                                      )}
-                                      href={iitem.url as any}
-                                      target={iitem.target}
-                                    >
-                                      {iitem.icon && (
-                                        <Icon
-                                          name={iitem.icon}
-                                          className="size-5 shrink-0"
-                                        />
-                                      )}
-                                      <div className="text-sm font-semibold">
-                                        {iitem.title}
-                                      </div>
-                                    </Link>
-                                  </NavigationMenuLink>
-                                </li>
-                              ))}
-                            </ul>
+                            <div
+                              className={cn(
+                                "relative overflow-hidden rounded-[1.6rem] border border-black/[0.06] bg-popover/95 p-3 shadow-[0_24px_60px_-24px_rgba(38,28,12,0.28)] backdrop-blur-2xl dark:border-white/[0.06]",
+                                hasSingleColumn ? "w-[22rem]" : "w-[40rem]"
+                              )}
+                            >
+                              <div
+                                aria-hidden
+                                className="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-gradient-to-br from-amber-300/30 via-amber-500/15 to-transparent blur-3xl dark:from-amber-400/20 dark:via-amber-500/10"
+                              />
+                              {featured && (
+                                <Link
+                                  href={featured.url as any}
+                                  target={featured.target}
+                                  className="group/featured relative flex items-center gap-4 overflow-hidden rounded-[1.2rem] border border-amber-500/15 bg-gradient-to-br from-amber-50 via-white to-amber-50/60 p-4 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-amber-500/30 hover:shadow-[0_18px_40px_-22px_rgba(217,119,6,0.45)] dark:border-amber-400/15 dark:from-amber-500/[0.08] dark:via-background dark:to-amber-500/[0.04] dark:hover:border-amber-400/30"
+                                >
+                                  <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/featured:scale-[1.04]">
+                                    <Icon
+                                      name={featured.icon || "RiCompassesFill"}
+                                      className="size-5"
+                                    />
+                                  </span>
+                                  <div className="min-w-0 flex-1">
+                                    <div className="flex items-center gap-2">
+                                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
+                                        {t("ai_tools.category_featured")}
+                                      </span>
+                                      <span className="h-1 w-1 rounded-full bg-amber-500/60" />
+                                      <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground/70">
+                                        {item.title}
+                                      </span>
+                                    </div>
+                                    <div className="mt-1 text-sm font-semibold text-foreground">
+                                      {featured.title}
+                                    </div>
+                                  </div>
+                                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 ring-1 ring-amber-500/20 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/featured:translate-x-0.5 group-hover/featured:-translate-y-0.5 group-hover/featured:bg-amber-500/15 dark:bg-amber-400/10 dark:text-amber-300 dark:ring-amber-400/25">
+                                    <Icon name="RiArrowRightUpLine" className="size-4" />
+                                  </span>
+                                </Link>
+                              )}
+
+                              <div
+                                className={cn(
+                                  "mt-3 grid gap-3 items-start",
+                                  hasSingleColumn ? "grid-cols-1" : "grid-cols-2"
+                                )}
+                              >
+                                {columnGroups.map((group) => (
+                                  <div
+                                    key={group.key}
+                                    className="rounded-[1.1rem] border border-black/[0.04] bg-gradient-to-b from-white/80 to-white/40 p-2 dark:border-white/[0.04] dark:from-white/[0.03] dark:to-transparent"
+                                  >
+                                    {renderCategoryHeader(group)}
+                                    <ul className="flex flex-col">
+                                      {group.items.map((iitem, ii) => (
+                                        <li key={ii}>
+                                          <NavigationMenuLink asChild>
+                                            <Link
+                                              className={cn(
+                                                "group/item flex select-none items-center gap-3 rounded-lg px-2.5 py-2 leading-none no-underline outline-hidden transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-amber-500/[0.07] hover:pl-3 focus:bg-amber-500/[0.07] dark:hover:bg-amber-400/[0.07]"
+                                              )}
+                                              href={iitem.url as any}
+                                              target={iitem.target}
+                                            >
+                                              {iitem.icon && (
+                                                <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-black/[0.04] text-muted-foreground transition-colors duration-300 group-hover/item:bg-amber-500/15 group-hover/item:text-amber-700 dark:bg-white/[0.04] dark:group-hover/item:bg-amber-400/15 dark:group-hover/item:text-amber-300">
+                                                  <Icon
+                                                    name={iitem.icon}
+                                                    className="size-3.5"
+                                                  />
+                                                </span>
+                                              )}
+                                              <span className="text-[13px] font-medium text-foreground/90 group-hover/item:text-foreground">
+                                                {iitem.title}
+                                              </span>
+                                            </Link>
+                                          </NavigationMenuLink>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
                           </NavigationMenuContent>
                         </NavigationMenuItem>
                       );
@@ -257,6 +408,7 @@ export default function Header({ header }: { header: HeaderType }) {
                   <Accordion type="single" collapsible className="w-full">
                     {navItems.map((item, i) => {
                       if (item.children && item.children.length > 0) {
+                        const groups = groupNavChildren(item.children);
                         return (
                           <AccordionItem
                             key={i}
@@ -266,26 +418,52 @@ export default function Header({ header }: { header: HeaderType }) {
                             <AccordionTrigger className="mb-4 py-0 font-semibold hover:no-underline text-left">
                               {item.title}
                             </AccordionTrigger>
-                            <AccordionContent className="mt-2">
-                              {item.children.map((iitem, ii) => (
-                                <Link
-                                  key={ii}
-                                  className={cn(
-                                    "flex select-none gap-4 rounded-md p-3 leading-none outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                                  )}
-                                  href={iitem.url as any}
-                                  target={iitem.target}
+                            <AccordionContent className="mt-2 flex flex-col gap-3">
+                              {groups.map((group) => (
+                                <div
+                                  key={group.key}
+                                  className="rounded-xl border border-black/[0.04] bg-black/[0.015] p-2 dark:border-white/[0.04] dark:bg-white/[0.02]"
                                 >
-                                  {iitem.icon && (
-                                    <Icon
-                                      name={iitem.icon}
-                                      className="size-4 shrink-0"
-                                    />
+                                  {group.key !== "other" && (
+                                    <div className="mb-1 flex items-center gap-2 px-2 pt-1">
+                                      {group.icon && (
+                                        <span className="flex size-5 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
+                                          <Icon
+                                            name={group.icon}
+                                            className="size-3"
+                                          />
+                                        </span>
+                                      )}
+                                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
+                                        {group.key === "featured"
+                                          ? t("ai_tools.category_featured")
+                                          : group.key === "writing"
+                                          ? t("ai_tools.category_writing")
+                                          : t("ai_tools.category_creative")}
+                                      </span>
+                                    </div>
                                   )}
-                                  <div className="text-sm font-semibold">
-                                    {iitem.title}
-                                  </div>
-                                </Link>
+                                  {group.items.map((iitem, ii) => (
+                                    <Link
+                                      key={ii}
+                                      className={cn(
+                                        "flex select-none gap-3 rounded-md p-2.5 leading-none outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                      )}
+                                      href={iitem.url as any}
+                                      target={iitem.target}
+                                    >
+                                      {iitem.icon && (
+                                        <Icon
+                                          name={iitem.icon}
+                                          className="size-4 shrink-0"
+                                        />
+                                      )}
+                                      <div className="text-sm font-semibold">
+                                        {iitem.title}
+                                      </div>
+                                    </Link>
+                                  ))}
+                                </div>
                               ))}
                             </AccordionContent>
                           </AccordionItem>

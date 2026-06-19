@@ -292,6 +292,9 @@
     "badge_hot": "人気",
     "badge_new": "新着",
     "button_use_now": "今すぐ使う",
+    "category_writing": "ライティング",
+    "category_creative": "クリエイティブ",
+    "category_featured": "ハブ",
     "tools": {
       "story_generator": {
         "name": "ストーリージェネレーター",
@@ -337,6 +340,10 @@
         "name": "対話ジェネレーター",
         "desc": "AIで脚本、小説、ゲーム向けのリアルで魅力的なキャラクター対話を作成します。"
       },
+      "incorrect_quote_generator": {
+        "name": "Incorrect Quote Generator",
+        "desc": "ファンダム、OC、グループ向けに短くて面白い、わざとズレた quote 会話を生成します。"
+      },
       "comic_generator": {
         "name": "AIコミックジェネレーター",
         "desc": "マンガ・ウェブトゥーン・コミック向けのセリフ、ナレーション、コマ割りスクリプトを生成します。"
@@ -349,7 +356,9 @@
         "name": "ロマンス小説ジェネレーター",
         "desc": "好みのサブジャンル・トロープ・甘さレベルでオリジナルのロマンス小説をAIで生成。無料・無制限。"
       }
-    }
+    },
+    "tab_story": "ストーリージェネレーター",
+    "tab_creative": "クリエイティブ"
   },
   "story_guide": {
     "step_1": {

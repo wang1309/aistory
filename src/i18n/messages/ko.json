@@ -292,6 +292,9 @@
     "badge_hot": "인기",
     "badge_new": "신규",
     "button_use_now": "지금 사용하기",
+    "category_writing": "글쓰기",
+    "category_creative": "크리에이티브",
+    "category_featured": "허브",
     "tools": {
       "story_generator": {
         "name": "스토리 생성기",
@@ -337,6 +340,10 @@
         "name": "대화 생성기",
         "desc": "AI로 시나리오, 소설, 게임을 위한 사실적이고 매력적인 캐릭터 대화를 만드세요."
       },
+      "incorrect_quote_generator": {
+        "name": "Incorrect Quote Generator",
+        "desc": "팬덤 캐릭터, OC, 그룹 관계를 위한 짧고 웃긴, 일부러 어긋난 quote 대사를 생성합니다."
+      },
       "comic_generator": {
         "name": "AI 만화 생성기",
         "desc": "망가, 웹툰, 만화 스토리텔링을 위한 대사, 나레이션, 컷별 스크립트를 생성합니다."
@@ -349,7 +356,9 @@
         "name": "로맨스 소설 생성기",
         "desc": "원하는 서브장르, 트로프, 달콤함 수준으로 오리지널 로맨스 소설을 AI로 생성하세요. 무료 무제한."
       }
-    }
+    },
+    "tab_story": "스토리 생성기",
+    "tab_creative": "크리에이티브"
   },
   "story_guide": {
     "step_1": {

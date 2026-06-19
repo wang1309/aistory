@@ -292,6 +292,9 @@
     "badge_hot": "Beliebt",
     "badge_new": "Neu",
     "button_use_now": "Jetzt starten",
+    "category_writing": "Schreiben",
+    "category_creative": "Kreativ",
+    "category_featured": "Hub",
     "tools": {
       "story_generator": {
         "name": "Geschichtengenerator",
@@ -337,6 +340,10 @@
         "name": "Dialog-Generator",
         "desc": "Erstellen Sie mit KI realistische, fesselnde Charakterdialoge für Drehbücher, Romane und Spiele."
       },
+      "incorrect_quote_generator": {
+        "name": "Incorrect Quote Generator",
+        "desc": "Erzeuge kurze, lustige und absichtlich falsche Quote-Dialoge für Fandom-Charaktere, OCs und Gruppendynamiken."
+      },
       "comic_generator": {
         "name": "AI Comic Generator",
         "desc": "Generieren Sie Comic-Dialoge, Erzählungen und Panel-Skripte für Manga, Webtoon und Comic-Storytelling."
@@ -349,7 +356,9 @@
         "name": "Liebesgeschichten-Generator",
         "desc": "Generiere originelle Liebesgeschichten mit KI — Sub-Genre, Trope und Intensitätsstufe nach Wahl. Kostenlos, ohne Anmeldung."
       }
-    }
+    },
+    "tab_story": "Geschichtengenerator",
+    "tab_creative": "Kreativ"
   },
   "story_guide": {
     "step_1": {

@@ -21,84 +21,104 @@
               "description": "Mit KI immersive Fantasy-Geschichten erstellen",
               "url": "/fantasy-generator",
               "icon": "RiSparkling2Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Buchtitel-Generator",
               "description": "Kreative Buchtitel mit KI generieren",
               "url": "/book-title-generator",
               "icon": "RiBookOpenLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Fanfiction-Generator",
               "description": "Fanfiction mit KI erstellen - Charakterpaarungen, Handlungskontrolle und voreingestellte Werke",
               "url": "/fanfic-generator",
               "icon": "RiBookMarkedLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Plot-Generator",
               "description": "Detaillierte Story-Outlines und Plot-Strukturen erstellen",
               "url": "/plot-generator",
               "icon": "RiMapLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Poem-Generator",
               "description": "KI-gestützte Gedichterstellung - unterstützt moderne Gedichte, klassische Poesie, Haikus und mehr",
               "url": "/poem-generator",
               "icon": "RiQuillPenLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Gedichttitel-Generator",
               "description": "Literarische oder plattformgerechte Titel für Gedichte generieren",
               "url": "/poem-title-generator",
               "icon": "RiStarLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Hintergrundgeschichten-Generator",
               "description": "Strukturierte Charakterhintergründe für RPGs, Romane und VTuber erstellen",
               "url": "/backstory-generator",
               "icon": "RiUser3Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "DnD-Hintergrundgeschichten-Generator",
               "description": "Spielbare DnD-Backstorys mit Volk, Klasse, Zielen, Schwächen und DM-Hooks generieren",
               "url": "/dnd-backstory-generator",
               "icon": "RiSwordLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Dialog-Generator",
               "description": "Realistische Charakterdialoge für Geschichten, Drehbücher und Spiele generieren",
               "url": "/dialogue-generator",
               "icon": "RiChat3Line",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Comic-Generator",
               "description": "Erstelle Comic-Dialoge, Narration und Panel-Skripte für Manga und Webtoon",
               "url": "/comic-generator",
               "icon": "RiLayoutGridLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Gutenacht-Geschichten-Generator",
               "description": "Erstellen Sie mit KI personalisierte, altersgerechte Gutenacht-Geschichten für Kinder. Kostenlos.",
               "url": "/bedtime-story-generator",
               "icon": "RiMoonLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
             },
             {
               "title": "Liebesgeschichten-Generator",
               "description": "Generiere originelle Liebesgeschichten mit KI — Sub-Genre, Trope und Intensitätsstufe nach Wahl. Kostenlos, ohne Anmeldung.",
               "url": "/romance-story-generator",
               "icon": "RiHeartLine",
-              "target": "_self"
+              "target": "_self",
+              "category": "writing"
+            },
+            {
+              "title": "Falsch-Zitat-Generator",
+              "description": "Erzeuge kurze, absichtlich falsche Quote-Dialoge für Fandom-Charaktere, OCs und Gruppen.",
+              "url": "/incorrect-quote-generator",
+              "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -845,6 +865,19 @@
               "title": "Liebesgeschichten-Generator",
               "url": "/romance-story-generator",
               "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Kreativ",
+          "children": [
+            {
+              "title": "Falsch-Zitat-Generator",
+              "description": "Kurze, absichtlich falsche Quote-Dialoge für Fandom-Charaktere und Gruppen.",
+              "url": "/incorrect-quote-generator",
+              "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         },

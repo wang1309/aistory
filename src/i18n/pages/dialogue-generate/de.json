@@ -6,6 +6,7 @@
   },
   "ui": {
     "title": "KI-Dialoggenerator",
+    "title_highlight": "Dialog",
     "subtitle": "Erstellen Sie mit KI überzeugende, realistische Gespräche zwischen Charakteren",
     "eyebrow": "KI-Schreibwerkzeug",
     "continue_writing": "Weiterschreiben",
@@ -33,7 +34,8 @@
     "remove_character": "Entfernen",
     "advanced_options": "Erweiterte Optionen",
     "generate_button": "Dialog generieren",
-    "generating": "Generiere..."
+    "generating": "Generiere...",
+    "theme_pills": ["Gespräch", "Streit", "Geständnis", "Interview"]
   },
   "placeholders": {
     "scenario_prompt": "Beschreiben Sie das Szenario oder den Kontext für den Dialog... (z.B. 'Zwei alte Freunde treffen sich nach 10 Jahren in einem Café')",

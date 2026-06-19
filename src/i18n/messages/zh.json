@@ -292,6 +292,9 @@
     "badge_hot": "热门",
     "badge_new": "新上线",
     "button_use_now": "立即使用",
+    "category_writing": "写作",
+    "category_creative": "创意",
+    "category_featured": "工具集",
     "tools": {
       "story_generator": {
         "name": "故事生成器",
@@ -337,6 +340,10 @@
         "name": "对话生成器",
         "desc": "使用 AI 为剧本、小说和游戏创建逼真、引人入胜的角色对话。"
       },
+      "incorrect_quote_generator": {
+        "name": "Incorrect Quote Generator",
+        "desc": "为同人角色、原创角色和群像关系快速生成短小、好笑、故意错位的对白。"
+      },
       "comic_generator": {
         "name": "AI漫画生成器",
         "desc": "为漫画、网漫和条漫创作生成漫画对白、旁白和逐格分镜脚本。"
@@ -349,7 +356,9 @@
         "name": "言情故事生成器",
         "desc": "用 AI 创作原创言情故事，支持总裁文、穿越、古风等多种类型，可选甜度和经典桥段。免费无限使用。"
       }
-    }
+    },
+    "tab_story": "故事生成器",
+    "tab_creative": "创意"
   },
   "story_guide": {
     "step_1": {

@@ -1,7 +1,8 @@
 import React from "react";
-import { getToolsByModule, type ModuleId } from "@/services/tools";
+import { getToolsByModule, type ModuleId, type ToolTab } from "@/services/tools";
 import { getTranslations } from "next-intl/server";
 import { AnimatedToolsGrid } from "./animated-tools-grid";
+import { ModuleToolsTabs, type ToolTabData } from "./module-tools-tabs";
 import { type AccentColor } from "@/components/sections/accent";
 
 interface ModuleToolsSectionProps {
@@ -13,6 +14,13 @@ interface ModuleToolsSectionProps {
   label?: string;
 }
 
+const TAB_ORDER: ToolTab[] = ["story", "creative"];
+
+const TAB_META: Record<ToolTab, { id: string; labelKey: string; icon: string }> = {
+  story: { id: "story", labelKey: "ai_tools.tab_story", icon: "RiBookOpenLine" },
+  creative: { id: "creative", labelKey: "ai_tools.tab_creative", icon: "RiSparkling2Line" },
+};
+
 export default async function ModuleToolsSection({
   module,
   title,
@@ -22,7 +30,8 @@ export default async function ModuleToolsSection({
   label,
 }: ModuleToolsSectionProps) {
   const t = await getTranslations();
-  const tools = getToolsByModule(module).filter((tool) =>
+  const allTools = getToolsByModule(module);
+  const tools = allTools.filter((tool) =>
     excludeSlug ? tool.slug !== excludeSlug : true
   );
 
@@ -30,7 +39,7 @@ export default async function ModuleToolsSection({
 
   const badgeCategoryLabel = t("ai_tools.badge_category");
 
-  const toolCards = tools.map((tool) => ({
+  const toCard = (tool: (typeof tools)[number]) => ({
     slug: tool.slug,
     icon: tool.icon,
     href: tool.href,
@@ -41,7 +50,26 @@ export default async function ModuleToolsSection({
       type: badge,
       label: badge === "hot" ? t("ai_tools.badge_hot") : t("ai_tools.badge_new"),
     })),
-  }));
+  });
+
+  // Determine tab structure from full tool set (before excludeSlug filtering)
+  const hasMultipleTabs =
+    TAB_ORDER.filter((tabKey) =>
+      allTools.some((tool) => (tool.tab ?? "story") === tabKey)
+    ).length > 1;
+
+  const tabs: ToolTabData[] = TAB_ORDER.map((tabKey) => {
+    const meta = TAB_META[tabKey];
+    const tabTools = tools
+      .filter((tool) => (tool.tab ?? "story") === tabKey)
+      .map(toCard);
+    return {
+      id: meta.id,
+      label: t(meta.labelKey),
+      icon: meta.icon,
+      tools: tabTools,
+    };
+  }).filter((tab) => tab.tools.length > 0);
 
   // Split title to highlight "AI"
   const HIGHLIGHT = "AI";
@@ -104,11 +132,21 @@ export default async function ModuleToolsSection({
           )}
         </div>
 
-        <AnimatedToolsGrid
-          tools={toolCards}
-          badgeCategoryLabel={badgeCategoryLabel}
-          accent={accent}
-        />
+        {hasMultipleTabs ? (
+          <ModuleToolsTabs
+            tabs={tabs}
+            badgeCategoryLabel={badgeCategoryLabel}
+            accent={accent}
+          />
+        ) : (
+          <div className="mt-16">
+            <AnimatedToolsGrid
+              tools={tabs[0]?.tools ?? tools.map(toCard)}
+              badgeCategoryLabel={badgeCategoryLabel}
+              accent={accent}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

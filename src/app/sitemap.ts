@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/story-generate',
     '/book-title-generator',
     '/dialogue-generator',
+    '/incorrect-quote-generator',
     '/fanfic-generator',
     '/plot-generator',
     '/poem-generator',
@@ -48,6 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
               || route === '/story-generate'
               || route === '/book-title-generator'
               || route === '/dialogue-generator'
+              || route === '/incorrect-quote-generator'
               || route === '/fanfic-generator'
               || route === '/plot-generator'
               || route === '/poem-generator'

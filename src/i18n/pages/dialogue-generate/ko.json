@@ -6,6 +6,7 @@
   },
   "ui": {
     "title": "AI 대화 생성기",
+    "title_highlight": "대화",
     "subtitle": "AI로 매력적이고 사실적인 캐릭터 대화 만들기",
     "eyebrow": "AI 글쓰기 도구",
     "continue_writing": "이어쓰기",
@@ -33,7 +34,8 @@
     "remove_character": "제거",
     "advanced_options": "고급 옵션",
     "generate_button": "대화 생성",
-    "generating": "생성 중..."
+    "generating": "생성 중...",
+    "theme_pills": ["대화", "논쟁", "고백", "인터뷰"]
   },
   "placeholders": {
     "scenario_prompt": "대화의 시나리오나 배경을 설명하세요... (예: '10년 만에 카페에서 만난 두 오랜 친구')",
