@@ -6,6 +6,19 @@
     "description": "최신 기능, 개선 사항, 버그 수정 및 보안 업데이트를 확인하세요",
     "items": [
       {
+        "version": "v1.3.14",
+        "date": "2026-06-19",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Incorrect Quote Generator 잘못된 인용 생성기 출시. 캐릭터 간 유머러스한 맥락 없는 대화를 생성",
+              "캐릭터 관리, 관계 모드, 톤 스타일, 다양한 생성 모드(빠른/표준/창의적) 지원"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.13",
         "date": "2026-06-13",
         "changes": [

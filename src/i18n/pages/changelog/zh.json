@@ -6,6 +6,19 @@
     "description": "了解我们最新的功能改进、问题修复和安全更新",
     "items": [
       {
+        "version": "v1.3.14",
+        "date": "2026-06-19",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Incorrect Quote Generator 错误语录生成器上线，支持生成角色间幽默的断章取义对话",
+              "支持角色管理、关系模式、语气风格及多种生成模式（快速/标准/创意）"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.13",
         "date": "2026-06-13",
         "changes": [

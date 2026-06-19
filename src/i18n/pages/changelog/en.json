@@ -6,6 +6,19 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.14",
+        "date": "2026-06-19",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Launched Incorrect Quote Generator for creating humorous out-of-context dialogue between characters",
+              "Supports character management, relationship modes, tone styles, and multiple generation modes (fast/standard/creative)"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.13",
         "date": "2026-06-13",
         "changes": [
