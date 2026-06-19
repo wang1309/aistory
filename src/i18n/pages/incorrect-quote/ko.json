@@ -1,7 +1,7 @@
 {
   "incorrect_quote_generate": {
     "metadata": {
-      "title": "무료 잘못된 인용 생성기 | Story Generator",
+      "title": "잘못된 인용 생성기 무료 & 가입 불필요 | Story Generator",
       "description": "팬덤 캐릭터, OC, 그룹 조합을 위한 짧고 일부러 어긋난 인용 대사를 빠르게 생성합니다. 무료이고 공유하기 쉽습니다.",
       "keywords": "incorrect quote generator, 팬덤 대사 생성기, 캐릭터 대사 도구, 짧은 대화 생성"
     },
@@ -10,7 +10,12 @@
       "title_highlight": "잘못된 인용",
       "subtitle": "최대 6명까지의 캐릭터로 짧고 일부러 어긋난 대사를 생성하거나, 프롬프트만으로도 바로 시작할 수 있습니다.",
       "eyebrow": "AI 대사 도구",
-      "theme_pills": ["팬덤", "오리지널 케미", "엇갈림", "숏 개그"],
+      "theme_pills": [
+        "팬덤",
+        "오리지널 케미",
+        "엇갈림",
+        "숏 개그"
+      ],
       "breadcrumb_home": "홈",
       "breadcrumb_current": "잘못된 인용 생성기",
       "prompt_label": "프롬프트",
@@ -87,19 +92,35 @@
     "random_prompts": [
       {
         "prompt": "팀은 왜 부엌 화재가 전술적 성공이었는지 해명하려고 한다.",
-        "characters": ["에이브리", "카이", "미나"]
+        "characters": [
+          "에이브리",
+          "카이",
+          "미나"
+        ]
       },
       {
         "prompt": "앙숙 두 사람이 학교 방송을 함께 맡게 됐지만 원고에서 전혀 합의하지 못한다.",
-        "characters": ["린", "솔"]
+        "characters": [
+          "린",
+          "솔"
+        ]
       },
       {
         "prompt": "치유사는 어떤 사건 이후로 사람을 북돋는 연설이 금지됐다.",
-        "characters": ["누르", "베아", "일란"]
+        "characters": [
+          "누르",
+          "베아",
+          "일란"
+        ]
       },
       {
         "prompt": "가족 같은 크루가 공공장소에서 딱 30초만 정상적으로 보이려고 애쓴다.",
-        "characters": ["줄스", "니아", "팍스", "아이비"]
+        "characters": [
+          "줄스",
+          "니아",
+          "팍스",
+          "아이비"
+        ]
       }
     ],
     "feature1": {

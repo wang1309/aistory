@@ -1,7 +1,7 @@
 {
   "incorrect_quote_generate": {
     "metadata": {
-      "title": "Kostenloser Falsch-Zitat-Generator | Story Generator",
+      "title": "Falsch-Zitat-Generator Kostenlos & Ohne Anmeldung | Story Generator",
       "description": "Erzeuge kurze, absichtlich falsche Quote-Dialoge für Fandom-Charaktere, OCs und Gruppen. Schnell, kostenlos und leicht zu teilen.",
       "keywords": "incorrect quote generator, fandom dialog generator, character quote tool, kurzer dialog generator"
     },
@@ -10,7 +10,12 @@
       "title_highlight": "Falsch-Zitat",
       "subtitle": "Erzeuge kurze, absichtlich falsche Dialoge mit bis zu sechs Charakteren oder lass den Prompt die Figuren vorgeben.",
       "eyebrow": "KI-Zitat-Tool",
-      "theme_pills": ["Fandom", "OC-Banter", "Falscher Kontext", "Schneller Gag"],
+      "theme_pills": [
+        "Fandom",
+        "OC-Banter",
+        "Falscher Kontext",
+        "Schneller Gag"
+      ],
       "breadcrumb_home": "Startseite",
       "breadcrumb_current": "Falsch-Zitat-Generator",
       "prompt_label": "Prompt",
@@ -87,19 +92,35 @@
     "random_prompts": [
       {
         "prompt": "Das Team versucht zu erklären, warum der Küchenbrand eindeutig als taktischer Erfolg zählt.",
-        "characters": ["Avery", "Kai", "Mina"]
+        "characters": [
+          "Avery",
+          "Kai",
+          "Mina"
+        ]
       },
       {
         "prompt": "Zwei Rivalen müssen gemeinsam eine Schulansage moderieren und sind sich beim Skript in nichts einig.",
-        "characters": ["Rin", "Sol"]
+        "characters": [
+          "Rin",
+          "Sol"
+        ]
       },
       {
         "prompt": "Der Heiler darf nach einem ganz bestimmten Vorfall keine motivierenden Reden mehr halten.",
-        "characters": ["Noor", "Bea", "Ilan"]
+        "characters": [
+          "Noor",
+          "Bea",
+          "Ilan"
+        ]
       },
       {
         "prompt": "Eine Found-Family-Crew versucht genau dreißig Sekunden lang, in der Öffentlichkeit normal zu wirken.",
-        "characters": ["Jules", "Nia", "Pax", "Ivy"]
+        "characters": [
+          "Jules",
+          "Nia",
+          "Pax",
+          "Ivy"
+        ]
       }
     ],
     "feature1": {

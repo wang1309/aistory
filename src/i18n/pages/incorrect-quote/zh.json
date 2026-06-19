@@ -1,7 +1,7 @@
 {
   "incorrect_quote_generate": {
     "metadata": {
-      "title": "免费错位对白生成器 | Story Generator",
+      "title": "错位对白生成器 免费无需注册 | Story Generator",
       "description": "为同人角色、原创角色和小队组合快速生成“错误引用”风格对白。免费、短格式、适合分享与二创。",
       "keywords": "incorrect quote generator, 错误引用生成器, 同人对白生成器, 搞笑对白生成器, 角色对白工具"
     },
@@ -10,7 +10,12 @@
       "title_highlight": "错位对白",
       "subtitle": "为最多 6 个角色生成短小、故意错位的搞笑对白，也可以只写场景让模型自行补足角色。",
       "eyebrow": "AI 对白工具",
-      "theme_pills": ["同人", "原创互动", "错位梗", "短打段子"],
+      "theme_pills": [
+        "同人",
+        "原创互动",
+        "错位梗",
+        "短打段子"
+      ],
       "breadcrumb_home": "首页",
       "breadcrumb_current": "错位对白生成器",
       "prompt_label": "提示词",
@@ -87,19 +92,35 @@
     "random_prompts": [
       {
         "prompt": "小队正在解释为什么厨房起火也算一次战术成功。",
-        "characters": ["艾薇", "凯", "米娜"]
+        "characters": [
+          "艾薇",
+          "凯",
+          "米娜"
+        ]
       },
       {
         "prompt": "两位死对头被迫一起主持校园广播，但谁都不肯按对方的稿子来。",
-        "characters": ["凛", "索尔"]
+        "characters": [
+          "凛",
+          "索尔"
+        ]
       },
       {
         "prompt": "治疗者因为某次事故，被禁止再发表鼓舞人心的演讲。",
-        "characters": ["诺尔", "贝娅", "伊兰"]
+        "characters": [
+          "诺尔",
+          "贝娅",
+          "伊兰"
+        ]
       },
       {
         "prompt": "一个临时家庭感很强的小队，正努力在公共场合假装自己非常正常。",
-        "characters": ["朱尔斯", "妮娅", "帕克斯", "艾薇"]
+        "characters": [
+          "朱尔斯",
+          "妮娅",
+          "帕克斯",
+          "艾薇"
+        ]
       }
     ],
     "feature1": {

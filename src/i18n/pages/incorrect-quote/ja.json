@@ -1,7 +1,7 @@
 {
   "incorrect_quote_generate": {
     "metadata": {
-      "title": "無料誤引用ジェネレーター | Story Generator",
+      "title": "誤引用ジェネレーター 無料・登録不要 | Story Generator",
       "description": "ファンダムキャラ、OC、グループ向けに、わざとズレた短い quote 会話をすばやく生成します。無料で使えて共有もしやすいです。",
       "keywords": "incorrect quote generator, ファンダム 会話生成, キャラクター quote, 短文 会話ツール"
     },
@@ -10,7 +10,12 @@
       "title_highlight": "誤引用",
       "subtitle": "最大6人までのキャラで、わざとズレた短い会話を生成できます。キャラ名なしで状況だけから作ることもできます。",
       "eyebrow": "AI セリフツール",
-      "theme_pills": ["ファンダム", "OC掛け合い", "すれ違い", "ショートネタ"],
+      "theme_pills": [
+        "ファンダム",
+        "OC掛け合い",
+        "すれ違い",
+        "ショートネタ"
+      ],
       "breadcrumb_home": "ホーム",
       "breadcrumb_current": "誤引用ジェネレーター",
       "prompt_label": "プロンプト",
@@ -87,19 +92,35 @@
     "random_prompts": [
       {
         "prompt": "チームは、なぜキッチン火災が戦術的成功なのか説明しようとしている。",
-        "characters": ["アヴェリー", "カイ", "ミナ"]
+        "characters": [
+          "アヴェリー",
+          "カイ",
+          "ミナ"
+        ]
       },
       {
         "prompt": "犬猿の仲の二人が校内放送を共同で担当することになったが、台本でまったく折り合わない。",
-        "characters": ["リン", "ソル"]
+        "characters": [
+          "リン",
+          "ソル"
+        ]
       },
       {
         "prompt": "ヒーラーは、ある事件のせいで人を励ますスピーチを禁止された。",
-        "characters": ["ノア", "ベア", "イラン"]
+        "characters": [
+          "ノア",
+          "ベア",
+          "イラン"
+        ]
       },
       {
         "prompt": "疑似家族っぽいクルーが、三十秒だけ公共の場で普通に振る舞おうとしている。",
-        "characters": ["ジュールズ", "ニア", "パックス", "アイヴィ"]
+        "characters": [
+          "ジュールズ",
+          "ニア",
+          "パックス",
+          "アイヴィ"
+        ]
       }
     ],
     "feature1": {

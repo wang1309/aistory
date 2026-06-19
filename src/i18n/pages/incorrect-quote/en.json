@@ -1,7 +1,7 @@
 {
   "incorrect_quote_generate": {
     "metadata": {
-      "title": "Free Incorrect Quote Generator | Story Generator",
+      "title": "Incorrect Quote Generator Free & No Sign Up | Story Generator",
       "description": "Generate funny, intentionally wrong quote exchanges for fandom characters, OCs, and roleplay groups. Fast, free, short-form, and easy to share.",
       "keywords": "incorrect quote generator, fandom quote generator, funny dialogue generator, character quote generator, fanfic prompt tool, incorrect quotes"
     },
@@ -10,7 +10,12 @@
       "title_highlight": "Incorrect Quote",
       "subtitle": "Generate short, intentionally wrong quote exchanges with up to six characters, or let the prompt imply the cast.",
       "eyebrow": "AI Quote Tool",
-      "theme_pills": ["Fandom", "OC banter", "Wrong context", "Quick gag"],
+      "theme_pills": [
+        "Fandom",
+        "OC banter",
+        "Wrong context",
+        "Quick gag"
+      ],
       "breadcrumb_home": "Home",
       "breadcrumb_current": "Incorrect Quote Generator",
       "prompt_label": "Prompt",
@@ -87,19 +92,35 @@
     "random_prompts": [
       {
         "prompt": "The team is trying to explain why the kitchen fire definitely counts as a tactical success.",
-        "characters": ["Avery", "Kai", "Mina"]
+        "characters": [
+          "Avery",
+          "Kai",
+          "Mina"
+        ]
       },
       {
         "prompt": "Two rivals are forced to co-host a school announcement and neither agrees on the script.",
-        "characters": ["Rin", "Sol"]
+        "characters": [
+          "Rin",
+          "Sol"
+        ]
       },
       {
         "prompt": "The healer has been banned from motivational speeches after one very specific incident.",
-        "characters": ["Noor", "Bea", "Ilan"]
+        "characters": [
+          "Noor",
+          "Bea",
+          "Ilan"
+        ]
       },
       {
         "prompt": "A found-family crew is trying to look normal in public for exactly thirty seconds.",
-        "characters": ["Jules", "Nia", "Pax", "Ivy"]
+        "characters": [
+          "Jules",
+          "Nia",
+          "Pax",
+          "Ivy"
+        ]
       }
     ],
     "feature1": {
