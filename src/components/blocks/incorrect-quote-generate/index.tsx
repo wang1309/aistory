@@ -240,8 +240,6 @@ export default function IncorrectQuoteGenerate({
 
   const runGeneration = useCallback(
     async (turnstileToken: string) => {
-      setIsGenerating(true);
-      setGeneratedQuote("");
 
       try {
         const response = await fetch("/api/incorrect-quote-generate", {
@@ -334,6 +332,8 @@ export default function IncorrectQuoteGenerate({
       return;
     }
 
+    setIsGenerating(true);
+    setGeneratedQuote("");
     turnstileRef.current?.execute();
   }, [prompt, t]);
 
@@ -910,11 +910,12 @@ export default function IncorrectQuoteGenerate({
       <TurnstileInvisible
         ref={turnstileRef}
         onSuccess={runGeneration}
-        onError={() =>
+        onError={() => {
+          setIsGenerating(false);
           toast.error(
             t("errors.verification_failed", "Verification failed. Try again.")
-          )
-        }
+          );
+        }}
       />
     </section>
   );
