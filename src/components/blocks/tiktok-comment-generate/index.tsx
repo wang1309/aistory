@@ -442,7 +442,7 @@ export default function TiktokCommentGenerate({
             key={`bubble-${i}`}
             aria-hidden
             className={cn(
-              "pointer-events-none absolute z-[1] hidden text-orange-500/60 dark:text-orange-400/60 sm:block",
+              "pointer-events-none absolute z-[1] hidden text-orange-500/60 dark:text-orange-400/60 md:block",
               b.pos,
               b.size
             )}
@@ -465,7 +465,7 @@ export default function TiktokCommentGenerate({
           </div>
         </div>
 
-        <div className="relative mx-auto mb-14 max-w-2xl text-center">
+        <div className="relative mx-auto mb-10 max-w-2xl text-center sm:mb-14">
         {/* Hero-scoped ambient: hearts + dust (scoped to this block, not the whole section) */}
         <div className="pointer-events-none absolute inset-0 z-0 overflow-visible" aria-hidden>
           {!reduceMotion && [
@@ -476,7 +476,7 @@ export default function TiktokCommentGenerate({
             <motion.div
               key={`heart-${i}`}
               aria-hidden
-              className="pointer-events-none absolute z-[1] hidden text-orange-500/50 dark:text-orange-400/50 sm:block"
+              className="pointer-events-none absolute z-[1] hidden text-orange-500/50 dark:text-orange-400/50 md:block"
               style={{ left: h.left, top: h.top }}
               initial={{ opacity: 0, y: 0, scale: 0.6 }}
               animate={{ opacity: [0, 0.75, 0.75, 0], y: [0, -50, -100], scale: [0.6, 1.1, 0.95] }}
@@ -497,7 +497,7 @@ export default function TiktokCommentGenerate({
             <motion.span
               key={`dust-${i}`}
               aria-hidden
-              className="absolute rounded-full bg-orange-500 dark:bg-orange-400 hidden sm:block"
+              className="absolute rounded-full bg-orange-500 dark:bg-orange-400 hidden md:block"
               style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
               initial={{ opacity: 0 }}
               animate={{ opacity: [0, d.peak, d.peak * 0.6, 0] }}
@@ -775,7 +775,7 @@ export default function TiktokCommentGenerate({
                           size="sm"
                           variant="outline"
                           onClick={() => handleCopy(reply)}
-                          className="h-8 px-3 text-xs"
+                          className="h-11 px-3 text-xs sm:h-8"
                         >
                           {t("ui.copy_button", "Copy")}
                         </Button>
@@ -785,7 +785,7 @@ export default function TiktokCommentGenerate({
                           variant="outline"
                           onClick={() => handleContinue(reply)}
                           disabled={isGenerating}
-                          className="h-8 px-3 text-xs"
+                          className="h-11 px-3 text-xs sm:h-8"
                         >
                           {t("ui.continue_button", "Continue")}
                         </Button>
@@ -888,7 +888,7 @@ export default function TiktokCommentGenerate({
                       variant="outline"
                       size="sm"
                       onClick={() => applyHistory(item)}
-                      className="h-8 px-3 text-xs"
+                      className="h-11 px-3 text-xs sm:h-8"
                     >
                       {t("ui.history_apply", "Apply")}
                     </Button>
@@ -897,7 +897,7 @@ export default function TiktokCommentGenerate({
                       variant="ghost"
                       size="sm"
                       onClick={() => deleteHistory(item.id)}
-                      className="h-8 px-3 text-xs text-muted-foreground hover:text-destructive"
+                      className="h-11 px-3 text-xs text-muted-foreground hover:text-destructive sm:h-8"
                     >
                       {t("ui.history_delete", "Delete")}
                     </Button>

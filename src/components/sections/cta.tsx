@@ -1,7 +1,7 @@
 "use client";
 
 import { Section as SectionType } from "@/types/blocks/section";
-import { motion } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 import { getAccent, type AccentColor } from "./accent";
 import Icon from "@/components/icon";
 import Link from "next/link";
@@ -17,6 +17,7 @@ export default function CTA({ section, accent = "orange" }: Props) {
   if (section.disabled) return null;
 
   return (
+    <MotionConfig reducedMotion="user">
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Subtle tint */}
       <div className={`absolute inset-0 ${a.sectionBg}`} />
@@ -75,5 +76,6 @@ export default function CTA({ section, accent = "orange" }: Props) {
         </motion.div>
       </div>
     </section>
+    </MotionConfig>
   );
 }

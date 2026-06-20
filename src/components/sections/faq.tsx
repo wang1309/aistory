@@ -1,7 +1,7 @@
 "use client";
 
 import { Section as SectionType } from "@/types/blocks/section";
-import { motion } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 import { getAccent, type AccentColor } from "./accent";
 import { useState } from "react";
 import { AnimatePresence, motion as m } from "framer-motion";
@@ -22,6 +22,7 @@ export default function FAQ({ section, accent = "orange" }: Props) {
   const hasHighlight = titleParts && titleParts.length === 2;
 
   return (
+    <MotionConfig reducedMotion="user">
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
@@ -163,5 +164,6 @@ export default function FAQ({ section, accent = "orange" }: Props) {
         </div>
       </div>
     </section>
+    </MotionConfig>
   );
 }

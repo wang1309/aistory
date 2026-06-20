@@ -1,9 +1,10 @@
 "use client";
 
 import { Section as SectionType } from "@/types/blocks/section";
-import { motion } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 import { getAccent, type AccentColor } from "./accent";
 import Icon from "@/components/icon";
+import Image from "next/image";
 
 interface Props {
   section: SectionType;
@@ -21,6 +22,7 @@ export default function Benefits({ section, accent = "orange" }: Props) {
   const [featured, ...rest] = section.items;
 
   return (
+    <MotionConfig reducedMotion="user">
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
@@ -106,10 +108,11 @@ export default function Benefits({ section, accent = "orange" }: Props) {
                   {/* Image with zoom effect */}
                   {featured.image?.src && (
                     <div className="relative h-56 overflow-hidden sm:h-64">
-                      <img
+                      <Image
                         src={featured.image.src}
                         alt={featured.title || ""}
-                        className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.04]"
+                        fill
+                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.04]"
                         loading="lazy"
                       />
                       {/* Gradient overlay */}
@@ -160,10 +163,11 @@ export default function Benefits({ section, accent = "orange" }: Props) {
                       {/* Image */}
                       {item.image?.src && (
                         <div className="relative h-36 overflow-hidden">
-                          <img
+                          <Image
                             src={item.image.src}
                             alt={item.title || ""}
-                            className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.04]"
+                            fill
+                            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.04]"
                             loading="lazy"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-card/75 to-transparent" />
@@ -198,5 +202,6 @@ export default function Benefits({ section, accent = "orange" }: Props) {
         </div>
       </div>
     </section>
+    </MotionConfig>
   );
 }

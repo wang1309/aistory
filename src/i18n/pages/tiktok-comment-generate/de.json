@@ -1,7 +1,7 @@
 {
   "tiktok_comment_generate": {
     "metadata": {
-      "title": "TikTok Kommentar-Generator kostenlos & ohne Anmeldung | Story Generator",
+      "title": "TikTok Kommentar-Generator kostenlos | Story Generator",
       "description": "Verwandle jeden TikTok-Kommentar oder jedes Video in 3-5 Antworten. Kostenloser TikTok Kommentar-Generator mit Ton, Länge & Sprache. Jetzt testen!",
       "keywords": "tiktok antwort generator, tiktok kommentar antworten, kommentar generator, antwort tool, tiktok video antwort tool, social media antwortassistent, creator antwortassistent"
     },
@@ -250,7 +250,15 @@
         },
         {
           "title": "Kann ich eine Antwort zu längerem Inhalt erweitern?",
-          "description": "Ja. Nutze „In AI Write fortsetzen“, um die Antwort in den Schreib-Workspace zu senden und zu längerem Caption, Post oder Skript auszubauen."
+          "description": "Ja. Nutze „In AI Write fortsetzen\", um die Antwort in den Schreib-Workspace zu senden und zu längerem Caption, Post oder Skript auszubauen."
+        },
+        {
+          "title": "Wie antworte ich als Creator schnell auf TikTok-Kommentare?",
+          "description": "Kommentar oder Video in den TikTok Kommentar-Generator einfügen, Antwort-Ziel wie Danke oder Frage beantworten wählen, Ton festlegen – schon werden 3-5 Antworten gestreamt. Eine 5-Minuten-Antwort-Session wird so zu wenigen Sekunden pro Kommentar."
+        },
+        {
+          "title": "Was sind gute TikTok-Kommentar-Antwort-Beispiele für Marken?",
+          "description": "Starke Markenantworten danken Fans herzlich, beantworten Produktfragen prägnant, klären Missverständnisse empathisch und reagieren auf negative Kommentare ohne Verteidigungshaltung. Der TikTok Kommentar-Generator erstellt pro Ziel ein Beispiel, damit du nicht generische Vorlagen wiederholst."
         }
       ]
     },

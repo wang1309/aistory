@@ -76,81 +76,79 @@ export default async function TiktokCommentGeneratorPage({
 
   const homeUrl = process.env.NEXT_PUBLIC_WEB_URL || "";
   const currentUrl = `${homeUrl}${locale === "en" ? "" : `/${locale}`}/tiktok-comment-generator`;
+  const homePath = `${homeUrl}${locale === "en" ? "" : `/${locale}`}`;
 
-  const breadcrumbSchema = {
+  const featureList = [
+    section.feature1?.items?.[0]?.title,
+    section.feature1?.items?.[1]?.title,
+    section.feature2?.items?.[0]?.title,
+    section.feature2?.items?.[1]?.title,
+    section.feature3?.items?.[0]?.title,
+  ].filter((v): v is string => Boolean(v));
+
+  const graph: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
+    "@graph": [
       {
-        "@type": "ListItem",
-        position: 1,
-        name: section.ui?.breadcrumb_home ?? "Home",
-        item: `${homeUrl}${locale === "en" ? "" : `/${locale}`}`,
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: section.ui?.breadcrumb_home ?? "Home",
+            item: homePath,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: section.ui?.breadcrumb_current ?? "TikTok Comment Generator",
+            item: currentUrl,
+          },
+        ],
       },
       {
-        "@type": "ListItem",
-        position: 2,
-        name: section.ui?.breadcrumb_current ?? "TikTok Comment Generator",
-        item: currentUrl,
+        "@type": "WebApplication",
+        name: section.ui?.title ?? "TikTok Comment Generator",
+        description: section.metadata.description,
+        url: currentUrl,
+        inLanguage: locale,
+        applicationCategory: "CommunicationApplication",
+        operatingSystem: "Web",
+        browserRequirements: "Requires JavaScript",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        ...(featureList.length ? { featureList } : {}),
       },
+      ...(section.faq?.items?.length
+        ? [
+            {
+              "@type": "FAQPage",
+              inLanguage: locale,
+              mainEntity: section.faq.items.map(
+                (item: { title?: string; description?: string }) => ({
+                  "@type": "Question",
+                  name: item.title,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: item.description,
+                  },
+                })
+              ),
+            },
+          ]
+        : []),
     ],
   };
-
-  const webAppSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: section.ui?.title ?? "TikTok Comment Generator",
-    description: section.metadata.description,
-    url: currentUrl,
-    applicationCategory: "CommunicationApplication",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-    featureList: [
-      "Generate 3-5 copy-ready replies from a single TikTok comment",
-      "Tone, length, and language controls with streaming output",
-      "Copy individual replies or copy all at once",
-      "Local-only history for quick retries and remixes",
-      "Send a draft to AI Write to expand into longer content",
-    ],
-  };
-
-  const faqSchema =
-    section.faq?.items?.length
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: section.faq.items.map(
-            (item: { title?: string; description?: string }) => ({
-              "@type": "Question",
-              name: item.title,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: item.description,
-              },
-            })
-          ),
-        }
-      : null;
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
-      />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
 
       <TiktokCommentGenerate section={section} />
       {section.feature1 && <FeatureIntro section={section.feature1} accent="orange" />}

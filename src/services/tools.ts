@@ -112,6 +112,18 @@ export const tools: Tool[] = [
     priority: 77,
   },
   {
+    slug: "tiktok-comment-generator",
+    nameKey: "ai_tools.tools.tiktok_comment_generator.name",
+    shortDescKey: "ai_tools.tools.tiktok_comment_generator.desc",
+    module: "ai-write",
+    category: "dialogue",
+    tab: "creative",
+    href: "/tiktok-comment-generator",
+    icon: "RiMessage3Line",
+    badges: ["new"],
+    priority: 76,
+  },
+  {
     slug: "comic-generator",
     nameKey: "ai_tools.tools.comic_generator.name",
     shortDescKey: "ai_tools.tools.comic_generator.desc",
