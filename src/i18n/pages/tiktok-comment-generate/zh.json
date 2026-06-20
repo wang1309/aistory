@@ -1,0 +1,273 @@
+{
+  "tiktok_comment_generate": {
+    "metadata": {
+      "title": "TikTok 评论生成器 免费无需注册 | Story Generator",
+      "description": "一键把 TikTok 评论或视频变成 3-5 条可直接复制的回复，支持语气、长度、语言切换。免费、无需注册，立即生成你的下一条高赞回复。",
+      "keywords": "tiktok 评论生成器, tiktok 回复灵感, 评论生成器, 评论回复工具, tiktok 视频回复工具, 社交回复助手, 创作者回复助手"
+    },
+    "ui": {
+      "title": "TikTok 评论生成器",
+      "title_highlight": "TikTok 评论",
+      "subtitle": "粘贴一条 TikTok 评论或视频，立刻获得 3-5 条可直接复制的回复，语气、长度和语言随心切换。",
+      "eyebrow": "AI 评论工具",
+      "theme_pills": [
+        "创作者回复",
+        "社群运营",
+        "语气控制",
+        "多语言"
+      ],
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "TikTok 评论生成器",
+      "comment_label": "评论或视频",
+      "comment_placeholder": "粘贴你想要回复的 TikTok 评论或视频描述。",
+      "random_button": "随机示例",
+      "context_label": "上下文（可选）",
+      "context_placeholder": "补充上下文，例如产品发布、问答短片或粉丝反应。",
+      "options_title": "生成设置",
+      "reply_goal_label": "回复目标",
+      "tone_label": "语气",
+      "length_label": "长度",
+      "mode_label": "AI 模型",
+      "advanced_options": "高级选项",
+      "output_language": "输出语言",
+      "generate_button": "生成回复",
+      "generating_button": "生成中...",
+      "regenerate_button": "重新生成",
+      "copy_button": "复制",
+      "copy_all_button": "全部复制",
+      "continue_button": "继续",
+      "output_title": "回复列表",
+      "empty_output": "粘贴评论或视频并点击生成，回复会出现在这里。",
+      "generating_output": "正在生成回复...",
+      "history_title": "最近的回复",
+      "history_empty": "暂无保存的回复。",
+      "history_apply": "应用",
+      "history_delete": "删除",
+      "history_clear": "清空"
+    },
+    "validation": {
+      "comment_required": "请先粘贴一条评论或视频。"
+    },
+    "success": {
+      "copied": "已复制到剪贴板。",
+      "copied_all": "已复制全部回复。",
+      "generated": "回复生成完毕。",
+      "random_prompt_selected": "已加载随机示例。",
+      "history_loaded": "历史已加载。",
+      "history_deleted": "已删除历史记录。",
+      "history_cleared": "历史已清空。"
+    },
+    "errors": {
+      "generate_failed": "生成失败，请重试。",
+      "verification_failed": "验证失败，请重试。"
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "适合频繁试不同回复",
+      "standard": "标准",
+      "standard_description": "质量与速度更平衡",
+      "creative": "创意",
+      "creative_description": "更放飞，适合俏皮语气"
+    },
+    "reply_goal": {
+      "thank_you": "感谢",
+      "answer_question": "回答问题",
+      "clarify_misunderstanding": "澄清误会",
+      "drive_engagement": "引导互动",
+      "handle_negative": "应对负面"
+    },
+    "tone": {
+      "warm": "温暖",
+      "professional": "专业",
+      "funny": "幽默",
+      "sales": "营销",
+      "empathetic": "共情"
+    },
+    "length": {
+      "short": "短",
+      "medium": "中等",
+      "long": "长"
+    },
+    "mode": {
+      "fast": "快速",
+      "standard": "标准",
+      "creative": "创意"
+    },
+    "random_prompts": [
+      {
+        "comment": "太棒了！还能在哪里学到更多？",
+        "context": "教程短片",
+        "replyGoal": "drive_engagement",
+        "tone": "warm",
+        "length": "short"
+      },
+      {
+        "comment": "我按这个试了一下，但对我来说没用。",
+        "context": "教程视频",
+        "replyGoal": "clarify_misunderstanding",
+        "tone": "empathetic",
+        "length": "medium"
+      },
+      {
+        "comment": "发货大概要多久？",
+        "context": "产品演示",
+        "replyGoal": "answer_question",
+        "tone": "professional",
+        "length": "short"
+      },
+      {
+        "comment": "客服差到离谱。",
+        "context": "新品回顾",
+        "replyGoal": "handle_negative",
+        "tone": "empathetic",
+        "length": "medium"
+      },
+      {
+        "comment": "太喜欢了！也给妹妹买了一条。",
+        "context": "礼物推荐短片",
+        "replyGoal": "thank_you",
+        "tone": "warm",
+        "length": "short"
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "总览",
+      "title": "这个 TikTok 评论生成器适合做什么",
+      "description": "为创作者和社群运营而生——不想再打开空白文档，只想快速拿到几条可直接复制的回复。粘贴评论或视频、选好语气，几秒内就能流式输出 3-5 条不同的回复。\n\n重点是降低摩擦。不用每次手敲五条同质回复，也不用复制万能的“Thanks!”，它能给出贴合评论或视频、品牌调性和受众语言的角度。",
+      "items": [
+        {
+          "title": "回复选项，而不是单一句子",
+          "description": "每条评论或视频生成 3-5 条不同的回复，让你挑选最贴合当下场景的那一条，而不是只能接受单一结果。",
+          "icon": "RiListCheck2"
+        },
+        {
+          "title": "为创作者和品牌主页打造",
+          "description": "语气、长度和语言控制让你无论是作为创作者、品牌还是社群运营，都能保持统一的风格。",
+          "icon": "RiUserVoiceLine"
+        },
+        {
+          "title": "听起来像真人",
+          "description": "提示词专门调校，避免营销味、机器人腔和过度推销，没有表情符号刷屏，也没有硬塞话题标签。",
+          "icon": "RiChatSmile3Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "为什么创作者要用评论生成器",
+      "description": "在 TikTok 上回复快，本身就是工作的一半。这个生成器让回复持续流动，又不会把你的脑子用光。",
+      "items": [
+        {
+          "title": "秒回，不是分钟回",
+          "description": "刷视频时也能流式生成回复，互动不必等到坐回电脑前。",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "多账号保持一致",
+          "description": "在多个账号上使用同样的语气和长度预设，让你的声音始终可被识别。",
+          "icon": "RiRepeat2Line"
+        },
+        {
+          "title": "本地历史便于快速重试",
+          "description": "最近的提示词和回复都保留在你的设备上，可以随时复用胜出的语气，而不必重打评论。",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "使用场景",
+      "title": "适用人群：创作者、品牌、社群运营",
+      "description": "对个人账号足够轻量，对社群运营流程也足够结构化。",
+      "items": [
+        {
+          "title": "个人创作者",
+          "description": "更快地回复粉丝、提问和黑评，不用反复复制粘贴同样三句话。",
+          "icon": "RiUserLine"
+        },
+        {
+          "title": "品牌和代理主页",
+          "description": "用语气预设匹配品牌声音，保持回复品牌安全和跨帖一致。",
+          "icon": "RiBuildingLine"
+        },
+        {
+          "title": "社群运营",
+          "description": "在一个聚焦的工具里处理感谢、问答、澄清和负面反馈。",
+          "icon": "RiCustomerService2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用步骤",
+      "title": "三步上手 TikTok 评论生成器",
+      "description": "从粘贴评论到拿到可复制的回复，不到一分钟。",
+      "items": [
+        {
+          "title": "粘贴评论或视频",
+          "description": "把要回复的 TikTok 评论或视频描述复制进来，可以选择性补充上下文，例如视频主题或帖子类型。",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "选择语气、长度和语言",
+          "description": "选择回复目标、语气、长度和输出语言，AI 模型预设可选，控制速度与创意。",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "生成、复制或扩展",
+          "description": "流式查看回复，复制想要的那一条，或者把最好的回复送到 AI Write 写成更长的内容。",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "TikTok 评论生成器 FAQ",
+      "description": "围绕范围、隐私与使用的简短回答。",
+      "items": [
+        {
+          "title": "这个 TikTok 评论生成器是免费的吗？",
+          "description": "是的，你可以免费生成、复制、全部复制，并继续在 AI Write 中扩展，无需注册。"
+        },
+        {
+          "title": "每次会生成几条回复（针对评论或视频）？",
+          "description": "每次运行会流式生成 3-5 条不同的回复，方便你挑选最贴合的，或综合使用找灵感。"
+        },
+        {
+          "title": "可以让回复保持品牌安全吗？",
+          "description": "可以。选择 Professional 语气保持品牌安全，或使用 Warm、Empathetic 语气，适合社群友好回复。"
+        },
+        {
+          "title": "支持哪些输出语言？",
+          "description": "支持英文、中文、日文、韩文、德文、俄文等。生成前在表单中选择输出语言即可。"
+        },
+        {
+          "title": "它会保存我的输入历史吗？",
+          "description": "只保存在你本地浏览器中，不会上传到服务器。你可以随时在历史面板中清空。"
+        },
+        {
+          "title": "可以把回复扩展成更长的内容吗？",
+          "description": "可以。点击“在 AI Write 续写”，把回复送到写作工作区，扩展成更长的文案、帖子或脚本。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "让你的下一条 TikTok 回复更聪明",
+      "description": "立刻运行生成器，复制想要的那一行；需要更长文案时，把最好的回复送到 AI Write。",
+      "buttons": [
+        {
+          "title": "立即试用",
+          "url": "#tiktok_comment_generator"
+        },
+        {
+          "title": "打开 AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    }
+  }
+}

@@ -37,8 +37,6 @@ export default async function ModuleToolsSection({
 
   if (!tools.length) return null;
 
-  const badgeCategoryLabel = t("ai_tools.badge_category");
-
   const toCard = (tool: (typeof tools)[number]) => ({
     slug: tool.slug,
     icon: tool.icon,
@@ -135,14 +133,12 @@ export default async function ModuleToolsSection({
         {hasMultipleTabs ? (
           <ModuleToolsTabs
             tabs={tabs}
-            badgeCategoryLabel={badgeCategoryLabel}
             accent={accent}
           />
         ) : (
           <div className="mt-16">
             <AnimatedToolsGrid
               tools={tabs[0]?.tools ?? tools.map(toCard)}
-              badgeCategoryLabel={badgeCategoryLabel}
               accent={accent}
             />
           </div>

@@ -23,11 +23,11 @@ export interface ToolCardData {
 
 interface AnimatedToolsGridProps {
   tools: ToolCardData[];
-  badgeCategoryLabel: string;
+  badgeCategoryLabel?: string;
   accent?: AccentColor;
 }
 
-export function AnimatedToolsGrid({ tools, badgeCategoryLabel, accent = "orange" }: AnimatedToolsGridProps) {
+export function AnimatedToolsGrid({ tools, accent = "orange" }: AnimatedToolsGridProps) {
   return (
     <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
       {tools.map((tool, i) => (
@@ -40,7 +40,6 @@ export function AnimatedToolsGrid({ tools, badgeCategoryLabel, accent = "orange"
         >
           <ToolCard
             tool={tool}
-            badgeCategoryLabel={badgeCategoryLabel}
             accent={accent}
           />
         </motion.div>
@@ -51,11 +50,9 @@ export function AnimatedToolsGrid({ tools, badgeCategoryLabel, accent = "orange"
 
 function ToolCard({
   tool,
-  badgeCategoryLabel,
   accent,
 }: {
   tool: ToolCardData;
-  badgeCategoryLabel: string;
   accent: AccentColor;
 }) {
   const a = getAccent(accent);
@@ -90,9 +87,6 @@ function ToolCard({
               <h3 className="text-[0.95rem] font-bold tracking-tight text-foreground leading-snug">
                 {tool.name}
               </h3>
-              <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/35 mt-0.5">
-                {badgeCategoryLabel}
-              </p>
             </div>
           </div>
 

@@ -344,6 +344,10 @@
         "name": "Incorrect Quote Generator",
         "desc": "Generate short, funny, intentionally wrong quote exchanges for fandom characters, OCs, and group dynamics."
       },
+      "tiktok_comment_generator": {
+        "name": "TikTok Comment Generator",
+        "desc": "Turn a single TikTok comment into 3-5 copy-ready replies with tone, length, and language controls."
+      },
       "comic_generator": {
         "name": "AI Comic Generator",
         "desc": "Generate comic dialogue, narration, and panel-by-panel scripts for manga, webtoon, and comic storytelling."

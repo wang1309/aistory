@@ -127,6 +127,14 @@
               "icon": "RiChatQuoteLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "TikTok Comment Generator",
+              "description": "Turn a single TikTok comment into 3-5 copy-ready replies with tone, length, and language controls.",
+              "url": "/tiktok-comment-generator",
+              "icon": "RiMessage3Line",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -884,6 +892,14 @@
               "description": "Funny, intentionally wrong quote exchanges for fandom characters and groups.",
               "url": "/incorrect-quote-generator",
               "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "TikTok Comment Generator",
+              "description": "Turn a TikTok comment into 3-5 copy-ready replies with tone, length, and language controls.",
+              "url": "/tiktok-comment-generator",
+              "icon": "RiMessage3Line",
               "target": "_self",
               "category": "creative"
             }

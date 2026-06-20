@@ -344,6 +344,10 @@
         "name": "Incorrect Quote Generator",
         "desc": "为同人角色、原创角色和群像关系快速生成短小、好笑、故意错位的对白。"
       },
+      "tiktok_comment_generator": {
+        "name": "TikTok 评论生成器",
+        "desc": "粘贴一条 TikTok 评论，立刻生成 3-5 条可直接复制的回复，支持语气、长度和语言切换。"
+      },
       "comic_generator": {
         "name": "AI漫画生成器",
         "desc": "为漫画、网漫和条漫创作生成漫画对白、旁白和逐格分镜脚本。"

@@ -344,6 +344,10 @@
         "name": "Incorrect Quote Generator",
         "desc": "ファンダム、OC、グループ向けに短くて面白い、わざとズレた quote 会話を生成します。"
       },
+      "tiktok_comment_generator": {
+        "name": "TikTok コメントジェネレーター",
+        "desc": "TikTok のコメントを貼り付けるだけで、語調・長さ・言語を調整した 3〜5 件のコピー即利用できる返信を生成します。"
+      },
       "comic_generator": {
         "name": "AIコミックジェネレーター",
         "desc": "マンガ・ウェブトゥーン・コミック向けのセリフ、ナレーション、コマ割りスクリプトを生成します。"

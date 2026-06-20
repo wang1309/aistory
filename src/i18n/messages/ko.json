@@ -344,6 +344,10 @@
         "name": "Incorrect Quote Generator",
         "desc": "팬덤 캐릭터, OC, 그룹 관계를 위한 짧고 웃긴, 일부러 어긋난 quote 대사를 생성합니다."
       },
+      "tiktok_comment_generator": {
+        "name": "TikTok 댓글 생성기",
+        "desc": "TikTok 댓글을 붙여 넣으면 어조·길이·언어를 조절해 3~5개의 바로 복사 가능한 답글을 생성합니다."
+      },
       "comic_generator": {
         "name": "AI 만화 생성기",
         "desc": "망가, 웹툰, 만화 스토리텔링을 위한 대사, 나레이션, 컷별 스크립트를 생성합니다."

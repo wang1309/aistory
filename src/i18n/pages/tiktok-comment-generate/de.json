@@ -1,0 +1,273 @@
+{
+  "tiktok_comment_generate": {
+    "metadata": {
+      "title": "TikTok Kommentar-Generator kostenlos & ohne Anmeldung | Story Generator",
+      "description": "Verwandle jeden TikTok-Kommentar oder jedes Video in 3-5 Antworten. Kostenloser TikTok Kommentar-Generator mit Ton, Länge & Sprache. Jetzt testen!",
+      "keywords": "tiktok antwort generator, tiktok kommentar antworten, kommentar generator, antwort tool, tiktok video antwort tool, social media antwortassistent, creator antwortassistent"
+    },
+    "ui": {
+      "title": "TikTok Kommentar-Generator",
+      "title_highlight": "TikTok Kommentar",
+      "subtitle": "Der TikTok Kommentar-Generator verwandelt jeden Kommentar oder jedes Video in 3-5 kopierfertige Antworten mit Steuerung für Ton, Länge und Sprache.",
+      "eyebrow": "AI Kommentar-Tool",
+      "theme_pills": [
+        "Creator-Antworten",
+        "Community-Management",
+        "Ton-Steuerung",
+        "Mehrsprachig"
+      ],
+      "breadcrumb_home": "Start",
+      "breadcrumb_current": "TikTok Kommentar-Generator",
+      "comment_label": "Kommentar oder Video",
+      "comment_placeholder": "Füge den TikTok-Kommentar oder das Video ein, auf das du antworten möchtest.",
+      "random_button": "Zufallsbeispiel",
+      "context_label": "Kontext (optional)",
+      "context_placeholder": "Kontext ergänzen, z. B. Produktlaunch, Q&A-Clip oder Fan-Reaktion.",
+      "options_title": "Generator-Einstellungen",
+      "reply_goal_label": "Antwort-Ziel",
+      "tone_label": "Ton",
+      "length_label": "Länge",
+      "mode_label": "AI-Modell",
+      "advanced_options": "Erweiterte Optionen",
+      "output_language": "Ausgabesprache",
+      "generate_button": "Antworten generieren",
+      "generating_button": "Generierung...",
+      "regenerate_button": "Neu generieren",
+      "copy_button": "Kopieren",
+      "copy_all_button": "Alle kopieren",
+      "continue_button": "Fortsetzen",
+      "output_title": "Antworten",
+      "empty_output": "Füge einen Kommentar oder ein Video ein und generiere, um Antworten hier zu sehen.",
+      "generating_output": "Antworten werden generiert...",
+      "history_title": "Letzte Antworten",
+      "history_empty": "Noch keine gespeicherten Antworten.",
+      "history_apply": "Übernehmen",
+      "history_delete": "Löschen",
+      "history_clear": "Leeren"
+    },
+    "validation": {
+      "comment_required": "Bitte zuerst einen Kommentar oder ein Video einfügen."
+    },
+    "success": {
+      "copied": "In die Zwischenablage kopiert.",
+      "copied_all": "Alle Antworten kopiert.",
+      "generated": "TikTok-Antworten generiert.",
+      "random_prompt_selected": "Zufallsbeispiel geladen.",
+      "history_loaded": "Verlauf geladen.",
+      "history_deleted": "Verlaufseintrag entfernt.",
+      "history_cleared": "Verlauf geleert."
+    },
+    "errors": {
+      "generate_failed": "Generierung der TikTok-Antworten fehlgeschlagen.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schnelles Ausprobieren vieler Varianten",
+      "standard": "Standard",
+      "standard_description": "Ausgewogene Qualität und Geschwindigkeit",
+      "creative": "Kreativ",
+      "creative_description": "Freier und verspielterer Ton"
+    },
+    "reply_goal": {
+      "thank_you": "Danke sagen",
+      "answer_question": "Frage beantworten",
+      "clarify_misunderstanding": "Missverständnis klären",
+      "drive_engagement": "Engagement fördern",
+      "handle_negative": "Negatives behandeln"
+    },
+    "tone": {
+      "warm": "Warm",
+      "professional": "Professionell",
+      "funny": "Lustig",
+      "sales": "Verkauf",
+      "empathetic": "Empathisch"
+    },
+    "length": {
+      "short": "Kurz",
+      "medium": "Mittel",
+      "long": "Lang"
+    },
+    "mode": {
+      "fast": "Schnell",
+      "standard": "Standard",
+      "creative": "Kreativ"
+    },
+    "random_prompts": [
+      {
+        "comment": "Das ist toll, wo kann ich mehr lernen?",
+        "context": "Tutorial-Clip",
+        "replyGoal": "drive_engagement",
+        "tone": "warm",
+        "length": "short"
+      },
+      {
+        "comment": "Hab es ausprobiert, aber bei mir hat es nicht geklappt.",
+        "context": "How-to-Video",
+        "replyGoal": "clarify_misunderstanding",
+        "tone": "empathetic",
+        "length": "medium"
+      },
+      {
+        "comment": "Wie lange dauert der Versand?",
+        "context": "Produktdemo",
+        "replyGoal": "answer_question",
+        "tone": "professional",
+        "length": "short"
+      },
+      {
+        "comment": "Schlechtester Kundenservice aller Zeiten.",
+        "context": "Launch-Rückblick",
+        "replyGoal": "handle_negative",
+        "tone": "empathetic",
+        "length": "medium"
+      },
+      {
+        "comment": "Ich liebe es! Hab auch eins für meine Schwester gekauft.",
+        "context": "Geschenkideen-Clip",
+        "replyGoal": "thank_you",
+        "tone": "warm",
+        "length": "short"
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Wofür dieser TikTok Kommentar-Generator gut ist",
+      "description": "Dieser TikTok Kommentar-Generator ist für Creator und Community Manager gedacht, die schnelle, kopierfertige Antworten wollen, ohne ein leeres Dokument zu öffnen. Kommentar oder Video einfügen, Ton wählen und in Sekunden 3-5 verschiedene Antworten streamen.\n\nIm Fokus steht die Reibungsverringerung. Statt jedes Mal fünf ähnliche Antworten per Hand zu tippen oder ein generisches „Thanks!“ zu kopieren, liefert der TikTok Kommentar-Generator Antworten, die zum Kommentar oder Video, zur Markenstimme und zur Sprache deiner Zielgruppe passen.",
+      "items": [
+        {
+          "title": "Antwort-Optionen, nicht nur eine Zeile",
+          "description": "Der TikTok Kommentar-Generator erzeugt pro Kommentar oder Video 3-5 verschiedene Antworten, damit du die passende für den Moment auswählen kannst.",
+          "icon": "RiListCheck2"
+        },
+        {
+          "title": "Für Creator und Markenseiten gebaut",
+          "description": "Ton-, Längen- und Sprachsteuerung helfen dir, ob als Creator, Unternehmen oder Community Manager einheitlich zu bleiben.",
+          "icon": "RiUserVoiceLine"
+        },
+        {
+          "title": "Menschlich klingender Output",
+          "description": "Prompts sind darauf getrimmt, spamigen, roboterhaften oder übermäßigen Verkaufsjargon zu vermeiden – ohne Emoji-Überfluss und ohne erzwungene Hashtags.",
+          "icon": "RiChatSmile3Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum Creator zum TikTok Kommentar-Generator greifen",
+      "description": "Schnelles Antworten auf TikTok ist halbe Miete. Dieser Generator hält Antworten am Fließen, ohne deinen Schreibkopf zu erschöpfen.",
+      "items": [
+        {
+          "title": "Antworten in Sekunden, nicht Minuten",
+          "description": "Streaming-Antworten beim Scrollen, damit Engagement nicht erst am Laptop wartet.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "Konsistenz über mehrere Konten",
+          "description": "Nutze dieselben Ton- und Längen-Presets über mehrere Konten, damit deine Stimme erkennbar bleibt.",
+          "icon": "RiRepeat2Line"
+        },
+        {
+          "title": "Lokaler Verlauf für schnelle Wiederholungen",
+          "description": "Letzte Prompts und Antworten bleiben auf deinem Gerät, sodass du einen erfolgreichen Ton ohne Neutippen erneut starten kannst.",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Anwendungsfälle",
+      "title": "Beste Einsatzorte für den TikTok Kommentar-Generator",
+      "description": "Leicht genug für persönliche Konten, strukturiert genug für Community-Management-Workflows.",
+      "items": [
+        {
+          "title": "Solo-Creator",
+          "description": "Der TikTok Kommentar-Generator hilft dir, schneller auf Fans, Fragen und Hater zu antworten, ohne dieselben drei Zeilen zu kopieren.",
+          "icon": "RiUserLine"
+        },
+        {
+          "title": "Marken- und Agenturseiten",
+          "description": "Passe die Markenstimme mit Ton-Presets an und halte Antworten markensicher und über Posts hinweg konsistent.",
+          "icon": "RiBuildingLine"
+        },
+        {
+          "title": "Community Manager",
+          "description": "Danksagungen, Fragen, Klärungen und Negatives in einem fokussierten Werkzeug behandeln.",
+          "icon": "RiCustomerService2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "ANWENDUNG",
+      "title": "So nutzt du den TikTok Kommentar-Generator in 3 Schritten",
+      "description": "Vom eingefügten Kommentar zur kopierfertigen Antwort mit dem TikTok Kommentar-Generator in unter einer Minute.",
+      "items": [
+        {
+          "title": "Kommentar oder Video einfügen",
+          "description": "Kopiere den TikTok-Kommentar oder das Video, auf das du antworten willst, und ergänze optional Kontext wie Videothema oder Post-Typ.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "Ton, Länge und Sprache wählen",
+          "description": "Wähle Antwort-Ziel, Ton, Länge und Ausgabesprache. Das optionale AI-Modell-Preset steuert Tempo vs. Kreativität.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "Generieren, kopieren oder erweitern",
+          "description": "Stream die Antworten des TikTok Kommentar-Generators, kopiere die gewünschte oder alle, und schicke die beste bei Bedarf in AI Write.",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "TikTok Kommentar-Generator FAQ",
+      "description": "Kurze Antworten zu Umfang, Datenschutz und Nutzung des TikTok Kommentar-Generators.",
+      "items": [
+        {
+          "title": "Ist dieser TikTok Kommentar-Generator kostenlos?",
+          "description": "Ja. Du kannst generieren, kopieren, alle kopieren und in AI Write fortsetzen, ohne dich anzumelden."
+        },
+        {
+          "title": "Wie viele Antworten schreibt der TikTok Kommentar-Generator pro Kommentar oder Video?",
+          "description": "Pro Lauf werden 3-5 verschiedene Antworten gestreamt, damit du die passende auswählen oder kombinieren kannst."
+        },
+        {
+          "title": "Kann der TikTok Kommentar-Generator Antworten markensicher halten?",
+          "description": "Ja. Wähle den professionellen Ton für markensichere Antworten oder nutze warme und empathische Töne für Community-freundliche Antworten."
+        },
+        {
+          "title": "Welche Sprachen schreibt der TikTok Kommentar-Generator?",
+          "description": "Englisch, Chinesisch, Japanisch, Koreanisch, Deutsch, Russisch und mehr. Wähle vor dem Generieren die Ausgabesprache im Formular."
+        },
+        {
+          "title": "Werden meine Eingaben gespeichert?",
+          "description": "Nur lokal im Browser, nichts wird auf einen Server hochgeladen. Du kannst den Verlauf jederzeit im Verlaufspanel leeren."
+        },
+        {
+          "title": "Kann ich eine Antwort zu längerem Inhalt erweitern?",
+          "description": "Ja. Nutze „In AI Write fortsetzen“, um die Antwort in den Schreib-Workspace zu senden und zu längerem Caption, Post oder Skript auszubauen."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Starte den TikTok Kommentar-Generator bei deinem nächsten Post",
+      "description": "Starte jetzt den TikTok Kommentar-Generator, kopiere die Zeile, die du willst, oder schicke die beste an AI Write, wenn du längeren Text brauchst.",
+      "buttons": [
+        {
+          "title": "Jetzt testen",
+          "url": "#tiktok_comment_generator"
+        },
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write"
+        }
+      ]
+    }
+  }
+}

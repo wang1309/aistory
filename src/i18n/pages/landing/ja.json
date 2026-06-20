@@ -119,6 +119,14 @@
               "icon": "RiChatQuoteLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "TikTok コメントジェネレーター",
+              "description": "TikTok のコメントを貼り付けるだけで、語調・長さ・言語を調整した 3〜5 件のコピー即利用できる返信を生成。",
+              "url": "/tiktok-comment-generator",
+              "icon": "RiMessage3Line",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -876,6 +884,14 @@
               "description": "ファンダムキャラやグループ向けに、わざとズレた短い会話を生成。",
               "url": "/incorrect-quote-generator",
               "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "TikTok コメントジェネレーター",
+              "description": "TikTok のコメントを 3〜5 件のコピー即利用できる返信に変換。",
+              "url": "/tiktok-comment-generator",
+              "icon": "RiMessage3Line",
               "target": "_self",
               "category": "creative"
             }

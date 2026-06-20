@@ -1,0 +1,273 @@
+{
+  "tiktok_comment_generate": {
+    "metadata": {
+      "title": "TikTok コメントジェネレーター 無料・登録不要 | Story Generator",
+      "description": "TikTok のコメントや動画を貼るだけで 3〜5 件のコピー即利用できる返信を生成。語調・長さ・言語を調整可能。無料・登録不要、今すぐ試してファンを魅了。",
+      "keywords": "tiktok コメントジェネレーター, tiktok 返信アイデア, コメント返信ツール, tiktok 動画返信ツール, SNS 返信アシスタント, クリエイター返信ツール"
+    },
+    "ui": {
+      "title": "TikTok コメントジェネレーター",
+      "title_highlight": "TikTok コメント",
+      "subtitle": "TikTok のコメントや動画を貼り付けるだけで、語調・長さ・言語を自在に調整した 3〜5 件の返信案を瞬時に生成。",
+      "eyebrow": "AI コメントツール",
+      "theme_pills": [
+        "クリエイター返信",
+        "コミュニティ管理",
+        "語調コントロール",
+        "多言語"
+      ],
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "TikTok コメントジェネレーター",
+      "comment_label": "コメントまたは動画",
+      "comment_placeholder": "返信したい TikTok コメントや動画説明を貼り付けてください。",
+      "random_button": "ランダム例",
+      "context_label": "背景（任意）",
+      "context_placeholder": "背景を補足。例：商品発表、Q&A 動画、ファンの反応。",
+      "options_title": "生成設定",
+      "reply_goal_label": "返信の目的",
+      "tone_label": "語調",
+      "length_label": "長さ",
+      "mode_label": "AI モデル",
+      "advanced_options": "詳細オプション",
+      "output_language": "出力言語",
+      "generate_button": "返信を生成",
+      "generating_button": "生成中...",
+      "regenerate_button": "再生成",
+      "copy_button": "コピー",
+      "copy_all_button": "すべてコピー",
+      "continue_button": "続ける",
+      "output_title": "返信リスト",
+      "empty_output": "コメントや動画を貼り付けて生成すると、返信案がここに表示されます。",
+      "generating_output": "返信を生成中...",
+      "history_title": "最近の返信",
+      "history_empty": "保存された返信はまだありません。",
+      "history_apply": "適用",
+      "history_delete": "削除",
+      "history_clear": "クリア"
+    },
+    "validation": {
+      "comment_required": "まずコメントまたは動画を貼り付けてください。"
+    },
+    "success": {
+      "copied": "クリップボードにコピーしました。",
+      "copied_all": "全返信をコピーしました。",
+      "generated": "返信を生成しました。",
+      "random_prompt_selected": "ランダム例を読み込みました。",
+      "history_loaded": "履歴を読み込みました。",
+      "history_deleted": "履歴を削除しました。",
+      "history_cleared": "履歴をクリアしました。"
+    },
+    "errors": {
+      "generate_failed": "返信の生成に失敗しました。",
+      "verification_failed": "認証に失敗しました。もう一度お試しください。"
+    },
+    "ai_models": {
+      "fast": "高速",
+      "fast_description": "すばやく何パターンも試したいときに",
+      "standard": "標準",
+      "standard_description": "品質と速度のバランス",
+      "creative": "クリエイティブ",
+      "creative_description": "より自由で遊びのある語調"
+    },
+    "reply_goal": {
+      "thank_you": "感謝",
+      "answer_question": "質問に答える",
+      "clarify_misunderstanding": "誤解を解く",
+      "drive_engagement": "エンゲージメント促進",
+      "handle_negative": "ネガティブ対応"
+    },
+    "tone": {
+      "warm": "温かい",
+      "professional": "プロフェッショナル",
+      "funny": "ユーモア",
+      "sales": "セールス",
+      "empathetic": "共感"
+    },
+    "length": {
+      "short": "短い",
+      "medium": "中",
+      "long": "長い"
+    },
+    "mode": {
+      "fast": "高速",
+      "standard": "標準",
+      "creative": "クリエイティブ"
+    },
+    "random_prompts": [
+      {
+        "comment": "すごい！もっと詳しく知るには？",
+        "context": "チュートリアル動画",
+        "replyGoal": "drive_engagement",
+        "tone": "warm",
+        "length": "short"
+      },
+      {
+        "comment": "試してみたけど上手くいきませんでした。",
+        "context": "ハウツー動画",
+        "replyGoal": "clarify_misunderstanding",
+        "tone": "empathetic",
+        "length": "medium"
+      },
+      {
+        "comment": "配送はどのくらいかかりますか？",
+        "context": "商品デモ",
+        "replyGoal": "answer_question",
+        "tone": "professional",
+        "length": "short"
+      },
+      {
+        "comment": "カスタマーサポートが最悪。",
+        "context": "発表まとめ",
+        "replyGoal": "handle_negative",
+        "tone": "empathetic",
+        "length": "medium"
+      },
+      {
+        "comment": "最高！妹にも一つ買いました。",
+        "context": "ギフト紹介動画",
+        "replyGoal": "thank_you",
+        "tone": "warm",
+        "length": "short"
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "この TikTok コメントジェネレーターの得意分野",
+      "description": "クリエイターやコミュニティマネージャーのために作られたツールです。空のドキュメントを開かず、コメントや動画を貼り付け、語調を選ぶだけで、数秒で 3〜5 件の異なる返信案がストリーミング出力されます。\n\n狙いは摩擦を減らすこと。毎回同じような 5 件を手打ちしたり、使い回しの「Thanks!」を貼ったりせず、コメントや動画・ブランドの声・読者の言語に合った角度の返信を手に入れられます。",
+      "items": [
+        {
+          "title": "一件だけでなく選べる返信",
+          "description": "コメントや動画ごとに 3〜5 件の異なる返信を生成し、その瞬間に合うものを選べます。",
+          "icon": "RiListCheck2"
+        },
+        {
+          "title": "クリエイターとブランドページ向け",
+          "description": "語調・長さ・言語のコントロールで、クリエイター・企業・コミュニティマネージャーに関わらず一貫した声を保てます。",
+          "icon": "RiUserVoiceLine"
+        },
+        {
+          "title": "人間らしい書きぶり",
+          "description": "プロンプトは、スパムっぽさ・機械的な表現・過剰なセールスを避けるよう調整。絵文字の乱用や不自然なハッシュタグもありません。",
+          "icon": "RiChatSmile3Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "クリエイターが返信ジェネレーターを使う理由",
+      "description": "TikTok での素早い返信は仕事の半分。このジェネレーターは、執筆の頭を使い果たさずに返信を流し続けます。",
+      "items": [
+        {
+          "title": "分単位ではなく秒単位で返信",
+          "description": "スクロールしながらストリーミング生成できるため、PC の前に戻るまでエンゲージメントを待たせません。",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "複数アカウントで一貫性",
+          "description": "同じ語調・長さのプリセットを使えば、複数アカウントでも声がブレません。",
+          "icon": "RiRepeat2Line"
+        },
+        {
+          "title": "ローカル履歴で再試行も手軽に",
+          "description": "最近のプロンプトと返信は端末に残るため、勝ちパターンの語調をコメント打ち直さずに再実行できます。",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "ユースケース",
+      "title": "おすすめ：クリエイター・ブランド・コミュニティ運営",
+      "description": "個人アカウントには十分軽量、コミュニティ運営にも構造化されたワークフローを提供します。",
+      "items": [
+        {
+          "title": "個人クリエイター",
+          "description": "ファン・質問・アンチコメントへの返信を、同じ三文をコピペせずに素早くこなせます。",
+          "icon": "RiUserLine"
+        },
+        {
+          "title": "ブランドと代理店ページ",
+          "description": "語調プリセットでブランドの声に合わせ、返信をブランドセーフかつ投稿間で一貫させます。",
+          "icon": "RiBuildingLine"
+        },
+        {
+          "title": "コミュニティマネージャー",
+          "description": "感謝・質問・誤解の修正・ネガティブ対応を、一つのツールで捌けます。",
+          "icon": "RiCustomerService2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "3 ステップで使う TikTok コメントジェネレーター",
+      "description": "コメント貼り付けからコピー即利用の返信まで、1 分以内。",
+      "items": [
+        {
+          "title": "コメントや動画を貼り付ける",
+          "description": "返信したい TikTok コメントや動画説明をコピーし、動画トピックや投稿タイプなど必要に応じて背景を補足します。",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "語調・長さ・言語を選ぶ",
+          "description": "返信の目的・語調・長さ・出力言語を選びます。AI モデルプリセットで速度と創造性も調整可能。",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "生成・コピー・拡張",
+          "description": "返信をストリーミングで確認し、欲しいものをコピー。一番良いものは AI Write に送って長文にも展開できます。",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "TikTok コメントジェネレーター FAQ",
+      "description": "スコープ・プライバシー・使い方に関する短い回答集。",
+      "items": [
+        {
+          "title": "この TikTok コメントジェネレーターは無料ですか？",
+          "description": "はい。生成・コピー・全件コピー・AI Write への継続を登録なしで無料で利用できます。"
+        },
+        {
+          "title": "コメントや動画ごとに何件の返信を生成しますか？",
+          "description": "毎回 3〜5 件の異なる返信をストリーミング生成するため、その瞬間に合うものを選んだり、組み合わせて発想にできます。"
+        },
+        {
+          "title": "ブランドセーフに保てますか？",
+          "description": "はい。Professional 語調でブランドセーフに保てるほか、Warm や Empathetic を使えばコミュニティ向けの返信になります。"
+        },
+        {
+          "title": "対応する出力言語は？",
+          "description": "英語・中国語・日本語・韓国語・ドイツ語・ロシア語など多数。生成前のフォームで出力言語を選んでください。"
+        },
+        {
+          "title": "入力履歴は保存されますか？",
+          "description": "ブラウザのローカルのみに保存され、サーバーへは送信されません。履歴パネルからいつでもクリアできます。"
+        },
+        {
+          "title": "返信をより長いコンテンツに展開できますか？",
+          "description": "はい。「AI Write で続きを書く」を使い、返信を執筆ワークスペースに送って、長いキャプション・投稿・脚本に展開できます。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "次の TikTok 投稿の返信をもっと賢く",
+      "description": "今すぐ生成器を動かし、欲しい一行をコピー。長い文案が必要なら、ベストな返信を AI Write に送って展開しましょう。",
+      "buttons": [
+        {
+          "title": "今すぐ試す",
+          "url": "#tiktok_comment_generator"
+        },
+        {
+          "title": "AI Write を開く",
+          "url": "/ai-write"
+        }
+      ]
+    }
+  }
+}

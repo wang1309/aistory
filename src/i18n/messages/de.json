@@ -344,6 +344,10 @@
         "name": "Incorrect Quote Generator",
         "desc": "Erzeuge kurze, lustige und absichtlich falsche Quote-Dialoge für Fandom-Charaktere, OCs und Gruppendynamiken."
       },
+      "tiktok_comment_generator": {
+        "name": "TikTok Kommentar-Generator",
+        "desc": "Verwandle einen TikTok-Kommentar in 3-5 kopierfertige Antworten mit Steuerung für Ton, Länge und Sprache."
+      },
       "comic_generator": {
         "name": "AI Comic Generator",
         "desc": "Generieren Sie Comic-Dialoge, Erzählungen und Panel-Skripte für Manga, Webtoon und Comic-Storytelling."

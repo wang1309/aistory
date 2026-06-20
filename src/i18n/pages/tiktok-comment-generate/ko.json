@@ -1,0 +1,273 @@
+{
+  "tiktok_comment_generate": {
+    "metadata": {
+      "title": "TikTok 댓글 생성기 무료·가입 불필요 | Story Generator",
+      "description": "TikTok 댓글이나 영상을 3~5개의 바로 복사 가능한 답글로 변환하세요. 무료 TikTok 댓글 생성기로 어조·길이·언어 조절 가능. 가입 없이 지금 바로 시도.",
+      "keywords": "tiktok 댓글 생성기, tiktok 답글 아이디어, 댓글 생성기, 댓글 답글 도구, tiktok 영상 답글 도구, 소셜 답글 도우미, 크리에이터 답글 도우미"
+    },
+    "ui": {
+      "title": "TikTok 댓글 생성기",
+      "title_highlight": "TikTok 댓글",
+      "subtitle": "TikTok 댓글 생성기로 댓글이나 영상을 붙여 넣으면 어조·길이·언어를 자유롭게 조절한 3~5개의 답글을 즉시 받아보세요.",
+      "eyebrow": "AI 댓글 도구",
+      "theme_pills": [
+        "크리에이터 답글",
+        "커뮤니티 운영",
+        "어조 컨트롤",
+        "다국어"
+      ],
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "TikTok 댓글 생성기",
+      "comment_label": "댓글 또는 영상",
+      "comment_placeholder": "답글을 달고 싶은 TikTok 댓글이나 영상 설명을 붙여 넣으세요.",
+      "random_button": "랜덤 예시",
+      "context_label": "맥락(선택)",
+      "context_placeholder": "맥락을 보완하세요. 예: 제품 발표, Q&A 영상, 팬 반응.",
+      "options_title": "생성 설정",
+      "reply_goal_label": "답글 목표",
+      "tone_label": "어조",
+      "length_label": "길이",
+      "mode_label": "AI 모델",
+      "advanced_options": "고급 옵션",
+      "output_language": "출력 언어",
+      "generate_button": "답글 생성",
+      "generating_button": "생성 중...",
+      "regenerate_button": "다시 생성",
+      "copy_button": "복사",
+      "copy_all_button": "모두 복사",
+      "continue_button": "계속",
+      "output_title": "답글 목록",
+      "empty_output": "댓글이나 영상을 붙여 넣고 생성하면 답글이 여기에 표시됩니다.",
+      "generating_output": "답글을 생성하는 중...",
+      "history_title": "최근 답글",
+      "history_empty": "저장된 답글이 아직 없습니다.",
+      "history_apply": "적용",
+      "history_delete": "삭제",
+      "history_clear": "전체 삭제"
+    },
+    "validation": {
+      "comment_required": "먼저 댓글이나 영상을 붙여 넣으세요."
+    },
+    "success": {
+      "copied": "클립보드에 복사했습니다.",
+      "copied_all": "전체 답글을 복사했습니다.",
+      "generated": "답글 생성이 완료되었습니다.",
+      "random_prompt_selected": "랜덤 예시를 불러왔습니다.",
+      "history_loaded": "히스토리를 불러왔습니다.",
+      "history_deleted": "히스토리를 삭제했습니다.",
+      "history_cleared": "히스토리를 비웠습니다."
+    },
+    "errors": {
+      "generate_failed": "답글 생성에 실패했습니다.",
+      "verification_failed": "인증에 실패했습니다. 다시 시도해 주세요."
+    },
+    "ai_models": {
+      "fast": "빠름",
+      "fast_description": "여러 패턴을 빠르게 시도할 때",
+      "standard": "표준",
+      "standard_description": "품질과 속도의 균형",
+      "creative": "크리에이티브",
+      "creative_description": "더 자유롭고 장난기 있는 어조"
+    },
+    "reply_goal": {
+      "thank_you": "감사",
+      "answer_question": "질문 답변",
+      "clarify_misunderstanding": "오해 해소",
+      "drive_engagement": "참여 유도",
+      "handle_negative": "부정 대응"
+    },
+    "tone": {
+      "warm": "따뜻함",
+      "professional": "프로페셔널",
+      "funny": "유머",
+      "sales": "세일즈",
+      "empathetic": "공감"
+    },
+    "length": {
+      "short": "짧게",
+      "medium": "중간",
+      "long": "길게"
+    },
+    "mode": {
+      "fast": "빠름",
+      "standard": "표준",
+      "creative": "크리에이티브"
+    },
+    "random_prompts": [
+      {
+        "comment": "너무 좋아요! 어디서 더 배울 수 있나요?",
+        "context": "튜토리얼 영상",
+        "replyGoal": "drive_engagement",
+        "tone": "warm",
+        "length": "short"
+      },
+      {
+        "comment": "이렇게 해봤는데 저는 안 됐어요.",
+        "context": "사용법 영상",
+        "replyGoal": "clarify_misunderstanding",
+        "tone": "empathetic",
+        "length": "medium"
+      },
+      {
+        "comment": "배송은 얼마나 걸리나요?",
+        "context": "제품 데모",
+        "replyGoal": "answer_question",
+        "tone": "professional",
+        "length": "short"
+      },
+      {
+        "comment": "고객 지원 최악이에요.",
+        "context": "출시 요약",
+        "replyGoal": "handle_negative",
+        "tone": "empathetic",
+        "length": "medium"
+      },
+      {
+        "comment": "너무 좋아요! 여동생 것도 하나 샀어요.",
+        "context": "추천 영상",
+        "replyGoal": "thank_you",
+        "tone": "warm",
+        "length": "short"
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "개요",
+      "title": "이 TikTok 댓글 생성기가 잘하는 일",
+      "description": "이 TikTok 댓글 생성기는 크리에이터와 커뮤니티 매니저를 위해 만들어졌습니다. 빈 문서를 열지 않고 댓글이나 영상을 붙여 넣고 어조만 고르면 몇 초 안에 3~5개의 서로 다른 답글이 스트리밍됩니다.\n\n핵심은 마찰을 줄이는 것입니다. 매번 비슷한 답글 다섯 개를 손으로 치거나, 'Thanks!'를 복사해 붙이지 않아도 됩니다. TikTok 댓글 생성기가 댓글이나 영상·브랜드 보이스·독자의 언어에 맞는 각도의 답글을 전달합니다.",
+      "items": [
+        {
+          "title": "한 줄이 아니라 선택지",
+          "description": "TikTok 댓글 생성기는 댓글이나 영상마다 3~5개의 서로 다른 답글을 만들어, 그 순간에 맞는 하나를 고를 수 있게 합니다.",
+          "icon": "RiListCheck2"
+        },
+        {
+          "title": "크리에이터와 브랜드 페이지를 위해",
+          "description": "어조·길이·언어 컨트롤로 크리에이터·기업·커뮤니티 매니저 모두 일관된 목소리를 유지할 수 있습니다.",
+          "icon": "RiUserVoiceLine"
+        },
+        {
+          "title": "사람처럼 들리는 문장",
+          "description": "프롬프트는 스팸風·기계적인 표현·과도한 세일즈를 피하도록 조정했고, 이모지 남발이나 억지 해시태그도 없습니다.",
+          "icon": "RiChatSmile3Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "장점",
+      "title": "크리에이터가 TikTok 댓글 생성기를 찾는 이유",
+      "description": "TikTok에서 빠른 답글은 일의 절반입니다. 이 생성기는 글쓰기 에너지를 다 쓰지 않고도 답글을 계속 흘려 보냅니다.",
+      "items": [
+        {
+          "title": "분 단위가 아니라 초 단위 답글",
+          "description": "스크롤하면서도 스트리밍 답글을 받을 수 있어, 참여가 PC 앞으로 미뤄지지 않습니다.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "여러 계정에서 일관성 유지",
+          "description": "같은 어조와 길이 프리셋을 여러 계정에 쓰면 목소리가 흔들리지 않습니다.",
+          "icon": "RiRepeat2Line"
+        },
+        {
+          "title": "로컬 히스토리로 빠른 재시도",
+          "description": "최근 프롬프트와 답글은 기기에 남아 있어, 이긴 어조를 댓글을 다시 치지 않고도 다시 실행할 수 있습니다.",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "활용 사례",
+      "title": "TikTok 댓글 생성기를 추천하는 대상",
+      "description": "개인 계정에는 가볍고, 커뮤니티 운영 워크플로에는 구조화되어 있습니다.",
+      "items": [
+        {
+          "title": "1인 크리에이터",
+          "description": "TikTok 댓글 생성기를 쓰면 팬·질문·안티 댓글에 세 문장을 복붙하지 않고 더 빠르게 답할 수 있습니다.",
+          "icon": "RiUserLine"
+        },
+        {
+          "title": "브랜드와 에이전시 페이지",
+          "description": "어조 프리셋으로 브랜드 보이스를 맞추고 답글을 브랜드 세이프하게 유지합니다.",
+          "icon": "RiBuildingLine"
+        },
+        {
+          "title": "커뮤니티 매니저",
+          "description": "감사·질문·오해 해소·부정 대응을 한 도구에서 처리할 수 있습니다.",
+          "icon": "RiCustomerService2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "사용 방법",
+      "title": "3단계로 쓰는 TikTok 댓글 생성기",
+      "description": "댓글 붙여 넣기부터 바로 복사 가능한 답글까지, TikTok 댓글 생성기로 1분 이내에 끝냅니다.",
+      "items": [
+        {
+          "title": "댓글 또는 영상 붙여 넣기",
+          "description": "답글을 달 댓글이나 영상 설명을 복사하고, 영상 주제나 게시물 유형 등 맥락을 선택적으로 보탭니다.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "어조·길이·언어 선택",
+          "description": "답글 목표·어조·길이·출력 언어를 고릅니다. AI 모델 프리셋으로 속도와 창의성도 조절 가능.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "생성·복사·확장",
+          "description": "TikTok 댓글 생성기의 답글을 스트리밍으로 확인하고 원하는 것을 복사하세요. 가장 좋은 것은 AI Write으로 보내 더 긴 콘텐츠로 확장할 수 있습니다.",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "TikTok 댓글 생성기 FAQ",
+      "description": "TikTok 댓글 생성기의 범위·프라이버시·사용에 관한 짧은 답변.",
+      "items": [
+        {
+          "title": "이 TikTok 댓글 생성기는 무료인가요?",
+          "description": "네. 생성·복사·전체 복사·AI Write 이어 쓰기를 가입 없이 무료로 이용할 수 있습니다."
+        },
+        {
+          "title": "TikTok 댓글 생성기는 댓글이나 영상당 답글을 몇 개 쓰나요?",
+          "description": "실행마다 3~5개의 서로 다른 답글을 스트리밍해, 그 순간에 맞는 것을 고르거나 조합해 아이디어를 얻을 수 있습니다."
+        },
+        {
+          "title": "TikTok 댓글 생성기로 브랜드 세이프하게 유지할 수 있나요?",
+          "description": "네. Professional 어조로 브랜드 세이프하게 유지하거나, Warm·Empathetic을 사용해 커뮤니티 친화적인 답글을 만들 수 있습니다."
+        },
+        {
+          "title": "TikTok 댓글 생성기는 어떤 언어를 지원하나요?",
+          "description": "영어·중국어·일본어·한국어·독일어·러시아어 등 다수. 생성 전 폼에서 출력 언어를 선택하세요."
+        },
+        {
+          "title": "입력 히스토리를 저장하나요?",
+          "description": "브라우저 로컬에만 저장되며 서버로 전송되지 않습니다. 히스토리 패널에서 언제든 비울 수 있습니다."
+        },
+        {
+          "title": "답글을 더 긴 콘텐츠로 확장할 수 있나요?",
+          "description": "네. 'AI Write에서 이어 쓰기'로 답글을 작업 공간으로 보내 더 긴 캡션·게시물·스크립트로 확장할 수 있습니다."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "다음 TikTok 게시물에서 더 똑똑하게 답하세요",
+      "description": "지금 TikTok 댓글 생성기를 돌려 원하는 한 줄을 복사하세요. 더 긴 문안이 필요하면 가장 좋은 답글을 AI Write으로 보내 확장하세요.",
+      "buttons": [
+        {
+          "title": "지금 시도",
+          "url": "#tiktok_comment_generator"
+        },
+        {
+          "title": "AI Write 열기",
+          "url": "/ai-write"
+        }
+      ]
+    }
+  }
+}

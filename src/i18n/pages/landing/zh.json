@@ -127,6 +127,14 @@
               "icon": "RiChatQuoteLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "TikTok 评论生成器",
+              "description": "粘贴一条 TikTok 评论，立刻生成 3-5 条可直接复制的回复，支持语气、长度和语言切换。",
+              "url": "/tiktok-comment-generator",
+              "icon": "RiMessage3Line",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -884,6 +892,14 @@
               "description": "为同人角色和小队组合生成\"错误引用\"风格对白。",
               "url": "/incorrect-quote-generator",
               "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "TikTok 评论生成器",
+              "description": "粘贴一条 TikTok 评论，立刻生成 3-5 条可直接复制的回复。",
+              "url": "/tiktok-comment-generator",
+              "icon": "RiMessage3Line",
               "target": "_self",
               "category": "creative"
             }

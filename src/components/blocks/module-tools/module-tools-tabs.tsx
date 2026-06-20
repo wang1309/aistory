@@ -16,13 +16,12 @@ export interface ToolTabData {
 
 interface ModuleToolsTabsProps {
   tabs: ToolTabData[];
-  badgeCategoryLabel: string;
+  badgeCategoryLabel?: string;
   accent?: AccentColor;
 }
 
 export function ModuleToolsTabs({
   tabs,
-  badgeCategoryLabel,
   accent = "orange",
 }: ModuleToolsTabsProps) {
   const [activeId, setActiveId] = useState(tabs[0]?.id ?? "");
@@ -99,7 +98,6 @@ export function ModuleToolsTabs({
         >
           <AnimatedToolsGrid
             tools={active.tools}
-            badgeCategoryLabel={badgeCategoryLabel}
             accent={accent}
           />
         </motion.div>

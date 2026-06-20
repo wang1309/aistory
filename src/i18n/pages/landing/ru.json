@@ -119,6 +119,14 @@
               "icon": "RiChatQuoteLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "Генератор комментариев TikTok",
+              "description": "Превратите один комментарий TikTok в 3-5 готовых ответов с управлением тоном, длиной и языком.",
+              "url": "/tiktok-comment-generator",
+              "icon": "RiMessage3Line",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -876,6 +884,14 @@
               "description": "Короткие намеренно неправильные диалоги для фандомных персонажей и групп.",
               "url": "/incorrect-quote-generator",
               "icon": "RiChatQuoteLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "Генератор комментариев TikTok",
+              "description": "Превратите один комментарий TikTok в 3-5 готовых ответов.",
+              "url": "/tiktok-comment-generator",
+              "icon": "RiMessage3Line",
               "target": "_self",
               "category": "creative"
             }

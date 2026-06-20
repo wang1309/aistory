@@ -1,0 +1,273 @@
+{
+  "tiktok_comment_generate": {
+    "metadata": {
+      "title": "TikTok Comment Generator Free & No Sign Up | Story Generator",
+      "description": "Turn any TikTok comment or video into 3-5 copy-ready replies in seconds. Free TikTok Comment Generator with tone, length & language. Try now, no signup.",
+      "keywords": "tiktok comment generator, free tiktok comment generator, tiktok comment reply generator, tiktok video reply generator, tiktok reply ideas, tiktok comment maker, comment reply writer, social media reply tool, creator reply assistant"
+    },
+    "ui": {
+      "title": "TikTok Comment Generator",
+      "title_highlight": "TikTok Comment",
+      "subtitle": "Use the TikTok Comment Generator to turn any TikTok comment or video into 3-5 copy-ready replies with tone, length, and language controls.",
+      "eyebrow": "AI Comment Tool",
+      "theme_pills": [
+        "Creator replies",
+        "Community manager",
+        "Tone control",
+        "Multi-language"
+      ],
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "TikTok Comment Generator",
+      "comment_label": "Comment or video",
+      "comment_placeholder": "Paste the TikTok comment or video you want to reply to.",
+      "random_button": "Random example",
+      "context_label": "Context (optional)",
+      "context_placeholder": "Add context, e.g. product launch, Q&A clip, or fan reaction.",
+      "options_title": "Generator settings",
+      "reply_goal_label": "Reply goal",
+      "tone_label": "Tone",
+      "length_label": "Length",
+      "mode_label": "AI model",
+      "advanced_options": "Advanced options",
+      "output_language": "Output language",
+      "generate_button": "Generate replies",
+      "generating_button": "Generating...",
+      "regenerate_button": "Regenerate",
+      "copy_button": "Copy",
+      "copy_all_button": "Copy all",
+      "continue_button": "Continue",
+      "output_title": "Replies",
+      "empty_output": "Paste a comment or video and generate to see reply options here.",
+      "generating_output": "Generating your replies...",
+      "history_title": "Recent replies",
+      "history_empty": "No saved replies yet.",
+      "history_apply": "Apply",
+      "history_delete": "Delete",
+      "history_clear": "Clear"
+    },
+    "validation": {
+      "comment_required": "Paste a comment or video first."
+    },
+    "success": {
+      "copied": "Copied to clipboard.",
+      "copied_all": "All replies copied.",
+      "generated": "TikTok replies generated.",
+      "random_prompt_selected": "Random example loaded.",
+      "history_loaded": "History loaded.",
+      "history_deleted": "History removed.",
+      "history_cleared": "History cleared."
+    },
+    "errors": {
+      "generate_failed": "Failed to generate TikTok replies.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quickest reply iteration",
+      "standard": "Standard",
+      "standard_description": "Balanced quality and speed",
+      "creative": "Creative",
+      "creative_description": "Looser and more playful tone"
+    },
+    "reply_goal": {
+      "thank_you": "Thank you",
+      "answer_question": "Answer question",
+      "clarify_misunderstanding": "Clarify misunderstanding",
+      "drive_engagement": "Drive engagement",
+      "handle_negative": "Handle negative"
+    },
+    "tone": {
+      "warm": "Warm",
+      "professional": "Professional",
+      "funny": "Funny",
+      "sales": "Sales",
+      "empathetic": "Empathetic"
+    },
+    "length": {
+      "short": "Short",
+      "medium": "Medium",
+      "long": "Long"
+    },
+    "mode": {
+      "fast": "Fast",
+      "standard": "Standard",
+      "creative": "Creative"
+    },
+    "random_prompts": [
+      {
+        "comment": "This is amazing, where can I learn more?",
+        "context": "Tutorial clip",
+        "replyGoal": "drive_engagement",
+        "tone": "warm",
+        "length": "short"
+      },
+      {
+        "comment": "I tried this and it didn't work for me.",
+        "context": "How-to video",
+        "replyGoal": "clarify_misunderstanding",
+        "tone": "empathetic",
+        "length": "medium"
+      },
+      {
+        "comment": "How long does shipping take?",
+        "context": "Product demo",
+        "replyGoal": "answer_question",
+        "tone": "professional",
+        "length": "short"
+      },
+      {
+        "comment": "Worst customer service ever.",
+        "context": "Launch recap",
+        "replyGoal": "handle_negative",
+        "tone": "empathetic",
+        "length": "medium"
+      },
+      {
+        "comment": "Love this! Just bought one for my sister too.",
+        "context": "Gift guide clip",
+        "replyGoal": "thank_you",
+        "tone": "warm",
+        "length": "short"
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What This TikTok Comment Generator Is Good At",
+      "description": "This tool is built for creators and community managers who want fast, copy-ready replies without opening a blank doc. Paste a comment or video, pick a tone, and the TikTok Comment Generator streams 3-5 distinct reply options in seconds.\n\nThe focus is reducing friction. Instead of writing the same five replies by hand or copying a generic 'Thanks!', the generator gives you angles that match the comment or video, your brand voice, and the language your audience actually speaks.",
+      "items": [
+        {
+          "title": "Reply options, not just one line",
+          "description": "The TikTok Comment Generator outputs 3-5 distinct replies per comment or video so you can pick the one that fits the moment instead of settling for a single output.",
+          "icon": "RiListCheck2"
+        },
+        {
+          "title": "Built for creators and brand pages",
+          "description": "Tone, length, and language controls help you stay on brand whether you reply as a creator, a business, or a community manager.",
+          "icon": "RiUserVoiceLine"
+        },
+        {
+          "title": "Human-sounding output",
+          "description": "Prompts are tuned to keep replies sounding human and avoid spammy, robotic, or oversell language, with no emoji overkill and no forced hashtags.",
+          "icon": "RiChatSmile3Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why Creators Reach for the TikTok Comment Generator",
+      "description": "Replying fast on TikTok is half the job. This generator keeps replies flowing without wearing out your drafting brain.",
+      "items": [
+        {
+          "title": "Reply in seconds, not minutes",
+          "description": "Stream replies while you scroll so engagement never has to wait until you sit down at a laptop.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "Stay consistent across accounts",
+          "description": "Use the same tone and length presets across multiple accounts so your voice stays recognizable on every post.",
+          "icon": "RiRepeat2Line"
+        },
+        {
+          "title": "Local history for quick retries",
+          "description": "Recent prompts and replies stay on your device, so you can re-run a winning tone without retyping the comment.",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Best Uses for the TikTok Comment Generator",
+      "description": "Lightweight enough for personal accounts, structured enough for community management workflows.",
+      "items": [
+        {
+          "title": "Solo creators",
+          "description": "The TikTok Comment Generator helps you reply to fans, questions, and haters faster without copy-pasting the same three lines.",
+          "icon": "RiUserLine"
+        },
+        {
+          "title": "Brand and agency pages",
+          "description": "Match brand voice with tone presets and keep replies brand-safe and consistent across posts.",
+          "icon": "RiBuildingLine"
+        },
+        {
+          "title": "Community managers",
+          "description": "Handle thank-yous, questions, clarifications, and negatives from one focused tool.",
+          "icon": "RiCustomerService2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the TikTok Comment Generator in 3 Steps",
+      "description": "From pasted comment to copy-ready reply with the TikTok Comment Generator in under a minute.",
+      "items": [
+        {
+          "title": "Paste the comment or video",
+          "description": "Copy the TikTok comment or video you want to reply to and add optional context like the video topic or post type.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "Pick tone, length, and language",
+          "description": "Choose a reply goal, tone, length, and output language. The model preset controls speed vs. creativity.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "Generate, copy, or expand",
+          "description": "Stream the replies from the TikTok Comment Generator, copy the one you want, copy all of them, or send the best one into AI Write for longer content.",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "TikTok Comment Generator FAQ",
+      "description": "Short answers about the TikTok Comment Generator's scope, privacy, and usage.",
+      "items": [
+        {
+          "title": "Is this TikTok Comment Generator free?",
+          "description": "Yes. You can generate, copy, copy all, and continue in AI Write without signing up."
+        },
+        {
+          "title": "How many replies does the TikTok Comment Generator write per comment or video?",
+          "description": "Each run streams 3-5 distinct replies so you can pick the one that fits the moment or mix them for inspiration."
+        },
+        {
+          "title": "Can the TikTok Comment Generator keep replies brand-safe?",
+          "description": "Yes. Pick the professional tone to stay brand-safe, or use warm and empathetic tones for community-friendly replies."
+        },
+        {
+          "title": "What languages can the TikTok Comment Generator write in?",
+          "description": "English, Chinese, Japanese, Korean, German, Russian, and more. Pick an output language in the form before you generate."
+        },
+        {
+          "title": "Does it store my input history?",
+          "description": "Only locally in your browser. Nothing is uploaded to a server. You can clear the history at any time from the history panel."
+        },
+        {
+          "title": "Can I expand a reply into longer content?",
+          "description": "Yes. Use Continue in AI Write to send the reply into the writing workspace and turn it into a longer caption, post, or script."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Run the TikTok Comment Generator on Your Next Post",
+      "description": "Open the TikTok Comment Generator now, copy the reply you want, or send the best one to AI Write when you need a longer caption.",
+      "buttons": [
+        {
+          "title": "Try it now",
+          "url": "#tiktok_comment_generator"
+        },
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    }
+  }
+}
