@@ -6,6 +6,19 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.15",
+        "date": "2026-06-21",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Launched YouTube Name Generator for finding launch-ready channel names",
+              "Generates grouped name ideas (brandable/searchable/hybrid), validates handle format, and scores each option on memorability, pronounceability, uniqueness, and pivot flexibility"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.14",
         "date": "2026-06-19",
         "changes": [
