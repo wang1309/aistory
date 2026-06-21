@@ -804,7 +804,7 @@ export default function YoutubeTitleGenerate({
                   </div>
                 )
               ) : (
-                <div className="space-y-5">
+                <div className="max-h-[60vh] space-y-5 overflow-y-auto pr-1 md:max-h-[640px]">
                   {ANGLE_GROUPS.map(({ key, labelKey }) => {
                     const groupItems = grouped[key];
                     if (!groupItems || groupItems.length === 0) return null;
