@@ -378,7 +378,7 @@ export default function YoutubeTitleGenerate({
           : "text-emerald-600 dark:text-emerald-400";
 
     return (
-      <div className="grid grid-cols-2 gap-1.5 text-[11px] text-muted-foreground">
+      <div className="grid grid-cols-2 gap-1.5 text-xs text-muted-foreground sm:text-[11px]">
         <div>
           <span className="text-foreground/60">
             {t("ui.diag_chars", "Chars")}:
@@ -804,7 +804,7 @@ export default function YoutubeTitleGenerate({
                   </div>
                 )
               ) : (
-                <div className="max-h-[60vh] space-y-5 overflow-y-auto pr-1 md:max-h-[640px]">
+                <div className="space-y-5 md:max-h-[640px] md:overflow-y-auto md:pr-1">
                   {ANGLE_GROUPS.map(({ key, labelKey }) => {
                     const groupItems = grouped[key];
                     if (!groupItems || groupItems.length === 0) return null;
@@ -844,7 +844,7 @@ export default function YoutubeTitleGenerate({
               {recommendedItem ? (
                 <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
                   <div className="space-y-2">
-                    <p className="font-display text-xl font-bold leading-snug text-foreground sm:text-2xl">
+                    <p className="font-display text-lg font-bold leading-snug text-foreground sm:text-xl md:text-2xl">
                       {recommendedItem.title}
                     </p>
                     <div className="flex flex-wrap gap-1.5">
@@ -960,7 +960,7 @@ export default function YoutubeTitleGenerate({
                       <button
                         type="button"
                         onClick={() => toggleShortlist(item)}
-                        className="absolute right-2 top-2 text-muted-foreground hover:text-destructive"
+                        className="absolute right-1 top-1 inline-flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
                         aria-label="remove"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
