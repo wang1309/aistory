@@ -3,7 +3,6 @@ import nextDynamic from "next/dynamic";
 import { getLandingPage } from "@/services/page";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
-import { ViewportLazy } from "@/components/viewport-lazy";
 // Shared section components (same as comic-generator page)
 import FeatureIntro from "@/components/sections/feature-intro";
 import Benefits from "@/components/sections/benefits";
@@ -157,54 +156,40 @@ export default async function LandingPage({
       <StoryGuide />
       {page.hero && <Hero hero={page.hero} />}
       {page.story_generate && (
-        <ViewportLazy fallback={<SectionSkeleton />}>
-          <Suspense fallback={<SectionSkeleton />}>
-            <StoryGenerate section={page.story_generate} />
-          </Suspense>
-        </ViewportLazy>
+        <Suspense fallback={<SectionSkeleton />}>
+          <StoryGenerate section={page.story_generate} />
+        </Suspense>
       )}
 
-      {/* High Priority: Lazy load with Suspense + viewport gate */}
-      <ViewportLazy fallback={<SectionSkeleton />}>
-        <Suspense fallback={<SectionSkeleton />}>
-          <ModuleToolsSection
-            module="ai-write"
-            title={t("ai_tools.section_title_home")}
-            description={t("ai_tools.section_description_home")}
-            accent="orange"
-          />
-        </Suspense>
-      </ViewportLazy>
+      <Suspense fallback={<SectionSkeleton />}>
+        <ModuleToolsSection
+          module="ai-write"
+          title={t("ai_tools.section_title_home")}
+          description={t("ai_tools.section_description_home")}
+          accent="orange"
+        />
+      </Suspense>
 
-      {/* Medium Priority: Shared section components (same as comic-generator) */}
-      <ViewportLazy fallback={<SectionSkeleton />}>
-        <Suspense fallback={<SectionSkeleton />}>
-          {page.branding && <Branding section={page.branding} />}
-          {page.introduce && <FeatureIntro section={page.introduce} accent="orange" />}
-          {page.benefit && <Benefits section={page.benefit} accent="orange" />}
-          {page.usage && <HowToUse section={page.usage} accent="orange" />}
-        </Suspense>
-      </ViewportLazy>
+      <Suspense fallback={<SectionSkeleton />}>
+        {page.branding && <Branding section={page.branding} />}
+        {page.introduce && <FeatureIntro section={page.introduce} accent="orange" />}
+        {page.benefit && <Benefits section={page.benefit} accent="orange" />}
+        {page.usage && <HowToUse section={page.usage} accent="orange" />}
+      </Suspense>
 
-      {/* Lower Priority: Lazy load further down */}
-      <ViewportLazy fallback={<SectionSkeleton />}>
-        <Suspense fallback={<SectionSkeleton />}>
-          {page.feature && <UseCases section={page.feature} accent="orange" />}
-          {page.story_showcase && <Showcase section={page.story_showcase} />}
-          {page.showcase && <Showcase section={page.showcase} />}
-          {page.stats && <Stats section={page.stats} />}
-        </Suspense>
-      </ViewportLazy>
+      <Suspense fallback={<SectionSkeleton />}>
+        {page.feature && <UseCases section={page.feature} accent="orange" />}
+        {page.story_showcase && <Showcase section={page.story_showcase} />}
+        {page.showcase && <Showcase section={page.showcase} />}
+        {page.stats && <Stats section={page.stats} />}
+      </Suspense>
 
-      {/* Lowest Priority: Lazy load at the bottom */}
-      <ViewportLazy fallback={<SectionSkeleton />}>
-        <Suspense fallback={<SectionSkeleton />}>
-          {page.pricing && <Pricing pricing={page.pricing} />}
-          {page.testimonial && <Testimonial section={page.testimonial} />}
-          {page.faq && <SectionFAQ section={page.faq} accent="orange" />}
-          {page.cta && <SectionCTA section={page.cta} accent="orange" />}
-        </Suspense>
-      </ViewportLazy>
+      <Suspense fallback={<SectionSkeleton />}>
+        {page.pricing && <Pricing pricing={page.pricing} />}
+        {page.testimonial && <Testimonial section={page.testimonial} />}
+        {page.faq && <SectionFAQ section={page.faq} accent="orange" />}
+        {page.cta && <SectionCTA section={page.cta} accent="orange" />}
+      </Suspense>
     </>
   );
 }

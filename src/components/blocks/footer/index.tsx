@@ -2,7 +2,6 @@ import { Footer as FooterType } from "@/types/blocks/footer";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { ViewportLazy } from "@/components/viewport-lazy";
 
 export default function Footer({ footer }: { footer: FooterType }) {
   const t = useTranslations();
