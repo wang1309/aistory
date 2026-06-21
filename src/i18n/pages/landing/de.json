@@ -135,6 +135,14 @@
               "icon": "RiPlayCircleLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "YouTube-Titel-Generator",
+              "description": "Generiere gruppierte YouTube-Titelwinkel, vergleiche Favoriten und wähle vor dem Veröffentlichen einen stärkeren Finaltitel.",
+              "url": "/youtube-title-generator",
+              "icon": "RiYoutubeLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -908,6 +916,14 @@
               "description": "Finde einen YouTube-Kanalnamen, mit dem du wirklich starten kannst.",
               "url": "/youtube-name-generator",
               "icon": "RiPlayCircleLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "YouTube-Titel-Generator",
+              "description": "Wähle vor dem Upload einen stärkeren YouTube-Titel.",
+              "url": "/youtube-title-generator",
+              "icon": "RiYoutubeLine",
               "target": "_self",
               "category": "creative"
             }

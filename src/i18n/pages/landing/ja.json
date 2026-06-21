@@ -135,6 +135,14 @@
               "icon": "RiPlayCircleLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "YouTube タイトル生成器",
+              "description": "複数の YouTube タイトル角度を生成し、ショートリストを比較して、公開前に強い最終タイトルを選びます。",
+              "url": "/youtube-title-generator",
+              "icon": "RiYoutubeLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -908,6 +916,14 @@
               "description": "実際に公開できる YouTube チャンネル名を見つけよう。",
               "url": "/youtube-name-generator",
               "icon": "RiPlayCircleLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "YouTube タイトル生成器",
+              "description": "公開前に強い YouTube タイトルを選ぶ。",
+              "url": "/youtube-title-generator",
+              "icon": "RiYoutubeLine",
               "target": "_self",
               "category": "creative"
             }

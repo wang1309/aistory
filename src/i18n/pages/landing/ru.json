@@ -135,6 +135,14 @@
               "icon": "RiPlayCircleLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "Генератор заголовков YouTube",
+              "description": "Создавайте сгруппированные варианты заголовков YouTube, сравнивайте избранные и выбирайте более сильный финальный заголовок перед публикацией.",
+              "url": "/youtube-title-generator",
+              "icon": "RiYoutubeLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -908,6 +916,14 @@
               "description": "Найдите название YouTube-канала, с которым реально можно запускаться.",
               "url": "/youtube-name-generator",
               "icon": "RiPlayCircleLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "Генератор заголовков YouTube",
+              "description": "Выбирайте сильный заголовок YouTube до публикации.",
+              "url": "/youtube-title-generator",
+              "icon": "RiYoutubeLine",
               "target": "_self",
               "category": "creative"
             }

@@ -135,6 +135,14 @@
               "icon": "RiPlayCircleLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "YouTube 제목 생성기",
+              "description": "여러 YouTube 제목 각도를 생성하고 후보를 비교해 게시 전 더 강한 최종 제목을 선택하세요.",
+              "url": "/youtube-title-generator",
+              "icon": "RiYoutubeLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -908,6 +916,14 @@
               "description": "실제로 런칭할 수 있는 YouTube 채널명을 찾아보세요.",
               "url": "/youtube-name-generator",
               "icon": "RiPlayCircleLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "YouTube 제목 생성기",
+              "description": "게시 전 더 강한 YouTube 제목을 선택하세요.",
+              "url": "/youtube-title-generator",
+              "icon": "RiYoutubeLine",
               "target": "_self",
               "category": "creative"
             }

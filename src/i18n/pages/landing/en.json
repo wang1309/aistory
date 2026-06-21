@@ -143,6 +143,14 @@
               "icon": "RiPlayCircleLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "YouTube Title Generator",
+              "description": "Generate grouped YouTube title angles, compare shortlisted options, and choose a stronger final title before publishing.",
+              "url": "/youtube-title-generator",
+              "icon": "RiYoutubeLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -916,6 +924,14 @@
               "description": "Find a YouTube channel name you can actually launch with.",
               "url": "/youtube-name-generator",
               "icon": "RiPlayCircleLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "YouTube Title Generator",
+              "description": "Test stronger YouTube titles before you publish.",
+              "url": "/youtube-title-generator",
+              "icon": "RiYoutubeLine",
               "target": "_self",
               "category": "creative"
             }
