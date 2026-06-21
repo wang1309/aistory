@@ -43,10 +43,7 @@ import type {
   YoutubeTitleLengthPreference,
   YoutubeTitleOptimizationPreference,
 } from "@/types/youtube-title";
-import type {
-  PersistedHistoryItem,
-  YoutubeTitleGenerateSection,
-} from "@/types/blocks/youtube-title-generate";
+import type { YoutubeTitleGenerateSection } from "@/types/blocks/youtube-title-generate";
 import YoutubeTitleBreadcrumb from "./breadcrumb";
 import {
   ANGLE_GROUPS,
@@ -59,6 +56,7 @@ import {
   saveHistoryEntry,
   saveShortlist,
 } from "./lib";
+import type { PersistedHistoryItem } from "./lib";
 
 interface YoutubeTitleGenerateProps {
   section?: YoutubeTitleGenerateSection;
