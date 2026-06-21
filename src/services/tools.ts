@@ -124,6 +124,18 @@ export const tools: Tool[] = [
     priority: 76,
   },
   {
+    slug: "youtube-name-generator",
+    nameKey: "ai_tools.tools.youtube_name_generator.name",
+    shortDescKey: "ai_tools.tools.youtube_name_generator.desc",
+    module: "ai-write",
+    category: "dialogue",
+    tab: "creative",
+    href: "/youtube-name-generator",
+    icon: "RiPlayCircleLine",
+    badges: ["new"],
+    priority: 75,
+  },
+  {
     slug: "comic-generator",
     nameKey: "ai_tools.tools.comic_generator.name",
     shortDescKey: "ai_tools.tools.comic_generator.desc",

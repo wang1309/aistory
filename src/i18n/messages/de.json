@@ -348,6 +348,10 @@
         "name": "TikTok Kommentar-Generator",
         "desc": "Verwandle einen TikTok-Kommentar in 3-5 kopierfertige Antworten mit Steuerung für Ton, Länge und Sprache."
       },
+      "youtube_name_generator": {
+        "name": "YouTube Name Generator",
+        "desc": "Finde einen startklaren YouTube-Kanalnamen mit gruppierten Kandidaten, Scoring, Handle-Prüfung und Shortlist-Vergleich."
+      },
       "comic_generator": {
         "name": "AI Comic Generator",
         "desc": "Generieren Sie Comic-Dialoge, Erzählungen und Panel-Skripte für Manga, Webtoon und Comic-Storytelling."

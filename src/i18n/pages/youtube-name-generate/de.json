@@ -1,0 +1,286 @@
+{
+  "youtube_name_generate": {
+    "metadata": {
+      "title": "YouTube Name Generator Kostenlos & Ohne Anmeldung | Startklare Kanalnamen",
+      "description": "Finde einen YouTube-Kanalnamen, mit dem du wirklich starten kannst. Generiere gruppierte Namensideen, vergleiche Scores, validiere Handles und wähle mit Zuversicht. Kostenlos, ohne Anmeldung.",
+      "keywords": "youtube name generator, youtube kanalname generator, youtube handle generator, youtube kanalname ideen, yt name generator, youtube markenname generator, kostenloser youtube name generator, startklarer youtube name"
+    },
+    "ui": {
+      "title": "YouTube Name Generator",
+      "title_highlight": "YouTube Name",
+      "subtitle": "Finde einen YouTube-Kanalnamen, mit dem du wirklich starten kannst. Generiere gruppierte Namensideen, vergleiche Scores, validiere Handles und wähle mit Zuversicht.",
+      "eyebrow": "KI-Namens-Tool",
+      "theme_pills": ["Startklar", "Handle-Prüfung", "Bewertet & verglichen", "Nach Stil gruppiert"],
+      "breadcrumb_home": "Start",
+      "breadcrumb_current": "YouTube Name Generator",
+      "niche_label": "Worum geht es in deinem Kanal?",
+      "niche_placeholder": "z. B. Slow-Living-Vlogs, Anfänger-Schachrätsel, Zimmerpflanzen",
+      "audience_label": "Für wen ist er?",
+      "audience_placeholder": "z. B. vielbeschäftigte junge Berufstätige, Teenager die Digitalart lernen",
+      "style_label": "Namensstil",
+      "length_label": "Länge",
+      "pivot_label": "Pivot-Spielraum",
+      "keywords_label": "Keywords (optional)",
+      "keywords_placeholder": "kommagetrennte Wörter, die betont werden sollen",
+      "creator_label": "Creator-Name (optional)",
+      "creator_placeholder": "Spitzname oder echter Name zum Einflechten",
+      "random_button": "Zufallsbeispiel",
+      "options_title": "Kanal-Kurzbrief",
+      "generate_button": "Namen generieren",
+      "generating_button": "Generierung...",
+      "regenerate_button": "Neu generieren",
+      "save_button": "Speichern",
+      "saved_button": "Gespeichert",
+      "remove_button": "Entfernen",
+      "copy_name_button": "Name kopieren",
+      "copy_handle_button": "Handle kopieren",
+      "copy_fallback_button": "Fallback kopieren",
+      "output_title": "Namensideen",
+      "empty_output": "Beschreibe Nische und Zielgruppe, dann werden hier strukturierte Namensideen angezeigt.",
+      "generating_output": "Namen werden generiert...",
+      "results_count": "{count} Namen",
+      "category_all": "Alle",
+      "best_for_label": "Am besten für",
+      "rationale_label": "Warum",
+      "scores_label": "Scores",
+      "score_memorability": "Einprägsam",
+      "score_pronounceability": "Aussprache",
+      "score_uniqueness": "Einzigartig",
+      "score_pivot": "Pivot-Raum",
+      "handle_label": "Handle",
+      "handle_warnings": "Hinweise",
+      "handle_fallbacks": "Alternativen",
+      "handle_valid": "Handle-freundliches Format",
+      "handle_invalid": "Handle-Format muss überarbeitet werden",
+      "shortlist_title": "Deine Auswahl",
+      "shortlist_empty": "Speichere Namen aus den Ergebnissen oben, um sie Seite an Seite zu vergleichen.",
+      "shortlist_hint": "Speichere bis zu 3 Namen zum Vergleichen.",
+      "shortlist_full": "Auswahl ist voll (max. 3).",
+      "compare_title": "Vergleich",
+      "recommendation_title": "Empfohlener Startname",
+      "recommendation_reason": "Warum",
+      "recommendation_backup_label": "Backup-Option",
+      "recommendation_next_actions": "Nächste Schritte",
+      "history_title": "Letzte Generierungen",
+      "history_apply": "Anwenden",
+      "history_delete": "Löschen",
+      "history_clear": "Leeren",
+      "sort_strongest": "Stärkste",
+      "sort_label": "Sortierung"
+    },
+    "validation": {
+      "niche_required": "Beschreibe zuerst deine Nische.",
+      "audience_required": "Beschreibe deine Zielgruppe."
+    },
+    "success": {
+      "copied_name": "Name in die Zwischenablage kopiert.",
+      "copied_handle": "Handle in die Zwischenablage kopiert.",
+      "generated": "YouTube-Namen generiert.",
+      "saved": "Zur Auswahl hinzugefügt.",
+      "removed": "Aus der Auswahl entfernt.",
+      "random_prompt_selected": "Zufallsbeispiel geladen.",
+      "history_loaded": "Verlauf geladen.",
+      "history_deleted": "Eintrag entfernt.",
+      "history_cleared": "Verlauf geleert."
+    },
+    "errors": {
+      "generate_failed": "YouTube-Namen konnten nicht generiert werden.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte erneut versuchen.",
+      "parse_failed": "Antwort konnte nicht geparsed werden."
+    },
+    "style": {
+      "brandable": "Markenfähig",
+      "searchable": "Suchbar",
+      "hybrid": "Hybrid",
+      "funny": "Lustig",
+      "personal": "Persönlich",
+      "expert": "Experte",
+      "cinematic": "Cinematisch"
+    },
+    "length": {
+      "short": "Kurz",
+      "medium": "Mittel",
+      "flexible": "Flexibel"
+    },
+    "pivot": {
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch"
+    },
+    "category": {
+      "brandable": "Markenfähig",
+      "searchable": "Suchbar",
+      "hybrid": "Hybrid"
+    },
+    "random_prompts": [
+      {
+        "niche": "Solo-Roguelike-Gaming mit täglichen Challenges und kurzen Clips",
+        "audience": "Teenager und junge Erwachsene, die schnelle Indie-Spiele mögen",
+        "style": "brandable",
+        "lengthPreference": "short",
+        "pivotFlexibility": "medium",
+        "keywords": ["rogue", "run"],
+        "creatorName": ""
+      },
+      {
+        "niche": "Anfängerfreundliches Kochen für kleine Wohnungen mit maximal 5 Zutaten",
+        "audience": "Vielbeschäftigte junge Berufstätige, die einfache Rezepte wollen",
+        "style": "searchable",
+        "lengthPreference": "flexible",
+        "pivotFlexibility": "low",
+        "keywords": ["easy", "kitchen"],
+        "creatorName": ""
+      },
+      {
+        "niche": "Slow-Living-Vlogs aus dem pazifischen Nordwesten",
+        "audience": "Ende 20, die nach Ruhe und Routinen suchen",
+        "style": "cinematic",
+        "lengthPreference": "medium",
+        "pivotFlexibility": "high",
+        "keywords": ["woods", "quiet"],
+        "creatorName": "Mara"
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Wofür dieser YouTube Name Generator gut ist",
+      "description": "Dieses Tool wurde für Erst-Ersteller gebaut, die beim Namensfinden feststecken. Statt einer flachen Liste zufälliger Ideen generiert es gruppierte Kandidaten, bewertet jeden, validiert Handles und hilft dir, einige starke Optionen Seite an Seite zu vergleichen.",
+      "items": [
+        {
+          "title": "Gruppierte Kandidaten, keine flache Liste",
+          "description": "Der YouTube Name Generator ordnet Namen in markenfähige, suchbare und hybrid Gruppen, damit du Ansätze vergleichen statt durch Dutzende ähnlicher Optionen scrollen kannst.",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "Jeder Name wird bewertet und erklärt",
+          "description": "Jeder Kandidat erhält vier 1-10 Scores (Einprägsamkeit, Aussprache, Einzigartigkeit, Pivot-Spielraum) und eine einzeilige Begründung.",
+          "icon": "RiBarChartLine"
+        },
+        {
+          "title": "Von Anfang an Handle-freundlich",
+          "description": "Jeder Name kommt mit einem @handle-Vorschlag, Formatprüfung, Warnungen zu schwachen Mustern und Fallback-Handles.",
+          "icon": "RiCheckboxCircleLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "ANWENDUNG",
+      "title": "So nutzt du den YouTube Name Generator in 3 Schritten",
+      "description": "Vom leeren Blatt zum startklaren Kanalnamen in unter einer Minute.",
+      "items": [
+        {
+          "title": "Beschreibe deinen Kanal-Brief",
+          "description": "Sag dem YouTube Name Generator, worum es geht und für wen. Ergänze Stil, Länge und Pivot-Spielraum.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "Gruppierte, bewertete Namen prüfen",
+          "description": "Durchsuche Kandidaten nach Kategorie, lies die Begründung, prüfe Scores und Handle-Warnungen.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "Auswahl, Vergleich, Start",
+          "description": "Speichere bis zu drei Namen in einer Auswahl, vergleiche sie und kopiere den empfohlenen Namen samt Handle.",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum Creator den YouTube Name Generator nutzen",
+      "description": "Namensfindungs-Angst ist real. Dieses Tool bringt dich vom leeren Blatt zu einem Namen, mit dem du starten kannst.",
+      "items": [
+        {
+          "title": "Entscheiden statt nur brainstormen",
+          "description": "Scores und ein empfohlener Name drängen dich zu einer selbstbewussten Entscheidung statt endlosem Vielleicht.",
+          "icon": "RiCompassLine"
+        },
+        {
+          "title": "Schwache Muster früh vermeiden",
+          "description": "Formatprüfungen und Warnungen markieren zu viele Zahlen, seltsame Zeichensetzung und andere schlechte Handle-Muster.",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "Lokaler Verlauf für Wiederholungen",
+          "description": "Letzte Generierungen bleiben auf deinem Gerät, damit du einen erfolgreichen Brief erneut nutzen kannst.",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Anwendungsfälle",
+      "title": "Beste Einsätze für den YouTube Name Generator",
+      "description": "Für Erst-Creator gebaut, die einen startklaren Namen wollen, nicht zufällige Ideen.",
+      "items": [
+        {
+          "title": "Neuen Kanal starten",
+          "description": "Vom „keine Ahnung wie ich nennen soll“ zu „damit kann ich starten“ in einem fokussierten Workflow.",
+          "icon": "RiRocketLine"
+        },
+        {
+          "title": "Ansätze vergleichen",
+          "description": "Markenfähige, suchbare und hybrid Namen Seite an Seite sehen und den passenden Ansatz wählen.",
+          "icon": "RiGitCompareLine"
+        },
+        {
+          "title": "Handle-Freundlichkeit prüfen",
+          "description": "Bevor du dich auf YouTube festlegst, erhältst du Formatprüfung, Fallback-Handles und Warnungen.",
+          "icon": "RiCheckDoubleLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "YouTube Name Generator FAQ",
+      "description": "Kurze Antworten zu Umfang, Datenschutz und Nutzung des YouTube Name Generator.",
+      "items": [
+        {
+          "title": "Ist dieser YouTube Name Generator kostenlos?",
+          "description": "Ja. Du kannst ohne Anmeldung Namen generieren, eine Auswahl speichern, Namen und Handles kopieren und letzte Generierungen erneut ansehen."
+        },
+        {
+          "title": "Wie viele Namensideen liefert der YouTube Name Generator pro Durchlauf?",
+          "description": "Jeder Durchlauf erzeugt etwa 24 gruppierte Kandidaten in markenfähigen, suchbaren und hybrid Kategorien plus eine finale Empfehlung."
+        },
+        {
+          "title": "Was bedeuten die vier Scores pro Name?",
+          "description": "Einprägsamkeit, Aussprache, Einzigartigkeit und Pivot-Spielraum sind 1-10 Hilfs-Scores für den Vergleich. Sie sind Entscheidungshilfe, keine objektive Wahrheit."
+        },
+        {
+          "title": "Prüft der YouTube Name Generator die Live-Verfügbarkeit von Handles?",
+          "description": "Nein. Das Tool validiert das Handle-Format, kennzeichnet schwache Muster wie zu viele Zahlen und schlägt Fallback-Handles vor. Es garantiert nicht, dass ein Handle auf YouTube frei ist."
+        },
+        {
+          "title": "Kann ich den YouTube Name Generator für nicht-englische Kanäle nutzen?",
+          "description": "Ja. Wähle in den erweiterten Optionen eine Ausgabesprache, dann werden Begründung, Warnungen und „am besten für“ in dieser Sprache verfasst."
+        },
+        {
+          "title": "Kann ich Namen speichern und später wiederkommen?",
+          "description": "Ja. Speichere bis zu drei Namen in einer Auswahl und schau dir letzte Generierungen im lokalen Verlauf deines Geräts an."
+        },
+        {
+          "title": "Funktioniert der YouTube Name Generator auch für Nischenthemen?",
+          "description": "Ja. Füge Keywords hinzu und beschreibe deine Nische so konkret wie möglich. Je konkreter der Brief, desto stärker die Kandidaten."
+        },
+        {
+          "title": "Kann ich neu generieren, wenn mir die erste Auswahl nicht gefällt?",
+          "description": "Ja. Klicke auf Neu generieren, um mit dem gleichen Brief einen neuen Satz zu erzeugen, oder passe Stil und Länge an und starte erneut."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Benenne deinen YouTube-Kanal noch heute",
+      "description": "Starte jetzt den YouTube Name Generator, vergleiche gruppierte Kandidaten und kopiere einen startklaren Namen samt Handle.",
+      "buttons": [
+        { "title": "Namen generieren", "url": "#youtube_name_generator" },
+        { "title": "AI Write öffnen", "url": "/ai-write" }
+      ]
+    }
+  }
+}

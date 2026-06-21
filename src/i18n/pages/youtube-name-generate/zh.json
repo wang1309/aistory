@@ -1,0 +1,286 @@
+{
+  "youtube_name_generate": {
+    "metadata": {
+      "title": "YouTube 频道名称生成器 | 免费 无需注册 | 可直接上线的名字",
+      "description": "找到一个你敢直接上线的 YouTube 频道名称。生成分组命名方案、对比打分、验证 handle,自信地做出选择。完全免费,无需注册。",
+      "keywords": "youtube 名称生成器, youtube 频道名称生成器, youtube handle 生成器, youtube 频道名想法, yt 名字生成器, youtube 品牌名生成器, 免费 youtube 名称生成器, 可上线 youtube 名"
+    },
+    "ui": {
+      "title": "YouTube 名称生成器",
+      "title_highlight": "YouTube 名称",
+      "subtitle": "找到一个你敢直接上线的 YouTube 频道名。生成分组命名方案,对比打分,验证 handle,自信地做出选择。",
+      "eyebrow": "AI 命名工具",
+      "theme_pills": ["可直接上线", "Handle 验证", "打分对比", "按风格分组"],
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "YouTube 名称生成器",
+      "niche_label": "你的频道是关于什么的?",
+      "niche_placeholder": "例如:慢生活 vlog、新手国际象棋谜题、室内绿植养护",
+      "audience_label": "面向谁?",
+      "audience_placeholder": "例如:忙碌的年轻职场人、学数字艺术的青少年",
+      "style_label": "命名风格",
+      "length_label": "长度",
+      "pivot_label": "转型空间",
+      "keywords_label": "关键词(可选)",
+      "keywords_placeholder": "用逗号分隔,想强调的词",
+      "creator_label": "创作者名(可选)",
+      "creator_placeholder": "想融入的昵称或真名",
+      "random_button": "随机示例",
+      "options_title": "频道简介",
+      "generate_button": "生成我的名字",
+      "generating_button": "生成中...",
+      "regenerate_button": "重新生成",
+      "save_button": "收藏",
+      "saved_button": "已收藏",
+      "remove_button": "移除",
+      "copy_name_button": "复制名称",
+      "copy_handle_button": "复制 handle",
+      "copy_fallback_button": "复制备选",
+      "output_title": "命名方案",
+      "empty_output": "填写频道定位和受众后,这里会展示结构化的命名方案。",
+      "generating_output": "正在生成你的名字...",
+      "results_count": "{count} 个名字",
+      "category_all": "全部",
+      "best_for_label": "适合",
+      "rationale_label": "理由",
+      "scores_label": "评分",
+      "score_memorability": "记忆度",
+      "score_pronounceability": "可读性",
+      "score_uniqueness": "独特性",
+      "score_pivot": "转型空间",
+      "handle_label": "Handle",
+      "handle_warnings": "提示",
+      "handle_fallbacks": "备选",
+      "handle_valid": "Handle 格式合规",
+      "handle_invalid": "Handle 格式需调整",
+      "shortlist_title": "你的候选名单",
+      "shortlist_empty": "从上方结果中收藏名字,即可并排对比。",
+      "shortlist_hint": "最多可收藏 3 个名字进行对比。",
+      "shortlist_full": "候选名单已满(上限 3 个)。",
+      "compare_title": "对比",
+      "recommendation_title": "推荐上线的名字",
+      "recommendation_reason": "理由",
+      "recommendation_backup_label": "备选方案",
+      "recommendation_next_actions": "下一步",
+      "history_title": "最近生成",
+      "history_apply": "应用",
+      "history_delete": "删除",
+      "history_clear": "清空",
+      "sort_strongest": "最强",
+      "sort_label": "排序"
+    },
+    "validation": {
+      "niche_required": "请先描述你的频道定位。",
+      "audience_required": "请描述你的受众。"
+    },
+    "success": {
+      "copied_name": "名称已复制到剪贴板。",
+      "copied_handle": "Handle 已复制到剪贴板。",
+      "generated": "YouTube 名字生成完成。",
+      "saved": "已加入候选名单。",
+      "removed": "已从候选名单移除。",
+      "random_prompt_selected": "已载入随机示例。",
+      "history_loaded": "历史记录已加载。",
+      "history_deleted": "历史记录已删除。",
+      "history_cleared": "历史记录已清空。"
+    },
+    "errors": {
+      "generate_failed": "生成 YouTube 名字失败。",
+      "verification_failed": "验证失败,请重试。",
+      "parse_failed": "解析 YouTube 命名响应失败。"
+    },
+    "style": {
+      "brandable": "品牌化",
+      "searchable": "可搜索",
+      "hybrid": "混合型",
+      "funny": "趣味",
+      "personal": "个人化",
+      "expert": "专业",
+      "cinematic": "电影感"
+    },
+    "length": {
+      "short": "短",
+      "medium": "中",
+      "flexible": "灵活"
+    },
+    "pivot": {
+      "low": "低",
+      "medium": "中",
+      "high": "高"
+    },
+    "category": {
+      "brandable": "品牌化",
+      "searchable": "可搜索",
+      "hybrid": "混合型"
+    },
+    "random_prompts": [
+      {
+        "niche": "单人 Roguelike 游戏,每天更新挑战与短视频片段",
+        "audience": "喜欢快节奏独立游戏的青少年和年轻玩家",
+        "style": "brandable",
+        "lengthPreference": "short",
+        "pivotFlexibility": "medium",
+        "keywords": ["rogue", "run"],
+        "creatorName": ""
+      },
+      {
+        "niche": "适合小公寓的 5 食材以内新手料理",
+        "audience": "想要简单食谱的忙碌年轻职场人",
+        "style": "searchable",
+        "lengthPreference": "flexible",
+        "pivotFlexibility": "low",
+        "keywords": ["easy", "kitchen"],
+        "creatorName": ""
+      },
+      {
+        "niche": "美国西北部慢生活 vlog",
+        "audience": "二十多岁想要平静与节奏感的人",
+        "style": "cinematic",
+        "lengthPreference": "medium",
+        "pivotFlexibility": "high",
+        "keywords": ["woods", "quiet"],
+        "creatorName": "Mara"
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概览",
+      "title": "这个 YouTube 名称生成器擅长什么",
+      "description": "这个工具专为首次做频道、卡在取名上的创作者打造。它不会扔给你一堆随机名字,而是生成分组候选、给每个名字打分、验证 handle、并帮你把几个强候选并排对比,让你能自信地做出选择。",
+      "items": [
+        {
+          "title": "分组候选,而不是一长串",
+          "description": "YouTube 名称生成器把候选名字分成品牌化、可搜索、混合型三组,让你对比不同角度,而不用在一堆相似名字里翻找。",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "每个名字都有打分和解释",
+          "description": "每个候选都会给出四项 1-10 的评分(记忆度、可读性、独特性、转型空间),以及一句话理由,让你清楚它为什么合适。",
+          "icon": "RiBarChartLine"
+        },
+        {
+          "title": "从一开始就 Handle 友好",
+          "description": "每个名字都会带上推荐的 @handle、格式校验、对弱模式的提醒,以及备选 handle,让你能立刻行动。",
+          "icon": "RiCheckboxCircleLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "三步用 YouTube 名称生成器找到频道名",
+      "description": "从空白页到可上线的频道名,不到一分钟。",
+      "items": [
+        {
+          "title": "填写频道简介",
+          "description": "告诉 YouTube 名称生成器你的频道做什么、面向谁。加上命名风格、长度和转型空间,让结果更精准。",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "查看分组打分结果",
+          "description": "按类别浏览候选名字,阅读理由,并在每张卡片上查看评分和 handle 提醒。",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "收藏、对比、上线",
+          "description": "把最多三个名字加入候选名单,并排对比,然后复制推荐的上线名称和 handle。",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "为什么创作者选择 YouTube 名称生成器",
+      "description": "取名焦虑是真实存在的。这个工具让你从空白页一路走到敢上线的名字。",
+      "items": [
+        {
+          "title": "做决策,而不是只有灵感",
+          "description": "评分和推荐名让你更接近一个自信的选择,而不是无止境地在「也许」里打转。",
+          "icon": "RiCompassLine"
+        },
+        {
+          "title": "提前规避弱模式",
+          "description": "格式检查和提醒会标记过多的数字、奇怪的标点等会拖累 YouTube handle 的模式。",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "本地历史,便于复用",
+          "description": "最近的生成记录保存在你的设备上,你可以直接复用一次效果不错的简介,无需重新输入。",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "使用场景",
+      "title": "YouTube 名称生成器的最佳场景",
+      "description": "专为想要可上线名字的首次创作者打造,而不是一串随机点子。",
+      "items": [
+        {
+          "title": "上线全新频道",
+          "description": "从「我完全不知道叫什么」到「这个我可以上线」,一次专注的工作流就能搞定。",
+          "icon": "RiRocketLine"
+        },
+        {
+          "title": "对比不同角度",
+          "description": "并排查看品牌化、可搜索、混合型名字,挑出最贴合你增长计划的角度。",
+          "icon": "RiGitCompareLine"
+        },
+        {
+          "title": "检查 Handle 友好度",
+          "description": "在 YouTube 上确定名字之前,先拿到格式校验、备选 handle 和提醒。",
+          "icon": "RiCheckDoubleLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "YouTube 名称生成器常见问题",
+      "description": "关于 YouTube 名称生成器范围、隐私和使用方式的简短回答。",
+      "items": [
+        {
+          "title": "这个 YouTube 名称生成器免费吗?",
+          "description": "免费。无需注册即可生成名字、加入候选名单、复制名称和 handle,以及回顾最近生成。"
+        },
+        {
+          "title": "每次会生成多少个名字?",
+          "description": "每次会生成约 24 个候选,分布在品牌化、可搜索、混合型三个类别下,并给出一个最终推荐。"
+        },
+        {
+          "title": "每个名字上的四项评分是什么意思?",
+          "description": "记忆度、可读性、独特性、转型空间都是 1-10 的引导性评分,帮助你对比名字,仅供参考,并非客观真理。"
+        },
+        {
+          "title": "YouTube 名称生成器会查询 handle 实时可用性吗?",
+          "description": "不会。工具会校验 handle 格式,标记出过多数字等弱模式,并提供备选 handle,但不保证该 handle 在 YouTube 上未被占用。"
+        },
+        {
+          "title": "我可以做非英语频道吗?",
+          "description": "可以。在高级选项里选择输出语言,理由、提醒和「适合」描述都会以该语言输出。"
+        },
+        {
+          "title": "我可以保存名字下次再看吗?",
+          "description": "可以。把最多三个名字加入候选名单,并从设备本地存储的最近生成里随时回看。"
+        },
+        {
+          "title": "这个工具适合小众领域吗?",
+          "description": "适合。加上关键词,并尽可能具体地描述你的领域,简介越具体,候选越强。"
+        },
+        {
+          "title": "如果不喜欢第一批名字可以重新生成吗?",
+          "description": "可以。点击「重新生成」按同一简介再跑一批,或者调整风格与长度再跑一次。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今天就给你的 YouTube 频道取个名",
+      "description": "现在打开 YouTube 名称生成器,对比分组候选,复制一个可上线的名字和 handle。",
+      "buttons": [
+        { "title": "生成我的名字", "url": "#youtube_name_generator" },
+        { "title": "打开 AI Write", "url": "/ai-write" }
+      ]
+    }
+  }
+}

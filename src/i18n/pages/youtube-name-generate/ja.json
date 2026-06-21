@@ -1,0 +1,286 @@
+{
+  "youtube_name_generate": {
+    "metadata": {
+      "title": "YouTube 名前ジェネレーター 無料・登録不要 | 公開できるチャンネル名",
+      "description": "実際に公開できる YouTube チャンネル名を見つけよう。グループ化された名前案を生成し、スコアを比較し、ハンドルを検証して、自信を持って選べる。完全無料、登録不要。",
+      "keywords": "youtube 名前ジェネレーター, youtube チャンネル名ジェネレーター, youtube ハンドルジェネレーター, youtube チャンネル名アイデア, yt 名前ジェネレーター, youtube ブランド名ジェネレーター, 無料 youtube 名前ジェネレーター, 公開できる youtube 名"
+    },
+    "ui": {
+      "title": "YouTube 名前ジェネレーター",
+      "title_highlight": "YouTube 名前",
+      "subtitle": "実際に公開できる YouTube チャンネル名を見つけよう。グループ化された名前案を生成し、スコアを比較し、ハンドルを検証して、自信を持って選べる。",
+      "eyebrow": "AI ネーミングツール",
+      "theme_pills": ["公開OK", "ハンドル検証", "スコア比較", "スタイル別"],
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "YouTube 名前ジェネレーター",
+      "niche_label": "チャンネルのテーマは?",
+      "niche_placeholder": "例:スローライフ vlog、初心者向けチェスパズル、観葉植物の手入れ",
+      "audience_label": "誰向け?",
+      "audience_placeholder": "例:忙しい若手社会人、デジタルアートを学ぶ十代",
+      "style_label": "ネーミングスタイル",
+      "length_label": "長さ",
+      "pivot_label": "ピボット余地",
+      "keywords_label": "キーワード(任意)",
+      "keywords_placeholder": "強調したい語をカンマ区切りで",
+      "creator_label": "クリエイター名(任意)",
+      "creator_placeholder": "組み込みたいニックネームや本名",
+      "random_button": "ランダム例",
+      "options_title": "チャンネルブリーフ",
+      "generate_button": "名前を生成",
+      "generating_button": "生成中...",
+      "regenerate_button": "再生成",
+      "save_button": "保存",
+      "saved_button": "保存済み",
+      "remove_button": "削除",
+      "copy_name_button": "名前をコピー",
+      "copy_handle_button": "ハンドルをコピー",
+      "copy_fallback_button": "代替をコピー",
+      "output_title": "名前アイデア",
+      "empty_output": "テーマと視聴者を入力して生成すると、ここに構造化された名前案が表示されます。",
+      "generating_output": "名前を生成しています...",
+      "results_count": "{count} 件",
+      "category_all": "すべて",
+      "best_for_label": "適している",
+      "rationale_label": "理由",
+      "scores_label": "スコア",
+      "score_memorability": "記憶性",
+      "score_pronounceability": "発音性",
+      "score_uniqueness": "独自性",
+      "score_pivot": "ピボット余地",
+      "handle_label": "ハンドル",
+      "handle_warnings": "注意",
+      "handle_fallbacks": "代替",
+      "handle_valid": "ハンドル形式 OK",
+      "handle_invalid": "ハンドル形式を要調整",
+      "shortlist_title": "ショートリスト",
+      "shortlist_empty": "上の結果から名前を保存すると、並べて比較できます。",
+      "shortlist_hint": "比較する名前は最大 3 つまで保存できます。",
+      "shortlist_full": "ショートリストが満杯です(最大 3 つ)。",
+      "compare_title": "比較",
+      "recommendation_title": "おすすめの公開名",
+      "recommendation_reason": "理由",
+      "recommendation_backup_label": "バックアップ案",
+      "recommendation_next_actions": "次のアクション",
+      "history_title": "最近の生成",
+      "history_apply": "適用",
+      "history_delete": "削除",
+      "history_clear": "クリア",
+      "sort_strongest": "強い順",
+      "sort_label": "並び替え"
+    },
+    "validation": {
+      "niche_required": "先にテーマを記入してください。",
+      "audience_required": "視聴者を記入してください。"
+    },
+    "success": {
+      "copied_name": "名前をクリップボードにコピーしました。",
+      "copied_handle": "ハンドルをクリップボードにコピーしました。",
+      "generated": "YouTube の名前を生成しました。",
+      "saved": "ショートリストに追加しました。",
+      "removed": "ショートリストから削除しました。",
+      "random_prompt_selected": "ランダム例を読み込みました。",
+      "history_loaded": "履歴を読み込みました。",
+      "history_deleted": "履歴を削除しました。",
+      "history_cleared": "履歴をクリアしました。"
+    },
+    "errors": {
+      "generate_failed": "YouTube 名前の生成に失敗しました。",
+      "verification_failed": "認証に失敗しました。もう一度お試しください。",
+      "parse_failed": "レスポンスの解析に失敗しました。"
+    },
+    "style": {
+      "brandable": "ブランダブル",
+      "searchable": "検索しやすい",
+      "hybrid": "ハイブリッド",
+      "funny": "ユーモア",
+      "personal": "パーソナル",
+      "expert": "エキスパート",
+      "cinematic": "シネマティック"
+    },
+    "length": {
+      "short": "短い",
+      "medium": "中",
+      "flexible": "柔軟"
+    },
+    "pivot": {
+      "low": "低",
+      "medium": "中",
+      "high": "高"
+    },
+    "category": {
+      "brandable": "ブランダブル",
+      "searchable": "検索しやすい",
+      "hybrid": "ハイブリッド"
+    },
+    "random_prompts": [
+      {
+        "niche": "デイリー挑戦と短いクリップを投稿するソロ Roguelike ゲーミング",
+        "audience": "テンポの良いインディーゲームが好きな十代〜若手層",
+        "style": "brandable",
+        "lengthPreference": "short",
+        "pivotFlexibility": "medium",
+        "keywords": ["rogue", "run"],
+        "creatorName": ""
+      },
+      {
+        "niche": "5 材料以内で作る小さなアパート向けの初心者料理",
+        "audience": "シンプルなレシピを求める忙しい若手社会人",
+        "style": "searchable",
+        "lengthPreference": "flexible",
+        "pivotFlexibility": "low",
+        "keywords": ["easy", "kitchen"],
+        "creatorName": ""
+      },
+      {
+        "niche": "太平洋北西沿岸のスローライフ vlog",
+        "audience": "後半 20 代で静けさとルーティンを求める人",
+        "style": "cinematic",
+        "lengthPreference": "medium",
+        "pivotFlexibility": "high",
+        "keywords": ["woods", "quiet"],
+        "creatorName": "Mara"
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "この YouTube 名前ジェネレーターが得意なこと",
+      "description": "このツールは、チャンネル名で行き詰まったはじめてのクリエイターのために作りました。ランダムな名前の羅列ではなく、グループ化された候補、各候補のスコア、ハンドル検証、少数の強い候補の横並び比較を提供します。",
+      "items": [
+        {
+          "title": "フラットな一覧ではなく、グループ化された候補",
+          "description": "YouTube 名前ジェネレーターは候補をブランダブル・検索しやすい・ハイブリッドの 3 グループに分け、似たような名前の山をスクロールする代わりに角度を比較できます。",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "すべての名前にスコアと説明付き",
+          "description": "各候補には 4 つの 1-10 スコア(記憶性・発音性・独自性・ピボット余地)と 1 行の理由が付きます。",
+          "icon": "RiBarChartLine"
+        },
+        {
+          "title": "最初からハンドルフレンドリー",
+          "description": "各名前には推奨 @ハンドル、形式検証、弱いパターンの警告、代替ハンドルが付属し、すぐに行動できます。",
+          "icon": "RiCheckboxCircleLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "3 ステップで使う YouTube 名前ジェネレーター",
+      "description": "白紙から公開できるチャンネル名まで 1 分以内。",
+      "items": [
+        {
+          "title": "チャンネルブリーフを記入",
+          "description": "YouTube 名前ジェネレーターに何のチャンネルか、誰向けかを伝えましょう。スタイル・長さ・ピボット余地を追加すると精度が上がります。",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "グループ化されたスコア付き候補を確認",
+          "description": "カテゴリー別に候補を眺め、理由、スコア、ハンドルの注意点をそれぞれ確認します。",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "保存・比較・公開",
+          "description": "最大 3 つまで保存、並べて比較し、おすすめの公開名とハンドルをコピーします。",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "クリエイターが YouTube 名前ジェネレーターを使う理由",
+      "description": "ネーミングの悩みは本当のものです。このツールは白紙から、公開できる名前まで導きます。",
+      "items": [
+        {
+          "title": "ブレストではなく、意思決定を",
+          "description": "スコアとおすすめ名で、「たぶん」の無限ループではなく、自信ある選択へ近づけます。",
+          "icon": "RiCompassLine"
+        },
+        {
+          "title": "弱いパターンを早めに回避",
+          "description": "形式検証と警告で、数字の多用や不自然な句読点など、ハンドルを損なうパターンを検出します。",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "ローカル履歴で再利用",
+          "description": "直近の生成履歴は端末に残るので、うまくいったブリーフを再利用できます。",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "ユースケース",
+      "title": "YouTube 名前ジェネレーターの最適な用途",
+      "description": "ランダムな案ではなく、公開できる名前を求めるはじめてのクリエイター向け。",
+      "items": [
+        {
+          "title": "新チャンネルを公開",
+          "description": "「何て名前にするか全然わからない」から「これで公開できる」まで、1 つの集中したワークフローで。",
+          "icon": "RiRocketLine"
+        },
+        {
+          "title": "角度を比較",
+          "description": "ブランダブル・検索しやすい・ハイブリッドの名前を横並べで確認し、成長計画に合う角度を選べます。",
+          "icon": "RiGitCompareLine"
+        },
+        {
+          "title": "ハンドル適性をチェック",
+          "description": "YouTube で決める前に、形式検証、代替ハンドル、警告が手に入ります。",
+          "icon": "RiCheckDoubleLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "YouTube 名前ジェネレーター FAQ",
+      "description": "スコープ、プライバシー、使い方に関する短い回答。",
+      "items": [
+        {
+          "title": "この YouTube 名前ジェネレーターは無料ですか?",
+          "description": "はい。登録なしで名前生成、ショートリスト保存、名前とハンドルのコピー、最近の生成の再確認ができます。"
+        },
+        {
+          "title": "1 回あたりいくつの名前が生成されますか?",
+          "description": "1 回で約 24 個の候補がブランダブル・検索しやすい・ハイブリッドに分かれて生成され、おすすめが 1 つ提示されます。"
+        },
+        {
+          "title": "各名前の 4 つのスコアは何を意味しますか?",
+          "description": "記憶性、発音性、独自性、ピボット余地は比較を助ける 1-10 の目安で、意思決定の補助であり客観的事実ではありません。"
+        },
+        {
+          "title": "ハンドルの空き状況をリアルタイムで確認しますか?",
+          "description": "いいえ。形式検証、数字の多用などの弱いパターンの警告、代替ハンドルの提示はしますが、YouTube で未登録かどうかは保証しません。"
+        },
+        {
+          "title": "英語以外のチャンネルにも使えますか?",
+          "description": "はい。詳細設定で出力言語を選ぶと、理由・注意・「適している」がその言語で出力されます。"
+        },
+        {
+          "title": "保存して後で戻ることはできますか?",
+          "description": "はい。最大 3 つまでショートリストに保存し、端末のローカル履歴から最近の生成を振り返れます。"
+        },
+        {
+          "title": "ニッチなテーマでも使えますか?",
+          "description": "はい。キーワードを追加し、できるだけ具体的にテーマを記述してください。ブリーフが具体的なほど候補は強くなります。"
+        },
+        {
+          "title": "最初の候補が気に入らない場合、再生成できますか?",
+          "description": "はい。「再生成」を押せば同じブリーフで新しい候補が出ます。スタイルや長さを調整してもう一度でも OK です。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今日、YouTube チャンネルに名前をつけよう",
+      "description": "今すぐ YouTube 名前ジェネレーターを起動し、グループ化された候補を比較して、公開できる名前とハンドルをコピーしましょう。",
+      "buttons": [
+        { "title": "名前を生成", "url": "#youtube_name_generator" },
+        { "title": "AI Write を開く", "url": "/ai-write" }
+      ]
+    }
+  }
+}

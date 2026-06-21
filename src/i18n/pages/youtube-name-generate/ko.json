@@ -1,0 +1,286 @@
+{
+  "youtube_name_generate": {
+    "metadata": {
+      "title": "YouTube 이름 생성기 무료 & 가입 불필요 | 런칭 가능한 채널명",
+      "description": "실제로 런칭할 수 있는 YouTube 채널명을 찾아보세요. 그룹화된 이름 후보를 생성하고, 점수를 비교하고, 핸들을 검증하여 자신 있게 선택하세요. 완전 무료, 가입 불필요.",
+      "keywords": "youtube 이름 생성기, youtube 채널명 생성기, youtube 핸들 생성기, youtube 채널명 아이디어, yt 이름 생성기, youtube 브랜드명 생성기, 무료 youtube 이름 생성기, 런칭 가능한 youtube 이름"
+    },
+    "ui": {
+      "title": "YouTube 이름 생성기",
+      "title_highlight": "YouTube 이름",
+      "subtitle": "실제로 런칭할 수 있는 YouTube 채널명을 찾아보세요. 그룹화된 이름 후보를 생성하고, 점수를 비교하고, 핸들을 검증하여 자신 있게 선택하세요.",
+      "eyebrow": "AI 네이밍 도구",
+      "theme_pills": ["런칭 가능", "핸들 검증", "점수 비교", "스타일별 그룹"],
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "YouTube 이름 생성기",
+      "niche_label": "채널이 어떤 내용인가요?",
+      "niche_placeholder": "예: 슬로우 라이프 브이로그, 초보용 체스 퍼즐, 실내 식물 가꾸기",
+      "audience_label": "누구를 위한 채널인가요?",
+      "audience_placeholder": "예: 바쁜 젊은 직장인, 디지털 아트를 배우는 10대",
+      "style_label": "네이밍 스타일",
+      "length_label": "길이",
+      "pivot_label": "피벗 여지",
+      "keywords_label": "키워드(선택)",
+      "keywords_placeholder": "강조할 단어를 쉼표로 구분",
+      "creator_label": "크리에이터 이름(선택)",
+      "creator_placeholder": "녹여낼 닉네임 또는 실명",
+      "random_button": "랜덤 예시",
+      "options_title": "채널 브리프",
+      "generate_button": "이름 생성",
+      "generating_button": "생성 중...",
+      "regenerate_button": "다시 생성",
+      "save_button": "저장",
+      "saved_button": "저장됨",
+      "remove_button": "제거",
+      "copy_name_button": "이름 복사",
+      "copy_handle_button": "핸들 복사",
+      "copy_fallback_button": "대체 복사",
+      "output_title": "이름 아이디어",
+      "empty_output": "니치와 시청자를 입력하고 생성하면 구조화된 이름 후보가 이곳에 표시됩니다.",
+      "generating_output": "이름을 생성하는 중...",
+      "results_count": "{count}개 이름",
+      "category_all": "전체",
+      "best_for_label": "적합",
+      "rationale_label": "이유",
+      "scores_label": "점수",
+      "score_memorability": "기억성",
+      "score_pronounceability": "발음성",
+      "score_uniqueness": "독창성",
+      "score_pivot": "피벗 여지",
+      "handle_label": "핸들",
+      "handle_warnings": "경고",
+      "handle_fallbacks": "대체",
+      "handle_valid": "핸들 형식 적합",
+      "handle_invalid": "핸들 형식 수정 필요",
+      "shortlist_title": "저장 목록",
+      "shortlist_empty": "위 결과에서 이름을 저장하면 나란히 비교할 수 있습니다.",
+      "shortlist_hint": "비교할 이름을 최대 3개까지 저장할 수 있습니다.",
+      "shortlist_full": "저장 목록이 가득 찼습니다(최대 3개).",
+      "compare_title": "비교",
+      "recommendation_title": "추천 런칭 이름",
+      "recommendation_reason": "이유",
+      "recommendation_backup_label": "백업 옵션",
+      "recommendation_next_actions": "다음 단계",
+      "history_title": "최근 생성",
+      "history_apply": "적용",
+      "history_delete": "삭제",
+      "history_clear": "비우기",
+      "sort_strongest": "강한 순",
+      "sort_label": "정렬"
+    },
+    "validation": {
+      "niche_required": "먼저 니치를 설명해 주세요.",
+      "audience_required": "시청자를 설명해 주세요."
+    },
+    "success": {
+      "copied_name": "이름이 클립보드에 복사되었습니다.",
+      "copied_handle": "핸들이 클립보드에 복사되었습니다.",
+      "generated": "YouTube 이름이 생성되었습니다.",
+      "saved": "저장 목록에 추가했습니다.",
+      "removed": "저장 목록에서 제거했습니다.",
+      "random_prompt_selected": "랜덤 예시를 불러왔습니다.",
+      "history_loaded": "기록을 불러왔습니다.",
+      "history_deleted": "기록을 삭제했습니다.",
+      "history_cleared": "기록을 비웠습니다."
+    },
+    "errors": {
+      "generate_failed": "YouTube 이름 생성에 실패했습니다.",
+      "verification_failed": "인증에 실패했습니다. 다시 시도해 주세요.",
+      "parse_failed": "응답을 파싱하지 못했습니다."
+    },
+    "style": {
+      "brandable": "브랜드형",
+      "searchable": "검색 가능형",
+      "hybrid": "하이브리드",
+      "funny": "유머러스",
+      "personal": "개인형",
+      "expert": "전문가형",
+      "cinematic": "시네마틱"
+    },
+    "length": {
+      "short": "짧게",
+      "medium": "중간",
+      "flexible": "유연"
+    },
+    "pivot": {
+      "low": "낮음",
+      "medium": "중간",
+      "high": "높음"
+    },
+    "category": {
+      "brandable": "브랜드형",
+      "searchable": "검색 가능형",
+      "hybrid": "하이브리드"
+    },
+    "random_prompts": [
+      {
+        "niche": "데일리 챌린지와 짧은 클립을 올리는 1인 로그라이크 게임 채널",
+        "audience": "빠른 템포의 인디 게임을 좋아하는 10대~청년층",
+        "style": "brandable",
+        "lengthPreference": "short",
+        "pivotFlexibility": "medium",
+        "keywords": ["rogue", "run"],
+        "creatorName": ""
+      },
+      {
+        "niche": "재료 5개 이하로 만드는 작은 아파트용 초보 요리",
+        "audience": "간단한 레시피를 원하는 바쁜 젊은 직장인",
+        "style": "searchable",
+        "lengthPreference": "flexible",
+        "pivotFlexibility": "low",
+        "keywords": ["easy", "kitchen"],
+        "creatorName": ""
+      },
+      {
+        "niche": "태평양 북서부의 슬로우 라이프 브이로그",
+        "audience": "늦은 20대로 평온과 루틴을 찾는 사람",
+        "style": "cinematic",
+        "lengthPreference": "medium",
+        "pivotFlexibility": "high",
+        "keywords": ["woods", "quiet"],
+        "creatorName": "Mara"
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "개요",
+      "title": "이 YouTube 이름 생성기가 잘하는 일",
+      "description": "이 도구는 이름 짓기에서 막힌 첫 크리에이터를 위해 만들어졌습니다. 무작위 아이디어를 쏟아내는 대신 그룹화된 후보를 생성하고, 각각에 점수를 매기고, 핸들을 검증하고, 몇 가지 강력한 옵션을 나란히 비교할 수 있게 돕습니다.",
+      "items": [
+        {
+          "title": "평면 목록이 아니라 그룹화된 후보",
+          "description": "YouTube 이름 생성기는 후보를 브랜드형·검색 가능형·하이브리드 그룹으로 나눠 비슷한 이름 사이를 스크롤하는 대신 각도를 비교할 수 있게 합니다.",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "모든 이름에 점수와 설명",
+          "description": "각 후보에는 4개의 1-10 점수(기억성·발음성·독창성·피벗 여지)와 한 줄 이유가 붙습니다.",
+          "icon": "RiBarChartLine"
+        },
+        {
+          "title": "처음부터 핸들 친화적",
+          "description": "각 이름에는 추천 @핸들, 형식 검증, 약한 패턴 경고, 대체 핸들이 함께 제공돼 바로 행동할 수 있습니다.",
+          "icon": "RiCheckboxCircleLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "사용법",
+      "title": "3단계로 쓰는 YouTube 이름 생성기",
+      "description": "백지 상태에서 런칭 가능한 채널명까지 1분 이내.",
+      "items": [
+        {
+          "title": "채널 브리프 작성",
+          "description": "YouTube 이름 생성기에 무엇에 관한 채널인지, 누구를 위한지 알려주세요. 스타일·길이·피벗 여지를 추가하면 결과가 더 날카로워집니다.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "그룹화된 점수 후보 검토",
+          "description": "카테고리별로 후보를 살펴보고, 이유, 점수, 핸들 경고를 각 카드에서 확인하세요.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "저장·비교·런칭",
+          "description": "최대 3개까지 저장 목록에 담고 나란히 비교한 뒤, 추천 이름과 핸들을 복사하세요.",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "장점",
+      "title": "크리에이터가 YouTube 이름 생성기를 찾는 이유",
+      "description": "이름 짓기 불안은 현실입니다. 이 생성기는 백지 상태에서 런칭 가능한 이름까지 안내합니다.",
+      "items": [
+        {
+          "title": "브레인스토밍이 아니라 의사결정",
+          "description": "점수와 추천 이름이 끝없는 '아마도' 대신 자신 있는 선택으로 이끕니다.",
+          "icon": "RiCompassLine"
+        },
+        {
+          "title": "약한 패턴을 일찍 회피",
+          "description": "형식 검사와 경고가 숫자 과다, 어색한 구두점 등 핸들을 해치는 패턴을 표시합니다.",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "재사용 가능한 로컬 기록",
+          "description": "최근 생성 결과가 기기에 남아, 잘 먹힌 브리프를 다시 활용할 수 있습니다.",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "활용 사례",
+      "title": "YouTube 이름 생성기의 최적 용도",
+      "description": "무작위 아이디어가 아니라 런칭 가능한 이름을 원하는 첫 크리에이터를 위해.",
+      "items": [
+        {
+          "title": "새 채널 런칭",
+          "description": "‘뭘로 이름 지어야 할지 모르겠다’에서 ‘이걸로 런칭할 수 있어’까지 한 차례 집중된 워크플로.",
+          "icon": "RiRocketLine"
+        },
+        {
+          "title": "각도 비교",
+          "description": "브랜드형·검색 가능형·하이브리드 이름을 나란히 보고 성장 계획에 맞는 각도를 고릅니다.",
+          "icon": "RiGitCompareLine"
+        },
+        {
+          "title": "핸들 적합성 점검",
+          "description": "YouTube에서 이름을 확정하기 전에 형식 검증, 대체 핸들, 경고를 받아볼 수 있습니다.",
+          "icon": "RiCheckDoubleLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "YouTube 이름 생성기 FAQ",
+      "description": "범위, 프라이버시, 사용법에 관한 짧은 답변.",
+      "items": [
+        {
+          "title": "이 YouTube 이름 생성기는 무료인가요?",
+          "description": "네. 가입 없이 이름 생성, 저장 목록 저장, 이름과 핸들 복사, 최근 생성 다시 보기를 할 수 있습니다."
+        },
+        {
+          "title": "한 번에 몇 개의 이름이 생성되나요?",
+          "description": "한 번에 약 24개의 후보가 브랜드형·검색 가능형·하이브리드로 분류되어 나오며, 추천 1개가 더 제시됩니다."
+        },
+        {
+          "title": "각 이름의 4개 점수는 무슨 의미인가요?",
+          "description": "기억성·발음성·독창성·피벗 여지는 비교를 돕는 1-10 안내 점수이며, 의사결정 보조일 뿐 객관적 사실이 아닙니다."
+        },
+        {
+          "title": "핸들의 실시간 가용성을 확인하나요?",
+          "description": "아니요. 형식 검증, 숫자 과다 같은 약한 패턴 경고, 대체 핸들 제안은 하지만 YouTube에서 해당 핸들이 비어 있는지는 보장하지 않습니다."
+        },
+        {
+          "title": "영어 이외의 채널에도 쓸 수 있나요?",
+          "description": "네. 고급 옵션에서 출력 언어를 선택하면 이유, 경고, ‘적합’이 해당 언어로 작성됩니다."
+        },
+        {
+          "title": "이름을 저장하고 나중에 돌아올 수 있나요?",
+          "description": "네. 최대 3개까지 저장 목록에 담고 기기 로컬 기록에서 최근 생성을 다시 볼 수 있습니다."
+        },
+        {
+          "title": "니치 주제에도 작동하나요?",
+          "description": "네. 키워드를 추가하고 니치를 가능한 한 구체적으로 묘사하세요. 브리프가 구체적일수록 후보가 강해집니다."
+        },
+        {
+          "title": "첫 번째 결과가 마음에 안 들면 다시 생성할 수 있나요?",
+          "description": "네. ‘다시 생성’을 누르면 같은 브리프로 새 결과가 나옵니다. 스타일과 길이를 조절해 다시 돌려도 됩니다."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "오늘 YouTube 채널에 이름을 지어주세요",
+      "description": "지금 YouTube 이름 생성기를 실행하고, 그룹화된 후보를 비교하고, 런칭 가능한 이름과 핸들을 복사하세요.",
+      "buttons": [
+        { "title": "이름 생성", "url": "#youtube_name_generator" },
+        { "title": "AI Write 열기", "url": "/ai-write" }
+      ]
+    }
+  }
+}

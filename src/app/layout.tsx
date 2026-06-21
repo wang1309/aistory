@@ -36,6 +36,7 @@ export default async function RootLayout({
   const locale = await getLocale();
   setRequestLocale(locale);
   const googleAdsenseCode = process.env.NEXT_PUBLIC_GOOGLE_ADCODE || "";
+  const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org";
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -48,6 +49,31 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={cn(dmSans.variable, sourceSerif.variable, notoSansSC.variable, "font-sans antialiased")}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": `${webUrl}/#organization`,
+                  name: "AI Story",
+                  url: webUrl,
+                  logo: `${webUrl}/logo.avif`,
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": `${webUrl}/#website`,
+                  url: webUrl,
+                  name: "AI Story",
+                  inLanguage: locale,
+                  publisher: { "@id": `${webUrl}/#organization` },
+                },
+              ],
+            }),
+          }}
+        />
         {children}
       </body>
     </html>
