@@ -19,6 +19,7 @@ const GENERATOR_IDS = [
   "story_prompt_generator", // Story Prompt Generator
   "incorrect_quote_generator", // Incorrect Quote Generator
   "tiktok_comment_generator", // TikTok Comment Reply Generator
+  "youtube_title_generator", // YouTube Title Generator
 ];
 
 interface ScrollToGeneratorProps {

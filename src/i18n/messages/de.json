@@ -352,6 +352,10 @@
         "name": "YouTube Name Generator",
         "desc": "Finde einen startklaren YouTube-Kanalnamen mit gruppierten Kandidaten, Scoring, Handle-Prüfung und Shortlist-Vergleich."
       },
+      "youtube_title_generator": {
+        "name": "YouTube-Titel-Generator",
+        "desc": "Generiere gruppierte YouTube-Titelwinkel, vergleiche Favoriten und wähle vor dem Veröffentlichen einen stärkeren Finaltitel."
+      },
       "comic_generator": {
         "name": "AI Comic Generator",
         "desc": "Generieren Sie Comic-Dialoge, Erzählungen und Panel-Skripte für Manga, Webtoon und Comic-Storytelling."

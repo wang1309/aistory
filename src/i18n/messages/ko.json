@@ -352,6 +352,10 @@
         "name": "YouTube 이름 생성기",
         "desc": "그룹화 후보, 점수 비교, 핸들 검증, 저장 목록 비교로 런칭 가능한 YouTube 채널명을 찾습니다."
       },
+      "youtube_title_generator": {
+        "name": "YouTube 제목 생성기",
+        "desc": "여러 YouTube 제목 각도를 생성하고 후보를 비교해 게시 전 더 강한 최종 제목을 선택하세요."
+      },
       "comic_generator": {
         "name": "AI 만화 생성기",
         "desc": "망가, 웹툰, 만화 스토리텔링을 위한 대사, 나레이션, 컷별 스크립트를 생성합니다."

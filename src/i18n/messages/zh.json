@@ -352,6 +352,10 @@
         "name": "YouTube 名称生成器",
         "desc": "找到可直接上线的 YouTube 频道名:分组候选、评分对比、Handle 校验、候选名单并排比较。"
       },
+      "youtube_title_generator": {
+        "name": "YouTube 标题生成器",
+        "desc": "生成不同角度的 YouTube 标题、对比候选清单，在发布前选出更强的最终标题。"
+      },
       "comic_generator": {
         "name": "AI漫画生成器",
         "desc": "为漫画、网漫和条漫创作生成漫画对白、旁白和逐格分镜脚本。"

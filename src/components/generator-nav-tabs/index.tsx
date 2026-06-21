@@ -27,6 +27,7 @@ const TABS: NavTab[] = [
   { href: "/incorrect-quote-generator", labelKey: "ai_tools.tools.incorrect_quote_generator.name" },
   { href: "/tiktok-comment-generator", labelKey: "ai_tools.tools.tiktok_comment_generator.name" },
   { href: "/youtube-name-generator", labelKey: "ai_tools.tools.youtube_name_generator.name" },
+  { href: "/youtube-title-generator", labelKey: "ai_tools.tools.youtube_title_generator.name" },
 ];
 
 export default function GeneratorNavTabs() {

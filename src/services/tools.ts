@@ -136,6 +136,18 @@ export const tools: Tool[] = [
     priority: 75,
   },
   {
+    slug: "youtube-title-generator",
+    nameKey: "ai_tools.tools.youtube_title_generator.name",
+    shortDescKey: "ai_tools.tools.youtube_title_generator.desc",
+    module: "ai-write",
+    category: "title",
+    tab: "creative",
+    href: "/youtube-title-generator",
+    icon: "RiYoutubeLine",
+    badges: ["new"],
+    priority: 74,
+  },
+  {
     slug: "comic-generator",
     nameKey: "ai_tools.tools.comic_generator.name",
     shortDescKey: "ai_tools.tools.comic_generator.desc",
