@@ -127,6 +127,14 @@
               "icon": "RiMessage3Line",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "YouTube генератор названий",
+              "description": "Генерируйте запускаемые названия YouTube-каналов с группами идей, оценками и проверкой хэндлов.",
+              "url": "/youtube-name-generator",
+              "icon": "RiPlayCircleLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -892,6 +900,14 @@
               "description": "Превратите один комментарий TikTok в 3-5 готовых ответов.",
               "url": "/tiktok-comment-generator",
               "icon": "RiMessage3Line",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "YouTube генератор названий",
+              "description": "Найдите название YouTube-канала, с которым реально можно запускаться.",
+              "url": "/youtube-name-generator",
+              "icon": "RiPlayCircleLine",
               "target": "_self",
               "category": "creative"
             }

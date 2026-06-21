@@ -135,6 +135,14 @@
               "icon": "RiMessage3Line",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "YouTube 频道名称生成器",
+              "description": "快速生成可上线的 YouTube 频道名称,提供分组方案、打分对比和 handle 验证。",
+              "url": "/youtube-name-generator",
+              "icon": "RiPlayCircleLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -900,6 +908,14 @@
               "description": "粘贴一条 TikTok 评论，立刻生成 3-5 条可直接复制的回复。",
               "url": "/tiktok-comment-generator",
               "icon": "RiMessage3Line",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "YouTube 频道名称生成器",
+              "description": "找到你敢直接上线的 YouTube 频道名称。",
+              "url": "/youtube-name-generator",
+              "icon": "RiPlayCircleLine",
               "target": "_self",
               "category": "creative"
             }

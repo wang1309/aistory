@@ -127,6 +127,14 @@
               "icon": "RiMessage3Line",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "YouTube 이름 생성기",
+              "description": "그룹화된 아이디어, 점수, 핸들 검증을 제공하는 런칭 가능한 YouTube 채널명을 생성하세요.",
+              "url": "/youtube-name-generator",
+              "icon": "RiPlayCircleLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -892,6 +900,14 @@
               "description": "TikTok 댓글을 3~5개의 바로 복사 가능한 답글로 변환.",
               "url": "/tiktok-comment-generator",
               "icon": "RiMessage3Line",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "YouTube 이름 생성기",
+              "description": "실제로 런칭할 수 있는 YouTube 채널명을 찾아보세요.",
+              "url": "/youtube-name-generator",
+              "icon": "RiPlayCircleLine",
               "target": "_self",
               "category": "creative"
             }

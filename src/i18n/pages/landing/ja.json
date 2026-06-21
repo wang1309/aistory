@@ -127,6 +127,14 @@
               "icon": "RiMessage3Line",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "YouTube 名前ジェネレーター",
+              "description": "グループ化された名前案、スコア、ハンドル検証付きで公開できる YouTube チャンネル名を生成。",
+              "url": "/youtube-name-generator",
+              "icon": "RiPlayCircleLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -892,6 +900,14 @@
               "description": "TikTok のコメントを 3〜5 件のコピー即利用できる返信に変換。",
               "url": "/tiktok-comment-generator",
               "icon": "RiMessage3Line",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "YouTube 名前ジェネレーター",
+              "description": "実際に公開できる YouTube チャンネル名を見つけよう。",
+              "url": "/youtube-name-generator",
+              "icon": "RiPlayCircleLine",
               "target": "_self",
               "category": "creative"
             }

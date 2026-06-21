@@ -127,6 +127,14 @@
               "icon": "RiMessage3Line",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "YouTube Name Generator",
+              "description": "Generiere startklare YouTube-Kanalnamen mit gruppierten Ideen, Scores und Handle-Validierung.",
+              "url": "/youtube-name-generator",
+              "icon": "RiPlayCircleLine",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         }
@@ -892,6 +900,14 @@
               "description": "Verwandle einen TikTok-Kommentar in 3-5 kopierfertige Antworten.",
               "url": "/tiktok-comment-generator",
               "icon": "RiMessage3Line",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
+              "title": "YouTube Name Generator",
+              "description": "Finde einen YouTube-Kanalnamen, mit dem du wirklich starten kannst.",
+              "url": "/youtube-name-generator",
+              "icon": "RiPlayCircleLine",
               "target": "_self",
               "category": "creative"
             }
