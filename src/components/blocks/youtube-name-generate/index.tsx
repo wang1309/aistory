@@ -479,7 +479,7 @@ export default function YoutubeNameGenerate({
               <span className="truncate text-base font-semibold text-foreground">
                 {item.name}
               </span>
-              <Badge variant="secondary" className="text-[10px] uppercase tracking-wide">
+              <Badge variant="secondary" className="text-[11px] uppercase tracking-wide">
                 {categoryLabel(item.category)}
               </Badge>
             </div>
@@ -495,7 +495,7 @@ export default function YoutubeNameGenerate({
             onClick={() => toggleShortlist(item)}
             disabled={!saved && shortlist.length >= MAX_SHORTLIST}
             className={cn(
-              "h-11 shrink-0 px-3 text-xs sm:h-8",
+              "h-11 shrink-0 px-3 text-xs sm:h-8 active:scale-[0.98]",
               saved &&
                 "bg-orange-600 text-white hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600"
             )}
@@ -574,7 +574,7 @@ export default function YoutubeNameGenerate({
             size="sm"
             variant="outline"
             onClick={() => handleCopy(item.name)}
-            className="h-11 px-2 text-xs sm:h-8"
+            className="h-11 px-2 text-xs sm:h-8 active:scale-[0.98]"
           >
             <Copy className="mr-1 h-3 w-3" />
             {t("ui.copy_name_button", "Copy name")}
@@ -584,7 +584,7 @@ export default function YoutubeNameGenerate({
             size="sm"
             variant="outline"
             onClick={() => handleCopy(item.suggestedHandle, "success.copied_handle")}
-            className="h-11 px-2 text-xs sm:h-8"
+            className="h-11 px-2 text-xs sm:h-8 active:scale-[0.98]"
           >
             <Copy className="mr-1 h-3 w-3" />
             {t("ui.copy_handle_button", "Copy handle")}
@@ -717,7 +717,7 @@ export default function YoutubeNameGenerate({
 
           <span
             className={cn(
-              "relative z-10 mb-5 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground",
+              "relative z-10 mb-5 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground",
               tkEnter(80)
             )}
           >
@@ -797,7 +797,7 @@ export default function YoutubeNameGenerate({
                     type="button"
                     variant="ghost"
                     onClick={handleRandomPrompt}
-                    className="h-11 justify-start px-3 text-sm text-orange-600 hover:bg-orange-500/10 dark:text-orange-400 sm:h-8 sm:justify-end sm:px-2.5 sm:text-xs"
+                    className="h-11 justify-start px-3 text-sm text-orange-600 hover:bg-orange-500/10 dark:text-orange-400 sm:h-8 active:scale-[0.98] sm:justify-end sm:px-2.5 sm:text-xs"
                   >
                     {t("ui.random_button", "Random example")}
                   </Button>
@@ -952,7 +952,7 @@ export default function YoutubeNameGenerate({
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="bg-orange-600 text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600"
+                  className="bg-orange-600 text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.98] active:bg-orange-800 dark:bg-orange-500 dark:hover:bg-orange-600"
                 >
                   {isGenerating
                     ? t("ui.generating_button", "Generating...")
@@ -964,7 +964,7 @@ export default function YoutubeNameGenerate({
                     variant="outline"
                     onClick={handleGenerate}
                     disabled={isGenerating}
-                    className="h-11 px-4 sm:h-10"
+                    className="h-11 px-4 sm:h-10 active:scale-[0.98]"
                   >
                     {t("ui.regenerate_button", "Regenerate")}
                   </Button>
@@ -1043,7 +1043,7 @@ export default function YoutubeNameGenerate({
                     ))}
                   </div>
 
-                  <div className="grid max-h-[640px] gap-3 overflow-y-auto pr-1">
+                  <div className="grid max-h-[60vh] gap-3 overflow-y-auto pr-1 md:max-h-[640px]">
                     {visibleResults.map((item, idx) => renderNameCard(item, idx))}
                   </div>
                 </>
@@ -1092,7 +1092,7 @@ export default function YoutubeNameGenerate({
                       <Button
                         size="sm"
                         onClick={() => handleCopy(recommendedItem.name)}
-                        className="h-11 bg-orange-600 text-white hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 sm:h-9"
+                        className="h-11 bg-orange-600 text-white hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 sm:h-9 active:scale-[0.98]"
                       >
                         <Copy className="mr-1.5 h-3.5 w-3.5" />
                         {t("ui.copy_name_button", "Copy name")}
@@ -1101,7 +1101,7 @@ export default function YoutubeNameGenerate({
                         size="sm"
                         variant="outline"
                         onClick={() => handleCopy(recommendedItem.suggestedHandle, "success.copied_handle")}
-                        className="h-11 sm:h-9"
+                        className="h-11 sm:h-9 active:scale-[0.98]"
                       >
                         <Copy className="mr-1.5 h-3.5 w-3.5" />
                         {t("ui.copy_handle_button", "Copy handle")}
@@ -1195,7 +1195,7 @@ export default function YoutubeNameGenerate({
                         <div className="font-mono text-xs text-orange-600 dark:text-orange-400">
                           @{item.suggestedHandle}
                         </div>
-                        <Badge variant="secondary" className="text-[10px]">
+                        <Badge variant="secondary" className="text-[11px]">
                           {categoryLabel(item.category)}
                         </Badge>
                       </div>
@@ -1260,7 +1260,7 @@ export default function YoutubeNameGenerate({
                       variant="outline"
                       size="sm"
                       onClick={() => applyHistory(item)}
-                      className="h-11 px-3 text-xs sm:h-8"
+                      className="h-11 px-3 text-xs sm:h-8 active:scale-[0.98]"
                     >
                       {t("ui.history_apply", "Apply")}
                     </Button>
@@ -1269,7 +1269,7 @@ export default function YoutubeNameGenerate({
                       variant="ghost"
                       size="sm"
                       onClick={() => deleteHistory(item.id)}
-                      className="h-11 px-3 text-xs text-muted-foreground hover:text-destructive sm:h-8"
+                      className="h-11 px-3 text-xs text-muted-foreground hover:text-destructive sm:h-8 active:scale-[0.98]"
                     >
                       {t("ui.history_delete", "Delete")}
                     </Button>
@@ -1317,7 +1317,7 @@ function CategoryTabButton({ active, onClick, label, count }: CategoryTabButtonP
       <span>{label}</span>
       <span
         className={cn(
-          "rounded-full px-1.5 text-[10px]",
+          "rounded-full px-1.5 text-[11px]",
           active ? "bg-orange-500/20" : "bg-muted"
         )}
       >

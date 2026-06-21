@@ -41,14 +41,22 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         {googleAdsenseCode && (
           <meta name="google-adsense-account" content={googleAdsenseCode} />
         )}
 
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={cn(dmSans.variable, sourceSerif.variable, notoSansSC.variable, "font-sans antialiased")}>
+      <body
+        className={cn(dmSans.variable, sourceSerif.variable, notoSansSC.variable, "font-sans antialiased")}
+        style={{
+          paddingTop: "env(safe-area-inset-top)",
+          paddingBottom: "env(safe-area-inset-bottom)",
+          paddingLeft: "env(safe-area-inset-left)",
+          paddingRight: "env(safe-area-inset-right)",
+        }}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
