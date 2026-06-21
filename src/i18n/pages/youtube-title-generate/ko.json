@@ -1,0 +1,281 @@
+{
+  "youtube_title_generate": {
+    "metadata": {
+      "title": "YouTube 제목 생성기: 게시 전 테스트할 가치가 있는 제목 선택",
+      "description": "요약이나 대본에서 여러 제목 각도를 생성하고, 후보를 비교하여 게시 전 더 강한 YouTube 제목을 선택하세요.",
+      "keywords": "youtube 제목 생성기, youtube 동영상 제목 생성, ai youtube 제목 도구, youtube 제목 최적화, youtube 제목 아이디어, 클릭률 제목, youtube ctr 도구"
+    },
+    "ui": {
+      "title": "YouTube 제목 생성기",
+      "title_highlight": "제목 생성기",
+      "subtitle": "요약이나 대본에서 여러 제목 각도를 생성하고, 후보를 비교하여 게시 전 가장 강한 제목을 선택하세요.",
+      "eyebrow": "AI 제목 도구",
+      "theme_pills": [
+        "4가지 각도",
+        "후보 비교",
+        "절단 인식",
+        "추천"
+      ],
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "YouTube 제목 생성기",
+      "topic_label": "동영상 주제는?",
+      "topic_placeholder": "예: 긴 영상을 더 빠르게 편집하는 법",
+      "audience_label": "누구를 위한가요?",
+      "audience_placeholder": "예: 직접 편집하는 1인 크리에이터",
+      "summary_label": "짧은 요약",
+      "summary_placeholder": "시청자가 무엇을 배우고 느낄지 한두 문장으로",
+      "transcript_label": "대본(선택)",
+      "transcript_placeholder": "대본이나 핵심 포인트를 붙여 넣어 제목을 실제 콘텐츠에 고정",
+      "length_label": "제목 길이",
+      "optimization_label": "최적화 방향",
+      "avoid_words_label": "피할 단어(선택)",
+      "avoid_words_placeholder": "쉼표로 구분, 절대 쓰지 않을 단어",
+      "random_button": "랜덤 예시",
+      "options_title": "동영상 브리프",
+      "advanced_title": "고급 옵션",
+      "generate_button": "제목 생성",
+      "generating_button": "생성 중...",
+      "regenerate_button": "재생성",
+      "save_button": "저장",
+      "saved_button": "저장됨",
+      "remove_button": "제거",
+      "copy_title_button": "제목 복사",
+      "output_title": "제목 각도",
+      "empty_output": "동영상과 시청자를 입력하면 여기에 그룹화된 제목 각도가 표시됩니다.",
+      "generating_output": "제목을 생성하는 중...",
+      "results_count": "{count}개 제목",
+      "angle_all": "전체",
+      "angle_search": "검색 우선",
+      "angle_curiosity": "호기심 우선",
+      "angle_outcome": "성과 우선",
+      "angle_contrarian": "역발상 우선",
+      "best_use_label": "적합한 용도",
+      "reason_label": "이유",
+      "diagnostics_label": "진단",
+      "diag_chars": "문자 수",
+      "diag_truncation": "절단 위험",
+      "diag_keyword": "키워드 위치",
+      "diag_authenticity": "신뢰도 위험",
+      "shortlist_title": "후보 목록",
+      "shortlist_empty": "위 결과에서 제목을 저장하면 나란히 비교할 수 있습니다.",
+      "shortlist_hint": "최대 3개까지 저장해 비교할 수 있습니다.",
+      "shortlist_full": "후보 목록이 가득 찼습니다(최대 3개).",
+      "compare_title": "후보 제목 비교",
+      "recommendation_title": "추천 최종 제목",
+      "recommendation_reason": "이유",
+      "recommendation_backup_label": "백업 옵션",
+      "history_title": "최근 생성",
+      "history_apply": "적용",
+      "history_delete": "삭제",
+      "history_clear": "비우기"
+    },
+    "validation": {
+      "topic_required": "동영상 주제를 알려주세요.",
+      "audience_required": "누구를 위한 동영상인지 알려주세요.",
+      "summary_required": "짧은 요약을 추가하여 제목 후보가 내용에 가깝도록 하세요.",
+      "generic_error": "지금은 제목을 생성할 수 없습니다. 다시 시도해 주세요."
+    },
+    "success": {
+      "copied": "제목이 클립보드에 복사되었습니다.",
+      "generated": "YouTube 제목이 생성되었습니다.",
+      "saved": "후보 목록에 추가했습니다.",
+      "removed": "후보 목록에서 제거했습니다.",
+      "random_prompt_selected": "랜덤 예시가 로드되었습니다.",
+      "history_loaded": "기록이 로드되었습니다.",
+      "history_deleted": "기록이 삭제되었습니다.",
+      "history_cleared": "기록이 비워졌습니다."
+    },
+    "errors": {
+      "generate_failed": "YouTube 제목 생성에 실패했습니다.",
+      "verification_failed": "인증에 실패했습니다. 다시 시도해 주세요."
+    },
+    "length": {
+      "short": "짧게(40-50자)",
+      "medium": "중간(50-60자)",
+      "flexible": "유연(40-70자)"
+    },
+    "optimization": {
+      "search": "검색 의도",
+      "balanced": "균형",
+      "clicks": "클릭 어필"
+    },
+    "risk": {
+      "low": "낮음",
+      "medium": "중간",
+      "high": "높음"
+    },
+    "placement": {
+      "front-loaded": "전면 배치",
+      "mid-title": "중간",
+      "late": "후반",
+      "none": "없음"
+    },
+    "random_prompts": [
+      {
+        "videoTopic": "긴 영상을 더 빠르게 편집하는 법",
+        "targetAudience": "직접 편집하는 1인 크리에이터",
+        "summary": "30분 브이로그를 2시간 안에 편집하는 워크플로우 실연.",
+        "titleLengthPreference": "medium",
+        "optimizationPreference": "balanced",
+        "avoidWords": ["insane", "secret"]
+      },
+      {
+        "videoTopic": "기구 없이 하는 입문자용 홈트레이닝",
+        "targetAudience": "바쁜 피트니스 입문자",
+        "summary": "작은 아파트에서 촬영한 20분 루틴과 명확한 대체 동작.",
+        "titleLengthPreference": "short",
+        "optimizationPreference": "clicks",
+        "avoidWords": []
+      },
+      {
+        "videoTopic": "올해 산 모든 가성비 기계식 키보드 리뷰",
+        "targetAudience": "예산 중심 타자/게이머",
+        "summary": "6개월간 12개를 테스트하고 소리와 타건감을 기록.",
+        "titleLengthPreference": "flexible",
+        "optimizationPreference": "search",
+        "avoidWords": []
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "개요",
+      "title": "이 YouTube 제목 생성기가 잘하는 일",
+      "description": "이미 게시 중인 크리에이터가 매 업로드 전 더 강한 제목을 선택하도록 돕습니다. 평면 목록이 아니라 그룹화된 각도, 진단, 후보 비교로 결정을 지원합니다.",
+      "items": [
+        {
+          "title": "네 가지 다른 제목 각도",
+          "description": "검색/호기심/성과/역발상 우선 그룹으로 사소한 차이가 아니라 방향을 비교합니다.",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "모든 후보에 진단 표시",
+          "description": "문자 수, 절단 위험, 키워드 위치, 신뢰도 위험으로 클릭을 얻을지 읽어냅니다.",
+          "icon": "RiBarChartLine"
+        },
+        {
+          "title": "후보, 비교, 추천",
+          "description": "최대 3개를 저장해 나란히 비교하고 균형 잡힌 추천과 백업을 활용합니다.",
+          "icon": "RiCheckboxCircleLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "사용 방법",
+      "title": "3단계로 쓰는 YouTube 제목 생성기",
+      "description": "요약에서 테스트 가치 있는 제목까지 1분 이내.",
+      "items": [
+        {
+          "title": "동영상 브리프 입력",
+          "description": "주제, 시청자, 짧은 요약을 입력합니다. 고급 옵션에서 대본이나 피할 단어를 추가할 수 있습니다.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "그룹화된 제목 각도 확인",
+          "description": "네 각도 그룹을 탐색하고 각 카드의 진단을 읽으며 강한 1~2개를 저장하세요.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "선택하고 복사",
+          "description": "후보를 나란히 비교하고 추천 제목 또는 백업을 복사하세요.",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "혜택",
+      "title": "크리에이터가 YouTube 제목 생성기를 쓰는 이유",
+      "description": "업로드 화면에서 멈추지 않고 자신 있게 결정합니다.",
+      "items": [
+        {
+          "title": "브레인스토밍이 아니라 결정",
+          "description": "진단과 추천이 끝없는 스크롤이 아닌 명확한 선택으로 이끕니다.",
+          "icon": "RiCompassLine"
+        },
+        {
+          "title": "업로드 전 절단 위험 발견",
+          "description": "문자 수와 위험으로 목록에서 잘리는 긴 제목을 사전에 경고합니다.",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "로컬 기록으로 재사용",
+          "description": "최근 생성이 기기에 남아 승리한 브리프를 다시 실행하기 쉽습니다.",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "사용 사례",
+      "title": "YouTube 제목 생성기의 최적 용도",
+      "description": "매 업로드 전 더 강한 제목을 원하는 활동 크리에이터에게 적합합니다.",
+      "items": [
+        {
+          "title": "두 각도 사이에서 고민할 때",
+          "description": "검색 우선과 호기심 우선을 나란히 비교해 영상 목표에 맞는 각도를 선택하세요.",
+          "icon": "RiGitCompareLine"
+        },
+        {
+          "title": "클릭베이트 피하기",
+          "description": "신뢰도 위험이 과장 패턴을 표시해 호기심과 신뢰를 모두 지킵니다.",
+          "icon": "RiCheckDoubleLine"
+        },
+        {
+          "title": "긴 제목 다듬기",
+          "description": "절단 진단으로 게시 전에 목록과 모바일에서 잘리는 제목을 찾아냅니다.",
+          "icon": "RiScissorsCutLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "YouTube 제목 생성기 FAQ",
+      "description": "범위, 프라이버시, 사용법에 대한 짧은 답변.",
+      "items": [
+        {
+          "title": "이 YouTube 제목 생성기는 무료인가요?",
+          "description": "네. 회원가입 없이 생성, 후보 저장, 복사, 최근 기록 확인이 가능합니다."
+        },
+        {
+          "title": "한 번에 몇 개의 제목이 생성되나요?",
+          "description": "1회 실행 시 12개의 제목이 4가지 각도(검색, 호기심, 성과, 역발상)로 분산되어 생성되며 추천과 백업이 제공됩니다."
+        },
+        {
+          "title": "각 제목의 진단은 무엇인가요?",
+          "description": "문자 수, 절단 위험, 키워드 위치, 신뢰도 위험은 비교를 돕는 휴리스틱이지 절대 진리가 아닙니다."
+        },
+        {
+          "title": "실시간 검색 순위를 확인하나요?",
+          "description": "아니요. 진단과 추천이 포함된 구조화된 제목만 제공하며 순위나 CTR을 예측하지 않습니다."
+        },
+        {
+          "title": "비영어권 동영상에도 쓸 수 있나요?",
+          "description": "네. URL에서 로케일을 바꾸면 이유, 진단, 추천이 해당 언어로 출력됩니다."
+        },
+        {
+          "title": "저장하고 나중에 돌아올 수 있나요?",
+          "description": "네. 최대 3개를 후보로 저장하고 로컬 기록에서 최근 생성을 다시 볼 수 있습니다."
+        },
+        {
+          "title": "틈새 주제에도 효과가 있나요?",
+          "description": "네. 대본을 추가하고 요약을 구체적으로 적을수록 후보가 강해집니다."
+        },
+        {
+          "title": "마음에 들지 않으면 다시 생성할 수 있나요?",
+          "description": "네. 같은 브리프로 재생성하거나 길이와 최적화 설정을 바꾸어 다시 실행할 수 있습니다."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "테스트할 가치가 있는 YouTube 제목 생성",
+      "description": "지금 YouTube 제목 생성기를 실행하고 그룹 각도를 비교해 다음 업로드 전 더 강한 제목을 복사하세요.",
+      "buttons": [
+        { "title": "제목 생성", "url": "#youtube_title_generator" },
+        { "title": "AI Write 열기", "url": "/ai-write" }
+      ]
+    }
+  }
+}

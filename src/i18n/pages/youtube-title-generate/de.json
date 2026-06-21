@@ -1,0 +1,281 @@
+{
+  "youtube_title_generate": {
+    "metadata": {
+      "title": "YouTube-Titel-Generator: Wähle einen Titel, den du vor dem Veröffentlichen testen solltest",
+      "description": "Generiere YouTube-Titelwinkel aus Zusammenfassung oder Transkript, vergleiche Favoriten und wähle vor dem Veröffentlichen einen stärkeren Titel.",
+      "keywords": "youtube titel generator, youtube video titel generator, ai youtube titel tool, youtube titel optimierer, youtube titel ideen, klickrate titel, youtube ctr tool"
+    },
+    "ui": {
+      "title": "YouTube-Titel-Generator",
+      "title_highlight": "Titel-Generator",
+      "subtitle": "Generiere gruppierte Titelwinkel aus deiner Zusammenfassung, vergleiche Favoriten und wähle vor dem Veröffentlichen den stärksten Titel.",
+      "eyebrow": "KI-Titel-Tool",
+      "theme_pills": [
+        "4 Winkel",
+        "Favoritenvergleich",
+        "Truncation-Warnung",
+        "Empfehlung"
+      ],
+      "breadcrumb_home": "Start",
+      "breadcrumb_current": "YouTube-Titel-Generator",
+      "topic_label": "Worum geht es im Video?",
+      "topic_placeholder": "z. B. wie ich Longform-Videos schneller schneide",
+      "audience_label": "Für wen?",
+      "audience_placeholder": "z. B. Solo-Creator, die selbst schneiden",
+      "summary_label": "Kurze Zusammenfassung",
+      "summary_placeholder": "Ein bis zwei Sätze, was Zuschauer lernen oder fühlen",
+      "transcript_label": "Transkript (optional)",
+      "transcript_placeholder": "Transkript oder Stichpunkte einfügen, um Titel am echten Inhalt zu verankern",
+      "length_label": "Titellänge",
+      "optimization_label": "Optimieren für",
+      "avoid_words_label": "Wörter vermeiden (optional)",
+      "avoid_words_placeholder": "kommagetrennte Wörter, die nie auftauchen sollen",
+      "random_button": "Zufallsbeispiel",
+      "options_title": "Video-Briefing",
+      "advanced_title": "Erweiterte Optionen",
+      "generate_button": "Titel generieren",
+      "generating_button": "Generierung...",
+      "regenerate_button": "Neu generieren",
+      "save_button": "Speichern",
+      "saved_button": "Gespeichert",
+      "remove_button": "Entfernen",
+      "copy_title_button": "Titel kopieren",
+      "output_title": "Titelwinkel",
+      "empty_output": "Beschreibe Video und Zielgruppe, dann werden hier gruppierte Titelwinkel angezeigt.",
+      "generating_output": "Titel werden generiert...",
+      "results_count": "{count} Titel",
+      "angle_all": "Alle",
+      "angle_search": "Suche zuerst",
+      "angle_curiosity": "Neugier zuerst",
+      "angle_outcome": "Ergebnis zuerst",
+      "angle_contrarian": "Konträr zuerst",
+      "best_use_label": "Am besten für",
+      "reason_label": "Warum",
+      "diagnostics_label": "Diagnose",
+      "diag_chars": "Zeichen",
+      "diag_truncation": "Truncation",
+      "diag_keyword": "Keyword-Position",
+      "diag_authenticity": "Authentizitätsrisiko",
+      "shortlist_title": "Deine Favoriten",
+      "shortlist_empty": "Speichere Titel aus den Ergebnissen oben, um sie nebeneinander zu vergleichen.",
+      "shortlist_hint": "Bis zu 3 Titel speichern und vergleichen.",
+      "shortlist_full": "Favoriten voll (max. 3).",
+      "compare_title": "Top-Titel vergleichen",
+      "recommendation_title": "Empfohlener Finaltitel",
+      "recommendation_reason": "Warum",
+      "recommendation_backup_label": "Backup-Option",
+      "history_title": "Letzte Generierungen",
+      "history_apply": "Übernehmen",
+      "history_delete": "Löschen",
+      "history_clear": "Leeren"
+    },
+    "validation": {
+      "topic_required": "Sag uns, worum es im Video geht.",
+      "audience_required": "Sag uns, für wen das Video ist.",
+      "summary_required": "Füge eine kurze Zusammenfassung hinzu, damit die Titel passend bleiben.",
+      "generic_error": "Wir konnten aktuell keine Titel generieren. Bitte erneut versuchen."
+    },
+    "success": {
+      "copied": "Titel in die Zwischenablage kopiert.",
+      "generated": "YouTube-Titel generiert.",
+      "saved": "Zu Favoriten hinzugefügt.",
+      "removed": "Aus Favoriten entfernt.",
+      "random_prompt_selected": "Zufallsbeispiel geladen.",
+      "history_loaded": "Verlauf geladen.",
+      "history_deleted": "Verlauf entfernt.",
+      "history_cleared": "Verlauf geleert."
+    },
+    "errors": {
+      "generate_failed": "YouTube-Titel konnten nicht generiert werden.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Erneut versuchen."
+    },
+    "length": {
+      "short": "Kurz (40-50 Zeichen)",
+      "medium": "Mittel (50-60 Zeichen)",
+      "flexible": "Flexibel (40-70 Zeichen)"
+    },
+    "optimization": {
+      "search": "Suchintention",
+      "balanced": "Ausgewogen",
+      "clicks": "Klickappell"
+    },
+    "risk": {
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch"
+    },
+    "placement": {
+      "front-loaded": "Vorne",
+      "mid-title": "Mitte",
+      "late": "Spät",
+      "none": "Keine"
+    },
+    "random_prompts": [
+      {
+        "videoTopic": "Wie ich Longform-Videos schneller schneide",
+        "targetAudience": "Solo-Creator, die selbst schneiden",
+        "summary": "Workflow-Demo, wie ein 30-Minuten-Vlog in unter zwei Stunden geschnitten wird.",
+        "titleLengthPreference": "medium",
+        "optimizationPreference": "balanced",
+        "avoidWords": ["insane", "secret"]
+      },
+      {
+        "videoTopic": "Anfänger-Home-Workout ohne Equipment",
+        "targetAudience": "Beschäftigte Fitness-Anfänger",
+        "summary": "20-Minuten-Routine in einer kleinen Wohnung, mit klaren Modifikationen.",
+        "titleLengthPreference": "short",
+        "optimizationPreference": "clicks",
+        "avoidWords": []
+      },
+      {
+        "videoTopic": "Jede Budget-Mechaniktastatur des Jahres im Review",
+        "targetAudience": "Tipper und Gamer mit Budget",
+        "summary": "Zwölf Tastaturen über sechs Monate getestet, mit Ton- und Tipperlebnis.",
+        "titleLengthPreference": "flexible",
+        "optimizationPreference": "search",
+        "avoidWords": []
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Womit dieser YouTube-Titel-Generator glänzt",
+      "description": "Für Creator, die bereits veröffentlichen und vor jedem Upload einen stärkeren Titel wählen wollen. Statt flacher Liste gibt es gruppierte Winkel, Diagnosen und einen Favoritenvergleich.",
+      "items": [
+        {
+          "title": "Vier unterschiedliche Titelwinkel",
+          "description": "Suche-, Neugier-, Ergebnis- und Konträr-Gruppen lassen dich Richtungen statt Nuancen vergleichen.",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "Diagnose für jeden Kandidaten",
+          "description": "Zeichenzahl, Truncation-Risiko, Keyword-Position und Authentizitätsrisiko zeigen, warum ein Titel Klicks verdient.",
+          "icon": "RiBarChartLine"
+        },
+        {
+          "title": "Favoriten, Vergleich, Empfehlung",
+          "description": "Bis zu drei Titel speichern, nebeneinander vergleichen und eine ausgewogene Empfehlung samt Backup nutzen.",
+          "icon": "RiCheckboxCircleLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "ANWENDUNG",
+      "title": "YouTube-Titel-Generator in 3 Schritten",
+      "description": "Von Zusammenfassung zum testwürdigen Titel in unter einer Minute.",
+      "items": [
+        {
+          "title": "Video-Briefing ausfüllen",
+          "description": "Sag dem Generator Thema, Zielgruppe und kurze Zusammenfassung. Optional Transkript oder Vermeidewörter.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "Gruppierte Titelwinkel prüfen",
+          "description": "Vier Winkel durchsehen, Karten-Diagnosen lesen und ein bis zwei Favoriten speichern.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "Auswählen und kopieren",
+          "description": "Favoriten vergleichen und empfohlenen Titel oder Backup kopieren.",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum Creator den YouTube-Titel-Generator nutzen",
+      "description": "Verlässlich entscheiden, statt vor dem Upload-Bildschirm zu stehen.",
+      "items": [
+        {
+          "title": "Entscheiden statt brainstormen",
+          "description": "Diagnosen und Empfehlung führen zu einer klaren Wahl statt endlosen Scrollens.",
+          "icon": "RiCompassLine"
+        },
+        {
+          "title": "Truncation vor dem Upload erkennen",
+          "description": "Zeichenzahl und Risiko warnen bei zu langen Titeln, die in Listen abgeschnitten werden.",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "Lokaler Verlauf für Wiederholungen",
+          "description": "Letzte Generierungen bleiben lokal, sodass du ein Gewinnbrief direkt neu starten kannst.",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Beste Einsatzorte für den YouTube-Titel-Generator",
+      "description": "Für aktive Creator, die vor jedem Upload einen stärkeren Titel wollen.",
+      "items": [
+        {
+          "title": "Zwischen zwei Winkeln abwägen",
+          "description": "Suche- und Neugier-Titel nebeneinander vergleichen und den passenden Winkel wählen.",
+          "icon": "RiGitCompareLine"
+        },
+        {
+          "title": "Clickbait vermeiden",
+          "description": "Authentizitätsrisiko flagt übertriebene Muster, damit Neugier ohne Vertrauensverlust bleibt.",
+          "icon": "RiCheckDoubleLine"
+        },
+        {
+          "title": "Zu lange Titel straffen",
+          "description": "Truncation-Diagnose findet Titel, die in Listen oder auf Mobile abgeschnitten werden.",
+          "icon": "RiScissorsCutLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "YouTube-Titel-Generator FAQ",
+      "description": "Kurze Antworten zu Scope, Datenschutz und Nutzung.",
+      "items": [
+        {
+          "title": "Ist dieser YouTube-Titel-Generator kostenlos?",
+          "description": "Ja. Generieren, Favoriten speichern, kopieren und letzte Generierungen ansehen ohne Anmeldung."
+        },
+        {
+          "title": "Wie viele Titel pro Lauf?",
+          "description": "Pro Lauf entstehen zwölf Titel über vier Winkel (Suche, Neugier, Ergebnis, Konträr), plus Empfehlung und Backup."
+        },
+        {
+          "title": "Was bedeuten die Diagnosen?",
+          "description": "Zeichenzahl, Truncation, Keyword-Position und Authentizitätsrisiko sind Heuristiken zum Vergleichen, keine absolute Wahrheit."
+        },
+        {
+          "title": "Prüft das Tool Live-Suchrankings?",
+          "description": "Nein. Es liefert strukturierte Titel mit Diagnosen und Empfehlung, sagt aber kein Ranking oder CTR voraus."
+        },
+        {
+          "title": "Funktioniert es für nicht-englische Videos?",
+          "description": "Ja. Wähle eine Locale in der URL und Begründung, Diagnose, Empfehlung erscheinen in dieser Sprache."
+        },
+        {
+          "title": "Kann ich Titel speichern und zurückkehren?",
+          "description": "Ja. Bis zu drei Titel als Favoriten speichern und letzte Generierungen lokal ansehen."
+        },
+        {
+          "title": "Funktioniert es für Nischenthemen?",
+          "description": "Ja. Transkript und konkrete Zusammenfassung machen die Kandidaten stärker."
+        },
+        {
+          "title": "Kann ich neu generieren?",
+          "description": "Ja. Auf Neu generieren klicken oder Länge und Optimierung anpassen und erneut starten."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Generiere einen testwürdigen YouTube-Titel",
+      "description": "Starte den YouTube-Titel-Generator jetzt, vergleiche gruppierte Winkel und kopiere vor dem nächsten Upload einen stärkeren Titel.",
+      "buttons": [
+        { "title": "Titel generieren", "url": "#youtube_title_generator" },
+        { "title": "AI Write öffnen", "url": "/ai-write" }
+      ]
+    }
+  }
+}

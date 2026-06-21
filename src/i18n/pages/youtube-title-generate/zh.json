@@ -1,0 +1,281 @@
+{
+  "youtube_title_generate": {
+    "metadata": {
+      "title": "YouTube 标题生成器：发布前选一个值得测试的标题",
+      "description": "根据视频简介或字幕生成多种标题角度，对比候选清单，在发布前选出更强的 YouTube 标题。",
+      "keywords": "youtube 标题生成器, youtube 视频标题生成, ai youtube 标题工具, youtube 标题优化, youtube 标题创意, 点击率标题, youtube ctr 工具"
+    },
+    "ui": {
+      "title": "YouTube 标题生成器",
+      "title_highlight": "标题生成器",
+      "subtitle": "从简介或字幕生成不同角度的标题，对比候选清单，在发布前选出最强的标题。",
+      "eyebrow": "AI 标题工具",
+      "theme_pills": [
+        "4 种角度",
+        "候选对比",
+        "截断感知",
+        "智能推荐"
+      ],
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "YouTube 标题生成器",
+      "topic_label": "视频讲的是什么？",
+      "topic_placeholder": "例如：我如何更快地剪辑长视频",
+      "audience_label": "给谁看？",
+      "audience_placeholder": "例如：自己剪辑视频的独立创作者",
+      "summary_label": "简短摘要",
+      "summary_placeholder": "用一两句话告诉观众能学到或感受到什么",
+      "transcript_label": "字幕（可选）",
+      "transcript_placeholder": "粘贴字幕或要点，让标题更贴近真实内容",
+      "length_label": "标题长度",
+      "optimization_label": "优化方向",
+      "avoid_words_label": "避免词汇（可选）",
+      "avoid_words_placeholder": "用逗号分隔，永远不会出现的词",
+      "random_button": "随机示例",
+      "options_title": "视频简介",
+      "advanced_title": "高级选项",
+      "generate_button": "生成标题",
+      "generating_button": "生成中...",
+      "regenerate_button": "重新生成",
+      "save_button": "收藏",
+      "saved_button": "已收藏",
+      "remove_button": "移除",
+      "copy_title_button": "复制标题",
+      "output_title": "标题角度",
+      "empty_output": "描述视频和观众后，这里会展示分组的标题角度。",
+      "generating_output": "正在生成标题...",
+      "results_count": "{count} 个标题",
+      "angle_all": "全部",
+      "angle_search": "搜索优先",
+      "angle_curiosity": "好奇优先",
+      "angle_outcome": "结果优先",
+      "angle_contrarian": "反共识优先",
+      "best_use_label": "适合场景",
+      "reason_label": "原因",
+      "diagnostics_label": "诊断",
+      "diag_chars": "字符数",
+      "diag_truncation": "截断风险",
+      "diag_keyword": "关键词位置",
+      "diag_authenticity": "真实性风险",
+      "shortlist_title": "候选清单",
+      "shortlist_empty": "从上方结果中收藏标题，即可并排对比。",
+      "shortlist_hint": "最多可收藏 3 个标题进行对比。",
+      "shortlist_full": "候选清单已满（上限 3 个）。",
+      "compare_title": "对比候选标题",
+      "recommendation_title": "推荐的最终标题",
+      "recommendation_reason": "原因",
+      "recommendation_backup_label": "备选方案",
+      "history_title": "最近生成",
+      "history_apply": "套用",
+      "history_delete": "删除",
+      "history_clear": "清空"
+    },
+    "validation": {
+      "topic_required": "请告诉我们视频讲的是什么。",
+      "audience_required": "请告诉我们视频是给谁看的。",
+      "summary_required": "请添加简短摘要，让标题更贴近内容。",
+      "generic_error": "暂时无法生成标题，请稍后重试。"
+    },
+    "success": {
+      "copied": "标题已复制到剪贴板。",
+      "generated": "YouTube 标题已生成。",
+      "saved": "已加入候选清单。",
+      "removed": "已从候选清单移除。",
+      "random_prompt_selected": "已加载随机示例。",
+      "history_loaded": "历史记录已加载。",
+      "history_deleted": "历史记录已删除。",
+      "history_cleared": "历史记录已清空。"
+    },
+    "errors": {
+      "generate_failed": "无法生成 YouTube 标题。",
+      "verification_failed": "验证失败，请重试。"
+    },
+    "length": {
+      "short": "短（40-50 字符）",
+      "medium": "中（50-60 字符）",
+      "flexible": "灵活（40-70 字符）"
+    },
+    "optimization": {
+      "search": "搜索意图",
+      "balanced": "平衡",
+      "clicks": "点击吸引"
+    },
+    "risk": {
+      "low": "低",
+      "medium": "中",
+      "high": "高"
+    },
+    "placement": {
+      "front-loaded": "前置",
+      "mid-title": "居中",
+      "late": "靠后",
+      "none": "无"
+    },
+    "random_prompts": [
+      {
+        "videoTopic": "我如何更快地剪辑长视频",
+        "targetAudience": "自己剪辑视频的独立创作者",
+        "summary": "一个工作流演示，30 分钟的 vlog 不到两小时就能剪完。",
+        "titleLengthPreference": "medium",
+        "optimizationPreference": "balanced",
+        "avoidWords": ["惊人", "秘密"]
+      },
+      {
+        "videoTopic": "零器械居家入门训练",
+        "targetAudience": "时间紧张、刚接触健身的人",
+        "summary": "在小公寓拍摄的 20 分钟训练，含清晰的替代动作。",
+        "titleLengthPreference": "short",
+        "optimizationPreference": "clicks",
+        "avoidWords": []
+      },
+      {
+        "videoTopic": "今年买过的每一把平价机械键盘评测",
+        "targetAudience": "预算有限的打字和游戏玩家",
+        "summary": "六个月内测试了十二把键盘，记录手感与声音。",
+        "titleLengthPreference": "flexible",
+        "optimizationPreference": "search",
+        "avoidWords": ["疯狂"]
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概览",
+      "title": "这个 YouTube 标题生成器擅长什么",
+      "description": "专为持续更新的创作者打造，帮助你在每次上传前选出更强的标题。不是平铺列表，而是分组角度 + 每条诊断 + 候选对比，帮你下定决心。",
+      "items": [
+        {
+          "title": "四种不同标题角度",
+          "description": "搜索优先、好奇优先、结果优先、反共识优先四种分组，方便你比较方向而不是细枝末节。",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "每条都有诊断",
+          "description": "字符数、截断风险、关键词位置、真实性风险，让你看清一个标题为何能或不能赢得点击。",
+          "icon": "RiBarChartLine"
+        },
+        {
+          "title": "候选、对比、推荐",
+          "description": "最多收藏三个标题，并排对比，再参考平衡推荐和一个备选角度。",
+          "icon": "RiCheckboxCircleLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "三步使用 YouTube 标题生成器",
+      "description": "从简介到值得测试的标题，不到一分钟。",
+      "items": [
+        {
+          "title": "描述视频简介",
+          "description": "告诉 YouTube 标题生成器视频讲什么、给谁看、加上简短摘要。可在高级选项中粘贴字幕或排除词汇。",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "查看分组标题角度",
+          "description": "浏览四种角度分组，阅读每张卡片的诊断，把最强的一两条加入候选清单。",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "选定并复制",
+          "description": "并排对比候选清单，复制推荐的最终标题或你喜欢的备选方案。",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "创作者为什么用 YouTube 标题生成器",
+      "description": "更有信心地决定标题，而不是盯着上传页发呆。",
+      "items": [
+        {
+          "title": "做决定而不是空想",
+          "description": "诊断结果和推荐标题推动你做出明确选择，而不是无穷无尽的刷屏。",
+          "icon": "RiCompassLine"
+        },
+        {
+          "title": "上传前发现截断风险",
+          "description": "字符数和截断风险会在标题过长、浏览页被截断时提醒你。",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "本地历史便于重试",
+          "description": "最近生成保留在本地，重新跑赢过的简介不用再输一遍。",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "使用场景",
+      "title": "YouTube 标题生成器的最佳使用场景",
+      "description": "适合每次上传前希望选更强标题的活跃创作者。",
+      "items": [
+        {
+          "title": "在两种角度之间纠结",
+          "description": "搜索优先和好奇优先的标题并排对比，挑出最契合视频目标的角度。",
+          "icon": "RiGitCompareLine"
+        },
+        {
+          "title": "避免标题党",
+          "description": "真实性风险会标记夸张模式，让你保留好奇感而不丢信任。",
+          "icon": "RiCheckDoubleLine"
+        },
+        {
+          "title": "压缩过长的标题",
+          "description": "截断诊断能在发布前发现浏览页或移动端被切断的标题。",
+          "icon": "RiScissorsCutLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "YouTube 标题生成器常见问题",
+      "description": "关于范围、隐私和使用方式的简短回答。",
+      "items": [
+        {
+          "title": "这个 YouTube 标题生成器免费吗？",
+          "description": "免费。生成、收藏、复制、回看最近记录都不需要登录。"
+        },
+        {
+          "title": "每次生成会产出多少标题？",
+          "description": "每次生成 12 条标题，分布在四种角度（搜索、好奇、结果、反共识），并提供推荐标题与备选方案。"
+        },
+        {
+          "title": "每个标题上的诊断是什么意思？",
+          "description": "字符数、截断风险、关键词位置、真实性风险都是辅助决策的启发式指标，不是绝对真理。"
+        },
+        {
+          "title": "会校验实时搜索排名吗？",
+          "description": "不会。它只产出带诊断和推荐的结构化标题，不预测搜索排名或 CTR。"
+        },
+        {
+          "title": "支持非英文视频吗？",
+          "description": "支持。在 URL 中切换语言，理由、诊断、推荐会以该语言输出。"
+        },
+        {
+          "title": "能保存标题以后再看吗？",
+          "description": "可以。最多收藏 3 个标题，并从本地历史回看最近的生成。"
+        },
+        {
+          "title": "对垂直小众话题有效吗？",
+          "description": "有效。粘贴字幕、写得越具体，候选标题就越强。"
+        },
+        {
+          "title": "不喜欢第一批可以重新生成吗？",
+          "description": "可以。点重新生成会用同一简介再跑一次，也可以调整长度和优化偏好再生成。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "生成值得测试的 YouTube 标题",
+      "description": "立即运行 YouTube 标题生成器，对比分组角度，在下一次上传前复制更强的标题。",
+      "buttons": [
+        { "title": "生成标题", "url": "#youtube_title_generator" },
+        { "title": "打开 AI Write", "url": "/ai-write" }
+      ]
+    }
+  }
+}

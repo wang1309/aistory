@@ -1,0 +1,281 @@
+{
+  "youtube_title_generate": {
+    "metadata": {
+      "title": "YouTube Title Generator: Choose a Title Worth Testing Before You Publish",
+      "description": "Generate YouTube title angles from your summary or transcript, compare shortlisted options, and choose a stronger title before publishing.",
+      "keywords": "youtube title generator, youtube video title generator, ai youtube title tool, youtube title optimizer, youtube title ideas, click through rate titles, youtube ctr tool"
+    },
+    "ui": {
+      "title": "YouTube Title Generator",
+      "title_highlight": "Title Generator",
+      "subtitle": "Generate grouped title angles from your summary or transcript, compare shortlisted options, and pick the strongest title before you publish.",
+      "eyebrow": "AI Title Tool",
+      "theme_pills": [
+        "4 angles",
+        "Shortlist compare",
+        "Truncation aware",
+        "Recommendation"
+      ],
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "YouTube Title Generator",
+      "topic_label": "What is the video about?",
+      "topic_placeholder": "e.g. how I edit long-form YouTube videos faster",
+      "audience_label": "Who is it for?",
+      "audience_placeholder": "e.g. solo creators editing their own videos",
+      "summary_label": "Short summary",
+      "summary_placeholder": "One or two sentences on what viewers will learn or feel",
+      "transcript_label": "Transcript (optional)",
+      "transcript_placeholder": "Paste a transcript or key points to anchor titles in real content",
+      "length_label": "Title length",
+      "optimization_label": "Optimize for",
+      "avoid_words_label": "Avoid words (optional)",
+      "avoid_words_placeholder": "comma-separated words to never use",
+      "random_button": "Random example",
+      "options_title": "Video brief",
+      "advanced_title": "Advanced options",
+      "generate_button": "Generate Titles",
+      "generating_button": "Generating...",
+      "regenerate_button": "Regenerate",
+      "save_button": "Save",
+      "saved_button": "Saved",
+      "remove_button": "Remove",
+      "copy_title_button": "Copy title",
+      "output_title": "Title angles",
+      "empty_output": "Describe your video and audience, then generate to see grouped title angles here.",
+      "generating_output": "Generating your titles...",
+      "results_count": "{count} titles",
+      "angle_all": "All",
+      "angle_search": "Search-first",
+      "angle_curiosity": "Curiosity-first",
+      "angle_outcome": "Outcome-first",
+      "angle_contrarian": "Contrarian-first",
+      "best_use_label": "Best for",
+      "reason_label": "Why",
+      "diagnostics_label": "Diagnostics",
+      "diag_chars": "Chars",
+      "diag_truncation": "Truncation",
+      "diag_keyword": "Keyword",
+      "diag_authenticity": "Authenticity",
+      "shortlist_title": "Your shortlist",
+      "shortlist_empty": "Save titles from the results above to compare them side by side.",
+      "shortlist_hint": "Save up to 3 titles to compare.",
+      "shortlist_full": "Shortlist is full (max 3).",
+      "compare_title": "Compare your top titles",
+      "recommendation_title": "Recommended final title",
+      "recommendation_reason": "Why",
+      "recommendation_backup_label": "Backup option",
+      "history_title": "Recent generations",
+      "history_apply": "Apply",
+      "history_delete": "Delete",
+      "history_clear": "Clear"
+    },
+    "validation": {
+      "topic_required": "Tell us what the video is about.",
+      "audience_required": "Tell us who the video is for.",
+      "summary_required": "Add a short summary so the title ideas stay relevant.",
+      "generic_error": "We couldn't generate titles right now. Please try again."
+    },
+    "success": {
+      "copied": "Title copied to clipboard.",
+      "generated": "YouTube titles generated.",
+      "saved": "Added to shortlist.",
+      "removed": "Removed from shortlist.",
+      "random_prompt_selected": "Random example loaded.",
+      "history_loaded": "History loaded.",
+      "history_deleted": "History removed.",
+      "history_cleared": "History cleared."
+    },
+    "errors": {
+      "generate_failed": "Failed to generate YouTube titles.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "length": {
+      "short": "Short (40-50 chars)",
+      "medium": "Medium (50-60 chars)",
+      "flexible": "Flexible (40-70 chars)"
+    },
+    "optimization": {
+      "search": "Search intent",
+      "balanced": "Balanced",
+      "clicks": "Click appeal"
+    },
+    "risk": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "placement": {
+      "front-loaded": "Front-loaded",
+      "mid-title": "Mid-title",
+      "late": "Late",
+      "none": "None"
+    },
+    "random_prompts": [
+      {
+        "videoTopic": "How I edit long-form YouTube videos faster",
+        "targetAudience": "Solo creators editing their own videos",
+        "summary": "A workflow walkthrough showing how to cut a 30-minute vlog in under two hours.",
+        "titleLengthPreference": "medium",
+        "optimizationPreference": "balanced",
+        "avoidWords": ["insane", "secret"]
+      },
+      {
+        "videoTopic": "Beginner home workout with no equipment",
+        "targetAudience": "Busy people new to fitness",
+        "summary": "A 20-minute routine filmed in a small apartment with clear modifications.",
+        "titleLengthPreference": "short",
+        "optimizationPreference": "clicks",
+        "avoidWords": []
+      },
+      {
+        "videoTopic": "Reviewing every budget mechanical keyboard I bought this year",
+        "targetAudience": "Typists and gamers on a budget",
+        "summary": "Twelve keyboards tested over six months with sound and typing feel notes.",
+        "titleLengthPreference": "flexible",
+        "optimizationPreference": "search",
+        "avoidWords": ["crazy"]
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What This YouTube Title Generator Is Good At",
+      "description": "Built for creators who already publish and want to choose a stronger title before each upload. Instead of a flat list, you get grouped angles, diagnostics on every option, and a shortlist flow that helps you decide.",
+      "items": [
+        {
+          "title": "Four distinct title angles",
+          "description": "Search-first, curiosity-first, outcome-first, and contrarian-first groups let you compare strategic directions instead of slight variations.",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "Diagnostics on every candidate",
+          "description": "Character count, truncation risk, keyword placement, and authenticity risk help you read why a title will or will not earn the click.",
+          "icon": "RiBarChartLine"
+        },
+        {
+          "title": "Shortlist, compare, recommend",
+          "description": "Save up to three titles, compare side by side, and lean on a balanced recommendation plus a backup angle.",
+          "icon": "RiCheckboxCircleLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the YouTube Title Generator in 3 Steps",
+      "description": "From summary to a title worth testing in under a minute.",
+      "items": [
+        {
+          "title": "Describe your video brief",
+          "description": "Tell the YouTube Title Generator what the video is about, who it is for, and add a short summary. Use advanced options to add a transcript or avoid words.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "Review grouped title angles",
+          "description": "Browse the four angle groups, read diagnostics on each card, and save the strongest two or three to your shortlist.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "Pick and copy",
+          "description": "Compare your shortlisted titles side by side, then copy the recommended final title or your favorite backup option.",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why Creators Use the YouTube Title Generator",
+      "description": "Decide on a title with confidence instead of staring at the upload screen.",
+      "items": [
+        {
+          "title": "Decide, do not just brainstorm",
+          "description": "Diagnostics and a recommended title push you toward a confident pick instead of an endless scroll.",
+          "icon": "RiCompassLine"
+        },
+        {
+          "title": "Catch truncation before upload",
+          "description": "Character count and truncation risk warn you when a long title will be cut off in browse results.",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "Local history for retries",
+          "description": "Recent generations stay on your device so you can re-run a winning brief without retyping it.",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Best Uses for the YouTube Title Generator",
+      "description": "For actively publishing creators who want a stronger title before each upload.",
+      "items": [
+        {
+          "title": "Picking between two angles",
+          "description": "Compare search-first and curiosity-first titles side by side and pick the angle that fits the video's goal.",
+          "icon": "RiGitCompareLine"
+        },
+        {
+          "title": "Avoiding clickbait",
+          "description": "Authenticity risk flags exaggerated patterns so you can keep curiosity without losing trust.",
+          "icon": "RiCheckDoubleLine"
+        },
+        {
+          "title": "Tightening long titles",
+          "description": "Truncation diagnostics catch titles that get cut off in browse and mobile results before you publish.",
+          "icon": "RiScissorsCutLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "YouTube Title Generator FAQ",
+      "description": "Short answers about scope, privacy, and usage.",
+      "items": [
+        {
+          "title": "Is this YouTube Title Generator free?",
+          "description": "Yes. You can generate titles, save a shortlist, copy results, and revisit recent generations without signing up."
+        },
+        {
+          "title": "How many titles does the YouTube Title Generator produce per run?",
+          "description": "Each run produces twelve titles spread across four angle groups (search-first, curiosity-first, outcome-first, contrarian-first), plus a recommended title and a backup option."
+        },
+        {
+          "title": "What do the diagnostics on each title mean?",
+          "description": "Character count, truncation risk, keyword placement, and authenticity risk are heuristics to help you compare titles. They are decision support, not objective truth."
+        },
+        {
+          "title": "Does the YouTube Title Generator check live search ranking?",
+          "description": "No. It produces structured title options with diagnostics and a recommendation. It does not predict search rank or CTR."
+        },
+        {
+          "title": "Can I use the YouTube Title Generator for non-English videos?",
+          "description": "Yes. Pick a locale in the URL and the rationale, diagnostics, and recommendations will be written in that language."
+        },
+        {
+          "title": "Can I save titles and come back later?",
+          "description": "Yes. Save up to three titles to a shortlist and revisit recent generations from local history stored on your device."
+        },
+        {
+          "title": "Will the YouTube Title Generator work for niche topics?",
+          "description": "Yes. Add a transcript and as specific a summary as you can. The more concrete the brief, the stronger the candidates."
+        },
+        {
+          "title": "Can I regenerate titles if I don't like the first batch?",
+          "description": "Yes. Hit Regenerate to produce a fresh batch using the same brief, or tweak the length and optimization preferences and run again."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Generate a YouTube Title Worth Testing",
+      "description": "Run the YouTube Title Generator now, compare grouped angles, and copy a stronger title before your next upload.",
+      "buttons": [
+        { "title": "Generate Titles", "url": "#youtube_title_generator" },
+        { "title": "Open AI Write", "url": "/ai-write" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "youtube_title_generate": {
+    "metadata": {
+      "title": "YouTube タイトル生成器：公開前にテスト価値のあるタイトルを選ぶ",
+      "description": "要約や文字起こしからタイトル角度を生成し、ショートリストを比較して、公開前に強い YouTube タイトルを選びます。",
+      "keywords": "youtube タイトル生成, youtube 動画タイトル生成, ai youtube タイトルツール, youtube タイトル最適化, youtube タイトル案, クリック率 タイトル, youtube ctr ツール"
+    },
+    "ui": {
+      "title": "YouTube タイトル生成器",
+      "title_highlight": "タイトル生成器",
+      "subtitle": "要約や文字起こしから複数のタイトル角度を生成し、ショートリストを比較して、公開前に最強のタイトルを選びましょう。",
+      "eyebrow": "AI タイトルツール",
+      "theme_pills": [
+        "4 つの角度",
+        "ショートリスト比較",
+        "トランケーション検知",
+        "レコメンド"
+      ],
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "YouTube タイトル生成器",
+      "topic_label": "動画の内容は？",
+      "topic_placeholder": "例：長尺動画をより早く編集する方法",
+      "audience_label": "誰向け？",
+      "audience_placeholder": "例：自分で編集するソロクリエイター",
+      "summary_label": "短い要約",
+      "summary_placeholder": "視聴者が何を学び、何を感じるかを 1〜2 文で",
+      "transcript_label": "文字起こし（任意）",
+      "transcript_placeholder": "文字起こしや要点を貼り付け、タイトルを実際の内容に固定",
+      "length_label": "タイトルの長さ",
+      "optimization_label": "最適化の方向",
+      "avoid_words_label": "避ける言葉（任意）",
+      "avoid_words_placeholder": "カンマ区切りで絶対に使わない言葉",
+      "random_button": "ランダム例",
+      "options_title": "動画ブリーフ",
+      "advanced_title": "高度な設定",
+      "generate_button": "タイトルを生成",
+      "generating_button": "生成中...",
+      "regenerate_button": "再生成",
+      "save_button": "保存",
+      "saved_button": "保存済み",
+      "remove_button": "削除",
+      "copy_title_button": "タイトルをコピー",
+      "output_title": "タイトル角度",
+      "empty_output": "動画と視聴者を入力すると、ここにグループ化されたタイトル角度が表示されます。",
+      "generating_output": "タイトルを生成しています...",
+      "results_count": "{count} 件",
+      "angle_all": "すべて",
+      "angle_search": "検索優先",
+      "angle_curiosity": "好奇心優先",
+      "angle_outcome": "アウトカム優先",
+      "angle_contrarian": "逆張り優先",
+      "best_use_label": "適した用途",
+      "reason_label": "理由",
+      "diagnostics_label": "診断",
+      "diag_chars": "文字数",
+      "diag_truncation": "トランケーション",
+      "diag_keyword": "キーワード位置",
+      "diag_authenticity": "信頼性リスク",
+      "shortlist_title": "ショートリスト",
+      "shortlist_empty": "上の結果からタイトルを保存すると、並べて比較できます。",
+      "shortlist_hint": "最大 3 件まで保存して比較できます。",
+      "shortlist_full": "ショートリストがいっぱいです（最大 3 件）。",
+      "compare_title": "候補タイトルを比較",
+      "recommendation_title": "推奨する最終タイトル",
+      "recommendation_reason": "理由",
+      "recommendation_backup_label": "バックアップ案",
+      "history_title": "最近の生成",
+      "history_apply": "適用",
+      "history_delete": "削除",
+      "history_clear": "クリア"
+    },
+    "validation": {
+      "topic_required": "動画の内容を教えてください。",
+      "audience_required": "誰向けの動画か教えてください。",
+      "summary_required": "短い要約を追加して、タイトル案を内容に寄せましょう。",
+      "generic_error": "現在タイトルを生成できません。もう一度お試しください。"
+    },
+    "success": {
+      "copied": "タイトルをクリップボードにコピーしました。",
+      "generated": "YouTube タイトルを生成しました。",
+      "saved": "ショートリストに追加しました。",
+      "removed": "ショートリストから削除しました。",
+      "random_prompt_selected": "ランダム例を読み込みました。",
+      "history_loaded": "履歴を読み込みました。",
+      "history_deleted": "履歴を削除しました。",
+      "history_cleared": "履歴をクリアしました。"
+    },
+    "errors": {
+      "generate_failed": "YouTube タイトルの生成に失敗しました。",
+      "verification_failed": "認証に失敗しました。もう一度お試しください。"
+    },
+    "length": {
+      "short": "短い（40-50 文字）",
+      "medium": "中程度（50-60 文字）",
+      "flexible": "柔軟（40-70 文字）"
+    },
+    "optimization": {
+      "search": "検索意図",
+      "balanced": "バランス",
+      "clicks": "クリック訴求"
+    },
+    "risk": {
+      "low": "低",
+      "medium": "中",
+      "high": "高"
+    },
+    "placement": {
+      "front-loaded": "前置き",
+      "mid-title": "中央",
+      "late": "後半",
+      "none": "なし"
+    },
+    "random_prompts": [
+      {
+        "videoTopic": "長尺動画をより早く編集する方法",
+        "targetAudience": "自分で編集するソロクリエイター",
+        "summary": "30 分の Vlog を 2 時間以内に仕上げる編集ワークフローの実演。",
+        "titleLengthPreference": "medium",
+        "optimizationPreference": "balanced",
+        "avoidWords": ["insane", "secret"]
+      },
+      {
+        "videoTopic": "器具なしの初心者向け自宅ワークアウト",
+        "targetAudience": "忙しい初心者",
+        "summary": "狭いアパートで撮影した 20 分のメニューで、代案も明示。",
+        "titleLengthPreference": "short",
+        "optimizationPreference": "clicks",
+        "avoidWords": []
+      },
+      {
+        "videoTopic": "今年買ったすべての予算系メカニカルキーボードをレビュー",
+        "targetAudience": "予算重視のタイピストとゲーマー",
+        "summary": "6 か月で 12 台をテストし、音と打鍵感を記録。",
+        "titleLengthPreference": "flexible",
+        "optimizationPreference": "search",
+        "avoidWords": []
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "この YouTube タイトル生成器が得意なこと",
+      "description": "すでに公開しているクリエイターが、毎回のアップロード前に強いタイトルを選ぶために作りました。平坦なリストではなく、グループ化された角度と各案の診断、ショートリスト比較で決断を支えます。",
+      "items": [
+        {
+          "title": "4 つの異なるタイトル角度",
+          "description": "検索優先、好奇心優先、アウトカム優先、逆張り優先のグループで、細かい差異ではなく方向性を比較できます。",
+          "icon": "RiLayoutGridLine"
+        },
+        {
+          "title": "すべての候補に診断を表示",
+          "description": "文字数、トランケーション、キーワード位置、信頼性リスクで、タイトルがクリックを獲得できるかどうかを読み解けます。",
+          "icon": "RiBarChartLine"
+        },
+        {
+          "title": "ショートリスト、比較、レコメンド",
+          "description": "最大 3 件を保存して並べて比較し、バランスの取れた推奨とバックアップ案を活用できます。",
+          "icon": "RiCheckboxCircleLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "3 ステップで使う YouTube タイトル生成器",
+      "description": "要約からテスト価値のあるタイトルまで 1 分以内。",
+      "items": [
+        {
+          "title": "動画ブリーフを記入",
+          "description": "内容、視聴者、短い要約を入力します。高度な設定で文字起こしや回避語を追加できます。",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "グループ化されたタイトル角度を確認",
+          "description": "4 つの角度を浏览し、各カードの診断を読み、強い 1〜2 案をショートリストへ。",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "選んでコピー",
+          "description": "ショートリストを並べて比較し、推奨タイトルまたはお気に入りのバックアップをコピー。",
+          "icon": "RiSendPlaneLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "クリエイターが YouTube タイトル生成器を使う理由",
+      "description": "アップロード画面で立ち止まらず、自信を持って決められます。",
+      "items": [
+        {
+          "title": "ブレインストーミングではなく決断",
+          "description": "診断とレコメンドが、果てしないスクロールから明確な選択へ導きます。",
+          "icon": "RiCompassLine"
+        },
+        {
+          "title": "アップロード前にトランケーションを検知",
+          "description": "文字数とリスクで、長すぎて一覧で切れるタイトルを事前に警告します。",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "ローカル履歴で再利用",
+          "description": "最近の生成は端末に残るので、勝ったブリーフを再実行しやすいです。",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "ユースケース",
+      "title": "YouTube タイトル生成器のベストな用途",
+      "description": "毎回のアップロード前に強いタイトルを選びたいクリエイターへ。",
+      "items": [
+        {
+          "title": "2 つの角度で迷ったとき",
+          "description": "検索優先と好奇心優先を並べて比較し、動画の目標に合う角度を選べます。",
+          "icon": "RiGitCompareLine"
+        },
+        {
+          "title": "クリックベイトを避ける",
+          "description": "信頼性リスクが誇張パターンを検知し、好奇心と信頼を両立させます。",
+          "icon": "RiCheckDoubleLine"
+        },
+        {
+          "title": "長すぎるタイトルを詰める",
+          "description": "トランケーション診断で、公開前に一覧やモバイルで切れるタイトルを見つけます。",
+          "icon": "RiScissorsCutLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "YouTube タイトル生成器 FAQ",
+      "description": "範囲、プライバシー、使い方に関する短い回答。",
+      "items": [
+        {
+          "title": "この YouTube タイトル生成器は無料ですか？",
+          "description": "はい。サインアップなしで生成、ショートリスト保存、コピー、最近の履歴の再閲覧ができます。"
+        },
+        {
+          "title": "1 回あたり何タイトル生成されますか？",
+          "description": "1 回で 12 タイトルを 4 つの角度（検索、好奇心、アウトカム、逆張り）に分散し、推奨とバックアップを提供します。"
+        },
+        {
+          "title": "各タイトルの診断の意味は？",
+          "description": "文字数、トランケーション、キーワード位置、信頼性リスクは比較を助ける啓発的な指標であり、絶対的な真実ではありません。"
+        },
+        {
+          "title": "検索順位をリアルタイムで確認しますか？",
+          "description": "いいえ。診断とレコメンド付きの構造化タイトルを提供するだけで、順位や CTR は予測しません。"
+        },
+        {
+          "title": "日本語など非英語動画にも使えますか？",
+          "description": "はい。URL のロケールを切り替えると、理由、診断、レコメンドがその言語で出力されます。"
+        },
+        {
+          "title": "保存して後で戻れますか？",
+          "description": "はい。最大 3 件をショートリストへ保存し、ローカル履歴から最近の生成を再表示できます。"
+        },
+        {
+          "title": "ニッチな話題でも機能しますか？",
+          "description": "はい。文字起こしを追加し、要約を具体的にするほど候補が強くなります。"
+        },
+        {
+          "title": "気に入らない場合は再生成できますか？",
+          "description": "はい。同じブリーフで再生成するか、長さと最適化設定を調整して再実行できます。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "テスト価値のある YouTube タイトルを生成",
+      "description": "今すぐ YouTube タイトル生成器を実行し、グループ角度を比較して、次のアップロード前に強いタイトルをコピーしましょう。",
+      "buttons": [
+        { "title": "タイトルを生成", "url": "#youtube_title_generator" },
+        { "title": "AI Write を開く", "url": "/ai-write" }
+      ]
+    }
+  }
+}
