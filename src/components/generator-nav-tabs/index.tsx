@@ -17,6 +17,7 @@ const TABS: NavTab[] = [
   { href: "/fanfic-generator", labelKey: "ai_tools.tools.fanfic_generator.name" },
   { href: "/fantasy-generator", labelKey: "ai_tools.tools.fantasy_generator.name" },
   { href: "/plot-generator", labelKey: "ai_tools.tools.plot_generator.name" },
+  { href: "/story-outline-generator", labelKey: "ai_tools.tools.story_outline_generator.name" },
   { href: "/poem-generator", labelKey: "ai_tools.tools.poem_generator.name" },
   { href: "/comic-generator", labelKey: "ai_tools.tools.comic_generator.name" },
   { href: "/backstory-generator", labelKey: "ai_tools.tools.backstory_generator.name" },
@@ -30,6 +31,8 @@ const TABS: NavTab[] = [
   { href: "/youtube-title-generator", labelKey: "ai_tools.tools.youtube_title_generator.name" },
 ];
 
+const GAP_PX = 6;
+
 export default function GeneratorNavTabs() {
   const pathname = usePathname();
   const locale = useLocale();
@@ -37,36 +40,45 @@ export default function GeneratorNavTabs() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const activeRef = useRef<HTMLAnchorElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
+  const [useMarquee, setUseMarquee] = useState(false);
+  const isCenteringRef = useRef(false);
   const animFrameRef = useRef<number | null>(null);
   const scrollPosRef = useRef(0);
   const pausedRef = useRef(false);
 
-  // Strip locale prefix to get bare path
   const barePath = pathname.replace(new RegExp(`^/${locale}`), "") || "/";
 
-  // Check overflow
-  const checkOverflow = useCallback(() => {
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setUseMarquee(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const measureOverflow = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
-    setIsOverflowing(el.scrollWidth > el.clientWidth + 2);
+    const realTabs = Array.from(el.querySelectorAll<HTMLElement>(":scope > [data-real]"));
+    if (realTabs.length === 0) return;
+    const totalWidth = realTabs.reduce((s, c) => s + c.offsetWidth, 0) + (realTabs.length - 1) * GAP_PX;
+    setIsOverflowing(totalWidth > el.clientWidth + 2);
   }, []);
 
   useEffect(() => {
-    checkOverflow();
-    const ro = new ResizeObserver(checkOverflow);
+    measureOverflow();
+    const ro = new ResizeObserver(measureOverflow);
     if (scrollRef.current) ro.observe(scrollRef.current);
     return () => ro.disconnect();
-  }, [checkOverflow]);
+  }, [measureOverflow, useMarquee]);
 
-  // Keep the active tab centered horizontally without moving the page itself.
   useEffect(() => {
+    if (useMarquee || !isOverflowing) return;
     const container = scrollRef.current;
     const active = activeRef.current;
-    if (!isOverflowing || !container || !active) {
-      return;
-    }
+    if (!container || !active) return;
 
+    isCenteringRef.current = true;
     container.scrollTo({
       left: getCenteredTabScrollLeft({
         containerWidth: container.clientWidth,
@@ -76,11 +88,13 @@ export default function GeneratorNavTabs() {
       }),
       behavior: "smooth",
     });
-  }, [isOverflowing, barePath]);
+    window.setTimeout(() => {
+      isCenteringRef.current = false;
+    }, 500);
+  }, [isOverflowing, barePath, useMarquee]);
 
-  // Marquee animation
   useEffect(() => {
-    if (!isOverflowing) {
+    if (!useMarquee || !isOverflowing) {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
       return;
     }
@@ -88,7 +102,7 @@ export default function GeneratorNavTabs() {
     const el = scrollRef.current;
     if (!el) return;
 
-    const SPEED = 0.5; // px per frame
+    const SPEED = 0.5;
     let pos = scrollPosRef.current;
 
     const tick = () => {
@@ -97,7 +111,6 @@ export default function GeneratorNavTabs() {
         return;
       }
       pos += SPEED;
-      // Reset when we've scrolled half the duplicated content
       const half = el.scrollWidth / 2;
       if (pos >= half) pos = 0;
       el.scrollLeft = pos;
@@ -106,47 +119,51 @@ export default function GeneratorNavTabs() {
     };
 
     animFrameRef.current = requestAnimationFrame(tick);
-    setIsScrolling(true);
-
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-      setIsScrolling(false);
     };
-  }, [isOverflowing]);
+  }, [useMarquee, isOverflowing]);
 
   const handleMouseEnter = () => { pausedRef.current = true; };
   const handleMouseLeave = () => { pausedRef.current = false; };
 
-  const renderTabs = (keySuffix = "") =>
-    TABS.map((tab) => {
-      const isActive = tab.href === "/" ? barePath === "/" : barePath === tab.href;
-      return (
-        <Link
-          key={tab.href + keySuffix}
-          href={`/${locale}${tab.href === "/" ? "" : tab.href}`}
-          ref={isActive && !keySuffix ? activeRef : undefined}
-          className={[
-            "inline-flex items-center shrink-0 rounded-full px-3.5 py-1 text-xs font-medium transition-all duration-200",
-            "whitespace-nowrap select-none",
-            isActive
-              ? "bg-orange-500/15 text-orange-600 dark:text-orange-400 ring-1 ring-orange-500/30"
-              : "text-muted-foreground hover:text-foreground hover:bg-muted/60",
-          ].join(" ")}
-          aria-current={isActive ? "page" : undefined}
-        >
-          {t(tab.labelKey)}
-        </Link>
-      );
-    });
+  const handleScroll = useCallback(() => {
+    if (isCenteringRef.current) return;
+    measureOverflow();
+  }, [measureOverflow]);
+
+  const renderTab = (tab: NavTab, isClone = false) => {
+    const isActive = !isClone && (tab.href === "/" ? barePath === "/" : barePath === tab.href);
+    return (
+      <Link
+        key={tab.href + (isClone ? "-clone" : "")}
+        href={`/${locale}${tab.href === "/" ? "" : tab.href}`}
+        ref={isActive ? activeRef : undefined}
+        data-real={isClone ? undefined : "true"}
+        className={[
+          "inline-flex items-center shrink-0 rounded-full px-4 py-2 text-xs font-medium transition-colors duration-200 min-h-[40px]",
+          "whitespace-nowrap select-none",
+          !useMarquee && "snap-start",
+          isActive
+            ? "bg-orange-500/15 text-orange-600 dark:text-orange-400 ring-1 ring-orange-500/30"
+            : "text-muted-foreground hover:text-foreground hover:bg-muted/60",
+        ].join(" ")}
+        aria-current={isActive ? "page" : undefined}
+        aria-hidden={isClone ? "true" : undefined}
+        tabIndex={isClone ? -1 : undefined}
+      >
+        {t(tab.labelKey)}
+      </Link>
+    );
+  };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-6 pt-6 pb-6">
+    <div className="w-full max-w-6xl mx-auto px-4 pt-6 pb-6 md:px-6">
       <div
         className="relative"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={useMarquee ? handleMouseEnter : undefined}
+        onMouseLeave={useMarquee ? handleMouseLeave : undefined}
       >
-        {/* Fade edges when overflowing */}
         {isOverflowing && (
           <>
             <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 z-10 bg-gradient-to-r from-background to-transparent" />
@@ -156,15 +173,15 @@ export default function GeneratorNavTabs() {
 
         <div
           ref={scrollRef}
+          onScroll={!useMarquee ? handleScroll : undefined}
           className={[
-            "flex items-center gap-1.5 overflow-x-hidden",
-            isScrolling ? "cursor-default" : "overflow-x-auto scrollbar-none",
+            "flex items-center gap-1.5 scrollbar-none",
+            useMarquee ? "overflow-x-hidden" : "overflow-x-auto snap-x snap-mandatory",
           ].join(" ")}
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
         >
-          {/* Render tabs twice for seamless marquee loop */}
-          {renderTabs()}
-          {isOverflowing && renderTabs("-clone")}
+          {TABS.map(tab => renderTab(tab))}
+          {useMarquee && isOverflowing && TABS.map(tab => renderTab(tab, true))}
         </div>
       </div>
     </div>

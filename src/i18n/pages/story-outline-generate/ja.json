@@ -1,0 +1,219 @@
+{
+  "story_outline_generate": {
+    "metadata": {
+      "title": "ストーリーアウトラインジェネレーター：曖昧なアイデアを書けるプロットに",
+      "description": "一つのアイデアから、構造化されたアウトラインを瞬時に生成——前提、核心の葛藤、ストーリー展開、主要ビーツをカバー。準備が整ったら章に展開できます。無料、登録不要。",
+      "keywords": "ストーリーアウトラインジェネレーター, プロットアウトラインジェネレーター, AI ストーリーアウトライン, 章アウトラインジェネレーター, 執筆アウトラインツール"
+    },
+    "ui": {
+      "title": "ストーリーアウトラインジェネレーター",
+      "title_highlight": "アウトラインジェネレーター",
+      "subtitle": "曖昧なアイデアを、実際に書ける構造化アウトラインに変換。準備が整ったら章に展開できます。",
+      "eyebrow": "AI ストーリーツール",
+      "theme_pills": [
+        "スピーディー",
+        "構造化ビーツ",
+        "章展開",
+        "初心者向け"
+      ],
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "ストーリーアウトラインジェネレーター",
+      "story_idea_label": "あなたのストーリーのアイデアは？",
+      "story_idea_placeholder": "例：内気な村の治療師が、幽霊と話せることに気づく。",
+      "genre_label": "ジャンル",
+      "tone_label": "トーン",
+      "target_length_label": "目標長",
+      "audience_label": "読者層",
+      "random_button": "ランダム例",
+      "generate_button": "アウトラインを生成",
+      "generating_button": "生成中...",
+      "regenerate_button": "別のアウトラインを生成",
+      "output_title": "あなたのストーリーアウトライン",
+      "empty_output": "ストーリーのアイデアを入力して生成すると、前提、葛藤、展開、主要ビーツがここに表示されます。",
+      "premise_label": "前提",
+      "conflict_label": "核心の葛藤",
+      "arc_label": "ストーリー展開",
+      "beats_label": "主要ビーツ",
+      "next_step_label": "次のステップ",
+      "expand_button": "章に展開",
+      "expanding_button": "展開中...",
+      "chapter_output_title": "章プラン",
+      "no_credits_title": "このアウトラインを展開するにはクレジットが必要です",
+      "no_credits_description": "無料のアウトライン生成は引き続き利用できますが、章展開は有料の次のステップです。",
+      "buy_credits_button": "クレジットを取得",
+      "conflict_goal_label": "目標",
+      "conflict_opposition_label": "対立",
+      "conflict_stakes_label": "代償",
+      "conflict_urgency_label": "緊急性"
+    },
+    "validation": {
+      "story_idea_required": "まずストーリーのアイデアを教えてください。"
+    },
+    "success": {
+      "generated": "ストーリーアウトラインを生成しました。",
+      "expanded": "章プランを生成しました。"
+    },
+    "errors": {
+      "generate_failed": "ストーリーアウトラインの生成に失敗しました。",
+      "expand_failed": "章への展開に失敗しました。",
+      "verification_failed": "認証に失敗しました。もう一度お試しください。"
+    },
+    "genre_options": {
+      "fantasy": "ファンタジー",
+      "romance": "ロマンス",
+      "thriller": "スリラー",
+      "sci-fi": "SF",
+      "mystery": "ミステリー",
+      "literary": "純文学",
+      "general": "一般"
+    },
+    "tone_options": {
+      "hopeful": "希望",
+      "dark": "ダーク",
+      "funny": "ユーモア",
+      "emotional": "エモーショナル",
+      "tense": "緊張",
+      "epic": "壮大"
+    },
+    "target_length_options": {
+      "short-story": "短編",
+      "novella": "中編",
+      "novel": "長編"
+    },
+    "audience_options": {
+      "kids": "子供向け",
+      "middle-grade": "ミドルグレード",
+      "ya": "ヤングアダルト",
+      "adult": "成人向け"
+    },
+    "random_prompts": [
+      "内気な村の治療師が、幽霊と話せることに気づく。",
+      "ライバル同士の宝探しダイバーが、沈みゆく街で生き残るために協力しなければならない。",
+      "燃え尽きた結婚式フォトグラファーが、偶然時間がループしている証拠を撮影する。"
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "このアウトラインジェネレーターが実際に何を助けるか",
+      "description": "重すぎる計画プロセスに追い込まず、書き始めるのに十分な構造を提供します。",
+      "items": [
+        {
+          "title": "一文から始める",
+          "description": "前提、ムード、キャラクターのアイデアを、使えるストーリーの方向に変換します。",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "核心の葛藤を明確に",
+          "description": "シーンを下書きする前に、目標、対立、代償、緊迫感をしっかり把握できます。",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "準備ができたら展開",
+          "description": "方向性が続きそうな場合にだけ、アウトラインから章プランへ進めます。",
+          "icon": "RiExpandUpDownLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "ストーリーアウトラインジェネレーターの使い方",
+      "description": "曖昧なアイデアから書ける構造まで、数分で到達できます。",
+      "items": [
+        {
+          "title": "ストーリーの種を描述",
+          "description": "明確なアイデアを一つ入力し、ジャンルやトーンなど軽い設定を選びます。",
+          "icon": "RiEdit2Line"
+        },
+        {
+          "title": "アウトラインを確認",
+          "description": "前提、核心の葛藤、ストーリー展開、主要ビーツを確認します。",
+          "icon": "RiFileList3Line"
+        },
+        {
+          "title": "章に展開",
+          "description": "有望なアウトラインを、より強力な執筆の足場として章ごとのプランに変えます。",
+          "icon": "RiBook2Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "新人作家がこのジェネレーターを選ぶ理由",
+      "description": "真っ白なページ問題を和らげつつ、プロセスを作り込みすぎません。",
+      "items": [
+        {
+          "title": "低摩擦",
+          "description": "ツールが役立つ前に、完全なストーリーバイブルは不要です。",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "明確な構造",
+          "description": "曖昧な段落ではなく、ビーツとエスカレーションを手に入れられます。",
+          "icon": "RiRouteLine"
+        },
+        {
+          "title": "自然な次のステップ",
+          "description": "アウトラインが機能すれば、章展開が実用的な執筆の橋渡しになります。",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "ユースケース",
+      "title": "ストーリーアウトラインジェネレーターの最佳用途",
+      "description": "アイデアはあるが、下書き前に強い構造が必要な作家向け。",
+      "items": [
+        {
+          "title": "前提を素早く検証",
+          "description": "アイデアに、物語を支える十分な葛藤とエスカレーションがあるかを確認します。",
+          "icon": "RiTestTubeLine"
+        },
+        {
+          "title": "スランプを突破",
+          "description": "行き詰まった概念を、作業できる具体的なビーツに変えます。",
+          "icon": "RiHammerLine"
+        },
+        {
+          "title": "自信を持って第一稿へ",
+          "description": "より実行可能な執筆プランが欲しいときは、章展開を利用します。",
+          "icon": "RiRocket2Line"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "よくある質問",
+      "title": "ストーリーアウトラインジェネレーター FAQ",
+      "description": "ツール利用に関するよくある質問。",
+      "items": [
+        {
+          "title": "このジェネレーターは無料ですか？",
+          "description": "アウトラインの生成は無料です。章への展開が有料の継続ステップとなります。"
+        },
+        {
+          "title": "アウトライン生成にアカウントは必要ですか？",
+          "description": "いいえ。章への展開を利用したいときのみログインが必要です。"
+        },
+        {
+          "title": "このツールの対象ユーザーは？",
+          "description": "重い計画プロセスなしに構造が欲しい、新人作家やインスピレーション主導の作家に最適です。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "label": "CTA",
+      "title": "書き続ける準備はできましたか？",
+      "description": "ストーリーアウトラインを生成してから、書き切る価値のある方向へ展開しましょう。",
+      "buttons": [
+        {
+          "title": "ストーリーアウトラインジェネレーターを試す",
+          "url": "#story_outline_generator"
+        }
+      ]
+    }
+  }
+}

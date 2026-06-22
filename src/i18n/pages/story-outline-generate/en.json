@@ -1,0 +1,219 @@
+{
+  "story_outline_generate": {
+    "metadata": {
+      "title": "Story Outline Generator: Turn a Vague Idea Into a Usable Plot",
+      "description": "Turn one idea into a structured story outline — premise, core conflict, arc, and key beats in seconds. Expand to chapters when ready. Free, no sign-up.",
+      "keywords": "story outline generator, plot outline generator, ai story outline, chapter outline generator, writing outline tool"
+    },
+    "ui": {
+      "title": "Story Outline Generator",
+      "title_highlight": "Outline Generator",
+      "subtitle": "Turn a vague story idea into a structured outline you can actually write, then expand it into chapters when you are ready.",
+      "eyebrow": "AI Story Tool",
+      "theme_pills": [
+        "Fast setup",
+        "Structured beats",
+        "Chapter expansion",
+        "New-writer friendly"
+      ],
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Story Outline Generator",
+      "story_idea_label": "What is your story idea?",
+      "story_idea_placeholder": "e.g. A shy village healer discovers she can talk to ghosts.",
+      "genre_label": "Genre",
+      "tone_label": "Tone",
+      "target_length_label": "Target length",
+      "audience_label": "Audience",
+      "random_button": "Random example",
+      "generate_button": "Generate Outline",
+      "generating_button": "Generating...",
+      "regenerate_button": "Generate Another Outline",
+      "output_title": "Your story outline",
+      "empty_output": "Describe your story idea, then generate to see a premise, conflict, arc, and key beats here.",
+      "premise_label": "Premise",
+      "conflict_label": "Core conflict",
+      "arc_label": "Story arc",
+      "beats_label": "Key beats",
+      "next_step_label": "Next step",
+      "expand_button": "Expand into Chapters",
+      "expanding_button": "Expanding...",
+      "chapter_output_title": "Chapter plan",
+      "no_credits_title": "You need credits to expand this outline",
+      "no_credits_description": "Free outline generation stays open, but chapter expansion is a paid next step.",
+      "buy_credits_button": "Get Credits",
+      "conflict_goal_label": "Goal",
+      "conflict_opposition_label": "Opposition",
+      "conflict_stakes_label": "Stakes",
+      "conflict_urgency_label": "Urgency"
+    },
+    "validation": {
+      "story_idea_required": "Tell us your story idea first."
+    },
+    "success": {
+      "generated": "Story outline generated.",
+      "expanded": "Chapter plan generated."
+    },
+    "errors": {
+      "generate_failed": "Failed to generate story outline.",
+      "expand_failed": "Failed to expand outline into chapters.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "genre_options": {
+      "fantasy": "Fantasy",
+      "romance": "Romance",
+      "thriller": "Thriller",
+      "sci-fi": "Sci-Fi",
+      "mystery": "Mystery",
+      "literary": "Literary",
+      "general": "General"
+    },
+    "tone_options": {
+      "hopeful": "Hopeful",
+      "dark": "Dark",
+      "funny": "Funny",
+      "emotional": "Emotional",
+      "tense": "Tense",
+      "epic": "Epic"
+    },
+    "target_length_options": {
+      "short-story": "Short Story",
+      "novella": "Novella",
+      "novel": "Novel"
+    },
+    "audience_options": {
+      "kids": "Kids",
+      "middle-grade": "Middle Grade",
+      "ya": "Young Adult",
+      "adult": "Adult"
+    },
+    "random_prompts": [
+      "A shy village healer discovers she can talk to ghosts.",
+      "Two rival treasure divers must team up to survive a sinking city.",
+      "A burned-out wedding photographer accidentally captures proof that time is looping."
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What This Story Outline Generator Actually Helps You Do",
+      "description": "Get enough structure to start writing without being forced into a heavyweight planning workflow.",
+      "items": [
+        {
+          "title": "Start from one sentence",
+          "description": "Bring a premise, a mood, or a character idea and turn it into a usable story direction.",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "See the core conflict clearly",
+          "description": "Get a tighter grasp on goal, opposition, stakes, and urgency before you draft scenes.",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "Expand only when ready",
+          "description": "Move from outline to chapter plan only after the direction feels worth continuing.",
+          "icon": "RiExpandUpDownLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the Story Outline Generator",
+      "description": "Go from vague idea to a writeable structure in minutes.",
+      "items": [
+        {
+          "title": "Describe the story seed",
+          "description": "Enter one clear idea and choose a few light preferences like genre and tone.",
+          "icon": "RiEdit2Line"
+        },
+        {
+          "title": "Review the outline",
+          "description": "Check the premise, core conflict, story arc, and key beats.",
+          "icon": "RiFileList3Line"
+        },
+        {
+          "title": "Expand into chapters",
+          "description": "Turn a promising outline into a chapter-by-chapter plan when you want a stronger drafting scaffold.",
+          "icon": "RiBook2Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why New Writers Use the Story Outline Generator",
+      "description": "It reduces the blank-page problem without overengineering your process.",
+      "items": [
+        {
+          "title": "Low friction",
+          "description": "You do not need a full story bible before the tool becomes useful.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "Clearer structure",
+          "description": "You leave with beats and escalation, not just a vague paragraph.",
+          "icon": "RiRouteLine"
+        },
+        {
+          "title": "Natural next step",
+          "description": "If the outline works, chapter expansion gives you a practical drafting bridge.",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Best Uses for the Story Outline Generator",
+      "description": "For writers who have an idea but need a stronger structure before drafting.",
+      "items": [
+        {
+          "title": "Testing a premise quickly",
+          "description": "See whether a story idea has enough conflict and escalation to carry a narrative.",
+          "icon": "RiTestTubeLine"
+        },
+        {
+          "title": "Breaking through writer's block",
+          "description": "Turn a stuck concept into concrete beats you can work from.",
+          "icon": "RiHammerLine"
+        },
+        {
+          "title": "Starting a first draft with more confidence",
+          "description": "Use chapter expansion when you want a more actionable writing plan.",
+          "icon": "RiRocket2Line"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Story Outline Generator FAQ",
+      "description": "Common questions about using the tool.",
+      "items": [
+        {
+          "title": "Is the story outline generator free?",
+          "description": "You can generate an outline for free. Chapter expansion is the paid continuation step."
+        },
+        {
+          "title": "Do I need an account before generating an outline?",
+          "description": "No. You only need to sign in when you want to continue into chapter expansion."
+        },
+        {
+          "title": "Who is this tool for?",
+          "description": "It is best for new and inspiration-led writers who want structure without a heavy planning workflow."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "label": "CTA",
+      "title": "Ready to Keep Writing?",
+      "description": "Generate a story outline, then expand the direction that feels worth finishing.",
+      "buttons": [
+        {
+          "title": "Try the Story Outline Generator",
+          "url": "#story_outline_generator"
+        }
+      ]
+    }
+  }
+}

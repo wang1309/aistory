@@ -1,0 +1,219 @@
+{
+  "story_outline_generate": {
+    "metadata": {
+      "title": "故事大纲生成器：把模糊的点子变成可写的剧情",
+      "description": "从一个故事点子，一键生成结构清晰的大纲——前提、核心冲突、故事弧线和关键节拍。准备好继续写时再扩展为章节。免费，无需注册。",
+      "keywords": "故事大纲生成器, 剧情大纲生成器, AI 故事大纲, 章节大纲生成器, 写作大纲工具"
+    },
+    "ui": {
+      "title": "故事大纲生成器",
+      "title_highlight": "大纲生成器",
+      "subtitle": "把模糊的故事点子变成可以真正动手写的结构化大纲，准备好继续写时再扩展为章节。",
+      "eyebrow": "AI 故事工具",
+      "theme_pills": [
+        "快速上手",
+        "结构化节拍",
+        "章节扩展",
+        "新手友好"
+      ],
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "故事大纲生成器",
+      "story_idea_label": "你的故事点子是什么？",
+      "story_idea_placeholder": "例如：一个害羞的乡村女医师发现自己能和鬼魂对话。",
+      "genre_label": "类型",
+      "tone_label": "基调",
+      "target_length_label": "目标篇幅",
+      "audience_label": "目标读者",
+      "random_button": "随机示例",
+      "generate_button": "生成大纲",
+      "generating_button": "生成中...",
+      "regenerate_button": "再生成一个大纲",
+      "output_title": "你的故事大纲",
+      "empty_output": "描述你的故事点子，然后生成，就能在这里看到前提、冲突、弧线和关键节拍。",
+      "premise_label": "前提",
+      "conflict_label": "核心冲突",
+      "arc_label": "故事弧线",
+      "beats_label": "关键节拍",
+      "next_step_label": "下一步",
+      "expand_button": "扩展为章节",
+      "expanding_button": "扩展中...",
+      "chapter_output_title": "章节计划",
+      "no_credits_title": "扩展此大纲需要积分",
+      "no_credits_description": "免费大纲生成持续开放，但章节扩展是付费的下一步。",
+      "buy_credits_button": "获取积分",
+      "conflict_goal_label": "目标",
+      "conflict_opposition_label": "阻碍",
+      "conflict_stakes_label": "代价",
+      "conflict_urgency_label": "紧迫性"
+    },
+    "validation": {
+      "story_idea_required": "请先告诉我们你的故事点子。"
+    },
+    "success": {
+      "generated": "故事大纲已生成。",
+      "expanded": "章节计划已生成。"
+    },
+    "errors": {
+      "generate_failed": "生成故事大纲失败。",
+      "expand_failed": "扩展为章节失败。",
+      "verification_failed": "验证失败，请重试。"
+    },
+    "genre_options": {
+      "fantasy": "奇幻",
+      "romance": "言情",
+      "thriller": "惊悚",
+      "sci-fi": "科幻",
+      "mystery": "悬疑",
+      "literary": "文学",
+      "general": "综合"
+    },
+    "tone_options": {
+      "hopeful": "充满希望",
+      "dark": "暗黑",
+      "funny": "幽默",
+      "emotional": "情感",
+      "tense": "紧张",
+      "epic": "史诗"
+    },
+    "target_length_options": {
+      "short-story": "短篇小说",
+      "novella": "中篇小说",
+      "novel": "长篇小说"
+    },
+    "audience_options": {
+      "kids": "儿童",
+      "middle-grade": "中年级",
+      "ya": "青少年",
+      "adult": "成人"
+    },
+    "random_prompts": [
+      "一个害羞的乡村女医师发现自己能和鬼魂对话。",
+      "两个互相竞争的寻宝潜水员必须联手才能在沉没的城市中活下来。",
+      "一个倦怠的婚礼摄影师偶然拍到时间正在循环的证据。"
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概览",
+      "title": "这个大纲生成器到底能帮你做什么",
+      "description": "给你足够开始动笔的结构，又不会强迫你陷入沉重的规划流程。",
+      "items": [
+        {
+          "title": "从一句话开始",
+          "description": "拿出一个前提、一种氛围或一个角色点子，把它变成可用的故事方向。",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "看清核心冲突",
+          "description": "在写场景之前，更清楚地把握目标、对手、代价和紧迫感。",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "准备好再扩展",
+          "description": "只有方向值得继续时，才从大纲进入章节计划。",
+          "icon": "RiExpandUpDownLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "如何使用",
+      "title": "如何使用故事大纲生成器",
+      "description": "几分钟内，把模糊的点子变成可写的结构。",
+      "items": [
+        {
+          "title": "描述故事种子",
+          "description": "输入一个清晰的想法，选择类型、基调等少量偏好。",
+          "icon": "RiEdit2Line"
+        },
+        {
+          "title": "审阅大纲",
+          "description": "查看前提、核心冲突、故事弧线和关键节拍。",
+          "icon": "RiFileList3Line"
+        },
+        {
+          "title": "扩展为章节",
+          "description": "当你想要更强的起草支架时，把 promising 的大纲转成逐章计划。",
+          "icon": "RiBook2Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "好处",
+      "title": "为什么新手作者选择故事大纲生成器",
+      "description": "它缓解白纸焦虑，又不会把你的流程过度工程化。",
+      "items": [
+        {
+          "title": "低门槛",
+          "description": "在工具变得有用之前，你不需要一整套故事圣经。",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "更清晰的结构",
+          "description": "你拿到的是节拍和升级，不是一段含糊的描述。",
+          "icon": "RiRouteLine"
+        },
+        {
+          "title": "顺理成章的下一步",
+          "description": "如果大纲可行，章节扩展给你一座实用的起草桥梁。",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "使用场景",
+      "title": "故事大纲生成器的最佳用途",
+      "description": "适合那些有点子、但起草前需要更强结构的作者。",
+      "items": [
+        {
+          "title": "快速验证前提",
+          "description": "看看一个故事点子是否有足够的冲突和升级来支撑叙事。",
+          "icon": "RiTestTubeLine"
+        },
+        {
+          "title": "突破写作瓶颈",
+          "description": "把卡住的概念变成具体的、可以接着写的节拍。",
+          "icon": "RiHammerLine"
+        },
+        {
+          "title": "更有信心地开始第一稿",
+          "description": "当你想要更可执行的写作计划时，使用章节扩展。",
+          "icon": "RiRocket2Line"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "故事大纲生成器常见问题",
+      "description": "关于使用本工具的常见问题。",
+      "items": [
+        {
+          "title": "故事大纲生成器是免费的吗？",
+          "description": "你可以免费生成大纲。章节扩展是付费的延续步骤。"
+        },
+        {
+          "title": "生成大纲前需要注册账号吗？",
+          "description": "不需要。只有当你想继续生成章节时才需要登录。"
+        },
+        {
+          "title": "这个工具适合谁？",
+          "description": "最适合新手和灵感驱动的作者，他们想要结构但不需要沉重的规划流程。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "label": "行动召唤",
+      "title": "准备好继续写下去？",
+      "description": "先生成一个故事大纲，再扩展那个值得写完的方向。",
+      "buttons": [
+        {
+          "title": "试试故事大纲生成器",
+          "url": "#story_outline_generator"
+        }
+      ]
+    }
+  }
+}

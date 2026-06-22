@@ -316,6 +316,10 @@
         "name": "Plot Generator",
         "desc": "Generate detailed story outlines and plot structures to scaffold your writing."
       },
+      "story_outline_generator": {
+        "name": "Story Outline Generator",
+        "desc": "Turn one story idea into a structured outline, then expand it into chapters when you are ready to keep writing."
+      },
       "poem_generator": {
         "name": "Poem Generator",
         "desc": "Create poems in modern, classical, or haiku styles with the help of AI."

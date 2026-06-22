@@ -14,6 +14,7 @@ const GENERATOR_IDS = [
   "fanfic_generator",      // Fanfic Generator
   "fantasy_generator",     // Fantasy Generator
   "plot_generator",        // Plot Generator
+  "story_outline_generator", // Story Outline Generator
   "poem_generator",        // Poem Generator
   "poem_title_generator",  // Poem Title Generator
   "story_prompt_generator", // Story Prompt Generator

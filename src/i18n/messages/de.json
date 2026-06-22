@@ -316,6 +316,10 @@
         "name": "Plot-Generator",
         "desc": "Erstellt schnell Story-Outlines und Handlungsstrukturen, damit Sie auf einem soliden Gerüst weiterschreiben."
       },
+      "story_outline_generator": {
+        "name": "Story-Outline-Generator",
+        "desc": "Verwandle eine Idee in ein strukturiertes Outline und erweitere es bei Bedarf zu Kapiteln."
+      },
       "poem_generator": {
         "name": "Poem-Generator",
         "desc": "Verfassen Sie moderne Gedichte, klassische Poesie oder Haikus mit Unterstützung der KI."

@@ -49,6 +49,14 @@
               "category": "writing"
             },
             {
+              "title": "Story-Outline-Generator",
+              "description": "Aus einer Idee sofort ein strukturiertes Outline – mit Prämisse, Konflikt, Bogen und Beats, erweiterbar zu Kapiteln.",
+              "url": "/story-outline-generator",
+              "icon": "RiNodeTree",
+              "target": "_self",
+              "category": "writing"
+            },
+            {
               "title": "Poem-Generator",
               "description": "KI-gestützte Gedichterstellung - unterstützt moderne Gedichte, klassische Poesie, Haikus und mehr",
               "url": "/poem-generator",
@@ -848,6 +856,11 @@
             {
               "title": "Plot-Generator",
               "url": "/plot-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Story-Outline-Generator",
+              "url": "/story-outline-generator",
               "target": "_self"
             },
             {

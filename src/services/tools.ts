@@ -169,6 +169,17 @@ export const tools: Tool[] = [
     priority: 70,
   },
   {
+    slug: "story-outline-generator",
+    nameKey: "ai_tools.tools.story_outline_generator.name",
+    shortDescKey: "ai_tools.tools.story_outline_generator.desc",
+    module: "ai-write",
+    category: "plot",
+    href: "/story-outline-generator",
+    icon: "RiNodeTree",
+    badges: ["new"],
+    priority: 72,
+  },
+  {
     slug: "poem-generator",
     nameKey: "ai_tools.tools.poem_generator.name",
     shortDescKey: "ai_tools.tools.poem_generator.desc",

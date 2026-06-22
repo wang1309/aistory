@@ -49,6 +49,14 @@
               "category": "writing"
             },
             {
+              "title": "Генератор структуры истории",
+              "description": "Из одной идеи — структурированный план: предпосылка, конфликт, арка и ключевые точки. Раскройте по главам при необходимости.",
+              "url": "/story-outline-generator",
+              "icon": "RiNodeTree",
+              "target": "_self",
+              "category": "writing"
+            },
+            {
               "title": "Генератор стихов",
               "description": "Создание стихов с помощью ИИ - поддержка современной поэзии, классических стихов, хайку и многого другого",
               "url": "/poem-generator",
@@ -848,6 +856,11 @@
             {
               "title": "Генератор сюжетов",
               "url": "/plot-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Генератор структуры истории",
+              "url": "/story-outline-generator",
               "target": "_self"
             },
             {

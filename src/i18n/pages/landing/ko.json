@@ -49,6 +49,14 @@
               "category": "writing"
             },
             {
+              "title": "스토리 개요 생성기",
+              "description": "하나의 아이디어에서 전제·갈등·전개·주요 비트를 담은 구조화된 개요를 생성하고, 챕터로 확장할 수 있습니다.",
+              "url": "/story-outline-generator",
+              "icon": "RiNodeTree",
+              "target": "_self",
+              "category": "writing"
+            },
+            {
               "title": "시 생성기",
               "description": "AI 기반 시 창작 - 현대시, 고전시, 하이쿠 등 다양한 형식 지원",
               "url": "/poem-generator",
@@ -848,6 +856,11 @@
             {
               "title": "플롯 생성기",
               "url": "/plot-generator",
+              "target": "_self"
+            },
+            {
+              "title": "스토리 개요 생성기",
+              "url": "/story-outline-generator",
               "target": "_self"
             },
             {

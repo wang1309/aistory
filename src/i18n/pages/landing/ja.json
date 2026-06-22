@@ -49,6 +49,14 @@
               "category": "writing"
             },
             {
+              "title": "ストーリーアウトラインジェネレーター",
+              "description": "一つのアイデアから前提・葛藤・展開・主要ビーツを含む構造化アウトラインを生成。章への展開も可能。",
+              "url": "/story-outline-generator",
+              "icon": "RiNodeTree",
+              "target": "_self",
+              "category": "writing"
+            },
+            {
               "title": "詩ジェネレーター",
               "description": "AI詩の作成 - 現代詩、古典詩、俳句など多彩な形式をサポート",
               "url": "/poem-generator",
@@ -848,6 +856,11 @@
             {
               "title": "プロットジェネレーター",
               "url": "/plot-generator",
+              "target": "_self"
+            },
+            {
+              "title": "ストーリーアウトラインジェネレーター",
+              "url": "/story-outline-generator",
               "target": "_self"
             },
             {

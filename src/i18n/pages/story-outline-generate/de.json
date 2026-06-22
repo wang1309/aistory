@@ -1,0 +1,219 @@
+{
+  "story_outline_generate": {
+    "metadata": {
+      "title": "Story-Outline-Generator: Verwandle eine vage Idee in einen schreibbaren Plot",
+      "description": "Aus einer Idee sofort ein strukturiertes Outline – Prämisse, Konflikt, Bogen und Beats. Zu Kapiteln erweiterbar. Kostenlos, ohne Anmeldung.",
+      "keywords": "Story-Outline-Generator, Plot-Outline-Generator, AI Story Outline, Kapitel-Outline-Generator, Schreib-Outline-Tool"
+    },
+    "ui": {
+      "title": "Story-Outline-Generator",
+      "title_highlight": "Outline-Generator",
+      "subtitle": "Verwandle eine vage Idee in ein strukturiertes Outline, das du wirklich schreiben kannst – und erweitere es bei Bedarf zu Kapiteln.",
+      "eyebrow": "AI Story-Werkzeug",
+      "theme_pills": [
+        "Schneller Einstieg",
+        "Strukturierte Beats",
+        "Kapitel-Erweiterung",
+        "Anfängerfreundlich"
+      ],
+      "breadcrumb_home": "Start",
+      "breadcrumb_current": "Story-Outline-Generator",
+      "story_idea_label": "Wie lautet deine Story-Idee?",
+      "story_idea_placeholder": "z. B. Eine schüchterne Dorfälterin entdeckt, dass sie mit Geistern sprechen kann.",
+      "genre_label": "Genre",
+      "tone_label": "Ton",
+      "target_length_label": "Ziellänge",
+      "audience_label": "Zielgruppe",
+      "random_button": "Zufallsbeispiel",
+      "generate_button": "Outline erstellen",
+      "generating_button": "Wird erstellt...",
+      "regenerate_button": "Weiteres Outline erstellen",
+      "output_title": "Dein Story-Outline",
+      "empty_output": "Beschreibe deine Idee und erstelle sie – hier erscheinen Prämisse, Konflikt, Bogen und Schlüssel-Beats.",
+      "premise_label": "Prämisse",
+      "conflict_label": "Zentraler Konflikt",
+      "arc_label": "Story-Bogen",
+      "beats_label": "Schlüssel-Beats",
+      "next_step_label": "Nächster Schritt",
+      "expand_button": "Zu Kapiteln erweitern",
+      "expanding_button": "Wird erweitert...",
+      "chapter_output_title": "Kapitelplan",
+      "no_credits_title": "Du brauchst Credits, um dieses Outline zu erweitern",
+      "no_credits_description": "Die kostenlose Outline-Erstellung bleibt verfügbar, aber die Kapitel-Erweiterung ist der kostenpflichtige nächste Schritt.",
+      "buy_credits_button": "Credits holen",
+      "conflict_goal_label": "Ziel",
+      "conflict_opposition_label": "Gegner",
+      "conflict_stakes_label": "Einsatz",
+      "conflict_urgency_label": "Dringlichkeit"
+    },
+    "validation": {
+      "story_idea_required": "Verrate uns zuerst deine Story-Idee."
+    },
+    "success": {
+      "generated": "Story-Outline wurde erstellt.",
+      "expanded": "Kapitelplan wurde erstellt."
+    },
+    "errors": {
+      "generate_failed": "Outline-Erstellung fehlgeschlagen.",
+      "expand_failed": "Erweiterung zu Kapiteln fehlgeschlagen.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "genre_options": {
+      "fantasy": "Fantasy",
+      "romance": "Romantik",
+      "thriller": "Thriller",
+      "sci-fi": "Sci-Fi",
+      "mystery": "Mystery",
+      "literary": "Literarisch",
+      "general": "Allgemein"
+    },
+    "tone_options": {
+      "hopeful": "Hoffnungsvoll",
+      "dark": "Düster",
+      "funny": "Humorvoll",
+      "emotional": "Emotional",
+      "tense": "Spannend",
+      "epic": "Episch"
+    },
+    "target_length_options": {
+      "short-story": "Kurzgeschichte",
+      "novella": "Novelle",
+      "novel": "Roman"
+    },
+    "audience_options": {
+      "kids": "Kinder",
+      "middle-grade": "Middle Grade",
+      "ya": "Young Adult",
+      "adult": "Erwachsene"
+    },
+    "random_prompts": [
+      "Eine schüchterne Dorfälterin entdeckt, dass sie mit Geistern sprechen kann.",
+      "Zwei rivalisierende Schatztaucher müssen zusammenarbeiten, um in einer versinkenden Stadt zu überleben.",
+      "Ein ausgebrannter Hochzeitsfotograf erwischt zufällig Beweise für eine Zeitschleife."
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Was dieser Outline-Generator dir wirklich hilft",
+      "description": "Bietet genug Struktur zum Loslegen, ohne dich in einen schweren Planungsprozess zu zwingen.",
+      "items": [
+        {
+          "title": "Beginne mit einem Satz",
+          "description": "Bringe eine Prämisse, eine Stimmung oder eine Charakteridee ein und verwandle sie in eine nutzbare Story-Richtung.",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "Erkenne den zentralen Konflikt",
+          "description": "Verstehe Ziel, Gegner, Einsatz und Dringlichkeit klarer, bevor du Szenacen entwirfst.",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "Erweitere nur bei Bedarf",
+          "description": "Wechsle erst vom Outline zum Kapitelplan, wenn sich die Richtung lohnt.",
+          "icon": "RiExpandUpDownLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "ANWENDUNG",
+      "title": "So nutzt du den Story-Outline-Generator",
+      "description": "Von der vagen Idee zur schreibbaren Struktur in Minuten.",
+      "items": [
+        {
+          "title": "Beschreibe den Story-Keim",
+          "description": "Gib eine klare Idee ein und wähle wenige leichte Einstellungen wie Genre und Ton.",
+          "icon": "RiEdit2Line"
+        },
+        {
+          "title": "Prüfe das Outline",
+          "description": "Sieh dir Prämisse, zentralen Konflikt, Story-Bogen und Schlüssel-Beats an.",
+          "icon": "RiFileList3Line"
+        },
+        {
+          "title": "Zu Kapiteln erweitern",
+          "description": "Verwandle ein vielversprechendes Outline in einen kapitelweisen Plan für stärkere Gerüste.",
+          "icon": "RiBook2Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum neue Autorinnen diesen Generator nutzen",
+      "description": "Lindert das Problem des leeren Blatts, ohne deinen Prozess zu überzustaffieren.",
+      "items": [
+        {
+          "title": "Niedrige Hürde",
+          "description": "Du brauchst keine vollständige Story-Bibel, bevor das Werkzeug nützlich wird.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "Klarere Struktur",
+          "description": "Du bekommst Beats und Eskalation, nicht nur einen vagen Absatz.",
+          "icon": "RiRouteLine"
+        },
+        {
+          "title": "Natürlicher nächster Schritt",
+          "description": "Wenn das Outline funktioniert, ist die Kapitel-Erweiterung eine praktische Brücke zum Schreiben.",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Anwendungsfälle",
+      "title": "Beste Einsätze für den Story-Outline-Generator",
+      "description": "Für Autorinnen mit Idee, die vor dem Entwurf eine stärkere Struktur brauchen.",
+      "items": [
+        {
+          "title": "Prämisse schnell testen",
+          "description": "Prüfe, ob eine Idee genug Konflikt und Eskalation hat, um eine Erzählung zu tragen.",
+          "icon": "RiTestTubeLine"
+        },
+        {
+          "title": "Schreibblockade durchbrechen",
+          "description": "Verwandle ein feststeckendes Konzept in konkrete, bearbeitbare Beats.",
+          "icon": "RiHammerLine"
+        },
+        {
+          "title": "Selbstbewusster in den ersten Entwurf",
+          "description": "Nutze die Kapitel-Erweiterung, wenn du einen ausführbareren Schreibplan willst.",
+          "icon": "RiRocket2Line"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Story-Outline-Generator FAQ",
+      "description": "Häufige Fragen zur Nutzung.",
+      "items": [
+        {
+          "title": "Ist der Generator kostenlos?",
+          "description": "Du kannst ein Outline kostenlos erstellen. Die Kapitel-Erweiterung ist der kostenpflichtige Folgeschritt."
+        },
+        {
+          "title": "Brauche ich vor der Erstellung ein Konto?",
+          "description": "Nein. Du musst dich nur anmelden, wenn du die Kapitel-Erweiterung fortsetzen willst."
+        },
+        {
+          "title": "Für wen ist dieses Werkzeug?",
+          "description": "Am besten für neue und inspirationsgetriebene Autorinnen, die Struktur ohne schweren Planungsworkflow wollen."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "label": "CTA",
+      "title": "Bereit, weiterzuschreiben?",
+      "description": "Erstelle ein Story-Outline und erweitere die Richtung, die es wert ist, zu Ende geschrieben zu werden.",
+      "buttons": [
+        {
+          "title": "Story-Outline-Generator ausprobieren",
+          "url": "#story_outline_generator"
+        }
+      ]
+    }
+  }
+}
