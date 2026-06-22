@@ -36,61 +36,70 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { buildAiWriteHeaderNav } from "@/components/ai-write/workbench/_lib";
 
+type HeaderCategoryKey =
+  | "featured"
+  | "writing"
+  | "planning"
+  | "characters"
+  | "kids"
+  | "creative"
+  | "other";
+
 type GroupedNavCategory = {
-  key: "featured" | "writing" | "creative" | "other";
+  key: HeaderCategoryKey;
   label?: string;
   description?: string;
   icon?: string;
   items: NavItem[];
 };
 
+const CATEGORY_META: Record<
+  Exclude<HeaderCategoryKey, "other">,
+  { labelKey: string; icon: string }
+> = {
+  featured: { labelKey: "ai_tools.category_featured", icon: "RiCompassesFill" },
+  writing: { labelKey: "ai_tools.category_writing", icon: "RiQuillPenLine" },
+  planning: { labelKey: "ai_tools.category_planning", icon: "RiNodeTree" },
+  characters: { labelKey: "ai_tools.category_characters", icon: "RiUserStarLine" },
+  kids: { labelKey: "ai_tools.category_kids", icon: "RiMoonLine" },
+  creative: { labelKey: "ai_tools.category_creative", icon: "RiSparkling2Line" },
+};
+
+const CATEGORY_ORDER: HeaderCategoryKey[] = [
+  "featured",
+  "writing",
+  "planning",
+  "characters",
+  "kids",
+  "creative",
+  "other",
+];
+
 function groupNavChildren(children: NavItem[] = []): GroupedNavCategory[] {
-  const buckets: Record<GroupedNavCategory["key"], NavItem[]> = {
+  const buckets: Record<HeaderCategoryKey, NavItem[]> = {
     featured: [],
     writing: [],
+    planning: [],
+    characters: [],
+    kids: [],
     creative: [],
     other: [],
   };
 
   for (const child of children) {
-    const key = (child.category as GroupedNavCategory["key"] | undefined) ?? "other";
-    if (key === "featured" || key === "writing" || key === "creative") {
+    const key = (child.category as HeaderCategoryKey | undefined) ?? "other";
+    if (key in buckets) {
       buckets[key].push(child);
     } else {
       buckets.other.push(child);
     }
   }
 
-  const groups: GroupedNavCategory[] = [];
-  if (buckets.featured.length) {
-    groups.push({
-      key: "featured",
-      icon: "RiCompassesFill",
-      items: buckets.featured,
-    });
-  }
-  if (buckets.writing.length) {
-    groups.push({
-      key: "writing",
-      icon: "RiQuillPenLine",
-      items: buckets.writing,
-    });
-  }
-  if (buckets.creative.length) {
-    groups.push({
-      key: "creative",
-      icon: "RiSparkling2Line",
-      items: buckets.creative,
-    });
-  }
-  if (buckets.other.length) {
-    groups.push({
-      key: "other",
-      items: buckets.other,
-    });
-  }
-
-  return groups;
+  return CATEGORY_ORDER.filter((key) => buckets[key].length > 0).map((key) =>
+    key === "other"
+      ? { key, items: buckets[key] }
+      : { key, icon: CATEGORY_META[key].icon, items: buckets[key] }
+  );
 }
 
 export default function Header({ header }: { header: HeaderType }) {
@@ -105,22 +114,17 @@ export default function Header({ header }: { header: HeaderType }) {
     if (group.key === "other") {
       return null;
     }
-    const labelKey =
-      group.key === "featured"
-        ? "ai_tools.category_featured"
-        : group.key === "writing"
-        ? "ai_tools.category_writing"
-        : "ai_tools.category_creative";
+    const meta = CATEGORY_META[group.key];
 
     return (
       <div className="flex items-center gap-2 px-2 pb-2 pt-1">
-        {group.icon && (
+        {meta && (
           <span className="flex size-6 items-center justify-center rounded-full bg-amber-500/10 text-amber-600 ring-1 ring-amber-500/20 dark:bg-amber-400/10 dark:text-amber-300 dark:ring-amber-400/20">
-            <Icon name={group.icon} className="size-3.5" />
+            <Icon name={meta.icon} className="size-3.5" />
           </span>
         )}
         <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
-          {t(labelKey)}
+          {t(meta.labelKey)}
         </span>
       </div>
     );
@@ -435,11 +439,7 @@ export default function Header({ header }: { header: HeaderType }) {
                                         </span>
                                       )}
                                       <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
-                                        {group.key === "featured"
-                                          ? t("ai_tools.category_featured")
-                                          : group.key === "writing"
-                                          ? t("ai_tools.category_writing")
-                                          : t("ai_tools.category_creative")}
+                                        {t(CATEGORY_META[group.key].labelKey)}
                                       </span>
                                     </div>
                                   )}
