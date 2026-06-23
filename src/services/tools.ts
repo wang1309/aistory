@@ -69,6 +69,7 @@ export const tools: Tool[] = [
     category: "story",
     href: "/fantasy-generator",
     icon: "RiSparkling2Line",
+    badges: ["hot"],
     priority: 95,
   },
   {

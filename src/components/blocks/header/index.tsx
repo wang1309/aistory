@@ -81,8 +81,10 @@ type HeaderToolItem = {
 function useHeaderToolColumns() {
   const t = useTranslations();
   const all = getToolsByModule("ai-write");
+  // story-generator 的 href 是主页 "/",Header 下拉里再放一次属于冗余入口
+  const forHeader = all.filter((tool) => tool.slug !== "story-generator");
   const columns: HeaderToolItem[][] = [[], [], []];
-  for (const tool of all) {
+  for (const tool of forHeader) {
     const colIdx = COLUMN_GROUP[tool.category];
     columns[colIdx].push({
       tool,
