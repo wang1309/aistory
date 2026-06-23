@@ -1,8 +1,8 @@
 import React from "react";
-import { getToolsByModule, type ModuleId, type ToolTab } from "@/services/tools";
+import { getToolsByModule, getNewTools, type ModuleId, type ToolTab } from "@/services/tools";
 import { getTranslations } from "next-intl/server";
 import { AnimatedToolsGrid } from "./animated-tools-grid";
-import { ModuleToolsTabs, type ToolTabData } from "./module-tools-tabs";
+import { ToolsExplorer, type ToolsExplorerTab } from "./tools-explorer";
 import { type AccentColor } from "@/components/sections/accent";
 
 interface ModuleToolsSectionProps {
@@ -34,6 +34,9 @@ export default async function ModuleToolsSection({
   const tools = allTools.filter((tool) =>
     excludeSlug ? tool.slug !== excludeSlug : true
   );
+  const newTools = getNewTools(module).filter((tool) =>
+    excludeSlug ? tool.slug !== excludeSlug : true
+  );
 
   if (!tools.length) return null;
 
@@ -56,7 +59,7 @@ export default async function ModuleToolsSection({
       allTools.some((tool) => (tool.tab ?? "story") === tabKey)
     ).length > 1;
 
-  const tabs: ToolTabData[] = TAB_ORDER.map((tabKey) => {
+  const tabs: ToolsExplorerTab[] = TAB_ORDER.map((tabKey) => {
     const meta = TAB_META[tabKey];
     const tabTools = tools
       .filter((tool) => (tool.tab ?? "story") === tabKey)
@@ -68,6 +71,8 @@ export default async function ModuleToolsSection({
       tools: tabTools,
     };
   }).filter((tab) => tab.tools.length > 0);
+
+  const newToolCards = newTools.map(toCard);
 
   // Split title to highlight "AI"
   const HIGHLIGHT = "AI";
@@ -131,8 +136,9 @@ export default async function ModuleToolsSection({
         </div>
 
         {hasMultipleTabs ? (
-          <ModuleToolsTabs
+          <ToolsExplorer
             tabs={tabs}
+            newTools={newToolCards}
             accent={accent}
           />
         ) : (

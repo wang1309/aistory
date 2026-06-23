@@ -21,13 +21,30 @@ export function buildContinueRoute({
   return query ? `/ai-write/editor?${query}` : "/ai-write/editor";
 }
 
+const AI_WRITE_TITLES = new Set([
+  "AI Write",
+  "AI 写作",
+  "KI-Schreiben",
+  "AI ライティング",
+  "AI 글쓰기",
+  "AI письмо",
+]);
+
+const TOOL_HUB_TITLE_BY_LOCALE_TITLE: Record<string, string> = {
+  "AI 写作": "AI 写作工具",
+  "KI-Schreiben": "KI-Schreib-Tools",
+  "AI ライティング": "AI ライティングツール",
+  "AI 글쓰기": "AI 글쓰기 도구",
+  "AI письмо": "Инструменты AI письма",
+};
+
 export function buildAiWriteHeaderNav(items: NavItem[] = []) {
   return items.flatMap((item) => {
-    if (!item.title || !item.children?.length) {
+    if (!item.title) {
       return [item];
     }
 
-    if (!["AI Write", "AI 写作", "KI-Schreiben"].includes(item.title)) {
+    if (!AI_WRITE_TITLES.has(item.title)) {
       return [item];
     }
 
@@ -41,22 +58,9 @@ export function buildAiWriteHeaderNav(items: NavItem[] = []) {
     const toolHub: NavItem = {
       ...item,
       icon: "RiMagicLine",
-      children: item.children.map((child) => {
-        if (child.url === "/ai-write") {
-          return {
-            ...child,
-            url: "/ai-write-tool",
-          };
-        }
-
-        return child;
-      }),
-      title:
-        item.title === "AI 写作"
-          ? "AI 写作工具"
-          : item.title === "KI-Schreiben"
-          ? "KI-Schreib-Tools"
-          : "AI Write Tool",
+      url: "/ai-write-tool",
+      children: [],
+      title: TOOL_HUB_TITLE_BY_LOCALE_TITLE[item.title] ?? "AI Write Tool",
     };
 
     return [toolHub, directEntry];

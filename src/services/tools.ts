@@ -43,6 +43,10 @@ export interface Tool {
    * Higher number means higher priority when sorting.
    */
   priority?: number;
+  /**
+   * Optional extra keywords for Hub search matching. Falls back to name + desc.
+   */
+  keywords?: string[];
 }
 
 export const tools: Tool[] = [
@@ -65,7 +69,6 @@ export const tools: Tool[] = [
     category: "story",
     href: "/fantasy-generator",
     icon: "RiSparkling2Line",
-    badges: ["new"],
     priority: 95,
   },
   {
@@ -76,8 +79,7 @@ export const tools: Tool[] = [
     category: "title",
     href: "/book-title-generator",
     icon: "RiQuillPenLine",
-    badges: ["hot"],
-    priority: 90,
+    priority: 89,
   },
   {
     slug: "fanfic-generator",
@@ -87,7 +89,8 @@ export const tools: Tool[] = [
     category: "fanfic",
     href: "/fanfic-generator",
     icon: "RiBookMarkedLine",
-    priority: 80,
+    badges: ["hot"],
+    priority: 96,
   },
   {
     slug: "dialogue-generator",
@@ -97,6 +100,7 @@ export const tools: Tool[] = [
     category: "dialogue",
     href: "/dialogue-generator",
     icon: "RiChat3Line",
+    badges: ["hot"],
     priority: 78,
   },
   {
@@ -154,9 +158,8 @@ export const tools: Tool[] = [
     module: "ai-write",
     category: "story",
     href: "/comic-generator",
-    icon: "RiComicsLine",
-    badges: ["new"],
-    priority: 76,
+    icon: "RiBrushLine",
+    priority: 94,
   },
   {
     slug: "plot-generator",
@@ -166,7 +169,7 @@ export const tools: Tool[] = [
     category: "plot",
     href: "/plot-generator",
     icon: "RiMapLine",
-    priority: 70,
+    priority: 90,
   },
   {
     slug: "story-outline-generator",
@@ -197,7 +200,8 @@ export const tools: Tool[] = [
     category: "title",
     href: "/poem-title-generator",
     icon: "RiStarLine",
-    priority: 55,
+    badges: ["hot"],
+    priority: 91,
   },
   {
     slug: "backstory-generator",
@@ -207,17 +211,19 @@ export const tools: Tool[] = [
     category: "story",
     href: "/backstory-generator",
     icon: "RiUser3Line",
-    priority: 85,
+    badges: ["hot"],
+    priority: 99,
   },
   {
-    slug: "story-prompt-generator",
-    nameKey: "ai_tools.tools.story_prompt_generator.name",
-    shortDescKey: "ai_tools.tools.story_prompt_generator.desc",
+    slug: "dnd-backstory-generator",
+    nameKey: "ai_tools.tools.dnd_backstory_generator.name",
+    shortDescKey: "ai_tools.tools.dnd_backstory_generator.desc",
     module: "ai-write",
     category: "story",
-    href: "/story-prompt-generator",
-    icon: "RiLightbulbLine",
-    priority: 65,
+    href: "/dnd-backstory-generator",
+    icon: "RiDiceLine",
+    badges: ["hot"],
+    priority: 97,
   },
   {
     slug: "bedtime-story-generator",
@@ -241,10 +247,43 @@ export const tools: Tool[] = [
     badges: ["new"],
     priority: 86,
   },
+  {
+    slug: "story-prompt-generator",
+    nameKey: "ai_tools.tools.story_prompt_generator.name",
+    shortDescKey: "ai_tools.tools.story_prompt_generator.desc",
+    module: "ai-write",
+    category: "story",
+    href: "/story-prompt-generator",
+    icon: "RiLightbulbLine",
+    priority: 65,
+  },
 ];
 
 export function getToolsByModule(module: ModuleId): Tool[] {
   return tools
     .filter((tool) => tool.module === module)
     .sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
+}
+
+export function getTopTools(module: ModuleId, limit: number): Tool[] {
+  return getToolsByModule(module).slice(0, limit);
+}
+
+export function getNewTools(module: ModuleId): Tool[] {
+  return getToolsByModule(module).filter((tool) =>
+    tool.badges?.includes("new")
+  );
+}
+
+export function getToolsByCategory(
+  module: ModuleId,
+  category: ToolCategory
+): Tool[] {
+  return getToolsByModule(module).filter((tool) => tool.category === category);
+}
+
+export function getFeaturedTools(module: ModuleId, limit: number): Tool[] {
+  return getToolsByModule(module)
+    .filter((tool) => tool.badges?.includes("hot"))
+    .slice(0, limit);
 }

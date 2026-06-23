@@ -293,9 +293,9 @@
     "badge_new": "新着",
     "button_use_now": "今すぐ使う",
     "category_writing": "ライティング",
-    "category_planning": "企画とアウトライン",
-    "category_characters": "キャラクターと背景",
-    "category_kids": "キッズと寝かしつけ",
+    "column_story": "ストーリー",
+    "column_title_structure": "タイトル & 構造",
+    "column_creative": "クリエイティブ",
     "category_creative": "クリエイティブ",
     "category_featured": "ハブ",
     "tools": {
@@ -377,7 +377,22 @@
       }
     },
     "tab_story": "ストーリージェネレーター",
-    "tab_creative": "クリエイティブ"
+    "tab_creative": "クリエイティブ",
+    "search_placeholder": "ツール名や用途で検索...",
+    "filter_all": "すべて",
+    "filter_story": "ストーリー",
+    "filter_title": "タイトル",
+    "filter_plot": "プロット",
+    "filter_poem": "詩",
+    "filter_dialogue": "対話",
+    "filter_fanfic": "二次創作",
+    "new_tools_section": "新着ツール",
+    "results_count": "{count} 個のツール",
+    "no_results": "一致するツールが見つかりません。フィルターを解除してみてください。",
+    "clear_filters": "フィルター解除",
+    "view_all_cta": "すべての {count}+ ツールを見る",
+    "view_all_sub": "ハブページで完整なカタログを閲覧",
+    "scroll_down": "下にスクロール"
   },
   "story_guide": {
     "step_1": {

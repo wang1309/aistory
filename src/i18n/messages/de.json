@@ -293,9 +293,9 @@
     "badge_new": "Neu",
     "button_use_now": "Jetzt starten",
     "category_writing": "Schreiben",
-    "category_planning": "Planung & Outlines",
-    "category_characters": "Figuren & Hintergründe",
-    "category_kids": "Kinder & Gute-Nacht",
+    "column_story": "Geschichte",
+    "column_title_structure": "Titel & Struktur",
+    "column_creative": "Kreativ",
     "category_creative": "Kreativ",
     "category_featured": "Hub",
     "tools": {
@@ -377,7 +377,22 @@
       }
     },
     "tab_story": "Geschichtengenerator",
-    "tab_creative": "Kreativ"
+    "tab_creative": "Kreativ",
+    "search_placeholder": "Tools nach Name oder Szenario suchen...",
+    "filter_all": "Alle",
+    "filter_story": "Geschichte",
+    "filter_title": "Titel",
+    "filter_plot": "Handlung",
+    "filter_poem": "Gedicht",
+    "filter_dialogue": "Dialog",
+    "filter_fanfic": "Fanfic",
+    "new_tools_section": "Neu hinzugefügt",
+    "results_count": "{count, plural, =0 {Keine Tools gefunden} one {# Tool} other {# Tools}}",
+    "no_results": "Keine passenden Tools gefunden. Versuche, die Filter zu löschen.",
+    "clear_filters": "Filter löschen",
+    "view_all_cta": "Alle {count}+ Tools ansehen",
+    "view_all_sub": "Den vollständigen Katalog auf der Hub-Seite durchsuchen",
+    "scroll_down": "Nach unten scrollen"
   },
   "story_guide": {
     "step_1": {

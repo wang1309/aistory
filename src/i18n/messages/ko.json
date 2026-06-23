@@ -293,9 +293,9 @@
     "badge_new": "신규",
     "button_use_now": "지금 사용하기",
     "category_writing": "글쓰기",
-    "category_planning": "기획과 개요",
-    "category_characters": "캐릭터와 배경",
-    "category_kids": "아동과 잠자리",
+    "column_story": "스토리",
+    "column_title_structure": "제목 & 구조",
+    "column_creative": "크리에이티브",
     "category_creative": "크리에이티브",
     "category_featured": "허브",
     "tools": {
@@ -377,7 +377,22 @@
       }
     },
     "tab_story": "스토리 생성기",
-    "tab_creative": "크리에이티브"
+    "tab_creative": "크리에이티브",
+    "search_placeholder": "도구 이름이나 용도로 검색...",
+    "filter_all": "전체",
+    "filter_story": "스토리",
+    "filter_title": "제목",
+    "filter_plot": "플롯",
+    "filter_poem": "시",
+    "filter_dialogue": "대화",
+    "filter_fanfic": "팬픽",
+    "new_tools_section": "신규 추가",
+    "results_count": "총 {count}개의 도구",
+    "no_results": "일치하는 도구가 없습니다. 필터를 초기화해 보세요.",
+    "clear_filters": "필터 초기화",
+    "view_all_cta": "전체 {count}+ 도구 보기",
+    "view_all_sub": "허브 페이지에서 전체 카탈로그 탐색",
+    "scroll_down": "아래로 스크롤"
   },
   "story_guide": {
     "step_1": {

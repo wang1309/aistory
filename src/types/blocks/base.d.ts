@@ -39,14 +39,7 @@ export interface Brand {
   target?: string;
 }
 
-export type NavItemCategory =
-  | "featured"
-  | "writing"
-  | "planning"
-  | "characters"
-  | "kids"
-  | "creative"
-  | string;
+export type NavItemCategory = "writing" | "creative" | "featured" | string;
 
 export interface NavItem {
   name?: string;

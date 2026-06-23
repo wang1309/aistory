@@ -293,9 +293,9 @@
     "badge_new": "Новое",
     "button_use_now": "Начать сейчас",
     "category_writing": "Написание",
-    "category_planning": "Планирование и планы",
-    "category_characters": "Персонажи и предыстории",
-    "category_kids": "Детские и bedtime",
+    "column_story": "Истории",
+    "column_title_structure": "Заголовки и структура",
+    "column_creative": "Творчество",
     "category_creative": "Творчество",
     "category_featured": "Хаб",
     "tools": {
@@ -377,7 +377,22 @@
       }
     },
     "tab_story": "Генератор историй",
-    "tab_creative": "Творчество"
+    "tab_creative": "Творчество",
+    "search_placeholder": "Поиск инструмента по названию или сценарию...",
+    "filter_all": "Все",
+    "filter_story": "История",
+    "filter_title": "Заголовок",
+    "filter_plot": "Сюжет",
+    "filter_poem": "Стих",
+    "filter_dialogue": "Диалог",
+    "filter_fanfic": "Фанфик",
+    "new_tools_section": "Новинки",
+    "results_count": "{count, plural, =0 {Инструменты не найдены} one {# инструмент} few {# инструмента} other {# инструментов}}",
+    "no_results": "Подходящих инструментов не найдено. Попробуйте сбросить фильтры.",
+    "clear_filters": "Сбросить фильтры",
+    "view_all_cta": "Смотреть все {count}+ инструментов",
+    "view_all_sub": "Открыть полный каталог на странице хаба",
+    "scroll_down": "Прокрутить вниз"
   },
   "story_guide": {
     "step_1": {

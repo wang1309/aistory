@@ -23,8 +23,19 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 
-import type { NavItem } from "@/types/blocks/base";
 import { Header as HeaderType } from "@/types/blocks/header";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
@@ -35,98 +46,174 @@ import ThemeToggle from "@/components/theme/toggle";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { buildAiWriteHeaderNav } from "@/components/ai-write/workbench/_lib";
+import {
+  getToolsByModule,
+  type Tool,
+  type ToolCategory,
+} from "@/services/tools";
 
-type HeaderCategoryKey =
-  | "featured"
-  | "writing"
-  | "planning"
-  | "characters"
-  | "kids"
-  | "creative"
-  | "other";
+const AI_WRITE_TOOL_HUB_URL = "/ai-write-tool";
 
-type GroupedNavCategory = {
-  key: HeaderCategoryKey;
-  label?: string;
-  description?: string;
-  icon?: string;
-  items: NavItem[];
+const COLUMN_GROUP: Record<ToolCategory, 0 | 1 | 2> = {
+  story: 0,
+  fanfic: 0,
+  title: 1,
+  plot: 1,
+  poem: 1,
+  dialogue: 2,
 };
 
-const CATEGORY_META: Record<
-  Exclude<HeaderCategoryKey, "other">,
-  { labelKey: string; icon: string }
-> = {
-  featured: { labelKey: "ai_tools.category_featured", icon: "RiCompassesFill" },
-  writing: { labelKey: "ai_tools.category_writing", icon: "RiQuillPenLine" },
-  planning: { labelKey: "ai_tools.category_planning", icon: "RiNodeTree" },
-  characters: { labelKey: "ai_tools.category_characters", icon: "RiUserStarLine" },
-  kids: { labelKey: "ai_tools.category_kids", icon: "RiMoonLine" },
-  creative: { labelKey: "ai_tools.category_creative", icon: "RiSparkling2Line" },
-};
-
-const CATEGORY_ORDER: HeaderCategoryKey[] = [
-  "featured",
-  "writing",
-  "planning",
-  "characters",
-  "kids",
-  "creative",
-  "other",
+const COLUMN_DEFS: Array<{ icon: string; labelKey: string }> = [
+  { icon: "RiBookOpenLine", labelKey: "ai_tools.column_story" },
+  { icon: "RiQuillPenLine", labelKey: "ai_tools.column_title_structure" },
+  { icon: "RiChat3Line", labelKey: "ai_tools.column_creative" },
 ];
 
-function groupNavChildren(children: NavItem[] = []): GroupedNavCategory[] {
-  const buckets: Record<HeaderCategoryKey, NavItem[]> = {
-    featured: [],
-    writing: [],
-    planning: [],
-    characters: [],
-    kids: [],
-    creative: [],
-    other: [],
-  };
+type HeaderToolItem = {
+  tool: Tool;
+  name: string;
+  description: string;
+  href: string;
+  icon: string;
+  badge?: "hot" | "new";
+};
 
-  for (const child of children) {
-    const key = (child.category as HeaderCategoryKey | undefined) ?? "other";
-    if (key in buckets) {
-      buckets[key].push(child);
-    } else {
-      buckets.other.push(child);
-    }
+function useHeaderToolColumns() {
+  const t = useTranslations();
+  const all = getToolsByModule("ai-write");
+  const columns: HeaderToolItem[][] = [[], [], []];
+  for (const tool of all) {
+    const colIdx = COLUMN_GROUP[tool.category];
+    columns[colIdx].push({
+      tool,
+      name: t(tool.nameKey),
+      description: t(tool.shortDescKey),
+      href: tool.href,
+      icon: tool.icon,
+      badge: tool.badges?.includes("hot")
+        ? "hot"
+        : tool.badges?.includes("new")
+        ? "new"
+        : undefined,
+    });
   }
+  return { columns, total: all.length };
+}
 
-  return CATEGORY_ORDER.filter((key) => buckets[key].length > 0).map((key) =>
-    key === "other"
-      ? { key, items: buckets[key] }
-      : { key, icon: CATEGORY_META[key].icon, items: buckets[key] }
+function ToolColumn({
+  colIdx,
+  colItems,
+  renderBadge,
+}: {
+  colIdx: number;
+  colItems: HeaderToolItem[];
+  renderBadge: (badge?: "hot" | "new") => ReactNode;
+}) {
+  const t = useTranslations();
+  const listRef = useRef<HTMLUListElement>(null);
+  const [canScrollDown, setCanScrollDown] = useState(false);
+
+  const checkScroll = useCallback(() => {
+    const el = listRef.current;
+    if (!el) return;
+    const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight;
+    setCanScrollDown(distanceFromBottom > 8);
+  }, []);
+
+  const scrollDown = useCallback(() => {
+    const el = listRef.current;
+    if (!el) return;
+    el.scrollTo({
+      top: el.scrollTop + el.clientHeight * 0.75,
+      behavior: "smooth",
+    });
+  }, []);
+
+  useEffect(() => {
+    checkScroll();
+  }, [colItems, checkScroll]);
+
+  return (
+    <div className="relative rounded-[1.1rem] border border-black/[0.04] bg-gradient-to-b from-white/80 to-white/40 p-2 dark:border-white/[0.04] dark:from-white/[0.03] dark:to-transparent">
+      <div className="flex items-center gap-2 px-2 pb-2 pt-1">
+        <span className="flex size-6 items-center justify-center rounded-full bg-amber-500/10 text-amber-600 ring-1 ring-amber-500/20 dark:bg-amber-400/10 dark:text-amber-300 dark:ring-amber-400/20">
+          <Icon name={COLUMN_DEFS[colIdx].icon} className="size-3.5" />
+        </span>
+        <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
+          {t(COLUMN_DEFS[colIdx].labelKey)}
+        </span>
+      </div>
+      <ul
+        ref={listRef}
+        onScroll={checkScroll}
+        className="flex max-h-[28rem] flex-col overflow-y-auto scroll-smooth pr-1"
+      >
+        {colItems.map((wt) => (
+          <li key={wt.tool.slug}>
+            <NavigationMenuLink asChild>
+              <Link
+                className="group/item relative flex select-none items-center gap-3 rounded-lg px-2.5 py-2 leading-none no-underline outline-hidden transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-amber-500/[0.07] hover:pl-3 focus:bg-amber-500/[0.07] dark:hover:bg-amber-400/[0.07]"
+                href={wt.href as any}
+              >
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-black/[0.04] text-muted-foreground transition-colors duration-300 group-hover/item:bg-amber-500/15 group-hover/item:text-amber-700 dark:bg-white/[0.04] dark:group-hover/item:bg-amber-400/15 dark:group-hover/item:text-amber-300">
+                  <Icon name={wt.icon} className="size-3.5" />
+                </span>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span
+                      className="min-w-0 flex-1 truncate pr-7 text-[13px] font-medium text-foreground/90 group-hover/item:text-foreground"
+                      tabIndex={-1}
+                    >
+                      {wt.name}
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" className="max-w-[16rem]">
+                    {wt.name}
+                  </TooltipContent>
+                </Tooltip>
+                {renderBadge(wt.badge)}
+              </Link>
+            </NavigationMenuLink>
+          </li>
+        ))}
+      </ul>
+      {canScrollDown && (
+        <button
+          type="button"
+          onClick={scrollDown}
+          aria-label={t("ai_tools.scroll_down")}
+          className="absolute bottom-1 left-1/2 z-20 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border border-amber-500/30 bg-popover/95 text-amber-700 shadow-md backdrop-blur-sm transition hover:border-amber-500/50 hover:bg-amber-500/15 dark:border-amber-400/30 dark:text-amber-300 dark:hover:border-amber-400/50 dark:hover:bg-amber-400/15"
+        >
+          <Icon name="RiArrowDownSLine" className="size-4" />
+        </button>
+      )}
+    </div>
   );
 }
 
 export default function Header({ header }: { header: HeaderType }) {
   const t = useTranslations();
   const navItems = buildAiWriteHeaderNav(header.nav?.items || []);
+  const { columns: toolColumns, total: toolTotal } = useHeaderToolColumns();
 
   if (header.disabled) {
     return null;
   }
 
-  const renderCategoryHeader = (group: GroupedNavCategory) => {
-    if (group.key === "other") {
-      return null;
-    }
-    const meta = CATEGORY_META[group.key];
-
+  const renderToolBadge = (badge?: "hot" | "new") => {
+    if (!badge) return null;
+    const label = badge === "hot" ? t("ai_tools.badge_hot") : t("ai_tools.badge_new");
     return (
-      <div className="flex items-center gap-2 px-2 pb-2 pt-1">
-        {meta && (
-          <span className="flex size-6 items-center justify-center rounded-full bg-amber-500/10 text-amber-600 ring-1 ring-amber-500/20 dark:bg-amber-400/10 dark:text-amber-300 dark:ring-amber-400/20">
-            <Icon name={meta.icon} className="size-3.5" />
-          </span>
+      <span
+        className={cn(
+          "pointer-events-none absolute right-1.5 top-1.5 z-10 inline-flex items-center rounded-full px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider",
+          badge === "hot"
+            ? "bg-rose-500/15 text-rose-600 dark:bg-rose-400/15 dark:text-rose-300"
+            : "bg-emerald-500/15 text-emerald-600 dark:bg-emerald-400/15 dark:text-emerald-300"
         )}
-        <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
-          {t(meta.labelKey)}
-        </span>
-      </div>
+      >
+        {label}
+      </span>
     );
   };
 
@@ -159,15 +246,7 @@ export default function Header({ header }: { header: HeaderType }) {
               <NavigationMenu>
                 <NavigationMenuList>
                   {navItems.map((item, i) => {
-                    if (item.children && item.children.length > 0) {
-                      const groups = groupNavChildren(item.children);
-                      const featured =
-                        groups.find((g) => g.key === "featured")?.items[0] ?? null;
-                      const columnGroups = groups.filter(
-                        (g) => g.key !== "featured"
-                      );
-                      const hasSingleColumn = columnGroups.length <= 1;
-
+                    if (item.url === AI_WRITE_TOOL_HUB_URL) {
                       return (
                         <NavigationMenuItem
                           key={i}
@@ -183,90 +262,42 @@ export default function Header({ header }: { header: HeaderType }) {
                             <span>{item.title}</span>
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
-                            <div
-                              className={cn(
-                                "relative overflow-hidden rounded-[1.6rem] border border-black/[0.06] bg-popover/95 p-3 shadow-[0_24px_60px_-24px_rgba(38,28,12,0.28)] backdrop-blur-2xl dark:border-white/[0.06]",
-                                hasSingleColumn ? "w-[22rem]" : "w-[40rem]"
-                              )}
-                            >
+                            <div className="relative w-[48rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-[1.6rem] border border-black/[0.06] bg-popover/95 p-3 shadow-[0_24px_60px_-24px_rgba(38,28,12,0.28)] backdrop-blur-2xl dark:border-white/[0.06]">
                               <div
                                 aria-hidden
                                 className="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-gradient-to-br from-amber-300/30 via-amber-500/15 to-transparent blur-3xl dark:from-amber-400/20 dark:via-amber-500/10"
                               />
-                              {featured && (
-                                <Link
-                                  href={featured.url as any}
-                                  target={featured.target}
-                                  className="group/featured relative flex items-center gap-4 overflow-hidden rounded-[1.2rem] border border-amber-500/15 bg-gradient-to-br from-amber-50 via-white to-amber-50/60 p-4 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-amber-500/30 hover:shadow-[0_18px_40px_-22px_rgba(217,119,6,0.45)] dark:border-amber-400/15 dark:from-amber-500/[0.08] dark:via-background dark:to-amber-500/[0.04] dark:hover:border-amber-400/30"
-                                >
-                                  <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/featured:scale-[1.04]">
-                                    <Icon
-                                      name={featured.icon || "RiCompassesFill"}
-                                      className="size-5"
-                                    />
-                                  </span>
-                                  <div className="min-w-0 flex-1">
-                                    <div className="flex items-center gap-2">
-                                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
-                                        {t("ai_tools.category_featured")}
-                                      </span>
-                                      <span className="h-1 w-1 rounded-full bg-amber-500/60" />
-                                      <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground/70">
-                                        {item.title}
-                                      </span>
-                                    </div>
-                                    <div className="mt-1 text-sm font-semibold text-foreground">
-                                      {featured.title}
-                                    </div>
-                                  </div>
-                                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 ring-1 ring-amber-500/20 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/featured:translate-x-0.5 group-hover/featured:-translate-y-0.5 group-hover/featured:bg-amber-500/15 dark:bg-amber-400/10 dark:text-amber-300 dark:ring-amber-400/25">
-                                    <Icon name="RiArrowRightUpLine" className="size-4" />
-                                  </span>
-                                </Link>
-                              )}
 
-                              <div
-                                className={cn(
-                                  "mt-3 grid gap-3 items-start",
-                                  hasSingleColumn ? "grid-cols-1" : "grid-cols-2"
-                                )}
-                              >
-                                {columnGroups.map((group) => (
-                                  <div
-                                    key={group.key}
-                                    className="rounded-[1.1rem] border border-black/[0.04] bg-gradient-to-b from-white/80 to-white/40 p-2 dark:border-white/[0.04] dark:from-white/[0.03] dark:to-transparent"
-                                  >
-                                    {renderCategoryHeader(group)}
-                                    <ul className="flex flex-col">
-                                      {group.items.map((iitem, ii) => (
-                                        <li key={ii}>
-                                          <NavigationMenuLink asChild>
-                                            <Link
-                                              className={cn(
-                                                "group/item flex select-none items-center gap-3 rounded-lg px-2.5 py-2 leading-none no-underline outline-hidden transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-amber-500/[0.07] hover:pl-3 focus:bg-amber-500/[0.07] dark:hover:bg-amber-400/[0.07]"
-                                              )}
-                                              href={iitem.url as any}
-                                              target={iitem.target}
-                                            >
-                                              {iitem.icon && (
-                                                <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-black/[0.04] text-muted-foreground transition-colors duration-300 group-hover/item:bg-amber-500/15 group-hover/item:text-amber-700 dark:bg-white/[0.04] dark:group-hover/item:bg-amber-400/15 dark:group-hover/item:text-amber-300">
-                                                  <Icon
-                                                    name={iitem.icon}
-                                                    className="size-3.5"
-                                                  />
-                                                </span>
-                                              )}
-                                              <span className="text-[13px] font-medium text-foreground/90 group-hover/item:text-foreground">
-                                                {iitem.title}
-                                              </span>
-                                            </Link>
-                                          </NavigationMenuLink>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
+                              <div className="relative grid grid-cols-3 gap-3">
+                                {toolColumns.map((colItems, colIdx) => (
+                                  <ToolColumn
+                                    key={colIdx}
+                                    colIdx={colIdx}
+                                    colItems={colItems}
+                                    renderBadge={renderToolBadge}
+                                  />
                                 ))}
                               </div>
+
+                              <Link
+                                href={AI_WRITE_TOOL_HUB_URL as any}
+                                className="group/cta mt-3 flex items-center gap-3 rounded-[1.1rem] border border-amber-500/20 bg-gradient-to-r from-amber-500/10 via-amber-400/[0.06] to-amber-500/[0.04] px-3 py-2.5 no-underline outline-hidden transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-amber-500/40 hover:from-amber-500/15 hover:to-amber-500/[0.08] dark:border-amber-400/20 dark:hover:border-amber-400/40"
+                              >
+                                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-amber-700 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
+                                  <Icon name="RiGridLine" className="size-4" />
+                                </span>
+                                <div className="min-w-0 flex-1">
+                                  <div className="text-[13px] font-semibold text-amber-800 dark:text-amber-200">
+                                    {t("ai_tools.view_all_cta", { count: toolTotal })}
+                                  </div>
+                                  <div className="text-[10px] text-amber-700/70 dark:text-amber-300/60">
+                                    {t("ai_tools.view_all_sub")}
+                                  </div>
+                                </div>
+                                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-700 transition-transform duration-300 group-hover/cta:translate-x-0.5 dark:bg-amber-400/15 dark:text-amber-300">
+                                  <Icon name="RiArrowRightLine" className="size-4" />
+                                </span>
+                              </Link>
                             </div>
                           </NavigationMenuContent>
                         </NavigationMenuItem>
@@ -411,8 +442,7 @@ export default function Header({ header }: { header: HeaderType }) {
                 <div className="mb-8 mt-8 flex flex-col gap-4">
                   <Accordion type="single" collapsible className="w-full">
                     {navItems.map((item, i) => {
-                      if (item.children && item.children.length > 0) {
-                        const groups = groupNavChildren(item.children);
+                      if (item.url === AI_WRITE_TOOL_HUB_URL) {
                         return (
                           <AccordionItem
                             key={i}
@@ -423,48 +453,45 @@ export default function Header({ header }: { header: HeaderType }) {
                               {item.title}
                             </AccordionTrigger>
                             <AccordionContent className="mt-2 flex flex-col gap-3">
-                              {groups.map((group) => (
+                              {toolColumns.map((colItems, colIdx) => (
                                 <div
-                                  key={group.key}
+                                  key={colIdx}
                                   className="rounded-xl border border-black/[0.04] bg-black/[0.015] p-2 dark:border-white/[0.04] dark:bg-white/[0.02]"
                                 >
-                                  {group.key !== "other" && (
-                                    <div className="mb-1 flex items-center gap-2 px-2 pt-1">
-                                      {group.icon && (
-                                        <span className="flex size-5 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
-                                          <Icon
-                                            name={group.icon}
-                                            className="size-3"
-                                          />
-                                        </span>
-                                      )}
-                                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
-                                        {t(CATEGORY_META[group.key].labelKey)}
-                                      </span>
-                                    </div>
-                                  )}
-                                  {group.items.map((iitem, ii) => (
+                                  <div className="mb-1 flex items-center gap-2 px-2 pt-1">
+                                    <span className="flex size-5 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
+                                      <Icon name={COLUMN_DEFS[colIdx].icon} className="size-3" />
+                                    </span>
+                                    <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
+                                      {t(COLUMN_DEFS[colIdx].labelKey)}
+                                    </span>
+                                  </div>
+                                  {colItems.map((wt) => (
                                     <Link
-                                      key={ii}
-                                      className={cn(
-                                        "flex select-none gap-3 rounded-md p-2.5 leading-none outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                                      )}
-                                      href={iitem.url as any}
-                                      target={iitem.target}
+                                      key={wt.tool.slug}
+                                      className="relative flex select-none gap-3 rounded-md p-2.5 leading-none outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                      href={wt.href as any}
                                     >
-                                      {iitem.icon && (
-                                        <Icon
-                                          name={iitem.icon}
-                                          className="size-4 shrink-0"
-                                        />
-                                      )}
-                                      <div className="text-sm font-semibold">
-                                        {iitem.title}
+                                      <Icon name={wt.icon} className="size-4 shrink-0" />
+                                      <div className="min-w-0 flex-1 truncate pr-8 text-sm font-semibold" title={wt.name}>
+                                        {wt.name}
                                       </div>
+                                      {renderToolBadge(wt.badge)}
                                     </Link>
                                   ))}
                                 </div>
                               ))}
+                              <Link
+                                href={AI_WRITE_TOOL_HUB_URL as any}
+                                className="flex items-center gap-2 rounded-xl border border-amber-500/20 bg-amber-500/[0.06] p-3 text-sm font-semibold text-amber-800 transition-colors hover:bg-amber-500/10 dark:border-amber-400/20 dark:text-amber-200 dark:hover:bg-amber-400/10"
+                              >
+                                <Icon name="RiGridLine" className="size-4 shrink-0" />
+                                {t("ai_tools.view_all_cta", { count: toolTotal })}
+                                <Icon
+                                  name="RiArrowRightSLine"
+                                  className="ml-auto size-4 shrink-0"
+                                />
+                              </Link>
                             </AccordionContent>
                           </AccordionItem>
                         );

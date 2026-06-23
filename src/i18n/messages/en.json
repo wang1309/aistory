@@ -293,9 +293,9 @@
     "badge_new": "New",
     "button_use_now": "Start now",
     "category_writing": "Writing",
-    "category_planning": "Planning & Outlines",
-    "category_characters": "Characters & Backstories",
-    "category_kids": "Kids & Bedtime",
+    "column_story": "Story",
+    "column_title_structure": "Title & Structure",
+    "column_creative": "Creative",
     "category_creative": "Creative",
     "category_featured": "Hub",
     "tools": {
@@ -377,7 +377,22 @@
       }
     },
     "tab_story": "Story Generator",
-    "tab_creative": "Creative"
+    "tab_creative": "Creative",
+    "search_placeholder": "Search tools by name or scenario...",
+    "filter_all": "All",
+    "filter_story": "Story",
+    "filter_title": "Title",
+    "filter_plot": "Plot",
+    "filter_poem": "Poem",
+    "filter_dialogue": "Dialogue",
+    "filter_fanfic": "Fanfic",
+    "new_tools_section": "Newly Added",
+    "results_count": "{count, plural, =0 {No tools found} one {# tool} other {# tools}}",
+    "no_results": "No matching tools. Try clearing the filters.",
+    "clear_filters": "Clear filters",
+    "view_all_cta": "View all {count}+ tools",
+    "view_all_sub": "Browse the full catalog on the hub page",
+    "scroll_down": "Scroll down"
   },
   "story_guide": {
     "step_1": {

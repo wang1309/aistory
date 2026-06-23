@@ -293,9 +293,9 @@
     "badge_new": "新上线",
     "button_use_now": "立即使用",
     "category_writing": "写作",
-    "category_planning": "规划与大纲",
-    "category_characters": "角色与背景",
-    "category_kids": "儿童与睡前",
+    "column_story": "故事",
+    "column_title_structure": "标题与结构",
+    "column_creative": "创意",
     "category_creative": "创意",
     "category_featured": "工具集",
     "tools": {
@@ -377,7 +377,22 @@
       }
     },
     "tab_story": "故事生成器",
-    "tab_creative": "创意"
+    "tab_creative": "创意",
+    "search_placeholder": "搜索工具名称或使用场景...",
+    "filter_all": "全部",
+    "filter_story": "故事",
+    "filter_title": "标题",
+    "filter_plot": "情节",
+    "filter_poem": "诗歌",
+    "filter_dialogue": "对话",
+    "filter_fanfic": "同人",
+    "new_tools_section": "最新上架",
+    "results_count": "共 {count} 个工具",
+    "no_results": "没有找到匹配的工具，试试清空筛选条件。",
+    "clear_filters": "清空筛选",
+    "view_all_cta": "查看全部 {count}+ 个工具",
+    "view_all_sub": "在工具中心浏览完整目录",
+    "scroll_down": "向下滚动"
   },
   "story_guide": {
     "step_1": {
