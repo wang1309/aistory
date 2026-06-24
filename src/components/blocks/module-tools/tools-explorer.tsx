@@ -55,10 +55,20 @@ export function ToolsExplorer({
     [categoriesInTab]
   );
 
+  const hasFilter = query.trim() !== "" || activeCategory !== "all";
+  const showNewSection = !hasFilter && newTools.length > 0;
+  const newToolSlugs = useMemo(
+    () => new Set(newTools.map((tool) => tool.slug)),
+    [newTools]
+  );
+
   const filteredTools = useMemo(() => {
     if (!activeTab) return [];
     const q = query.trim().toLowerCase();
     return activeTab.tools.filter((tool) => {
+      if (showNewSection && newToolSlugs.has(tool.slug)) {
+        return false;
+      }
       if (activeCategory !== "all" && tool.category !== activeCategory) {
         return false;
       }
@@ -68,12 +78,9 @@ export function ToolsExplorer({
       }
       return true;
     });
-  }, [activeTab, query, activeCategory]);
+  }, [activeTab, query, activeCategory, showNewSection, newToolSlugs]);
 
   if (!activeTab) return null;
-
-  const hasFilter = query.trim() !== "" || activeCategory !== "all";
-  const showNewSection = !hasFilter && newTools.length > 0;
 
   return (
     <div className="mt-10">
