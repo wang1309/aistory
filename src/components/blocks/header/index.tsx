@@ -264,13 +264,13 @@ export default function Header({ header }: { header: HeaderType }) {
                             <span>{item.title}</span>
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
-                            <div className="relative w-[48rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-[1.6rem] border border-black/[0.06] bg-popover/95 p-3 shadow-[0_24px_60px_-24px_rgba(38,28,12,0.28)] backdrop-blur-2xl dark:border-white/[0.06]">
+                            <div className="relative w-[42rem] max-w-[calc(100vw-2.5rem)] overflow-hidden rounded-[1.6rem] border border-black/[0.06] bg-popover/95 p-2.5 shadow-[0_24px_60px_-24px_rgba(38,28,12,0.28)] backdrop-blur-2xl dark:border-white/[0.06] xl:w-[48rem] xl:p-3 2xl:w-[52rem]">
                               <div
                                 aria-hidden
                                 className="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-gradient-to-br from-amber-300/30 via-amber-500/15 to-transparent blur-3xl dark:from-amber-400/20 dark:via-amber-500/10"
                               />
 
-                              <div className="relative grid grid-cols-3 gap-3">
+                              <div className="relative grid grid-cols-3 gap-2 xl:gap-3">
                                 {toolColumns.map((colItems, colIdx) => (
                                   <ToolColumn
                                     key={colIdx}
