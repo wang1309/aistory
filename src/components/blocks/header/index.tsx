@@ -197,6 +197,8 @@ export default function Header({ header }: { header: HeaderType }) {
   const t = useTranslations();
   const navItems = buildAiWriteHeaderNav(header.nav?.items || []);
   const { columns: toolColumns, total: toolTotal } = useHeaderToolColumns();
+  const mobileDrawerItemClassName =
+    "mx-5 flex items-center gap-3 rounded-xl px-5 py-3 font-semibold transition-colors hover:bg-accent hover:text-accent-foreground";
 
   if (header.disabled) {
     return null;
@@ -416,8 +418,8 @@ export default function Header({ header }: { header: HeaderType }) {
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="overflow-y-auto">
-                <SheetHeader>
+              <SheetContent className="w-[min(92vw,24rem)] overflow-y-auto p-0 sm:max-w-sm">
+                <SheetHeader className="px-5 pb-4 pr-14 pt-5">
                   <SheetTitle>
                     <Link
                       href={(header.brand?.url || "/") as any}
@@ -441,7 +443,7 @@ export default function Header({ header }: { header: HeaderType }) {
                     </Link>
                   </SheetTitle>
                 </SheetHeader>
-                <div className="mb-8 mt-8 flex flex-col gap-4">
+                <div className="mb-8 mt-4 flex flex-col gap-3">
                   <Accordion type="single" collapsible className="w-full">
                     {navItems.map((item, i) => {
                       if (item.url === AI_WRITE_TOOL_HUB_URL) {
@@ -451,49 +453,77 @@ export default function Header({ header }: { header: HeaderType }) {
                             value={item.title || ""}
                             className="border-b-0"
                           >
-                            <AccordionTrigger className="mb-4 py-0 font-semibold hover:no-underline text-left">
-                              {item.title}
+                            <AccordionTrigger className="rounded-xl px-5 py-3 text-left text-base font-semibold hover:no-underline [&>svg]:ml-4 [&>svg]:shrink-0 [&>svg]:text-muted-foreground">
+                              <span className="flex min-w-0 items-center gap-3">
+                                {item.icon && (
+                                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
+                                    <Icon
+                                      name={item.icon}
+                                      className="size-4 shrink-0"
+                                    />
+                                  </span>
+                                )}
+                                <span className="truncate">{item.title}</span>
+                              </span>
                             </AccordionTrigger>
-                            <AccordionContent className="mt-2 flex flex-col gap-3">
-                              {toolColumns.map((colItems, colIdx) => (
-                                <div
-                                  key={colIdx}
-                                  className="rounded-xl border border-black/[0.04] bg-black/[0.015] p-2 dark:border-white/[0.04] dark:bg-white/[0.02]"
-                                >
-                                  <div className="mb-1 flex items-center gap-2 px-2 pt-1">
-                                    <span className="flex size-5 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
-                                      <Icon name={COLUMN_DEFS[colIdx].icon} className="size-3" />
-                                    </span>
-                                    <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
-                                      {t(COLUMN_DEFS[colIdx].labelKey)}
-                                    </span>
+                            <AccordionContent className="px-5 pb-2 pt-1">
+                              <div className="flex flex-col gap-3 rounded-[1.35rem] border border-black/[0.05] bg-black/[0.015] p-3 dark:border-white/[0.05] dark:bg-white/[0.02]">
+                                {toolColumns.map((colItems, colIdx) => (
+                                  <div
+                                    key={colIdx}
+                                    className="rounded-[1.1rem] border border-black/[0.04] bg-white/70 p-2.5 dark:border-white/[0.04] dark:bg-white/[0.02]"
+                                  >
+                                    <div className="mb-1.5 flex items-center gap-2 px-1.5 pt-0.5">
+                                      <span className="flex size-6 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
+                                        <Icon
+                                          name={COLUMN_DEFS[colIdx].icon}
+                                          className="size-3.5"
+                                        />
+                                      </span>
+                                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
+                                        {t(COLUMN_DEFS[colIdx].labelKey)}
+                                      </span>
+                                    </div>
+                                    {colItems.map((wt) => (
+                                      <Link
+                                        key={wt.tool.slug}
+                                        className="relative flex select-none items-center gap-3 rounded-lg px-2.5 py-2.5 leading-none outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                        href={wt.href as any}
+                                      >
+                                        <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-black/[0.04] text-muted-foreground dark:bg-white/[0.04]">
+                                          <Icon
+                                            name={wt.icon}
+                                            className="size-4 shrink-0"
+                                          />
+                                        </span>
+                                        <div
+                                          className="min-w-0 flex-1 truncate pr-8 text-sm font-semibold"
+                                          title={wt.name}
+                                        >
+                                          {wt.name}
+                                        </div>
+                                        {renderToolBadge(wt.badge)}
+                                      </Link>
+                                    ))}
                                   </div>
-                                  {colItems.map((wt) => (
-                                    <Link
-                                      key={wt.tool.slug}
-                                      className="relative flex select-none gap-3 rounded-md p-2.5 leading-none outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                                      href={wt.href as any}
-                                    >
-                                      <Icon name={wt.icon} className="size-4 shrink-0" />
-                                      <div className="min-w-0 flex-1 truncate pr-8 text-sm font-semibold" title={wt.name}>
-                                        {wt.name}
-                                      </div>
-                                      {renderToolBadge(wt.badge)}
-                                    </Link>
-                                  ))}
-                                </div>
-                              ))}
-                              <Link
-                                href={AI_WRITE_TOOL_HUB_URL as any}
-                                className="flex items-center gap-2 rounded-xl border border-amber-500/20 bg-amber-500/[0.06] p-3 text-sm font-semibold text-amber-800 transition-colors hover:bg-amber-500/10 dark:border-amber-400/20 dark:text-amber-200 dark:hover:bg-amber-400/10"
-                              >
-                                <Icon name="RiGridLine" className="size-4 shrink-0" />
-                                {t("ai_tools.view_all_cta", { count: toolTotal })}
-                                <Icon
-                                  name="RiArrowRightSLine"
-                                  className="ml-auto size-4 shrink-0"
-                                />
-                              </Link>
+                                ))}
+                                <Link
+                                  href={AI_WRITE_TOOL_HUB_URL as any}
+                                  className="flex items-center gap-3 rounded-[1.1rem] border border-amber-500/20 bg-amber-500/[0.06] px-3.5 py-3 text-sm font-semibold text-amber-800 transition-colors hover:bg-amber-500/10 dark:border-amber-400/20 dark:text-amber-200 dark:hover:bg-amber-400/10"
+                                >
+                                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-amber-500/12 text-amber-700 dark:bg-amber-400/12 dark:text-amber-300">
+                                    <Icon
+                                      name="RiGridLine"
+                                      className="size-4 shrink-0"
+                                    />
+                                  </span>
+                                  {t("ai_tools.view_all_cta", { count: toolTotal })}
+                                  <Icon
+                                    name="RiArrowRightSLine"
+                                    className="ml-auto size-4 shrink-0"
+                                  />
+                                </Link>
+                              </div>
                             </AccordionContent>
                           </AccordionItem>
                         );
@@ -503,7 +533,7 @@ export default function Header({ header }: { header: HeaderType }) {
                           key={i}
                           href={item.url as any}
                           target={item.target}
-                          className="font-semibold my-4 flex items-center gap-2 px-4"
+                          className={mobileDrawerItemClassName}
                         >
                           {item.icon && (
                             <Icon
@@ -518,21 +548,21 @@ export default function Header({ header }: { header: HeaderType }) {
                   </Accordion>
                   <Link
                     href={"/community" as any}
-                    className="font-semibold my-4 flex items-center gap-2 px-4"
+                    className={mobileDrawerItemClassName}
                   >
                     <Icon name="RiCommunityLine" className="size-4 shrink-0" />
                     {t("community.title")}
                   </Link>
                   <Link
                     href={"/pricing" as any}
-                    className="font-semibold my-4 flex items-center gap-2 px-4"
+                    className={mobileDrawerItemClassName}
                   >
                     <Icon name="RiPriceTag3Line" className="size-4 shrink-0" />
                     {t("pricing.title")}
                   </Link>
                 </div>
                 <div className="flex-1"></div>
-                <div className="border-t pt-4">
+                <div className="border-t px-5 pt-4">
                   <div className="mt-2 flex flex-col gap-3">
                     {header.buttons?.map((item, i) => {
                       return (
