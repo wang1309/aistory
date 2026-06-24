@@ -34,7 +34,7 @@ export default function Stats({ section }: { section: SectionType }) {
                 <p className="text-[10px] font-medium text-muted-foreground/50 uppercase tracking-[0.2em]">
                   {item.title}
                 </p>
-                <p className={`pt-4 font-display font-bold tracking-tight ${isMiddle ? "text-[4.5rem] lg:text-[6rem] leading-none" : "text-[3rem] lg:text-[4rem] leading-none"}`}>
+                <p className={`pt-4 font-display font-bold tracking-tight leading-none ${isMiddle ? "text-[3rem] sm:text-[4.5rem] lg:text-[6rem]" : "text-[2.25rem] sm:text-[3rem] lg:text-[4rem]"}`}>
                   <span className="bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-transparent">
                     {item.label}
                   </span>
