@@ -9,6 +9,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/providers/theme";
 import VerificationModal from "@/components/verification-modal";
 import Analytics from "@/components/analytics";
+import NextTopLoader from "nextjs-toploader";
 import { Metadata } from "next";
 import { buildLanguageAlternates } from "@/lib/seo";
 
@@ -107,6 +108,12 @@ export default async function LocaleLayout({
         <AppContextProvider>
           <ThemeProvider>
             {children}
+            {/* 顶部路由加载进度条:amber 品牌色,点击导航到新页面渲染前的空档给用户即时反馈 */}
+            <NextTopLoader
+              color="#f59e0b"
+              shadow="0 0 10px rgba(245,158,11,0.7), 0 0 5px rgba(245,158,11,0.5)"
+              height={3}
+            />
             <VerificationModal />
             <Analytics />
           </ThemeProvider>

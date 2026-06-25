@@ -38,7 +38,7 @@ import {
 
 import { Header as HeaderType } from "@/types/blocks/header";
 import Icon from "@/components/icon";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import LocaleToggle from "@/components/locale/toggle";
 import { Menu } from "lucide-react";
 import SignToggle from "@/components/sign/toggle";
@@ -199,6 +199,13 @@ export default function Header({ header }: { header: HeaderType }) {
   const { columns: toolColumns, total: toolTotal } = useHeaderToolColumns();
   const mobileDrawerItemClassName =
     "mx-5 flex items-center gap-3 rounded-xl px-5 py-3 font-semibold transition-colors hover:bg-accent hover:text-accent-foreground";
+
+  // 移动端抽屉受控：路由变化后自动关闭,避免点击导航项跳转后抽屉仍残留
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   if (header.disabled) {
     return null;
@@ -412,13 +419,22 @@ export default function Header({ header }: { header: HeaderType }) {
                 </span>
               )}
             </Link>
-            <Sheet>
+            <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
                 <Button variant="default" size="icon">
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="w-[min(92vw,24rem)] overflow-y-auto p-0 sm:max-w-sm">
+              <SheetContent
+                onClick={(e) => {
+                  // 点击任意导航链接立即收起抽屉,避免等页面加载才关的"点了没反应"感;
+                  // Accordion 触发器/语言·主题切换是按钮(closest("a") 为 null),不会误关
+                  if ((e.target as HTMLElement).closest("a")) {
+                    setMobileOpen(false);
+                  }
+                }}
+                className="w-[min(92vw,24rem)] overflow-y-auto p-0 sm:max-w-sm"
+              >
                 <SheetHeader className="px-5 pb-4 pr-14 pt-5">
                   <SheetTitle>
                     <Link
