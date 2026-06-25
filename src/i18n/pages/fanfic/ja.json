@@ -34,7 +34,9 @@
       "worldview_placeholder": "作品の世界観と設定を説明してください...",
       "characters_label": "主要キャラクター",
       "characters_placeholder": "キャラクター名をカンマ区切りで入力",
-      "characters_hint": "例：ハリー・ポッター、ハーマイオニー・グレンジャー、ドラコ・マルフォイ"
+      "characters_hint": "例：ハリー・ポッター、ハーマイオニー・グレンジャー、ドラコ・マルフォイ",
+      "show_more": "もっと見る",
+      "show_less": "折りたたむ"
     },
     "pairing": {
       "label": "カップリング",

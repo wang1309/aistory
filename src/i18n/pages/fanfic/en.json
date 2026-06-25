@@ -34,7 +34,9 @@
       "worldview_placeholder": "Describe the worldview and setting of the work...",
       "characters_label": "Main Characters",
       "characters_placeholder": "Enter character names, separated by commas",
-      "characters_hint": "Example: Harry Potter, Hermione Granger, Draco Malfoy"
+      "characters_hint": "Example: Harry Potter, Hermione Granger, Draco Malfoy",
+      "show_more": "Show more",
+      "show_less": "Show less"
     },
     "pairing": {
       "label": "Character Pairing",

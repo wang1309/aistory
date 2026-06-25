@@ -34,7 +34,9 @@
       "worldview_placeholder": "작품의 세계관과 설정을 설명해주세요...",
       "characters_label": "주요 캐릭터",
       "characters_placeholder": "캐릭터 이름을 쉼표로 구분하여 입력",
-      "characters_hint": "예시: 해리 포터, 헤르미온느 그레인저, 드레이코 말포이"
+      "characters_hint": "예시: 해리 포터, 헤르미온느 그레인저, 드레이코 말포이",
+      "show_more": "더 보기",
+      "show_less": "접기"
     },
     "pairing": {
       "label": "캐릭터 페어링",

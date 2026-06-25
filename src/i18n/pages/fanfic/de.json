@@ -34,7 +34,9 @@
       "worldview_placeholder": "Beschreiben Sie das Weltbild und die Szenerie des Werks...",
       "characters_label": "Hauptcharaktere",
       "characters_placeholder": "Geben Sie Charakternamen ein, durch Kommas getrennt",
-      "characters_hint": "Beispiel: Harry Potter, Hermine Granger, Draco Malfoy"
+      "characters_hint": "Beispiel: Harry Potter, Hermine Granger, Draco Malfoy",
+      "show_more": "Mehr anzeigen",
+      "show_less": "Weniger anzeigen"
     },
     "pairing": {
       "label": "Charakterpaarung",
