@@ -18,6 +18,8 @@ export interface FanficGenerate {
     characters_label: string;
     characters_placeholder: string;
     characters_hint: string;
+    show_more?: string;
+    show_less?: string;
   };
   pairing: {
     label: string;
