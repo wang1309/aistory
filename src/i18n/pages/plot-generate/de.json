@@ -1,5 +1,12 @@
 {
   "plot_generate": {
+    "completion_guide": {
+      "title": "Gefällt Ihnen diese Handlungsskizze?",
+      "subtitle": "Sie können sie speichern oder eine neue generieren.",
+      "create_another": "Neue Handlung generieren",
+      "share_action": "Geschichte speichern",
+      "continue_label": "Geschichte fortsetzen"
+    },
     "random_prompts": [
       "Ein Detektiv entdeckt eine Geheimgesellschaft, die die Stadt aus dem Schatten kontrolliert",
       "Ein Zeitreisender ändert versehentlich die Geschichte und muss die Zeitlinie reparieren, bevor er verschwindet",

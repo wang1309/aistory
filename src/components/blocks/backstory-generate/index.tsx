@@ -49,7 +49,7 @@ function calculateWordCount(text: string): number {
 }
 
 interface BackstoryGenerateProps {
-    section?: BackstoryGenerateType;
+    section: BackstoryGenerateType;
 }
 
 export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
@@ -221,23 +221,6 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     // Computed values
     const wordCount = useMemo(() => calculateWordCount(generatedBackstory), [generatedBackstory]);
     
-    const completionGuideTranslations = useMemo(() => {
-        if (locale === "zh") {
-            return {
-                title: "喜欢这个设定吗？",
-                subtitle: "保存它，或基于此继续创作。",
-                create_another: "再试一次",
-                share_action: "保存故事",
-            };
-        }
-        return {
-            title: "Like this backstory?",
-            subtitle: "Save it or use it to create your story.",
-            create_another: "Try Again",
-            share_action: "Save Story",
-        };
-    }, [locale]);
-
     // ========== EVENT HANDLERS ==========
 
     const handleRandomPrompt = useCallback(() => {
@@ -1006,7 +989,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                         className="mt-12 pt-8 border-t border-dashed border-border/50"
                     >
                         <CompletionGuide
-                            translations={completionGuideTranslations}
+                            translations={section.completion_guide}
                             onCreateAnother={handleCreateAnother}
                             onSave={handleSaveClick}
                             onContinue={() => {
@@ -1015,7 +998,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                 } catch {}
                                 router.push(buildContinueRoute({ source: "backstory-generator" }) as any);
                             }}
-                            continueLabel={locale === "zh" ? "续写" : "Continue in AI Write"}
+                            continueLabel={section.completion_guide.continue_label}
                             isSaveDisabled={isSavingStory}
                         />
                     </motion.div>

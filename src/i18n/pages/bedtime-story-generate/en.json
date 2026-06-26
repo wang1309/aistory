@@ -100,6 +100,7 @@
       "title": "Your Bedtime Story",
       "words": "words",
       "copy": "Copy",
+      "continue_button": "Continue the story",
       "generating_message": "Writing your bedtime story...",
       "empty_message": "Your personalized bedtime story will appear here. Cozy up and get ready to read aloud!"
     },

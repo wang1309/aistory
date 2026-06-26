@@ -1,5 +1,12 @@
 {
   "plot_generate": {
+    "completion_guide": {
+      "title": "このプロットは気に入りましたか？",
+      "subtitle": "保存するか、別のものを生成して新しいアイデアを探求できます。",
+      "create_another": "別のプロットを生成",
+      "share_action": "物語を保存",
+      "continue_label": "物語を続ける"
+    },
     "random_prompts": [
       "刑事が影から街を支配する秘密結社を発見する",
       "タイムトラベラーが誤って歴史を変え、消える前にタイムラインを修正しなければならない",

@@ -100,6 +100,7 @@
       "title": "나의 취침 이야기",
       "words": "단어",
       "copy": "복사",
+      "continue_button": "이야기 이어쓰기",
       "generating_message": "취침 이야기를 작성 중입니다...",
       "empty_message": "맞춤형 취침 이야기가 여기에 표시됩니다. 오늘 밤 특별한 이야기를 준비하세요!"
     },

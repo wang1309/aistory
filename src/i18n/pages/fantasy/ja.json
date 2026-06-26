@@ -257,6 +257,7 @@
       "button_export_pdf": "Export PDF",
       "button_exporting_pdf": "Exporting...",
       "button_regenerate": "Regenerate",
+      "button_continue": "物語を続ける",
       "button_send_to_workspace": "Send to Writing Space",
       "loading": "Generating your fantasy world..."
     },

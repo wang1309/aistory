@@ -62,7 +62,7 @@ function calculateWordCount(text: string): number {
 // ========== COMPONENT ==========
 
 interface PlotGenerateProps {
-  section?: PlotGenerateType;
+  section: PlotGenerateType;
 }
 
 export default function PlotGenerate({ section }: PlotGenerateProps) {
@@ -535,24 +535,6 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   // Computed values
   const wordCount = useMemo(() => calculateWordCount(generatedPlot), [generatedPlot]);
   const promptCharCount = prompt.length;
-
-  const completionGuideTranslations = useMemo(() => {
-    if (locale === "zh") {
-      return {
-        title: "喜欢这个剧情大纲吗？",
-        subtitle: "你可以保存它，或者基于它继续创作故事。",
-        create_another: "再生成一个大纲",
-        share_action: "保存到故事库",
-      };
-    }
-
-    return {
-      title: "Like this plot outline?",
-      subtitle: "You can save it, or generate another one to explore new ideas.",
-      create_another: "Generate Another Plot",
-      share_action: "Save Story",
-    };
-  }, [locale]);
 
   // Load plot from history
   const handleLoadPlot = useCallback((plot: PlotData) => {
@@ -1173,9 +1155,9 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                 } catch {}
                 router.push(buildContinueRoute({ source: "plot-generator" }) as any);
               }}
-              continueLabel={locale === "zh" ? "续写" : "Continue in AI Write"}
+              continueLabel={section.completion_guide.continue_label}
               isSaveDisabled={hasSavedCurrentStory}
-              translations={completionGuideTranslations}
+              translations={section.completion_guide}
             />
           </div>
         )}

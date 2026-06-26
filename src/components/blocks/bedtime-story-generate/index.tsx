@@ -757,7 +757,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                       className="h-8 text-xs gap-1.5 rounded-full bg-orange-600 px-3 text-white hover:bg-orange-500"
                     >
                       <PenLine className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">{locale === "zh" ? "续写" : "Continue"}</span>
+                      <span className="hidden sm:inline">{t("output.continue_button")}</span>
                     </Button>
                   </div>
                 )}

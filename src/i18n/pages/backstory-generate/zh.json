@@ -1,5 +1,12 @@
 {
     "backstory_generate": {
+        "completion_guide": {
+            "title": "喜欢这个设定吗？",
+            "subtitle": "保存它，或基于此继续创作。",
+            "create_another": "再试一次",
+            "share_action": "保存故事",
+            "continue_label": "续写故事"
+        },
         "metadata": {
             "title": "免费角色背景生成器 - AI人物设定工具",
             "description": "免费AI角色背景生成器，从一句角色概念快速扩展为结构化背景故事，专为被设定和大纲卡住的小说作者、跑团DM与内容创作者而设计。",

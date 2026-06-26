@@ -33,6 +33,7 @@
       "generating": "생성 중...",
       "random_button": "랜덤 아이디어",
       "copy_button": "복사",
+      "continue_button": "이야기 이어쓰기",
       "export_button": "내보내기",
       "output_title": "생성된 만화 스크립트",
       "output_empty": "컷별 만화 스크립트가 여기에 표시됩니다. 아이디어를 입력하고 생성을 클릭하세요!",

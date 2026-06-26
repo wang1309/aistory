@@ -100,6 +100,7 @@
       "title": "あなたのおやすみ話",
       "words": "語",
       "copy": "コピー",
+      "continue_button": "物語を続ける",
       "generating_message": "おやすみ話を作成中...",
       "empty_message": "あなたの個性的なおやすみ話がここに表示されます。今夜の読み聞かせをお楽しみに！"
     },

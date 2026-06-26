@@ -5,6 +5,13 @@
     "keywords": "AI-Gedichtgenerator,Haiku-Generator,Sonett-Generator,Akrostich-Generator,Limerick-Generator,Liebesgedicht-Generator,Gedicht-Generator,Vers-Generator,kostenloser Gedicht-Generator,Online-Gedichtgenerator,moderne Poesie,klassische Poesie"
   },
   "poemGenerate": {
+    "completion_guide": {
+      "title": "Gefällt Ihnen Ihr Gedicht?",
+      "subtitle": "Sie können es speichern oder ein neues erstellen.",
+      "create_another": "Neues Gedicht erstellen",
+      "share_action": "Geschichte speichern",
+      "continue_label": "Geschichte fortsetzen"
+    },
     "header": {
       "title": "AI Gedichtgenerator",
       "subtitle": "Erstellen Sie einzigartige Poesie mit KI - Modern, Klassisch, Haiku, Sonett & Liebesgedicht-Generator",

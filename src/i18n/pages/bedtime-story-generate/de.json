@@ -100,6 +100,7 @@
       "title": "Ihre Gutenacht-Geschichte",
       "words": "Wörter",
       "copy": "Kopieren",
+      "continue_button": "Geschichte fortsetzen",
       "generating_message": "Ihre Gutenacht-Geschichte wird geschrieben...",
       "empty_message": "Ihre personalisierte Gutenacht-Geschichte erscheint hier. Machen Sie es sich gemütlich!"
     },

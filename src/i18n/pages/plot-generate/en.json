@@ -1,5 +1,12 @@
 {
   "plot_generate": {
+    "completion_guide": {
+      "title": "Like this plot outline?",
+      "subtitle": "You can save it, or generate another one to explore new ideas.",
+      "create_another": "Generate Another Plot",
+      "share_action": "Save Story",
+      "continue_label": "Continue the story"
+    },
     "random_prompts": [
       "A detective discovers a secret society controlling the city from the shadows",
       "A time traveler accidentally changes history and must fix the timeline before fading from existence",

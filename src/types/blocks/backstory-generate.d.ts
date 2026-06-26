@@ -81,4 +81,11 @@ export interface BackstoryGenerate {
         generation_failed: string;
     };
     random_prompts: string[];
+    completion_guide: {
+        title: string;
+        subtitle: string;
+        create_another: string;
+        share_action: string;
+        continue_label: string;
+    };
 }

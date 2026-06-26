@@ -272,6 +272,7 @@ export interface FantasyGenerate {
     button_export_pdf: string;
     button_exporting_pdf: string;
     button_regenerate: string;
+    button_continue: string;
     button_send_to_workspace: string;
     loading: string;
   };

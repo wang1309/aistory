@@ -319,4 +319,11 @@ export interface PoemGenerate {
   feature3_section?: Section;
   poem_applications_section?: Section;
   testimonial_section?: Section;
+  completion_guide: {
+    title: string;
+    subtitle: string;
+    create_another: string;
+    share_action: string;
+    continue_label: string;
+  };
 }

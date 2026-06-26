@@ -60,6 +60,7 @@ export interface BedtimeStoryGenerate {
     title: string;
     words: string;
     copy: string;
+    continue_button: string;
     generating_message: string;
     empty_message: string;
   };

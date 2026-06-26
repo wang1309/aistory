@@ -5,6 +5,13 @@
     "keywords": "AI 시 생성기,하이쿠 생성기,소네트 생성기,아크로스틱 생성기,라임릭 생성기,러브 시 생성기,시 생성기,운문 생성기,무료 시 생성기,온라인 시 생성기,현대시,고전시"
   },
   "poemGenerate": {
+    "completion_guide": {
+      "title": "이 시가 마음에 드시나요?",
+      "subtitle": "저장하거나 다른 것을 만들어 새로운 영감을 탐색할 수 있습니다.",
+      "create_another": "다른 시 만들기",
+      "share_action": "이야기 저장",
+      "continue_label": "이야기 이어쓰기"
+    },
     "header": {
       "title": "AI 시 생성기",
       "subtitle": "AI로 독특한 시를 창작 - 현대시, 고전시, 하이쿠, 소네트, 러브 시 생성기",

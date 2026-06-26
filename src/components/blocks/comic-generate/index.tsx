@@ -973,7 +973,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                       className="gap-1.5 text-xs rounded-full bg-orange-600 px-3 text-white hover:bg-orange-500"
                     >
                       <PenLine className="h-3 w-3" />
-                      <span className="hidden sm:inline">{locale === "zh" ? "续写" : "Continue"}</span>
+                      <span className="hidden sm:inline">{t("ui.continue_button")}</span>
                     </Button>
                   </div>
                 )}

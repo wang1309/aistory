@@ -9,4 +9,11 @@ export interface PlotGenerate {
   feature_section?: Section;
   feature1_section?: Section;
   feature3_section?: Section;
+  completion_guide: {
+    title: string;
+    subtitle: string;
+    create_another: string;
+    share_action: string;
+    continue_label: string;
+  };
 }

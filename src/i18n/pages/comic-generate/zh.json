@@ -33,6 +33,7 @@
       "generating": "生成中...",
       "random_button": "随机灵感",
       "copy_button": "复制",
+      "continue_button": "续写故事",
       "export_button": "导出",
       "output_title": "生成的漫画脚本",
       "output_empty": "你的逐格漫画脚本将在此显示。输入故事灵感并点击生成！",

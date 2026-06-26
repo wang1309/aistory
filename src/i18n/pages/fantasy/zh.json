@@ -257,6 +257,7 @@
       "button_export_pdf": "导出 PDF",
       "button_exporting_pdf": "导出中...",
       "button_regenerate": "重新生成",
+      "button_continue": "续写故事",
       "button_send_to_workspace": "发送到写作空间",
       "loading": "正在生成你的奇幻世界..."
     },

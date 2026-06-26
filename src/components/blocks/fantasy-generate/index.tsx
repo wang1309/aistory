@@ -1072,7 +1072,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                     }}
                   >
                     <Icon name="mdi:pencil-plus" className="w-4 h-4 mr-2" />
-                    {locale === "zh" ? "续写" : "Continue"}
+                    {section.output.button_continue}
                   </Button>
                 </div>
               </>

@@ -33,6 +33,7 @@
       "generating": "Generating...",
       "random_button": "Random Idea",
       "copy_button": "Copy",
+      "continue_button": "Continue the story",
       "export_button": "Export",
       "output_title": "Generated Comic Script",
       "output_empty": "Your panel-by-panel comic script will appear here. Enter your story idea and click Generate!",

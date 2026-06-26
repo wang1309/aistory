@@ -1,5 +1,12 @@
 {
     "backstory_generate": {
+        "completion_guide": {
+            "title": "この設定は気に入りましたか？",
+            "subtitle": "保存するか、これを使って物語を作りましょう。",
+            "create_another": "もう一度試す",
+            "share_action": "物語を保存",
+            "continue_label": "物語を続ける"
+        },
         "metadata": {
             "title": "無料バックストーリージェネレーター - AIキャラクター背景作成ツール",
             "description": "無料AIバックストーリージェネレーター。ひと言のキャラクター案から構造化された背景を生成し、設定やプロットに行き詰まった小説家・TRPG GM・クリエイターをサポートします。",

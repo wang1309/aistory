@@ -257,6 +257,7 @@
       "button_export_pdf": "Экспорт PDF",
       "button_exporting_pdf": "Экспорт...",
       "button_regenerate": "Перегенерировать",
+      "button_continue": "Продолжить историю",
       "button_send_to_workspace": "Отправить в рабочее пространство",
       "loading": "Генерируем ваш фэнтези мир..."
     },

@@ -5,6 +5,13 @@
     "keywords": "AI poem generator,haiku poem generator,sonnet poem generator,acrostic poem generator,limerick poem generator,love poem generator,poetry generator,verse generator,free poem generator,online poem generator,modern poetry,classical poetry"
   },
   "poemGenerate": {
+    "completion_guide": {
+      "title": "Like your poem?",
+      "subtitle": "You can save it, or create another one to explore new inspiration.",
+      "create_another": "Create Another Poem",
+      "share_action": "Save Story",
+      "continue_label": "Continue the story"
+    },
     "header": {
       "title": "AI Poem Generator",
       "subtitle": "Create Unique Poetry with AI - Modern, Classical, Haiku, Sonnet & Love Poem Generator",

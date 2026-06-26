@@ -737,24 +737,6 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const maxCharacters = 2000;
   const lineCount = calculateLineCount(generatedPoem);
 
-  const completionGuideTranslations = useMemo(() => {
-    if (locale === "zh") {
-      return {
-        title: "喜欢这首诗吗？",
-        subtitle: "你可以保存它，或者再写一首新的诗歌。",
-        create_another: "再写一首诗",
-        share_action: "保存到故事库",
-      };
-    }
-
-    return {
-      title: "Like your poem?",
-      subtitle: "You can save it, or create another one to explore new inspiration.",
-      create_another: "Create Another Poem",
-      share_action: "Save Story",
-    };
-  }, [locale, section]);
-
   return (
     <div id="poem_generator" className="bg-background">
       <div className="relative mx-auto w-full max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
@@ -1456,9 +1438,9 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                   } catch {}
                   router.push(buildContinueRoute({ source: "poem-generator" }) as any);
                 }}
-                continueLabel={locale === "zh" ? "续写" : "Continue in AI Write"}
+                continueLabel={section.completion_guide.continue_label}
                 isSaveDisabled={hasSavedCurrentPoem}
-                translations={completionGuideTranslations}
+                translations={section.completion_guide}
               />
             </div>
           )}

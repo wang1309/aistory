@@ -34,6 +34,7 @@ export interface ComicGenerate {
     generating: string;
     random_button: string;
     copy_button: string;
+    continue_button: string;
     export_button: string;
     output_title: string;
     output_empty: string;

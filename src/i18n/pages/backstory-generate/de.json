@@ -1,5 +1,12 @@
 {
     "backstory_generate": {
+        "completion_guide": {
+            "title": "Gefällt Ihnen das Setting?",
+            "subtitle": "Speichern Sie es oder nutzen Sie es für Ihre Geschichte.",
+            "create_another": "Erneut versuchen",
+            "share_action": "Geschichte speichern",
+            "continue_label": "Geschichte fortsetzen"
+        },
         "metadata": {
             "title": "Kostenloser Backstory-Generator - KI-Tool für Charakterhintergründe",
             "description": "Kostenloser KI-Backstory-Generator, der aus einer kurzen Charakteridee eine strukturierte Vorgeschichte erstellt – für Autor:innen, RPG-Spielleiter und Kreative mit Schreibblockaden.",

@@ -33,6 +33,7 @@
       "generating": "生成中...",
       "random_button": "ランダムアイデア",
       "copy_button": "コピー",
+      "continue_button": "物語を続ける",
       "export_button": "エクスポート",
       "output_title": "生成されたコミックスクリプト",
       "output_empty": "コマ割りスクリプトがここに表示されます。アイデアを入力して生成してください！",

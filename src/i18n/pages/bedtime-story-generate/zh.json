@@ -100,6 +100,7 @@
       "title": "您的睡前故事",
       "words": "字",
       "copy": "复制",
+      "continue_button": "续写故事",
       "generating_message": "正在为您创作睡前故事...",
       "empty_message": "您的个性化睡前故事将在这里出现。准备好了吗？让我们开始今晚的睡前时光！"
     },

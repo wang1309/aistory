@@ -1,5 +1,12 @@
 {
     "backstory_generate": {
+        "completion_guide": {
+            "title": "이 설정이 마음에 드시나요?",
+            "subtitle": "저장하거나 이것으로 이야기를 만들어 보세요.",
+            "create_another": "다시 시도하기",
+            "share_action": "이야기 저장",
+            "continue_label": "이야기 이어쓰기"
+        },
         "metadata": {
             "title": "무료 백스토리 생성기 - AI 캐릭터 배경 생성 도구",
             "description": "무료 AI 백스토리 생성기로 한 줄짜리 캐릭터 아이디어를 구조화된 백스토리로 확장해, 설정과 플롯에서 막힌 소설가, RPG 마스터, 크리에이터를 도와보세요.",

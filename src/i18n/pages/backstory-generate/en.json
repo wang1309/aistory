@@ -1,5 +1,12 @@
 {
     "backstory_generate": {
+        "completion_guide": {
+            "title": "Like this backstory?",
+            "subtitle": "Save it or use it to create your story.",
+            "create_another": "Try Again",
+            "share_action": "Save Story",
+            "continue_label": "Continue the story"
+        },
         "metadata": {
             "title": "Free Backstory Generator - AI Character Background Creator",
             "description": "Free AI backstory generator that expands a one-line character idea into a structured backstory, built for writers, RPG DMs and creators stuck on outlines.",

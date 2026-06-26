@@ -5,6 +5,13 @@
     "keywords": "AI诗歌生成器,俳句生成器,十四行诗生成器,藏头诗生成器,打油诗生成器,情诗生成器,诗词生成器,在线写诗,免费诗歌生成,现代诗生成,古典诗词"
   },
   "poemGenerate": {
+    "completion_guide": {
+      "title": "喜欢这首诗吗？",
+      "subtitle": "你可以保存它，或者再写一首新的诗歌。",
+      "create_another": "再写一首诗",
+      "share_action": "保存到故事库",
+      "continue_label": "续写故事"
+    },
     "header": {
       "title": "AI 诗歌生成器",
       "subtitle": "用AI创作独特的诗歌 - 支持现代诗、古典诗词、俳句、十四行诗、情诗生成器",
