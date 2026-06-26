@@ -632,7 +632,8 @@
       "title": "Liked your story?",
       "subtitle": "You can save it, or try a new idea!",
       "create_another": "Create Another",
-      "share_action": "Save Story"
+      "share_action": "Save Story",
+      "continue_label": "Continue the story"
     }
   },
   "cta": {

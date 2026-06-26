@@ -239,5 +239,6 @@ export interface StoryGenerate {
     subtitle: string;
     create_another: string;
     share_action: string;
+    continue_label: string;
   };
 }

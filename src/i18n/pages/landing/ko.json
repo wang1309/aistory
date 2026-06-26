@@ -632,7 +632,8 @@
       "title": "이 이야기가 마음에 드시나요?",
       "subtitle": "저장하거나 새로운 아이디어를 시도해 보세요!",
       "create_another": "새로운 이야기 만들기",
-      "share_action": "이야기 공유하기"
+      "share_action": "이야기 공유하기",
+      "continue_label": "이야기 이어쓰기"
     }
   },
   "cta": {

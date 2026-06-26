@@ -1423,7 +1423,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             onCreateAnother={handleCreateAnother}
             onSave={handleSaveClick}
             onContinue={handleContinueInAiWrite}
-            continueLabel={locale === "zh" ? "继续到 AI Write" : "Continue in AI Write"}
+            continueLabel={section.completion_guide.continue_label}
             translations={section.completion_guide}
             isSaveDisabled={isSavingStory || hasSavedCurrentStory}
           />

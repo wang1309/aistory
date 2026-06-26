@@ -632,7 +632,8 @@
       "title": "Gefällt Ihnen die Geschichte?",
       "subtitle": "Sie können sie speichern oder eine neue Idee ausprobieren!",
       "create_another": "Neue Geschichte erstellen",
-      "share_action": "Geschichte teilen"
+      "share_action": "Geschichte teilen",
+      "continue_label": "Geschichte fortsetzen"
     }
   },
   "cta": {

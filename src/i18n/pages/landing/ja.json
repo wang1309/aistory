@@ -632,7 +632,8 @@
       "title": "この物語は気に入りましたか？",
       "subtitle": "保存するか、新しいアイデアを試してみてください！",
       "create_another": "新しい物語を作る",
-      "share_action": "物語を共有する"
+      "share_action": "物語を共有する",
+      "continue_label": "物語を続ける"
     }
   },
   "cta": {
