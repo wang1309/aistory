@@ -288,6 +288,8 @@
     "section_description_home": "Entdecken Sie alle KI-Schreibfunktionen an einem Ort – von Geschichten über Titel bis hin zu Fanfiction, Handlungen und Gedichten.",
     "section_title_hub": "Sammlung der AI-Schreibwerkzeuge",
     "section_description_hub": "Durchsuchen Sie alle AI-Schreibwerkzeuge dieser Seite und springen Sie direkt zu dem Feature, das am besten zu Ihrem Schreibszenario passt.",
+    "related_title": "Verwandte AI-Schreibwerkzeuge",
+    "related_more_label": "Alle AI-Schreibwerkzeuge entdecken",
     "badge_category": "AI-Schreibwerkzeug",
     "badge_hot": "Beliebt",
     "badge_new": "Neu",
@@ -374,6 +376,10 @@
       "romance_story_generator": {
         "name": "Liebesgeschichten-Generator",
         "desc": "Generiere originelle Liebesgeschichten mit KI — Sub-Genre, Trope und Intensitätsstufe nach Wahl. Kostenlos, ohne Anmeldung."
+      },
+      "city_nickname_generator": {
+        "name": "Stadtspitznamen-Generator",
+        "desc": "Generiere offizielle, lokale, legendäre und spöttische Spitznamen für fiktive Städte."
       }
     },
     "tab_story": "Geschichtengenerator",

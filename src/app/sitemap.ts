@@ -33,6 +33,7 @@ const TOOL_ROUTES = new Set([
   '/bedtime-story-generator',
   '/fantasy-generator',
   '/romance-story-generator',
+  '/city-nickname-generator',
 ])
 
 function getRouteTier(route: string): RouteTier {
@@ -106,6 +107,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/bedtime-story-generator',
     '/fantasy-generator',
     '/romance-story-generator',
+    '/city-nickname-generator',
     '/changelog'
   ]
 

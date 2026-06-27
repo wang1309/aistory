@@ -29,6 +29,7 @@ const TABS: NavTab[] = [
   { href: "/tiktok-comment-generator", labelKey: "ai_tools.tools.tiktok_comment_generator.name" },
   { href: "/youtube-name-generator", labelKey: "ai_tools.tools.youtube_name_generator.name" },
   { href: "/youtube-title-generator", labelKey: "ai_tools.tools.youtube_title_generator.name" },
+  { href: "/city-nickname-generator", labelKey: "ai_tools.tools.city_nickname_generator.name" },
 ];
 
 const GAP_PX = 6;

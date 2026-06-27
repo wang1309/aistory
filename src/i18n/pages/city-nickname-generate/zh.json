@@ -1,0 +1,279 @@
+{
+  "city_nickname_generate": {
+    "metadata": {
+      "title": "城市昵称生成器 — 为写作、RPG 和世界构建创作独特城市称号",
+      "description": "为奇幻、黑色、科幻和现代背景生成城市昵称。为故事、RPG 和世界构建创作官方、本地、传奇或讽刺的城市称号。",
+      "keywords": "城市昵称生成器, 虚构城市昵称, 奇幻城市称号, 城市绰号创意, 城镇昵称生成器, 世界构建城市名称"
+    },
+    "ui": {
+      "title": "城市昵称生成器",
+      "title_highlight": "城市昵称",
+      "subtitle": "为虚构世界、RPG 场景和故事地点生成城市昵称。立即创作官方称号、本地绰号、传奇称谓或讽刺俚语。",
+      "theme_pills": ["4 种昵称风格", "类型语调感知", "贴切度说明", "世界构建就绪"],
+      "eyebrow": "AI 世界构建工具",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "城市昵称生成器",
+      "form_title": "城市信息",
+      "city_name_label": "城市名称（可选）",
+      "city_name_placeholder": "例如：维利斯港、灰湖、铁据",
+      "city_type_label": "城市类型",
+      "city_type_placeholder": "例如：港口城市、首都、工业城市、要塞小镇",
+      "genre_label": "类型",
+      "reputation_label": "声誉",
+      "reputation_placeholder": "例如：富裕、腐败、神圣、无法无天、被遗忘",
+      "tone_label": "语调",
+      "known_for_label": "以……闻名",
+      "known_for_placeholder": "例如：霓虹市场和走私者、金色圆顶和皇家游行",
+      "geography_label": "地理（可选）",
+      "geography_placeholder": "例如：沿海、高山隘口、地下",
+      "power_culture_label": "权力或文化（可选）",
+      "power_culture_placeholder": "例如：行会、辛迪加、神权、技术官僚",
+      "styles_label": "昵称风格",
+      "count_label": "数量",
+      "advanced_options": "高级选项",
+      "random_button": "随机示例",
+      "generate_button": "生成昵称",
+      "generating_button": "生成中……",
+      "output_title": "城市昵称创意",
+      "group_official": "官方称号",
+      "group_local": "本地绰号",
+      "group_legendary": "传奇称谓",
+      "group_mocking": "讽刺绰号",
+      "why_it_fits": "为何贴切",
+      "best_for": "适用场景",
+      "copy_button": "复制",
+      "empty_output": "填写城市详情并生成，此处将显示分组昵称创意。",
+      "history_title": "最近生成",
+      "history_apply": "应用",
+      "history_delete": "删除",
+      "history_clear": "清除"
+    },
+    "validation": {
+      "city_type_required": "请选择城市类型。",
+      "known_for_required": "请填写城市以何闻名。",
+      "style_required": "请至少选择一种昵称风格。",
+      "generic_error": "目前无法生成城市昵称，请重试。"
+    },
+    "success": {
+      "copied": "昵称已复制到剪贴板。",
+      "generated": "城市昵称已生成。",
+      "history_loaded": "历史记录已加载。",
+      "history_cleared": "历史记录已清除。"
+    },
+    "errors": {
+      "generate_failed": "生成城市昵称失败。",
+      "verification_failed": "验证失败，请重试。"
+    },
+    "genre": {
+      "fantasy": "奇幻",
+      "dark-fantasy": "黑暗奇幻",
+      "noir": "黑色",
+      "cyberpunk": "赛博朋克",
+      "sci-fi": "科幻",
+      "steampunk": "蒸汽朋克",
+      "modern": "现代",
+      "post-apocalyptic": "后启示录"
+    },
+    "tone": {
+      "poetic": "诗意",
+      "majestic": "庄严",
+      "gritty": "粗粝",
+      "ominous": "不祥",
+      "romantic": "浪漫",
+      "cold": "冷峻",
+      "street": "街头"
+    },
+    "style": {
+      "official": "官方",
+      "local": "本地",
+      "legendary": "传奇",
+      "mocking": "讽刺"
+    },
+    "count": {
+      "6": "6 个昵称",
+      "12": "12 个昵称",
+      "20": "20 个昵称"
+    },
+    "random_prompts": [
+      {
+        "cityName": "维利斯港",
+        "cityType": "港口城市",
+        "genre": "sci-fi",
+        "reputation": "lawless",
+        "tone": "cold",
+        "knownFor": "霓虹市场、走私者、轨道船坞",
+        "geography": "沿海，低重力",
+        "powerOrCulture": "辛迪加",
+        "nicknameStyles": ["local", "mocking"],
+        "count": 12
+      },
+      {
+        "cityName": "",
+        "cityType": "首都",
+        "genre": "fantasy",
+        "reputation": "wealthy",
+        "tone": "majestic",
+        "knownFor": "金色圆顶、皇家游行、古老神殿",
+        "geography": "山顶",
+        "powerOrCulture": "贵族与教会",
+        "nicknameStyles": ["official", "legendary"],
+        "count": 12
+      },
+      {
+        "cityName": "灰湖",
+        "cityType": "工业城市",
+        "genre": "noir",
+        "reputation": "dangerous",
+        "tone": "gritty",
+        "knownFor": "雨水、烟雾、讨债人",
+        "geography": "河三角洲，多雾",
+        "powerOrCulture": "工厂工会和犯罪头目",
+        "nicknameStyles": ["local", "mocking", "legendary"],
+        "count": 12
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概述",
+      "title": "城市昵称生成器能做什么",
+      "description": "专为世界构建者、RPG 主持人和小说作家打造，帮助他们找到有分量的可信城市名称。不再是平铺直叙的列表，而是带有简短说明和类型感知上下文的分组昵称类别。",
+      "items": [
+        {
+          "title": "四种昵称视角",
+          "description": "官方、本地、传奇和讽刺昵称组揭示了不同派系和社会阶层如何称呼同一座城市。",
+          "icon": "RiMapPin2Line"
+        },
+        {
+          "title": "契合世界观的解释",
+          "description": "每个昵称都附有「为何贴切」说明和「适用场景」，让你在使用前就明白其含义。",
+          "icon": "RiInformationLine"
+        },
+        {
+          "title": "类型与语调感知",
+          "description": "从黑暗奇幻到赛博朋克再到黑色电影，每种类型和语调都能产生契合你世界词汇的独特昵称语言。",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "3 步使用城市昵称生成器",
+      "description": "不到一分钟，从城市概念到可信昵称。",
+      "items": [
+        {
+          "title": "描述你的城市",
+          "description": "输入城市类型、以何闻名、类型、语调和声誉。添加地理或执政势力以获得更具体的结果。",
+          "icon": "RiBuilding2Line"
+        },
+        {
+          "title": "选择昵称风格",
+          "description": "选择你想要的昵称视角——官方称号、本地俚语、传奇称谓或讽刺绰号。",
+          "icon": "RiCheckboxMultipleLine"
+        },
+        {
+          "title": "复制你喜欢的",
+          "description": "浏览分组结果，阅读每个昵称的贴切原因，复制符合你故事或战役的那些。",
+          "icon": "RiFileCopyLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "为什么作家和游戏主持人使用这个工具",
+      "description": "好的世界名称不只是听起来酷——它们承载着社会意义、历史和派系身份。",
+      "items": [
+        {
+          "title": "承载派系分量的名称",
+          "description": "官方名称反映执政权力。本地绰号展示居民的应对方式。讽刺绰号揭示阶级张力。每组都为世界增添一层深度。",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "简短解释，立即可用",
+          "description": "「为何贴切」说明回答了编辑或玩家会提出的问题——让你自信地使用这个名称，而不是反复质疑。",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "适用所有类型",
+          "description": "奇幻王国、黑色城市、赛博朋克蔓延都市和后启示录定居点都有不同的昵称词汇——此生成器匹配每一种。",
+          "icon": "RiEarthLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "使用场景",
+      "title": "谁在使用城市昵称生成器",
+      "description": "任何时候一个地点需要像有历史的真实地方，城市昵称都很重要。",
+      "items": [
+        {
+          "title": "RPG 游戏主持人",
+          "description": "给玩家一个本地居民叫法与地图标注不同的城市。昵称表、酒馆俚语、不祥传说——三者兼得。",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "小说和世界构建作家",
+          "description": "在对话中加入本地绰号，城市立刻有了街头质感。不需要世界构建文档——读者能感受到历史。",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "游戏设计师和叙事团队",
+          "description": "快速跨不同城市原型进行地点命名。生成、按风格筛选，然后将候选名单交给写作团队。",
+          "icon": "RiGamepadLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "城市昵称生成器 — 常见问题",
+      "items": [
+        {
+          "title": "世界构建中的城市昵称是什么？",
+          "description": "城市昵称是一种非正式或正式的称谓，赋予定居点超越官方名称的声誉驱动身份。现实中如「不夜城」或「钢铁之都」。在虚构作品中，这些名称无需说教就能传达派系身份、阶级张力和历史。"
+        },
+        {
+          "title": "四种昵称风格分别是什么意思？",
+          "description": "官方昵称是正式文件、贵族或官方宣传中使用的称号。本地昵称是居民在街上实际说的。传奇昵称来自神话、预言或古老事件。讽刺绰号被外来者、对手或下层阶级用来贬低城市的自命不凡。"
+        },
+        {
+          "title": "这些昵称可以用于出版作品吗？",
+          "description": "可以。生成的昵称可用于小说、游戏以及任何商业或非商业创意作品，无需署名。"
+        },
+        {
+          "title": "适用于真实城市吗？",
+          "description": "该生成器针对虚构城市和世界构建场景进行了优化。当你描述一个背景、类型和语调而不是真实世界地点时，效果最佳。"
+        },
+        {
+          "title": "如何获得更具体的结果？",
+          "description": "填写可选字段——地理、执政权力或文化以及城市名称。你提供的背景越多，昵称就越能反映你世界的实际细节，而不是类型默认值。"
+        }
+      ]
+    },
+    "related_tools": {
+      "eyebrow": "相关工具",
+      "title": "更多世界构建工具",
+      "description": "继续完善你的世界——为你刚命名的城市生成标题、背景和大纲。",
+      "cta": "打开",
+      "more_label": "浏览全部 AI 写作工具"
+    },
+    "cta": {
+      "name": "cta",
+      "title": "为你世界中的每座城市命名",
+      "description": "为任何虚构城市生成官方称号、街头绰号、传奇称谓和讽刺俚语。免费、无限次使用，无需账号。",
+      "buttons": [
+        {
+          "title": "生成城市昵称",
+          "url": "#city_nickname_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "探索 AI 写作工具",
+          "url": "/ai-write-tool",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    }
+  }
+}

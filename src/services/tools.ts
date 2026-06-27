@@ -258,6 +258,18 @@ export const tools: Tool[] = [
     icon: "RiLightbulbLine",
     priority: 65,
   },
+  {
+    slug: "city-nickname-generator",
+    nameKey: "ai_tools.tools.city_nickname_generator.name",
+    shortDescKey: "ai_tools.tools.city_nickname_generator.desc",
+    module: "ai-write",
+    category: "title",
+    tab: "creative",
+    href: "/city-nickname-generator",
+    icon: "RiMapPin2Line",
+    badges: ["new"],
+    priority: 73,
+  },
 ];
 
 export function getToolsByModule(module: ModuleId): Tool[] {

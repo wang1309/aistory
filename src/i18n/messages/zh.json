@@ -288,6 +288,8 @@
     "section_description_home": "在一个模块中浏览本站所有 AI 写作功能，从故事生成到书名、同人文、情节与诗歌，一键直达。",
     "section_title_hub": "AI 写作工具大全",
     "section_description_hub": "在这里集中查看并使用所有与 AI 写作相关的功能，根据你的创作场景快速跳转到对应工具。",
+    "related_title": "相关 AI 写作工具",
+    "related_more_label": "浏览全部 AI 写作工具",
     "badge_category": "AI 写作工具",
     "badge_hot": "热门",
     "badge_new": "新上线",
@@ -374,6 +376,10 @@
       "romance_story_generator": {
         "name": "言情故事生成器",
         "desc": "用 AI 创作原创言情故事，支持总裁文、穿越、古风等多种类型，可选甜度和经典桥段。免费无限使用。"
+      },
+      "city_nickname_generator": {
+        "name": "城市昵称生成器",
+        "desc": "为虚构城市生成官方、本地、传奇和讽刺昵称。"
       }
     },
     "tab_story": "故事生成器",

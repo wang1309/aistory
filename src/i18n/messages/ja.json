@@ -288,6 +288,8 @@
     "section_description_home": "ストーリー生成からタイトル、二次創作、プロット、詩まで、すべての AI ライティング機能をまとめてチェックできます。",
     "section_title_hub": "AI ライティングツール集",
     "section_description_hub": "本サイトの AI ライティングツールを一覧で確認し、あなたの執筆シーンに合う機能へすぐに移動できます。",
+    "related_title": "関連する AI ライティングツール",
+    "related_more_label": "すべての AI ライティングツールを見る",
     "badge_category": "AI ライティングツール",
     "badge_hot": "人気",
     "badge_new": "新着",
@@ -374,6 +376,10 @@
       "romance_story_generator": {
         "name": "ロマンス小説ジェネレーター",
         "desc": "好みのサブジャンル・トロープ・甘さレベルでオリジナルのロマンス小説をAIで生成。無料・無制限。"
+      },
+      "city_nickname_generator": {
+        "name": "都市ニックネームジェネレーター",
+        "desc": "架空の都市のための公式、ローカル、伝説的、皮肉なニックネームを生成します。"
       }
     },
     "tab_story": "ストーリージェネレーター",

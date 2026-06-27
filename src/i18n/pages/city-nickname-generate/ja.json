@@ -1,0 +1,279 @@
+{
+  "city_nickname_generate": {
+    "metadata": {
+      "title": "都市ニックネームジェネレーター — 執筆・RPG・ワールドビルディング用",
+      "description": "ファンタジー、ノワール、SF、現代設定向けの都市ニックネームを生成。ストーリー、RPG、ワールドビルディング用の公式、ローカル、伝説的、または皮肉な都市称号を作成。",
+      "keywords": "都市ニックネームジェネレーター, 架空都市ニックネーム, ファンタジー都市称号, 都市ニックネームアイデア, ワールドビルディング都市名"
+    },
+    "ui": {
+      "title": "都市ニックネームジェネレーター",
+      "title_highlight": "都市ニックネーム",
+      "subtitle": "架空の世界、RPGの舞台、物語の場所向けの都市ニックネームを生成。公式称号、地元のニックネーム、伝説的な異名、または皮肉なスラングを数秒で作成。",
+      "theme_pills": ["4つのニックネームスタイル", "ジャンル・トーン対応", "適合理由メモ", "ワールドビルディング対応"],
+      "eyebrow": "AIワールドビルディングツール",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "都市ニックネームジェネレーター",
+      "form_title": "都市の概要",
+      "city_name_label": "都市名（任意）",
+      "city_name_placeholder": "例：ヴェリスポート、アッシェンミア、アイアンホールド",
+      "city_type_label": "都市タイプ",
+      "city_type_placeholder": "例：港湾都市、首都、工業都市、要塞町",
+      "genre_label": "ジャンル",
+      "reputation_label": "評判",
+      "reputation_placeholder": "例：裕福、腐敗、神聖、無法、忘れられた",
+      "tone_label": "トーン",
+      "known_for_label": "有名なもの",
+      "known_for_placeholder": "例：ネオンマーケットと密輸業者、金のドームと王室行列",
+      "geography_label": "地理（任意）",
+      "geography_placeholder": "例：沿岸、高山峠、地下",
+      "power_culture_label": "権力または文化（任意）",
+      "power_culture_placeholder": "例：ギルド、シンジケート、神権政治、テクノクラート",
+      "styles_label": "ニックネームスタイル",
+      "count_label": "数",
+      "advanced_options": "詳細オプション",
+      "random_button": "ランダム例",
+      "generate_button": "ニックネームを生成",
+      "generating_button": "生成中…",
+      "output_title": "都市ニックネームアイデア",
+      "group_official": "公式称号",
+      "group_local": "地元のニックネーム",
+      "group_legendary": "伝説的な異名",
+      "group_mocking": "皮肉なニックネーム",
+      "why_it_fits": "なぜ合うのか",
+      "best_for": "最適な用途",
+      "copy_button": "コピー",
+      "empty_output": "都市の詳細を入力して生成すると、グループ化されたニックネームアイデアが表示されます。",
+      "history_title": "最近の生成",
+      "history_apply": "適用",
+      "history_delete": "削除",
+      "history_clear": "クリア"
+    },
+    "validation": {
+      "city_type_required": "都市タイプを選択してください。",
+      "known_for_required": "都市が何で有名かを入力してください。",
+      "style_required": "少なくとも1つのニックネームスタイルを選択してください。",
+      "generic_error": "現在、都市ニックネームを生成できませんでした。もう一度お試しください。"
+    },
+    "success": {
+      "copied": "ニックネームをクリップボードにコピーしました。",
+      "generated": "都市ニックネームが生成されました。",
+      "history_loaded": "履歴が読み込まれました。",
+      "history_cleared": "履歴がクリアされました。"
+    },
+    "errors": {
+      "generate_failed": "都市ニックネームの生成に失敗しました。",
+      "verification_failed": "認証に失敗しました。もう一度お試しください。"
+    },
+    "genre": {
+      "fantasy": "ファンタジー",
+      "dark-fantasy": "ダークファンタジー",
+      "noir": "ノワール",
+      "cyberpunk": "サイバーパンク",
+      "sci-fi": "SF",
+      "steampunk": "スチームパンク",
+      "modern": "現代",
+      "post-apocalyptic": "ポストアポカリプス"
+    },
+    "tone": {
+      "poetic": "詩的",
+      "majestic": "荘厳",
+      "gritty": "殺伐",
+      "ominous": "不吉",
+      "romantic": "ロマンチック",
+      "cold": "冷淡",
+      "street": "ストリート"
+    },
+    "style": {
+      "official": "公式",
+      "local": "ローカル",
+      "legendary": "伝説",
+      "mocking": "皮肉"
+    },
+    "count": {
+      "6": "6つのニックネーム",
+      "12": "12つのニックネーム",
+      "20": "20つのニックネーム"
+    },
+    "random_prompts": [
+      {
+        "cityName": "ヴェリスポート",
+        "cityType": "港湾都市",
+        "genre": "sci-fi",
+        "reputation": "lawless",
+        "tone": "cold",
+        "knownFor": "ネオンマーケット、密輸業者、軌道ドック",
+        "geography": "沿岸、低重力",
+        "powerOrCulture": "シンジケート",
+        "nicknameStyles": ["local", "mocking"],
+        "count": 12
+      },
+      {
+        "cityName": "",
+        "cityType": "首都",
+        "genre": "fantasy",
+        "reputation": "wealthy",
+        "tone": "majestic",
+        "knownFor": "金のドーム、王室行列、古代神殿",
+        "geography": "丘の上",
+        "powerOrCulture": "貴族と教会",
+        "nicknameStyles": ["official", "legendary"],
+        "count": 12
+      },
+      {
+        "cityName": "アッシェンミア",
+        "cityType": "工業都市",
+        "genre": "noir",
+        "reputation": "dangerous",
+        "tone": "gritty",
+        "knownFor": "雨、煙、取り立て屋",
+        "geography": "河川デルタ、霧が多い",
+        "powerOrCulture": "工場組合と犯罪ボス",
+        "nicknameStyles": ["local", "mocking", "legendary"],
+        "count": 12
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "この都市ニックネームジェネレーターの強み",
+      "description": "重みのある信頼性の高い都市名が必要なワールドビルダー、RPGゲームマスター、フィクション作家向けに構築。平坦なリストではなく、短い説明とジャンル対応のコンテキストを持つグループ化されたニックネームカテゴリを提供。",
+      "items": [
+        {
+          "title": "4つのニックネームの視点",
+          "description": "公式、ローカル、伝説、皮肉のニックネームグループが、異なる派閥や社会階級が同じ都市をどう呼ぶかを明らかにします。",
+          "icon": "RiMapPin2Line"
+        },
+        {
+          "title": "世界観に合った説明",
+          "description": "すべてのニックネームには「なぜ合うのか」のメモと「最適な用途」が含まれており、使用前に意味を理解できます。",
+          "icon": "RiInformationLine"
+        },
+        {
+          "title": "ジャンルとトーンを認識",
+          "description": "ダークファンタジーからサイバーパンク、ノワールまで、すべてのジャンルとトーンがあなたの世界の語彙に合った独特のニックネーム言語を生成します。",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "都市ニックネームジェネレーターの3ステップ",
+      "description": "都市のコンセプトから信頼性の高いニックネームまで1分以内。",
+      "items": [
+        {
+          "title": "都市を説明する",
+          "description": "都市タイプ、有名なもの、ジャンル、トーン、評判を入力します。より具体的な結果を得るには地理や支配勢力を追加します。",
+          "icon": "RiBuilding2Line"
+        },
+        {
+          "title": "ニックネームスタイルを選ぶ",
+          "description": "必要なニックネームの視点を選択します — 公式称号、地元のスラング、伝説的な異名、または皮肉なニックネーム。",
+          "icon": "RiCheckboxMultipleLine"
+        },
+        {
+          "title": "お気に入りをコピー",
+          "description": "グループ化された結果を閲覧し、各ニックネームが合う理由を読み、物語やキャンペーンに合うものをコピーします。",
+          "icon": "RiFileCopyLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "作家とゲームマスターがこのツールを使う理由",
+      "description": "優れた世界の名前はかっこいいだけでなく、社会的意味、歴史、派閥のアイデンティティを持っています。",
+      "items": [
+        {
+          "title": "派閥の重みを持つ名前",
+          "description": "公式名称は支配権力を反映します。地元のニックネームは住民の対処法を示します。皮肉なニックネームは階級の緊張を明らかにします。各グループが世界の深みを一層加えます。",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "短い説明、即座に使用可能",
+          "description": "「なぜ合うのか」のメモが編集者やプレイヤーが尋ねる質問に答えるので、何度も迷わず自信を持ってその名前を使えます。",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "すべてのジャンルに対応",
+          "description": "ファンタジー王国、ノワール都市、サイバーパンクの広がり、ポストアポカリプスの集落はすべて異なるニックネームの語彙を持っています — このジェネレーターはそれぞれに対応します。",
+          "icon": "RiEarthLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "ユースケース",
+      "title": "都市ニックネームジェネレーターを使う人",
+      "description": "ある場所が歴史を持つ本物の場所のように感じさせる必要があるときはいつでも、都市ニックネームが重要です。",
+      "items": [
+        {
+          "title": "RPGゲームマスター",
+          "description": "地図の表記とは異なる地元の呼び方を持つ都市をプレイヤーに提供します。ニックネームテーブル、酒場のスラング、不吉な伝説 — 三つ同時に。",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "フィクションとワールドビルディング作家",
+          "description": "台詞に地元のニックネームを加えると、都市にすぐに街角の質感が生まれます。ワールドビルディング文書は不要 — 読者が歴史を感じられます。",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "ゲームデザイナーとナラティブチーム",
+          "description": "異なる都市アーキタイプ全体で場所の命名を素早くプロトタイプ化します。生成し、スタイル別にフィルタリングし、ショートリストをライティングチームに渡します。",
+          "icon": "RiGamepadLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "よくある質問",
+      "title": "都市ニックネームジェネレーター — よくある質問",
+      "items": [
+        {
+          "title": "ワールドビルディングにおける都市ニックネームとは？",
+          "description": "都市ニックネームは、定住地に公式名称を超えた評判主導のアイデンティティを与える非公式または公式の異名です。現実では「眠らない街」や「鉄の首都」などがあります。フィクションでは、これらの名前は説明なしに派閥のアイデンティティ、階級の緊張、歴史を伝えます。"
+        },
+        {
+          "title": "4つのニックネームスタイルの意味は？",
+          "description": "公式ニックネームは公式文書、貴族、または公式プロパガンダで使用される称号です。ローカルニックネームは住民が実際に街で言うものです。伝説的なニックネームは神話、予言、または古代の出来事から来ています。皮肉なニックネームは外来者、ライバル、または下層階級が都市の自尊心を損なうために使用します。"
+        },
+        {
+          "title": "生成されたニックネームは出版物に使えますか？",
+          "description": "はい。生成されたニックネームはフィクション、ゲーム、商業的・非商業的なクリエイティブワークに使用できます。帰属の要件はありません。"
+        },
+        {
+          "title": "実在する都市にも使えますか？",
+          "description": "このジェネレーターは架空の都市とワールドビルディングのコンテキスト向けに調整されています。実在する場所ではなく、設定、ジャンル、トーンを説明するときに最も効果的です。"
+        },
+        {
+          "title": "より具体的な結果を得るには？",
+          "description": "オプションフィールド（地理、支配権力または文化、都市名）を入力してください。コンテキストを多く提供するほど、ジャンルのデフォルトではなく実際の世界の詳細を反映したニックネームが生成されます。"
+        }
+      ]
+    },
+    "related_tools": {
+      "eyebrow": "関連ツール",
+      "title": "ワールドビルダー向けのツール",
+      "description": "世界をさらに作り込もう——名付けた都市のタイトル、背景、アウトラインを生成。",
+      "cta": "開く",
+      "more_label": "すべての AI ライティングツールを見る"
+    },
+    "cta": {
+      "name": "cta",
+      "title": "あなたの世界のすべての都市に名前をつけよう",
+      "description": "任意の架空都市の公式称号、街のニックネーム、伝説的な異名、皮肉なスラングを生成。無料、無制限、アカウント不要。",
+      "buttons": [
+        {
+          "title": "都市ニックネームを生成",
+          "url": "#city_nickname_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "AI ライティングツールを見る",
+          "url": "/ai-write-tool",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    }
+  }
+}

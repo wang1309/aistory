@@ -5,7 +5,7 @@ import HowToUse from "@/components/sections/how-to-use";
 import UseCases from "@/components/sections/use-cases";
 import FAQ from "@/components/sections/faq";
 import CTA from "@/components/sections/cta";
-import ModuleToolsSection from "@/components/blocks/module-tools";
+import RelatedTools from "@/components/blocks/related-tools";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
 
@@ -199,11 +199,13 @@ export default async function FanficGeneratorPage({
       {howToUseSection && <HowToUse section={howToUseSection} accent="orange" />}
       {useCasesSection && <UseCases section={useCasesSection} accent="orange" />}
       {faqSection && <FAQ section={faqSection} accent="orange" />}
-      <ModuleToolsSection
-        module="ai-write"
-        title={t("ai_tools.section_title_hub")}
+      <RelatedTools
+        currentSlug="fanfic-generator"
+        limit={6}
+        title={t("ai_tools.related_title")}
         description={t("ai_tools.section_description_hub")}
-        excludeSlug="fanfic-generator"
+        moreHref="/ai-write-tool"
+        moreLabel={t("ai_tools.related_more_label")}
         accent="orange"
       />
       <CTA section={cta} accent="orange" />

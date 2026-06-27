@@ -288,6 +288,8 @@
     "section_description_home": "Discover all AI writing features in one place – from story generation to titles, fanfic, plots and poems.",
     "section_title_hub": "AI Writing Tools Collection",
     "section_description_hub": "Browse all AI writing tools on this site and jump directly into the feature that best matches your writing scenario.",
+    "related_title": "Related AI Writing Tools",
+    "related_more_label": "Explore all AI writing tools",
     "badge_category": "AI writing tool",
     "badge_hot": "Hot",
     "badge_new": "New",
@@ -374,6 +376,10 @@
       "romance_story_generator": {
         "name": "Romance Story Generator",
         "desc": "Generate original romance stories with your favorite trope, sub-genre, and heat level. Free AI romance writer."
+      },
+      "city_nickname_generator": {
+        "name": "City Nickname Generator",
+        "desc": "Generate official, local, legendary, and mocking nicknames for fictional cities."
       }
     },
     "tab_story": "Story Generator",

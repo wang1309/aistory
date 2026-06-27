@@ -288,6 +288,8 @@
     "section_description_home": "스토리 생성부터 제목, 팬픽, 플롯, 시까지 모든 AI 글쓰기 기능을 한 번에 확인하세요.",
     "section_title_hub": "AI 글쓰기 도구 모음",
     "section_description_hub": "사이트의 모든 AI 글쓰기 도구를 한눈에 보고, 글쓰기 상황에 맞는 기능으로 바로 이동할 수 있습니다.",
+    "related_title": "관련 AI 글쓰기 도구",
+    "related_more_label": "모든 AI 글쓰기 도구 보기",
     "badge_category": "AI 글쓰기 도구",
     "badge_hot": "인기",
     "badge_new": "신규",
@@ -374,6 +376,10 @@
       "romance_story_generator": {
         "name": "로맨스 소설 생성기",
         "desc": "원하는 서브장르, 트로프, 달콤함 수준으로 오리지널 로맨스 소설을 AI로 생성하세요. 무료 무제한."
+      },
+      "city_nickname_generator": {
+        "name": "도시 별명 생성기",
+        "desc": "가상 도시를 위한 공식, 지역, 전설, 조롱적인 별명을 생성합니다."
       }
     },
     "tab_story": "스토리 생성기",

@@ -4,7 +4,7 @@ import Benefits from "@/components/sections/benefits";
 import UseCases from "@/components/sections/use-cases";
 import FAQ from "@/components/sections/faq";
 import CTA from "@/components/sections/cta";
-import ModuleToolsSection from "@/components/blocks/module-tools";
+import RelatedTools from "@/components/blocks/related-tools";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { buildLanguageAlternates } from "@/lib/seo";
 
@@ -92,12 +92,14 @@ export default async function PoemTitleGeneratorPage({
             <Benefits section={featureBenefits} accent="orange" />
             <UseCases section={featureUsecases} accent="orange" />
             <FAQ section={faq} accent="orange" />
-            <ModuleToolsSection
-                module="ai-write"
-                title={t("ai_tools.section_title_hub")}
-                description={t("ai_tools.section_description_hub")}
-                excludeSlug="poem-title-generator"
-                accent="orange"
+            <RelatedTools
+              currentSlug="poem-title-generator"
+              limit={6}
+              title={t("ai_tools.related_title")}
+              description={t("ai_tools.section_description_hub")}
+              moreHref="/ai-write-tool"
+              moreLabel={t("ai_tools.related_more_label")}
+              accent="orange"
             />
             <CTA section={cta} accent="orange" />
         </>

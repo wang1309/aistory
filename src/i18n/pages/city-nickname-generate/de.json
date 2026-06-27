@@ -1,0 +1,279 @@
+{
+  "city_nickname_generate": {
+    "metadata": {
+      "title": "Stadtspitznamen-Generator für Weltenbau & RPGs",
+      "description": "Generiere Stadtspitznamen für Fantasy-, Noir-, SciFi- und moderne Settings. Erstelle offizielle, lokale, legendäre oder spöttische Stadtbeinamen für Weltenbau.",
+      "keywords": "Stadtspitznamen Generator, fiktiver Stadtname Generator, Fantasy Stadtname, Stadtbeiname Generator, Weltenbau Stadtname, RPG Stadtname Ideen"
+    },
+    "ui": {
+      "title": "Stadtspitznamen-Generator",
+      "title_highlight": "Stadtspitznamen",
+      "subtitle": "Generiere Stadtspitznamen für fiktive Welten, RPG-Settings und Story-Orte. Erstelle offizielle Titel, lokale Spitznamen, legendäre Beinamen oder spöttischen Slang in Sekunden.",
+      "theme_pills": ["4 Spitznamen-Stile", "Genre- & Ton-bewusst", "Warum-es-passt-Notizen", "Weltenbau-ready"],
+      "eyebrow": "AI Weltenbau-Tool",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Stadtspitznamen-Generator",
+      "form_title": "Stadtprofil",
+      "city_name_label": "Stadtname (optional)",
+      "city_name_placeholder": "z.B. Velisport, Aschenmeer, Eisenhold",
+      "city_type_label": "Stadttyp",
+      "city_type_placeholder": "z.B. Hafenstadt, Hauptstadt, Industriestadt, Festungsstadt",
+      "genre_label": "Genre",
+      "reputation_label": "Ruf",
+      "reputation_placeholder": "z.B. wohlhabend, korrupt, heilig, gesetzlos, vergessen",
+      "tone_label": "Ton",
+      "known_for_label": "Bekannt für",
+      "known_for_placeholder": "z.B. Neonmärkte und Schmuggler, goldene Kuppeln und Königsumzüge",
+      "geography_label": "Geografie (optional)",
+      "geography_placeholder": "z.B. Küste, Hochgebirgspass, unterirdisch",
+      "power_culture_label": "Macht oder Kultur (optional)",
+      "power_culture_placeholder": "z.B. Gilden, Syndikate, Theokratie, Technokraten",
+      "styles_label": "Spitznamen-Stile",
+      "count_label": "Anzahl",
+      "advanced_options": "Erweiterte Optionen",
+      "random_button": "Zufälliges Beispiel",
+      "generate_button": "Spitznamen generieren",
+      "generating_button": "Generiere…",
+      "output_title": "Stadtspitznamen-Ideen",
+      "group_official": "Offizielle Spitznamen",
+      "group_local": "Lokale Spitznamen",
+      "group_legendary": "Legendäre Beinamen",
+      "group_mocking": "Spöttische Spitznamen",
+      "why_it_fits": "Warum es passt",
+      "best_for": "Am besten für",
+      "copy_button": "Kopieren",
+      "empty_output": "Fülle die Stadtdetails aus und generiere, um hier gruppierte Spitznamen-Ideen zu sehen.",
+      "history_title": "Letzte Generierungen",
+      "history_apply": "Anwenden",
+      "history_delete": "Löschen",
+      "history_clear": "Löschen"
+    },
+    "validation": {
+      "city_type_required": "Wähle aus, was für eine Stadt das ist.",
+      "known_for_required": "Sag uns, wofür die Stadt bekannt ist.",
+      "style_required": "Wähle mindestens einen Spitznamen-Stil.",
+      "generic_error": "Wir konnten gerade keine Stadtspitznamen generieren. Bitte versuche es erneut."
+    },
+    "success": {
+      "copied": "Spitzname in die Zwischenablage kopiert.",
+      "generated": "Stadtspitznamen generiert.",
+      "history_loaded": "Verlauf geladen.",
+      "history_cleared": "Verlauf gelöscht."
+    },
+    "errors": {
+      "generate_failed": "Stadtspitznamen konnten nicht generiert werden.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte versuche es erneut."
+    },
+    "genre": {
+      "fantasy": "Fantasy",
+      "dark-fantasy": "Dark Fantasy",
+      "noir": "Noir",
+      "cyberpunk": "Cyberpunk",
+      "sci-fi": "Science-Fiction",
+      "steampunk": "Steampunk",
+      "modern": "Modern",
+      "post-apocalyptic": "Postapokalyptisch"
+    },
+    "tone": {
+      "poetic": "Poetisch",
+      "majestic": "Majestätisch",
+      "gritty": "Raubeinig",
+      "ominous": "Unheilverkündend",
+      "romantic": "Romantisch",
+      "cold": "Kalt",
+      "street": "Street"
+    },
+    "style": {
+      "official": "Offiziell",
+      "local": "Lokal",
+      "legendary": "Legendär",
+      "mocking": "Spöttisch"
+    },
+    "count": {
+      "6": "6 Spitznamen",
+      "12": "12 Spitznamen",
+      "20": "20 Spitznamen"
+    },
+    "random_prompts": [
+      {
+        "cityName": "Velisport",
+        "cityType": "Hafenstadt",
+        "genre": "sci-fi",
+        "reputation": "lawless",
+        "tone": "cold",
+        "knownFor": "Neonmärkte, Schmuggler, Orbitaldock",
+        "geography": "Küste, geringe Schwerkraft",
+        "powerOrCulture": "Syndikate",
+        "nicknameStyles": ["local", "mocking"],
+        "count": 12
+      },
+      {
+        "cityName": "",
+        "cityType": "Hauptstadt",
+        "genre": "fantasy",
+        "reputation": "wealthy",
+        "tone": "majestic",
+        "knownFor": "goldene Kuppeln, Königsumzüge, antike Tempel",
+        "geography": "Hügel",
+        "powerOrCulture": "Adel und Kirche",
+        "nicknameStyles": ["official", "legendary"],
+        "count": 12
+      },
+      {
+        "cityName": "Aschenmeer",
+        "cityType": "Industriestadt",
+        "genre": "noir",
+        "reputation": "dangerous",
+        "tone": "gritty",
+        "knownFor": "Regen, Rauch, Schuldeneintreiber",
+        "geography": "Flussdelta, nebelreich",
+        "powerOrCulture": "Fabrikgewerkschaften und Verbrecherbossen",
+        "nicknameStyles": ["local", "mocking", "legendary"],
+        "count": 12
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Übersicht",
+      "title": "Was dieser Stadtspitznamen-Generator kann",
+      "description": "Gebaut für Weltenbauer, RPG-Spielleiter und Autoren, die glaubwürdige Stadtnamen mit Gewicht brauchen. Statt flacher Listen erhältst du gruppierte Spitznamen-Kategorien mit kurzen Erklärungen und genre-bewusstem Kontext.",
+      "items": [
+        {
+          "title": "Vier Spitznamen-Perspektiven",
+          "description": "Offizielle, lokale, legendäre und spöttische Spitznamen-Gruppen zeigen, wie verschiedene Fraktionen und Gesellschaftsschichten dieselbe Stadt bezeichnen.",
+          "icon": "RiMapPin2Line"
+        },
+        {
+          "title": "Erklärungen, die zu deiner Welt passen",
+          "description": "Jeder Spitzname enthält einen 'Warum es passt'-Hinweis und einen 'Am besten für'-Anwendungsfall, damit du die Bedeutung verstehst, bevor du ihn verwendest.",
+          "icon": "RiInformationLine"
+        },
+        {
+          "title": "Genre- und tonbewusst",
+          "description": "Von Dark Fantasy über Cyberpunk bis Noir erzeugt jedes Genre und jeder Ton eine eigenständige Spitznamenssprache, die zum Wortschatz deiner Welt passt.",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "ANLEITUNG",
+      "title": "Den Stadtspitznamen-Generator in 3 Schritten nutzen",
+      "description": "Vom Stadtkonzept zu einem glaubwürdigen Spitznamen in unter einer Minute.",
+      "items": [
+        {
+          "title": "Beschreibe deine Stadt",
+          "description": "Gib Stadttyp, Bekanntes, Genre, Ton und Ruf ein. Füge Geografie oder herrschende Macht für spezifischere Ergebnisse hinzu.",
+          "icon": "RiBuilding2Line"
+        },
+        {
+          "title": "Spitznamen-Stile wählen",
+          "description": "Wähle die gewünschten Perspektiven — offizielle Titel, lokaler Slang, legendäre Beinamen oder spöttische Beleidigungen.",
+          "icon": "RiCheckboxMultipleLine"
+        },
+        {
+          "title": "Favoriten kopieren",
+          "description": "Durchsuche gruppierte Ergebnisse, lies warum jeder Spitzname passt, und kopiere die, die zu deiner Geschichte oder Kampagne passen.",
+          "icon": "RiFileCopyLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum Autoren und Spielleiter dieses Tool nutzen",
+      "description": "Gute Weltnamen klingen nicht nur cool — sie tragen soziale Bedeutung, Geschichte und Fraktionsidentität.",
+      "items": [
+        {
+          "title": "Namen mit Fraktionsgewicht",
+          "description": "Offizielle Namen spiegeln Herrschaftsmacht wider. Lokale Spitznamen zeigen, wie Bewohner damit umgehen. Spöttische Namen offenbaren Klassenspannungen. Jede Gruppe fügt der Welt eine Tiefenebene hinzu.",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "Kurze Erklärungen, sofort verwendbar",
+          "description": "Der 'Warum es passt'-Hinweis beantwortet die Frage, die dein Lektor oder Spieler stellen wird — damit du den Namen selbstbewusst einsetzt statt ihn ständig zu hinterfragen.",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "Funktioniert für jedes Genre",
+          "description": "Fantasykönigreich, Noir-Stadt, Cyberpunk-Metropole und postapokalyptische Siedlungen haben alle unterschiedliche Spitznamen-Vokabulare — dieser Generator passt sich an.",
+          "icon": "RiEarthLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Anwendungsfälle",
+      "title": "Wer den Stadtspitznamen-Generator nutzt",
+      "description": "Stadtspitznamen sind immer wichtig, wenn ein Ort wie ein echtes Stück Geschichte wirken soll.",
+      "items": [
+        {
+          "title": "RPG-Spielleiter",
+          "description": "Gib Spielern eine Stadt, die Einheimische anders nennen als auf der Karte steht. Spitznamenstabelle, Kneipens lang, unheilvolle Legende — alles auf einmal.",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "Belletristik- und Weltenbau-Autoren",
+          "description": "Einen lokalen Spitznamen in den Dialog einbauen und eine Stadt bekommt sofort Straßentextur. Kein Weltenbau-Dokument nötig — die Leser spüren die Geschichte.",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "Spieldesigner und Narrative Teams",
+          "description": "Standortbenennung schnell über verschiedene Stadtarchetypen prototypisieren. Generieren, nach Stil filtern und Shortlists an das Schreibteam übergeben.",
+          "icon": "RiGamepadLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Stadtspitznamen-Generator — FAQ",
+      "items": [
+        {
+          "title": "Was ist ein Stadtspitzname im Weltenbau?",
+          "description": "Ein Stadtspitzname ist ein informelles oder formelles Epitheton, das einer Siedlung eine rufgetriebene Identität jenseits ihres offiziellen Namens verleiht. In der Realität sind 'Die Stadt, die niemals schläft' oder 'Die Eiserne Hauptstadt' Beispiele. In der Fiktion vermitteln diese Namen Fraktionsidentität, Klassenspannungen und Geschichte ohne Erklärungen."
+        },
+        {
+          "title": "Was bedeuten die vier Spitznamen-Stile?",
+          "description": "Offizielle Spitznamen sind in formellen Dokumenten, vom Adel oder in offizieller Propaganda verwendete Titel. Lokale Spitznamen sind das, was Bewohner tatsächlich auf der Straße sagen. Legendäre Spitznamen stammen aus Mythen, Prophezeiungen oder alten Ereignissen. Spöttische Spitznamen werden von Außenseitern, Rivalen oder unteren Klassen verwendet, um den Dünkel der Stadt zu untergraben."
+        },
+        {
+          "title": "Kann ich diese Spitznamen in veröffentlichten Werken verwenden?",
+          "description": "Ja. Die generierten Spitznamen können in Belletristik, Spielen und jeder kommerziellen oder nicht-kommerziellen kreativen Arbeit verwendet werden. Es gibt keine Attributionspflicht."
+        },
+        {
+          "title": "Funktioniert es auch für echte Städte?",
+          "description": "Der Generator ist auf fiktive Städte und Weltenbau-Kontexte ausgelegt. Er funktioniert am besten, wenn du ein Setting, Genre und Ton beschreibst statt einen realen Ort."
+        },
+        {
+          "title": "Wie bekomme ich spezifischere Ergebnisse?",
+          "description": "Fülle die optionalen Felder aus — Geografie, herrschende Macht oder Kultur und Stadtname. Je mehr Kontext du gibst, desto mehr spiegeln die Spitznamen tatsächliche Details deiner Welt wider statt Genre-Defaults."
+        }
+      ]
+    },
+    "related_tools": {
+      "eyebrow": "Verwandte Tools",
+      "title": "Weitere Tools für Weltenbauer",
+      "description": "Gestalte deine Welt weiter — Titel, Hintergründe und Outlines für die eben benannten Städte.",
+      "cta": "Öffnen",
+      "more_label": "Alle AI-Schreibtools entdecken"
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Benenne jede Stadt in deiner Welt",
+      "description": "Generiere offizielle Titel, Straßenspitznamen, legendäre Beinamen und spöttischen Slang für jede fiktive Stadt. Kostenlos, unbegrenzt, kein Konto nötig.",
+      "buttons": [
+        {
+          "title": "Stadtspitznamen generieren",
+          "url": "#city_nickname_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "AI-Schreibwerkzeuge entdecken",
+          "url": "/ai-write-tool",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    }
+  }
+}

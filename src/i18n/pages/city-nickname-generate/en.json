@@ -1,0 +1,279 @@
+{
+  "city_nickname_generate": {
+    "metadata": {
+      "title": "City Nickname Generator for Writers, RPGs, and Worldbuilding",
+      "description": "Generate city nicknames for fantasy, noir, sci-fi, and modern settings. Create official, local, legendary, or mocking city epithets for worldbuilding.",
+      "keywords": "city nickname generator, fictional city nickname generator, fantasy city nickname generator, city nickname ideas, town nickname generator, city epithet generator, worldbuilding city nickname"
+    },
+    "ui": {
+      "title": "City Nickname Generator",
+      "title_highlight": "City Nickname",
+      "subtitle": "Generate city nicknames for fictional worlds, RPG settings, and story locations. Create official titles, local nicknames, legendary epithets, or mocking slang in seconds.",
+      "theme_pills": ["4 nickname styles", "Genre & tone aware", "Why-it-fits notes", "Worldbuilding ready"],
+      "eyebrow": "AI Worldbuilding Tool",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "City Nickname Generator",
+      "form_title": "City brief",
+      "city_name_label": "City name (optional)",
+      "city_name_placeholder": "e.g. Velisport, Ashenmere, Ironhold",
+      "city_type_label": "City type",
+      "city_type_placeholder": "e.g. port city, capital, industrial city, fortress town",
+      "genre_label": "Genre",
+      "reputation_label": "Reputation",
+      "reputation_placeholder": "e.g. wealthy, corrupt, sacred, lawless, forgotten",
+      "tone_label": "Tone",
+      "known_for_label": "Known for",
+      "known_for_placeholder": "e.g. neon markets and smugglers, gold domes and royal processions",
+      "geography_label": "Geography (optional)",
+      "geography_placeholder": "e.g. coastal, high mountain pass, underground",
+      "power_culture_label": "Power or culture (optional)",
+      "power_culture_placeholder": "e.g. guilds, syndicates, theocracy, technocrats",
+      "styles_label": "Nickname styles",
+      "count_label": "Count",
+      "advanced_options": "Advanced options",
+      "random_button": "Random example",
+      "generate_button": "Generate Nicknames",
+      "generating_button": "Generating...",
+      "output_title": "City nickname ideas",
+      "group_official": "Official nicknames",
+      "group_local": "Local nicknames",
+      "group_legendary": "Legendary nicknames",
+      "group_mocking": "Mocking nicknames",
+      "why_it_fits": "Why it fits",
+      "best_for": "Best for",
+      "copy_button": "Copy",
+      "empty_output": "Fill in your city details and generate to see grouped nickname ideas here.",
+      "history_title": "Recent generations",
+      "history_apply": "Apply",
+      "history_delete": "Delete",
+      "history_clear": "Clear"
+    },
+    "validation": {
+      "city_type_required": "Choose what kind of city this is.",
+      "known_for_required": "Tell us what the city is known for.",
+      "style_required": "Choose at least one nickname style.",
+      "generic_error": "We couldn't generate city nicknames right now. Please try again."
+    },
+    "success": {
+      "copied": "Nickname copied to clipboard.",
+      "generated": "City nicknames generated.",
+      "history_loaded": "History loaded.",
+      "history_cleared": "History cleared."
+    },
+    "errors": {
+      "generate_failed": "Failed to generate city nicknames.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "genre": {
+      "fantasy": "Fantasy",
+      "dark-fantasy": "Dark Fantasy",
+      "noir": "Noir",
+      "cyberpunk": "Cyberpunk",
+      "sci-fi": "Sci-Fi",
+      "steampunk": "Steampunk",
+      "modern": "Modern",
+      "post-apocalyptic": "Post-Apocalyptic"
+    },
+    "tone": {
+      "poetic": "Poetic",
+      "majestic": "Majestic",
+      "gritty": "Gritty",
+      "ominous": "Ominous",
+      "romantic": "Romantic",
+      "cold": "Cold",
+      "street": "Street"
+    },
+    "style": {
+      "official": "Official",
+      "local": "Local",
+      "legendary": "Legendary",
+      "mocking": "Mocking"
+    },
+    "count": {
+      "6": "6 nicknames",
+      "12": "12 nicknames",
+      "20": "20 nicknames"
+    },
+    "random_prompts": [
+      {
+        "cityName": "Velisport",
+        "cityType": "port city",
+        "genre": "sci-fi",
+        "reputation": "lawless",
+        "tone": "cold",
+        "knownFor": "neon markets, smugglers, orbital dock",
+        "geography": "coastal, low gravity",
+        "powerOrCulture": "syndicates",
+        "nicknameStyles": ["local", "mocking"],
+        "count": 12
+      },
+      {
+        "cityName": "",
+        "cityType": "capital",
+        "genre": "fantasy",
+        "reputation": "wealthy",
+        "tone": "majestic",
+        "knownFor": "gold domes, royal processions, ancient temples",
+        "geography": "hilltop",
+        "powerOrCulture": "nobility and church",
+        "nicknameStyles": ["official", "legendary"],
+        "count": 12
+      },
+      {
+        "cityName": "Ashenmere",
+        "cityType": "industrial city",
+        "genre": "noir",
+        "reputation": "dangerous",
+        "tone": "gritty",
+        "knownFor": "rain, smoke, debt collectors",
+        "geography": "river delta, fog-prone",
+        "powerOrCulture": "factory unions and crime bosses",
+        "nicknameStyles": ["local", "mocking", "legendary"],
+        "count": 12
+      }
+    ],
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What This City Nickname Generator Is Good At",
+      "description": "Built for worldbuilders, RPG game masters, and fiction writers who need believable city names that carry weight. Instead of flat lists, you get grouped nickname categories with short explanations and genre-aware context.",
+      "items": [
+        {
+          "title": "Four nickname perspectives",
+          "description": "Official, local, legendary, and mocking nickname groups reveal how different factions and social classes refer to the same city.",
+          "icon": "RiMapPin2Line"
+        },
+        {
+          "title": "Explanations that fit your world",
+          "description": "Every nickname includes a 'why it fits' note and a 'best for' use case so you understand what the name implies before you use it.",
+          "icon": "RiInformationLine"
+        },
+        {
+          "title": "Genre and tone aware",
+          "description": "From dark fantasy to cyberpunk to noir, every genre and tone produces distinct nickname language that matches your setting's vocabulary.",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the City Nickname Generator in 3 Steps",
+      "description": "The city nickname generator takes you from city concept to believable nickname in under a minute.",
+      "items": [
+        {
+          "title": "Describe your city",
+          "description": "Enter the city type, what it's known for, genre, tone, and reputation. Add geography or ruling power for more specific results.",
+          "icon": "RiBuilding2Line"
+        },
+        {
+          "title": "Choose nickname styles",
+          "description": "Select which nickname perspectives you want — official titles, local slang, legendary epithets, or mocking insults.",
+          "icon": "RiCheckboxMultipleLine"
+        },
+        {
+          "title": "Copy your favorites",
+          "description": "Browse grouped results, read why each nickname fits, and copy the ones that match your story or campaign.",
+          "icon": "RiFileCopyLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why Writers and Game Masters Use the City Nickname Generator",
+      "description": "Good world names do more than sound cool — they carry social meaning, history, and faction identity.",
+      "items": [
+        {
+          "title": "Names that carry faction weight",
+          "description": "Official names reflect ruling power. Local nicknames show how residents cope. Mocking names reveal class tension. Each group adds a layer of world depth.",
+          "icon": "RiGroupLine"
+        },
+        {
+          "title": "Short explanations, immediate use",
+          "description": "The 'why it fits' note answers the question your editor or player will ask — so you can use the name confidently instead of second-guessing it.",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "Works across every genre",
+          "description": "Fantasy kingdoms, noir cities, cyberpunk sprawls, and post-apocalyptic settlements all have distinct nickname vocabularies — the city nickname generator matches each one.",
+          "icon": "RiEarthLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Who Uses the City Nickname Generator",
+      "description": "The city nickname generator helps wherever a location needs to feel like a real place with a history.",
+      "items": [
+        {
+          "title": "RPG game masters",
+          "description": "Give players a city that locals call something different than the map label. The nickname table, the tavern slang, the ominous legend — all three at once.",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "Fiction and worldbuilding writers",
+          "description": "Drop a local nickname into dialogue and a city suddenly has street-level texture. No worldbuilding document needed — readers feel the history.",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "Game designers and narrative teams",
+          "description": "Prototype location naming fast across different city archetypes. Generate, filter by style, and hand off shortlists to the writing team.",
+          "icon": "RiGamepadLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "City Nickname Generator — FAQ",
+      "items": [
+        {
+          "title": "What is a city nickname in worldbuilding?",
+          "description": "A city nickname is an informal or formal epithet that gives a settlement a reputation-driven identity beyond its official name. 'The City That Never Sleeps' or 'The Iron Capital' are real-world examples. In fiction, these names signal faction identity, class tension, and history without exposition."
+        },
+        {
+          "title": "What do the four nickname styles mean?",
+          "description": "Official nicknames are titles used in formal documents, by nobility, or in official propaganda. Local nicknames are what residents actually say on the street. Legendary nicknames come from myth, prophecy, or ancient events. Mocking nicknames are used by outsiders, rivals, or lower classes to undercut the city's pretensions."
+        },
+        {
+          "title": "Can I use city nickname generator results in published work?",
+          "description": "Yes. The generated nicknames are yours to use in fiction, games, and any commercial or non-commercial creative work. There is no attribution requirement."
+        },
+        {
+          "title": "Does the city nickname generator work for real cities too?",
+          "description": "The city nickname generator is tuned for fictional cities and worldbuilding contexts. It works best when you describe a setting, genre, and tone rather than a real-world location."
+        },
+        {
+          "title": "How do I get more specific results?",
+          "description": "Fill in the optional fields — geography, ruling power or culture, and city name. The more context you give, the more the nicknames reflect actual details of your world instead of genre defaults."
+        }
+      ]
+    },
+    "related_tools": {
+      "eyebrow": "Related tools",
+      "title": "More tools for worldbuilders",
+      "description": "Keep shaping your world — titles, backstories, and outlines for the cities you just named.",
+      "cta": "Open",
+      "more_label": "Explore all AI writing tools"
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Name Every City in Your World",
+      "description": "The city nickname generator produces official titles, street nicknames, legendary epithets, and mocking slang for any fictional city. Free, unlimited, no account needed.",
+      "buttons": [
+        {
+          "title": "Generate City Nicknames",
+          "url": "#city_nickname_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "Explore AI Writing Tools",
+          "url": "/ai-write-tool",
+          "icon": "RiArrowRightUpLine"
+        }
+      ]
+    }
+  }
+}
