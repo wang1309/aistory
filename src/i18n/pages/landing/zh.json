@@ -802,6 +802,14 @@
               "icon": "RiYoutubeLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "城市昵称生成器",
+              "description": "为虚构城市生成官方、本地、传奇和讽刺昵称。",
+              "url": "/city-nickname-generator",
+              "icon": "RiMapPin2Line",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         },

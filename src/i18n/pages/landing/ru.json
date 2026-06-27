@@ -802,6 +802,14 @@
               "icon": "RiYoutubeLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "Генератор прозвищ городов",
+              "description": "Генерируйте официальные, местные, легендарные и насмешливые прозвища для вымышленных городов.",
+              "url": "/city-nickname-generator",
+              "icon": "RiMapPin2Line",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         },

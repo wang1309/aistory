@@ -802,6 +802,14 @@
               "icon": "RiYoutubeLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "City Nickname Generator",
+              "description": "Generate official, local, legendary, and mocking nicknames for fictional cities.",
+              "url": "/city-nickname-generator",
+              "icon": "RiMapPin2Line",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         },

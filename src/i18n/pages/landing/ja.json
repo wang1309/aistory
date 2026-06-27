@@ -802,6 +802,14 @@
               "icon": "RiYoutubeLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "都市ニックネームジェネレーター",
+              "description": "架空の都市のための公式、ローカル、伝説的、皮肉なニックネームを生成します。",
+              "url": "/city-nickname-generator",
+              "icon": "RiMapPin2Line",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         },

@@ -802,6 +802,14 @@
               "icon": "RiYoutubeLine",
               "target": "_self",
               "category": "creative"
+            },
+            {
+              "title": "Stadtspitznamen-Generator",
+              "description": "Generiere offizielle, lokale, legendäre und spöttische Spitznamen für fiktive Städte.",
+              "url": "/city-nickname-generator",
+              "icon": "RiMapPin2Line",
+              "target": "_self",
+              "category": "creative"
             }
           ]
         },
