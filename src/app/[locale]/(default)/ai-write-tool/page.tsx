@@ -73,7 +73,7 @@ export default async function AiWriteToolPage({
       />
       <ModuleToolsSection
         module="ai-write"
-        title={`${t("ai_tools.section_title_hub")} / AI Write Tool`}
+        title="AI Write Tools"
         description={t("ai_tools.section_description_hub")}
       />
     </>

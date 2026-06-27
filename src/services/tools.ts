@@ -2,11 +2,11 @@ export type ModuleId = "ai-write";
 
 export type ToolCategory =
   | "story"
-  | "title"
-  | "fanfic"
+  | "character"
   | "plot"
+  | "title"
   | "poem"
-  | "dialogue";
+  | "social";
 
 export type ToolBadge = "hot" | "new";
 
@@ -87,7 +87,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.fanfic_generator.name",
     shortDescKey: "ai_tools.tools.fanfic_generator.desc",
     module: "ai-write",
-    category: "fanfic",
+    category: "character",
     href: "/fanfic-generator",
     icon: "RiBookMarkedLine",
     badges: ["hot"],
@@ -98,7 +98,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.dialogue_generator.name",
     shortDescKey: "ai_tools.tools.dialogue_generator.desc",
     module: "ai-write",
-    category: "dialogue",
+    category: "social",
     href: "/dialogue-generator",
     icon: "RiChat3Line",
     badges: ["hot"],
@@ -109,7 +109,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.incorrect_quote_generator.name",
     shortDescKey: "ai_tools.tools.incorrect_quote_generator.desc",
     module: "ai-write",
-    category: "dialogue",
+    category: "social",
     tab: "creative",
     href: "/incorrect-quote-generator",
     icon: "RiDoubleQuotesL",
@@ -121,7 +121,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.tiktok_comment_generator.name",
     shortDescKey: "ai_tools.tools.tiktok_comment_generator.desc",
     module: "ai-write",
-    category: "dialogue",
+    category: "social",
     tab: "creative",
     href: "/tiktok-comment-generator",
     icon: "RiMessage3Line",
@@ -133,7 +133,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.youtube_name_generator.name",
     shortDescKey: "ai_tools.tools.youtube_name_generator.desc",
     module: "ai-write",
-    category: "dialogue",
+    category: "social",
     tab: "creative",
     href: "/youtube-name-generator",
     icon: "RiPlayCircleLine",
@@ -209,7 +209,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.backstory_generator.name",
     shortDescKey: "ai_tools.tools.backstory_generator.desc",
     module: "ai-write",
-    category: "story",
+    category: "character",
     href: "/backstory-generator",
     icon: "RiUser3Line",
     badges: ["hot"],
@@ -220,7 +220,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.dnd_backstory_generator.name",
     shortDescKey: "ai_tools.tools.dnd_backstory_generator.desc",
     module: "ai-write",
-    category: "story",
+    category: "character",
     href: "/dnd-backstory-generator",
     icon: "RiDiceLine",
     badges: ["hot"],
@@ -253,7 +253,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.story_prompt_generator.name",
     shortDescKey: "ai_tools.tools.story_prompt_generator.desc",
     module: "ai-write",
-    category: "story",
+    category: "plot",
     href: "/story-prompt-generator",
     icon: "RiLightbulbLine",
     priority: 65,
@@ -263,7 +263,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.city_nickname_generator.name",
     shortDescKey: "ai_tools.tools.city_nickname_generator.desc",
     module: "ai-write",
-    category: "title",
+    category: "social",
     tab: "creative",
     href: "/city-nickname-generator",
     icon: "RiMapPin2Line",

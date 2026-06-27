@@ -1,8 +1,7 @@
 import React from "react";
-import { getToolsByModule, getNewTools, type ModuleId, type ToolTab } from "@/services/tools";
+import { getToolsByModule, getNewTools, type ModuleId } from "@/services/tools";
 import { getTranslations } from "next-intl/server";
-import { AnimatedToolsGrid } from "./animated-tools-grid";
-import { ToolsExplorer, type ToolsExplorerTab } from "./tools-explorer";
+import { ToolsExplorer } from "./tools-explorer";
 import { type AccentColor } from "@/components/sections/accent";
 
 interface ModuleToolsSectionProps {
@@ -14,13 +13,6 @@ interface ModuleToolsSectionProps {
   label?: string;
 }
 
-const TAB_ORDER: ToolTab[] = ["story", "creative"];
-
-const TAB_META: Record<ToolTab, { id: string; labelKey: string; icon: string }> = {
-  story: { id: "story", labelKey: "ai_tools.tab_story", icon: "RiBookOpenLine" },
-  creative: { id: "creative", labelKey: "ai_tools.tab_creative", icon: "RiSparkling2Line" },
-};
-
 export default async function ModuleToolsSection({
   module,
   title,
@@ -30,8 +22,7 @@ export default async function ModuleToolsSection({
   label,
 }: ModuleToolsSectionProps) {
   const t = await getTranslations();
-  const allTools = getToolsByModule(module);
-  const tools = allTools.filter((tool) =>
+  const tools = getToolsByModule(module).filter((tool) =>
     excludeSlug ? tool.slug !== excludeSlug : true
   );
   const newTools = getNewTools(module).filter((tool) =>
@@ -53,25 +44,7 @@ export default async function ModuleToolsSection({
     })),
   });
 
-  // Determine tab structure from full tool set (before excludeSlug filtering)
-  const hasMultipleTabs =
-    TAB_ORDER.filter((tabKey) =>
-      allTools.some((tool) => (tool.tab ?? "story") === tabKey)
-    ).length > 1;
-
-  const tabs: ToolsExplorerTab[] = TAB_ORDER.map((tabKey) => {
-    const meta = TAB_META[tabKey];
-    const tabTools = tools
-      .filter((tool) => (tool.tab ?? "story") === tabKey)
-      .map(toCard);
-    return {
-      id: meta.id,
-      label: t(meta.labelKey),
-      icon: meta.icon,
-      tools: tabTools,
-    };
-  }).filter((tab) => tab.tools.length > 0);
-
+  const toolCards = tools.map(toCard);
   const newToolCards = newTools.map(toCard);
 
   // Split title to highlight "AI"
@@ -135,20 +108,11 @@ export default async function ModuleToolsSection({
           )}
         </div>
 
-        {hasMultipleTabs ? (
-          <ToolsExplorer
-            tabs={tabs}
+        <ToolsExplorer
+            tools={toolCards}
             newTools={newToolCards}
             accent={accent}
           />
-        ) : (
-          <div className="mt-16">
-            <AnimatedToolsGrid
-              tools={tabs[0]?.tools ?? tools.map(toCard)}
-              accent={accent}
-            />
-          </div>
-        )}
       </div>
     </section>
   );

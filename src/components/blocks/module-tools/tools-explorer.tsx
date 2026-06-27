@@ -8,15 +8,8 @@ import { AnimatedToolsGrid, type ToolCardData } from "./animated-tools-grid";
 import type { AccentColor } from "@/components/sections/accent";
 import { useTranslations } from "next-intl";
 
-export interface ToolsExplorerTab {
-  id: string;
-  label: string;
-  icon?: string;
-  tools: ToolCardData[];
-}
-
 interface ToolsExplorerProps {
-  tabs: ToolsExplorerTab[];
+  tools: ToolCardData[];
   newTools?: ToolCardData[];
   accent?: AccentColor;
 }
@@ -24,35 +17,32 @@ interface ToolsExplorerProps {
 const FILTER_CHIPS: { id: string; labelKey: string }[] = [
   { id: "all", labelKey: "ai_tools.filter_all" },
   { id: "story", labelKey: "ai_tools.filter_story" },
-  { id: "title", labelKey: "ai_tools.filter_title" },
+  { id: "character", labelKey: "ai_tools.filter_character" },
   { id: "plot", labelKey: "ai_tools.filter_plot" },
+  { id: "title", labelKey: "ai_tools.filter_title" },
   { id: "poem", labelKey: "ai_tools.filter_poem" },
-  { id: "dialogue", labelKey: "ai_tools.filter_dialogue" },
-  { id: "fanfic", labelKey: "ai_tools.filter_fanfic" },
+  { id: "social", labelKey: "ai_tools.filter_social" },
 ];
 
 export function ToolsExplorer({
-  tabs,
+  tools,
   newTools = [],
   accent = "orange",
 }: ToolsExplorerProps) {
   const t = useTranslations();
-  const [activeTabId, setActiveTabId] = useState(tabs[0]?.id ?? "");
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  const activeTab = tabs.find((tab) => tab.id === activeTabId) ?? tabs[0];
-
-  const categoriesInTab = useMemo(() => {
-    if (!activeTab) return new Set<string>();
-    return new Set(activeTab.tools.map((tool) => tool.category));
-  }, [activeTab]);
+  const categoriesInTools = useMemo(
+    () => new Set(tools.map((tool) => tool.category)),
+    [tools]
+  );
 
   const availableChips = useMemo(
     () => FILTER_CHIPS.filter(
-      (chip) => chip.id === "all" || categoriesInTab.has(chip.id)
+      (chip) => chip.id === "all" || categoriesInTools.has(chip.id)
     ),
-    [categoriesInTab]
+    [categoriesInTools]
   );
 
   const hasFilter = query.trim() !== "" || activeCategory !== "all";
@@ -63,24 +53,17 @@ export function ToolsExplorer({
   );
 
   const filteredTools = useMemo(() => {
-    if (!activeTab) return [];
     const q = query.trim().toLowerCase();
-    return activeTab.tools.filter((tool) => {
-      if (showNewSection && newToolSlugs.has(tool.slug)) {
-        return false;
-      }
-      if (activeCategory !== "all" && tool.category !== activeCategory) {
-        return false;
-      }
+    return tools.filter((tool) => {
+      if (showNewSection && newToolSlugs.has(tool.slug)) return false;
+      if (activeCategory !== "all" && tool.category !== activeCategory) return false;
       if (q) {
         const haystack = `${tool.name} ${tool.description}`.toLowerCase();
         if (!haystack.includes(q)) return false;
       }
       return true;
     });
-  }, [activeTab, query, activeCategory, showNewSection, newToolSlugs]);
-
-  if (!activeTab) return null;
+  }, [tools, query, activeCategory, showNewSection, newToolSlugs]);
 
   return (
     <div className="mt-10">
@@ -90,16 +73,8 @@ export function ToolsExplorer({
         placeholder={t("ai_tools.search_placeholder")}
       />
 
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-        <TabBar
-          tabs={tabs}
-          activeId={activeTabId}
-          onChange={setActiveTabId}
-        />
-      </div>
-
       {availableChips.length > 1 && (
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5">
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-1.5">
           {availableChips.map((chip) => {
             const isActive = activeCategory === chip.id;
             return (
@@ -121,7 +96,7 @@ export function ToolsExplorer({
         </div>
       )}
 
-      <div className="mt-5 flex items-center justify-center">
+      <div className="mt-4 flex items-center justify-center">
         <span className="text-xs text-muted-foreground/60">
           {t("ai_tools.results_count", { count: filteredTools.length })}
         </span>
@@ -129,7 +104,7 @@ export function ToolsExplorer({
 
       <AnimatePresence mode="wait">
         <motion.div
-          key={`${activeTab.id}-${activeCategory}-${query.trim()}`}
+          key={`${activeCategory}-${query.trim()}`}
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -4 }}
@@ -209,73 +184,6 @@ function SearchInput({
           </button>
         )}
       </div>
-    </div>
-  );
-}
-
-function TabBar({
-  tabs,
-  activeId,
-  onChange,
-}: {
-  tabs: ToolsExplorerTab[];
-  activeId: string;
-  onChange: (id: string) => void;
-}) {
-  return (
-    <div
-      role="tablist"
-      aria-label="Tool categories"
-      className="inline-flex items-center gap-1 rounded-full border border-border/20 bg-background/70 p-1 shadow-[0_8px_30px_-12px_rgba(38,28,12,0.18)] backdrop-blur-md dark:border-white/10"
-    >
-      {tabs.map((tab) => {
-        const isActive = tab.id === activeId;
-        const count = tab.tools.length;
-        return (
-          <button
-            key={tab.id}
-            role="tab"
-            aria-selected={isActive}
-            onClick={() => onChange(tab.id)}
-            className={cn(
-              "group relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12.5px] font-semibold transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] sm:px-5 sm:py-2.5 sm:text-sm",
-              isActive
-                ? "text-foreground"
-                : "text-muted-foreground/70 hover:text-foreground/80"
-            )}
-          >
-            {isActive && (
-              <motion.span
-                layoutId="tools-explorer-tab-pill"
-                className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-primary/15 via-primary/10 to-primary/[0.04] ring-1 ring-primary/25"
-                transition={{ type: "spring", stiffness: 380, damping: 32 }}
-              />
-            )}
-            {tab.icon && (
-              <Icon
-                name={tab.icon}
-                className={cn(
-                  "size-4 shrink-0",
-                  isActive
-                    ? "text-primary"
-                    : "text-muted-foreground/60 group-hover:text-foreground/70"
-                )}
-              />
-            )}
-            <span>{tab.label}</span>
-            <span
-              className={cn(
-                "ml-0.5 inline-flex min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-semibold",
-                isActive
-                  ? "bg-primary/15 text-primary"
-                  : "bg-foreground/[0.04] text-muted-foreground/60"
-              )}
-            >
-              {count}
-            </span>
-          </button>
-        );
-      })}
     </div>
   );
 }

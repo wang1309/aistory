@@ -56,11 +56,11 @@ const AI_WRITE_TOOL_HUB_URL = "/ai-write-tool";
 
 const COLUMN_GROUP: Record<ToolCategory, 0 | 1 | 2> = {
   story: 0,
-  fanfic: 0,
+  character: 0,
   title: 1,
   plot: 1,
   poem: 1,
-  dialogue: 2,
+  social: 2,
 };
 
 const COLUMN_DEFS: Array<{ icon: string; labelKey: string }> = [
