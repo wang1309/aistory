@@ -6,6 +6,19 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.16",
+        "date": "2026-06-27",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Launched City Nickname Generator for creating layered nickname sets for fictional cities",
+              "Generates official, local, legendary, and mocking nicknames with tone and style controls"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.15",
         "date": "2026-06-21",
         "changes": [
