@@ -8,6 +8,7 @@ export default function Markdown({ content }: { content: string }) {
     <MDEditor.Markdown
       className="markdown bg-background"
       source={content}
+      skipHtml={false}
       components={{
         a: ({ children, ...props }) => (
           <a {...props} target="_blank" rel="noopener noreferrer">

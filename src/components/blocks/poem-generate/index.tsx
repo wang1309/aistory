@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -1236,6 +1237,12 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                       <Icon name="Copy" className="size-3.5 mr-1.5" />
                       {section.output.button_copy}
                     </Button>
+                    <ShareResultButton
+                      content={generatedPoem}
+                      prompt={prompt}
+                      sourceCategory="poem"
+                      title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                    />
                     <Button
                       variant="outline"
                       size="sm"

@@ -13,6 +13,7 @@ import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 import { useRouter } from "@/i18n/navigation";
 import Icon from "@/components/icon";
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -883,6 +884,12 @@ export default function IncorrectQuoteGenerate({
                 >
                   {t("ui.copy_button", "Copy")}
                 </Button>
+                <ShareResultButton
+                  content={generatedQuote}
+                  prompt={prompt}
+                  sourceCategory="quote"
+                  title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                />
                 <Button
                   type="button"
                   variant="outline"

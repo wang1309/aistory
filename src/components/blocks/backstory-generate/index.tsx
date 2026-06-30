@@ -3,6 +3,7 @@
 import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -933,6 +934,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                         locale={locale}
                                     />
                                     {generatedBackstory && (
+                                      <>
                                         <Button
                                             variant="ghost"
                                             size="sm"
@@ -942,6 +944,13 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                             <Copy className="w-3.5 h-3.5" />
                                             {t('output.copy')}
                                         </Button>
+                                        <ShareResultButton
+                                            content={generatedBackstory}
+                                            prompt={prompt}
+                                            sourceCategory="backstory"
+                                            title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                                        />
+                                      </>
                                     )}
                                 </div>
                             </div>

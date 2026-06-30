@@ -1,5 +1,30 @@
 import { SnowflakeIdv1 } from "simple-flakeid";
 import { v4 as uuidv4 } from "uuid";
+import { randomBytes } from "crypto";
+
+const BASE62_CHARS =
+  "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+/**
+ * Generate a short, URL-friendly share id (11 chars, base62).
+ * Collisions are backed by the unique index on share_id.
+ */
+export function getShareId(): string {
+  const bytes = randomBytes(11);
+  let out = "";
+  for (let i = 0; i < bytes.length; i++) {
+    out += BASE62_CHARS[bytes[i] % 62];
+  }
+  return out;
+}
+
+/**
+ * Generate a delete token for anonymous-owned shares, so the creator can
+ * remove a share without an account.
+ */
+export function getShareDeleteToken(): string {
+  return randomBytes(16).toString("base64url");
+}
 
 export function getUuid(): string {
   return uuidv4();

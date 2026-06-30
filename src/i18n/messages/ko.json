@@ -449,5 +449,39 @@
       "question": "생성된 스토리를 내보내거나 저장할 수 있나요?",
       "answer": "네! 생성된 스토리를 쉽게 복사하고 원하는 형식으로 저장할 수 있습니다. PDF 내보내기도 지원합니다."
     }
-  ]
+  ],
+  "share_dialog": {
+    "title": "이 이야기 공유하기",
+    "button": "공유",
+    "desc": "누구나 열 수 있는 공개 링크를 만드세요.",
+    "warning": "이 이야기의 읽기 전용 스냅샷(프롬프트 포함)이 공개됩니다. 링크가 있는 누구나 읽을 수 있지만 편집할 수는 없습니다.",
+    "create_button": "공유 링크 만들기",
+    "creating": "만드는 중…",
+    "created": "공유 링크가 준비되었습니다",
+    "copied": "링크가 복사되었습니다",
+    "share_text": "AI가 생성한 이 이야기를 확인해 보세요!",
+    "open": "링크 열기",
+    "delete": "공유 삭제",
+    "confirm_delete": "이 공유 링크를 삭제하시겠어요? 삭제하면 페이지에 더 이상 접속할 수 없습니다.",
+    "error_verify": "인증에 실패했습니다. 다시 시도해 주세요.",
+    "error_blocked": "이 콘텐츠는 공유할 수 없습니다.",
+    "error_create": "공유 링크 생성에 실패했습니다.",
+    "error_delete": "공유 링크 삭제에 실패했습니다."
+  },
+  "share_page": {
+    "title": "공유된 이야기",
+    "untitled": "제목 없음",
+    "views": "{count}회 조회",
+    "prompt_label": "프롬프트에서 생성:",
+    "start_creating": "나만의 이야기 만들기",
+    "report": "신고",
+    "reported": "신고가 접수되었습니다. 감사합니다!",
+    "report_title": "이 이야기 신고하기",
+    "report_placeholder": "문제를 설명해 주세요 (선택)",
+    "report_submit": "제출",
+    "report_cancel": "취소",
+    "cta_title": "나만의 AI 이야기 만들기",
+    "cta_desc": "몇 초 만에 고유한 이야기를 생성하세요 — 무료, 가입 불필요.",
+    "cta_button": "시작하기"
+  }
 }

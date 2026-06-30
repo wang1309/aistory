@@ -19,7 +19,7 @@ const StoryHistoryDropdown = dynamic(() => import("@/components/story-history-dr
   ssr: false,
   loading: () => null,
 });
-const StoryShareButtons = dynamic(() => import("@/components/story-share-buttons"), {
+const StoryShareDialog = dynamic(() => import("@/components/story/story-share-dialog"), {
   ssr: false,
   loading: () => null,
 });
@@ -167,6 +167,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
 
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const [shareDialogOpen, setShareDialogOpen] = useState(false);
   const confettiModuleRef = useRef<((opts?: any) => void) | null>(null);
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
@@ -1369,14 +1370,21 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                       <Icon name="refresh-cw" className="size-3.5" /> {locale === 'zh' ? '重新生成' : 'Regenerate'}
                     </Button>
 
-                    <StoryShareButtons
-                      storyTitle={section.output.title}
-                      wordCount={wordCount}
-                      model={AI_MODELS.find(m => m.id === selectedModel)?.name || 'AI'}
-                      locale={locale}
-                      inviteCode={user?.invite_code}
-                      translations={shareTranslations}
-                    />
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        if (!generatedStory.trim()) {
+                          toast.error(section.toasts.error_no_content);
+                          return;
+                        }
+                        setShareDialogOpen(true);
+                      }}
+                      className="gap-1.5 text-xs"
+                    >
+                      <Icon name="RiShareLine" className="size-3.5" />
+                      {shareTranslations.title}
+                    </Button>
 
                     <Button variant="ghost" size="sm" onClick={() => { navigator.clipboard.writeText(generatedStory); toast.success(section.toasts.success_copied); }} className="gap-1.5 text-xs">
                       <Icon name="copy" className="size-3.5" /> {section.output.button_copy}
@@ -1435,6 +1443,17 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           onSelect={handleConfirmSave}
           locale={locale}
           isSaving={isSavingStory}
+        />
+
+        <StoryShareDialog
+          open={shareDialogOpen}
+          onOpenChange={setShareDialogOpen}
+          story={{
+            title: prompt.substring(0, 30) + (prompt.length > 30 ? "..." : ""),
+            content: generatedStory,
+            prompt,
+            sourceCategory: "story",
+          }}
         />
 
       </div>

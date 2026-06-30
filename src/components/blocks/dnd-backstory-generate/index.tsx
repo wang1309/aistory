@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -999,6 +1000,12 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                       <Copy className="w-3.5 h-3.5" />
                       <span className="hidden sm:inline">{t("output.copy")}</span>
                     </Button>
+                    <ShareResultButton
+                      content={generatedBackstory}
+                      prompt={prompt}
+                      sourceCategory="dnd-backstory"
+                      title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                    />
                     <Button
                       size="sm"
                       onClick={() => {

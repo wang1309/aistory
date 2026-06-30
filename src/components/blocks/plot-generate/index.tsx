@@ -3,6 +3,7 @@
 import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
@@ -1092,6 +1093,12 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                         <Icon name="copy" className="size-3.5" />
                         {t('preview.button_copy')}
                       </Button>
+                      <ShareResultButton
+                        content={generatedPlot}
+                        prompt={prompt}
+                        sourceCategory="plot"
+                        title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                      />
                     </div>
 
                     {/* Content */}

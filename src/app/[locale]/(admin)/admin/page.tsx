@@ -5,6 +5,7 @@ import { getOrderCountByDate, getPaidOrdersTotal } from "@/models/order";
 import { getUserCountByDate, getUsersTotal } from "@/models/user";
 import { getFeedbacksTotal } from "@/models/feedback";
 import { getPostsTotal } from "@/models/post";
+import { getReportedSharesCount } from "@/models/story-share";
 import { DataCard } from "@/types/blocks/base";
 
 export default async function AdminDashboardPage() {
@@ -12,6 +13,7 @@ export default async function AdminDashboardPage() {
   const totalUsers = await getUsersTotal();
   const totalFeedbacks = await getFeedbacksTotal();
   const totalPosts = await getPostsTotal();
+  const reportedShares = await getReportedSharesCount();
 
   const dataCards: DataCard[] = [
     {
@@ -37,6 +39,12 @@ export default async function AdminDashboardPage() {
       label: "",
       value: (totalFeedbacks || 0).toString(),
       description: "Feedbacks in total",
+    },
+    {
+      title: "Pending Reports",
+      label: "",
+      value: (reportedShares || 0).toString(),
+      description: "Reported story shares awaiting review (Story Shares → Reported)",
     },
   ];
 

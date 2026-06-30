@@ -14,6 +14,7 @@ import Icon from "@/components/icon";
 import { cn } from "@/lib/utils";
 import { useAppContext } from "@/contexts/app";
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -81,6 +82,45 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
   const [chapterPlan, setChapterPlan] = useState<StoryOutlineChapterPlan | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isExpanding, setIsExpanding] = useState(false);
+
+  // Flatten the structured outline into shareable markdown text.
+  const outlineShareText = useMemo(() => {
+    if (!outline) return "";
+    const lines: string[] = [`# ${outline.premise}`, ""];
+    lines.push("## Core Conflict");
+    const cc = outline.coreConflict;
+    lines.push(`- Goal: ${cc.protagonistGoal}`);
+    lines.push(`- Opposition: ${cc.opposition}`);
+    lines.push(`- Stakes: ${cc.stakes}`);
+    lines.push(`- Urgency: ${cc.urgency}`);
+    lines.push("", "## Story Arc");
+    const arc = outline.storyArc;
+    lines.push(`- Opening: ${arc.opening}`);
+    lines.push(`- Escalation: ${arc.escalation}`);
+    lines.push(`- Midpoint: ${arc.midpoint}`);
+    lines.push(`- Crisis: ${arc.crisis}`);
+    lines.push(`- Climax: ${arc.climax}`);
+    lines.push(`- Resolution: ${arc.resolution}`);
+    lines.push("", "## Key Beats");
+    outline.keyBeats.forEach((b, i) => {
+      lines.push(
+        `${i + 1}. **${b.label}** — ${b.summary}` +
+          (b.purpose ? ` _(${b.purpose})_` : "")
+      );
+    });
+    if (outline.nextStepTeaser) {
+      lines.push("", `> ${outline.nextStepTeaser}`);
+    }
+    if (chapterPlan?.chapters?.length) {
+      lines.push("", "## Chapters");
+      chapterPlan.chapters.forEach((c) => {
+        lines.push(`### Chapter ${c.number}: ${c.title}`, c.summary);
+        if (c.conflict) lines.push(`_Conflict: ${c.conflict}_`);
+        if (c.endingHook) lines.push(`_Hook: ${c.endingHook}_`);
+      });
+    }
+    return lines.join("\n");
+  }, [outline, chapterPlan]);
 
   const t = useCallback(
     (path: string, fallback: string) => {
@@ -445,8 +485,16 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
 
         <div className="space-y-4 lg:flex lg:self-start lg:flex-col">
           <Card className="border-orange-500/20 lg:flex lg:min-h-[28rem] lg:max-h-[34rem] lg:flex-col lg:overflow-hidden">
-            <CardHeader className="lg:shrink-0">
+            <CardHeader className="lg:shrink-0 flex flex-row items-center justify-between gap-2">
               <CardTitle>{t("ui.output_title", "Your story outline")}</CardTitle>
+              {outline && (
+                <ShareResultButton
+                  content={outlineShareText}
+                  prompt={storyIdea}
+                  sourceCategory="outline"
+                  title={storyIdea.substring(0, 30) + (storyIdea.length > 30 ? "..." : "")}
+                />
+              )}
             </CardHeader>
             <CardContent className="space-y-5 lg:flex-1 lg:overflow-y-auto lg:pr-4">
               {!outline ? (

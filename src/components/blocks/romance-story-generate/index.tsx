@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
@@ -744,6 +745,12 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
                       <Copy className="w-3.5 h-3.5" />
                       {t("output.copy")}
                     </Button>
+                    <ShareResultButton
+                      content={generatedStory}
+                      prompt={prompt}
+                      sourceCategory="romance"
+                      title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                    />
                     <Button
                       size="sm"
                       onClick={() => {

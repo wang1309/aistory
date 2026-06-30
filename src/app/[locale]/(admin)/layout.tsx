@@ -75,6 +75,11 @@ export default async function AdminLayout({
           url: "/admin/feedbacks",
           icon: "RiMessage2Line",
         },
+        {
+          title: "Story Shares",
+          url: "/admin/story-shares",
+          icon: "RiShareLine",
+        },
       ],
     },
     bottomNav: {

@@ -3,6 +3,7 @@
 import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -1362,6 +1363,12 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                             >
                               <Icon name="copy" className="mr-2 size-4" /> Copy
                             </Button>
+                            <ShareResultButton
+                              content={generatedFanfic}
+                              prompt={prompt}
+                              sourceCategory="fanfic"
+                              title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                            />
                             <Button variant="ghost" onClick={handleGenerate} disabled={isGenerating}>
                               <Icon name="refresh" className="mr-2 size-4" />
                               {section.tabbed?.form?.generation?.start_button || 'Regenerate'}

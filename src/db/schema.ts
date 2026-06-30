@@ -356,3 +356,29 @@ export const sg_chat_summaries = pgTable(
     uniqueIndex("sg_chat_summaries_story_user_unique_idx").on(table.story_uuid, table.user_uuid),
   ]
 );
+
+// Story Share: public, read-only snapshot of a generated story.
+// Anonymous-friendly (user_uuid 可空), decoupled from sg_stories (which requires a logged-in owner).
+export const sg_story_shares = pgTable(
+  "sg_story_shares",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    share_id: varchar({ length: 32 }).notNull(),
+    title: varchar({ length: 200 }),
+    content: text().notNull(),
+    prompt: text(),
+    settings: jsonb().$type<Record<string, unknown>>(),
+    source_category: varchar({ length: 50 }),
+    user_uuid: varchar({ length: 255 }),
+    delete_token: varchar({ length: 64 }),
+    status: varchar({ length: 20 }).notNull().default("visible"),
+    view_count: integer().notNull().default(0),
+    created_at: timestamp({ withTimezone: true }),
+    updated_at: timestamp({ withTimezone: true }),
+  },
+  (table) => [
+    uniqueIndex("sg_story_shares_share_id_unique_idx").on(table.share_id),
+    index("sg_story_shares_user_created_idx").on(table.user_uuid, table.created_at),
+    index("sg_story_shares_status_created_idx").on(table.status, table.created_at),
+  ]
+);

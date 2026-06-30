@@ -449,5 +449,39 @@
       "question": "我可以导出或保存生成的故事吗？",
       "answer": "可以！您可以轻松复制生成的故事，并以您喜欢的格式保存。我们还支持PDF导出，方便您使用。"
     }
-  ]
+  ],
+  "share_dialog": {
+    "title": "分享这个故事",
+    "button": "分享",
+    "desc": "生成一个任何人都能打开的公开链接。",
+    "warning": "系统将把这个故事的只读快照（包含你的提示词）公开。任何拥有链接的人都可以阅读，但无法编辑。",
+    "create_button": "创建分享链接",
+    "creating": "创建中…",
+    "created": "分享链接已生成",
+    "copied": "链接已复制",
+    "share_text": "来看看这个 AI 生成的故事！",
+    "open": "打开链接",
+    "delete": "删除分享",
+    "confirm_delete": "确定删除这个分享链接吗？删除后页面将无法访问。",
+    "error_verify": "验证失败，请重试。",
+    "error_blocked": "该内容无法分享。",
+    "error_create": "创建分享链接失败。",
+    "error_delete": "删除分享链接失败。"
+  },
+  "share_page": {
+    "title": "分享的故事",
+    "untitled": "无题故事",
+    "views": "{count} 次浏览",
+    "prompt_label": "生成自提示词：",
+    "start_creating": "创作你自己的故事",
+    "report": "举报",
+    "reported": "举报已提交，感谢反馈！",
+    "report_title": "举报这个故事",
+    "report_placeholder": "请描述问题（选填）",
+    "report_submit": "提交",
+    "report_cancel": "取消",
+    "cta_title": "用 AI 创作你的故事",
+    "cta_desc": "几秒钟生成独一无二的故事——免费，无需注册。",
+    "cta_button": "开始创作"
+  }
 }

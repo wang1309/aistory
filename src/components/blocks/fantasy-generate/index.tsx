@@ -3,6 +3,7 @@
 import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -1053,6 +1054,12 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                     <Icon name="mdi:content-copy" className="w-4 h-4 mr-2" />
                     {section.output.button_copy}
                   </Button>
+                  <ShareResultButton
+                    content={generatedStory}
+                    prompt={prompt}
+                    sourceCategory="fantasy"
+                    title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                  />
                   <Button
                     variant="outline"
                     size="sm"

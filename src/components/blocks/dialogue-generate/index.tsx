@@ -12,6 +12,7 @@ import TurnstileInvisible, {
 } from "@/components/TurnstileInvisible";
 
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -1089,6 +1090,12 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                         <Icon name="RiFileCopyLine" className="w-4 h-4 mr-2" />
                         {t("output.copy")}
                       </Button>
+                      <ShareResultButton
+                        content={generatedDialogue}
+                        prompt={prompt}
+                        sourceCategory="dialogue"
+                        title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                      />
                       <Button
                         size="sm"
                         onClick={() => {

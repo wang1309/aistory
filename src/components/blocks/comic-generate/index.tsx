@@ -3,6 +3,7 @@
 import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import { useState, useCallback, useMemo, useRef, useEffect, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import ShareResultButton from "@/components/story/share-result-button";
 import {
   Select,
   SelectContent,
@@ -962,6 +963,12 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                       <Copy className="h-3 w-3" />
                       <span className="hidden sm:inline">{t("ui.copy_button")}</span>
                     </Button>
+                    <ShareResultButton
+                      content={generatedScript}
+                      prompt={prompt}
+                      sourceCategory="comic"
+                      title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                    />
                     <Button
                       size="sm"
                       onClick={() => {

@@ -449,5 +449,39 @@
       "question": "Can I export or save my generated stories?",
       "answer": "Yes! You can easily copy your generated stories and save them in your preferred format. We also support PDF export for your convenience."
     }
-  ]
+  ],
+  "share_dialog": {
+    "title": "Share this story",
+    "button": "Share",
+    "desc": "Create a public link anyone can open.",
+    "warning": "A read-only snapshot of this story — including your prompt — will be made public. Anyone with the link can read it (but not edit it).",
+    "create_button": "Create share link",
+    "creating": "Creating...",
+    "created": "Share link ready",
+    "copied": "Link copied",
+    "share_text": "Check out this AI-generated story!",
+    "open": "Open link",
+    "delete": "Delete share",
+    "confirm_delete": "Delete this shared link? The page will no longer be accessible.",
+    "error_verify": "Verification failed. Please retry.",
+    "error_blocked": "This content can't be shared.",
+    "error_create": "Failed to create share link.",
+    "error_delete": "Failed to delete share link."
+  },
+  "share_page": {
+    "title": "Shared Story",
+    "untitled": "Untitled Story",
+    "views": "{count} views",
+    "prompt_label": "Generated from prompt:",
+    "start_creating": "Create your own story",
+    "report": "Report",
+    "reported": "Report submitted. Thank you!",
+    "report_title": "Report this story",
+    "report_placeholder": "Tell us what's wrong (optional)",
+    "report_submit": "Submit",
+    "report_cancel": "Cancel",
+    "cta_title": "Make your own AI story",
+    "cta_desc": "Generate unique stories in seconds — free, no sign-up needed.",
+    "cta_button": "Start Creating"
+  }
 }

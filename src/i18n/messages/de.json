@@ -449,5 +449,39 @@
       "question": "Kann ich meine generierten Geschichten exportieren oder speichern?",
       "answer": "Ja! Sie können Ihre generierten Geschichten einfach kopieren und in Ihrem bevorzugten Format speichern. Wir unterstützen auch den PDF-Export für Ihren Komfort."
     }
-  ]
+  ],
+  "share_dialog": {
+    "title": "Diese Geschichte teilen",
+    "button": "Teilen",
+    "desc": "Erstelle einen öffentlichen Link, den jeder öffnen kann.",
+    "warning": "Ein schreibgeschützter Snapshot dieser Geschichte – einschließlich deines Prompts – wird veröffentlicht. Wer den Link hat, kann lesen, aber nicht bearbeiten.",
+    "create_button": "Teilen-Link erstellen",
+    "creating": "Wird erstellt …",
+    "created": "Teilen-Link ist bereit",
+    "copied": "Link kopiert",
+    "share_text": "Schau dir diese KI-generierte Geschichte an!",
+    "open": "Link öffnen",
+    "delete": "Freigabe löschen",
+    "confirm_delete": "Diesen geteilten Link löschen? Die Seite ist danach nicht mehr erreichbar.",
+    "error_verify": "Verifizierung fehlgeschlagen. Bitte erneut versuchen.",
+    "error_blocked": "Dieser Inhalt kann nicht geteilt werden.",
+    "error_create": "Teilen-Link konnte nicht erstellt werden.",
+    "error_delete": "Freigabe konnte nicht gelöscht werden."
+  },
+  "share_page": {
+    "title": "Geteilte Geschichte",
+    "untitled": "Ohne Titel",
+    "views": "{count} Aufrufe",
+    "prompt_label": "Erstellt aus Prompt:",
+    "start_creating": "Eigene Geschichte erstellen",
+    "report": "Melden",
+    "reported": "Meldung gesendet. Danke!",
+    "report_title": "Diese Geschichte melden",
+    "report_placeholder": "Beschreibe das Problem (optional)",
+    "report_submit": "Absenden",
+    "report_cancel": "Abbrechen",
+    "cta_title": "Erstelle deine eigene KI-Geschichte",
+    "cta_desc": "Einzigartige Geschichten in Sekunden – kostenlos, ohne Anmeldung.",
+    "cta_button": "Jetzt starten"
+  }
 }
