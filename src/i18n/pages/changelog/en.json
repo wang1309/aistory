@@ -6,6 +6,19 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.17",
+        "date": "2026-06-30",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Launched public sharing: turn any generated story into a shareable read-only link (/share/<id>) that anyone can open without signing in",
+              "Added Share buttons across 13 generators, including story, dialogue, fanfic, poem, plot, comic, and backstory generators"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.16",
         "date": "2026-06-27",
         "changes": [

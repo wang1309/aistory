@@ -6,6 +6,19 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.17",
+        "date": "2026-06-30",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Öffentliches Teilen eingeführt: Wandeln Sie jedes generierte Ergebnis in einen teilbaren, schreibgeschützten Link (/share/<id>) um, den jeder ohne Anmeldung öffnen kann",
+              "Teilen-Schaltflächen zu 13 Generatoren hinzugefügt, darunter Story, Dialog, Fanfic, Gedicht, Handlung, Comic und Hintergrundgeschichte"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.16",
         "date": "2026-06-27",
         "changes": [
