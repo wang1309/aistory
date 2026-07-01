@@ -7,7 +7,7 @@
     "groups": [
       {
         "name": "trial",
-        "title": "Test"
+        "title": "Credit-Pakete"
       },
       {
         "name": "monthly",
@@ -43,6 +43,58 @@
         "product_id": "trial-one-time",
         "product_name": "Story Generator Testpaket",
         "credits": 500,
+        "valid_months": 0,
+        "group": "trial"
+      },
+      {
+        "title": "Standard-Paket",
+        "description": "Für gelegentliche Kreative. Credits laufen nie ab — nutzen Sie sie, wann Sie wollen.",
+        "features_title": "Enthält",
+        "features": [
+          "5.000 Credits, laufen nie ab"
+        ],
+        "interval": "one-time",
+        "amount": 900,
+        "currency": "USD",
+        "price": "$9",
+        "unit": "/ einmalig",
+        "is_featured": false,
+        "tip": "Credits laufen nie ab",
+        "button": {
+          "title": "Jetzt kaufen",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "credit-starter-one-time",
+        "product_name": "Story Generator Standard-Paket",
+        "credits": 5000,
+        "valid_months": 0,
+        "group": "trial"
+      },
+      {
+        "title": "Wert-Paket",
+        "description": "Für aktive Kreative. Mehr Credits, besserer Wert — laufen nie ab.",
+        "label": "Bester Wert",
+        "features_title": "Enthält",
+        "features": [
+          "15.000 Credits, laufen nie ab",
+          "3x mehr Credits als Standard-Paket — besserer Wert!"
+        ],
+        "interval": "one-time",
+        "amount": 2400,
+        "currency": "USD",
+        "price": "$24",
+        "unit": "/ einmalig",
+        "is_featured": true,
+        "tip": "Credits laufen nie ab",
+        "button": {
+          "title": "Jetzt kaufen",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "credit-pro-one-time",
+        "product_name": "Story Generator Wert-Paket",
+        "credits": 15000,
         "valid_months": 0,
         "group": "trial"
       },

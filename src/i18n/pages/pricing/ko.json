@@ -7,7 +7,7 @@
     "groups": [
       {
         "name": "trial",
-        "title": "체험"
+        "title": "크레딧 팩"
       },
       {
         "name": "monthly",
@@ -43,6 +43,58 @@
         "product_id": "trial-one-time",
         "product_name": "Story Generator 체험 팩",
         "credits": 500,
+        "valid_months": 0,
+        "group": "trial"
+      },
+      {
+        "title": "스탠다드 팩",
+        "description": "가끔 창작하는 분에게 적합합니다. 크레딧은 유효기간이 없어 필요할 때 사용하세요.",
+        "features_title": "포함 사항",
+        "features": [
+          "5,000 크레딧, 유효기간 없음"
+        ],
+        "interval": "one-time",
+        "amount": 900,
+        "currency": "USD",
+        "price": "$9",
+        "unit": "/ 1회",
+        "is_featured": false,
+        "tip": "크레딧 유효기간 없음",
+        "button": {
+          "title": "지금 구매",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "credit-starter-one-time",
+        "product_name": "Story Generator 스탠다드 팩",
+        "credits": 5000,
+        "valid_months": 0,
+        "group": "trial"
+      },
+      {
+        "title": "벨류 팩",
+        "description": "적극적인 창작자를 위해. 더 많은 크레딧, 더 큰 가치, 유효기간 없음.",
+        "label": "최고 가치",
+        "features_title": "포함 사항",
+        "features": [
+          "15,000 크레딧, 유효기간 없음",
+          "스탠다드 팩보다 3배 더 많은 크레딧, 더 큰 가치!"
+        ],
+        "interval": "one-time",
+        "amount": 2400,
+        "currency": "USD",
+        "price": "$24",
+        "unit": "/ 1회",
+        "is_featured": true,
+        "tip": "크레딧 유효기간 없음",
+        "button": {
+          "title": "지금 구매",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "credit-pro-one-time",
+        "product_name": "Story Generator 벨류 팩",
+        "credits": 15000,
         "valid_months": 0,
         "group": "trial"
       },

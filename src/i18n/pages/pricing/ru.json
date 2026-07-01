@@ -7,7 +7,7 @@
     "groups": [
       {
         "name": "trial",
-        "title": "Пробный"
+        "title": "Пакеты кредитов"
       },
       {
         "name": "monthly",
@@ -43,6 +43,58 @@
         "product_id": "trial-one-time",
         "product_name": "Story Generator Пробный пакет",
         "credits": 500,
+        "valid_months": 0,
+        "group": "trial"
+      },
+      {
+        "title": "Стандартный пакет",
+        "description": "Для нерегулярных авторов. Кредиты без срока действия — используйте, когда нужно.",
+        "features_title": "Включает",
+        "features": [
+          "5 000 кредитов, без срока действия"
+        ],
+        "interval": "one-time",
+        "amount": 900,
+        "currency": "USD",
+        "price": "$9",
+        "unit": "/ разово",
+        "is_featured": false,
+        "tip": "Кредиты без срока действия",
+        "button": {
+          "title": "Купить сейчас",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "credit-starter-one-time",
+        "product_name": "Story Generator Стандартный пакет",
+        "credits": 5000,
+        "valid_months": 0,
+        "group": "trial"
+      },
+      {
+        "title": "Выгодный пакет",
+        "description": "Для активных авторов. Больше кредитов, выгоднее — без срока действия.",
+        "label": "Выгодно",
+        "features_title": "Включает",
+        "features": [
+          "15 000 кредитов, без срока действия",
+          "В 3 раза больше кредитов, чем в Standard — выгоднее!"
+        ],
+        "interval": "one-time",
+        "amount": 2400,
+        "currency": "USD",
+        "price": "$24",
+        "unit": "/ разово",
+        "is_featured": true,
+        "tip": "Кредиты без срока действия",
+        "button": {
+          "title": "Купить сейчас",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "credit-pro-one-time",
+        "product_name": "Story Generator Выгодный пакет",
+        "credits": 15000,
         "valid_months": 0,
         "group": "trial"
       },
