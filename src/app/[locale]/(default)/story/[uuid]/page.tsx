@@ -20,10 +20,15 @@ export async function generateMetadata({
   const { uuid } = await params;
   const t = await getTranslations();
 
+  // Community stories are UGC of varying quality; noindex to avoid thin-content
+  // spam signals. keep follow:true so internal links still pass equity to CTAs.
+  const robots = { index: false, follow: true };
+
   const story = await findPublicStoryByUuid(uuid);
   if (!story) {
     return {
       title: t("community.title"),
+      robots,
     };
   }
 
@@ -46,6 +51,7 @@ export async function generateMetadata({
       description,
       url: canonicalUrl,
     },
+    robots,
   };
 }
 
