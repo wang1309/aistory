@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 
+import Script from "next/script";
 import { getLocale, setRequestLocale } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { DM_Sans, Source_Serif_4, Noto_Sans_SC } from "next/font/google";
@@ -37,6 +38,8 @@ export default async function RootLayout({
   setRequestLocale(locale);
   const googleAdsenseCode = process.env.NEXT_PUBLIC_GOOGLE_ADCODE || "";
   const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org";
+  // Microsoft Clarity Project ID（在 .env.* 中配置 NEXT_PUBLIC_CLARITY_ID）
+  const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID || "";
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -82,6 +85,21 @@ export default async function RootLayout({
             }),
           }}
         />
+        {clarityId && (
+          <Script
+            id="microsoft-clarity"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "${clarityId}");
+              `,
+            }}
+          />
+        )}
         {children}
       </body>
     </html>
