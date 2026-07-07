@@ -626,7 +626,14 @@
       "error_pdf_export_failed": "PDF export failed. Please try again.",
       "success_generated": "Story generated successfully!",
       "success_copied": "Story copied to clipboard!",
-      "success_pdf_exported": "PDF exported successfully!"
+      "success_pdf_exported": "PDF exported successfully!",
+      "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits.",
+      "insufficient_credits": "Insufficient credits",
+      "rate_limited": "Too many requests today. Please try again later."
+    },
+    "quota": {
+      "remaining_today": "Today's uses",
+      "creative_used_up": "Used up · resets tomorrow"
     },
     "completion_guide": {
       "title": "Liked your story?",

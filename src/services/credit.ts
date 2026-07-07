@@ -24,12 +24,14 @@ export enum CreditsTransType {
   Ping = "ping", // cost for ping api
   ChatContinue = "chat_continue", // cost for streaming continue chat
   StoryOutlineExpand = "story_outline_expand", // cost for story outline chapter expansion
+  StoryGenerateCreative = "story_generate_creative", // cost for creative model story generation
 }
 
 export enum CreditsAmount {
   NewUserGet = 50,
   PingCost = 1,
   StoryOutlineExpand = 5,
+  StoryGenerateCreativeCost = 5,
 }
 
 export async function getUserCredits(user_uuid: string): Promise<UserCredits> {

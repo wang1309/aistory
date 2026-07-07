@@ -43,7 +43,7 @@ function getKvRestConfigFromEnv(): KvRestConfig | null {
   return { accountId, namespaceId, apiToken };
 }
 
-async function getTurnstileIdentity(): Promise<string | null> {
+export async function getTurnstileIdentity(): Promise<string | null> {
   try {
     const userUuid = await getUserUuid();
     if (userUuid) {

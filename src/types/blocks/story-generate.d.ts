@@ -233,6 +233,13 @@ export interface StoryGenerate {
     success_generated: string;
     success_copied: string;
     success_pdf_exported: string;
+    creative_limit_reached: string;
+    insufficient_credits: string;
+    rate_limited: string;
+  };
+  quota: {
+    remaining_today: string;
+    creative_used_up: string;
   };
   completion_guide: {
     title: string;

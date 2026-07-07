@@ -432,6 +432,18 @@
       "Adding the finishing touches..."
     ]
   },
+  "story_paywall": {
+    "eyebrow": "Creative Model",
+    "popular": "Most popular",
+    "title": "Insufficient credits",
+    "description": "Upgrade a plan to keep creating with the Creative model.",
+    "loading": "Loading plans...",
+    "empty": "Unable to load plans right now.",
+    "credits": "credits",
+    "view_all": "View all plans",
+    "later": "Later",
+    "checkout_failed": "Checkout failed. Please try again."
+  },
   "structured_data_faq": [
     {
       "question": "Is the AI story generator really free?",

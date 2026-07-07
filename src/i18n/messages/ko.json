@@ -432,6 +432,18 @@
       "마지막 손질을 하는 중..."
     ]
   },
+  "story_paywall": {
+    "eyebrow": "Creative 모델",
+    "popular": "가장 인기",
+    "title": "크레딧 부족",
+    "description": "플랜을 업그레이드하여 Creative 모델로 계속 작성하세요.",
+    "loading": "불러오는 중...",
+    "empty": "지금 플랜을 불러올 수 없습니다.",
+    "credits": "크레딧",
+    "view_all": "모든 플랜 보기",
+    "later": "나중에",
+    "checkout_failed": "결제 시작에 실패했습니다. 다시 시도해 주세요."
+  },
   "structured_data_faq": [
     {
       "question": "AI 스토리 생성기는 정말 무료인가요?",

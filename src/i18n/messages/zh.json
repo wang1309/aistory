@@ -432,6 +432,18 @@
       "正在添加最后的点缀..."
     ]
   },
+  "story_paywall": {
+    "eyebrow": "Creative 模型",
+    "popular": "最受欢迎",
+    "title": "积分不足",
+    "description": "升级套餐,继续使用 Creative 模型创作。",
+    "loading": "加载中...",
+    "empty": "暂时无法加载套餐。",
+    "credits": "积分",
+    "view_all": "查看全部套餐",
+    "later": "稍后",
+    "checkout_failed": "支付发起失败,请重试。"
+  },
   "structured_data_faq": [
     {
       "question": "AI故事生成器真的免费吗？",

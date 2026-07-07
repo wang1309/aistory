@@ -432,6 +432,18 @@
       "Den letzten Schliff geben..."
     ]
   },
+  "story_paywall": {
+    "eyebrow": "Creative-Modell",
+    "popular": "Beliebteste",
+    "title": "Nicht genügend Guthaben",
+    "description": "Upgrade auf einen Plan, um mit dem Creative-Modell weiterzuschreiben.",
+    "loading": "Wird geladen...",
+    "empty": "Pläne konnten derzeit nicht geladen werden.",
+    "credits": "Credits",
+    "view_all": "Alle Pläne ansehen",
+    "later": "Später",
+    "checkout_failed": "Checkout fehlgeschlagen. Bitte erneut versuchen."
+  },
   "structured_data_faq": [
     {
       "question": "Ist der KI-Geschichtengenerator wirklich kostenlos?",

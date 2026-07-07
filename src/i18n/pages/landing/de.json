@@ -626,7 +626,14 @@
       "error_pdf_export_failed": "PDF-Export fehlgeschlagen. Bitte versuchen Sie es erneut.",
       "success_generated": "Geschichte erfolgreich generiert!",
       "success_copied": "Geschichte in die Zwischenablage kopiert!",
-      "success_pdf_exported": "PDF erfolgreich exportiert!"
+      "success_pdf_exported": "PDF erfolgreich exportiert!",
+      "creative_limit_reached": "Die heutigen kostenlosen Creative Nutzungen sind aufgebraucht. Anmelden, um fortzufahren.",
+      "insufficient_credits": "Nicht genügend Guthaben",
+      "rate_limited": "Zu viele Anfragen heute. Bitte später erneut versuchen."
+    },
+    "quota": {
+      "remaining_today": "Heute verbleibend",
+      "creative_used_up": "Aufgebraucht · zurück morgen"
     },
     "completion_guide": {
       "title": "Gefällt Ihnen die Geschichte?",

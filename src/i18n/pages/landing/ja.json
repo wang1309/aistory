@@ -626,7 +626,14 @@
       "error_pdf_export_failed": "PDFのエクスポートに失敗しました。もう一度お試しください。",
       "success_generated": "ストーリーが正常に生成されました！",
       "success_copied": "ストーリーがクリップボードにコピーされました！",
-      "success_pdf_exported": "PDFのエクスポートに成功しました！"
+      "success_pdf_exported": "PDFのエクスポートに成功しました！",
+      "creative_limit_reached": "今日のCreative無料回数を使い切りました。ログインして続行。",
+      "insufficient_credits": "クレジット不足",
+      "rate_limited": "本日のリクエストが多すぎます。後でもう一度お試しください。"
+    },
+    "quota": {
+      "remaining_today": "今日の残り",
+      "creative_used_up": "使い切りました · 明日リセット"
     },
     "completion_guide": {
       "title": "この物語は気に入りましたか？",

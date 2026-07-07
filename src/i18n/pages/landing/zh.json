@@ -626,7 +626,14 @@
       "error_pdf_export_failed": "PDF导出失败，请重试。",
       "success_generated": "故事生成成功！",
       "success_copied": "故事已复制到剪贴板！",
-      "success_pdf_exported": "PDF导出成功！"
+      "success_pdf_exported": "PDF导出成功！",
+      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。",
+      "insufficient_credits": "积分不足",
+      "rate_limited": "今日请求过多,请稍后再试。"
+    },
+    "quota": {
+      "remaining_today": "今日剩余",
+      "creative_used_up": "已用完 · 明日恢复"
     },
     "completion_guide": {
       "title": "喜欢这个故事吗？",

@@ -1,6 +1,19 @@
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
+import { getUserUuid } from "@/services/user";
+import {
+  CreditsAmount,
+  CreditsTransType,
+  decreaseCredits,
+  getUserCredits,
+} from "@/services/credit";
+import {
+  checkCreativeQuota,
+  checkIpHardCap,
+  incrementCreativeQuota,
+  incrementIpHardCap,
+} from "@/lib/free-quota";
 
 interface StoryOptions {
   format: string | null;
@@ -118,6 +131,76 @@ export async function POST(req: Request) {
     }
 
     console.log("✓ Turnstile verification passed, proceeding with story generation");
+
+    // ===== 限额闸门(Turnstile 后、GRSAI 前,流式前拦截)=====
+    // creative 每日 N 次(默认 3)免费;超额 → 匿名引导登录(429)、已登录扣积分续用(402/扣分)
+    // 所有模型共享 IP hard cap(防匿名脚本刷量,默认 50/天)
+    // 注意:错误响应必须用 Response.json + 显式 status,禁用 respErr(默认 200 会被流式 reader 吞掉)
+    const user_uuid = await getUserUuid();
+
+    // IP hard cap(所有模型,按 IP)
+    const ipCap = await checkIpHardCap();
+    if (ipCap.used >= ipCap.limit) {
+      console.log(`IP hard cap exceeded: ${ipCap.used}/${ipCap.limit}`);
+      return Response.json(
+        {
+          code: "rate_limited",
+          message: "too many requests today, please try again later",
+          remaining: 0,
+          limit: ipCap.limit,
+        },
+        { status: 429 }
+      );
+    }
+
+    // creative 每日免费额度
+    let pendingCreditDeduct: { cost: number } | null = null;
+    if (model === "creative") {
+      const quota = await checkCreativeQuota();
+      console.log(`Creative quota: ${quota.used}/${quota.limit} (remaining ${quota.remaining})`);
+      if (quota.used >= quota.limit) {
+        // 免费额度用完
+        if (!user_uuid) {
+          // 匿名:引导登录(登录送 NewUserGet 积分 + 重新获 3 次免费)
+          return Response.json(
+            {
+              code: "free_quota_exceeded",
+              message: "daily free creative limit reached, login to continue",
+              remaining: 0,
+              limit: quota.limit,
+              need: "login",
+            },
+            { status: 429 }
+          );
+        }
+        // 已登录:扣积分续用(参考 story-outline-expand 范式)
+        const userCredits = await getUserCredits(user_uuid);
+        const cost =
+          Number(process.env.SG_CREATIVE_COST) ||
+          CreditsAmount.StoryGenerateCreativeCost;
+        if ((userCredits.left_credits || 0) < cost) {
+          return Response.json(
+            {
+              code: "insufficient_credits",
+              message: "insufficient credits for creative model",
+              remaining: 0,
+              need: cost,
+              left: userCredits.left_credits || 0,
+            },
+            { status: 402 }
+          );
+        }
+        // 标记扣分(等上游 ok 后执行)
+        pendingCreditDeduct = { cost };
+      } else {
+        // 免费额度内:KV +1(乐观计数,流式前)
+        await incrementCreativeQuota();
+      }
+    }
+
+    // IP hard cap +1(通过检查的请求才计数)
+    await incrementIpHardCap();
+    // ===== 限额闸门结束 =====
 
     const apiKey = process.env.GRSAI_API_KEY;
     const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
@@ -237,6 +320,21 @@ export async function POST(req: Request) {
       const errorText = await response.text();
       console.log("API Error:", response.status, errorText);
       return respErr(`API Error: ${response.status} - ${errorText}`);
+    }
+
+    // creative 超额用户:上游 ok 后扣分(参考 story-outline-expand 范式)
+    // 失败不中断生成(fail-open,上游成本已发生),仅打日志
+    if (pendingCreditDeduct && user_uuid) {
+      try {
+        await decreaseCredits({
+          user_uuid,
+          trans_type: CreditsTransType.StoryGenerateCreative,
+          credits: pendingCreditDeduct.cost,
+        });
+        console.log(`Creative credit deducted: ${pendingCreditDeduct.cost}`);
+      } catch (e) {
+        console.log("Creative credit deduct failed (continuing):", e);
+      }
     }
 
     console.log("Story generation started..."+response);

@@ -626,7 +626,14 @@
       "error_pdf_export_failed": "Экспорт PDF не удался. Пожалуйста, попробуйте снова.",
       "success_generated": "История успешно создана!",
       "success_copied": "История скопирована в буфер обмена!",
-      "success_pdf_exported": "PDF успешно экспортирован!"
+      "success_pdf_exported": "PDF успешно экспортирован!",
+      "creative_limit_reached": "Сегодняшние бесплатные Creative попытки исчерпаны. Войдите, чтобы продолжить.",
+      "insufficient_credits": "Недостаточно кредитов",
+      "rate_limited": "Сегодня слишком много запросов. Попробуйте позже."
+    },
+    "quota": {
+      "remaining_today": "Осталось сегодня",
+      "creative_used_up": "Исчерпано · сброс завтра"
     },
     "completion_guide": {
       "title": "Вам понравилась история?",
