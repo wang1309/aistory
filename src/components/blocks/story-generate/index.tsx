@@ -47,7 +47,6 @@ import {
   markCreativeIncrement,
   markCreativeQuotaExhausted,
 } from "@/lib/creative-quota-client";
-import { track } from "@/lib/track";
 const StorySaveDialog = dynamic(() => import("@/components/story/story-save-dialog"), {
   ssr: false,
   loading: () => null,
@@ -479,7 +478,6 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       selectedModel === "creative" &&
       getCreativeUsed() >= getCreativeLimit()
     ) {
-      track("creative_free_limit_hit", { source: "optimistic" });
       toast.error(section.toasts.creative_limit_reached);
       setShowSignModal(true);
       return;
@@ -571,7 +569,6 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         // creative 免费额度用完(匿名)→ 引导登录
         if (response.status === 429 && code === "free_quota_exceeded") {
-          track("creative_free_limit_hit", { source: "backend_429" });
           markCreativeQuotaExhausted();
           setCreativeUsed(getCreativeLimit());
           toast.error(section.toasts.creative_limit_reached);

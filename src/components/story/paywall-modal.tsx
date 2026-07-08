@@ -13,7 +13,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, Loader2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { useAppContext } from "@/contexts/app";
-import { track } from "@/lib/track";
 import type { PricingItem } from "@/types/blocks/pricing";
 
 type Props = {
@@ -39,7 +38,6 @@ export default function PaywallModal({ open, onClose }: Props) {
 
   useEffect(() => {
     if (!open) return;
-    track("paywall_view");
     setLoading(true);
     fetch(`/api/pricing?locale=${locale}`)
       .then((r) => r.json())
@@ -61,7 +59,6 @@ export default function PaywallModal({ open, onClose }: Props) {
       return;
     }
     if (checkingOut) return;
-    track("paywall_checkout_click", { product_id: item.product_id });
     try {
       setCheckingOut(item.product_id);
       const response = await fetch("/api/checkout", {
@@ -92,7 +89,6 @@ export default function PaywallModal({ open, onClose }: Props) {
   };
 
   const goPricing = () => {
-    track("paywall_view_all_click");
     onClose();
     router.push("/pricing");
   };
