@@ -812,3 +812,26 @@ body.block-dragging {
 body.block-dragging * {
   cursor: grabbing !important;
 }
+
+/* Force prose text to be readable in dark mode */
+.dark .prose p,
+.dark .prose li,
+.dark .prose span,
+.dark .prose td,
+.dark .prose th {
+  color: #e2e8f0 !important;
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  color: #f8fafc !important;
+}
+
+.dark .prose strong,
+.dark .prose b {
+  color: #ffffff !important;
+}

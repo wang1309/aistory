@@ -54,38 +54,32 @@ export default function CompletionGuide({
                 <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
                     {(continueHref || onContinue) && (
                         continueHref ? (
-                            <Button
-                                asChild
-                                size="lg"
-                                variant="outline"
-                                className="w-full sm:w-auto rounded-full h-14 px-8 text-base font-semibold border border-black/5 dark:border-white/10 bg-white/90 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10"
+                            <button
+                                className="inline-flex items-center justify-center w-full sm:w-auto rounded-full h-14 px-8 text-base font-semibold border border-black/10 dark:border-white/20 bg-white/90 dark:bg-white/10 hover:bg-gray-50 dark:hover:bg-white/15 text-slate-800 dark:text-slate-100 shadow-sm transition-all hover:-translate-y-0.5"
                             >
-                                <Link href={continueHref as any}>
+                                <Link href={continueHref as any} className="inline-flex items-center">
                                     <Icon name="RiChat3Line" className="size-5 mr-2 text-orange-500" />
                                     {continueLabel || "Continue in AI Write"}
                                 </Link>
-                            </Button>
+                            </button>
                         ) : (
-                            <Button
+                            <button
                                 onClick={onContinue}
-                                size="lg"
-                                variant="outline"
-                                className="w-full sm:w-auto rounded-full h-14 px-8 text-base font-semibold border border-black/5 dark:border-white/10 bg-white/90 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10"
+                                className="inline-flex items-center justify-center w-full sm:w-auto rounded-full h-14 px-8 text-base font-semibold border border-black/10 dark:border-white/20 bg-white/90 dark:bg-white/10 hover:bg-gray-50 dark:hover:bg-white/15 text-slate-800 dark:text-slate-100 shadow-sm transition-all hover:-translate-y-0.5"
                             >
                                 <Icon name="RiChat3Line" className="size-5 mr-2 text-orange-500" />
                                 {continueLabel || "Continue in AI Write"}
-                            </Button>
+                            </button>
                         )
                     )}
 
-                    <Button
+                    <button
                         onClick={onCreateAnother}
-                        size="lg"
-                        className="w-full sm:w-auto rounded-full h-14 px-8 text-base font-semibold bg-white dark:bg-white/10 hover:bg-gray-50 dark:hover:bg-white/20 text-foreground border border-black/5 dark:border-white/10 shadow-sm transition-all hover:-translate-y-0.5"
+                        className="inline-flex items-center justify-center w-full sm:w-auto rounded-full h-14 px-8 text-base font-semibold border border-black/10 dark:border-white/20 bg-white/90 dark:bg-white/10 hover:bg-gray-50 dark:hover:bg-white/15 text-slate-800 dark:text-slate-100 shadow-sm transition-all hover:-translate-y-0.5"
                     >
                         <Icon name="plus" className="size-5 mr-2 text-indigo-500" />
                         {translations.create_another}
-                    </Button>
+                    </button>
 
                     <Button
                         onClick={onSave}

@@ -959,7 +959,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                             <div ref={outputScrollRef} className="flex-1 p-6 sm:p-8 overflow-y-auto custom-scrollbar">
                                 {generatedBackstory ? (
                                     <div className="animate-fade-in">
-                                        <article className="prose prose-slate dark:prose-invert prose-lg max-w-none leading-relaxed prose-headings:font-serif prose-p:font-serif prose-p:text-slate-700 dark:prose-p:text-slate-300">
+                                        <article className="prose prose-lg max-w-none leading-relaxed prose-headings:font-serif prose-headings:text-foreground prose-p:font-serif prose-p:text-slate-700 prose-li:text-slate-700 prose-strong:text-slate-900 dark:prose-p:text-slate-200 dark:prose-li:text-slate-200 dark:prose-strong:text-white dark:prose-headings:text-white">
                                             <ReactMarkdown>{generatedBackstory}</ReactMarkdown>
                                         </article>
                                     </div>
