@@ -64,12 +64,47 @@ export default function AiWriteHero() {
   const [prompt, setPrompt] = useState("");
   const [sending, setSending] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [typed, setTyped] = useState({ head: 0, high: 0 });
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setMounted(true));
     return () => cancelAnimationFrame(id);
   }, []);
+
+  // Typewriter: heading first, then highlight, sequential.
+  // Runs only after mount so SSR ships the full text (SEO-safe) and there is
+  // no hydration mismatch — the fade-in mask hides the "full → empty" swap.
+  useEffect(() => {
+    if (!mounted) return;
+    const headLen = copy.heading.length;
+    const highLen = copy.highlight.length;
+    const stepMs = 52;
+    const pauseMs = 260;
+    const startDelay = 500;
+    const timers: number[] = [];
+    setTyped({ head: 0, high: 0 });
+    let delay = startDelay;
+    for (let i = 1; i <= headLen; i++) {
+      const n = i;
+      timers.push(
+        window.setTimeout(() => setTyped((t) => ({ ...t, head: n })), delay)
+      );
+      delay += stepMs;
+    }
+    delay += pauseMs;
+    for (let i = 1; i <= highLen; i++) {
+      const n = i;
+      timers.push(
+        window.setTimeout(() => setTyped((t) => ({ ...t, high: n })), delay)
+      );
+      delay += stepMs;
+    }
+    return () => timers.forEach((t) => window.clearTimeout(t));
+    // copy.heading/highlight are stable primitives per locale
+  }, [mounted, copy.heading, copy.highlight]);
+
+  const headingDone = typed.head >= copy.heading.length;
 
   const handleStart = useCallback(() => {
     setSending(true);
@@ -148,8 +183,19 @@ export default function AiWriteHero() {
             </div>
 
             {/* Heading */}
-            <h1 className="text-balance font-display font-bold tracking-tight text-foreground text-[clamp(2.75rem,6vw,5.5rem)] leading-[1.05]">
-              <span className="block">{copy.heading}</span>
+            <h1
+              aria-label={`${copy.heading} ${copy.highlight}`}
+              className="text-balance font-display font-bold tracking-tight text-foreground text-[clamp(2.75rem,6vw,5.5rem)] leading-[1.05]"
+            >
+              <span className="block">
+                {mounted ? copy.heading.slice(0, typed.head) : copy.heading}
+                {mounted && !headingDone && (
+                  <span
+                    aria-hidden
+                    className="aiwrite-caret ml-[0.08em] inline-block h-[0.82em] w-[0.055em] translate-y-[0.02em] rounded-[1px] bg-primary/70"
+                  />
+                )}
+              </span>
               <span className="relative block mt-1">
                 <span
                   className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent"
@@ -157,8 +203,16 @@ export default function AiWriteHero() {
                     backgroundSize: "200% 100%",
                   }}
                 >
-                  {copy.highlight}
+                  {mounted
+                    ? copy.highlight.slice(0, typed.high)
+                    : copy.highlight}
                 </span>
+                {mounted && headingDone && (
+                  <span
+                    aria-hidden
+                    className="aiwrite-caret ml-[0.08em] inline-block h-[0.82em] w-[0.055em] translate-y-[0.02em] rounded-[1px] bg-primary/70"
+                  />
+                )}
                 {/* Decorative underline */}
                 <svg
                   className="mt-2 h-3 w-48 text-primary/20 sm:h-4 sm:w-56"
