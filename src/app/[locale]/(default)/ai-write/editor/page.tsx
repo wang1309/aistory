@@ -5,31 +5,72 @@ import { getUserUuid } from "@/services/user";
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { buildLanguageAlternates } from "@/lib/seo";
+import { cache } from "react";
 
 export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 
+type EditorMetadata = {
+  title: string;
+  editor_label: string;
+  description: string;
+};
+
+async function loadEditorMetadata(locale: string): Promise<EditorMetadata> {
+  try {
+    const messages = await import(
+      `@/i18n/pages/ai-write-editor/${locale}.json`
+    );
+    return messages.default.ai_write_editor.metadata as EditorMetadata;
+  } catch {
+    const messages = await import(`@/i18n/pages/ai-write-editor/en.json`);
+    return messages.default.ai_write_editor.metadata as EditorMetadata;
+  }
+}
+
+// 用 React cache 让 generateMetadata 与 page 在同一请求里共享一次 story 查询，
+// 避免元信息生成与渲染各查一次数据库。
+const loadStoryForRequest = cache(
+  async (
+    storyUuid?: string
+  ): Promise<Awaited<ReturnType<typeof findStoryByUuidForUser>>> => {
+    if (!storyUuid) return undefined;
+    const userUuid = await getUserUuid();
+    if (!userUuid) return undefined;
+    return findStoryByUuidForUser(storyUuid, userUuid);
+  }
+);
+
 export async function generateMetadata({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams?: Promise<{ story?: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const story = await loadStoryForRequest(resolvedSearchParams?.story);
 
   let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/ai-write/editor`;
   if (locale !== "en") {
     canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/ai-write/editor`;
   }
 
+  const messages = await loadEditorMetadata(locale);
+
+  // 有 story 时把故事标题放进 title，方便用户在多个浏览器标签页之间区分；
+  // 没有故事时退回到描述性的默认标题。
+  const storyTitle = story?.title?.trim();
+  const title = storyTitle
+    ? `${storyTitle} — ${messages.editor_label}`
+    : messages.title;
+
   return {
-    title: "AI Write — Editor",
-    description:
-      locale === "zh"
-        ? "在一个续写工作台中编辑故事、调用 Agnes 对话代理并持续完善正文。"
-        : locale === "de"
-        ? "Bearbeite deinen Text in einer Schreibwerkbank und lasse Agnes direkt weiterfuehren."
-        : "Edit your draft in a writing workbench and continue it with Agnes in real time.",
+    title,
+    description: messages.description,
     alternates: {
       canonical: canonicalUrl,
       languages: buildLanguageAlternates("/ai-write/editor"),
@@ -52,24 +93,7 @@ export default async function AiWriteEditorPage({
   const storyUuid = resolvedSearchParams?.story;
   const source = resolvedSearchParams?.source;
 
-  let story:
-    | {
-        uuid: string;
-        title: string | null;
-        content: string;
-        word_count: number;
-        settings: Record<string, unknown> | null;
-        prompt?: string | null;
-        status?: string | null;
-      }
-    | undefined;
-
-  if (storyUuid) {
-    const userUuid = await getUserUuid();
-    if (userUuid) {
-      story = await findStoryByUuidForUser(storyUuid, userUuid);
-    }
-  }
+  const story = await loadStoryForRequest(storyUuid);
 
   const initial = buildWorkbenchInitialState({ story });
 
