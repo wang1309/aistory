@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @import "./theme.css";
 
+/* Tailwind v4 默认 dark: 走 @media (prefers-color-scheme: dark)，
+   但本项目用 next-themes attribute="class" 切 .dark class，
+   必须把 dark: 绑到 .dark class，否则手动切夜间模式时所有 dark: 工具类失效
+   （表现为 section 顶部浅金渐变在暗背景上泄漏成"渐变黄色"）。 */
+@custom-variant dark (&:is(.dark *));
+
 @plugin "tailwindcss-animate";
 @plugin "@tailwindcss/typography";
 
