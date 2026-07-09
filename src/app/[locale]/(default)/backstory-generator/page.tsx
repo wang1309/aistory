@@ -1,5 +1,6 @@
 import BackstoryGenerate from "@/components/blocks/backstory-generate";
 import FeatureIntro from "@/components/sections/feature-intro";
+import HowToUse from "@/components/sections/how-to-use";
 import Benefits from "@/components/sections/benefits";
 import UseCases from "@/components/sections/use-cases";
 import FAQ from "@/components/sections/faq";
@@ -74,7 +75,7 @@ export default async function BackstoryGeneratePage({
     const messages = await import(`@/i18n/pages/backstory-generate/${locale}.json`);
     const t = await getTranslations();
     const section = messages.default.backstory_generate;
-    const { feature_intro, feature1_section, feature_section, faq_section, cta_section } = section;
+    const { feature_intro, how_to_use, feature1_section, feature_section, faq_section, cta_section } = section;
 
     // Build URLs for breadcrumb structured data
     const homeUrl = process.env.NEXT_PUBLIC_WEB_URL || "";
@@ -163,6 +164,11 @@ export default async function BackstoryGeneratePage({
             {/* What is Backstory Generator */}
             {feature_intro && (
                 <FeatureIntro section={feature_intro} accent="orange" />
+            )}
+
+            {/* How to Use */}
+            {how_to_use && (
+                <HowToUse section={how_to_use} accent="orange" />
             )}
 
             {/* Why Use */}

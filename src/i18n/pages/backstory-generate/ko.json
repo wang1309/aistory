@@ -112,6 +112,26 @@
                 "src": "/imgs/backstory/what-is-backstory1.avif"
             }
         },
+        "how_to_use": {
+            "name": "how_to_use",
+            "label": "사용 방법",
+            "title": "백스토리 생성기 사용 방법",
+            "description": "한 줄 캐릭터 아이디어를 구조화된 백스토리로 바꾸는 세 단계.",
+            "items": [
+                {
+                    "title": "캐릭터를 설명하세요",
+                    "description": "한 줄 캐릭터 컨셉을 입력(또는 랜덤)한 뒤, 판타지·SF·선협 같은 세계관, 캐릭터 역할, 이야기에 맞는 톤을 선택하세요."
+                },
+                {
+                    "title": "출력 결과 미세 조정",
+                    "description": "AI 모델, 출력 언어, 짧음부터 상세까지 길이를 선택해 소설·TRPG·버추얼 유튜버 설정에 맞추세요."
+                },
+                {
+                    "title": "생성 후 바로 활용",
+                    "description": "기원, 전환점, 관계, 목표, 스토리 갈고리가 담긴 구조화된 백스토리를 받아 원고·캐릭터 시트·대본에 바로 붙여넣으세요."
+                }
+            ]
+        },
         "feature1_section": {
             "name": "feature1",
             "title": "AI 백스토리 생성기를 써야 하는 이유",

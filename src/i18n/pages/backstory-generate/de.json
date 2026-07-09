@@ -112,6 +112,26 @@
                 "src": "/imgs/backstory/what-is-backstory1.avif"
             }
         },
+        "how_to_use": {
+            "name": "how_to_use",
+            "label": "Anleitung",
+            "title": "So nutzt du den Backstory-Generator",
+            "description": "Verwandle eine einzeilige Charakteridee in drei einfachen Schritten in eine strukturierte Hintergrundgeschichte.",
+            "items": [
+                {
+                    "title": "Beschreibe deinen Charakter",
+                    "description": "Gib ein einzeiliges Charakterkonzept ein (oder zieh ein zufälliges), wähle dann ein Weltsetting wie Fantasy, Sci-Fi oder Xianxia, eine Charakterrolle und einen passenden Ton."
+                },
+                {
+                    "title": "Passe die Ausgabe an",
+                    "description": "Wähle dein KI-Modell, die Ausgabesprache und die Länge von Kurz bis Detailliert, damit die Hintergrundgeschichte zu deinem Roman, deiner Kampagne oder deiner VTuber-Lore passt."
+                },
+                {
+                    "title": "Generieren und einfügen",
+                    "description": "Erhalte eine strukturierte Hintergrundgeschichte mit Herkunft, Wendepunkten, Beziehungen, Zielen und Story-Hooks, die du direkt ins Manuskript, den Charakterbogen oder das Skript übernehmen kannst."
+                }
+            ]
+        },
         "feature1_section": {
             "name": "feature1",
             "title": "Warum unseren KI-Backstory-Generator nutzen",

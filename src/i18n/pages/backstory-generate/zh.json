@@ -112,6 +112,26 @@
                 "src": "/imgs/backstory/what-is-backstory1.avif"
             }
         },
+        "how_to_use": {
+            "name": "how_to_use",
+            "label": "使用方法",
+            "title": "如何使用角色背景故事生成器",
+            "description": "只需三步，把一句话角色设定变成结构完整的背景故事。",
+            "items": [
+                {
+                    "title": "描述你的角色",
+                    "description": "输入一句话角色设定（或点击随机），再选择奇幻、科幻、仙侠等世界观、角色类型以及契合故事的语调。"
+                },
+                {
+                    "title": "调整生成结果",
+                    "description": "选择 AI 模型、输出语言，以及从简短到详细的篇幅，让背景故事贴合你的小说、跑团或虚拟主播设定。"
+                },
+                {
+                    "title": "生成并直接使用",
+                    "description": "获得包含出身、转折点、人物关系、目标和故事钩子的结构化背景故事，可直接粘贴到稿件、角色卡或剧本中。"
+                }
+            ]
+        },
         "feature1_section": {
             "name": "feature1",
             "title": "为什么使用角色背景生成器",

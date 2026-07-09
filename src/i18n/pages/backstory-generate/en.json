@@ -112,6 +112,26 @@
                 "src": "/imgs/backstory/what-is-backstory1.avif"
             }
         },
+        "how_to_use": {
+            "name": "how_to_use",
+            "label": "How to Use",
+            "title": "How to Use the Backstory Generator",
+            "description": "Turn a one-line character idea into a structured backstory in three simple steps.",
+            "items": [
+                {
+                    "title": "Describe Your Character",
+                    "description": "Type a one-line character concept (or hit Random), then pick a world setting like Fantasy, Sci-Fi or Xianxia, a character role, and a tone that fits your story."
+                },
+                {
+                    "title": "Tune the Output",
+                    "description": "Choose your AI model, output language, and length from Short to Detailed, so the backstory matches your novel, campaign, or VTuber lore."
+                },
+                {
+                    "title": "Generate & Drop It In",
+                    "description": "Get a structured backstory with origin, turning points, relationships, goals, and story hooks, ready to paste into your manuscript, character sheet, or script."
+                }
+            ]
+        },
         "feature1_section": {
             "name": "feature1",
             "title": "Why Use Our AI Backstory Generator",
