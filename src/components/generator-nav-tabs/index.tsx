@@ -42,12 +42,19 @@ export default function GeneratorNavTabs() {
   const activeRef = useRef<HTMLAnchorElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
   const [useMarquee, setUseMarquee] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const isCenteringRef = useRef(false);
   const animFrameRef = useRef<number | null>(null);
   const scrollPosRef = useRef(0);
   const pausedRef = useRef(false);
 
   const barePath = pathname.replace(new RegExp(`^/${locale}`), "") || "/";
+
+  // 客户端渲染:挂载后才输出导航条内容,避免 SSR HTML 包含全部工具名导航文字,
+  // 稀释当前页面的核心关键词密度。
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -157,6 +164,15 @@ export default function GeneratorNavTabs() {
       </Link>
     );
   };
+
+  // SSR 阶段只渲染占位(保留高度避免 CLS),不输出任何 Tab 文字/链接。
+  if (!mounted) {
+    return (
+      <div className="w-full max-w-6xl mx-auto px-4 pt-6 pb-6 md:px-6">
+        <div className="min-h-[40px]" aria-hidden="true" />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 pt-6 pb-6 md:px-6">
