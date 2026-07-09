@@ -35,11 +35,11 @@ export default function CompletionGuide({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-12 p-8 rounded-[2rem] bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5 border border-white/10 relative overflow-hidden"
+            className="mt-12 p-8 rounded-[2rem] bg-gradient-to-br from-orange-500/5 via-orange-500/5 to-amber-500/5 border border-orange-500/10 relative overflow-hidden"
         >
             {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="text-center md:text-left">
@@ -77,7 +77,7 @@ export default function CompletionGuide({
                         onClick={onCreateAnother}
                         className="inline-flex items-center justify-center w-full sm:w-auto rounded-full h-14 px-8 text-base font-semibold border border-black/10 dark:border-white/20 bg-white/90 dark:bg-white/10 hover:bg-gray-50 dark:hover:bg-white/15 text-slate-800 dark:text-slate-100 shadow-sm transition-all hover:-translate-y-0.5"
                     >
-                        <Icon name="plus" className="size-5 mr-2 text-indigo-500" />
+                        <Icon name="plus" className="size-5 mr-2 text-orange-500" />
                         {translations.create_another}
                     </button>
 
@@ -85,7 +85,7 @@ export default function CompletionGuide({
                         onClick={onSave}
                         size="lg"
                         disabled={isSaveDisabled}
-                        className="w-full sm:w-auto rounded-full h-14 px-8 text-base font-bold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-lg shadow-indigo-500/20 transition-all hover:-translate-y-0.5 hover:shadow-indigo-500/40 disabled:opacity-60 disabled:cursor-default disabled:hover:translate-y-0 disabled:hover:shadow-none"
+                        className="w-full sm:w-auto rounded-full h-14 px-8 text-base font-bold bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white shadow-lg shadow-orange-500/20 transition-all hover:-translate-y-0.5 hover:shadow-orange-500/40 disabled:opacity-60 disabled:cursor-default disabled:hover:translate-y-0 disabled:hover:shadow-none"
                     >
                         {translations.share_action}
                         <Icon name="save" className="size-5 ml-2" />
