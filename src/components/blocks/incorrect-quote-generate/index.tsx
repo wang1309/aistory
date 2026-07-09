@@ -86,6 +86,166 @@ function parseStreamLine(line: string): string | null {
   }
 }
 
+const FLUID_EASE: [number, number, number, number] = [0.32, 0.72, 0, 1];
+
+/** Animated ellipsis — three dots that pulse in sequence. */
+function GeneratingDots({ reduceMotion }: { reduceMotion: boolean | null }) {
+  if (reduceMotion) {
+    return <span className="text-orange-500">...</span>;
+  }
+
+  return (
+    <span className="inline-flex items-center gap-[2px]">
+      {[0, 1, 2].map((i) => (
+        <motion.span
+          key={i}
+          className="inline-block size-1 rounded-full bg-orange-500 dark:bg-orange-400"
+          animate={{ opacity: [0.2, 1, 0.2] }}
+          transition={{
+            duration: 1.2,
+            repeat: Infinity,
+            delay: i * 0.15,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </span>
+  );
+}
+
+/** A single skeleton bar with a warm shimmer sweep crossing left → right. */
+function ShimmerBar({
+  className,
+  delay = 0,
+  reduceMotion,
+}: {
+  className?: string;
+  delay?: number;
+  reduceMotion: boolean | null;
+}) {
+  return (
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-full bg-orange-500/[0.08] dark:bg-orange-400/[0.08]",
+        className
+      )}
+    >
+      {!reduceMotion && (
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-500/25 to-transparent dark:via-orange-400/25"
+          animate={{ x: ["-100%", "300%"] }}
+          transition={{
+            duration: 1.4,
+            repeat: Infinity,
+            delay,
+            ease: FLUID_EASE,
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+/**
+ * "Composing" state shown in the output panel while the stream has not yet
+ * produced its first token. Once `generatedQuote` receives content, this is
+ * replaced by the live streamed text.
+ */
+function GeneratingState({
+  label,
+  reduceMotion,
+}: {
+  label: string;
+  reduceMotion: boolean | null;
+}) {
+  // Two speaker turns, each with a name stub + two dialogue lines — hints at
+  // the speaker-labelled exchange that is about to stream in.
+  const turns = [
+    { nameWidth: "w-16", lines: ["w-full", "w-[82%]"] },
+    { nameWidth: "w-12", lines: ["w-[90%]", "w-[68%]"] },
+  ];
+
+  return (
+    <div
+      className="flex flex-col gap-6"
+      role="status"
+      aria-live="polite"
+      aria-busy="true"
+    >
+      {/* Status header: bezel quote glyph + pulse dot + label */}
+      <div className="flex items-center gap-3">
+        <div className="rounded-xl border border-orange-500/15 bg-orange-500/[0.06] p-1 dark:bg-orange-400/[0.06]">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-background/70">
+            <motion.span
+              className="font-display text-sm italic font-bold text-orange-600 dark:text-orange-400"
+              animate={
+                reduceMotion
+                  ? {}
+                  : { rotate: [0, -10, 10, -6, 0], scale: [1, 1.12, 1] }
+              }
+              transition={{
+                duration: 2.4,
+                repeat: Infinity,
+                ease: FLUID_EASE,
+              }}
+            >
+              &ldquo;
+            </motion.span>
+          </div>
+        </div>
+
+        <span className="relative flex size-2 shrink-0">
+          {!reduceMotion && (
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-orange-500/50 dark:bg-orange-400/50" />
+          )}
+          <span className="relative inline-flex size-2 rounded-full bg-orange-500 dark:bg-orange-400" />
+        </span>
+
+        <span className="text-sm font-medium text-foreground/80">
+          {label}
+        </span>
+        <GeneratingDots reduceMotion={reduceMotion} />
+      </div>
+
+      {/* Skeleton dialogue preview */}
+      <div className="space-y-5">
+        {turns.map((turn, turnIndex) => (
+          <div key={turnIndex} className="space-y-2.5">
+            <ShimmerBar
+              className={cn("h-2.5", turn.nameWidth)}
+              delay={turnIndex * 0.2}
+              reduceMotion={reduceMotion}
+            />
+            {turn.lines.map((lineWidth, lineIndex) => (
+              <ShimmerBar
+                key={lineIndex}
+                className={cn("h-2.5", lineWidth)}
+                delay={turnIndex * 0.2 + (lineIndex + 1) * 0.12}
+                reduceMotion={reduceMotion}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {/* Progress sweep bar */}
+      <div className="relative h-1 overflow-hidden rounded-full bg-orange-500/10 dark:bg-orange-400/10">
+        {!reduceMotion && (
+          <motion.div
+            className="absolute inset-y-0 w-1/3 rounded-full bg-gradient-to-r from-transparent via-orange-500 to-transparent dark:via-orange-400"
+            animate={{ x: ["-100%", "300%"] }}
+            transition={{
+              duration: 1.6,
+              repeat: Infinity,
+              ease: FLUID_EASE,
+            }}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function IncorrectQuoteGenerate({
   section,
 }: IncorrectQuoteGenerateProps) {
@@ -689,20 +849,46 @@ export default function IncorrectQuoteGenerate({
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label>{t("ui.output_language", "Output language")}</Label>
-                <Select value={outputLanguage} onValueChange={setOutputLanguage}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {LANGUAGE_OPTIONS.map((option) => (
-                      <SelectItem key={option.code} value={option.code}>
-                        {option.flag} {option.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label>{t("ui.output_language", "Output language")}</Label>
+                  <Select value={outputLanguage} onValueChange={setOutputLanguage}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {LANGUAGE_OPTIONS.map((option) => (
+                        <SelectItem key={option.code} value={option.code}>
+                          {option.flag} {option.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>{t("ui.mode_label", "AI model")}</Label>
+                  <Select
+                    value={mode}
+                    onValueChange={(value) =>
+                      setMode(value as IncorrectQuoteMode)
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {modeOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-muted-foreground">
+                    {modeOptions.find((option) => option.value === mode)?.description}
+                  </p>
+                </div>
               </div>
 
               <Collapsible open={showAdvanced} onOpenChange={setShowAdvanced}>
@@ -788,30 +974,6 @@ export default function IncorrectQuoteGenerate({
                     </SelectContent>
                   </Select>
                 </div>
-
-                <div className="space-y-2">
-                  <Label>{t("ui.mode_label", "AI model")}</Label>
-                  <Select
-                    value={mode}
-                    onValueChange={(value) =>
-                      setMode(value as IncorrectQuoteMode)
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {modeOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <p className="text-xs text-muted-foreground">
-                    {modeOptions.find((option) => option.value === mode)?.description}
-                  </p>
-                </div>
               </div>
 
               <div className="space-y-3">
@@ -867,20 +1029,36 @@ export default function IncorrectQuoteGenerate({
               <CardTitle>{t("ui.output_title", "Output")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="min-h-72 rounded-lg border bg-muted/30 p-4 text-sm whitespace-pre-wrap">
-                {generatedQuote ||
-                  (isGenerating
-                    ? t("ui.generating_output", "Generating your incorrect quote...")
-                    : t("ui.empty_output", "Your generated quote will appear here."))}
+              <div className="min-h-72 rounded-lg border bg-muted/30 p-4 text-sm">
+                {isGenerating && !generatedQuote ? (
+                  <GeneratingState
+                    label={t(
+                      "ui.generating_output",
+                      "Generating your incorrect quote..."
+                    )}
+                    reduceMotion={reduceMotion}
+                  />
+                ) : generatedQuote ? (
+                  <span className="block whitespace-pre-wrap leading-relaxed">
+                    {generatedQuote}
+                  </span>
+                ) : (
+                  <span className="text-muted-foreground/70">
+                    {t(
+                      "ui.empty_output",
+                      "Your generated quote will appear here."
+                    )}
+                  </span>
+                )}
               </div>
 
-              <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={handleCopy}
                   disabled={!generatedQuote || isGenerating}
-                  className="h-11 px-2 text-xs sm:h-10 sm:px-4 sm:text-sm"
+                  className="min-h-11 w-full px-3 text-xs sm:h-10 sm:w-auto sm:min-h-0 sm:px-4 sm:text-sm"
                 >
                   {t("ui.copy_button", "Copy")}
                 </Button>
@@ -889,13 +1067,14 @@ export default function IncorrectQuoteGenerate({
                   prompt={prompt}
                   sourceCategory="quote"
                   title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                  className="min-h-11 w-full gap-1.5 px-3 text-xs sm:h-10 sm:w-auto sm:min-h-0 sm:px-4 sm:text-sm"
                 />
                 <Button
                   type="button"
                   variant="outline"
                   onClick={handleGenerate}
                   disabled={isGenerating || !lastCompletedQuote}
-                  className="h-11 px-2 text-xs sm:h-10 sm:px-4 sm:text-sm"
+                  className="min-h-11 w-full px-3 text-xs sm:h-10 sm:w-auto sm:min-h-0 sm:px-4 sm:text-sm"
                 >
                   {t("ui.regenerate_button", "Regenerate")}
                 </Button>
@@ -904,7 +1083,7 @@ export default function IncorrectQuoteGenerate({
                   variant="outline"
                   onClick={handleContinue}
                   disabled={!generatedQuote || isGenerating}
-                  className="h-11 px-2 text-xs sm:h-10 sm:px-4 sm:text-sm"
+                  className="min-h-11 w-full px-3 text-xs sm:h-10 sm:w-auto sm:min-h-0 sm:px-4 sm:text-sm"
                 >
                   {t("ui.continue_button", "Continue in AI Write")}
                 </Button>
