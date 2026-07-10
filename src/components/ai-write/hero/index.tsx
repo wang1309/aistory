@@ -315,7 +315,7 @@ export default function AiWriteHero() {
                   <Button
                     onClick={handleStart}
                     disabled={sending}
-                    className="group h-9 rounded-full bg-foreground px-4 text-[13px] font-medium text-background hover:bg-foreground/85 active:scale-[0.97] dark:bg-white dark:text-foreground dark:hover:bg-white/90"
+                    className="group h-9 rounded-full bg-foreground px-4 text-[13px] font-medium text-background hover:bg-foreground/85 active:scale-[0.97] dark:bg-white dark:text-[oklch(0.20_0.02_55)] dark:hover:bg-white/90"
                     style={{
                       transition:
                         "all 400ms cubic-bezier(0.32,0.72,0,1)",
@@ -326,7 +326,7 @@ export default function AiWriteHero() {
                     ) : (
                       <span className="flex items-center gap-2">
                         {copy.inputButton}
-                        <span className="inline-flex size-5.5 items-center justify-center rounded-full bg-background/15 dark:bg-foreground/15 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px]">
+                        <span className="inline-flex size-5.5 items-center justify-center rounded-full bg-background/15 dark:bg-black/10 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px]">
                           <Icon name="RiArrowRightLine" className="size-3 opacity-70" />
                         </span>
                       </span>

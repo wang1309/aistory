@@ -202,10 +202,10 @@ export default function PaywallModal({ open, onClose }: Props) {
           <button
             onClick={goPricing}
             disabled={!!checkingOut}
-            className="group mt-6 flex w-full items-center justify-between rounded-full bg-foreground px-5 py-3.5 text-sm font-semibold text-background transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-foreground/90 active:scale-[0.98] disabled:opacity-50 dark:bg-white dark:text-foreground"
+            className="group mt-6 flex w-full items-center justify-between rounded-full bg-foreground px-5 py-3.5 text-sm font-semibold text-background transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-foreground/90 active:scale-[0.98] disabled:opacity-50 dark:bg-white dark:text-[oklch(0.20_0.02_55)]"
           >
             <span>{t("view_all")}</span>
-            <span className="flex size-7 items-center justify-center rounded-full bg-background/15 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[1px] group-hover:scale-105 dark:bg-foreground/15">
+            <span className="flex size-7 items-center justify-center rounded-full bg-background/15 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[1px] group-hover:scale-105 dark:bg-black/10">
               <ArrowRight className="size-3.5" />
             </span>
           </button>

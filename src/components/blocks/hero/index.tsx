@@ -237,14 +237,14 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                           size="lg"
                           className="w-full sm:w-auto h-12 sm:h-14 rounded-full px-7 text-sm font-semibold
                             bg-foreground text-background hover:bg-foreground/85 active:scale-[0.97]
-                            dark:bg-white dark:text-foreground dark:hover:bg-white/90
+                            dark:bg-white dark:text-[oklch(0.20_0.02_55)] dark:hover:bg-white/90
                             transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
                           style={getHeroCtaAnimationStyle(isMounted)}
                         >
                           <span className="flex items-center gap-2.5">
                             {item.icon && <Icon name={item.icon} className="size-4 shrink-0 opacity-70" />}
                             <span>{item.title}</span>
-                            <span className="inline-flex size-5 items-center justify-center rounded-full bg-background/15 dark:bg-foreground/15 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px]">
+                            <span className="inline-flex size-5 items-center justify-center rounded-full bg-background/15 dark:bg-black/10 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px]">
                               <svg viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" d="M6 3l5 5-5 5" />
                               </svg>

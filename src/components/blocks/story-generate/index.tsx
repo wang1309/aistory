@@ -1261,7 +1261,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   <div className="rounded-full border border-border/20 bg-foreground/[0.015] dark:bg-white/[0.02] p-1">
                     <Button
                       onClick={handleGenerateClick}
-                      className="w-full h-12 text-sm font-semibold bg-foreground text-background hover:bg-foreground/85 disabled:opacity-50 rounded-full border-none transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] dark:bg-white dark:text-foreground dark:hover:bg-white/90"
+                      className="w-full h-12 text-sm font-semibold bg-foreground text-background hover:bg-foreground/85 disabled:opacity-50 rounded-full border-none transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] dark:bg-white dark:text-[oklch(0.20_0.02_55)] dark:hover:bg-white/90"
                       style={getCtaBreatheAnimationStyle({
                         isActive: sectionVisible,
                         delay: "1s",
@@ -1270,16 +1270,16 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                       <div className="flex items-center justify-center gap-3">
                         {isGenerating ? (
                           <>
-                            <div className="size-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                            <div className="size-4 border-2 border-white/30 border-t-white dark:border-black/30 dark:border-t-black rounded-full animate-spin" />
                             <span className="animate-pulse">{section.generate_button.generating}</span>
                           </>
                         ) : (
                           <>
-                            <span className="inline-flex size-6 items-center justify-center rounded-full bg-background/15 dark:bg-foreground/15">
+                            <span className="inline-flex size-6 items-center justify-center rounded-full bg-background/15 dark:bg-black/10">
                               <Sparkles className="size-3.5" />
                             </span>
                             <span>{section.generate_button.text}</span>
-                            <span className="inline-flex size-6 items-center justify-center rounded-full bg-background/10 dark:bg-foreground/10 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
+                            <span className="inline-flex size-6 items-center justify-center rounded-full bg-background/10 dark:bg-black/10 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
                               <svg viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M3 13L13 3M13 3H6M13 3v7" strokeLinecap="round" strokeLinejoin="round"/>
                               </svg>
