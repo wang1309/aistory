@@ -68,6 +68,11 @@ const PaywallModal = dynamic(() => import("@/components/story/paywall-modal"), {
 import type { StoryStatus } from "@/models/story";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
+import {
+  buildPostAuthResumeTrackingPayload,
+  consumePendingAuthResume,
+  writePendingAuthResume,
+} from "@/lib/auth-resume";
 
 const isDev = process.env.NODE_ENV === "development";
 const devLog = (...args: any[]) => {
@@ -308,6 +313,34 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const [isSavingStory, setIsSavingStory] = useState(false);
   const [hasSavedCurrentStory, setHasSavedCurrentStory] = useState(false);
   const [savedStoryUuid, setSavedStoryUuid] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!user || typeof window === "undefined") return;
+
+    const resume = consumePendingAuthResume("save_story", {
+      sourcePage: "story-generator",
+    });
+    if (!resume || resume.source !== "story_save") return;
+
+    const payload = resume.payload;
+    const resumedStory = typeof payload.generatedStory === "string" ? payload.generatedStory : "";
+    if (!resumedStory.trim()) return;
+
+    if (typeof payload.prompt === "string") setPrompt(payload.prompt);
+    setGeneratedStory(resumedStory);
+    if (typeof payload.selectedModel === "string") setSelectedModel(payload.selectedModel);
+    if (typeof payload.selectedFormat === "string") setSelectedFormat(payload.selectedFormat);
+    if (typeof payload.selectedLength === "string") setSelectedLength(payload.selectedLength);
+    if (typeof payload.selectedGenre === "string") setSelectedGenre(payload.selectedGenre);
+    if (typeof payload.selectedPerspective === "string") setSelectedPerspective(payload.selectedPerspective);
+    if (typeof payload.selectedAudience === "string") setSelectedAudience(payload.selectedAudience);
+    if (typeof payload.selectedTone === "string") setSelectedTone(payload.selectedTone);
+    if (typeof payload.selectedLanguage === "string") setSelectedLanguage(payload.selectedLanguage);
+    setHasSavedCurrentStory(false);
+    setSavedStoryUuid(null);
+    setIsSaveDialogOpen(true);
+    track("post_auth_action_resumed", buildPostAuthResumeTrackingPayload(resume));
+  }, [track, user]);
 
   // Calculate word count (memoized for performance)
   const wordCount = useMemo(() => calculateWordCount(generatedStory), [generatedStory]);
@@ -889,12 +922,44 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     }
 
     if (!user) {
+      writePendingAuthResume({
+        source: "story_save",
+        action: "save_story",
+        sourcePage: "story-generator",
+        startedAt: Date.now(),
+        payload: {
+          prompt,
+          generatedStory,
+          selectedModel,
+          selectedFormat,
+          selectedLength,
+          selectedGenre,
+          selectedPerspective,
+          selectedAudience,
+          selectedTone,
+          selectedLanguage,
+        },
+      });
       requireAuth({ source: "story_save", action: "save_story", sourcePage: "story-generator" });
       return;
     }
 
     setIsSaveDialogOpen(true);
-  }, [generatedStory, section, user, requireAuth]);
+  }, [
+    generatedStory,
+    prompt,
+    requireAuth,
+    section,
+    selectedAudience,
+    selectedFormat,
+    selectedGenre,
+    selectedLanguage,
+    selectedLength,
+    selectedModel,
+    selectedPerspective,
+    selectedTone,
+    user,
+  ]);
 
   useGeneratorShortcuts({
     onGenerate: handleGenerateClick,

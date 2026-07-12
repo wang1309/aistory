@@ -30,6 +30,11 @@ import StyleFingerprintPanel from "../style-fingerprint";
 import SignToggle from "@/components/sign/toggle";
 import type { Editor } from "@tiptap/react";
 import type { StoryStatus } from "@/models/story";
+import {
+  buildPostAuthResumeTrackingPayload,
+  consumePendingAuthResume,
+  writePendingAuthResume,
+} from "@/lib/auth-resume";
 
 const BLANK_DRAFT_KEY = "ai-write:blank";
 const PANEL_WIDTH_KEY = "ai-write:panel-width";
@@ -628,6 +633,7 @@ export default function AiWriteWorkbench({
   const shouldStickEditorToBottomRef = useRef(true);
   const abortRef = useRef<AbortController | null>(null);
   const pendingSaveAfterSignInRef = useRef(false);
+  const pendingSaveResumeRef = useRef(false);
   const isProgrammaticChangeRef = useRef(false);
   const chatKeyRestoredRef = useRef<string | null>(null);
 
@@ -990,7 +996,7 @@ export default function AiWriteWorkbench({
         track("post_auth_action_resumed", {
           source: intentSource,
           action: "continue_writing",
-          source_page: continueEntrySource || undefined,
+          source_page: intentSource || undefined,
         });
         track("ai_write_open_from_generator", {
           source_page: intentSource,
@@ -1043,7 +1049,20 @@ export default function AiWriteWorkbench({
           })
         ) {
           pendingSaveAfterSignInRef.current = true;
-          requireAuth({ source: "story_save", action: "save_story" });
+          writePendingAuthResume({
+            source: "story_save",
+            action: "save_story",
+            sourcePage: "ai-write",
+            startedAt: Date.now(),
+            payload: {
+              title,
+              content,
+              plainText,
+              instruction,
+              storyUuid,
+            },
+          });
+          requireAuth({ source: "story_save", action: "save_story", sourcePage: "ai-write" });
           toast.error(copy.storyCreatedNeedLogin);
         }
         return;
@@ -1780,12 +1799,41 @@ export default function AiWriteWorkbench({
   }, [saveStory, storyUuid]);
 
   useEffect(() => {
+    if (!user) return;
+
+    const resume = consumePendingAuthResume("save_story", {
+      sourcePage: "ai-write",
+    });
+    if (resume?.source === "story_save") {
+      const payload = resume.payload;
+      const resumedTitle = typeof payload.title === "string" ? payload.title : "";
+      const resumedContent = typeof payload.content === "string" ? payload.content : "";
+      const resumedPlainText = typeof payload.plainText === "string" ? payload.plainText : resumedContent;
+      const resumedInstruction = typeof payload.instruction === "string" ? payload.instruction : "";
+      const resumedStoryUuid = typeof payload.storyUuid === "string" ? payload.storyUuid : "";
+
+      if (resumedContent.trim() || resumedPlainText.trim()) {
+        pendingSaveAfterSignInRef.current = true;
+        pendingSaveResumeRef.current = true;
+        if (resumedTitle) setTitle(resumedTitle);
+        if (resumedContent) setContent(resumedContent);
+        if (resumedPlainText) setPlainText(resumedPlainText);
+        if (resumedInstruction) setInstruction(resumedInstruction);
+        if (resumedStoryUuid) setStoryUuid(resumedStoryUuid);
+        track("post_auth_action_resumed", buildPostAuthResumeTrackingPayload(resume));
+      }
+    }
+  }, [track, user]);
+
+  useEffect(() => {
     if (!user || !pendingSaveAfterSignInRef.current) return;
     if (!plainText.trim()) {
+      if (pendingSaveResumeRef.current) return;
       pendingSaveAfterSignInRef.current = false;
       return;
     }
     pendingSaveAfterSignInRef.current = false;
+    pendingSaveResumeRef.current = false;
     void saveStory({ createIfNeeded: !storyUuid, manual: true });
   }, [user, plainText, storyUuid, saveStory]);
 

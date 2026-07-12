@@ -18,6 +18,7 @@ export type AuthAction =
 export type AuthProvider = "google" | "github" | "google-one-tap";
 
 export type AuthSourcePage =
+  | "ai-write"
   | "story-generator"
   | "backstory-generator"
   | "fanfic-generator"
