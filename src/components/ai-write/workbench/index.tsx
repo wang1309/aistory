@@ -990,6 +990,7 @@ export default function AiWriteWorkbench({
         track("post_auth_action_resumed", {
           source: intentSource,
           action: "continue_writing",
+          source_page: continueEntrySource || undefined,
         });
         track("ai_write_open_from_generator", {
           source_page: intentSource,

@@ -467,7 +467,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
         source: payload.source,
         redirectTo: payload.redirectTo,
       });
-      requireAuth({ source: "ai_write", action: "continue_writing" });
+      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "dialogue-generator" });
       return;
     }
 

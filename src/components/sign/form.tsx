@@ -23,6 +23,7 @@ import {
   type AuthAction,
   type AuthProvider,
   type AuthSource,
+  type AuthSourcePage,
 } from "@/lib/auth-funnel";
 
 type SignFormContextMode = "default" | "continue-ai-write";
@@ -33,6 +34,7 @@ export default function SignForm({
   source,
   authSource,
   authAction,
+  authSourcePage,
   showHeader = true,
   className,
   ...props
@@ -42,6 +44,7 @@ export default function SignForm({
   source?: string;
   authSource?: AuthSource;
   authAction?: AuthAction;
+  authSourcePage?: AuthSourcePage;
   showHeader?: boolean;
 }) {
   const t = useTranslations();
@@ -63,11 +66,13 @@ export default function SignForm({
       authSource || (isContinueContext ? "ai_write" : "header");
     const resolvedAction =
       authAction || (isContinueContext ? "continue_writing" : "sign_in");
+    const resolvedSourcePage = authSourcePage;
 
     writePendingAuthAttempt({
       source: resolvedSource,
       action: resolvedAction,
       provider,
+      ...(resolvedSourcePage ? { sourcePage: resolvedSourcePage } : {}),
       startedAt: Date.now(),
     });
 
@@ -76,6 +81,7 @@ export default function SignForm({
       buildAuthTrackingPayload({
         source: resolvedSource,
         action: resolvedAction,
+        sourcePage: resolvedSourcePage,
         provider,
         context: isContinueContext ? "continue-ai-write" : "default",
       })

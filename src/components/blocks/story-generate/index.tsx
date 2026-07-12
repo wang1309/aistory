@@ -495,7 +495,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         trigger: "optimistic",
       });
       toast.error(section.toasts.creative_limit_reached);
-      requireAuth({ source: "ai_write", action: "continue_writing" });
+      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "story-generator" });
       return;
     }
     // 已登录 + creative 超额 + 积分不足 → 跳 pricing(扣分续用也续不动)
@@ -593,7 +593,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             trigger: "backend_fallback",
           });
           toast.error(section.toasts.creative_limit_reached);
-          requireAuth({ source: "ai_write", action: "continue_writing" });
+          requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "story-generator" });
           return;
         }
         // IP hard cap 触发(所有模型)
@@ -889,7 +889,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     }
 
     if (!user) {
-      requireAuth({ source: "story_save", action: "save_story" });
+      requireAuth({ source: "story_save", action: "save_story", sourcePage: "story-generator" });
       return;
     }
 
@@ -981,7 +981,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         if (code !== 0) {
           if (message === "no auth") {
-            requireAuth({ source: "story_save", action: "save_story" });
+            requireAuth({ source: "story_save", action: "save_story", sourcePage: "story-generator" });
           }
 
           toast.error(
@@ -1080,7 +1080,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         source: payload.source,
         redirectTo: payload.redirectTo,
       });
-      requireAuth({ source: "ai_write", action: "continue_writing" });
+      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "story-generator" });
       return;
     }
 

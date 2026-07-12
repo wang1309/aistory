@@ -405,7 +405,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     }
 
     if (!user) {
-      requireAuth({ source: "story_save", action: "save_story" });
+      requireAuth({ source: "story_save", action: "save_story", sourcePage: "plot-generator" });
       return;
     }
 
@@ -495,7 +495,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
         if (code !== 0) {
           if (message === "no auth") {
-            requireAuth({ source: "story_save", action: "save_story" });
+            requireAuth({ source: "story_save", action: "save_story", sourcePage: "plot-generator" });
           }
 
           toast.error(

@@ -212,6 +212,7 @@ function AppContextProviderInner({
           buildAuthTrackingPayload({
             source: attempt.source,
             action: attempt.action,
+            sourcePage: attempt.sourcePage,
             provider: attempt.provider,
           })
         );

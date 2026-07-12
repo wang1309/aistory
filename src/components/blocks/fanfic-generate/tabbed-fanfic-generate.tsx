@@ -487,7 +487,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     }
 
     if (!user) {
-      requireAuth({ source: "story_save", action: "save_story" });
+      requireAuth({ source: "story_save", action: "save_story", sourcePage: "fanfic-generator" });
       return;
     }
 
@@ -538,7 +538,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
         source: payload.source,
         redirectTo: payload.redirectTo,
       });
-      requireAuth({ source: "ai_write", action: "continue_writing" });
+      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "fanfic-generator" });
       return;
     }
 
@@ -622,7 +622,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
         if (code !== 0) {
           if (message === "no auth") {
-            requireAuth({ source: "story_save", action: "save_story" });
+            requireAuth({ source: "story_save", action: "save_story", sourcePage: "fanfic-generator" });
           }
 
           toast.error(

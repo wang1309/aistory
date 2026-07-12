@@ -391,7 +391,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             } else {
                 toast.error("Saved locally. Sign in to save this backstory to your account.");
             }
-            requireAuth({ source: "story_save", action: "save_story" });
+            requireAuth({ source: "story_save", action: "save_story", sourcePage: "backstory-generator" });
             return;
         }
 
@@ -461,7 +461,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
 
                 if (code !== 0) {
                     if (message === "no auth") {
-                        requireAuth({ source: "story_save", action: "save_story" });
+                        requireAuth({ source: "story_save", action: "save_story", sourcePage: "backstory-generator" });
                     }
 
                     if (locale === "zh") {
@@ -552,7 +552,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                 source: payload.source,
                 redirectTo: payload.redirectTo,
             });
-            requireAuth({ source: "ai_write", action: "continue_writing" });
+            requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "backstory-generator" });
             return;
         }
 

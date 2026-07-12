@@ -468,7 +468,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
         source: payload.source,
         redirectTo: payload.redirectTo,
       });
-      requireAuth({ source: "ai_write", action: "continue_writing" });
+      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "dnd-backstory-generator" });
       return;
     }
 

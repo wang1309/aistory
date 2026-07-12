@@ -46,6 +46,7 @@ export default function SignModal() {
         buildAuthTrackingPayload({
           source: authIntent?.source || "header",
           action: authIntent?.action || "sign_in",
+          sourcePage: authIntent?.sourcePage,
           context: authIntent?.context,
         })
       );
@@ -57,6 +58,7 @@ export default function SignModal() {
         buildAuthTrackingPayload({
           source: authIntent?.source || "header",
           action: authIntent?.action || "sign_in",
+          sourcePage: authIntent?.sourcePage,
           context: authIntent?.context,
           reason: "dismissed",
         })
@@ -93,6 +95,7 @@ export default function SignModal() {
             source={continueSource}
             authSource={authIntent?.source}
             authAction={authIntent?.action}
+            authSourcePage={authIntent?.sourcePage}
             showHeader={false}
           />
         </DialogContent>
@@ -113,6 +116,7 @@ export default function SignModal() {
           source={continueSource}
           authSource={authIntent?.source}
           authAction={authIntent?.action}
+          authSourcePage={authIntent?.sourcePage}
           showHeader={false}
           className="px-4"
         />

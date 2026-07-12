@@ -602,7 +602,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
     }
 
     if (!user) {
-      requireAuth({ source: "story_save", action: "save_story" });
+      requireAuth({ source: "story_save", action: "save_story", sourcePage: "poem-generator" });
       return;
     }
 
@@ -694,7 +694,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
         if (code !== 0) {
           if (message === "no auth") {
-            requireAuth({ source: "story_save", action: "save_story" });
+            requireAuth({ source: "story_save", action: "save_story", sourcePage: "poem-generator" });
           }
 
           toast.error(
