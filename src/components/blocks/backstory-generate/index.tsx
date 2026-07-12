@@ -65,7 +65,7 @@ interface BackstoryGenerateProps {
 
 export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     const locale = useLocale();
-    const { user, setShowSignModal, setSignModalContext } = useAppContext();
+    const { user, requireAuth, setSignModalContext } = useAppContext();
     const router = useRouter();
     const reduceMotion = useReducedMotion();
     const { track } = useOpenPanel();
@@ -391,12 +391,12 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             } else {
                 toast.error("Saved locally. Sign in to save this backstory to your account.");
             }
-            setShowSignModal(true);
+            requireAuth({ source: "story_save", action: "save_story" });
             return;
         }
 
         setIsSaveDialogOpen(true);
-    }, [AI_MODELS, generatedBackstory, locale, prompt, selectedModel, setShowSignModal, user, wordCount]);
+    }, [AI_MODELS, generatedBackstory, locale, prompt, selectedModel, requireAuth, user, wordCount]);
 
     const handleConfirmSave = useCallback(
         async (status: StoryStatus) => {
@@ -461,7 +461,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
 
                 if (code !== 0) {
                     if (message === "no auth") {
-                        setShowSignModal(true);
+                        requireAuth({ source: "story_save", action: "save_story" });
                     }
 
                     if (locale === "zh") {
@@ -493,7 +493,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             } finally {
                 setIsSavingStory(false);
             }
-        }, [AI_MODELS, generatedBackstory, locale, prompt, selectedModel, setShowSignModal, wordCount]
+        }, [AI_MODELS, generatedBackstory, locale, prompt, selectedModel, requireAuth, wordCount]
     );
 
     const handleLoadStory = useCallback((story: SavedStory) => {
@@ -552,7 +552,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                 source: payload.source,
                 redirectTo: payload.redirectTo,
             });
-            setShowSignModal(true);
+            requireAuth({ source: "ai_write", action: "continue_writing" });
             return;
         }
 
@@ -563,7 +563,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
         }
 
         router.push(payload.redirectTo as any);
-    }, [generatedBackstory, prompt, router, user, track, setSignModalContext, setShowSignModal]);
+    }, [generatedBackstory, prompt, router, user, track, setSignModalContext, requireAuth]);
 
     useGeneratorShortcuts({
         onGenerate: handleGenerateClick,

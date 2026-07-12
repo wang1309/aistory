@@ -62,7 +62,7 @@ async function copyToClipboard(text: string): Promise<boolean> {
 
 export default function PoemGenerate({ section }: { section: PoemGenerateType }) {
   const locale = useLocale();
-  const { user, setShowSignModal } = useAppContext();
+  const { user, requireAuth } = useAppContext();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
 
@@ -602,12 +602,12 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
     }
 
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "story_save", action: "save_story" });
       return;
     }
 
     setIsSaveDialogOpen(true);
-  }, [generatedPoem, section, user, setShowSignModal]);
+  }, [generatedPoem, section, user, requireAuth]);
 
   useGeneratorShortcuts({
     onGenerate: handleGenerate,
@@ -694,7 +694,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
         if (code !== 0) {
           if (message === "no auth") {
-            setShowSignModal(true);
+            requireAuth({ source: "story_save", action: "save_story" });
           }
 
           toast.error(
@@ -729,7 +729,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       } finally {
         setIsSavingStory(false);
       }
-    }, [generatedPoem, prompt, locale, selectedModel, section, setShowSignModal]
+    }, [generatedPoem, prompt, locale, selectedModel, section, requireAuth]
   );
 
   // ===== RENDER =====

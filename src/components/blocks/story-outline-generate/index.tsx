@@ -46,7 +46,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
   const locale = useLocale();
   const router = useRouter();
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
-  const { user, setShowSignModal, refreshUser } = useAppContext();
+  const { user, requireAuth, refreshUser } = useAppContext();
   const reduceMotion = useReducedMotion();
   const [sectionVisible, setSectionVisible] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -187,7 +187,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
     if (!outline) return;
 
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "ai_write", action: "continue_writing" });
       return;
     }
 
@@ -218,7 +218,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
     } finally {
       setIsExpanding(false);
     }
-  }, [locale, outline, refreshUser, router, setShowSignModal, t, user]);
+  }, [locale, outline, refreshUser, router, requireAuth, t, user]);
 
   return (
     <section

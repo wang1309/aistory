@@ -74,7 +74,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const locale = useLocale();
   const t = useTranslations();
   const tabbedForm = section.tabbed?.form as any;
-  const { user, setShowSignModal, setSignModalContext } = useAppContext();
+  const { user, requireAuth, setSignModalContext } = useAppContext();
   const router = useRouter();
   const { track } = useOpenPanel();
   const reduceMotion = useReducedMotion();
@@ -487,12 +487,12 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     }
 
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "story_save", action: "save_story" });
       return;
     }
 
     setIsSaveDialogOpen(true);
-  }, [generatedFanfic, section, user, setShowSignModal]);
+  }, [generatedFanfic, section, user, requireAuth]);
 
   const handleContinueInAiWrite = useCallback(() => {
     if (!generatedFanfic.trim()) {
@@ -538,7 +538,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
         source: payload.source,
         redirectTo: payload.redirectTo,
       });
-      setShowSignModal(true);
+      requireAuth({ source: "ai_write", action: "continue_writing" });
       return;
     }
 
@@ -549,7 +549,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     }
 
     router.push(payload.redirectTo as any);
-  }, [generatedFanfic, prompt, router, user, track, setSignModalContext, setShowSignModal]);
+  }, [generatedFanfic, prompt, router, user, track, setSignModalContext, requireAuth]);
 
   useGeneratorShortcuts({
     onGenerate: handleGenerate,
@@ -622,7 +622,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
         if (code !== 0) {
           if (message === "no auth") {
-            setShowSignModal(true);
+            requireAuth({ source: "story_save", action: "save_story" });
           }
 
           toast.error(
@@ -664,7 +664,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       advancedOptions,
       prompt,
       wordCount,
-      setShowSignModal,
+      requireAuth,
       AI_MODELS,
       selectedModel,
     ]

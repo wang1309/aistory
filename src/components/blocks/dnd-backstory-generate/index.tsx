@@ -96,7 +96,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
   const locale = useLocale();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
-  const { user, setShowSignModal, setSignModalContext } = useAppContext();
+  const { user, requireAuth, setSignModalContext } = useAppContext();
   const { track } = useOpenPanel();
 
   const t = useCallback(
@@ -468,7 +468,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
         source: payload.source,
         redirectTo: payload.redirectTo,
       });
-      setShowSignModal(true);
+      requireAuth({ source: "ai_write", action: "continue_writing" });
       return;
     }
 
@@ -479,7 +479,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
     }
 
     router.push(payload.redirectTo as any);
-  }, [generatedBackstory, prompt, router, user, track, setSignModalContext, setShowSignModal]);
+  }, [generatedBackstory, prompt, router, user, track, setSignModalContext, requireAuth]);
 
   useGeneratorShortcuts({
     onGenerate: handleGenerate,

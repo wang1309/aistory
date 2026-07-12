@@ -68,7 +68,7 @@ interface PlotGenerateProps {
 
 export default function PlotGenerate({ section }: PlotGenerateProps) {
   const locale = useLocale();
-  const { user, setShowSignModal } = useAppContext();
+  const { user, requireAuth } = useAppContext();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
 
@@ -405,12 +405,12 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     }
 
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "story_save", action: "save_story" });
       return;
     }
 
     setIsSaveDialogOpen(true);
-  }, [generatedPlot, locale, user, setShowSignModal]);
+  }, [generatedPlot, locale, user, requireAuth]);
 
   useGeneratorShortcuts({
     onGenerate: handleGenerateClick,
@@ -495,7 +495,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
         if (code !== 0) {
           if (message === "no auth") {
-            setShowSignModal(true);
+            requireAuth({ source: "story_save", action: "save_story" });
           }
 
           toast.error(
@@ -530,7 +530,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       } finally {
         setIsSavingStory(false);
       }
-    }, [generatedPlot, locale, prompt, selectedModel, setShowSignModal])
+    }, [generatedPlot, locale, prompt, selectedModel, requireAuth])
   ;
 
   // Computed values

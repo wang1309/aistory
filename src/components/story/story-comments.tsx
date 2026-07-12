@@ -35,7 +35,7 @@ interface CommentsResponse {
 
 export default function StoryComments({ storyUuid }: StoryCommentsProps) {
   const t = useTranslations("community");
-  const { user, setShowSignModal } = useAppContext();
+  const { user, requireAuth } = useAppContext();
 
   const [comments, setComments] = useState<StoryComment[]>([]);
   const [page, setPage] = useState(1);
@@ -140,7 +140,7 @@ export default function StoryComments({ storyUuid }: StoryCommentsProps) {
 
   const handleSubmit = useCallback(async () => {
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "story_comment", action: "comment_story" });
       return;
     }
 
@@ -193,16 +193,16 @@ export default function StoryComments({ storyUuid }: StoryCommentsProps) {
     } finally {
       setSubmitting(false);
     }
-  }, [user, setShowSignModal, content, submitting, replyTo, storyUuid, t]);
+  }, [user, requireAuth, content, submitting, replyTo, storyUuid, t]);
 
   const handleReply = useCallback((comment: StoryComment) => {
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "story_comment", action: "comment_story" });
       return;
     }
 
     setReplyTo(comment);
-  }, [user, setShowSignModal]);
+  }, [user, requireAuth]);
 
   const handleCancelReply = useCallback(() => {
     setReplyTo(null);
@@ -283,7 +283,9 @@ export default function StoryComments({ storyUuid }: StoryCommentsProps) {
               size="sm"
               variant="outline"
               className="h-7 px-2 text-xs"
-              onClick={() => setShowSignModal(true)}
+              onClick={() =>
+                requireAuth({ source: "story_comment", action: "comment_story" })
+              }
             >
               {t("comments_login_button")}
             </Button>

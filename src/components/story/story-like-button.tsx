@@ -20,7 +20,7 @@ export default function StoryLikeButton({
   storyUuid,
   size = "md",
 }: StoryLikeButtonProps) {
-  const { user, setShowSignModal } = useAppContext();
+  const { user, requireAuth } = useAppContext();
   const [state, setState] = useState<LikeState>({ liked: false, likesCount: 0 });
   const [loading, setLoading] = useState(false);
   const [initialLoaded, setInitialLoaded] = useState(false);
@@ -61,7 +61,7 @@ export default function StoryLikeButton({
 
   const handleToggle = useCallback(async () => {
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "story_like", action: "like_story" });
       return;
     }
 
@@ -83,7 +83,7 @@ export default function StoryLikeButton({
 
       if (json.code !== 0) {
         if (json.message === "no auth") {
-          setShowSignModal(true);
+          requireAuth({ source: "story_like", action: "like_story" });
           return;
         }
 
@@ -105,7 +105,7 @@ export default function StoryLikeButton({
     } finally {
       setLoading(false);
     }
-  }, [user, setShowSignModal, loading, state.liked, storyUuid]);
+  }, [user, requireAuth, loading, state.liked, storyUuid]);
 
   const iconName = state.liked ? "RiHeart3Fill" : "RiHeart3Line";
   const countLabel = initialLoaded ? state.likesCount.toString() : "";

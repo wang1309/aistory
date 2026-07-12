@@ -31,7 +31,7 @@ import { Fragment } from "react";
 export default function SidebarUser({ account }: { account?: Account }) {
   const t = useTranslations();
 
-  const { user, setShowSignModal } = useAppContext();
+  const { user, requireAuth } = useAppContext();
   const { isMobile, open } = useSidebar();
 
   return (
@@ -127,7 +127,10 @@ export default function SidebarUser({ account }: { account?: Account }) {
         <>
           {open ? (
             <div className="flex justify-center items-center h-full px-4 py-4">
-              <Button className="w-full" onClick={() => setShowSignModal(true)}>
+              <Button
+                className="w-full"
+                onClick={() => requireAuth({ source: "header", action: "sign_in" })}
+              >
                 {t("user.sign_in")}
               </Button>
             </div>
@@ -141,7 +144,7 @@ export default function SidebarUser({ account }: { account?: Account }) {
               {/* <SidebarMenuItem>
                 <SidebarMenuButton
                   className="cursor-pointer"
-                    onClick={() => setShowSignModal(true)}
+                    onClick={() => requireAuth({ source: "header", action: "sign_in" })}
                   asChild
                 >
                   <User />

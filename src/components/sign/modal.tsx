@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useEffect, useRef } from "react";
 
 import {
   Dialog,
@@ -23,10 +24,48 @@ import { useAppContext } from "@/contexts/app";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useTranslations } from "next-intl";
 import SignForm from "@/components/sign/form";
+import { buildAuthTrackingPayload } from "@/lib/auth-funnel";
+import { useOpenPanel } from "@openpanel/nextjs";
 
 export default function SignModal() {
   const t = useTranslations();
-  const { showSignModal, setShowSignModal, signModalContext } = useAppContext();
+  const {
+    showSignModal,
+    setShowSignModal,
+    signModalContext,
+    authIntent,
+    clearAuthIntent,
+  } = useAppContext();
+  const { track } = useOpenPanel();
+  const wasOpen = useRef(false);
+
+  useEffect(() => {
+    if (showSignModal && !wasOpen.current) {
+      track(
+        "auth_modal_open",
+        buildAuthTrackingPayload({
+          source: authIntent?.source || "header",
+          action: authIntent?.action || "sign_in",
+          context: authIntent?.context,
+        })
+      );
+    }
+
+    if (!showSignModal && wasOpen.current) {
+      track(
+        "auth_modal_close",
+        buildAuthTrackingPayload({
+          source: authIntent?.source || "header",
+          action: authIntent?.action || "sign_in",
+          context: authIntent?.context,
+          reason: "dismissed",
+        })
+      );
+      clearAuthIntent();
+    }
+
+    wasOpen.current = showSignModal;
+  }, [authIntent, clearAuthIntent, showSignModal, track]);
 
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const isContinueContext = signModalContext.mode === "continue-ai-write";
@@ -52,6 +91,8 @@ export default function SignModal() {
             redirectTo={continueRedirect}
             contextMode={signModalContext.mode}
             source={continueSource}
+            authSource={authIntent?.source}
+            authAction={authIntent?.action}
             showHeader={false}
           />
         </DialogContent>
@@ -70,6 +111,8 @@ export default function SignModal() {
           redirectTo={continueRedirect}
           contextMode={signModalContext.mode}
           source={continueSource}
+          authSource={authIntent?.source}
+          authAction={authIntent?.action}
           showHeader={false}
           className="px-4"
         />

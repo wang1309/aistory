@@ -6,12 +6,17 @@ import { useTranslations } from "next-intl";
 
 export default function SignIn() {
   const t = useTranslations();
-  const { setShowSignModal } = useAppContext();
+  const { requireAuth } = useAppContext();
 
   return (
     <Button
       variant="default"
-      onClick={() => setShowSignModal(true)}
+      onClick={() =>
+        requireAuth({
+          source: "header",
+          action: "sign_in",
+        })
+      }
       className="cursor-pointer"
     >
       {t("user.sign_in")}

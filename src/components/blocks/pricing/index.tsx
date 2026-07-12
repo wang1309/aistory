@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 
 export default function Pricing({ pricing }: { pricing: PricingType }) {
   const locale = useLocale();
-  const { user, setShowSignModal } = useAppContext();
+  const { user, requireAuth } = useAppContext();
 
   const [group, setGroup] = useState(() => {
     return pricing.groups?.[1]?.name;
@@ -26,7 +26,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
   const handleCheckout = async (item: PricingItem, cn_pay: boolean = false) => {
     try {
       if (!user) {
-        setShowSignModal(true);
+        requireAuth({ source: "pricing", action: "checkout" });
         return;
       }
 
@@ -48,7 +48,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
       if (response.status === 401) {
         setIsLoading(false);
         setProductId(null);
-        setShowSignModal(true);
+        requireAuth({ source: "pricing", action: "checkout" });
         return;
       }
 

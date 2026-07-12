@@ -565,7 +565,7 @@ export default function AiWriteWorkbench({
 }: WorkbenchProps) {
   const locale = useLocale();
   const router = useRouter();
-  const { user, setShowSignModal, refreshUser } = useAppContext();
+  const { user, requireAuth, refreshUser } = useAppContext();
   const { track } = useOpenPanel();
   const copy = useMemo(() => getCopy(locale), [locale]);
   const [continueEntrySource, setContinueEntrySource] = useState<string | null>(null);
@@ -1038,7 +1038,7 @@ export default function AiWriteWorkbench({
           })
         ) {
           pendingSaveAfterSignInRef.current = true;
-          setShowSignModal(true);
+          requireAuth({ source: "story_save", action: "save_story" });
           toast.error(copy.storyCreatedNeedLogin);
         }
         return;
@@ -1108,7 +1108,7 @@ export default function AiWriteWorkbench({
       instruction,
       plainText,
       router,
-      setShowSignModal,
+      requireAuth,
       source,
       storyUuid,
       title,
@@ -1498,7 +1498,7 @@ export default function AiWriteWorkbench({
     }
 
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "ai_write", action: "continue_writing" });
       toast.error(copy.needLogin);
       return;
     }
@@ -1577,7 +1577,7 @@ export default function AiWriteWorkbench({
     performStream,
     plainText,
     replyToIndex,
-    setShowSignModal,
+    requireAuth,
     storyUuid,
     user,
   ]);
@@ -1585,7 +1585,7 @@ export default function AiWriteWorkbench({
   const handleRegenerate = useCallback(
     async (assistantIndex: number) => {
       if (!user) {
-        setShowSignModal(true);
+        requireAuth({ source: "ai_write", action: "continue_writing" });
         toast.error(copy.needLogin);
         return;
       }
@@ -1612,13 +1612,13 @@ export default function AiWriteWorkbench({
         ]);
       }
     },
-    [copy.needLogin, copy.regenerated, messages, performStream, setShowSignModal, user]
+    [copy.needLogin, copy.regenerated, messages, performStream, requireAuth, user]
   );
 
   const handleContinueMessage = useCallback(
     async (assistantIndex: number) => {
       if (!user) {
-        setShowSignModal(true);
+        requireAuth({ source: "ai_write", action: "continue_writing" });
         toast.error(copy.needLogin);
         return;
       }
@@ -1639,7 +1639,7 @@ export default function AiWriteWorkbench({
         setMessages((prev) => [...prev, { role: "assistant", content: result }]);
       }
     },
-    [copy.msgContinue, copy.needLogin, messages, performStream, plainText, setShowSignModal, user]
+    [copy.msgContinue, copy.needLogin, messages, performStream, plainText, requireAuth, user]
   );
 
   const handleRetryStream = useCallback(async () => {
@@ -1804,7 +1804,7 @@ export default function AiWriteWorkbench({
   const handleProcessText = useCallback(
     async (text: string, systemPrompt: string): Promise<string> => {
       if (!user) {
-        setShowSignModal(true);
+        requireAuth({ source: "ai_write", action: "continue_writing" });
         toast.error(copy.needLogin);
         throw new Error("not authenticated");
       }
@@ -1854,13 +1854,13 @@ export default function AiWriteWorkbench({
       void refreshUserCredits();
       return result.trim() || text;
     },
-    [user, copy.needLogin, refreshUserCredits, setShowSignModal]
+    [user, copy.needLogin, refreshUserCredits, requireAuth]
   );
 
   const handleSlashAI = useCallback(
     (action: "continue" | "improve" | "expand" | "summarize") => {
       if (!user) {
-        setShowSignModal(true);
+        requireAuth({ source: "ai_write", action: "continue_writing" });
         toast.error(copy.needLogin);
         return;
       }
@@ -1878,13 +1878,13 @@ export default function AiWriteWorkbench({
       };
       setInstruction(prompts[action]);
     },
-    [user, plainText, copy, locale, setShowSignModal]
+    [user, plainText, copy, locale, requireAuth]
   );
 
   const handleAskAi = useCallback(
     (selectedText: string) => {
       if (!user) {
-        setShowSignModal(true);
+        requireAuth({ source: "ai_write", action: "continue_writing" });
         toast.error(copy.needLogin);
         return;
       }
@@ -1897,12 +1897,12 @@ export default function AiWriteWorkbench({
         return base ? `${base}\n\n${quoteBlock}` : quoteBlock;
       });
     },
-    [copy.needLogin, copy.quotePrefix, setShowSignModal, user]
+    [copy.needLogin, copy.quotePrefix, requireAuth, user]
   );
 
   const handleConsistencyCheck = useCallback(async () => {
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "ai_write", action: "continue_writing" });
       toast.error(copy.needLogin);
       return;
     }
@@ -2020,7 +2020,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
     } finally {
       setIsChecking(false);
     }
-  }, [copy, plainText, refreshUserCredits, setShowSignModal, storyUuid, user]);
+  }, [copy, plainText, refreshUserCredits, requireAuth, storyUuid, user]);
 
   // Debounced inline AI suggestion
   useEffect(() => {
@@ -2295,7 +2295,9 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               title={title}
               plainText={plainText}
               isAuthenticated={!!user}
-              onSignIn={() => setShowSignModal(true)}
+              onSignIn={() =>
+                requireAuth({ source: "ai_write", action: "continue_writing" })
+              }
               reviewLabels={copy.reviewLabels}
               needLoginLabel={copy.needLoginAction}
             />

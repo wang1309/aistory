@@ -17,6 +17,12 @@ import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useOpenPanel } from "@openpanel/nextjs";
 import { buildContinueTrackingPayload } from "@/components/ai-write/workbench/continue-intent";
+import {
+  buildAuthTrackingPayload,
+  type AuthAction,
+  type AuthProvider,
+  type AuthSource,
+} from "@/lib/auth-funnel";
 
 type SignFormContextMode = "default" | "continue-ai-write";
 
@@ -24,6 +30,8 @@ export default function SignForm({
   redirectTo,
   contextMode = "default",
   source,
+  authSource,
+  authAction,
   showHeader = true,
   className,
   ...props
@@ -31,6 +39,8 @@ export default function SignForm({
   redirectTo?: string;
   contextMode?: SignFormContextMode;
   source?: string;
+  authSource?: AuthSource;
+  authAction?: AuthAction;
   showHeader?: boolean;
 }) {
   const t = useTranslations();
@@ -47,7 +57,17 @@ export default function SignForm({
   const googleLabel = t("sign_modal.google_sign_in");
   const githubLabel = t("sign_modal.github_sign_in");
 
-  const trackSignInStart = (provider: "google" | "github") => {
+  const trackSignInStart = (provider: AuthProvider) => {
+    track(
+      "auth_provider_click",
+      buildAuthTrackingPayload({
+        source: authSource || (isContinueContext ? "ai_write" : "header"),
+        action: authAction || (isContinueContext ? "continue_writing" : "sign_in"),
+        provider,
+        context: isContinueContext ? "continue-ai-write" : "default",
+      })
+    );
+
     if (!isContinueContext) return;
     track(
       "sign_in_start_for_continue",

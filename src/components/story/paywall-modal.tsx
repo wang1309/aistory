@@ -31,7 +31,7 @@ export default function PaywallModal({ open, onClose }: Props) {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("story_paywall");
-  const { user, setShowSignModal } = useAppContext();
+  const { user, requireAuth } = useAppContext();
   const [items, setItems] = useState<PricingItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [checkingOut, setCheckingOut] = useState<string | null>(null);
@@ -55,7 +55,7 @@ export default function PaywallModal({ open, onClose }: Props) {
   const handleCheckout = async (item: PricingItem) => {
     // paywall 触发时用户应已登录,但 session 可能过期
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "paywall", action: "checkout" });
       return;
     }
     if (checkingOut) return;
@@ -71,7 +71,7 @@ export default function PaywallModal({ open, onClose }: Props) {
         }),
       });
       if (response.status === 401) {
-        setShowSignModal(true);
+        requireAuth({ source: "paywall", action: "checkout" });
         return;
       }
       const { code, message, data } = await response.json();

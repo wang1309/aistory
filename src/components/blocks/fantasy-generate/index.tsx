@@ -42,7 +42,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
   const locale = useLocale();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
-  const { user, setShowSignModal } = useAppContext();
+  const { user } = useAppContext();
 
   // Mode state
   const [mode, setMode] = useState<"quick" | "worldbuilder">("quick");

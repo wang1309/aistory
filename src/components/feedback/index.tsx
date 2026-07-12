@@ -28,7 +28,7 @@ export default function Feedback({
 }) {
   const t = useTranslations();
 
-  const { user, setShowSignModal, showFeedback, setShowFeedback } =
+  const { user, showFeedback, setShowFeedback } =
     useAppContext();
 
   const [feedback, setFeedback] = useState("");

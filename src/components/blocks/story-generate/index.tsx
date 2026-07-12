@@ -111,7 +111,7 @@ function calculateWordCount(text: string): number {
 export default function StoryGenerate({ section }: { section: StoryGenerateType }) {
   const locale = useLocale(); // 获取当前语言
   const router = useRouter();
-  const { user, setShowSignModal, setSignModalContext } = useAppContext();
+  const { user, requireAuth, setSignModalContext } = useAppContext();
   const { track } = useOpenPanel();
   const t = useTranslations("generation_progress");
 
@@ -495,7 +495,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         trigger: "optimistic",
       });
       toast.error(section.toasts.creative_limit_reached);
-      setShowSignModal(true);
+      requireAuth({ source: "ai_write", action: "continue_writing" });
       return;
     }
     // 已登录 + creative 超额 + 积分不足 → 跳 pricing(扣分续用也续不动)
@@ -593,7 +593,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             trigger: "backend_fallback",
           });
           toast.error(section.toasts.creative_limit_reached);
-          setShowSignModal(true);
+          requireAuth({ source: "ai_write", action: "continue_writing" });
           return;
         }
         // IP hard cap 触发(所有模型)
@@ -724,7 +724,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     } finally {
       setIsGenerating(false);
     }
-  }, [prompt, selectedModel, locale, section, AI_MODELS, triggerFirstTimeConfetti, router, setShowSignModal, track]);
+  }, [prompt, selectedModel, locale, section, AI_MODELS, triggerFirstTimeConfetti, router, requireAuth, track]);
   // Note: advancedOptions are accessed via ref, so not in dependency array
 
   // Handle Turnstile verification success
@@ -889,12 +889,12 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     }
 
     if (!user) {
-      setShowSignModal(true);
+      requireAuth({ source: "story_save", action: "save_story" });
       return;
     }
 
     setIsSaveDialogOpen(true);
-  }, [generatedStory, section, user, setShowSignModal]);
+  }, [generatedStory, section, user, requireAuth]);
 
   useGeneratorShortcuts({
     onGenerate: handleGenerateClick,
@@ -981,7 +981,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         if (code !== 0) {
           if (message === "no auth") {
-            setShowSignModal(true);
+            requireAuth({ source: "story_save", action: "save_story" });
           }
 
           toast.error(
@@ -1030,7 +1030,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       selectedModel,
       prompt,
       wordCount,
-      setShowSignModal,
+      requireAuth,
     ]
   );
 
@@ -1080,7 +1080,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         source: payload.source,
         redirectTo: payload.redirectTo,
       });
-      setShowSignModal(true);
+      requireAuth({ source: "ai_write", action: "continue_writing" });
       return;
     }
 
@@ -1097,7 +1097,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     }
 
     router.push(payload.redirectTo as any);
-  }, [generatedStory, prompt, router, savedStoryUuid, user, track, setSignModalContext, setShowSignModal]);
+  }, [generatedStory, prompt, router, savedStoryUuid, user, track, setSignModalContext, requireAuth]);
 
   // ========== RENDER ==========
 

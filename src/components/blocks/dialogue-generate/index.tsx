@@ -85,7 +85,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
   const locale = useLocale();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
-  const { user, setShowSignModal, setSignModalContext } = useAppContext();
+  const { user, requireAuth, setSignModalContext } = useAppContext();
   const { track } = useOpenPanel();
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const outputScrollRef = useRef<HTMLDivElement | null>(null);
@@ -467,7 +467,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
         source: payload.source,
         redirectTo: payload.redirectTo,
       });
-      setShowSignModal(true);
+      requireAuth({ source: "ai_write", action: "continue_writing" });
       return;
     }
 
@@ -478,7 +478,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
     }
 
     router.push(payload.redirectTo as any);
-  }, [generatedDialogue, prompt, router, user, track, setSignModalContext, setShowSignModal]);
+  }, [generatedDialogue, prompt, router, user, track, setSignModalContext, requireAuth]);
 
   const downloadTextFile = useCallback((content: string, filename: string, mimeType: string) => {
     const blob = new Blob([content], { type: mimeType });
