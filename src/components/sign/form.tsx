@@ -15,24 +15,58 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import { useOpenPanel } from "@openpanel/nextjs";
+import { buildContinueTrackingPayload } from "@/components/ai-write/workbench/continue-intent";
+
+type SignFormContextMode = "default" | "continue-ai-write";
 
 export default function SignForm({
+  redirectTo,
+  contextMode = "default",
+  source,
+  showHeader = true,
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: React.ComponentPropsWithoutRef<"div"> & {
+  redirectTo?: string;
+  contextMode?: SignFormContextMode;
+  source?: string;
+  showHeader?: boolean;
+}) {
   const t = useTranslations();
+  const { track } = useOpenPanel();
+
+  const isContinueContext = contextMode === "continue-ai-write";
+  const title = isContinueContext
+    ? t("sign_modal.continue_ai_write_title")
+    : t("sign_modal.sign_in_title");
+  const description = isContinueContext
+    ? t("sign_modal.continue_ai_write_description")
+    : t("sign_modal.sign_in_description");
+
+  const googleLabel = t("sign_modal.google_sign_in");
+  const githubLabel = t("sign_modal.github_sign_in");
+
+  const trackSignInStart = (provider: "google" | "github") => {
+    if (!isContinueContext) return;
+    track(
+      "sign_in_start_for_continue",
+      buildContinueTrackingPayload({
+        source_page: source,
+        provider,
+      })
+    );
+  };
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="text-xl">
-            {t("sign_modal.sign_in_title")}
-          </CardTitle>
-          <CardDescription>
-            {t("sign_modal.sign_in_description")}
-          </CardDescription>
-        </CardHeader>
+        {showHeader && (
+          <CardHeader className="text-center">
+            <CardTitle className="text-xl">{title}</CardTitle>
+            <CardDescription>{description}</CardDescription>
+          </CardHeader>
+        )}
         <CardContent>
           <div className="grid gap-6">
             <div className="flex flex-col gap-4">
@@ -40,23 +74,35 @@ export default function SignForm({
                 <Button
                   variant="outline"
                   className="w-full"
-                  onClick={() => signIn("google")}
+                  onClick={() => {
+                    trackSignInStart("google");
+                    signIn("google", { redirectTo });
+                  }}
                 >
                   <SiGoogle className="w-4 h-4" />
-                  {t("sign_modal.google_sign_in")}
+                  {googleLabel}
                 </Button>
               )}
               {process.env.NEXT_PUBLIC_AUTH_GITHUB_ENABLED === "true" && (
                 <Button
                   variant="outline"
                   className="w-full"
-                  onClick={() => signIn("github")}
+                  onClick={() => {
+                    trackSignInStart("github");
+                    signIn("github", { redirectTo });
+                  }}
                 >
                   <SiGithub className="w-4 h-4" />
-                  {t("sign_modal.github_sign_in")}
+                  {githubLabel}
                 </Button>
               )}
             </div>
+
+            {isContinueContext && (
+              <p className="text-center text-xs text-muted-foreground">
+                {t("sign_modal.continue_ai_write_safe_hint")}
+              </p>
+            )}
 
             {false && (
               <>

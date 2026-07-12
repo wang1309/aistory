@@ -39,7 +39,18 @@ import { cn } from "@/lib/utils";
 import type { DndBackstoryGenerate as DndBackstoryGenerateType } from "@/types/blocks/dnd-backstory-generate";
 import DndBackstoryBreadcrumb from "./breadcrumb";
 import { useRouter } from "@/i18n/navigation";
-import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import {
+  getContinueActionLabel,
+  shouldGateAnonymousContinue,
+} from "@/components/ai-write/workbench/_lib";
+import {
+  buildContinueIntentPayload,
+  buildContinueTrackingPayload,
+  CONTINUE_INTENT_KEY,
+  GENERATOR_PREFILL_KEY,
+} from "@/components/ai-write/workbench/continue-intent";
+import { useAppContext } from "@/contexts/app";
+import { useOpenPanel } from "@openpanel/nextjs";
 
 const DND_DRAFT_KEY = "dnd-backstory-generator:prompt";
 
@@ -85,6 +96,8 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
   const locale = useLocale();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
+  const { user, setShowSignModal, setSignModalContext } = useAppContext();
+  const { track } = useOpenPanel();
 
   const t = useCallback(
     (path: string) => {
@@ -410,6 +423,63 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
     navigator.clipboard.writeText(generatedBackstory);
     toast.success(t("success.backstory_copied"));
   }, [generatedBackstory, t]);
+
+  const handleContinueInAiWrite = useCallback(() => {
+    if (!generatedBackstory.trim()) {
+      return;
+    }
+
+    track(
+      "continue_ai_write_cta_click",
+      buildContinueTrackingPayload({
+        source_page: "dnd-backstory-generator",
+        logged_in: !!user,
+        cta_variant: user ? "continue_ai_write" : "sign_in_to_continue_ai_write",
+      })
+    );
+
+    const payload = buildContinueIntentPayload({
+      source: "dnd-backstory-generator",
+      title: prompt,
+      content: generatedBackstory,
+    });
+
+    if (
+      shouldGateAnonymousContinue({
+        hasUser: !!user,
+        hasGeneratedContent: !!generatedBackstory.trim(),
+      })
+    ) {
+      try {
+        window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+        window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+      } catch {
+        // ignore prefill cache failures
+      }
+
+      track(
+        "sign_modal_open_for_continue",
+        buildContinueTrackingPayload({
+          source_page: "dnd-backstory-generator",
+        })
+      );
+      setSignModalContext({
+        mode: "continue-ai-write",
+        source: payload.source,
+        redirectTo: payload.redirectTo,
+      });
+      setShowSignModal(true);
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+    } catch {
+      // ignore prefill cache failures
+    }
+
+    router.push(payload.redirectTo as any);
+  }, [generatedBackstory, prompt, router, user, track, setSignModalContext, setShowSignModal]);
 
   useGeneratorShortcuts({
     onGenerate: handleGenerate,
@@ -1008,16 +1078,11 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                     />
                     <Button
                       size="sm"
-                      onClick={() => {
-                        try {
-                          window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedBackstory }));
-                        } catch {}
-                        router.push(buildContinueRoute({ source: "dnd-backstory-generator" }) as any);
-                      }}
+                      onClick={handleContinueInAiWrite}
                       className="h-8 text-xs gap-1.5 rounded-full bg-orange-600 px-3 text-white hover:bg-orange-500"
                     >
                       <PenLine className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">{locale === "zh" ? "续写" : "Continue"}</span>
+                      <span className="hidden sm:inline">{getContinueActionLabel({ hasUser: !!user, locale })}</span>
                     </Button>
                   </div>
                 )}

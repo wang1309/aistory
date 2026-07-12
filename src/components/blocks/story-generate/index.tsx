@@ -40,7 +40,17 @@ import CompletionGuide from "@/components/story/completion-guide";
 import GenerationProgress from "@/components/story/generation-progress";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
-import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import {
+  getContinueActionLabel,
+  shouldGateAnonymousContinue,
+} from "@/components/ai-write/workbench/_lib";
+import {
+  buildContinueIntentPayload,
+  buildContinueTrackingPayload,
+  CONTINUE_INTENT_KEY,
+  GENERATOR_PREFILL_KEY,
+} from "@/components/ai-write/workbench/continue-intent";
+import { useOpenPanel } from "@openpanel/nextjs";
 import {
   getCreativeLimit,
   getCreativeUsed,
@@ -101,7 +111,8 @@ function calculateWordCount(text: string): number {
 export default function StoryGenerate({ section }: { section: StoryGenerateType }) {
   const locale = useLocale(); // 获取当前语言
   const router = useRouter();
-  const { user, setShowSignModal } = useAppContext();
+  const { user, setShowSignModal, setSignModalContext } = useAppContext();
+  const { track } = useOpenPanel();
   const t = useTranslations("generation_progress");
 
   // Get progress tips from translations
@@ -1018,30 +1029,65 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       return;
     }
 
-    if (savedStoryUuid) {
-      router.push(
-        buildContinueRoute({
-          storyUuid: savedStoryUuid,
-          source: "generator",
-        }) as any
+    track(
+      "continue_ai_write_cta_click",
+      buildContinueTrackingPayload({
+        source_page: "generator",
+        logged_in: !!user,
+        cta_variant: user ? "continue_ai_write" : "sign_in_to_continue_ai_write",
+      })
+    );
+
+    const payload = buildContinueIntentPayload({
+      source: "generator",
+      title: prompt,
+      content: generatedStory,
+      storyUuid: savedStoryUuid ?? undefined,
+    });
+
+    // 匿名用户已有生成内容 → 先落地 prefill + 跳转意图，再弹登录
+    if (
+      shouldGateAnonymousContinue({
+        hasUser: !!user,
+        hasGeneratedContent: !!generatedStory.trim(),
+      })
+    ) {
+      try {
+        window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+        window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+      } catch {
+        // ignore prefill cache failures
+      }
+
+      track(
+        "sign_modal_open_for_continue",
+        buildContinueTrackingPayload({
+          source_page: "generator",
+        })
       );
+      setSignModalContext({
+        mode: "continue-ai-write",
+        source: payload.source,
+        redirectTo: payload.redirectTo,
+      });
+      setShowSignModal(true);
+      return;
+    }
+
+    // 已登录:有 savedStoryUuid 直接带 story 参数,否则先落地 prefill 再跳转
+    if (savedStoryUuid) {
+      router.push(payload.redirectTo as any);
       return;
     }
 
     try {
-      window.localStorage.setItem(
-        "ai-write:generator-prefill",
-        JSON.stringify({
-          title: prompt.substring(0, 30) + (prompt.length > 30 ? "..." : ""),
-          content: generatedStory,
-        })
-      );
+      window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
     } catch {
       // ignore prefill cache failures
     }
 
-    router.push(buildContinueRoute({ source: "generator" }) as any);
-  }, [generatedStory, prompt, router, savedStoryUuid]);
+    router.push(payload.redirectTo as any);
+  }, [generatedStory, prompt, router, savedStoryUuid, user, track, setSignModalContext, setShowSignModal]);
 
   // ========== RENDER ==========
 
@@ -1530,7 +1576,12 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             onCreateAnother={handleCreateAnother}
             onSave={handleSaveClick}
             onContinue={handleContinueInAiWrite}
-            continueLabel={section.completion_guide.continue_label}
+            continueLabel={getContinueActionLabel({ hasUser: !!user, locale })}
+            continueHint={
+              locale.startsWith("zh")
+                ? "保留当前内容与上下文，登录后直接继续生成"
+                : "Your content and context are preserved. Sign in to continue generating in AI Write."
+            }
             translations={section.completion_guide}
             isSaveDisabled={isSavingStory || hasSavedCurrentStory}
           />

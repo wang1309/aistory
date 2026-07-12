@@ -42,7 +42,17 @@ import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import { useRouter } from "@/i18n/navigation";
-import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import {
+  getContinueActionLabel,
+  shouldGateAnonymousContinue,
+} from "@/components/ai-write/workbench/_lib";
+import {
+  buildContinueIntentPayload,
+  buildContinueTrackingPayload,
+  CONTINUE_INTENT_KEY,
+  GENERATOR_PREFILL_KEY,
+} from "@/components/ai-write/workbench/continue-intent";
+import { useOpenPanel } from "@openpanel/nextjs";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -64,8 +74,9 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const locale = useLocale();
   const t = useTranslations();
   const tabbedForm = section.tabbed?.form as any;
-  const { user, setShowSignModal } = useAppContext();
+  const { user, setShowSignModal, setSignModalContext } = useAppContext();
   const router = useRouter();
+  const { track } = useOpenPanel();
   const reduceMotion = useReducedMotion();
 
   // ========== STATE MANAGEMENT ==========
@@ -175,22 +186,12 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   );
 
   const completionGuideTranslations = section.completion_guide || {
-    title:
-      locale === "zh"
-        ? "喜欢这篇同人文吗？"
-        : "Liked your story?",
-    subtitle:
-      locale === "zh"
-        ? "你可以保存它，或者尝试新的创意！"
-        : "You can save it, or try a new idea!",
-    create_another:
-      locale === "zh"
-        ? "再写一篇同人文"
-        : "Create Another",
-    share_action:
-      locale === "zh"
-        ? "保存故事"
-        : "Save Story",
+    title: "Liked your story?",
+    subtitle: "Sign in to keep writing, or try a new idea!",
+    create_another: "Create Another",
+    share_action: "Save Story",
+    continue_hint:
+      "Your content and context are preserved. Sign in to continue generating in AI Write.",
   };
 
   // ========== REF FOR LATEST STATE ==========
@@ -493,6 +494,63 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     setIsSaveDialogOpen(true);
   }, [generatedFanfic, section, user, setShowSignModal]);
 
+  const handleContinueInAiWrite = useCallback(() => {
+    if (!generatedFanfic.trim()) {
+      return;
+    }
+
+    track(
+      "continue_ai_write_cta_click",
+      buildContinueTrackingPayload({
+        source_page: "fanfic-generator",
+        logged_in: !!user,
+        cta_variant: user ? "continue_ai_write" : "sign_in_to_continue_ai_write",
+      })
+    );
+
+    const payload = buildContinueIntentPayload({
+      source: "fanfic-generator",
+      title: prompt,
+      content: generatedFanfic,
+    });
+
+    if (
+      shouldGateAnonymousContinue({
+        hasUser: !!user,
+        hasGeneratedContent: !!generatedFanfic.trim(),
+      })
+    ) {
+      try {
+        window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+        window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+      } catch {
+        // ignore prefill cache failures
+      }
+
+      track(
+        "sign_modal_open_for_continue",
+        buildContinueTrackingPayload({
+          source_page: "fanfic-generator",
+        })
+      );
+      setSignModalContext({
+        mode: "continue-ai-write",
+        source: payload.source,
+        redirectTo: payload.redirectTo,
+      });
+      setShowSignModal(true);
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+    } catch {
+      // ignore prefill cache failures
+    }
+
+    router.push(payload.redirectTo as any);
+  }, [generatedFanfic, prompt, router, user, track, setSignModalContext, setShowSignModal]);
+
   useGeneratorShortcuts({
     onGenerate: handleGenerate,
     onFocusInput: () => {
@@ -568,34 +626,27 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
           }
 
           toast.error(
-            locale === "zh"
-              ? message === "no auth"
-                ? "请先登录后再保存故事"
-                : `保存失败：${message}`
-              : message || "Failed to save story"
+            message === "no auth"
+              ? section.toasts?.save_no_auth || "Please sign in to save your story"
+              : (section.toasts?.save_failed || "Failed to save story: {{reason}}").replace(
+                  "{{reason}}",
+                  message || ""
+                )
           );
           return;
         }
 
         toast.success(
-          locale === "zh"
-            ? status === "published"
-              ? "故事已发布"
-              : "故事已保存"
-            : status === "published"
-            ? "Story published"
-            : "Story saved"
+          status === "published"
+            ? section.toasts?.save_published || "Story published"
+            : section.toasts?.save_saved || "Story saved"
         );
 
         setHasSavedCurrentStory(true);
         setIsSaveDialogOpen(false);
       } catch (error) {
         console.error("save fanfic failed", error);
-        toast.error(
-          locale === "zh"
-            ? "保存失败，请稍后再试"
-            : "Failed to save story, please try again."
-        );
+        toast.error(section.toasts?.save_error || "Failed to save story, please try again.");
       } finally {
         setIsSavingStory(false);
       }
@@ -1373,27 +1424,6 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               <Icon name="refresh" className="mr-2 size-4" />
                               {section.tabbed?.form?.generation?.start_button || 'Regenerate'}
                             </Button>
-                            {generatedFanfic && !isGenerating && (
-                              <Button
-                                onClick={() => {
-                                  try {
-                                    window.localStorage.setItem(
-                                      "ai-write:generator-prefill",
-                                      JSON.stringify({
-                                        title: prompt.substring(0, 30) + (prompt.length > 30 ? "..." : ""),
-                                        content: generatedFanfic,
-                                      })
-                                    );
-                                  } catch {
-                                    // ignore prefill cache failures
-                                  }
-                                  router.push(buildContinueRoute({ source: "fanfic-generator" }) as any);
-                                }}
-                              >
-                                <Icon name="mdi:pencil-plus" className="mr-2 size-4" />
-                                {section.output.button_continue}
-                              </Button>
-                            )}
                           </div>
                         </div>
                         {generatedFanfic && !isGenerating && (
@@ -1401,6 +1431,9 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                             <CompletionGuide
                               onCreateAnother={handleCreateAnother}
                               onSave={handleSaveClick}
+                              onContinue={handleContinueInAiWrite}
+                              continueLabel={getContinueActionLabel({ hasUser: !!user, locale })}
+                              continueHint={completionGuideTranslations.continue_hint}
                               translations={completionGuideTranslations}
                               isSaveDisabled={isSavingStory || hasSavedCurrentStory}
                             />

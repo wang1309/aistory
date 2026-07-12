@@ -21,6 +21,53 @@ export function buildContinueRoute({
   return query ? `/ai-write/editor?${query}` : "/ai-write/editor";
 }
 
+/**
+ * 复用 buildContinueRoute 作为登录后唯一跳转目的地。
+ * 匿名“继续 AI 续写”流程在登录后都会落到 /ai-write/editor。
+ */
+export function buildContinueSignInRedirect({
+  storyUuid,
+  source,
+}: {
+  storyUuid?: string;
+  source?: string;
+} = {}) {
+  return buildContinueRoute({ storyUuid, source });
+}
+
+/**
+ * 仅当匿名用户已生成内容时，才拦截“继续 AI 续写”并先引导登录。
+ * 已登录用户或尚未生成内容的匿名用户直接放行。
+ */
+export function shouldGateAnonymousContinue({
+  hasUser,
+  hasGeneratedContent,
+}: {
+  hasUser: boolean;
+  hasGeneratedContent: boolean;
+}) {
+  return !hasUser && hasGeneratedContent;
+}
+
+/**
+ * 根据登录状态返回“继续 AI 续写”按钮文案。
+ * 匿名用户看到登录引导语，已登录用户看到直接续写语。
+ */
+export function getContinueActionLabel({
+  hasUser,
+  locale,
+}: {
+  hasUser: boolean;
+  locale: string;
+}) {
+  const isZh = locale.startsWith("zh");
+  if (hasUser) {
+    return isZh ? "继续 AI 续写" : "Continue AI Writing";
+  }
+
+  return isZh ? "登录后继续这个故事" : "Sign in to continue the story";
+}
+
 const AI_WRITE_TITLES = new Set([
   "AI Write",
   "AI 写作",

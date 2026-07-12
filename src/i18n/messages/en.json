@@ -34,7 +34,10 @@
     "google_sign_in": "Sign in with Google",
     "github_sign_in": "Sign in with GitHub",
     "close_title": "Close",
-    "cancel_title": "Cancel"
+    "cancel_title": "Cancel",
+    "continue_ai_write_title": "Sign in to continue AI writing",
+    "continue_ai_write_description": "Your generated content is saved. After sign-in, you'll go straight to AI Write and continue from this result.",
+    "continue_ai_write_safe_hint": "Your current content will not be lost."
   },
   "my_orders": {
     "title": "My Orders",

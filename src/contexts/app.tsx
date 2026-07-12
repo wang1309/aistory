@@ -12,7 +12,7 @@ import {
 import { cacheGet, cacheRemove } from "@/lib/cache";
 
 import { CacheKey } from "@/services/constant";
-import { ContextValue } from "@/types/context";
+import { ContextValue, SignModalContext } from "@/types/context";
 import { User } from "@/types/user";
 import moment from "moment";
 import useOneTapLogin from "@/hooks/useOneTapLogin";
@@ -50,6 +50,9 @@ function AppContextProviderInner({
   session: any;
 }) {
   const [showSignModal, setShowSignModal] = useState<boolean>(false);
+  const [signModalContext, setSignModalContext] = useState<SignModalContext>({
+    mode: "default",
+  });
   const [user, setUser] = useState<User | null>(null);
 
   const [showFeedback, setShowFeedback] = useState<boolean>(false);
@@ -62,6 +65,15 @@ function AppContextProviderInner({
       setVerificationCallback(null);
     }
   }, [showVerificationModal, verificationCallback]);
+
+  // 登录弹窗关闭时，清掉 continue-ai-write 上下文，避免下次打开残留旧文案
+  useEffect(() => {
+    if (!showSignModal && signModalContext) {
+      if (signModalContext.mode !== "default") {
+        setSignModalContext({ mode: "default" });
+      }
+    }
+  }, [showSignModal, signModalContext]);
 
   const updateInvite = useCallback(async (user: User) => {
     try {
@@ -142,6 +154,8 @@ function AppContextProviderInner({
     () => ({
       showSignModal,
       setShowSignModal,
+      signModalContext,
+      setSignModalContext,
       user,
       setUser,
       refreshUser: fetchUserInfo,
@@ -155,6 +169,7 @@ function AppContextProviderInner({
     [
       fetchUserInfo,
       showSignModal,
+      signModalContext,
       user,
       showFeedback,
       showVerificationModal,

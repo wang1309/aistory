@@ -272,9 +272,14 @@
       "button_export_pdf": "PDF出力",
       "button_exporting_pdf": "出力中...",
       "button_regenerate": "再生成",
-      "button_continue": "続きを書く",
-      "toast_login_required": "続きを書くには、まずログインしてください",
       "loading": "読み込み中..."
+    },
+    "completion_guide": {
+      "title": "このお話、気に入りましたか？",
+      "subtitle": "ログインして書き続けるか、新しいアイデアを試そう！",
+      "create_another": "もう一つ書く",
+      "share_action": "ストーリーを保存",
+      "continue_hint": "内容とコンテキストは保持されます。ログインして AI Write で生成を続けましょう。"
     },
     "pdf": {
       "generated_at": "生成日時",
@@ -312,7 +317,12 @@
       "success_generated": "二次創作が正常に生成されました！",
       "success_copied": "クリップボードにコピーしました",
       "success_pdf_exported": "PDFが正常に出力されました",
-      "warning_mature_content": "成人向けコンテンツレーティングを選択しました。18歳以上であることを確認してください"
+      "warning_mature_content": "成人向けコンテンツレーティングを選択しました。18歳以上であることを確認してください",
+      "save_no_auth": "保存にはログインが必要です",
+      "save_failed": "保存に失敗しました：{{reason}}",
+      "save_published": "ストーリーを公開しました",
+      "save_saved": "ストーリーを保存しました",
+      "save_error": "保存に失敗しました。後でもう一度お試しください。"
     },
     "history": {
       "title": "履歴",

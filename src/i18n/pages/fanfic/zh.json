@@ -272,9 +272,14 @@
       "button_export_pdf": "导出 PDF",
       "button_exporting_pdf": "导出中...",
       "button_regenerate": "重新生成",
-      "button_continue": "续写",
-      "toast_login_required": "请先登录后再续写",
       "loading": "加载中..."
+    },
+    "completion_guide": {
+      "title": "喜欢这篇同人文吗？",
+      "subtitle": "登录后可以继续续写，或者换个新创意试试！",
+      "create_another": "再写一篇同人文",
+      "share_action": "保存故事",
+      "continue_hint": "保留当前内容与上下文，登录后直接继续生成"
     },
     "pdf": {
       "generated_at": "生成时间",
@@ -312,7 +317,12 @@
       "success_generated": "同人文生成成功！",
       "success_copied": "已复制到剪贴板",
       "success_pdf_exported": "PDF 导出成功",
-      "warning_mature_content": "您选择了成人内容分级，请确保您已年满 18 岁"
+      "warning_mature_content": "您选择了成人内容分级，请确保您已年满 18 岁",
+      "save_no_auth": "请先登录后再保存故事",
+      "save_failed": "保存失败：{{reason}}",
+      "save_published": "故事已发布",
+      "save_saved": "故事已保存",
+      "save_error": "保存失败，请稍后再试"
     },
     "history": {
       "title": "历史记录",

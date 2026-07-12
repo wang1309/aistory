@@ -18,6 +18,11 @@ import {
   shouldAutoScrollEditor,
   shouldRestoreBlankDraft,
 } from "./_lib";
+import {
+  CONTINUE_INTENT_KEY,
+  GENERATOR_PREFILL_KEY,
+} from "./continue-intent";
+import { useOpenPanel } from "@openpanel/nextjs";
 import { RichTextEditor } from "../editor";
 import { setInlineSuggestion } from "../editor/inline-suggestion";
 import StoryBiblePanel from "../story-bible";
@@ -26,7 +31,6 @@ import SignToggle from "@/components/sign/toggle";
 import type { Editor } from "@tiptap/react";
 import type { StoryStatus } from "@/models/story";
 
-const GENERATOR_PREFILL_KEY = "ai-write:generator-prefill";
 const BLANK_DRAFT_KEY = "ai-write:blank";
 const PANEL_WIDTH_KEY = "ai-write:panel-width";
 const CHAT_MESSAGES_PREFIX = "ai-write:chat-messages";
@@ -562,7 +566,9 @@ export default function AiWriteWorkbench({
   const locale = useLocale();
   const router = useRouter();
   const { user, setShowSignModal, refreshUser } = useAppContext();
+  const { track } = useOpenPanel();
   const copy = useMemo(() => getCopy(locale), [locale]);
+  const [continueEntrySource, setContinueEntrySource] = useState<string | null>(null);
   const [title, setTitle] = useState(initialTitle);
   const [content, setContent] = useState(initialContent);
   const [plainText, setPlainText] = useState(initialContent);
@@ -947,6 +953,22 @@ export default function AiWriteWorkbench({
     restorePrefillRef.current = true;
 
     try {
+      // 读取并清理“继续续写”登录后意图:记录来源并埋点抵达
+      let intentSource: string | null = null;
+      try {
+        const intentRaw = window.localStorage.getItem(CONTINUE_INTENT_KEY);
+        if (intentRaw) {
+          const intent = JSON.parse(intentRaw) as { source?: string } | null;
+          if (intent?.source) {
+            intentSource = intent.source;
+            setContinueEntrySource(intent.source);
+          }
+          window.localStorage.removeItem(CONTINUE_INTENT_KEY);
+        }
+      } catch {
+        // ignore invalid intent
+      }
+
       const raw = window.localStorage.getItem(GENERATOR_PREFILL_KEY);
       if (!raw) return;
 
@@ -963,10 +985,18 @@ export default function AiWriteWorkbench({
 
       window.localStorage.removeItem(GENERATOR_PREFILL_KEY);
       toast.success(copy.generatorRestored);
+
+      if (intentSource) {
+        track("ai_write_open_from_generator", {
+          source_page: intentSource,
+          prefill_restored: true,
+          logged_in: true,
+        });
+      }
     } catch {
       // ignore invalid prefill
     }
-  }, [content, copy.generatorRestored, isHydrated, storyUuid, title]);
+  }, [content, copy.generatorRestored, isHydrated, storyUuid, title, track]);
 
   useEffect(() => {
     if (!isHydrated || storyUuid || typeof window === "undefined") return;
@@ -2080,7 +2110,10 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
   }, [autocompleteOn, isStreaming, plainText, refreshUserCredits, user]);
 
   return (
-    <section className="fixed inset-0 z-[60] flex flex-col overflow-hidden bg-background">
+    <section
+      className="fixed inset-0 z-[60] flex flex-col overflow-hidden bg-background"
+      data-continue-entry={continueEntrySource ? "continue-entry" : "default-entry"}
+    >
       {/* Breadcrumb bar */}
       <div className="flex min-h-12 flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-border/40 px-4 py-2">
         <div className="flex min-w-0 flex-1 items-center gap-2 text-sm text-muted-foreground">

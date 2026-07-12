@@ -34,7 +34,10 @@
     "google_sign_in": "使用 Google 登录",
     "github_sign_in": "使用 GitHub 登录",
     "close_title": "关闭",
-    "cancel_title": "取消"
+    "cancel_title": "取消",
+    "continue_ai_write_title": "登录后继续 AI 续写",
+    "continue_ai_write_description": "当前生成内容已保留。登录后将直接进入 AI Write，基于这段内容继续生成。",
+    "continue_ai_write_safe_hint": "不会丢失当前内容"
   },
   "my_orders": {
     "title": "我的订单",

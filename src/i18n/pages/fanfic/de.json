@@ -272,9 +272,14 @@
       "button_export_pdf": "PDF exportieren",
       "button_exporting_pdf": "Exportiere...",
       "button_regenerate": "Neu generieren",
-      "button_continue": "Weiter schreiben",
-      "toast_login_required": "Bitte melde dich zuerst an, um weiter zu schreiben",
       "loading": "Laden..."
+    },
+    "completion_guide": {
+      "title": "Gefällt dir deine Story?",
+      "subtitle": "Melde dich an, um weiterzuschreiben, oder probiere eine neue Idee!",
+      "create_another": "Neue erstellen",
+      "share_action": "Story speichern",
+      "continue_hint": "Dein Inhalt und Kontext bleiben erhalten. Melde dich an, um in AI Write weiterzuschreiben."
     },
     "pdf": {
       "generated_at": "Generiert am",
@@ -312,7 +317,12 @@
       "success_generated": "Fanfiction erfolgreich generiert!",
       "success_copied": "In die Zwischenablage kopiert",
       "success_pdf_exported": "PDF erfolgreich exportiert",
-      "warning_mature_content": "Sie haben eine Bewertung für erwachsene Inhalte ausgewählt. Bitte bestätigen Sie, dass Sie mindestens 18 Jahre alt sind"
+      "warning_mature_content": "Sie haben eine Bewertung für erwachsene Inhalte ausgewählt. Bitte bestätigen Sie, dass Sie mindestens 18 Jahre alt sind",
+      "save_no_auth": "Bitte melde dich an, um deine Geschichte zu speichern",
+      "save_failed": "Speichern fehlgeschlagen: {{reason}}",
+      "save_published": "Geschichte veröffentlicht",
+      "save_saved": "Geschichte gespeichert",
+      "save_error": "Speichern fehlgeschlagen, bitte versuche es später erneut."
     },
     "history": {
       "title": "Verlauf",

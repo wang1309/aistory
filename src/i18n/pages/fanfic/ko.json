@@ -272,9 +272,14 @@
       "button_export_pdf": "PDF 내보내기",
       "button_exporting_pdf": "내보내는 중...",
       "button_regenerate": "재생성",
-      "button_continue": "이어쓰기",
-      "toast_login_required": "이어쓰려면 먼저 로그인해 주세요",
       "loading": "로딩 중..."
+    },
+    "completion_guide": {
+      "title": "이 이야기가 마음에 드시나요?",
+      "subtitle": "로그인해서 계속 쓰거나, 새로운 아이디어를 시도해 보세요!",
+      "create_another": "하나 더 만들기",
+      "share_action": "이야기 저장",
+      "continue_hint": "콘텐츠와 문맥이 그대로 유지됩니다. 로그인 후 AI Write에서 계속 생성하세요."
     },
     "pdf": {
       "generated_at": "생성일",
@@ -312,7 +317,12 @@
       "success_generated": "팬픽이 성공적으로 생성되었습니다!",
       "success_copied": "클립보드에 복사됨",
       "success_pdf_exported": "PDF가 성공적으로 내보내졌습니다",
-      "warning_mature_content": "성인 콘텐츠 등급을 선택하셨습니다. 만 18세 이상임을 확인해주세요"
+      "warning_mature_content": "성인 콘텐츠 등급을 선택하셨습니다. 만 18세 이상임을 확인해주세요",
+      "save_no_auth": "이야기를 저장하려면 로그인해 주세요",
+      "save_failed": "저장 실패: {{reason}}",
+      "save_published": "이야기가 게시되었습니다",
+      "save_saved": "이야기가 저장되었습니다",
+      "save_error": "저장에 실패했습니다. 나중에 다시 시도해 주세요."
     },
     "history": {
       "title": "히스토리",

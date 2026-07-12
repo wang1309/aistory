@@ -39,9 +39,21 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/icon";
+import CompletionGuide from "@/components/story/completion-guide";
 import DialogueBreadcrumb from "./breadcrumb";
 import { useRouter } from "@/i18n/navigation";
-import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import {
+  getContinueActionLabel,
+  shouldGateAnonymousContinue,
+} from "@/components/ai-write/workbench/_lib";
+import {
+  buildContinueIntentPayload,
+  buildContinueTrackingPayload,
+  CONTINUE_INTENT_KEY,
+  GENERATOR_PREFILL_KEY,
+} from "@/components/ai-write/workbench/continue-intent";
+import { useAppContext } from "@/contexts/app";
+import { useOpenPanel } from "@openpanel/nextjs";
 import { DialogueGenerate as DialogueGenerateType } from "@/types/blocks/dialogue-generate";
 import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { DialogueCharacter } from "@/types/dialogue";
@@ -73,6 +85,8 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
   const locale = useLocale();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
+  const { user, setShowSignModal, setSignModalContext } = useAppContext();
+  const { track } = useOpenPanel();
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const outputScrollRef = useRef<HTMLDivElement | null>(null);
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
@@ -408,6 +422,63 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
     navigator.clipboard.writeText(generatedDialogue);
     toast.success(t("success.dialogue_copied"));
   }, [generatedDialogue, t]);
+
+  const handleContinueInAiWrite = useCallback(() => {
+    if (!generatedDialogue.trim()) {
+      return;
+    }
+
+    track(
+      "continue_ai_write_cta_click",
+      buildContinueTrackingPayload({
+        source_page: "dialogue-generator",
+        logged_in: !!user,
+        cta_variant: user ? "continue_ai_write" : "sign_in_to_continue_ai_write",
+      })
+    );
+
+    const payload = buildContinueIntentPayload({
+      source: "dialogue-generator",
+      title: prompt,
+      content: generatedDialogue,
+    });
+
+    if (
+      shouldGateAnonymousContinue({
+        hasUser: !!user,
+        hasGeneratedContent: !!generatedDialogue.trim(),
+      })
+    ) {
+      try {
+        window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+        window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+      } catch {
+        // ignore prefill cache failures
+      }
+
+      track(
+        "sign_modal_open_for_continue",
+        buildContinueTrackingPayload({
+          source_page: "dialogue-generator",
+        })
+      );
+      setSignModalContext({
+        mode: "continue-ai-write",
+        source: payload.source,
+        redirectTo: payload.redirectTo,
+      });
+      setShowSignModal(true);
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+    } catch {
+      // ignore prefill cache failures
+    }
+
+    router.push(payload.redirectTo as any);
+  }, [generatedDialogue, prompt, router, user, track, setSignModalContext, setShowSignModal]);
 
   const downloadTextFile = useCallback((content: string, filename: string, mimeType: string) => {
     const blob = new Blob([content], { type: mimeType });
@@ -1096,19 +1167,6 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                         sourceCategory="dialogue"
                         title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
                       />
-                      <Button
-                        size="sm"
-                        onClick={() => {
-                          try {
-                            window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedDialogue }));
-                          } catch {}
-                          router.push(buildContinueRoute({ source: "dialogue-generator" }) as any);
-                        }}
-                        className="rounded-full bg-orange-600 px-4 text-white hover:bg-orange-500"
-                      >
-                        <Icon name="mdi:pencil-plus" className="w-4 h-4 mr-2" />
-                        {t("ui.continue_writing")}
-                      </Button>
                     </div>
                   )}
                 </div>
@@ -1183,6 +1241,21 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
             </Card>
           </motion.div>
         </div>
+
+        {/* 完成引导:继续续写主 CTA,从输出区工具栏挪出来避免拥挤 */}
+        {generatedDialogue && !isGenerating ? (
+          <div className="mx-auto mt-10 w-full max-w-3xl">
+            <CompletionGuide
+              onContinue={handleContinueInAiWrite}
+              continueLabel={getContinueActionLabel({ hasUser: !!user, locale })}
+              continueHint={
+                locale.startsWith("zh")
+                  ? "保留当前内容与上下文，登录后直接继续生成"
+                  : "Your content and context are preserved. Sign in to continue generating in AI Write."
+              }
+            />
+          </div>
+        ) : null}
       </div>
 
       <TurnstileInvisible

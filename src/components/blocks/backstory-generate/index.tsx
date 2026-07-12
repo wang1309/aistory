@@ -30,7 +30,17 @@ import type { BackstoryGenerate as BackstoryGenerateType } from "@/types/blocks/
 import type { SavedStory } from "@/lib/story-storage";
 import BackstoryBreadcrumb from "./breadcrumb";
 import { useRouter } from "@/i18n/navigation";
-import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import {
+  getContinueActionLabel,
+  shouldGateAnonymousContinue,
+} from "@/components/ai-write/workbench/_lib";
+import {
+  buildContinueIntentPayload,
+  buildContinueTrackingPayload,
+  CONTINUE_INTENT_KEY,
+  GENERATOR_PREFILL_KEY,
+} from "@/components/ai-write/workbench/continue-intent";
+import { useOpenPanel } from "@openpanel/nextjs";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -55,9 +65,10 @@ interface BackstoryGenerateProps {
 
 export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     const locale = useLocale();
-    const { user, setShowSignModal } = useAppContext();
+    const { user, setShowSignModal, setSignModalContext } = useAppContext();
     const router = useRouter();
     const reduceMotion = useReducedMotion();
+    const { track } = useOpenPanel();
 
     // Helper function to get nested translations
     const t = (path: string) => {
@@ -496,6 +507,63 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
         setGeneratedBackstory("");
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
+
+    const handleContinueInAiWrite = useCallback(() => {
+        if (!generatedBackstory.trim()) {
+            return;
+        }
+
+        track(
+            "continue_ai_write_cta_click",
+            buildContinueTrackingPayload({
+                source_page: "backstory-generator",
+                logged_in: !!user,
+                cta_variant: user ? "continue_ai_write" : "sign_in_to_continue_ai_write",
+            })
+        );
+
+        const payload = buildContinueIntentPayload({
+            source: "backstory-generator",
+            title: prompt,
+            content: generatedBackstory,
+        });
+
+        if (
+            shouldGateAnonymousContinue({
+                hasUser: !!user,
+                hasGeneratedContent: !!generatedBackstory.trim(),
+            })
+        ) {
+            try {
+                window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+                window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+            } catch {
+                // ignore prefill cache failures
+            }
+
+            track(
+                "sign_modal_open_for_continue",
+                buildContinueTrackingPayload({
+                    source_page: "backstory-generator",
+                })
+            );
+            setSignModalContext({
+                mode: "continue-ai-write",
+                source: payload.source,
+                redirectTo: payload.redirectTo,
+            });
+            setShowSignModal(true);
+            return;
+        }
+
+        try {
+            window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+        } catch {
+            // ignore prefill cache failures
+        }
+
+        router.push(payload.redirectTo as any);
+    }, [generatedBackstory, prompt, router, user, track, setSignModalContext, setShowSignModal]);
 
     useGeneratorShortcuts({
         onGenerate: handleGenerateClick,
@@ -1001,13 +1069,13 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                             translations={section.completion_guide}
                             onCreateAnother={handleCreateAnother}
                             onSave={handleSaveClick}
-                            onContinue={() => {
-                                try {
-                                    window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedBackstory }));
-                                } catch {}
-                                router.push(buildContinueRoute({ source: "backstory-generator" }) as any);
-                            }}
-                            continueLabel={section.completion_guide.continue_label}
+                            onContinue={handleContinueInAiWrite}
+                            continueLabel={getContinueActionLabel({ hasUser: !!user, locale })}
+                            continueHint={
+                                locale.startsWith("zh")
+                                    ? "保留当前内容与上下文，登录后直接继续生成"
+                                    : "Your content and context are preserved. Sign in to continue generating in AI Write."
+                            }
                             isSaveDisabled={isSavingStory}
                         />
                     </motion.div>

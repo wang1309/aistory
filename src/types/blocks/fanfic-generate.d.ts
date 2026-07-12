@@ -200,8 +200,6 @@ export interface FanficGenerate {
     button_export_pdf: string;
     button_exporting_pdf: string;
     button_regenerate: string;
-    button_continue: string;
-    toast_login_required: string;
     loading: string;
   };
   pdf: {
@@ -241,12 +239,18 @@ export interface FanficGenerate {
     success_copied: string;
     success_pdf_exported: string;
     warning_mature_content: string;
+    save_no_auth: string;
+    save_failed: string;
+    save_published: string;
+    save_saved: string;
+    save_error: string;
   };
   completion_guide?: {
     title: string;
     subtitle: string;
     create_another: string;
     share_action: string;
+    continue_hint: string;
   };
   history: {
     title: string;
