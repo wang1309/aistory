@@ -490,7 +490,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       getCreativeUsed() >= getCreativeLimit()
     ) {
       track("creative_quota_sign_in_cta_click", {
-        source_page: "generator",
+        source_page: "story-generator",
         cta_variant: "sign_in_get_more_credits",
         trigger: "optimistic",
       });
@@ -588,7 +588,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           markCreativeQuotaExhausted();
           setCreativeUsed(getCreativeLimit());
           track("creative_quota_sign_in_cta_click", {
-            source_page: "generator",
+            source_page: "story-generator",
             cta_variant: "sign_in_get_more_credits",
             trigger: "backend_fallback",
           });
@@ -1042,14 +1042,14 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     track(
       "continue_ai_write_cta_click",
       buildContinueTrackingPayload({
-        source_page: "generator",
+        source_page: "story-generator",
         logged_in: !!user,
         cta_variant: user ? "continue_ai_write" : "sign_in_to_continue_ai_write",
       })
     );
 
     const payload = buildContinueIntentPayload({
-      source: "generator",
+      source: "story-generator",
       title: prompt,
       content: generatedStory,
       storyUuid: savedStoryUuid ?? undefined,
@@ -1072,7 +1072,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       track(
         "sign_modal_open_for_continue",
         buildContinueTrackingPayload({
-          source_page: "generator",
+          source_page: "story-generator",
         })
       );
       setSignModalContext({

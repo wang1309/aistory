@@ -1001,7 +1001,7 @@ export default function AiWriteWorkbench({
     } catch {
       // ignore invalid prefill
     }
-  }, [content, copy.generatorRestored, isHydrated, storyUuid, title, track]);
+  }, [content, copy.generatorRestored, isHydrated, storyUuid, title, track, continueEntrySource]);
 
   useEffect(() => {
     if (!isHydrated || storyUuid || typeof window === "undefined") return;
