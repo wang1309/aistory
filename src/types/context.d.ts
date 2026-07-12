@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { AuthIntent, AuthIntentInput } from "@/lib/auth-funnel";
 import { User } from "@/types/user";
 
 /**
@@ -19,6 +20,9 @@ export type SignModalContext =
 export interface ContextValue {
   showSignModal: boolean;
   setShowSignModal: (show: boolean) => void;
+  authIntent: AuthIntent | null;
+  requireAuth: (intent: AuthIntentInput) => void;
+  clearAuthIntent: () => void;
   signModalContext: SignModalContext;
   setSignModalContext: (context: SignModalContext) => void;
   user: User | null;

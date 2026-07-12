@@ -13,6 +13,11 @@ import { cacheGet, cacheRemove } from "@/lib/cache";
 
 import { CacheKey } from "@/services/constant";
 import { ContextValue, SignModalContext } from "@/types/context";
+import {
+  AuthIntent,
+  AuthIntentInput,
+  normalizeAuthIntent,
+} from "@/lib/auth-funnel";
 import { User } from "@/types/user";
 import moment from "moment";
 import useOneTapLogin from "@/hooks/useOneTapLogin";
@@ -50,6 +55,7 @@ function AppContextProviderInner({
   session: any;
 }) {
   const [showSignModal, setShowSignModal] = useState<boolean>(false);
+  const [authIntent, setAuthIntent] = useState<AuthIntent | null>(null);
   const [signModalContext, setSignModalContext] = useState<SignModalContext>({
     mode: "default",
   });
@@ -58,6 +64,15 @@ function AppContextProviderInner({
   const [showFeedback, setShowFeedback] = useState<boolean>(false);
   const [showVerificationModal, setShowVerificationModal] = useState<boolean>(false);
   const [verificationCallback, setVerificationCallback] = useState<((token: string) => void) | null>(null);
+
+  const requireAuth = useCallback((intent: AuthIntentInput) => {
+    setAuthIntent(normalizeAuthIntent(intent));
+    setShowSignModal(true);
+  }, []);
+
+  const clearAuthIntent = useCallback(() => {
+    setAuthIntent(null);
+  }, []);
 
   // 当验证模态框关闭时，重置回调
   useEffect(() => {
@@ -154,6 +169,9 @@ function AppContextProviderInner({
     () => ({
       showSignModal,
       setShowSignModal,
+      authIntent,
+      requireAuth,
+      clearAuthIntent,
       signModalContext,
       setSignModalContext,
       user,
@@ -168,6 +186,9 @@ function AppContextProviderInner({
     }),
     [
       fetchUserInfo,
+      authIntent,
+      clearAuthIntent,
+      requireAuth,
       showSignModal,
       signModalContext,
       user,
