@@ -17,18 +17,30 @@ export type AuthAction =
 
 export type AuthProvider = "google" | "github" | "google-one-tap";
 
+export type AuthSourcePage =
+  | "story-generator"
+  | "backstory-generator"
+  | "fanfic-generator"
+  | "dialogue-generator"
+  | "dnd-backstory-generator"
+  | "plot-generator"
+  | "poem-generator"
+  | "fantasy-generator";
+
 export const AUTH_ATTEMPT_STORAGE_KEY = "auth-funnel:pending-attempt";
 
 export type PendingAuthAttempt = {
   source: AuthSource;
   action: AuthAction;
   provider: AuthProvider;
+  sourcePage?: AuthSourcePage;
   startedAt: number;
 };
 
 export type AuthIntent = {
   source: AuthSource;
   action: AuthAction;
+  sourcePage?: AuthSourcePage;
   redirectTo?: string;
   context?: string;
   metadata?: Record<string, unknown>;
@@ -42,6 +54,7 @@ export function normalizeAuthIntent(input: AuthIntentInput): AuthIntent {
   return {
     source: input.source,
     action: input.action || "sign_in",
+    ...(input.sourcePage ? { sourcePage: input.sourcePage } : {}),
     ...(input.redirectTo ? { redirectTo: input.redirectTo } : {}),
     ...(input.context ? { context: input.context } : {}),
     ...(input.metadata ? { metadata: input.metadata } : {}),
@@ -50,6 +63,7 @@ export function normalizeAuthIntent(input: AuthIntentInput): AuthIntent {
 
 export function buildAuthTrackingPayload(
   intent: Pick<AuthIntent, "source" | "action" | "context"> & {
+    sourcePage?: AuthSourcePage;
     provider?: AuthProvider;
     locale?: string;
     reason?: string;
@@ -64,6 +78,7 @@ export function buildAuthTrackingPayload(
   return {
     source: intent.source,
     action: intent.action,
+    ...(intent.sourcePage ? { source_page: intent.sourcePage } : {}),
     ...(intent.provider ? { provider: intent.provider } : {}),
     ...(context ? { context } : {}),
     ...(intent.locale ? { locale: intent.locale } : {}),
@@ -106,6 +121,7 @@ export function readPendingAuthAttempt(): PendingAuthAttempt | null {
       source: parsed.source,
       action: parsed.action,
       provider: parsed.provider,
+      ...(parsed.sourcePage ? { sourcePage: parsed.sourcePage } : {}),
       startedAt: parsed.startedAt,
     } as PendingAuthAttempt;
   } catch {
