@@ -576,6 +576,7 @@
     },
     "generate_button": {
       "text": "Geschichte generieren",
+      "sign_in_for_more": "Anmelden für mehr Guthaben",
       "generating": "Wird generiert...",
       "info": {
         "credit": "Kostenloses Guthaben",

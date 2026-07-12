@@ -576,6 +576,7 @@
     },
     "generate_button": {
       "text": "生成故事",
+      "sign_in_for_more": "登录获取更多积分",
       "generating": "生成中...",
       "info": {
         "credit": "免费积分",

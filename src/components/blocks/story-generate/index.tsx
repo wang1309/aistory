@@ -489,6 +489,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       selectedModel === "creative" &&
       getCreativeUsed() >= getCreativeLimit()
     ) {
+      track("creative_quota_sign_in_cta_click", {
+        source_page: "generator",
+        cta_variant: "sign_in_get_more_credits",
+        trigger: "optimistic",
+      });
       toast.error(section.toasts.creative_limit_reached);
       setShowSignModal(true);
       return;
@@ -511,7 +516,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     // Trigger invisible Turnstile verification
     // After verification succeeds, handleTurnstileSuccess will be called automatically
     turnstileRef.current?.execute();
-  }, [prompt, selectedModel, section, user]);
+  }, [prompt, selectedModel, section, user, track]);
 
   // Perform story generation with Turnstile token
   const performStoryGeneration = useCallback(async (turnstileToken: string) => {
@@ -582,6 +587,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         if (response.status === 429 && code === "free_quota_exceeded") {
           markCreativeQuotaExhausted();
           setCreativeUsed(getCreativeLimit());
+          track("creative_quota_sign_in_cta_click", {
+            source_page: "generator",
+            cta_variant: "sign_in_get_more_credits",
+            trigger: "backend_fallback",
+          });
           toast.error(section.toasts.creative_limit_reached);
           setShowSignModal(true);
           return;
@@ -714,7 +724,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     } finally {
       setIsGenerating(false);
     }
-  }, [prompt, selectedModel, locale, section, AI_MODELS, triggerFirstTimeConfetti, router, setShowSignModal]);
+  }, [prompt, selectedModel, locale, section, AI_MODELS, triggerFirstTimeConfetti, router, setShowSignModal, track]);
   // Note: advancedOptions are accessed via ref, so not in dependency array
 
   // Handle Turnstile verification success
@@ -1091,6 +1101,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // ========== RENDER ==========
 
+  // creative 每日免费额度已用完(匿名)→ 按钮文案切换为登录引导
+  const creativeQuotaExhausted =
+    !user && selectedModel === "creative" && creativeUsed >= getCreativeLimit();
+
   return (
     <section
       id="craft_story"
@@ -1324,7 +1338,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                             <span className="inline-flex size-6 items-center justify-center rounded-full bg-background/15 dark:bg-black/10">
                               <Sparkles className="size-3.5" />
                             </span>
-                            <span>{section.generate_button.text}</span>
+                            <span>{creativeQuotaExhausted ? section.generate_button.sign_in_for_more : section.generate_button.text}</span>
                             <span className="inline-flex size-6 items-center justify-center rounded-full bg-background/10 dark:bg-black/10 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
                               <svg viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M3 13L13 3M13 3H6M13 3v7" strokeLinecap="round" strokeLinejoin="round"/>

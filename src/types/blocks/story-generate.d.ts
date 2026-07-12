@@ -182,6 +182,7 @@ export interface StoryGenerate {
   };
   generate_button: {
     text: string;
+    sign_in_for_more: string;
     generating: string;
     info: {
       credit: string;

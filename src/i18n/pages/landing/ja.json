@@ -576,6 +576,7 @@
     },
     "generate_button": {
       "text": "ストーリー生成",
+      "sign_in_for_more": "ログインしてクレジットを獲得",
       "generating": "生成中...",
       "info": {
         "credit": "無料クレジット",

@@ -576,6 +576,7 @@
     },
     "generate_button": {
       "text": "Generate Story",
+      "sign_in_for_more": "Sign In Get More Credits",
       "generating": "Generating...",
       "info": {
         "credit": "Free Credit",
