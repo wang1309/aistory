@@ -516,7 +516,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     // Trigger invisible Turnstile verification
     // After verification succeeds, handleTurnstileSuccess will be called automatically
     turnstileRef.current?.execute();
-  }, [prompt, selectedModel, section, user, track]);
+  }, [prompt, selectedModel, section, user, requireAuth, track]);
 
   // Perform story generation with Turnstile token
   const performStoryGeneration = useCallback(async (turnstileToken: string) => {

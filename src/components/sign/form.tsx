@@ -19,6 +19,7 @@ import { useOpenPanel } from "@openpanel/nextjs";
 import { buildContinueTrackingPayload } from "@/components/ai-write/workbench/continue-intent";
 import {
   buildAuthTrackingPayload,
+  writePendingAuthAttempt,
   type AuthAction,
   type AuthProvider,
   type AuthSource,
@@ -58,11 +59,23 @@ export default function SignForm({
   const githubLabel = t("sign_modal.github_sign_in");
 
   const trackSignInStart = (provider: AuthProvider) => {
+    const resolvedSource =
+      authSource || (isContinueContext ? "ai_write" : "header");
+    const resolvedAction =
+      authAction || (isContinueContext ? "continue_writing" : "sign_in");
+
+    writePendingAuthAttempt({
+      source: resolvedSource,
+      action: resolvedAction,
+      provider,
+      startedAt: Date.now(),
+    });
+
     track(
       "auth_provider_click",
       buildAuthTrackingPayload({
-        source: authSource || (isContinueContext ? "ai_write" : "header"),
-        action: authAction || (isContinueContext ? "continue_writing" : "sign_in"),
+        source: resolvedSource,
+        action: resolvedAction,
         provider,
         context: isContinueContext ? "continue-ai-write" : "default",
       })

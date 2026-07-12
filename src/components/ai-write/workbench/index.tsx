@@ -987,6 +987,10 @@ export default function AiWriteWorkbench({
       toast.success(copy.generatorRestored);
 
       if (intentSource) {
+        track("post_auth_action_resumed", {
+          source: intentSource,
+          action: "continue_writing",
+        });
         track("ai_write_open_from_generator", {
           source_page: intentSource,
           prefill_restored: true,

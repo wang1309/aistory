@@ -17,6 +17,15 @@ export type AuthAction =
 
 export type AuthProvider = "google" | "github" | "google-one-tap";
 
+export const AUTH_ATTEMPT_STORAGE_KEY = "auth-funnel:pending-attempt";
+
+export type PendingAuthAttempt = {
+  source: AuthSource;
+  action: AuthAction;
+  provider: AuthProvider;
+  startedAt: number;
+};
+
 export type AuthIntent = {
   source: AuthSource;
   action: AuthAction;
@@ -60,4 +69,56 @@ export function buildAuthTrackingPayload(
     ...(intent.locale ? { locale: intent.locale } : {}),
     ...(intent.reason ? { reason: intent.reason } : {}),
   };
+}
+
+export function writePendingAuthAttempt(attempt: PendingAuthAttempt) {
+  if (typeof window === "undefined") return;
+
+  try {
+    window.sessionStorage.setItem(
+      AUTH_ATTEMPT_STORAGE_KEY,
+      JSON.stringify(attempt)
+    );
+  } catch {
+    // Storage can be unavailable in private browsing or restricted contexts.
+  }
+}
+
+export function readPendingAuthAttempt(): PendingAuthAttempt | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const raw = window.sessionStorage.getItem(AUTH_ATTEMPT_STORAGE_KEY);
+    if (!raw) return null;
+
+    const parsed = JSON.parse(raw) as Partial<PendingAuthAttempt>;
+    if (
+      !parsed.source ||
+      !parsed.action ||
+      !parsed.provider ||
+      typeof parsed.startedAt !== "number" ||
+      Date.now() - parsed.startedAt > 15 * 60 * 1000
+    ) {
+      return null;
+    }
+
+    return {
+      source: parsed.source,
+      action: parsed.action,
+      provider: parsed.provider,
+      startedAt: parsed.startedAt,
+    } as PendingAuthAttempt;
+  } catch {
+    return null;
+  }
+}
+
+export function clearPendingAuthAttempt() {
+  if (typeof window === "undefined") return;
+
+  try {
+    window.sessionStorage.removeItem(AUTH_ATTEMPT_STORAGE_KEY);
+  } catch {
+    // Ignore storage cleanup failures.
+  }
 }

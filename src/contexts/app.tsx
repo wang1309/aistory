@@ -14,15 +14,19 @@ import { cacheGet, cacheRemove } from "@/lib/cache";
 import { CacheKey } from "@/services/constant";
 import { ContextValue, SignModalContext } from "@/types/context";
 import {
+  buildAuthTrackingPayload,
+  clearPendingAuthAttempt,
   AuthIntent,
   AuthIntentInput,
   normalizeAuthIntent,
+  readPendingAuthAttempt,
 } from "@/lib/auth-funnel";
 import { User } from "@/types/user";
 import moment from "moment";
 import useOneTapLogin from "@/hooks/useOneTapLogin";
 import { useSession } from "next-auth/react";
 import { isAuthEnabled, isGoogleOneTapEnabled } from "@/lib/auth";
+import { useOpenPanel } from "@openpanel/nextjs";
 
 const AppContext = createContext({} as ContextValue);
 
@@ -64,6 +68,7 @@ function AppContextProviderInner({
   const [showFeedback, setShowFeedback] = useState<boolean>(false);
   const [showVerificationModal, setShowVerificationModal] = useState<boolean>(false);
   const [verificationCallback, setVerificationCallback] = useState<((token: string) => void) | null>(null);
+  const { track } = useOpenPanel();
 
   const requireAuth = useCallback((intent: AuthIntentInput) => {
     setAuthIntent(normalizeAuthIntent(intent));
@@ -197,6 +202,23 @@ function AppContextProviderInner({
       verificationCallback,
     ]
   );
+
+  useEffect(() => {
+    if (session && session.user) {
+      const attempt = readPendingAuthAttempt();
+      if (attempt) {
+        track(
+          "auth_success",
+          buildAuthTrackingPayload({
+            source: attempt.source,
+            action: attempt.action,
+            provider: attempt.provider,
+          })
+        );
+        clearPendingAuthAttempt();
+      }
+    }
+  }, [session, track]);
 
   useEffect(() => {
     if (session && session.user) {
