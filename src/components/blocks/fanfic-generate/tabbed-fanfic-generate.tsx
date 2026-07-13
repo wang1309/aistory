@@ -53,6 +53,15 @@ import {
   GENERATOR_PREFILL_KEY,
 } from "@/components/ai-write/workbench/continue-intent";
 import { useOpenPanel } from "@openpanel/nextjs";
+import {
+  buildPostAuthResumeTrackingPayload,
+  consumePendingAuthResume,
+  writePendingAuthResume,
+} from "@/lib/auth-resume";
+import {
+  ACTIVATION_EVENTS,
+  buildActivationTrackingPayload,
+} from "@/lib/activation-funnel";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -122,6 +131,34 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
   const [isSavingStory, setIsSavingStory] = useState(false);
   const [hasSavedCurrentStory, setHasSavedCurrentStory] = useState(false);
+
+  useEffect(() => {
+    if (!user) return;
+
+    const resume = consumePendingAuthResume("save_story", {
+      sourcePage: "fanfic-generator",
+    });
+    if (!resume) return;
+
+    const payload = resume.payload;
+    const resumedContent = typeof payload.generatedFanfic === "string" ? payload.generatedFanfic : "";
+    if (!resumedContent.trim()) return;
+
+    if (typeof payload.prompt === "string") setPrompt(payload.prompt);
+    if (typeof payload.language === "string") setLanguage(payload.language);
+    if (typeof payload.sourceType === "string") setSourceType(payload.sourceType as "preset" | "custom");
+    if (typeof payload.selectedPresetWork === "string") setSelectedPresetWork(payload.selectedPresetWork);
+    if (typeof payload.customWorkName === "string") setCustomWorkName(payload.customWorkName);
+    if (typeof payload.customWorldview === "string") setCustomWorldview(payload.customWorldview);
+    if (typeof payload.customCharacters === "string") setCustomCharacters(payload.customCharacters);
+    if (typeof payload.pairingType === "string") setPairingType(payload.pairingType as "romantic" | "gen" | "poly");
+    if (Array.isArray(payload.selectedCharacters)) setSelectedCharacters(payload.selectedCharacters.filter((item): item is string => typeof item === "string"));
+    if (typeof payload.plotType === "string") setPlotType(payload.plotType);
+    if (typeof payload.selectedModel === "string") setSelectedModel(payload.selectedModel);
+    setGeneratedFanfic(resumedContent);
+    setIsSaveDialogOpen(true);
+    track("post_auth_action_resumed", buildPostAuthResumeTrackingPayload(resume));
+  }, [track, user]);
 
   const languageOptions = useMemo(() => Object.entries(section.prompt.language_options || {}), [section.prompt.language_options]);
 
@@ -487,12 +524,42 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     }
 
     if (!user) {
+      writePendingAuthResume({
+        source: "story_save",
+        action: "save_story",
+        sourcePage: "fanfic-generator",
+        startedAt: Date.now(),
+        payload: {
+          prompt,
+          generatedFanfic,
+          language,
+          sourceType,
+          selectedPresetWork,
+          customWorkName,
+          customWorldview,
+          customCharacters,
+          pairingType,
+          selectedCharacters,
+          plotType,
+          selectedModel,
+        },
+      });
       requireAuth({ source: "story_save", action: "save_story", sourcePage: "fanfic-generator" });
       return;
     }
 
     setIsSaveDialogOpen(true);
-  }, [generatedFanfic, section, user, requireAuth]);
+    track(
+      ACTIVATION_EVENTS.saveDialogOpen,
+      buildActivationTrackingPayload({
+        sourcePage: "fanfic-generator",
+        loggedIn: true,
+        action: "save_dialog_open",
+        model: selectedModel,
+        wordCount,
+      })
+    );
+  }, [generatedFanfic, section, selectedModel, track, user, requireAuth, wordCount]);
 
   const handleContinueInAiWrite = useCallback(() => {
     if (!generatedFanfic.trim()) {
@@ -643,6 +710,20 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
         );
 
         setHasSavedCurrentStory(true);
+        track(
+          ACTIVATION_EVENTS.storySaved,
+          buildActivationTrackingPayload({
+            sourcePage: "fanfic-generator",
+            loggedIn: true,
+            action: "story_saved",
+            model: selectedModel,
+            wordCount,
+          })
+        );
+        track(ACTIVATION_EVENTS.activationCompleted, {
+          source_page: "fanfic-generator",
+          action: "story_saved",
+        });
         setIsSaveDialogOpen(false);
       } catch (error) {
         console.error("save fanfic failed", error);
@@ -667,6 +748,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       requireAuth,
       AI_MODELS,
       selectedModel,
+      track,
     ]
   );
 

@@ -35,6 +35,10 @@ import {
   consumePendingAuthResume,
   writePendingAuthResume,
 } from "@/lib/auth-resume";
+import {
+  ACTIVATION_EVENTS,
+  buildActivationTrackingPayload,
+} from "@/lib/activation-funnel";
 
 const BLANK_DRAFT_KEY = "ai-write:blank";
 const PANEL_WIDTH_KEY = "ai-write:panel-width";
@@ -1089,6 +1093,19 @@ export default function AiWriteWorkbench({
             if (json.code !== 0) throw new Error(json.message || "save failed");
             setLastSavedAt(new Date().toISOString());
             setIsDirty(false);
+            track(
+              ACTIVATION_EVENTS.storySaved,
+              buildActivationTrackingPayload({
+                sourcePage: "ai-write",
+                loggedIn: true,
+                action: "story_saved",
+                wordCount,
+              })
+            );
+            track(ACTIVATION_EVENTS.activationCompleted, {
+              source_page: "ai-write",
+              action: "story_saved",
+            });
             return;
           }
 
@@ -1111,6 +1128,19 @@ export default function AiWriteWorkbench({
 
           setStoryUuid(json.data.uuid as string);
           setLastSavedAt(new Date().toISOString());
+          track(
+            ACTIVATION_EVENTS.storySaved,
+            buildActivationTrackingPayload({
+              sourcePage: "ai-write",
+              loggedIn: true,
+              action: "story_saved",
+              wordCount,
+            })
+          );
+          track(ACTIVATION_EVENTS.activationCompleted, {
+            source_page: "ai-write",
+            action: "story_saved",
+          });
           toast.success(copy.createStorySuccess);
           router.replace(
             buildContinueRoute({
@@ -1135,6 +1165,7 @@ export default function AiWriteWorkbench({
       requireAuth,
       source,
       storyUuid,
+      track,
       title,
       user,
       wordCount,
@@ -1573,6 +1604,24 @@ export default function AiWriteWorkbench({
     if (result) {
       setMessages((prev) => [...prev, { role: "assistant", content: result }]);
 
+      const firstGenerationKey = `ai-write:first-generation:${user.uuid}`;
+      if (!window.localStorage.getItem(firstGenerationKey)) {
+        window.localStorage.setItem(firstGenerationKey, "1");
+        track(
+          ACTIVATION_EVENTS.aiWriteFirstGeneration,
+          buildActivationTrackingPayload({
+            sourcePage: "ai-write",
+            loggedIn: true,
+            action: "ai_write_first_generation",
+            wordCount,
+          })
+        );
+        track(ACTIVATION_EVENTS.activationCompleted, {
+          source_page: "ai-write",
+          action: "ai_write_first_generation",
+        });
+      }
+
       if (activeConversationUuid && storyUuid && user) {
         try {
           await fetch(`/api/chat/conversations/${activeConversationUuid}/messages`, {
@@ -1603,7 +1652,9 @@ export default function AiWriteWorkbench({
     replyToIndex,
     requireAuth,
     storyUuid,
+    track,
     user,
+    wordCount,
   ]);
 
   const handleRegenerate = useCallback(

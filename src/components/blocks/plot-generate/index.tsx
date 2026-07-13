@@ -37,6 +37,16 @@ import { useAppContext } from "@/contexts/app";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { useRouter } from "@/i18n/navigation";
 import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import { useOpenPanel } from "@openpanel/nextjs";
+import {
+  buildPostAuthResumeTrackingPayload,
+  consumePendingAuthResume,
+  writePendingAuthResume,
+} from "@/lib/auth-resume";
+import {
+  ACTIVATION_EVENTS,
+  buildActivationTrackingPayload,
+} from "@/lib/activation-funnel";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -71,6 +81,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   const { user, requireAuth } = useAppContext();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
+  const { track } = useOpenPanel();
 
   // Helper function to get nested translations from section data
   const t = (path: string) => {
@@ -163,6 +174,28 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
   const [isSavingStory, setIsSavingStory] = useState(false);
   const [hasSavedCurrentStory, setHasSavedCurrentStory] = useState(false);
+  const wordCount = useMemo(() => calculateWordCount(generatedPlot), [generatedPlot]);
+
+  useEffect(() => {
+    if (!user) return;
+
+    const resume = consumePendingAuthResume("save_story", {
+      sourcePage: "plot-generator",
+    });
+    if (!resume) return;
+
+    const payload = resume.payload;
+    const resumedPlot = typeof payload.generatedPlot === "string" ? payload.generatedPlot : "";
+    if (!resumedPlot.trim()) return;
+
+    if (typeof payload.prompt === "string") setPrompt(payload.prompt);
+    setGeneratedPlot(resumedPlot);
+    if (typeof payload.selectedModel === "string") setSelectedModel(payload.selectedModel);
+    setCurrentPlotId(null);
+    setHasSavedCurrentStory(false);
+    setIsSaveDialogOpen(true);
+    track("post_auth_action_resumed", buildPostAuthResumeTrackingPayload(resume));
+  }, [track, user]);
 
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
@@ -405,12 +438,33 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     }
 
     if (!user) {
+      writePendingAuthResume({
+        source: "story_save",
+        action: "save_story",
+        sourcePage: "plot-generator",
+        startedAt: Date.now(),
+        payload: {
+          prompt,
+          generatedPlot,
+          selectedModel,
+        },
+      });
       requireAuth({ source: "story_save", action: "save_story", sourcePage: "plot-generator" });
       return;
     }
 
     setIsSaveDialogOpen(true);
-  }, [generatedPlot, locale, user, requireAuth]);
+    track(
+      ACTIVATION_EVENTS.saveDialogOpen,
+      buildActivationTrackingPayload({
+        sourcePage: "plot-generator",
+        loggedIn: true,
+        action: "save_dialog_open",
+        model: selectedModel,
+        wordCount,
+      })
+    );
+  }, [generatedPlot, locale, selectedModel, track, user, requireAuth, wordCount]);
 
   useGeneratorShortcuts({
     onGenerate: handleGenerateClick,
@@ -519,6 +573,20 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
         );
 
         setHasSavedCurrentStory(true);
+        track(
+          ACTIVATION_EVENTS.storySaved,
+          buildActivationTrackingPayload({
+            sourcePage: "plot-generator",
+            loggedIn: true,
+            action: "story_saved",
+            model: selectedModel,
+            wordCount,
+          })
+        );
+        track(ACTIVATION_EVENTS.activationCompleted, {
+          source_page: "plot-generator",
+          action: "story_saved",
+        });
         setIsSaveDialogOpen(false);
       } catch (error) {
         console.error("save plot story failed", error);
@@ -530,11 +598,10 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       } finally {
         setIsSavingStory(false);
       }
-    }, [generatedPlot, locale, prompt, selectedModel, requireAuth])
+    }, [generatedPlot, locale, prompt, selectedModel, requireAuth, track, wordCount])
   ;
 
   // Computed values
-  const wordCount = useMemo(() => calculateWordCount(generatedPlot), [generatedPlot]);
   const promptCharCount = prompt.length;
 
   // Load plot from history

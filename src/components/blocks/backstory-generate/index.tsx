@@ -41,6 +41,15 @@ import {
   GENERATOR_PREFILL_KEY,
 } from "@/components/ai-write/workbench/continue-intent";
 import { useOpenPanel } from "@openpanel/nextjs";
+import {
+  buildPostAuthResumeTrackingPayload,
+  consumePendingAuthResume,
+  writePendingAuthResume,
+} from "@/lib/auth-resume";
+import {
+  ACTIVATION_EVENTS,
+  buildActivationTrackingPayload,
+} from "@/lib/activation-funnel";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -162,6 +171,30 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     const [generatedBackstory, setGeneratedBackstory] = useState("");
     const [isSavingStory, setIsSavingStory] = useState(false);
     const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
+
+    useEffect(() => {
+        if (!user) return;
+
+        const resume = consumePendingAuthResume("save_story", {
+            sourcePage: "backstory-generator",
+        });
+        if (!resume) return;
+
+        const payload = resume.payload;
+        const resumedContent = typeof payload.generatedBackstory === "string" ? payload.generatedBackstory : "";
+        if (!resumedContent.trim()) return;
+
+        if (typeof payload.prompt === "string") setPrompt(payload.prompt);
+        setGeneratedBackstory(resumedContent);
+        if (typeof payload.selectedModel === "string") setSelectedModel(payload.selectedModel);
+        if (typeof payload.selectedLanguage === "string") setSelectedLanguage(payload.selectedLanguage);
+        if (typeof payload.selectedWorldview === "string") setSelectedWorldview(payload.selectedWorldview);
+        if (typeof payload.selectedRoleType === "string") setSelectedRoleType(payload.selectedRoleType);
+        if (typeof payload.selectedTone === "string") setSelectedTone(payload.selectedTone);
+        if (typeof payload.selectedLength === "string") setSelectedLength(payload.selectedLength as typeof selectedLength);
+        setIsSaveDialogOpen(true);
+        track("post_auth_action_resumed", buildPostAuthResumeTrackingPayload(resume));
+    }, [track, user]);
     
     const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
     const promptRef = useRef<HTMLTextAreaElement | null>(null);
@@ -386,6 +419,22 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
         }
 
         if (!user) {
+            writePendingAuthResume({
+                source: "story_save",
+                action: "save_story",
+                sourcePage: "backstory-generator",
+                startedAt: Date.now(),
+                payload: {
+                    prompt,
+                    generatedBackstory,
+                    selectedModel,
+                    selectedLanguage,
+                    selectedWorldview,
+                    selectedRoleType,
+                    selectedTone,
+                    selectedLength,
+                },
+            });
             if (locale === "zh") {
                 toast.error("已在本地“我的故事”中保存，登录后可以同步到云端。");
             } else {
@@ -396,7 +445,17 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
         }
 
         setIsSaveDialogOpen(true);
-    }, [AI_MODELS, generatedBackstory, locale, prompt, selectedModel, requireAuth, user, wordCount]);
+        track(
+            ACTIVATION_EVENTS.saveDialogOpen,
+            buildActivationTrackingPayload({
+                sourcePage: "backstory-generator",
+                loggedIn: !!user,
+                action: "save_dialog_open",
+                model: selectedModel,
+                wordCount,
+            })
+        );
+    }, [AI_MODELS, generatedBackstory, locale, prompt, selectedModel, requireAuth, track, user, wordCount]);
 
     const handleConfirmSave = useCallback(
         async (status: StoryStatus) => {
@@ -482,6 +541,21 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                     toast.success(status === "published" ? "Story published" : "Story saved");
                 }
 
+                track(
+                    ACTIVATION_EVENTS.storySaved,
+                    buildActivationTrackingPayload({
+                        sourcePage: "backstory-generator",
+                        loggedIn: true,
+                        action: "story_saved",
+                        model: selectedModel,
+                        wordCount,
+                    })
+                );
+                track(ACTIVATION_EVENTS.activationCompleted, {
+                    source_page: "backstory-generator",
+                    action: "story_saved",
+                });
+
                 setIsSaveDialogOpen(false);
             } catch (error) {
                 console.error("Save backstory failed", error);
@@ -493,7 +567,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             } finally {
                 setIsSavingStory(false);
             }
-        }, [AI_MODELS, generatedBackstory, locale, prompt, selectedModel, requireAuth, wordCount]
+        }, [AI_MODELS, generatedBackstory, locale, prompt, selectedModel, requireAuth, track, wordCount]
     );
 
     const handleLoadStory = useCallback((story: SavedStory) => {

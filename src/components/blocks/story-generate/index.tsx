@@ -73,6 +73,10 @@ import {
   consumePendingAuthResume,
   writePendingAuthResume,
 } from "@/lib/auth-resume";
+import {
+  ACTIVATION_EVENTS,
+  buildActivationTrackingPayload,
+} from "@/lib/activation-funnel";
 
 const isDev = process.env.NODE_ENV === "development";
 const devLog = (...args: any[]) => {
@@ -545,6 +549,15 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
     // Start loading state while Turnstile verification is in progress
     setIsGenerating(true);
+    track(
+      ACTIVATION_EVENTS.generationStarted,
+      buildActivationTrackingPayload({
+        sourcePage: "story-generator",
+        loggedIn: !!user,
+        action: "generation_started",
+        model: selectedModel,
+      })
+    );
 
     // Trigger invisible Turnstile verification
     // After verification succeeds, handleTurnstileSuccess will be called automatically
@@ -709,6 +722,16 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       devLog("=== Final accumulated text length ===", accumulatedText.length);
 
       if (accumulatedText.trim()) {
+        track(
+          ACTIVATION_EVENTS.generationSucceeded,
+          buildActivationTrackingPayload({
+            sourcePage: "story-generator",
+            loggedIn: !!user,
+            action: "generation_succeeded",
+            model: selectedModel,
+            wordCount: calculateWordCount(accumulatedText),
+          })
+        );
         // creative 免费额度:localStorage 镜像 +1(后端 KV 已 +1)
         if (selectedModel === "creative") {
           setCreativeUsed(markCreativeIncrement());
@@ -753,11 +776,20 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       }
     } catch (error) {
       devLog("=== Story generation error ===", error);
+      track(
+        ACTIVATION_EVENTS.generationFailed,
+        buildActivationTrackingPayload({
+          sourcePage: "story-generator",
+          loggedIn: !!user,
+          action: "generation_failed",
+          model: selectedModel,
+        })
+      );
       toast.error(section.toasts.error_generate_failed);
     } finally {
       setIsGenerating(false);
     }
-  }, [prompt, selectedModel, locale, section, AI_MODELS, triggerFirstTimeConfetti, router, requireAuth, track]);
+  }, [prompt, selectedModel, locale, section, AI_MODELS, triggerFirstTimeConfetti, router, requireAuth, track, user]);
   // Note: advancedOptions are accessed via ref, so not in dependency array
 
   // Handle Turnstile verification success
@@ -945,6 +977,16 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     }
 
     setIsSaveDialogOpen(true);
+    track(
+      ACTIVATION_EVENTS.saveDialogOpen,
+      buildActivationTrackingPayload({
+        sourcePage: "story-generator",
+        loggedIn: true,
+        action: "save_dialog_open",
+        model: selectedModel,
+        wordCount,
+      })
+    );
   }, [
     generatedStory,
     prompt,
@@ -1074,6 +1116,20 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         if (data?.uuid) {
           setSavedStoryUuid(data.uuid as string);
         }
+        track(
+          ACTIVATION_EVENTS.storySaved,
+          buildActivationTrackingPayload({
+            sourcePage: "story-generator",
+            loggedIn: true,
+            action: "story_saved",
+            model: selectedModel,
+            wordCount,
+          })
+        );
+        track(ACTIVATION_EVENTS.activationCompleted, {
+          source_page: "story-generator",
+          action: "story_saved",
+        });
 
         setIsSaveDialogOpen(false);
       } catch (error) {
@@ -1096,6 +1152,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       prompt,
       wordCount,
       requireAuth,
+      track,
     ]
   );
 

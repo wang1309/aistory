@@ -34,6 +34,16 @@ import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import { useRouter } from "@/i18n/navigation";
 import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import { useOpenPanel } from "@openpanel/nextjs";
+import {
+  buildPostAuthResumeTrackingPayload,
+  consumePendingAuthResume,
+  writePendingAuthResume,
+} from "@/lib/auth-resume";
+import {
+  ACTIVATION_EVENTS,
+  buildActivationTrackingPayload,
+} from "@/lib/activation-funnel";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -65,6 +75,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const { user, requireAuth } = useAppContext();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
+  const { track } = useOpenPanel();
 
   // Helper function to get nested translations from section data
   const t = (path: string) => {
@@ -144,6 +155,35 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
   const [isSavingStory, setIsSavingStory] = useState(false);
   const [hasSavedCurrentPoem, setHasSavedCurrentPoem] = useState(false);
+
+  useEffect(() => {
+    if (!user) return;
+
+    const resume = consumePendingAuthResume("save_story", {
+      sourcePage: "poem-generator",
+    });
+    if (!resume) return;
+
+    const payload = resume.payload;
+    const resumedPoem = typeof payload.generatedPoem === "string" ? payload.generatedPoem : "";
+    if (!resumedPoem.trim()) return;
+
+    if (typeof payload.prompt === "string") setPrompt(payload.prompt);
+    if (typeof payload.selectedModel === "string") setSelectedModel(payload.selectedModel);
+    if (typeof payload.selectedLanguage === "string") setSelectedLanguage(payload.selectedLanguage);
+    if (typeof payload.selectedPoemType === "string") setSelectedPoemType(payload.selectedPoemType as typeof selectedPoemType);
+    if (typeof payload.selectedLength === "string") setSelectedLength(payload.selectedLength);
+    if (typeof payload.selectedRhymeScheme === "string" || payload.selectedRhymeScheme === null) setSelectedRhymeScheme(payload.selectedRhymeScheme as string | null);
+    if (typeof payload.selectedTheme === "string" || payload.selectedTheme === null) setSelectedTheme(payload.selectedTheme as string | null);
+    if (typeof payload.selectedMood === "string" || payload.selectedMood === null) setSelectedMood(payload.selectedMood as string | null);
+    if (typeof payload.selectedStyle === "string" || payload.selectedStyle === null) setSelectedStyle(payload.selectedStyle as string | null);
+    if (typeof payload.selectedCipai === "string" || payload.selectedCipai === null) setSelectedCipai(payload.selectedCipai as string | null);
+    if (typeof payload.strictTone === "boolean") setStrictTone(payload.strictTone);
+    setGeneratedPoem(resumedPoem);
+    setHasSavedCurrentPoem(false);
+    setIsSaveDialogOpen(true);
+    track("post_auth_action_resumed", buildPostAuthResumeTrackingPayload(resume));
+  }, [track, user]);
 
   useDraftAutoSave({
     key: `poem-generator:prompt:${locale}`,
@@ -602,12 +642,42 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
     }
 
     if (!user) {
+      writePendingAuthResume({
+        source: "story_save",
+        action: "save_story",
+        sourcePage: "poem-generator",
+        startedAt: Date.now(),
+        payload: {
+          prompt,
+          generatedPoem,
+          selectedModel,
+          selectedLanguage,
+          selectedPoemType,
+          selectedLength,
+          selectedRhymeScheme,
+          selectedTheme,
+          selectedMood,
+          selectedStyle,
+          selectedCipai,
+          strictTone,
+        },
+      });
       requireAuth({ source: "story_save", action: "save_story", sourcePage: "poem-generator" });
       return;
     }
 
     setIsSaveDialogOpen(true);
-  }, [generatedPoem, section, user, requireAuth]);
+    track(
+      ACTIVATION_EVENTS.saveDialogOpen,
+      buildActivationTrackingPayload({
+        sourcePage: "poem-generator",
+        loggedIn: true,
+        action: "save_dialog_open",
+        model: selectedModel,
+        wordCount: generatedPoem.length,
+      })
+    );
+  }, [generatedPoem, section, selectedModel, track, user, requireAuth]);
 
   useGeneratorShortcuts({
     onGenerate: handleGenerate,
@@ -718,6 +788,20 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
         );
 
         setHasSavedCurrentPoem(true);
+        track(
+          ACTIVATION_EVENTS.storySaved,
+          buildActivationTrackingPayload({
+            sourcePage: "poem-generator",
+            loggedIn: true,
+            action: "story_saved",
+            model: selectedModel,
+            wordCount: generatedPoem.length,
+          })
+        );
+        track(ACTIVATION_EVENTS.activationCompleted, {
+          source_page: "poem-generator",
+          action: "story_saved",
+        });
         setIsSaveDialogOpen(false);
       } catch (error) {
         console.error("save poem failed", error);
@@ -729,7 +813,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       } finally {
         setIsSavingStory(false);
       }
-    }, [generatedPoem, prompt, locale, selectedModel, section, requireAuth]
+    }, [generatedPoem, prompt, locale, selectedModel, section, requireAuth, track]
   );
 
   // ===== RENDER =====
