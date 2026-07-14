@@ -12,10 +12,12 @@ import { toast } from "sonner";
 import { useAppContext } from "@/contexts/app";
 import { useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
+import { useOpenPanel } from "@openpanel/nextjs";
 
 export default function Pricing({ pricing }: { pricing: PricingType }) {
   const locale = useLocale();
   const { user, requireAuth } = useAppContext();
+  const { track } = useOpenPanel();
 
   const [group, setGroup] = useState(() => {
     return pricing.groups?.[1]?.name;
@@ -24,15 +26,33 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
   const [productId, setProductId] = useState<string | null>(null);
 
   const handleCheckout = async (item: PricingItem, cn_pay: boolean = false) => {
+    const checkoutCurrency = cn_pay ? "cny" : item.currency ?? "unknown";
+    const trackingProperties = {
+      source_page: "pricing",
+      product_id: item.product_id,
+      product_name: item.product_name || item.title || item.product_id,
+      pricing_group: item.group || null,
+      interval: item.interval,
+      currency: checkoutCurrency,
+      payment_method: cn_pay ? "cnpay" : "default",
+      logged_in: !!user,
+    };
+
+    track("pricing_checkout_click", trackingProperties);
+
     try {
       if (!user) {
+        track("pricing_auth_required", {
+          ...trackingProperties,
+          reason: "not_authenticated",
+        });
         requireAuth({ source: "pricing", action: "checkout" });
         return;
       }
 
       const params = {
         product_id: item.product_id,
-        currency: cn_pay ? "cny" : item.currency,
+        currency: checkoutCurrency,
         locale: locale || "en",
       };
 
@@ -48,25 +68,66 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
       if (response.status === 401) {
         setIsLoading(false);
         setProductId(null);
+        track("pricing_auth_required", {
+          ...trackingProperties,
+          reason: "session_expired",
+          http_status: 401,
+        });
         requireAuth({ source: "pricing", action: "checkout" });
         return;
       }
 
-      const { code, message, data } = await response.json();
-      if (code !== 0) {
-        toast.error(message);
-        return;
-      }
-
-      const { checkout_url } = data;
-      if (!checkout_url) {
+      let responseData;
+      try {
+        responseData = await response.json();
+      } catch {
+        track("pricing_checkout_failed", {
+          ...trackingProperties,
+          failure_reason: "response_error",
+          http_status: response.status,
+        });
         toast.error("checkout failed");
         return;
       }
 
+      if (responseData === null || typeof responseData !== "object") {
+        track("pricing_checkout_failed", {
+          ...trackingProperties,
+          failure_reason: "response_error",
+          http_status: response.status,
+        });
+        toast.error("checkout failed");
+        return;
+      }
+
+      const { code, message, data } = responseData;
+      if (!response.ok || code !== 0) {
+        track("pricing_checkout_failed", {
+          ...trackingProperties,
+          failure_reason: "response_error",
+          http_status: response.status,
+        });
+        toast.error(message || "checkout failed");
+        return;
+      }
+
+      const checkout_url = data?.checkout_url;
+      if (!checkout_url) {
+        track("pricing_checkout_failed", {
+          ...trackingProperties,
+          failure_reason: "missing_checkout_url",
+        });
+        toast.error("checkout failed");
+        return;
+      }
+
+      track("pricing_checkout_created", trackingProperties);
       window.location.href = checkout_url;
-    } catch (e) {
-      console.log("checkout failed: ", e);
+    } catch {
+      track("pricing_checkout_failed", {
+        ...trackingProperties,
+        failure_reason: "network_error",
+      });
       toast.error("checkout failed");
     } finally {
       setIsLoading(false);
