@@ -7,7 +7,11 @@ import {
   migrateLegacyStoryCreativeQuota,
   readCreativeQuota,
 } from "@/lib/free-quota";
-import type { CreativePageKey } from "@/lib/creative-quota-core";
+import {
+  buildCreativeQuotaClientStatus,
+  type CreativePageKey,
+} from "@/lib/creative-quota-core";
+import { CreditsAmount, getUserCredits } from "@/services/credit";
 
 function isCreativePageKey(value: string | null): value is CreativePageKey {
   return !!value && (CREATIVE_PAGE_KEYS as readonly string[]).includes(value);
@@ -28,5 +32,19 @@ export async function GET(request: Request) {
   }
 
   const status = await readCreativeQuota(pageKey, userIdentity || visitor.visitorIdentity);
-  return appendCreativeVisitorCookie(Response.json(status), visitor.setCookie);
+  const creditCost =
+    Number(process.env.SG_CREATIVE_COST) ||
+    CreditsAmount.StoryGenerateCreativeCost;
+  const credits = userUuid ? await getUserCredits(userUuid) : null;
+
+  return appendCreativeVisitorCookie(
+    Response.json(
+      buildCreativeQuotaClientStatus({
+        quota: status,
+        creditCost,
+        leftCredits: credits?.left_credits ?? null,
+      })
+    ),
+    visitor.setCookie
+  );
 }

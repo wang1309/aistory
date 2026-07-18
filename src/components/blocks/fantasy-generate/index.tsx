@@ -196,7 +196,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
         message: "Daily free Creative quota reached. Please sign in to continue.",
-      })
+      }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
     }

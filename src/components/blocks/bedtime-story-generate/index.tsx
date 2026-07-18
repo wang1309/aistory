@@ -220,7 +220,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
         message: t("toasts.creative_limit_reached"),
-      })
+      }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
     }

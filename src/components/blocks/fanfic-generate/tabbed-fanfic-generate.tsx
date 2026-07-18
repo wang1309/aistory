@@ -561,6 +561,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
         message:
           section.tabbed?.messages?.error_generation ||
           "Daily free Creative quota reached. Please sign in to continue.",
+      }) || creativeQuota.guardCreativeCreditQuota({
+        selectedModel: latestStateRef.current.selectedModel,
       })
     ) {
       return;

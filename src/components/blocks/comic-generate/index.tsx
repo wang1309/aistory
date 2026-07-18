@@ -316,7 +316,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
         message: getCreativeQuotaLimitReachedMessage(locale),
-      })
+      }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
     }

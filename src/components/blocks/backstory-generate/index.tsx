@@ -314,7 +314,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             creativeQuota.guardAnonymousCreativeQuota({
                 selectedModel,
                 message: t('toasts.creative_limit_reached'),
-            })
+            }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
         ) {
             return;
         }

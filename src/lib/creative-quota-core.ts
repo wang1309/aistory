@@ -23,6 +23,11 @@ export type CreativeQuotaStatus = {
   mode: "free" | "credits";
 };
 
+export type CreativeQuotaClientStatus = CreativeQuotaStatus & {
+  creditCost: number;
+  leftCredits?: number;
+};
+
 export function buildCreativeQuotaKey(
   dateKey: string,
   identity: string,
@@ -93,6 +98,47 @@ export function shouldOptimisticallyGateCreativeAnonymousUsage({
   limit: number;
 }) {
   return !hasUser && selectedModel === "creative" && used >= limit;
+}
+
+export function shouldOptimisticallyGateCreativeCreditUsage({
+  hasUser,
+  selectedModel,
+  used,
+  limit,
+  credits,
+  cost,
+}: {
+  hasUser: boolean;
+  selectedModel: string | null | undefined;
+  used: number;
+  limit: number;
+  credits: number | null;
+  cost: number | null;
+}) {
+  return (
+    hasUser &&
+    selectedModel === "creative" &&
+    used >= limit &&
+    credits !== null &&
+    cost !== null &&
+    credits < cost
+  );
+}
+
+export function buildCreativeQuotaClientStatus({
+  quota,
+  creditCost,
+  leftCredits,
+}: {
+  quota: CreativeQuotaStatus;
+  creditCost: number;
+  leftCredits: number | null;
+}): CreativeQuotaClientStatus {
+  return {
+    ...quota,
+    creditCost,
+    ...(leftCredits === null ? {} : { leftCredits }),
+  };
 }
 
 export function formatCreativeQuotaHint({

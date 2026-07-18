@@ -344,7 +344,7 @@ export default function TiktokCommentGenerate({
           "toasts.creative_limit_reached",
           "Today's free Creative uses are used up. Log in to get more credits."
         ),
-      })
+      }) || creativeQuota.guardCreativeCreditQuota({ selectedModel: mode })
     ) {
       return;
     }

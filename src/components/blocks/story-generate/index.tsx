@@ -53,15 +53,10 @@ import {
 import { useOpenPanel } from "@openpanel/nextjs";
 import {
   getCreativeLimit,
-  getCreativeUsed,
-  markCreativeIncrement,
-  markCreativeQuotaExhausted,
 } from "@/lib/creative-quota-client";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 const StorySaveDialog = dynamic(() => import("@/components/story/story-save-dialog"), {
-  ssr: false,
-  loading: () => null,
-});
-const PaywallModal = dynamic(() => import("@/components/story/paywall-modal"), {
   ssr: false,
   loading: () => null,
 });
@@ -84,10 +79,6 @@ const devLog = (...args: any[]) => {
     console.log(...args);
   }
 };
-
-// creative 超额后扣分续用的单次成本(与后端 CreditsAmount.StoryGenerateCreativeCost 默认值一致)
-// 后端可用 SG_CREATIVE_COST env 覆盖;前端这里只是乐观预估,最终以后端为准
-const CREATIVE_COST = 5;
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -123,6 +114,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const { user, requireAuth, setSignModalContext } = useAppContext();
   const { track } = useOpenPanel();
   const t = useTranslations("generation_progress");
+  const creativeQuota = useCreativeQuotaPage("story-generator");
 
   // Get progress tips from translations
   const progressTips = useMemo(() => {
@@ -202,9 +194,6 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   const [turnstileToken, setTurnstileToken] = useState<string>("");
   // creative 每日免费额度(localStorage 镜像,用于 UI 即时反馈)
-  const [creativeUsed, setCreativeUsed] = useState(0);
-  // 积分不足 paywall 弹窗
-  const [paywallOpen, setPaywallOpen] = useState(false);
   const [shareDialogOpen, setShareDialogOpen] = useState(false);
   const confettiModuleRef = useRef<((opts?: any) => void) | null>(null);
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
@@ -231,27 +220,6 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
-
-  // 客户端 hydration 后读取 creative 今日已用次数
-  useEffect(() => {
-    setCreativeUsed(getCreativeUsed("story-generator"));
-  }, []);
-
-  // Refresh the server-backed count after hydration and account changes.
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/creative-quota/status?page=story-generator")
-      .then((response) => (response.ok ? response.json() : null))
-      .then((status) => {
-        if (!cancelled && status && typeof status.used === "number") {
-          setCreativeUsed(status.used);
-        }
-      })
-      .catch(() => undefined);
-    return () => {
-      cancelled = true;
-    };
-  }, [user?.uuid]);
 
   const sgEnter = (delayMs: number) =>
     `transition-all duration-[800ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
@@ -535,31 +503,12 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       return;
     }
 
-    // 前端乐观检查:本地已知超限就直接拦,不走接口(接口仅兜底,防清缓存/直调 API 绕过)
-    // 匿名 + creative 已超额 → 弹登录引导
     if (
-      !user &&
-      selectedModel === "creative" &&
-      getCreativeUsed("story-generator") >= getCreativeLimit()
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel,
+        message: section.toasts.creative_limit_reached,
+      }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
-      track("creative_quota_sign_in_cta_click", {
-        source_page: "story-generator",
-        cta_variant: "sign_in_get_more_credits",
-        trigger: "optimistic",
-      });
-      toast.error(section.toasts.creative_limit_reached);
-      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "story-generator" });
-      return;
-    }
-    // 已登录 + creative 超额 + 积分不足 → 跳 pricing(扣分续用也续不动)
-    if (
-      user &&
-      selectedModel === "creative" &&
-      getCreativeUsed("story-generator") >= getCreativeLimit() &&
-      (user.credits?.left_credits ?? 0) < CREATIVE_COST
-    ) {
-      toast.error(section.toasts.insufficient_credits);
-      setPaywallOpen(true);
       return;
     }
 
@@ -578,7 +527,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     // Trigger invisible Turnstile verification
     // After verification succeeds, handleTurnstileSuccess will be called automatically
     turnstileRef.current?.execute();
-  }, [prompt, selectedModel, section, user, requireAuth, track]);
+  }, [creativeQuota, prompt, selectedModel, section, track, user]);
 
   // Perform story generation with Turnstile token
   const performStoryGeneration = useCallback(async (turnstileToken: string) => {
@@ -645,28 +594,10 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           errorData.message === "verification failed" ||
           errorData.message === "verification required";
 
-        // creative 免费额度用完(匿名)→ 引导登录
-        if (response.status === 429 && code === "free_quota_exceeded") {
-          markCreativeQuotaExhausted("story-generator");
-          setCreativeUsed(getCreativeLimit());
-          track("creative_quota_sign_in_cta_click", {
-            source_page: "story-generator",
-            cta_variant: "sign_in_get_more_credits",
-            trigger: "backend_fallback",
-          });
-          toast.error(section.toasts.creative_limit_reached);
-          requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "story-generator" });
-          return;
-        }
+        if (creativeQuota.handleQuotaError(response.status, errorData)) return;
         // IP hard cap 触发(所有模型)
         if (response.status === 429 && code === "rate_limited") {
           toast.error(section.toasts.rate_limited);
-          return;
-        }
-        // 积分不足(已登录超额)→ 跳 pricing
-        if (response.status === 402 && code === "insufficient_credits") {
-          toast.error(section.toasts.insufficient_credits);
-          setPaywallOpen(true);
           return;
         }
         if (isVerificationError) {
@@ -750,7 +681,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         );
         // creative 免费额度:localStorage 镜像 +1(后端 KV 已 +1)
         if (selectedModel === "creative") {
-          setCreativeUsed(markCreativeIncrement("story-generator"));
+          creativeQuota.increment();
         }
         // Check if this is first time and trigger confetti
         const isFirstTime = await triggerFirstTimeConfetti();
@@ -805,7 +736,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     } finally {
       setIsGenerating(false);
     }
-  }, [prompt, selectedModel, locale, section, AI_MODELS, triggerFirstTimeConfetti, router, requireAuth, track, user]);
+  }, [prompt, selectedModel, locale, section, AI_MODELS, creativeQuota, triggerFirstTimeConfetti, router, track, user]);
   // Note: advancedOptions are accessed via ref, so not in dependency array
 
   // Handle Turnstile verification success
@@ -1241,7 +1172,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // creative 每日免费额度已用完(匿名)→ 按钮文案切换为登录引导
   const creativeQuotaExhausted =
-    !user && selectedModel === "creative" && creativeUsed >= getCreativeLimit();
+    creativeQuota.anonymousCreativeExhausted;
 
   return (
     <section
@@ -1432,9 +1363,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                             isSelected
                               ? 'bg-foreground/[0.04] border border-foreground/[0.12] ring-1 ring-primary/20'
                               : 'bg-background border border-border/10 hover:border-border/25 hover:bg-foreground/[0.02]'
-                          } ${model.id === "creative" && creativeUsed >= getCreativeLimit() ? 'opacity-60' : ''}`}
+                          } ${model.id === "creative" && creativeQuota.used >= getCreativeLimit() ? 'opacity-60' : ''}`}
                         >
-                          {model.id === "creative" && creativeUsed >= getCreativeLimit() && (
+                          {model.id === "creative" && creativeQuota.used >= getCreativeLimit() && (
                             <span className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-amber-500 ring-2 ring-background" title={section.quota.creative_used_up} />
                           )}
                           <div className={`flex items-center justify-center size-8 rounded-lg border transition-all duration-300 ${
@@ -1490,17 +1421,17 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   <GeneratorShortcutHints showQuickSave />
                   {selectedModel === "creative" && (
                     <div className="mt-2 text-center text-[10px] text-muted-foreground">
-                      {creativeUsed >= getCreativeLimit() ? (
+                      {creativeQuota.used >= getCreativeLimit() ? (
                         user ? (
                           <span className="text-amber-600 dark:text-amber-500">
-                            {section.quota.creative_credits_hint.replace("{cost}", String(CREATIVE_COST))}
+                            {section.quota.creative_credits_hint.replace("{cost}", String(creativeQuota.creditCost ?? 5))}
                           </span>
                         ) : (
                           <span className="text-amber-600 dark:text-amber-500">{section.quota.creative_used_up}</span>
                         )
                       ) : (
                         <span>
-                          {section.quota.remaining_today}: {getCreativeLimit() - creativeUsed}/{getCreativeLimit()}
+                          {section.quota.remaining_today}: {getCreativeLimit() - creativeQuota.used}/{getCreativeLimit()}
                         </span>
                       )}
                     </div>
@@ -1508,9 +1439,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 </div>
 
                 {/* 积分不足 paywall 弹窗 */}
-                <PaywallModal
-                  open={paywallOpen}
-                  onClose={() => setPaywallOpen(false)}
+                <CreativeQuotaPaywall
+                  open={creativeQuota.paywallOpen}
+                  onClose={() => creativeQuota.setPaywallOpen(false)}
                   sourcePage="story-generator"
                 />
 

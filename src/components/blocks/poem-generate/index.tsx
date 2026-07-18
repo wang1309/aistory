@@ -493,7 +493,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
         message: "Daily free Creative quota reached. Please sign in to continue.",
-      })
+      }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
     }

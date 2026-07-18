@@ -303,7 +303,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
         message: t('toasts.creative_limit_reached'),
-      })
+      }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
     }

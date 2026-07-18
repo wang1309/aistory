@@ -378,7 +378,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
         message: t("toasts.creative_limit_reached"),
-      })
+      }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
     }
