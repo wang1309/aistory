@@ -28,6 +28,7 @@
             "tone": "스토리 톤",
             "generate_button": "백스토리 생성",
             "generating": "생성 중...",
+            "back_to_top": "맨 위로",
             "theme_pills": ["판타지", "SF", "현대 도시", "선협"]
         },
         "placeholders": {
@@ -227,6 +228,9 @@
                     "icon": "GoArrowUpRight"
                 }
             ]
+        },
+        "toasts": {
+            "creative_limit_reached": "오늘 Creative 무료 횟수가 모두 소진되었습니다. 로그인하여 계속하세요."
         }
     }
 }

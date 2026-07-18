@@ -498,5 +498,8 @@
     "cta_title": "用 AI 创作你的故事",
     "cta_desc": "几秒钟生成独一无二的故事——免费，无需注册。",
     "cta_button": "开始创作"
+  },
+  "creative_quota": {
+    "credits_hint": "免费次数已用完 · 每次生成消耗 {cost} 积分"
   }
 }

@@ -14,7 +14,7 @@ import confetti from "canvas-confetti";
 import { cn } from "@/lib/utils";
 import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { StoryStorage } from "@/lib/story-storage";
-import { ChevronDown, Settings2, Sparkles, Zap, Palette, Copy, RefreshCw, Wand2, BookOpen, Eraser, Castle, Rocket, Building2, Landmark, Scroll, Bot, Star, Skull, User } from "lucide-react";
+import { ChevronDown, ChevronUp, Settings2, Sparkles, Zap, Palette, Copy, RefreshCw, Wand2, BookOpen, Eraser, Castle, Rocket, Building2, Landmark, Scroll, Bot, Star, Skull, User } from "lucide-react";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
@@ -175,6 +175,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     const [generatedBackstory, setGeneratedBackstory] = useState("");
     const [isSavingStory, setIsSavingStory] = useState(false);
     const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
+    const [showBackToTop, setShowBackToTop] = useState(false);
 
     useEffect(() => {
         if (!user) return;
@@ -271,6 +272,16 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     const wordCount = useMemo(() => calculateWordCount(generatedBackstory), [generatedBackstory]);
     
     // ========== EVENT HANDLERS ==========
+
+    const handleOutputScroll = useCallback(() => {
+        const el = outputScrollRef.current;
+        if (!el) return;
+        setShowBackToTop(el.scrollTop > 120);
+    }, []);
+
+    const scrollOutputToTop = useCallback(() => {
+        outputScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
 
     const handleRandomPrompt = useCallback(() => {
         const randomIndex = Math.floor(Math.random() * SAMPLE_PROMPTS.length);
@@ -1151,7 +1162,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                             </div>
 
                             {/* Content Area */}
-                            <div ref={outputScrollRef} className="flex-1 p-6 sm:p-8 overflow-y-auto custom-scrollbar">
+                            <div ref={outputScrollRef} onScroll={handleOutputScroll} className="flex-1 p-6 sm:p-8 overflow-y-auto custom-scrollbar">
                                 {generatedBackstory ? (
                                     <div className="animate-fade-in">
                                         <article className="prose prose-lg max-w-none leading-relaxed prose-headings:font-serif prose-headings:text-foreground prose-p:font-serif prose-p:text-slate-700 prose-li:text-slate-700 prose-strong:text-slate-900 dark:prose-p:text-slate-200 dark:prose-li:text-slate-200 dark:prose-strong:text-white dark:prose-headings:text-white">
@@ -1182,6 +1193,18 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                     </div>
                                 )}
                             </div>
+                            {showBackToTop && !isGenerating && (
+                                <div className="py-3 flex justify-center border-t border-border/30">
+                                    <button
+                                        type="button"
+                                        onClick={scrollOutputToTop}
+                                        className="inline-flex items-center gap-1.5 rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur transition hover:bg-accent hover:text-foreground"
+                                    >
+                                        <ChevronUp className="size-3.5" />
+                                        {t('ui.back_to_top')}
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </motion.div>
                 </div>

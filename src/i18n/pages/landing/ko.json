@@ -634,7 +634,8 @@
     },
     "quota": {
       "remaining_today": "오늘 남은 횟수",
-      "creative_used_up": "소진됨 · 내일 리셋"
+      "creative_used_up": "소진됨 · 내일 리셋",
+      "creative_credits_hint": "무료 횟수 소진 · 생성마다 {cost} 크레딧 차감"
     },
     "completion_guide": {
       "title": "이 이야기가 마음에 드시나요?",

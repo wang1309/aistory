@@ -28,6 +28,7 @@
             "tone": "Story Tone",
             "generate_button": "Generate Backstory",
             "generating": "Generating...",
+            "back_to_top": "Back to top",
             "theme_pills": ["Fantasy", "Sci-Fi", "Modern Urban", "Xianxia"]
         },
         "placeholders": {
@@ -143,7 +144,7 @@
                     "description": "Use the backstory generator to get clear sections for origin, turning points, relationships, goals, and story hooks, so you can understand your character’s whole life at a glance.",
                     "icon": "RiListCheck2",
                     "image": {
-                         "src": "/imgs/backstory/why-use-backstory1.avif"
+                        "src": "/imgs/backstory/why-use-backstory1.avif"
                     }
                 },
                 {
@@ -151,15 +152,15 @@
                     "description": "Whether for DND campaigns, novels, VTubers, or chatbots, our AI backstory generator adapts to your needs so one tool can power every character you create.",
                     "icon": "RiGamepadLine",
                     "image": {
-                         "src": "/imgs/backstory/why-use-backstory2.avif"
-                    }          
+                        "src": "/imgs/backstory/why-use-backstory2.avif"
+                    }
                 },
                 {
                     "title": "Instant Inspiration",
                     "description": "When you feel stuck, this free backstory generator quickly produces fresh character ideas and angles that you can edit, remix, and expand.",
                     "icon": "RiLightbulbFlashLine",
                     "image": {
-                         "src": "/imgs/backstory/why-use-backstory3.avif"
+                        "src": "/imgs/backstory/why-use-backstory3.avif"
                     }
                 }
             ]
@@ -227,6 +228,9 @@
                     "icon": "GoArrowUpRight"
                 }
             ]
+        },
+        "toasts": {
+            "creative_limit_reached": "Today's free Creative uses are used up. Sign in to get more credits."
         }
     }
 }

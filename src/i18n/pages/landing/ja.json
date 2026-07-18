@@ -634,7 +634,8 @@
     },
     "quota": {
       "remaining_today": "今日の残り",
-      "creative_used_up": "使い切りました · 明日リセット"
+      "creative_used_up": "使い切りました · 明日リセット",
+      "creative_credits_hint": "無料回数を使い切りました · 生成ごとに {cost} クレジット消費"
     },
     "completion_guide": {
       "title": "この物語は気に入りましたか？",

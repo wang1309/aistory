@@ -28,6 +28,7 @@
             "tone": "物語のトーン",
             "generate_button": "バックストーリーを生成",
             "generating": "生成中...",
+            "back_to_top": "トップへ戻る",
             "theme_pills": ["ファンタジー", "SF", "現代都市", "仙侠"]
         },
         "placeholders": {
@@ -227,6 +228,9 @@
                     "icon": "GoArrowUpRight"
                 }
             ]
+        },
+        "toasts": {
+            "creative_limit_reached": "今日のCreative無料回数を使い切りました。ログインして続行。"
         }
     }
 }

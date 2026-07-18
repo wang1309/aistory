@@ -28,6 +28,7 @@
             "tone": "Ton der Geschichte",
             "generate_button": "Backstory generieren",
             "generating": "Wird generiert...",
+            "back_to_top": "Nach oben",
             "theme_pills": ["Fantasy", "Sci-Fi", "Moderne Großstadt", "Xianxia"]
         },
         "placeholders": {
@@ -227,6 +228,9 @@
                     "icon": "GoArrowUpRight"
                 }
             ]
+        },
+        "toasts": {
+            "creative_limit_reached": "Die heutigen kostenlosen Creative Nutzungen sind aufgebraucht. Anmelden, um fortzufahren."
         }
     }
 }

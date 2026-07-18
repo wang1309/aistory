@@ -495,5 +495,8 @@
     "cta_title": "나만의 AI 이야기 만들기",
     "cta_desc": "몇 초 만에 고유한 이야기를 생성하세요 — 무료, 가입 불필요.",
     "cta_button": "시작하기"
+  },
+  "creative_quota": {
+    "credits_hint": "무료 횟수 소진 · 생성마다 {cost} 크레딧 차감"
   }
 }

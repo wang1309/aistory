@@ -634,7 +634,8 @@
     },
     "quota": {
       "remaining_today": "Today's uses",
-      "creative_used_up": "Used up · resets tomorrow"
+      "creative_used_up": "Used up · resets tomorrow",
+      "creative_credits_hint": "Free uses exhausted · Each generation costs {cost} credits"
     },
     "completion_guide": {
       "title": "Liked your story?",

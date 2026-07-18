@@ -28,6 +28,7 @@
             "tone": "故事基调",
             "generate_button": "生成背景故事",
             "generating": "生成中...",
+            "back_to_top": "回到顶部",
             "theme_pills": ["奇幻", "科幻", "都市", "仙侠"]
         },
         "placeholders": {
@@ -227,6 +228,9 @@
                     "icon": "GoArrowUpRight"
                 }
             ]
+        },
+        "toasts": {
+            "creative_limit_reached": "今日 Creative 免费次数已用完，登录可获得更多积分。"
         }
     }
 }

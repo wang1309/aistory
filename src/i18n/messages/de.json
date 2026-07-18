@@ -495,5 +495,8 @@
     "cta_title": "Erstelle deine eigene KI-Geschichte",
     "cta_desc": "Einzigartige Geschichten in Sekunden – kostenlos, ohne Anmeldung.",
     "cta_button": "Jetzt starten"
+  },
+  "creative_quota": {
+    "credits_hint": "Freie Nutzungen aufgebraucht · Jede Generierung kostet {cost} Credits"
   }
 }

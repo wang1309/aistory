@@ -498,5 +498,8 @@
     "cta_title": "Make your own AI story",
     "cta_desc": "Generate unique stories in seconds — free, no sign-up needed.",
     "cta_button": "Start Creating"
+  },
+  "creative_quota": {
+    "credits_hint": "Free uses exhausted · Each generation costs {cost} credits"
   }
 }

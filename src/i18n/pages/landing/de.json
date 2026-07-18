@@ -634,7 +634,8 @@
     },
     "quota": {
       "remaining_today": "Heute verbleibend",
-      "creative_used_up": "Aufgebraucht · zurück morgen"
+      "creative_used_up": "Aufgebraucht · zurück morgen",
+      "creative_credits_hint": "Freie Nutzungen aufgebraucht · Jede Generierung kostet {cost} Credits"
     },
     "completion_guide": {
       "title": "Gefällt Ihnen die Geschichte?",

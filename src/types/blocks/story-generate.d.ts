@@ -241,6 +241,7 @@ export interface StoryGenerate {
   quota: {
     remaining_today: string;
     creative_used_up: string;
+    creative_credits_hint: string;
   };
   completion_guide: {
     title: string;

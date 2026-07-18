@@ -1491,7 +1491,13 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   {selectedModel === "creative" && (
                     <div className="mt-2 text-center text-[10px] text-muted-foreground">
                       {creativeUsed >= getCreativeLimit() ? (
-                        <span className="text-amber-600 dark:text-amber-500">{section.quota.creative_used_up}</span>
+                        user ? (
+                          <span className="text-amber-600 dark:text-amber-500">
+                            {section.quota.creative_credits_hint.replace("{cost}", String(CREATIVE_COST))}
+                          </span>
+                        ) : (
+                          <span className="text-amber-600 dark:text-amber-500">{section.quota.creative_used_up}</span>
+                        )
                       ) : (
                         <span>
                           {section.quota.remaining_today}: {getCreativeLimit() - creativeUsed}/{getCreativeLimit()}

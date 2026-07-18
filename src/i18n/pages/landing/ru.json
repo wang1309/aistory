@@ -634,7 +634,8 @@
     },
     "quota": {
       "remaining_today": "Осталось сегодня",
-      "creative_used_up": "Исчерпано · сброс завтра"
+      "creative_used_up": "Исчерпано · сброс завтра",
+      "creative_credits_hint": "Бесплатные попытки исчерпаны · Каждая генерация стоит {cost} кредитов"
     },
     "completion_guide": {
       "title": "Вам понравилась история?",

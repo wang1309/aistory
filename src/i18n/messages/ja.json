@@ -495,5 +495,8 @@
     "cta_title": "あなただけの AI 物語を作ろう",
     "cta_desc": "数秒でオリジナル物語を生成 — 無料、登録不要。",
     "cta_button": "作成を始める"
+  },
+  "creative_quota": {
+    "credits_hint": "無料回数を使い切りました · 生成ごとに {cost} クレジット消費"
   }
 }
