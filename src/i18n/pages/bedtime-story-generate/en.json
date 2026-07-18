@@ -102,7 +102,10 @@
       "copy": "Copy",
       "continue_button": "Continue the story",
       "generating_message": "Writing your bedtime story...",
-      "empty_message": "Your personalized bedtime story will appear here. Cozy up and get ready to read aloud!"
+      "empty_message": "Your personalized bedtime story will appear here. Cozy up and get ready to read aloud!",
+      "export": "Export",
+      "export_md": "Markdown (.md)",
+      "export_txt": "Plain text (.txt)"
     },
     "random_prompts": [
       "A small bunny who is afraid of the dark discovers that fireflies are the stars' tiny helpers",
@@ -248,6 +251,13 @@
           "icon": "GoArrowUpRight"
         }
       ]
+    },
+    "completion_guide": {
+      "title": "Love this bedtime story?",
+      "subtitle": "Share it with your child or continue crafting in AI Write.",
+      "create_another": "Create Another",
+      "share_action": "Save Story",
+      "continue_label": "Continue in AI Write"
     }
   }
 }

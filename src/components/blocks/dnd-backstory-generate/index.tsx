@@ -7,9 +7,17 @@ import { motion, useReducedMotion } from "framer-motion";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import {
+  AlignLeft,
+  BookOpen,
   ChevronDown,
   Copy,
+  Download,
   Eraser,
+  FileCode,
+  FileText,
+  FileType,
+  Loader2,
+  Palette,
   RefreshCw,
   ScrollText,
   Settings2,
@@ -18,17 +26,23 @@ import {
   Sword,
   Wand2,
   Zap,
-  Palette,
-  PenLine,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import ShareResultButton from "@/components/story/share-result-button";
+import CompletionGuide from "@/components/story/completion-guide";
+import StorySaveDialog from "@/components/story/story-save-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
@@ -36,7 +50,9 @@ import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { StoryStorage } from "@/lib/story-storage";
 import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { cn } from "@/lib/utils";
+import type { StoryStatus } from "@/models/story";
 import type { DndBackstoryGenerate as DndBackstoryGenerateType } from "@/types/blocks/dnd-backstory-generate";
+import type { StoryMetadata } from "@/lib/pdf-export";
 import DndBackstoryBreadcrumb from "./breadcrumb";
 import { useRouter } from "@/i18n/navigation";
 import {
@@ -51,6 +67,15 @@ import {
 } from "@/components/ai-write/workbench/continue-intent";
 import { useAppContext } from "@/contexts/app";
 import { useOpenPanel } from "@openpanel/nextjs";
+import { ACTIVATION_EVENTS, buildActivationTrackingPayload } from "@/lib/activation-funnel";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
+import {
+  buildPostAuthResumeTrackingPayload,
+  consumePendingAuthResume,
+  writePendingAuthResume,
+} from "@/lib/auth-resume";
 
 const DND_DRAFT_KEY = "dnd-backstory-generator:prompt";
 
@@ -62,6 +87,18 @@ function calculateWordCount(text: string): number {
   const withoutCJK = text.replace(cjkRegex, " ").trim();
   const englishCount = withoutCJK ? withoutCJK.split(/\s+/).filter(Boolean).length : 0;
   return cjkCount + englishCount;
+}
+
+function downloadTextFile(text: string, filename: string, mime: string) {
+  const blob = new Blob([text], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 interface DndBackstoryGenerateProps {
@@ -98,6 +135,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
   const reduceMotion = useReducedMotion();
   const { user, requireAuth, setSignModalContext } = useAppContext();
   const { track } = useOpenPanel();
+  const creativeQuota = useCreativeQuotaPage("dnd-backstory-generator");
 
   const t = useCallback(
     (path: string) => {
@@ -180,6 +218,9 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedBackstory, setGeneratedBackstory] = useState("");
+  const [isSavingStory, setIsSavingStory] = useState(false);
+  const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
 
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
@@ -209,6 +250,28 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
     rivalOrFaction: "",
     extraConstraints: "",
   });
+
+  useEffect(() => {
+    if (!user) return;
+
+    const resume = consumePendingAuthResume("save_story", {
+      sourcePage: "dnd-backstory-generator",
+    });
+    if (!resume) return;
+
+    const payload = resume.payload;
+    const resumedContent =
+      typeof payload.generatedBackstory === "string" ? payload.generatedBackstory : "";
+    if (!resumedContent.trim()) return;
+
+    if (typeof payload.prompt === "string") setPrompt(payload.prompt);
+    setGeneratedBackstory(resumedContent);
+    if (typeof payload.selectedModel === "string") setSelectedModel(payload.selectedModel);
+    if (typeof payload.selectedLanguage === "string") setSelectedLanguage(payload.selectedLanguage);
+
+    setIsSaveDialogOpen(true);
+    track("post_auth_action_resumed", buildPostAuthResumeTrackingPayload(resume));
+  }, [track, user]);
 
   useEffect(() => {
     latestOptionsRef.current = {
@@ -278,7 +341,9 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
   const handleRandomPrompt = useCallback(() => {
     if (!randomPrompts.length) return;
     const randomIndex = Math.floor(Math.random() * randomPrompts.length);
-    setPrompt(randomPrompts[randomIndex]);
+    const randomSeed = randomPrompts[randomIndex];
+    setPrompt(randomSeed);
+    setBackground(randomSeed);
     toast.success(t("success.random_prompt_selected"));
     setTimeout(() => promptRef.current?.focus(), 50);
   }, [randomPrompts, t]);
@@ -309,10 +374,30 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
       return;
     }
 
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel,
+        message: t("toasts.creative_limit_reached"),
+      })
+    ) {
+      return;
+    }
+
     setGeneratedBackstory("");
     setIsGenerating(true);
+
+    track(
+      ACTIVATION_EVENTS.generationStarted,
+      buildActivationTrackingPayload({
+        sourcePage: "dnd-backstory-generator",
+        loggedIn: !!user,
+        action: "generation_started",
+        model: selectedModel,
+      })
+    );
+
     turnstileRef.current?.execute();
-  }, [background, characterClass, customCharacterClass, customRace, prompt, race, selectedModel, t]);
+  }, [background, characterClass, creativeQuota, customCharacterClass, customRace, prompt, race, selectedModel, t, track, user]);
 
   const handleTurnstileSuccess = useCallback(
     async (turnstileToken: string) => {
@@ -352,6 +437,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
 
         if (!response.ok) {
           const errorData = await response.json();
+          if (creativeQuota.handleQuotaError(response.status, errorData)) return;
           throw new Error(errorData.message || `HTTP ${response.status}`);
         }
 
@@ -387,6 +473,17 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
         }
 
         if (accumulatedContent.trim()) {
+          if (opts.model === "creative") creativeQuota.increment();
+          track(
+            ACTIVATION_EVENTS.generationSucceeded,
+            buildActivationTrackingPayload({
+              sourcePage: "dnd-backstory-generator",
+              loggedIn: !!user,
+              action: "generation_succeeded",
+              model: opts.model,
+              wordCount: calculateWordCount(accumulatedContent),
+            })
+          );
           StoryStorage.saveStory({
             title: (opts.prompt.trim() || "DnD Backstory").slice(0, 30),
             prompt: opts.prompt.trim(),
@@ -405,12 +502,21 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
         }
       } catch (error) {
         console.error("DnD backstory generation error:", error);
+        track(
+          ACTIVATION_EVENTS.generationFailed,
+          buildActivationTrackingPayload({
+            sourcePage: "dnd-backstory-generator",
+            loggedIn: !!user,
+            action: "generation_failed",
+            model: opts.model,
+          })
+        );
         toast.error(t("errors.generation_failed"));
       } finally {
         setIsGenerating(false);
       }
     },
-    [AI_MODELS, t]
+    [AI_MODELS, creativeQuota, t, track, user]
   );
 
   const handleTurnstileError = useCallback(() => {
@@ -423,6 +529,295 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
     navigator.clipboard.writeText(generatedBackstory);
     toast.success(t("success.backstory_copied"));
   }, [generatedBackstory, t]);
+
+  const wordCount = useMemo(() => calculateWordCount(generatedBackstory), [generatedBackstory]);
+
+  const handleExport = useCallback(
+    async (format: "pdf" | "docx" | "epub" | "markdown" | "txt") => {
+      const content = generatedBackstory.trim();
+      if (!content) {
+        toast.error(t("errors.no_content_to_export"));
+        return;
+      }
+
+      setIsExporting(true);
+
+      try {
+        const rawTitle = prompt.trim() || t("output.title");
+        const safeTitle =
+          rawTitle.replace(/[^\w一-鿿]/g, "_").slice(0, 30) || "DnD_Backstory";
+        const modelName =
+          AI_MODELS.find((item) => item.id === selectedModel)?.name || "";
+
+        if (format === "markdown") {
+          downloadTextFile(content, `${safeTitle}.md`, "text/markdown;charset=utf-8");
+        } else if (format === "txt") {
+          downloadTextFile(content, `${safeTitle}.txt`, "text/plain;charset=utf-8");
+        } else if (format === "pdf") {
+          const metadata: StoryMetadata = {
+            title: rawTitle,
+            prompt:
+              prompt.trim().slice(0, 200) + (prompt.length > 200 ? "..." : ""),
+            wordCount,
+            generatedAt: new Date(),
+            model: modelName,
+            tone: campaignTones.find(([key]) => key === campaignTone)?.[1],
+          };
+          const pdfTranslations = {
+            generated_at: t("pdf.generated_at"),
+            word_count_label: t("pdf.word_count_label"),
+            ai_model: t("pdf.ai_model"),
+            story_format: t("pdf.story_format"),
+            story_genre: t("pdf.story_genre"),
+            story_tone: t("pdf.story_tone"),
+            prompt: t("pdf.prompt"),
+            footer_text: t("pdf.footer_text"),
+            page_indicator: t("pdf.page_indicator"),
+          };
+          const { exportStoryToPdf } = await import("@/lib/pdf-export");
+          await exportStoryToPdf(content, metadata, locale, pdfTranslations);
+        } else {
+          // docx / epub need HTML — render the markdown source first
+          const MarkdownIt = (await import("markdown-it")).default;
+          const md = new MarkdownIt({ html: false, breaks: true, linkify: true });
+          const html = md.render(content);
+
+          if (format === "docx") {
+            const { exportToDocx } = await import("@/lib/docx-export");
+            await exportToDocx({ title: rawTitle, html });
+          } else {
+            const { exportToEpub } = await import("@/lib/epub-export");
+            await exportToEpub({ title: rawTitle, html, locale });
+          }
+        }
+
+        toast.success(t("success.backstory_exported"));
+      } catch (error) {
+        console.error("Export failed:", error);
+        toast.error(t("errors.export_failed"));
+      } finally {
+        setIsExporting(false);
+      }
+    },
+    [
+      AI_MODELS,
+      campaignTone,
+      campaignTones,
+      generatedBackstory,
+      locale,
+      prompt,
+      selectedModel,
+      t,
+      wordCount,
+    ]
+  );
+
+  const handleSaveClick = useCallback(() => {
+    const content = generatedBackstory.trim();
+    if (!content) {
+      if (locale === "zh") {
+        toast.error("当前没有可保存的内容，请先生成一个 DnD 背景故事。");
+      } else {
+        toast.error("No DnD backstory to save yet. Please generate one first.");
+      }
+      return;
+    }
+
+    try {
+      const rawTitle = prompt.trim() || (locale === "zh" ? "未命名 DnD 背景" : "Untitled DnD Backstory");
+      const title = rawTitle.length > 30 ? `${rawTitle.slice(0, 30)}...` : rawTitle;
+      const modelName = AI_MODELS.find((item) => item.id === selectedModel)?.name || "AI";
+
+      StoryStorage.saveStory({
+        title,
+        prompt: prompt.trim(),
+        content,
+        wordCount,
+        model: modelName,
+        genre: "DnD",
+      });
+    } catch (error) {
+      console.error("Failed to save DnD backstory locally:", error);
+    }
+
+    if (!user) {
+      writePendingAuthResume({
+        source: "story_save",
+        action: "save_story",
+        sourcePage: "dnd-backstory-generator",
+        startedAt: Date.now(),
+        payload: {
+          prompt,
+          generatedBackstory,
+          selectedModel,
+          selectedLanguage,
+        },
+      });
+
+      if (locale === "zh") {
+        toast.error("已在本地“我的故事”中保存，登录后可以同步到云端。");
+      } else {
+        toast.error("Saved locally. Sign in to save this backstory to your account.");
+      }
+
+      requireAuth({
+        source: "story_save",
+        action: "save_story",
+        sourcePage: "dnd-backstory-generator",
+      });
+      return;
+    }
+
+    setIsSaveDialogOpen(true);
+    track(
+      ACTIVATION_EVENTS.saveDialogOpen,
+      buildActivationTrackingPayload({
+        sourcePage: "dnd-backstory-generator",
+        loggedIn: !!user,
+        action: "save_dialog_open",
+        model: selectedModel,
+        wordCount,
+      })
+    );
+  }, [
+    AI_MODELS,
+    generatedBackstory,
+    locale,
+    prompt,
+    requireAuth,
+    selectedLanguage,
+    selectedModel,
+    track,
+    user,
+    wordCount,
+  ]);
+
+  const handleConfirmSave = useCallback(
+    async (status: StoryStatus) => {
+      const content = generatedBackstory.trim();
+      if (!content) {
+        if (locale === "zh") {
+          toast.error("当前没有可保存的内容，请先生成一个 DnD 背景故事。");
+        } else {
+          toast.error("No DnD backstory to save yet. Please generate one first.");
+        }
+        return;
+      }
+
+      try {
+        setIsSavingStory(true);
+
+        const opts = latestOptionsRef.current;
+        const settings: Record<string, unknown> = {
+          locale,
+          outputLanguage: opts.locale,
+          race: opts.race,
+          characterClass: opts.characterClass,
+          background: opts.background,
+          campaignTone: opts.campaignTone,
+          useCase: opts.useCase,
+          length: opts.length,
+          alignment: opts.alignment,
+        };
+
+        if (opts.motivation) settings.motivation = opts.motivation;
+        if (opts.definingEvent) settings.definingEvent = opts.definingEvent;
+        if (opts.greatestFearOrFlaw) settings.greatestFearOrFlaw = opts.greatestFearOrFlaw;
+        if (opts.importantBond) settings.importantBond = opts.importantBond;
+        if (opts.secret) settings.secret = opts.secret;
+        if (opts.hookType) settings.hookType = opts.hookType;
+        if (opts.worldNotes) settings.worldNotes = opts.worldNotes;
+        if (opts.partyRole) settings.partyRole = opts.partyRole;
+        if (opts.deityOrPatron) settings.deityOrPatron = opts.deityOrPatron;
+        if (opts.rivalOrFaction) settings.rivalOrFaction = opts.rivalOrFaction;
+        if (opts.extraConstraints) settings.extraConstraints = opts.extraConstraints;
+
+        const rawTitle = prompt.trim() || (locale === "zh" ? "未命名 DnD 背景" : "Untitled DnD Backstory");
+        const title = rawTitle.length > 30 ? `${rawTitle.slice(0, 30)}...` : rawTitle;
+
+        const modelMap: Record<string, string> = {
+          fast: "gemini-2.5-flash",
+          standard: "gemini-3.1-flash-lite",
+          creative: "gemini-3-flash",
+        };
+        const actualModel = modelMap[selectedModel || "standard"] || "gemini-3.1-flash-lite";
+
+        const resp = await fetch("/api/stories", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title,
+            prompt: prompt.trim(),
+            content,
+            wordCount,
+            modelUsed: actualModel,
+            settings,
+            status,
+            visibility: status === "published" ? "public" : "private",
+            sourceCategory: "backstory",
+          }),
+        });
+
+        if (!resp.ok) {
+          throw new Error("request failed with status: " + resp.status);
+        }
+
+        const { code, message } = await resp.json();
+
+        if (code !== 0) {
+          if (message === "no auth") {
+            requireAuth({
+              source: "story_save",
+              action: "save_story",
+              sourcePage: "dnd-backstory-generator",
+            });
+          }
+
+          if (locale === "zh") {
+            toast.error(message === "no auth" ? "请先登录后再保存故事" : `保存失败：${message}`);
+          } else {
+            toast.error(message || "Failed to save story");
+          }
+          return;
+        }
+
+        if (locale === "zh") {
+          toast.success(status === "published" ? "故事已发布" : "故事已保存");
+        } else {
+          toast.success(status === "published" ? "Story published" : "Story saved");
+        }
+
+        track(
+          ACTIVATION_EVENTS.storySaved,
+          buildActivationTrackingPayload({
+            sourcePage: "dnd-backstory-generator",
+            loggedIn: true,
+            action: "story_saved",
+            model: selectedModel,
+            wordCount,
+          })
+        );
+        track(ACTIVATION_EVENTS.activationCompleted, {
+          source_page: "dnd-backstory-generator",
+          action: "story_saved",
+        });
+
+        setIsSaveDialogOpen(false);
+      } catch (error) {
+        console.error("Save DnD backstory failed", error);
+        if (locale === "zh") {
+          toast.error("保存失败，请稍后再试");
+        } else {
+          toast.error("Failed to save story, please try again.");
+        }
+      } finally {
+        setIsSavingStory(false);
+      }
+    },
+    [generatedBackstory, locale, prompt, requireAuth, selectedModel, track, wordCount]
+  );
 
   const handleContinueInAiWrite = useCallback(() => {
     if (!generatedBackstory.trim()) {
@@ -481,12 +876,16 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
     router.push(payload.redirectTo as any);
   }, [generatedBackstory, prompt, router, user, track, setSignModalContext, requireAuth]);
 
+  const handleCreateAnother = useCallback(() => {
+    setGeneratedBackstory("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   useGeneratorShortcuts({
     onGenerate: handleGenerate,
     onFocusInput: () => promptRef.current?.focus(),
+    onQuickSave: handleSaveClick,
   });
-
-  const wordCount = useMemo(() => calculateWordCount(generatedBackstory), [generatedBackstory]);
 
   return (
     <div id="dnd_backstory_generator" className="min-h-screen bg-background text-foreground selection:bg-orange-500/20">
@@ -729,7 +1128,10 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                       <SelectContent>
                         {AI_MODELS.map((model) => (
                           <SelectItem key={model.id} value={model.id}>
-                            {model.name}
+                            <div className="flex items-center gap-2 py-0.5">
+                              <span className="opacity-70">{model.icon}</span>
+                              <span className="font-medium">{model.name}</span>
+                            </div>
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -802,7 +1204,10 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                 </div>
 
                 <div className="space-y-2">
-                  <Label>{t("ui.background")}</Label>
+                  <Label>
+                    {t("ui.background")}
+                    <span className="text-red-500 ml-1">*</span>
+                  </Label>
                   <Input
                     value={background}
                     onChange={(event) => setBackground(event.target.value)}
@@ -1019,11 +1424,14 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                           </svg>
                         )}
                       </span>
-                      {t("ui.generate_button")}
+                      {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                        ? "Sign in to continue"
+                        : t("ui.generate_button")}
                     </>
                   )}
                 </Button>
                 <GeneratorShortcutHints className="mt-3" />
+                <CreativeQuotaHint pageKey="dnd-backstory-generator" selectedModel={selectedModel} used={creativeQuota.used} />
               </div>
             </div>
           </motion.div>
@@ -1033,13 +1441,13 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             ref={resultRef}
-            className="relative h-[720px] max-h-[75vh] min-h-[400px] sm:min-h-[520px] md:sticky md:top-24"
+            className="relative flex h-[720px] max-h-[75vh] min-h-[400px] flex-col sm:min-h-[520px] md:sticky md:top-24"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 to-orange-500/5 rounded-[2rem] blur-2xl -z-10" />
 
             <div
               className={cn(
-                "h-full rounded-[2rem] border border-border backdrop-blur-xl overflow-hidden transition-all duration-500 flex flex-col card-hover-lift",
+                "flex-1 rounded-[2rem] border border-border backdrop-blur-xl overflow-hidden transition-all duration-500 flex flex-col card-hover-lift",
                 generatedBackstory
                   ? "bg-card/80 shadow-2xl shadow-orange-500/10"
                   : "bg-card/40 shadow-xl border-dashed"
@@ -1076,14 +1484,57 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                       sourceCategory="dnd-backstory"
                       title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
                     />
-                    <Button
-                      size="sm"
-                      onClick={handleContinueInAiWrite}
-                      className="h-8 text-xs gap-1.5 rounded-full bg-orange-600 px-3 text-white hover:bg-orange-500"
-                    >
-                      <PenLine className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">{getContinueActionLabel({ hasUser: !!user, locale })}</span>
-                    </Button>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          disabled={isExporting}
+                          className="h-8 text-xs gap-1.5 text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10"
+                        >
+                          {isExporting ? (
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          ) : (
+                            <Download className="w-3.5 h-3.5" />
+                          )}
+                          <span className="hidden sm:inline">
+                            {isExporting ? t("output.exporting") : t("output.export")}
+                          </span>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end" className="min-w-[160px]">
+                        <DropdownMenuItem
+                          onClick={() => handleExport("pdf")}
+                          disabled={isExporting}
+                        >
+                          <FileText className="mr-2 h-4 w-4" /> PDF
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => handleExport("docx")}
+                          disabled={isExporting}
+                        >
+                          <FileType className="mr-2 h-4 w-4" /> DOCX
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => handleExport("epub")}
+                          disabled={isExporting}
+                        >
+                          <BookOpen className="mr-2 h-4 w-4" /> EPUB
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => handleExport("markdown")}
+                          disabled={isExporting}
+                        >
+                          <FileCode className="mr-2 h-4 w-4" /> Markdown
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => handleExport("txt")}
+                          disabled={isExporting}
+                        >
+                          <AlignLeft className="mr-2 h-4 w-4" /> TXT
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </div>
                 )}
               </div>
@@ -1121,9 +1572,40 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                 )}
               </div>
             </div>
+
           </motion.div>
         </div>
+
+        {generatedBackstory && !isGenerating ? (
+          <div className="mt-10">
+            <CompletionGuide
+              translations={section?.completion_guide}
+              onCreateAnother={handleCreateAnother}
+              onSave={handleSaveClick}
+              onContinue={handleContinueInAiWrite}
+              continueLabel={getContinueActionLabel({ hasUser: !!user, locale })}
+              continueHint={
+                locale.startsWith("zh")
+                  ? "保留当前内容与上下文，登录后直接继续生成"
+                  : "Your content and context are preserved. Sign in to continue generating in AI Write."
+              }
+              isSaveDisabled={isSavingStory}
+            />
+          </div>
+        ) : null}
       </main>
+      <StorySaveDialog
+        open={isSaveDialogOpen}
+        onOpenChange={setIsSaveDialogOpen}
+        onSelect={handleConfirmSave}
+        locale={locale}
+        isSaving={isSavingStory}
+      />
+      <CreativeQuotaPaywall
+        open={creativeQuota.paywallOpen}
+        onClose={() => creativeQuota.setPaywallOpen(false)}
+        sourcePage="dnd-backstory-generator"
+      />
     </div>
   );
 }

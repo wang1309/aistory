@@ -102,7 +102,10 @@
       "copy": "コピー",
       "continue_button": "物語を続ける",
       "generating_message": "おやすみ話を作成中...",
-      "empty_message": "あなたの個性的なおやすみ話がここに表示されます。今夜の読み聞かせをお楽しみに！"
+      "empty_message": "あなたの個性的なおやすみ話がここに表示されます。今夜の読み聞かせをお楽しみに！",
+      "export": "エクスポート",
+      "export_md": "Markdown (.md)",
+      "export_txt": "プレーンテキスト (.txt)"
     },
     "random_prompts": [
       "暗闇を怖がる小さなウサギが、ホタルは星の小さな助手だと発見する",
@@ -248,6 +251,13 @@
           "icon": "GoArrowUpRight"
         }
       ]
+    },
+    "completion_guide": {
+      "title": "この寝る前の物語はいかがでしたか？",
+      "subtitle": "お子さんと共有するか、AI Writeで続けて作成しましょう。",
+      "create_another": "もう一度作る",
+      "share_action": "物語を保存",
+      "continue_label": "AI Writeで続ける"
     }
   }
 }

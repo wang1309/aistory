@@ -103,6 +103,9 @@
   "errors": {
     "generation_failed": "Failed to generate dialogue. Please try again."
   },
+  "toasts": {
+    "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits."
+  },
   "random_prompts": [
     "Two strangers stuck in an elevator during a power outage discover they have a surprising connection",
     "A detective interrogates a suspect who claims to have an alibi that's impossible to verify",

@@ -15,6 +15,7 @@ import {
   ChevronDown, 
   Settings2, 
   Sparkles, 
+  Palette,
   Copy, 
   RefreshCw, 
   Lightbulb,
@@ -806,7 +807,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                         </SelectItem>
                         <SelectItem value="creative">
                           <span className="flex items-center gap-2">
-                            <Wand2 className="w-3 h-3 text-orange-500" />
+                            <Palette className="w-3 h-3 text-orange-500" />
                             {t("ai_models.creative")}
                           </span>
                         </SelectItem>

@@ -18,10 +18,11 @@ import {
   Wand2,
   Zap,
   Palette,
-  PenLine,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import Icon from "@/components/icon";
 import ShareResultButton from "@/components/story/share-result-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -38,7 +39,18 @@ import { cn } from "@/lib/utils";
 import type { BedtimeStoryGenerate as BedtimeStoryGenerateType } from "@/types/blocks/bedtime-story-generate";
 import BedtimeStoryBreadcrumb from "./breadcrumb";
 import { useRouter } from "@/i18n/navigation";
-import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import { getContinueActionLabel, shouldGateAnonymousContinue } from "@/components/ai-write/workbench/_lib";
+import { buildContinueIntentPayload, buildContinueTrackingPayload, CONTINUE_INTENT_KEY, GENERATOR_PREFILL_KEY } from "@/components/ai-write/workbench/continue-intent";
+import { useAppContext } from "@/contexts/app";
+import { useOpenPanel } from "@openpanel/nextjs";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
+import CompletionGuide from "@/components/story/completion-guide";
+import StorySaveDialog from "@/components/story/story-save-dialog";
+import type { StoryStatus } from "@/models/story";
+import { writePendingAuthResume } from "@/lib/auth-resume";
+import { ACTIVATION_EVENTS, buildActivationTrackingPayload } from "@/lib/activation-funnel";
 
 const DRAFT_KEY = "bedtime-story-generator:prompt";
 
@@ -72,6 +84,9 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
   const locale = useLocale();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
+  const creativeQuota = useCreativeQuotaPage("bedtime-story-generator");
+  const { user, requireAuth, setSignModalContext } = useAppContext();
+  const { track } = useOpenPanel();
 
   const t = useCallback(
     (path: string) => {
@@ -136,6 +151,8 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedStory, setGeneratedStory] = useState("");
+  const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
+  const [isSavingStory, setIsSavingStory] = useState(false);
 
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
@@ -199,10 +216,18 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
       toast.error(t("validation.select_model"));
       return;
     }
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel,
+        message: t("toasts.creative_limit_reached"),
+      })
+    ) {
+      return;
+    }
     setGeneratedStory("");
     setIsGenerating(true);
     turnstileRef.current?.execute();
-  }, [prompt, selectedModel, t]);
+  }, [creativeQuota, prompt, selectedModel, t]);
 
   const handleTurnstileSuccess = useCallback(
     async (turnstileToken: string) => {
@@ -228,6 +253,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
 
         if (!response.ok) {
           const errorData = await response.json();
+          if (creativeQuota.handleQuotaError(response.status, errorData)) return;
           throw new Error(errorData.message || `HTTP ${response.status}`);
         }
 
@@ -261,6 +287,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
         }
 
         if (accumulatedContent.trim()) {
+          if (opts.model === "creative") creativeQuota.increment();
           StoryStorage.saveStory({
             title: (opts.prompt.trim() || "Bedtime Story").slice(0, 30),
             prompt: opts.prompt.trim(),
@@ -283,7 +310,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
         setIsGenerating(false);
       }
     },
-    [AI_MODELS, t]
+    [AI_MODELS, creativeQuota, t]
   );
 
   const handleTurnstileError = useCallback(() => {
@@ -291,18 +318,178 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
     toast.error(t("errors.generation_failed"));
   }, [t]);
 
+  const downloadTextFile = useCallback((content: string, filename: string, mimeType: string) => {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }, []);
+
+  const markdownToPlainText = useCallback((md: string) => {
+    return md
+      .replace(/\r\n/g, "\n")
+      .replace(/```[\s\S]*?```/g, (b) => b.replace(/^```[a-zA-Z0-9_-]*\n?/, "").replace(/```\s*$/, ""))
+      .replace(/`([^`]+)`/g, "$1")
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, "$1 ($2)")
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)")
+      .replace(/^\s{0,3}#{1,6}\s+/gm, "")
+      .replace(/^\s{0,3}>\s?/gm, "")
+      .replace(/\*\*([^*]+)\*\*/g, "$1").replace(/__([^_]+)__/g, "$1")
+      .replace(/\*([^*]+)\*/g, "$1").replace(/_([^_]+)_/g, "$1")
+      .replace(/^\s{0,3}(-{3,}|\*{3,}|_{3,})\s*$/gm, "")
+      .replace(/^\s{0,3}([-*+]\s+)/gm, "")
+      .replace(/^\s{0,3}(\d+\.)\s+/gm, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }, []);
+
+  const handleExportMd = useCallback(() => {
+    if (!generatedStory) return;
+    const ts = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+    downloadTextFile(generatedStory, `bedtime-story-${ts}.md`, "text/markdown;charset=utf-8");
+  }, [downloadTextFile, generatedStory]);
+
+  const handleExportTxt = useCallback(() => {
+    if (!generatedStory) return;
+    const ts = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+    downloadTextFile(markdownToPlainText(generatedStory), `bedtime-story-${ts}.txt`, "text/plain;charset=utf-8");
+  }, [downloadTextFile, markdownToPlainText, generatedStory]);
+
   const handleCopy = useCallback(() => {
     if (!generatedStory) return;
     navigator.clipboard.writeText(generatedStory);
     toast.success(t("success.story_copied"));
   }, [generatedStory, t]);
 
+  const wordCount = useMemo(() => calculateWordCount(generatedStory), [generatedStory]);
+
+  const handleSaveClick = useCallback(() => {
+    const content = generatedStory.trim();
+    if (!content) {
+      toast.error(locale.startsWith("zh") ? "请先生成故事再保存。" : "No story to save yet. Please generate one first.");
+      return;
+    }
+    try {
+      const rawTitle = prompt.trim() || (locale.startsWith("zh") ? "未命名睡前故事" : "Untitled Bedtime Story");
+      const title = rawTitle.length > 30 ? `${rawTitle.slice(0, 30)}...` : rawTitle;
+      StoryStorage.saveStory({
+        title,
+        prompt: prompt.trim(),
+        content,
+        wordCount,
+        model: AI_MODELS.find((m) => m.id === selectedModel)?.name || "AI",
+        genre: "Bedtime",
+      });
+    } catch (err) {
+      console.error("Failed to save bedtime story locally:", err);
+    }
+    if (!user) {
+      writePendingAuthResume({
+        source: "story_save",
+        action: "save_story",
+        sourcePage: "bedtime-story-generator",
+        startedAt: Date.now(),
+        payload: { prompt, generatedStory, selectedModel, selectedLanguage },
+      });
+      toast.error(locale.startsWith("zh") ? "已在本地「我的故事」中保存，登录后可以同步到云端。" : "Saved locally. Sign in to save this story to your account.");
+      requireAuth({ source: "story_save", action: "save_story", sourcePage: "bedtime-story-generator" });
+      return;
+    }
+    setIsSaveDialogOpen(true);
+    track(ACTIVATION_EVENTS.saveDialogOpen, buildActivationTrackingPayload({ sourcePage: "bedtime-story-generator", loggedIn: !!user, action: "save_dialog_open", model: selectedModel, wordCount }));
+  }, [AI_MODELS, generatedStory, locale, prompt, requireAuth, selectedLanguage, selectedModel, track, user, wordCount]);
+
+  const handleConfirmSave = useCallback(async (status: StoryStatus) => {
+    const content = generatedStory.trim();
+    if (!content) return;
+    try {
+      setIsSavingStory(true);
+      const rawTitle = prompt.trim() || (locale.startsWith("zh") ? "未命名睡前故事" : "Untitled Bedtime Story");
+      const title = rawTitle.length > 30 ? `${rawTitle.slice(0, 30)}...` : rawTitle;
+      const modelMap: Record<string, string> = { fast: "gemini-2.5-flash", standard: "gemini-3.1-flash-lite", creative: "gemini-3-flash" };
+      const resp = await fetch("/api/stories", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title,
+          prompt: prompt.trim(),
+          content,
+          wordCount,
+          modelUsed: modelMap[selectedModel] || "gemini-3.1-flash-lite",
+          settings: { locale, outputLanguage: selectedLanguage, ageGroup, storyTheme, storyLength, endingMood, moralLesson },
+          status,
+          visibility: status === "published" ? "public" : "private",
+          sourceCategory: "bedtime",
+        }),
+      });
+      if (!resp.ok) throw new Error("request failed with status: " + resp.status);
+      const { code, message } = await resp.json();
+      if (code !== 0) {
+        if (message === "no auth") requireAuth({ source: "story_save", action: "save_story", sourcePage: "bedtime-story-generator" });
+        toast.error(locale.startsWith("zh") ? (message === "no auth" ? "请先登录后再保存故事" : `保存失败：${message}`) : (message || "Failed to save story"));
+        return;
+      }
+      toast.success(locale.startsWith("zh") ? (status === "published" ? "故事已发布" : "故事已保存") : (status === "published" ? "Story published" : "Story saved"));
+      track(ACTIVATION_EVENTS.storySaved, buildActivationTrackingPayload({ sourcePage: "bedtime-story-generator", loggedIn: true, action: "story_saved", model: selectedModel, wordCount }));
+      track(ACTIVATION_EVENTS.activationCompleted, { source_page: "bedtime-story-generator", action: "story_saved" });
+      setIsSaveDialogOpen(false);
+    } catch (error) {
+      console.error("Save bedtime story failed", error);
+      toast.error(locale.startsWith("zh") ? "保存失败，请稍后再试" : "Failed to save story, please try again.");
+    } finally {
+      setIsSavingStory(false);
+    }
+  }, [ageGroup, endingMood, generatedStory, locale, moralLesson, prompt, requireAuth, selectedLanguage, selectedModel, storyLength, storyTheme, track, wordCount]);
+
+  const handleCreateAnother = useCallback(() => {
+    setGeneratedStory("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  const handleContinueInAiWrite = useCallback(() => {
+    if (!generatedStory.trim()) return;
+
+    track(
+      "continue_ai_write_cta_click",
+      buildContinueTrackingPayload({
+        source_page: "bedtime-story-generator",
+        logged_in: !!user,
+        cta_variant: user ? "continue_ai_write" : "sign_in_to_continue_ai_write",
+      })
+    );
+
+    const payload = buildContinueIntentPayload({
+      source: "bedtime-story-generator",
+      title: prompt,
+      content: generatedStory,
+    });
+
+    if (shouldGateAnonymousContinue({ hasUser: !!user, hasGeneratedContent: !!generatedStory.trim() })) {
+      try {
+        window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+        window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+      } catch {}
+      track("sign_modal_open_for_continue", buildContinueTrackingPayload({ source_page: "bedtime-story-generator" }));
+      setSignModalContext({ mode: "continue-ai-write", source: payload.source, redirectTo: payload.redirectTo });
+      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "bedtime-story-generator" });
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+    } catch {}
+    router.push(payload.redirectTo as any);
+  }, [generatedStory, prompt, router, user, track, setSignModalContext, requireAuth]);
+
   useGeneratorShortcuts({
     onGenerate: handleGenerate,
     onFocusInput: () => promptRef.current?.focus(),
   });
-
-  const wordCount = useMemo(() => calculateWordCount(generatedStory), [generatedStory]);
 
   return (
     <div id="bedtime_story_generator" className="min-h-screen bg-background text-foreground selection:bg-orange-500/20">
@@ -483,9 +670,9 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-6 lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:pr-1"
+            className="space-y-6 lg:sticky lg:top-24 lg:h-[720px] lg:max-h-[75vh] lg:min-h-[520px] lg:overflow-y-auto lg:pr-1"
           >
-            <div className="bg-card/60 backdrop-blur-xl border border-border rounded-3xl p-6 shadow-xl shadow-black/5 dark:shadow-black/20 ring-1 ring-black/5">
+            <div className="bg-card/60 backdrop-blur-xl border border-border rounded-3xl p-6 shadow-xl shadow-black/5 dark:shadow-black/20 ring-1 ring-black/5 lg:h-full lg:flex lg:flex-col">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <Label className="text-sm font-semibold text-foreground flex items-center gap-2">
@@ -535,10 +722,13 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                       <SelectTrigger className="h-9 bg-muted/50 border-border/50 rounded-lg">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
-                        {AI_MODELS.map((model) => (
+                        <SelectContent>
+                          {AI_MODELS.map((model) => (
                           <SelectItem key={model.id} value={model.id}>
-                            {model.name}
+                            <div className="flex items-center gap-2 py-0.5">
+                              <span className="opacity-70">{model.icon}</span>
+                              <span className="font-medium">{model.name}</span>
+                            </div>
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -682,7 +872,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                 </Collapsible>
               </div>
 
-              <div className="pt-6">
+              <div className="pt-6 lg:mt-auto">
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
@@ -696,11 +886,19 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                   ) : (
                     <>
                       <Moon className="w-5 h-5 mr-2 group-hover:animate-moon-glow" />
-                      {t("ui.generate_button")}
+                      {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                        ? "Sign in to continue"
+                        : t("ui.generate_button")}
                     </>
                   )}
                 </Button>
                 <GeneratorShortcutHints className="mt-3" />
+                <CreativeQuotaHint
+                  pageKey="bedtime-story-generator"
+                  selectedModel={selectedModel}
+                  used={creativeQuota.used}
+                  className="mt-3"
+                />
               </div>
             </div>
           </motion.div>
@@ -738,6 +936,26 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                 </div>
                 {generatedStory && (
                   <div className="flex items-center gap-2">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-8 text-xs gap-1.5 text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10"
+                        >
+                          <Icon name="RiDownloadLine" className="w-3.5 h-3.5" />
+                          <span className="hidden sm:inline">{t("output.export")}</span>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={handleExportMd}>
+                          {t("output.export_md")}
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={handleExportTxt}>
+                          {t("output.export_txt")}
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                     <Button
                       variant="ghost"
                       size="sm"
@@ -753,19 +971,6 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                       sourceCategory="bedtime"
                       title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
                     />
-                    <Button
-                      size="sm"
-                      onClick={() => {
-                        try {
-                          window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedStory }));
-                        } catch {}
-                        router.push(buildContinueRoute({ source: "bedtime-story-generator" }) as any);
-                      }}
-                      className="h-8 text-xs gap-1.5 rounded-full bg-orange-600 px-3 text-white hover:bg-orange-500"
-                    >
-                      <PenLine className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">{t("output.continue_button")}</span>
-                    </Button>
                   </div>
                 )}
               </div>
@@ -840,7 +1045,36 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
             </div>
           </motion.div>
         </div>
+
+        {generatedStory && !isGenerating && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-12 pt-8 border-t border-dashed border-border/50"
+          >
+            <CompletionGuide
+              translations={section?.completion_guide}
+              onCreateAnother={handleCreateAnother}
+              onSave={handleSaveClick}
+              onContinue={handleContinueInAiWrite}
+              continueLabel={getContinueActionLabel({ hasUser: !!user, locale })}
+              isSaveDisabled={isSavingStory}
+            />
+          </motion.div>
+        )}
       </main>
+      <StorySaveDialog
+        open={isSaveDialogOpen}
+        onOpenChange={setIsSaveDialogOpen}
+        onSelect={handleConfirmSave}
+        locale={locale}
+        isSaving={isSavingStory}
+      />
+      <CreativeQuotaPaywall
+        open={creativeQuota.paywallOpen}
+        onClose={() => creativeQuota.setPaywallOpen(false)}
+        sourcePage="bedtime-story-generator"
+      />
     </div>
   );
 }

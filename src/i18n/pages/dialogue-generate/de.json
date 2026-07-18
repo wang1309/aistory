@@ -103,6 +103,9 @@
   "errors": {
     "generation_failed": "Dialog konnte nicht generiert werden. Bitte versuchen Sie es erneut."
   },
+  "toasts": {
+    "creative_limit_reached": "Die heutigen kostenlosen Creative Nutzungen sind aufgebraucht. Anmelden, um fortzufahren."
+  },
   "random_prompts": [
     "Zwei Fremde, die während eines Stromausfalls im Aufzug stecken, entdecken eine überraschende Verbindung",
     "Ein Detektiv verhört einen Verdächtigen, der behauptet, ein nicht überprüfbares Alibi zu haben",

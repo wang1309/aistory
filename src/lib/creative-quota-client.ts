@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * creative 每日免费额度的客户端 localStorage 镜像。
  *
@@ -7,7 +9,12 @@
  */
 
 const CREATIVE_QUOTA_LIMIT = 3;
-const STORAGE_PREFIX = "creative_quota_";
+import { useEffect, useState } from "react";
+import type { CreativePageKey } from "@/lib/creative-quota-core";
+import { incrementCreativeUsedCount } from "@/lib/creative-quota-core";
+
+const STORAGE_PREFIX = "creative_quota:";
+const LEGACY_STORAGE_PREFIX = "creative_quota_";
 
 function getTodayUtcKey(): string {
   const now = new Date();
@@ -17,45 +24,85 @@ function getTodayUtcKey(): string {
   return `${y}-${m}-${d}`;
 }
 
-function getKey(): string {
-  return `${STORAGE_PREFIX}${getTodayUtcKey()}`;
+function getKey(pageKey: CreativePageKey): string {
+  return `${STORAGE_PREFIX}${pageKey}:${getTodayUtcKey()}`;
 }
 
 export function getCreativeLimit(): number {
   return CREATIVE_QUOTA_LIMIT;
 }
 
-export function getCreativeUsed(): number {
+export function getCreativeUsed(pageKey: CreativePageKey = "story-generator"): number {
   if (typeof window === "undefined") return 0;
   try {
-    const v = window.localStorage.getItem(getKey());
+    const key = getKey(pageKey);
+    let v = window.localStorage.getItem(key);
+    if (!v && pageKey === "story-generator") {
+      v = window.localStorage.getItem(`${LEGACY_STORAGE_PREFIX}${getTodayUtcKey()}`);
+      if (v) window.localStorage.setItem(key, v);
+    }
     return v ? Number(v) || 0 : 0;
   } catch {
     return 0;
   }
 }
 
-export function markCreativeUsed(n: number): void {
+export function markCreativeUsed(n: number, pageKey: CreativePageKey = "story-generator"): void {
   if (typeof window === "undefined") return;
   try {
-    window.localStorage.setItem(getKey(), String(Math.max(0, n)));
+    window.localStorage.setItem(getKey(pageKey), String(Math.max(0, n)));
   } catch {
     // ignore
   }
 }
 
 /** creative 生成成功后 +1,返回新的已用次数 */
-export function markCreativeIncrement(): number {
-  const next = getCreativeUsed() + 1;
-  markCreativeUsed(next);
+export function markCreativeIncrement(pageKey: CreativePageKey = "story-generator"): number {
+  const next = incrementCreativeUsedCount(getCreativeUsed(pageKey), CREATIVE_QUOTA_LIMIT);
+  markCreativeUsed(next, pageKey);
   return next;
 }
 
 /** 后端返回 429 时,同步本地为已用完 */
-export function markCreativeQuotaExhausted(): void {
-  markCreativeUsed(CREATIVE_QUOTA_LIMIT);
+export function markCreativeQuotaExhausted(pageKey: CreativePageKey = "story-generator"): void {
+  markCreativeUsed(CREATIVE_QUOTA_LIMIT, pageKey);
 }
 
-export function isCreativeExhausted(): boolean {
-  return getCreativeUsed() >= CREATIVE_QUOTA_LIMIT;
+export function isCreativeExhausted(pageKey: CreativePageKey = "story-generator"): boolean {
+  return getCreativeUsed(pageKey) >= CREATIVE_QUOTA_LIMIT;
+}
+
+export function useCreativeQuota(pageKey: CreativePageKey) {
+  const [used, setUsed] = useState(0);
+
+  useEffect(() => {
+    setUsed(getCreativeUsed(pageKey));
+  }, [pageKey]);
+
+  return {
+    used,
+    setUsed,
+    increment: () => {
+      const next = markCreativeIncrement(pageKey);
+      setUsed(next);
+      return next;
+    },
+    exhaust: () => {
+      markCreativeQuotaExhausted(pageKey);
+      setUsed(CREATIVE_QUOTA_LIMIT);
+    },
+  };
+}
+
+export function isCreativeQuotaError(
+  status: number,
+  data: unknown,
+  code: "free_quota_exceeded" | "insufficient_credits"
+): boolean {
+  if (status !== 429 && status !== 402) return false;
+  return (
+    !!data &&
+    typeof data === "object" &&
+    (data as { code?: unknown }).code === code
+  );
 }

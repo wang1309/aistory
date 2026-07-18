@@ -36,7 +36,16 @@ import type { StoryStatus } from "@/models/story";
 import { useAppContext } from "@/contexts/app";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { useRouter } from "@/i18n/navigation";
-import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import {
+  getContinueActionLabel,
+  shouldGateAnonymousContinue,
+} from "@/components/ai-write/workbench/_lib";
+import {
+  buildContinueIntentPayload,
+  buildContinueTrackingPayload,
+  CONTINUE_INTENT_KEY,
+  GENERATOR_PREFILL_KEY,
+} from "@/components/ai-write/workbench/continue-intent";
 import { useOpenPanel } from "@openpanel/nextjs";
 import {
   buildPostAuthResumeTrackingPayload,
@@ -47,6 +56,9 @@ import {
   ACTIVATION_EVENTS,
   buildActivationTrackingPayload,
 } from "@/lib/activation-funnel";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -78,10 +90,11 @@ interface PlotGenerateProps {
 
 export default function PlotGenerate({ section }: PlotGenerateProps) {
   const locale = useLocale();
-  const { user, requireAuth } = useAppContext();
+  const { user, requireAuth, setSignModalContext } = useAppContext();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
   const { track } = useOpenPanel();
+  const creativeQuota = useCreativeQuotaPage("plot-generator");
 
   // Helper function to get nested translations from section data
   const t = (path: string) => {
@@ -286,13 +299,32 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       return;
     }
 
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel,
+        message: t('toasts.creative_limit_reached'),
+      })
+    ) {
+      return;
+    }
+
     // Start loading state while Turnstile verification is in progress
     setIsGenerating(true);
+
+    track(
+      ACTIVATION_EVENTS.generationStarted,
+      buildActivationTrackingPayload({
+        sourcePage: "plot-generator",
+        loggedIn: !!user,
+        action: "generation_started",
+        model: selectedModel,
+      })
+    );
 
     // Trigger invisible Turnstile verification
     // After verification succeeds, handleTurnstileSuccess will be called automatically
     turnstileRef.current?.execute();
-  }, [prompt, selectedModel, section]);
+  }, [creativeQuota, prompt, selectedModel, section, t, track, user]);
 
   const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
     console.log("=== Starting Plot Generation ===");
@@ -336,6 +368,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
       if (!response.ok) {
         const errorData = await response.json();
+        if (creativeQuota.handleQuotaError(response.status, errorData)) return;
         throw new Error(errorData.message || `HTTP ${response.status}`);
       }
 
@@ -373,6 +406,17 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
       // Save to LocalStorage
       if (accumulatedContent.trim()) {
+        if (selectedModel === "creative") creativeQuota.increment();
+        track(
+          ACTIVATION_EVENTS.generationSucceeded,
+          buildActivationTrackingPayload({
+            sourcePage: "plot-generator",
+            loggedIn: !!user,
+            action: "generation_succeeded",
+            model: selectedModel,
+            wordCount: calculateWordCount(accumulatedContent),
+          })
+        );
         const savedPlot = PlotStorage.savePlot({
           title: extractPlotTitle(accumulatedContent),
           prompt: prompt.trim(),
@@ -406,11 +450,20 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
     } catch (error) {
       console.error("Plot generation error:", error);
+      track(
+        ACTIVATION_EVENTS.generationFailed,
+        buildActivationTrackingPayload({
+          sourcePage: "plot-generator",
+          loggedIn: !!user,
+          action: "generation_failed",
+          model: selectedModel,
+        })
+      );
       toast.error(`${t('errors.generation_failed')} ${error}`);
     } finally {
       setIsGenerating(false);
     }
-  }, [prompt, selectedModel]);
+  }, [creativeQuota, prompt, selectedModel, track, user]);
 
   const handleTurnstileSuccess = useCallback((turnstileToken: string) => {
     console.log("✓ Turnstile verification successful (Plot)");
@@ -630,6 +683,63 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     navigator.clipboard.writeText(generatedPlot);
     toast.success(t('success.plot_copied'));
   }, [generatedPlot, section]);
+
+  const handleContinueInAiWrite = useCallback(() => {
+    if (!generatedPlot.trim()) {
+      return;
+    }
+
+    track(
+      "continue_ai_write_cta_click",
+      buildContinueTrackingPayload({
+        source_page: "plot-generator",
+        logged_in: !!user,
+        cta_variant: user ? "continue_ai_write" : "sign_in_to_continue_ai_write",
+      })
+    );
+
+    const payload = buildContinueIntentPayload({
+      source: "plot-generator",
+      title: prompt,
+      content: generatedPlot,
+    });
+
+    if (
+      shouldGateAnonymousContinue({
+        hasUser: !!user,
+        hasGeneratedContent: !!generatedPlot.trim(),
+      })
+    ) {
+      try {
+        window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+        window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+      } catch {
+        // ignore prefill cache failures
+      }
+
+      track(
+        "sign_modal_open_for_continue",
+        buildContinueTrackingPayload({
+          source_page: "plot-generator",
+        })
+      );
+      setSignModalContext({
+        mode: "continue-ai-write",
+        source: payload.source,
+        redirectTo: payload.redirectTo,
+      });
+      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "plot-generator" });
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+    } catch {
+      // ignore prefill cache failures
+    }
+
+    router.push(payload.redirectTo as any);
+  }, [generatedPlot, prompt, requireAuth, router, setSignModalContext, track, user]);
 
   // ========== RENDER ==========
 
@@ -874,9 +984,6 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                             <div className="flex items-center gap-2 py-0.5">
                               <span className="opacity-70">{model.icon}</span>
                               <span className="font-medium">{model.name}</span>
-                              <span className={`text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border ${model.badgeColor}`}>
-                                {model.badge}
-                              </span>
                             </div>
                           </SelectItem>
                         ))}
@@ -1104,11 +1211,6 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
               </CollapsibleContent>
             </Collapsible>
 
-            {/* Plot History Dropdown */}
-            <div className="flex justify-center">
-              <PlotHistoryDropdown onLoadPlot={handleLoadPlot} locale={locale} />
-            </div>
-
             {/* Generate Button */}
             <div className="flex flex-col gap-3">
               <Button
@@ -1124,11 +1226,16 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                 ) : (
                   <div className="flex items-center justify-center gap-2">
                     <Icon name="sparkles" className="size-4" />
-                    <span>{t('ui.generate_plot')}</span>
+                    <span>
+                      {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                        ? "Sign in to continue"
+                        : t('ui.generate_plot')}
+                    </span>
                   </div>
                 )}
               </Button>
               <GeneratorShortcutHints showQuickSave />
+              <CreativeQuotaHint pageKey="plot-generator" selectedModel={selectedModel} used={creativeQuota.used} />
             </div>
           </div>
 
@@ -1151,21 +1258,24 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                           </div>
                         </div>
                       </div>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={handleCopy}
-                        className="h-8 gap-1.5 text-xs text-muted-foreground hover:text-foreground"
-                      >
-                        <Icon name="copy" className="size-3.5" />
-                        {t('preview.button_copy')}
-                      </Button>
-                      <ShareResultButton
-                        content={generatedPlot}
-                        prompt={prompt}
-                        sourceCategory="plot"
-                        title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
-                      />
+                      <div className="flex items-center gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={handleCopy}
+                          className="h-8 gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+                        >
+                          <Icon name="copy" className="size-3.5" />
+                          {t('preview.button_copy')}
+                        </Button>
+                        <ShareResultButton
+                          content={generatedPlot}
+                          prompt={prompt}
+                          sourceCategory="plot"
+                          title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                        />
+                        <PlotHistoryDropdown onLoadPlot={handleLoadPlot} locale={locale} />
+                      </div>
                     </div>
 
                     {/* Content */}
@@ -1177,6 +1287,9 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                   </>
                 ) : (
                   <div className="flex-1 flex flex-col items-center justify-center p-12 text-center">
+                    <div className="absolute right-4 top-4 z-10">
+                      <PlotHistoryDropdown onLoadPlot={handleLoadPlot} locale={locale} />
+                    </div>
                     <div className="size-20 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-6 border border-orange-500/20">
                       <Icon name="book-open" className="size-8 text-orange-500/50" />
                     </div>
@@ -1220,16 +1333,13 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
             <CompletionGuide
               onCreateAnother={handleCreateAnother}
               onSave={handleSaveClick}
-              onContinue={() => {
-                try {
-                  window.localStorage.setItem(
-                    "ai-write:generator-prefill",
-                    JSON.stringify({ title: prompt.substring(0, 30), content: generatedPlot })
-                  );
-                } catch {}
-                router.push(buildContinueRoute({ source: "plot-generator" }) as any);
-              }}
-              continueLabel={section.completion_guide.continue_label}
+              onContinue={handleContinueInAiWrite}
+              continueLabel={getContinueActionLabel({ hasUser: !!user, locale })}
+              continueHint={
+                locale.startsWith("zh")
+                  ? "保留当前内容与上下文，登录后直接继续生成"
+                  : "Your content and context are preserved. Sign in to continue generating in AI Write."
+              }
               isSaveDisabled={hasSavedCurrentStory}
               translations={section.completion_guide}
             />
@@ -1249,6 +1359,11 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           onSelect={handleConfirmSave}
           locale={locale}
           isSaving={isSavingStory}
+        />
+        <CreativeQuotaPaywall
+          open={creativeQuota.paywallOpen}
+          onClose={() => creativeQuota.setPaywallOpen(false)}
+          sourcePage="plot-generator"
         />
         {/* Invisible Turnstile for non-interactive verification */}
         <TurnstileInvisible

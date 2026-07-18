@@ -1,5 +1,11 @@
 import { buildComicPrompt } from "@/lib/comic-prompt";
 import { ComicGenerateRequest } from "@/types/comic";
+import {
+  commitCreativeQuotaCharge,
+  creativeQuotaErrorResponse,
+  prepareCreativeQuota,
+  withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || "";
 const GRSAI_API_KEY = process.env.GRSAI_API_KEY || "";
@@ -69,11 +75,19 @@ export async function POST(req: Request) {
       );
     }
 
+    const quotaGate = await prepareCreativeQuota({
+      pageKey: "comic-generator",
+      model,
+      request: req,
+    });
+    const quotaError = creativeQuotaErrorResponse(quotaGate);
+    if (quotaError) return quotaError;
+
     if (!GRSAI_API_KEY) {
-      return new Response(
+      return withCreativeVisitorCookie(new Response(
         JSON.stringify({ error: "API key not configured" }),
         { status: 500, headers: { "Content-Type": "application/json" } }
-      );
+      ), quotaGate);
     }
 
     const finalPrompt = buildComicPrompt({
@@ -120,11 +134,13 @@ export async function POST(req: Request) {
     if (!response.ok) {
       const errorText = await response.text();
       console.error("GRSAI API error:", errorText);
-      return new Response(
+      return withCreativeVisitorCookie(new Response(
         JSON.stringify({ error: "Failed to generate comic script" }),
         { status: 500, headers: { "Content-Type": "application/json" } }
-      );
+      ), quotaGate);
     }
+
+    await commitCreativeQuotaCharge(quotaGate);
 
     const encoder = new TextEncoder();
     const decoder = new TextDecoder();
@@ -209,13 +225,13 @@ export async function POST(req: Request) {
 
     const transformedStream = response.body?.pipeThrough(transformStream);
 
-    return new Response(transformedStream, {
+    return withCreativeVisitorCookie(new Response(transformedStream, {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "no-cache, no-transform",
         "X-Content-Type-Options": "nosniff",
       },
-    });
+    }), quotaGate);
   } catch (error) {
     console.error("Comic generation error:", error);
     return new Response(

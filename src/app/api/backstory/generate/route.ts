@@ -1,6 +1,12 @@
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
+import {
+    commitCreativeQuotaCharge,
+    creativeQuotaErrorResponse,
+    prepareCreativeQuota,
+    withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 /**
  * Verify Cloudflare Turnstile Token
@@ -227,6 +233,14 @@ export async function POST(req: Request) {
             return respErr("Verification failed");
         }
 
+        const quotaGate = await prepareCreativeQuota({
+            pageKey: "backstory-generator",
+            model,
+            request: req,
+        });
+        const quotaError = creativeQuotaErrorResponse(quotaGate);
+        if (quotaError) return quotaError;
+
         console.log("✓ Turnstile verification passed, proceeding with backstory generation");
 
         // API Key check
@@ -234,7 +248,7 @@ export async function POST(req: Request) {
         const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
         if (!apiKey) {
             console.log("GRSAI_API_KEY not found");
-            return respErr("API KEY not configured");
+            return withCreativeVisitorCookie(respErr("API KEY not configured"), quotaGate);
         }
 
         // Build AI Prompt
@@ -290,13 +304,15 @@ export async function POST(req: Request) {
         if (!response.ok) {
             const errorText = await response.text();
             console.log("GRSAI API error:", response.status, errorText);
-            return respErr(`API request failed: ${response.status}`);
+            return withCreativeVisitorCookie(respErr(`API request failed: ${response.status}`), quotaGate);
         }
 
         if (!response.body) {
             console.log("Response body is null");
-            return respErr("No response body from AI service");
+            return withCreativeVisitorCookie(respErr("No response body from AI service"), quotaGate);
         }
+
+        await commitCreativeQuotaCharge(quotaGate);
 
         console.log("✓ GRSAI API response received, starting streaming");
 
@@ -374,13 +390,13 @@ export async function POST(req: Request) {
 
         const transformedStream = response.body.pipeThrough(transformStream);
 
-        return new Response(transformedStream, {
+        return withCreativeVisitorCookie(new Response(transformedStream, {
             headers: {
                 "Content-Type": "text/plain; charset=utf-8",
                 "Cache-Control": "no-cache, no-transform",
                 "X-Content-Type-Options": "nosniff",
             },
-        });
+        }), quotaGate);
     } catch (error) {
         console.log("Backstory generation error:", error);
         return respErr(`Backstory generation failed: ${error}`);

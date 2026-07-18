@@ -85,6 +85,9 @@ export interface TiktokCommentGenerate {
     generate_failed?: string;
     verification_failed?: string;
   };
+  toasts?: {
+    creative_limit_reached?: string;
+  };
   ai_models?: {
     fast?: string;
     fast_description?: string;

@@ -3,6 +3,12 @@ import { respErr } from "@/lib/resp";
 import { buildPoemPrompt } from "@/lib/poem-prompt-builder";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
 import type { PoemGenerateOptions } from "@/types/poem";
+import {
+  commitCreativeQuotaCharge,
+  creativeQuotaErrorResponse,
+  prepareCreativeQuota,
+  withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 /**
  * 验证 Cloudflare Turnstile Token
@@ -131,12 +137,20 @@ export async function POST(req: Request) {
       return respErr("Verification failed");
     }
 
+    const quotaGate = await prepareCreativeQuota({
+      pageKey: "poem-generator",
+      model,
+      request: req,
+    });
+    const quotaError = creativeQuotaErrorResponse(quotaGate);
+    if (quotaError) return quotaError;
+
     console.log("✓ Turnstile verification passed, proceeding with poem generation");
 
     const apiKey = process.env.GRSAI_API_KEY;
     const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
     if (!apiKey) {
-      return respErr("API KEY not found");
+      return withCreativeVisitorCookie(respErr("API KEY not found"), quotaGate);
     }
 
     // 构建 Poem 生成参数
@@ -196,14 +210,16 @@ export async function POST(req: Request) {
     if (!response.ok) {
       const errorText = await response.text();
       console.log("API Error:", response.status, errorText);
-      return respErr(`API Error: ${response.status} - ${errorText}`);
+      return withCreativeVisitorCookie(respErr(`API Error: ${response.status} - ${errorText}`), quotaGate);
     }
 
     console.log("Poem generation started..." + response);
 
     if (!response.body) {
-      return respErr("No response body from API");
+      return withCreativeVisitorCookie(respErr("No response body from API"), quotaGate);
     }
+
+    await commitCreativeQuotaCharge(quotaGate);
 
     // 使用 TransformStream 处理流式响应
     const encoder = new TextEncoder();
@@ -305,13 +321,13 @@ export async function POST(req: Request) {
     // 通过 transform stream 传输响应体
     const transformedStream = response.body.pipeThrough(transformStream);
 
-    return new Response(transformedStream, {
+    return withCreativeVisitorCookie(new Response(transformedStream, {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "no-cache, no-transform",
         "X-Content-Type-Options": "nosniff",
       },
-    });
+    }), quotaGate);
   } catch (e) {
     console.log("Poem generation failed:", e);
     return respErr("bad request: " + e);

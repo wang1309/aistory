@@ -58,6 +58,9 @@
       "generate_failed": "生成に失敗しました。",
       "verification_failed": "認証に失敗しました。再試行してください。"
     },
+    "toasts": {
+      "creative_limit_reached": "今日のCreative無料回数を使い切りました。ログインして続行。"
+    },
     "ai_models": {
       "fast": "Fast",
       "fast_description": "素早く何度も試したいとき向け",

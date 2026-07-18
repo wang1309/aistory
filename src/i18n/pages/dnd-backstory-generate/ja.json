@@ -1,5 +1,12 @@
 {
   "dnd_backstory_generate": {
+    "completion_guide": {
+      "title": "この設定は気に入りましたか？",
+      "subtitle": "保存するか、これを使って物語を作りましょう。",
+      "create_another": "もう一度試す",
+      "share_action": "物語を保存",
+      "continue_label": "物語を続ける"
+    },
     "metadata": {
       "title": "DnD バックストーリージェネレーター | D&D 5e キャラ背景無料作成",
       "description": "D&D 5e / 5.5e プレイヤーと DM 向け無料バックストーリージェネレーター。性格特徴、理想、絆、欠点、秘密、そして DM hooks を含む実用的なキャラクター背景を即座に生成します。",
@@ -148,15 +155,31 @@
     "success": {
       "random_prompt_selected": "ランダムな DnD シードを選択しました！",
       "backstory_generated": "DnD 背景を生成しました！",
-      "backstory_copied": "DnD 背景をコピーしました！"
+      "backstory_copied": "DnD 背景をコピーしました！",
+      "backstory_exported": "DnD 背景をエクスポートしました！"
     },
     "errors": {
-      "generation_failed": "DnD 背景の生成に失敗しました。"
+      "generation_failed": "DnD 背景の生成に失敗しました。",
+      "no_content_to_export": "エクスポートする DnD 背景がありません。まず生成してください。",
+      "export_failed": "エクスポートに失敗しました。もう一度お試しください。"
+    },
+    "pdf": {
+      "generated_at": "生成日時",
+      "word_count_label": "文字数",
+      "ai_model": "AI モデル",
+      "story_format": "形式",
+      "story_genre": "ジャンル",
+      "story_tone": "トーン",
+      "prompt": "プロンプト",
+      "footer_text": "AI Story Generator で生成",
+      "page_indicator": "{current} / {total} ページ"
     },
     "output": {
       "title": "生成された DnD 背景",
       "words": "語",
       "copy": "コピー",
+      "export": "エクスポート",
+      "exporting": "エクスポート中...",
       "generating_message": "卓で使える DnD 背景を作成中...",
       "empty_message": "ここに traits、flaws、bonds、secrets、DM hooks を含む DnD 背景が表示されます。"
     },

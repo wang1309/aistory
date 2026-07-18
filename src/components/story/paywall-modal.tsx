@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "@/i18n/navigation";
 import {
   Dialog,
@@ -14,10 +14,14 @@ import { ArrowRight, Loader2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { useAppContext } from "@/contexts/app";
 import type { PricingItem } from "@/types/blocks/pricing";
+import { useOpenPanel } from "@openpanel/nextjs";
+import type { CreativePageKey } from "@/lib/creative-quota-core";
+import { buildCreativePaywallTrackingPayload } from "@/lib/creative-tracking";
 
 type Props = {
   open: boolean;
   onClose: () => void;
+  sourcePage?: CreativePageKey;
 };
 
 /**
@@ -27,14 +31,36 @@ type Props = {
  * - Double-Bezel:每个套餐外壳 + 内核
  * - 点击套餐直接 /api/checkout 跳支付页;CTA "查看全部"跳 /pricing
  */
-export default function PaywallModal({ open, onClose }: Props) {
+export default function PaywallModal({
+  open,
+  onClose,
+  sourcePage,
+}: Props) {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("story_paywall");
   const { user, requireAuth } = useAppContext();
+  const { track } = useOpenPanel();
   const [items, setItems] = useState<PricingItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [checkingOut, setCheckingOut] = useState<string | null>(null);
+  const wasOpen = useRef(false);
+
+  useEffect(() => {
+    if (open && !wasOpen.current && sourcePage) {
+      track(
+        "creative_quota_paywall_open",
+        buildCreativePaywallTrackingPayload({
+          sourcePage,
+          loggedIn: !!user,
+          locale,
+          reason: "insufficient_credits",
+        })
+      );
+    }
+
+    wasOpen.current = open;
+  }, [locale, open, sourcePage, track, user]);
 
   useEffect(() => {
     if (!open) return;
@@ -53,13 +79,41 @@ export default function PaywallModal({ open, onClose }: Props) {
   }, [open, locale]);
 
   const handleCheckout = async (item: PricingItem) => {
+    const trackingPayload = sourcePage
+      ? buildCreativePaywallTrackingPayload({
+          sourcePage,
+          loggedIn: !!user,
+          locale,
+          reason: "insufficient_credits",
+          productId: item.product_id,
+          productName: item.product_name || item.title || item.product_id,
+          pricingGroup: item.group || null,
+          interval: item.interval,
+          currency: item.currency ?? "unknown",
+          paymentMethod: "default",
+        })
+      : null;
+
     // paywall 触发时用户应已登录,但 session 可能过期
     if (!user) {
-      requireAuth({ source: "paywall", action: "checkout" });
+      if (trackingPayload) {
+        track("creative_quota_paywall_auth_required", {
+          ...trackingPayload,
+          failure_reason: "not_authenticated",
+        });
+      }
+      requireAuth({
+        source: "paywall",
+        action: "checkout",
+        ...(sourcePage ? { sourcePage } : {}),
+      });
       return;
     }
     if (checkingOut) return;
     try {
+      if (trackingPayload) {
+        track("creative_quota_paywall_checkout_click", trackingPayload);
+      }
       setCheckingOut(item.product_id);
       const response = await fetch("/api/checkout", {
         method: "POST",
@@ -71,17 +125,45 @@ export default function PaywallModal({ open, onClose }: Props) {
         }),
       });
       if (response.status === 401) {
-        requireAuth({ source: "paywall", action: "checkout" });
+        if (trackingPayload) {
+          track("creative_quota_paywall_auth_required", {
+            ...trackingPayload,
+            failure_reason: "session_expired",
+            http_status: 401,
+          });
+        }
+        requireAuth({
+          source: "paywall",
+          action: "checkout",
+          ...(sourcePage ? { sourcePage } : {}),
+        });
         return;
       }
       const { code, message, data } = await response.json();
       if (code !== 0 || !data?.checkout_url) {
+        if (trackingPayload) {
+          track("creative_quota_paywall_checkout_failed", {
+            ...trackingPayload,
+            failure_reason: !data?.checkout_url
+              ? "missing_checkout_url"
+              : "response_error",
+          });
+        }
         toast.error(message || t("checkout_failed"));
         return;
+      }
+      if (trackingPayload) {
+        track("creative_quota_paywall_checkout_created", trackingPayload);
       }
       window.location.href = data.checkout_url;
     } catch (e) {
       console.log("paywall checkout failed:", e);
+      if (trackingPayload) {
+        track("creative_quota_paywall_checkout_failed", {
+          ...trackingPayload,
+          failure_reason: "network_error",
+        });
+      }
       toast.error(t("checkout_failed"));
     } finally {
       setCheckingOut(null);
@@ -89,6 +171,17 @@ export default function PaywallModal({ open, onClose }: Props) {
   };
 
   const goPricing = () => {
+    if (sourcePage) {
+      track(
+        "creative_quota_paywall_view_all_click",
+        buildCreativePaywallTrackingPayload({
+          sourcePage,
+          loggedIn: !!user,
+          locale,
+          reason: "insufficient_credits",
+        })
+      );
+    }
     onClose();
     router.push("/pricing");
   };

@@ -15,12 +15,24 @@ import { FantasyGenerate as FantasyGenerateType } from "@/types/blocks/fantasy-g
 import { useLocale } from "next-intl";
 import { useAppContext } from "@/contexts/app";
 import { useRouter } from "@/i18n/navigation";
-import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import { buildContinueRoute, getContinueActionLabel, shouldGateAnonymousContinue } from "@/components/ai-write/workbench/_lib";
 import confetti from "canvas-confetti";
 import { cn } from "@/lib/utils";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
-import { Wand2, Sparkles, Zap, Palette, PenTool, BookOpen, Globe, Users, Scroll } from "lucide-react";
+import { Wand2, Sparkles, Zap, Palette, PenTool, BookOpen, Globe, Users, Scroll, Shuffle } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
+import CompletionGuide from "@/components/story/completion-guide";
+import StorySaveDialog from "@/components/story/story-save-dialog";
+import type { StoryStatus } from "@/models/story";
+import {
+  buildContinueIntentPayload,
+  CONTINUE_INTENT_KEY,
+  GENERATOR_PREFILL_KEY,
+} from "@/components/ai-write/workbench/continue-intent";
+import { writePendingAuthResume, consumePendingAuthResume } from "@/lib/auth-resume";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -42,7 +54,8 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
   const locale = useLocale();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
-  const { user } = useAppContext();
+  const { user, requireAuth, setSignModalContext } = useAppContext();
+  const creativeQuota = useCreativeQuotaPage("fantasy-generator");
 
   // Mode state
   const [mode, setMode] = useState<"quick" | "worldbuilder">("quick");
@@ -86,6 +99,9 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
   const [generatedCharacters, setGeneratedCharacters] = useState("");
   const [generatedOutline, setGeneratedOutline] = useState("");
   const [activeOutputTab, setActiveOutputTab] = useState("story");
+  const [isSavingStory, setIsSavingStory] = useState(false);
+  const [hasSavedCurrentStory, setHasSavedCurrentStory] = useState(false);
+  const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
 
   // Refs
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
@@ -145,6 +161,23 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
   }, [isGenerating]);
 
   // Handle generate click
+  // 从示例池随机抽取一条 prompt（避免与当前内容连续重复）
+  const handleRandomPrompt = useCallback(() => {
+    const examples = section.quick_mode?.prompt?.examples;
+    if (!examples || examples.length === 0) return;
+    if (examples.length === 1) {
+      setPrompt(examples[0].slice(0, 2000));
+      return;
+    }
+    let next = prompt;
+    let guard = 0;
+    while (next === prompt && guard < 20) {
+      next = examples[Math.floor(Math.random() * examples.length)];
+      guard++;
+    }
+    setPrompt(next.slice(0, 2000));
+  }, [section, prompt]);
+
   const handleGenerateClick = useCallback(() => {
     if (mode === "quick" && !prompt.trim()) {
       toast.error(section.toasts.error_no_prompt);
@@ -159,9 +192,18 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
       return;
     }
 
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel,
+        message: "Daily free Creative quota reached. Please sign in to continue.",
+      })
+    ) {
+      return;
+    }
+
     setIsGenerating(true);
     turnstileRef.current?.execute();
-  }, [mode, prompt, subgenre, selectedModel, section]);
+  }, [creativeQuota, mode, prompt, section, selectedModel, subgenre]);
 
   // Perform generation
   const performGeneration = useCallback(
@@ -236,6 +278,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
 
         if (!response.ok) {
           const errorData = await response.json();
+          if (creativeQuota.handleQuotaError(response.status, errorData)) return;
           toast.error(errorData.message || section.toasts.error_generate_failed);
           return;
         }
@@ -278,6 +321,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         }
 
         if (accumulatedText.trim()) {
+          if (selectedModel === "creative") creativeQuota.increment();
           confetti({
             particleCount: 100,
             spread: 70,
@@ -323,6 +367,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
       selectedModel,
       locale,
       section,
+      creativeQuota,
     ]
   );
 
@@ -342,6 +387,222 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
     navigator.clipboard.writeText(generatedStory);
     toast.success(section.toasts.success_copied);
   }, [generatedStory, section]);
+
+  const completionGuideTranslations = section.completion_guide || {
+    title: "Liked your story?",
+    subtitle: "Sign in to keep writing, or try a new idea!",
+    create_another: "Create Another",
+    share_action: "Save Story",
+    continue_hint:
+      "Your content and context are preserved. Sign in to continue generating in AI Write.",
+  };
+
+  // 匿名保存触发登录后，登录回来恢复内容并打开保存弹窗
+  useEffect(() => {
+    if (!user) return;
+    const resume = consumePendingAuthResume("save_story", {
+      sourcePage: "fantasy-generator",
+    });
+    if (!resume) return;
+    const payload = resume.payload;
+    const resumedContent = typeof payload.generatedStory === "string" ? payload.generatedStory : "";
+    if (!resumedContent.trim()) return;
+    if (typeof payload.prompt === "string") setPrompt(payload.prompt);
+    if (typeof payload.mode === "string") setMode(payload.mode as "quick" | "worldbuilder");
+    setGeneratedStory(resumedContent);
+    setIsSaveDialogOpen(true);
+  }, [user]);
+
+  const handleCreateAnother = useCallback(() => {
+    setGeneratedStory("");
+    setGeneratedWorldview("");
+    setGeneratedCharacters("");
+    setGeneratedOutline("");
+    setHasSavedCurrentStory(false);
+  }, []);
+
+  const handleSaveClick = useCallback(() => {
+    if (!generatedStory.trim()) {
+      toast.error(section.toasts.error_no_content);
+      return;
+    }
+    if (!user) {
+      writePendingAuthResume({
+        source: "story_save",
+        action: "save_story",
+        sourcePage: "fantasy-generator",
+        startedAt: Date.now(),
+        payload: {
+          prompt,
+          generatedStory,
+          mode,
+        },
+      });
+      requireAuth({ source: "story_save", action: "save_story", sourcePage: "fantasy-generator" });
+      return;
+    }
+    setIsSaveDialogOpen(true);
+  }, [generatedStory, section, user, requireAuth, prompt, mode]);
+
+  const handleContinueInAiWrite = useCallback(() => {
+    if (!generatedStory.trim()) return;
+    const payload = buildContinueIntentPayload({
+      source: "fantasy-generator",
+      title: prompt,
+      content: generatedStory,
+    });
+    if (
+      shouldGateAnonymousContinue({
+        hasUser: !!user,
+        hasGeneratedContent: !!generatedStory.trim(),
+      })
+    ) {
+      try {
+        window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+        window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+      } catch {
+        // ignore prefill cache failures
+      }
+      setSignModalContext({
+        mode: "continue-ai-write",
+        source: payload.source,
+        redirectTo: payload.redirectTo,
+      });
+      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "fantasy-generator" });
+      return;
+    }
+    try {
+      window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+    } catch {
+      // ignore prefill cache failures
+    }
+    router.push(payload.redirectTo as any);
+  }, [generatedStory, prompt, router, user, setSignModalContext, requireAuth]);
+
+  const handleConfirmSave = useCallback(
+    async (status: StoryStatus) => {
+      if (!generatedStory.trim()) {
+        toast.error(section.toasts.error_no_content);
+        return;
+      }
+      try {
+        setIsSavingStory(true);
+        const settings: Record<string, unknown> = {
+          locale,
+          mode,
+          prompt,
+          subgenre,
+          wbSubgenre,
+          tone,
+          audience,
+          length,
+          perspective,
+          era,
+          worldOverview,
+          factions,
+          magicSource,
+          magicCost,
+          magicLimitations,
+          protagonistName,
+          protagonistRaceClass,
+          protagonistPersonality,
+          protagonistBackground,
+          protagonistGoal,
+          antagonistName,
+          antagonistMotivation,
+          antagonistRelationship,
+          mainQuest,
+          keyEvents,
+          twists,
+        };
+        const modelKey = selectedModel || "standard";
+        const modelMap: Record<string, string> = {
+          fast: "gemini-2.5-flash",
+          standard: "gemini-3.1-flash-lite",
+          creative: "gemini-3-flash",
+        };
+        const actualModel = modelMap[modelKey] || "gemini-3.1-flash-lite";
+        const resp = await fetch("/api/stories", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: prompt.substring(0, 30) + (prompt.length > 30 ? "..." : ""),
+            prompt,
+            content: generatedStory,
+            wordCount,
+            modelUsed: actualModel,
+            settings,
+            status,
+            visibility: status === "published" ? "public" : "private",
+            sourceCategory: "fantasy",
+          }),
+        });
+        if (!resp.ok) {
+          throw new Error("request failed with status: " + resp.status);
+        }
+        const { code, message } = await resp.json();
+        if (code !== 0) {
+          if (message === "no auth") {
+            requireAuth({ source: "story_save", action: "save_story", sourcePage: "fantasy-generator" });
+          }
+          toast.error(
+            message === "no auth"
+              ? section.toasts.save_no_auth || "Please sign in to save your story"
+              : (section.toasts.save_failed || "Failed to save story: {{reason}}").replace(
+                  "{{reason}}",
+                  message || ""
+                )
+          );
+          return;
+        }
+        toast.success(
+          status === "published"
+            ? section.toasts.save_published || "Story published"
+            : section.toasts.save_saved || "Story saved"
+        );
+        setHasSavedCurrentStory(true);
+        setIsSaveDialogOpen(false);
+      } catch (error) {
+        console.error("save fantasy failed", error);
+        toast.error(section.toasts.save_error || "Failed to save story, please try again.");
+      } finally {
+        setIsSavingStory(false);
+      }
+    },
+    [
+      generatedStory,
+      section,
+      locale,
+      mode,
+      prompt,
+      subgenre,
+      wbSubgenre,
+      tone,
+      audience,
+      length,
+      perspective,
+      era,
+      worldOverview,
+      factions,
+      magicSource,
+      magicCost,
+      magicLimitations,
+      protagonistName,
+      protagonistRaceClass,
+      protagonistPersonality,
+      protagonistBackground,
+      protagonistGoal,
+      antagonistName,
+      antagonistMotivation,
+      antagonistRelationship,
+      mainQuest,
+      keyEvents,
+      twists,
+      selectedModel,
+      wordCount,
+      requireAuth,
+    ]
+  );
 
   // ========== RENDER ==========
 
@@ -553,10 +814,24 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
             <div className="glass-premium rounded-3xl p-8 space-y-6">
               {/* Story Idea */}
               <div>
-                <Label className="text-lg font-semibold mb-2 block">
-                  {section.quick_mode.prompt.label}
-                  <span className="text-destructive ml-1">{section.quick_mode.prompt.required}</span>
-                </Label>
+                <div className="flex items-center justify-between mb-2">
+                  <Label className="text-lg font-semibold">
+                    {section.quick_mode.prompt.label}
+                    <span className="text-destructive ml-1">{section.quick_mode.prompt.required}</span>
+                  </Label>
+                  {section.quick_mode.prompt.random_label && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleRandomPrompt}
+                      className="gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+                    >
+                      <Shuffle className="size-3.5" />
+                      {section.quick_mode.prompt.random_label}
+                    </Button>
+                  )}
+                </div>
                 <Textarea
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value.slice(0, 2000))}
@@ -994,6 +1269,12 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
               </button>
             ))}
           </div>
+          <CreativeQuotaHint
+            pageKey="fantasy-generator"
+            selectedModel={selectedModel}
+            used={creativeQuota.used}
+            className="mt-3"
+          />
         </div>
 
         {/* Generate Button */}
@@ -1012,11 +1293,12 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
             ) : (
               <>
                 <Wand2 className="w-5 h-5 mr-2" />
-                {section.generate_button.text}
+                {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                  ? "Sign in to continue"
+                  : section.generate_button.text}
               </>
             )}
           </Button>
-          <p className="text-xs text-center text-muted-foreground mt-3">{section.generate_button.tip}</p>
         </div>
 
         {/* Output Section */}
@@ -1069,24 +1351,38 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                     <Icon name="mdi:refresh" className="w-4 h-4 mr-2" />
                     {section.output.button_regenerate}
                   </Button>
-                  <Button
-                    size="sm"
-                    onClick={() => {
-                      try {
-                        window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedStory }));
-                      } catch {}
-                      router.push(buildContinueRoute({ source: "fantasy-generator" }) as any);
-                    }}
-                  >
-                    <Icon name="mdi:pencil-plus" className="w-4 h-4 mr-2" />
-                    {section.output.button_continue}
-                  </Button>
                 </div>
+
+                {!isGenerating && (
+                  <div className="mt-6">
+                    <CompletionGuide
+                      onCreateAnother={handleCreateAnother}
+                      onSave={handleSaveClick}
+                      onContinue={handleContinueInAiWrite}
+                      continueLabel={getContinueActionLabel({ hasUser: !!user, locale })}
+                      continueHint={completionGuideTranslations.continue_hint}
+                      translations={completionGuideTranslations}
+                      isSaveDisabled={isSavingStory || hasSavedCurrentStory}
+                    />
+                  </div>
+                )}
               </>
             )}
           </div>
         )}
       </div>
+      <CreativeQuotaPaywall
+        open={creativeQuota.paywallOpen}
+        onClose={() => creativeQuota.setPaywallOpen(false)}
+        sourcePage="fantasy-generator"
+      />
+      <StorySaveDialog
+        open={isSaveDialogOpen}
+        onOpenChange={setIsSaveDialogOpen}
+        onSelect={handleConfirmSave}
+        locale={locale}
+        isSaving={isSavingStory}
+      />
     </section>
   );
 }

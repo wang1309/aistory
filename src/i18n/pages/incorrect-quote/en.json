@@ -58,6 +58,9 @@
       "generate_failed": "Failed to generate incorrect quote.",
       "verification_failed": "Verification failed. Try again."
     },
+    "toasts": {
+      "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits."
+    },
     "ai_models": {
       "fast": "Fast",
       "fast_description": "Quickest quote iteration",

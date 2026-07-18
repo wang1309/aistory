@@ -234,8 +234,24 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // 客户端 hydration 后读取 creative 今日已用次数
   useEffect(() => {
-    setCreativeUsed(getCreativeUsed());
+    setCreativeUsed(getCreativeUsed("story-generator"));
   }, []);
+
+  // Refresh the server-backed count after hydration and account changes.
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/creative-quota/status?page=story-generator")
+      .then((response) => (response.ok ? response.json() : null))
+      .then((status) => {
+        if (!cancelled && status && typeof status.used === "number") {
+          setCreativeUsed(status.used);
+        }
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, [user?.uuid]);
 
   const sgEnter = (delayMs: number) =>
     `transition-all duration-[800ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
@@ -524,7 +540,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     if (
       !user &&
       selectedModel === "creative" &&
-      getCreativeUsed() >= getCreativeLimit()
+      getCreativeUsed("story-generator") >= getCreativeLimit()
     ) {
       track("creative_quota_sign_in_cta_click", {
         source_page: "story-generator",
@@ -539,7 +555,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     if (
       user &&
       selectedModel === "creative" &&
-      getCreativeUsed() >= getCreativeLimit() &&
+      getCreativeUsed("story-generator") >= getCreativeLimit() &&
       (user.credits?.left_credits ?? 0) < CREATIVE_COST
     ) {
       toast.error(section.toasts.insufficient_credits);
@@ -631,7 +647,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
         // creative 免费额度用完(匿名)→ 引导登录
         if (response.status === 429 && code === "free_quota_exceeded") {
-          markCreativeQuotaExhausted();
+          markCreativeQuotaExhausted("story-generator");
           setCreativeUsed(getCreativeLimit());
           track("creative_quota_sign_in_cta_click", {
             source_page: "story-generator",
@@ -734,7 +750,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         );
         // creative 免费额度:localStorage 镜像 +1(后端 KV 已 +1)
         if (selectedModel === "creative") {
-          setCreativeUsed(markCreativeIncrement());
+          setCreativeUsed(markCreativeIncrement("story-generator"));
         }
         // Check if this is first time and trigger confetti
         const isFirstTime = await triggerFirstTimeConfetti();
@@ -1486,7 +1502,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 </div>
 
                 {/* 积分不足 paywall 弹窗 */}
-                <PaywallModal open={paywallOpen} onClose={() => setPaywallOpen(false)} />
+                <PaywallModal
+                  open={paywallOpen}
+                  onClose={() => setPaywallOpen(false)}
+                  sourcePage="story-generator"
+                />
 
                 {/* Usage hints */}
                 <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-muted-foreground/40">

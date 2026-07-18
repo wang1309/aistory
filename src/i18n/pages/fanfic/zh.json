@@ -428,7 +428,8 @@
         "generation": {
           "status_writing": "正在创作中...",
           "status_complete": "创作完成！",
-          "start_button": "开始创作同人小说"
+          "start_button": "开始创作同人小说",
+          "regenerate_button": "重新生成"
         }
       },
       "buttons": {
@@ -463,7 +464,10 @@
         "generation_success": "创作完成！",
         "step_validation": "请先完成当前步骤",
         "auto_advance": "已进入步骤 {{step}}",
-        "error_generation": "生成失败，请重试"
+        "error_generation": "生成失败，请重试",
+        "prompt_needs_more": "还需 {{n}} 个字",
+        "error_prompt_too_short": "请至少输入 {{min}} 个字（当前 {{current}}，还差 {{need}}）",
+        "back_to_top": "回到顶部"
       }
     },
     "modern": {

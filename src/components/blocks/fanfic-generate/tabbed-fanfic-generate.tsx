@@ -62,6 +62,9 @@ import {
   ACTIVATION_EVENTS,
   buildActivationTrackingPayload,
 } from "@/lib/activation-funnel";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -77,6 +80,9 @@ function calculateWordCount(text: string): number {
   return cjkCount + englishCount;
 }
 
+// Story prompt 最小字符数（必填校验阈值）
+const PROMPT_MIN_LENGTH = 10;
+
 // ========== TABBED FANFIC GENERATE COMPONENT ==========
 
 export default function TabbedFanficGenerate({ section }: { section: FanficGenerateType }) {
@@ -87,6 +93,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const router = useRouter();
   const { track } = useOpenPanel();
   const reduceMotion = useReducedMotion();
+  const creativeQuota = useCreativeQuotaPage("fanfic-generator");
 
   // ========== STATE MANAGEMENT ==========
 
@@ -122,6 +129,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     perspective: 'third',
   });
   const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useDraftAutoSave({
     key: `fanfic-generator:tabbed-prompt:${locale}`,
@@ -249,6 +257,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
   const turnstileRef = useRef<TurnstileInvisibleHandle | null>(null);
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
+  const outputRef = useRef<HTMLDivElement | null>(null);
 
   // Update ref when state changes
   useEffect(() => {
@@ -267,6 +276,24 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       selectedModel,
     };
   }, [sourceType, selectedPresetWork, customWorkName, pairingType, selectedCharacters, plotType, prompt, language, advancedOptions, selectedModel]);
+
+  // 流式生成时自动滚动到输出底部，确保最新内容可见（生成完成后可自由滚动阅读）
+  useEffect(() => {
+    if (!isGenerating) return;
+    const el = outputRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [generatedFanfic, isGenerating]);
+
+  // 滚动偏离顶部时显示「回到顶部」浮动按钮
+  const handleOutputScroll = useCallback(() => {
+    const el = outputRef.current;
+    if (!el) return;
+    setShowBackToTop(el.scrollTop > 120);
+  }, []);
+
+  const scrollOutputToTop = useCallback(() => {
+    outputRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   // ========== STEP DEFINITIONS ==========
 
@@ -342,7 +369,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       case 2:
         return selectedCharacters.length > 0;
       case 3:
-        return prompt.trim().length >= 10;
+        return prompt.trim().length >= PROMPT_MIN_LENGTH;
       case 4:
         return true; // Advanced options are optional
       case 5:
@@ -409,6 +436,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
       if (!response.ok) {
         const errorData = await response.json();
+        if (creativeQuota.handleQuotaError(response.status, errorData)) return;
         throw new Error(errorData.message || 'Generation failed');
       }
 
@@ -462,6 +490,18 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
       const count = calculateWordCount(accumulatedText);
       setWordCount(count);
 
+      track(
+        ACTIVATION_EVENTS.generationSucceeded,
+        buildActivationTrackingPayload({
+          sourcePage: "fanfic-generator",
+          loggedIn: !!user,
+          action: "generation_succeeded",
+          model: currentState.selectedModel,
+          wordCount: count,
+        })
+      );
+      if (currentState.selectedModel === "creative") creativeQuota.increment();
+
       // Generate tags
       const presetWork = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
       const sourceName = sourceType === 'preset' && presetWork
@@ -486,11 +526,20 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
 
     } catch (error) {
       console.error('Generation failed:', error);
+      track(
+        ACTIVATION_EVENTS.generationFailed,
+        buildActivationTrackingPayload({
+          sourcePage: "fanfic-generator",
+          loggedIn: !!user,
+          action: "generation_failed",
+          model: currentState.selectedModel,
+        })
+      );
       toast.error(error instanceof Error ? error.message : section.tabbed?.messages?.error_generation || 'Generation failed, please try again');
     } finally {
       setIsGenerating(false);
     }
-  }, [sourceType, selectedPresetWork, selectedCharacters, plotType, customWorkName, locale, section]);
+  }, [sourceType, selectedPresetWork, selectedCharacters, plotType, customWorkName, locale, section, track, user, creativeQuota]);
 
   const handleTurnstileSuccess = useCallback((token: string) => {
     console.log("✓ Turnstile verification successful (Tabbed Fanfic)");
@@ -506,9 +555,31 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const handleGenerate = useCallback(() => {
     if (isGenerating) return;
 
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel: latestStateRef.current.selectedModel,
+        message:
+          section.tabbed?.messages?.error_generation ||
+          "Daily free Creative quota reached. Please sign in to continue.",
+      })
+    ) {
+      return;
+    }
+
     setIsGenerating(true);
+
+    track(
+      ACTIVATION_EVENTS.generationStarted,
+      buildActivationTrackingPayload({
+        sourcePage: "fanfic-generator",
+        loggedIn: !!user,
+        action: "generation_started",
+        model: latestStateRef.current.selectedModel,
+      })
+    );
+
     turnstileRef.current?.execute();
-  }, [isGenerating]);
+  }, [creativeQuota, isGenerating, section.tabbed, section.toasts, track, user]);
 
   const handleCreateAnother = useCallback(() => {
     setGeneratedFanfic("");
@@ -757,6 +828,18 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const handleNextStep = () => {
     const completed = isStepCompleted(currentStep);
     if (!completed) {
+      if (currentStep === 3) {
+        const currentLen = prompt.trim().length;
+        const need = Math.max(0, PROMPT_MIN_LENGTH - currentLen);
+        toast.error(
+          (section.tabbed?.messages?.error_prompt_too_short || "Please enter at least {{min}} characters (current: {{current}}, {{need}} more needed)")
+            .replace("{{min}}", String(PROMPT_MIN_LENGTH))
+            .replace("{{current}}", String(currentLen))
+            .replace("{{need}}", String(need))
+        );
+        promptRef.current?.focus();
+        return;
+      }
       toast.error(section.tabbed?.messages?.error_complete_current || "Please complete current step first");
       return;
     }
@@ -1138,6 +1221,9 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                     <div className="space-y-4">
                       <Label className="text-xs font-medium tracking-wide text-muted-foreground/50">
                         {section.tabbed?.form?.preset_characters_label}
+                        {sourceType === 'preset' && (
+                          <span className="text-orange-500 ml-0.5" aria-hidden>*</span>
+                        )}
                       </Label>
                       <div className="flex flex-wrap gap-3">
                         {(sourceType === 'preset' && selectedPresetWork ? getWorkById(selectedPresetWork)?.characters : [])?.map((char) => (
@@ -1161,6 +1247,9 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                     <div className="space-y-3">
                       <Label className="text-xs font-medium tracking-wide text-muted-foreground/50">
                         {section.tabbed?.form?.custom_characters_label}
+                        {sourceType === 'custom' && (
+                          <span className="text-orange-500 ml-0.5" aria-hidden>*</span>
+                        )}
                       </Label>
                       <div className="flex gap-3">
                         <input
@@ -1251,7 +1340,8 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                         <Label className="text-xs font-medium tracking-wide text-muted-foreground/50 ml-1">
                           {section.tabbed?.form?.language_label || section.prompt.language_label}
                         </Label>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+                        {/* Desktop (>= sm): language card grid */}
+                        <div className="hidden sm:grid sm:grid-cols-4 lg:grid-cols-6 gap-3">
                           {Object.entries(section.prompt.language_options || {}).map(([code, lang]) => (
                             <button
                               key={code}
@@ -1282,12 +1372,32 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                             </button>
                           ))}
                         </div>
+
+                        {/* Mobile (< sm): native select dropdown — 唤起系统级选择器 */}
+                        <div className="sm:hidden relative">
+                          <select
+                            value={language}
+                            onChange={(e) => setLanguage(e.target.value)}
+                            aria-label={section.tabbed?.form?.language_label || section.prompt.language_label}
+                            className="w-full appearance-none rounded-2xl border border-border/10 bg-muted/5 py-3.5 pl-4 pr-10 text-sm font-medium text-foreground focus:border-orange-500/50 focus:outline-none focus:ring-0 transition-colors"
+                          >
+                            {Object.entries(section.prompt.language_options || {}).map(([code, lang]) => (
+                              <option key={code} value={code}>
+                                {lang.flag} {lang.native}
+                              </option>
+                            ))}
+                          </select>
+                          <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+                        </div>
                       </div>
 
                       {/* Prompt */}
                       <div className="space-y-4 relative group">
                         <div className="absolute -inset-4 bg-orange-500/10 rounded-3xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700" />
-                        <Label className="text-xs font-medium tracking-wide text-muted-foreground/50 ml-1">{section.tabbed?.form?.story_prompt_label}</Label>
+                        <Label className="text-xs font-medium tracking-wide text-muted-foreground/50 ml-1">
+                          {section.tabbed?.form?.story_prompt_label}
+                          <span className="text-orange-500 ml-0.5" aria-hidden>*</span>
+                        </Label>
                         <Textarea
                           ref={promptRef}
                           placeholder={section.tabbed?.form?.story_prompt_placeholder}
@@ -1296,8 +1406,13 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                           className="relative min-h-[160px] sm:min-h-[200px] w-full bg-transparent border-0 border-b border-white/10 focus:border-orange-500/50 focus:ring-0 rounded-none px-0 text-lg sm:text-xl font-light leading-relaxed placeholder:text-muted-foreground/20 resize-none transition-all duration-300"
                           style={{ boxShadow: 'none' }}
                         />
-                        <div className="flex justify-end">
-                           <span className={cn("text-[10px] font-bold uppercase tracking-widest", prompt.trim().length < 10 ? "text-orange-400" : "text-orange-400")}>
+                        <div className="flex justify-between items-center min-h-[16px]">
+                           {prompt.trim().length < PROMPT_MIN_LENGTH ? (
+                              <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500">
+                                 {(section.tabbed?.messages?.prompt_needs_more || "Need {{n}} more characters").replace("{{n}}", String(PROMPT_MIN_LENGTH - prompt.trim().length))}
+                              </span>
+                           ) : null}
+                           <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
                               {prompt.length} / 2000
                            </span>
                         </div>
@@ -1348,6 +1463,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                              </button>
                            ))}
                          </div>
+                         <CreativeQuotaHint pageKey="fanfic-generator" selectedModel={selectedModel} used={creativeQuota.used} />
                        </div>
 
                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
@@ -1425,7 +1541,11 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                           className="h-14 sm:h-16 px-8 sm:px-12 rounded-full bg-orange-500 text-white text-base sm:text-lg font-bold shadow-md shadow-orange-500/25 hover:bg-orange-600 active:scale-[0.97] transition-all"
                         >
                           <Sparkles className="mr-2 size-5" />
-                          <span>{section.tabbed?.form?.generation?.start_button}</span>
+                          <span className="pr-7">
+                            {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                              ? "Sign in to continue"
+                              : section.tabbed?.form?.generation?.start_button}
+                          </span>
                         </Button>
                         <GeneratorShortcutHints showQuickSave />
                       </div>
@@ -1472,10 +1592,28 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                             )}
 
                             <div className="prose prose-lg dark:prose-invert max-w-none font-serif leading-loose">
-                              <div className="whitespace-pre-wrap min-h-[200px]">
-                                {generatedFanfic || (section.tabbed?.form?.generation?.status_writing || 'Preparing response...')}
+                              <div
+                                ref={outputRef}
+                                onScroll={handleOutputScroll}
+                                className="max-h-[60vh] overflow-y-auto pr-1"
+                              >
+                                <div className="whitespace-pre-wrap min-h-[200px]">
+                                  {generatedFanfic || (section.tabbed?.form?.generation?.status_writing || 'Preparing response...')}
+                                </div>
                               </div>
                             </div>
+                            {showBackToTop && !isGenerating && (
+                              <div className="mt-4 flex justify-center">
+                                <button
+                                  type="button"
+                                  onClick={scrollOutputToTop}
+                                  className="inline-flex items-center gap-1.5 rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur transition hover:bg-accent hover:text-foreground"
+                                >
+                                  <ChevronUp className="size-3.5" />
+                                  {section.tabbed?.messages?.back_to_top || "Back to top"}
+                                </button>
+                              </div>
+                            )}
 
                             {isGenerating && (
                               <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
@@ -1484,28 +1622,33 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                               </div>
                             )}
                           </div>
-                          <div className="bg-muted/5 p-4 sm:p-6 flex flex-wrap justify-end gap-3 sm:gap-4">
-                            <Button
-                              variant="ghost"
-                              disabled={!generatedFanfic}
-                              onClick={() => {
-                                if (!generatedFanfic) return;
-                                navigator.clipboard.writeText(generatedFanfic);
-                                toast.success(section.tabbed?.messages?.copy_success || 'Copied!');
-                              }}
-                            >
-                              <Icon name="copy" className="mr-2 size-4" /> Copy
-                            </Button>
-                            <ShareResultButton
-                              content={generatedFanfic}
-                              prompt={prompt}
-                              sourceCategory="fanfic"
-                              title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
-                            />
-                            <Button variant="ghost" onClick={handleGenerate} disabled={isGenerating}>
-                              <Icon name="refresh" className="mr-2 size-4" />
-                              {section.tabbed?.form?.generation?.start_button || 'Regenerate'}
-                            </Button>
+                          <div className="bg-muted/5 p-4 sm:p-6">
+                            <div className="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:justify-end sm:gap-3">
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="gap-1.5 text-xs w-full sm:w-auto"
+                                disabled={!generatedFanfic}
+                                onClick={() => {
+                                  if (!generatedFanfic) return;
+                                  navigator.clipboard.writeText(generatedFanfic);
+                                  toast.success(section.tabbed?.messages?.copy_success || 'Copied!');
+                                }}
+                              >
+                                <Icon name="copy" className="size-3.5" /> Copy
+                              </Button>
+                              <ShareResultButton
+                                content={generatedFanfic}
+                                prompt={prompt}
+                                sourceCategory="fanfic"
+                                title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
+                                className="gap-1.5 text-xs w-full sm:w-auto"
+                              />
+                              <Button variant="outline" size="sm" className="gap-1.5 text-xs col-span-2 sm:col-auto w-full sm:w-auto" onClick={handleGenerate} disabled={isGenerating}>
+                                <Icon name="refresh" className="size-3.5" />
+                                {section.tabbed?.form?.generation?.regenerate_button || 'Regenerate'}
+                              </Button>
+                            </div>
                           </div>
                         </div>
                         {generatedFanfic && !isGenerating && (
@@ -1546,8 +1689,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                     
                     <Button
                       onClick={handleNextStep}
-                      disabled={!isStepCompleted(currentStep)}
-                      className="rounded-full px-8 bg-white text-black hover:bg-white/90 font-bold shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="rounded-full px-8 bg-white text-black hover:bg-white/90 font-bold shadow-lg"
                     >
                       {section.tabbed?.buttons?.next_step} <Icon name="arrow-right" className="ml-2 size-4" />
                     </Button>
@@ -1571,6 +1713,11 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
         onSelect={handleConfirmSave}
         locale={locale}
         isSaving={isSavingStory}
+      />
+      <CreativeQuotaPaywall
+        open={creativeQuota.paywallOpen}
+        onClose={() => creativeQuota.setPaywallOpen(false)}
+        sourcePage="fanfic-generator"
       />
     </div>
   );

@@ -1,5 +1,12 @@
 {
   "dnd_backstory_generate": {
+    "completion_guide": {
+      "title": "Gefällt Ihnen das Setting?",
+      "subtitle": "Speichern Sie es oder nutzen Sie es für Ihre Geschichte.",
+      "create_another": "Erneut versuchen",
+      "share_action": "Geschichte speichern",
+      "continue_label": "Geschichte fortsetzen"
+    },
     "metadata": {
       "title": "DnD-Hintergrundgeschichten-Generator | D&D 5e Charakter-Lore",
       "description": "Kostenloser DnD-Hintergrundgeschichten-Generator für D&D 5e und 5.5e Spieler und DMs. Erstelle spielbare Charakterhintergründe mit Eigenschaften, Idealen, Bindungen, Makeln, Geheimnissen und drei DM Hooks pro Ausgabe.",
@@ -148,15 +155,31 @@
     "success": {
       "random_prompt_selected": "Zufälliger DnD-Seed ausgewählt!",
       "backstory_generated": "DnD-Hintergrund erfolgreich generiert!",
-      "backstory_copied": "DnD-Hintergrund in die Zwischenablage kopiert!"
+      "backstory_copied": "DnD-Hintergrund in die Zwischenablage kopiert!",
+      "backstory_exported": "DnD-Hintergrund exportiert!"
     },
     "errors": {
-      "generation_failed": "DnD-Hintergrund konnte nicht generiert werden."
+      "generation_failed": "DnD-Hintergrund konnte nicht generiert werden.",
+      "no_content_to_export": "Kein DnD-Hintergrund zum Exportieren vorhanden. Bitte zuerst generieren.",
+      "export_failed": "Export fehlgeschlagen, bitte erneut versuchen."
+    },
+    "pdf": {
+      "generated_at": "Erstellt am",
+      "word_count_label": "Wortanzahl",
+      "ai_model": "KI-Modell",
+      "story_format": "Format",
+      "story_genre": "Genre",
+      "story_tone": "Ton",
+      "prompt": "Prompt",
+      "footer_text": "Erstellt mit AI Story Generator",
+      "page_indicator": "Seite {current} / {total}"
     },
     "output": {
       "title": "Generierter DnD Hintergrund",
       "words": "Wörter",
       "copy": "Kopieren",
+      "export": "Exportieren",
+      "exporting": "Exportiere...",
       "generating_message": "Es wird ein spielbarer DnD-Hintergrund geschmiedet...",
       "empty_message": "Hier erscheint ein strukturierter DnD-Hintergrund mit Traits, Flaws, Bonds, Secrets und DM Hooks."
     },

@@ -95,6 +95,9 @@ export interface DialogueGenerate {
   errors: {
     generation_failed: string;
   };
+  toasts: {
+    creative_limit_reached: string;
+  };
   random_prompts: string[];
   feature?: Section;
   feature1?: Section;

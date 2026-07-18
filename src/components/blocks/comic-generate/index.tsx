@@ -11,6 +11,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -25,6 +31,7 @@ import { cn } from "@/lib/utils";
 import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import {
   ChevronDown,
+  Download,
   Settings2,
   Sparkles,
   Copy,
@@ -36,7 +43,6 @@ import {
   Eraser,
   Zap,
   Palette,
-  PenLine,
 } from "lucide-react";
 import Icon from "@/components/icon";
 import TurnstileInvisible, {
@@ -49,7 +55,23 @@ import type { ComicGenerate as ComicGenerateType } from "@/types/blocks/comic-ge
 import type { ComicCharacter } from "@/types/comic";
 import ComicBreadcrumb from "./breadcrumb";
 import { useRouter } from "@/i18n/navigation";
-import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import {
+  getContinueActionLabel,
+  shouldGateAnonymousContinue,
+} from "@/components/ai-write/workbench/_lib";
+import {
+  buildContinueIntentPayload,
+  buildContinueTrackingPayload,
+  CONTINUE_INTENT_KEY,
+  GENERATOR_PREFILL_KEY,
+} from "@/components/ai-write/workbench/continue-intent";
+import CompletionGuide from "@/components/story/completion-guide";
+import { useAppContext } from "@/contexts/app";
+import { useOpenPanel } from "@openpanel/nextjs";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
+import { getCreativeQuotaLimitReachedMessage } from "@/lib/creative-quota-core";
 
 // ========== CONSTANTS ==========
 
@@ -91,6 +113,9 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
   const locale = useLocale();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
+  const creativeQuota = useCreativeQuotaPage("comic-generator");
+  const { user, requireAuth, setSignModalContext } = useAppContext();
+  const { track } = useOpenPanel();
 
   const t = useCallback(
     (path: string) => {
@@ -287,11 +312,20 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
       return;
     }
 
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel,
+        message: getCreativeQuotaLimitReachedMessage(locale),
+      })
+    ) {
+      return;
+    }
+
     setIsGenerating(true);
     setGeneratedScript("");
     saveToHistory(prompt.trim());
     turnstileRef.current?.execute();
-  }, [prompt, selectedModel, saveToHistory, t]);
+  }, [creativeQuota, prompt, saveToHistory, selectedModel, t]);
 
   const handleTurnstileSuccess = useCallback(async (turnstileToken: string) => {
     const opts = generateOptionsRef.current;
@@ -318,6 +352,9 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
       });
 
       if (!response.ok) {
+        let errorData: unknown = null;
+        try { errorData = await response.json(); } catch {}
+        if (creativeQuota.handleQuotaError(response.status, errorData)) return;
         throw new Error("Generation failed");
       }
 
@@ -348,6 +385,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
         }
       }
 
+      if (accumulated.trim() && opts.model === "creative") creativeQuota.increment();
       toast.success(t("success.script_generated"));
 
       if (window.innerWidth < 1024) {
@@ -361,7 +399,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
     } finally {
       setIsGenerating(false);
     }
-  }, [t]);
+  }, [creativeQuota, t]);
 
   const handleTurnstileError = useCallback(() => {
     setIsGenerating(false);
@@ -370,12 +408,91 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
 
   // ========== COPY ==========
 
+  const downloadTextFile = useCallback((content: string, filename: string, mimeType: string) => {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }, []);
+
+  const markdownToPlainText = useCallback((md: string) => {
+    return md
+      .replace(/\r\n/g, "\n")
+      .replace(/```[\s\S]*?```/g, (block) => block.replace(/^```[a-zA-Z0-9_-]*\n?/, "").replace(/```\s*$/, ""))
+      .replace(/`([^`]+)`/g, "$1")
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, "$1 ($2)")
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)")
+      .replace(/^\s{0,3}#{1,6}\s+/gm, "")
+      .replace(/^\s{0,3}>\s?/gm, "")
+      .replace(/\*\*([^*]+)\*\*/g, "$1")
+      .replace(/__([^_]+)__/g, "$1")
+      .replace(/\*([^*]+)\*/g, "$1")
+      .replace(/_([^_]+)_/g, "$1")
+      .replace(/^\s{0,3}(-{3,}|\*{3,}|_{3,})\s*$/gm, "")
+      .replace(/^\s{0,3}([-*+]\s+)/gm, "")
+      .replace(/^\s{0,3}(\d+\.)\s+/gm, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }, []);
+
+  const handleExportMd = useCallback(() => {
+    if (!generatedScript) return;
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+    downloadTextFile(generatedScript, `comic-${timestamp}.md`, "text/markdown;charset=utf-8");
+  }, [downloadTextFile, generatedScript]);
+
+  const handleExportTxt = useCallback(() => {
+    if (!generatedScript) return;
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+    downloadTextFile(markdownToPlainText(generatedScript), `comic-${timestamp}.txt`, "text/plain;charset=utf-8");
+  }, [downloadTextFile, generatedScript, markdownToPlainText]);
+
   const handleCopy = useCallback(() => {
     if (!generatedScript) return;
     navigator.clipboard.writeText(generatedScript).then(() => {
       toast.success(t("success.script_copied"));
     });
   }, [generatedScript, t]);
+
+  const handleContinueInAiWrite = useCallback(() => {
+    if (!generatedScript.trim()) return;
+
+    track(
+      "continue_ai_write_cta_click",
+      buildContinueTrackingPayload({
+        source_page: "comic-generator",
+        logged_in: !!user,
+        cta_variant: user ? "continue_ai_write" : "sign_in_to_continue_ai_write",
+      })
+    );
+
+    const payload = buildContinueIntentPayload({
+      source: "comic-generator",
+      title: prompt,
+      content: generatedScript,
+    });
+
+    if (shouldGateAnonymousContinue({ hasUser: !!user, hasGeneratedContent: !!generatedScript.trim() })) {
+      try {
+        window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+        window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+      } catch {}
+      track("sign_modal_open_for_continue", buildContinueTrackingPayload({ source_page: "comic-generator" }));
+      setSignModalContext({ mode: "continue-ai-write", source: payload.source, redirectTo: payload.redirectTo });
+      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "comic-generator" });
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+    } catch {}
+    router.push(payload.redirectTo as any);
+  }, [generatedScript, prompt, router, user, track, setSignModalContext, requireAuth]);
 
   // ========== RENDER ==========
 
@@ -895,6 +1012,11 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                       </button>
                     ))}
                   </div>
+                  <CreativeQuotaHint
+                    pageKey="comic-generator"
+                    selectedModel={selectedModel}
+                    used={creativeQuota.used}
+                  />
                 </div>
               </div>
 
@@ -925,7 +1047,9 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                         </svg>
                       )}
                     </span>
-                    {t("ui.generate_button")}
+                    {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                      ? "Sign in to continue"
+                      : t("ui.generate_button")}
                   </>
                 )}
               </Button>
@@ -938,7 +1062,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
             initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 0.15 }}
-            className="flex flex-col"
+            className="flex flex-col lg:sticky lg:top-20 lg:self-start lg:h-[calc(100vh-6rem)] lg:max-h-[calc(100vh-6rem)]"
           >
             <div className="h-full rounded-2xl border border-border bg-card shadow-sm card-hover-lift flex flex-col">
               {/* Output header */}
@@ -969,25 +1093,29 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                       sourceCategory="comic"
                       title={prompt.substring(0, 30) + (prompt.length > 30 ? "..." : "")}
                     />
-                    <Button
-                      size="sm"
-                      onClick={() => {
-                        try {
-                          window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedScript }));
-                        } catch {}
-                        router.push(buildContinueRoute({ source: "comic-generator" }) as any);
-                      }}
-                      className="gap-1.5 text-xs rounded-full bg-orange-600 px-3 text-white hover:bg-orange-500"
-                    >
-                      <PenLine className="h-3 w-3" />
-                      <span className="hidden sm:inline">{t("ui.continue_button")}</span>
-                    </Button>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="sm" className="gap-1.5 text-xs">
+                          <Download className="h-3 w-3" />
+                          <span className="hidden sm:inline">{t("ui.export_button")}</span>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={handleExportMd}>
+                          {t("output.export_md")}
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={handleExportTxt}>
+                          {t("output.export_txt")}
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+
                   </div>
                 )}
               </div>
 
               {/* Output content */}
-              <div className="relative min-h-[480px] flex-1 p-5 overflow-hidden">
+              <div className="relative min-h-[480px] flex-1 overflow-y-auto p-5 lg:min-h-0">
                 {generatedScript ? (
                   <div className="prose prose-sm dark:prose-invert max-w-none">
                     <ReactMarkdown>{generatedScript}</ReactMarkdown>
@@ -1084,7 +1212,27 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
             </div>
           </motion.div>
         </div>
+
+        {/* 完成引导:继续续写主 CTA */}
+        {generatedScript && !isGenerating ? (
+          <div className="mx-auto mt-10 w-full max-w-3xl">
+            <CompletionGuide
+              onContinue={handleContinueInAiWrite}
+              continueLabel={getContinueActionLabel({ hasUser: !!user, locale })}
+              continueHint={
+                locale.startsWith("zh")
+                  ? "保留当前内容与上下文，登录后直接继续生成"
+                  : "Your content and context are preserved. Sign in to continue generating in AI Write."
+              }
+            />
+          </div>
+        ) : null}
       </div>
+      <CreativeQuotaPaywall
+        open={creativeQuota.paywallOpen}
+        onClose={() => creativeQuota.setPaywallOpen(false)}
+        sourcePage="comic-generator"
+      />
     </div>
   );
 }

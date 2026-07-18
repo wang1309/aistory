@@ -738,11 +738,11 @@ export default function YoutubeTitleGenerate({
                 </CollapsibleContent>
               </Collapsible>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col items-center gap-3">
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="bg-orange-600 text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.98] active:bg-orange-800 dark:bg-orange-500 dark:hover:bg-orange-600"
+                  className="w-full h-12 text-base font-semibold bg-orange-600 text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] active:bg-orange-800 dark:bg-orange-500 dark:hover:bg-orange-600"
                 >
                   {isGenerating
                     ? t("ui.generating_button", "Generating...")
@@ -754,7 +754,7 @@ export default function YoutubeTitleGenerate({
                     variant="outline"
                     onClick={handleGenerate}
                     disabled={isGenerating}
-                    className="h-11 px-4 sm:h-10 active:scale-[0.98]"
+                    className="h-10 px-6 text-sm active:scale-[0.98]"
                   >
                     {t("ui.regenerate_button", "Regenerate")}
                   </Button>

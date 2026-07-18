@@ -102,7 +102,10 @@
       "copy": "Kopieren",
       "continue_button": "Geschichte fortsetzen",
       "generating_message": "Ihre Gutenacht-Geschichte wird geschrieben...",
-      "empty_message": "Ihre personalisierte Gutenacht-Geschichte erscheint hier. Machen Sie es sich gemütlich!"
+      "empty_message": "Ihre personalisierte Gutenacht-Geschichte erscheint hier. Machen Sie es sich gemütlich!",
+      "export": "Exportieren",
+      "export_md": "Markdown (.md)",
+      "export_txt": "Nur Text (.txt)"
     },
     "random_prompts": [
       "Ein kleines Häschen, das Angst vor der Dunkelheit hat, entdeckt, dass Glühwürmchen die kleinen Helfer der Sterne sind",
@@ -248,6 +251,13 @@
           "icon": "GoArrowUpRight"
         }
       ]
+    },
+    "completion_guide": {
+      "title": "Diese Gutenachtgeschichte gefallen?",
+      "subtitle": "Teilen Sie sie mit Ihrem Kind oder schreiben Sie in AI Write weiter.",
+      "create_another": "Neu erstellen",
+      "share_action": "Geschichte speichern",
+      "continue_label": "In AI Write fortsetzen"
     }
   }
 }

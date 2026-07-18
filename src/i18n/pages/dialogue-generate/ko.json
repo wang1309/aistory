@@ -103,6 +103,9 @@
   "errors": {
     "generation_failed": "대화 생성에 실패했습니다. 다시 시도해 주세요."
   },
+  "toasts": {
+    "creative_limit_reached": "오늘 Creative 무료 횟수가 모두 소진되었습니다. 로그인하여 계속하세요."
+  },
   "random_prompts": [
     "정전 중 엘리베이터에 갇힌 두 낯선 사람이 놀라운 연결고리를 발견한다",
     "형사가 확인할 수 없는 알리바이를 주장하는 용의자를 심문한다",

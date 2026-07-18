@@ -472,9 +472,13 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button onClick={handleGenerate} disabled={isGenerating} className="w-full sm:w-auto">
-                <Sparkles className="mr-2 h-4 w-4" />
+            <div className="flex flex-col items-center gap-3">
+              <Button
+                onClick={handleGenerate}
+                disabled={isGenerating}
+                className="w-full h-12 text-base font-semibold bg-orange-600 text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:hover:bg-orange-600"
+              >
+                <Sparkles className="mr-2 h-5 w-5" />
                 {isGenerating
                   ? t("ui.generating_button", "Generating...")
                   : t("ui.generate_button", "Generate Outline")}

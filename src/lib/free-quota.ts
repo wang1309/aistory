@@ -1,6 +1,18 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { headers } from "next/headers";
 import { getTurnstileIdentity } from "@/lib/turnstile-kv";
+import {
+  buildCreativeMergeKey,
+  buildCreativeMigrationKey,
+  buildCreativeQuotaKey,
+  buildLegacyCreativeQuotaKey,
+  CREATIVE_PAGE_KEYS,
+  getCreativeQuotaStatus,
+  mergeUsedCounts,
+  migrateCreativeUsedCount,
+  type CreativePageKey,
+  type CreativeQuotaStatus,
+} from "@/lib/creative-quota-core";
 
 /**
  * 每日免费额度计数(Cloudflare KV)
@@ -15,6 +27,11 @@ import { getTurnstileIdentity } from "@/lib/turnstile-kv";
  */
 
 const FREE_QUOTA_KV_TTL_SECONDS = 30 * 60 * 60; // 30h
+const CREATIVE_VISITOR_COOKIE = "creative_visitor_id";
+const CREATIVE_VISITOR_MAX_AGE = 60 * 60 * 24 * 90;
+
+export { CREATIVE_PAGE_KEYS };
+export type { CreativePageKey, CreativeQuotaStatus };
 
 // ========== 配置(env 可调,支持一键关闭/收紧) ==========
 
@@ -141,6 +158,135 @@ function getTodayUtcKey(): string {
   const m = String(now.getUTCMonth() + 1).padStart(2, "0");
   const d = String(now.getUTCDate()).padStart(2, "0");
   return `${y}-${m}-${d}`;
+}
+
+export function getCreativeDateKey(): string {
+  return getTodayUtcKey();
+}
+
+function parseCookieHeader(cookieHeader: string | null, name: string): string | null {
+  if (!cookieHeader) return null;
+  const prefix = `${name}=`;
+  const entry = cookieHeader.split(";").map((part) => part.trim()).find((part) => part.startsWith(prefix));
+  if (!entry) return null;
+  try {
+    const value = decodeURIComponent(entry.slice(prefix.length));
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value)
+      ? value
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+export type CreativeVisitorContext = {
+  visitorId: string;
+  visitorIdentity: string;
+  setCookie?: string;
+};
+
+export function getCreativeVisitorContext(cookieHeader: string | null): CreativeVisitorContext {
+  const existing = parseCookieHeader(cookieHeader, CREATIVE_VISITOR_COOKIE);
+  if (existing) {
+    return { visitorId: existing, visitorIdentity: `visitor:${existing}` };
+  }
+
+  const visitorId = crypto.randomUUID();
+  const secure = process.env.NODE_ENV === "production" ? "; Secure" : "";
+  return {
+    visitorId,
+    visitorIdentity: `visitor:${visitorId}`,
+    setCookie: `${CREATIVE_VISITOR_COOKIE}=${encodeURIComponent(visitorId)}; Max-Age=${CREATIVE_VISITOR_MAX_AGE}; Path=/; HttpOnly; SameSite=Lax${secure}`,
+  };
+}
+
+export function appendCreativeVisitorCookie(response: Response, setCookie?: string): Response {
+  if (setCookie) response.headers.append("Set-Cookie", setCookie);
+  return response;
+}
+
+export function getCreativeQuotaKey(
+  dateKey: string,
+  identity: string,
+  pageKey: CreativePageKey
+) {
+  return buildCreativeQuotaKey(dateKey, identity, pageKey);
+}
+
+export function getCreativeMergeKey(
+  dateKey: string,
+  visitorIdentity: string,
+  userIdentity: string,
+  pageKey: CreativePageKey
+) {
+  return buildCreativeMergeKey(dateKey, visitorIdentity, userIdentity, pageKey);
+}
+
+/** Copy the pre-page-scoped story counter into the new story key once. */
+export async function migrateLegacyStoryCreativeQuota(identity: string): Promise<void> {
+  const dateKey = getTodayUtcKey();
+  const markerKey = buildCreativeMigrationKey(dateKey, identity);
+  if (await kvGet(markerKey)) return;
+
+  const legacyRaw = await kvGet(buildLegacyCreativeQuotaKey(dateKey, identity));
+  if (legacyRaw !== null) {
+    const limit = getCreativeDailyLimit();
+    const current = await readCreativeQuota("story-generator", identity);
+    await writeCreativeQuota(
+      "story-generator",
+      identity,
+      migrateCreativeUsedCount(Number(legacyRaw) || 0, current.used, limit)
+    );
+  }
+
+  await kvPut(markerKey, "1", FREE_QUOTA_KV_TTL_SECONDS);
+}
+
+export async function readCreativeQuota(
+  pageKey: CreativePageKey,
+  identity: string
+): Promise<CreativeQuotaStatus> {
+  const limit = getCreativeDailyLimit();
+  const raw = await kvGet(getCreativeQuotaKey(getTodayUtcKey(), identity, pageKey));
+  return getCreativeQuotaStatus(raw ? Number(raw) || 0 : 0, limit);
+}
+
+export async function writeCreativeQuota(
+  pageKey: CreativePageKey,
+  identity: string,
+  used: number
+): Promise<void> {
+  await kvPut(
+    getCreativeQuotaKey(getTodayUtcKey(), identity, pageKey),
+    String(Math.max(0, used)),
+    FREE_QUOTA_KV_TTL_SECONDS
+  );
+}
+
+export async function incrementPageCreativeQuota(
+  pageKey: CreativePageKey,
+  identity: string
+): Promise<CreativeQuotaStatus> {
+  const current = await readCreativeQuota(pageKey, identity);
+  const used = current.used + 1;
+  await writeCreativeQuota(pageKey, identity, used);
+  return getCreativeQuotaStatus(used, current.limit);
+}
+
+export async function mergePageCreativeQuota(
+  pageKey: CreativePageKey,
+  visitorIdentity: string,
+  userIdentity: string
+): Promise<void> {
+  const dateKey = getTodayUtcKey();
+  const mergeKey = getCreativeMergeKey(dateKey, visitorIdentity, userIdentity, pageKey);
+  if (await kvGet(mergeKey)) return;
+
+  const visitor = await readCreativeQuota(pageKey, visitorIdentity);
+  const account = await readCreativeQuota(pageKey, userIdentity);
+  const merged = mergeUsedCounts(account.used, visitor.used, account.limit);
+  await writeCreativeQuota(pageKey, userIdentity, merged);
+  await kvPut(mergeKey, "1", FREE_QUOTA_KV_TTL_SECONDS);
 }
 
 // ========== IP identity(用于 hard cap,独立于 turnstile identity) ==========

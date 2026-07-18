@@ -19,7 +19,18 @@
         "label": "Story Idea",
         "placeholder": "Describe your fantasy story idea... e.g., 'A young prince who cannot use magic must save the kingdom from an ancient dragon'",
         "required": "*",
-        "character_counter": "{{count}}/2000"
+        "character_counter": "{{count}}/2000",
+        "random_label": "ランダム",
+        "examples": [
+          "いやいや修行する見習いは、自分の魔法が記憶を糧にしていることに気づく――呪文を唱えるたび、大切な顔をひとつ忘れてしまう。",
+          "月が七つに砕け散ったとき、若き天文学者は、誰もが忘れてしまった予言をもう一度組み直さなければならない。",
+          "因縁のドラゴン騎士二人が、千年前に絶滅した種族が氷の中から戻ってきたことで、危うい同盟を結ばされる。",
+          "王国最後の司書は、現実を書き換える一冊の本を守っている――読者は生涯に一ページしか読めない。",
+          "魔術師たちの世界で生まれつき魔法を持たない鍛冶屋の娘が、古の魔力を宿して響く武器を打つ。",
+          "盗賊が盗んだ呪われた王冠は、あえてかぶる者に未来を囁き続ける。",
+          "灯台守は、岸に近づく光が船ではなく、いま目覚めた太古の何かだと気づく。",
+          "すべての嘘が聞こえる外交官が、和平会議と見せかけた巧妙な罠に踏み込む。"
+        ]
       },
       "subgenre": {
         "label": "Subgenre",
@@ -239,8 +250,7 @@
     },
     "generate_button": {
       "text": "Generate Fantasy Story",
-      "generating": "Weaving your tale...",
-      "tip": "Each generation uses 1 credit. Results may vary."
+      "generating": "Weaving your tale..."
     },
     "output": {
       "tabs": {
@@ -266,6 +276,13 @@
       "previous": "Previous",
       "generate": "Generate"
     },
+    "completion_guide": {
+      "title": "このお話、気に入りましたか？",
+      "subtitle": "ログインして書き続けるか、新しいアイデアを試そう！",
+      "create_another": "もう一つ書く",
+      "share_action": "ストーリーを保存",
+      "continue_hint": "内容とコンテキストは保持されます。ログインして AI Write で生成を続けましょう。"
+    },
     "toasts": {
       "error_no_prompt": "Please enter your story idea",
       "error_no_subgenre": "Please select a fantasy subgenre",
@@ -274,7 +291,12 @@
       "error_no_stream": "Unable to receive response stream",
       "error_no_content": "No content was generated",
       "success_generated": "Your fantasy story is ready!",
-      "success_copied": "Copied to clipboard!"
+      "success_copied": "Copied to clipboard!",
+      "save_no_auth": "保存にはログインが必要です",
+      "save_failed": "保存に失敗しました：{{reason}}",
+      "save_published": "ストーリーを公開しました",
+      "save_saved": "ストーリーを保存しました",
+      "save_error": "保存に失敗しました。後でもう一度お試しください。"
     },
     "ui": {
       "required": "*",

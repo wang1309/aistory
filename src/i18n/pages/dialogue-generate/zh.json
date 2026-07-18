@@ -103,6 +103,9 @@
   "errors": {
     "generation_failed": "生成对话失败，请重试。"
   },
+  "toasts": {
+    "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。"
+  },
   "random_prompts": [
     "两个陌生人在停电时被困在电梯里，发现他们之间有着令人惊讶的联系",
     "一名侦探审问一个声称有无法核实的不在场证明的嫌疑人",

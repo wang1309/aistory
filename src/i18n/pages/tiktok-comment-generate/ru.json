@@ -61,6 +61,9 @@
       "generate_failed": "Не удалось сгенерировать ответы TikTok.",
       "verification_failed": "Проверка не пройдена. Попробуйте снова."
     },
+    "toasts": {
+      "creative_limit_reached": "Сегодняшние бесплатные Creative попытки исчерпаны. Войдите, чтобы продолжить."
+    },
     "ai_models": {
       "fast": "Быстро",
       "fast_description": "Самый быстрый перебор вариантов",

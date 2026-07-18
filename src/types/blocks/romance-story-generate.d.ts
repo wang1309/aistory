@@ -60,10 +60,20 @@ export interface RomanceStoryGenerate {
     title: string;
     words: string;
     copy: string;
+    export: string;
+    export_md: string;
+    export_txt: string;
     generating_message: string;
     empty_message: string;
   };
   random_prompts: string[];
+  completion_guide?: {
+    title: string;
+    subtitle: string;
+    create_another: string;
+    share_action: string;
+    continue_label: string;
+  };
   feature_intro?: Section;
   feature_benefits?: Section;
   feature_section?: Section;

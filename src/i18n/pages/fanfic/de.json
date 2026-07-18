@@ -428,7 +428,8 @@
         "generation": {
           "status_writing": "Wird erstellt...",
           "status_complete": "Erstellung abgeschlossen!",
-          "start_button": "Fanfiction erstellen beginnen"
+          "start_button": "Fanfiction erstellen beginnen",
+          "regenerate_button": "Neu generieren"
         }
       },
       "buttons": {
@@ -463,7 +464,10 @@
         "generation_success": "Erstellung abgeschlossen!",
         "step_validation": "Bitte aktuellen Schritt zuerst abschließen",
         "auto_advance": "Weitergeleitet zu Schritt {{step}}",
-        "error_generation": "Erstellung fehlgeschlagen, bitte erneut versuchen"
+        "error_generation": "Erstellung fehlgeschlagen, bitte erneut versuchen",
+        "prompt_needs_more": "Noch {{n}} Zeichen",
+        "error_prompt_too_short": "Bitte mindestens {{min}} Zeichen eingeben (aktuell {{current}}, noch {{need}} nötig)",
+        "back_to_top": "Nach oben"
       }
     },
     "modern": {

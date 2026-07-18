@@ -2,6 +2,12 @@ import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
 import { buildRomanceStoryPrompt, type RomanceHeatLevel } from "./_lib";
+import {
+  commitCreativeQuotaCharge,
+  creativeQuotaErrorResponse,
+  prepareCreativeQuota,
+  withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 async function verifyTurnstileToken(token: string): Promise<boolean> {
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
@@ -62,9 +68,17 @@ export async function POST(req: Request) {
     const isValidToken = await verifyTurnstileToken(turnstileToken);
     if (!isValidToken) return respErr("Verification failed");
 
+    const quotaGate = await prepareCreativeQuota({
+      pageKey: "romance-story-generator",
+      model,
+      request: req,
+    });
+    const quotaError = creativeQuotaErrorResponse(quotaGate);
+    if (quotaError) return quotaError;
+
     const apiKey = process.env.GRSAI_API_KEY;
     const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-    if (!apiKey) return respErr("API KEY not configured");
+    if (!apiKey) return withCreativeVisitorCookie(respErr("API KEY not configured"), quotaGate);
 
     const finalPrompt = buildRomanceStoryPrompt({
       prompt: prompt.trim(),
@@ -109,9 +123,11 @@ export async function POST(req: Request) {
     if (!response.ok) {
       const errorText = await response.text();
       console.log("GRSAI API error (Romance Story):", response.status, errorText);
-      return respErr(`API request failed: ${response.status}`);
+      return withCreativeVisitorCookie(respErr(`API request failed: ${response.status}`), quotaGate);
     }
-    if (!response.body) return respErr("No response body from AI service");
+    if (!response.body) return withCreativeVisitorCookie(respErr("No response body from AI service"), quotaGate);
+
+    await commitCreativeQuotaCharge(quotaGate);
 
     const encoder = new TextEncoder();
     const decoder = new TextDecoder();
@@ -165,13 +181,13 @@ export async function POST(req: Request) {
       },
     });
 
-    return new Response(response.body.pipeThrough(transformStream), {
+    return withCreativeVisitorCookie(new Response(response.body.pipeThrough(transformStream), {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "no-cache, no-transform",
         "X-Content-Type-Options": "nosniff",
       },
-    });
+    }), quotaGate);
   } catch (error) {
     console.log("Romance story generation error:", error);
     return respErr(`Romance story generation failed: ${error}`);

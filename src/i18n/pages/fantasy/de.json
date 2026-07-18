@@ -19,7 +19,18 @@
         "label": "Story Idea",
         "placeholder": "Describe your fantasy story idea... e.g., 'A young prince who cannot use magic must save the kingdom from an ancient dragon'",
         "required": "*",
-        "character_counter": "{{count}}/2000"
+        "character_counter": "{{count}}/2000",
+        "random_label": "Überrasch mich",
+        "examples": [
+          "Ein widerwilliger Lehrling entdeckt, dass seine Magie sich von Erinnerungen ernährt – jeder Zauber kostet ein vergessen Gesicht.",
+          "Als der Mond in sieben Stücke zerspringt, muss eine junge Astronomin eine Prophezeiung neu zusammensetzen, die alle bereits vergessen haben.",
+          "Zwei verfeindete Drachenreiter werden zu einem unbehaglichen Bündnis gezwungen, als eine seit Jahrtausenden ausgestorbene Spezies aus dem Eis zurückkehrt.",
+          "Der letzte Bibliothekar des Königreichs hütet ein einziges Buch, das die Realität umschreiben kann – eine Seite pro Lebenszeit des Lesers.",
+          "Eine Schmiedetochter, geboren ohne Magie in einer Welt voller Magier, schmiedet Waffen, die von längst vergessenen Verzauberungen summen.",
+          "Ein Dieb stiehlt eine verfluchte Krone, die jedem, der sie zu tragen wagt, die Zukunft zuflüstert.",
+          "Ein Leuchtturmwärter erkennt, dass die Lichter nahe der Küste keine Schiffe sind, sondern etwas Uraltes, das endlich erwacht.",
+          "Ein Diplomat, der jede Lüge hören kann, steuert auf einen Friedensgipfel zu, der insgeheim eine sorgsam gestellte Falle ist."
+        ]
       },
       "subgenre": {
         "label": "Subgenre",
@@ -239,8 +250,7 @@
     },
     "generate_button": {
       "text": "Generate Fantasy Story",
-      "generating": "Weaving your tale...",
-      "tip": "Each generation uses 1 credit. Results may vary."
+      "generating": "Weaving your tale..."
     },
     "output": {
       "tabs": {
@@ -266,6 +276,13 @@
       "previous": "Previous",
       "generate": "Generate"
     },
+    "completion_guide": {
+      "title": "Gefällt dir deine Story?",
+      "subtitle": "Melde dich an, um weiterzuschreiben, oder probiere eine neue Idee!",
+      "create_another": "Neue erstellen",
+      "share_action": "Story speichern",
+      "continue_hint": "Dein Inhalt und Kontext bleiben erhalten. Melde dich an, um in AI Write weiterzuschreiben."
+    },
     "toasts": {
       "error_no_prompt": "Please enter your story idea",
       "error_no_subgenre": "Please select a fantasy subgenre",
@@ -274,7 +291,12 @@
       "error_no_stream": "Unable to receive response stream",
       "error_no_content": "No content was generated",
       "success_generated": "Your fantasy story is ready!",
-      "success_copied": "Copied to clipboard!"
+      "success_copied": "Copied to clipboard!",
+      "save_no_auth": "Bitte melde dich an, um deine Geschichte zu speichern",
+      "save_failed": "Speichern fehlgeschlagen: {{reason}}",
+      "save_published": "Geschichte veröffentlicht",
+      "save_saved": "Geschichte gespeichert",
+      "save_error": "Speichern fehlgeschlagen, bitte versuche es später erneut."
     },
     "ui": {
       "required": "*",

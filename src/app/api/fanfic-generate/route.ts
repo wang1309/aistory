@@ -1,6 +1,12 @@
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
+import {
+  commitCreativeQuotaCharge,
+  creativeQuotaErrorResponse,
+  prepareCreativeQuota,
+  withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 // Language display names for prompts
 const languageNames: Record<string, { native: string; english: string }> = {
@@ -158,12 +164,20 @@ export async function POST(req: Request) {
       return respErr("verification failed");
     }
 
+    const quotaGate = await prepareCreativeQuota({
+      pageKey: "fanfic-generator",
+      model: requestedModel,
+      request: req,
+    });
+    const quotaError = creativeQuotaErrorResponse(quotaGate);
+    if (quotaError) return quotaError;
+
     console.log("✓ Turnstile verification passed, proceeding with fanfic generation");
 
     const apiKey = process.env.GRSAI_API_KEY;
     const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
     if (!apiKey) {
-      return respErr("API KEY not found");
+      return withCreativeVisitorCookie(respErr("API KEY not found"), quotaGate);
     }
 
     // Map fanfic-specific parameters to story generation parameters
@@ -311,14 +325,16 @@ Please ensure:
     if (!response.ok) {
       const errorText = await response.text();
       console.log("API Error:", response.status, errorText);
-      return respErr(`API Error: ${response.status} - ${errorText}`);
+      return withCreativeVisitorCookie(respErr(`API Error: ${response.status} - ${errorText}`), quotaGate);
     }
 
     console.log("Fanfic generation started...");
 
     if (!response.body) {
-      return respErr("No response body from API");
+      return withCreativeVisitorCookie(respErr("No response body from API"), quotaGate);
     }
+
+    await commitCreativeQuotaCharge(quotaGate);
 
     // Use TransformStream for better Cloudflare Workers compatibility
     const encoder = new TextEncoder();
@@ -407,13 +423,13 @@ Please ensure:
     // Pipe the response body through our transform stream
     const transformedStream = response.body.pipeThrough(transformStream);
 
-    return new Response(transformedStream, {
+    return withCreativeVisitorCookie(new Response(transformedStream, {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "no-cache, no-transform",
         "X-Content-Type-Options": "nosniff",
       },
-    });
+    }), quotaGate);
   } catch (e) {
     console.log("Fanfic generation failed:", e);
     return respErr("bad request: " + e);

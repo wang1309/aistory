@@ -2,6 +2,12 @@ import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
 import { FantasyGenerateRequest } from "@/types/blocks/fantasy-generate";
+import {
+  commitCreativeQuotaCharge,
+  creativeQuotaErrorResponse,
+  prepareCreativeQuota,
+  withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 // Verify Cloudflare Turnstile token
 async function verifyTurnstileToken(token: string): Promise<boolean> {
@@ -124,12 +130,20 @@ export async function POST(req: Request) {
       return respErr("Verification failed");
     }
 
+    const quotaGate = await prepareCreativeQuota({
+      pageKey: "fantasy-generator",
+      model,
+      request: req,
+    });
+    const quotaError = creativeQuotaErrorResponse(quotaGate);
+    if (quotaError) return quotaError;
+
     console.log("✓ Turnstile verification passed, proceeding with fantasy story generation");
 
     const apiKey = process.env.GRSAI_API_KEY;
     const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
     if (!apiKey) {
-      return respErr("API KEY not found");
+      return withCreativeVisitorCookie(respErr("API KEY not found"), quotaGate);
     }
 
     // Generate the prompt based on mode
@@ -178,12 +192,14 @@ export async function POST(req: Request) {
     if (!response.ok) {
       const errorText = await response.text();
       console.log("API Error:", response.status, errorText);
-      return respErr(`API Error: ${response.status} - ${errorText}`);
+      return withCreativeVisitorCookie(respErr(`API Error: ${response.status} - ${errorText}`), quotaGate);
     }
 
     if (!response.body) {
-      return respErr("No response body from API");
+      return withCreativeVisitorCookie(respErr("No response body from API"), quotaGate);
     }
+
+    await commitCreativeQuotaCharge(quotaGate);
 
     // Use TransformStream for streaming
     const encoder = new TextEncoder();
@@ -263,13 +279,13 @@ export async function POST(req: Request) {
 
     const transformedStream = response.body.pipeThrough(transformStream);
 
-    return new Response(transformedStream, {
+    return withCreativeVisitorCookie(new Response(transformedStream, {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "no-cache, no-transform",
         "X-Content-Type-Options": "nosniff",
       },
-    });
+    }), quotaGate);
   } catch (e) {
     console.log("Fantasy story generation failed:", e);
     return respErr("Bad request: " + e);

@@ -1,5 +1,12 @@
 {
   "dnd_backstory_generate": {
+    "completion_guide": {
+      "title": "Вам понравился этот сеттинг?",
+      "subtitle": "Сохраните его или используйте для создания истории.",
+      "create_another": "Попробовать ещё раз",
+      "share_action": "Сохранить историю",
+      "continue_label": "Продолжить историю"
+    },
     "metadata": {
       "title": "DnD генератор предысторий | D&D 5e персонаж бесплатно",
       "description": "Бесплатный DnD генератор предысторий для игроков и ДМов D&D 5e и 5.5e. Создавайте играбельные предыстории персонажей с чертами, идеалами, связями, изъянами, секретами и тремя DM-зацепками в каждом результате.",
@@ -148,15 +155,31 @@
     "success": {
       "random_prompt_selected": "Случайный DnD seed выбран!",
       "backstory_generated": "DnD предыстория успешно создана!",
-      "backstory_copied": "DnD предыстория скопирована!"
+      "backstory_copied": "DnD предыстория скопирована!",
+      "backstory_exported": "DnD предыстория экспортирована!"
     },
     "errors": {
-      "generation_failed": "Не удалось создать DnD предысторию."
+      "generation_failed": "Не удалось создать DnD предысторию.",
+      "no_content_to_export": "Нет DnD предыстории для экспорта. Сначала сгенерируйте.",
+      "export_failed": "Не удалось экспортировать, попробуйте снова."
+    },
+    "pdf": {
+      "generated_at": "Время создания",
+      "word_count_label": "Количество слов",
+      "ai_model": "ИИ-модель",
+      "story_format": "Формат",
+      "story_genre": "Жанр",
+      "story_tone": "Тон",
+      "prompt": "Промпт",
+      "footer_text": "Создано с помощью AI Story Generator",
+      "page_indicator": "Страница {current} / {total}"
     },
     "output": {
       "title": "Сгенерированная DnD предыстория",
       "words": "слов",
       "copy": "Копировать",
+      "export": "Экспорт",
+      "exporting": "Экспорт...",
       "generating_message": "Создаём играбельную DnD предысторию...",
       "empty_message": "Здесь появится структурированная DnD предыстория с traits, flaws, bonds, secrets и DM hooks."
     },

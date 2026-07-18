@@ -42,6 +42,9 @@ import type {
 } from "@/types/tiktok-comment";
 import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { TiktokCommentStorage } from "@/lib/tiktok-comment-storage";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 import TiktokCommentBreadcrumb from "./breadcrumb";
 import { pickRandomTiktokCommentPreset, splitReplies } from "./lib";
 
@@ -90,6 +93,7 @@ export default function TiktokCommentGenerate({
 }: TiktokCommentGenerateProps) {
   const locale = useLocale();
   const router = useRouter();
+  const creativeQuota = useCreativeQuotaPage("tiktok-comment-generator");
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const reduceMotion = useReducedMotion();
   const [sectionVisible, setSectionVisible] = useState(false);
@@ -246,7 +250,18 @@ export default function TiktokCommentGenerate({
           }),
         });
 
-        if (!response.ok || !response.body) {
+        if (!response.ok) {
+          let errorData: unknown = null;
+          try {
+            errorData = await response.json();
+          } catch {
+            // ignore parse failures
+          }
+          if (creativeQuota.handleQuotaError(response.status, errorData)) return;
+          throw new Error("request failed");
+        }
+
+        if (!response.body) {
           throw new Error("request failed");
         }
 
@@ -288,6 +303,9 @@ export default function TiktokCommentGenerate({
 
         saveCompletedReplies(accumulated);
         setLastCompletedOutput(accumulated);
+        if (mode === "creative") {
+          creativeQuota.increment();
+        }
         toast.success(t("success.generated", "TikTok replies generated."));
       } catch (error) {
         console.error("TikTok comment generation failed:", error);
@@ -301,6 +319,7 @@ export default function TiktokCommentGenerate({
     [
       comment,
       context,
+      creativeQuota,
       length,
       locale,
       mode,
@@ -318,10 +337,22 @@ export default function TiktokCommentGenerate({
       return;
     }
 
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel: mode,
+        message: t(
+          "toasts.creative_limit_reached",
+          "Today's free Creative uses are used up. Log in to get more credits."
+        ),
+      })
+    ) {
+      return;
+    }
+
     setIsGenerating(true);
     setGeneratedReplies("");
     turnstileRef.current?.execute();
-  }, [comment, t]);
+  }, [comment, creativeQuota, mode, t]);
 
   const handleRandomPrompt = useCallback(() => {
     const preset = pickRandomTiktokCommentPreset({ presets: randomPresets });
@@ -609,20 +640,46 @@ export default function TiktokCommentGenerate({
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label>{t("ui.output_language", "Output language")}</Label>
-                <Select value={outputLanguage} onValueChange={setOutputLanguage}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {LANGUAGE_OPTIONS.map((option) => (
-                      <SelectItem key={option.code} value={option.code}>
-                        {option.flag} {option.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label>{t("ui.output_language", "Output language")}</Label>
+                  <Select value={outputLanguage} onValueChange={setOutputLanguage}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {LANGUAGE_OPTIONS.map((option) => (
+                        <SelectItem key={option.code} value={option.code}>
+                          {option.flag} {option.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>{t("ui.mode_label", "AI model")}</Label>
+                  <Select
+                    value={mode}
+                    onValueChange={(value) =>
+                      setMode(value as TiktokCommentModelMode)
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {modeOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-muted-foreground">
+                    {modeOptions.find((option) => option.value === mode)?.description}
+                  </p>
+                </div>
               </div>
 
               <Collapsible open={showAdvanced} onOpenChange={setShowAdvanced}>
@@ -708,40 +765,29 @@ export default function TiktokCommentGenerate({
                         </Select>
                       </div>
 
-                      <div className="space-y-2">
-                        <Label>{t("ui.mode_label", "AI model")}</Label>
-                        <Select
-                          value={mode}
-                          onValueChange={(value) =>
-                            setMode(value as TiktokCommentModelMode)
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {modeOptions.map((option) => (
-                              <SelectItem key={option.value} value={option.value}>
-                                {option.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        <p className="text-xs text-muted-foreground">
-                          {modeOptions.find((option) => option.value === mode)?.description}
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </CollapsibleContent>
               </Collapsible>
 
-              <div className="flex flex-wrap gap-3">
-                <Button onClick={handleGenerate} disabled={isGenerating}>
+              <div className="flex flex-col items-center gap-3">
+                <Button
+                  onClick={handleGenerate}
+                  disabled={isGenerating}
+                  className="h-12 px-6 text-base"
+                >
                   {isGenerating
                     ? t("ui.generating_button", "Generating...")
-                    : t("ui.generate_button", "Generate replies")}
+                    : mode === "creative" &&
+                        creativeQuota.anonymousCreativeExhausted
+                      ? "Sign in to continue"
+                      : t("ui.generate_button", "Generate replies")}
                 </Button>
+                <CreativeQuotaHint
+                  pageKey="tiktok-comment-generator"
+                  selectedModel={mode}
+                  used={creativeQuota.used}
+                />
               </div>
             </CardContent>
           </Card>
@@ -918,6 +964,11 @@ export default function TiktokCommentGenerate({
             t("errors.verification_failed", "Verification failed. Try again.")
           );
         }}
+      />
+      <CreativeQuotaPaywall
+        open={creativeQuota.paywallOpen}
+        onClose={() => creativeQuota.setPaywallOpen(false)}
+        sourcePage="tiktok-comment-generator"
       />
     </section>
   );

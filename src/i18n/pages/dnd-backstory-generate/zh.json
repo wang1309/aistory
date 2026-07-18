@@ -1,5 +1,12 @@
 {
   "dnd_backstory_generate": {
+    "completion_guide": {
+      "title": "喜欢这个设定吗？",
+      "subtitle": "保存它，或基于此继续创作。",
+      "create_another": "再试一次",
+      "share_action": "保存故事",
+      "continue_label": "续写故事"
+    },
     "metadata": {
       "title": "DnD 背景故事生成器 | 免费 D&D 5e 角色设定工具",
       "description": "面向 D&D 5e / 5.5e 玩家与 DM 的背景故事生成器。快速生成可直接跑团使用的角色背景，包含性格特征、理想、羁绊、缺陷、秘密与 DM 剧情钩子，支持多种战役风格。",
@@ -148,15 +155,31 @@
     "success": {
       "random_prompt_selected": "已选择随机 DnD 角色种子！",
       "backstory_generated": "DnD 背景故事生成成功！",
-      "backstory_copied": "DnD 背景故事已复制到剪贴板！"
+      "backstory_copied": "DnD 背景故事已复制到剪贴板！",
+      "backstory_exported": "DnD 背景故事已导出！"
     },
     "errors": {
-      "generation_failed": "DnD 背景故事生成失败，请重试。"
+      "generation_failed": "DnD 背景故事生成失败，请重试。",
+      "no_content_to_export": "当前没有可导出的内容，请先生成一个 DnD 背景故事。",
+      "export_failed": "导出失败，请稍后再试。"
+    },
+    "pdf": {
+      "generated_at": "生成时间",
+      "word_count_label": "字数",
+      "ai_model": "AI 模型",
+      "story_format": "格式",
+      "story_genre": "类型",
+      "story_tone": "语气",
+      "prompt": "提示词",
+      "footer_text": "由 AI Story Generator 生成",
+      "page_indicator": "第 {current} 页 / 共 {total} 页"
     },
     "output": {
       "title": "生成的 DnD 背景故事",
       "words": "字",
       "copy": "复制",
+      "export": "导出",
+      "exporting": "导出中...",
       "generating_message": "正在为你的角色锻造可直接跑团使用的 DnD 背景故事...",
       "empty_message": "这里会显示结构化的 DnD 背景故事，包含性格、缺陷、羁绊、秘密与 DM hooks。"
     },

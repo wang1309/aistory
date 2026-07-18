@@ -1,5 +1,12 @@
 {
   "dnd_backstory_generate": {
+    "completion_guide": {
+      "title": "Like this backstory?",
+      "subtitle": "Save it or use it to create your story.",
+      "create_another": "Try Again",
+      "share_action": "Save Story",
+      "continue_label": "Continue the story"
+    },
     "metadata": {
       "title": "Free DnD Backstory Generator | D&D 5e Character Lore",
       "description": "DnD Backstory Generator for D&D 5e and 5.5e players and DMs. Build playable character backstories with traits, ideals, bonds, flaws, secrets, and three actionable DM hooks in every output.",
@@ -148,15 +155,31 @@
     "success": {
       "random_prompt_selected": "Random DnD seed selected!",
       "backstory_generated": "DnD backstory generated successfully!",
-      "backstory_copied": "DnD backstory copied to clipboard!"
+      "backstory_copied": "DnD backstory copied to clipboard!",
+      "backstory_exported": "DnD backstory exported!"
     },
     "errors": {
-      "generation_failed": "Failed to generate DnD backstory. Please try again."
+      "generation_failed": "Failed to generate DnD backstory. Please try again.",
+      "no_content_to_export": "No DnD backstory to export yet. Please generate one first.",
+      "export_failed": "Export failed, please try again."
+    },
+    "pdf": {
+      "generated_at": "Generated at",
+      "word_count_label": "Word count",
+      "ai_model": "AI Model",
+      "story_format": "Format",
+      "story_genre": "Genre",
+      "story_tone": "Tone",
+      "prompt": "Prompt",
+      "footer_text": "Generated with AI Story Generator",
+      "page_indicator": "Page {current} / {total}"
     },
     "output": {
       "title": "Generated DnD Backstory",
       "words": "words",
       "copy": "Copy",
+      "export": "Export",
+      "exporting": "Exporting...",
       "generating_message": "Forging your playable DnD backstory...",
       "empty_message": "Your structured DnD backstory will appear here with traits, flaws, bonds, secrets, and DM hooks."
     },

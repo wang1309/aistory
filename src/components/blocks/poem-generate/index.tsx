@@ -33,7 +33,13 @@ import type { StoryStatus } from "@/models/story";
 import { useGeneratorShortcuts } from "@/hooks/useGeneratorShortcuts";
 import { useDraftAutoSave } from "@/hooks/useDraftAutoSave";
 import { useRouter } from "@/i18n/navigation";
-import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
+import { getContinueActionLabel, shouldGateAnonymousContinue } from "@/components/ai-write/workbench/_lib";
+import {
+  buildContinueIntentPayload,
+  buildContinueTrackingPayload,
+  CONTINUE_INTENT_KEY,
+  GENERATOR_PREFILL_KEY,
+} from "@/components/ai-write/workbench/continue-intent";
 import { useOpenPanel } from "@openpanel/nextjs";
 import {
   buildPostAuthResumeTrackingPayload,
@@ -44,6 +50,9 @@ import {
   ACTIVATION_EVENTS,
   buildActivationTrackingPayload,
 } from "@/lib/activation-funnel";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 
 // ========== HELPER FUNCTIONS ==========
 
@@ -72,10 +81,11 @@ async function copyToClipboard(text: string): Promise<boolean> {
 
 export default function PoemGenerate({ section }: { section: PoemGenerateType }) {
   const locale = useLocale();
-  const { user, requireAuth } = useAppContext();
+  const { user, requireAuth, setSignModalContext } = useAppContext();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
   const { track } = useOpenPanel();
+  const creativeQuota = useCreativeQuotaPage("poem-generator");
 
   // Helper function to get nested translations from section data
   const t = (path: string) => {
@@ -479,13 +489,32 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       return;
     }
 
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel,
+        message: "Daily free Creative quota reached. Please sign in to continue.",
+      })
+    ) {
+      return;
+    }
+
     // Start loading state while Turnstile verification is in progress
     setIsGenerating(true);
+
+    track(
+      ACTIVATION_EVENTS.generationStarted,
+      buildActivationTrackingPayload({
+        sourcePage: "poem-generator",
+        loggedIn: !!user,
+        action: "generation_started",
+        model: selectedModel,
+      })
+    );
 
     // Trigger invisible Turnstile verification
     // After verification succeeds, handleTurnstileSuccess will be called automatically
     turnstileRef.current?.execute();
-  }, [prompt, selectedModel, section]);
+  }, [creativeQuota, prompt, selectedModel, section, track, user]);
 
   // Perform poem generation
   const performGeneration = useCallback(async (turnstileToken: string) => {
@@ -532,8 +561,11 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       console.log("Response status:", response.status);
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error("API Error:", errorText);
+        let errorData: unknown = null;
+        try {
+          errorData = await response.json();
+        } catch {}
+        if (creativeQuota.handleQuotaError(response.status, errorData)) return;
         toast.error(section.toasts.error_generate_failed);
         return;
       }
@@ -571,6 +603,18 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       setGeneratedPoem(accumulatedPoem);
       console.log("=== POEM STATE UPDATED ===");
 
+      track(
+        ACTIVATION_EVENTS.generationSucceeded,
+        buildActivationTrackingPayload({
+          sourcePage: "poem-generator",
+          loggedIn: !!user,
+          action: "generation_succeeded",
+          model: selectedModel,
+          wordCount: accumulatedPoem.length,
+        })
+      );
+      if (selectedModel === "creative") creativeQuota.increment();
+
       // Success!
       toast.success(section.toasts.success_generated);
 
@@ -605,11 +649,20 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
     } catch (error) {
       console.error("Generation error:", error);
+      track(
+        ACTIVATION_EVENTS.generationFailed,
+        buildActivationTrackingPayload({
+          sourcePage: "poem-generator",
+          loggedIn: !!user,
+          action: "generation_failed",
+          model: selectedModel,
+        })
+      );
       toast.error(section.toasts.error_generate_failed);
     } finally {
       setIsGenerating(false);
     }
-  }, [prompt, selectedModel, isFirstGeneration, section]);
+  }, [creativeQuota, prompt, selectedModel, isFirstGeneration, section, track, user]);
 
   // Handle Turnstile success
   const handleTurnstileSuccess = useCallback((token: string) => {
@@ -815,6 +868,41 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       }
     }, [generatedPoem, prompt, locale, selectedModel, section, requireAuth, track]
   );
+
+  const handleContinueInAiWrite = useCallback(() => {
+    if (!generatedPoem.trim()) return;
+
+    track(
+      "continue_ai_write_cta_click",
+      buildContinueTrackingPayload({
+        source_page: "poem-generator",
+        logged_in: !!user,
+        cta_variant: user ? "continue_ai_write" : "sign_in_to_continue_ai_write",
+      })
+    );
+
+    const payload = buildContinueIntentPayload({
+      source: "poem-generator",
+      title: prompt,
+      content: generatedPoem,
+    });
+
+    if (shouldGateAnonymousContinue({ hasUser: !!user, hasGeneratedContent: !!generatedPoem.trim() })) {
+      try {
+        window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+        window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+      } catch {}
+      track("sign_modal_open_for_continue", buildContinueTrackingPayload({ source_page: "poem-generator" }));
+      setSignModalContext({ mode: "continue-ai-write", source: payload.source, redirectTo: payload.redirectTo });
+      requireAuth({ source: "ai_write", action: "continue_writing", sourcePage: "poem-generator" });
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
+    } catch {}
+    router.push(payload.redirectTo as any);
+  }, [generatedPoem, prompt, router, user, track, setSignModalContext, requireAuth]);
 
   // ===== RENDER =====
 
@@ -1178,6 +1266,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                     );
                   })}
                 </div>
+                <CreativeQuotaHint pageKey="poem-generator" selectedModel={selectedModel} used={creativeQuota.used} />
               </div>
 
               {/* Advanced Mode Options */}
@@ -1273,7 +1362,11 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                   ) : (
                     <div className="flex items-center gap-2">
                       <Icon name="Sparkles" className="size-4" />
-                      <span>{section.generate_button.text}</span>
+                      <span>
+                        {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                          ? "Sign in to continue"
+                          : section.generate_button.text}
+                      </span>
                     </div>
                   )}
                 </Button>
@@ -1523,13 +1616,8 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
               <CompletionGuide
                 onCreateAnother={handleCreateAnother}
                 onSave={handleSaveClick}
-                onContinue={() => {
-                  try {
-                    window.localStorage.setItem("ai-write:generator-prefill", JSON.stringify({ title: prompt.substring(0, 30), content: generatedPoem }));
-                  } catch {}
-                  router.push(buildContinueRoute({ source: "poem-generator" }) as any);
-                }}
-                continueLabel={section.completion_guide.continue_label}
+                onContinue={handleContinueInAiWrite}
+                continueLabel={getContinueActionLabel({ hasUser: !!user, locale })}
                 isSaveDisabled={hasSavedCurrentPoem}
                 translations={section.completion_guide}
               />
@@ -1550,6 +1638,11 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
           onSelect={handleConfirmSave}
           locale={locale}
           isSaving={isSavingStory}
+        />
+        <CreativeQuotaPaywall
+          open={creativeQuota.paywallOpen}
+          onClose={() => creativeQuota.setPaywallOpen(false)}
+          sourcePage="poem-generator"
         />
       </div>
     </div>

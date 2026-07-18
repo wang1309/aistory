@@ -101,6 +101,9 @@
       "title": "Deine Liebesgeschichte",
       "words": "Wörter",
       "copy": "Kopieren",
+      "export": "Exportieren",
+      "export_md": "Als Markdown exportieren",
+      "export_txt": "Als Klartext exportieren",
       "generating_message": "Schreibe deine Liebesgeschichte...",
       "empty_message": "Deine originelle Liebesgeschichte, lebendige Charaktere, knisternde Spannung und das perfekte Ende, wird hier erscheinen."
     },
@@ -248,6 +251,13 @@
           "icon": "GoArrowUpRight"
         }
       ]
+    },
+    "completion_guide": {
+      "title": "Diese Liebesgeschichte gefallen?",
+      "subtitle": "Teilen Sie sie oder schreiben Sie in AI Write weiter.",
+      "create_another": "Neu erstellen",
+      "share_action": "Geschichte speichern",
+      "continue_label": "In AI Write fortsetzen"
     }
   }
 }

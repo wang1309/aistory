@@ -5,12 +5,14 @@ import { useLocale } from "next-intl";
 import { toast } from "sonner";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, Settings2 } from "lucide-react";
+import { useOpenPanel } from "@openpanel/nextjs";
 import GeneratorNavTabs from "@/components/generator-nav-tabs";
 import TurnstileInvisible, {
   TurnstileInvisibleHandle,
 } from "@/components/TurnstileInvisible";
 import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 import { useRouter } from "@/i18n/navigation";
+import { useAppContext } from "@/contexts/app";
 import Icon from "@/components/icon";
 import { Button } from "@/components/ui/button";
 import ShareResultButton from "@/components/story/share-result-button";
@@ -41,9 +43,16 @@ import type {
   IncorrectQuoteSafetyOptions,
   IncorrectQuoteTone,
 } from "@/types/incorrect-quote";
+import {
+  ACTIVATION_EVENTS,
+  buildActivationTrackingPayload,
+} from "@/lib/activation-funnel";
 import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { IncorrectQuoteStorage } from "@/lib/incorrect-quote-storage";
 import { cn } from "@/lib/utils";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 import IncorrectQuoteBreadcrumb from "./breadcrumb";
 import { pickRandomIncorrectQuotePreset } from "./lib";
 
@@ -252,6 +261,9 @@ export default function IncorrectQuoteGenerate({
   const locale = useLocale();
   const router = useRouter();
   const reduceMotion = useReducedMotion();
+  const { user } = useAppContext();
+  const { track } = useOpenPanel();
+  const creativeQuota = useCreativeQuotaPage("incorrect-quote-generator");
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
 
   const [prompt, setPrompt] = useState("");
@@ -401,7 +413,6 @@ export default function IncorrectQuoteGenerate({
 
   const runGeneration = useCallback(
     async (turnstileToken: string) => {
-
       try {
         const response = await fetch("/api/incorrect-quote-generate", {
           method: "POST",
@@ -422,7 +433,18 @@ export default function IncorrectQuoteGenerate({
           }),
         });
 
-        if (!response.ok || !response.body) {
+        if (!response.ok) {
+          let errorData: unknown = null;
+          try {
+            errorData = await response.json();
+          } catch {
+            // ignore parse failures
+          }
+          if (creativeQuota.handleQuotaError(response.status, errorData)) return;
+          throw new Error("request failed");
+        }
+
+        if (!response.body) {
           throw new Error("request failed");
         }
 
@@ -464,15 +486,38 @@ export default function IncorrectQuoteGenerate({
 
         saveCompletedQuote(accumulated);
         setLastCompletedQuote(accumulated);
+        if (mode === "creative") {
+          creativeQuota.increment();
+        }
+        track(
+          ACTIVATION_EVENTS.generationSucceeded,
+          buildActivationTrackingPayload({
+            sourcePage: "incorrect-quote-generator",
+            loggedIn: !!user,
+            action: "generation_succeeded",
+            model: mode,
+            wordCount: accumulated.split(/\s+/).filter(Boolean).length,
+          })
+        );
         toast.success(t("success.generated", "Incorrect quote generated."));
       } catch (error) {
         console.error("Incorrect quote generation failed:", error);
+        track(
+          ACTIVATION_EVENTS.generationFailed,
+          buildActivationTrackingPayload({
+            sourcePage: "incorrect-quote-generator",
+            loggedIn: !!user,
+            action: "generation_failed",
+            model: mode,
+          })
+        );
         toast.error(t("errors.generate_failed", "Failed to generate incorrect quote."));
       } finally {
         setIsGenerating(false);
       }
     },
     [
+      creativeQuota,
       length,
       locale,
       mode,
@@ -482,7 +527,9 @@ export default function IncorrectQuoteGenerate({
       safety,
       saveCompletedQuote,
       t,
+      track,
       tone,
+      user,
       validCharacters,
     ]
   );
@@ -493,10 +540,31 @@ export default function IncorrectQuoteGenerate({
       return;
     }
 
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel: mode,
+        message: t(
+          "toasts.creative_limit_reached",
+          "Today's free Creative uses are used up. Log in to get more credits."
+        ),
+      })
+    ) {
+      return;
+    }
+
     setIsGenerating(true);
     setGeneratedQuote("");
+    track(
+      ACTIVATION_EVENTS.generationStarted,
+      buildActivationTrackingPayload({
+        sourcePage: "incorrect-quote-generator",
+        loggedIn: !!user,
+        action: "generation_started",
+        model: mode,
+      })
+    );
     turnstileRef.current?.execute();
-  }, [prompt, t]);
+  }, [creativeQuota, mode, prompt, t, track, user]);
 
   const handleCopy = useCallback(async () => {
     if (!generatedQuote.trim()) {
@@ -1014,12 +1082,24 @@ export default function IncorrectQuoteGenerate({
                 </CollapsibleContent>
               </Collapsible>
 
-              <div className="flex flex-wrap gap-3">
-                <Button onClick={handleGenerate} disabled={isGenerating}>
+              <div className="flex flex-col items-center gap-3">
+                <Button
+                  onClick={handleGenerate}
+                  disabled={isGenerating}
+                  className="mx-auto h-12 px-6 text-base"
+                >
                   {isGenerating
                     ? t("ui.generating_button", "Generating...")
-                    : t("ui.generate_button", "Generate incorrect quote")}
+                    : mode === "creative" &&
+                        creativeQuota.anonymousCreativeExhausted
+                      ? "Sign in to continue"
+                      : t("ui.generate_button", "Generate incorrect quote")}
                 </Button>
+                <CreativeQuotaHint
+                  pageKey="incorrect-quote-generator"
+                  selectedModel={mode}
+                  used={creativeQuota.used}
+                />
               </div>
             </CardContent>
           </Card>
@@ -1102,6 +1182,11 @@ export default function IncorrectQuoteGenerate({
             t("errors.verification_failed", "Verification failed. Try again.")
           );
         }}
+      />
+      <CreativeQuotaPaywall
+        open={creativeQuota.paywallOpen}
+        onClose={() => creativeQuota.setPaywallOpen(false)}
+        sourcePage="incorrect-quote-generator"
       />
     </section>
   );

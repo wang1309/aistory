@@ -54,6 +54,10 @@ import {
 } from "@/components/ai-write/workbench/continue-intent";
 import { useAppContext } from "@/contexts/app";
 import { useOpenPanel } from "@openpanel/nextjs";
+import { ACTIVATION_EVENTS, buildActivationTrackingPayload } from "@/lib/activation-funnel";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 import { DialogueGenerate as DialogueGenerateType } from "@/types/blocks/dialogue-generate";
 import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { DialogueCharacter } from "@/types/dialogue";
@@ -87,6 +91,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
   const reduceMotion = useReducedMotion();
   const { user, requireAuth, setSignModalContext } = useAppContext();
   const { track } = useOpenPanel();
+  const creativeQuota = useCreativeQuotaPage("dialogue-generator");
   const turnstileRef = useRef<TurnstileInvisibleHandle>(null);
   const outputScrollRef = useRef<HTMLDivElement | null>(null);
   const promptRef = useRef<HTMLTextAreaElement | null>(null);
@@ -307,6 +312,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
 
       setIsGenerating(true);
       setGeneratedDialogue("");
+      let accumulatedDialogue = "";
 
       try {
         const response = await fetch("/api/dialogue-generate", {
@@ -327,6 +333,11 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
         });
 
         if (!response.ok) {
+          let errorData: unknown = null;
+          try {
+            errorData = await response.json();
+          } catch {}
+          if (creativeQuota.handleQuotaError(response.status, errorData)) return;
           throw new Error("Generation failed");
         }
 
@@ -350,6 +361,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
             if (line.startsWith("0:")) {
               try {
                 const content = JSON.parse(line.slice(2));
+                accumulatedDialogue += content;
                 setGeneratedDialogue((prev) => prev + content);
               } catch {
                 // Skip malformed lines
@@ -358,9 +370,32 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
           }
         }
 
+        track(
+          ACTIVATION_EVENTS.generationSucceeded,
+          buildActivationTrackingPayload({
+            sourcePage: "dialogue-generator",
+            loggedIn: !!user,
+            action: "generation_succeeded",
+            model: selectedModel,
+            wordCount: accumulatedDialogue.split(/\s+/).filter(Boolean).length,
+          })
+        );
+        if (selectedModel === "creative" && accumulatedDialogue.trim()) {
+          creativeQuota.increment();
+        }
+
         toast.success(t("success.dialogue_generated"));
       } catch (error) {
         console.error("Generation error:", error);
+        track(
+          ACTIVATION_EVENTS.generationFailed,
+          buildActivationTrackingPayload({
+            sourcePage: "dialogue-generator",
+            loggedIn: !!user,
+            action: "generation_failed",
+            model: selectedModel,
+          })
+        );
         toast.error(t("errors.generation_failed"));
       } finally {
         setIsGenerating(false);
@@ -377,6 +412,9 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
       setting,
       includeNarration,
       t,
+      track,
+      user,
+      creativeQuota,
     ]
   );
 
@@ -408,15 +446,34 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
       return;
     }
 
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel,
+        message: t("toasts.creative_limit_reached"),
+      })
+    ) {
+      return;
+    }
+
     savePromptToHistory(prompt);
 
     // Start loading state while Turnstile verification is in progress
     setIsGenerating(true);
 
+    track(
+      ACTIVATION_EVENTS.generationStarted,
+      buildActivationTrackingPayload({
+        sourcePage: "dialogue-generator",
+        loggedIn: !!user,
+        action: "generation_started",
+        model: selectedModel,
+      })
+    );
+
     // Trigger invisible Turnstile verification
     // After verification succeeds, handleTurnstileSuccess will be called automatically
     turnstileRef.current?.execute();
-  }, [prompt, selectedModel, characters, t, savePromptToHistory]);
+  }, [characters, creativeQuota, prompt, savePromptToHistory, selectedModel, t, track, user]);
 
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(generatedDialogue);
@@ -985,6 +1042,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                       </button>
                     ))}
                   </div>
+                  <CreativeQuotaHint pageKey="dialogue-generator" selectedModel={selectedModel} used={creativeQuota.used} />
                 </div>
 
                 {/* Language */}
@@ -1104,7 +1162,9 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                   ) : (
                     <>
                       <Icon name="RiChat3Line" className="w-5 h-5 mr-2" />
-                      {t("ui.generate_button")}
+                      {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                        ? "Sign in to continue"
+                        : t("ui.generate_button")}
                     </>
                   )}
                 </Button>
@@ -1262,6 +1322,11 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
         ref={turnstileRef}
         onSuccess={handleTurnstileSuccess}
         onError={handleTurnstileError}
+      />
+      <CreativeQuotaPaywall
+        open={creativeQuota.paywallOpen}
+        onClose={() => creativeQuota.setPaywallOpen(false)}
+        sourcePage="dialogue-generator"
       />
     </section>
   );

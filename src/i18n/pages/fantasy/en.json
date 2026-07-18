@@ -19,7 +19,18 @@
         "label": "Story Idea",
         "placeholder": "Describe your fantasy story idea... e.g., 'A young prince who cannot use magic must save the kingdom from an ancient dragon'",
         "required": "*",
-        "character_counter": "{{count}}/2000"
+        "character_counter": "{{count}}/2000",
+        "random_label": "Surprise me",
+        "examples": [
+          "A reluctant apprentice discovers their magic feeds on memories—every spell costs a forgotten face.",
+          "When the moon shatters into seven pieces, a young astronomer must reassemble a prophecy everyone has already forgotten.",
+          "Two rival dragon-riders are forced into an uneasy alliance when a species extinct for a thousand years returns from the ice.",
+          "The kingdom's last librarian guards a single book that can rewrite reality—one page per reader's lifetime.",
+          "A blacksmith's daughter, born without magic in a world of mages, forges weapons that hum with long-buried enchantments.",
+          "A thief steals a cursed crown that whispers the future to anyone who dares to wear it.",
+          "A lighthouse keeper realizes the lights approaching the shore aren't ships, but something ancient finally waking up.",
+          "A diplomat who can hear every lie navigates a peace summit that is secretly a carefully laid trap."
+        ]
       },
       "subgenre": {
         "label": "Subgenre",
@@ -239,8 +250,7 @@
     },
     "generate_button": {
       "text": "Generate Fantasy Story",
-      "generating": "Weaving your tale...",
-      "tip": "Each generation uses 1 credit. Results may vary."
+      "generating": "Weaving your tale..."
     },
     "output": {
       "tabs": {
@@ -266,6 +276,13 @@
       "previous": "Previous",
       "generate": "Generate"
     },
+    "completion_guide": {
+      "title": "Liked your story?",
+      "subtitle": "Sign in to keep writing, or try a new idea!",
+      "create_another": "Create Another",
+      "share_action": "Save Story",
+      "continue_hint": "Your content and context are preserved. Sign in to continue generating in AI Write."
+    },
     "toasts": {
       "error_no_prompt": "Please enter your story idea",
       "error_no_subgenre": "Please select a fantasy subgenre",
@@ -274,7 +291,12 @@
       "error_no_stream": "Unable to receive response stream",
       "error_no_content": "No content was generated",
       "success_generated": "Your fantasy story is ready!",
-      "success_copied": "Copied to clipboard!"
+      "success_copied": "Copied to clipboard!",
+      "save_no_auth": "Please sign in to save your story",
+      "save_failed": "Failed to save story: {{reason}}",
+      "save_published": "Story published",
+      "save_saved": "Story saved",
+      "save_error": "Failed to save story, please try again."
     },
     "ui": {
       "required": "*",

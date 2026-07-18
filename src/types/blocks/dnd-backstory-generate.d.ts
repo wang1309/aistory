@@ -82,18 +82,41 @@ export interface DndBackstoryGenerate {
     random_prompt_selected: string;
     backstory_generated: string;
     backstory_copied: string;
+    backstory_exported: string;
   };
   errors: {
     generation_failed: string;
+    no_content_to_export: string;
+    export_failed: string;
   };
   output: {
     title: string;
     words: string;
     copy: string;
+    export: string;
+    exporting: string;
     generating_message: string;
     empty_message: string;
   };
+  pdf?: {
+    generated_at: string;
+    word_count_label: string;
+    ai_model: string;
+    story_format: string;
+    story_genre: string;
+    story_tone: string;
+    prompt: string;
+    footer_text: string;
+    page_indicator: string;
+  };
   random_prompts: string[];
+  completion_guide?: {
+    title: string;
+    subtitle: string;
+    create_another: string;
+    share_action: string;
+    continue_label: string;
+  };
   feature_intro?: Section;
   feature_benefits?: Section;
   feature_section?: Section;

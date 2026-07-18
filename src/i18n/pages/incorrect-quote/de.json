@@ -58,6 +58,9 @@
       "generate_failed": "Erzeugung fehlgeschlagen.",
       "verification_failed": "Verifizierung fehlgeschlagen. Bitte erneut versuchen."
     },
+    "toasts": {
+      "creative_limit_reached": "Die heutigen kostenlosen Creative Nutzungen sind aufgebraucht. Anmelden, um fortzufahren."
+    },
     "ai_models": {
       "fast": "Schnell",
       "fast_description": "Für schnelle Iterationen und viele Versuche",

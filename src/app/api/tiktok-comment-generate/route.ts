@@ -7,6 +7,12 @@ import {
   resolveTiktokCommentModelConfig,
 } from "./_lib";
 import type { TiktokCommentGenerateRouteRequest } from "@/types/tiktok-comment";
+import {
+  commitCreativeQuotaCharge,
+  creativeQuotaErrorResponse,
+  prepareCreativeQuota,
+  withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 async function verifyTurnstileToken(token: string): Promise<boolean> {
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
@@ -59,11 +65,19 @@ export async function POST(req: Request) {
       return respErr("verification failed");
     }
 
+    const quotaGate = await prepareCreativeQuota({
+      pageKey: "tiktok-comment-generator",
+      model: normalized.mode,
+      request: req,
+    });
+    const quotaError = creativeQuotaErrorResponse(quotaGate);
+    if (quotaError) return quotaError;
+
     const apiKey = process.env.GRSAI_API_KEY;
     const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
 
     if (!apiKey) {
-      return respErr("API KEY not found");
+      return withCreativeVisitorCookie(respErr("API KEY not found"), quotaGate);
     }
 
     const prompt = buildTiktokCommentPrompt(normalized);
@@ -93,22 +107,33 @@ export async function POST(req: Request) {
 
     if (!response.ok) {
       console.error("TikTok comment upstream API error", response.status);
-      return respErr("Failed to generate TikTok comment replies");
+      return withCreativeVisitorCookie(
+        respErr("Failed to generate TikTok comment replies"),
+        quotaGate
+      );
     }
 
     if (!response.body) {
-      return respErr("No response body from API");
+      return withCreativeVisitorCookie(
+        respErr("No response body from API"),
+        quotaGate
+      );
     }
 
-    return new Response(
-      response.body.pipeThrough(createTiktokCommentTransformStream()),
-      {
-        headers: {
-          "Content-Type": "text/plain; charset=utf-8",
-          "Cache-Control": "no-cache, no-transform",
-          "X-Content-Type-Options": "nosniff",
-        },
-      }
+    await commitCreativeQuotaCharge(quotaGate);
+
+    return withCreativeVisitorCookie(
+      new Response(
+        response.body.pipeThrough(createTiktokCommentTransformStream()),
+        {
+          headers: {
+            "Content-Type": "text/plain; charset=utf-8",
+            "Cache-Control": "no-cache, no-transform",
+            "X-Content-Type-Options": "nosniff",
+          },
+        }
+      ),
+      quotaGate
     );
   } catch (error) {
     console.error("TikTok comment generation error:", error);

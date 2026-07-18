@@ -101,6 +101,9 @@
       "title": "Your Romance Story",
       "words": "words",
       "copy": "Copy",
+      "export": "Export",
+      "export_md": "Export as Markdown",
+      "export_txt": "Export as Plain Text",
       "generating_message": "Writing your romance story...",
       "empty_message": "Your original romance story, with characters, tension, and the perfect ending, will appear here."
     },
@@ -248,6 +251,13 @@
           "icon": "GoArrowUpRight"
         }
       ]
+    },
+    "completion_guide": {
+      "title": "Love this romance story?",
+      "subtitle": "Share it or continue crafting in AI Write.",
+      "create_another": "Create Another",
+      "share_action": "Save Story",
+      "continue_label": "Continue in AI Write"
     }
   }
 }

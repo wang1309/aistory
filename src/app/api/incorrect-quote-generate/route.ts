@@ -7,6 +7,12 @@ import {
   resolveIncorrectQuoteModelConfig,
 } from "./_lib";
 import type { IncorrectQuoteGenerateRequest } from "@/types/incorrect-quote";
+import {
+  commitCreativeQuotaCharge,
+  creativeQuotaErrorResponse,
+  prepareCreativeQuota,
+  withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 type IncorrectQuoteGenerateRouteRequest = IncorrectQuoteGenerateRequest & {
   turnstileToken?: string;
@@ -59,11 +65,19 @@ export async function POST(req: Request) {
       return respErr("verification failed");
     }
 
+    const quotaGate = await prepareCreativeQuota({
+      pageKey: "incorrect-quote-generator",
+      model: normalized.mode,
+      request: req,
+    });
+    const quotaError = creativeQuotaErrorResponse(quotaGate);
+    if (quotaError) return quotaError;
+
     const apiKey = process.env.GRSAI_API_KEY;
     const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
 
     if (!apiKey) {
-      return respErr("API KEY not found");
+      return withCreativeVisitorCookie(respErr("API KEY not found"), quotaGate);
     }
 
     const prompt = buildIncorrectQuotePrompt(normalized);
@@ -92,20 +106,31 @@ export async function POST(req: Request) {
 
     if (!response.ok) {
       console.error("Incorrect quote upstream API error", response.status);
-      return respErr("Failed to generate incorrect quote");
+      return withCreativeVisitorCookie(
+        respErr("Failed to generate incorrect quote"),
+        quotaGate
+      );
     }
 
     if (!response.body) {
-      return respErr("No response body from API");
+      return withCreativeVisitorCookie(
+        respErr("No response body from API"),
+        quotaGate
+      );
     }
 
-    return new Response(response.body.pipeThrough(createIncorrectQuoteTransformStream()), {
-      headers: {
-        "Content-Type": "text/plain; charset=utf-8",
-        "Cache-Control": "no-cache, no-transform",
-        "X-Content-Type-Options": "nosniff",
-      },
-    });
+    await commitCreativeQuotaCharge(quotaGate);
+
+    return withCreativeVisitorCookie(
+      new Response(response.body.pipeThrough(createIncorrectQuoteTransformStream()), {
+        headers: {
+          "Content-Type": "text/plain; charset=utf-8",
+          "Cache-Control": "no-cache, no-transform",
+          "X-Content-Type-Options": "nosniff",
+        },
+      }),
+      quotaGate
+    );
   } catch (error) {
     console.error("Incorrect quote generation error", error);
     return respErr("bad request");

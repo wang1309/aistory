@@ -26,6 +26,8 @@ export interface FantasyGenerate {
       placeholder: string;
       required: string;
       character_counter: string;
+      random_label?: string;
+      examples?: string[];
     };
     subgenre: {
       label: string;
@@ -254,7 +256,6 @@ export interface FantasyGenerate {
   generate_button: {
     text: string;
     generating: string;
-    tip: string;
   };
   // 输出区域
   output: {
@@ -282,6 +283,14 @@ export interface FantasyGenerate {
     previous: string;
     generate: string;
   };
+  // 生成完成引导
+  completion_guide?: {
+    title: string;
+    subtitle: string;
+    create_another: string;
+    share_action: string;
+    continue_hint: string;
+  };
   // Toast 消息
   toasts: {
     error_no_prompt: string;
@@ -292,6 +301,11 @@ export interface FantasyGenerate {
     error_no_content: string;
     success_generated: string;
     success_copied: string;
+    save_no_auth?: string;
+    save_failed?: string;
+    save_published?: string;
+    save_saved?: string;
+    save_error?: string;
   };
   // UI 文本
   ui: {

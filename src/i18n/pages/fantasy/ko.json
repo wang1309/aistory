@@ -19,7 +19,18 @@
         "label": "Story Idea",
         "placeholder": "Describe your fantasy story idea... e.g., 'A young prince who cannot use magic must save the kingdom from an ancient dragon'",
         "required": "*",
-        "character_counter": "{{count}}/2000"
+        "character_counter": "{{count}}/2000",
+        "random_label": "랜덤",
+        "examples": [
+          "마지못해 수련하는 견습생은 자신의 마법이 기억을 먹고 산다는 걸 깨닫는다. 주문 하나에 소중한 얼굴 하나를 잊는다.",
+          "달이 일곱 조각으로 부서졌을 때, 젊은 천문학자는 모두가 잊어버린 예언을 다시 조합해야 한다.",
+          "숙적인 두 용기사는 천 년 전 멸종한 종족이 얼음 속에서 돌아오자 위태로운 동맹을 맺게 된다.",
+          "왕국 마지막 사서가 현실을 다시 쓸 수 있는 한 권의 책을 지킨다. 독자는 평생 한 페이지만 읽을 수 있다.",
+          "마법사의 세계에서 태어날 때부터 마법이 없는 대장장이의 딸이, 고대 마력을 품고 울리는 무기를 벼린다.",
+          "도둑이 훔친 저주받은 왕관은, 감히 쓰는 자에게 미래를 속삭인다.",
+          "등대지기는 해안에 다가오는 빛이 배가 아니라, 이제 막 깨어난 고대의 무언가임을 깨닫는다.",
+          "모든 거짓을 들을 수 있는 외교관이, 평화 회담으로 위장한 정교한 함정에 들어선다."
+        ]
       },
       "subgenre": {
         "label": "Subgenre",
@@ -239,8 +250,7 @@
     },
     "generate_button": {
       "text": "Generate Fantasy Story",
-      "generating": "Weaving your tale...",
-      "tip": "Each generation uses 1 credit. Results may vary."
+      "generating": "Weaving your tale..."
     },
     "output": {
       "tabs": {
@@ -266,6 +276,13 @@
       "previous": "Previous",
       "generate": "Generate"
     },
+    "completion_guide": {
+      "title": "이 이야기가 마음에 드시나요?",
+      "subtitle": "로그인해서 계속 쓰거나, 새로운 아이디어를 시도해 보세요!",
+      "create_another": "하나 더 만들기",
+      "share_action": "이야기 저장",
+      "continue_hint": "콘텐츠와 문맥이 그대로 유지됩니다. 로그인 후 AI Write에서 계속 생성하세요."
+    },
     "toasts": {
       "error_no_prompt": "Please enter your story idea",
       "error_no_subgenre": "Please select a fantasy subgenre",
@@ -274,7 +291,12 @@
       "error_no_stream": "Unable to receive response stream",
       "error_no_content": "No content was generated",
       "success_generated": "Your fantasy story is ready!",
-      "success_copied": "Copied to clipboard!"
+      "success_copied": "Copied to clipboard!",
+      "save_no_auth": "이야기를 저장하려면 로그인해 주세요",
+      "save_failed": "저장 실패: {{reason}}",
+      "save_published": "이야기가 게시되었습니다",
+      "save_saved": "이야기가 저장되었습니다",
+      "save_error": "저장에 실패했습니다. 나중에 다시 시도해 주세요."
     },
     "ui": {
       "required": "*",

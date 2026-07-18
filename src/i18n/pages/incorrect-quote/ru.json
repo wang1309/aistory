@@ -58,6 +58,9 @@
       "generate_failed": "Не удалось сгенерировать incorrect quote.",
       "verification_failed": "Проверка не пройдена. Попробуйте снова."
     },
+    "toasts": {
+      "creative_limit_reached": "Сегодняшние бесплатные Creative попытки исчерпаны. Войдите, чтобы продолжить."
+    },
     "ai_models": {
       "fast": "Быстрый",
       "fast_description": "Лучше для быстрых прогонов и частых перегенераций",

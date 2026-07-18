@@ -102,7 +102,10 @@
       "copy": "复制",
       "continue_button": "续写故事",
       "generating_message": "正在为您创作睡前故事...",
-      "empty_message": "您的个性化睡前故事将在这里出现。准备好了吗？让我们开始今晚的睡前时光！"
+      "empty_message": "您的个性化睡前故事将在这里出现。准备好了吗？让我们开始今晚的睡前时光！",
+      "export": "导出",
+      "export_md": "Markdown (.md)",
+      "export_txt": "纯文本 (.txt)"
     },
     "random_prompts": [
       "一只害怕黑暗的小兔子发现萤火虫是星星的小助手",
@@ -248,6 +251,13 @@
           "icon": "GoArrowUpRight"
         }
       ]
+    },
+    "completion_guide": {
+      "title": "喜欢这个睡前故事吗？",
+      "subtitle": "分享给孩子，或在 AI Write 中继续创作。",
+      "create_another": "再创作一个",
+      "share_action": "保存故事",
+      "continue_label": "在 AI Write 中续写"
     }
   }
 }

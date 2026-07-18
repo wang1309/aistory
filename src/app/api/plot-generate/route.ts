@@ -3,6 +3,12 @@ import { respErr } from "@/lib/resp";
 import { buildPlotPrompt } from "@/lib/plot-prompt";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
 import type { PlotGenerateOptions } from "@/types/plot";
+import {
+  commitCreativeQuotaCharge,
+  creativeQuotaErrorResponse,
+  prepareCreativeQuota,
+  withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 /**
  * 验证 Cloudflare Turnstile Token
@@ -130,6 +136,14 @@ export async function POST(req: Request) {
       return respErr("Verification failed");
     }
 
+    const quotaGate = await prepareCreativeQuota({
+      pageKey: "plot-generator",
+      model,
+      request: req,
+    });
+    const quotaError = creativeQuotaErrorResponse(quotaGate);
+    if (quotaError) return quotaError;
+
     console.log("✓ Turnstile verification passed, proceeding with plot generation");
 
     // API Key 检查
@@ -137,7 +151,7 @@ export async function POST(req: Request) {
     const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
     if (!apiKey) {
       console.log("GRSAI_API_KEY not found");
-      return respErr("API KEY not configured");
+      return withCreativeVisitorCookie(respErr("API KEY not configured"), quotaGate);
     }
 
     // 构建 Plot 生成选项
@@ -204,13 +218,15 @@ export async function POST(req: Request) {
     if (!response.ok) {
       const errorText = await response.text();
       console.log("GRSAI API error:", response.status, errorText);
-      return respErr(`API request failed: ${response.status}`);
+      return withCreativeVisitorCookie(respErr(`API request failed: ${response.status}`), quotaGate);
     }
 
     if (!response.body) {
       console.log("Response body is null");
-      return respErr("No response body from AI service");
+      return withCreativeVisitorCookie(respErr("No response body from AI service"), quotaGate);
     }
+
+    await commitCreativeQuotaCharge(quotaGate);
 
     console.log("✓ GRSAI API response received, starting streaming");
 
@@ -277,14 +293,14 @@ export async function POST(req: Request) {
 
     const readableStream = response.body.pipeThrough(transformStream);
 
-    return new Response(readableStream, {
+    return withCreativeVisitorCookie(new Response(readableStream, {
       headers: {
         "Content-Type": "text/event-stream; charset=utf-8",
         "Cache-Control": "no-cache, no-transform",
         "Connection": "keep-alive",
         "X-Content-Type-Options": "nosniff",
       },
-    });
+    }), quotaGate);
   } catch (error) {
     console.log("Plot generation error:", error);
     return respErr(`Plot generation failed: ${error}`);

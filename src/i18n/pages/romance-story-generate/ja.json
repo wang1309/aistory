@@ -101,6 +101,9 @@
       "title": "あなたのロマンス小説",
       "words": "語",
       "copy": "コピー",
+      "export": "エクスポート",
+      "export_md": "Markdownとして保存",
+      "export_txt": "プレーンテキストとして保存",
       "generating_message": "ロマンス小説を執筆中...",
       "empty_message": "あなたのオリジナルロマンス小説, 個性的なキャラクター、ときめく緊張感、完璧なエンディング, がここに表示されます。"
     },
@@ -248,6 +251,13 @@
           "icon": "GoArrowUpRight"
         }
       ]
+    },
+    "completion_guide": {
+      "title": "このロマンス小説はいかがでしたか？",
+      "subtitle": "共有するか、AI Writeで続けて作成しましょう。",
+      "create_another": "もう一度作る",
+      "share_action": "物語を保存",
+      "continue_label": "AI Writeで続ける"
     }
   }
 }

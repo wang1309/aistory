@@ -26,7 +26,12 @@ export type AuthSourcePage =
   | "dnd-backstory-generator"
   | "plot-generator"
   | "poem-generator"
-  | "fantasy-generator";
+  | "fantasy-generator"
+  | "bedtime-story-generator"
+  | "comic-generator"
+  | "romance-story-generator"
+  | "incorrect-quote-generator"
+  | "tiktok-comment-generator";
 
 export const AUTH_ATTEMPT_STORAGE_KEY = "auth-funnel:pending-attempt";
 

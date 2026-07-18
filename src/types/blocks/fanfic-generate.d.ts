@@ -358,6 +358,7 @@ export interface FanficGenerate {
         status_writing?: string;
         status_complete?: string;
         start_button?: string;
+        regenerate_button?: string;
         summary_title?: string;
         source_work_label?: string;
         pairing_label?: string;
@@ -406,6 +407,9 @@ export interface FanficGenerate {
       step_validation?: string;
       auto_advance?: string;
       error_generation?: string;
+      prompt_needs_more?: string;
+      error_prompt_too_short?: string;
+      back_to_top?: string;
     };
   };
   modern?: {

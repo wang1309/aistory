@@ -41,6 +41,9 @@ import {
   GENERATOR_PREFILL_KEY,
 } from "@/components/ai-write/workbench/continue-intent";
 import { useOpenPanel } from "@openpanel/nextjs";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 import {
   buildPostAuthResumeTrackingPayload,
   consumePendingAuthResume,
@@ -78,6 +81,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     const router = useRouter();
     const reduceMotion = useReducedMotion();
     const { track } = useOpenPanel();
+    const creativeQuota = useCreativeQuotaPage("backstory-generator");
 
     // Helper function to get nested translations
     const t = (path: string) => {
@@ -295,9 +299,29 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             return;
         }
 
+        if (
+            creativeQuota.guardAnonymousCreativeQuota({
+                selectedModel,
+                message: t('toasts.creative_limit_reached'),
+            })
+        ) {
+            return;
+        }
+
         setIsGenerating(true);
+
+        track(
+            ACTIVATION_EVENTS.generationStarted,
+            buildActivationTrackingPayload({
+                sourcePage: "backstory-generator",
+                loggedIn: !!user,
+                action: "generation_started",
+                model: selectedModel,
+            })
+        );
+
         turnstileRef.current?.execute();
-    }, [prompt, selectedModel, section]);
+    }, [creativeQuota, prompt, selectedModel, section, t, track, user]);
 
     const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
         const options = backstoryOptionsRef.current;
@@ -325,6 +349,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
 
             if (!response.ok) {
                 const errorData = await response.json();
+                if (creativeQuota.handleQuotaError(response.status, errorData)) return;
                 throw new Error(errorData.message || `HTTP ${response.status}`);
             }
 
@@ -359,6 +384,17 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             }
 
             if (accumulatedContent.trim()) {
+                if (selectedModel === "creative") creativeQuota.increment();
+                track(
+                    ACTIVATION_EVENTS.generationSucceeded,
+                    buildActivationTrackingPayload({
+                        sourcePage: "backstory-generator",
+                        loggedIn: !!user,
+                        action: "generation_succeeded",
+                        model: selectedModel,
+                        wordCount: calculateWordCount(accumulatedContent),
+                    })
+                );
                 confetti({
                     particleCount: 80,
                     spread: 60,
@@ -370,11 +406,20 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
 
         } catch (error) {
             console.error("Backstory generation error:", error);
+            track(
+                ACTIVATION_EVENTS.generationFailed,
+                buildActivationTrackingPayload({
+                    sourcePage: "backstory-generator",
+                    loggedIn: !!user,
+                    action: "generation_failed",
+                    model: selectedModel,
+                })
+            );
             toast.error(`${t('errors.generation_failed')} ${error}`);
         } finally {
             setIsGenerating(false);
         }
-    }, [prompt, selectedModel]);
+    }, [creativeQuota, prompt, selectedModel, track, user]);
 
     const handleTurnstileSuccess = useCallback((turnstileToken: string) => {
         handleVerificationSuccess(turnstileToken);
@@ -887,7 +932,12 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                             </SelectTrigger>
                                             <SelectContent>
                                                 {AI_MODELS.map(m => (
-                                                    <SelectItem key={m.id} value={m.id}>{m.name}</SelectItem>
+                                                    <SelectItem key={m.id} value={m.id}>
+                                                        <div className="flex items-center gap-2 py-0.5">
+                                                            <span className="opacity-70">{m.icon}</span>
+                                                            <span className="font-medium">{m.name}</span>
+                                                        </div>
+                                                    </SelectItem>
                                                 ))}
                                             </SelectContent>
                                         </Select>
@@ -1028,11 +1078,14 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                                     </svg>
                                                 )}
                                             </span>
-                                            {t('ui.generate_button')}
+                                            {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                                                ? "Sign in to continue"
+                                                : t('ui.generate_button')}
                                         </>
                                     )}
                                 </Button>
                                 <GeneratorShortcutHints />
+                                <CreativeQuotaHint pageKey="backstory-generator" selectedModel={selectedModel} used={creativeQuota.used} />
                             </div>
                         </div>
                     </motion.div>
@@ -1162,6 +1215,11 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                 onSelect={handleConfirmSave}
                 locale={locale}
                 isSaving={isSavingStory}
+            />
+            <CreativeQuotaPaywall
+                open={creativeQuota.paywallOpen}
+                onClose={() => creativeQuota.setPaywallOpen(false)}
+                sourcePage="backstory-generator"
             />
         </div>
     );
