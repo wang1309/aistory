@@ -23,8 +23,8 @@ export async function generateMetadata({
   }
 
   return {
-    title: t("blog.title"),
-    description: t("blog.description"),
+    title: t("blog.meta_title"),
+    description: t("blog.meta_description"),
     alternates: {
       canonical: canonicalUrl,
     },

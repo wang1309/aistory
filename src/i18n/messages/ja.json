@@ -134,7 +134,9 @@
     "author": "著者",
     "home": "ホーム",
     "index_label": "索引",
-    "on_this_page": "このページの内容"
+    "on_this_page": "このページの内容",
+    "meta_title": "執筆ガイドと物語のインスピレーション | AI Story Generator",
+    "meta_description": "フィクション作家のための執筆ガイド、プロンプト、インスピレーション。AI Story Generator で魅力的なキャラクター、プロット、物語を創作しましょう。"
   },
   "pricing": {
     "title": "料金プラン"

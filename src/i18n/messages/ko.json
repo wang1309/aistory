@@ -134,7 +134,9 @@
     "author": "작성자",
     "home": "홈",
     "index_label": "목차",
-    "on_this_page": "이 페이지에서"
+    "on_this_page": "이 페이지에서",
+    "meta_title": "글쓰기 가이드와 이야기 영감 | AI Story Generator",
+    "meta_description": "픽션 작가를 위한 글쓰기 가이드, 프롬프트, 영감. AI Story Generator로 더 매력적인 캐릭터, 플롯, 이야기를 만들어 보세요."
   },
   "pricing": {
     "title": "요금제"

@@ -137,7 +137,9 @@
     "author": "作者",
     "home": "首页",
     "index_label": "目录",
-    "on_this_page": "本页目录"
+    "on_this_page": "本页目录",
+    "meta_title": "写作指南与故事灵感 | AI Story Generator",
+    "meta_description": "为故事创作者准备的写作指南、提示与灵感。用 AI Story Generator 构思更精彩的人物、情节与故事。"
   },
   "pricing": {
     "title": "定价"
