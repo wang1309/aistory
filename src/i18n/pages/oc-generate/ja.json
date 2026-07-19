@@ -1,0 +1,142 @@
+{
+  "oc_generate": {
+    "metadata": {
+      "title": "オリジナルキャラクター生成器 - 執筆者とTRPGプレイヤー向け",
+      "description": "性格、葛藤、ストーリーフック、画像プロンプトを備えた再利用可能なオリジナルキャラクターを作成。無料・登録不要・ブラウザで動作。",
+      "keywords": "OC生成器, オリジナルキャラクター生成, OCプロフィール生成, TRPGキャラクター作成, キャラクターメーカー, OCアイデア"
+    },
+    "ui": {
+      "title": "オリジナルキャラクター生成器",
+      "subtitle": "ずっと書き続けられるキャラクターを作ろう。",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "OC生成器",
+      "generate_concepts": "キャラクターの概念を生成",
+      "select_concept": "この概念を選ぶ",
+      "generate_profile": "キャラクタープロフィールを作成",
+      "reroll_field": "再生成",
+      "save_local": "このブラウザに保存",
+      "saved_local": "このブラウザに保存済み",
+      "history": "保存したキャラクター",
+      "export_markdown": "Markdown書き出し",
+      "export_json": "JSON書き出し",
+      "copy_field": "コピー",
+      "copy_profile": "プロフィールをコピー",
+      "lock_field": "ロック",
+      "unlock_field": "ロック解除",
+      "delete_character": "削除",
+      "delete_confirm": "このキャラクターをこのブラウザから完全に削除しますか?",
+      "restore_version": "このバージョンを復元",
+      "empty_history": "保存したキャラクターはまだありません。生成して保存するとここに表示されます。",
+      "continue_backstory": "背景故事生成へ進む",
+      "continue_story": "物語を始める",
+      "continue_dnd": "D&D背景を作る",
+      "local_only_label": "このブラウザにのみ保存されます。サイトデータを消去すると削除されます。",
+      "generating": "生成中…",
+      "concepts_step_title": "概念を選ぶ",
+      "profile_step_title": "あなたのキャラクター",
+      "back": "戻る",
+      "retry": "再試行"
+    },
+    "modes": {
+      "label": "モード",
+      "general": "一般",
+      "general_hint": "小説や短編向けのオリジナルキャラクター。",
+      "rpg": "TRPG",
+      "rpg_hint": "プレイ可能なフックを持つテーブル・ゲームキャラクター。",
+      "anime": "アニメ",
+      "anime_hint": "ライトノベル・アニメ調の、強いビジュアルモチーフのキャラクター。"
+    },
+    "fields": {
+      "world": "世界",
+      "world_placeholder": "例:氷封の辺境、ネオンの巨大都市、静かな海辺の町",
+      "role": "キャラクターの役割",
+      "role_placeholder": "例:気が進まない治療師、引退した密輸人、王室の記録官",
+      "constraints": "制約",
+      "constraints_placeholder": "生成器が避けるべき、あるいは守るべきことは? 例:選ばれし主人公なし、低魔法、モラルグレー",
+      "identity": "アイデンティティ",
+      "name": "名前",
+      "aliases": "別名",
+      "age": "年齢",
+      "pronouns": "代名詞",
+      "species": "種族",
+      "appearance": "外見",
+      "personality": "性格",
+      "desire": "願い",
+      "flaw": "欠点",
+      "secret": "秘密",
+      "relationships": "関係",
+      "conflict": "葛藤",
+      "storyHooks": "ストーリーフック",
+      "visualPrompt": "画像プロンプト",
+      "premise": "前提",
+      "visualHook": "ビジュアルフック",
+      "personalityHook": "性格フック",
+      "conflictHook": "葛藤フック"
+    },
+    "role_presets": [
+      "気が進まない治療師",
+      "引退した密輸人",
+      "王室の記録官",
+      "汚名を着た騎士",
+      "路地裏の錬金術師",
+      "秘密を抱えた運び屋"
+    ],
+    "world_presets": [
+      "ダークファンタジー王国",
+      "氷封の辺境",
+      "ネオンの巨大都市",
+      "崩壊後の荒野",
+      "ほっこり魔法学院"
+    ],
+    "placeholders": {
+      "world": "世界や舞台を描写",
+      "role": "キャラクターの役割を描写",
+      "constraints": "任意の制約・避けたい要素"
+    },
+    "output": {
+      "pending_concepts": "3つのオリジナル概念を構想中…",
+      "pending_profile": "完全なプロフィールを作成中…",
+      "pending_reroll": "新しい案を生成中…",
+      "concepts_empty": "まだ概念がありません - 世界と役割を描写してから生成してください。"
+    },
+    "errors": {
+      "concepts_failed": "概念を生成できませんでした。もう一度お試しください。",
+      "profile_failed": "このプロフィールを作成できませんでした。もう一度お試しください。",
+      "reroll_failed": "そのフィールドを再生成できませんでした。現在のプロフィールは変更されていません。",
+      "verification_failed": "認証に失敗しました。再読み込みして再度お試しください。",
+      "generic": "問題が発生しました。もう一度お試しください。"
+    },
+    "success": {
+      "concepts_ready": "3つの概念が完成しました。",
+      "profile_ready": "キャラクタープロフィールが完成しました。",
+      "reroll_applied": "新しい案を適用しました。",
+      "saved_local": "キャラクターをこのブラウザに保存しました。",
+      "copied": "クリップボードにコピーしました。",
+      "handed_off_backstory": "キャラクターを背景故事生成器に送りました。あちらで設定を完了してください。",
+      "handed_off_story": "キャラクターを物語生成器に送りました。あちらで設定を完了してください。",
+      "handed_off_dnd": "キャラクターをD&D背景生成器に送りました。あちらで設定を完了してください。"
+    },
+    "faq_items": [
+      {
+        "title": "OC生成器とは何ですか?",
+        "description": "OC(オリジナルキャラクター)生成器は、世界・役割・いくつかの制約を、性格・葛藤・ストーリーフック・画像プロンプトを持つ、すぐ書けるキャラクターに変えます。"
+      },
+      {
+        "title": "登録は必要ですか?",
+        "description": "いいえ。1日の無料枠までは匿名で生成できます。それ以降はログインすれば続けて生成できます。"
+      },
+      {
+        "title": "キャラクターは保存されますか?",
+        "description": "生成されたプロフィールはブラウザ(localStorage)にのみ保存され、書き出しやコピーしない限りあなたの端末から出ません。"
+      },
+      {
+        "title": "気に入ったフィールドをロックできますか?",
+        "description": "はい。任意のフィールドをロックして他を再生成すると、ロックした値はそのまま、他は新しい案に変わります。"
+      },
+      {
+        "title": "このキャラクターで書き続けられますか?",
+        "description": "はい。背景故事・物語・D&D背景の各生成器に進むと、キャラクターが自動的に出発点として読み込まれます。"
+      }
+    ]
+  }
+}

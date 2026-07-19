@@ -1,0 +1,142 @@
+{
+  "oc_generate": {
+    "metadata": {
+      "title": "Original-Charakter-Generator für Autoren und RPGs",
+      "description": "Erstelle ein wiederverwendbares Original-Charakter-Profil mit Persönlichkeit, Konflikt, Story-Hooks und einem Bild-Prompt. Kostenlos, ohne Anmeldung, direkt im Browser.",
+      "keywords": "OC-Generator, Original-Charakter-Generator, OC-Profil-Generator, RPG-Charakter-Generator, Charakter-Ersteller, OC-Ideen"
+    },
+    "ui": {
+      "title": "Original-Charakter-Generator",
+      "subtitle": "Erschaffe einen Charakter, mit dem du weiterschreiben kannst.",
+      "breadcrumb_home": "Start",
+      "breadcrumb_current": "OC-Generator",
+      "generate_concepts": "Charakter-Konzepte generieren",
+      "select_concept": "Dieses Konzept wählen",
+      "generate_profile": "Charakter-Profil erstellen",
+      "reroll_field": "Neu würfeln",
+      "save_local": "In diesem Browser speichern",
+      "saved_local": "In diesem Browser gespeichert",
+      "history": "Gespeicherte Charaktere",
+      "export_markdown": "Markdown exportieren",
+      "export_json": "JSON exportieren",
+      "copy_field": "Kopieren",
+      "copy_profile": "Profil kopieren",
+      "lock_field": "Sperren",
+      "unlock_field": "Entsperren",
+      "delete_character": "Löschen",
+      "delete_confirm": "Diesen Charakter dauerhaft aus diesem Browser löschen?",
+      "restore_version": "Diese Version wiederherstellen",
+      "empty_history": "Noch keine gespeicherten Charaktere. Generiere und speichere einen, um ihn hier zu sehen.",
+      "continue_backstory": "Zur Hintergrund-Geschichte",
+      "continue_story": "Story starten",
+      "continue_dnd": "D&D-Hintergrund erstellen",
+      "local_only_label": "Nur in diesem Browser gespeichert. Das Löschen der Website-Daten entfernt sie.",
+      "generating": "Wird erstellt…",
+      "concepts_step_title": "Konzept wählen",
+      "profile_step_title": "Dein Charakter",
+      "back": "Zurück",
+      "retry": "Erneut versuchen"
+    },
+    "modes": {
+      "label": "Modus",
+      "general": "Allgemein",
+      "general_hint": "Original-Charaktere für Romane und Kurzgeschichten.",
+      "rpg": "RPG",
+      "rpg_hint": "Tabletop- und Spielcharaktere mit spielbaren Hooks.",
+      "anime": "Anime",
+      "anime_hint": "Light-Novel- und Anime-Charaktere mit starken visuellen Motiven."
+    },
+    "fields": {
+      "world": "Welt",
+      "world_placeholder": "z. B. eisige Grenze, Neon-Metropole, verschlafene Küstenstadt",
+      "role": "Charakter-Rolle",
+      "role_placeholder": "z. B. widerwillige Heilerin, pensionierter Schmuggler, königlicher Archivar",
+      "constraints": "Einschränkungen",
+      "constraints_placeholder": "Was sollte der Generator meiden oder beachten? z. B. keine Auserwählten, niedrige Magie, moralisch grau",
+      "identity": "Identität",
+      "name": "Name",
+      "aliases": "Alias",
+      "age": "Alter",
+      "pronouns": "Pronomen",
+      "species": "Spezies",
+      "appearance": "Erscheinung",
+      "personality": "Persönlichkeit",
+      "desire": "Verlangen",
+      "flaw": "Schwäche",
+      "secret": "Geheimnis",
+      "relationships": "Beziehungen",
+      "conflict": "Konflikt",
+      "storyHooks": "Story-Hooks",
+      "visualPrompt": "Bild-Prompt",
+      "premise": "Prämisse",
+      "visualHook": "Visueller Hook",
+      "personalityHook": "Persönlichkeits-Hook",
+      "conflictHook": "Konflikt-Hook"
+    },
+    "role_presets": [
+      "widerwillige Heilerin",
+      "pensionierter Schmuggler",
+      "königlicher Archivar",
+      "gefallener Ritter",
+      "Straßen-Alchemist",
+      "Bote mit einem Geheimnis"
+    ],
+    "world_presets": [
+      "Dark-Fantasy-Königreich",
+      "eisige Grenze",
+      "Neon-Metropole",
+      "Post-Kollaps-Ödland",
+      "gemütliche Magie-Akademie"
+    ],
+    "placeholders": {
+      "world": "Beschreibe die Welt oder den Schauplatz",
+      "role": "Beschreibe die Rolle des Charakters",
+      "constraints": "Optionale Einschränkungen und Dinge, die vermieden werden sollen"
+    },
+    "output": {
+      "pending_concepts": "Träume drei Original-Konzepte aus…",
+      "pending_profile": "Erstellt das vollständige Profil…",
+      "pending_reroll": "Erzeugt einen neuen Vorschlag…",
+      "concepts_empty": "Noch keine Konzepte - beschreibe Welt und Rolle und generiere dann."
+    },
+    "errors": {
+      "concepts_failed": "Konzepte konnten nicht generiert werden. Bitte erneut versuchen.",
+      "profile_failed": "Dieses Profil konnte nicht erstellt werden. Bitte erneut versuchen.",
+      "reroll_failed": "Dieses Feld konnte nicht neu gewürfelt werden. Dein aktuelles Profil ist unverändert.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte neu laden und erneut versuchen.",
+      "generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
+    },
+    "success": {
+      "concepts_ready": "Drei Konzepte sind bereit.",
+      "profile_ready": "Dein Charakter-Profil ist fertig.",
+      "reroll_applied": "Neuer Vorschlag übernommen.",
+      "saved_local": "Charakter in diesem Browser gespeichert.",
+      "copied": "In die Zwischenablage kopiert.",
+      "handed_off_backstory": "Charakter an den Hintergrund-Generator gesendet. Schließe das Setup dort ab.",
+      "handed_off_story": "Charakter an den Story-Generator gesendet. Schließe das Setup dort ab.",
+      "handed_off_dnd": "Charakter an den D&D-Hintergrund-Generator gesendet. Schließe das Setup dort ab."
+    },
+    "faq_items": [
+      {
+        "title": "Was ist ein OC-Generator?",
+        "description": "Ein OC- (Original-Charakter-) Generator verwandelt eine Welt, eine Rolle und ein paar Einschränkungen in einen schreibfertigen Charakter mit Persönlichkeit, Konflikt, Story-Hooks und Bild-Prompt."
+      },
+      {
+        "title": "Muss ich mich anmelden?",
+        "description": "Nein. Du kannst bis zum täglichen Gratis-Kontingent anonym Charaktere generieren. Melde dich an, um darüber hinaus weiterzumachen."
+      },
+      {
+        "title": "Werden meine Charaktere gespeichert?",
+        "description": "Generierte Profile werden nur in deinem Browser (localStorage) gespeichert. Sie verlassen nie dein Gerät, es sei denn, du exportierst oder kopierst sie."
+      },
+      {
+        "title": "Kann ich Felder sperren, die mir gefallen?",
+        "description": "Ja. Sperre ein beliebiges Feld und würfle den Rest neu - gesperrte Werte bleiben genau wie sie sind, alles andere bekommt einen neuen Vorschlag."
+      },
+      {
+        "title": "Kann ich mit diesem Charakter weiterschreiben?",
+        "description": "Ja. Gehe in die Hintergrund-, Story- oder D&D-Hinterbild-Generatoren und dein Charakter wird automatisch als Startpunkt geladen."
+      }
+    ]
+  }
+}

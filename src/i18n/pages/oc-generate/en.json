@@ -1,0 +1,142 @@
+{
+  "oc_generate": {
+    "metadata": {
+      "title": "Original Character Generator for Writers and RPGs",
+      "description": "Create a reusable original character profile with personality, conflict, story hooks, and a visual prompt. Free, no sign-up, works in your browser.",
+      "keywords": "OC generator, original character generator, OC profile generator, RPG character generator, character creator, OC ideas"
+    },
+    "ui": {
+      "title": "Original Character Generator",
+      "subtitle": "Build a character you can keep writing with.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "OC Generator",
+      "generate_concepts": "Generate Character Concepts",
+      "select_concept": "Choose This Concept",
+      "generate_profile": "Build Character Profile",
+      "reroll_field": "Reroll",
+      "save_local": "Save to This Browser",
+      "saved_local": "Saved to this browser",
+      "history": "Saved Characters",
+      "export_markdown": "Export Markdown",
+      "export_json": "Export JSON",
+      "copy_field": "Copy",
+      "copy_profile": "Copy Profile",
+      "lock_field": "Lock",
+      "unlock_field": "Unlock",
+      "delete_character": "Delete",
+      "delete_confirm": "Delete this character permanently from this browser?",
+      "restore_version": "Restore this version",
+      "empty_history": "No saved characters yet. Generate and save one to keep it here.",
+      "continue_backstory": "Continue to Backstory",
+      "continue_story": "Start a Story",
+      "continue_dnd": "Build D&D Backstory",
+      "local_only_label": "Saved only in this browser. Clearing site data removes them.",
+      "generating": "Generating…",
+      "concepts_step_title": "Choose a concept",
+      "profile_step_title": "Your character",
+      "back": "Back",
+      "retry": "Try again"
+    },
+    "modes": {
+      "label": "Mode",
+      "general": "General",
+      "general_hint": "Original characters for novels and short fiction.",
+      "rpg": "RPG",
+      "rpg_hint": "Tabletop and game characters with playable hooks.",
+      "anime": "Anime",
+      "anime_hint": "Light-novel and anime-style characters with strong visual motifs."
+    },
+    "fields": {
+      "world": "World",
+      "world_placeholder": "e.g. icebound frontier, neon megacity, sleepy coastal town",
+      "role": "Character role",
+      "role_placeholder": "e.g. reluctant healer, retired smuggler, royal archivist",
+      "constraints": "Constraints",
+      "constraints_placeholder": "What should the generator avoid or honor? e.g. no chosen ones, low magic, morally grey",
+      "identity": "Identity",
+      "name": "Name",
+      "aliases": "Aliases",
+      "age": "Age",
+      "pronouns": "Pronouns",
+      "species": "Species",
+      "appearance": "Appearance",
+      "personality": "Personality",
+      "desire": "Desire",
+      "flaw": "Flaw",
+      "secret": "Secret",
+      "relationships": "Relationships",
+      "conflict": "Conflict",
+      "storyHooks": "Story Hooks",
+      "visualPrompt": "Visual Prompt",
+      "premise": "Premise",
+      "visualHook": "Visual Hook",
+      "personalityHook": "Personality Hook",
+      "conflictHook": "Conflict Hook"
+    },
+    "role_presets": [
+      "reluctant healer",
+      "retired smuggler",
+      "royal archivist",
+      "disgraced knight",
+      "street alchemist",
+      "courier with a secret"
+    ],
+    "world_presets": [
+      "dark fantasy kingdom",
+      "icebound frontier",
+      "neon megacity",
+      "post-collapse wasteland",
+      "cozy magic academy"
+    ],
+    "placeholders": {
+      "world": "Describe the world or setting",
+      "role": "Describe the character's role",
+      "constraints": "Optional constraints and things to avoid"
+    },
+    "output": {
+      "pending_concepts": "Dreaming up three original concepts…",
+      "pending_profile": "Building the full character profile…",
+      "pending_reroll": "Spinning up a fresh take…",
+      "concepts_empty": "No concepts yet — describe your world and role, then generate."
+    },
+    "errors": {
+      "concepts_failed": "Could not generate concepts. Please try again.",
+      "profile_failed": "Could not build this profile. Please try again.",
+      "reroll_failed": "Could not reroll that field. Your current profile is unchanged.",
+      "verification_failed": "Verification failed. Please reload and try again.",
+      "generic": "Something went wrong. Please try again."
+    },
+    "success": {
+      "concepts_ready": "Three concepts are ready.",
+      "profile_ready": "Your character profile is ready.",
+      "reroll_applied": "New take applied.",
+      "saved_local": "Character saved to this browser.",
+      "copied": "Copied to clipboard.",
+      "handed_off_backstory": "Character sent to Backstory Generator. Finish setting up there.",
+      "handed_off_story": "Character sent to Story Generator. Finish setting up there.",
+      "handed_off_dnd": "Character sent to D&D Backstory Generator. Finish setting up there."
+    },
+    "faq_items": [
+      {
+        "title": "What is an OC generator?",
+        "description": "An OC (original character) generator turns a world, a role, and a few constraints into a ready-to-write character with personality, conflict, story hooks, and a visual prompt."
+      },
+      {
+        "title": "Do I need to sign up?",
+        "description": "No. You can generate original characters anonymously up to the daily free quota. Sign in to keep generating beyond it."
+      },
+      {
+        "title": "Are my characters saved?",
+        "description": "Generated profiles are saved only in your browser (localStorage). They never leave your device unless you export or copy them."
+      },
+      {
+        "title": "Can I lock fields I like?",
+        "description": "Yes. Lock any field and reroll the rest — locked values stay exactly as they are while everything else gets a fresh take."
+      },
+      {
+        "title": "Can I keep writing with this character?",
+        "description": "Yes. Continue into the Backstory, Story, or D&D Backstory generators and your character is loaded automatically as a starting point."
+      }
+    ]
+  }
+}

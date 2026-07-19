@@ -1,0 +1,142 @@
+{
+  "oc_generate": {
+    "metadata": {
+      "title": "原创角色生成器 - 面向写作者与 RPG 玩家",
+      "description": "生成可重复使用的原创角色档案,含性格、冲突、故事钩子与画面提示词。免费、免登录,在浏览器中运行。",
+      "keywords": "OC 生成器, 原创角色生成器, OC 档案生成器, RPG 角色生成器, 角色创建器, OC 灵感"
+    },
+    "ui": {
+      "title": "原创角色生成器",
+      "subtitle": "打造一个能陪你一直写下去的角色。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "OC 生成器",
+      "generate_concepts": "生成角色概念",
+      "select_concept": "选择这个概念",
+      "generate_profile": "生成角色档案",
+      "reroll_field": "重新生成",
+      "save_local": "保存到本浏览器",
+      "saved_local": "已保存到本浏览器",
+      "history": "已保存的角色",
+      "export_markdown": "导出 Markdown",
+      "export_json": "导出 JSON",
+      "copy_field": "复制",
+      "copy_profile": "复制档案",
+      "lock_field": "锁定",
+      "unlock_field": "解锁",
+      "delete_character": "删除",
+      "delete_confirm": "确定要从此浏览器永久删除这个角色吗?",
+      "restore_version": "恢复此版本",
+      "empty_history": "还没有保存的角色。生成并保存一个,就会出现在这里。",
+      "continue_backstory": "继续生成背景故事",
+      "continue_story": "开始写故事",
+      "continue_dnd": "生成 D&D 背景",
+      "local_only_label": "仅保存在此浏览器中。清除站点数据将一并删除。",
+      "generating": "生成中…",
+      "concepts_step_title": "选择一个概念",
+      "profile_step_title": "你的角色",
+      "back": "返回",
+      "retry": "重试"
+    },
+    "modes": {
+      "label": "模式",
+      "general": "通用",
+      "general_hint": "面向小说与短篇的原创角色。",
+      "rpg": "RPG",
+      "rpg_hint": "适合桌面与游戏的可扮演角色,带可玩钩子。",
+      "anime": "动漫",
+      "anime_hint": "轻小说与动漫风格角色,视觉符号强烈。"
+    },
+    "fields": {
+      "world": "世界设定",
+      "world_placeholder": "例如:冰封边境、霓虹巨城、宁静海滨小镇",
+      "role": "角色定位",
+      "role_placeholder": "例如:不情愿的医者、退休走私客、王室档案官",
+      "constraints": "约束条件",
+      "constraints_placeholder": "生成器应回避或遵守什么?例如:不要天选之子、低魔、道德灰色",
+      "identity": "身份",
+      "name": "姓名",
+      "aliases": "别名",
+      "age": "年龄",
+      "pronouns": "人称代词",
+      "species": "种族",
+      "appearance": "外貌",
+      "personality": "性格",
+      "desire": "渴望",
+      "flaw": "缺陷",
+      "secret": "秘密",
+      "relationships": "人际关系",
+      "conflict": "冲突",
+      "storyHooks": "故事钩子",
+      "visualPrompt": "画面提示词",
+      "premise": "设定",
+      "visualHook": "视觉钩子",
+      "personalityHook": "性格钩子",
+      "conflictHook": "冲突钩子"
+    },
+    "role_presets": [
+      "不情愿的医者",
+      "退休走私客",
+      "王室档案官",
+      "蒙羞的骑士",
+      "街头炼金术士",
+      "身怀秘密的信使"
+    ],
+    "world_presets": [
+      "黑暗奇幻王国",
+      "冰封边境",
+      "霓虹巨城",
+      "崩塌后的废土",
+      "温馨魔法学院"
+    ],
+    "placeholders": {
+      "world": "描述世界或场景",
+      "role": "描述角色的定位",
+      "constraints": "可选的约束与需要回避的内容"
+    },
+    "output": {
+      "pending_concepts": "正在构思三个原创概念…",
+      "pending_profile": "正在构建完整角色档案…",
+      "pending_reroll": "正在生成新的版本…",
+      "concepts_empty": "还没有概念 - 描述你的世界和定位,然后生成。"
+    },
+    "errors": {
+      "concepts_failed": "无法生成概念,请重试。",
+      "profile_failed": "无法生成该档案,请重试。",
+      "reroll_failed": "无法重新生成该字段,你当前的档案未改变。",
+      "verification_failed": "验证失败,请刷新后重试。",
+      "generic": "出错了,请重试。"
+    },
+    "success": {
+      "concepts_ready": "三个概念已就绪。",
+      "profile_ready": "你的角色档案已生成。",
+      "reroll_applied": "已应用新的版本。",
+      "saved_local": "角色已保存到本浏览器。",
+      "copied": "已复制到剪贴板。",
+      "handed_off_backstory": "角色已发送到背景故事生成器,请在那边继续完成。",
+      "handed_off_story": "角色已发送到故事生成器,请在那边继续完成。",
+      "handed_off_dnd": "角色已发送到 D&D 背景生成器,请在那边继续完成。"
+    },
+    "faq_items": [
+      {
+        "title": "什么是 OC 生成器?",
+        "description": "OC(原创角色)生成器会把一个世界、一个定位和若干约束,变成一个可直接写作的角色,包含性格、冲突、故事钩子和画面提示词。"
+      },
+      {
+        "title": "需要注册吗?",
+        "description": "不需要。你可以匿名生成原创角色,直到用完每日免费额度。登录后可继续生成。"
+      },
+      {
+        "title": "我的角色会被保存吗?",
+        "description": "生成的档案只保存在你的浏览器(localStorage)中,除非你导出或复制,否则不会离开你的设备。"
+      },
+      {
+        "title": "可以锁定我喜欢的字段吗?",
+        "description": "可以。锁定任意字段后重新生成其他部分 - 锁定的值保持不变,其余字段获得新的版本。"
+      },
+      {
+        "title": "可以用这个角色继续创作吗?",
+        "description": "可以。继续进入背景故事、故事或 D&D 背景生成器,你的角色会自动作为起点载入。"
+      }
+    ]
+  }
+}
