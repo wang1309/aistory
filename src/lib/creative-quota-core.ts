@@ -12,6 +12,7 @@ export const CREATIVE_PAGE_KEYS = [
   "poem-generator",
   "romance-story-generator",
   "tiktok-comment-generator",
+  "oc-generator",
 ] as const;
 
 export type CreativePageKey = (typeof CREATIVE_PAGE_KEYS)[number];
