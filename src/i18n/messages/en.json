@@ -129,12 +129,15 @@
   },
   "blog": {
     "title": "Blog",
-    "description": "News, resources, and updates about ShipAny",
+    "description": "Guides, inspiration, and updates for storytellers",
     "read_more_text": "Read More",
     "no_content": "No content",
     "all": "All",
     "category": "Category",
-    "author": "Author"
+    "author": "Author",
+    "home": "Home",
+    "index_label": "Index",
+    "on_this_page": "On this page"
   },
   "pricing": {
     "title": "Pricing"

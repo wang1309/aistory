@@ -31,7 +31,8 @@ export type AuthSourcePage =
   | "comic-generator"
   | "romance-story-generator"
   | "incorrect-quote-generator"
-  | "tiktok-comment-generator";
+  | "tiktok-comment-generator"
+  | "oc-generator";
 
 export const AUTH_ATTEMPT_STORAGE_KEY = "auth-funnel:pending-attempt";
 

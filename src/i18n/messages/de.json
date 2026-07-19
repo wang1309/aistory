@@ -126,12 +126,15 @@
   },
   "blog": {
     "title": "Blog",
-    "description": "Neuigkeiten, Ressourcen und Updates über ShipAny",
+    "description": "Leitfäden, Inspiration und Updates für Geschichtenerzähler",
     "read_more_text": "Mehr lesen",
     "no_content": "Kein Inhalt",
     "all": "Alle",
     "category": "Kategorie",
-    "author": "Autor"
+    "author": "Autor",
+    "home": "Startseite",
+    "index_label": "Inhalt",
+    "on_this_page": "Auf dieser Seite"
   },
   "pricing": {
     "title": "Preise"

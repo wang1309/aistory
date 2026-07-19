@@ -126,12 +126,15 @@
   },
   "blog": {
     "title": "ブログ",
-    "description": "ShipAnyに関するニュース、リソース、アップデート",
+    "description": "ストーリーテラーのためのガイド、インスピレーション、アップデート",
     "read_more_text": "続きを読む",
     "no_content": "コンテンツがありません",
     "all": "すべて",
     "category": "カテゴリー",
-    "author": "著者"
+    "author": "著者",
+    "home": "ホーム",
+    "index_label": "索引",
+    "on_this_page": "このページの内容"
   },
   "pricing": {
     "title": "料金プラン"

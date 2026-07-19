@@ -689,6 +689,11 @@
               "title": "変更履歴",
               "url": "/changelog",
               "target": "_self"
+            },
+            {
+              "title": "ブログ",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },

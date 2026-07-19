@@ -689,6 +689,11 @@
               "title": "更新日志",
               "url": "/changelog",
               "target": "_self"
+            },
+            {
+              "title": "博客",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },

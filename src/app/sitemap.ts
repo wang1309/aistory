@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { locales } from '@/i18n/locale'
+import { getAllPosts, PostStatus } from '@/models/post'
 
 type RouteTier = 'home' | 'tool' | 'legal' | 'meta'
 
@@ -8,6 +9,7 @@ const ROUTE_TIERS: Record<string, RouteTier> = {
   '/privacy-policy': 'legal',
   '/terms-of-service': 'legal',
   '/changelog': 'meta',
+  '/posts': 'meta',
   '/ai-write': 'tool',
   '/ai-write/editor': 'tool',
   '/ai-write-tool': 'tool',
@@ -78,7 +80,17 @@ function priorityForTier(tier: RouteTier): number {
   }
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+function toDate(v: unknown): Date | null {
+  if (!v) return null
+  const d = new Date(v as string)
+  return isNaN(d.getTime()) ? null : d
+}
+
+function localizedUrl(webUrl: string, locale: string, route: string): string {
+  return locale === 'en' ? `${webUrl}${route}` : `${webUrl}/${locale}${route}`
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org"
 
   const routes = [
@@ -94,7 +106,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/incorrect-quote-generator',
     '/tiktok-comment-generator',
     '/youtube-name-generator',
-  '/youtube-title-generator',
+    '/youtube-title-generator',
     '/fanfic-generator',
     '/plot-generator',
     '/story-outline-generator',
@@ -108,31 +120,45 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/fantasy-generator',
     '/romance-story-generator',
     '/city-nickname-generator',
+    '/posts',
     '/changelog'
   ]
 
-  return locales.flatMap(locale =>
+  const staticEntries: MetadataRoute.Sitemap = locales.flatMap(locale =>
     routes.map(route => {
       const tier = getRouteTier(route)
-      const url = locale === 'en'
-        ? `${webUrl}${route}`
-        : `${webUrl}/${locale}${route}`
-
       return {
-        url,
+        url: localizedUrl(webUrl, locale, route),
         lastModified: lastModForTier(tier),
         changeFrequency: changeFreqForTier(tier),
         priority: priorityForTier(tier),
         alternates: {
           languages: locales.reduce((acc, lang) => {
-            const langUrl = lang === 'en'
-              ? `${webUrl}${route}`
-              : `${webUrl}/${lang}${route}`
-            acc[lang] = langUrl
+            acc[lang] = localizedUrl(webUrl, lang, route)
             return acc
           }, { "x-default": `${webUrl}${route}` } as Record<string, string>)
         }
       }
     })
   )
+
+  let postEntries: MetadataRoute.Sitemap = []
+  try {
+    const all = await getAllPosts(1, 1000)
+    postEntries = (all ?? [])
+      .filter(
+        (p) => p.status === PostStatus.Online && !!p.slug && !!p.locale
+      )
+      .map((p) => ({
+        url: localizedUrl(webUrl, p.locale!, `/posts/${p.slug}`),
+        lastModified:
+          toDate(p.updated_at) || toDate(p.created_at) || new Date('2026-06-13'),
+        changeFrequency: 'weekly' as const,
+        priority: 0.6,
+      }))
+  } catch {
+    // db unavailable during build — skip dynamic post entries
+  }
+
+  return [...staticEntries, ...postEntries]
 }

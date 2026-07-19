@@ -7,7 +7,6 @@ import {
   findCategoryByName,
 } from "@/models/category";
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 
 export async function generateMetadata({
   params,
@@ -62,17 +61,16 @@ export default async function PostsPage({
   const blog: BlogType = {
     title: t("blog.title"),
     description: t("blog.description"),
+    label: t("blog.index_label"),
     items: posts as unknown as BlogItem[],
     read_more_text: t("blog.read_more_text"),
   };
 
   return (
-    <div className="container py-6 md:py-8">
-      <Blog
-        blog={blog}
-        categories={categories as any}
-        category={category as any}
-      />
-    </div>
+    <Blog
+      blog={blog}
+      categories={categories as any}
+      category={category as any}
+    />
   );
 }

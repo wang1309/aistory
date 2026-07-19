@@ -1,14 +1,14 @@
-import { Breadcrumb, BreadcrumbList } from "@/components/ui/breadcrumb";
 import {
+  Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-
-import { BlogItem } from "@/types/blocks/blog";
 import { Home } from "lucide-react";
 import { Post } from "@/types/post";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 export default function Crumb({ post }: { post: Post }) {
@@ -18,16 +18,16 @@ export default function Crumb({ post }: { post: Post }) {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href={post.locale === "en" ? "/" : `/${post.locale}`}>
-            <Home className="h-4 w-4" />
+          <BreadcrumbLink asChild>
+            <Link href="/" aria-label={t("blog.home")}>
+              <Home className="h-4 w-4" />
+            </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink
-            href={post.locale === "en" ? "/posts" : `/${post.locale}/posts`}
-          >
-            {t("blog.title")}
+          <BreadcrumbLink asChild>
+            <Link href="/posts">{t("blog.title")}</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />

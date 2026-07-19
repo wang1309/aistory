@@ -126,12 +126,15 @@
   },
   "blog": {
     "title": "블로그",
-    "description": "ShipAny에 대한 뉴스, 리소스 및 업데이트",
+    "description": "스토리텔러를 위한 가이드, 영감, 업데이트",
     "read_more_text": "더 읽기",
     "no_content": "콘텐츠 없음",
     "all": "전체",
     "category": "카테고리",
-    "author": "작성자"
+    "author": "작성자",
+    "home": "홈",
+    "index_label": "목차",
+    "on_this_page": "이 페이지에서"
   },
   "pricing": {
     "title": "요금제"

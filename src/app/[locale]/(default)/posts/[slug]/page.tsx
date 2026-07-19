@@ -51,11 +51,5 @@ export default async function PostSlugPage ({
     (category) => category.uuid === post.category_uuid
   );
 
-  return (
-    <BlogDetail
-      post={post as unknown as Post}
-      categories={categories as any}
-      category={category}
-    />
-  );
+  return <BlogDetail post={post as unknown as Post} category={category} />;
 }

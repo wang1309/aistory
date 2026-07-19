@@ -689,6 +689,11 @@
               "title": "Changelog",
               "url": "/changelog",
               "target": "_self"
+            },
+            {
+              "title": "Blog",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },

@@ -689,6 +689,11 @@
               "title": "Изменения",
               "url": "/changelog",
               "target": "_self"
+            },
+            {
+              "title": "Блог",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },

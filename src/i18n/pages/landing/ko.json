@@ -689,6 +689,11 @@
               "title": "변경 로그",
               "url": "/changelog",
               "target": "_self"
+            },
+            {
+              "title": "블로그",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },

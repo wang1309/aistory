@@ -129,12 +129,15 @@
   },
   "blog": {
     "title": "博客",
-    "description": "关于 ShipAny 的新闻、资源和更新",
+    "description": "面向故事创作者的指南、灵感与最新动态",
     "read_more_text": "阅读更多",
     "no_content": "暂无内容",
     "all": "全部",
     "category": "分类",
-    "author": "作者"
+    "author": "作者",
+    "home": "首页",
+    "index_label": "目录",
+    "on_this_page": "本页目录"
   },
   "pricing": {
     "title": "定价"
