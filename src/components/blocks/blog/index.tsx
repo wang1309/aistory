@@ -27,7 +27,7 @@ export default function Blog({
     <section className="w-full py-16 md:py-24">
       <div className="container">
         {/* Editorial masthead */}
-        <header className="mb-10 max-w-3xl md:mb-14">
+        <header className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
           <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             {blog.label || t("blog.title")}
           </p>

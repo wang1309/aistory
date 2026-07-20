@@ -99,7 +99,7 @@ export default function BlogDetail({
       <div className="container">
         <Crumb post={post} />
 
-        <header className="mt-8 max-w-3xl md:mt-10">
+        <header className="mx-auto mt-8 max-w-3xl text-center md:mt-10">
           {category && categoryHref && (
             <Link
               href={categoryHref}
@@ -112,7 +112,7 @@ export default function BlogDetail({
             {post.title}
           </h1>
           {(post.author_name || post.created_at) && (
-            <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 font-sans text-sm text-muted-foreground">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 font-sans text-sm text-muted-foreground">
               {post.author_name && (
                 <span className="inline-flex items-center gap-2">
                   {post.author_avatar_url && (
