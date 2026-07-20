@@ -1,5 +1,6 @@
 import { LandingPage, PricingPage, ShowcasePage } from "@/types/pages/landing";
 import { ChangelogPage } from "@/types/pages/changelog";
+import { cache } from "react";
 
 export async function getLandingPage(locale: string): Promise<LandingPage> {
   return (await getPage("landing", locale)) as LandingPage;
@@ -17,7 +18,7 @@ export async function getChangelogPage(locale: string): Promise<ChangelogPage> {
   return (await getPage("changelog", locale)) as ChangelogPage;
 }
 
-export async function getPage(
+export const getPage = cache(async function getPage(
   name: string,
   locale: string
 ): Promise<LandingPage | PricingPage | ShowcasePage | ChangelogPage> {
@@ -36,4 +37,4 @@ export async function getPage(
       (module) => module.default
     );
   }
-}
+});

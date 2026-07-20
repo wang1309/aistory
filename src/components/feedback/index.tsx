@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import dynamic from "next/dynamic";
 import { Github, Mail, MessageCircle, Twitter } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -19,7 +20,11 @@ import { useAppContext } from "@/contexts/app";
 import { useState } from "react";
 import { SocialItem } from "@/types/blocks/base";
 import { useTranslations } from "next-intl";
-import { Turnstile } from "@marsidev/react-turnstile";
+
+const Turnstile = dynamic(
+  () => import("@marsidev/react-turnstile").then((module) => module.Turnstile),
+  { ssr: false }
+);
 
 export default function Feedback({
   socialLinks,
@@ -165,7 +170,7 @@ export default function Feedback({
             </div>
           </div>
 
-          {siteKey && (
+          {showFeedback && siteKey && (
             <div className="mt-4">
               <Turnstile
                 siteKey={siteKey}

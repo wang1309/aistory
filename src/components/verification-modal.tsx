@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import dynamic from "next/dynamic";
 import {
   Dialog,
   DialogContent,
@@ -10,9 +11,13 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/icon";
-import { Turnstile } from "@marsidev/react-turnstile";
 import { useAppContext } from "@/contexts/app";
 import { useTranslations } from "next-intl";
+
+const Turnstile = dynamic(
+  () => import("@marsidev/react-turnstile").then((module) => module.Turnstile),
+  { ssr: false }
+);
 
 export default function VerificationModal({
   title,
@@ -105,7 +110,7 @@ export default function VerificationModal({
         </DialogHeader>
 
         <div className="mt-6">
-          {siteKey ? (
+          {showVerificationModal && siteKey ? (
             <div className="flex justify-center">
               <Turnstile
                 siteKey={siteKey}
