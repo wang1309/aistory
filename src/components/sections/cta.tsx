@@ -1,7 +1,4 @@
-"use client";
-
 import { Section as SectionType } from "@/types/blocks/section";
-import { motion, MotionConfig } from "framer-motion";
 import { getAccent, type AccentColor } from "./accent";
 import Icon from "@/components/icon";
 import Link from "next/link";
@@ -17,19 +14,12 @@ export default function CTA({ section, accent = "orange" }: Props) {
   if (section.disabled) return null;
 
   return (
-    <MotionConfig reducedMotion="user">
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Subtle tint */}
       <div className={`absolute inset-0 ${a.sectionBg}`} />
 
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          className="mx-auto max-w-2xl text-center"
-        >
+        <div className="mx-auto max-w-2xl text-center">
           {section.title && (
             <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               {section.title}
@@ -73,9 +63,8 @@ export default function CTA({ section, accent = "orange" }: Props) {
               })}
             </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
-    </MotionConfig>
   );
 }

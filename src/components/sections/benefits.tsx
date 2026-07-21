@@ -1,7 +1,4 @@
-"use client";
-
 import { Section as SectionType } from "@/types/blocks/section";
-import { motion, MotionConfig } from "framer-motion";
 import { getAccent, type AccentColor } from "./accent";
 import Icon from "@/components/icon";
 import Image from "next/image";
@@ -22,7 +19,6 @@ export default function Benefits({ section, accent = "orange" }: Props) {
   const [featured, ...rest] = section.items;
 
   return (
-    <MotionConfig reducedMotion="user">
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
@@ -36,13 +32,7 @@ export default function Benefits({ section, accent = "orange" }: Props) {
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          className="max-w-2xl"
-        >
+        <div className="max-w-2xl">
           {section.label && (
             <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">
               <span className={`inline-block size-1.5 rounded-full ${a.solid}`} />
@@ -87,20 +77,14 @@ export default function Benefits({ section, accent = "orange" }: Props) {
               {section.description}
             </p>
           )}
-        </motion.div>
+        </div>
 
         {/* Asymmetric Bento Grid */}
         <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-12">
 
           {/* ── Featured card (left, 7 cols) ── */}
           {featured && (
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.65, ease: [0.32, 0.72, 0, 1] }}
-              className="lg:col-span-7"
-            >
+            <div className="lg:col-span-7">
               {/* Outer shell */}
               <div className="group h-full rounded-[1.75rem] border border-border/15 bg-foreground/[0.012] p-1.5 transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/28 dark:bg-white/[0.015]">
                 {/* Inner core */}
@@ -141,21 +125,14 @@ export default function Benefits({ section, accent = "orange" }: Props) {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           )}
 
           {/* ── Right column: 2 stacked cards (5 cols) ── */}
           {rest.length > 0 && (
             <div className="flex flex-col gap-5 lg:col-span-5">
               {rest.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.6, delay: (i + 1) * 0.1, ease: [0.32, 0.72, 0, 1] }}
-                  className="flex-1"
-                >
+                <div key={i} className="flex-1">
                   {/* Outer shell */}
                   <div className="group h-full rounded-[1.5rem] border border-border/15 bg-foreground/[0.012] p-1 transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/28 dark:bg-white/[0.015]">
                     {/* Inner core */}
@@ -194,7 +171,7 @@ export default function Benefits({ section, accent = "orange" }: Props) {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           )}
@@ -202,6 +179,5 @@ export default function Benefits({ section, accent = "orange" }: Props) {
         </div>
       </div>
     </section>
-    </MotionConfig>
   );
 }

@@ -1,7 +1,4 @@
-"use client";
-
 import { Section as SectionType } from "@/types/blocks/section";
-import { motion, MotionConfig } from "framer-motion";
 import { getAccent, type AccentColor } from "./accent";
 import Icon from "@/components/icon";
 
@@ -19,7 +16,6 @@ export default function HowToUse({ section, accent = "orange" }: Props) {
   const hasHighlight = titleParts && titleParts.length === 2;
 
   return (
-    <MotionConfig reducedMotion="user">
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Layered background */}
       <div className="pointer-events-none absolute inset-0">
@@ -37,13 +33,7 @@ export default function HowToUse({ section, accent = "orange" }: Props) {
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          className="mx-auto max-w-xl text-center"
-        >
+        <div className="mx-auto max-w-xl text-center">
           {section.label && (
             <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">
               <span className={`inline-block size-1.5 rounded-full ${a.solid} opacity-60`} />
@@ -89,7 +79,7 @@ export default function HowToUse({ section, accent = "orange" }: Props) {
               {section.description}
             </p>
           )}
-        </motion.div>
+        </div>
 
         {/* Steps pipeline */}
         <div className="relative mt-20">
@@ -98,14 +88,7 @@ export default function HowToUse({ section, accent = "orange" }: Props) {
 
           <div className="grid gap-8 md:grid-cols-3 lg:gap-6">
             {section.items.slice(0, 3).map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.65, delay: i * 0.12, ease: [0.32, 0.72, 0, 1] }}
-                className="group relative flex flex-col items-center text-center"
-              >
+              <div key={i} className="group relative flex flex-col items-center text-center">
                 {/* Step node — icon inside double-bezel circle */}
                 <div className="relative z-10 mb-8">
                   {/* Ambient glow behind node */}
@@ -163,12 +146,11 @@ export default function HowToUse({ section, accent = "orange" }: Props) {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </div>
     </section>
-    </MotionConfig>
   );
 }

@@ -1,7 +1,4 @@
-"use client";
-
 import { Section as SectionType } from "@/types/blocks/section";
-import { motion, MotionConfig } from "framer-motion";
 import { getAccent, type AccentColor } from "./accent";
 import Icon from "@/components/icon";
 
@@ -20,7 +17,6 @@ export default function FeatureIntro({ section, accent = "orange" }: Props) {
   const hasHighlight = titleParts && titleParts.length === 2;
 
   return (
-    <MotionConfig reducedMotion="user">
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Ambient background gradients */}
       <div className="pointer-events-none absolute inset-0">
@@ -34,12 +30,7 @@ export default function FeatureIntro({ section, accent = "orange" }: Props) {
         <div className="grid gap-16 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_380px] items-center">
 
           {/* ── Left: Text content ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          >
+          <div>
             {/* Eyebrow badge */}
             {section.label && (
               <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">
@@ -97,14 +88,7 @@ export default function FeatureIntro({ section, accent = "orange" }: Props) {
             {/* Feature list */}
             <ul className="space-y-6">
               {section.items.map((item, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.55, delay: i * 0.12, ease: [0.32, 0.72, 0, 1] }}
-                  className="group flex items-start gap-4"
-                >
+                <li key={i} className="group flex items-start gap-4">
                   {/* Double-bezel icon container */}
                   <div className="mt-0.5 shrink-0 rounded-2xl border border-border/15 bg-foreground/[0.02] p-1 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-primary/20">
                     <div className={`flex size-9 items-center justify-center rounded-xl transition-all duration-500 ${a.iconBg} group-hover:scale-110`}>
@@ -128,10 +112,10 @@ export default function FeatureIntro({ section, accent = "orange" }: Props) {
                       </p>
                     )}
                   </div>
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* ── Right: Z-Axis Feature Card Stack ── */}
           <div className="hidden lg:flex lg:items-center lg:justify-center">
@@ -145,43 +129,31 @@ export default function FeatureIntro({ section, accent = "orange" }: Props) {
 
               {/* Card 1 — back left */}
               {section.items[0] && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.6, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
+                <div
                   className="absolute left-0 top-2 w-[220px] -rotate-[4deg] scale-95 opacity-55"
                   style={{ transformOrigin: "center center" }}
                 >
                   <FeatureCard item={section.items[0]} a={a} />
-                </motion.div>
+                </div>
               )}
 
               {/* Card 2 — back right */}
               {section.items[1] && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.6, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
+                <div
                   className="absolute bottom-2 right-0 w-[220px] rotate-[3deg] scale-[0.97] opacity-65"
                   style={{ transformOrigin: "center center" }}
                 >
                   <FeatureCard item={section.items[1]} a={a} />
-                </motion.div>
+                </div>
               )}
 
               {/* Card 3 — front center */}
               {section.items[2] && (
-                <motion.div
-                  initial={{ opacity: 0, y: 24, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.7, delay: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                <div
                   className="absolute left-1/2 top-1/2 z-10 w-[248px] -translate-x-1/2 -translate-y-1/2"
                 >
                   <FeatureCard item={section.items[2]} a={a} prominent />
-                </motion.div>
+                </div>
               )}
             </div>
           </div>
@@ -189,7 +161,6 @@ export default function FeatureIntro({ section, accent = "orange" }: Props) {
         </div>
       </div>
     </section>
-    </MotionConfig>
   );
 }
 

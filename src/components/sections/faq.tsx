@@ -1,10 +1,8 @@
 "use client";
 
 import { Section as SectionType } from "@/types/blocks/section";
-import { motion, MotionConfig } from "framer-motion";
 import { getAccent, type AccentColor } from "./accent";
 import { useState } from "react";
-import { AnimatePresence, motion as m } from "framer-motion";
 
 interface Props {
   section: SectionType;
@@ -22,7 +20,6 @@ export default function FAQ({ section, accent = "orange" }: Props) {
   const hasHighlight = titleParts && titleParts.length === 2;
 
   return (
-    <MotionConfig reducedMotion="user">
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
@@ -37,13 +34,7 @@ export default function FAQ({ section, accent = "orange" }: Props) {
         <div className="grid gap-16 lg:grid-cols-[1fr_1.5fr]">
 
           {/* Left column — sticky heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-            className="lg:sticky lg:top-32 lg:self-start"
-          >
+          <div className="lg:sticky lg:top-32 lg:self-start">
             {section.label && (
               <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">
                 <span className={`inline-block size-1.5 rounded-full ${a.solid} opacity-60`} />
@@ -88,19 +79,15 @@ export default function FAQ({ section, accent = "orange" }: Props) {
                 {section.description}
               </p>
             )}
-          </motion.div>
+          </div>
 
           {/* Right column — accordion */}
           <div className="space-y-4">
             {section.items.map((item, i) => {
               const isOpen = openIndex === i;
               return (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.55, delay: i * 0.08, ease: [0.32, 0.72, 0, 1] }}
                   className={`group relative rounded-[1.25rem] border transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                     isOpen
                       ? "border-border/40 bg-card shadow-[0_2px_20px_-6px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_20px_-6px_rgba(0,0,0,0.3)]"
@@ -142,28 +129,19 @@ export default function FAQ({ section, accent = "orange" }: Props) {
                     </span>
                   </button>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <m.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-6 pb-5 pl-[4.25rem]">
-                          <p className="text-sm leading-[1.7] text-muted-foreground/60">{item.description}</p>
-                        </div>
-                      </m.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
+                  {isOpen && (
+                    <div className="overflow-hidden">
+                      <div className="px-6 pb-5 pl-[4.25rem]">
+                        <p className="text-sm leading-[1.7] text-muted-foreground/60">{item.description}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
         </div>
       </div>
     </section>
-    </MotionConfig>
   );
 }

@@ -1,7 +1,4 @@
-"use client";
-
 import { Section as SectionType } from "@/types/blocks/section";
-import { motion, MotionConfig } from "framer-motion";
 import { getAccent, type AccentColor } from "./accent";
 import Icon from "@/components/icon";
 
@@ -19,7 +16,6 @@ export default function UseCases({ section, accent = "orange" }: Props) {
   const hasHighlight = titleParts && titleParts.length === 2;
 
   return (
-    <MotionConfig reducedMotion="user">
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Layered background — replaces flat a.sectionBg */}
       <div className="pointer-events-none absolute inset-0">
@@ -37,13 +33,7 @@ export default function UseCases({ section, accent = "orange" }: Props) {
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 
         {/* Centered header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          className="mx-auto max-w-xl text-center"
-        >
+        <div className="mx-auto max-w-xl text-center">
           {section.label && (
             <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">
               <span className={`inline-block size-1.5 rounded-full ${a.solid}`} />
@@ -90,7 +80,7 @@ export default function UseCases({ section, accent = "orange" }: Props) {
               {section.description}
             </p>
           )}
-        </motion.div>
+        </div>
 
         {/* Equal 3-column grid */}
         <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-3">
@@ -99,13 +89,7 @@ export default function UseCases({ section, accent = "orange" }: Props) {
             const indexLabel = String(i + 1).padStart(2, "0");
 
             return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.32, 0.72, 0, 1] }}
-              >
+              <div key={i}>
                 {/* Outer shell */}
                 <div className="group h-full rounded-[1.75rem] border border-border/15 bg-foreground/[0.012] p-1.5 transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/28 dark:bg-white/[0.015]">
                   {/* Inner core */}
@@ -146,13 +130,12 @@ export default function UseCases({ section, accent = "orange" }: Props) {
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
       </div>
     </section>
-    </MotionConfig>
   );
 }
