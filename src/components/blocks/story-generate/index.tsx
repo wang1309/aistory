@@ -36,8 +36,14 @@ const TurnstileInvisible = dynamic(() => import("@/components/TurnstileInvisible
   ssr: false,
   loading: () => null,
 });
-import CompletionGuide from "@/components/story/completion-guide";
-import GenerationProgress from "@/components/story/generation-progress";
+const CompletionGuide = dynamic(() => import("@/components/story/completion-guide"), {
+  ssr: false,
+  loading: () => null,
+});
+const GenerationProgress = dynamic(() => import("@/components/story/generation-progress"), {
+  ssr: false,
+  loading: () => null,
+});
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import {
@@ -55,7 +61,16 @@ import {
   getCreativeLimit,
 } from "@/lib/creative-quota-client";
 import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
-import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
+const CreativeQuotaPaywall = dynamic(
+  () =>
+    import("@/components/blocks/creative-quota-paywall").then(
+      (module) => module.CreativeQuotaPaywall
+    ),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
 const StorySaveDialog = dynamic(() => import("@/components/story/story-save-dialog"), {
   ssr: false,
   loading: () => null,
@@ -1439,11 +1454,13 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                 </div>
 
                 {/* 积分不足 paywall 弹窗 */}
-                <CreativeQuotaPaywall
-                  open={creativeQuota.paywallOpen}
-                  onClose={() => creativeQuota.setPaywallOpen(false)}
-                  sourcePage="story-generator"
-                />
+                {creativeQuota.paywallOpen && (
+                  <CreativeQuotaPaywall
+                    open={creativeQuota.paywallOpen}
+                    onClose={() => creativeQuota.setPaywallOpen(false)}
+                    sourcePage="story-generator"
+                  />
+                )}
 
                 {/* Usage hints */}
                 <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-muted-foreground/40">

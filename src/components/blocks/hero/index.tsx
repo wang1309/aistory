@@ -2,6 +2,7 @@
 
 import { memo, useMemo, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import HappyUsers from "./happy-users";
 import { getHeroCtaAnimationStyle } from "./animation-style";
@@ -29,17 +30,58 @@ const STORY_IMAGES = [
 const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
   const [isMounted, setIsMounted] = useState(false);
   const [allowPrism, setAllowPrism] = useState(false);
+  const [showDesktopCascade, setShowDesktopCascade] = useState(false);
   const locale = useLocale();
 
   useEffect(() => {
     setIsMounted(true);
-    if (typeof window !== "undefined") {
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!reduceMotion && hero.prism_background?.enabled) {
-        const timer = setTimeout(() => setAllowPrism(true), 500);
-        return () => clearTimeout(timer);
-      }
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    if (reduceMotion || !isDesktop || !hero.prism_background?.enabled) {
+      return;
     }
+
+    let idleCallback: number | undefined;
+    let timer: number | undefined;
+    const idleWindow = window as unknown as {
+      requestIdleCallback?: typeof window.requestIdleCallback;
+      cancelIdleCallback?: typeof window.cancelIdleCallback;
+    };
+    const enablePrism = () => {
+      if (idleWindow.requestIdleCallback) {
+        idleCallback = idleWindow.requestIdleCallback(() => setAllowPrism(true), {
+          timeout: 4_000,
+        });
+      } else {
+        timer = window.setTimeout(() => setAllowPrism(true), 1_000);
+      }
+    };
+
+    if (document.readyState === "complete") {
+      enablePrism();
+    } else {
+      window.addEventListener("load", enablePrism, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener("load", enablePrism);
+      if (idleCallback !== undefined && idleWindow.cancelIdleCallback) {
+        idleWindow.cancelIdleCallback(idleCallback);
+      }
+      if (timer !== undefined) {
+        window.clearTimeout(timer);
+      }
+    };
+  }, [hero.prism_background?.enabled]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const updateCascadeVisibility = () => setShowDesktopCascade(mediaQuery.matches);
+
+    updateCascadeVisibility();
+    mediaQuery.addEventListener("change", updateCascadeVisibility);
+
+    return () => mediaQuery.removeEventListener("change", updateCascadeVisibility);
   }, []);
 
   const { texts, highlightText } = useMemo(() => {
@@ -329,6 +371,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
           </div>
 
           {/* ───── RIGHT COLUMN — Animated Story Cascade ───── */}
+          {showDesktopCascade && (
           <div className="relative hidden lg:flex items-center justify-center overflow-hidden">
             {/* Decorative ambient glow */}
             <div className="pointer-events-none absolute -inset-12">
@@ -356,13 +399,14 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                   {/* Double-bezel frame */}
                   <div className="rounded-[1.5rem] border border-border/15 bg-foreground/[0.02] p-1.5 dark:bg-white/[0.03] shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_40px_-12px_rgba(0,0,0,0.45)]">
                     <div className="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)]">
-                      <img
+                      <Image
                         src={src}
                         alt={`story-${i}`}
                         width={240}
                         height={320}
                         className="w-[220px] h-[300px] object-cover"
-                        loading="lazy"
+                        sizes="220px"
+                        quality={75}
                       />
                       {/* Top reflection */}
                       <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white/[0.08] to-transparent dark:from-white/[0.04]" />
@@ -372,6 +416,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
               ))}
             </div>
           </div>
+          )}
 
         </div>
       </div>
