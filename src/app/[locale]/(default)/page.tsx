@@ -23,7 +23,6 @@ const Branding = nextDynamic(() => import("@/components/blocks/branding"));
 const Hero = nextDynamic(() => import("@/components/blocks/hero"), {
   loading: () => <HeroSkeleton />,
 });
-const StoryGuide = nextDynamic(() => import("@/components/onboarding/story-guide"));
 const Showcase = nextDynamic(() => import("@/components/blocks/showcase"));
 const Stats = nextDynamic(() => import("@/components/blocks/stats"));
 const Pricing = nextDynamic(() => import("@/components/blocks/pricing"));
@@ -152,8 +151,7 @@ export default async function LandingPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {/* Critical: Always render immediately */}
-      <StoryGuide />
+      {/* New visitor guide is intentionally disabled until it is enabled again. */}
       {page.hero && <Hero hero={page.hero} />}
       {page.story_generate && (
         <Suspense fallback={<SectionSkeleton />}>

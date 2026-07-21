@@ -136,21 +136,21 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
           <>
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,oklch(0.96_0.03_65),transparent)] dark:bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,oklch(0.16_0.02_55),transparent)]" />
             <div
-              className="absolute -left-[20%] top-[10%] h-[600px] w-[600px] rounded-full opacity-30 dark:opacity-15"
+              className="hidden lg:block absolute -left-[20%] top-[10%] h-[600px] w-[600px] rounded-full opacity-30 dark:opacity-15"
               style={{
                 background: "radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)",
                 animation: "hero-orb-1 20s ease-in-out infinite",
               }}
             />
             <div
-              className="absolute -right-[10%] bottom-[5%] h-[500px] w-[500px] rounded-full opacity-20 dark:opacity-10"
+              className="hidden lg:block absolute -right-[10%] bottom-[5%] h-[500px] w-[500px] rounded-full opacity-20 dark:opacity-10"
               style={{
                 background: "radial-gradient(circle, oklch(0.88 0.04 85) 0%, transparent 70%)",
                 animation: "hero-orb-2 25s ease-in-out infinite",
               }}
             />
             <div
-              className="absolute left-[40%] top-[60%] h-[400px] w-[400px] rounded-full opacity-15 dark:opacity-8"
+              className="hidden lg:block absolute left-[40%] top-[60%] h-[400px] w-[400px] rounded-full opacity-15 dark:opacity-8"
               style={{
                 background: "radial-gradient(circle, oklch(0.92 0.05 35) 0%, transparent 70%)",
                 animation: "hero-orb-3 18s ease-in-out infinite",
