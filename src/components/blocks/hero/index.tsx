@@ -115,12 +115,9 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
     [hero.prism_background]
   );
 
-  const enter = (delay: number) =>
-    `transition-all duration-[800ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
-      isMounted
-        ? "translate-y-0 opacity-100"
-        : "translate-y-8 opacity-0"
-    }`;
+  // The title and CTA are the mobile LCP candidates, so the SSR output must be
+  // visible before hydration instead of waiting for an entrance animation.
+  const enter = (_delay: number) => "translate-y-0 opacity-100";
 
   if (hero.disabled) return null;
 
@@ -371,8 +368,9 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
           </div>
 
           {/* ───── RIGHT COLUMN — Animated Story Cascade ───── */}
-          {showDesktopCascade && (
-          <div className="relative hidden lg:flex items-center justify-center overflow-hidden">
+          <div className="relative hidden lg:flex items-center justify-center overflow-hidden min-h-[580px]">
+            {showDesktopCascade && (
+              <>
             {/* Decorative ambient glow */}
             <div className="pointer-events-none absolute -inset-12">
               <div
@@ -415,8 +413,9 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                 </div>
               ))}
             </div>
+              </>
+            )}
           </div>
-          )}
 
         </div>
       </div>
