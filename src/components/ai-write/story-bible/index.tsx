@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { useOpenPanel } from "@openpanel/nextjs";
+import {
+  ACTIVATION_EVENTS,
+  buildActivationTrackingPayload,
+} from "@/lib/activation-funnel";
 import type { BibleCharacter } from "@/models/story-bible";
 
 type BibleData = {
@@ -18,6 +23,7 @@ type BibleData = {
 
 interface StoryBiblePanelProps {
   storyUuid: string;
+  sourcePage?: string;
   onBibleChange?: (hasBible: boolean) => void;
 }
 
@@ -120,9 +126,10 @@ function saveCache(storyUuid: string, data: BibleData) {
   }
 }
 
-export default function StoryBiblePanel({ storyUuid, onBibleChange }: StoryBiblePanelProps) {
+export default function StoryBiblePanel({ storyUuid, sourcePage, onBibleChange }: StoryBiblePanelProps) {
   const locale = useLocale();
   const copy = getCopy(locale);
+  const { track } = useOpenPanel();
 
   const [bible, setBible] = useState<BibleData>({ ...defaultBible });
   const [isSaving, setIsSaving] = useState(false);
@@ -216,6 +223,15 @@ export default function StoryBiblePanel({ storyUuid, onBibleChange }: StoryBible
           saveCache(storyUuid, updated);
           return updated;
         });
+        track(
+          ACTIVATION_EVENTS.storyBibleCreated,
+          buildActivationTrackingPayload({
+            sourcePage: sourcePage || "ai-write",
+            loggedIn: true,
+            action: "story_bible_created",
+            contentType: sourcePage === "backstory-generator" ? "backstory" : "story",
+          })
+        );
         toast.success(copy.saved);
         return;
       }
@@ -226,7 +242,7 @@ export default function StoryBiblePanel({ storyUuid, onBibleChange }: StoryBible
     } finally {
       setIsSaving(false);
     }
-  }, [bible, copy, storyUuid]);
+  }, [bible, copy, sourcePage, storyUuid, track]);
 
   const updateCharacter = useCallback(
     (index: number, field: keyof BibleCharacter, value: string) => {

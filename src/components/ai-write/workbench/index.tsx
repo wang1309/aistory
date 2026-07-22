@@ -21,6 +21,7 @@ import {
 import {
   CONTINUE_INTENT_KEY,
   GENERATOR_PREFILL_KEY,
+  type BackstoryContinuationContext,
 } from "./continue-intent";
 import { useOpenPanel } from "@openpanel/nextjs";
 import { RichTextEditor } from "../editor";
@@ -578,6 +579,8 @@ export default function AiWriteWorkbench({
   const { track } = useOpenPanel();
   const copy = useMemo(() => getCopy(locale), [locale]);
   const [continueEntrySource, setContinueEntrySource] = useState<string | null>(null);
+  const [generatorContext, setGeneratorContext] =
+    useState<BackstoryContinuationContext | null>(null);
   const [title, setTitle] = useState(initialTitle);
   const [content, setContent] = useState(initialContent);
   const [plainText, setPlainText] = useState(initialContent);
@@ -963,15 +966,25 @@ export default function AiWriteWorkbench({
     restorePrefillRef.current = true;
 
     try {
-      // 读取并清理“继续续写”登录后意图:记录来源并埋点抵达
+      // 读取并清理“继续续写”登录后意图:记录来源、入口模式并埋点抵达
       let intentSource: string | null = null;
+      let intentEntryMode: "direct" | "post_auth" | null = null;
       try {
         const intentRaw = window.localStorage.getItem(CONTINUE_INTENT_KEY);
         if (intentRaw) {
-          const intent = JSON.parse(intentRaw) as { source?: string } | null;
+          const intent = JSON.parse(intentRaw) as {
+            source?: string;
+            entryMode?: "direct" | "post_auth";
+          } | null;
           if (intent?.source) {
             intentSource = intent.source;
             setContinueEntrySource(intent.source);
+          }
+          if (intent?.entryMode === "direct" || intent?.entryMode === "post_auth") {
+            intentEntryMode = intent.entryMode;
+          } else {
+            // 旧版本意图没有入口模式,只有在意图存在时才视为登录后恢复
+            intentEntryMode = "post_auth";
           }
           window.localStorage.removeItem(CONTINUE_INTENT_KEY);
         }
@@ -985,6 +998,7 @@ export default function AiWriteWorkbench({
       const parsed = JSON.parse(raw) as {
         title?: string;
         content?: string;
+        context?: BackstoryContinuationContext;
       } | null;
 
       if (parsed?.title && !title.trim()) setTitle(parsed.title);
@@ -992,26 +1006,31 @@ export default function AiWriteWorkbench({
         setContent(parsed.content);
         setPlainText(parsed.content);
       }
+      if (parsed?.context) setGeneratorContext(parsed.context);
 
       window.localStorage.removeItem(GENERATOR_PREFILL_KEY);
       toast.success(copy.generatorRestored);
 
       if (intentSource) {
-        track("post_auth_action_resumed", {
-          source: intentSource,
-          action: "continue_writing",
-          source_page: intentSource || undefined,
-        });
         track("ai_write_open_from_generator", {
           source_page: intentSource,
+          content_type: intentSource === "backstory-generator" ? "backstory" : "story",
+          entry_mode: intentEntryMode,
           prefill_restored: true,
-          logged_in: true,
+          logged_in: Boolean(user),
         });
+        if (intentEntryMode === "post_auth") {
+          track("post_auth_action_resumed", {
+            source: intentSource,
+            action: "continue_writing",
+            source_page: intentSource || undefined,
+          });
+        }
       }
     } catch {
       // ignore invalid prefill
     }
-  }, [content, copy.generatorRestored, isHydrated, storyUuid, title, track, continueEntrySource]);
+  }, [content, copy.generatorRestored, isHydrated, storyUuid, title, track, user]);
 
   useEffect(() => {
     if (!isHydrated || storyUuid || typeof window === "undefined") return;
@@ -1077,7 +1096,11 @@ export default function AiWriteWorkbench({
         content,
         wordCount,
         modelUsed: "generic",
-        settings: { source: source ?? null, mode: "ai-write" },
+        settings: {
+          source: source ?? null,
+          mode: "ai-write",
+          ...(generatorContext ? { generator_context: generatorContext } : {}),
+        },
       };
 
       startSaving(async () => {
@@ -1159,6 +1182,7 @@ export default function AiWriteWorkbench({
       copy.createStorySuccess,
       copy.saveFailed,
       copy.storyCreatedNeedLogin,
+      generatorContext,
       instruction,
       plainText,
       router,
@@ -1401,6 +1425,9 @@ export default function AiWriteWorkbench({
         if (chatSummary) {
           systemPrompt += `\n\n== Previous conversation summary ==\n${chatSummary}`;
         }
+        if (generatorContext) {
+          systemPrompt += `\n\n== Generator Context ==\nWorld: ${generatorContext.worldview}\nRole: ${generatorContext.roleType}\nTone: ${generatorContext.tone}\nRequested length: ${generatorContext.length}\nOutput language: ${generatorContext.outputLanguage}`;
+        }
 
         const plan = planBudget({
           system: tokenEstimate(systemPrompt),
@@ -1538,7 +1565,7 @@ export default function AiWriteWorkbench({
         setIsStreaming(false);
       }
     },
-    [chatMode, chatSummary, copy.continueFailed, copy.stopped, generateSummary, plainText, refreshUserCredits, source, storyUuid, summarizedUpTo, title, user]
+    [chatMode, chatSummary, copy.continueFailed, copy.stopped, generateSummary, generatorContext, plainText, refreshUserCredits, source, storyUuid, summarizedUpTo, title, user]
   );
 
   const handleContinue = useCallback(async () => {
@@ -2023,6 +2050,17 @@ export default function AiWriteWorkbench({
       { role: "user", content: copy.consistencyCheck },
     ]);
 
+    track(
+      ACTIVATION_EVENTS.consistencyCheckRun,
+      buildActivationTrackingPayload({
+        sourcePage: source ?? "ai-write",
+        loggedIn: true,
+        action: "consistency_check_run",
+        contentType: source === "backstory-generator" ? "backstory" : "story",
+        wordCount,
+      })
+    );
+
     try {
       // Build bible context (use cache if available)
       let bibleContext = "";
@@ -2043,6 +2081,19 @@ export default function AiWriteWorkbench({
             // ignore
           }
         }
+      }
+
+      if (bibleContext) {
+        track(
+          ACTIVATION_EVENTS.storyBibleUsed,
+          buildActivationTrackingPayload({
+            sourcePage: source ?? "ai-write",
+            loggedIn: true,
+            action: "story_bible_used",
+            contentType: source === "backstory-generator" ? "backstory" : "story",
+            wordCount,
+          })
+        );
       }
 
       const systemPrompt = `You are a professional fiction editor specialized in plot consistency checking. Analyze the following story text${bibleContext ? " alongside the character profiles" : ""} and identify any logical contradictions, character inconsistencies, timeline conflicts, or world-building contradictions.
@@ -2124,7 +2175,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
     } finally {
       setIsChecking(false);
     }
-  }, [copy, plainText, refreshUserCredits, requireAuth, storyUuid, user]);
+  }, [copy, plainText, refreshUserCredits, requireAuth, source, storyUuid, track, user, wordCount]);
 
   // Debounced inline AI suggestion
   useEffect(() => {
@@ -2560,6 +2611,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             <div key="bible" className="animate-fade-in-up flex-1 overflow-auto">
               <StoryBiblePanel
                 storyUuid={storyUuid}
+                sourcePage={source ?? "ai-write"}
                 onBibleChange={(active) => {
                   setBibleActive(active);
                   bibleVersionRef.current++;

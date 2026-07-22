@@ -1,20 +1,20 @@
 {
   "ai_write_landing": {
     "metadata": {
-      "title": "AI Story Writer — Write Stories with AI That Remembers Your Characters",
-      "description": "Write stories with an AI partner that remembers your characters, respects your voice, and helps you craft better fiction — not generic text. Free AI writing workbench with Story Bible and Style Fingerprint.",
-      "keywords": "AI story writer, AI writing tool, AI fiction writer, story writing assistant, AI novel writing, creative writing AI, AI writing partner"
+      "title": "AI Story Writer & Novel Writing Workbench | Aistory",
+      "description": "Write and continue long-form fiction with an AI story writer built around your Story Bible, character consistency, and writing style — a workbench for stories that grow beyond one prompt.",
+      "keywords": "AI story writer, AI novel writing software, AI fiction writing workbench, character consistency, Story Bible, AI writing partner"
     },
     "ui": {
       "title": "AI Story Writer",
-      "subtitle": "Write stories with an AI partner that remembers your characters, respects your voice, and helps you craft better fiction.",
+      "subtitle": "Plan, continue, and revise fiction with an AI writing workbench that remembers your characters and respects your voice.",
       "breadcrumb_home": "Home",
       "breadcrumb_current": "AI Write"
     },
     "hero": {
       "heading": "Your AI Writing Partner,",
       "highlight": "Not a Writing Machine",
-      "description": "Most AI tools flatten your voice into generic text. AI Write is different — it remembers your characters, learns your style, and helps you write <strong>your</strong> story, not a statistical average.",
+      "description": "Most AI tools generate a disposable draft. AI Write helps you keep developing the same story: it remembers your characters, learns your style, and supports the next chapter without flattening your voice.",
       "input_placeholder": "Describe the story you want to write…",
       "input_button": "Start Writing",
       "input_button_sending": "Opening…"

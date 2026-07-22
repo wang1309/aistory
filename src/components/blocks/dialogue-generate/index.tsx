@@ -477,8 +477,18 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
 
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(generatedDialogue);
+    track(
+      ACTIVATION_EVENTS.resultCopied,
+      buildActivationTrackingPayload({
+        sourcePage: "dialogue-generator",
+        loggedIn: Boolean(user),
+        action: "result_copied",
+        contentType: "utility",
+        wordCount: generatedDialogue.split(/\s+/).filter(Boolean).length,
+      })
+    );
     toast.success(t("success.dialogue_copied"));
-  }, [generatedDialogue, t]);
+  }, [generatedDialogue, t, track, user]);
 
   const handleContinueInAiWrite = useCallback(() => {
     if (!generatedDialogue.trim()) {

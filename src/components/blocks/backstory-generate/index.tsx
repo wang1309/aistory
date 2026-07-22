@@ -35,6 +35,7 @@ import {
   shouldGateAnonymousContinue,
 } from "@/components/ai-write/workbench/_lib";
 import {
+  buildBackstoryContinuationContext,
   buildContinueIntentPayload,
   buildContinueTrackingPayload,
   CONTINUE_INTENT_KEY,
@@ -654,9 +655,27 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
 
         const payload = buildContinueIntentPayload({
             source: "backstory-generator",
+            entryMode: user ? "direct" : "post_auth",
             title: prompt,
             content: generatedBackstory,
+            context: buildBackstoryContinuationContext({
+                outputLanguage: selectedLanguage,
+                worldview: selectedWorldview,
+                roleType: selectedRoleType,
+                tone: selectedTone,
+                length: selectedLength,
+            }),
         });
+
+        try {
+            window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
+            window.localStorage.setItem(
+                GENERATOR_PREFILL_KEY,
+                JSON.stringify(payload.prefill)
+            );
+        } catch {
+            // Continue navigation must not fail when browser storage is unavailable.
+        }
 
         if (
             shouldGateAnonymousContinue({
@@ -664,13 +683,6 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                 hasGeneratedContent: !!generatedBackstory.trim(),
             })
         ) {
-            try {
-                window.localStorage.setItem(CONTINUE_INTENT_KEY, JSON.stringify(payload));
-                window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
-            } catch {
-                // ignore prefill cache failures
-            }
-
             track(
                 "sign_modal_open_for_continue",
                 buildContinueTrackingPayload({
@@ -686,14 +698,8 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             return;
         }
 
-        try {
-            window.localStorage.setItem(GENERATOR_PREFILL_KEY, JSON.stringify(payload.prefill));
-        } catch {
-            // ignore prefill cache failures
-        }
-
         router.push(payload.redirectTo as any);
-    }, [generatedBackstory, prompt, router, user, track, setSignModalContext, requireAuth]);
+    }, [generatedBackstory, prompt, router, user, track, setSignModalContext, requireAuth, selectedLanguage, selectedWorldview, selectedRoleType, selectedTone, selectedLength]);
 
     useGeneratorShortcuts({
         onGenerate: handleGenerateClick,

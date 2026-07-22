@@ -6,6 +6,10 @@ export const ACTIVATION_EVENTS = {
   storySaved: "story_saved",
   aiWriteFirstGeneration: "ai_write_first_generation",
   activationCompleted: "activation_completed",
+  storyBibleCreated: "story_bible_created",
+  storyBibleUsed: "story_bible_used",
+  consistencyCheckRun: "consistency_check_run",
+  resultCopied: "result_copied",
 } as const;
 
 export type ActivationEvent = (typeof ACTIVATION_EVENTS)[keyof typeof ACTIVATION_EVENTS];
@@ -24,12 +28,22 @@ export function buildActivationTrackingPayload({
   action,
   model,
   wordCount,
+  contentType,
+  entryChannel,
 }: {
   sourcePage: string;
   loggedIn: boolean;
   action: string;
   model?: string | null;
   wordCount?: number;
+  contentType?:
+    | "story"
+    | "backstory"
+    | "fanfic"
+    | "dnd"
+    | "bedtime"
+    | "utility";
+  entryChannel?: "organic" | "direct" | "referral" | "paid" | "unknown";
 }) {
   return {
     source_page: sourcePage,
@@ -39,5 +53,7 @@ export function buildActivationTrackingPayload({
     ...(typeof wordCount === "number"
       ? { word_count_bucket: getWordCountBucket(wordCount) }
       : {}),
+    ...(contentType ? { content_type: contentType } : {}),
+    ...(entryChannel ? { entry_channel: entryChannel } : {}),
   };
 }
