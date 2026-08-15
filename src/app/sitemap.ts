@@ -13,6 +13,7 @@ const ROUTE_TIERS: Record<string, RouteTier> = {
   '/ai-write': 'tool',
   '/ai-write/editor': 'tool',
   '/ai-write-tool': 'tool',
+  '/ai-tools': 'tool',
 }
 
 const TOOL_ROUTES = new Set([
@@ -101,6 +102,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/ai-write',
     '/ai-write/editor',
     '/ai-write-tool',
+    '/ai-tools',
     '/story-generate',
     '/book-title-generator',
     '/dialogue-generator',

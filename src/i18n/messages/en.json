@@ -410,7 +410,13 @@
     "clear_filters": "Clear filters",
     "view_all_cta": "View all {count}+ tools",
     "view_all_sub": "Browse the full catalog on the hub page",
-    "scroll_down": "Scroll down"
+    "scroll_down": "Scroll down",
+    "tools_hub_nav": "Tools",
+    "tools_hub_title": "Free AI Tools",
+    "tools_hub_description": "A growing collection of free AI tools for creators. New tools are on the way.",
+    "tools_hub_empty_title": "More tools coming soon",
+    "tools_hub_empty_desc": "We're building new AI tools beyond writing. Stay tuned — this space will fill up soon.",
+    "tools_hub_cta": "Explore AI Write Tools"
   },
   "story_guide": {
     "step_1": {

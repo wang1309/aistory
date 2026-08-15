@@ -407,7 +407,13 @@
     "clear_filters": "필터 초기화",
     "view_all_cta": "전체 {count}+ 도구 보기",
     "view_all_sub": "허브 페이지에서 전체 카탈로그 탐색",
-    "scroll_down": "아래로 스크롤"
+    "scroll_down": "아래로 스크롤",
+    "tools_hub_nav": "도구",
+    "tools_hub_title": "무료 AI 도구",
+    "tools_hub_description": "창작자를 위한 무료 AI 도구 모음. 새로운 도구가 계속 추가됩니다.",
+    "tools_hub_empty_title": "더 많은 도구가 곧 준비됩니다",
+    "tools_hub_empty_desc": "글쓰기 외의 새로운 AI 도구를 준비 중입니다. 기대해 주세요.",
+    "tools_hub_cta": "AI 글쓰기 도구 둘러보기"
   },
   "story_guide": {
     "step_1": {

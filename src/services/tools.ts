@@ -1,4 +1,4 @@
-export type ModuleId = "ai-write";
+export type ModuleId = "ai-write" | "ai-tools";
 
 export type ToolCategory =
   | "story"

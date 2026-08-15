@@ -1,15 +1,16 @@
 import { Section as SectionType } from "@/types/blocks/section";
 import { getAccent, type AccentColor } from "./accent";
 import Icon from "@/components/icon";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 interface Props {
   section: SectionType;
   accent?: AccentColor;
+  locale?: string;
 }
 
-export default function CTA({ section, accent = "orange" }: Props) {
+export default function CTA({ section, accent = "orange", locale }: Props) {
   const a = getAccent(accent);
   if (section.disabled) return null;
 
@@ -38,6 +39,7 @@ export default function CTA({ section, accent = "orange" }: Props) {
                   <Link
                     key={i}
                     href={btn.url || "#"}
+                    locale={locale === "en" ? undefined : locale}
                     target={btn.target || undefined}
                     className={cn(
                       "group inline-flex items-center gap-2.5 rounded-full px-6 py-3 text-sm font-semibold active:scale-[0.97]",

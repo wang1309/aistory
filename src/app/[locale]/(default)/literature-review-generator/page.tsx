@@ -170,7 +170,7 @@ export default async function LiteratureReviewGeneratorPage({
         accent="amber"
       />
 
-      {cta_section && <CTA section={cta_section} accent="amber" />}
+      {cta_section && <CTA section={cta_section} accent="amber" locale={locale} />}
     </>
   );
 }

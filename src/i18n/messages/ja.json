@@ -407,7 +407,13 @@
     "clear_filters": "フィルター解除",
     "view_all_cta": "すべての {count}+ ツールを見る",
     "view_all_sub": "ハブページで完整なカタログを閲覧",
-    "scroll_down": "下にスクロール"
+    "scroll_down": "下にスクロール",
+    "tools_hub_nav": "ツール",
+    "tools_hub_title": "無料AIツール",
+    "tools_hub_description": "クリエイターのための無料AIツールコレクション。新しいツールが続々登場予定。",
+    "tools_hub_empty_title": "新しいツールは近日公開",
+    "tools_hub_empty_desc": "ライティング以外の新しいAIツールを開発中です。お楽しみに。",
+    "tools_hub_cta": "AIライティングツールを見る"
   },
   "story_guide": {
     "step_1": {

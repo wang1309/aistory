@@ -369,6 +369,21 @@ export default function Header({ header }: { header: HeaderType }) {
                       {t("pricing.title")}
                     </Link>
                   </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <Link
+                      className={cn(
+                        "text-muted-foreground",
+                        navigationMenuTriggerStyle,
+                        buttonVariants({
+                          variant: "ghost",
+                        })
+                      )}
+                      href={"/ai-tools" as any}
+                    >
+                      <Icon name="RiToolsLine" className="size-4 shrink-0 mr-0" />
+                      {t("ai_tools.tools_hub_nav")}
+                    </Link>
+                  </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
@@ -575,6 +590,13 @@ export default function Header({ header }: { header: HeaderType }) {
                   >
                     <Icon name="RiPriceTag3Line" className="size-4 shrink-0" />
                     {t("pricing.title")}
+                  </Link>
+                  <Link
+                    href={"/ai-tools" as any}
+                    className={mobileDrawerItemClassName}
+                  >
+                    <Icon name="RiToolsLine" className="size-4 shrink-0" />
+                    {t("ai_tools.tools_hub_nav")}
                   </Link>
                 </div>
                 <div className="flex-1"></div>

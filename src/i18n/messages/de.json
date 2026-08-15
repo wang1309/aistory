@@ -407,7 +407,13 @@
     "clear_filters": "Filter löschen",
     "view_all_cta": "Alle {count}+ Tools ansehen",
     "view_all_sub": "Den vollständigen Katalog auf der Hub-Seite durchsuchen",
-    "scroll_down": "Nach unten scrollen"
+    "scroll_down": "Nach unten scrollen",
+    "tools_hub_nav": "Tools",
+    "tools_hub_title": "Kostenlose KI-Tools",
+    "tools_hub_description": "Eine wachsende Sammlung kostenloser KI-Tools für Kreative. Neue Tools sind unterwegs.",
+    "tools_hub_empty_title": "Weitere Tools folgen in Kürze",
+    "tools_hub_empty_desc": "Wir entwickeln neue KI-Tools abseits des Schreibens. Bleib gespannt.",
+    "tools_hub_cta": "KI-Schreib-Tools entdecken"
   },
   "story_guide": {
     "step_1": {
