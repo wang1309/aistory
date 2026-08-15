@@ -385,6 +385,10 @@
         "name": "Romance Story Generator",
         "desc": "Generate original romance stories with your favorite trope, sub-genre, and heat level. Free AI romance writer."
       },
+      "literature_review_generator": {
+        "name": "Literature Review Generator",
+        "desc": "Draft a narrative literature review outline and structure from your topic, constraints, and sources. Free to start."
+      },
       "city_nickname_generator": {
         "name": "City Nickname Generator",
         "desc": "Generate official, local, legendary, and mocking nicknames for fictional cities."

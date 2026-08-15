@@ -249,6 +249,18 @@ export const tools: Tool[] = [
     priority: 86,
   },
   {
+    slug: "literature-review-generator",
+    nameKey: "ai_tools.tools.literature_review_generator.name",
+    shortDescKey: "ai_tools.tools.literature_review_generator.desc",
+    module: "ai-write",
+    category: "story",
+    tab: "creative",
+    href: "/literature-review-generator",
+    icon: "RiBookOpenLine",
+    badges: ["new"],
+    priority: 84,
+  },
+  {
     slug: "story-prompt-generator",
     nameKey: "ai_tools.tools.story_prompt_generator.name",
     shortDescKey: "ai_tools.tools.story_prompt_generator.desc",

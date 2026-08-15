@@ -30,6 +30,7 @@ export type AuthSourcePage =
   | "bedtime-story-generator"
   | "comic-generator"
   | "romance-story-generator"
+  | "literature-review-generator"
   | "incorrect-quote-generator"
   | "tiktok-comment-generator"
   | "oc-generator";

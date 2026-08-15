@@ -382,6 +382,10 @@
         "name": "Liebesgeschichten-Generator",
         "desc": "Generiere originelle Liebesgeschichten mit KI — Sub-Genre, Trope und Intensitätsstufe nach Wahl. Kostenlos, ohne Anmeldung."
       },
+      "literature_review_generator": {
+        "name": "Literaturübersicht-Generator",
+        "desc": "Erstelle Gliederung und Struktur einer narrativen Literaturübersicht aus Thema, Vorgaben und Quellen. Kostenlos starten."
+      },
       "city_nickname_generator": {
         "name": "Stadtspitznamen-Generator",
         "desc": "Generiere offizielle, lokale, legendäre und spöttische Spitznamen für fiktive Städte."

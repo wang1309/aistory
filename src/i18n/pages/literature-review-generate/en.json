@@ -1,0 +1,285 @@
+{
+  "literature_review_generate": {
+    "metadata": {
+      "title": "Free AI Literature Review Generator | Narrative Review Drafts",
+      "description": "Turn a research topic into a structured narrative literature review draft: introduction, thematic synthesis, tensions and gaps, plus an evidence-to-verify checklist. Free to start.",
+      "keywords": "literature review generator, ai literature review, how to write a literature review, literature review example, literature review outline, narrative literature review, sample literature review, literature review template, literature review help, thesis literature review draft"
+    },
+    "ui": {
+      "eyebrow": "Academic Writing Aid",
+      "title": "Generator",
+      "title_accent": "Literature Review",
+      "subtitle": "Turn a research topic and your constraints into a clear literature-review draft structure that you can verify, revise, and support with your own sources.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Literature Review Generator",
+      "integrity_note_title": "Academic integrity, by design",
+      "integrity_note": "This tool drafts structure and prose — it does not search scholarly databases and never invents citations. Every claim you keep must be checked against a real source, and you must follow your institution's policy on AI use before submitting any coursework.",
+      "disclosure": "Generated text needs checking. If you supply no sources, no citations are claimed — the draft lists evidence to find instead.",
+      "value_points": [
+        {
+          "title": "Structure you can defend",
+          "description": "Introduction, thematic synthesis, tensions and gaps, conclusion — the narrative-review shape markers expect, drafted from your topic and constraints."
+        },
+        {
+          "title": "Your sources stay yours",
+          "description": "Paste reading notes or references and the draft treats them as context only. It never adds authors, DOIs, page numbers, or findings from memory."
+        },
+        {
+          "title": "Evidence made visible",
+          "description": "Claims that still need a source are collected in an 'Evidence to Verify' checklist, so placeholders can never masquerade as references."
+        }
+      ],
+      "topic_label": "Research Topic",
+      "topic_hint": "One or two sentences: the field, the issue, and any scope limits.",
+      "random_button": "Random Topic",
+      "research_question_label": "Research Question (optional)",
+      "assignment_brief_label": "Assignment Brief (optional)",
+      "discipline_label": "Discipline (optional)",
+      "themes_sources_label": "Key Themes or Supplied Sources / Notes (optional)",
+      "themes_sources_hint": "Paste themes, reading notes, or the references you already have. The draft confines itself to what you provide and labels everything else for verification.",
+      "ai_model": "AI Model",
+      "output_language": "Output Language",
+      "academic_level": "Academic Level",
+      "review_length": "Review Length",
+      "tone": "Tone",
+      "advanced_options": "Optional Details",
+      "generate_button": "Generate Review Outline & Draft",
+      "generating": "Drafting your literature review...",
+      "sign_in_to_continue": "Sign in to continue"
+    },
+    "placeholders": {
+      "topic": "e.g. 'How do formative assessment practices affect student motivation in secondary science education?'",
+      "research_question": "e.g. 'Which assessment formats show the strongest link to intrinsic motivation?'",
+      "assignment_brief": "Word count, required structure, referencing style, marking criteria...",
+      "discipline": "e.g. Education, Psychology, Nursing, Computer Science...",
+      "themes_sources": "Paste key themes, reading notes, or references you already have (author, year, key finding)..."
+    },
+    "random_prompts": [
+      "The impact of social media use on adolescent mental health",
+      "Formative assessment and student motivation in secondary science education",
+      "Remote work and employee productivity in knowledge industries",
+      "Microplastics in freshwater ecosystems: sources and ecological effects",
+      "Gamification in higher education language learning",
+      "Nurse staffing levels and patient outcomes in acute care hospitals",
+      "Explainable AI in clinical decision support systems",
+      "Urban green spaces and community wellbeing"
+    ],
+    "ai_models": {
+      "fast": "Fastest",
+      "fast_description": "Quick structural draft",
+      "standard": "Eloquent",
+      "standard_description": "Balanced synthesis and prose",
+      "creative": "Creative",
+      "creative_description": "Most detailed and expressive"
+    },
+    "academic_levels": {
+      "undergraduate": "Undergraduate (final year)",
+      "masters": "Master's"
+    },
+    "review_lengths": {
+      "short": "Short (~800 words)",
+      "medium": "Medium (~1500 words)",
+      "long": "Long (~2500 words)"
+    },
+    "tones": {
+      "neutral": "Neutral academic",
+      "formal": "Formal",
+      "accessible": "Accessible"
+    },
+    "validation": {
+      "enter_topic": "Please enter your research topic first.",
+      "topic_too_long": "Please keep the topic under 300 characters.",
+      "select_model": "Please select an AI model."
+    },
+    "success": {
+      "random_topic_selected": "Random topic selected!",
+      "review_generated": "Literature review draft generated!",
+      "review_copied": "Draft copied to clipboard!",
+      "saved_locally": "Saved locally to My Stories."
+    },
+    "errors": {
+      "generation_failed": "Failed to generate the review. Please try again."
+    },
+    "output": {
+      "title": "Your Literature Review Draft",
+      "words": "words",
+      "copy": "Copy",
+      "export": "Export",
+      "export_md": "Export as Markdown",
+      "export_txt": "Export as Plain Text",
+      "generating_message": "Drafting your literature review...",
+      "empty_message": "Your review draft — introduction, thematic synthesis, tensions and gaps, conclusion, and an evidence checklist — will appear here.",
+      "evidence_warning_title": "Evidence to verify",
+      "evidence_warning": "This is a drafting aid. Check every claim against a real source before submission and complete the 'Evidence to Verify' checklist. The draft does not include real citations unless you supplied them."
+    },
+    "completion_guide": {
+      "title": "Draft look useful?",
+      "subtitle": "Save it, generate again, or keep writing in AI Write.",
+      "create_another": "Generate Again",
+      "share_action": "Save Draft",
+      "continue_label": "Continue in AI Write"
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What Is a Literature Review Generator?",
+      "description": "A literature review is a critical synthesis of what has already been published on a topic: its purpose is to show what is known, where studies agree or clash, and where the gaps remain. A literature review generator is an AI drafting aid for exactly that chapter. You give it a research topic, your assignment constraints, and optionally the sources and notes you have already collected; it drafts the structure and prose of a narrative literature review — introduction, theme-based synthesis, tensions and gaps, and a conclusion — plus an 'Evidence to Verify' checklist of every claim that still needs a real source.\n\nIt is deliberately not a research database, citation manager, or systematic-review tool. It does not search Google Scholar or any publisher database, and it never invents bibliographic details. The draft is a starting point you verify, revise, and cite against your own reading — which is exactly how a defensible literature review gets written."
+    },
+    "example_section": {
+      "name": "example_outline",
+      "label": "EXAMPLE",
+      "title": "Literature Review Outline Example",
+      "description": "Every draft follows this shape — a standard narrative review template you can build on once each claim is sourced. Yours is generated from your topic and constraints, with [source needed] markers wherever evidence still belongs.",
+      "items": [
+        {
+          "title": "## Introduction",
+          "description": "Scope of the review, how the field is organised, and how the themes were chosen.",
+          "content": "“Research on formative assessment has grown rapidly over the past two decades, yet findings remain uneven across secondary science contexts. [source needed]”"
+        },
+        {
+          "title": "### Theme: Feedback and motivation",
+          "description": "The body synthesises perspectives theme by theme instead of summarising paper by paper.",
+          "content": "“Several strands of work converge on the claim that timely, specific feedback predicts engagement, while award-based incentives show mixed results. [source needed]”"
+        },
+        {
+          "title": "## Tensions and Gaps",
+          "description": "Where studies disagree, which questions stay open, and what remains under-researched.",
+          "content": "“Findings conflict on whether extrinsic rewards crowd out intrinsic motivation in adolescent samples. [source needed]”"
+        },
+        {
+          "title": "## Conclusion",
+          "description": "What the balance of the reviewed context suggests and what a reader should take away.",
+          "content": "“Taken together, the literature points to feedback quality — not volume — as the lever most worth further study. [source needed]”"
+        },
+        {
+          "title": "## Evidence to Verify",
+          "description": "A checklist of every claim that still needs a real source — never a fabricated reference list.",
+          "content": "“☐ ‘Feedback quality predicts engagement’ — search: formative feedback + student motivation + secondary school”"
+        }
+      ]
+    },
+    "source_responsibility": {
+      "name": "source_responsibility",
+      "label": "Sources",
+      "title": "How the Generator Handles Sources",
+      "description": "Clear boundaries, so nothing in your draft pretends to be sourced.",
+      "items": [
+        {
+          "title": "No invented references",
+          "description": "The generator never fabricates citations, author-year references, DOIs, page numbers, quotes, or specific study findings. If a claim has no source behind it, the draft says so with a [source needed] marker instead.",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "Your notes as context",
+          "description": "Anything you paste — reading notes, themes, half-kept references — is treated strictly as user-provided context. The draft refers to those works only with the details you gave, and marks anything incomplete for verification.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "A checklist, not a bibliography",
+          "description": "Every claim that still needs evidence is collected in the 'Evidence to Verify' section, phrased so you can search for it. Placeholders stay visible and separate; they never masquerade as a reference list.",
+          "icon": "RiSearchEyeLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Write a Literature Review in Three Steps",
+      "description": "From blank page to a verifiable draft structure.",
+      "items": [
+        {
+          "title": "Describe Your Review",
+          "description": "Enter your research topic, and optionally your research question, assignment brief, and discipline. The more constraints you give, the closer the structure sits to your brief."
+        },
+        {
+          "title": "Set Level, Length, and Tone",
+          "description": "Choose undergraduate or Master's level, an approximate length, and the tone your department expects. Paste any sources or notes you already have."
+        },
+        {
+          "title": "Verify, Revise, Cite",
+          "description": "Read the streamed draft, work through the 'Evidence to Verify' checklist with your own reading, tighten the transitions and topic sentences, add real citations, and check your institution's AI policy before submission."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Use Cases",
+      "title": "Who Uses This Literature Review Generator",
+      "description": "Built for the narrative reviews that coursework actually requires.",
+      "items": [
+        {
+          "title": "Coursework Master's Students",
+          "description": "Facing a 3,000-word review chapter with six weeks of reading? Draft the thematic structure first, then fill it with sources you have actually read and can defend in a viva.",
+          "icon": "RiGraduationCapLine"
+        },
+        {
+          "title": "Final-Year Undergraduates",
+          "description": "Turn a broad topic into an organised review skeleton — introduction, themes, gaps, conclusion — and learn what a narrative review is supposed to do while you build it.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Thesis Proposal Writers",
+          "description": "Need a first pass at the background chapter? Generate the structure and tensions in the field, then anchor every claim in the literature you cite in your proposal — a common starting point for PhD and master's proposal writers.",
+          "icon": "RiFileList3Line"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Literature Review Generator FAQs",
+      "description": "The academic-integrity questions students ask most.",
+      "items": [
+        {
+          "title": "Is this a citation generator?",
+          "description": "No. The generator drafts the structure and prose of a narrative literature review. It does not retrieve, format, or verify citations, and it never invents bibliographic details. You add real references from sources you have actually read."
+        },
+        {
+          "title": "Does it search Google Scholar or academic databases?",
+          "description": "No. It only works with the topic, constraints, and sources you provide. It cannot prove coverage of a field, and it does not claim to. Searching the literature remains your job — the draft tells you exactly what to search for."
+        },
+        {
+          "title": "Can I submit the generated review directly?",
+          "description": "No. The output is a drafting aid. You must read it critically, verify every claim against real sources, add genuine citations, revise the prose, and comply with your institution's policy on AI-assisted work before submitting anything."
+        },
+        {
+          "title": "What happens if I don't paste any sources?",
+          "description": "The draft is written without naming specific studies, and every claim that needs evidence is listed in the 'Evidence to Verify' checklist instead of a fake reference list. Paste your notes on a second pass to tighten the synthesis."
+        },
+        {
+          "title": "Is this a systematic review tool?",
+          "description": "No. It drafts narrative literature reviews only. It does not support PRISMA screening, protocol registration, or completeness claims, and it will not pretend your review was systematic."
+        },
+        {
+          "title": "Is the Literature Review Generator free?",
+          "description": "Yes. Anonymous visitors can generate drafts with the standard model for free. The Creative model follows the site-wide three-trial daily quota with sign-in, and Turnstile verification protects the endpoint from abuse."
+        },
+        {
+          "title": "How long should a literature review be?",
+          "description": "It depends on your level and brief. As commonly cited guidance, undergraduate reviews often run 1,000–2,000 words and master's reviews 3,000–5,000, but your assignment brief always wins. The generator drafts at roughly 800, 1,500, or 2,500 words so you have a proportionate starting structure to expand with sourced material."
+        },
+        {
+          "title": "How many sources should be in a literature review?",
+          "description": "There is no fixed number — it depends on the scope of your topic and your level. Commonly cited guidance is around 15–30 sources for an undergraduate review and 40 or more for a master's review, but breadth matters more than count. Because the generator never invents sources, its 'Evidence to Verify' checklist tells you exactly which claims need one."
+        },
+        {
+          "title": "Does the generator follow APA format?",
+          "description": "The generator drafts structure and prose, not citations — so it does not format references in APA, MLA, Harvard, or any other style. You add and format real references in the style your department requires. Tip: paste your required referencing style, abstract, and section headings into the assignment brief so the draft respects them from the start."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Start Your Literature Review Draft",
+      "description": "Describe your topic, set your constraints, and get a review structure you can verify and defend — free to start.",
+      "buttons": [
+        {
+          "title": "Generate Literature Review",
+          "url": "/literature-review-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

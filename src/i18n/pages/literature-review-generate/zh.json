@@ -1,0 +1,285 @@
+{
+  "literature_review_generate": {
+    "metadata": {
+      "title": "免费 AI 文献综述生成器 | 叙事式综述草稿",
+      "description": "把研究主题变成结构完整的叙事式文献综述草稿：引言、主题综合、争议与空白，外加待核实证据清单。免费开始。",
+      "keywords": "literature review generator, how to write a literature review, literature review example, literature review outline, sample literature review, 文献综述生成器, ai文献综述, 文献综述怎么写, 文献综述大纲, 文献综述模板, 叙事式文献综述"
+    },
+    "ui": {
+      "eyebrow": "学术写作助手",
+      "title": "生成器",
+      "title_accent": "文献综述",
+      "subtitle": "把研究主题和你的写作约束变成清晰的文献综述草稿结构，由你自己核实、修改，并用真实文献支撑。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "文献综述生成器",
+      "integrity_note_title": "学术诚信是设计底线",
+      "integrity_note": "本工具只生成结构和文字草稿——它不检索学术数据库，也绝不编造引用。你保留的每一个论点都必须对照真实文献核实，提交课程作业前请遵守所在机构关于 AI 使用的规定。",
+      "disclosure": "生成内容需要核查。若未提供任何来源，草稿不会声称任何引用，而是列出需要查找的证据。",
+      "value_points": [
+        {
+          "title": "经得起追问的结构",
+          "description": "引言、主题综合、争议与空白、结论——符合课程评分预期的叙事式综述框架，基于你的主题和约束生成。"
+        },
+        {
+          "title": "来源永远属于你",
+          "description": "粘贴阅读笔记或参考文献后，草稿只把它们当作上下文，绝不凭记忆添加作者、DOI、页码或研究结论。"
+        },
+        {
+          "title": "证据一目了然",
+          "description": "仍需来源支撑的论点会汇入「待核实证据」清单，占位说明永远不会伪装成参考文献。"
+        }
+      ],
+      "topic_label": "研究主题",
+      "topic_hint": "一至两句话：研究领域、问题以及范围限定。",
+      "random_button": "随机主题",
+      "research_question_label": "研究问题（可选）",
+      "assignment_brief_label": "作业要求（可选）",
+      "discipline_label": "学科（可选）",
+      "themes_sources_label": "关键主题或已有文献 / 笔记（可选）",
+      "themes_sources_hint": "粘贴主题、阅读笔记或已有参考文献。草稿只依据你提供的内容展开，其余部分一律标注待核实。",
+      "ai_model": "AI 模型",
+      "output_language": "输出语言",
+      "academic_level": "学术层级",
+      "review_length": "综述长度",
+      "tone": "语气",
+      "advanced_options": "可选细节",
+      "generate_button": "生成综述大纲与草稿",
+      "generating": "正在撰写你的文献综述…",
+      "sign_in_to_continue": "登录后继续"
+    },
+    "placeholders": {
+      "topic": "例如：「形成性评价方式如何影响中学生科学学习动机？」",
+      "research_question": "例如：「哪些评价形式与内在动机的关联最强？」",
+      "assignment_brief": "字数要求、结构要求、引用格式、评分标准…",
+      "discipline": "例如：教育学、心理学、护理学、计算机科学…",
+      "themes_sources": "粘贴关键主题、阅读笔记或已有文献（作者、年份、核心结论）…"
+    },
+    "random_prompts": [
+      "社交媒体使用对青少年心理健康的影响",
+      "形成性评价与中学生科学课程学习动机",
+      "远程办公与知识型行业员工生产力",
+      "淡水生态系统中的微塑料：来源与生态影响",
+      "游戏化在高校语言教学中的应用",
+      "急性救治医院的护理人力配置与患者结局",
+      "可解释 AI 在临床决策支持系统中的应用",
+      "城市绿地与社区居民幸福感"
+    ],
+    "ai_models": {
+      "fast": "极速",
+      "fast_description": "快速搭出结构草稿",
+      "standard": "优雅",
+      "standard_description": "综合与文笔均衡",
+      "creative": "创意",
+      "creative_description": "最详尽、表达力最强"
+    },
+    "academic_levels": {
+      "undergraduate": "本科（毕业年级）",
+      "masters": "硕士"
+    },
+    "review_lengths": {
+      "short": "短（约 800 词）",
+      "medium": "中（约 1500 词）",
+      "long": "长（约 2500 词）"
+    },
+    "tones": {
+      "neutral": "中性学术",
+      "formal": "正式",
+      "accessible": "通俗易读"
+    },
+    "validation": {
+      "enter_topic": "请先输入研究主题。",
+      "topic_too_long": "研究主题请控制在 300 字以内。",
+      "select_model": "请选择 AI 模型。"
+    },
+    "success": {
+      "random_topic_selected": "已随机选择研究主题！",
+      "review_generated": "文献综述草稿已生成！",
+      "review_copied": "草稿已复制到剪贴板！",
+      "saved_locally": "已保存到本地「我的故事」。"
+    },
+    "errors": {
+      "generation_failed": "生成综述失败，请重试。"
+    },
+    "output": {
+      "title": "你的文献综述草稿",
+      "words": "词",
+      "copy": "复制",
+      "export": "导出",
+      "export_md": "导出 Markdown",
+      "export_txt": "导出纯文本",
+      "generating_message": "正在撰写你的文献综述…",
+      "empty_message": "你的综述草稿——引言、主题综合、争议与空白、结论以及证据清单——将显示在这里。",
+      "evidence_warning_title": "待核实证据",
+      "evidence_warning": "这只是写作辅助。提交前请对照真实文献核实每个论点，并完成「待核实证据」清单。除非你自己提供，草稿不包含任何真实引用。"
+    },
+    "completion_guide": {
+      "title": "草稿合用吗？",
+      "subtitle": "保存、重新生成，或到 AI Write 继续写作。",
+      "create_another": "再次生成",
+      "share_action": "保存草稿",
+      "continue_label": "在 AI Write 中继续"
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "概述",
+      "title": "什么是文献综述生成器？",
+      "description": "文献综述是对某一主题已发表研究的批判性综合：它的目的是呈现学界已经知道什么、研究之间何处一致或冲突、还有哪些空白。文献综述生成器正是为这一章节打造的 AI 写作辅助。你提供研究主题、作业约束，以及可选的已有文献与笔记；它会生成叙事式文献综述的结构与文字草稿——引言、按主题展开的综合、争议与空白、结论——并附上「待核实证据」清单，列出每一个仍需真实来源支撑的论点。\n\n它刻意不做学术数据库检索、引用管理或系统综述。它不搜索 Google Scholar 或任何出版商数据库，也绝不编造文献信息。草稿是一个起点，由你核实、修改，并基于自己的阅读添加引用——这才是经得起答辩的文献综述的写作方式。"
+    },
+    "example_section": {
+      "name": "example_outline",
+      "label": "示例",
+      "title": "文献综述大纲示例",
+      "description": "每份草稿都遵循这个骨架——一份标准的叙事式综述模板，每个论点补上来源后即可继续扩展。你的草稿由主题和约束生成，证据尚缺处会带 [source needed] 标记。",
+      "items": [
+        {
+          "title": "## Introduction（引言）",
+          "description": "综述的范围、领域如何组织、主题如何选定。",
+          "content": "「过去二十年形成性评价研究快速增长，但在中学理科情境中的结论仍不一致。[source needed]」"
+        },
+        {
+          "title": "### Theme: Feedback and motivation（主题：反馈与动机）",
+          "description": "正文按主题综合各方视角，而不是逐篇罗列文献。",
+          "content": "「多条研究线索共同指向：及时、具体的反馈能预测学习投入，而奖励式激励的效果并不稳定。[source needed]」"
+        },
+        {
+          "title": "## Tensions and Gaps（争议与空白）",
+          "description": "研究分歧之处、仍开放的问题、研究不足的领域。",
+          "content": "「关于外在奖励是否挤占青少年群体的内在动机，现有结论相互冲突。[source needed]」"
+        },
+        {
+          "title": "## Conclusion（结论）",
+          "description": "已综述内容指向什么、读者应带走什么。",
+          "content": "「综合来看，文献指向反馈质量——而非数量——才是最值得深入研究的杠杆。[source needed]」"
+        },
+        {
+          "title": "## Evidence to Verify（待核实证据）",
+          "description": "仍需真实来源的论点清单——绝不是编造的参考文献表。",
+          "content": "「☐『反馈质量预测学习投入』— 检索：formative feedback + student motivation + secondary school」"
+        }
+      ]
+    },
+    "source_responsibility": {
+      "name": "source_responsibility",
+      "label": "来源",
+      "title": "生成器如何处理来源",
+      "description": "边界清晰，草稿里不会有任何伪装成有据可查的内容。",
+      "items": [
+        {
+          "title": "绝不编造文献",
+          "description": "生成器绝不虚构引用、作者年份、DOI、页码、直接引语或具体研究结论。没有来源支撑的论点，草稿会用 [source needed] 标记如实说明。",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "笔记仅作上下文",
+          "description": "你粘贴的任何内容——阅读笔记、主题、残缺的参考文献——都只作为用户提供的上下文。草稿只用你给出的细节提及这些文献，不完整之处一律标注待核实。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "清单而非参考文献表",
+          "description": "所有仍需证据的论点都汇入「待核实证据」部分，措辞便于你直接检索。占位说明保持可见且独立，绝不会伪装成参考文献列表。",
+          "icon": "RiSearchEyeLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "三步学会写文献综述",
+      "description": "从空白页到可核实的草稿结构。",
+      "items": [
+        {
+          "title": "描述你的综述",
+          "description": "输入研究主题，可选填研究问题、作业要求和学科。约束越具体，生成的结构越贴合你的作业简报。"
+        },
+        {
+          "title": "设置层级、长度与语气",
+          "description": "选择本科或硕士层级、大致篇幅和院系期望的语气。已有文献或笔记可以直接粘贴进来。"
+        },
+        {
+          "title": "核实、修改、引用",
+          "description": "阅读流式生成的草稿，结合自己的阅读逐项核对「待核实证据」清单，打磨过渡句与主题句，补上真实引用，并在提交前确认学校的相关 AI 政策。"
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "适用人群",
+      "title": "谁在使用文献综述生成器",
+      "description": "为课程作业中真正需要的叙事式综述而设计。",
+      "items": [
+        {
+          "title": "硕士课程学生",
+          "description": "面对三千字综述章节和六周阅读量？先搭好主题结构，再用你真正读过、答辩时守得住的文献填充。",
+          "icon": "RiGraduationCapLine"
+        },
+        {
+          "title": "本科毕业年级学生",
+          "description": "把宽泛的主题变成条理清晰的综述骨架——引言、主题、空白、结论——并在搭建过程中理解叙事式综述的本意。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "学位论文开题者",
+          "description": "背景章节需要第一版思路？先生成该领域的结构与争议点，再让每个论点落在开题报告引用的文献上——这也是博士生与硕士生撰写开题报告常用的起点。",
+          "icon": "RiFileList3Line"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "文献综述生成器常见问题",
+      "description": "学生最关心的学术诚信问题。",
+      "items": [
+        {
+          "title": "这是引用生成器吗？",
+          "description": "不是。本工具生成叙事式文献综述的结构与文字草稿，不检索、不排版、不核实引用，也绝不编造文献信息。真实引用需要来自你实际阅读过的文献。"
+        },
+        {
+          "title": "它会搜索 Google Scholar 或学术数据库吗？",
+          "description": "不会。它只处理你提供的主题、约束和来源，无法也不声称证明领域覆盖的完整性。检索文献仍然是你自己的工作——草稿会明确告诉你该检索什么。"
+        },
+        {
+          "title": "生成的综述可以直接提交吗？",
+          "description": "不可以。输出只是写作辅助。你必须批判性地阅读、对照真实来源核实每个论点、补充真实引用、修改文字，并在提交前遵守所在机构关于 AI 辅助作业的规定。"
+        },
+        {
+          "title": "不粘贴任何来源会怎样？",
+          "description": "草稿不会点名任何具体研究，所有需要证据的论点都会列入「待核实证据」清单，而不是伪造参考文献列表。第二轮粘贴笔记可以让综合更紧凑。"
+        },
+        {
+          "title": "这是系统综述工具吗？",
+          "description": "不是。它只生成叙事式文献综述，不支持 PRISMA 筛选、方案注册或完整性声明，也不会假装你的综述是系统综述。"
+        },
+        {
+          "title": "文献综述生成器免费吗？",
+          "description": "免费。匿名访客可以用标准模型免费生成草稿。Creative 模型遵循全站每日三次试用与登录规则，Turnstile 验证则用于防止接口被滥用。"
+        },
+        {
+          "title": "文献综述应该写多长？",
+          "description": "取决于你的层级和作业要求。常见的参考区间：本科综述通常 1,000–2,000 词，硕士综述 3,000–5,000 词，但作业要求永远优先。生成器提供约 800、1,500、2,500 词三档草稿，给你一个比例合适的起始结构，再用有据内容扩展。"
+        },
+        {
+          "title": "文献综述需要多少篇文献？",
+          "description": "没有固定数字——取决于主题范围和层级。常见参考：本科综述约 15–30 篇，硕士综述 40 篇以上，但覆盖面比数量更重要。由于生成器绝不编造来源，「待核实证据」清单会明确告诉你哪些论点还需要文献支撑。"
+        },
+        {
+          "title": "生成器遵循 APA 格式吗？",
+          "description": "生成器只生成结构与文字，不生成引用——因此不会按 APA、MLA、Harvard 或任何格式排版参考文献。真实引用由你按院系要求的格式补充。小技巧：把要求的引用格式、摘要（abstract）与各级标题写进「作业要求」，草稿从一开始就会遵守它们。"
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "开始生成你的文献综述草稿",
+      "description": "描述主题、设置约束，得到可核实、可答辩的综述结构——免费开始。",
+      "buttons": [
+        {
+          "title": "生成文献综述",
+          "url": "/literature-review-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}

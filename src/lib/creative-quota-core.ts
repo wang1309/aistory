@@ -8,6 +8,7 @@ export const CREATIVE_PAGE_KEYS = [
   "fanfic-generator",
   "fantasy-generator",
   "incorrect-quote-generator",
+  "literature-review-generator",
   "plot-generator",
   "poem-generator",
   "romance-story-generator",

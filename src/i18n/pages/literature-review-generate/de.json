@@ -1,0 +1,285 @@
+{
+  "literature_review_generate": {
+    "metadata": {
+      "title": "Kostenloser KI-Literaturübersicht-Generator | Narrative Review-Entwürfe",
+      "description": "Verwandle ein Forschungsthema in einen strukturierten narrativen Literaturübersicht-Entwurf: Einleitung, thematische Synthese, Spannungen und Lücken, plus Checkliste zu prüfender Belege. Kostenlos starten.",
+      "keywords": "literature review generator, how to write a literature review, literature review example, literaturübersicht generator, literaturübersicht schreiben, literaturübersicht beispiel, literaturübersicht gliederung, literaturübersicht muster"
+    },
+    "ui": {
+      "eyebrow": "Wissenschaftliches Schreibwerkzeug",
+      "title": "Generator",
+      "title_accent": "Literaturübersicht",
+      "subtitle": "Verwandle ein Forschungsthema und deine Vorgaben in eine klare Struktur für den Literaturübersicht-Entwurf — von dir überprüft, überarbeitet und mit eigenen Quellen belegt.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Literaturübersicht-Generator",
+      "integrity_note_title": "Wissenschaftliche Integrität als Designprinzip",
+      "integrity_note": "Dieses Tool entwirft Struktur und Prosa — es durchsucht keine wissenschaftlichen Datenbanken und erfindet niemals Zitate. Jede Aussage, die du behältst, muss an einer echten Quelle geprüft werden, und vor der Abgabe gilt die KI-Richtlinie deiner Hochschule.",
+      "disclosure": "Generierter Text muss geprüft werden. Ohne gelieferte Quellen werden keine Zitate behauptet — stattdessen wird aufzufindende Evidenz aufgelistet.",
+      "value_points": [
+        {
+          "title": "Verteidigungsfähige Struktur",
+          "description": "Einleitung, thematische Synthese, Spannungen und Lücken, Fazit — die narrative Review-Form, die Prüfer erwarten, entworfen aus deinem Thema und deinen Vorgaben."
+        },
+        {
+          "title": "Deine Quellen bleiben deine",
+          "description": "Füge Lese-notizen oder Literatur ein und der Entwurf behandelt sie ausschließlich als Kontext. Autoren, DOIs, Seitenzahlen oder Befunde ergänzt er nie aus dem Gedächtnis."
+        },
+        {
+          "title": "Evidenz sichtbar gemacht",
+          "description": "Aussagen, die noch eine Quelle brauchen, landen in der Checkliste „Zu prüfende Belege“ — Platzhalter können sich nie als Referenzen ausgeben."
+        }
+      ],
+      "topic_label": "Forschungsthema",
+      "topic_hint": "Ein bis zwei Sätze: Feld, Fragestellung und ggf. Eingrenzung.",
+      "random_button": "Zufälliges Thema",
+      "research_question_label": "Forschungsfrage (optional)",
+      "assignment_brief_label": "Aufgabenstellung (optional)",
+      "discipline_label": "Disziplin (optional)",
+      "themes_sources_label": "Kernthemen oder vorhandene Quellen / Notizen (optional)",
+      "themes_sources_hint": "Füge Themen, Lese-notizen oder bereits vorhandene Literatur ein. Der Entwurf stützt sich nur auf das Gelieferte und markiert alles Weitere als zu prüfen.",
+      "ai_model": "KI-Modell",
+      "output_language": "Ausgabesprache",
+      "academic_level": "Niveau",
+      "review_length": "Umfang",
+      "tone": "Ton",
+      "advanced_options": "Optionale Angaben",
+      "generate_button": "Gliederung & Entwurf generieren",
+      "generating": "Literaturübersicht wird entworfen…",
+      "sign_in_to_continue": "Zum Fortfahren anmelden"
+    },
+    "placeholders": {
+      "topic": "z. B. „Wie wirken formative Assessments auf die Lernmotivation im naturwissenschaftlichen Unterricht der Sekundarstufe?“",
+      "research_question": "z. B. „Welche Assessmentsformen zeigen den stärksten Zusammenhang mit intrinsischer Motivation?“",
+      "assignment_brief": "Wortzahl, geforderte Struktur, Zitierstil, Bewertungskriterien…",
+      "discipline": "z. B. Erziehungswissenschaft, Psychologie, Pflegewissenschaft, Informatik…",
+      "themes_sources": "Kernthemen, Lese-notizen oder vorhandene Literatur (Autor, Jahr, zentrales Ergebnis) einfügen…"
+    },
+    "random_prompts": [
+      "Einfluss der Social-Media-Nutzung auf die psychische Gesundheit Jugendlicher",
+      "Formative Assessments und Lernmotivation im naturwissenschaftlichen Unterricht der Sekundarstufe",
+      "Remote Work und Mitarbeiterproduktivität in Wissensbranchen",
+      "Mikroplastik in Süßwasserökosystemen: Quellen und ökologische Wirkungen",
+      "Gamification im sprachlichen Hochschulunterricht",
+      "Pflegepersonalausstattung und Patientenergebnisse in Akutkrankenhäusern",
+      "Erklärbare KI in klinischen Entscheidungsunterstützungssystemen",
+      "Städtische Grünflächen und Gemeinwohlbefinden"
+    ],
+    "ai_models": {
+      "fast": "Schnellste",
+      "fast_description": "Schneller Strukturentwurf",
+      "standard": "Eloquent",
+      "standard_description": "Ausgewogene Synthese und Prosa",
+      "creative": "Kreativ",
+      "creative_description": "Am ausführlichsten und ausdrucksstärksten"
+    },
+    "academic_levels": {
+      "undergraduate": "Bachelor (letztes Jahr)",
+      "masters": "Master"
+    },
+    "review_lengths": {
+      "short": "Kurz (~800 Wörter)",
+      "medium": "Mittel (~1500 Wörter)",
+      "long": "Lang (~2500 Wörter)"
+    },
+    "tones": {
+      "neutral": "Neutral-wissenschaftlich",
+      "formal": "Formell",
+      "accessible": "Verständlich"
+    },
+    "validation": {
+      "enter_topic": "Bitte gib zuerst dein Forschungsthema ein.",
+      "topic_too_long": "Bitte halte das Thema unter 300 Zeichen.",
+      "select_model": "Bitte wähle ein KI-Modell."
+    },
+    "success": {
+      "random_topic_selected": "Zufälliges Thema ausgewählt!",
+      "review_generated": "Literaturübersicht-Entwurf generiert!",
+      "review_copied": "Entwurf in die Zwischenablage kopiert!",
+      "saved_locally": "Lokal in „Meine Geschichten“ gespeichert."
+    },
+    "errors": {
+      "generation_failed": "Generierung fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "output": {
+      "title": "Dein Literaturübersicht-Entwurf",
+      "words": "Wörter",
+      "copy": "Kopieren",
+      "export": "Export",
+      "export_md": "Als Markdown exportieren",
+      "export_txt": "Als Text exportieren",
+      "generating_message": "Literaturübersicht wird entworfen…",
+      "empty_message": "Dein Entwurf — Einleitung, thematische Synthese, Spannungen und Lücken, Fazit und Beleg-Checkliste — erscheint hier.",
+      "evidence_warning_title": "Zu prüfende Belege",
+      "evidence_warning": "Dies ist ein Entwurfswerkzeug. Prüfe vor der Abgabe jede Aussage an einer echten Quelle und arbeite die Checkliste „Zu prüfende Belege“ ab. Ohne eigene Quellen enthält der Entwurf keine echten Zitate."
+    },
+    "completion_guide": {
+      "title": "Entwurf brauchbar?",
+      "subtitle": "Speichern, neu generieren oder in AI Write weiterschreiben.",
+      "create_another": "Neu generieren",
+      "share_action": "Entwurf speichern",
+      "continue_label": "In AI Write fortfahren"
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Was ist ein Literaturübersicht-Generator?",
+      "description": "Eine Literaturübersicht ist eine kritische Synthese dessen, was zu einem Thema bereits veröffentlicht wurde: Ihr Zweck ist zu zeigen, was bekannt ist, wo Studien übereinstimmen oder kollidieren und welche Lücken bleiben. Ein Literaturübersicht-Generator ist ein KI-Entwurfswerkzeug für genau dieses Kapitel. Du gibst ein Forschungsthema, deine Aufgabenstellung und optional bereits gesammelte Quellen und Notizen ein; das Tool entwirft Struktur und Prosa einer narrativen Literaturübersicht — Einleitung, themenbasierte Synthese, Spannungen und Lücken, Fazit — plus eine Checkliste „Zu prüfende Belege“ für jede Aussage, die noch eine echte Quelle braucht.\n\nBewusst ist es keine Recherche-Datenbank, kein Zitiermanager und kein Systematic-Review-Werkzeug. Es durchsucht weder Google Scholar noch Verlagsdatenbanken und erfindet niemals bibliografische Angaben. Der Entwurf ist ein Ausgangspunkt, den du prüfst, überarbeitest und mit eigener Lektüre belegst — genau so entsteht eine verteidigungsfähige Literaturübersicht."
+    },
+    "example_section": {
+      "name": "example_outline",
+      "label": "BEISPIEL",
+      "title": "Beispiel-Gliederung einer Literaturübersicht",
+      "description": "Jeder Entwurf folgt dieser Form — eine Standard-Vorlage für narrative Reviews, die sich ausbauen lässt, sobald jede Aussage belegt ist. Deiner wird aus Thema und Vorgaben generiert, mit [source needed]-Markern, wo noch Evidenz fehlt.",
+      "items": [
+        {
+          "title": "## Introduction (Einleitung)",
+          "description": "Umfang des Reviews, wie das Feld gegliedert ist und wie die Themen gewählt wurden.",
+          "content": "„Die Forschung zu formativem Feedback ist in den letzten zwei Jahrzehnten stark gewachsen, doch die Befunde bleiben im Sekundarstufen-Kontext uneinheitlich. [source needed]“"
+        },
+        {
+          "title": "### Theme: Feedback and motivation",
+          "description": "Der Hauptteil synthetisiert Perspektiven Thema für Thema, statt Papier für Papier zusammenzufassen.",
+          "content": "„Mehrere Stränge laufen auf die Aussage zusammen, dass zeitnahes, spezifisches Feedback Engagement vorhersagt, während prämierte Anreize gemischte Ergebnisse zeigen. [source needed]“"
+        },
+        {
+          "title": "## Tensions and Gaps (Spannungen und Lücken)",
+          "description": "Wo Studien uneins sind, welche Fragen offen bleiben und was untererforscht ist.",
+          "content": "„Die Befunde widersprechen sich dazu, ob extrinsische Belohnungen intrinsische Motivation bei Jugendlichen verdrängen. [source needed]“"
+        },
+        {
+          "title": "## Conclusion (Fazit)",
+          "description": "Was die geprüften Belege andeuten und was Leser:innen mitnehmen sollten.",
+          "content": "„Zusammen genommen deutet die Literatur auf Feedbackqualität — nicht -menge — als den Hebel, der weitere Studie am ehesten lohnt. [source needed]“"
+        },
+        {
+          "title": "## Evidence to Verify (Zu prüfende Belege)",
+          "description": "Checkliste aller Aussagen, die noch eine echte Quelle brauchen — nie ein erfundenes Literaturverzeichnis.",
+          "content": "„☐ ‚Feedbackqualität sagt Engagement voraus‘ — Suche: formative feedback + student motivation + secondary school“"
+        }
+      ]
+    },
+    "source_responsibility": {
+      "name": "source_responsibility",
+      "label": "Quellen",
+      "title": "Wie der Generator mit Quellen umgeht",
+      "description": "Klare Grenzen, damit in deinem Entwurf nichts Belegtes vortäuscht.",
+      "items": [
+        {
+          "title": "Keine erfundenen Referenzen",
+          "description": "Der Generator erfindet nie Zitate, Autor-Jahr-Angaben, DOIs, Seitenzahlen, wörtliche Zitate oder konkrete Studienergebnisse. Fehlt zu einer Aussage die Quelle, steht ehrlich ein [source needed]-Marker.",
+          "icon": "RiShieldCheckLine"
+        },
+        {
+          "title": "Notizen nur als Kontext",
+          "description": "Alles Eingefügte — Lese-notizen, Themen, unvollständige Referenzen — wird strikt als nutzergelieferter Kontext behandelt. Der Entwurf erwähnt diese Werke nur mit den von dir gegebenen Details und markiert Unvollständiges zur Prüfung.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Checkliste statt Literaturverzeichnis",
+          "description": "Alle noch zu belegenden Aussagen sammelt der Abschnitt „Zu prüfende Belege“ — formuliert, sodass du direkt suchen kannst. Platzhalter bleiben sichtbar und getrennt; sie geben sich nie als Referenzliste aus.",
+          "icon": "RiSearchEyeLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "SO GEHT'S",
+      "title": "In drei Schritten eine Literaturübersicht schreiben",
+      "description": "Vom leeren Blatt zur überprüfbaren Entwurfsstruktur.",
+      "items": [
+        {
+          "title": "Review beschreiben",
+          "description": "Thema eingeben, optional Forschungsfrage, Aufgabenstellung und Disziplin. Je konkreter die Vorgaben, desto näher liegt die Struktur an deiner Aufgabe."
+        },
+        {
+          "title": "Niveau, Umfang und Ton setzen",
+          "description": "Bachelor oder Master, ungefährer Umfang und den erwarteten Ton wählen. Vorhandene Quellen oder Notizen direkt einfügen."
+        },
+        {
+          "title": "Prüfen, überarbeiten, belegen",
+          "description": "Den gestreamten Entwurf lesen, die Checkliste „Zu prüfende Belege“ mit eigener Lektüre abarbeiten, Übergänge und Topic Sentences schärfen, echte Zitate ergänzen und vor der Abgabe die KI-Richtlinie der Hochschule prüfen."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "applications",
+      "label": "Anwendungen",
+      "title": "Wer diesen Literaturübersicht-Generator nutzt",
+      "description": "Gebaut für die narrativen Reviews, die Kursarbeiten tatsächlich verlangen.",
+      "items": [
+        {
+          "title": "Masterstudierende",
+          "description": "3.000 Wörter Review-Kapitel und sechs Wochen Lektüre? Erst die thematische Struktur entwerfen, dann mit Literatur füllen, die du wirklich gelesen hast und im Kolloquium verteidigen kannst.",
+          "icon": "RiGraduationCapLine"
+        },
+        {
+          "title": "Bachelorstudierende im Abschlussjahr",
+          "description": "Ein breites Thema in ein geordnetes Review-Gerüst verwandeln — Einleitung, Themen, Lücken, Fazit — und beim Aufbau verstehen, was ein narratives Review leisten soll.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Anfertiger von Exposés",
+          "description": "Erster Anlauf für das Hintergrundkapitel nötig? Struktur und Spannungsfelder des Fachgebiets generieren, dann jede Aussage an die Literatur des Exposés binden — ein verbreiteter Ausgangspunkt für Doktorand:innen und Masterstudierende.",
+          "icon": "RiFileList3Line"
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Häufige Fragen zum Literaturübersicht-Generator",
+      "description": "Die Fragen zur wissenschaftlichen Integrität, die Studierende am häufigsten stellen.",
+      "items": [
+        {
+          "title": "Ist das ein Zitiergenerator?",
+          "description": "Nein. Der Generator entwirft Struktur und Prosa einer narrativen Literaturübersicht. Er ruft keine Zitate ab, formatiert und prüft sie nicht und erfindet keine bibliografischen Angaben. Echte Referenzen ergänzt du aus selbst gelesener Literatur."
+        },
+        {
+          "title": "Durchsucht er Google Scholar oder Fachdatenbanken?",
+          "description": "Nein. Er arbeitet nur mit Thema, Vorgaben und Quellen, die du lieferst. Er kann die Abdeckung eines Feldes nicht beweisen und behauptet es nicht. Die Literaturrecherche bleibt deine Aufgabe — der Entwurf sagt dir genau, wonach du suchen sollst."
+        },
+        {
+          "title": "Kann ich den generierten Review direkt einreichen?",
+          "description": "Nein. Die Ausgabe ist ein Entwurfswerkzeug. Du musst sie kritisch lesen, jede Aussage an echten Quellen prüfen, echte Zitate ergänzen, die Prosa überarbeiten und die KI-Richtlinie deiner Hochschule einhalten, bevor du etwas einreichst."
+        },
+        {
+          "title": "Was passiert, wenn ich keine Quellen einfüge?",
+          "description": "Der Entwurf nennt keine konkreten Studien; jede belegbedürftige Aussage landet stattdessen in der Checkliste „Zu prüfende Belege“ — ohne falsches Literaturverzeichnis. Im zweiten Durchgang Notizen einfügen, um die Synthese zu straffen."
+        },
+        {
+          "title": "Ist das ein Systematic-Review-Werkzeug?",
+          "description": "Nein. Es entwirft nur narrative Literaturübersichten. PRISMA-Screening, Registrierung von Protokollen oder Vollständigkeitsaussagen werden nicht unterstützt, und es gibt nie vor, dein Review sei systematisch gewesen."
+        },
+        {
+          "title": "Ist der Literaturübersicht-Generator kostenlos?",
+          "description": "Ja. Anonyme Besucher können mit dem Standardmodell kostenlos Entwürfe generieren. Das Kreativ-Modell folgt der siteweiten Tagesquote von drei Versuchen mit Anmeldung, und Turnstile-Verifizierung schützt den Endpunkt vor Missbrauch."
+        },
+        {
+          "title": "Wie lang sollte eine Literaturübersicht sein?",
+          "description": "Das hängt von Niveau und Aufgabenstellung ab. Als häufig zitierte Orientierung gelten 1.000–2.000 Wörter im Bachelor und 3.000–5.000 im Master, aber die Aufgabenstellung hat immer Vorrang. Der Generator entwirft mit rund 800, 1.500 oder 2.500 Wörtern eine proportionale Startstruktur, die du mit belegtem Material ausbaust."
+        },
+        {
+          "title": "Wie viele Quellen gehören in eine Literaturübersicht?",
+          "description": "Es gibt keine feste Zahl — sie hängt vom Umfang des Themas und deinem Niveau ab. Häufig genannte Orientierung: etwa 15–30 Quellen im Bachelor, 40 oder mehr im Master; Breite zählt aber mehr als Anzahl. Da der Generator nie Quellen erfindet, sagt die Checkliste „Zu prüfende Belege“ genau, welche Aussagen noch eine brauchen."
+        },
+        {
+          "title": "Folgt der Generator dem APA-Format?",
+          "description": "Der Generator entwirft Struktur und Prosa, keine Zitate — er formatiert also keine Referenzen in APA, MLA, Harvard oder einem anderen Stil. Echte Referenzen ergänzt du im geforderten Stil deines Fachbereichs.Tipp: Füge den geforderten Zitierstil, das Abstract und die Zwischenüberschriften in die Aufgabenstellung ein, dann respektiert der Entwurf sie von Anfang an."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Starte deinen Literaturübersicht-Entwurf",
+      "description": "Thema beschreiben, Vorgaben setzen — und eine überprüfbare, verteidigungsfähige Review-Struktur erhalten. Kostenlos starten.",
+      "buttons": [
+        {
+          "title": "Literaturübersicht generieren",
+          "url": "/literature-review-generator",
+          "target": "",
+          "icon": "GoArrowUpRight"
+        }
+      ]
+    }
+  }
+}
