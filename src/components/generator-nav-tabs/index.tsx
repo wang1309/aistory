@@ -175,7 +175,7 @@ export default function GeneratorNavTabs() {
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 pt-6 pb-6 md:px-6">
+    <div className="w-full max-w-6xl mx-auto px-4 pt-6 pb-6 md:px-6" data-nosnippet>
       <div
         className="relative"
         onMouseEnter={useMarquee ? handleMouseEnter : undefined}

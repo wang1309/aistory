@@ -1,0 +1,204 @@
+{
+  "band_name_generator": {
+    "metadata": {
+      "title": "Band Name Generator for Musicians, Rock & Metal | AI Story",
+      "description": "Generate original band names by genre, mood, and keywords. Get name ideas, a short band bio, and an availability checklist for your next music project.",
+      "keywords": "band name generator, band name generator ai, band name generator with keywords, band name generator free, one word band name generator, metal band name generator, band name generator rock, band name ideas, band name availability, band bio"
+    },
+    "ui": {
+      "title": "Band Name Generator",
+      "title_highlight": "Band Name",
+      "subtitle": "Our free band name generator creates original names that fit your sound, then pairs every idea with a short bio, visual direction, and next steps to check whether it is worth claiming.",
+      "theme_pills": ["6 identity directions", "Genre & vibe aware", "No-AI mode", "Availability checklist"],
+      "eyebrow": "AI Music Identity Tool",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Band Name Generator",
+      "form_title": "Shape your band identity",
+      "genre_label": "Genre",
+      "genre_options": [
+        { "value": "rock", "label": "Rock" },
+        { "value": "metal", "label": "Metal" },
+        { "value": "indie", "label": "Indie / alternative" },
+        { "value": "emo", "label": "Emo / post-hardcore" },
+        { "value": "pop", "label": "Pop" },
+        { "value": "electronic", "label": "Electronic / dance" },
+        { "value": "hip_hop", "label": "Hip-hop / rap" }
+      ],
+      "vibe_label": "Vibe",
+      "vibe_options": [
+        { "value": "anthemic", "label": "Anthemic" },
+        { "value": "gritty", "label": "Gritty" },
+        { "value": "dreamy", "label": "Dreamy" },
+        { "value": "playful", "label": "Playful" },
+        { "value": "dark", "label": "Dark" },
+        { "value": "nostalgic", "label": "Nostalgic" }
+      ],
+      "length_label": "Name length",
+      "length_options": [
+        { "value": "any", "label": "Any length" },
+        { "value": "one_word", "label": "One word" },
+        { "value": "short", "label": "Short (two words)" },
+        { "value": "phrase", "label": "Longer phrase" }
+      ],
+      "mode_label": "Mode",
+      "mode_options": [
+        { "value": "ai", "label": "AI-written directions" },
+        { "value": "template", "label": "No AI (instant templates)" }
+      ],
+      "model_label": "AI model",
+      "model_options": [
+        { "value": "fast", "label": "Fast" },
+        { "value": "standard", "label": "Standard" },
+        { "value": "creative", "label": "Creative" }
+      ],
+      "sign_in_button": "Sign in to continue",
+      "template_note": "No-AI mode combines fixed genre word lists instantly — no model is involved, and every name shows the template that built it.",
+      "cue_label": "Keywords, city, era, or influence to include? (optional)",
+      "cue_placeholder": "e.g. anchor the name around 'raven', a Detroit garage-rock vibe, something that sounds like a 1980s synth club",
+      "inspiration_hint": "Generating names with a similar feel to:",
+      "generate_button": "Generate band names",
+      "generating_button": "Building identity directions...",
+      "reroll_button": "Generate 6 more",
+      "output_title": "Your band name generator results",
+      "output_title_template": "Your template band names",
+      "empty_output": "Pick a genre and vibe, then generate to see six identity directions from the band name generator, complete with pronunciation, bios, and visual direction.",
+      "result_label": "Direction",
+      "pronunciation_label": "Pronunciation",
+      "rationale_label": "Why it works",
+      "genre_fit_label": "Genre fit",
+      "bio_label": "One-line bio",
+      "visual_label": "Visual direction",
+      "pattern_label": "Template",
+      "pattern_labels": {
+        "the_adj_noun": "the + adjective + noun",
+        "adj_noun": "adjective + noun",
+        "noun_suffix": "noun + collective word",
+        "compound_word": "one-word compound",
+        "noun_and_the_plural": "noun + \"& the\" + collective word",
+        "cue_suffix": "your keyword + partner word"
+      },
+      "copy_button": "Copy name",
+      "favorite_button": "Add to favorites",
+      "favorited_button": "Remove from favorites",
+      "similar_button": "More like this",
+      "favorites_title": "Favorites in this session",
+      "check_button": "Check availability",
+      "check_close_button": "Hide checks",
+      "check_disclaimer": "These links open external searches. This band name generator never checks or guarantees that a name, handle, domain, or trademark is available — always look yourself before committing.",
+      "check_links": {
+        "search": "Google",
+        "spotify": "Spotify",
+        "youtube": "YouTube",
+        "instagram": "Instagram handle",
+        "domain": "bandname.com",
+        "trademark": "Trademark search"
+      },
+      "loading_status": "Generating band names, please wait."
+    },
+    "validation": {
+      "cue_too_long": "Keywords must be 120 characters or fewer.",
+      "inspiration_too_long": "Inspiration name must be 100 characters or fewer.",
+      "generic_error": "We couldn't generate band names right now. Please try again.",
+      "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits."
+    },
+    "success": {
+      "copied": "Name copied to clipboard.",
+      "generated": "Band identity directions generated.",
+      "favorited": "Added to favorites.",
+      "unfavorited": "Removed from favorites."
+    },
+    "errors": {
+      "generate_failed": "Unable to generate band names. Please try again.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "continuation": {
+      "title": "Take the name further",
+      "description": "Writers can turn a band into a full cast and story — musicians can borrow the same angles for liner notes and press kits.",
+      "character_label": "Create the frontman",
+      "character_hint": "Design the original character behind the voice",
+      "backstory_label": "Write the band's origin",
+      "backstory_hint": "Build how the group formed and what it cost",
+      "prompt_label": "Turn it into a story",
+      "prompt_hint": "Get a story prompt set inside the band's world"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Name Styles",
+      "title": "Band Name Generator: Styles by Genre",
+      "description": "Every genre has its own naming logic. Pick one in the band name generator above, or scan the styles below to see how the conventions differ.",
+      "items": [
+        { "title": "Rock", "description": "Rock names pair a worn image with a strong noun: think 'Wild Static' or 'The Crimson Roses'. They should sound right spray-painted on an amp and shouted from a crowd.", "icon": "RiMicLine" },
+        { "title": "Metal", "description": "Metal reaches for weight and myth: 'Ashen Covenant' or 'Sunless Vigil' promise volume, ritual, and doom. Concrete, physical words beat clever puns here.", "icon": "RiSwordLine" },
+        { "title": "Indie / alternative", "description": "Indie names are handmade and a little wry: 'Paper Coastline' or 'The Borrowed Sweaters' feel like they were coined in a practice space, not a boardroom.", "icon": "RiHeadphoneLine" },
+        { "title": "Emo / post-hardcore", "description": "Emo names confess: 'October Motel' or 'Sleepless Theory' carry homesickness and hurt in three syllables. Nostalgic, specific, and easy to tattoo.", "icon": "RiHeartLine" },
+        { "title": "Pop", "description": "Pop names are bright and instantly chantable: 'Cherry Cinema' or 'Fizzy Galaxy' read as hooks before anyone hears a note. If a room can sing it back, it works.", "icon": "RiStarLine" },
+        { "title": "Electronic / dance", "description": "Electronic names borrow from machines and texture: 'Glacial Voltage' or 'Parallel Echo' sound like they were built in a DAW — synthetic, precise, and atmospheric.", "icon": "RiDiscLine" },
+        { "title": "Hip-hop / rap", "description": "Hip-hop names carry swagger and place: 'Uptown Cipher' or 'Concrete Dynasty' tell you who they are and which block they're from in two words.", "icon": "RiMusic2Line" }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Choose a Band Name",
+      "description": "Run these three tests on every idea your band name generator produces — they separate a name you'll keep from a name you'll outgrow.",
+      "items": [
+        { "title": "Say it out loud", "description": "Announce it like a frontman, answer it in an interview, text it to a friend. If it's hard to say or spell after one hearing, it will fight you for the life of the band.", "icon": "RiMic2Line" },
+        { "title": "Search it before you love it", "description": "Search the exact name in quotes, then on streaming services and social platforms. A name nobody else uses is easier to own than one you'll always be disambiguating.", "icon": "RiSearchEyeLine" },
+        { "title": "Fit the room you'll play", "description": "Picture the name on the marquee of the venue you actually want to play. Genre-appropriate, memorable, and a little distinctive beats clever-but-generic every time.", "icon": "RiTeamLine" }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Before You Claim It",
+      "title": "The Band Name Availability Checklist",
+      "description": "This band name generator never claims a name is free. Instead it hands you the exact checks to run yourself — every result card links straight to them.",
+      "items": [
+        { "title": "Exact web search", "description": "Search the name in quotes plus 'band'. If the first page belongs to someone else's project, move on — you'd be competing for your own name forever.", "icon": "RiSearchEyeLine" },
+        { "title": "Streaming platforms", "description": "Look the name up on Spotify and Apple Music. Distros reject names that collide with existing artist profiles, so settle this before your first release.", "icon": "RiDiscLine" },
+        { "title": "Social handles", "description": "Check the handle on Instagram, TikTok, and YouTube. You don't need every platform, but the ones your audience lives on should be close to the name itself.", "icon": "RiLinksLine" },
+        { "title": "Domain name", "description": "A matching .com is ideal but not required — 'nameband.com' or 'nameofficial.com' are standard fallbacks. Grab the domain the day you commit.", "icon": "RiGlobalLine" },
+        { "title": "Trademark screening", "description": "For anything beyond a hobby, search your national trademark register (USPTO in the US). This is screening, not legal clearance — a trademark attorney makes the final call.", "icon": "RiShieldCheckLine" },
+        { "title": "Sleep on it", "description": "Live with the shortlist for a week. The name that still feels right on a Tuesday morning, after the excitement fades, is the one to claim.", "icon": "RiMoonLine" }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Who Uses the Band Name Generator",
+      "description": "Real musicians naming a project, plus writers and creators who use the band name generator for a band that only exists on the page.",
+      "items": [
+        { "title": "New bands & solo artists", "description": "Use the band name generator to explore genre-fitting directions with bios and visual direction before you print the first flyer.", "icon": "RiMicLine" },
+        { "title": "Writers & game masters", "description": "Need a fictional band for a novel, campaign, or fanfic? Every direction ships with a bio and visual identity you can drop straight into the story.", "icon": "RiBookOpenLine" },
+        { "title": "Content creators", "description": "Naming a playlist series, a podcast about music, or a virtual idol project? The genre and vibe controls keep the name on-brand for the scene.", "icon": "RiTeamLine" }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Band Name Generator — FAQ",
+      "items": [
+        { "title": "Can I use a generated band name for my real band?", "description": "Yes — every name this free band name generator produces is an invented suggestion you're free to use, change, or discard, at no cost. The tool does not run trademark or platform checks, so run the availability checklist yourself before you commit the name to releases and profiles." },
+        { "title": "What does the no-AI mode actually do?", "description": "No-AI mode lets the band name generator skip the model entirely. It combines fixed, genre-specific word lists through classic band-name templates — 'adjective + noun', 'the + adjective + noun', 'noun & the collective' — and shows you the exact template behind every name. It's instant, transparent, and never labels a word-list result as AI-written." },
+        { "title": "Is the availability checklist a legal clearance?", "description": "No. The checklist links to Google, streaming services, social platforms, domain search, and trademark registers so you can look yourself. It is practical screening, not legal advice — for real protection, have a trademark attorney run a proper clearance search before you invest in the name." },
+        { "title": "How do I generate one-word band names?", "description": "Set Name length to 'One word'. The band name generator then returns single words — real words, compounds, or invented words that still read naturally. One-word names are the easiest to own but the hardest to find free, so check them extra carefully." },
+        { "title": "Can I build the name around my own keywords?", "description": "Yes. Put a keyword, city, era, or influence in the keywords field — 'ravens', 'Detroit garage', '80s synth club' — and the band name generator anchors its directions around it. In no-AI mode your keyword becomes the anchor word of the template." },
+        { "title": "Does it work for metal, rock, emo, or hip-hop names specifically?", "description": "Yes. In the band name generator, the Genre control rewrites the naming logic for each style: metal gets weight and myth, emo gets confession and nostalgia, electronic gets machines and texture, hip-hop gets swagger and place. Pick your genre and the conventions follow." },
+        { "title": "Is the first generation really free?", "description": "Yes. This band name generator is completely free — every generation works without an account or sign-in. Pick your genre, vibe, and keywords, and generate as often as you like." }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Name Your Band Today",
+      "description": "Six genre-aware identity directions with pronunciation, bios, and visual direction — our band name generator is free and needs no account.",
+      "buttons": [
+        { "title": "Generate band names", "url": "#band_name_generator", "icon": "RiSparkling2Line" },
+        { "title": "Browse more free tools", "url": "/ai-tools", "icon": "RiAppsLine" }
+      ]
+    },
+    "related_tools": {
+      "title": "Keep the Creativity Going",
+      "description": "Turn the band into a story, a cast of characters, or a full fantasy world — free companion tools that live beside the band name generator.",
+      "more_label": "Browse all AI tools"
+    }
+  }
+}

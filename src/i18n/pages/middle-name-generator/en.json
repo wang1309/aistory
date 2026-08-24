@@ -1,0 +1,373 @@
+{
+  "middle_name_generator": {
+    "metadata": {
+      "title": "Middle Name Generator for Characters & Pen Names | AI Story",
+      "description": "A free middle name generator for fictional characters and pen names. Match first and last names by setting, tone, cadence, and story role.",
+      "keywords": "middle name generator, middle name ideas, character middle name, middle names for characters, pen name middle name, full name generator, middle name maker, middle name generator with first and last name, fictional name generator"
+    },
+    "ui": {
+      "title": "Middle Name Generator",
+      "title_highlight": "Middle Name",
+      "subtitle": "Complete a name that already has a beginning and an ending. This free middle name generator suggests middles that fit the character, setting, and sound of the full name.",
+      "theme_pills": [
+        "3 full-name directions",
+        "First & last name aware",
+        "Initials check",
+        "No sign-up"
+      ],
+      "eyebrow": "AI Full-Name Fit Tool",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Middle Name Generator",
+      "form_title": "Shape the full name",
+      "mode_label": "AI model",
+      "mode_options": [
+        {
+          "value": "fast",
+          "label": "Fast"
+        },
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "creative",
+          "label": "Creative"
+        }
+      ],
+      "use_case_label": "This middle name is for a",
+      "use_case_options": [
+        {
+          "value": "fictional_character",
+          "label": "Fictional character"
+        },
+        {
+          "value": "pen_name",
+          "label": "Pen name / byline"
+        }
+      ],
+      "first_name_label": "First name (optional)",
+      "first_name_placeholder": "e.g. Elena",
+      "last_name_label": "Last name (optional)",
+      "last_name_placeholder": "e.g. Hart",
+      "setting_label": "Genre / setting",
+      "setting_options": [
+        {
+          "value": "contemporary",
+          "label": "Contemporary"
+        },
+        {
+          "value": "mystery_thriller",
+          "label": "Mystery & Thriller"
+        },
+        {
+          "value": "romance",
+          "label": "Romance"
+        },
+        {
+          "value": "fantasy",
+          "label": "Fantasy"
+        },
+        {
+          "value": "historical",
+          "label": "Historical"
+        },
+        {
+          "value": "science_fiction",
+          "label": "Science Fiction"
+        },
+        {
+          "value": "literary",
+          "label": "Literary"
+        }
+      ],
+      "era_label": "Era",
+      "era_options": [
+        {
+          "value": "any",
+          "label": "No preference"
+        },
+        {
+          "value": "contemporary",
+          "label": "Contemporary (2020s)"
+        },
+        {
+          "value": "mid_20th",
+          "label": "Mid-20th century"
+        },
+        {
+          "value": "early_20th",
+          "label": "Early 20th century"
+        },
+        {
+          "value": "victorian",
+          "label": "Victorian / 19th century"
+        },
+        {
+          "value": "timeless",
+          "label": "Timeless"
+        }
+      ],
+      "tone_label": "Tone / family signal",
+      "tone_options": [
+        {
+          "value": "restrained",
+          "label": "Restrained"
+        },
+        {
+          "value": "formal",
+          "label": "Formal"
+        },
+        {
+          "value": "old_money",
+          "label": "Old money"
+        },
+        {
+          "value": "rebellious",
+          "label": "Rebellious"
+        },
+        {
+          "value": "inherited",
+          "label": "Inherited / family name"
+        },
+        {
+          "value": "warm",
+          "label": "Warm"
+        },
+        {
+          "value": "mysterious",
+          "label": "Mysterious"
+        }
+      ],
+      "cadence_label": "Middle name length",
+      "cadence_options": [
+        {
+          "value": "any",
+          "label": "Any length"
+        },
+        {
+          "value": "short",
+          "label": "Short (1–2 syllables)"
+        },
+        {
+          "value": "long",
+          "label": "Long (3+ syllables)"
+        }
+      ],
+      "avoid_initials_label": "Initials to avoid (optional)",
+      "avoid_initials_placeholder": "e.g. A, S, S",
+      "note_label": "Family note or keyword (optional)",
+      "note_placeholder": "e.g. honor a grandmother called Rose, signal a complicated family history without melodrama",
+      "privacy_hint": "Your first and last names are used only to build this request — they are never stored, logged, or sent to analytics.",
+      "generate_button": "Find middle names",
+      "generating_button": "Fitting middle names...",
+      "sign_in_button": "Sign in to continue",
+      "reroll_button": "Try 3 new directions",
+      "output_title": "Full-name directions for your character",
+      "empty_output": "Enter the first and last name you already have, then generate to see three complete full-name directions here.",
+      "direction_label": "Direction",
+      "middle_name_label": "Middle name",
+      "initials_label": "Initials",
+      "initials_warning": "Uses an initial you avoided",
+      "cadence_note_label": "How it sounds",
+      "implication_label": "Story signal",
+      "copy_button": "Copy full name",
+      "favorite_button": "Add to favorites",
+      "favorited_button": "Remove from favorites",
+      "continue_button": "Continue with this character",
+      "favorites_title": "Favorites in this session",
+      "loading_status": "Generating middle name directions, please wait."
+    },
+    "validation": {
+      "name_too_long": "Names must be 60 characters or fewer.",
+      "avoid_initials_too_long": "Initials to avoid must be 12 characters or fewer.",
+      "note_too_long": "Note must be 160 characters or fewer.",
+      "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits.",
+      "generic_error": "We couldn't generate middle names right now. Please try again."
+    },
+    "success": {
+      "copied": "Full name copied to clipboard.",
+      "generated": "Three full-name directions generated.",
+      "favorited": "Added to favorites.",
+      "unfavorited": "Removed from favorites.",
+      "continue_copied": "Full name copied — paste it as the character name in the OC builder."
+    },
+    "errors": {
+      "generate_failed": "Unable to generate middle names. Please try again.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "continuation": {
+      "title": "Continue with this name",
+      "description": "A finished name is the start of a character, not the end. Take it into the rest of your workflow.",
+      "dialogue_label": "Write the dialogue",
+      "dialogue_hint": "Open the dialogue studio and give this name its first lines",
+      "backstory_label": "Write the backstory",
+      "backstory_hint": "Explain the family history the middle name implies",
+      "prompt_label": "Get a story prompt",
+      "prompt_hint": "Drop the full name into a scene starter"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "A Middle Name Generator That Judges the Whole Name",
+      "description": "A middle name is never chosen alone. This tool fits it into the complete string — first, middle, last — the way readers and signing tables will meet it.",
+      "items": [
+        {
+          "title": "Full-name fit, not a list",
+          "description": "Keep the first and last name you already trust. Every direction shows the complete name, so you judge the fit you'll actually print.",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "Cadence you can hear",
+          "description": "Each direction comes with a short, hedged note on how the full name sounds spoken — a short middle gives the surname more weight, a long one adds a formal stride.",
+          "icon": "RiMicLine"
+        },
+        {
+          "title": "A story signal, not decoration",
+          "description": "The middle name should tell the reader something — inherited, rebellious, ceremonial. Every direction explains what it signals in the story or byline.",
+          "icon": "RiLightbulbLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the Middle Name Generator in 3 Steps",
+      "description": "Take a half-finished name from first draft to three complete directions in under a minute with this middle name generator.",
+      "items": [
+        {
+          "title": "Enter what you already have",
+          "description": "Type the first and last name (both optional), pick the setting, era, and the tone the middle name should carry — restrained, inherited, rebellious, and more.",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "Compare three directions",
+          "description": "Read each full name aloud with its cadence note and story signal. Check the initials preview, favorite what clicks, and reroll for new directions.",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "Continue with the character",
+          "description": "Copy the winning full name, or take it straight into the OC builder, a backstory, or a story prompt and keep writing.",
+          "icon": "RiUser3Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why the Middle Name Matters in Fiction",
+      "description": "The middle name is where rhythm, initials, and family history meet — and where lazy naming shows first.",
+      "items": [
+        {
+          "title": "Rhythm you can hear",
+          "description": "Three names in a row have a beat. The right middle name controls pacing — clipped and professional, or flowing and ceremonial — before a reader knows why.",
+          "icon": "RiMusic2Line"
+        },
+        {
+          "title": "Initials that don't backfire",
+          "description": "Elena V. Hart and Elena S. Hart are different characters on a monogrammed briefcase. The initials preview shows the acronym the full name spells.",
+          "icon": "RiText"
+        },
+        {
+          "title": "A family layer without exposition",
+          "description": "An inherited middle name implies grandparents, wills, and expectations in a single line of dialogue — backstory you never have to narrate.",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Six Styles, One Control Panel",
+      "description": "Every style below maps to settings in this middle name generator — set it and compare.",
+      "items": [
+        {
+          "title": "Modern leads",
+          "description": "Contemporary setting, restrained tone: middles that sound like a name chosen last decade, not a costume.",
+          "icon": "RiSmartphoneLine"
+        },
+        {
+          "title": "Historical registers",
+          "description": "Victorian or early-20th-century era: middles with the period's cadence, without turning into parody.",
+          "icon": "RiTimeLine"
+        },
+        {
+          "title": "Literary middles",
+          "description": "Literary setting: understated names that carry weight in close third person.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Terse one-syllable middles",
+          "description": "Short cadence: a clipped middle that lets the surname land — the thriller default.",
+          "icon": "RiSpeedLine"
+        },
+        {
+          "title": "Ceremonial full strides",
+          "description": "Long cadence, formal tone: three-syllable middles that fill a room at a wedding or a courtroom.",
+          "icon": "RiVipCrownLine"
+        },
+        {
+          "title": "Gender-neutral picks",
+          "description": "Tone-first generation with no gender controls: middles judged only by how they read in the full name.",
+          "icon": "RiUserHeartLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Middle Name Generator — FAQ",
+      "items": [
+        {
+          "title": "Can I use a generated middle name in my fiction?",
+          "description": "Yes. The suggestions are original combinations meant as creative starting points. Names are common cultural material, so a full name you assemble here is yours to use — just avoid modeling a character's full name on a real, identifiable living person."
+        },
+        {
+          "title": "How is this different from the Pen Name Generator?",
+          "description": "The Pen Name Generator invents complete bylines from scratch. This tool completes a name you already have — it keeps your first and last name exactly as written and fits a middle name into the full string for a character or a byline."
+        },
+        {
+          "title": "How do I avoid an awkward initials problem?",
+          "description": "Type the letters you want to avoid into 'Initials to avoid'. The initials preview shows the acronym each direction spells, and flags any direction whose initials use a letter you excluded."
+        },
+        {
+          "title": "Does the tool check whether a name is available?",
+          "description": "No. The middle name generator makes no claims about trademarks, domains, legal names, or uniqueness. If you plan to publish under a name, search it in quotes, check retailer author pages, and search the trademark registries that apply to your market first."
+        },
+        {
+          "title": "Can I ask for a name from a specific culture?",
+          "description": "You can describe the sound or family tradition you want in the note field. The tool never claims a name's origin, meaning, or authenticity, and it never presents cultural inference as fact — it fits names by how they read in your setting."
+        },
+        {
+          "title": "Should every character have a middle name?",
+          "description": "No — and that's a real choice. A character with no middle name can read as plain-spoken, self-made, or from a tradition that doesn't use them. If the middle name adds nothing, cut it."
+        },
+        {
+          "title": "Do you store the names I enter?",
+          "description": "No. First and last names are used only to build your generation request, are never written to logs or analytics, and are not retained after the response returns."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Finish the Name Today",
+      "description": "Run this free middle name generator for three complete full-name directions with cadence notes and story signals — no account needed.",
+      "buttons": [
+        {
+          "title": "Find middle names",
+          "url": "#middle_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "Back to AI Tools",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Keep Building the Character",
+      "description": "Pair the finished name with a pen name, a backstory, dialogue, or a story prompt.",
+      "more_label": "Browse all AI tools"
+    }
+  }
+}

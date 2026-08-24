@@ -1,0 +1,238 @@
+{
+  "elf_name_generator": {
+    "metadata": {
+      "title": "엘프 이름 생성기: 캐릭터, 가문, 판타지 세계관용",
+      "description": "무료 AI 엘프 이름 생성기. 발음·의미·이유까지 담은 오리지널 엘프 이름 10개를 한 번에. TRPG, 소설, NPC 이름짓기에 적합합니다.",
+      "keywords": "엘프 이름 생성기, 엘프 이름, 판타지 엘프 이름, 엘프 이름 추천, dnd 엘프 이름, 여성 엘프 이름, 남성 엘프 이름, 엘프 가문 이름, npc 엘프 이름"
+    },
+    "ui": {
+      "title": "엘프 이름 생성기",
+      "title_highlight": "엘프 이름",
+      "subtitle": "클릭 한 번으로 열 개의 오리지널 엘프 이름을 만들어 드립니다. 모든 후보에는 발음 가이드, 창의적 의미, 그리고 캐릭터·가문·NPC 세트에 어울리는 이유가 함께 제공됩니다.",
+      "theme_pills": ["후보 10개", "혈통·스타일 제어", "발음 가이드", "가문·NPC 모드"],
+      "eyebrow": "AI 판타지 네이밍 도구",
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "엘프 이름 생성기",
+      "form_title": "엘프 이름 설계하기",
+      "heritage_label": "혈통",
+      "heritage_options": [
+        { "value": "moonlit_court", "label": "달빛 궁정" },
+        { "value": "ancient_woodland", "label": "고대 수림" },
+        { "value": "shadowborne", "label": "그림자 혈통" },
+        { "value": "sunlit_scholar", "label": "햇살 학파" },
+        { "value": "custom", "label": "직접 정의한 문화" }
+      ],
+      "custom_heritage_label": "나만의 문화 설명",
+      "custom_heritage_placeholder": "예: 오로라를 따라 이동하는 툰드라 유목 혈통. 아이를 얼음 결정의 이름을 따라 지음",
+      "custom_heritage_helper": "자신만의 엘프 문화를 한두 문장으로 설명하면, 생성기가 어울리는 작명 관습을 만들어 냅니다.",
+      "style_label": "이름 스타일",
+      "style_options": [
+        { "value": "graceful", "label": "우아함" },
+        { "value": "ancient", "label": "고풍" },
+        { "value": "fierce", "label": "강렬함" },
+        { "value": "mysterious", "label": "신비로움" },
+        { "value": "playful", "label": "장난스러움" }
+      ],
+      "name_use_label": "이름 용도",
+      "name_use_options": [
+        { "value": "character", "label": "캐릭터 한 명" },
+        { "value": "family_clan", "label": "가족 또는 가문" },
+        { "value": "npc_set", "label": "NPC 세트" }
+      ],
+      "name_form_label": "성별 형태",
+      "name_form_options": [
+        { "value": "feminine", "label": "여성형" },
+        { "value": "masculine", "label": "남성형" },
+        { "value": "neutral", "label": "중성형" },
+        { "value": "mixed", "label": "혼합" }
+      ],
+      "role_label": "역할 또는 이야기 배경(선택)",
+      "role_placeholder": "예: 잊힌 숲을 지키는 추방된 레인저, 비밀을 감춘 궁정 기록관, 결투를 즐기는 검무사",
+      "inspiration_hint": "다음 이름과 비슷한 느낌의 이름을 생성하는 중:",
+      "mode_label": "AI 모델",
+      "mode_options": [{"value": "fast", "label": "빠른 모드"}, {"value": "standard", "label": "표준"}, {"value": "creative", "label": "크리에이티브"}],
+      "sign_in_button": "로그인하고 계속하기",
+      "generate_button": "엘프 이름 생성",
+      "generating_button": "이름을 불러오는 중...",
+      "reroll_button": "10개 더 생성",
+      "output_title": "당신의 엘프 이름",
+      "empty_output": "혈통과 스타일을 고른 뒤 생성하면 발음, 의미, 이유가 담긴 엘프 이름 열 개가 여기에 나타납니다.",
+      "result_label": "이름",
+      "pronunciation_label": "발음",
+      "meaning_label": "의미",
+      "reason_label": "어울리는 이유",
+      "copy_button": "이름 복사",
+      "favorite_button": "즐겨찾기 추가",
+      "favorited_button": "즐겨찾기 해제",
+      "similar_button": "비슷한 이름 더 보기",
+      "favorites_title": "이번 세션의 즐겨찾기"
+    },
+    "validation": {
+      "custom_heritage_required": "먼저 나만의 문화를 설명해 주세요.",
+      "role_too_long": "배경은 400자 이하여야 합니다.",
+      "custom_heritage_too_long": "나만의 문화 설명은 160자 이하여야 합니다.",
+      "inspiration_too_long": "영감 이름은 100자 이하여야 합니다.",
+      "generic_error": "지금은 엘프 이름을 생성할 수 없습니다. 다시 시도해 주세요.",
+      "creative_limit_reached": "오늘의 무료 Creative 사용횟수가 끝났습니다. 로그인하면 크레딧을 받을 수 있어요."
+    },
+    "success": {
+      "copied": "이름이 클립보드에 복사되었습니다.",
+      "generated": "엘프 이름 열 개가 생성되었습니다.",
+      "favorited": "즐겨찾기에 추가했습니다.",
+      "unfavorited": "즐겨찾기에서 제거했습니다."
+    },
+    "errors": {
+      "generate_failed": "엘프 이름을 생성할 수 없습니다. 다시 시도해 주세요.",
+      "verification_failed": "인증에 실패했습니다. 다시 시도해 주세요."
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "개요",
+      "title": "이 엘프 이름 생성기의 강점",
+      "description": "테이블롤플레이잉, 소설, 세계관 설계를 위해 만들어졌습니다. 모든 이름은 기존 리스트의 재탕이 아니라 당신의 설정을 위해 새로 지어집니다.",
+      "items": [
+        {
+          "title": "매번 새로운 오리지널",
+          "description": "열 개의 후보 모두 혈통, 스타일, 맥락에 맞춰 즉석에서 창작됩니다. 재활용 리스트도, 유명 판타지 프랜차이즈 이름을 살짝 바꾼 것도 없습니다.",
+          "icon": "RiLeafLine"
+        },
+        {
+          "title": "발음과 의미 함께",
+          "description": "모든 이름에 발음 가이드와 창의적 의미가 붙습니다. 소리 내어 읽어보고 무엇을 암시하는지 확인한 뒤 결정하세요.",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "맥락 반영 이유",
+          "description": "캐릭터의 역할을 알려주면 각 이름이 왜 어울리는지 설명해 드립니다. 레인저와 궁정 기록관은 전혀 다르게 읽히죠.",
+          "icon": "RiUser3Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "사용 방법",
+      "title": "3단계로 사용하는 엘프 이름 생성기",
+      "description": "백지에서 바로 쓸 수 있는 엘프 이름 열 개까지, 1분이면 충분합니다.",
+      "items": [
+        {
+          "title": "혈통과 스타일 선택",
+          "description": "네 가지 기본 엘프 문화 중 하나를 고르거나 직접 설명하고, 우아함부터 강렬함까지 이름의 느낌을 정하세요.",
+          "icon": "RiLeafLine"
+        },
+        {
+          "title": "캐릭터 맥락 추가",
+          "description": "이름 용도(캐릭터 한 명, 가문, NPC 세트)를 알려주고 역할을 덧붙이면 더 정확한 결과를 얻습니다.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "복사·즐겨찾기·심화 탐색",
+          "description": "이름을 바로 복사하고, 이번 세션에서 후보를 모아두고, '비슷한 이름 더 보기'로 마음에 드는 이름 주변을 탐색하세요.",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "장점",
+      "title": "좋은 엘프 이름이 중요한 이유",
+      "description": "이름은 문화를 담습니다. 어울리는 이름은 엘프가 정말 어딘가에서 자란 사람처럼 느껴지게 합니다.",
+      "items": [
+        {
+          "title": "혈통이 소리를 바꿉니다",
+          "description": "달빛 궁정의 엘프와 고대 수림의 엘프는 같게 들려서는 안 됩니다. 혈통 옵션은 음절, 리듬, 분위기를 바꿉니다.",
+          "icon": "RiMoonLine"
+        },
+        {
+          "title": "확장 가능한 의미",
+          "description": "각 의미는 창의적 해석입니다. 설정의 씨앗으로 삼아 배경, 플롯, 대사로 키워 나갈 수 있습니다.",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "집단 이름의 일관성",
+          "description": "가문 모드는 한 집안의 이름들을 형태상 가깝게, NPC 모드는 무리 속 이름들을 서로 뚜렷하게 구분해 줍니다.",
+          "icon": "RiTeamLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "활용 사례",
+      "title": "엘프 이름 생성기를 사용하는 사람들",
+      "description": "독자와 플레이어 앞에서 흔들리지 않는 이름이 필요한 작가와 마스터들.",
+      "items": [
+        {
+          "title": "TRPG 플레이어와 마스터",
+          "description": "플레이어 캐릭터에 즉시 이름을 붙이거나, 세션이 시작되기 전에 엘프 정착지 전체에 구분되는 NPC를 채워 넣으세요.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "판타지 소설가",
+          "description": "장을 거쳐도 일관된 작명 문화를 유지하세요. 행사에서 실제로 소리 내어 읽을 수 있는 발음까지 함께 제공됩니다.",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "세계관·게임 디자이너",
+          "description": "저작권이 없는 오리지널 엘프 문화의 작명 관습을 설계하세요. 남의 설정을 빌려 쓸 필요가 없습니다.",
+          "icon": "RiSwordLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "자주 묻는 질문",
+      "title": "엘프 이름 생성기 — FAQ",
+      "items": [
+        {
+          "title": "엘프 이름이 정말 오리지널인가요?",
+          "description": "네. 모든 이름은 혈통, 스타일, 맥락에 맞춰 그 자리에서 창작됩니다. 생성기는 유명 판타지 프랜차이즈, 작가, 인공어에서 온 이름을 복사하거나 살짝 고쳐 쓰지 않습니다."
+        },
+        {
+          "title": "의미는 무엇을 뜻하나요?",
+          "description": "의미는 당신의 세계를 위해 지어낸 창의적 해석이지, 공식 언어의 검증된 번역이 아닙니다. 유지하거나, 고치거나, 확장할 수 있는 설정의 씨앗으로 활용하세요."
+        },
+        {
+          "title": "TRPG 캐릭터 이름으로 쓸 수 있나요?",
+          "description": "네. 테이블롤플레이잉 캐릭터, 플레이어 캐릭터, NPC를 위해 설계된 이름들입니다. 캐릭터 시트에 바로 복사하거나, 여러 개를 즐겨찾기에 두고 비교해 보세요."
+        },
+        {
+          "title": "혈통과 스타일은 결과를 어떻게 바꾸나요?",
+          "description": "혈통은 이름이 속한 문화를 정합니다. 달빛 궁정, 고대 수림, 그림자 혈통, 햇살 학파, 또는 직접 설명한 문화 중에서 고르세요. 스타일은 우아하고 선율적인 것부터 강렬하고 날카로운 것까지 소리를 조절합니다."
+        },
+        {
+          "title": "왜 모든 이름에 발음이 붙나요?",
+          "description": "소리 내어 읽을 수 없는 이름은 테이블에서 자연스럽게 기피됩니다. 모든 후보에는 플레이어와 독자가 자신 있게 발음할 수 있는 간단한 음절 가이드가 함께합니다."
+        },
+        {
+          "title": "가문 모드와 NPC 모드는 어떻게 작동하나요?",
+          "description": "가문 모드는 하나의 혈통처럼 읽히는 이름 열 개를 만듭니다. 가족과 가문에 적합합니다. NPC 모드는 뚜렷이 구분되는 이름 열 개를 만들어, 모든 이름이 각자 뚜렷이 구별되는 정착지를 채우기에 좋습니다."
+        },
+        {
+          "title": "왜 유명 판타지 세계관의 이름을 가져오지 않나요?",
+          "description": "출판 프랜차이즈의 이름을 쓰면 법적 문제가 생길 수 있고, 세계관이 남의 것처럼 느껴집니다. 오리지널 이름은 설정을 당신의 것으로 지켜 줍니다. '비슷한 이름 더 보기'는 당신이 좋아하는 느낌을 남을 모방하지 않고 탐색합니다."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "오늘 밤 엘프에게 이름을 지어 주세요",
+      "description": "발음, 의미, 이유가 담긴 열 개의 오리지널 엘프 이름 — 무료, 계정 불필요.",
+      "buttons": [
+        {
+          "title": "엘프 이름 생성",
+          "url": "#elf_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "AI 도구로 돌아가기",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "세계관을 계속 쌓아 가세요",
+      "description": "엘프 이름에 배경 스토리, 판타지 이야기 또는 다른 네이밍 도구를 더해 보세요.",
+      "more_label": "모든 AI 도구 둘러보기"
+    }
+  }
+}

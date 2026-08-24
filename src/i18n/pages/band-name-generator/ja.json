@@ -1,0 +1,204 @@
+{
+  "band_name_generator": {
+    "metadata": {
+      "title": "バンド名ジェネレーター - ロック・メタル対応 | AI Story",
+      "description": "ジャンル・ムード・キーワードからオリジナルのバンド名を生成。ひとことバイオ、ビジュアル方向、そして名前を決める前のチェクリスト付き。無料。",
+      "keywords": "バンド名 ジェネレーター, バンド名生成 AI, キーワードでバンド名, 無料 バンド名生成, 単語 バンド名, メタル バンド名, ロック バンド名, バンド名 アイデア, バンド名 重複チェック, バンド 紹介文"
+    },
+    "ui": {
+      "title": "ミュージシャンとクリエイターのためのバンド名ジェネレーター",
+      "title_highlight": "バンド名",
+      "subtitle": "あなたのサウンドに合うバンド名を生成し、バイオとビジュアル方向、そして名前を名乗る価値があるか確かめる次の一手までまとめて手に入ります。",
+      "theme_pills": ["6つのアイデンティティ方向", "ジャンル・ムード対応", "AIなしモード", "使用可否チェックリスト"],
+      "eyebrow": "AI ミュージックアイデンティティツール",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "バンド名ジェネレーター",
+      "form_title": "バンドのアイデンティティを形にする",
+      "genre_label": "ジャンル",
+      "genre_options": [
+        { "value": "rock", "label": "ロック" },
+        { "value": "metal", "label": "メタル" },
+        { "value": "indie", "label": "インディー / オルタナティブ" },
+        { "value": "emo", "label": "エモ / ポストハードコア" },
+        { "value": "pop", "label": "ポップ" },
+        { "value": "electronic", "label": "エレクトロニック / ダンス" },
+        { "value": "hip_hop", "label": "ヒップホップ / ラップ" }
+      ],
+      "vibe_label": "ムード",
+      "vibe_options": [
+        { "value": "anthemic", "label": "アンセム調" },
+        { "value": "gritty", "label": "グリッティ" },
+        { "value": "dreamy", "label": "ドリーミー" },
+        { "value": "playful", "label": "プレイフル" },
+        { "value": "dark", "label": "ダーク" },
+        { "value": "nostalgic", "label": "ノスタルジック" }
+      ],
+      "length_label": "名前の長さ",
+      "length_options": [
+        { "value": "any", "label": "指定なし" },
+        { "value": "one_word", "label": "ひとつの単語" },
+        { "value": "short", "label": "短め(2語)" },
+        { "value": "phrase", "label": "長めのフレーズ" }
+      ],
+      "mode_label": "モード",
+      "mode_options": [
+        { "value": "ai", "label": "AIが書く方向案" },
+        { "value": "template", "label": "AIなし(即時テンプレート)" }
+      ],
+      "model_label": "AI モデル",
+      "model_options": [
+        { "value": "fast", "label": "高速" },
+        { "value": "standard", "label": "標準" },
+        { "value": "creative", "label": "クリエイティブ" }
+      ],
+      "sign_in_button": "ログインして続行",
+      "template_note": "AIなしモードは固定のジャンル別ワードリストを即時に組み合わせます。モデルは一切使わず、すべての名前に生成元テンプレートを表示します。",
+      "cue_label": "入れたいキーワード、都市、時代、影響は?(任意)",
+      "cue_placeholder": "例:「raven(ワタリガラス)」を軸に、デトロイト・ガレージロックの雰囲気、80年代シンセクラブのような響き",
+      "inspiration_hint": "この名前に近い雰囲気で生成しています:",
+      "generate_button": "バンド名を生成",
+      "generating_button": "アイデンティティ方向を作成中...",
+      "reroll_button": "さらに6件生成",
+      "output_title": "あなたのバンドアイデンティティ方向",
+      "output_title_template": "テンプレート生成のバンド名",
+      "empty_output": "ジャンルとムードを選んで生成すると、発音・バイオ・ビジュアル方向つきの6つのバンド名案がここに表示されます。",
+      "result_label": "方向",
+      "pronunciation_label": "発音",
+      "rationale_label": "機能する理由",
+      "genre_fit_label": "ジャンル適合度",
+      "bio_label": "ひとことバイオ",
+      "visual_label": "ビジュアル方向",
+      "pattern_label": "テンプレート",
+      "pattern_labels": {
+        "the_adj_noun": "the + 形容詞 + 名詞",
+        "adj_noun": "形容詞 + 名詞",
+        "noun_suffix": "名詞 + 集合語",
+        "compound_word": "一語の複合語",
+        "noun_and_the_plural": "名詞 + \"& the\" + 集合語",
+        "cue_suffix": "あなたのキーワード + 相手語"
+      },
+      "copy_button": "名前をコピー",
+      "favorite_button": "お気に入りに追加",
+      "favorited_button": "お気に入りから外す",
+      "similar_button": "似た名前を生成",
+      "favorites_title": "このセッションのお気に入り",
+      "check_button": "使用可否をチェック",
+      "check_close_button": "チェックを閉じる",
+      "check_disclaimer": "これらのリンクは外部検索を開きます。本ツールは名前・ハンドル・ドメイン・商標の可用性を一切確認も保証もしていません。決める前に必ず自分で確かめてください。",
+      "check_links": {
+        "search": "Google",
+        "spotify": "Spotify",
+        "youtube": "YouTube",
+        "instagram": "Instagram ハンドル",
+        "domain": "bandname.com ドメイン",
+        "trademark": "商標検索"
+      },
+      "loading_status": "バンド名を生成しています。お待ちください。"
+    },
+    "validation": {
+      "cue_too_long": "キーワードは120文字以内で入力してください。",
+      "inspiration_too_long": "参照名は100文字以内で入力してください。",
+      "generic_error": "現在バンド名を生成できません。もう一度お試しください。",
+      "creative_limit_reached": "本日のCreative無料回数を使い切りました。ログインでクレジットを追加できます。"
+    },
+    "success": {
+      "copied": "名前をクリップボードにコピーしました。",
+      "generated": "バンドのアイデンティティ方向を生成しました。",
+      "favorited": "お気に入りに追加しました。",
+      "unfavorited": "お気に入りから外しました。"
+    },
+    "errors": {
+      "generate_failed": "バンド名を生成できませんでした。もう一度お試しください。",
+      "verification_failed": "認証に失敗しました。もう一度お試しください。"
+    },
+    "continuation": {
+      "title": "名前を先へ進める",
+      "description": "書き手はバンドをキャストと物語へ広げられます。ミュージシャンもブックレットやプレスキットの文面に同じ視点が使えます。",
+      "character_label": "フロントマンを作る",
+      "character_hint": "あの声の背後にいるオリジナルキャラクターをデザインする",
+      "backstory_label": "バンドの起源を書く",
+      "backstory_hint": "結成の経緯とその代償を組み立てる",
+      "prompt_label": "物語に変える",
+      "prompt_hint": "バンドの世界を舞台にしたプロンプトを入手"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "命名スタイル",
+      "title": "ジャンル別バンド名のスタイル",
+      "description": "ジャンルごとに命名の論理があります。上のジェネレーターで選ぶか、下のスタイルを眺めて違いを確かめてください。",
+      "items": [
+        { "title": "ロック", "description": "ロックの名前は使い込まれたイメージと強い名詞の組合せ。「Wild Static」や「The Crimson Roses」は、アンプにスプレーしても観客が叫んでも様になる響きが必要です。", "icon": "RiMicLine" },
+        { "title": "メタル", "description": "メタルは重さと神話を求めます。「Ashen Covenant」や「Sunless Vigil」は音量・儀式・破滅を予感させる。ここでは気の利いた駄洒落より具体的で身体のある語が勝ります。", "icon": "RiSwordLine" },
+        { "title": "インディー / オルタナティブ", "description": "インディーの名前は手作り感と少しの皮肉。「Paper Coastline」や「The Borrowed Sweaters」は会議室ではなくリハ室で生まれた響きです。", "icon": "RiHeadphoneLine" },
+        { "title": "エモ / ポストハードコア", "description": "エモの名前は告白です。「October Motel」や「Sleepless Theory」は3音節に望郷と痛みを乗せます。懐かしく、具体的で、タトゥーにしたくなる名前。", "icon": "RiHeartLine" },
+        { "title": "ポップ", "description": "ポップの名前は明るく、すぐ合唱できる響き。「Cherry Cinema」や「Fizzy Galaxy」は音符を聞く前からフックとして機能します。部屋中が歌い返せる名前が正解です。", "icon": "RiStarLine" },
+        { "title": "エレクトロニック / ダンス", "description": "エレクトロの名前は機械と質感の借用。「Glacial Voltage」や「Parallel Echo」はDAWの中で組み上げたような、合成的で正確な空気感を持っています。", "icon": "RiDiscLine" },
+        { "title": "ヒップホップ / ラップ", "description": "ヒップホップの名前は自信と場所を纏います。「Uptown Cipher」や「Concrete Dynasty」は2語で、彼らが誰でどの街区の出かを語ります。", "icon": "RiMusic2Line" }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "バンド名の選び方",
+      "description": "長く使える名前と、すぐ飽きる名前を分ける3つのテスト。",
+      "items": [
+        { "title": "声に出して言う", "description": "フロントマンのように MC で名乗り、インタビューで答え、友達に送ってみる。一度聞いて言えない・書けない名前は、バンドを続ける限りずっと足を引っ張ります。", "icon": "RiMic2Line" },
+        { "title": "気に入る前に検索する", "description": "名前を引用符で囲んで検索し、次にストリーミングと SNS でも調べる。誰も使っていない名前の方が、いつも説明を必要とする名前よりずっと手に入れやすい。", "icon": "RiSearchEyeLine" },
+        { "title": "本当に立ちたい舞台に合わせる", "description": "実際に出演したいライブハウスの看板にその名前が掛かっている姿を想像する。ジャンルに合い、覚えやすく、少しだけ個性的な名前が、小賢しくても凡庸な名前に常に勝ります。", "icon": "RiTeamLine" }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "名乗る前に",
+      "title": "バンド名 使用可否チェックリスト",
+      "description": "本ジェネレーターは名前が空いていると主張しません。代わりに自分で確かめるチェックを用意します — 結果カードから直接開けます。",
+      "items": [
+        { "title": "精密な Web 検索", "description": "名前を引用符で囲み「band」を足して検索。1ページ目が他人のプロジェクトなら次へ。さもないと、自分の名前と永遠に戦うことになります。", "icon": "RiSearchEyeLine" },
+        { "title": "ストリーミング", "description": "Spotify と Apple Music で名前を調べる。既存アーティストと重なる名前はディストリビューターに拒否されがちなので、初リリース前に必ず解決を。", "icon": "RiDiscLine" },
+        { "title": "SNS ハンドル", "description": "Instagram・TikTok・YouTube でハンドルを確認。全プラットフォームは不要ですが、リスナーがいる場所のアカウントは名前に近いものを。", "icon": "RiLinksLine" },
+        { "title": "ドメイン", "description": ".com が取れれば理想ですが必須ではありません。「nameband.com」「nameofficial.com」は定番の代替案。決めたその日に取得を。", "icon": "RiGlobalLine" },
+        { "title": "商標スクリーニング", "description": "趣味の域を超えるなら、国内の商標データベース(米国は USPTO)を検索。これはスクリーニングで法的確認ではありません。最終判断は商標専門の弁護士に。", "icon": "RiShieldCheckLine" },
+        { "title": "ひと晩置く", "description": "候補リストと1週間暮らしてみる。高揚が引いた後の、何気ない火曜の朝でもまだしっくりくる名前が、名乗るべき名前です。", "icon": "RiMoonLine" }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "ユースケース",
+      "title": "バンド名ジェネレーターは誰が使うか",
+      "description": "プロジェクトに名前を付ける現役ミュージシャンと、紙の上にだけ存在するバンドが必要なクリエイター。",
+      "items": [
+        { "title": "新しいバンド・ソロ勢", "description": "ジャケットの差し替えより改名の方が高くつきます。最初のフライヤーを刷る前に、バイオとビジュアル方向つきの候補を探索しましょう。", "icon": "RiMicLine" },
+        { "title": "書き手・GM", "description": "小説、キャンペーン、二次創作に架空のバンドが必要?各案にはバイオとビジュアル整理がついていて、そのまま物語へ投入できます。", "icon": "RiBookOpenLine" },
+        { "title": "コンテンツクリエイター", "description": "プレイリスト企画、音楽ポッドキャスト、バーチャルアイドル案件の命名に。ジャンルとムードの設定で名前がシーンのトーンに合います。", "icon": "RiTeamLine" }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "バンド名ジェネレーター — よくある質問",
+      "items": [
+        { "title": "生成されたバンド名を本物のバンドに使えますか?", "description": "はい。名前は無料で利用・改変・破棄できる創作上の提案です。ただし本ツールは商標やプラットフォームの重複チェックを行いません。リリースやプロフィールに名前を確定する前に、必ず使用可否チェックリストを自分で回してください。" },
+        { "title": "AIなしモードは実際どう動いていますか?", "description": "AIなしモードはモデルを一切呼びません。ジャンル別の固定ワードリストを、定番のバンド名テンプレート(「形容詞+名詞」「the+形容詞+名詞」「名詞 & the 集合語」)で即時に組み合わせ、各名前の生成元テンプレートを明示します。即時で透明であり、ワードリストの結果を AI 作と偽ることはありません。" },
+        { "title": "チェックリストは法的な権利確認ですか?", "description": "いいえ。チェックリストは Google、ストリーミング、SNS、ドメイン検索、商標データベースへのリンクを提供し、自分で調べられるようにするものです。実用的なスクリーニングであって法的助言ではありません。確実な保護が必要なら、投資の前に商標専門の弁護士へ正式な調査を依頼してください。" },
+        { "title": "ひとつの単語のバンド名はどう生成しますか?", "description": "「名前の長さ」を「ひとつの冊語」に設定してください。実在語・複合語・自然に読める造語のいずれかが単独で返ります。単語名は一番広めやすい一方、空きを見つけにくいので特に慎重にチェックを。" },
+        { "title": "自分のキーワードを軸にできますか?", "description": "はい。キーワード欄に語・都市・時代・影響を入れてください(「raven」「デトロイト・ガレージ」「80年代シンセクラブ」等)。ジェネレーターはそれを軸に方向を展開します。AIなしモードでは、キーワードがテンプレートのアンカーワードになります。" },
+        { "title": "メタル・ロック・エモ・ヒップホップ向けには?", "description": "対応しています。ジャンル設定がスタイルごとに命名ロジックを書き換えます。メタルは重さと神話、エモは告白と郷愁、エレクトロは機械と質感、ヒップホップは自信と場所。ジャンルを選べば慣習もついてきます。" },
+        { "title": "最初の生成は本当に無料ですか?", "description": "はい。このページの生成はすべて無料で、アカウント登録もログインも不要です。ジャンル・ムード・キーワードを選んで、何度でも生成してください。" }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今日、バンドに名前を",
+      "description": "発音・バイオ・ビジュアル方向つきの、ジャンル対応の6つのアイデンティティ方向 — 無料、アカウント不要。",
+      "buttons": [
+        { "title": "バンド名を生成", "url": "#band_name_generator", "icon": "RiSparkling2Line" },
+        { "title": "無料ツールをもっと見る", "url": "/ai-tools", "icon": "RiAppsLine" }
+      ]
+    },
+    "related_tools": {
+      "title": "創作を続けよう",
+      "description": "バンドを物語に、キャストに、あるいは幻想世界まるごとに — 同じ工房からの無料ツール。",
+      "more_label": "AIツールをすべて見る"
+    }
+  }
+}

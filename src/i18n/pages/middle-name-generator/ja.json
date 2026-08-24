@@ -1,0 +1,373 @@
+{
+  "middle_name_generator": {
+    "metadata": {
+      "title": "ミドルネーム生成器 — キャラクター&ペンネーム向け | AI Story",
+      "description": "フィクションのキャラクターやペンネームを完成させるミドルネームを提案。ファーストネームとラストネームに合わせ、ジャンル・トーン・響き・物語上の役割で調整できます。",
+      "keywords": "ミドルネーム 生成, ミドルネーム 希望, キャラクター 名前, 小説 キャラ 名前, ペンネーム ミドルネーム, フルネーム 生成, middle name generator"
+    },
+    "ui": {
+      "title": "ミドルネーム生成器",
+      "title_highlight": "ミドルネーム",
+      "subtitle": "始まりと終わりがもうある名前に、真ん中を足しましょう。キャラクター・設定・フルネームの響きに合うミドルネームの方向性を生成します。",
+      "theme_pills": [
+        "3つのフルネーム案",
+        "ファースト&ラスト固定",
+        "イニシャル確認",
+        "登録不要"
+      ],
+      "eyebrow": "AI フルネーム調整ツール",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "ミドルネーム生成器",
+      "form_title": "フルネームを組み立てる",
+      "mode_label": "AI モデル",
+      "mode_options": [
+        {
+          "value": "fast",
+          "label": "高速"
+        },
+        {
+          "value": "standard",
+          "label": "標準"
+        },
+        {
+          "value": "creative",
+          "label": "クリエイティブ"
+        }
+      ],
+      "use_case_label": "このミドルネームの用途",
+      "use_case_options": [
+        {
+          "value": "fictional_character",
+          "label": "フィクションのキャラクター"
+        },
+        {
+          "value": "pen_name",
+          "label": "ペンネーム / 署名"
+        }
+      ],
+      "first_name_label": "ファーストネーム(任意)",
+      "first_name_placeholder": "例:Elena",
+      "last_name_label": "ラストネーム(任意)",
+      "last_name_placeholder": "例:Hart",
+      "setting_label": "ジャンル / 舞台",
+      "setting_options": [
+        {
+          "value": "contemporary",
+          "label": "現代"
+        },
+        {
+          "value": "mystery_thriller",
+          "label": "ミステリー & スリラー"
+        },
+        {
+          "value": "romance",
+          "label": "ロマンス"
+        },
+        {
+          "value": "fantasy",
+          "label": "ファンタジー"
+        },
+        {
+          "value": "historical",
+          "label": "歴史"
+        },
+        {
+          "value": "science_fiction",
+          "label": "SF"
+        },
+        {
+          "value": "literary",
+          "label": "純文学"
+        }
+      ],
+      "era_label": "時代",
+      "era_options": [
+        {
+          "value": "any",
+          "label": "指定なし"
+        },
+        {
+          "value": "contemporary",
+          "label": "現代(2020年代)"
+        },
+        {
+          "value": "mid_20th",
+          "label": "20世紀半ば"
+        },
+        {
+          "value": "early_20th",
+          "label": "20世紀初頭"
+        },
+        {
+          "value": "victorian",
+          "label": "ヴィクトリア朝 / 19世紀"
+        },
+        {
+          "value": "timeless",
+          "label": "時代を問わない"
+        }
+      ],
+      "tone_label": "トーン / 家族の響き",
+      "tone_options": [
+        {
+          "value": "restrained",
+          "label": "控えめ"
+        },
+        {
+          "value": "formal",
+          "label": "フォーマル"
+        },
+        {
+          "value": "old_money",
+          "label": "旧家の気品"
+        },
+        {
+          "value": "rebellious",
+          "label": "反逆的"
+        },
+        {
+          "value": "inherited",
+          "label": "家伝の名"
+        },
+        {
+          "value": "warm",
+          "label": "温かい"
+        },
+        {
+          "value": "mysterious",
+          "label": "ミステリアス"
+        }
+      ],
+      "cadence_label": "ミドルネームの長さ",
+      "cadence_options": [
+        {
+          "value": "any",
+          "label": "指定なし"
+        },
+        {
+          "value": "short",
+          "label": "短い(1〜2音節)"
+        },
+        {
+          "value": "long",
+          "label": "長い(3音節以上)"
+        }
+      ],
+      "avoid_initials_label": "避けたいイニシャル(任意)",
+      "avoid_initials_placeholder": "例:A, S, S",
+      "note_label": "家系のメモやキーワード(任意)",
+      "note_placeholder": "例:Rose という名の祖母へのオマージュ、大げさにならず複雑な家族史を匂わせる",
+      "privacy_hint": "入力された名前はこのリクエストの生成にだけ使われ、保存・ログ・解析に送られることはありません。",
+      "generate_button": "ミドルネームを探す",
+      "generating_button": "ミドルネームを調整中...",
+      "sign_in_button": "ログインして続行",
+      "reroll_button": "別の3案を生成",
+      "output_title": "キャラクターのフルネーム案",
+      "empty_output": "すでに持っているファーストネームとラストネームを入力して生成すると、3つのフルネーム案がここに表示されます。",
+      "direction_label": "案",
+      "middle_name_label": "ミドルネーム",
+      "initials_label": "イニシャル",
+      "initials_warning": "避けたイニシャルが使われています",
+      "cadence_note_label": "読み上げた時の響き",
+      "implication_label": "物語のシグナル",
+      "copy_button": "フルネームをコピー",
+      "favorite_button": "お気に入りに追加",
+      "favorited_button": "お気に入りから外す",
+      "continue_button": "このキャラクターで続ける",
+      "favorites_title": "このセッションのお気に入り",
+      "loading_status": "ミドルネーム案を生成しています。しばらくお待ちください。"
+    },
+    "validation": {
+      "name_too_long": "名前は60文字以内で入力してください。",
+      "avoid_initials_too_long": "避けたいイニシャルは12文字以内で入力してください。",
+      "note_too_long": "メモは160文字以内で入力してください。",
+      "creative_limit_reached": "本日のCreative無料回数を使い切りました。ログインでクレジットを追加できます。",
+      "generic_error": "現在ミドルネームを生成できません。もう一度お試しください。"
+    },
+    "success": {
+      "copied": "フルネームをコピーしました。",
+      "generated": "3つのフルネーム案を生成しました。",
+      "favorited": "お気に入りに追加しました。",
+      "unfavorited": "お気に入りから外しました。",
+      "continue_copied": "フルネームをコピーしました — OCビルダーのキャラ名欄に貼り付けてください。"
+    },
+    "errors": {
+      "generate_failed": "ミドルネームを生成できません。もう一度お試しください。",
+      "verification_failed": "認証に失敗しました。もう一度お試しください。"
+    },
+    "continuation": {
+      "title": "この名前で続きへ",
+      "description": "名前が決まったのはキャラクターの始まりにすぎません。そのまま創作の流れに持ち込みましょう。",
+      "dialogue_label": "セリフを書く",
+      "dialogue_hint": "会話ジェネレーターでこの名前の最初のセリフを作る",
+      "backstory_label": "生い立を書く",
+      "backstory_hint": "ミドルネームが暗示する家族史を書き下ろす",
+      "prompt_label": "ストーリーを得る",
+      "prompt_hint": "フルネームをシーンの冒頭に置く"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "名前全体で判断するミドルネーム生成器",
+      "description": "ミドルネームは単独で選ぶものではありません。ファースト・ミドル・ラストの繋がりの中で、読者やサイン会で読まれる形のまま判断します。",
+      "items": [
+        {
+          "title": "リストではなく、フルネームのFit",
+          "description": "もう決めているファーストネームとラストネームはそのまま。各案は完成形のフルネームを表示するので、実際に印字される名前で判断できます。",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "耳で確かめられる響き",
+          "description": "各案には、読み上げた時の響きについて短く慎重な一言が付きます。短いミドルは姓に重みを与え、長いミドルは格式のある歩幅を加えます。",
+          "icon": "RiMicLine"
+        },
+        {
+          "title": "飾りではなく物語のシグナル",
+          "description": "ミドルネームは読者に何かを語るべきです。継承、反逆、儀式。各案がそれが物語や署名で何を示すかを説明します。",
+          "icon": "RiLightbulbLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "3ステップで使うミドルネーム生成器",
+      "description": "書きかけの名前から3つの完成案まで、1分以内に。",
+      "items": [
+        {
+          "title": "持っている情報を入力",
+          "description": "ファーストネームとラストネーム(どちらも任意)を入力し、舞台・時代・ミドルネームに持たせたいトーン(控えめ・家伝・反逆など)を選びます。",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "3案を見比べる",
+          "description": "響きの注釈と物語シグナル付きで各フルネームを声に出して読む。イニシャルを確認し、気に入ったものをお気に入りに。作り直しも自由。",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "キャラクターごと続きへ",
+          "description": "選んだフルネームをコピーするか、OCビルダー・生い立ち・ストーリープロンプトにそのまま持ち込んで執筆を続けます。",
+          "icon": "RiUser3Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "フィクションでミドルネームが効く理由",
+      "description": "ミドルネームはリズム・イニシャル・家族史が交わる場所。手を抜いた命名が最初に露呈する場所でもあります。",
+      "items": [
+        {
+          "title": "聞こえるリズム",
+          "description": "3つの名前の連なりには拍子があります。適切なミドルネームは、読者が理由を意識する前にテンポを決めます。切り詰めてプロフェッショナルか、流麗で儀式的か。",
+          "icon": "RiMusic2Line"
+        },
+        {
+          "title": "イニシャルの事故を防ぐ",
+          "description": "Elena V. Hart と Elena S. Hart は、イニシャル入りのブリーフケースでは別の人物です。イニシャルプレビューがフルネームの作る頭文字を表示します。",
+          "icon": "RiText"
+        },
+        {
+          "title": "解説なしの家族の層",
+          "description": "受け継がれたミドルネームは、祖父母・遺言・期待を台詞一行に含意します。語る必要のない背景設定です。",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "使用例",
+      "title": "6つのスタイル、1つのコントロールパネル",
+      "description": "以下のスタイルはすべて生成器の設定に対応しています。選んで、比べてください。",
+      "items": [
+        {
+          "title": "現代の主人公",
+          "description": "現代の設定に控えめなトーン。十年前に名付けられたと感じられる名前で、衣装がかりではないもの。",
+          "icon": "RiSmartphoneLine"
+        },
+        {
+          "title": "歴史の質感",
+          "description": "ヴィクトリア朝や20世紀初頭。時代のリズムを持つミドルネームを、パロディに堕ちずに。",
+          "icon": "RiTimeLine"
+        },
+        {
+          "title": "純文学のミドル",
+          "description": "文学的な設定。近い三人称の中で重みを持つ、抑えられた名前。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "単音節の短い名",
+          "description": "短いケイデンス。姓を着地させる切り詰めたミドルは、スリラーの定番です。",
+          "icon": "RiSpeedLine"
+        },
+        {
+          "title": "儀式的な長い名",
+          "description": "長いケイデンスとフォーマルなトーン。結婚式や法廷で場を制する3音節のミドルネーム。",
+          "icon": "RiVipCrownLine"
+        },
+        {
+          "title": "ジェンダーニュートラル",
+          "description": "性別の選択肢はなく、トーン主体。ミドルネームはフルネームの中でどう読めるかだけで判断されます。",
+          "icon": "RiUserHeartLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "ミドルネーム生成器 — FAQ",
+      "items": [
+        {
+          "title": "生成されたミドルネームを作品に使えますか?",
+          "description": "はい。提案は創作の出発点として設計されたオリジナルの組み合わせです。名前はありふれた文化的素材なので、ここで組み立てたフルネームは自由に使えます。ただし実在の特定可能な人物のフルネームをそのまま当てはめるのは避けてください。"
+        },
+        {
+          "title": "ペンネーム生成器との違いは?",
+          "description": "ペンネーム生成器は完全な署名をゼロから作ります。本ツールは既にある名前を完成させます。入力されたファーストネームとラストネームを厳密に保持し、ミドルネームをフルネームにはめ込みます。"
+        },
+        {
+          "title": "気まずいイニシャルを避けるには?",
+          "description": "「避けたいイニシャル」に避けたい文字を入力してください。イニシャルプレビューが各案の作る頭文字を表示し、除外した文字を使った案にはフラグを立てます。"
+        },
+        {
+          "title": "名前が使用可能かどうかは確認してくれますか?",
+          "description": "いいえ。本ツールは商標・ドメイン・法的な名前・唯一性について一切主張しません。公開用の名前として使う予定がある場合は、引用符付きで検索し、書店の著者ページを確認し、対象市場の商標データベースを検索してください。"
+        },
+        {
+          "title": "特定の文化の名前をお願いできますか?",
+          "description": "備考欄に望む響きや家系の伝統を描写することはできます。ただし本ツールは名前の起源・意味・本物らしさを主張せず、文化的推論を事実として提示しません。設定の中でどう読めるかだけで合わせます。"
+        },
+        {
+          "title": "すべてのキャラクターにミドルネームは必要?",
+          "description": "いいえ。それ自体が作術上の選択です。ミドルネームのないキャラクターは、飾らない、自力で成り上がった、あるいはミドルネームを使わない文化の出身と読めます。何も加えないなら、削りましょう。"
+        },
+        {
+          "title": "入力した名前は保存されますか?",
+          "description": "いいえ。ファーストネームとラストネームは生成リクエストの構築にのみ使われ、ログや解析に書き込まれることなく、応答の返却後も保持されません。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今日、名前を完成させる",
+      "description": "響きの注釈と物語シグナル付きの3つのフルネーム案。無料、アカウント不要。",
+      "buttons": [
+        {
+          "title": "ミドルネームを探す",
+          "url": "#middle_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "AIツール一覧へ",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "キャラクター作りを続ける",
+      "description": "決まった名前を、ペンネーム・生い立ち・対話・ストーリープロンプトと組み合わせましょう。",
+      "more_label": "すべてのAIツールを見る"
+    }
+  }
+}

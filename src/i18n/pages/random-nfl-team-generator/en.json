@@ -1,0 +1,264 @@
+{
+  "random_nfl_team_generator": {
+    "metadata": {
+      "title": "Random NFL Team Generator for Pools & Drafts | AI Story",
+      "description": "Randomly pick or shuffle the 32 current NFL teams. Assign unique teams to a fantasy football pool, filter by conference or division, and copy the results.",
+      "keywords": "random nfl team generator, nfl team randomizer, random nfl team picker, random football team generator, random nfl team wheel, random nfl team by division, nfl team generator for fantasy football, pick a random nfl team, nfl draft order randomizer"
+    },
+    "ui": {
+      "title": "Random NFL Team Generator",
+      "title_highlight": "NFL Team",
+      "subtitle": "This random NFL team generator draws one club or deals all 32 with a fair, no-duplicate shuffle. Built for fantasy drafts, office pools, and Madden rebuilds — no sign-up, nothing between you and the pick.",
+      "theme_pills": ["All 32 current clubs", "Crypto-grade randomness", "No duplicate deals", "Pool assignment"],
+      "eyebrow": "Free Football Draw Tool",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Random NFL Team Generator",
+      "form_title": "Set up your draw",
+      "mode_label": "Draw mode",
+      "mode_options": [
+        { "value": "pick", "label": "Pick teams" },
+        { "value": "shuffle", "label": "Shuffle all" },
+        { "value": "assign", "label": "Assign to people" }
+      ],
+      "mode_hints": {
+        "pick": "Draw one or several unique clubs in a single click — quick picks, Madden rebuild roulette, settling whose couch you watch from.",
+        "shuffle": "The entire pool, numbered 1 to N — a full draft order you can copy straight into the league chat.",
+        "assign": "Paste your league members, one per line — everyone is dealt a different club, guaranteed."
+      },
+      "scope_label": "Pool",
+      "scope_options": [
+        { "value": "all", "label": "All 32 teams" },
+        { "value": "afc", "label": "AFC conference" },
+        { "value": "nfc", "label": "NFC conference" },
+        { "value": "afc_east", "label": "AFC East" },
+        { "value": "afc_north", "label": "AFC North" },
+        { "value": "afc_south", "label": "AFC South" },
+        { "value": "afc_west", "label": "AFC West" },
+        { "value": "nfc_east", "label": "NFC East" },
+        { "value": "nfc_north", "label": "NFC North" },
+        { "value": "nfc_south", "label": "NFC South" },
+        { "value": "nfc_west", "label": "NFC West" }
+      ],
+      "count_label": "How many teams?",
+      "pick_button": "Pick random teams",
+      "shuffle_button": "Shuffle all teams",
+      "assign_button": "Assign teams to players",
+      "reroll_button": "Draw again",
+      "participants_label": "Participants (one per line)",
+      "participants_placeholder": "Jordan\nSam\nAlex\nRiley",
+      "participants_hint": "Up to 32 names, one per line. Each person is dealt a different club from the selected pool.",
+      "output_title": {
+        "pick": "Your random pick",
+        "shuffle": "Shuffled draft order",
+        "assign": "Team assignments"
+      },
+      "empty_output": "Choose a mode, set the pool, and draw — the result appears here with a copy button for the group chat.",
+      "result_label": "Pick",
+      "eligible_label": "Teams in the draw:",
+      "participant_header": "Participant",
+      "team_header": "Team",
+      "copy_button": "Copy result",
+      "copy_team_button": "Copy team name",
+      "conference_badge": { "afc": "AFC", "nfc": "NFC" },
+      "division_badge": { "east": "East", "north": "North", "south": "South", "west": "West" },
+      "share_mode_label": "Mode",
+      "share_filter_label": "Pool",
+      "disclaimer": "Unofficial fan-made tool. Team names are trademarks of the NFL and its clubs; this site is not affiliated with, sponsored, or endorsed by the NFL."
+    },
+    "validation": {
+      "no_teams": "No teams match the selected pool. Try a wider pool.",
+      "participants_empty": "Add at least one participant, one per line.",
+      "participants_too_many": "There are more participants than teams in the pool — widen the pool or shorten the list.",
+      "generic_error": "Something went wrong. Please try again."
+    },
+    "success": {
+      "picked": "Teams picked.",
+      "shuffled": "Full shuffle complete.",
+      "assigned": "Teams assigned.",
+      "copied": "Copied to clipboard."
+    },
+    "continuation": {
+      "title": "Writing a football story?",
+      "description": "Writers and game masters: the draw is your premise. These free tools from the same workshop turn a random NFL team into a full story.",
+      "squad_name_label": "Name your fantasy squad",
+      "squad_name_hint": "A fierce team name for the league chat",
+      "backstory_label": "Write the underdog arc",
+      "backstory_hint": "From training camp to the final drive",
+      "prompt_label": "Get a story prompt",
+      "prompt_hint": "A plot set inside one football season"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Draw Modes",
+      "title": "Three Ways to Draw a Random NFL Team",
+      "description": "A quick pick, a full draft order, or a one-to-one deal for the whole league — the same fair engine behind all three.",
+      "items": [
+        {
+          "title": "Pick mode",
+          "description": "One click draws one or several unique clubs. Use it for Madden franchise roulette, classroom games, or settling whose team you follow this season.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "Shuffle mode",
+          "description": "The entire pool gets a numbered order, 1 through N. It's a complete draft order that survives being screenshotted, pasted, and argued about.",
+          "icon": "RiListOrdered"
+        },
+        {
+          "title": "Assign mode",
+          "description": "Paste your participants and every one of them is dealt a different club. Zero duplicates, zero negotiations — the whole draw fits in one message.",
+          "icon": "RiTeamLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Run a Fair Random NFL Team Draw",
+      "description": "Run a fair random NFL team draw in three steps — under a minute for a 32-person league.",
+      "items": [
+        {
+          "title": "Choose the pool",
+          "description": "All 32 clubs, one conference, or a single division. The counter under the dropdown always shows exactly how many clubs are in the draw.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "Pick a mode",
+          "description": "Pick for a quick random NFL team, shuffle for a full draft order, assign to deal unique clubs to named participants.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "Copy the result",
+          "description": "One tap copies a plain-text record of the draw — mode, pool, every name — ready to paste into the league chat as proof.",
+          "icon": "RiClipboardLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Why It's Fair",
+      "title": "A Draw Your League Can't Argue With",
+      "description": "Fairness here is engineering, not a promise — every property below is how the tool actually works.",
+      "items": [
+        {
+          "title": "Crypto-grade randomness",
+          "description": "Every random NFL team draw uses your browser's crypto.getRandomValues with rejection sampling — no modulo bias, no favorite clubs, no pattern for anyone to game.",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "No duplicate deals",
+          "description": "Assigning 32 people yields all 32 clubs exactly once. The engine shuffles once and deals from the top — it never draws with replacement.",
+          "icon": "RiCheckboxCircleLine"
+        },
+        {
+          "title": "Instant, in your browser",
+          "description": "No server round-trip, no waiting on a spinner. The draw runs locally and completes before you could blink at a slower tool.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "Copy-ready audit trail",
+          "description": "Every result copies as plain text with the mode and pool attached — a record the group can check, keep, and replay.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "Free, no account",
+          "description": "No sign-up, no paywall after three draws, no email harvest. Open the page, draw, leave.",
+          "icon": "RiCoinLine"
+        },
+        {
+          "title": "Verified 32-club list",
+          "description": "The dataset holds the 32 current NFL clubs with correct conferences and divisions, checked against nfl.com/teams before each season.",
+          "icon": "RiShieldCheckLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Who Runs This Draw",
+      "description": "The once-a-season occasions where a random NFL team pick beats twenty minutes of negotiation.",
+      "items": [
+        {
+          "title": "Fantasy commissioners",
+          "description": "Assign a real club to every manager for a survivor pool, a draft-order reveal, or a 'cheer for someone else's misery' side game.",
+          "icon": "RiTrophyLine"
+        },
+        {
+          "title": "Office pools & watch parties",
+          "description": "Pick squares, sides, or whose couch hosts which game — a public, legible result that ends the debate in one tap.",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "Madden & franchise gamers",
+          "description": "Spin a random rebuild, constrain it to one division for a career-mode rule, and reroll until the challenge feels right.",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "Teachers & quiz nights",
+          "description": "Assign clubs to students for a stats project or a trivia bracket — fair, instant, and readable from the back row.",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Random NFL Team Generator — FAQ",
+      "items": [
+        {
+          "title": "Is the draw actually random and fair?",
+          "description": "Yes. Every draw runs a Fisher-Yates shuffle seeded by your browser's crypto.getRandomValues, with rejection sampling to remove modulo bias. Each club in the pool has exactly the same chance of landing in any slot, and the whole draw happens locally on your device."
+        },
+        {
+          "title": "How do I assign NFL teams for a fantasy football league?",
+          "description": "Switch to 'Assign to people', paste your league members one per line, then draw. Each participant is dealt a different club — a 32-person league uses all 32 teams exactly once. Copy the result into your group chat as the record of the draw."
+        },
+        {
+          "title": "Can I randomize by conference or division?",
+          "description": "Yes. The Pool dropdown narrows the draw to the AFC, the NFC, or any single division (4 clubs). The counter beside it always shows how many clubs are currently eligible, so a division-only deal tops out at 4 people."
+        },
+        {
+          "title": "How many teams can I pick at once?",
+          "description": "Any number from 1 up to the pool size (32 for the whole league). Random NFL team picks are drawn without duplicates — for a complete ranked order of every team, use Shuffle mode instead."
+        },
+        {
+          "title": "Can I use this as a random NFL team wheel?",
+          "description": "The single-team pick does the same job as a spinning wheel — one fair, random club with a visible result — just without the spin animation. If you need the theater of a wheel for a party, draw in Shuffle mode and reveal the list one line at a time."
+        },
+        {
+          "title": "Is the team list up to date?",
+          "description": "The dataset contains the 32 current NFL clubs with their correct conferences and divisions, verified against nfl.com/teams ahead of the 2026 season and reviewed every preseason. Club names and locations follow their current official usage."
+        },
+        {
+          "title": "Is this tool affiliated with the NFL?",
+          "description": "No. This is an unofficial, fan-made utility. NFL team names and marks are trademarks of the NFL and its member clubs; this site is not affiliated with, sponsored, or endorsed by the NFL in any way."
+        },
+        {
+          "title": "Is it free to use?",
+          "description": "Completely free, with no account, no sign-up wall, and no limit on how often you draw. The tool runs entirely in your browser, so you can reroll as many times as the league demands."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Run Your Draft Night Draw",
+      "description": "A fair, no-duplicate random NFL team draw with copy-ready results — free, instant, no account needed.",
+      "buttons": [
+        {
+          "title": "Draw random teams",
+          "url": "#random_nfl_team_generator",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "Browse more free tools",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Keep the Creativity Going",
+      "description": "Turn the draw into a story, a character, or a whole fictional band — free tools from the same workshop.",
+      "more_label": "Browse all AI tools"
+    }
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "emoji_translator": {
+    "metadata": {
+      "title": "Emoji Translator: Add, Translate and Explain Emoji",
+      "description": "Free AI emoji translator. Add fitting emoji to a message, translate text into emoji, or explain an emoji message in context. Three tone-aware variants with reasons and cautions.",
+      "keywords": "emoji translator, emoji translator ai, add emoji to text, translate text to emoji, explain emoji meaning, emoji generator, ai emoji"
+    },
+    "ui": {
+      "title": "Emoji Translator",
+      "title_highlight": "Emoji",
+      "subtitle": "Add fitting emoji to a message, turn text into emoji, or decode an emoji message in context. Three tone-aware variants, each with a reason and an ambiguity caution.",
+      "theme_pills": ["3 variants", "Tone aware", "Context aware", "Ambiguity cautions"],
+      "eyebrow": "AI Emoji Tool",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Emoji Translator",
+      "form_title": "Your message",
+      "text_label": "Message",
+      "text_placeholder": "Paste or type a message. Add emoji to decorate it, translate it into emoji, or decode the emoji it contains.",
+      "context_label": "Context (optional)",
+      "context_placeholder": "e.g. replying to a close friend, a public Instagram caption, a dating-app message",
+      "mode_label": "Mode",
+      "mode_options": [
+        { "value": "add", "label": "Add emoji" },
+        { "value": "translate", "label": "Translate to emoji" },
+        { "value": "explain", "label": "Explain emoji" }
+      ],
+      "scenario_label": "Scenario",
+      "scenario_options": [
+        { "value": "caption", "label": "Caption / post" },
+        { "value": "chat_reply", "label": "Chat reply" },
+        { "value": "bio", "label": "Profile bio" },
+        { "value": "just_for_fun", "label": "Just for fun" }
+      ],
+      "tone_label": "Tone",
+      "tone_options": [
+        { "value": "subtle", "label": "Subtle" },
+        { "value": "playful", "label": "Playful" },
+        { "value": "bold", "label": "Bold" }
+      ],
+      "generate_button": "Translate",
+      "generating_button": "Translating...",
+      "random_button": "Random",
+      "output_title": "Emoji suggestions",
+      "empty_output": "Enter a message and choose a mode to see three tone-aware emoji variants here.",
+      "result_label": "Variant",
+      "reason_label": "Why these emoji",
+      "caution_label": "Worth noting",
+      "copy_button": "Copy"
+    },
+    "validation": {
+      "text_required": "Enter a message to translate.",
+      "text_too_long": "Message must be 500 characters or fewer.",
+      "context_too_long": "Context must be 300 characters or fewer.",
+      "generic_error": "We couldn't generate emoji suggestions right now. Please try again."
+    },
+    "success": {
+      "copied": "Variant copied to clipboard.",
+      "generated": "Emoji suggestions generated.",
+      "random_prompt_selected": "Random example loaded."
+    },
+    "random_prompts": [
+      {
+        "text": "Morning coffee and a good book. This is my happy place.",
+        "context": "Instagram caption",
+        "mode": "add",
+        "scenario": "caption",
+        "tone": "subtle"
+      },
+      {
+        "text": "Are you free this weekend? Let's do something fun together.",
+        "context": "texting a close friend",
+        "mode": "add",
+        "scenario": "chat_reply",
+        "tone": "playful"
+      },
+      {
+        "text": "I finally finished the project I've been working on for months.",
+        "context": "social media announcement",
+        "mode": "translate",
+        "scenario": "caption",
+        "tone": "bold"
+      },
+      {
+        "text": "My friend sent me 🌙✨ and nothing else. What does that even mean?",
+        "context": "late-night chat",
+        "mode": "explain",
+        "scenario": "chat_reply",
+        "tone": "playful"
+      },
+      {
+        "text": "New recipe tried, kitchen survived, dinner was actually good.",
+        "context": "casual post",
+        "mode": "add",
+        "scenario": "just_for_fun",
+        "tone": "playful"
+      }
+    ],
+    "errors": {
+      "generate_failed": "Unable to generate emoji suggestions. Please try again.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What This Emoji Translator Is Good At",
+      "description": "Built for messaging, captions, and quick social replies. Instead of a single emoji dump, you get three tone-aware variants with the reasoning behind each one.",
+      "items": [
+        {
+          "title": "Three modes, one tool",
+          "description": "Add emoji to a message, translate text into emoji, or explain what an emoji message might mean — switch modes without leaving the page.",
+          "icon": "RiEmotionHappyLine"
+        },
+        {
+          "title": "Reasoning, not just emoji",
+          "description": "Every variant comes with a reason explaining the emoji choice, so you understand why it works before you send it.",
+          "icon": "RiInformationLine"
+        },
+        {
+          "title": "Ambiguity cautions",
+          "description": "When emoji could be read differently in context, the variant flags it — so you avoid sending the wrong signal.",
+          "icon": "RiAlertLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the Emoji Translator in 3 Steps",
+      "description": "From raw message to three ready-to-copy variants in seconds.",
+      "items": [
+        {
+          "title": "Enter your message",
+          "description": "Paste a message you want to decorate, translate, or decode. Add a little context for sharper results.",
+          "icon": "RiChat3Line"
+        },
+        {
+          "title": "Pick a mode, scenario, and tone",
+          "description": "Choose whether to add emoji, translate to emoji, or explain emoji — then set the scenario and tone you want.",
+          "icon": "RiSettings3Line"
+        },
+        {
+          "title": "Copy your favorite variant",
+          "description": "Review the three variants, read the reasons and cautions, and copy the one that fits best.",
+          "icon": "RiFileCopyLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why People Use the Emoji Translator",
+      "description": "Emoji carry tone and intent. A wrong one changes the meaning of a whole message.",
+      "items": [
+        {
+          "title": "Tone that matches the moment",
+          "description": "Subtle, playful, or bold — the tone control keeps your emoji consistent with how the message should feel.",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "Context-aware suggestions",
+          "description": "Tell the tool it's a caption, a chat reply, or a bio, and the emoji adapt to where the message actually lands.",
+          "icon": "RiFocus3Line"
+        },
+        {
+          "title": "Decode ambiguous messages",
+          "description": "In explain mode, the tool offers a possible interpretation of an emoji message — with a caution that meaning depends on context.",
+          "icon": "RiSearchEyeLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Who Uses the Emoji Translator",
+      "description": "Anyone who writes messages, captions, or bios where emoji change the tone.",
+      "items": [
+        {
+          "title": "Social media creators",
+          "description": "Add the right emoji to captions and replies so posts feel alive without looking cluttered.",
+          "icon": "RiInstagramLine"
+        },
+        {
+          "title": "Messaging and dating",
+          "description": "Translate a plain message into emoji to lighten the tone, or decode an emoji-heavy reply you're not sure about.",
+          "icon": "RiChatSmile3Line"
+        },
+        {
+          "title": "Profile and bio writers",
+          "description": "Keep bios short and expressive with one or two well-chosen emoji instead of a crowded wall of symbols.",
+          "icon": "RiUserSmileLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Emoji Translator — FAQ",
+      "items": [
+        {
+          "title": "What does the Emoji Translator do?",
+          "description": "It takes a message and produces three emoji variants: it can add fitting emoji to your text, translate text into emoji, or explain what an emoji message might mean in context. Each variant includes a reason and an optional caution."
+        },
+        {
+          "title": "What are the three modes?",
+          "description": "'Add emoji' keeps your original words and appends emoji that reinforce the meaning. 'Translate to emoji' rewrites the message in an emoji-forward way. 'Explain emoji' interprets the emoji in your message as a possible reading, never a definitive one."
+        },
+        {
+          "title": "Why do variants include a caution?",
+          "description": "Emoji meaning depends on context, relationship, and culture. A caution flags when a reading could be misinterpreted, so you can think twice before sending."
+        },
+        {
+          "title": "Does the tool change what my message says?",
+          "description": "In 'add' mode your original text is preserved and only emoji are appended. In 'translate' mode the message is rewritten to convey the same meaning with emoji. The tool will not introduce harmful, sexualized, or slur-based substitutions."
+        },
+        {
+          "title": "Is the Emoji Translator free?",
+          "description": "Yes. The Emoji Translator is free to use. No account is required."
+        },
+        {
+          "title": "What languages does it support?",
+          "description": "The interface is available in English, Chinese, German, Korean, Japanese, and Russian, and the explanations are written in the language you select."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Translate Any Message Into the Right Emoji",
+      "description": "Add, translate, or explain emoji with three tone-aware variants. Free, no account needed.",
+      "buttons": [
+        {
+          "title": "Try the Emoji Translator",
+          "url": "#emoji_translator",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "More Tools for What You Write",
+      "description": "Keep your captions, replies, and titles sharp with these next picks.",
+      "more_label": "Browse all AI tools"
+    }
+  }
+}

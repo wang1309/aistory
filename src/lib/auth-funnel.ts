@@ -21,6 +21,7 @@ export type AuthSourcePage =
   | "ai-write"
   | "story-generator"
   | "backstory-generator"
+  | "band-name-generator"
   | "fanfic-generator"
   | "dialogue-generator"
   | "dnd-backstory-generator"
@@ -31,8 +32,12 @@ export type AuthSourcePage =
   | "comic-generator"
   | "romance-story-generator"
   | "literature-review-generator"
+  | "middle-name-generator"
   | "incorrect-quote-generator"
   | "tiktok-comment-generator"
+  | "elf-name-generator"
+  | "pen-name-generator"
+  | "gang-name-generator"
   | "oc-generator";
 
 export const AUTH_ATTEMPT_STORAGE_KEY = "auth-funnel:pending-attempt";

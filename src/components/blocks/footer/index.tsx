@@ -17,7 +17,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
           <div className="flex flex-col items-center justify-between gap-10 text-center lg:flex-row lg:text-left">
             <div className="flex w-full max-w-96 shrink flex-col items-center justify-between gap-6 lg:items-start">
               {footer.brand && (
-                <div>
+                <div className="min-w-0">
                   <div className="flex items-center justify-center gap-2 lg:justify-start">
                     {footer.brand.logo && (
                       <img
@@ -30,7 +30,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
                       />
                     )}
                     {footer.brand.title && (
-                      <p className="text-3xl font-semibold">
+                      <p className="min-w-0 text-3xl font-semibold [overflow-wrap:anywhere]">
                         {footer.brand.title}
                       </p>
                     )}
@@ -46,7 +46,11 @@ export default function Footer({ footer }: { footer: FooterType }) {
                 <ul className="flex items-center space-x-6 text-muted-foreground">
                   {footer.social.items?.map((item, i) => (
                     <li key={i} className="font-medium hover:text-primary">
-                      <a href={item.url || ""} target={item.target}>
+                      <a
+                        href={item.url || ""}
+                        target={item.target}
+                        className="inline-flex size-10 items-center justify-center"
+                      >
                         {item.icon && (
                           <Icon name={item.icon} className="size-4" />
                         )}
@@ -58,12 +62,16 @@ export default function Footer({ footer }: { footer: FooterType }) {
             </div>
             <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:gap-12">
               {footer.nav?.items?.map((item, i) => (
-                <div key={i}>
+                <div key={i} className="min-w-0">
                   <p className="mb-6 font-bold">{item.title}</p>
                   <ul className="space-y-4 text-sm text-muted-foreground">
                     {item.children?.map((iitem, ii) => (
                       <li key={ii} className="font-medium hover:text-primary">
-                        <Link href={iitem.url || ""} target={iitem.target}>
+                        <Link
+                          href={iitem.url || ""}
+                          target={iitem.target}
+                          className="[overflow-wrap:anywhere]"
+                        >
                           {iitem.title}
                         </Link>
                       </li>
@@ -122,6 +130,8 @@ export default function Footer({ footer }: { footer: FooterType }) {
                   <a
                     href="https://shipany.ai"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="ShipAny"
                     className="px-2 text-primary"
                   >
                   </a>

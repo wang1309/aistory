@@ -1,0 +1,243 @@
+{
+  "emoji_translator": {
+    "metadata": {
+      "title": "Emoji 翻译器：添加、翻译与解读 Emoji",
+      "description": "免费 AI emoji 翻译器。为消息添加贴切的 emoji，把文字翻译成 emoji，或在语境中解读一条 emoji 消息。提供三种语气版本，附理由与歧义提示。",
+      "keywords": "emoji 翻译器, emoji 翻译, 给文字加 emoji, 文字转 emoji, 解读 emoji 含义, emoji 生成器, AI emoji"
+    },
+    "ui": {
+      "title": "Emoji 翻译器",
+      "title_highlight": "Emoji",
+      "subtitle": "为消息添加贴切的 emoji，把文字翻译成 emoji，或在语境中解读 emoji 消息。三种语气版本，每个都附理由与歧义提示。",
+      "theme_pills": ["3 个版本", "语气可控", "语境可控", "歧义提示"],
+      "eyebrow": "AI Emoji 工具",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "Emoji 翻译器",
+      "form_title": "你的消息",
+      "text_label": "消息",
+      "text_placeholder": "粘贴或输入一条消息。可以给消息加 emoji、翻译成 emoji，或解读其中的 emoji。",
+      "context_label": "语境（可选）",
+      "context_placeholder": "例如：回复密友、公开的 Instagram 文案、交友软件里的消息",
+      "mode_label": "模式",
+      "mode_options": [
+        { "value": "add", "label": "添加 emoji" },
+        { "value": "translate", "label": "翻译成 emoji" },
+        { "value": "explain", "label": "解读 emoji" }
+      ],
+      "scenario_label": "场景",
+      "scenario_options": [
+        { "value": "caption", "label": "文案 / 帖子" },
+        { "value": "chat_reply", "label": "聊天回复" },
+        { "value": "bio", "label": "个人简介" },
+        { "value": "just_for_fun", "label": "随手玩" }
+      ],
+      "tone_label": "语气",
+      "tone_options": [
+        { "value": "subtle", "label": "克制" },
+        { "value": "playful", "label": "俏皮" },
+        { "value": "bold", "label": "奔放" }
+      ],
+      "generate_button": "翻译",
+      "generating_button": "翻译中...",
+      "random_button": "随机",
+      "output_title": "Emoji 建议",
+      "empty_output": "输入消息并选择模式，即可在这里看到三种语气版本的 emoji。",
+      "result_label": "版本",
+      "reason_label": "为什么用这些 emoji",
+      "caution_label": "需要留意",
+      "copy_button": "复制"
+    },
+    "validation": {
+      "text_required": "请输入要翻译的消息。",
+      "text_too_long": "消息不能超过 500 个字符。",
+      "context_too_long": "语境不能超过 300 个字符。",
+      "generic_error": "暂时无法生成 emoji 建议，请重试。"
+    },
+    "success": {
+      "copied": "已复制该版本到剪贴板。",
+      "generated": "emoji 建议已生成。",
+      "random_prompt_selected": "已加载随机示例。"
+    },
+    "random_prompts": [
+      {
+        "text": "早上一杯咖啡，一本好书，这就是我的快乐角落。",
+        "context": "Instagram 文案",
+        "mode": "add",
+        "scenario": "caption",
+        "tone": "subtle"
+      },
+      {
+        "text": "这周末有空吗？一起去做点好玩的事吧。",
+        "context": "给好朋友发消息",
+        "mode": "add",
+        "scenario": "chat_reply",
+        "tone": "playful"
+      },
+      {
+        "text": "做了几个月的项目终于完成了。",
+        "context": "社交媒体动态",
+        "mode": "translate",
+        "scenario": "caption",
+        "tone": "bold"
+      },
+      {
+        "text": "朋友只给我发了 🌙✨ 两个字都没说，这是什么意思？",
+        "context": "深夜聊天",
+        "mode": "explain",
+        "scenario": "chat_reply",
+        "tone": "playful"
+      },
+      {
+        "text": "试了新菜谱，厨房保住了，晚饭居然还不错。",
+        "context": "随手发帖",
+        "mode": "add",
+        "scenario": "just_for_fun",
+        "tone": "playful"
+      }
+    ],
+    "errors": {
+      "generate_failed": "无法生成 emoji 建议，请重试。",
+      "verification_failed": "验证失败，请重试。"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概览",
+      "title": "这款 Emoji 翻译器擅长什么",
+      "description": "为聊天、文案和社交回复而生。不只是一堆 emoji 堆砌，而是给出三种语气版本，并解释每个版本的思路。",
+      "items": [
+        {
+          "title": "三种模式，一个工具",
+          "description": "给消息加 emoji、把文字翻译成 emoji，或解读 emoji 消息可能的意思——无需离开页面即可切换。",
+          "icon": "RiEmotionHappyLine"
+        },
+        {
+          "title": "给理由，而不只是 emoji",
+          "description": "每个版本都附说明，告诉你为什么选这些 emoji，让你在发送前就理解它为何有效。",
+          "icon": "RiInformationLine"
+        },
+        {
+          "title": "歧义提示",
+          "description": "当某些 emoji 在语境中可能被解读成不同意思时，版本会标注提醒，避免你发出错误的信号。",
+          "icon": "RiAlertLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "3 步用上 Emoji 翻译器",
+      "description": "从原始消息到三个可直接复制的版本，只需几秒。",
+      "items": [
+        {
+          "title": "输入消息",
+          "description": "粘贴你想装饰、翻译或解读的消息。补充一点语境，结果会更准。",
+          "icon": "RiChat3Line"
+        },
+        {
+          "title": "选择模式、场景和语气",
+          "description": "选择添加 emoji、翻译成 emoji 或解读 emoji，再设置场景与语气。",
+          "icon": "RiSettings3Line"
+        },
+        {
+          "title": "复制喜欢的版本",
+          "description": "查看三个版本，阅读理由和提示，复制最合适的那一个。",
+          "icon": "RiFileCopyLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "为什么大家用 Emoji 翻译器",
+      "description": "emoji 承载语气和意图。选错一个，整条消息的意思就变了。",
+      "items": [
+        {
+          "title": "贴合当下的语气",
+          "description": "克制、俏皮或奔放——语气控制让 emoji 与消息该有的感觉保持一致。",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "语境相关建议",
+          "description": "告诉工具这是文案、聊天回复还是简介，emoji 就会适配消息实际出现的场景。",
+          "icon": "RiFocus3Line"
+        },
+        {
+          "title": "解读含糊的消息",
+          "description": "在解读模式下，工具给出 emoji 消息的一种可能解释，并提示含义取决于语境。",
+          "icon": "RiSearchEyeLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "使用场景",
+      "title": "谁在用 Emoji 翻译器",
+      "description": "任何写消息、文案或简介、且 emoji 会改变语气的人。",
+      "items": [
+        {
+          "title": "社交媒体创作者",
+          "description": "为文案和回复加上恰当的 emoji，让帖子鲜活又不显杂乱。",
+          "icon": "RiInstagramLine"
+        },
+        {
+          "title": "聊天与交友",
+          "description": "把平淡的消息翻译成 emoji 来活跃气氛，或解读一条你拿不准的 emoji 回复。",
+          "icon": "RiChatSmile3Line"
+        },
+        {
+          "title": "简介撰写者",
+          "description": "用一两个精选 emoji 让简介简短又有表现力，而不是堆满一整面符号。",
+          "icon": "RiUserSmileLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "Emoji 翻译器 — 常见问题",
+      "items": [
+        {
+          "title": "Emoji 翻译器能做什么？",
+          "description": "它接收一条消息并生成三个 emoji 版本：可以为文字添加贴切的 emoji、把文字翻译成 emoji，或在语境中解读 emoji 消息。每个版本都附理由和可选的提示。"
+        },
+        {
+          "title": "三种模式分别是什么？",
+          "description": "“添加 emoji”保留原文，只追加强化含义的 emoji。“翻译成 emoji”把消息改写成 emoji 风格、传达相同意思。“解读 emoji”把消息中的 emoji 当作一种可能的读法来解释，而非唯一确定的解释。"
+        },
+        {
+          "title": "为什么版本里会有提示？",
+          "description": "emoji 的含义取决于语境、关系和文化。提示会在某种读法可能被误解时标出，让你发送前三思。"
+        },
+        {
+          "title": "工具会改变我消息的原意吗？",
+          "description": "“添加”模式保留原文，只追加 emoji。“翻译”模式改写消息以用 emoji 传达相同意思。工具不会引入有害、色情或侮辱性的替换。"
+        },
+        {
+          "title": "Emoji 翻译器免费吗？",
+          "description": "免费。无需注册账号即可使用。"
+        },
+        {
+          "title": "支持哪些语言？",
+          "description": "界面支持中文、英语、德语、韩语、日语和俄语，解释文字会按你选择的语言输出。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "把任何消息翻译成恰当的 emoji",
+      "description": "添加、翻译或解读 emoji，三种语气版本任选。免费，无需账号。",
+      "buttons": [
+        {
+          "title": "试试 Emoji 翻译器",
+          "url": "#emoji_translator",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "更多写作辅助工具",
+      "description": "让文案、回复和标题更出彩,接着试试这几个工具。",
+      "more_label": "浏览全部 AI 工具"
+    }
+  }
+}

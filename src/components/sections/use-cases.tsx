@@ -83,7 +83,7 @@ export default function UseCases({ section, accent = "orange" }: Props) {
         </div>
 
         {/* Equal 3-column grid */}
-        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3">
           {section.items.map((item, i) => {
             const isFeatured = i === 0;
             const indexLabel = String(i + 1).padStart(2, "0");

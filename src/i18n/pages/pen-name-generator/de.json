@@ -1,0 +1,187 @@
+{
+  "pen_name_generator": {
+    "metadata": {
+      "title": "Pseudonym-Generator — Kostenlose KI-Ideen für Autorennamen",
+      "description": "Kostenloser KI-Pseudonym-Generator. Erhalte 10 genreorientierte Pseudonyme mit Aussprache und Begründung. Steuere Genre, Ton und Zielmarkt. Ohne Anmeldung",
+      "keywords": "Pseudonym Generator, Autorenname Ideen, Schriftsteller Pseudonym, Nom de Plume, Pen Name Generator, Künstlername Autor, Pseudonym finden, Autor Pseudonym Ideen"
+    },
+    "ui": {
+      "title": "Pseudonym-Generator für Autorinnen und Autoren",
+      "title_highlight": "Pseudonym",
+      "subtitle": "Erhalte zehn Pseudonym-Kandidaten, abgestimmt auf dein Genre, deine Markenziele und deinen Zielmarkt — jedes mit Aussprache und einer Begründung, warum es als Autorenname funktioniert.",
+      "theme_pills": [
+        "10 Kandidaten",
+        "Genreorientiert",
+        "Datenschutz-bewusste Prompts",
+        "Prüfliste vor dem Veröffentlichen"
+      ],
+      "eyebrow": "KI-Tool für Autorennamen",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Pseudonym-Generator",
+      "form_title": "Pseudonym gestalten",
+      "genre_label": "Genre",
+      "genre_options": [
+        { "value": "romance", "label": "Liebesroman" },
+        { "value": "thriller_mystery", "label": "Thriller & Krimi" },
+        { "value": "fantasy", "label": "Fantasy" },
+        { "value": "science_fiction", "label": "Science Fiction" },
+        { "value": "literary", "label": "Literarische Fiction" },
+        { "value": "non_fiction", "label": "Sachbuch" },
+        { "value": "general", "label": "Allgemein / alle Genres" }
+      ],
+      "brand_goal_label": "Markenziel",
+      "brand_goal_options": [
+        { "value": "single_brand", "label": "Ein Name für alles" },
+        { "value": "separate_genres", "label": "Getrennte Namen je Genre" },
+        { "value": "privacy_first", "label": "Identität privat halten" },
+        { "value": "initials_led", "label": "Initialen-basierter Name" }
+      ],
+      "tone_label": "Ton",
+      "tone_options": [
+        { "value": "classic", "label": "Klassisch" },
+        { "value": "warm", "label": "Warm" },
+        { "value": "bold", "label": "Kraftvoll" },
+        { "value": "mysterious", "label": "Geheimnisvoll" },
+        { "value": "modern", "label": "Modern" },
+        { "value": "scholarly", "label": "Gelehrt" }
+      ],
+      "name_form_label": "Namensform",
+      "name_form_options": [
+        { "value": "full_name", "label": "Ganzer Name" },
+        { "value": "first_initial", "label": "Initial + Mittelname" },
+        { "value": "initials_surname", "label": "Initialien + Nachname" },
+        { "value": "single_name", "label": "Einzelname" }
+      ],
+      "target_market_label": "Zielmarkt",
+      "target_market_options": [
+        { "value": "en", "label": "Englischsprachiger Markt" },
+        { "value": "zh", "label": "Chinesischsprachiger Markt" },
+        { "value": "de", "label": "Deutschsprachiger Markt" },
+        { "value": "ko", "label": "Koreanischsprachiger Markt" },
+        { "value": "ja", "label": "Japanischsprachiger Markt" },
+        { "value": "ru", "label": "Russischsprachiger Markt" }
+      ],
+      "cue_label": "Besondere Wünsche? (optional)",
+      "cue_placeholder": "z. B. weiche S-Laute, ein Nachname, der auf einen Buchrücken passt, eine Anspielung auf den Mädchennamen der Großmutter",
+      "inspiration_hint": "Namen mit ähnlichem Klang wie:",
+      "mode_label": "KI-Modell",
+      "mode_options": [{"value": "fast", "label": "Schnell"}, {"value": "standard", "label": "Standard"}, {"value": "creative", "label": "Kreativ"}],
+      "sign_in_button": "Zum Fortfahren anmelden",
+      "generate_button": "Pseudonyme generieren",
+      "generating_button": "Autorennamen werden entworfen...",
+      "reroll_button": "10 weitere generieren",
+      "output_title": "Deine Pseudonym-Kandidaten",
+      "empty_output": "Lege Genre und Markenziel fest und generiere dann zehn Pseudonym-Kandidaten mit Aussprache und Begründung.",
+      "result_label": "Kandidat",
+      "pronunciation_label": "Aussprache",
+      "reason_label": "Warum es funktioniert",
+      "copy_button": "Namen kopieren",
+      "favorite_button": "Zu Favoriten",
+      "favorited_button": "Aus Favoriten entfernen",
+      "similar_button": "Mehr davon",
+      "favorites_title": "Favoriten dieser Sitzung",
+      "loading_status": "Pseudonyme werden generiert, bitte warten."
+    },
+    "validation": {
+      "cue_too_long": "Besondere Wünsche dürfen höchstens 120 Zeichen lang sein.",
+      "inspiration_too_long": "Der Inspirationsname darf höchstens 100 Zeichen lang sein.",
+      "generic_error": "Pseudonyme konnten gerade nicht generiert werden. Bitte erneut versuchen.",
+      "creative_limit_reached": "Die kostenlosen Creative-Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten."
+    },
+    "success": {
+      "copied": "Name in die Zwischenablage kopiert.",
+      "generated": "Zehn Pseudonyme generiert.",
+      "favorited": "Zu Favoriten hinzugefügt.",
+      "unfavorited": "Aus Favoriten entfernt."
+    },
+    "errors": {
+      "generate_failed": "Pseudonyme konnten nicht generiert werden. Bitte erneut versuchen.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "screening": {
+      "title": "Vor der Veröffentlichung prüfen",
+      "disclaimer": "Dies sind kreative Vorschläge, keine geprüften Namen. Das Tool garantiert keine Verfügbarkeit — arbeite die Prüfliste ab, bevor du dich festlegst.",
+      "open_button": "5-Schritte-Prüfliste anzeigen",
+      "close_button": "Prüfliste ausblenden",
+      "items": [
+        { "title": "Exakten Namen suchen", "description": "Suche das vollständige Pseudonym in Anführungszeichen in einer Suchmaschine. Gehört es bereits einem bekannten Autor oder einer Marke, streiche den Kandidaten." },
+        { "title": "Autorendatenbanken und Händler prüfen", "description": "Schlage den Namen auf Autorenseiten von Buchhändlern und in Bibliothekskatalogen nach. Du suchst nach aktiven Autoren, die darunter veröffentlichen — nicht nur nach exakten Dubletten." },
+        { "title": "Domains und Social-Media-Handles prüfen", "description": "Prüfe, ob die passende Domain und die gewünschten Social-Media-Handles bereits von jemandem aus deiner Nische belegt sind." },
+        { "title": "Relevante Markenregister durchsuchen", "description": "Durchsuche die für deinen Markt relevanten Markenregister — etwa DPMA, EUIPO oder USPTO — nach dem Namen in verlagsrelevanten Klassen." },
+        { "title": "Verträge, Steuern und Fachberatung prüfen", "description": "Lies vor der Unterschrift, wie dein Verlag mit Pseudonymen umgeht, und hole Rat zu Steuern, Bankkonten und berufsrechtlichen Regeln für das Schreiben unter einem Decknamen." }
+      ]
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Was dieser Pseudonym-Generator gut kann",
+      "description": "Gebaut für Autorinnen und Autoren, die einen Autorennamen für ihr Regal brauchen — frisch erfunden für Genre und Ziele, nie von einer Liste abgerufen.",
+      "items": [
+        { "title": "Genreorientierte Kandidaten", "description": "Ein Liebesroman-Autorenname und ein Hard-SF-Autorenname sollten nicht gleich klingen. Das Genre steuert Rhythmus, Initialen und Nachnamenstil für dein Regal.", "icon": "RiBookOpenLine" },
+        { "title": "Aussprache für jeden Namen", "description": "Jeder Kandidat liefert eine einfache Silbenanleitung, damit du ihn bei Signierstunden, Interviews und Podcasts aussprechen kannst, bevor du dich festlegst.", "icon": "RiMicLine" },
+        { "title": "Begründungen, nicht nur Namen", "description": "Jeder Kandidat erklärt, warum er als Autorenname funktioniert — was er Leserinnen, Händlern und Rezensenten in deinem Genre signalisiert.", "icon": "RiLightbulbLine" }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "SO GEHT'S",
+      "title": "Den Pseudonym-Generator in 3 Schritten nutzen",
+      "description": "Vom leeren Blatt zu einer nutzbaren Shortlist in unter einer Minute.",
+      "items": [
+        { "title": "Genre, Ziele und Markt festlegen", "description": "Wähle dein Genre, den Zweck des Namens — eine Marke, Genre-Trennung oder Datenschutz — und den Markt, in dem deine Leser kaufen.", "icon": "RiQuillPenLine" },
+        { "title": "Zehn Kandidaten generieren und vergleichen", "description": "Lies Aussprache und Begründung auf jeder Karte, merke Favoriten vor und ergänze einen Wunsch wie einen Klang, den du liebst, für treffendere Ergebnisse.", "icon": "RiSparkling2Line" },
+        { "title": "Favoriten vor der Veröffentlichung prüfen", "description": "Führe deine Shortlist durch die fünf Schritte der Prüfliste und kopiere den Sieger dann in dein Manuskript und deine Konten.", "icon": "RiShieldCheckLine" }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum der richtige Autorenname zählt",
+      "description": "Ein Pseudonym ist eine Verlagsentscheidung, nicht nur ein Etikett. Der richtige Name funktioniert überall, wo deine Bücher leben.",
+      "items": [
+        { "title": "Ein Name, eine Marke", "description": "Leser folgen Namen, die sie wiedererkennen. Ein stimmiger Autorenname baut Serientreue, Newsletter-Vertrauen und Regalpräsenz über mehrere Bücher auf.", "icon": "RiPriceTag3Line" },
+        { "title": "Platz für Genre-Wechsel", "description": "Du schreibst herzige Liebesromane und harte Thriller? Getrennte Pseudonyme verhindern, dass beide Zielgruppen von Covern abprallen, die das falsche Genre versprechen.", "icon": "RiBookMarkedLine" },
+        { "title": "Distanz by Design", "description": "Ein gewählter Autorenname hält deinen bürgerlichen Namen von Covern, Katalogen und Suchergebnissen fern — eine Trennungsschicht, die du als öffentlicher Autor selbst steuerst.", "icon": "RiLock2Line" }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Anwendungsfälle",
+      "title": "Wer den Pseudonym-Generator nutzt",
+      "description": "Schreibende, die einen professionellen Autorennamen brauchen — ohne Namenskommission.",
+      "items": [
+        { "title": "Debütroman-Autorinnen und -Autoren", "description": "Probiere Autorennamen aus, die auf Cover, Buchrücken und in Rezensionen funktionieren, bevor dein erstes Buch darunter erscheint.", "icon": "RiRocketLine" },
+        { "title": "Multi-Genre-Indie-Autoren", "description": "Erstelle für jede Veröffentlichungslinie einen eigenen, genregerechten Autorennamen und halte sie in den Händler-Metadaten getrennt.", "icon": "RiStackLine" },
+        { "title": "Datenschutzbewusste Berufstätige", "description": "Lehrer, Anwälte und Beamte, die Fiction schreiben, halten ihre Berufsidentität vom Autorennamen fern — und bleiben auf Lesungen trotzdem gut aussprechbar.", "icon": "RiUserSharedLine" }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Pseudonym-Generator — Häufige Fragen",
+      "items": [
+        { "title": "Warum nutzen Autorinnen und Autoren Pseudonyme?", "description": "Schreibende veröffentlichen unter Pseudonymen, um eine Marke je Genre zu pflegen, Beruf und Privatleben zu trennen, Namenskollisionen mit bestehenden Autoren zu vermeiden oder weil ein gewählter Name auf einem Cover besser lesbar ist als der bürgerliche." },
+        { "title": "Prüft das Tool, ob ein Pseudonym frei ist?", "description": "Nein. Der Generator garantiert keine Verfügbarkeit und prüft keine Register, Händler, Domains oder Marken. Behandle jeden Kandidaten als kreativen Vorschlag und prüfe ihn mit der fünf Schritte umfassenden Prüfliste, bevor du darunter veröffentlichst." },
+        { "title": "Macht mich ein Pseudonym anonym?", "description": "Ein Pseudonym macht dich nicht automatisch anonym. Verträge, Urheberrechts-Eintragungen, Steuern und Metadaten können den Autorennamen weiterhin mit deinem bürgerlichen Namen verbinden. Wenn Anonymität wichtig ist, hole professionellen Rat zu Verträgen und Rechtslage ein." },
+        { "title": "Kann ich je Genre ein anderes Pseudonym verwenden?", "description": "Ja — genau dafür gibt es das Markenziel 'Getrennte Namen je Genre'. Viele Autoren führen je Genre einen Namen, damit Lesende immer wissen, was ein Cover verspricht. Halte jede Linie in Händler-Metadaten und auf Covern konsistent." },
+        { "title": "Wie prüfe ich einen Kandidaten, bevor ich mich festlege?", "description": "Suche den exakten Namen in Anführungszeichen, prüfe Autorenseiten bei Händlern, sieh Dir Domains und Social-Media-Handles an, durchsuche die Markenregister deines Marktes und lies die Pseudonym-Klauseln in deinem Verlagsvertrag. Die Prüfliste auf dieser Seite führt dich hindurch." },
+        { "title": "Warum schlägt das Tool keine Namen nach Geschlecht oder Herkunft vor?", "description": "Autorennamen werden als Autorennamen beurteilt. Der Generator behauptet oder impliziert nie etwas über Geschlecht, Ethnie, Nationalität, Religion oder kulturelle Identität hinter einem Namen — er schlägt Namen rein nach ihrer Wirkung in deinem Genre und Markt vor." },
+        { "title": "Kann ich ein generiertes Pseudonym als Marke eintragen lassen?", "description": "Manchmal, aber das Tool gibt dazu keine Zusicherung. Die Eintragung hängt von deiner Rechtsordnung, den angemeldeten Klassen und bestehenden Marken ab. Prüfe Kandidaten in den relevanten Markenregistern und hole vor einer Anmeldung professionellen Rat ein." }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Finde heute noch deinen Autorennamen",
+      "description": "Zehn genreorientierte Pseudonym-Kandidaten mit Aussprache und Begründung — kostenlos, ohne Konto.",
+      "buttons": [
+        { "title": "Pseudonyme generieren", "url": "#pen_name_generator", "icon": "RiSparkling2Line" },
+        { "title": "Zurück zu den KI-Tools", "url": "/ai-tools", "icon": "RiAppsLine" }
+      ]
+    },
+    "related_tools": {
+      "title": "Baue dein Autoren-Toolkit weiter aus",
+      "description": "Kombiniere dein Pseudonym mit einem Buchtitel, einer Gliederung oder einer Fantasy-Geschichte, die darunter erscheint.",
+      "more_label": "Alle KI-Tools ansehen"
+    }
+  }
+}

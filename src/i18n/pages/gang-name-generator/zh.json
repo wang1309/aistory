@@ -1,0 +1,298 @@
+{
+  "gang_name_generator": {
+    "metadata": {
+      "title": "帮派名称生成器 — 小说、跑团与游戏的虚构组织命名 | AI Story",
+      "description": "免费 AI 帮派名称生成器:为小说、跑团和游戏生成虚构帮派、团伙、家族、黑帮与赛博朋克组织名称,附含义与故事钩子。",
+      "keywords": "帮派名称生成器, 帮派名字生成, 团伙名称, 组织名称生成器, 氏族名称生成器, 黑帮名称, 奇幻帮派名, 赛博朋克帮派名, 帮派名生成器 含义"
+    },
+    "ui": {
+      "title": "帮派名称生成器",
+      "title_highlight": "帮派名称",
+      "subtitle": "生成一个虚构帮派名称,同时获得它的含义、名声、标志、地盘与宿敌冲突钩子,直接用于你的故事或战役。",
+      "theme_pills": ["6 份组织档案", "世界观的设定", "即用故事钩子", "100% 虚构"],
+      "eyebrow": "AI 世界观工具",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "帮派名称生成器",
+      "form_title": "设定你的组织",
+      "world_label": "世界观 / 题材",
+      "world_options": [
+        { "value": "street_crime", "label": "犯罪黑色 / 街头团伙" },
+        { "value": "mafia", "label": "黑手党 / 黑帮题材" },
+        { "value": "fantasy", "label": "奇幻" },
+        { "value": "cyberpunk", "label": "赛博朋克" },
+        { "value": "post_apocalyptic", "label": "末日废土" },
+        { "value": "biker", "label": "机车飞车党" },
+        { "value": "game_world", "label": "开放世界游戏风" }
+      ],
+      "group_type_label": "组织类型",
+      "group_type_options": [
+        { "value": "crew", "label": "街头团伙" },
+        { "value": "crime_family", "label": "犯罪家族" },
+        { "value": "syndicate", "label": "辛迪加联合体" },
+        { "value": "brotherhood", "label": "兄弟会 / 教团" },
+        { "value": "clan", "label": "氏族" },
+        { "value": "biker_club", "label": "机车俱乐部" }
+      ],
+      "tone_label": "基调",
+      "tone_options": [
+        { "value": "menacing", "label": "威慑" },
+        { "value": "gritty", "label": "冷硬写实" },
+        { "value": "cunning", "label": "狡黠" },
+        { "value": "flashy", "label": "张扬" },
+        { "value": "funny", "label": "搞笑" },
+        { "value": "honorable", "label": "荣誉" }
+      ],
+      "flavor_label": "文化风味",
+      "flavor_options": [
+        { "value": "none", "label": "不指定" },
+        { "value": "italian", "label": "意式犯罪史诗" },
+        { "value": "japanese", "label": "日式极道题材" },
+        { "value": "chinese", "label": "中式江湖武侠" },
+        { "value": "western", "label": "西部旧时代法外之徒" },
+        { "value": "nordic", "label": "北欧萨迦" }
+      ],
+      "cue_label": "想包含的词或场景?(可选)",
+      "cue_placeholder": "例如:围绕“渡鸦”起名、一个掌控港口码头的团伙、适合雨夜港口城市的名字",
+      "inspiration_hint": "正在生成与这个名字气质相近的名称:",
+      "mode_label": "AI 模型",
+      "mode_options": [
+        { "value": "fast", "label": "快速" },
+        { "value": "standard", "label": "标准" },
+        { "value": "creative", "label": "创意" }
+      ],
+      "sign_in_button": "登录后继续",
+      "generate_button": "生成帮派名称",
+      "generating_button": "正在构建组织……",
+      "reroll_button": "再生成 6 个",
+      "output_title": "你的虚构组织档案",
+      "empty_output": "先选择世界观与基调,生成后即可在这里看到六份带含义与故事钩子的虚构组织档案。",
+      "result_label": "组织",
+      "meaning_label": "含义",
+      "reputation_label": "名声",
+      "territory_label": "地盘",
+      "symbol_label": "标志",
+      "core_value_label": "核心信条",
+      "rival_hook_label": "宿敌钩子",
+      "copy_button": "复制名称",
+      "favorite_button": "加入收藏",
+      "favorited_button": "取消收藏",
+      "similar_button": "再来类似的",
+      "favorites_title": "本次会话的收藏",
+      "loading_status": "正在生成帮派名称,请稍候。"
+    },
+    "validation": {
+      "cue_too_long": "词或场景需控制在 120 字以内。",
+      "inspiration_too_long": "灵感名称需控制在 100 字以内。",
+      "generic_error": "暂时无法生成帮派名称,请重试。",
+      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。"
+    },
+    "success": {
+      "copied": "名称已复制到剪贴板。",
+      "generated": "已生成六份组织档案。",
+      "favorited": "已加入收藏。",
+      "unfavorited": "已取消收藏。"
+    },
+    "errors": {
+      "generate_failed": "无法生成帮派名称,请重试。",
+      "verification_failed": "验证失败,请重试。"
+    },
+    "fictional_only": {
+      "title": "仅用于小说、游戏与跑团",
+      "disclaimer": "本工具产出的每一个名称、标志与地盘都是为故事和战役凭空虚构的,绝不复刻真实帮派的名称、标志或身份,也不是真实组织的名录。",
+      "open_button": "查看虚构使用守则",
+      "close_button": "收起守则",
+      "items": [
+        {
+          "title": "一切皆为虚构",
+          "description": "生成器刻意拒绝真实帮派的名称、标志、颜色、手势与组织结构。如果某个结果碰巧与真实事物相似,请弃用并重新生成。"
+        },
+        {
+          "title": "保持明确的虚构性",
+          "description": "给组织配上虚构的成员、虚构的城市与虚构的冲突。以虚构为先的写法能让作品顺利适配各类出版与平台规范。"
+        },
+        {
+          "title": "避免现实伤害",
+          "description": "不要把结果改造成某个真实组织的仿冒,也不要用于招募、恐吓,或任何针对真实人物、真实地点的用途。"
+        },
+        {
+          "title": "发表前先检索",
+          "description": "发表之前,请给名称加引号搜索一次。如果与真实组织或知名作品撞名,换一个词或重新生成。"
+        }
+      ]
+    },
+    "continuation": {
+      "title": "继续构建这个世界",
+      "description": "帮派名称只是开局。把这份档案带进你的角色与冲突。",
+      "leader_label": "创建首领",
+      "leader_hint": "设计统领这个团伙的原创角色",
+      "backstory_label": "撰写起源",
+      "backstory_hint": "构建这个组织的发家往事",
+      "plot_label": "展开成剧情",
+      "plot_hint": "把宿敌钩子变成完整故事线"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "风格",
+      "title": "为你的虚构帮派选择一种风格",
+      "description": "每个世界观都有自己的命名逻辑。可以直接在上方的生成器里选择设定,也可以浏览下面的风格速览,看看各流派命名方式的差异。",
+      "items": [
+        {
+          "title": "犯罪黑色与街头团伙",
+          "description": "现代团伙常拿一个地点或一个记号反复使用:比如“码头九人组”或“霍尔登帮”。短促、本地化,真实到连当地人都真的会这么叫。",
+          "icon": "RiScales3Line"
+        },
+        {
+          "title": "黑手党与犯罪家族",
+          "description": "黑帮命名讲究王朝感与体面:“朱红法庭”或“科尔维诺家族”一听就有年头、有旧钱、有誓约。家族姓氏与敬称承担主要分量。",
+          "icon": "RiCopperCoinLine"
+        },
+        {
+          "title": "奇幻阵营",
+          "description": "奇幻组织喜欢把意象和誓言配对:“灰烬誓盟”或“镀金渡鸦佣兵团”三个词就许诺了魔法、遗迹与雇佣兵的历史。",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "赛博朋克集体",
+          "description": "霓虹团伙把技术俚语和教派感拼接在一起:“静电零集体”或“霓虹教议会”读起来就像带着宣言和光效标志的黑客小队。",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "法外机车俱乐部",
+          "description": "机车命名是镀铬金属加圣徒气质:“铁环骑士”或“灰烬圣徒”把金属与信仰并置,正如虚构作品里飞车党的自我命名方式。",
+          "icon": "RiMotorbikeLine"
+        },
+        {
+          "title": "搞笑帮派名",
+          "description": "喜剧向帮派靠反差取胜:“外婆的不在场证明”或“客气吵闹团”能让人一笑,同时照样占得住地盘。把基调拨到“搞笑”即可按这个路数生成。",
+          "icon": "RiEmotionLaughLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "如何起一个令人印象深刻的虚构帮派名",
+      "description": "三步走,从空白页到一个角色能脱口而出的名字。",
+      "items": [
+        {
+          "title": "先定世界观与基调",
+          "description": "黑手党家族和赛博朋克集体不该共享一套词汇。先设定世界观、组织类型和基调——好的名字放到别的题材里应该立刻显得违和。",
+          "icon": "RiFlagLine"
+        },
+        {
+          "title": "意象 + 信条 + 组织类型",
+          "description": "取一个抓人的意象(渡鸦、余烬、海港),加上组织信奉的准则,再落到组织形式——团伙、氏族、辛迪加。“灰烬”+誓言+兄弟会,就得到“灰烬誓盟”。",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "放进对白里检验",
+          "description": "分别用威胁、耳语和徽记三种口吻念一遍:“没人敢惹码头九人组。”三种语境都成立,这个名字就立得住。",
+          "icon": "RiQuillPenLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "示例",
+      "title": "带含义的帮派名称示例",
+      "description": "尝一口每次生成都会返回的档案格式——每个名称都自带故事语境。",
+      "items": [
+        {
+          "title": "朱红法庭 — 黑手党家族",
+          "description": "含义:“朱红”给旧式暴力披上贵族式的红,“法庭”则宣称这个家族像王朝一样掌权。名声:慈善晚宴上碰不得,码头上人人发抖。适合一个统治同一座城市几代人的家族。",
+          "icon": "RiVipCrownLine"
+        },
+        {
+          "title": "静电零集体 — 赛博朋克小组",
+          "description": "含义:“静电”是它们藏身的噪声,“零”是它们不留的痕迹,“集体”宣告这是宣言而非某个老大。名声:用一次标志性信号故障认领行动的幽灵。适合在网络内部对抗巨企的黑客团。",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "灰烬誓盟 — 奇幻兄弟会",
+          "description": "含义:“灰烬”背负被焚毁的故乡与幸存者的哀恸,“誓盟”让这个名字成为每个成员反复重申的誓言。名声:连国王都会毁约的合同,他们也照守。适合有一条铁律的佣兵团。",
+          "icon": "RiShieldStarLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "适用人群",
+      "title": "谁在用帮派名称生成器",
+      "description": "需要在十分钟内得到一个“活着的”阵营的作者与主持人。",
+      "items": [
+        {
+          "title": "小说作者",
+          "description": "为犯罪长篇、奇幻史诗或赛博朋克惊悚配备一个有名称、有声名、有宿敌冲突的阵营,剧情可以直接挂上去。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "跑团主持人",
+          "description": "快速给战役填满玩家可以结盟、背叛或另立山头的团伙——每份档案都自带一个现成的冲突钩子。",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "游戏与世界观设计师",
+          "description": "飞速给设定里的各派系命名,再依据各自的标志、地盘与核心信条铺开机制与传说。",
+          "icon": "RiStackLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "帮派名称生成器 — 常见问题",
+      "items": [
+        {
+          "title": "怎么起一个好帮派名?",
+          "description": "先从设定与基调出发,把抓人的意象、组织的信条与组织形式(团伙、家族、氏族、辛迪加)组合起来,再放进对白里检验——威胁、耳语、徽记三种口吻都念一遍。三种都撑得住,这个名字就属于你的故事。"
+        },
+        {
+          "title": "生成的帮派名称可以免费用吗?",
+          "description": "可以。工具生成的名称都是创意建议,你可以在小说和游戏里自由使用、修改或弃用,无需付费。工具不做商标检索,商业出版前请给名称加引号搜索确认。"
+        },
+        {
+          "title": "怎么让帮派名契合奇幻或赛博朋克设定?",
+          "description": "使用“世界观”选项。奇幻名把意象与誓约、教团配对;赛博朋克名把技术俚语与宣言感拼接;黑手党名倚重王朝与姓氏。生成器会根据你选的世界观切换整套命名逻辑。"
+        },
+        {
+          "title": "团伙、氏族和辛迪加有什么区别?",
+          "description": "团伙小而灵活,靠私人忠诚维系;氏族是古老的血脉,有世代相传的地盘与宿怨;辛迪加庞大而商业化,有合法门面和冷峻的指挥链。“组织类型”选项会改变这一切。"
+        },
+        {
+          "title": "这个工具会生成真实帮派的名称吗?",
+          "description": "不会,而且被刻意设计成绝不生成。所有名称、标志与地盘皆为虚构。生成器拒绝真实帮派的名称、标志、成员与结构,也不会产出可用于真实招募或恐吓的内容。"
+        },
+        {
+          "title": "可以生成黑手党、机车或搞笑帮派名吗?",
+          "description": "可以。把世界观设为“黑手党”或“机车飞车党”即可获得相应风格;把基调拨到“搞笑”则得到黑色幽默向的名字。还可以叠加世界观与基调——比如“赛博朋克 + 搞笑”——调出混合风味。"
+        },
+        {
+          "title": "第一次生成真的免费吗?",
+          "description": "是的。本页所有生成都免费,无需注册或登录——选好参数,想生成多少次都可以。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "现在就为你的阵营命名",
+      "description": "六份虚构组织档案,含含义、名声、标志与宿敌钩子——免费,无需账号。",
+      "buttons": [
+        {
+          "title": "生成帮派名称",
+          "url": "#gang_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "展开这个组织的故事",
+          "url": "/plot-generator",
+          "icon": "RiSwordLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "继续构建你的世界",
+      "description": "为阵营配上剧情、起源故事、冲突提示词,或一整篇奇幻故事。",
+      "more_label": "浏览全部 AI 工具"
+    }
+  }
+}

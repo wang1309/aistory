@@ -1,0 +1,264 @@
+{
+  "random_nfl_team_generator": {
+    "metadata": {
+      "title": "랜덤 NFL 팀 생성기: 풀 & 드래프트용 | AI Story",
+      "description": "현재 32개 NFL 팀을 무작위로 뽑거나 섞으세요. 판타지 풋볼 리그에 중복 없는 팀을 배정하고, 컨퍼런스·디비전으로 필터링하고, 결과를 한 번에 복사하세요.",
+      "keywords": "random nfl team generator, NFL 팀 랜덤, NFL 팀 뽑기, nfl team randomizer, 랜덤 팀 생성기, NFL 추첨, 판타지 풋볼 팀 배정, random football team generator"
+    },
+    "ui": {
+      "title": "랜덤 NFL 팀 생성기",
+      "title_highlight": "NFL 팀",
+      "subtitle": "이 랜덤 NFL 팀 생성기는 한 팀 뽑기부터 32개 팀 전체를 공정하게 섞어 중복 없이 나누기까지. 판타지 드래프트, 오피스 풀, 매든 리빌드 도전을 위해 — 가입 없이, 바로 뽑습니다.",
+      "theme_pills": ["현재 32개 팀 전부", "암호화 수준 랜덤", "중복 없음", "인원수별 배정"],
+      "eyebrow": "무료 풋볼 추첨 도구",
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "랜덤 NFL 팀 생성기",
+      "form_title": "추첨 설정",
+      "mode_label": "추첨 모드",
+      "mode_options": [
+        { "value": "pick", "label": "팀 뽑기" },
+        { "value": "shuffle", "label": "전체 섞기" },
+        { "value": "assign", "label": "인원에게 배정" }
+      ],
+      "mode_hints": {
+        "pick": "클릭 한 번으로 중복 없는 팀을 한 개 이상 추첨 — 간편 뽑기, 매든 리빌드 룰렛, 이번 시즌 누구를 응원할지 정할 때.",
+        "shuffle": "선택한 풀 전체에 1부터 N까지 번호를 붙입니다 — 리그 단체방에 바로 붙여넣는 완전한 드래프트 순서.",
+        "assign": "참가자를 한 줄에 한 명씩 붙여넣으세요 — 모두에게 반드시 다른 팀이 배정됩니다."
+      },
+      "scope_label": "대상",
+      "scope_options": [
+        { "value": "all", "label": "전체 32팀" },
+        { "value": "afc", "label": "AFC 컨퍼런스" },
+        { "value": "nfc", "label": "NFC 컨퍼런스" },
+        { "value": "afc_east", "label": "AFC 동부" },
+        { "value": "afc_north", "label": "AFC 북부" },
+        { "value": "afc_south", "label": "AFC 남부" },
+        { "value": "afc_west", "label": "AFC 서부" },
+        { "value": "nfc_east", "label": "NFC 동부" },
+        { "value": "nfc_north", "label": "NFC 북부" },
+        { "value": "nfc_south", "label": "NFC 남부" },
+        { "value": "nfc_west", "label": "NFC 서부" }
+      ],
+      "count_label": "몇 팀을 뽑을까요?",
+      "pick_button": "랜덤으로 팀 뽑기",
+      "shuffle_button": "전체 팀 섞기",
+      "assign_button": "멤버에게 팀 배정",
+      "reroll_button": "다시 뽑기",
+      "participants_label": "참가자 (한 줄에 한 명)",
+      "participants_placeholder": "지훈\n서연\n민준\n하은",
+      "participants_hint": "최대 32명, 한 줄에 한 명. 선택한 대상 풀에서 각자 다른 팀을 배정받습니다.",
+      "output_title": {
+        "pick": "뽑기 결과",
+        "shuffle": "섞인 드래프트 순서",
+        "assign": "팀 배정 결과"
+      },
+      "empty_output": "모드를 고르고 대상을 정한 뒤 뽑으세요 — 결과가 여기에 표시되고, 단체방으로 복사하는 버튼도 함께 제공됩니다.",
+      "result_label": "뽑기",
+      "eligible_label": "추첨 대상 팀 수:",
+      "participant_header": "참가자",
+      "team_header": "팀",
+      "copy_button": "결과 복사",
+      "copy_team_button": "팀 이름 복사",
+      "conference_badge": { "afc": "AFC", "nfc": "NFC" },
+      "division_badge": { "east": "동부", "north": "북부", "south": "남부", "west": "서부" },
+      "share_mode_label": "모드",
+      "share_filter_label": "대상",
+      "disclaimer": "비공식 팬 제작 도구입니다. 팀 이름은 NFL과 각 구단의 상표이며, 본 사이트는 NFL과 어떠한 제휴·후원·보증 관계도 없습니다."
+    },
+    "validation": {
+      "no_teams": "선택한 대상에 팀이 없습니다. 대상을 넓혀 보세요.",
+      "participants_empty": "참가자를 한 줄에 한 명씩 최소 한 명 입력하세요.",
+      "participants_too_many": "참가자 수가 대상 팀 수보다 많습니다 — 대상을 넓히거나 명단을 줄이세요.",
+      "generic_error": "문제가 발생했습니다. 다시 시도해 주세요."
+    },
+    "success": {
+      "picked": "팀을 뽑았습니다.",
+      "shuffled": "섞기를 완료했습니다.",
+      "assigned": "팀을 배정했습니다.",
+      "copied": "클립보드에 복사했습니다."
+    },
+    "continuation": {
+      "title": "풋볼 이야기를 써 볼까요?",
+      "description": "작가와 게임 마스터에게: 추첨 결과가 곧 프레미스입니다. 같은 공방의 무료 도구들이 랜덤 NFL 팀을 완전한 이야기로 바꿔 드립니다.",
+      "squad_name_label": "판타지 팀 이름 짓기",
+      "squad_name_hint": "리그 채팅용 강렬한 팀 이름 생성",
+      "backstory_label": "언더독 서사 쓰기",
+      "backstory_hint": "트레이닝 캠프부터 마지막 드라이브까지",
+      "prompt_label": "스토리 프롬프트 받기",
+      "prompt_hint": "한 풋볼 시즌을 무대로 한 플롯"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "추첨 모드",
+      "title": "랜덤 NFL 팀을 뽑는 세 가지 방식",
+      "description": "빠른 뽑기, 완전한 드래프트 순서, 리그 전원 일대일 배정 — 세 가지 모두 같은 공정한 엔진으로 작동합니다.",
+      "items": [
+        {
+          "title": "팀 뽑기",
+          "description": "클릭 한 번으로 중복 없는 팀을 한 개 이상 추첨합니다. 매든 프랜차이즈 룰렛, 교실 게임, 이번 시즌 응원 팀 정하기에.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "전체 섞기",
+          "description": "대상 풀 전체에 1부터 N까지 번호가 매겨집니다. 캡처·붙여넣기·입씨름에도 흔들리지 않는 완전한 드래프트 순서죠.",
+          "icon": "RiListOrdered"
+        },
+        {
+          "title": "인원에게 배정",
+          "description": "참가자 명단을 붙여넣으면 모두에게 다른 팀이 배정됩니다. 중복 제로, 협상 제로 — 추첨 전체가 메시지 하나에 들어갑니다.",
+          "icon": "RiTeamLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "사용 방법",
+      "title": "공정한 랜덤 NFL 팀 추첨 하는 법",
+      "description": "랜덤 NFL 팀 추첨을 세 단계로 — 32명 리그도 1분 안에 끝납니다.",
+      "items": [
+        {
+          "title": "대상 고르기",
+          "description": "전체 32팀, 한쪽 컨퍼런스, 또는 단일 디비전. 드롭다운 옆 카운터가 항상 추첨에 포함된 팀 수를 정확히 보여줍니다.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "모드 고르기",
+          "description": "빠른 랜덤 NFL 팀은 뽑기, 완전한 드래프트 순서는 전체 섞기, 참가자별 중복 없는 배정은 인원 배정.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "결과 복사",
+          "description": "한 번 탭하면 모드·대상·모든 이름을 담은 텍스트 기록이 복사됩니다 — 증거로 그대로 단체방에 붙여넣으세요.",
+          "icon": "RiClipboardLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "공정성",
+      "title": "리그 누구도 따질 수 없는 추첨",
+      "description": "여기서 공정함은 약속이 아니라 엔지니어링입니다 — 아래 항목은 전부 이 도구의 실제 동작 방식입니다.",
+      "items": [
+        {
+          "title": "암호화 수준의 랜덤",
+          "description": "추첨은 브라우저의 crypto.getRandomValues와 기각 샘플링을 사용합니다 — 모듈로 편향 없음, 편애 팀 없음, 악용할 패턴도 없음.",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "중복 없는 배정",
+          "description": "32명에게 배정하면 32팀이 정확히 한 번씩 사용됩니다. 엔진은 한 번 섞고 위부터 나눠 줄 뿐, 복원 추출은 절대 하지 않습니다.",
+          "icon": "RiCheckboxCircleLine"
+        },
+        {
+          "title": "브라우저에서 즉시",
+          "description": "서버 왕복 없음, 로딩 스피너 대기도 없음. 추첨은 로컬에서 실행되어 느린 도구에서 눈 한 번 깜빡일 사이에 끝납니다.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "복사 가능한 추첨 기록",
+          "description": "모든 결과는 모드와 대상이 붙은 텍스트로 복사됩니다 — 모두가 확인·보관·재검증할 수 있는 기록입니다.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "무료, 계정 불필요",
+          "description": "가입 없음, 세 번 뽑고 유료 전환하는 벽 없음, 이메일 수집 없음. 페이지 열고, 뽑고, 끝.",
+          "icon": "RiCoinLine"
+        },
+        {
+          "title": "검증된 32팀 명단",
+          "description": "데이터셋은 올바른 컨퍼런스·디비전 구분을 갖춘 현재 32개 NFL 팀을 담고 있으며, 매 시즌 개막 전 nfl.com/teams와 대조합니다.",
+          "icon": "RiShieldCheckLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "활용 사례",
+      "title": "이 추첨을 사용하는 사람들",
+      "description": "일 년에 한 번, 랜덤 NFL 팀 추첨이 20분의 협상보다 나은 순간들.",
+      "items": [
+        {
+          "title": "판타지 리그 커미셔너",
+          "description": "서바이버 풀, 드래프트 순서 공개, '남의 팀 응원하기' 이벤트에 실제 팀을 각 매니저에게 배정하세요.",
+          "icon": "RiTrophyLine"
+        },
+        {
+          "title": "오피스 풀 & 시청 파티",
+          "description": "스퀘어 뽑기, 응원팀 정하기, 어느 집에서 어느 경기를 볼지 — 공개되고 읽기 쉬운 결과가 탭 한 번으로 논쟁을 끝냅니다.",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "매든 & 프랜차이즈 게이머",
+          "description": "랜덤 리빌드를 돌리고, 커리어 모드 규칙으로 단일 디비전에 한정하고, 찜찜하면 만족할 때까지 다시 뽑으세요.",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "선생님 & 퀴즈 나이트",
+          "description": "통계 프로젝트나 상식 토너먼트에 학생들에게 팀을 배정 — 공정하고 즉각적이며 맨 뒷자리에서도 읽힙니다.",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "랜덤 NFL 팀 생성기 — FAQ",
+      "items": [
+        {
+          "title": "이 추첨은 정말 무작위이고 공정한가요?",
+          "description": "네. 매 추첨은 브라우저의 crypto.getRandomValues를 시드로 한 Fisher-Yates 셔플을 실행하며, 기각 샘플링으로 모듈로 편향을 제거합니다. 풀에 있는 각 팀이 어떤 자리에 들어갈 확률도 정확히 같고, 추첨 전체가 여러분의 기기에서 로컬로 이루어집니다."
+        },
+        {
+          "title": "판타지 풋볼 리그에 팀을 배정하려면 어떻게 하나요?",
+          "description": "'인원에게 배정'으로 전환하고, 리그 멤버를 한 줄에 한 명씩 붙여넣은 뒤 뽑으세요. 각 참가자에게 서로 다른 팀이 배정됩니다 — 32명 리그라면 32팀이 정확히 한 번씩 사용됩니다. 결과를 단체방에 복사하면 그것이 추첨 기록이 됩니다."
+        },
+        {
+          "title": "컨퍼런스나 디비전으로만 뽑을 수 있나요?",
+          "description": "가능합니다. 대상 드롭다운에서 AFC, NFC 또는 임의의 단일 디비전(4팀)으로 좁힐 수 있습니다. 옆의 카운터가 항상 현재 대상 팀 수를 보여주므로, 디비전 한정 배정은 최대 4명까지라는 걸 바로 알 수 있습니다."
+        },
+        {
+          "title": "한 번에 최대 몇 팀까지 뽑을 수 있나요?",
+          "description": "1부터 풀 크기(전체 리그는 32)까지 자유롭게 지정할 수 있습니다. 랜덤 NFL 팀 뽑기는 중복 없이 이루어지며 — 모든 팀의 완전한 순위가 필요하다면 '전체 섞기' 모드를 사용하세요."
+        },
+        {
+          "title": "NFL 팀 돌림판 대신 쓸 수 있나요?",
+          "description": "한 팀 뽑기는 돌아가는 돌림판과 같은 일을 합니다 — 공정하게 무작위 팀 하나를 눈에 보이는 형태로 — 회전 애니메이션만 없을 뿐입니다. 파티에서 돌림판의 재미가 필요하다면 전체 섞기로 뽑은 뒤 한 줄씩 공개해 보세요."
+        },
+        {
+          "title": "팀 명단이 최신인가요?",
+          "description": "데이터셋은 올바른 컨퍼런스·디비전 구분을 갖춘 현재 32개 NFL 팀을 포함하며, 2026 시즌 전에 nfl.com/teams와 대조했고 매 프리시즌 다시 검토합니다. 팀 이름과 연고지는 현재 공식 표기를 따릅니다."
+        },
+        {
+          "title": "이 도구는 NFL과 제휴되어 있나요?",
+          "description": "아니요. 비공식 팬 제작 도구입니다. NFL 팀 이름과 마크는 NFL과 가맹 구단의 상표이며, 본 사이트는 NFL과 어떠한 제휴·후원·보증 관계도 없습니다."
+        },
+        {
+          "title": "무료로 사용할 수 있나요?",
+          "description": "완전 무료이며 계정도 필요 없고, 가입 장벽과 추첨 횟수 제한도 없습니다. 도구는 브라우저에서 전부 실행되므로 리그가 원하는 만큼 몇 번이든 다시 뽑을 수 있습니다."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "드래프트 나이트 추첨을 지금 시작하세요",
+      "description": "중복 없는 공정한 랜덤 NFL 팀 추첨, 복사 바로 되는 결과와 함께 — 무료, 즉시, 계정 불필요.",
+      "buttons": [
+        {
+          "title": "랜덤으로 팀 뽑기",
+          "url": "#random_nfl_team_generator",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "더 많은 무료 도구 보기",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "창의력을 이어가세요",
+      "description": "추첨 결과를 이야기, 캐릭터, 가상의 밴드로 발전시키세요 — 같은 공방의 무료 도구들입니다.",
+      "more_label": "모든 AI 도구 보기"
+    }
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "elf_name_generator": {
+    "metadata": {
+      "title": "エルフ名生成機:キャラクター・氏族・ファンタジー世界の命名に",
+      "description": "無料AIエルフ名生成機。発音・意味・理由つきのオリジナル・エルフ名を10個生成。血統・スタイル・性別・背景を制御可能。TRPG、小説、NPC命名に最適。",
+      "keywords": "エルフ名生成, エルフ 名前, ファンタジー エルフ名, エルフ 名前 考え, dnd エルフ名, 女性エルフ名, 男性エルフ名, エルフ 氏族名, npc エルフ名"
+    },
+    "ui": {
+      "title": "エルフ名生成機",
+      "title_highlight": "エルフ名",
+      "subtitle": "ワンクリックで10個のオリジナル・エルフ名を作成。各候補には発音ガイド、創作された意味、そしてキャラクター・氏族・NPCセットに合う理由が添えられます。",
+      "theme_pills": ["候補10個", "血統とスタイルを制御", "発音ガイド", "氏族・NPCモード"],
+      "eyebrow": "AI ファンタジー命名ツール",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "エルフ名生成機",
+      "form_title": "エルフ名を設計する",
+      "heritage_label": "血統文化",
+      "heritage_options": [
+        { "value": "moonlit_court", "label": "月光の宮廷" },
+        { "value": "ancient_woodland", "label": "太古の森" },
+        { "value": "shadowborne", "label": "影の血族" },
+        { "value": "sunlit_scholar", "label": "陽光の学識家" },
+        { "value": "custom", "label": "カスタム文化" }
+      ],
+      "custom_heritage_label": "あなたの文化を説明",
+      "custom_heritage_placeholder": "例:オーロラを追ってツンドラを移動する遊牧の血統。子どもは氷の形状にちなんで名付けられる",
+      "custom_heritage_helper": "オリジナルのエルフ文化を1〜2文で説明してください。生成機はそれに合う命名慣習を作ります。",
+      "style_label": "名前のスタイル",
+      "style_options": [
+        { "value": "graceful", "label": "優雅" },
+        { "value": "ancient", "label": "古風" },
+        { "value": "fierce", "label": "勇猛" },
+        { "value": "mysterious", "label": "神秘" },
+        { "value": "playful", "label": "茶目っ気" }
+      ],
+      "name_use_label": "名前の用途",
+      "name_use_options": [
+        { "value": "character", "label": "キャラクター1人" },
+        { "value": "family_clan", "label": "家族・氏族" },
+        { "value": "npc_set", "label": "NPCのまとまり" }
+      ],
+      "name_form_label": "性別形式",
+      "name_form_options": [
+        { "value": "feminine", "label": "女性形" },
+        { "value": "masculine", "label": "男性形" },
+        { "value": "neutral", "label": "中性形" },
+        { "value": "mixed", "label": "ミックス" }
+      ],
+      "role_label": "役割や物語の背景(任意)",
+      "role_placeholder": "例:忘れられた森を守る追放されたレンジャー、秘密を隠す宮廷書記官、決闘好きの剣舞士",
+      "inspiration_hint": "この名前に近い響きの名前を生成中:",
+      "mode_label": "AI モデル",
+      "mode_options": [{"value": "fast", "label": "高速"}, {"value": "standard", "label": "標準"}, {"value": "creative", "label": "クリエイティブ"}],
+      "sign_in_button": "ログインして続行",
+      "generate_button": "エルフ名を生成",
+      "generating_button": "名前を召喚中...",
+      "reroll_button": "さらに10個生成",
+      "output_title": "あなたのエルフ名",
+      "empty_output": "血統とスタイルを選んで生成すると、発音・意味・理由つきのエルフ名10個がここに表示されます。",
+      "result_label": "名前",
+      "pronunciation_label": "発音",
+      "meaning_label": "意味",
+      "reason_label": "合う理由",
+      "copy_button": "名前をコピー",
+      "favorite_button": "お気に入りに追加",
+      "favorited_button": "お気に入りから外す",
+      "similar_button": "似た名前をもっと",
+      "favorites_title": "このセッションのお気に入り"
+    },
+    "validation": {
+      "custom_heritage_required": "先にカスタム文化を説明してください。",
+      "role_too_long": "役割背景は400文字以内で入力してください。",
+      "custom_heritage_too_long": "カスタム文化は160文字以内で入力してください。",
+      "inspiration_too_long": "インスピレーション名は100文字以内で入力してください。",
+      "generic_error": "現在エルフ名を生成できません。もう一度お試しください。",
+      "creative_limit_reached": "本日のCreative無料回数を使い切りました。ログインでクレジットを追加できます。"
+    },
+    "success": {
+      "copied": "名前をクリップボードにコピーしました。",
+      "generated": "10個のエルフ名を生成しました。",
+      "favorited": "お気に入りに追加しました。",
+      "unfavorited": "お気に入りから外しました。"
+    },
+    "errors": {
+      "generate_failed": "エルフ名を生成できません。もう一度お試しください。",
+      "verification_failed": "認証に失敗しました。もう一度お試しください。"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "このエルフ名生成機が得意なこと",
+      "description": "テーブルトップRPG、小説、世界観構築のために作られました。どの名前も既存リストの再利用ではなく、あなたの設定のために生み出されます。",
+      "items": [
+        {
+          "title": "毎回オリジナル",
+          "description": "10個の候補はすべて、あなたの血統・スタイル・文脈に合わせてその場で創作されます。使い回しのリストも、有名ファンタジーフランチャイズの名前の焼き直しもありません。",
+          "icon": "RiLeafLine"
+        },
+        {
+          "title": "発音と意味つき",
+          "description": "すべての名前に発音ガイドと創作された意味が付きます。声に出して読めるし、何を示唆するか確認してから決められます。",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "文脈を反映した理由",
+          "description": "キャラクターの役割を伝えると、各名前がなぜ合うのかを説明します。レンジャーと宮廷書記官では響きがまったく変わります。",
+          "icon": "RiUser3Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "3ステップで使うエルフ名生成機",
+      "description": "まっさらなページから、すぐ使えるエルフ名10個まで1分以内。",
+      "items": [
+        {
+          "title": "血統とスタイルを選ぶ",
+          "description": "4つの既成エルフ文化から選ぶか自分で説明し、優雅から勇猛まで名前の響きを調整します。",
+          "icon": "RiLeafLine"
+        },
+        {
+          "title": "キャラクター文脈を足す",
+          "description": "名前の用途(キャラ1人・氏族・NPCまとまり)を伝え、役割を添えるとより鋭い結果になります。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "コピー・お気に入り・深掘り",
+          "description": "名前をコピーし、セッション内でお気に入りを集め、「似た名前をもっと」で気に入った名前の周辺を探れます。",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "良いエルフ名が大事な理由",
+      "description": "名前は文化を運びます。合う名前は、エルフが本当にどこかで育ったように感じさせます。",
+      "items": [
+        {
+          "title": "血統が響きを作る",
+          "description": "月光の宮廷のエルフと太古の森のエルフが同じ響きではいけません。血統設定は音節・リズム・雰囲気を変えます。",
+          "icon": "RiMoonLine"
+        },
+        {
+          "title": "育てられる意味",
+          "description": "意味は創作的解釈です。設定の種として、背景・筋・台詞へ育てられます。",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "集団命名の一貫性",
+          "description": "氏族モードは一族の名前を形の近いものに保ち、NPCモードは群衆の中の名前を互いに明確に分けます。",
+          "icon": "RiTeamLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "活用シーン",
+      "title": "エルフ名生成機を使う人々",
+      "description": "読者とプレイヤーの前で名前が通用する必要がある書き手とマスター。",
+      "items": [
+        {
+          "title": "TRPGプレイヤーとGM",
+          "description": "プレイヤーキャラに即座に名前を付けたり、セッション開始前にエルフの集落全体に区別できるNPCを配置したりできます。",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "ファンタジー小説家",
+          "description": "章をまたいで一貫した命名文化を保てます。イベントで本当に声に出して読める発音つき。",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "世界観・ゲームデザイナー",
+          "description": "著作権を気にせず、オリジナルのエルフ文化の命名慣習を設計できます。",
+          "icon": "RiSwordLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "よくある質問",
+      "title": "エルフ名生成機 — よくある質問",
+      "items": [
+        {
+          "title": "エルフ名はオリジナルですか?",
+          "description": "はい。すべての名前は、あなたの血統・スタイル・文脈に合わせてその場で創作されます。生成機は、有名ファンタジーフランチャイズ・作者・人工言語の名前をコピーしたり少し変えたりしません。"
+        },
+        {
+          "title": "意味は何を表していますか?",
+          "description": "意味はあなたの世界のために創作された解釈であり、公式言語の検証された翻訳ではありません。残しても、書き換えても、広げてもよい設定のフックとして扱ってください。"
+        },
+        {
+          "title": "TRPGキャラクターに使えますか?",
+          "description": "はい。テーブルトップのキャラクター、プレイヤーキャラ、NPC、プレイヤーに見せるキャンペーン向けに作られています。名前をキャラクターシートに直接コピーするか、複数をお気に入りに入れて比べてください。"
+        },
+        {
+          "title": "血統とスタイルは結果をどう変えますか?",
+          "description": "血統は名前が属する文化を決めます。月光の宮廷、太古の森、影の血族、陽光の学識家、または自分で説明した文化から選べます。スタイルは響きを制御し、優雅で旋律的なものから勇猛で鋭いものまで調整できます。"
+        },
+        {
+          "title": "なぜ全ての名前に発音があるのですか?",
+          "description": "声に出せない名前は卓で避けられがちです。各候補には簡単な音節ガイドがつき、プレイヤーも読者も自信を持って発音できます。"
+        },
+        {
+          "title": "氏族モードとNPCモードはどう違いますか?",
+          "description": "氏族モードは同じ血統に読める10個の名前を生成し、家族や家門に向きます。NPCモードは明確に区別できる10個の名前を生成し、それぞれの名前が際立つ集落を埋めるのに向きます。"
+        },
+        {
+          "title": "なぜ有名ファンタジー世界の名前を流用しないのですか?",
+          "description": "出版フランチャイズの名前を使うと法的な懸念が生まれ、世界が借り物に感じられます。オリジナル名は設定をあなたのものに保ちます。「似た名前をもっと」は、誰かを模倣せずに好きな響きを探せます。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今夜、エルフに名前を",
+      "description": "発音・意味・理由つきのオリジナル・エルフ名10個。無料でアカウント不要。",
+      "buttons": [
+        {
+          "title": "エルフ名を生成",
+          "url": "#elf_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "AIツールに戻る",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "世界観をさらに組み立てる",
+      "description": "エルフ名に背景ストーリー、ファンタジー物語、他の命名ツールを組み合わせましょう。",
+      "more_label": "すべてのAIツールを見る"
+    }
+  }
+}

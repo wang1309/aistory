@@ -1,0 +1,264 @@
+{
+  "random_nfl_team_generator": {
+    "metadata": {
+      "title": "Random NFL Team Generator für Pools & Drafts | AI Story",
+      "description": "Ziehe oder mische die 32 aktuellen NFL-Teams zufällig. Weise einem Fantasy-Football-Pool eindeutige Teams zu, filtere nach Conference oder Division und kopiere das Ergebnis.",
+      "keywords": "random nfl team generator, NFL Teams Zufallsgenerator, NFL Team Randomizer, zufälliges NFL Team, NFL Draft Reihenfolge, Fantasy Football Teams auslosen, random football team generator, NFL Team Wheel"
+    },
+    "ui": {
+      "title": "Random NFL Team Generator",
+      "title_highlight": "NFL Team",
+      "subtitle": "Dieser Random NFL Team Generator zieht ein Team oder verteilt alle 32 mit einer fairen Mischung ohne Dubletten. Gebaut für Fantasy-Drafts, Office-Pools und Madden-Rebuilds — ohne Anmeldung, nichts zwischen dir und der Ziehung.",
+      "theme_pills": ["Alle 32 aktuellen Teams", "Krypto-Zufallsqualität", "Keine Dubletten", "Zuweisung an Teilnehmer"],
+      "eyebrow": "Kostenloses Football-Ziehungstool",
+      "breadcrumb_home": "Start",
+      "breadcrumb_current": "Random NFL Team Generator",
+      "form_title": "Ziehung einrichten",
+      "mode_label": "Ziehungsmodus",
+      "mode_options": [
+        { "value": "pick", "label": "Teams ziehen" },
+        { "value": "shuffle", "label": "Alle mischen" },
+        { "value": "assign", "label": "Personen zuweisen" }
+      ],
+      "mode_hints": {
+        "pick": "Ein Klick zieht ein oder mehrere eindeutige Teams — spontante Auswahl, Madden-Rebuild-Roulette oder wem man heute die Daumen drückt.",
+        "shuffle": "Der komplette Pool, nummeriert von 1 bis N — eine vollständige Draft-Reihenfolge zum Kopieren in den Liga-Chat.",
+        "assign": "Füge deine Ligamitglieder zeilenweise ein — jede Person erhält garantiert ein anderes Team."
+      },
+      "scope_label": "Pool",
+      "scope_options": [
+        { "value": "all", "label": "Alle 32 Teams" },
+        { "value": "afc", "label": "AFC Conference" },
+        { "value": "nfc", "label": "NFC Conference" },
+        { "value": "afc_east", "label": "AFC East" },
+        { "value": "afc_north", "label": "AFC North" },
+        { "value": "afc_south", "label": "AFC South" },
+        { "value": "afc_west", "label": "AFC West" },
+        { "value": "nfc_east", "label": "NFC East" },
+        { "value": "nfc_north", "label": "NFC North" },
+        { "value": "nfc_south", "label": "NFC South" },
+        { "value": "nfc_west", "label": "NFC West" }
+      ],
+      "count_label": "Wie viele Teams?",
+      "pick_button": "Zufällige Teams ziehen",
+      "shuffle_button": "Alle Teams mischen",
+      "assign_button": "Teams zuweisen",
+      "reroll_button": "Neu ziehen",
+      "participants_label": "Teilnehmer (einer pro Zeile)",
+      "participants_placeholder": "Jordan\nSam\nAlex\nRiley",
+      "participants_hint": "Bis zu 32 Namen, einer pro Zeile. Jede Person erhält aus dem gewählten Pool ein anderes Team.",
+      "output_title": {
+        "pick": "Deine Ziehung",
+        "shuffle": "Gemischte Draft-Reihenfolge",
+        "assign": "Team-Zuweisungen"
+      },
+      "empty_output": "Modus wählen, Pool einstellen, ziehen — das Ergebnis erscheint hier mit Kopier-Button für den Gruppenchat.",
+      "result_label": "Ziehung",
+      "eligible_label": "Teams in der Ziehung:",
+      "participant_header": "Teilnehmer",
+      "team_header": "Team",
+      "copy_button": "Ergebnis kopieren",
+      "copy_team_button": "Teamnamen kopieren",
+      "conference_badge": { "afc": "AFC", "nfc": "NFC" },
+      "division_badge": { "east": "East", "north": "North", "south": "South", "west": "West" },
+      "share_mode_label": "Modus",
+      "share_filter_label": "Pool",
+      "disclaimer": "Inoffizielles Fan-Tool. Teamnamen sind Marken der NFL und ihrer Clubs; diese Seite steht in keiner Verbindung zur NFL und wird von ihr weder gesponsert noch unterstützt."
+    },
+    "validation": {
+      "no_teams": "Keine Teams im gewählten Pool. Wähle einen größeren Pool.",
+      "participants_empty": "Füge mindestens einen Teilnehmer hinzu, einen pro Zeile.",
+      "participants_too_many": "Es gibt mehr Teilnehmer als Teams im Pool — Pool vergrößern oder Liste kürzen.",
+      "generic_error": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
+    },
+    "success": {
+      "picked": "Teams gezogen.",
+      "shuffled": "Mischung abgeschlossen.",
+      "assigned": "Teams zugewiesen.",
+      "copied": "In die Zwischenablage kopiert."
+    },
+    "continuation": {
+      "title": "Schreibst du eine Football-Geschichte?",
+      "description": "Für Autoren und Spielleiter: Die Ziehung ist deine Prämisse. Diese kostenlosen Tools aus derselben Werkstatt machen aus einem Random NFL Team eine ganze Geschichte.",
+      "squad_name_label": "Benenne dein Fantasy-Team",
+      "squad_name_hint": "Ein kampfkräftiger Teamname für den Liga-Chat",
+      "backstory_label": "Schreib den Underdog-Bogen",
+      "backstory_hint": "Vom Trainingscamp bis zum letzten Drive",
+      "prompt_label": "Story-Prompt holen",
+      "prompt_hint": "Eine Handlung innerhalb einer Football-Saison"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Ziehungsmodi",
+      "title": "Drei Wege, ein Random NFL Team zu ziehen",
+      "description": "Schnelle Auswahl, vollständige Draft-Reihenfolge oder Eins-zu-eins-Verteilung für die ganze Liga — hinter allen dreien dieselbe faire Engine.",
+      "items": [
+        {
+          "title": "Teams ziehen",
+          "description": "Ein Klick zieht ein oder mehrere eindeutige Teams. Für Madden-Franchise-Roulette, Klassenspiele oder die Frage, wem man diese Saison anhängt.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "Alle mischen",
+          "description": "Der komplette Pool erhält eine nummerierte Reihenfolge von 1 bis N. Eine vollständige Draft-Reihenfolge, die Screenshot, Copy-Paste und Diskussionen übersteht.",
+          "icon": "RiListOrdered"
+        },
+        {
+          "title": "Personen zuweisen",
+          "description": "Teilnehmerliste einfügen und jede Person erhält ein anderes Team. Keine Dubletten, keine Verhandlungen — die ganze Ziehung passt in eine Nachricht.",
+          "icon": "RiTeamLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "SO GEHT'S",
+      "title": "So läuft eine faire Random NFL Team Ziehung",
+      "description": "Deine Random NFL Team Ziehung in drei Schritten — unter einer Minute für eine 32-Personen-Liga.",
+      "items": [
+        {
+          "title": "Pool wählen",
+          "description": "Alle 32 Teams, eine Conference oder eine einzelne Division. Der Zähler neben dem Dropdown zeigt immer genau, wie viele Teams in der Ziehung stecken.",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "Modus wählen",
+          "description": "Ziehen für ein schnelles Random NFL Team, mischen für die vollständige Draft-Reihenfolge, zuweisen für eindeutige Teams pro Teilnehmer.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "Ergebnis kopieren",
+          "description": "Ein Tippen kopiert eine Textaufzeichnung der Ziehung — Modus, Pool, jeder Name — als Nachweis direkt in den Liga-Chat.",
+          "icon": "RiClipboardLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Fairness",
+      "title": "Eine Ziehung, gegen die keiner argumentieren kann",
+      "description": "Fairness ist hier Technik, kein Versprechen — jede Eigenschaft unten ist so tatsächlich umgesetzt.",
+      "items": [
+        {
+          "title": "Zufall in Krypto-Qualität",
+          "description": "Jede Random NFL Team Ziehung nutzt crypto.getRandomValues des Browsers mit Rejection Sampling — kein Modulo-Bias, keine Lieblingsteams, kein Muster zum Ausnutzen.",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "Keine Dubletten",
+          "description": "Bei 32 Personen werden alle 32 Teams genau einmal vergeben. Die Engine mischt einmal und teilt von oben ab — Ziehen mit Zurücklegen gibt es nie.",
+          "icon": "RiCheckboxCircleLine"
+        },
+        {
+          "title": "Sofort, im Browser",
+          "description": "Kein Server-Roundtrip, kein Wartekreis. Die Ziehung läuft lokal und ist fertig, bevor du bei einem trägeren Tool blinzelst.",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "Kopierbarer Ziehungsnachweis",
+          "description": "Jedes Ergebnis lässt sich als Klartext mit Modus und Pool kopieren — ein Protokoll, das die Gruppe prüfen, aufbewahren und nachvollziehen kann.",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "Kostenlos, ohne Konto",
+          "description": "Keine Anmeldung, keine Paywall nach drei Ziehungen, kein E-Mail-Abgreifen. Seite öffnen, ziehen, weitergehen.",
+          "icon": "RiCoinLine"
+        },
+        {
+          "title": "Geprüfte 32-Team-Liste",
+          "description": "Der Datensatz enthält die 32 aktuellen NFL-Teams mit korrekten Conferences und Divisions, vor jeder Saison abgeglichen mit nfl.com/teams.",
+          "icon": "RiShieldCheckLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Wer diese Ziehung nutzt",
+      "description": "Die einmal-im-Jahr-Anlässe, in denen ein Random NFL Team Draw zwanzig Minuten Verhandlung schlägt.",
+      "items": [
+        {
+          "title": "Fantasy-Commissioner",
+          "description": "Weise jedem Manager ein echtes Team zu — für Survivor-Pools, Draft-Reihenfolgen oder ein Neben-Spiel mit Schadenfreude.",
+          "icon": "RiTrophyLine"
+        },
+        {
+          "title": "Office-Pools & Watch-Partys",
+          "description": "Squares ziehen, Seiten wählen, klären, auf wessen Couch welches Spiel läuft — ein öffentliches, lesbares Ergebnis beendet die Debatte mit einem Tipp.",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "Madden- & Franchise-Spieler",
+          "description": "Zufälligen Rebuild drehen, für eine Karrieremodus-Regel auf eine Division begrenzen und neu ziehen, bis die Challenge passt.",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "Lehrer & Quizabende",
+          "description": "Teams für ein Statistikprojekt oder ein Trivia-Turnier zuweisen — fair, sofort und aus der letzten Reihe lesbar.",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Random NFL Team Generator — FAQ",
+      "items": [
+        {
+          "title": "Ist die Ziehung wirklich zufällig und fair?",
+          "description": "Ja. Jede Ziehung führt einen Fisher-Yates-Shuffle aus, gesät von crypto.getRandomValues des Browsers, mit Rejection Sampling gegen Modulo-Bias. Jedes Team im Pool hat exakt dieselbe Chance auf jeden Platz, und die gesamte Ziehung läuft lokal auf deinem Gerät."
+        },
+        {
+          "title": "Wie weise ich Teams für eine Fantasy-Football-Liga zu?",
+          "description": "Wechsle zu „Personen zuweisen“, füge deine Ligamitglieder zeilenweise ein und ziehe. Jeder Teilnehmer erhält ein anderes Team — eine 32-Personen-Liga nutzt alle 32 Teams genau einmal. Kopiere das Ergebnis in den Gruppenchat als Protokoll der Ziehung."
+        },
+        {
+          "title": "Kann ich nach Conference oder Division filtern?",
+          "description": "Ja. Das Pool-Dropdown grenzt die Ziehung auf AFC, NFC oder eine einzelne Division (4 Teams) ein. Der Zähler daneben zeigt stets, wie viele Teams aktuell teilnehmen — eine Division reicht also für höchstens 4 Personen."
+        },
+        {
+          "title": "Wie viele Teams kann ich gleichzeitig ziehen?",
+          "description": "Beliebig viele von 1 bis zur Poolgröße (32 für die ganze Liga). Ziehungen erfolgen ohne Dubletten — für eine vollständige Rangliste aller Teams nutze den Modus „Alle mischen“."
+        },
+        {
+          "title": "Kann ich das als NFL-Team-Glücksrad nutzen?",
+          "description": "Die Einzelteam-Ziehung erledigt denselben Job wie ein drehendes Rad — ein faires, zufälliges Team mit sichtbarem Ergebnis — nur ohne Drehanimation. Wenn du auf einer Party die Show brauchst, ziehe im Misch-Modus und gib die Liste Zeile für Zeile frei."
+        },
+        {
+          "title": "Ist die Teamliste aktuell?",
+          "description": "Der Datensatz enthält die 32 aktuellen NFL-Teams mit korrekten Conferences und Divisions, vor der Saison 2026 mit nfl.com/teams abgeglichen und jedem Preseason geprüft. Teamnamen und Standorte folgen der aktuellen offiziellen Verwendung."
+        },
+        {
+          "title": "Steht dieses Tool in Verbindung zur NFL?",
+          "description": "Nein. Dies ist ein inoffizielles, von Fans gebautes Tool. NFL-Teamnamen und -Marken sind Marken der NFL und ihrer Clubs; diese Seite ist mit der NFL weder verbunden, gesponsert noch von ihr unterstützt."
+        },
+        {
+          "title": "Ist die Nutzung kostenlos?",
+          "description": "Vollständig kostenlos, ohne Konto, ohne Anmelde-Wand und ohne Limitierung der Ziehungen. Das Tool läuft komplett im Browser — du kannst so oft neu ziehen, wie die Liga es verlangt."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Starte deine Draft-Night-Ziehung",
+      "description": "Ein fairer Random NFL Team Draw ohne Dubletten mit kopierfertigem Ergebnis — kostenlos, sofort, ohne Konto.",
+      "buttons": [
+        {
+          "title": "Zufällige Teams ziehen",
+          "url": "#random_nfl_team_generator",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "Weitere kostenlose Tools",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Kreativität weitergehen lassen",
+      "description": "Verwandle die Ziehung in eine Geschichte, einen Charakter oder eine fiktive Band — kostenlose Tools aus derselben Werkstatt.",
+      "more_label": "Alle KI-Tools ansehen"
+    }
+  }
+}

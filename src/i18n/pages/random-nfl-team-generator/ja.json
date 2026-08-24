@@ -1,0 +1,264 @@
+{
+  "random_nfl_team_generator": {
+    "metadata": {
+      "title": "ランダムNFLチームジェネレーター：ファンタジー抽選ツール | AI Story",
+      "description": "現在の32つのNFLチームをランダムに選ぶ・シャッフルする。ファンタジーフットボールのリーグに重複しないチームを割り当て、カンファレンスやディビジョンで絞り込み、結果をワンタップでコピー。",
+      "keywords": "random nfl team generator, NFLチーム ランダム, NFL チーム 抽選, nfl team randomizer, ランダム チームジェネレーター, NFL シャッフル, ファンタジーフットボール チーム分け, random football team generator"
+    },
+    "ui": {
+      "title": "ランダムNFLチームジェネレーター",
+      "title_highlight": "NFLチーム",
+      "subtitle": "このランダムNFLチームジェネレーターは、1チームのクジ引きから、32チーム全部の公平なシャッフル・重複なしの割り当てまで。ファンタジードラフト、オフィスのプール、Maddenのリビルド挑戦のために——登録不要、開いたらすぐ抽選。",
+      "theme_pills": ["全32の現行チーム", "暗号レベルの乱数", "重複なし", "人数分の割り当て"],
+      "eyebrow": "無料フットボール抽選ツール",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "ランダムNFLチームジェネレーター",
+      "form_title": "抽選を設定",
+      "mode_label": "抽選モード",
+      "mode_options": [
+        { "value": "pick", "label": "チームを引く" },
+        { "value": "shuffle", "label": "全員シャッフル" },
+        { "value": "assign", "label": "人数分に割り当て" }
+      ],
+      "mode_hints": {
+        "pick": "ワンクリックで1つ以上の重複しないチームを抽選。即席の決定、Maddenのリビルドルーレット、今シーズン応援するチーム決めに。",
+        "shuffle": "選んだプール全体に1〜Nの番号を付与。そのままリーグのグループチャットに貼れる完全なドラフト順位です。",
+        "assign": "参加者を1行に1人ずつ貼り付け——全員に必ず違うチームが割り当てられます。"
+      },
+      "scope_label": "対象",
+      "scope_options": [
+        { "value": "all", "label": "全32チーム" },
+        { "value": "afc", "label": "AFC カンファレンス" },
+        { "value": "nfc", "label": "NFC カンファレンス" },
+        { "value": "afc_east", "label": "AFC 東地区" },
+        { "value": "afc_north", "label": "AFC 北地区" },
+        { "value": "afc_south", "label": "AFC 南地区" },
+        { "value": "afc_west", "label": "AFC 西地区" },
+        { "value": "nfc_east", "label": "NFC 東地区" },
+        { "value": "nfc_north", "label": "NFC 北地区" },
+        { "value": "nfc_south", "label": "NFC 南地区" },
+        { "value": "nfc_west", "label": "NFC 西地区" }
+      ],
+      "count_label": "何チーム引く？",
+      "pick_button": "ランダムにチームを引く",
+      "shuffle_button": "全チームをシャッフル",
+      "assign_button": "メンバーに割り当て",
+      "reroll_button": "もう一度引く",
+      "participants_label": "参加者（1行に1人）",
+      "participants_placeholder": "タロ\nハナコ\nケンジ\nユミ",
+      "participants_hint": "最大32人、1行に1人。選んだ対象プールの中から、各自に違うチームが配られます。",
+      "output_title": {
+        "pick": "抽選結果",
+        "shuffle": "シャッフル後の順位",
+        "assign": "チーム割り当て"
+      },
+      "empty_output": "モードを選び、対象を設定して抽選——結果はここに表示され、グループチャットへコピーするボタンも付きます。",
+      "result_label": "抽選",
+      "eligible_label": "対象チーム数：",
+      "participant_header": "参加者",
+      "team_header": "チーム",
+      "copy_button": "結果をコピー",
+      "copy_team_button": "チーム名をコピー",
+      "conference_badge": { "afc": "AFC", "nfc": "NFC" },
+      "division_badge": { "east": "東地区", "north": "北地区", "south": "南地区", "west": "西地区" },
+      "share_mode_label": "モード",
+      "share_filter_label": "対象",
+      "disclaimer": "非公式のファンメイドツールです。チーム名はNFLおよび各球団の商標であり、当サイトはNFLと一切提携・承認・後援関係にありません。"
+    },
+    "validation": {
+      "no_teams": "選択した対象にチームがありません。対象を広げてください。",
+      "participants_empty": "参加者を1行に1人ずつ、少なくとも1人入力してください。",
+      "participants_too_many": "参加者数が対象チーム数を超えています——対象を広げるか、名簿を減らしてください。",
+      "generic_error": "問題が発生しました。もう一度お試しください。"
+    },
+    "success": {
+      "picked": "抽選が完了しました。",
+      "shuffled": "シャッフルが完了しました。",
+      "assigned": "割り当てが完了しました。",
+      "copied": "クリップボードにコピーしました。"
+    },
+    "continuation": {
+      "title": "フットボールの物語を書いてみる？",
+      "description": "作家やGM（ゲームマスター）へ：抽選結果がそのまま物語の前提になります。同じ工房の無料ツールで、ランダムNFLチームを完全な物語に変えましょう。",
+      "squad_name_label": "ファンタジーチームの名付け",
+      "squad_name_hint": "リーグチャット映えする強そうなチーム名を生成",
+      "backstory_label": "下剋上の弧を書く",
+      "backstory_hint": "トレーニングキャンプから最後のドライブまで",
+      "prompt_label": "ストーリープロンプトを取得",
+      "prompt_hint": "あるフットボールシーズンを舞台にした筋書き"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "抽選モード",
+      "title": "ランダムNFLチームを引く3つの方法",
+      "description": "お手軽クジ引き、完全なドラフト順位、リーグ全員への一対一の割り当て——どれも同じ公平なエンジンで動きます。",
+      "items": [
+        {
+          "title": "チームを引く",
+          "description": "ワンクリックで1つ以上の重複しないチームを抽選。Maddenのリビルドルーレット、教室ゲーム、今シーズンの贔屓チーム決めに。",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "全員シャッフル",
+          "description": "対象プール全体に1〜Nの番号付き順位。スクショされても、貼られても、論争されても破綻しない完全なドラフト順位です。",
+          "icon": "RiListOrdered"
+        },
+        {
+          "title": "人数分に割り当て",
+          "description": "参加者名簿を貼れば、全員に違うチームが割り当てられます。重複ゼロ、交渉ゼロ——抽選全体がメッセージ1通に収まります。",
+          "icon": "RiTeamLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "公平なランダムNFLチーム抽選のやり方",
+      "description": "ランダムNFLチーム抽選を3ステップで——32人リーグでも1分以内。",
+      "items": [
+        {
+          "title": "対象を選ぶ",
+          "description": "全32チーム、片方のカンファレンス、または単一地区。ドロップダウン横のカウンターが、常に抽選対象のチーム数を示します。",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "モードを選ぶ",
+          "description": "素早いランダムNFLチームの抽選、完全なドラフト順位のシャッフル、または参加者への重複なし割り当て。",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "結果をコピー",
+          "description": "ワンタップで、モード・対象・全チーム名を含むプレーンテキストの記録をコピー。証拠としてそのままチャットに貼れます。",
+          "icon": "RiClipboardLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "公平性",
+      "title": "リーグの誰も文句を言えない抽選",
+      "description": "ここでの公平性は約束ではなく実装です——以下はすべて、このツールの実際の動作です。",
+      "items": [
+        {
+          "title": "暗号レベルの乱数",
+          "description": "毎回のランダムNFLチーム抽選はブラウザのcrypto.getRandomValuesと棄却サンプリングを使用——モジュロバイアスなし、贔屓チームなし、悪用できる法則もなし。",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "重複なしの割り当て",
+          "description": "32人に割り当てれば32チームがちょうど1回ずつ使われます。エンジンは1回シャッフルして上から配るだけで、復元抽出は決してしません。",
+          "icon": "RiCheckboxCircleLine"
+        },
+        {
+          "title": "ブラウザ内で即完了",
+          "description": "サーバー往復なし、スピナーで待たされることもなし。抽選はローカルで実行され、遅いツールで瞬きする間に終わります。",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "コピーできる抽選記録",
+          "description": "すべての結果はモードと対象付きのプレーンテキストとしてコピー可能——みんなで確認・保存・検証できる記録です。",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "無料・アカウント不要",
+          "description": "登録なし、3回で課金する壁もなし、メール収集もなし。ページを開き、引いて、終わり。",
+          "icon": "RiCoinLine"
+        },
+        {
+          "title": "検証済みの32チーム名簿",
+          "description": "データセットは正しいカンファレンス・地区区分つきの32の現行NFLチームを収録し、毎シーズン開幕前にnfl.com/teamsと照合します。",
+          "icon": "RiShieldCheckLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "ユースケース",
+      "title": "この抽選を使う人たち",
+      "description": "ランダムNFLチームの抽出が20分の議論に勝る、年に一度の場面。",
+      "items": [
+        {
+          "title": "ファンタジーリーグのコミッショナー",
+          "description": "サバイバープール、ドラフト順位発表、または「他の人のチームを応援する」裏企画に、各マネージャーへ実際のチームを割り当て。",
+          "icon": "RiTrophyLine"
+        },
+        {
+          "title": "オフィスのプールと観戦会",
+          "description": "マス目、どちら側か、どの家でどの試合を見るか——公開されて読みやすい結果が、ワンタップで議論を終わらせます。",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "Madden・フランチャイズ勢",
+          "description": "ランダムリビルドを回す、単一地区に絞って縛りプレイのルールにする、納得いくまで引き直す。",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "先生とクイズ大会",
+          "description": "統計課題やトリビアトーナメントのために生徒へチームを割り当て——公平、即時、後ろの席からでも読めます。",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "ランダムNFLチームジェネレーター — FAQ",
+      "items": [
+        {
+          "title": "この抽選は本当にランダムで公平ですか？",
+          "description": "はい。毎回の抽選は、ブラウザのcrypto.getRandomValuesをシードとしたFisher-Yatesシャッフルを実行し、棄却サンプリングでモジュロバイアスを除去します。プール内の各チームがどの位置に入る確率も完全に等しく、抽選はすべて端末内で完結します。"
+        },
+        {
+          "title": "ファンタジーフットボールのリーグにチームを割り当てるには？",
+          "description": "「人数分に割り当て」に切り替え、リーグメンバーを1行に1人ずつ貼り付けて抽選します。各参加者には違うチームが割り当てられ、32人リーグなら32チームがちょうど1回ずつ使われます。結果をグループチャットにコピーすれば、それが抽選の記録です。"
+        },
+        {
+          "title": "カンファレンスや地区で絞り込めますか？",
+          "description": "はい。「対象」ドロップダウンでAFC、NFC、または任意の1地区（4チーム）に絞り込めます。横のカウンターが常に現在の対象チーム数を表示するので、地区限定の割り当ては最大4人までと分かります。"
+        },
+        {
+          "title": "一度に何チーム引けますか？",
+          "description": "1からプールサイズ（全リーグなら32）まで任意の数を指定できます。ランダムNFLチームの抽選は重複なし——全チームの完全な順位が必要な場合は「全員シャッフル」モードを使ってください。"
+        },
+        {
+          "title": "NFLチームのルーレット代わりに使えますか？",
+          "description": "1チーム抽選は回転ルーレットと同じ仕事をします——公平にランダムな1チームを目に見える形で——ただ回転アニメーションがないだけ。パーティーでルーレットの演出が必要なら、シャッフルモードで引いて1行ずつ順に発表してください。"
+        },
+        {
+          "title": "チーム名簿は最新ですか？",
+          "description": "データセットは正しいカンファレンス・地区区分つきの32の現行NFLチームを含み、2026シーズン前にnfl.com/teamsで検証済み、毎プレシーズンに見直しています。チーム名と本拠地は現在の公式の呼称に従っています。"
+        },
+        {
+          "title": "このツールはNFLと提携していますか？",
+          "description": "いいえ。これは非公式のファンメイドツールです。NFLのチーム名とマークはNFLおよび加盟球団の商標であり、当サイトはNFLと一切の提携・承認・後援関係にありません。"
+        },
+        {
+          "title": "無料で使えますか？",
+          "description": "完全無料で、アカウント不要、登録の壁も、抽選回数の制限もありません。ツールはブラウザ内で完結するので、リーグが必要とするだけ何度でも引き直せます。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "ドラフトナイトの抽選を今すぐ",
+      "description": "公平で重複なしのランダムNFLチーム抽選、コピーできる結果つき——無料、即時、アカウント不要。",
+      "buttons": [
+        {
+          "title": "ランダムにチームを引く",
+          "url": "#random_nfl_team_generator",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "無料ツールをもっと見る",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "創造力を続きさせよう",
+      "description": "抽選結果を物語、キャラクター、架空のバンドに変える——同じ工房の無料ツール。",
+      "more_label": "すべてのAIツールを見る"
+    }
+  }
+}

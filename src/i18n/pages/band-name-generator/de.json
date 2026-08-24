@@ -1,0 +1,204 @@
+{
+  "band_name_generator": {
+    "metadata": {
+      "title": "Bandnamen-Generator für Musiker, Rock & Metal | AI Story",
+      "description": "Erstelle originelle Bandnamen nach Genre, Stimmung und Keywords. Jeder Name kommt mit Kurz-Bio, visueller Richtung und einer Verfügbarkeits-Checkliste — kostenlos.",
+      "keywords": "Bandnamen-Generator, Bandnamen-Generator KI, Bandnamen mit Keywords, kostenloser Bandnamen-Generator, Ein-Wort-Bandname, Metal Bandnamen, Rock Bandnamen, Bandnamen-Ideen, Bandname verfügbarkeit, Band-Bio"
+    },
+    "ui": {
+      "title": "Bandnamen-Generator für Musiker und Creator",
+      "title_highlight": "Bandnamen",
+      "subtitle": "Erstelle einen Bandnamen, der zu eurem Sound passt — mit Kurz-Bio, visueller Richtung und den nächsten Schritten, um zu prüfen, ob er es wert ist, beansprucht zu werden.",
+      "theme_pills": ["6 Identitätsrichtungen", "Genre- & Vibe-bewusst", "No-AI-Modus", "Verfügbarkeits-Checkliste"],
+      "eyebrow": "KI-Tool für Musik-Identität",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Bandnamen-Generator",
+      "form_title": "Eure Band-Identität formen",
+      "genre_label": "Genre",
+      "genre_options": [
+        { "value": "rock", "label": "Rock" },
+        { "value": "metal", "label": "Metal" },
+        { "value": "indie", "label": "Indie / Alternative" },
+        { "value": "emo", "label": "Emo / Post-Hardcore" },
+        { "value": "pop", "label": "Pop" },
+        { "value": "electronic", "label": "Electronic / Dance" },
+        { "value": "hip_hop", "label": "Hip-Hop / Rap" }
+      ],
+      "vibe_label": "Vibe",
+      "vibe_options": [
+        { "value": "anthemic", "label": "Hymnisch" },
+        { "value": "gritty", "label": "Rau & ehrlich" },
+        { "value": "dreamy", "label": "Verträumt" },
+        { "value": "playful", "label": "Verspielt" },
+        { "value": "dark", "label": "Düster" },
+        { "value": "nostalgic", "label": "Nostalgisch" }
+      ],
+      "length_label": "Namenslänge",
+      "length_options": [
+        { "value": "any", "label": "Beliebig" },
+        { "value": "one_word", "label": "Ein Wort" },
+        { "value": "short", "label": "Kurz (zwei Wörter)" },
+        { "value": "phrase", "label": "Längere Phrase" }
+      ],
+      "mode_label": "Modus",
+      "mode_options": [
+        { "value": "ai", "label": "KI-geschriebene Richtungen" },
+        { "value": "template", "label": "Ohne KI (sofortige Vorlagen)" }
+      ],
+      "model_label": "KI-Modell",
+      "model_options": [
+        { "value": "fast", "label": "Schnell" },
+        { "value": "standard", "label": "Standard" },
+        { "value": "creative", "label": "Kreativ" }
+      ],
+      "sign_in_button": "Zum Fortfahren anmelden",
+      "template_note": "Der No-AI-Modus kombiniert sofort feste Genre-Wortlisten — ganz ohne Modell. Jeder Name zeigt die Vorlage, die ihn erzeugt hat.",
+      "cue_label": "Keywords, Stadt, Ära oder Einfluss einbauen? (optional)",
+      "cue_placeholder": "z. B. der Name soll um „Rabe\" kreisen, eine Detroit-Garage-Rock-Stimmung, klingen wie ein Synth-Club der 80er",
+      "inspiration_hint": "Namen mit ähnlichem Gefühl wie dieser werden erzeugt:",
+      "generate_button": "Bandnamen generieren",
+      "generating_button": "Identitätsrichtungen werden erstellt...",
+      "reroll_button": "6 weitere generieren",
+      "output_title": "Eure Band-Identitätsrichtungen",
+      "output_title_template": "Eure Vorlagen-Bandnamen",
+      "empty_output": "Wählt Genre und Vibe und generiert — hier erscheinen dann sechs Band-Identitätsrichtungen mit Aussprache, Bios und visueller Richtung.",
+      "result_label": "Richtung",
+      "pronunciation_label": "Aussprache",
+      "rationale_label": "Warum es funktioniert",
+      "genre_fit_label": "Genre-Passung",
+      "bio_label": "Ein-Zeilen-Bio",
+      "visual_label": "Visuelle Richtung",
+      "pattern_label": "Vorlage",
+      "pattern_labels": {
+        "the_adj_noun": "the + Adjektiv + Substantiv",
+        "adj_noun": "Adjektiv + Substantiv",
+        "noun_suffix": "Substantiv + Sammelbegriff",
+        "compound_word": "Ein-Wort-Kompositum",
+        "noun_and_the_plural": "Substantiv + „& the\" + Sammelbegriff",
+        "cue_suffix": "dein Keyword + Partnerwort"
+      },
+      "copy_button": "Namen kopieren",
+      "favorite_button": "Zu Favoriten",
+      "favorited_button": "Aus Favoriten entfernen",
+      "similar_button": "Mehr davon",
+      "favorites_title": "Favoriten dieser Sitzung",
+      "check_button": "Verfügbarkeit prüfen",
+      "check_close_button": "Prüfungen ausblenden",
+      "check_disclaimer": "Diese Links öffnen externe Suchen. Dieses Tool prüft oder garantiert nie, ob ein Name, Handle, eine Domain oder Marke frei ist — schaut vor der Festlegung immer selbst nach.",
+      "check_links": {
+        "search": "Google",
+        "spotify": "Spotify",
+        "youtube": "YouTube",
+        "instagram": "Instagram-Handle",
+        "domain": "bandname.com Domain",
+        "trademark": "Markenrecherche"
+      },
+      "loading_status": "Bandnamen werden generiert, bitte warten."
+    },
+    "validation": {
+      "cue_too_long": "Keywords dürfen höchstens 120 Zeichen lang sein.",
+      "inspiration_too_long": "Der Referenzname darf höchstens 100 Zeichen lang sein.",
+      "generic_error": "Bandnamen konnten gerade nicht generiert werden. Bitte erneut versuchen.",
+      "creative_limit_reached": "Die kostenlosen Creative-Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten."
+    },
+    "success": {
+      "copied": "Name in die Zwischenablage kopiert.",
+      "generated": "Band-Identitätsrichtungen wurden generiert.",
+      "favorited": "Zu Favoriten hinzugefügt.",
+      "unfavorited": "Aus Favoriten entfernt."
+    },
+    "errors": {
+      "generate_failed": "Bandnamen konnten nicht generiert werden. Bitte erneut versuchen.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "continuation": {
+      "title": "Den Namen weiterführen",
+      "description": "Autoren können aus einer Band ein ganzes Ensemble und eine Geschichte bauen — Musiker bekommen dieselben Winkel für Booklet-Texte und Presskits.",
+      "character_label": "Den Frontmann erschaffen",
+      "character_hint": "Designe die Original-Figur hinter der Stimme",
+      "backstory_label": "Den Band-Ursprung schreiben",
+      "backstory_hint": "Erzähle, wie die Band entstand und was es kostete",
+      "prompt_label": "Daraus eine Geschichte machen",
+      "prompt_hint": "Hol dir einen Story-Prompt aus der Welt der Band"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Namensstile",
+      "title": "Bandnamen-Stile nach Genre",
+      "description": "Jedes Genre hat seine eigene Namenslogik. Wählt eines im Generator oben oder überfliegt die Stile unten, um die Unterschiede zu sehen.",
+      "items": [
+        { "title": "Rock", "description": "Rocknamen paaren ein abgenutztes Bild mit einem starken Substantiv: „Wild Static\" oder „The Crimson Roses\". Sie müssen auf einen Verstärker gesprüht und von einer Menge gebrüllt klingen.", "icon": "RiMicLine" },
+        { "title": "Metal", "description": "Metal greift nach Gewicht und Mythos: „Ashen Covenant\" oder „Sunless Vigil\" versprechen Lautstärke, Ritual und Untergang. Konkrete, physische Wörter schlagen hier clevere Wortspiele.", "icon": "RiSwordLine" },
+        { "title": "Indie / Alternative", "description": "Indie-Namen sind handgemacht und ein wenig trocken: „Paper Coastline\" oder „The Borrowed Sweaters\" klingen, als entstünden sie im Proberaum, nicht im Vorstand.", "icon": "RiHeadphoneLine" },
+        { "title": "Emo / Post-Hardcore", "description": "Emo-Namen gestehen: „October Motel\" oder „Sleepless Theory\" tragen Heimweh und Verletzung in drei Silben. Nostalgisch, konkret und taugowillig.", "icon": "RiHeartLine" },
+        { "title": "Pop", "description": "Popnamen sind hell und sofort mitsingbar: „Cherry Cinema\" oder „Fizzy Galaxy\" wirken als Hook, bevor jemand eine Note gehört hat. Wenn ein Raum es zurücksingen kann, funktioniert es.", "icon": "RiStarLine" },
+        { "title": "Electronic / Dance", "description": "Electronic-Namen stammen aus Maschinen und Texturen: „Glacial Voltage\" oder „Parallel Echo\" klingen, als wären sie im DAW gebaut — synthetisch, präzise, atmosphärisch.", "icon": "RiDiscLine" },
+        { "title": "Hip-Hop / Rap", "description": "Hip-Hop-Namen tragen Swagger und Ort: „Uptown Cipher\" oder „Concrete Dynasty\" sagen in zwei Worten, wer sie sind und aus welchem Block sie kommen.", "icon": "RiMusic2Line" }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "SO GEHT'S",
+      "title": "Wie man einen Bandnamen wählt",
+      "description": "Drei Tests, die einen Namen zum Behalten von einem zum Überdrüssigwerden trennen.",
+      "items": [
+        { "title": "Laut aussprechen", "description": "Kündige ihn an wie ein Frontmann, beantworte ihn im Interview, schicke ihn per Nachricht an Freund:innen. Wer ihn nach einmal Hören nicht sagen und schreiben kann, wird euch das ganze Bandleben lang Widerstand leisten.", "icon": "RiMic2Line" },
+        { "title": "Suchen, bevor du ihn liebst", "description": "Suche den exakten Namen in Anführungszeichen, dann auf Streaming-Diensten und sozialen Plattformen. Ein Name, den sonst niemand nutzt, lässt sich leichter besitzen als einer, den du immer erklären musst.", "icon": "RiSearchEyeLine" },
+        { "title": "Passe zur Bühne, auf der ihr spielt", "description": "Stell dir den Namen auf dem Spielplan des Clubs vor, in dem ihr wirklich auftreten wollt. Genre-passend, merkbar und ein wenig eigenständig schlägt clever, aber generisch — immer.", "icon": "RiTeamLine" }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Bevor ihr ihn beansprucht",
+      "title": "Die Verfügbarkeits-Checkliste für Bandnamen",
+      "description": "Dieser Generator behauptet nie, ein Name sei frei. Er gibt dir die exakten Prüfungen für die eigene Recherche — jede Ergebniskarte verlinkt direkt dorthin.",
+      "items": [
+        { "title": "Exakte Websuche", "description": "Suche den Namen in Anführungszeichen plus „band\". Gehört die erste Seite dem Projekt von jemand anderem, zieht weiter — sonst konkurriert ihr für immer mit eurem eigenen Namen.", "icon": "RiSearchEyeLine" },
+        { "title": "Streaming-Dienste", "description": "Schlage den Namen auf Spotify und Apple Music nach. Distributoren lehnen Namen ab, die mit bestehenden Künstlerprofilen kollidieren — kläre das vor der ersten Veröffentlichung.", "icon": "RiDiscLine" },
+        { "title": "Social Handles", "description": "Prüfe den Handle auf Instagram, TikTok und YouTube. Du brauchst nicht jede Plattform, aber die, auf denen dein Publikum lebt, sollten nah am Namen liegen.", "icon": "RiLinksLine" },
+        { "title": "Domain", "description": "Eine passende .com ist ideal, aber kein Muss — „nameband.com\" oder „nameofficial.com\" sind übliche Alternativen. Sichere die Domain an dem Tag, an dem du dich festlegst.", "icon": "RiGlobalLine" },
+        { "title": "Marken-Screening", "description": "Für mehr als ein Hobby: Suche im nationalen Markenregister (in den USA die USPTO). Das ist Screening, keine rechtliche Freigabe — das letzte Wort hat eine Marken-Anwältin oder ein Marken-Anwalt.", "icon": "RiShieldCheckLine" },
+        { "title": "Eine Nacht drüber schlafen", "description": "Lebe eine Woche mit der Shortlist. Der Name, der sich an einem gewöhnlichen Dienstagmorgen immer noch richtig anfühlt, ist der, den du beanspruchen solltest.", "icon": "RiMoonLine" }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Anwendungsfälle",
+      "title": "Wer den Bandnamen-Generator nutzt",
+      "description": "Echte Musiker, die ein Projekt benennen — und Creator, die eine Band brauchen, die nur auf dem Papier existiert.",
+      "items": [
+        { "title": "Neue Bands & Solokünstler", "description": "Cover-Art ist günstiger als eine Umbenennung. Erkunde genre-passende Richtungen mit Bios und visueller Richtung, bevor der erste Flyer gedruckt wird.", "icon": "RiMicLine" },
+        { "title": "Autoren & Spielleiter", "description": "Brauchst du eine fiktive Band für Roman, Kampagne oder Fanfic? Jede Richtung kommt mit Bio und visueller Identität, die direkt in die Geschichte passt.", "icon": "RiBookOpenLine" },
+        { "title": "Content-Creator", "description": "Eine Playlist-Reihe, einen Musik-Podcast oder ein Virtual-Idol-Projekt benennen? Genre- und Vibe-Regler halten den Namen passend zur Szene.", "icon": "RiTeamLine" }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Bandnamen-Generator — FAQ",
+      "items": [
+        { "title": "Kann ich einen generierten Bandnamen für meine echte Band nutzen?", "description": "Ja — die Namen sind erfundene Vorschläge, die du kostenlos nutzen, ändern oder verwerfen kannst. Das Tool führt keine Marken- oder Plattformprüfungen durch, also arbeite die Verfügbarkeits-Checkliste selbst ab, bevor du den Namen auf Veröffentlichungen und Profilen festschreibst." },
+        { "title": "Was macht der No-AI-Modus wirklich?", "description": "Der No-AI-Modus überspringt das Modell komplett. Er kombiniert feste, genrespezifische Wortlisten durch klassische Bandnamen-Vorlagen — „Adjektiv + Substantiv\", „the + Adjektiv + Substantiv\", „Substantiv & the Sammelbegriff\" — und zeigt die exakte Vorlage hinter jedem Namen. Sofort, transparent, und er gibt Wortlisten-Ergebnisse nie als KI-geschrieben aus." },
+        { "title": "Ist die Verfügbarkeits-Checkliste eine rechtliche Freigabe?", "description": "Nein. Die Checkliste verlinkt zu Google, Streaming-Diensten, sozialen Plattformen, Domainsuche und Markenregistern, damit du selbst nachsehen kannst. Sie ist praktisches Screening, keine Rechtsberatung — für echten Schutz lässt vor der Investition eine markenrechtlich versierte Person eine saubere Recherche laufen." },
+        { "title": "Wie erzeuge ich Ein-Wort-Bandnamen?", "description": "Stelle die Namenslänge auf „Ein Wort\". Der Generator liefert dann einzelne Wörter — echte Wörter, Komposita oder erfundene Wörter, die sich natürlich lesen. Ein-Wort-Namen sind am leichtesten zu tragen, aber am schwersten frei zu finden — prüfe sie besonders sorgfältig." },
+        { "title": "Kann ich den Namen um eigene Keywords bauen?", "description": "Ja. Trage ein Keyword, eine Stadt, Ära oder einen Einfluss ins Keywords-Feld ein — „Raben\", „Detroit Garage\", „80er-Synth-Club\" — und der Generator verankert seine Richtungen daran. Im No-AI-Modus wird dein Keyword zum Ankerwort der Vorlage." },
+        { "title": "Funktioniert er speziell für Metal-, Rock-, Emo- oder Hip-Hop-Namen?", "description": "Ja. Der Genre-Regler schreibt die Namenslogik für jeden Stil neu: Metal bekommt Gewicht und Mythos, Emo bekommt Geständnis und Nostalgie, Electronic bekommt Maschinen und Textur, Hip-Hop bekommt Swagger und Ort. Wähle dein Genre — die Konventionen folgen." },
+        { "title": "Ist die erste Generierung wirklich kostenlos?", "description": "Ja. Jede Generierung auf dieser Seite ist kostenlos und funktioniert ohne Konto oder Anmeldung — wähle Genre, Vibe und Keywords und generiere so oft du willst." }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Benenne deine Band heute",
+      "description": "Sechs genre-bewusste Identitätsrichtungen mit Aussprache, Bios und visueller Richtung — kostenlos, ohne Konto.",
+      "buttons": [
+        { "title": "Bandnamen generieren", "url": "#band_name_generator", "icon": "RiSparkling2Line" },
+        { "title": "Weitere kostenlose Tools entdecken", "url": "/ai-tools", "icon": "RiAppsLine" }
+      ]
+    },
+    "related_tools": {
+      "title": "Kreativ weitermachen",
+      "description": "Mach aus der Band eine Geschichte, ein Figurenensemble oder eine ganze Fantasiewelt — kostenlose Tools aus derselben Werkstatt.",
+      "more_label": "Alle KI-Tools durchsuchen"
+    }
+  }
+}

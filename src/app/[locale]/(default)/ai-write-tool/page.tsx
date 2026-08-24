@@ -16,7 +16,8 @@ export async function generateMetadata({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const t = await getTranslations();
+  // force-static 下 metadata pass 的无参调用回落 defaultLocale,须显式传 locale
+  const t = await getTranslations({ locale });
 
   let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/ai-write-tool`;
   if (locale !== "en") {
@@ -41,7 +42,7 @@ export default async function AiWriteToolPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const t = await getTranslations();
+  const t = await getTranslations({ locale });
   const tools = getToolsByModule("ai-write");
   const webUrl =
     process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org";
@@ -75,6 +76,7 @@ export default async function AiWriteToolPage({
         module="ai-write"
         title="AI Write Tools"
         description={t("ai_tools.section_description_hub")}
+        locale={locale}
       />
     </>
   );

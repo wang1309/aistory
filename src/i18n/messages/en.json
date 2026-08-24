@@ -392,6 +392,34 @@
       "city_nickname_generator": {
         "name": "City Nickname Generator",
         "desc": "Generate official, local, legendary, and mocking nicknames for fictional cities."
+      },
+      "emoji_translator": {
+        "name": "Emoji Translator",
+        "desc": "Add fitting emoji to a message, translate text into emoji, or explain an emoji message in context."
+      },
+      "elf_name_generator": {
+        "name": "Elf Name Generator",
+        "desc": "Generate 10 original fantasy elf names using heritage, style, and character context — with pronunciation and meaning."
+      },
+      "pen_name_generator": {
+        "name": "Pen Name Generator",
+        "desc": "Generate 10 original, genre-aware pen name ideas with pronunciation and a reason each one works as a byline."
+      },
+      "gang_name_generator": {
+        "name": "Gang Name Generator",
+        "desc": "Generate 6 fictional gang, crew, clan, and mafia organization names with meanings, reputations, symbols, and rivalry hooks."
+      },
+      "band_name_generator": {
+        "name": "Band Name Generator",
+        "desc": "Generate band names by genre, vibe, and keywords — each with pronunciation, a short bio, visual direction, and an availability checklist."
+      },
+      "random_nfl_team_generator": {
+        "name": "Random NFL Team Generator",
+        "desc": "Draw one club or shuffle all 32 current NFL teams — fair crypto randomness, no duplicates, conference and division filters, and copy-ready pool assignments."
+      },
+      "middle_name_generator": {
+        "name": "Middle Name Generator",
+        "desc": "Complete a fictional character or pen name — three full-name directions that keep your first and last name, with cadence notes, initials preview, and story signals."
       }
     },
     "tab_story": "Story Generator",
@@ -404,6 +432,8 @@
     "filter_title": "Title",
     "filter_poem": "Poem",
     "filter_social": "Social",
+    "filter_name_generator": "Name Generator",
+    "filter_utility": "Utility",
     "new_tools_section": "Newly Added",
     "results_count": "{count, plural, =0 {No tools found} one {# tool} other {# tools}}",
     "no_results": "No matching tools. Try clearing the filters.",
@@ -411,7 +441,10 @@
     "view_all_cta": "View all {count}+ tools",
     "view_all_sub": "Browse the full catalog on the hub page",
     "scroll_down": "Scroll down",
-    "tools_hub_nav": "Tools",
+    "tools_hub_nav": "All Tools",
+    "group_writing": "Writing Tools",
+    "group_social": "Social Media",
+    "group_name": "Name Generator",
     "tools_hub_title": "Free AI Tools",
     "tools_hub_description": "A growing collection of free AI tools for creators. New tools are on the way.",
     "tools_hub_empty_title": "More tools coming soon",

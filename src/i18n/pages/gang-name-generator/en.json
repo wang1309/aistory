@@ -1,0 +1,298 @@
+{
+  "gang_name_generator": {
+    "metadata": {
+      "title": "Gang Name Generator for Fiction, RPGs & Games | AI Story",
+      "description": "Generate fictional gang, crew, clan, mafia, and cyberpunk names with meanings and story hooks. Free AI tool for writers, RPGs, D&D campaigns, and games.",
+      "keywords": "gang name generator, gang name generator ai, gang names ideas, crew name generator, faction name generator, clan name generator, mafia name generator, fantasy gang names, cyberpunk gang names, gang name generator with meaning, gang names for dnd, rpg faction name generator"
+    },
+    "ui": {
+      "title": "Gang Name Generator",
+      "title_highlight": "Gang Name",
+      "subtitle": "Use the Gang Name Generator to create a fictional gang name, then get its meaning, reputation, symbol, territory, and rivalry hook for your story or campaign.",
+      "theme_pills": ["6 profiles", "World-aware", "Story-ready hooks", "100% fictional"],
+      "eyebrow": "AI Worldbuilding Tool",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Gang Name Generator",
+      "form_title": "Shape your organization",
+      "world_label": "World / genre",
+      "world_options": [
+        { "value": "street_crime", "label": "Crime noir / street crews" },
+        { "value": "mafia", "label": "Mafia / mob fiction" },
+        { "value": "fantasy", "label": "Fantasy" },
+        { "value": "cyberpunk", "label": "Cyberpunk" },
+        { "value": "post_apocalyptic", "label": "Post-apocalyptic" },
+        { "value": "biker", "label": "Outlaw biker" },
+        { "value": "game_world", "label": "Open-world game style" }
+      ],
+      "group_type_label": "Group type",
+      "group_type_options": [
+        { "value": "crew", "label": "Street crew" },
+        { "value": "crime_family", "label": "Crime family" },
+        { "value": "syndicate", "label": "Syndicate" },
+        { "value": "brotherhood", "label": "Brotherhood / order" },
+        { "value": "clan", "label": "Clan" },
+        { "value": "biker_club", "label": "Biker club" }
+      ],
+      "tone_label": "Tone",
+      "tone_options": [
+        { "value": "menacing", "label": "Menacing" },
+        { "value": "gritty", "label": "Gritty" },
+        { "value": "cunning", "label": "Cunning" },
+        { "value": "flashy", "label": "Flashy" },
+        { "value": "funny", "label": "Funny" },
+        { "value": "honorable", "label": "Honorable" }
+      ],
+      "flavor_label": "Cultural flavor",
+      "flavor_options": [
+        { "value": "none", "label": "No specific flavor" },
+        { "value": "italian", "label": "Italian crime-saga" },
+        { "value": "japanese", "label": "Japanese yakuza-fiction" },
+        { "value": "chinese", "label": "Chinese jianghu / wuxia" },
+        { "value": "western", "label": "Old West outlaws" },
+        { "value": "nordic", "label": "Norse saga" }
+      ],
+      "cue_label": "Word or setting to include? (optional)",
+      "cue_placeholder": "e.g. a name built around 'ravens', a crew that runs the harbor docks, something that fits a rainy port city",
+      "inspiration_hint": "Generating names with a similar feel to:",
+      "mode_label": "AI model",
+      "mode_options": [
+        { "value": "fast", "label": "Fast" },
+        { "value": "standard", "label": "Standard" },
+        { "value": "creative", "label": "Creative" }
+      ],
+      "sign_in_button": "Sign in to continue",
+      "generate_button": "Generate a gang name",
+      "generating_button": "Building organizations...",
+      "reroll_button": "Generate 6 more",
+      "output_title": "Your fictional organization profiles",
+      "empty_output": "Pick a world and tone in the Gang Name Generator, then generate to see six fictional organization profiles with meanings and story hooks here.",
+      "result_label": "Organization",
+      "meaning_label": "Meaning",
+      "reputation_label": "Reputation",
+      "territory_label": "Territory",
+      "symbol_label": "Symbol",
+      "core_value_label": "Core value",
+      "rival_hook_label": "Rivalry hook",
+      "copy_button": "Copy name",
+      "favorite_button": "Add to favorites",
+      "favorited_button": "Remove from favorites",
+      "similar_button": "More like this",
+      "favorites_title": "Favorites in this session",
+      "loading_status": "Generating gang names, please wait."
+    },
+    "validation": {
+      "cue_too_long": "Word or setting must be 120 characters or fewer.",
+      "inspiration_too_long": "Inspiration name must be 100 characters or fewer.",
+      "generic_error": "We couldn't generate gang names right now. Please try again.",
+      "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits."
+    },
+    "success": {
+      "copied": "Name copied to clipboard.",
+      "generated": "Six organization profiles generated.",
+      "favorited": "Added to favorites.",
+      "unfavorited": "Removed from favorites."
+    },
+    "errors": {
+      "generate_failed": "Unable to generate gang names. Please try again.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "fictional_only": {
+      "title": "For fiction, games, and RPGs only",
+      "disclaimer": "Every name, symbol, and territory this tool produces is invented fiction for stories and campaigns. It never reproduces real gang names, symbols, or identities, and it is not a directory of real-world groups.",
+      "open_button": "Show the fictional-use guidelines",
+      "close_button": "Hide the guidelines",
+      "items": [
+        {
+          "title": "Everything here is invented",
+          "description": "The generator refuses real gang names, symbols, colors, hand signs, and structures on purpose. If a result ever echoes something real, discard it and regenerate."
+        },
+        {
+          "title": "Keep it clearly fictional",
+          "description": "Give the group fictional members, a fictional city, and fictional stakes. Fiction-first framing keeps the story usable across publishers and platforms."
+        },
+        {
+          "title": "Avoid real-world harm",
+          "description": "Don't adapt results to impersonate an active group, and don't use them for recruitment, intimidation, or anything aimed at real people or places."
+        },
+        {
+          "title": "Check before you publish",
+          "description": "Before publishing, search the name in quotes. If it collides with a real organization or an established franchise, change a word or regenerate."
+        }
+      ]
+    },
+    "continuation": {
+      "title": "Continue building this world",
+      "description": "A gang name from the Gang Name Generator is the opening move. Take the profile into the rest of your cast and conflict.",
+      "leader_label": "Create the leader",
+      "leader_hint": "Design the original character who runs the crew",
+      "backstory_label": "Write its origin",
+      "backstory_hint": "Build how the organization came to be",
+      "plot_label": "Turn it into a plot",
+      "plot_hint": "Turn the rivalry hook into a storyline"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Styles",
+      "title": "Choose a Style for Your Fictional Gang",
+      "description": "Each world in the Gang Name Generator has its own naming logic. Pick a setting above, or scan the styles below to see how the conventions differ.",
+      "items": [
+        {
+          "title": "Crime noir & street crews",
+          "description": "Modern crews take a place or a mark and wear it down: think 'the Dockside Nine' or 'the Halden Crew'. Short, local, and believable enough that locals would actually say them.",
+          "icon": "RiScales3Line"
+        },
+        {
+          "title": "Mafia & mob families",
+          "description": "Mob names lean on dynasty and respect: 'the Vermillion Court' or 'the Corvino Family' sound old, moneyed, and bound by oaths. Family surnames and honorifics do the heavy lifting.",
+          "icon": "RiCopperCoinLine"
+        },
+        {
+          "title": "Fantasy factions",
+          "description": "Fantasy organizations pair an image with a vow: 'the Ashen Vow' or 'the Gilded Raven Company' promise magic, ruins, and mercenary history in three words.",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "Cyberpunk collectives",
+          "description": "Neon crews splice tech slang with cult gravity: 'Static Zero Collective' or 'the Neon Synod' read like netrunner cells with a manifesto and a logo made of light.",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "Outlaw biker clubs",
+          "description": "Biker names are chrome and scripture: 'Iron Halo Riders' or 'the Cinder Saints' pair metal with sanctity, the way riding clubs name themselves in fiction.",
+          "icon": "RiMotorbikeLine"
+        },
+        {
+          "title": "Funny gang names",
+          "description": "Comedy gangs undercut the menace: 'Grandma's Alibi' or 'the Polite Ruckus' get a laugh and still hold a turf. Set the tone dial to Funny to generate in this register.",
+          "icon": "RiEmotionLaughLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Make a Memorable Fictional Gang Name with the Gang Name Generator",
+      "description": "Three steps with the Gang Name Generator from blank page to a name your characters can say out loud.",
+      "items": [
+        {
+          "title": "Establish world and tone",
+          "description": "A mafia family and a cyberpunk collective should not share a vocabulary. Set the world, group type, and tone first in the Gang Name Generator — the name should be unthinkable outside its setting.",
+          "icon": "RiFlagLine"
+        },
+        {
+          "title": "Combine image, value, and group type",
+          "description": "Take a striking image (raven, ember, harbor), the code the group lives by, and its form — crew, clan, syndicate. 'Ashen' + vow + brotherhood gives you 'the Ashen Vow'.",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "Test the name in dialogue",
+          "description": "Say it as a threat, a whisper, and a badge: 'Nobody crosses the Dockside Nine.' If it works in all three lines, it works on the page.",
+          "icon": "RiQuillPenLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Examples",
+      "title": "Gang Names with Meanings from the Gang Name Generator",
+      "description": "A taste of the profile format every generation returns — every name arrives with the story context around it.",
+      "items": [
+        {
+          "title": "The Vermillion Court — mafia family",
+          "description": "Meaning: 'Vermillion' dresses old violence in aristocratic red, while 'Court' claims the family holds power like a dynasty. Reputation: untouchable at galas, feared at the docks. Use it when your story needs a family that has been ruling one city for generations.",
+          "icon": "RiVipCrownLine"
+        },
+        {
+          "title": "Static Zero Collective — cyberpunk cell",
+          "description": "Meaning: 'Static' is the noise they hide in, 'Zero' the footprint they leave; 'Collective' signals a manifesto, not a boss. Reputation: ghosts who claim credit with a signature glitch. Use it for netrunners who fight a corporation from inside its own network.",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "The Ashen Vow — fantasy brotherhood",
+          "description": "Meaning: 'Ashen' carries a burned homeland and survivors' grief; 'Vow' makes the name an oath each member renews. Reputation: hired blades who keep contracts even kings break. Use it for a mercenary order with one unbreakable rule.",
+          "icon": "RiShieldStarLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Who Uses the Gang Name Generator",
+      "description": "The Gang Name Generator helps writers and game masters who need a faction that feels alive in the next ten minutes.",
+      "items": [
+        {
+          "title": "Novelists",
+          "description": "Give your crime saga, fantasy epic, or cyberpunk thriller a faction with a name, a reputation, and a rivalry the plot can hang on.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Tabletop GMs",
+          "description": "Stock your campaign with crews the players can ally with, betray, or found a rival to — every profile ships a ready-made conflict hook.",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "Game & world designers",
+          "description": "Name the factions of your setting fast, then hand each one a symbol, a territory, and a core value to build mechanics and lore around.",
+          "icon": "RiStackLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Gang Name Generator — FAQ",
+      "items": [
+        {
+          "title": "How do I make a good gang name?",
+          "description": "Start from the setting and tone in the Gang Name Generator, combine a striking image with the group's code and its form (crew, family, clan, syndicate), then test the name in dialogue — as a threat, a whisper, and a badge. If it survives all three, it belongs in your story."
+        },
+        {
+          "title": "Are the generated gang names free to use?",
+          "description": "Yes. Names the tool invents are creative suggestions you can use, change, or discard in your fiction and games without paying anything. The tool does not run trademark checks, so search the name in quotes before commercial publication."
+        },
+        {
+          "title": "How do I make a gang name fit a fantasy or cyberpunk setting?",
+          "description": "Use the World control. Fantasy names pair images with vows and orders; cyberpunk names splice tech slang with manifesto gravity; mafia names lean on dynasty and surnames. The generator rewrites its naming logic for whichever world you pick."
+        },
+        {
+          "title": "What is the difference between a crew, a clan, and a syndicate?",
+          "description": "A crew is small and mobile, built on personal loyalty. A clan is an old bloodline with ancestral territory and grudges. A syndicate is sprawling and businesslike, with legitimate fronts and a cold chain of command. The Group type control changes all of this."
+        },
+        {
+          "title": "Does this tool generate real gang names?",
+          "description": "No, and it is designed never to. Every name, symbol, and territory is invented fiction. The generator refuses real-world gang names, symbols, members, and structures, and it produces nothing that could serve real recruitment or intimidation."
+        },
+        {
+          "title": "Can I generate mafia, biker, or funny gang names?",
+          "description": "Yes. Set World to Mafia or Outlaw biker for those registers, or turn the Tone dial to Funny for darkly comedic names. Combine a world with a tone — cyberpunk and funny — for hybrid flavors."
+        },
+        {
+          "title": "Is the first generation really free?",
+          "description": "Yes. Every generation on this page is free and works without an account or sign-in — pick your controls and generate as often as you like."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Name Your Faction Now",
+      "description": "Every Gang Name Generator session delivers six fictional organization profiles with meanings, reputations, symbols, and rivalry hooks — free, no account needed.",
+      "buttons": [
+        {
+          "title": "Generate a gang name",
+          "url": "#gang_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "Build this group's story",
+          "url": "/plot-generator",
+          "icon": "RiSwordLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Keep Building Your World",
+      "description": "Pair your Gang Name Generator faction with a plot, an origin story, a conflict prompt, or a full fantasy tale.",
+      "more_label": "Browse all AI tools"
+    }
+  }
+}

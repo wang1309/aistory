@@ -1,0 +1,298 @@
+{
+  "gang_name_generator": {
+    "metadata": {
+      "title": "갱 이름 생성기 — 소설·TRPG·게임용 | AI Story",
+      "description": "무료 AI 갱 이름 생성기. 의미와 스토리 훅이 딸린 가상 갱단, 크루, 패밀리, 마피아, 사이버펑크 조직 이름을 소설·TRPG·게임용으로 생성.",
+      "keywords": "갱 이름 생성기, 갱 이름 AI, 갱 이름 아이디어, 크루 이름, 파벌 이름, 클랜 이름 생성기, 마피아 이름, 판타지 갱 이름, 사이버펑크 갱 이름, 의미 있는 갱 이름"
+    },
+    "ui": {
+      "title": "갱 이름 생성기",
+      "title_highlight": "갱 이름",
+      "subtitle": "가상 갱 이름을 뽑으면 의미, 평판, 상징, 구역, 라이벌 훅까지 한 번에. 이야기나 캠페인에 바로 쓰세요.",
+      "theme_pills": ["6개 프로필", "세계관 반영", "바로 쓰는 훅", "100% 가상"],
+      "eyebrow": "AI 월드빌딩 도구",
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "갱 이름 생성기",
+      "form_title": "조직 설계하기",
+      "world_label": "세계관 / 장르",
+      "world_options": [
+        { "value": "street_crime", "label": "범죄 느와르 / 거리 조직" },
+        { "value": "mafia", "label": "마피아 / 폭력조직" },
+        { "value": "fantasy", "label": "판타지" },
+        { "value": "cyberpunk", "label": "사이버펑크" },
+        { "value": "post_apocalyptic", "label": "종말 이후" },
+        { "value": "biker", "label": "폭주족 / 바이커" },
+        { "value": "game_world", "label": "오픈월드 게임풍" }
+      ],
+      "group_type_label": "조직 유형",
+      "group_type_options": [
+        { "value": "crew", "label": "거리 크루" },
+        { "value": "crime_family", "label": "범죄 패밀리" },
+        { "value": "syndicate", "label": "신디케이트" },
+        { "value": "brotherhood", "label": "형제단 / 교단" },
+        { "value": "clan", "label": "씨족" },
+        { "value": "biker_club", "label": "바이크 클럽" }
+      ],
+      "tone_label": "톤",
+      "tone_options": [
+        { "value": "menacing", "label": "위협적" },
+        { "value": "gritty", "label": "거친" },
+        { "value": "cunning", "label": "교활한" },
+        { "value": "flashy", "label": "허세 만땅" },
+        { "value": "funny", "label": "코믹" },
+        { "value": "honorable", "label": "명예로운" }
+      ],
+      "flavor_label": "문화적 감성",
+      "flavor_options": [
+        { "value": "none", "label": "특정 없음" },
+        { "value": "italian", "label": "이탈리아 범죄 서사" },
+        { "value": "japanese", "label": "일본 야쿠자 픽션" },
+        { "value": "chinese", "label": "중국 강호/무협" },
+        { "value": "western", "label": "서부 무법자" },
+        { "value": "nordic", "label": "북구 사가" }
+      ],
+      "cue_label": "포함할 단어나 배경? (선택)",
+      "cue_placeholder": "예: '까마귀'가 들어간 이름, 항만 부두를 장악한 크루, 비 내리는 항구 도시에 어울리는 이름",
+      "inspiration_hint": "이 이름과 비슷한 느낌으로 생성 중:",
+      "mode_label": "AI 모델",
+      "mode_options": [
+        { "value": "fast", "label": "빠른 모드" },
+        { "value": "standard", "label": "표준" },
+        { "value": "creative", "label": "크리에이티브" }
+      ],
+      "sign_in_button": "로그인하고 계속하기",
+      "generate_button": "갱 이름 생성",
+      "generating_button": "조직을 만들고 있습니다...",
+      "reroll_button": "6개 더 생성",
+      "output_title": "가상 조직 프로필",
+      "empty_output": "세계관과 톤을 고르고 생성하면 의미와 스토리 훅이 담긴 가상 조직 프로필 여섯 개가 여기 나타납니다.",
+      "result_label": "조직",
+      "meaning_label": "의미",
+      "reputation_label": "평판",
+      "territory_label": "구역",
+      "symbol_label": "상징",
+      "core_value_label": "핵심 신념",
+      "rival_hook_label": "라이벌 훅",
+      "copy_button": "이름 복사",
+      "favorite_button": "즐겨찾기 추가",
+      "favorited_button": "즐겨찾기 해제",
+      "similar_button": "비슷한 이름 더",
+      "favorites_title": "이 세션의 즐겨찾기",
+      "loading_status": "갱 이름을 생성 중입니다. 잠시만 기다려 주세요."
+    },
+    "validation": {
+      "cue_too_long": "단어나 배경은 120자 이하여야 합니다.",
+      "inspiration_too_long": "영감 이름은 100자 이하여야 합니다.",
+      "generic_error": "지금은 갱 이름을 생성할 수 없습니다. 다시 시도해 주세요.",
+      "creative_limit_reached": "오늘의 무료 Creative 사용횟수가 끝났습니다. 로그인하면 크레딧을 받을 수 있어요."
+    },
+    "success": {
+      "copied": "이름을 클립보드에 복사했습니다.",
+      "generated": "조직 프로필 여섯 개를 생성했습니다.",
+      "favorited": "즐겨찾기에 추가했습니다.",
+      "unfavorited": "즐겨찾기에서 제거했습니다."
+    },
+    "errors": {
+      "generate_failed": "갱 이름을 생성할 수 없습니다. 다시 시도해 주세요.",
+      "verification_failed": "인증에 실패했습니다. 다시 시도해 주세요."
+    },
+    "fictional_only": {
+      "title": "픽션·게임·TRPG 전용",
+      "disclaimer": "이 도구가 만드는 이름, 상징, 구역은 모두 이야기와 캠페인을 위한 순수 창작물입니다. 실제 갱단의 이름·상징·정체성을 재현하지 않으며, 실제 조직 목록도 아닙니다.",
+      "open_button": "픽션 사용 가이드라인 보기",
+      "close_button": "가이드라인 접기",
+      "items": [
+        {
+          "title": "모든 것은 창작",
+          "description": "생성기는 실제 갱단의 이름, 상징, 색, 손동작, 구조를 의도적으로 배제합니다. 결과가 실제와 겹쳐 보이면 버리고 다시 생성하세요."
+        },
+        {
+          "title": "명확한 픽션 유지",
+          "description": "조직에 가상 인물, 가상 도시, 가상 갈등을 붙이세요. 픽션 우선 접근은 어느 출판사·플랫폼 기준에서든 이야기를 쓸 수 있게 합니다."
+        },
+        {
+          "title": "현실 피해 방지",
+          "description": "결과를 실제 조직 사칭에 쓰지 마세요. 모집, 협박, 실제 사람이나 장소를 겨냥한 용도로도 절대 사용하면 안 됩니다."
+        },
+        {
+          "title": "출간 전 검색",
+          "description": "게시 전에 이름을 따옴표로 묶어 검색하세요. 실제 조직이나 유명 프랜차이즈와 겹치면 단어를 바꾸거나 다시 생성하세요."
+        }
+      ]
+    },
+    "continuation": {
+      "title": "이 세계를 계속 짓기",
+      "description": "갱 이름은 첫 수입니다. 프로필을 캐스트와 갈등으로 이어가세요.",
+      "leader_label": "리더 만들기",
+      "leader_hint": "크루를 이끄는 오리지널 캐릭터 설계",
+      "backstory_label": "기원 쓰기",
+      "backstory_hint": "조직이 어떻게 생겨났는지 구축",
+      "plot_label": "플롯으로 만들기",
+      "plot_hint": "라이벌 훅을 스토리로 전개"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "스타일",
+      "title": "가상 갱단의 스타일 고르기",
+      "description": "세계관마다 이름 짓는 논리가 다릅니다. 위 생성기에서 배경을 고르거나, 아래 스타일 카드로 관습의 차이를 확인해 보세요.",
+      "items": [
+        {
+          "title": "범죄 느와르와 거리 크루",
+          "description": "현대 크루는 장소나 표식을 통째로 차지합니다: '부두 아홉수'나 '홀든 일당'. 짧고 로컬해서 동네사람이 실제로 부를 법한 이름.",
+          "icon": "RiScales3Line"
+        },
+        {
+          "title": "마피아와 패밀리",
+          "description": "마피아 이름은 왕조와 존중 위에 서 있습니다: '진홍 궁정'이나 '코르비노 패밀리'는 오래되고, 돈 있고, 서약으로 묶인 울림. 성과 경칭이 무게를 쥡니다.",
+          "icon": "RiCopperCoinLine"
+        },
+        {
+          "title": "판타지 진영",
+          "description": "판타지 조직은 이미지와 맹세를 짝짓습니다: '잿빛 서약'이나 '도금까마귀 용병단'은 세 단어로 마법, 유적, 용병사를 약속합니다.",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "사이버펑크 집단",
+          "description": "네온 크루는 기술 은어와 교단적 무게를 접목합니다: '스태틱 제로 컬렉티브'나 '네온 시노드'는 선언문과 빛 로고를 가진 러너 셀처럼 읽힙니다.",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "바이크 클럽",
+          "description": "바이커 이름은 크롬과 성스러움: '아이언 헤일로 라이더스'나 '재의 성인들'은 금속과 신성을 나란히 놓는, 픽션 바이크 클럽식 명명입니다.",
+          "icon": "RiMotorbikeLine"
+        },
+        {
+          "title": "웃긴 갱 이름",
+          "description": "코미디 갱단은 위협을 뒤집습니다: '외할머니의 알리바이'나 '정중한 소란단'은 웃음을 주면서도 구역을 지킵니다. 톤을 코믹으로 돌리면 이 결으로 생성됩니다.",
+          "icon": "RiEmotionLaughLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "사용법",
+      "title": "기억에 남는 가상 갱 이름 만드는 법",
+      "description": "백지에서 캐릭터가 입 밖에 낼 이름까지, 세 단계.",
+      "items": [
+        {
+          "title": "세계관과 톤 정하기",
+          "description": "마피아 패밀리와 사이버펑크 집단은 어휘를 공유하면 안 됩니다. 먼저 세계관·조직 유형·톤을 정하세요. 좋은 이름은 다른 배경에선 성립하지 않아야 합니다.",
+          "icon": "RiFlagLine"
+        },
+        {
+          "title": "이미지 + 신념 + 조직 유형",
+          "description": "인상적인 이미지(까마귀, 잔불, 항구), 조직의 신념, 형태(크루·씨족·신디케이트)를 조합하세요. '잿빛' + 서약 + 형제단이면 '잿빛 서약'이 나옵니다.",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "대사로 테스트",
+          "description": "협박, 속삭임, 배지 셋으로 말해 보세요: '부두 아홉수를 건드리는 자는 없다.' 세 줄 모두 살아남으면 페이지에서도 살아남습니다.",
+          "icon": "RiQuillPenLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "예시",
+      "title": "의미가 담긴 갱 이름 예시",
+      "description": "매번 돌아오는 프로필 형식의 맛보기 — 모든 이름은 맥락과 함께 도착합니다.",
+      "items": [
+        {
+          "title": "진홍 궁정 — 마피아 패밀리",
+          "description": "의미: '진홍'은 오래된 폭력을 귀족의 붉은색으로 감싸고, '궁정'은 패밀리의 권력이 왕조 같다고 선언합니다. 평판: 무도회장에선 건드릴 수 없고 부두에선 공포. 한 도시를 대대로 다스리는 패밀리에 어울립니다.",
+          "icon": "RiVipCrownLine"
+        },
+        {
+          "title": "스태틱 제로 컬렉티브 — 사이버펑크 셀",
+          "description": "의미: '스태틱'은 그들이 숨는 노이즈, '제로'는 남기지 않는 흔적이며, '컬렉티브'는 보스가 아니라 선언문을 뜻합니다. 평판: 시그니처 결함으로 범행을 인정하는 유령. 기업 네트워크 안에서 싸우는 러너에 어울립니다.",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "잿빛 서약 — 판타지 형제단",
+          "description": "의미: '잿빛'은 불탄 고향과 생존자의 애도를, '서약'은 모든 구성원이 갱신하는 맹세를 짊어집니다. 평판: 왕도 깨는 계약을 지키는 칼날. 하나의 철칙을 가진 용병단에 어울립니다.",
+          "icon": "RiShieldStarLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "활용",
+      "title": "갱 이름 생성기의 사용자",
+      "description": "10분 안에 '살아 있는' 진영이 필요한 작가와 GM.",
+      "items": [
+        {
+          "title": "소설가",
+          "description": "범죄 서사, 판타지 대서사, 사이버펑크 스릴러에 이름·평판·라이벌 관계를 갖춘 진영을. 플롯을 그냥 걸어 올리면 됩니다.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "TRPG GM",
+          "description": "플레이어가 동맹하고, 배신하고, 맞서 세울 수 있는 크루로 캠페인을 채우세요. 모든 프로필에 바로 쓸 갈등 훅이 붙습니다.",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "게임·세계 디자이너",
+          "description": "설정 속 진영에 빠르게 이름을 붙이고, 상징·구역·핵심 신념을 메커니즘과 로어의 기반으로 삼으세요.",
+          "icon": "RiStackLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "갱 이름 생성기 — FAQ",
+      "items": [
+        {
+          "title": "좋은 갱 이름은 어떻게 짓나요?",
+          "description": "배경과 톤에서 출발해 인상적인 이미지, 조직의 신념, 형태(크루·패밀리·씨족·신디케이트)를 조합하고, 대사로 검증하세요 — 협박, 속삭임, 배지 셋. 셋 다 버티면 그 이름은 이야기의 것입니다."
+        },
+        {
+          "title": "생성된 갱 이름은 무료로 쓸 수 있나요?",
+          "description": "네. 도구가 발명한 이름은 창작 제안으로, 소설과 게임에서 자유롭게 사용·수정·폐기할 수 있고 비용이 없습니다. 상표 검색은 하지 않으므로 상업 출간 전에는 따옴표로 묶어 검색해 보세요."
+        },
+        {
+          "title": "판타지나 사이버펑크에 맞는 이름은 어떻게?",
+          "description": "'세계관' 컨트롤을 쓰세요. 판타지 이름은 이미지와 맹세·교단을, 사이버펑크는 기술 은어와 선언문을, 마피아는 왕조와 성씨를 활용합니다. 생성기는 선택한 세계관에 맞춰 명명 논리를 바꿉니다."
+        },
+        {
+          "title": "크루, 씨족, 신디케이트의 차이는?",
+          "description": "크루는 작고 기동적이며 개인적 충성으로 묶입니다. 씨족은 대대로 이어진 혈통에 조상의 구역과 원한이 있습니다. 신디케이트는 방대하고 사업적이며 합법적 겉면과 차가운 지휘계통을 갖췄습니다. '조직 유형'이 이 모든 걸 바꿉니다."
+        },
+        {
+          "title": "실제 갱단 이름을 생성하나요?",
+          "description": "아니요, 절대 그러지 않도록 설계됐습니다. 모든 이름, 상징, 구역은 가상 창작물입니다. 생성기는 실제 갱단의 이름·상징·구성원·구조를 거부하며, 현실의 모집이나 협박에 쓰일 수 있는 것은 만들지 않습니다."
+        },
+        {
+          "title": "마피아, 바이커, 웃긴 갱 이름도 생성할 수 있나요?",
+          "description": "네. 세계관을 마피아나 바이커로 설정하면 그 결로, 톤을 코믹으로 돌리면 블랙코미디 결로 생성됩니다. 세계관과 톤을 조합(사이버펑크×코믹 등)하면 하이브리드도 가능합니다."
+        },
+        {
+          "title": "첫 생성은 정말 무료인가요?",
+          "description": "네. 이 페이지의 모든 생성은 무료이며 계정 가입이나 로그인 없이 작동합니다 — 설정을 고르고 원하는 만큼 생성하세요."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "지금 진영의 이름을 짓기",
+      "description": "의미·평판·상징·라이벌 훅이 담긴 가상 조직 프로필 여섯 개 — 무료, 계정 불필요.",
+      "buttons": [
+        {
+          "title": "갱 이름 생성",
+          "url": "#gang_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "이 조직의 이야기 짓기",
+          "url": "/plot-generator",
+          "icon": "RiSwordLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "세계를 계속 만들기",
+      "description": "진영에 플롯, 기원 이야기, 갈등 프롬프트, 판타지 장편을 곁들이세요.",
+      "more_label": "모든 AI 도구 보기"
+    }
+  }
+}

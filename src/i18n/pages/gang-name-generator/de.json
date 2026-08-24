@@ -1,0 +1,298 @@
+{
+  "gang_name_generator": {
+    "metadata": {
+      "title": "Bandennamen-Generator für Fiktion, RPGs & Spiele | AI Story",
+      "description": "Kostenloser KI-Bandennamen-Generator: fiktive Banden-, Clan-, Mafia- und Cyberpunk-Namen mit Bedeutungen und Story-Haken für Romane, Rollenspiele und Games.",
+      "keywords": "Bandennamen-Generator, Bandennamen KI, Gangname Generator, Crew Namen, Fraktionsnamen, Clan-Namen-Generator, Mafia Namen, Fantasy Bandennamen, Cyberpunk Bandennamen, Bandennamen mit Bedeutung"
+    },
+    "ui": {
+      "title": "Bandennamen-Generator",
+      "title_highlight": "Bandennamen",
+      "subtitle": "Erfinde einen fiktiven Bandennamen und erhalte Bedeutung, Ruf, Symbol, Revier und Rivalen-Konflikt gleich mitgeliefert — bereit für deine Geschichte oder Kampagne.",
+      "theme_pills": ["6 Profile", "Weltbewusst", "Story-fertige Haken", "100 % fiktiv"],
+      "eyebrow": "KI-Weltenbau-Werkzeug",
+      "breadcrumb_home": "Start",
+      "breadcrumb_current": "Bandennamen-Generator",
+      "form_title": "Gestalte deine Organisation",
+      "world_label": "Welt / Genre",
+      "world_options": [
+        { "value": "street_crime", "label": "Crime-Noir / Straßenbanden" },
+        { "value": "mafia", "label": "Mafia / Mob-Fiktion" },
+        { "value": "fantasy", "label": "Fantasy" },
+        { "value": "cyberpunk", "label": "Cyberpunk" },
+        { "value": "post_apocalyptic", "label": "Postapokalyptisch" },
+        { "value": "biker", "label": "Rockerbanden" },
+        { "value": "game_world", "label": "Open-World-Game-Stil" }
+      ],
+      "group_type_label": "Gruppentyp",
+      "group_type_options": [
+        { "value": "crew", "label": "Straßencrew" },
+        { "value": "crime_family", "label": "Verbrecherfamilie" },
+        { "value": "syndicate", "label": "Syndikat" },
+        { "value": "brotherhood", "label": "Bruderschaft / Orden" },
+        { "value": "clan", "label": "Clan" },
+        { "value": "biker_club", "label": "Rockclub" }
+      ],
+      "tone_label": "Ton",
+      "tone_options": [
+        { "value": "menacing", "label": "Bedrohlich" },
+        { "value": "gritty", "label": "Rau" },
+        { "value": "cunning", "label": "Gerissen" },
+        { "value": "flashy", "label": "Protzig" },
+        { "value": "funny", "label": "Komisch" },
+        { "value": "honorable", "label": "Ehrenhaft" }
+      ],
+      "flavor_label": "Kultureller Einschlag",
+      "flavor_options": [
+        { "value": "none", "label": "Ohne besonderen Einschlag" },
+        { "value": "italian", "label": "Italienische Crime-Saga" },
+        { "value": "japanese", "label": "Japanische Yakuza-Fiktion" },
+        { "value": "chinese", "label": "Chinesische Jianghu/Wuxia" },
+        { "value": "western", "label": "Wilde-West-Banden" },
+        { "value": "nordic", "label": "Nordische Sage" }
+      ],
+      "cue_label": "Wort oder Schauplatz einbauen? (optional)",
+      "cue_placeholder": "z. B. ein Name um „Raben“, eine Crew, die die Hafendocks kontrolliert, etwas für eine verregnete Hafenstadt",
+      "inspiration_hint": "Namen mit ähnlichem Klang werden generiert zu:",
+      "mode_label": "KI-Modell",
+      "mode_options": [
+        { "value": "fast", "label": "Schnell" },
+        { "value": "standard", "label": "Standard" },
+        { "value": "creative", "label": "Kreativ" }
+      ],
+      "sign_in_button": "Zum Fortfahren anmelden",
+      "generate_button": "Bandennamen generieren",
+      "generating_button": "Organisationen werden gebaut …",
+      "reroll_button": "6 weitere generieren",
+      "output_title": "Deine fiktiven Organisationsprofile",
+      "empty_output": "Wähle Welt und Ton und generiere dann sechs fiktive Organisationsprofile mit Bedeutungen und Story-Haken.",
+      "result_label": "Organisation",
+      "meaning_label": "Bedeutung",
+      "reputation_label": "Ruf",
+      "territory_label": "Revier",
+      "symbol_label": "Symbol",
+      "core_value_label": "Kernwert",
+      "rival_hook_label": "Rivalen-Haken",
+      "copy_button": "Namen kopieren",
+      "favorite_button": "Zu Favoriten",
+      "favorited_button": "Aus Favoriten entfernen",
+      "similar_button": "Mehr davon",
+      "favorites_title": "Favoriten dieser Sitzung",
+      "loading_status": "Bandennamen werden generiert, bitte warten."
+    },
+    "validation": {
+      "cue_too_long": "Wort oder Schauplatz darf höchstens 120 Zeichen haben.",
+      "inspiration_too_long": "Inspiration darf höchstens 100 Zeichen haben.",
+      "generic_error": "Bandennamen konnten gerade nicht generiert werden. Bitte erneut versuchen.",
+      "creative_limit_reached": "Die kostenlosen Creative-Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten."
+    },
+    "success": {
+      "copied": "Name in die Zwischenablage kopiert.",
+      "generated": "Sechs Organisationsprofile generiert.",
+      "favorited": "Zu Favoriten hinzugefügt.",
+      "unfavorited": "Aus Favoriten entfernt."
+    },
+    "errors": {
+      "generate_failed": "Bandennamen konnten nicht generiert werden. Bitte erneut versuchen.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "fictional_only": {
+      "title": "Nur für Fiktion, Games und RPGs",
+      "disclaimer": "Jeder Name, jedes Symbol und jedes Revier dieses Tools ist erfundene Fiktion für Geschichten und Kampagnen. Es gibt nie echte Bandennamen, Symbole oder Identitäten wieder und ist kein Verzeichnis realer Gruppen.",
+      "open_button": "Richtlinien für fiktive Nutzung zeigen",
+      "close_button": "Richtlinien ausblenden",
+      "items": [
+        {
+          "title": "Alles hier ist erfunden",
+          "description": "Der Generator lehnt echte Bandennamen, Symbole, Farben, Handzeichen und Strukturen bewusst ab. Sollte ein Ergebnis je an Reales erinnern: verwerfen und neu generieren."
+        },
+        {
+          "title": "Klar fiktiv bleiben",
+          "description": "Gib der Gruppe erfundene Mitglieder, eine erfundene Stadt und erfundene Konflikte. Fiktion-first hält die Geschichte für Verlage und Plattformen nutzbar."
+        },
+        {
+          "title": "Keine realen Schäden",
+          "description": "Baue Ergebnisse nicht zu einer Imitation einer aktiven Gruppe um und nutze sie nie für Rekrutierung, Einschüchterung oder etwas, das sich gegen echte Menschen oder Orte richtet."
+        },
+        {
+          "title": "Vor der Veröffentlichung prüfen",
+          "description": "Suche den Namen vor dem Publizieren in Anführungszeichen. Kollidiert er mit einer realen Organisation oder etablierten Franchise, ändere ein Wort oder generiere neu."
+        }
+      ]
+    },
+    "continuation": {
+      "title": "Diese Welt weiterbauen",
+      "description": "Ein Bandenname ist der Eröffnungszug. Führe das Profil in Cast und Konflikt fort.",
+      "leader_label": "Anführer erschaffen",
+      "leader_hint": "Gestalte den OC, der die Crew führt",
+      "backstory_label": "Ursprung schreiben",
+      "backstory_hint": "Baue, wie die Organisation entstand",
+      "plot_label": "Zur Handlung machen",
+      "plot_hint": "Verwandle den Rivalen-Haken in eine Story"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Stile",
+      "title": "Wähle einen Stil für deine fiktive Bande",
+      "description": "Jede Welt hat ihre eigene Namenslogik. Wähle oben im Generator ein Setting oder lies die Stilkarten, um die Konventionen zu vergleichen.",
+      "items": [
+        {
+          "title": "Crime-Noir & Straßenbanden",
+          "description": "Moderne Crews nehmen einen Ort oder ein Mal und nutzen es ab: „die Kaikante Neun“ oder „die Halden-Crew“. Kurz, lokal, glaubwürdig genug, dass Anwohner es wirklich sagen würden.",
+          "icon": "RiScales3Line"
+        },
+        {
+          "title": "Mafia & Mob-Familien",
+          "description": "Mob-Namen setzen auf Dynastie und Respekt: „der Zinnoberhof“ oder „die Familie Corvino“ klingen alt, geldadelig und eidverbunden. Familiennamen und Ehrentitel tragen die Bedeutung.",
+          "icon": "RiCopperCoinLine"
+        },
+        {
+          "title": "Fantasy-Fraktionen",
+          "description": "Fantasy-Organisationen paaren ein Bild mit einem Schwur: „der Aschschwur“ oder „die Vergoldete Rabenkompanie“ versprechen Magie, Ruinen und Söldnergeschichte in drei Worten.",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "Cyberpunk-Kollektive",
+          "description": "Neon-Crews verschränken Tech-Slang mit Kult-Ernst: „Kollektiv Statisch Null“ oder „die Neon-Synode“ lesen sich wie Netrunner-Zellen mit Manifest und Lichtlogo.",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "Rockerclubs",
+          "description": "Rockernamen sind Chrom und Schrift: „Eisen-Halo-Rider“ oder „die Zinder-Heiligen“ paaren Metall mit Heiligkeit, wie es Fiktion-Rockerclubs tun.",
+          "icon": "RiMotorbikeLine"
+        },
+        {
+          "title": "Lustige Bandennamen",
+          "description": "Comedy-Banden unterlaufen die Bedrohung: „Omas Alibi“ oder „der höfliche Radau“ ernten ein Lachen und halten trotzdem ihr Revier. Stell den Tonregler auf Komisch.",
+          "icon": "RiEmotionLaughLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "SO GEHT'S",
+      "title": "So gelingt einprägsamer fiktiver Bandenname",
+      "description": "Drei Schritte vom leeren Blatt zu einem Namen, den Figuren aussprechen können.",
+      "items": [
+        {
+          "title": "Welt und Ton festlegen",
+          "description": "Eine Mafiefamilie und ein Cyberpunk-Kollektiv teilen keinen Wortschatz. Erst Welt, Gruppentyp und Ton setzen — ein guter Name ist außerhalb seines Settings unvorstellbar.",
+          "icon": "RiFlagLine"
+        },
+        {
+          "title": "Bild + Wert + Gruppentyp kombinieren",
+          "description": "Nimm ein markantes Bild (Rabe, Glut, Hafen), den Kodex der Gruppe und ihre Form — Crew, Clan, Syndikat. „Asche“ + Schwur + Bruderschaft ergibt „den Aschschwur“.",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "Namen im Dialog testen",
+          "description": "Sprich ihn als Drohung, als Flüstern und als Abzeichen: „Niemand kreuzt die Kaikante Neun.“ Hält er in allen drei Zeilen, hält er auf der Seite.",
+          "icon": "RiQuillPenLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Beispiele",
+      "title": "Bandennamen mit Bedeutung",
+      "description": "Eine Kostprobe des Profilformats, das jede Generation zurückgibt — jeder Name kommt mit Kontext.",
+      "items": [
+        {
+          "title": "Der Zinnoberhof — Mafiefamilie",
+          "description": "Bedeutung: „Zinnober“ kleidet alte Gewalt in aristokratisches Rot, „Hof“ beansprucht Macht wie eine Dynastie. Ruf: bei Galas unantastbar, am Hafen gefürchtet. Für Familien, die eine Stadt über Generationen regieren.",
+          "icon": "RiVipCrownLine"
+        },
+        {
+          "title": "Kollektiv Statisch Null — Cyberpunk-Zelle",
+          "description": "Bedeutung: „Statisch“ ist das Rauschen, in dem sie verschwinden, „Null“ die Spur, die sie nicht hinterlassen; „Kollektiv“ signalisiert Manifest statt Boss. Ruf: Geister, die mit einer Signatur-Störung bekennen. Für Netrunner im Konzernnetz.",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "Der Aschschwur — Fantasy-Bruderschaft",
+          "description": "Bedeutung: „Asche“ trägt die verbrannte Heimat und die Trauer der Überlebenden, „Schwur“ macht den Namen zum Eid eines jeden Mitglieds. Ruf: Klingen, die Verträge halten, die selbst Könige brechen. Für Söldnerorden mit einer eisernen Regel.",
+          "icon": "RiShieldStarLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Anwendungsfälle",
+      "title": "Wer nutzt den Bandennamen-Generator",
+      "description": "Autoren und Spielleiter, die in zehn Minuten eine Fraktion brauchen, die lebendig wirkt.",
+      "items": [
+        {
+          "title": "Romanciers",
+          "description": "Gib deinem Crime-Epos, deiner Fantasy-Reihe oder deinem Cyberpunk-Thriller eine Fraktion mit Name, Ruf und Rivalität zum Weitererzählen.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Pen-&-Paper-SLs",
+          "description": "Fülle deine Kampagne mit Banden, denen Spieler sich anschließen, die sie verraten oder die sie herausfordern — jedes Profil liefert einen konfliktfertigen Haken.",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "Game- & Weltdesigner",
+          "description": "Benenne die Fraktionen deines Settings schnell und erhalte Symbol, Revier und Kernwert als Basis für Mechanik und Lore.",
+          "icon": "RiStackLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Bandennamen-Generator — FAQ",
+      "items": [
+        {
+          "title": "Wie finde ich einen guten Bandennamen?",
+          "description": "Starte mit Setting und Ton, kombiniere ein markantes Bild mit dem Kodex der Gruppe und ihrer Form (Crew, Familie, Clan, Syndikat) und teste den Namen im Dialog — als Drohung, Flüstern und Abzeichen. Übersteht er alle drei, gehört er in deine Geschichte."
+        },
+        {
+          "title": "Sind die generierten Bandennamen kostenlos nutzbar?",
+          "description": "Ja. Die erfundenen Namen sind kreative Vorschläge, die du in Fiktion und Games kostenlos verwenden, ändern oder verwerfen kannst. Das Tool prüft keine Marken — suche den Namen vor kommerzieller Veröffentlichung in Anführungszeichen."
+        },
+        {
+          "title": "Wie passe ich einen Bandennamen an Fantasy oder Cyberpunk an?",
+          "description": "Nutze das Welt-Steuerfeld. Fantasy-Namen paaren Bilder mit Schwüren und Orden; Cyberpunk-Namen verschränken Tech-Slang mit Manifest-Ernst; Mafia-Namen setzen auf Dynastie und Nachnamen. Der Generator schreibt seine Namenslogik je nach Welt um."
+        },
+        {
+          "title": "Was unterscheidet Crew, Clan und Syndikat?",
+          "description": "Eine Crew ist klein und beweglich, getragen von persönlicher Loyalität. Ein Clan ist eine alte Blutlinie mit angestammtem Revier und Fehden. Ein Syndikat ist weit verzweigt und geschäftlich, mit legitimen Fassaden und kalter Befehlskette. Der Gruppentyp ändert all das."
+        },
+        {
+          "title": "Erzeugt dieses Tool echte Bandennamen?",
+          "description": "Nein — und das by Design. Jeder Name, jedes Symbol und Revier ist erfundene Fiktion. Der Generator lehnt echte Bandennamen, Symbole, Mitglieder und Strukturen ab und erzeugt nichts, das realer Rekrutierung oder Einschüchterung dienen könnte."
+        },
+        {
+          "title": "Kann ich Mafia-, Rocker- oder lustige Bandennamen generieren?",
+          "description": "Ja. Stelle die Welt auf Mafia oder Rockerbanden für diese Register oder drehe den Ton auf Komisch für schwarz-gallige Namen. Kombiniere Welt und Ton — Cyberpunk plus Komisch — für Hybridgeschmäcker."
+        },
+        {
+          "title": "Ist die erste Generation wirklich kostenlos?",
+          "description": "Ja. Jede Generation auf dieser Seite ist kostenlos und funktioniert ohne Konto oder Anmeldung — Parameter wählen und beliebig oft generieren."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Benenne deine Fraktion jetzt",
+      "description": "Sechs fiktive Organisationsprofile mit Bedeutungen, Ruf, Symbolen und Rivalen-Haken — kostenlos, ohne Konto.",
+      "buttons": [
+        {
+          "title": "Bandennamen generieren",
+          "url": "#gang_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "Story der Gruppe bauen",
+          "url": "/plot-generator",
+          "icon": "RiSwordLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Baue deine Welt weiter",
+      "description": "Kombiniere die Fraktion mit Handlung, Ursprungsgeschichte, Konflikt-Prompt oder einem ganzen Fantasy-Abenteuer.",
+      "more_label": "Alle KI-Tools ansehen"
+    }
+  }
+}

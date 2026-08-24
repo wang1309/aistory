@@ -104,6 +104,7 @@ export default function FAQ({ section, accent = "orange" }: Props) {
 
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
+                    aria-expanded={isOpen}
                     className="flex w-full min-h-[44px] items-center gap-3 px-4 py-4 text-left sm:gap-4 sm:px-6 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
                   >
                     {/* Double-bezel number badge */}
@@ -129,13 +130,19 @@ export default function FAQ({ section, accent = "orange" }: Props) {
                     </span>
                   </button>
 
-                  {isOpen && (
+                  {/* Answer stays in the DOM (SEO/SERP-friendly) and collapses via
+                      grid-template-rows 0fr↔1fr instead of conditional rendering. */}
+                  <div
+                    className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
+                  >
                     <div className="overflow-hidden">
-                      <div className="px-6 pb-5 pl-[4.25rem]">
+                      <div className="px-4 pb-5 sm:px-6 sm:pl-[4.25rem]">
                         <p className="text-sm leading-[1.7] text-muted-foreground/60">{item.description}</p>
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}

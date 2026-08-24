@@ -1,0 +1,243 @@
+{
+  "emoji_translator": {
+    "metadata": {
+      "title": "Emoji-Übersetzer: Emoji hinzufügen, übersetzen und erklären",
+      "description": "Kostenloser KI-Emoji-Übersetzer. Füge einer Nachricht passende Emoji hinzu, übersetze Text in Emoji oder erkläre eine Emoji-Nachricht im Kontext. Drei tonabhängige Varianten mit Begründung und Hinweis.",
+      "keywords": "Emoji-Übersetzer, Emoji Übersetzer KI, Emoji zu Text hinzufügen, Text in Emoji übersetzen, Emoji Bedeutung erklären, Emoji-Generator, KI Emoji"
+    },
+    "ui": {
+      "title": "Emoji-Übersetzer",
+      "title_highlight": "Emoji",
+      "subtitle": "Füge einer Nachricht passende Emoji hinzu, wandele Text in Emoji um oder entschlüssele eine Emoji-Nachricht im Kontext. Drei tonabhängige Varianten, jeweils mit Begründung und Hinweis zur Mehrdeutigkeit.",
+      "theme_pills": ["3 Varianten", "Tonabhängig", "Kontextabhängig", "Mehrdeutigkeits-Hinweise"],
+      "eyebrow": "KI-Emoji-Tool",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Emoji-Übersetzer",
+      "form_title": "Deine Nachricht",
+      "text_label": "Nachricht",
+      "text_placeholder": "Füge eine Nachricht ein oder tippe sie. Verziere sie mit Emoji, übersetze sie in Emoji oder entschlüssele die enthaltenen Emoji.",
+      "context_label": "Kontext (optional)",
+      "context_placeholder": "z. B. Antwort an einen engen Freund, öffentliche Instagram-Caption, Nachricht in einer Dating-App",
+      "mode_label": "Modus",
+      "mode_options": [
+        { "value": "add", "label": "Emoji hinzufügen" },
+        { "value": "translate", "label": "In Emoji übersetzen" },
+        { "value": "explain", "label": "Emoji erklären" }
+      ],
+      "scenario_label": "Szenario",
+      "scenario_options": [
+        { "value": "caption", "label": "Caption / Beitrag" },
+        { "value": "chat_reply", "label": "Chat-Antwort" },
+        { "value": "bio", "label": "Profil-Bio" },
+        { "value": "just_for_fun", "label": "Einfach so" }
+      ],
+      "tone_label": "Ton",
+      "tone_options": [
+        { "value": "subtle", "label": "Dezent" },
+        { "value": "playful", "label": "Verspielt" },
+        { "value": "bold", "label": "Draufgängerisch" }
+      ],
+      "generate_button": "Übersetzen",
+      "generating_button": "Übersetze...",
+      "random_button": "Zufällig",
+      "output_title": "Emoji-Vorschläge",
+      "empty_output": "Gib eine Nachricht ein und wähle einen Modus, um hier drei tonabhängige Varianten zu sehen.",
+      "result_label": "Variante",
+      "reason_label": "Warum diese Emoji",
+      "caution_label": "Zu beachten",
+      "copy_button": "Kopieren"
+    },
+    "validation": {
+      "text_required": "Gib eine Nachricht zum Übersetzen ein.",
+      "text_too_long": "Die Nachricht darf höchstens 500 Zeichen lang sein.",
+      "context_too_long": "Der Kontext darf höchstens 300 Zeichen lang sein.",
+      "generic_error": "Wir konnten gerade keine Emoji-Vorschläge erzeugen. Bitte versuche es erneut."
+    },
+    "success": {
+      "copied": "Variante in die Zwischenablage kopiert.",
+      "generated": "Emoji-Vorschläge erzeugt.",
+      "random_prompt_selected": "Zufälliges Beispiel geladen."
+    },
+    "random_prompts": [
+      {
+        "text": "Morgenkaffee und ein gutes Buch. Das ist mein Glücksort.",
+        "context": "Instagram-Caption",
+        "mode": "add",
+        "scenario": "caption",
+        "tone": "subtle"
+      },
+      {
+        "text": "Hast du am Wochenende Zeit? Lass uns etwas Schönes zusammen unternehmen.",
+        "context": "Nachricht an einen engen Freund",
+        "mode": "add",
+        "scenario": "chat_reply",
+        "tone": "playful"
+      },
+      {
+        "text": "Das Projekt, an dem ich monatelang gearbeitet habe, ist endlich fertig.",
+        "context": "Ankündigung in sozialen Medien",
+        "mode": "translate",
+        "scenario": "caption",
+        "tone": "bold"
+      },
+      {
+        "text": "Ein Freund hat mir nur 🌙✨ geschickt. Was soll das heißen?",
+        "context": "Chat spät in der Nacht",
+        "mode": "explain",
+        "scenario": "chat_reply",
+        "tone": "playful"
+      },
+      {
+        "text": "Neues Rezept ausprobiert, Küche überlebt, Abendessen war sogar lecker.",
+        "context": "Lockerer Beitrag",
+        "mode": "add",
+        "scenario": "just_for_fun",
+        "tone": "playful"
+      }
+    ],
+    "errors": {
+      "generate_failed": "Emoji-Vorschläge konnten nicht erzeugt werden. Bitte versuche es erneut.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Versuche es erneut."
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Wofür dieser Emoji-Übersetzer gut ist",
+      "description": "Gemacht für Messaging, Captions und schnelle Social-Media-Antworten. Statt einem einfachen Emoji-Haufen bekommst du drei tonabhängige Varianten mit der jeweiligen Begründung.",
+      "items": [
+        {
+          "title": "Drei Modi, ein Werkzeug",
+          "description": "Emoji zu einer Nachricht hinzufügen, Text in Emoji übersetzen oder erklären, was eine Emoji-Nachricht bedeuten könnte – ohne die Seite zu verlassen.",
+          "icon": "RiEmotionHappyLine"
+        },
+        {
+          "title": "Begründung statt nur Emoji",
+          "description": "Jede Variante liefert eine Begründung für die Emoji-Wahl, damit du verstehst, warum sie funktioniert, bevor du sie sendest.",
+          "icon": "RiInformationLine"
+        },
+        {
+          "title": "Hinweise bei Mehrdeutigkeit",
+          "description": "Wenn Emoji im Kontext unterschiedlich gelesen werden könnten, wird die Variante entsprechend markiert – so vermeidst du falsche Signale.",
+          "icon": "RiAlertLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "ANWENDUNG",
+      "title": "So nutzt du den Emoji-Übersetzer in 3 Schritten",
+      "description": "Von der rohen Nachricht zu drei kopierfertigen Varianten in Sekunden.",
+      "items": [
+        {
+          "title": "Nachricht eingeben",
+          "description": "Füge eine Nachricht ein, die du verzieren, übersetzen oder entschlüsseln willst. Etwas Kontext schärft das Ergebnis.",
+          "icon": "RiChat3Line"
+        },
+        {
+          "title": "Modus, Szenario und Ton wählen",
+          "description": "Wähle, ob du Emoji hinzufügen, in Emoji übersetzen oder Emoji erklären willst – dann Szenario und Ton festlegen.",
+          "icon": "RiSettings3Line"
+        },
+        {
+          "title": "Lieblingsvariante kopieren",
+          "description": "Vergleiche die drei Varianten, lies Begründung und Hinweis und kopiere die passendste.",
+          "icon": "RiFileCopyLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum Menschen den Emoji-Übersetzer nutzen",
+      "description": "Emoji tragen Ton und Absicht. Ein falsches verändert die Bedeutung der ganzen Nachricht.",
+      "items": [
+        {
+          "title": "Ton, der zum Moment passt",
+          "description": "Dezent, verspielt oder draufgängerisch – die Ton-Steuerung hält deine Emoji im Einklang mit dem Gefühl der Nachricht.",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "Kontextabhängige Vorschläge",
+          "description": "Sag dem Tool, ob es eine Caption, eine Chat-Antwort oder eine Bio ist – die Emoji passen sich an, wo die Nachricht wirklich landet.",
+          "icon": "RiFocus3Line"
+        },
+        {
+          "title": "Mehrdeutige Nachrichten entschlüsseln",
+          "description": "Im Erklär-Modus bietet das Tool eine mögliche Deutung einer Emoji-Nachricht – mit dem Hinweis, dass die Bedeutung vom Kontext abhängt.",
+          "icon": "RiSearchEyeLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Anwendungsfälle",
+      "title": "Wer den Emoji-Übersetzer nutzt",
+      "description": "Alle, die Nachrichten, Captions oder Bios schreiben, bei denen Emoji den Ton verändern.",
+      "items": [
+        {
+          "title": "Social-Media-Ersteller",
+          "description": "Füge Captions und Antworten die richtigen Emoji hinzu, damit Beiträge lebendig wirken, ohne überladen zu sein.",
+          "icon": "RiInstagramLine"
+        },
+        {
+          "title": "Messaging und Dating",
+          "description": "Übersetze eine schlichte Nachricht in Emoji, um den Ton aufzulockern, oder entschlüssele eine emoji-lastige Antwort, bei der du unsicher bist.",
+          "icon": "RiChatSmile3Line"
+        },
+        {
+          "title": "Profil- und Bio-Autoren",
+          "description": "Halte Bios kurz und ausdrucksstark mit ein oder zwei wohlgewählten Emoji statt einer vollen Symbol-Wand.",
+          "icon": "RiUserSmileLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Emoji-Übersetzer — FAQ",
+      "items": [
+        {
+          "title": "Was macht der Emoji-Übersetzer?",
+          "description": "Er nimmt eine Nachricht und erzeugt drei Emoji-Varianten: Er kann deiner Nachricht passende Emoji hinzufügen, Text in Emoji übersetzen oder erklären, was eine Emoji-Nachricht im Kontext bedeuten könnte. Jede Variante enthält eine Begründung und einen optionalen Hinweis."
+        },
+        {
+          "title": "Was sind die drei Modi?",
+          "description": "„Emoji hinzufügen“ belässt deinen Originaltext und hängt Emoji an, die die Bedeutung verstärken. „In Emoji übersetzen“ schreibt die Nachricht emoji-lastig um. „Emoji erklären“ legt eine mögliche Lesart der Emoji in deiner Nachricht nahe, nie eine endgültige."
+        },
+        {
+          "title": "Warum enthalten Varianten einen Hinweis?",
+          "description": "Die Bedeutung von Emoji hängt von Kontext, Beziehung und Kultur ab. Ein Hinweis markiert, wenn eine Lesart missverstanden werden könnte, damit du vor dem Senden noch einmal nachdenkst."
+        },
+        {
+          "title": "Verändert das Tool, was meine Nachricht aussagt?",
+          "description": "Im Modus „hinzufügen“ bleibt dein Originaltext erhalten, nur Emoji werden angehängt. Im Modus „übersetzen“ wird die Nachricht umgeschrieben, um dieselbe Bedeutung mit Emoji zu vermitteln. Das Tool führt keine schädlichen, sexualisierten oder beleidigenden Ersetzungen ein."
+        },
+        {
+          "title": "Ist der Emoji-Übersetzer kostenlos?",
+          "description": "Ja. Der Emoji-Übersetzer ist kostenlos nutzbar. Es wird kein Konto benötigt."
+        },
+        {
+          "title": "Welche Sprachen werden unterstützt?",
+          "description": "Die Oberfläche gibt es auf Deutsch, Englisch, Chinesisch, Koreanisch, Japanisch und Russisch. Die Erklärungen werden in der von dir gewählten Sprache verfasst."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Übersetze jede Nachricht in die richtigen Emoji",
+      "description": "Emoji hinzufügen, übersetzen oder erklären – mit drei tonabhängigen Varianten. Kostenlos, ohne Konto.",
+      "buttons": [
+        {
+          "title": "Emoji-Übersetzer ausprobieren",
+          "url": "#emoji_translator",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Mehr Werkzeuge für deine Texte",
+      "description": "Mach Captions, Antworten und Titel noch treffsicherer – mit diesen Tools als Nächstes.",
+      "more_label": "Alle KI-Tools ansehen"
+    }
+  }
+}

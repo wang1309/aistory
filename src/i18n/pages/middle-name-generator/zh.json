@@ -1,0 +1,373 @@
+{
+  "middle_name_generator": {
+    "metadata": {
+      "title": "中间名生成器 —— 小说角色 & 笔名取名工具 | AI Story",
+      "description": "为小说角色或笔名补全中间名。根据名字与姓氏、题材、语气、节奏和角色定位,生成贴合全名的中间名方案。",
+      "keywords": "中间名生成器, 中间名, 角色取名, 小说角色名字, 笔名中间名, 全名生成器, 英文中间名, middle name generator"
+    },
+    "ui": {
+      "title": "中间名生成器",
+      "title_highlight": "中间名",
+      "subtitle": "为一个已有开头和结尾的名字补全中间。生成与角色、设定和全名读音都契合的中间名方案。",
+      "theme_pills": [
+        "3 组全名方案",
+        "保留首尾名",
+        "缩写自查",
+        "无需注册"
+      ],
+      "eyebrow": "AI 全名契合工具",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "中间名生成器",
+      "form_title": "塑造完整全名",
+      "mode_label": "AI 模型",
+      "mode_options": [
+        {
+          "value": "fast",
+          "label": "快速"
+        },
+        {
+          "value": "standard",
+          "label": "标准"
+        },
+        {
+          "value": "creative",
+          "label": "创意"
+        }
+      ],
+      "use_case_label": "这个中间名用于",
+      "use_case_options": [
+        {
+          "value": "fictional_character",
+          "label": "小说角色"
+        },
+        {
+          "value": "pen_name",
+          "label": "笔名 / 署名"
+        }
+      ],
+      "first_name_label": "名字(可选)",
+      "first_name_placeholder": "如 Elena",
+      "last_name_label": "姓氏(可选)",
+      "last_name_placeholder": "如 Hart",
+      "setting_label": "题材 / 设定",
+      "setting_options": [
+        {
+          "value": "contemporary",
+          "label": "当代"
+        },
+        {
+          "value": "mystery_thriller",
+          "label": "悬疑 & 惊悚"
+        },
+        {
+          "value": "romance",
+          "label": "言情"
+        },
+        {
+          "value": "fantasy",
+          "label": "奇幻"
+        },
+        {
+          "value": "historical",
+          "label": "历史"
+        },
+        {
+          "value": "science_fiction",
+          "label": "科幻"
+        },
+        {
+          "value": "literary",
+          "label": "文学向"
+        }
+      ],
+      "era_label": "年代",
+      "era_options": [
+        {
+          "value": "any",
+          "label": "不限"
+        },
+        {
+          "value": "contemporary",
+          "label": "当代(2020 年代)"
+        },
+        {
+          "value": "mid_20th",
+          "label": "20 世纪中叶"
+        },
+        {
+          "value": "early_20th",
+          "label": "20 世纪初"
+        },
+        {
+          "value": "victorian",
+          "label": "维多利亚 / 19 世纪"
+        },
+        {
+          "value": "timeless",
+          "label": "跨时代通用"
+        }
+      ],
+      "tone_label": "语气 / 家族色彩",
+      "tone_options": [
+        {
+          "value": "restrained",
+          "label": "克制内敛"
+        },
+        {
+          "value": "formal",
+          "label": "正式庄重"
+        },
+        {
+          "value": "old_money",
+          "label": "旧世家"
+        },
+        {
+          "value": "rebellious",
+          "label": "叛逆"
+        },
+        {
+          "value": "inherited",
+          "label": "家族传承"
+        },
+        {
+          "value": "warm",
+          "label": "温暖"
+        },
+        {
+          "value": "mysterious",
+          "label": "神秘"
+        }
+      ],
+      "cadence_label": "中间名长度",
+      "cadence_options": [
+        {
+          "value": "any",
+          "label": "不限长度"
+        },
+        {
+          "value": "short",
+          "label": "短(1–2 个音节)"
+        },
+        {
+          "value": "long",
+          "label": "长(3 个音节以上)"
+        }
+      ],
+      "avoid_initials_label": "需要避开的姓名缩写(可选)",
+      "avoid_initials_placeholder": "如 A, S, S",
+      "note_label": "家族线索或关键词(可选)",
+      "note_placeholder": "如:致敬一位叫 Rose 的祖母;暗示一段复杂的家族史但不落俗套",
+      "privacy_hint": "你填写的名字仅用于生成这次请求——不会存储、写日志,也不会进入任何统计。",
+      "generate_button": "寻找中间名",
+      "generating_button": "正在匹配中间名...",
+      "sign_in_button": "登录后继续",
+      "reroll_button": "换 3 组新方案",
+      "output_title": "为你的角色生成的全名方案",
+      "empty_output": "先填入已有的名字和姓氏,生成后即可在这里看到三组完整的全名方案。",
+      "direction_label": "方案",
+      "middle_name_label": "中间名",
+      "initials_label": "姓名缩写",
+      "initials_warning": "用到了你想避开的缩写字母",
+      "cadence_note_label": "读音节奏",
+      "implication_label": "故事信号",
+      "copy_button": "复制全名",
+      "favorite_button": "加入收藏",
+      "favorited_button": "取消收藏",
+      "continue_button": "用这个角色继续创作",
+      "favorites_title": "本次会话的收藏",
+      "loading_status": "正在生成中间名方案,请稍候。"
+    },
+    "validation": {
+      "name_too_long": "名字需在 60 个字符以内。",
+      "avoid_initials_too_long": "需要避开的缩写需在 12 个字符以内。",
+      "note_too_long": "备注需在 160 个字符以内。",
+      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。",
+      "generic_error": "暂时无法生成中间名,请重试。"
+    },
+    "success": {
+      "copied": "全名已复制到剪贴板。",
+      "generated": "已生成三组全名方案。",
+      "favorited": "已加入收藏。",
+      "unfavorited": "已取消收藏。",
+      "continue_copied": "全名已复制——去 OC 角色构建器粘贴为角色名吧。"
+    },
+    "errors": {
+      "generate_failed": "无法生成中间名,请重试。",
+      "verification_failed": "校验失败,请重试。"
+    },
+    "continuation": {
+      "title": "带着这个名字继续",
+      "description": "名字定稿只是角色的开始。把它带进你接下来的创作流程。",
+      "dialogue_label": "写一段对话",
+      "dialogue_hint": "在对话生成器中让这个名字说出第一句话",
+      "backstory_label": "写角色背景",
+      "backstory_hint": "把中间名暗示的家族史写出来",
+      "prompt_label": "获取故事灵感",
+      "prompt_hint": "把全名放进一个场景开头"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概述",
+      "title": "以全名为单位判断契合度的中间名生成器",
+      "description": "中间名从不该孤立挑选。本工具把它放回完整的名串——名、中间名、姓——按读者和签售会上会被念出的样子来判断。",
+      "items": [
+        {
+          "title": "全名契合,而非名词列表",
+          "description": "保留你已经确定的名字与姓氏。每个方案都展示完整全名,你判断的是最终会印出来的那个名字。",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "听得见的节奏",
+          "description": "每个方案附带一句简短、留有余地的读音说明——短的中间名让姓氏更有分量,长的则添一分庄重。",
+          "icon": "RiMicLine"
+        },
+        {
+          "title": "是故事信号,不是装饰",
+          "description": "中间名应该告诉读者一些事——传承、叛逆、仪式感。每个方案都会说明它在故事或署名中传递了什么。",
+          "icon": "RiLightbulbLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "三步用上中间名生成器",
+      "description": "从一个写了一半的名字,到三组完整方案,一分钟以内。",
+      "items": [
+        {
+          "title": "填入已有的部分",
+          "description": "输入名字和姓氏(均可留空),选择题材、年代,以及中间名应有的语气——克制、传承、叛逆等等。",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "对比三个方案",
+          "description": "连同读音节奏和故事信号把每个全名念出声。查看姓名缩写预览,收藏心动的方案,或重新生成。",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "带着角色继续",
+          "description": "复制选定的全名,或直接进入 OC 构建、角色背景、故事灵感,继续写作。",
+          "icon": "RiUser3Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "价值",
+      "title": "为什么小说里的中间名很重要",
+      "description": "中间名是节奏、缩写与家族史的交汇点——也是偷懒取名最先露馅的地方。",
+      "items": [
+        {
+          "title": "听得见的韵律",
+          "description": "三个名字连读自有节拍。合适的中间名在读者意识到之前就定下了语速——利落职业,还是舒展庄重。",
+          "icon": "RiMusic2Line"
+        },
+        {
+          "title": "不会翻车的缩写",
+          "description": "Elena V. Hart 和 Elena S. Hart 在烫银 initials 的公文包上是两个角色。缩写预览会显示全名拼出的首字母组合。",
+          "icon": "RiText"
+        },
+        {
+          "title": "不靠旁白的家族层次",
+          "description": "一个继承来的中间名,一句台词就暗示了祖辈、遗嘱与期望——这些背景根本不必叙述出来。",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "使用场景",
+      "title": "六种风格,一套控制面板",
+      "description": "以下每种风格都对应生成器里的具体设置——选好参数,直接对比。",
+      "items": [
+        {
+          "title": "当代主角",
+          "description": "当代设定、克制语气:听起来像近十年取的名字,而不是戏服。",
+          "icon": "RiSmartphoneLine"
+        },
+        {
+          "title": "历史年代感",
+          "description": "维多利亚或 20 世纪初:带着那个年代节奏的中间名,又不至于滑向戏仿。",
+          "icon": "RiTimeLine"
+        },
+        {
+          "title": "文学向中间名",
+          "description": "文学设定:克制而有分量的名字,在贴近的第三人称叙事里站得住。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "单音节短名",
+          "description": "短节奏:一个干脆的中间名让姓氏稳稳落地——悬疑小说的默认选项。",
+          "icon": "RiSpeedLine"
+        },
+        {
+          "title": "仪式感长名",
+          "description": "长节奏、正式语气:三音节的中间名,在婚礼或法庭上压得住场面。",
+          "icon": "RiVipCrownLine"
+        },
+        {
+          "title": "性别中立选择",
+          "description": "不设性别控制,以气质为先:中间名只按它在全名中的读感来评判。",
+          "icon": "RiUserHeartLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "中间名生成器 —— 常见问题",
+      "items": [
+        {
+          "title": "生成的中间名可以用在我的小说里吗?",
+          "description": "可以。这些建议是原创组合,作为创作起点而设计。名字本身是常见的文化素材,你在此组装的全名可以自由使用——只需避免把角色的完整名字套在真实可辨的在世人身上。"
+        },
+        {
+          "title": "它和笔名生成器有什么区别?",
+          "description": "笔名生成器从零发明完整的署名。本工具补全你已有的名字——严格保留你填写的名字与姓氏,把中间名嵌进完整全名里,服务于角色或署名。"
+        },
+        {
+          "title": "怎么避免尴尬的姓名缩写?",
+          "description": "在「需要避开的姓名缩写」里填入想避开的字母。缩写预览会显示每个方案拼出的首字母组合,并标记出使用了被排除字母的方案。"
+        },
+        {
+          "title": "工具会检查名字是否可用吗?",
+          "description": "不会。生成器不对商标、域名、法定姓名或唯一性做任何承诺。如果你打算用某个名字出版,请先加引号精确搜索、查零售平台作者页,并检索你所在市场的商标数据库。"
+        },
+        {
+          "title": "可以要求某个特定文化的名字吗?",
+          "description": "你可以在备注里描述想要的声音或家族传统。但工具不会声称任何名字的起源、含义或“正宗性”,也不会把文化推断当作事实——它只按名字在设定中的读感来匹配。"
+        },
+        {
+          "title": "每个角色都需要中间名吗?",
+          "description": "不需要——这本身就是一个真实的选择。没有中间名的角色可能显得直率、白手起家,或来自不用中间名的传统。如果中间名没有增添任何东西,删掉它。"
+        },
+        {
+          "title": "你们会存储我输入的名字吗?",
+          "description": "不会。名字与姓氏只用于构建本次生成请求,不会写入日志或统计,响应返回后也不会保留。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今天就把名字补全",
+      "description": "三组完整全名方案,附读音节奏与故事信号——免费,无需注册。",
+      "buttons": [
+        {
+          "title": "寻找中间名",
+          "url": "#middle_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "返回 AI 工具集",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "继续完善这个角色",
+      "description": "把定稿的名字与笔名、角色背景、对白或故事灵感搭配使用。",
+      "more_label": "浏览全部 AI 工具"
+    }
+  }
+}

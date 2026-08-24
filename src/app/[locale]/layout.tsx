@@ -21,7 +21,8 @@ export async function generateMetadata({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const t = await getTranslations();
+  // force-static 渲染下无参调用回落 defaultLocale,须显式传 locale
+  const t = await getTranslations({ locale });
 
   const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "storiesgenerator.org";
   const title = t("metadata.title") || "";
@@ -100,7 +101,8 @@ export default async function LocaleLayout({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const messages = await getMessages();
+  // 同上:静态渲染下 getMessages() 须显式传 locale,否则 client 侧翻译整体回落英文
+  const messages = await getMessages({ locale });
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

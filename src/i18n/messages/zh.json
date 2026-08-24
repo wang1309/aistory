@@ -392,6 +392,34 @@
       "city_nickname_generator": {
         "name": "城市昵称生成器",
         "desc": "为虚构城市生成官方、本地、传奇和讽刺昵称。"
+      },
+      "emoji_translator": {
+        "name": "Emoji 翻译器",
+        "desc": "为消息添加贴切的 emoji，把文字翻译成 emoji，或在语境中解读一条 emoji 消息。"
+      },
+      "elf_name_generator": {
+        "name": "精灵名字生成器",
+        "desc": "根据血统、风格与角色背景，一次生成 10 个原创奇幻精灵名字，附发音与寓意。"
+      },
+      "pen_name_generator": {
+        "name": "笔名生成器",
+        "desc": "根据类型、品牌目标与目标市场，一次生成 10 个附读音与推荐理由的原创笔名创意。"
+      },
+      "gang_name_generator": {
+        "name": "帮派名称生成器",
+        "desc": "一次生成 6 个虚构帮派、团伙、氏族与黑帮组织名称,附含义、名声、标志与宿敌冲突钩子。"
+      },
+      "band_name_generator": {
+        "name": "乐队名字生成器",
+        "desc": "按流派、气质与关键词生成乐队名,每个附读音、一句话简介、视觉方向与可用性检查清单,支持无 AI 模板模式。"
+      },
+      "random_nfl_team_generator": {
+        "name": "随机 NFL 球队生成器",
+        "desc": "随机抽一支或打乱全部 32 支现役 NFL 球队——加密级公平随机、绝不重复,支持联会与分区筛选,抽签结果一键复制。"
+      },
+      "middle_name_generator": {
+        "name": "中间名生成器",
+        "desc": "为小说角色或笔名补全中间名——三组保留名字与姓氏的全名方案,附读音节奏、姓名缩写预览与故事信号。"
       }
     },
     "tab_story": "故事生成器",
@@ -404,6 +432,8 @@
     "filter_title": "标题",
     "filter_poem": "诗歌",
     "filter_social": "社交",
+    "filter_name_generator": "名字生成器",
+    "filter_utility": "实用工具",
     "new_tools_section": "最新上架",
     "results_count": "共 {count} 个工具",
     "no_results": "没有找到匹配的工具，试试清空筛选条件。",
@@ -411,7 +441,10 @@
     "view_all_cta": "查看全部 {count}+ 个工具",
     "view_all_sub": "在工具中心浏览完整目录",
     "scroll_down": "向下滚动",
-    "tools_hub_nav": "工具",
+    "tools_hub_nav": "全部工具",
+    "group_writing": "写作工具",
+    "group_social": "社交媒体",
+    "group_name": "名字生成器",
     "tools_hub_title": "免费 AI 工具",
     "tools_hub_description": "不断扩充的免费 AI 工具合集，更多工具即将上线。",
     "tools_hub_empty_title": "更多工具即将上线",

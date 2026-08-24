@@ -1,0 +1,274 @@
+{
+  "pen_name_generator": {
+    "metadata": {
+      "title": "笔名生成器 — 免费 AI 作者笔名创意工具",
+      "description": "免费 AI 笔名生成器。根据类型、品牌目标、语气与目标市场,一次生成 10 个附读音与理由的作者笔名创意,无需注册。",
+      "keywords": "笔名生成器, 笔名, 作者笔名, 化名生成器, 笔名创意, 作家笔名, 网名生成, 小说笔名, 起笔名"
+    },
+    "ui": {
+      "title": "笔名生成器",
+      "title_highlight": "笔名",
+      "subtitle": "根据你的创作类型、品牌目标与目标市场,一次生成十个笔名候选——每个都附读音说明,以及它作为署名之所以成立的理由。",
+      "theme_pills": ["一次 10 个候选", "贴合创作类型", "隐私优先提示词", "发布前自查清单"],
+      "eyebrow": "AI 作者署名工具",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "笔名生成器",
+      "form_title": "定制你的笔名",
+      "genre_label": "创作类型",
+      "genre_options": [
+        { "value": "romance", "label": "言情 / 浪漫" },
+        { "value": "thriller_mystery", "label": "惊悚与悬疑" },
+        { "value": "fantasy", "label": "奇幻" },
+        { "value": "science_fiction", "label": "科幻" },
+        { "value": "literary", "label": "严肃文学" },
+        { "value": "non_fiction", "label": "非虚构" },
+        { "value": "general", "label": "通用 / 全类型" }
+      ],
+      "brand_goal_label": "品牌目标",
+      "brand_goal_options": [
+        { "value": "single_brand", "label": "一个笔名走天下" },
+        { "value": "separate_genres", "label": "不同类型分开署名" },
+        { "value": "privacy_first", "label": "优先保护真实身份" },
+        { "value": "initials_led", "label": "首字母式署名" }
+      ],
+      "tone_label": "语气风格",
+      "tone_options": [
+        { "value": "classic", "label": "经典" },
+        { "value": "warm", "label": "温暖" },
+        { "value": "bold", "label": "醒目" },
+        { "value": "mysterious", "label": "神秘" },
+        { "value": "modern", "label": "现代" },
+        { "value": "scholarly", "label": "学术" }
+      ],
+      "name_form_label": "名字形式",
+      "name_form_options": [
+        { "value": "full_name", "label": "完整名 + 姓" },
+        { "value": "first_initial", "label": "首字母 + 中间名" },
+        { "value": "initials_surname", "label": "首字母缩写 + 姓" },
+        { "value": "single_name", "label": "单名" }
+      ],
+      "target_market_label": "目标市场",
+      "target_market_options": [
+        { "value": "en", "label": "英语市场" },
+        { "value": "zh", "label": "中文市场" },
+        { "value": "de", "label": "德语市场" },
+        { "value": "ko", "label": "韩语市场" },
+        { "value": "ja", "label": "日语市场" },
+        { "value": "ru", "label": "俄语市场" }
+      ],
+      "cue_label": "特殊要求(可选)",
+      "cue_placeholder": "例如:偏爱柔和的 S 音、姓氏要放得下书脊、想致敬外婆的娘家姓",
+      "inspiration_hint": "正在生成风格接近这个名字的笔名:",
+      "mode_label": "AI 模型",
+      "mode_options": [{"value": "fast", "label": "快速"}, {"value": "standard", "label": "标准"}, {"value": "creative", "label": "创意"}],
+      "sign_in_button": "登录后继续",
+      "generate_button": "生成笔名",
+      "generating_button": "正在拟写署名...",
+      "reroll_button": "再生成 10 个",
+      "output_title": "你的笔名候选",
+      "empty_output": "先设置创作类型与品牌目标,生成后即可在这里看到十个附读音与理由的笔名候选。",
+      "result_label": "候选",
+      "pronunciation_label": "读音",
+      "reason_label": "推荐理由",
+      "copy_button": "复制名字",
+      "favorite_button": "加入收藏",
+      "favorited_button": "取消收藏",
+      "similar_button": "再来类似款",
+      "favorites_title": "本次会话的收藏",
+      "loading_status": "正在生成笔名,请稍候。"
+    },
+    "validation": {
+      "cue_too_long": "特殊要求不能超过 120 个字符。",
+      "inspiration_too_long": "灵感名字不能超过 100 个字符。",
+      "generic_error": "暂时无法生成笔名,请重试。",
+      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。"
+    },
+    "success": {
+      "copied": "名字已复制到剪贴板。",
+      "generated": "已生成十个笔名。",
+      "favorited": "已加入收藏。",
+      "unfavorited": "已取消收藏。"
+    },
+    "errors": {
+      "generate_failed": "无法生成笔名,请重试。",
+      "verification_failed": "验证失败,请重试。"
+    },
+    "screening": {
+      "title": "发布前先自查",
+      "disclaimer": "这些是创意建议,不是经过核验的名字。本工具不保证任何名字可用——在确定使用某个候选之前,请先走完下面的清单。",
+      "open_button": "展开 5 步自查清单",
+      "close_button": "收起清单",
+      "items": [
+        {
+          "title": "精确搜索这个名字",
+          "description": "把完整笔名加上引号放进搜索引擎精确搜索。如果已有知名作者或品牌使用,直接划掉这个候选。"
+        },
+        {
+          "title": "查作者库与图书零售平台",
+          "description": "在图书零售平台的作者页和图书馆目录里检索。要找的是已经在用它出书的作者,而不只是一模一样的重名。"
+        },
+        {
+          "title": "查域名与社交账号",
+          "description": "看看对应的网站域名,以及你打算使用的社交账号 handle 是否已被同领域的人占用。"
+        },
+        {
+          "title": "检索相关商标数据库",
+          "description": "在你的目标市场对应的商标注册库里检索,例如中国商标网、USPTO 或 EUIPO,重点关注出版相关类别。"
+        },
+        {
+          "title": "审合同、税务与专业意见",
+          "description": "签约前仔细阅读出版方对笔名的处理条款,并就税务、银行开户以及所在行业对化名写作的规定咨询专业人士。"
+        }
+      ]
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概览",
+      "title": "这个笔名生成器擅长什么",
+      "description": "为需要一枚贴合书架定位的署名而设计——按你的类型与目标即时创作,绝不从固定名单里翻旧账。",
+      "items": [
+        {
+          "title": "贴合创作类型",
+          "description": "言情小说和硬科幻的署名不该一个腔调。类型选项会调整节奏、首字母和姓氏风格,匹配你要站上的那个书架。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "每个名字都有读音",
+          "description": "每个候选都附带简明的音节指南,签约、访谈和播客之前就能把它大声读出来试试。",
+          "icon": "RiMicLine"
+        },
+        {
+          "title": "给理由,而不只是名字",
+          "description": "每个候选都会解释它作为署名为什么成立——它向读者、零售平台和书评人传递了什么信号。",
+          "icon": "RiLightbulbLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "三步用好笔名生成器",
+      "description": "从空白页到一份可用的候选清单,一分钟以内。",
+      "items": [
+        {
+          "title": "设置类型、目标与市场",
+          "description": "选择你的创作类型、这枚名字的用途——统一品牌、类型隔离还是保护隐私——以及读者所在的市场。",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "生成并比较十个候选",
+          "description": "阅读每张卡片上的读音和理由,收藏心动的选项;再补一条特殊要求(比如你偏爱的音),结果会更准。",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "发布前自查入选名字",
+          "description": "把候选名单过一遍五步自查清单,然后把最终选中的名字复制进书稿和账号资料。",
+          "icon": "RiShieldCheckLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "好处",
+      "title": "为什么笔名值得认真挑",
+      "description": "笔名是一个出版决策,不只是一个代号。选对了,它在你的书出现的每个地方都在发力。",
+      "items": [
+        {
+          "title": "一个署名,一个品牌",
+          "description": "读者追随他们认得的名字。统一的署名能跨作品积累系列忠诚度、邮件列表信任和书架辨识度。",
+          "icon": "RiPriceTag3Line"
+        },
+        {
+          "title": "给类型切换留空间",
+          "description": "同时写治愈系言情和硬核惊悚?分开的笔名能让两批读者不会被传达错误预期的封面劝退。",
+          "icon": "RiBookMarkedLine"
+        },
+        {
+          "title": "有设计感的距离",
+          "description": "一枚精心挑选的署名可以让你的本名远离封面、书目和搜索结果——这是你作为公开作者可以掌控的一层隔离。",
+          "icon": "RiLock2Line"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "适用人群",
+      "title": "谁在用笔名生成器",
+      "description": "需要一个专业署名、又不想开命名委员会的写作者。",
+      "items": [
+        {
+          "title": "出道小说家",
+          "description": "在第一本书顶着它问世之前,先试戴一批在封面、书脊和书评里都站得住的署名。",
+          "icon": "RiRocketLine"
+        },
+        {
+          "title": "多类型独立作者",
+          "description": "为每条产品线快速起一个类型气质鲜明的署名,并在零售平台元数据里保持彼此独立。",
+          "icon": "RiStackLine"
+        },
+        {
+          "title": "注重隐私的职场人",
+          "description": "教师、律师、公务员等写小说的人,让本职身份远离署名,同时在活动上仍然朗朗上口。",
+          "icon": "RiUserSharedLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "笔名生成器 — 常见问题",
+      "items": [
+        {
+          "title": "作者为什么要用笔名?",
+          "description": "常见原因有:每个类型维持一个统一品牌;把公开身份和私人生活分开;避免与现有作者重名;或者仅仅因为选定的署名比本名更适合印在封面上。"
+        },
+        {
+          "title": "工具会核查笔名是否可用吗?",
+          "description": "不会。生成器不保证可用性,也不查注册记录、零售平台、域名或商标。请把每个候选当作创意建议,并按本页的五步清单自查后再发布使用。"
+        },
+        {
+          "title": "用了笔名就能匿名吗?",
+          "description": "笔名不会自动让你匿名。合同、版权登记、税务和元数据仍可能把署名与本名关联起来。如果匿名对你很重要,请就出版合同和所在司法辖区的化名处理方式咨询专业人士。"
+        },
+        {
+          "title": "不同类型可以用不同笔名吗?",
+          "description": "可以——这正是「不同类型分开署名」这个品牌目标的用途。许多作者每个类型用一个署名,让读者看到封面就知道能期待什么。记得在零售平台元数据和封面设计上保持每条线一致。"
+        },
+        {
+          "title": "定下某个候选前要怎么自查?",
+          "description": "加引号精确搜索完整名字;查零售平台作者页;看域名和社交账号;检索目标市场的商标数据库;再读一遍出版合同里的笔名条款。本页的五步清单会带你走一遍。"
+        },
+        {
+          "title": "为什么不按性别或族裔推荐名字?",
+          "description": "署名只按署名评判。生成器从不宣称或暗示名字背后的性别、族裔、国籍、宗教或文化身份——只根据名字在你的类型和市场中的观感来推荐。"
+        },
+        {
+          "title": "生成的笔名可以注册商标吗?",
+          "description": "视情况而定,但本工具对此不做任何承诺。能否注册取决于你的司法辖区、申请类别和现有在先商标。请在相关商标数据库中自查,并在提交任何申请前咨询专业人士。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今天就找到你的署名",
+      "description": "十个贴合类型的笔名候选,附读音与理由——免费,无需注册。",
+      "buttons": [
+        {
+          "title": "生成笔名",
+          "url": "#pen_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "返回 AI 工具",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "继续搭建你的作者工具箱",
+      "description": "为新笔名配一个书名、一份大纲,或一个即将署上它的一部奇幻故事。",
+      "more_label": "浏览全部 AI 工具"
+    }
+  }
+}

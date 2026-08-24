@@ -200,6 +200,187 @@
     }
   }
 
+  /* Emoji translator loading: emoji faces swap in sequence while generating.
+     Cycle is 10s for 8 faces — each face owns one 12.5% slice (1.25s): pops
+     in over ~0.15s, holds with a gentle lift, hands off to the next face.
+     Negative delays phase-shift each face so the slices tile the cycle. */
+  @keyframes emoji-swap {
+    0% { opacity: 0; transform: scale(0.7) translateY(6px); }
+    1.5% { opacity: 1; transform: scale(1) translateY(0); }
+    6% { transform: scale(1.06) translateY(-2px); }
+    11% { opacity: 1; transform: scale(1) translateY(0); }
+    12.5%, 100% { opacity: 0; transform: scale(0.85) translateY(-6px); }
+  }
+  .emoji-translator-loading-emoji {
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .emoji-translator-loading-emoji {
+      animation: emoji-swap 10s var(--ease-soft) infinite;
+      animation-delay: calc(var(--emoji-index) * -1.25s);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* State stays legible without motion: a single face with an opacity-only pulse. */
+    .emoji-translator-loading-emoji:first-child {
+      animation: emoji-swap-pulse 1.6s ease-in-out infinite;
+    }
+  }
+  @keyframes emoji-swap-pulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+
+  /* Elf name generator loading: elven glyphs materialize in sequence while
+     names are being forged. Same tiling scheme as emoji-swap — 10s cycle,
+     8 glyphs, each owns a 1.25s slice, negative delays phase-shift.
+     Glyphs drift up as if inscribed, with a brief luminous hold. */
+  @keyframes elf-glyph-swap {
+    0% { opacity: 0; transform: scale(0.7) translateY(6px); }
+    1.5% { opacity: 1; transform: scale(1) translateY(0); }
+    6% { transform: scale(1.06) translateY(-2px); }
+    11% { opacity: 1; transform: scale(1) translateY(0); }
+    12.5%, 100% { opacity: 0; transform: scale(0.85) translateY(-6px); }
+  }
+  .elf-loading-glyph {
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .elf-loading-glyph {
+      animation: elf-glyph-swap 10s var(--ease-soft) infinite;
+      animation-delay: calc(var(--glyph-index) * -1.25s);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* State stays legible without motion: one glyph with an opacity-only pulse. */
+    .elf-loading-glyph:first-child {
+      animation: elf-glyph-pulse 1.6s ease-in-out infinite;
+    }
+  }
+  @keyframes elf-glyph-pulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+
+  /* Pen name generator loading: writing glyphs materialize in sequence while
+     pen names are being drafted. Same tiling scheme as elf-glyph-swap — 10s
+     cycle, 8 glyphs, each owns a 1.25s slice, negative delays phase-shift. */
+  @keyframes pen-glyph-swap {
+    0% { opacity: 0; transform: scale(0.7) translateY(6px); }
+    1.5% { opacity: 1; transform: scale(1) translateY(0); }
+    6% { transform: scale(1.06) translateY(-2px); }
+    11% { opacity: 1; transform: scale(1) translateY(0); }
+    12.5%, 100% { opacity: 0; transform: scale(0.85) translateY(-6px); }
+  }
+  .pen-loading-glyph {
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .pen-loading-glyph {
+      animation: pen-glyph-swap 10s var(--ease-soft) infinite;
+      animation-delay: calc(var(--glyph-index) * -1.25s);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* State stays legible without motion: one glyph with an opacity-only pulse. */
+    .pen-loading-glyph:first-child {
+      animation: pen-glyph-pulse 1.6s ease-in-out infinite;
+    }
+  }
+
+  /* Gang name generator loading: faction emblems surface in sequence while
+     organizations are being forged. Same tiling scheme as elf-glyph-swap —
+     10s cycle, 8 glyphs, each owns a 1.25s slice, negative delays phase-shift.
+     Emblems rise as if stenciled onto a wall, with a brief steady hold. */
+  @keyframes gang-glyph-swap {
+    0% { opacity: 0; transform: scale(0.7) translateY(6px); }
+    1.5% { opacity: 1; transform: scale(1) translateY(0); }
+    6% { transform: scale(1.06) translateY(-2px); }
+    11% { opacity: 1; transform: scale(1) translateY(0); }
+    12.5%, 100% { opacity: 0; transform: scale(0.85) translateY(-6px); }
+  }
+  .gang-loading-glyph {
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .gang-loading-glyph {
+      animation: gang-glyph-swap 10s var(--ease-soft) infinite;
+      animation-delay: calc(var(--glyph-index) * -1.25s);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* State stays legible without motion: one glyph with an opacity-only pulse. */
+    .gang-loading-glyph:first-child {
+      animation: gang-glyph-pulse 1.6s ease-in-out infinite;
+    }
+  }
+  @keyframes gang-glyph-pulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+
+  /* Band name generator loading: band icons swap in sequence while names are
+     being riffed. Same tiling scheme as elf-glyph-swap — 10s cycle, 8 glyphs,
+     each owns a 1.25s slice, negative delays phase-shift. Icons pop in like
+     stage lights with a brief steady hold. */
+  @keyframes band-glyph-swap {
+    0% { opacity: 0; transform: scale(0.7) translateY(6px); }
+    1.5% { opacity: 1; transform: scale(1) translateY(0); }
+    6% { transform: scale(1.06) translateY(-2px); }
+    11% { opacity: 1; transform: scale(1) translateY(0); }
+    12.5%, 100% { opacity: 0; transform: scale(0.85) translateY(-6px); }
+  }
+  .band-loading-glyph {
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .band-loading-glyph {
+      animation: band-glyph-swap 10s var(--ease-soft) infinite;
+      animation-delay: calc(var(--glyph-index) * -1.25s);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* State stays legible without motion: one glyph with an opacity-only pulse. */
+    .band-loading-glyph:first-child {
+      animation: band-glyph-pulse 1.6s ease-in-out infinite;
+    }
+  }
+  @keyframes band-glyph-pulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+
+  /* Middle name generator loading: serif initials surface in sequence while
+     full names are being composed. Same tiling scheme as elf-glyph-swap —
+     10s cycle, 8 initials, each owns a 1.25s slice, negative delays
+     phase-shift. Initials rise as if typeset, with a brief steady hold. */
+  @keyframes middle-initial-swap {
+    0% { opacity: 0; transform: scale(0.7) translateY(6px); }
+    1.5% { opacity: 1; transform: scale(1) translateY(0); }
+    6% { transform: scale(1.06) translateY(-2px); }
+    11% { opacity: 1; transform: scale(1) translateY(0); }
+    12.5%, 100% { opacity: 0; transform: scale(0.85) translateY(-6px); }
+  }
+  .middle-loading-glyph {
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .middle-loading-glyph {
+      animation: middle-initial-swap 10s var(--ease-soft) infinite;
+      animation-delay: calc(var(--glyph-index) * -1.25s);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* State stays legible without motion: one initial with an opacity-only pulse. */
+    .middle-loading-glyph:first-child {
+      animation: middle-initial-pulse 1.6s ease-in-out infinite;
+    }
+  }
+  @keyframes middle-initial-pulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+
   :root {
     --meteor-color: 251 191 36;
     --meteor-glow: rgba(251, 191, 36, 0.8);
@@ -406,6 +587,37 @@
   }
   .animate-fade-in-up {
     animation: fadeInUp 0.4s var(--ease-soft) forwards;
+  }
+
+  /* Generator result card entrance — staggered fade + rise (band-name-generator) */
+  @keyframes cardRise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-card-rise {
+    animation: cardRise 250ms var(--ease-soft) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-card-rise {
+      animation-name: cardFade;
+      animation-duration: 150ms;
+      animation-delay: 0ms !important;
+    }
+  }
+  @keyframes cardFade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   /* Fade In Down */

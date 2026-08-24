@@ -1,0 +1,238 @@
+{
+  "elf_name_generator": {
+    "metadata": {
+      "title": "Elfennamen-Generator für Charaktere, Clans & Fantasy-Welten",
+      "description": "Kostenloser KI-Elfennamen-Generator. 10 originelle Elfennamen mit Aussprache, Bedeutung & Begründung. Steuere Kultur, Stil & Rolle für Rollenspiele & NPCs.",
+      "keywords": "elfennamen generator, elfennamen, fantasy elfennamen, elben namen, dnd elfennamen, weibliche elfennamen, männliche elfennamen, elfennamen ideen, sippe namen, npc elfennamen"
+    },
+    "ui": {
+      "title": "Elfennamen-Generator",
+      "title_highlight": "Elfennamen",
+      "subtitle": "Erschaffe mit einem Klick zehn originelle Elfennamen. Jeder Kandidat kommt mit Aussprache, einer kreativen Bedeutung und einer Begründung, warum er zu deinem Charakter, Clan oder NPC-Set passt.",
+      "theme_pills": ["10 Kandidaten", "Kultur & Stil steuerbar", "Aussprache-Hilfe", "Clan- & NPC-Modus"],
+      "eyebrow": "KI-Fantasy-Namentool",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Elfennamen-Generator",
+      "form_title": "Gestalte deine Elfennamen",
+      "heritage_label": "Herkunft",
+      "heritage_options": [
+        { "value": "moonlit_court", "label": "Mondlichter Hof" },
+        { "value": "ancient_woodland", "label": "Uralter Wald" },
+        { "value": "shadowborne", "label": "Schattengeboren" },
+        { "value": "sunlit_scholar", "label": "Sonnenkundiger Gelehrter" },
+        { "value": "custom", "label": "Eigene Kultur" }
+      ],
+      "custom_heritage_label": "Beschreibe deine Kultur",
+      "custom_heritage_placeholder": "z. B. eine nomadische Tundra-Linie, die dem Polarlicht folgt und Kinder nach Eisformationen benennt",
+      "custom_heritage_helper": "Beschreibe deine eigene Elfenkultur in ein, zwei Sätzen. Der Generator erfindet passende Namenskonventionen.",
+      "style_label": "Namensstil",
+      "style_options": [
+        { "value": "graceful", "label": "Anmutig" },
+        { "value": "ancient", "label": "Uralte" },
+        { "value": "fierce", "label": "Wild" },
+        { "value": "mysterious", "label": "Geheimnisvoll" },
+        { "value": "playful", "label": "Verspielt" }
+      ],
+      "name_use_label": "Wofür sind die Namen?",
+      "name_use_options": [
+        { "value": "character", "label": "Ein Charakter" },
+        { "value": "family_clan", "label": "Eine Familie oder Sippe" },
+        { "value": "npc_set", "label": "Ein NPC-Set" }
+      ],
+      "name_form_label": "Namensform",
+      "name_form_options": [
+        { "value": "feminine", "label": "Weiblich" },
+        { "value": "masculine", "label": "Männlich" },
+        { "value": "neutral", "label": "Neutral" },
+        { "value": "mixed", "label": "Gemischt" }
+      ],
+      "role_label": "Rolle oder Story-Kontext (optional)",
+      "role_placeholder": "z. B. ein verbannter Waldläufer, der einen vergessenen Wald schützt; ein Hofarchivar mit einem Geheimnis; eine duellfreudige Klingentänzerin",
+      "inspiration_hint": "Namen mit ähnlichem Klang wie dieser werden erzeugt:",
+      "mode_label": "KI-Modell",
+      "mode_options": [{"value": "fast", "label": "Schnell"}, {"value": "standard", "label": "Standard"}, {"value": "creative", "label": "Kreativ"}],
+      "sign_in_button": "Zum Fortfahren anmelden",
+      "generate_button": "Elfennamen generieren",
+      "generating_button": "Namen werden beschworen...",
+      "reroll_button": "10 weitere generieren",
+      "output_title": "Deine Elfennamen",
+      "empty_output": "Wähle Herkunft und Stil und generiere dann zehn Elfennamen mit Aussprache, Bedeutung und Begründung.",
+      "result_label": "Name",
+      "pronunciation_label": "Aussprache",
+      "meaning_label": "Bedeutung",
+      "reason_label": "Warum er passt",
+      "copy_button": "Name kopieren",
+      "favorite_button": "Zu Favoriten",
+      "favorited_button": "Aus Favoriten entfernen",
+      "similar_button": "Mehr davon",
+      "favorites_title": "Favoriten dieser Sitzung"
+    },
+    "validation": {
+      "custom_heritage_required": "Beschreibe zuerst deine eigene Kultur.",
+      "role_too_long": "Der Hintergrund darf höchstens 400 Zeichen haben.",
+      "custom_heritage_too_long": "Die eigene Kultur darf höchstens 160 Zeichen haben.",
+      "inspiration_too_long": "Der Inspirationsname darf höchstens 100 Zeichen haben.",
+      "generic_error": "Elfennamen konnten gerade nicht erzeugt werden. Bitte erneut versuchen.",
+      "creative_limit_reached": "Die kostenlosen Creative-Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten."
+    },
+    "success": {
+      "copied": "Name in die Zwischenablage kopiert.",
+      "generated": "Zehn Elfennamen erzeugt.",
+      "favorited": "Zu Favoriten hinzugefügt.",
+      "unfavorited": "Aus Favoriten entfernt."
+    },
+    "errors": {
+      "generate_failed": "Elfennamen konnten nicht erzeugt werden. Bitte erneut versuchen.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Was dieser Elfennamen-Generator gut kann",
+      "description": "Gebaut für Pen-&-Paper-Runden, Romane und Worldbuilding. Jeder Name wird frisch für deine Welt erfunden statt aus einer Liste recycelt.",
+      "items": [
+        {
+          "title": "Jedes Mal originell",
+          "description": "Alle zehn Kandidaten werden für deine Herkunft, deinen Stil und deinen Kontext erfunden. Keine recycelten Listen, keine leicht abgewandelten Namen bekannter Fantasy-Franchises.",
+          "icon": "RiLeafLine"
+        },
+        {
+          "title": "Aussprache und Bedeutung",
+          "description": "Jeder Name kommt mit Aussprache-Hilfe und einer kreativen Bedeutung – du kannst ihn laut aussprechen und wissen, was er andeutet, bevor du dich festlegst.",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "Kontextbezogene Begründungen",
+          "description": "Beschreibe die Rolle deines Charakters, und der Generator erklärt, warum jeder Name passt – ein Waldläufer liest sich anders als ein Hofarchivar.",
+          "icon": "RiUser3Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "SO GEHT'S",
+      "title": "So nutzt du den Elfennamen-Generator in 3 Schritten",
+      "description": "Vom leeren Blatt zu zehn gebrauchsfertigen Elfennamen in unter einer Minute.",
+      "items": [
+        {
+          "title": "Herkunft und Stil wählen",
+          "description": "Wähle eine von vier fertigen Elfenkulturen oder beschreibe deine eigene – und stelle den Klang der Namen von anmutig bis wild ein.",
+          "icon": "RiLeafLine"
+        },
+        {
+          "title": "Charakterkontext ergänzen",
+          "description": "Sag dem Generator, wofür die Namen gedacht sind – ein Charakter, eine Sippe oder ein NPC-Set – und ergänze eine Rolle für passgenauere Treffer.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Kopieren, favorisieren oder vertiefen",
+          "description": "Kopiere jeden Namen, sammle Favoriten für die Sitzung oder nutze „Mehr davon“, um Varianten um einen Namen zu erkunden, den du liebst.",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum ein guter Elfennamen zählt",
+      "description": "Namen tragen Kultur. Der richtige Name lässt einen Elf so wirken, als wäre er irgendwo aufgewachsen.",
+      "items": [
+        {
+          "title": "Herkunft prägt den Klang",
+          "description": "Ein Elf des Mondlicht-Hofs und einer aus dem uralten Wald sollten nicht gleich klingen. Die Herkunft ändert Silben, Rhythmus und Atmosphäre.",
+          "icon": "RiMoonLine"
+        },
+        {
+          "title": "Bedeutungen zum Weiterbauen",
+          "description": "Jede Bedeutung ist eine kreative Deutung – ein Startpunkt für Lore, aus dem Hintergrund, Handlung und Dialoge wachsen können.",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "Konsistente Gruppen-Namen",
+          "description": "Der Sippen-Modus hält die Namen einer Familie formverwandt, während der NPC-Modus eine Gruppe von Namen klar unterscheidbar hält.",
+          "icon": "RiTeamLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Anwendungsfälle",
+      "title": "Wer nutzt den Elfennamen-Generator",
+      "description": "Autoren und Spielleiter, die Elfennamen brauchen, die vor einem Publikum bestehen.",
+      "items": [
+        {
+          "title": "Tabletop-Spieler und SLs",
+          "description": "Benenne sofort einen Spielercharakter oder statte eine ganze Elbensiedlung mit unterscheidbaren NPCs aus, bevor die Runde beginnt.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "Fantasy-Autoren",
+          "description": "Halte eine Namenskultur über Kapitel hinweg konsistent – mit Aussprachen, die du auf Lesungen tatsächlich laut vorlesen kannst.",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "Worldbuilder und Spiele-Designer",
+          "description": "Entwirf Namenskonventionen für originelle Elfenkulturen, ohne dich bei Settings zu bedienen, die dir nicht gehören.",
+          "icon": "RiSwordLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Elfennamen-Generator — FAQ",
+      "items": [
+        {
+          "title": "Sind die Elfennamen originell?",
+          "description": "Ja. Jeder Name wird spontan für deine Herkunft, deinen Stil und deinen Kontext erfunden. Der Generator kopiert oder modifiziert keine Namen aus bekannten Fantasy-Franchises, von Autoren oder aus konstruierten Sprachen."
+        },
+        {
+          "title": "Was bedeuten die Bedeutungen?",
+          "description": "Bedeutungen sind kreative Deutungen, die für deine Welt erfunden wurden – keine überprüften Übersetzungen einer offiziellen Sprache. Betrachte sie als Lore-Anker, die du behalten, umschreiben oder ausbauen kannst."
+        },
+        {
+          "title": "Kann ich die Namen für Rollenspiel-Charaktere nutzen?",
+          "description": "Ja. Die Namen sind für Tabletop-Charaktere, Spielercharaktere, NPCs und kampagnentaugliche Auftritte gebaut. Kopiere jeden Namen direkt auf deinen Charakterbogen oder favorisiere mehrere zum Vergleichen."
+        },
+        {
+          "title": "Wie verändern Herkunft und Stil die Ergebnisse?",
+          "description": "Die Herkunft legt die Kultur fest – ein Mondlicht-Hof, ein uralter Wald, eine Schattenlinie, eine gelehrte Gesellschaft oder eine selbstbeschriebene Kultur. Der Stil steuert den Klang, von anmutig-melodisch bis wild-scharf."
+        },
+        {
+          "title": "Warum hat jeder Name eine Aussprache?",
+          "description": "Ein Name, den man nicht laut sagen kann, wird am Spieltisch gemieden. Jeder Kandidat enthält eine einfache Silbenhilfe, damit Spieler und Leser ihn sicher aussprechen."
+        },
+        {
+          "title": "Wie funktionieren Sippen- und NPC-Modus?",
+          "description": "Der Sippen-Modus erzeugt zehn Namen, die wie eine verwandte Linie wirken – ideal für Familien und Häuser. Der NPC-Modus erzeugt zehn klar unterscheidbare Namen, ideal um eine Siedlung zu bevölkern, in der jeder Name heraussticht."
+        },
+        {
+          "title": "Warum werden keine Namen berühmter Fantasy-Welten kopiert?",
+          "description": "Namen veröffentlichter Franchises bringen rechtliche Fragen mit sich und lassen deine Welt geliehen wirken. Originelle Namen halten dein Setting zu deinem – und „Mehr davon“ erkundet den Klang, den du liebst, ohne jemanden zu imitieren."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Benenne deine Elben noch heute Abend",
+      "description": "Zehn originelle Elfennamen mit Aussprache, Bedeutung und Begründung – kostenlos, ohne Konto.",
+      "buttons": [
+        {
+          "title": "Elfennamen generieren",
+          "url": "#elf_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "Zurück zu den KI-Tools",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Baue deine Welt weiter",
+      "description": "Kombiniere deine Elfennamen mit einer Hintergrundgeschichte, einer Fantasy-Story oder einem weiteren Namens-Tool.",
+      "more_label": "Alle KI-Tools durchsuchen"
+    }
+  }
+}

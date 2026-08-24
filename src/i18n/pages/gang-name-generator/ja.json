@@ -1,0 +1,298 @@
+{
+  "gang_name_generator": {
+    "metadata": {
+      "title": "ギャング名ジェネレーター — 小説・TRPG・ゲーム用 | AI Story",
+      "description": "無料AIギャング名ジェネレーター。小説・TRPG・ゲーム向けに、意味とストーリーフック付きの架空ギャング・クルー・一族・マフィア・サイバーパンク組織名を生成。",
+      "keywords": "ギャング名ジェネレーター, ギャング名 AI, ギャング名案, クルー名, 派閥名, クラン名ジェネレーター, マフィア名, ファンタジー ギャング名, サイバーパンク ギャング名, 意味付き ギャング名"
+    },
+    "ui": {
+      "title": "ギャング名ジェネレーター",
+      "title_highlight": "ギャング名",
+      "subtitle": "架空のギャング名を生成し、意味・評判・シンボル・縄張り・宿敵フックまでセットで。そのまま物語やキャンペーンに使えます。",
+      "theme_pills": ["6件のプロフィール", "世界観対応", "すぐ使えるフック", "100%架空"],
+      "eyebrow": "AI ワールドビルディングツール",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "ギャング名ジェネレーター",
+      "form_title": "組織をデザイン",
+      "world_label": "世界観 / ジャンル",
+      "world_options": [
+        { "value": "street_crime", "label": "犯罪ノワール / ストリート" },
+        { "value": "mafia", "label": "マフィア / モブ" },
+        { "value": "fantasy", "label": "ファンタジー" },
+        { "value": "cyberpunk", "label": "サイバーパンク" },
+        { "value": "post_apocalyptic", "label": "終末後世界" },
+        { "value": "biker", "label": "暴走族 / バイカー" },
+        { "value": "game_world", "label": "オープンワールド風" }
+      ],
+      "group_type_label": "組織タイプ",
+      "group_type_options": [
+        { "value": "crew", "label": "ストリートクルー" },
+        { "value": "crime_family", "label": "犯罪一族" },
+        { "value": "syndicate", "label": "シンジケート" },
+        { "value": "brotherhood", "label": "同胞団 / 教団" },
+        { "value": "clan", "label": "氏族" },
+        { "value": "biker_club", "label": "バイククラブ" }
+      ],
+      "tone_label": "トーン",
+      "tone_options": [
+        { "value": "menacing", "label": "威圧的" },
+        { "value": "gritty", "label": "荒々しい" },
+        { "value": "cunning", "label": "狡猾" },
+        { "value": "flashy", "label": "派手" },
+        { "value": "funny", "label": "コミカル" },
+        { "value": "honorable", "label": "誇り高き" }
+      ],
+      "flavor_label": "文化テイスト",
+      "flavor_options": [
+        { "value": "none", "label": "指定しない" },
+        { "value": "italian", "label": "イタリアン犯罪サーガ" },
+        { "value": "japanese", "label": "日本の極道小説風" },
+        { "value": "chinese", "label": "中華江湖・武侠" },
+        { "value": "western", "label": "西部の無法者" },
+        { "value": "nordic", "label": "北欧サガ" }
+      ],
+      "cue_label": "入れたい単語や舞台(任意)",
+      "cue_placeholder": "例:「烏」を含む名前、港湾ドックを仕切るクルー、雨の港町に合う名前",
+      "inspiration_hint": "この名前と似た雰囲気で生成中:",
+      "mode_label": "AI モデル",
+      "mode_options": [
+        { "value": "fast", "label": "高速" },
+        { "value": "standard", "label": "標準" },
+        { "value": "creative", "label": "クリエイティブ" }
+      ],
+      "sign_in_button": "ログインして続行",
+      "generate_button": "ギャング名を生成",
+      "generating_button": "組織を構築中…",
+      "reroll_button": "さらに6件生成",
+      "output_title": "架空組織プロフィール",
+      "empty_output": "世界観とトーンを選んで生成すると、意味とストーリーフック付きの架空組織プロフィールが6件表示されます。",
+      "result_label": "組織",
+      "meaning_label": "意味",
+      "reputation_label": "評判",
+      "territory_label": "縄張り",
+      "symbol_label": "シンボル",
+      "core_value_label": "掟",
+      "rival_hook_label": "宿敵フック",
+      "copy_button": "名前をコピー",
+      "favorite_button": "お気に入りに追加",
+      "favorited_button": "お気に入りから外す",
+      "similar_button": "似た名前を生成",
+      "favorites_title": "このセッションのお気に入り",
+      "loading_status": "ギャング名を生成中です。お待ちください。"
+    },
+    "validation": {
+      "cue_too_long": "単語・舞台は120文字以内で入力してください。",
+      "inspiration_too_long": "インスピレーション名は100文字以内で入力してください。",
+      "generic_error": "現在ギャング名を生成できません。もう一度お試しください。",
+      "creative_limit_reached": "本日のCreative無料回数を使い切りました。ログインでクレジットを追加できます。"
+    },
+    "success": {
+      "copied": "名前をクリップボードにコピーしました。",
+      "generated": "6件の組織プロフィールを生成しました。",
+      "favorited": "お気に入りに追加しました。",
+      "unfavorited": "お気に入りから外しました。"
+    },
+    "errors": {
+      "generate_failed": "ギャング名を生成できませんでした。もう一度お試しください。",
+      "verification_failed": "認証に失敗しました。もう一度お試しください。"
+    },
+    "fictional_only": {
+      "title": "フィクション・ゲーム・TRPG専用",
+      "disclaimer": "このツールが生み出す名前・シンボル・縄張りはすべて、物語とキャンペーンのための完全な架空の創作物です。実在ギャングの名前・シンボル・同一性を再現せず、実在組織の名鑑でもありません。",
+      "open_button": "フィクション利用ガイドラインを見る",
+      "close_button": "ガイドラインを閉じる",
+      "items": [
+        {
+          "title": "すべてが架空",
+          "description": "ジェネレーターは実在ギャングの名前・シンボル・色・合図・構造を意図的に排除しています。もし結果が実在に響いてしまったら、破棄して生成し直してください。"
+        },
+        {
+          "title": "明確なフィクションを保つ",
+          "description": "架空のメンバー、架空の街、架空のしがらみを与えましょう。フィクション第一の構えは、あらゆる出版・プラットフォーム基準で物語を使いやすくします。"
+        },
+        {
+          "title": "現実への害を避ける",
+          "description": "結果を実在組織の偽装に作り変えないでください。勧誘・威嚇・実在の人物や場所に向けた用途にも絶対に使わないでください。"
+        },
+        {
+          "title": "公開前に検索",
+          "description": "公開する前に名前を引用符付きで検索してください。実在組織や有名フランチャイズと重なったら、単語を変えるか再生成しましょう。"
+        }
+      ]
+    },
+    "continuation": {
+      "title": "この世界を組み続ける",
+      "description": "ギャング名は最初の一着。プロフィールをキャストと葛藤へつなげましょう。",
+      "leader_label": "リーダーを作る",
+      "leader_hint": "クルーを率いるオリジナルキャラを設計",
+      "backstory_label": "起源を書く",
+      "backstory_hint": "組織の成り立ちを構築",
+      "plot_label": "プロットにする",
+      "plot_hint": "宿敵フックをストーリーに展開"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "スタイル",
+      "title": "架空ギャングのスタイルを選ぶ",
+      "description": "世界観ごとに命名の論理は違います。上のジェネレーターで設定を選ぶか、下のスタイル一覧で流儀の違いを確認してください。",
+      "items": [
+        {
+          "title": "犯罪ノワールとストリート",
+          "description": "現代のクルーは土地や紋を丸ごと背負います:「波止場の九人組」や「ハルデン一味」。短く、ローカルで、地元が本当に呼びそうなリアリティ。",
+          "icon": "RiScales3Line"
+        },
+        {
+          "title": "マフィアと一族",
+          "description": "モブの名前は王朝と敬意の上に立つ:「朱紅の宮廷」や「コルヴィノ一族」は古く、裕福で、誓いで結ばれた響き。姓と敬称がそのまま重みになります。",
+          "icon": "RiCopperCoinLine"
+        },
+        {
+          "title": "ファンタジー陣営",
+          "description": "ファンタジー組織はイメージと誓いを対にする:「灰の誓約」や「金鴉傭兵団」は三語で魔法と遺跡と傭兵の歴史を約束します。",
+          "icon": "RiSwordLine"
+        },
+        {
+          "title": "サイバーパンク集団",
+          "description": "ネオンの一味は技術スラングと教団めいた重さを接合する:「スタティック・ゼロ合同」や「ネオン主教団」は宣言と光の紋を持つランナーセルの響き。",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "バイカー集団",
+          "description": "バイカーの名はクロームと聖性:「鉄環ライダーズ」や「燼の聖人」は金属と神聖を並べる、フィクションの走り屋スタイル。",
+          "icon": "RiMotorbikeLine"
+        },
+        {
+          "title": "面白ギャング名",
+          "description": "コメディ系は脅しを裏切る:「ばあちゃんのアリバイ」や「丁寧な騒乱団」は笑いを取っても縄張りは守る。トーンをコミカルにすればこの流儀で生成されます。",
+          "icon": "RiEmotionLaughLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "記憶に残る架空ギャング名の作り方",
+      "description": "白紙から、キャラが口に出せる名前までの3ステップ。",
+      "items": [
+        {
+          "title": "世界観とトーンを定める",
+          "description": "マフィア一族とサイバーパンク集団が語彙を共有してはいけません。まず世界観・組織タイプ・トーンを設定。良い名前は他の設定では成立しません。",
+          "icon": "RiFlagLine"
+        },
+        {
+          "title": "イメージ×掟×組織タイプ",
+          "description": "鮮烈なイメージ(鴉・残り火・港)と組織の掟、形態(クルー・氏族・シンジケート)を組み合わせる。「灰」+誓い+同胞団なら「灰の誓約」が生まれます。",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "セリフで検証する",
+          "description": "脅し・囁き・誇示の三通りで口にする:「波止場の九人組に手を出す奴はいない」。3行すべて成立すれば、物語でも成立します。",
+          "icon": "RiQuillPenLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "例",
+      "title": "意味付きギャング名の例",
+      "description": "毎回の生成で返ってくるプロフィール形式の味見 — すべての名前が文脈付きで届きます。",
+      "items": [
+        {
+          "title": "朱紅の宮廷 — マフィア一族",
+          "description": "意味:「朱紅」は古い暴力を貴族的な赤で包み、「宮廷」は一族の力を王朝のように主張する。評判:舞踏会では触れられず、波止場では恐れられる。一つの街を代々統治する一族に。",
+          "icon": "RiVipCrownLine"
+        },
+        {
+          "title": "スタティック・ゼロ合同 — サイバーパンク細胞",
+          "description": "意味:「スタティック」は潜伏するノイズ、「ゼロ」は残さない痕跡、「合同」はボスではなく宣言を示す。評判:シグネチャの障害で犯行声明を出す亡霊。企業ネット内部から戦うランナーに。",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "灰の誓約 — ファンタジー同胞団",
+          "description": "意味:「灰」は焼かれた故郷と生き残りの哀しみを、「誓約」は全員が更新する誓いを背負う。評判:王でも破る契約を守る刃。一つの鉄則を持つ傭兵団に。",
+          "icon": "RiShieldStarLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "用途",
+      "title": "ギャング名ジェネレーターの利用者",
+      "description": "10分後に「生きて」いる陣営が必要な書き手とGMへ。",
+      "items": [
+        {
+          "title": "小説家",
+          "description": "犯罪長編・ファンタジー史詩・サイバーパンクスリラーに、名前・評判・宿敵関係を備えた陣営を。プロットをぶら下げられます。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "TRPGのGM",
+          "description": "プレイヤーが協力・裏切り・対抗できる一味をキャンペーンに配置。すべてのプロフィールに即席の紛争フック付き。",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "ゲーム・世界デザイナー",
+          "description": "設定の陣営に素早く命名し、シンボル・縄張り・掟をメカニクスとロアの土台に。",
+          "icon": "RiStackLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "ギャング名ジェネレーター — FAQ",
+      "items": [
+        {
+          "title": "良いギャング名の作り方は?",
+          "description": "設定とトーンから始め、鮮烈なイメージ・組織の掟・形態(クルー・一族・氏族・シンジケート)を組み合わせ、最後にセリフで検証 — 脅し・囁き・誇示の三通り。すべて耐えられれば、その名は物語のものです。"
+        },
+        {
+          "title": "生成されたギャング名は無料で使えますか?",
+          "description": "はい。ツールが発明した名前は創作の提案であり、小説やゲームで無料で使用・改変・破棄できます。商標検索は行わないため、商業公開の前には引用符付きで検索してください。"
+        },
+        {
+          "title": "ファンタジーやサイバーパンクに合う名前にするには?",
+          "description": "「世界観」を使います。ファンタジーはイメージと誓い、サイバーパンクは技術スラングと宣言、マフィアは王朝と姓。ジェネレーターは選んだ世界に合わせて命名ロジックを書き換えます。"
+        },
+        {
+          "title": "クルー・氏族・シンジケートの違いは?",
+          "description": "クルーは小さく機動的で個人的忠誠で成り立つ。氏族は古い血筋で、先祖代々の縄張りと遺恨を持つ。シンジケートは庞大で事業的、合法の看板と冷たい指揮系統を持つ。「組織タイプ」でこれらすべてが変わります。"
+        },
+        {
+          "title": "実在のギャング名を生成しますか?",
+          "description": "いいえ、絶対にしない設計です。名前・シンボル・縄張りはすべて架空。実在ギャングの名前・シンボル・メンバー・構造を拒否し、現実の勧誘や威嚇に使えるものは一切生成しません。"
+        },
+        {
+          "title": "マフィア・バイカー・面白い名前も生成できる?",
+          "description": "できます。世界観をマフィアやバイカーにすればその流儀に、トーンをコミカルにすればブラックユーモア寄りに。世界観×トーン(サイバーパンク×コミカル等)の組み合わせも自由です。"
+        },
+        {
+          "title": "最初の生成は本当に無料?",
+          "description": "はい。このページの生成はすべて無料で、アカウント登録もログインも不要です。設定を選んで何度でも生成できます。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今すぐ陣営に名前を",
+      "description": "意味・評判・シンボル・宿敵フック付きの架空組織プロフィール6件 — 無料、アカウント不要。",
+      "buttons": [
+        {
+          "title": "ギャング名を生成",
+          "url": "#gang_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "組織の物語を組み立てる",
+          "url": "/plot-generator",
+          "icon": "RiSwordLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "世界づくりを続ける",
+      "description": "陣営にプロット、起源、対立プロンプト、一本のファンタジー物語を組み合わせる。",
+      "more_label": "すべてのAIツールを見る"
+    }
+  }
+}

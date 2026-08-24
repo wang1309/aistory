@@ -562,7 +562,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                     {t("ui.ai_model")}
                   </Label>
                   <Select value={selectedModel} onValueChange={setSelectedModel}>
-                    <SelectTrigger className="h-9 bg-background border-border/50 rounded-lg">
+                    <SelectTrigger className="h-9 w-full bg-background border-border/50 rounded-lg">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -582,7 +582,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                     {t("ui.output_language")}
                   </Label>
                   <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-                    <SelectTrigger className="h-9 bg-background border-border/50 rounded-lg">
+                    <SelectTrigger className="h-9 w-full bg-background border-border/50 rounded-lg">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -596,13 +596,13 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label className="text-xs font-medium tracking-wide text-muted-foreground">
                     {t("ui.academic_level")}
                   </Label>
                   <Select value={academicLevel} onValueChange={setAcademicLevel}>
-                    <SelectTrigger className="h-9 bg-background border-border/50 rounded-lg">
+                    <SelectTrigger className="h-9 w-full bg-background border-border/50 rounded-lg">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -617,7 +617,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                     {t("ui.review_length")}
                   </Label>
                   <Select value={reviewLength} onValueChange={setReviewLength}>
-                    <SelectTrigger className="h-9 bg-background border-border/50 rounded-lg">
+                    <SelectTrigger className="h-9 w-full bg-background border-border/50 rounded-lg">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -627,12 +627,12 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 sm:col-span-2">
                   <Label className="text-xs font-medium tracking-wide text-muted-foreground">
                     {t("ui.tone")}
                   </Label>
                   <Select value={tone} onValueChange={setTone}>
-                    <SelectTrigger className="h-9 bg-background border-border/50 rounded-lg">
+                    <SelectTrigger className="h-9 w-full bg-background border-border/50 rounded-lg">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -715,16 +715,16 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="group w-full h-12 text-base bg-amber-600 font-semibold text-white shadow-md shadow-amber-600/20 hover:bg-amber-700 active:scale-[0.98] disabled:opacity-60 dark:bg-amber-500 dark:text-[oklch(0.20_0.02_55)] dark:shadow-amber-500/20 dark:hover:bg-amber-400"
+                  className="group w-full min-h-12 h-auto whitespace-normal py-3 text-base bg-amber-600 font-semibold text-white shadow-md shadow-amber-600/20 hover:bg-amber-700 active:scale-[0.98] disabled:opacity-60 dark:bg-amber-500 dark:text-[oklch(0.20_0.02_55)] dark:shadow-amber-500/20 dark:hover:bg-amber-400"
                 >
                   {isGenerating ? (
                     <>
-                      <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
+                      <RefreshCw className="w-5 h-5 mr-2 shrink-0 animate-spin" />
                       {t("ui.generating")}
                     </>
                   ) : (
                     <>
-                      <Library className="w-5 h-5 mr-2" />
+                      <Library className="w-5 h-5 mr-2 shrink-0" />
                       {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
                         ? t("ui.sign_in_to_continue")
                         : t("ui.generate_button")}

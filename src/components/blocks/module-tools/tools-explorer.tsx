@@ -6,12 +6,18 @@ import Icon from "@/components/icon";
 import { cn } from "@/lib/utils";
 import { AnimatedToolsGrid, type ToolCardData } from "./animated-tools-grid";
 import type { AccentColor } from "@/components/sections/accent";
+import type { ToolGroup } from "@/services/tools";
 import { useTranslations } from "next-intl";
 
 interface ToolsExplorerProps {
   tools: ToolCardData[];
   newTools?: ToolCardData[];
   accent?: AccentColor;
+  /**
+   * true 时筛选项切到粗粒度三大组(Writing/Social/Name),
+   * false(默认)保持细分类目 chips。All Tools hub 用 true。
+   */
+  groupedChips?: boolean;
 }
 
 const FILTER_CHIPS: { id: string; labelKey: string }[] = [
@@ -22,28 +28,38 @@ const FILTER_CHIPS: { id: string; labelKey: string }[] = [
   { id: "title", labelKey: "ai_tools.filter_title" },
   { id: "poem", labelKey: "ai_tools.filter_poem" },
   { id: "social", labelKey: "ai_tools.filter_social" },
+  { id: "name", labelKey: "ai_tools.filter_name_generator" },
+  { id: "utility", labelKey: "ai_tools.filter_utility" },
+];
+
+// All Tools hub 的粗粒度筛选:顺序即展示顺序
+const GROUP_CHIPS: { id: ToolGroup | "all"; labelKey: string }[] = [
+  { id: "all", labelKey: "ai_tools.filter_all" },
+  { id: "social", labelKey: "ai_tools.group_social" },
+  { id: "name", labelKey: "ai_tools.group_name" },
+  { id: "writing", labelKey: "ai_tools.group_writing" },
 ];
 
 export function ToolsExplorer({
   tools,
   newTools = [],
   accent = "orange",
+  groupedChips = false,
 }: ToolsExplorerProps) {
   const t = useTranslations();
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  const categoriesInTools = useMemo(
-    () => new Set(tools.map((tool) => tool.category)),
-    [tools]
-  );
+  const chips = groupedChips ? GROUP_CHIPS : FILTER_CHIPS;
 
-  const availableChips = useMemo(
-    () => FILTER_CHIPS.filter(
+  // 细分类目模式下只显示当前数据里存在的分类;大组模式下三组恒有值
+  const availableChips = useMemo(() => {
+    if (groupedChips) return chips;
+    const categoriesInTools = new Set(tools.map((tool) => tool.category));
+    return chips.filter(
       (chip) => chip.id === "all" || categoriesInTools.has(chip.id)
-    ),
-    [categoriesInTools]
-  );
+    );
+  }, [chips, groupedChips, tools]);
 
   const hasFilter = query.trim() !== "" || activeCategory !== "all";
   const showNewSection = !hasFilter && newTools.length > 0;
@@ -56,14 +72,26 @@ export function ToolsExplorer({
     const q = query.trim().toLowerCase();
     return tools.filter((tool) => {
       if (showNewSection && newToolSlugs.has(tool.slug)) return false;
-      if (activeCategory !== "all" && tool.category !== activeCategory) return false;
+      if (
+        activeCategory !== "all" &&
+        (groupedChips ? tool.group : tool.category) !== activeCategory
+      ) {
+        return false;
+      }
       if (q) {
         const haystack = `${tool.name} ${tool.description}`.toLowerCase();
         if (!haystack.includes(q)) return false;
       }
       return true;
     });
-  }, [tools, query, activeCategory, showNewSection, newToolSlugs]);
+  }, [
+    tools,
+    query,
+    activeCategory,
+    showNewSection,
+    newToolSlugs,
+    groupedChips,
+  ]);
 
   return (
     <div className="mt-10">
@@ -120,11 +148,7 @@ export function ToolsExplorer({
                   {t("ai_tools.new_tools_section")}
                 </span>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-                {newTools.map((tool) => (
-                  <NewToolCard key={tool.slug} tool={tool} accent={accent} />
-                ))}
-              </div>
+              <AnimatedToolsGrid tools={newTools} accent={accent} className="mt-0" />
             </div>
           )}
 
@@ -185,67 +209,6 @@ function SearchInput({
         )}
       </div>
     </div>
-  );
-}
-
-function NewToolCard({
-  tool,
-  accent,
-}: {
-  tool: ToolCardData;
-  accent: AccentColor;
-}) {
-  return (
-    <motion.a
-      href={tool.href}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
-      className={cn(
-        "group relative flex items-center gap-3 overflow-hidden rounded-2xl border border-emerald-500/15 bg-gradient-to-br from-emerald-500/[0.04] via-card to-card p-4 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-emerald-500/30 hover:shadow-[0_14px_30px_-18px_rgba(16,185,129,0.35)] dark:border-emerald-400/15 dark:hover:border-emerald-400/30"
-      )}
-    >
-      <div className="shrink-0 rounded-lg border border-border/15 bg-foreground/[0.02] p-0.5">
-        <div
-          className={cn(
-            "flex size-8 items-center justify-center rounded-lg transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110",
-            "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
-          )}
-        >
-          <Icon name={tool.icon} className="size-4" />
-        </div>
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-2">
-          <h3 className="truncate text-sm font-bold tracking-tight text-foreground">
-            {tool.name}
-          </h3>
-          {tool.badges?.map((badge) => (
-            <span
-              key={badge.label}
-              className="rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-300"
-            >
-              {badge.label}
-            </span>
-          ))}
-        </div>
-        <p className="mt-0.5 truncate text-xs text-muted-foreground/60">
-          {tool.description}
-        </p>
-      </div>
-      <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-foreground/[0.03] text-muted-foreground/40 transition-all duration-500 group-hover:bg-emerald-500/10 group-hover:text-emerald-600 group-hover:translate-x-0.5 dark:group-hover:text-emerald-300">
-        <svg
-          viewBox="0 0 16 16"
-          className="size-3.5"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        >
-          <path strokeLinecap="round" d="M5 3l6 5-6 5" />
-        </svg>
-      </span>
-    </motion.a>
   );
 }
 

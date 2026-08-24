@@ -1,0 +1,204 @@
+{
+  "band_name_generator": {
+    "metadata": {
+      "title": "乐队名字生成器 - 摇滚/金属/独立乐队命名工具 | AI Story",
+      "description": "按流派、气质和关键词生成原创乐队名字。每个名字附一句话简介、视觉方向,以及认领前的查重清单,免费使用。",
+      "keywords": "乐队名字生成器, 乐队名字生成器 AI, 关键词乐队名生成, 免费乐队名生成, 单词乐队名, 金属乐队名字, 摇滚乐队名字, 乐队名创意, 乐队名查重, 乐队简介"
+    },
+    "ui": {
+      "title": "面向音乐人与创作者的乐队名字生成器",
+      "title_highlight": "乐队名字",
+      "subtitle": "生成一个贴合你们声音的乐队名,并附上简介、视觉方向,以及判断它是否值得认领的下一步检查。",
+      "theme_pills": ["6 个身份方向", "流派与气质感知", "无 AI 模式", "可用性检查清单"],
+      "eyebrow": "AI 音乐身份工具",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "乐队名字生成器",
+      "form_title": "塑造你的乐队身份",
+      "genre_label": "流派",
+      "genre_options": [
+        { "value": "rock", "label": "摇滚" },
+        { "value": "metal", "label": "金属" },
+        { "value": "indie", "label": "独立 / 另类" },
+        { "value": "emo", "label": "Emo / 后核" },
+        { "value": "pop", "label": "流行" },
+        { "value": "electronic", "label": "电子 / 舞曲" },
+        { "value": "hip_hop", "label": "嘻哈 / 说唱" }
+      ],
+      "vibe_label": "气质",
+      "vibe_options": [
+        { "value": "anthemic", "label": "史诗感 / 大合唱" },
+        { "value": "gritty", "label": "粗粝真实" },
+        { "value": "dreamy", "label": "梦幻迷离" },
+        { "value": "playful", "label": "俏皮轻松" },
+        { "value": "dark", "label": "阴暗压抑" },
+        { "value": "nostalgic", "label": "怀旧复古" }
+      ],
+      "length_label": "名字长度",
+      "length_options": [
+        { "value": "any", "label": "不限长度" },
+        { "value": "one_word", "label": "单个词" },
+        { "value": "short", "label": "短名(两个词)" },
+        { "value": "phrase", "label": "长短语" }
+      ],
+      "mode_label": "生成模式",
+      "mode_options": [
+        { "value": "ai", "label": "AI 撰写方向" },
+        { "value": "template", "label": "无 AI(即时模板)" }
+      ],
+      "model_label": "AI 模型",
+      "model_options": [
+        { "value": "fast", "label": "快速" },
+        { "value": "standard", "label": "标准" },
+        { "value": "creative", "label": "创意" }
+      ],
+      "sign_in_button": "登录后继续",
+      "template_note": "无 AI 模式即时组合固定的流派词库,全程不调用任何模型,每个名字都会标明生成它的模板。",
+      "cue_label": "要融入的关键词、城市、年代或影响?(可选)",
+      "cue_placeholder": "例如:以“渡鸦”为核心、底特律车库摇滚气质、听起来像 80 年代合成器俱乐部",
+      "inspiration_hint": "正在生成与以下名字感觉相近的名字:",
+      "generate_button": "生成乐队名字",
+      "generating_button": "正在构建身份方向...",
+      "reroll_button": "再生成 6 个",
+      "output_title": "你的乐队身份方向",
+      "output_title_template": "你的模板乐队名",
+      "empty_output": "选择流派与气质后点击生成,即可在这里看到 6 个附带读音、简介与视觉方向的乐队身份方向。",
+      "result_label": "方向",
+      "pronunciation_label": "读音",
+      "rationale_label": "为什么成立",
+      "genre_fit_label": "流派契合度",
+      "bio_label": "一句话简介",
+      "visual_label": "视觉方向",
+      "pattern_label": "模板",
+      "pattern_labels": {
+        "the_adj_noun": "the + 形容词 + 名词",
+        "adj_noun": "形容词 + 名词",
+        "noun_suffix": "名词 + 集体词",
+        "compound_word": "单词复合词",
+        "noun_and_the_plural": "名词 + \"& the\" + 集体词",
+        "cue_suffix": "你的关键词 + 搭配词"
+      },
+      "copy_button": "复制名字",
+      "favorite_button": "加入收藏",
+      "favorited_button": "取消收藏",
+      "similar_button": "再来类似的",
+      "favorites_title": "本次会话收藏",
+      "check_button": "检查可用性",
+      "check_close_button": "收起检查",
+      "check_disclaimer": "这些链接会打开外部搜索。本工具从不检查、也不保证任何名字、账号、域名或商标可用——认领前请务必亲自核实。",
+      "check_links": {
+        "search": "Google",
+        "spotify": "Spotify",
+        "youtube": "YouTube",
+        "instagram": "Instagram 账号",
+        "domain": "bandname.com 域名",
+        "trademark": "商标检索"
+      },
+      "loading_status": "正在生成乐队名字,请稍候。"
+    },
+    "validation": {
+      "cue_too_long": "关键词需控制在 120 个字符以内。",
+      "inspiration_too_long": "参考名需控制在 100 个字符以内。",
+      "generic_error": "暂时无法生成乐队名字,请重试。",
+      "creative_limit_reached": "今日 Creative 免费次数已用完，登录可获得更多积分。"
+    },
+    "success": {
+      "copied": "名字已复制到剪贴板。",
+      "generated": "乐队身份方向已生成。",
+      "favorited": "已加入收藏。",
+      "unfavorited": "已取消收藏。"
+    },
+    "errors": {
+      "generate_failed": "无法生成乐队名字,请重试。",
+      "verification_failed": "验证失败,请重试。"
+    },
+    "continuation": {
+      "title": "让名字走得更远",
+      "description": "写作者可以把一支乐队扩展成完整的角色与故事,音乐人也可以借这些角度写内页文案和 press kit。",
+      "character_label": "创造主唱",
+      "character_hint": "设计声音背后的原创角色",
+      "backstory_label": "写乐队起源",
+      "backstory_hint": "构建乐队如何成立、付出了什么",
+      "prompt_label": "变成一个故事",
+      "prompt_hint": "获取一个发生在乐队世界里的故事提示"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "命名风格",
+      "title": "各流派的乐队命名风格",
+      "description": "每个流派都有自己的命名逻辑。在上方的生成器里选一个,或浏览下面的风格对比,看看惯例有何不同。",
+      "items": [
+        { "title": "摇滚", "description": "摇滚名字把一个磨损的意象和一个有力的名词配对:比如“Wild Static”或“The Crimson Roses”。它应该既适合喷在音箱上,也适合人群齐声呐喊。", "icon": "RiMicLine" },
+        { "title": "金属", "description": "金属乐追求重量与神话:“Ashen Covenant”或“Sunless Vigil”承诺了音量、仪式感和毁灭。这里具体、可触摸的词胜过聪明的双关。", "icon": "RiSwordLine" },
+        { "title": "独立 / 另类", "description": "独立乐队名字带着手工感和一点冷幽默:“Paper Coastline”或“The Borrowed Sweaters”像是诞生在排练室,而不是会议室里。", "icon": "RiHeadphoneLine" },
+        { "title": "Emo / 后核", "description": "Emo 名字在坦白:“October Motel”或“Sleepless Theory”用三个音节装下乡愁与伤口。怀旧、具体,且适合纹在身上。", "icon": "RiHeartLine" },
+        { "title": "流行", "description": "流行名字明亮且一听就能跟唱:“Cherry Cinema”或“Fizzy Galaxy”在听到旋律之前就像一个 hook。全场能跟着唱回来的名字就是好名字。", "icon": "RiStarLine" },
+        { "title": "电子 / 舞曲", "description": "电子名字借自机器与质感:“Glacial Voltage”或“Parallel Echo”听起来就像在 DAW 里做出来的——合成、精准、有氛围。", "icon": "RiDiscLine" },
+        { "title": "嘻哈 / 说唱", "description": "嘻哈名字自带 swagger 与地名:“Uptown Cipher”或“Concrete Dynasty”用两个词告诉你他们是谁、来自哪个街区。", "icon": "RiMusic2Line" }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "如何挑选乐队名字",
+      "description": "三道测试,区分你会长期使用的名字和你很快就会厌倦的名字。",
+      "items": [
+        { "title": "大声念出来", "description": "像主唱一样报幕,在采访里回答它,把它发给朋友。如果一个名字听一遍还难说难拼,它会在乐队的整个生命周期里跟你作对。", "icon": "RiMic2Line" },
+        { "title": "爱上它之前先搜索它", "description": "用引号精确搜索这个名字,再在流媒体和社交平台上查一遍。一个没人用过的名字,远比一个永远要加后缀区分的名字更容易经营。", "icon": "RiSearchEyeLine" },
+        { "title": "匹配你真正想演的舞台", "description": "想象这个名字挂在你真正想演的场地招牌上。贴合流派、好记、又有一点独特,永远胜过聪明但平庸。", "icon": "RiTeamLine" }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "认领之前",
+      "title": "乐队名可用性检查清单",
+      "description": "本生成器从不宣称某个名字可用,而是把该做的检查直接交到你手里——每个结果卡都能一键直达。",
+      "items": [
+        { "title": "精确网页搜索", "description": "用引号包住名字加上“band”搜索。如果第一页已经属于别人的项目,就换一个——否则你要永远和自己的名字抢搜索结果。", "icon": "RiSearchEyeLine" },
+        { "title": "流媒体平台", "description": "在 Spotify 和 Apple Music 上查这个名字。发行商通常会拒绝与现有艺人主页冲突的名字,所以务必在首发之前解决。", "icon": "RiDiscLine" },
+        { "title": "社交账号", "description": "在 Instagram、TikTok 和 YouTube 上检查账号名。你不必占领每个平台,但受众所在平台的账号应尽量贴近名字本身。", "icon": "RiLinksLine" },
+        { "title": "域名", "description": "能配上 .com 最好,但不是必须——“名字band.com”或“名字official.com”都是常见备选。确定名字的当天就买下域名。", "icon": "RiGlobalLine" },
+        { "title": "商标筛查", "description": "只要不只是玩票,就查一下所在国的商标数据库(美国是 USPTO)。这只是筛查而非法律确认——最终请让商标律师做正式检索。", "icon": "RiShieldCheckLine" },
+        { "title": "放一个星期再定", "description": "和候选名单一起生活一周。等兴奋感退去,某个星期二早上仍然觉得对的名字,才是该认领的那个。", "icon": "RiMoonLine" }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "适用人群",
+      "title": "谁在用乐队名字生成器",
+      "description": "为项目命名的真实音乐人,以及只需要一支存在于纸面上的乐队的创作者。",
+      "items": [
+        { "title": "新乐队与独立音乐人", "description": "改封面比改名便宜。在印第一张海报之前,先探索贴合流派的命名方向,附带简介与视觉方向。", "icon": "RiMicLine" },
+        { "title": "写作者与 GM", "description": "小说、跑团战役或同人文需要一支虚构乐队?每个方向都自带简介和视觉身份,可以直接放进故事里。", "icon": "RiBookOpenLine" },
+        { "title": "内容创作者", "description": "给歌单企划、音乐播客或虚拟偶像项目起名?流派与气质控制能让名字贴合你的场景与调性。", "icon": "RiTeamLine" }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "乐队名字生成器 — 常见问题",
+      "items": [
+        { "title": "生成的乐队名可以用于我真实的乐队吗?", "description": "可以。这些名字是原创建议,你可以免费使用、修改或丢弃。但工具不做商标或平台查重,所以在把名字用于发行和个人主页之前,请先跑一遍可用性检查清单。" },
+        { "title": "无 AI 模式到底做了什么?", "description": "无 AI 模式完全不调用模型,而是用固定的流派词库,按经典乐队名模板即时组合——“形容词+名词”“the+形容词+名词”“名词 & the 集体词”——并标明每个名字背后的模板。它即时、透明,绝不会把词库结果冒充为 AI 创作。" },
+        { "title": "可用性检查清单等于法律确权吗?", "description": "不等于。清单只是把 Google、流媒体、社交平台、域名搜索和商标数据库的入口交给你,方便自己动手查。它是实用筛查而非法律意见——若要真正保护名字,请在投入之前请商标律师做正式的清查检索。" },
+        { "title": "如何生成单词乐队名?", "description": "把“名字长度”设为“单个词”。生成器会只返回单词——真实词汇、复合词,或读起来自然的自造词。单词名最容易传播,但也最难找到空闲,需要格外仔细检查。" },
+        { "title": "可以围绕我自己的关键词命名吗?", "description": "可以。在关键词栏填入一个词、城市、年代或影响——“渡鸦”“底特律车库”“80 年代合成器俱乐部”——生成器会围绕它展开方向。无 AI 模式下,你的关键词会成为模板的锚定词。" },
+        { "title": "它专门适合金属、摇滚、Emo 或嘻哈命名吗?", "description": "适合。流派控制会为每种风格重写命名逻辑:金属得到重量与神话,Emo 得到坦白与怀旧,电子得到机器与质感,嘻哈得到 swagger 与街区。选好流派,惯例随之改变。" },
+        { "title": "第一次生成真的免费吗?", "description": "真的。本页所有生成均免费、无需注册或登录——选好流派、气质和关键词,想生成多少次都可以。" }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今天就为乐队命名",
+      "description": "六个贴合流派的身份方向,附带读音、简介与视觉方向——免费,无需账号。",
+      "buttons": [
+        { "title": "生成乐队名字", "url": "#band_name_generator", "icon": "RiSparkling2Line" },
+        { "title": "浏览更多免费工具", "url": "/ai-tools", "icon": "RiAppsLine" }
+      ]
+    },
+    "related_tools": {
+      "title": "继续你的创作",
+      "description": "把乐队变成一个故事、一组角色,或一整个幻想世界——来自同一工坊的免费工具。",
+      "more_label": "浏览全部 AI 工具"
+    }
+  }
+}

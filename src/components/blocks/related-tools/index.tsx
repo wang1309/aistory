@@ -1,17 +1,16 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { tools as allTools, type Tool } from "@/services/tools";
+import { Link } from "@/i18n/navigation";
 import { type AccentColor } from "@/components/sections/accent";
 import { cn } from "@/lib/utils";
-import {
-  RelatedToolsGrid,
-  type RelatedToolCard,
-} from "./related-tools-grid";
+import { RandomToolsGrid } from "@/components/blocks/related-tools/random-tools-grid";
+import type { ToolCardData } from "@/components/blocks/module-tools/animated-tools-grid";
 
 interface RelatedToolsProps {
   /** Slug of the current page's tool (excluded from results). */
   currentSlug: string;
-  /** Optional hand-picked slugs, shown in the given order when present. */
+  /** Optional hand-picked slugs, seeded at the head of the candidate pool. */
   relatedSlugs?: string[];
   /** Number of related tools to show. Defaults to 4. */
   limit?: number;
@@ -26,43 +25,49 @@ interface RelatedToolsProps {
 }
 
 /**
- * Pick related tools. Prefer an explicit `relatedSlugs` list (curated by the
- * page); otherwise fall back to a category → tab → module scoring rubric so
- * every tool page gets a sensible default set.
+ * Build the candidate pool for related tools: hand-picked slugs first, then
+ * tools ranked by category → tab → module affinity, then the rest by
+ * priority. The caller samples `limit` entries from this pool at random on
+ * the client (see RandomToolsGrid), so every visit can surface a different
+ * mix while never leaving the relevant set.
  */
-function resolveRelated(
+function resolveRelatedPool(
   currentSlug: string,
-  relatedSlugs?: string[],
-  limit = 4
+  relatedSlugs?: string[]
 ): Tool[] {
+  const pool: Tool[] = [];
+  const seen = new Set<string>([currentSlug]);
+
   if (relatedSlugs?.length) {
-    const picked: Tool[] = [];
     for (const slug of relatedSlugs) {
       const tool = allTools.find((t) => t.slug === slug);
-      if (tool && tool.slug !== currentSlug) picked.push(tool);
-      if (picked.length >= limit) break;
+      if (tool && !seen.has(tool.slug)) {
+        pool.push(tool);
+        seen.add(tool.slug);
+      }
     }
-    if (picked.length) return picked;
   }
 
   const current = allTools.find((t) => t.slug === currentSlug);
-  if (!current) return [];
+  const rest =
+    !current
+      ? []
+      : allTools
+          .filter((t) => !seen.has(t.slug))
+          .map((t) => ({
+            tool: t,
+            score:
+              (t.category === current.category ? 3 : 0) +
+              (t.tab && t.tab === current.tab ? 2 : 0) +
+              (t.module === current.module ? 1 : 0),
+          }))
+          .sort(
+            (a, b) =>
+              b.score - a.score || (b.tool.priority ?? 0) - (a.tool.priority ?? 0)
+          )
+          .map((s) => s.tool);
 
-  const scored = allTools
-    .filter((t) => t.slug !== currentSlug)
-    .map((t) => ({
-      tool: t,
-      score:
-        (t.category === current.category ? 3 : 0) +
-        (t.tab && t.tab === current.tab ? 2 : 0) +
-        (t.module === current.module ? 1 : 0),
-    }))
-    .sort(
-      (a, b) =>
-        b.score - a.score || (b.tool.priority ?? 0) - (a.tool.priority ?? 0)
-    );
-
-  return scored.slice(0, limit).map((s) => s.tool);
+  return [...pool, ...rest];
 }
 
 export default async function RelatedTools({
@@ -72,25 +77,28 @@ export default async function RelatedTools({
   title,
   description,
   eyebrow,
-  ctaLabel,
   moreHref,
   moreLabel,
   accent = "orange",
 }: RelatedToolsProps) {
   const t = await getTranslations();
-  const related = resolveRelated(currentSlug, relatedSlugs, limit);
-  if (!related.length) return null;
+  const pool = resolveRelatedPool(currentSlug, relatedSlugs);
+  if (!pool.length) return null;
 
-  const cards: RelatedToolCard[] = related.map((tool) => ({
+  // 与工具目录(module-tools)同一套媒体卡:封面图 + 标题 + 描述。
+  const cards: ToolCardData[] = pool.map((tool) => ({
     slug: tool.slug,
     icon: tool.icon,
     href: tool.href,
     name: t(tool.nameKey),
     description: t(tool.shortDescKey),
+    category: tool.category,
+    accent: tool.accent,
+    image: tool.image,
   }));
 
   return (
-    <section className="relative py-20 sm:py-24">
+    <section className="relative py-20 sm:py-24" data-nosnippet>
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
           {eyebrow && (
@@ -109,11 +117,16 @@ export default async function RelatedTools({
           )}
         </div>
 
-        <RelatedToolsGrid tools={cards} ctaLabel={ctaLabel} accent={accent} />
+        <RandomToolsGrid
+          tools={cards}
+          limit={limit}
+          accent={accent}
+          className="mt-10"
+        />
 
         {moreHref && moreLabel && (
           <div className="mt-8 flex justify-center">
-            <a
+            <Link
               href={moreHref}
               className={cn(
                 "group inline-flex items-center gap-2.5 rounded-full",
@@ -137,7 +150,7 @@ export default async function RelatedTools({
               >
                 <ArrowUpRight className="size-3.5" />
               </span>
-            </a>
+            </Link>
           </div>
         )}
       </div>

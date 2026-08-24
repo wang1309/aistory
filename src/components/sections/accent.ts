@@ -25,6 +25,14 @@ export interface Accent {
   line: string;
   tint: string;
   sectionBg: string;
+  /**
+   * Cover-block gradient for media cards (tool directory covers).
+   */
+  cover: string;
+  /**
+   * Low-opacity tint for the oversized decorative glyph on covers.
+   */
+  coverGlyph: string;
 }
 
 const accents: Record<AccentColor, Accent> = {
@@ -45,6 +53,9 @@ const accents: Record<AccentColor, Accent> = {
     line: "via-orange-500/25",
     tint: "bg-orange-600/[0.04] dark:bg-orange-500/[0.06]",
     sectionBg: "bg-[oklch(0.98_0.01_65)] dark:bg-[oklch(0.15_0.01_65)]",
+    cover:
+      "bg-gradient-to-br from-orange-500/[0.15] via-orange-500/[0.06] to-transparent dark:from-orange-400/[0.12] dark:via-orange-400/[0.05]",
+    coverGlyph: "text-orange-500/[0.14] dark:text-orange-400/[0.11]",
   },
   teal: {
     text: "text-teal-600 dark:text-teal-400",
@@ -63,6 +74,9 @@ const accents: Record<AccentColor, Accent> = {
     line: "via-teal-500/25",
     tint: "bg-teal-600/[0.04] dark:bg-teal-500/[0.06]",
     sectionBg: "bg-[oklch(0.98_0.01_180)] dark:bg-[oklch(0.15_0.01_180)]",
+    cover:
+      "bg-gradient-to-br from-teal-500/[0.15] via-teal-500/[0.06] to-transparent dark:from-teal-400/[0.12] dark:via-teal-400/[0.05]",
+    coverGlyph: "text-teal-500/[0.14] dark:text-teal-400/[0.11]",
   },
   pink: {
     text: "text-pink-600 dark:text-pink-400",
@@ -81,6 +95,9 @@ const accents: Record<AccentColor, Accent> = {
     line: "via-pink-500/25",
     tint: "bg-pink-600/[0.04] dark:bg-pink-500/[0.06]",
     sectionBg: "bg-[oklch(0.98_0.01_345)] dark:bg-[oklch(0.15_0.01_345)]",
+    cover:
+      "bg-gradient-to-br from-pink-500/[0.15] via-pink-500/[0.06] to-transparent dark:from-pink-400/[0.12] dark:via-pink-400/[0.05]",
+    coverGlyph: "text-pink-500/[0.14] dark:text-pink-400/[0.11]",
   },
   blue: {
     text: "text-blue-600 dark:text-blue-400",
@@ -99,6 +116,9 @@ const accents: Record<AccentColor, Accent> = {
     line: "via-blue-500/25",
     tint: "bg-blue-600/[0.04] dark:bg-blue-500/[0.06]",
     sectionBg: "bg-[oklch(0.98_0.01_260)] dark:bg-[oklch(0.15_0.01_260)]",
+    cover:
+      "bg-gradient-to-br from-blue-500/[0.15] via-blue-500/[0.06] to-transparent dark:from-blue-400/[0.12] dark:via-blue-400/[0.05]",
+    coverGlyph: "text-blue-500/[0.14] dark:text-blue-400/[0.11]",
   },
   cyan: {
     text: "text-cyan-600 dark:text-cyan-400",
@@ -117,6 +137,9 @@ const accents: Record<AccentColor, Accent> = {
     line: "via-cyan-500/25",
     tint: "bg-cyan-600/[0.04] dark:bg-cyan-500/[0.06]",
     sectionBg: "bg-[oklch(0.98_0.01_195)] dark:bg-[oklch(0.15_0.01_195)]",
+    cover:
+      "bg-gradient-to-br from-cyan-500/[0.15] via-cyan-500/[0.06] to-transparent dark:from-cyan-400/[0.12] dark:via-cyan-400/[0.05]",
+    coverGlyph: "text-cyan-500/[0.14] dark:text-cyan-400/[0.11]",
   },
   violet: {
     text: "text-violet-600 dark:text-violet-400",
@@ -135,6 +158,9 @@ const accents: Record<AccentColor, Accent> = {
     line: "via-violet-500/25",
     tint: "bg-violet-600/[0.04] dark:bg-violet-500/[0.06]",
     sectionBg: "bg-[oklch(0.98_0.01_290)] dark:bg-[oklch(0.15_0.01_290)]",
+    cover:
+      "bg-gradient-to-br from-violet-500/[0.15] via-violet-500/[0.06] to-transparent dark:from-violet-400/[0.12] dark:via-violet-400/[0.05]",
+    coverGlyph: "text-violet-500/[0.14] dark:text-violet-400/[0.11]",
   },
   emerald: {
     text: "text-emerald-600 dark:text-emerald-400",
@@ -153,6 +179,9 @@ const accents: Record<AccentColor, Accent> = {
     line: "via-emerald-500/25",
     tint: "bg-emerald-600/[0.04] dark:bg-emerald-500/[0.06]",
     sectionBg: "bg-[oklch(0.98_0.01_160)] dark:bg-[oklch(0.15_0.01_160)]",
+    cover:
+      "bg-gradient-to-br from-emerald-500/[0.15] via-emerald-500/[0.06] to-transparent dark:from-emerald-400/[0.12] dark:via-emerald-400/[0.05]",
+    coverGlyph: "text-emerald-500/[0.14] dark:text-emerald-400/[0.11]",
   },
   indigo: {
     text: "text-indigo-600 dark:text-indigo-400",
@@ -171,6 +200,9 @@ const accents: Record<AccentColor, Accent> = {
     line: "via-indigo-500/25",
     tint: "bg-indigo-600/[0.04] dark:bg-indigo-500/[0.06]",
     sectionBg: "bg-[oklch(0.98_0.01_270)] dark:bg-[oklch(0.15_0.01_270)]",
+    cover:
+      "bg-gradient-to-br from-indigo-500/[0.15] via-indigo-500/[0.06] to-transparent dark:from-indigo-400/[0.12] dark:via-indigo-400/[0.05]",
+    coverGlyph: "text-indigo-500/[0.14] dark:text-indigo-400/[0.11]",
   },
   rose: {
     text: "text-rose-600 dark:text-rose-400",
@@ -189,6 +221,9 @@ const accents: Record<AccentColor, Accent> = {
     line: "via-rose-500/25",
     tint: "bg-rose-600/[0.04] dark:bg-rose-500/[0.06]",
     sectionBg: "bg-[oklch(0.98_0.01_355)] dark:bg-[oklch(0.15_0.01_355)]",
+    cover:
+      "bg-gradient-to-br from-rose-500/[0.15] via-rose-500/[0.06] to-transparent dark:from-rose-400/[0.12] dark:via-rose-400/[0.05]",
+    coverGlyph: "text-rose-500/[0.14] dark:text-rose-400/[0.11]",
   },
   amber: {
     text: "text-amber-600 dark:text-amber-400",
@@ -207,6 +242,9 @@ const accents: Record<AccentColor, Accent> = {
     line: "via-amber-500/25",
     tint: "bg-amber-600/[0.04] dark:bg-amber-500/[0.06]",
     sectionBg: "bg-[oklch(0.98_0.01_80)] dark:bg-[oklch(0.15_0.01_80)]",
+    cover:
+      "bg-gradient-to-br from-amber-500/[0.15] via-amber-500/[0.06] to-transparent dark:from-amber-400/[0.12] dark:via-amber-400/[0.05]",
+    coverGlyph: "text-amber-500/[0.14] dark:text-amber-400/[0.11]",
   },
 };
 

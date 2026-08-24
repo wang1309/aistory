@@ -1,0 +1,182 @@
+{
+  "pen_name_generator": {
+    "metadata": {
+      "title": "Pen Name Generator — Free AI Author Pen Name Ideas",
+      "description": "Free AI pen name generator. Get 10 genre-aware author pen name ideas with pronunciation and reasons. Control genre, tone, and target market. No sign-up.",
+      "keywords": "pen name generator, author pen names, pseudonym generator, nom de plume, pen name ideas, writer pen names, pen name maker, fantasy author pen name, romance pen name"
+    },
+    "ui": {
+      "title": "Pen Name Generator",
+      "title_highlight": "Pen Name",
+      "subtitle": "This pen name generator shapes ten candidates for your genre, brand goals, and target market — each with pronunciation and a reason it works as a byline.",
+      "theme_pills": ["10 candidates", "Genre-aware", "Privacy-first prompts", "Screening checklist"],
+      "eyebrow": "AI Author Name Tool",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Pen Name Generator",
+      "form_title": "Shape your pen names",
+      "genre_label": "Genre",
+      "genre_options": [
+        { "value": "romance", "label": "Romance" },
+        { "value": "thriller_mystery", "label": "Thriller & Mystery" },
+        { "value": "fantasy", "label": "Fantasy" },
+        { "value": "science_fiction", "label": "Science Fiction" },
+        { "value": "literary", "label": "Literary Fiction" },
+        { "value": "non_fiction", "label": "Non-Fiction" },
+        { "value": "general", "label": "General / All genres" }
+      ],
+      "brand_goal_label": "Brand goal",
+      "brand_goal_options": [
+        { "value": "single_brand", "label": "One brand for everything" },
+        { "value": "separate_genres", "label": "Separate names per genre" },
+        { "value": "privacy_first", "label": "Keep my identity private" },
+        { "value": "initials_led", "label": "Initials-led byline" }
+      ],
+      "tone_label": "Tone",
+      "tone_options": [
+        { "value": "classic", "label": "Classic" },
+        { "value": "warm", "label": "Warm" },
+        { "value": "bold", "label": "Bold" },
+        { "value": "mysterious", "label": "Mysterious" },
+        { "value": "modern", "label": "Modern" },
+        { "value": "scholarly", "label": "Scholarly" }
+      ],
+      "name_form_label": "Name form",
+      "name_form_options": [
+        { "value": "full_name", "label": "Full name" },
+        { "value": "first_initial", "label": "First initial + middle" },
+        { "value": "initials_surname", "label": "Initials + surname" },
+        { "value": "single_name", "label": "Single name" }
+      ],
+      "target_market_label": "Target market",
+      "target_market_options": [
+        { "value": "en", "label": "English-speaking market" },
+        { "value": "zh", "label": "Chinese-speaking market" },
+        { "value": "de", "label": "German-speaking market" },
+        { "value": "ko", "label": "Korean-speaking market" },
+        { "value": "ja", "label": "Japanese-speaking market" },
+        { "value": "ru", "label": "Russian-speaking market" }
+      ],
+      "cue_label": "Any special request? (optional)",
+      "cue_placeholder": "e.g. soft S sounds, a surname that fits on a book spine, something that nods to my grandmother's maiden name",
+      "inspiration_hint": "Generating names with a similar feel to:",
+      "mode_label": "AI model",
+      "mode_options": [{"value": "fast", "label": "Fast"}, {"value": "standard", "label": "Standard"}, {"value": "creative", "label": "Creative"}],
+      "sign_in_button": "Sign in to continue",
+      "generate_button": "Generate Pen Names",
+      "generating_button": "Drafting bylines...",
+      "reroll_button": "Generate 10 more",
+      "output_title": "Your pen name candidates",
+      "empty_output": "Set your genre and brand goal, then generate to see ten pen name candidates with pronunciation and reasons here.",
+      "result_label": "Candidate",
+      "pronunciation_label": "Pronunciation",
+      "reason_label": "Why it works",
+      "copy_button": "Copy name",
+      "favorite_button": "Add to favorites",
+      "favorited_button": "Remove from favorites",
+      "similar_button": "More like this",
+      "favorites_title": "Favorites in this session",
+      "loading_status": "Generating pen names, please wait."
+    },
+    "validation": {
+      "cue_too_long": "Special request must be 120 characters or fewer.",
+      "inspiration_too_long": "Inspiration name must be 100 characters or fewer.",
+      "generic_error": "We couldn't generate pen names right now. Please try again.",
+      "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits."
+    },
+    "success": {
+      "copied": "Name copied to clipboard.",
+      "generated": "Ten pen names generated.",
+      "favorited": "Added to favorites.",
+      "unfavorited": "Removed from favorites."
+    },
+    "errors": {
+      "generate_failed": "Unable to generate pen names. Please try again.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "screening": {
+      "title": "Screen before publishing",
+      "disclaimer": "These are creative suggestions, not cleared names. The tool does not guarantee availability — work through the checklist before you commit to any candidate.",
+      "open_button": "Show the 5-step screening checklist",
+      "close_button": "Hide the checklist",
+      "items": [
+        { "title": "Search the exact name", "description": "Search the full pen name in a search engine with quotes around it. If a well-known author or brand already owns it, cross the candidate off." },
+        { "title": "Check author databases and retailers", "description": "Look the name up on book retailer author pages and library catalogs. You are checking for existing authors publishing under it, not just exact duplicates." },
+        { "title": "Check domains and social handles", "description": "See whether a matching website domain and the social handles you would want are already taken by someone active in your niche." },
+        { "title": "Search the relevant trademark databases", "description": "Search trademark registries that apply to your market — for example USPTO or EUIPO, plus your local registry — for the name in publishing-related classes." },
+        { "title": "Review contracts, tax, and professional advice", "description": "Before signing anything, read how your publisher handles pen names and get advice on taxes, banking, and any professional rules that apply to writing under a pseudonym." }
+      ]
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What This Pen Name Generator Is Good At",
+      "description": "Built for authors who need a byline that fits their shelf — invented fresh for your genre and goals, never recycled from a list.",
+      "items": [
+        { "title": "Genre-aware candidates", "description": "A romance byline and a hard sci-fi byline should not sound alike. The genre control shapes rhythm, initials, and surname style for the shelf you write for.", "icon": "RiBookOpenLine" },
+        { "title": "Pronunciation for every name", "description": "Each candidate ships with a simple syllable guide, so you can say it at signings, interviews, and podcasts before you commit.", "icon": "RiMicLine" },
+        { "title": "Reasons, not just names", "description": "Every candidate explains why it works as a byline — what it signals to readers, retailers, and reviewers in your genre.", "icon": "RiLightbulbLine" }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the Pen Name Generator in 3 Steps",
+      "description": "The pen name generator takes you from blank page to a shortlist of usable bylines in under a minute.",
+      "items": [
+        { "title": "Set genre, goals, and market", "description": "Pick the genre you write in, what the name is for — one brand, genre separation, or privacy — and the market your readers buy in.", "icon": "RiQuillPenLine" },
+        { "title": "Generate and compare ten candidates", "description": "Read the pronunciation and reason on each card, favorite the ones that click, and add a cue like a sound you love for sharper results.", "icon": "RiSparkling2Line" },
+        { "title": "Screen your favorite before publishing", "description": "Run your shortlist through the five-step screening checklist, then copy the winner into your manuscript and accounts.", "icon": "RiShieldCheckLine" }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why the Right Pen Name Matters",
+      "description": "A pen name is a publishing decision, not just a label. The right one works everywhere your books live.",
+      "items": [
+        { "title": "One byline, one brand", "description": "Readers follow names they recognize. A coherent byline builds series loyalty, mailing-list trust, and shelf presence across books.", "icon": "RiPriceTag3Line" },
+        { "title": "Room for genre switches", "description": "Writing cozy romance and gritty thrillers? Separate pen names keep both audiences from bouncing off covers that promise the wrong genre.", "icon": "RiBookMarkedLine" },
+        { "title": "Distance by design", "description": "A chosen byline keeps your legal name off covers, catalogs, and search results — one layer of separation you control as a public author.", "icon": "RiLock2Line" }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Who Uses the Pen Name Generator",
+      "description": "Writers who need a professional byline without a naming committee.",
+      "items": [
+        { "title": "Debut novelists", "description": "Test-drive bylines that read well on a cover, a spine, and a review before your first book goes out under it.", "icon": "RiRocketLine" },
+        { "title": "Multi-genre indies", "description": "Spin up a distinct, genre-appropriate byline for each pen-name line you publish, then keep them separate in retailer metadata.", "icon": "RiStackLine" },
+        { "title": "Privacy-conscious professionals", "description": "Teachers, lawyers, and civil servants who write fiction keep their day identity off the byline while staying pronounceable at events.", "icon": "RiUserSharedLine" }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Pen Name Generator — FAQ",
+      "items": [
+        { "title": "Why do authors use pen names?", "description": "Authors write under pen names to keep one brand per genre, to separate public and private life, to avoid a name collision with an existing author, or simply because a chosen byline reads better on a cover than a legal name." },
+        { "title": "Does the tool check whether a pen name is free to use?", "description": "No. The generator does not guarantee availability and does not check registries, retailers, domains, or trademarks. Treat every candidate as a creative suggestion and screen it with the five-step checklist before you publish under it." },
+        { "title": "Will a pen name keep me anonymous?", "description": "A pen name does not automatically make you anonymous. Contracts, copyright filings, taxes, and metadata can still connect a byline to your legal identity. If anonymity matters, get professional advice on how pseudonyms are handled in your publishing contracts and jurisdiction." },
+        { "title": "Can I use different pen names for different genres?", "description": "Yes — that is what the 'Separate names per genre' brand goal is for. Many authors run one byline per genre so readers always know what a cover promises. Keep each line consistent in retailer metadata and on your covers." },
+        { "title": "How do I screen a candidate before committing?", "description": "Search the exact name in quotes, check author pages on retailers, look at domain and social handles, search the trademark registries for your market, and read the pen-name clauses in your publishing contract. The five-step checklist on this page walks you through it." },
+        { "title": "Why doesn't the tool suggest names based on gender or ethnicity?", "description": "Bylines are judged as bylines. The generator never claims or implies anything about the gender, ethnicity, nationality, religion, or cultural identity behind a name — it suggests names purely by how they read in your genre and market." },
+        { "title": "Can I trademark or register a generated pen name?", "description": "Sometimes, but the tool makes no claim about it. Registration depends on your jurisdiction, the classes you file in, and existing marks. Screen candidates in the relevant trademark databases and consult a professional before filing anything." }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Find Your Byline Today",
+      "description": "Ten genre-aware pen name candidates from the free pen name generator — pronunciation and reasons included, no account needed.",
+      "buttons": [
+        { "title": "Generate Pen Names", "url": "#pen_name_generator", "icon": "RiSparkling2Line" },
+        { "title": "Back to AI Tools", "url": "/ai-tools", "icon": "RiAppsLine" }
+      ]
+    },
+    "related_tools": {
+      "title": "Keep Building Your Author Kit",
+      "description": "Pair your pen name with a book title, an outline, or a fantasy story to write under it.",
+      "more_label": "Browse all AI tools"
+    }
+  }
+}

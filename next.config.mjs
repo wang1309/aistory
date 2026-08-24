@@ -24,7 +24,30 @@ const nextConfig = {
     ],
   },
   async redirects() {
-    return [];
+    // ai-tools module tools live under /ai-tools/<slug>. Keep old root-level
+    // URLs (and their locale variants) working with permanent redirects.
+    const toolSlugs = [
+      "emoji-translator",
+      "elf-name-generator",
+      "pen-name-generator",
+      "gang-name-generator",
+      "band-name-generator",
+      "random-nfl-team-generator",
+      "middle-name-generator",
+    ];
+    const prefixedLocales = ["zh", "de", "ja", "ko", "ru"];
+    return toolSlugs.flatMap((slug) => [
+      {
+        source: `/${slug}`,
+        destination: `/ai-tools/${slug}`,
+        permanent: true,
+      },
+      ...prefixedLocales.map((locale) => ({
+        source: `/${locale}/${slug}`,
+        destination: `/${locale}/ai-tools/${slug}`,
+        permanent: true,
+      })),
+    ]);
   },
 };
 

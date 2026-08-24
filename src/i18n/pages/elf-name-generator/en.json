@@ -1,0 +1,238 @@
+{
+  "elf_name_generator": {
+    "metadata": {
+      "title": "Elf Name Generator for Characters, Clans & Fantasy Worlds",
+      "description": "Free AI elf name generator. 10 elf names with pronunciation, meaning, and context-aware reasons. Control heritage, style & role for RPGs, novels & NPCs.",
+      "keywords": "elf name generator, elf names, fantasy elf names, elf name ideas, dnd elf names, female elf names, male elf names, elven name generator, elf clan names, npc elf names"
+    },
+    "ui": {
+      "title": "Elf Name Generator",
+      "title_highlight": "Elf Name",
+      "subtitle": "Create ten original elf names in one click. Each candidate arrives with pronunciation, a creative meaning, and a reason it fits your character, clan, or NPC set.",
+      "theme_pills": ["10 candidates", "Heritage & style control", "Pronunciation guide", "Clan & NPC mode"],
+      "eyebrow": "AI Fantasy Name Tool",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Elf Name Generator",
+      "form_title": "Design your elf names",
+      "heritage_label": "Heritage",
+      "heritage_options": [
+        { "value": "moonlit_court", "label": "Moonlit Court" },
+        { "value": "ancient_woodland", "label": "Ancient Woodland" },
+        { "value": "shadowborne", "label": "Shadowborne" },
+        { "value": "sunlit_scholar", "label": "Sunlit Scholar" },
+        { "value": "custom", "label": "Custom culture" }
+      ],
+      "custom_heritage_label": "Describe your culture",
+      "custom_heritage_placeholder": "e.g. a nomadic tundra lineage that follows the aurora and names children after ice formations",
+      "custom_heritage_helper": "Describe your own elf culture in a sentence or two. The generator invents naming conventions that fit it.",
+      "style_label": "Name style",
+      "style_options": [
+        { "value": "graceful", "label": "Graceful" },
+        { "value": "ancient", "label": "Ancient" },
+        { "value": "fierce", "label": "Fierce" },
+        { "value": "mysterious", "label": "Mysterious" },
+        { "value": "playful", "label": "Playful" }
+      ],
+      "name_use_label": "What are the names for?",
+      "name_use_options": [
+        { "value": "character", "label": "One character" },
+        { "value": "family_clan", "label": "A family or clan" },
+        { "value": "npc_set", "label": "A set of NPCs" }
+      ],
+      "name_form_label": "Name form",
+      "name_form_options": [
+        { "value": "feminine", "label": "Feminine" },
+        { "value": "masculine", "label": "Masculine" },
+        { "value": "neutral", "label": "Neutral" },
+        { "value": "mixed", "label": "Mixed" }
+      ],
+      "role_label": "Role or story context (optional)",
+      "role_placeholder": "e.g. an exiled ranger protecting a forgotten forest, a court archivist hiding a secret, a duel-happy blade dancer",
+      "inspiration_hint": "Generating names with a similar feel to:",
+      "mode_label": "AI model",
+      "mode_options": [{"value": "fast", "label": "Fast"}, {"value": "standard", "label": "Standard"}, {"value": "creative", "label": "Creative"}],
+      "sign_in_button": "Sign in to continue",
+      "generate_button": "Generate Elf Names",
+      "generating_button": "Summoning names...",
+      "reroll_button": "Generate 10 more",
+      "output_title": "Your elf names",
+      "empty_output": "Choose a heritage and style, then generate to see ten elf names with pronunciation, meaning, and reasons here.",
+      "result_label": "Name",
+      "pronunciation_label": "Pronunciation",
+      "meaning_label": "Meaning",
+      "reason_label": "Why it fits",
+      "copy_button": "Copy name",
+      "favorite_button": "Add to favorites",
+      "favorited_button": "Remove from favorites",
+      "similar_button": "More like this",
+      "favorites_title": "Favorites in this session"
+    },
+    "validation": {
+      "custom_heritage_required": "Describe your custom culture first.",
+      "role_too_long": "Role background must be 400 characters or fewer.",
+      "custom_heritage_too_long": "Custom culture must be 160 characters or fewer.",
+      "inspiration_too_long": "Inspiration name must be 100 characters or fewer.",
+      "generic_error": "We couldn't generate elf names right now. Please try again.",
+      "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits."
+    },
+    "success": {
+      "copied": "Name copied to clipboard.",
+      "generated": "Ten elf names generated.",
+      "favorited": "Added to favorites.",
+      "unfavorited": "Removed from favorites."
+    },
+    "errors": {
+      "generate_failed": "Unable to generate elf names. Please try again.",
+      "verification_failed": "Verification failed. Try again."
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Overview",
+      "title": "What This Elf Name Generator Is Good At",
+      "description": "Built for tabletop campaigns, novels, and worldbuilding. Every name is invented fresh for your setting instead of recycled from a list.",
+      "items": [
+        {
+          "title": "Original names, every time",
+          "description": "Each of the ten candidates is invented for your heritage, style, and context. No recycled lists, no slight edits of famous names from fantasy franchises.",
+          "icon": "RiLeafLine"
+        },
+        {
+          "title": "Pronunciation and meaning",
+          "description": "Every name ships with a pronunciation guide and a creative meaning, so you can say it out loud and know what it suggests before you commit.",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "Context-aware reasons",
+          "description": "Describe your character's role and the generator explains why each name suits them — a ranger reads differently from a court archivist.",
+          "icon": "RiUser3Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "HOW TO USE",
+      "title": "How to Use the Elf Name Generator in 3 Steps",
+      "description": "From blank page to ten usable elf names in under a minute.",
+      "items": [
+        {
+          "title": "Pick a heritage and style",
+          "description": "Choose one of four ready-made elf cultures or describe your own, then set the sound of the names from graceful to fierce.",
+          "icon": "RiLeafLine"
+        },
+        {
+          "title": "Add character context",
+          "description": "Tell the generator what the names are for — one character, a family clan, or a set of NPCs — and add a role for sharper fits.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Copy, favorite, or go deeper",
+          "description": "Copy any name, keep favorites for the session, or hit 'More like this' to explore variations around a name you love.",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Benefits",
+      "title": "Why a Good Elf Name Matters",
+      "description": "Names carry culture. The right one makes an elf feel like they grew up somewhere.",
+      "items": [
+        {
+          "title": "Heritage shapes the sound",
+          "description": "A moonlit court elf and an ancient woodland elf should not sound alike. The heritage control changes syllables, rhythm, and atmosphere.",
+          "icon": "RiMoonLine"
+        },
+        {
+          "title": "Meanings you can build on",
+          "description": "Each meaning is a creative interpretation — a starting hook for lore you can grow into backstory, plot, and dialogue.",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "Consistent naming for groups",
+          "description": "Clan mode keeps a family of names related in shape, while NPC mode keeps a crowd distinct so players never mix them up.",
+          "icon": "RiTeamLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Use Cases",
+      "title": "Who Uses the Elf Name Generator",
+      "description": "Writers and game masters who need elf names that hold up in front of an audience.",
+      "items": [
+        {
+          "title": "TTRPG players and DMs",
+          "description": "Name a player character instantly, or stock an entire elven settlement with distinct NPCs before the session starts.",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "Fantasy novelists",
+          "description": "Keep a consistent naming culture across chapters, with pronunciations you can actually read aloud at events.",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "Worldbuilders and game designers",
+          "description": "Draft naming conventions for original elf cultures without borrowing from settings you don't own.",
+          "icon": "RiSwordLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Elf Name Generator — FAQ",
+      "items": [
+        {
+          "title": "Are the elf names original?",
+          "description": "Yes. Every name is invented on the spot for your heritage, style, and context. The generator does not copy or slightly modify names from any recognizable fantasy franchise, author, or constructed language."
+        },
+        {
+          "title": "What do the meanings mean?",
+          "description": "Meanings are creative interpretations invented for your world, not verified translations of any official language. Treat them as lore hooks you can keep, edit, or expand."
+        },
+        {
+          "title": "Can I use the names for RPG characters?",
+          "description": "Yes. The names are built for tabletop characters, player characters, NPCs, and player-facing campaigns. Copy any name straight into your character sheet, or favorite several and compare them."
+        },
+        {
+          "title": "How do heritage and style change the results?",
+          "description": "Heritage sets the culture the names come from — a moonlit court, an ancient woodland, a shadow lineage, a scholarly society, or a culture you describe yourself. Style controls the sound, from graceful and melodic to fierce and sharp."
+        },
+        {
+          "title": "Why does every name include pronunciation?",
+          "description": "A name you can't say out loud gets avoided at the table. Each candidate includes a simple syllable guide so players and readers can pronounce it confidently."
+        },
+        {
+          "title": "How do clan and NPC modes work?",
+          "description": "Clan mode generates ten names that read as one related lineage, useful for families and houses. NPC mode generates ten clearly distinct names, useful for populating a settlement where every name should stand apart."
+        },
+        {
+          "title": "Why doesn't it copy names from famous fantasy settings?",
+          "description": "Using names from published franchises raises legal questions and makes your world feel borrowed. Original names keep your setting yours — and 'More like this' explores the sound you love without imitating anyone."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Name Your Elves Tonight",
+      "description": "Ten original elf names with pronunciation, meaning, and reasons — free, no account needed.",
+      "buttons": [
+        {
+          "title": "Generate Elf Names",
+          "url": "#elf_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "Back to AI Tools",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Keep Building Your World",
+      "description": "Pair your elf names with a backstory, a fantasy story, or another name tool.",
+      "more_label": "Browse all AI tools"
+    }
+  }
+}

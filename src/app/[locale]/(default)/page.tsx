@@ -82,7 +82,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations();
+  // force-static 下 metadata pass 的无参调用回落 defaultLocale,须显式传 locale
+  const t = await getTranslations({ locale });
 
   const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org";
   const canonicalUrl = locale === "en" ? webUrl : `${webUrl}/${locale}`;
@@ -127,7 +128,7 @@ export default async function LandingPage({
   setRequestLocale(locale);
 
   const page = await getLandingPage(locale);
-  const t = await getTranslations();
+  const t = await getTranslations({ locale });
 
   const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org";
   const currentUrl = locale === "en" ? webUrl : `${webUrl}/${locale}`;
@@ -165,6 +166,7 @@ export default async function LandingPage({
           title={t("ai_tools.section_title_home")}
           description={t("ai_tools.section_description_home")}
           accent="orange"
+          locale={locale}
         />
       </Suspense>
 

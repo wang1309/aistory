@@ -1,0 +1,373 @@
+{
+  "middle_name_generator": {
+    "metadata": {
+      "title": "Zweitname-Generator für Figuren & Pseudonyme | AI Story",
+      "description": "Finde Zweitnamen, die eine fiktive Figur oder ein Pseudonym vervollständigen. Passe Vor- und Nachname nach Setting, Ton, Klang und Rolle in der Geschichte ab.",
+      "keywords": "zweitname generator, zweitname ideen, middle name generator, zweitname für figuren, charakter zweitname, pseudonym zweitname, vollständiger name generator"
+    },
+    "ui": {
+      "title": "Zweitname-Generator",
+      "title_highlight": "Zweitname",
+      "subtitle": "Vervollständige einen Namen, der bereits Anfang und Ende hat. Generiere Zweitname-Richtungen, die zu Figur, Setting und Klang des Gesamtnamens passen.",
+      "theme_pills": [
+        "3 Gesamtnamens-Richtungen",
+        "Vor- & Nachname bleiben",
+        "Initialen-Check",
+        "Keine Anmeldung"
+      ],
+      "eyebrow": "KI-Werkzeug für Gesamtnamen",
+      "breadcrumb_home": "Start",
+      "breadcrumb_current": "Zweitname-Generator",
+      "form_title": "Den Gesamtnamen formen",
+      "mode_label": "KI-Modell",
+      "mode_options": [
+        {
+          "value": "fast",
+          "label": "Schnell"
+        },
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "creative",
+          "label": "Kreativ"
+        }
+      ],
+      "use_case_label": "Dieser Zweitname ist für",
+      "use_case_options": [
+        {
+          "value": "fictional_character",
+          "label": "Eine fiktive Figur"
+        },
+        {
+          "value": "pen_name",
+          "label": "Pseudonym / Autorenname"
+        }
+      ],
+      "first_name_label": "Vorname (optional)",
+      "first_name_placeholder": "z. B. Elena",
+      "last_name_label": "Nachname (optional)",
+      "last_name_placeholder": "z. B. Hart",
+      "setting_label": "Genre / Setting",
+      "setting_options": [
+        {
+          "value": "contemporary",
+          "label": "Gegenwart"
+        },
+        {
+          "value": "mystery_thriller",
+          "label": "Krimi & Thriller"
+        },
+        {
+          "value": "romance",
+          "label": "Liebesroman"
+        },
+        {
+          "value": "fantasy",
+          "label": "Fantasy"
+        },
+        {
+          "value": "historical",
+          "label": "Historisch"
+        },
+        {
+          "value": "science_fiction",
+          "label": "Science Fiction"
+        },
+        {
+          "value": "literary",
+          "label": "Literarisch"
+        }
+      ],
+      "era_label": "Epoche",
+      "era_options": [
+        {
+          "value": "any",
+          "label": "Keine Präferenz"
+        },
+        {
+          "value": "contemporary",
+          "label": "Gegenwart (2020er)"
+        },
+        {
+          "value": "mid_20th",
+          "label": "Mitte 20. Jahrhundert"
+        },
+        {
+          "value": "early_20th",
+          "label": "Frühes 20. Jahrhundert"
+        },
+        {
+          "value": "victorian",
+          "label": "Viktorianisch / 19. Jahrhundert"
+        },
+        {
+          "value": "timeless",
+          "label": "Zeitlos"
+        }
+      ],
+      "tone_label": "Ton / Familiensignal",
+      "tone_options": [
+        {
+          "value": "restrained",
+          "label": "Zurückhaltend"
+        },
+        {
+          "value": "formal",
+          "label": "Formell"
+        },
+        {
+          "value": "old_money",
+          "label": "Altes Geld"
+        },
+        {
+          "value": "rebellious",
+          "label": "Rebellisch"
+        },
+        {
+          "value": "inherited",
+          "label": "Ererbt / Familienname"
+        },
+        {
+          "value": "warm",
+          "label": "Warm"
+        },
+        {
+          "value": "mysterious",
+          "label": "Geheimnisvoll"
+        }
+      ],
+      "cadence_label": "Länge des Zweitnamens",
+      "cadence_options": [
+        {
+          "value": "any",
+          "label": "Beliebige Länge"
+        },
+        {
+          "value": "short",
+          "label": "Kurz (1–2 Silben)"
+        },
+        {
+          "value": "long",
+          "label": "Lang (3+ Silben)"
+        }
+      ],
+      "avoid_initials_label": "Zu vermeidende Initialen (optional)",
+      "avoid_initials_placeholder": "z. B. A, S, S",
+      "note_label": "Familiennotiz oder Stichwort (optional)",
+      "note_placeholder": "z. B. eine Großmutter namens Rose ehren, eine komplizierte Familiengeschichte andeuten ohne Melodrama",
+      "privacy_hint": "Deine Vor- und Nachnamen werden nur für diese Anfrage verwendet — nie gespeichert, protokolliert oder an Analytics gesendet.",
+      "generate_button": "Zweitnamen finden",
+      "generating_button": "Zweitnamen werden angepasst...",
+      "sign_in_button": "Zum Fortfahren anmelden",
+      "reroll_button": "3 neue Richtungen versuchen",
+      "output_title": "Gesamtnamens-Richtungen für deine Figur",
+      "empty_output": "Gib den Vor- und Nachnamen ein, den du schon hast, und generiere drei vollständige Gesamtnamens-Richtungen.",
+      "direction_label": "Richtung",
+      "middle_name_label": "Zweitname",
+      "initials_label": "Initialen",
+      "initials_warning": "Verwendet eine vermiedene Initiale",
+      "cadence_note_label": "Klang beim Sprechen",
+      "implication_label": "Geschichtssignal",
+      "copy_button": "Gesamtnamen kopieren",
+      "favorite_button": "Zu Favoriten",
+      "favorited_button": "Aus Favoriten entfernen",
+      "continue_button": "Mit dieser Figur weiter",
+      "favorites_title": "Favoriten dieser Sitzung",
+      "loading_status": "Zweitname-Richtungen werden generiert, bitte warten."
+    },
+    "validation": {
+      "name_too_long": "Namen dürfen höchstens 60 Zeichen lang sein.",
+      "avoid_initials_too_long": "Zu vermeidende Initialen: höchstens 12 Zeichen.",
+      "note_too_long": "Notiz: höchstens 160 Zeichen.",
+      "creative_limit_reached": "Die kostenlosen Creative-Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten.",
+      "generic_error": "Zweitnamen konnten gerade nicht generiert werden. Bitte erneut versuchen."
+    },
+    "success": {
+      "copied": "Gesamter Name in die Zwischenablage kopiert.",
+      "generated": "Drei Gesamtnamens-Richtungen generiert.",
+      "favorited": "Zu Favoriten hinzugefügt.",
+      "unfavorited": "Aus Favoriten entfernt.",
+      "continue_copied": "Name kopiert — füge ihn im OC-Builder als Figurennamen ein."
+    },
+    "errors": {
+      "generate_failed": "Zweitnamen konnten nicht generiert werden. Bitte erneut versuchen.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "continuation": {
+      "title": "Mit diesem Namen weiter",
+      "description": "Ein fertiger Name ist der Anfang einer Figur, nicht das Ende. Nimm ihn in den Rest deines Workflows.",
+      "dialogue_label": "Dialog schreiben",
+      "dialogue_hint": "Öffne das Dialog-Studio und gib diesem Namen seine ersten Zeilen",
+      "backstory_label": "Backstory schreiben",
+      "backstory_hint": "Die Familiengeschichte erzählen, die der Zweitname andeutet",
+      "prompt_label": "Story-Prompt holen",
+      "prompt_hint": "Den Gesamtnamen in einen Szenenstarter setzen"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "Überblick",
+      "title": "Ein Zweitname-Generator, der den ganzen Namen beurteilt",
+      "description": "Ein Zweitname wird nie isoliert gewählt. Dieses Werkzeug fügt ihn in die komplette Kette ein — Vor-, Zweit-, Nachname — so wie Leser und Signierstunden ihn treffen werden.",
+      "items": [
+        {
+          "title": "Fit des Gesamtnamens, keine Liste",
+          "description": "Behalte den Vor- und Nachnamen, dem du schon vertraust. Jede Richtung zeigt den vollständigen Namen, damit du den Fit beurteilst, der tatsächlich gedruckt wird.",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "Klang, den man hören kann",
+          "description": "Zu jeder Richtung gibt es eine kurze, vorsichtige Notiz zum gesprochenen Klang — ein kurzer Zweitname gibt dem Nachnamen mehr Gewicht, ein langer einen feierlichen Schritt.",
+          "icon": "RiMicLine"
+        },
+        {
+          "title": "Ein Geschichtssignal, keine Deko",
+          "description": "Der Zweitname sollte dem Leser etwas sagen — ererbt, rebellisch, zeremoniell. Jede Richtung erklärt, was er in Geschichte oder Autorennamen signalisiert.",
+          "icon": "RiLightbulbLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "SO GEHT'S",
+      "title": "Den Zweitname-Generator in 3 Schritten nutzen",
+      "description": "Vom halbfertigen Namen zu drei vollständigen Richtungen in unter einer Minute.",
+      "items": [
+        {
+          "title": "Eingeben, was schon da ist",
+          "description": "Vor- und Nachname eingeben (beide optional), Setting, Epoche und den Ton wählen, den der Zweitname tragen soll — zurückhaltend, ererbt, rebellisch und mehr.",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "Drei Richtungen vergleichen",
+          "description": "Lies jeden Gesamtnamen laut mit seiner Klangnotiz und seinem Geschichtssignal. Initialen prüfen, Favoriten merken, neu generieren.",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "Mit der Figur weiter",
+          "description": "Den siegreichen Gesamtnamen kopieren — oder direkt in den OC-Builder, eine Backstory oder einen Story-Prompt übernehmen und weiterschreiben.",
+          "icon": "RiUser3Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "Vorteile",
+      "title": "Warum der Zweitname in Fiktion zählt",
+      "description": "Der Zweitname ist der Ort, an dem Rhythmus, Initialen und Familiengeschichte zusammentreffen — und wo bequemes Benennen zuerst auffällt.",
+      "items": [
+        {
+          "title": "Rhythmus, den man hört",
+          "description": "Drei Namen in Folge haben einen Takt. Der richtige Zweitname steuert das Tempo — knackig und professionell oder fließend und zeremoniell — bevor ein Leser weiß, warum.",
+          "icon": "RiMusic2Line"
+        },
+        {
+          "title": "Initialen ohne Backfire",
+          "description": "Elena V. Hart und Elena S. Hart sind auf einer monogrammierten Aktentasche verschiedene Figuren. Die Initialen-Vorschau zeigt das Akronym des Gesamtnamens.",
+          "icon": "RiText"
+        },
+        {
+          "title": "Eine Familienschicht ohne Exposition",
+          "description": "Ein ererbter Zweitname impliziert Großeltern, Testamente und Erwartungen in einer einzigen Dialogzeile — Hintergrund, den du nie erzählen musst.",
+          "icon": "RiHistoryLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "Anwendungen",
+      "title": "Sechs Stile, ein Bedienpult",
+      "description": "Jeder Stil unten entspricht einer Einstellung im Generator — einstellen und vergleichen.",
+      "items": [
+        {
+          "title": "Moderne Protagonisten",
+          "description": "Gegenwärtiges Setting, zurückhaltender Ton: Zweitnamen, die klingen wie im letzten Jahrzehnt gewählt, nicht wie ein Kostüm.",
+          "icon": "RiSmartphoneLine"
+        },
+        {
+          "title": "Historische Register",
+          "description": "Viktorianisch oder frühes 20. Jahrhundert: Zweitnamen im Klang der Epoche, ohne ins Parodistische zu kippen.",
+          "icon": "RiTimeLine"
+        },
+        {
+          "title": "Literarische Zweitnamen",
+          "description": "Literarisches Setting: zurückhaltende Namen, die im nahen Personalportrait Gewicht tragen.",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "Kurze einsilbige Zweitnamen",
+          "description": "Kurzer Klang: ein knappes Mittel, das dem Nachnamen Landung gibt — der Thriller-Standard.",
+          "icon": "RiSpeedLine"
+        },
+        {
+          "title": "Zeremonielle Lange",
+          "description": "Langer Klang, formeller Ton: dreisilbige Zweitnamen, die bei Hochzeit oder Gerichtssaal ein Zimmer füllen.",
+          "icon": "RiVipCrownLine"
+        },
+        {
+          "title": "Geschlechtsneutrale Wahl",
+          "description": "Ton-first-Generierung ohne Gender-Regler: Zweitnamen, nur danach beurteilt, wie sie im Gesamtnamen lesen.",
+          "icon": "RiUserHeartLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Zweitname-Generator — FAQ",
+      "items": [
+        {
+          "title": "Kann ich einen generierten Zweitnamen in meiner Fiktion verwenden?",
+          "description": "Ja. Die Vorschläge sind originale Kombinationen und als kreativer Startpunkt gedacht. Namen sind gemeinsames Kulturgut — ein hier zusammengesetzter Gesamtname gehört dir. Modelle nur keinen vollständigen Figurennamen an einer realen, identifizierbaren lebenden Person nach."
+        },
+        {
+          "title": "Wie unterscheidet sich das vom Pseudonym-Generator?",
+          "description": "Der Pseudonym-Generator erfindet komplette Autorennamen von Grund auf. Dieses Werkzeug vervollständigt einen Namen, den du schon hast — es bewahrt Vor- und Nachnamen exakt wie geschrieben und fügt einen Zweitname in die Gesamtkette ein, für Figur oder Autorennamen."
+        },
+        {
+          "title": "Wie vermeide ich ein peinliches Initialen-Problem?",
+          "description": "Tippe die zu vermeidenden Buchstaben unter „Zu vermeidende Initialen“ ein. Die Initialen-Vorschau zeigt das Akronym jeder Richtung und markiert Richtungen, die einen ausgeschlossenen Buchstaben verwenden."
+        },
+        {
+          "title": "Prüft das Werkzeug, ob ein Name verfügbar ist?",
+          "description": "Nein. Der Generator macht keine Angaben zu Marken, Domänen, legalen Namen oder Einzigartigkeit. Wenn du unter einem Namen veröffentlichen willst, suche ihn in Anführungszeichen, prüfe Autorenseiten im Buchhandel und durchsuche die für deinen Markt relevanten Markenregister."
+        },
+        {
+          "title": "Kann ich einen Namen aus einer bestimmten Kultur anfragen?",
+          "description": "Du kannst den gewünschten Klang oder die Familientradition im Notizfeld beschreiben. Das Werkzeug behauptet nie Herkunft, Bedeutung oder Authentizität eines Namens und präsentiert nie kulturelle Schlussfolgerungen als Fakt — es passt Namen danach an, wie sie in deinem Setting lesen."
+        },
+        {
+          "title": "Braucht jede Figur einen Zweitnamen?",
+          "description": "Nein — und das ist eine echte Entscheidung. Eine Figur ohne Zweitnamen kann schlicht, aus eigener Kraft oder aus einer Tradition ohne Zweitnamen wirken. Wenn der Zweitname nichts hinzufügt, streich ihn."
+        },
+        {
+          "title": "Werden meine eingegebenen Namen gespeichert?",
+          "description": "Nein. Vor- und Nachnamen werden nur zum Aufbau deiner Generierungsanfrage verwendet, nie in Logs oder Analytics geschrieben und nach Rückgabe der Antwort nicht aufbewahrt."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Vervollständige den Namen heute",
+      "description": "Drei vollständige Gesamtnamens-Richtungen mit Klangnotizen und Geschichtssignalen — kostenlos, ohne Konto.",
+      "buttons": [
+        {
+          "title": "Zweitnamen finden",
+          "url": "#middle_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "Zurück zu den KI-Tools",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Baue an der Figur weiter",
+      "description": "Kombiniere den fertigen Namen mit einem Pseudonym, einer Backstory, Dialog oder einem Story-Prompt.",
+      "more_label": "Alle KI-Tools ansehen"
+    }
+  }
+}

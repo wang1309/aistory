@@ -1,0 +1,238 @@
+{
+  "elf_name_generator": {
+    "metadata": {
+      "title": "精灵名字生成器:角色、家族与奇幻世界命名",
+      "description": "免费 AI 精灵名字生成器。一次生成 10 个原创精灵名,附发音、寓意与契合理由。控制血统、风格、性别与角色背景,适合跑团、小说与 NPC 命名。",
+      "keywords": "精灵名字生成器, 精灵名字, 奇幻精灵名, 精灵名字大全, DND精灵名, 女精灵名字, 男精灵名字, 精灵族名字, 精灵家族名, NPC精灵名"
+    },
+    "ui": {
+      "title": "精灵名字生成器",
+      "title_highlight": "精灵名字",
+      "subtitle": "一键生成十个原创精灵名字。每个候选名都附带发音、创意寓意,以及它契合你的角色、家族或 NPC 组合的理由。",
+      "theme_pills": ["10 个候选", "血统与风格可控", "发音指南", "家族与 NPC 模式"],
+      "eyebrow": "AI 奇幻命名工具",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "精灵名字生成器",
+      "form_title": "定制你的精灵名字",
+      "heritage_label": "血统文化",
+      "heritage_options": [
+        { "value": "moonlit_court", "label": "月影王庭" },
+        { "value": "ancient_woodland", "label": "远古林语" },
+        { "value": "shadowborne", "label": "暗影血脉" },
+        { "value": "sunlit_scholar", "label": "向阳学士" },
+        { "value": "custom", "label": "自定义文化" }
+      ],
+      "custom_heritage_label": "描述你的文化",
+      "custom_heritage_placeholder": "例如:追随极光迁徙的冻原游牧血统,以冰棱为孩子命名",
+      "custom_heritage_helper": "用一两句话描述你自己的精灵文化,生成器会为其发明相称的命名习惯。",
+      "style_label": "名字风格",
+      "style_options": [
+        { "value": "graceful", "label": "优雅" },
+        { "value": "ancient", "label": "古朴" },
+        { "value": "fierce", "label": "凌厉" },
+        { "value": "mysterious", "label": "神秘" },
+        { "value": "playful", "label": "俏皮" }
+      ],
+      "name_use_label": "名字用途",
+      "name_use_options": [
+        { "value": "character", "label": "单个角色" },
+        { "value": "family_clan", "label": "家族或氏族" },
+        { "value": "npc_set", "label": "一组 NPC" }
+      ],
+      "name_form_label": "性别形式",
+      "name_form_options": [
+        { "value": "feminine", "label": "女性化" },
+        { "value": "masculine", "label": "男性化" },
+        { "value": "neutral", "label": "中性" },
+        { "value": "mixed", "label": "混合" }
+      ],
+      "role_label": "角色或故事背景(可选)",
+      "role_placeholder": "例如:守护遗忘森林的流放游侠、藏匿秘密的王庭档案官、嗜斗如命的刃舞者",
+      "inspiration_hint": "正在生成风格相近于以下名字的候选:",
+      "mode_label": "AI 模型",
+      "mode_options": [{"value": "fast", "label": "快速"}, {"value": "standard", "label": "标准"}, {"value": "creative", "label": "创意"}],
+      "sign_in_button": "登录后继续",
+      "generate_button": "生成精灵名字",
+      "generating_button": "正在召唤名字……",
+      "reroll_button": "再生成 10 个",
+      "output_title": "你的精灵名字",
+      "empty_output": "选择血统与风格后点击生成,这里会展示十个附带发音、寓意与理由的精灵名字。",
+      "result_label": "名字",
+      "pronunciation_label": "发音",
+      "meaning_label": "寓意",
+      "reason_label": "契合理由",
+      "copy_button": "复制名字",
+      "favorite_button": "加入收藏",
+      "favorited_button": "取消收藏",
+      "similar_button": "更多类似",
+      "favorites_title": "本次会话的收藏"
+    },
+    "validation": {
+      "custom_heritage_required": "请先描述你的自定义文化。",
+      "role_too_long": "角色背景不能超过 400 字符。",
+      "custom_heritage_too_long": "自定义文化不能超过 160 字符。",
+      "inspiration_too_long": "灵感名字不能超过 100 字符。",
+      "generic_error": "暂时无法生成精灵名字,请重试。",
+      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。"
+    },
+    "success": {
+      "copied": "名字已复制到剪贴板。",
+      "generated": "已生成十个精灵名字。",
+      "favorited": "已加入收藏。",
+      "unfavorited": "已取消收藏。"
+    },
+    "errors": {
+      "generate_failed": "无法生成精灵名字,请重试。",
+      "verification_failed": "验证失败,请重试。"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概述",
+      "title": "这个精灵名字生成器擅长什么",
+      "description": "为跑团、小说与世界观构建而生。每个名字都是为你的设定现创造的,而不是从现成列表里复读。",
+      "items": [
+        {
+          "title": "每次都是原创",
+          "description": "十个候选全部依据你的血统、风格与背景即兴创造。没有回收列表,也没有对知名奇幻品牌名字的微调仿写。",
+          "icon": "RiLeafLine"
+        },
+        {
+          "title": "发音与寓意",
+          "description": "每个名字都附发音指南与创意寓意,让你能先读出口、明白它暗示什么,再决定是否采用。",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "结合背景的理由",
+          "description": "描述角色身份后,生成器会解释每个名字为何契合——游侠与王庭档案官读起来完全不同。",
+          "icon": "RiUser3Line"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "三步用上精灵名字生成器",
+      "description": "从空白页到十个可用的精灵名字,不到一分钟。",
+      "items": [
+        {
+          "title": "选择血统与风格",
+          "description": "从四种现成精灵文化中挑选,或描述你自己的文化,再把名字的听感从优雅调到凌厉。",
+          "icon": "RiLeafLine"
+        },
+        {
+          "title": "补充角色背景",
+          "description": "告诉生成器名字的用途——单个角色、家族氏族还是一组 NPC——再补充身份背景,结果会更贴切。",
+          "icon": "RiBookOpenLine"
+        },
+        {
+          "title": "复制、收藏或深挖",
+          "description": "复制任何名字,在本次会话中收藏候选,或点击「更多类似」围绕喜欢的名字继续探索。",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "优势",
+      "title": "为什么精灵名字值得讲究",
+      "description": "名字承载文化。合适的名字会让精灵像真的在某片土地长大。",
+      "items": [
+        {
+          "title": "血统塑造听感",
+          "description": "月影王庭的精灵与远古林语的精灵不该听起来一样。血统选项会改变音节、节奏与气质。",
+          "icon": "RiMoonLine"
+        },
+        {
+          "title": "可以生长的寓意",
+          "description": "每个寓意都是创意诠释——是世界观的种子,可以长成背景、情节与台词。",
+          "icon": "RiLightbulbLine"
+        },
+        {
+          "title": "群体命名保持一致",
+          "description": "家族模式让一组名字形态相近,而 NPC 模式让一群角色各自分明,玩家绝不会张冠李戴。",
+          "icon": "RiTeamLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "使用场景",
+      "title": "谁在用精灵名字生成器",
+      "description": "需要在读者与玩家面前经得起推敲的写作者与主持人。",
+      "items": [
+        {
+          "title": "跑团玩家与 DM",
+          "description": "即刻为玩家角色命名,或在开团前为一整座精灵聚落配齐互不混淆的 NPC。",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "奇幻小说作者",
+          "description": "让命名文化在章节之间保持一致,发音也能在签售会上真的读出口。",
+          "icon": "RiQuillPenLine"
+        },
+        {
+          "title": "世界观与游戏设计师",
+          "description": "为原创精灵文化起草命名习惯,不必借用你不拥有版权的既有设定。",
+          "icon": "RiSwordLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "精灵名字生成器 — 常见问题",
+      "items": [
+        {
+          "title": "这些精灵名字是原创的吗?",
+          "description": "是的。每个名字都是根据你的血统、风格与背景即时创造的。生成器不会复制或微调任何知名奇幻品牌、作者或构造语言中的名字。"
+        },
+        {
+          "title": "寓意代表什么?",
+          "description": "寓意是为你的世界即兴创作的创意诠释,并非任何官方语言的考证翻译。可以把它们当作可保留、可修改、可扩写的设定种子。"
+        },
+        {
+          "title": "可以用来给跑团角色命名吗?",
+          "description": "可以。这些名字专为桌面角色、玩家角色、NPC 与面向玩家的战役而设计。直接把名字复制到角色卡上,或先收藏几个再比较。"
+        },
+        {
+          "title": "血统和风格如何影响结果?",
+          "description": "血统决定名字所属的文化——月影王庭、远古林语、暗影血脉、向阳学士,或你自定义的文化。风格控制听感,从优雅婉转到凌厉铿锵。"
+        },
+        {
+          "title": "为什么每个名字都带发音?",
+          "description": "读不出口的名字会在桌上被绕开。每个候选都附简易音节指南,让玩家与读者都能自信念出。"
+        },
+        {
+          "title": "家族模式和 NPC 模式怎么运作?",
+          "description": "家族模式生成的十个名字读起来像同一条血脉,适合家族与门第;NPC 模式生成的十个名字彼此分明,适合让聚落里的每个名字都站得住。"
+        },
+        {
+          "title": "为什么不照搬知名奇幻设定的名字?",
+          "description": "使用出版品牌的名字既有版权风险,也会让你的世界显得像借来的。原创名字让你的设定真正属于你——「更多类似」会探索你喜欢的听感,而不是模仿任何人。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今晚就为精灵命名",
+      "description": "十个原创精灵名字,附带发音、寓意与理由——免费,无需注册。",
+      "buttons": [
+        {
+          "title": "生成精灵名字",
+          "url": "#elf_name_generator",
+          "icon": "RiSparkling2Line"
+        },
+        {
+          "title": "返回 AI 工具",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "继续构建你的世界",
+      "description": "把精灵名字与背景故事、奇幻小说或其他命名工具搭配使用。",
+      "more_label": "浏览全部 AI 工具"
+    }
+  }
+}

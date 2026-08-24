@@ -1,0 +1,264 @@
+{
+  "random_nfl_team_generator": {
+    "metadata": {
+      "title": "随机 NFL 球队生成器：梦幻联盟抽签工具 | AI Story",
+      "description": "随机抽取或打乱全部 32 支现役 NFL 球队。为梦幻橄榄球联盟分配互不重复的球队，支持按联会或分区筛选，结果一键复制。",
+      "keywords": "random nfl team generator, 随机 nfl 球队, nfl 球队随机, nfl team randomizer, 随机球队生成器, nfl 抽签, 梦幻橄榄球 分队, random football team generator, nfl team wheel"
+    },
+    "ui": {
+      "title": "随机 NFL 球队生成器",
+      "title_highlight": "NFL 球队",
+      "subtitle": "这款随机 NFL 球队生成器一次抽一支，或把全部 32 支球队公平洗牌、互不重复地分发。为梦幻选秀、办公室赌池和 Madden 重建挑战而生——无需注册，打开即抽。",
+      "theme_pills": ["32 支现役球队", "加密级随机", "绝无重复", "按人分队"],
+      "eyebrow": "免费橄榄球抽签工具",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "随机 NFL 球队生成器",
+      "form_title": "设置你的抽签",
+      "mode_label": "抽签模式",
+      "mode_options": [
+        { "value": "pick", "label": "随机抽取" },
+        { "value": "shuffle", "label": "全部洗牌" },
+        { "value": "assign", "label": "按人分队" }
+      ],
+      "mode_hints": {
+        "pick": "一次点击抽出一支或多支不重复的球队——适合快速定队、Madden 重建轮盘、决定今晚支持谁。",
+        "shuffle": "把整个池子从 1 排到 N——完整的选秀顺位，可直接复制进群聊。",
+        "assign": "每行粘贴一位参与者——保证每人分到一支不同的球队。"
+      },
+      "scope_label": "抽签范围",
+      "scope_options": [
+        { "value": "all", "label": "全部 32 支" },
+        { "value": "afc", "label": "AFC 美联会" },
+        { "value": "nfc", "label": "NFC 国联会" },
+        { "value": "afc_east", "label": "AFC 东区" },
+        { "value": "afc_north", "label": "AFC 北区" },
+        { "value": "afc_south", "label": "AFC 南区" },
+        { "value": "afc_west", "label": "AFC 西区" },
+        { "value": "nfc_east", "label": "NFC 东区" },
+        { "value": "nfc_north", "label": "NFC 北区" },
+        { "value": "nfc_south", "label": "NFC 南区" },
+        { "value": "nfc_west", "label": "NFC 西区" }
+      ],
+      "count_label": "抽几支球队？",
+      "pick_button": "随机抽队",
+      "shuffle_button": "全部洗牌",
+      "assign_button": "分配球队给成员",
+      "reroll_button": "再抽一次",
+      "participants_label": "参与者（每行一位）",
+      "participants_placeholder": "小明\n阿强\n小美\n阿杰",
+      "participants_hint": "最多 32 个名字，每行一位。每人会从所选范围内分到一支不同的球队。",
+      "output_title": {
+        "pick": "你的随机结果",
+        "shuffle": "洗牌后的顺序",
+        "assign": "分队结果"
+      },
+      "empty_output": "选择模式、设定范围后点击抽签——结果会显示在这里，并附带可复制到群聊的按钮。",
+      "result_label": "抽签",
+      "eligible_label": "本次抽签球队数：",
+      "participant_header": "参与者",
+      "team_header": "球队",
+      "copy_button": "复制结果",
+      "copy_team_button": "复制球队名",
+      "conference_badge": { "afc": "AFC", "nfc": "NFC" },
+      "division_badge": { "east": "东区", "north": "北区", "south": "南区", "west": "西区" },
+      "share_mode_label": "模式",
+      "share_filter_label": "范围",
+      "disclaimer": "非官方球迷自制工具。球队名称属于 NFL 及各球队的商标；本站与 NFL 不存在任何隶属、赞助或背书关系。"
+    },
+    "validation": {
+      "no_teams": "当前范围没有可选球队，请扩大抽签范围。",
+      "participants_empty": "请至少添加一位参与者，每行一位。",
+      "participants_too_many": "参与者数量超过了范围内的球队数——请扩大范围或删减名单。",
+      "generic_error": "出了点问题，请重试。"
+    },
+    "success": {
+      "picked": "抽取完成。",
+      "shuffled": "洗牌完成。",
+      "assigned": "分队完成。",
+      "copied": "已复制到剪贴板。"
+    },
+    "continuation": {
+      "title": "想写一个橄榄球故事？",
+      "description": "写作者和跑团主持人：抽签结果就是你的故事起点。同一工坊的这些免费工具，能把一支随机 NFL 球队变成完整的故事。",
+      "squad_name_label": "帮你的梦幻战队起名",
+      "squad_name_hint": "为联盟群聊生成一个霸气的球队名",
+      "backstory_label": "写下逆袭弧线",
+      "backstory_hint": "从训练营打到最后一次进攻",
+      "prompt_label": "获取故事提示词",
+      "prompt_hint": "以一个橄榄球赛季为舞台的情节"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "抽签模式",
+      "title": "抽一支随机 NFL 球队的三种方式",
+      "description": "快速抽一支、完整选秀顺位、或给整个联盟一对一发牌——三种模式背后是同一套公平引擎。",
+      "items": [
+        {
+          "title": "随机抽取",
+          "description": "一次点击抽出一支或多支不重复的球队。适合 Madden 重建轮盘、课堂游戏，或决定这个赛季你追随谁。",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "全部洗牌",
+          "description": "整个范围从 1 号排到 N 号，得到完整选秀顺位。截图、粘贴、争论都经得住。",
+          "icon": "RiListOrdered"
+        },
+        {
+          "title": "按人分队",
+          "description": "粘贴参与者名单，每人分到一支不同的球队。零重复、零扯皮——整个抽签一条消息发完。",
+          "icon": "RiTeamLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使用方法",
+      "title": "如何进行一次公平的随机 NFL 球队抽签",
+      "description": "三步完成一次公平的随机 NFL 球队抽签——32 人的联盟一分钟内搞定。",
+      "items": [
+        {
+          "title": "选择范围",
+          "description": "全部 32 支、单个联会、或单个分区。下拉框旁的计数器始终显示本次抽签到底有多少支球队。",
+          "icon": "RiEqualizerLine"
+        },
+        {
+          "title": "选择模式",
+          "description": "抽取一支快速的随机 NFL 球队、洗牌出完整顺位、或给具名参与者分发互不重复的球队。",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "复制结果",
+          "description": "一键复制纯文本的抽签记录——模式、范围、每个名字——直接贴进群聊当凭证。",
+          "icon": "RiClipboardLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "公平性",
+      "title": "一个让全联盟无话可说的抽签",
+      "description": "这里的公平是工程实现，不是一句口号——以下每一条都是工具的真实工作方式。",
+      "items": [
+        {
+          "title": "加密级随机",
+          "description": "每一次随机 NFL 球队抽签都使用浏览器 crypto.getRandomValues 并配合拒绝采样——没有模偏差、没有偏爱的球队、没有可被钻的规律。",
+          "icon": "RiFingerprint2Line"
+        },
+        {
+          "title": "绝无重复",
+          "description": "给 32 人分队正好用完 32 支球队，每支恰好一次。引擎只洗一次牌、从顶部发牌，绝不放回重抽。",
+          "icon": "RiCheckboxCircleLine"
+        },
+        {
+          "title": "本地即时完成",
+          "description": "没有服务器往返、没有转圈等待。抽签在你设备上本地运行，快过任何需要加载的工具。",
+          "icon": "RiFlashlightLine"
+        },
+        {
+          "title": "可复制的抽签凭证",
+          "description": "每个结果都能复制成附带模式与范围的纯文本——全联盟可以核对、留存、复查。",
+          "icon": "RiClipboardLine"
+        },
+        {
+          "title": "免费、无需账号",
+          "description": "不注册、不设三次后收费的墙、不收集邮箱。打开页面，抽签，走人。",
+          "icon": "RiCoinLine"
+        },
+        {
+          "title": "核对过的 32 队名单",
+          "description": "数据集收录 32 支现役 NFL 球队及其正确的联会与分区归属，每季开赛前对照 nfl.com/teams 核验。",
+          "icon": "RiShieldCheckLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "使用场景",
+      "title": "谁在用这个抽签",
+      "description": "那些一年一次、随机 NFL 球队抽取胜过二十分钟谈判的场合。",
+      "items": [
+        {
+          "title": "梦幻联盟盟主",
+          "description": "为幸存者赌池、选秀顺位揭晓或\"为别人的球队加油\"整活玩法，给每位经理分配一支真实球队。",
+          "icon": "RiTrophyLine"
+        },
+        {
+          "title": "办公室赌池与观赛聚会",
+          "description": "抽格子、选边、定谁家的沙发看哪场——公开、清晰的结果，一次点击终结争论。",
+          "icon": "RiTeamLine"
+        },
+        {
+          "title": "Madden 与经营模式玩家",
+          "description": "转一个随机重建挑战，限定单个分区增加难度，不满意就重抽，直到挑战感觉对了为止。",
+          "icon": "RiGamepadLine"
+        },
+        {
+          "title": "老师与知识竞赛之夜",
+          "description": "给学生分配球队做统计项目或竞猜对阵——公平、即时，坐最后一排也看得清。",
+          "icon": "RiBookOpenLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "常见问题",
+      "title": "随机 NFL 球队生成器 — 常见问题",
+      "items": [
+        {
+          "title": "这个抽签真的随机、公平吗？",
+          "description": "是的。每次抽签都执行以浏览器 crypto.getRandomValues 为种子的 Fisher-Yates 洗牌，并使用拒绝采样消除模偏差。范围内每支球队落在任意位置的概率完全相同，且整个抽签都在你的设备上本地完成。"
+        },
+        {
+          "title": "怎么给梦幻橄榄球联盟分配 NFL 球队？",
+          "description": "切换到\"按人分队\"，每行粘贴一位联盟成员，然后抽签。每位参与者会分到一支不同的球队——32 人联盟正好用完 32 支球队，每支恰好一次。把结果复制到群聊，就是这次抽签的凭证。"
+        },
+        {
+          "title": "可以按联会或分区抽吗？",
+          "description": "可以。抽签范围下拉框可限定 AFC、NFC 或任意单个分区（4 支球队）。旁边的计数器始终显示当前可选球队数量，所以只抽单个分区时最多支持 4 人分队。"
+        },
+        {
+          "title": "一次最多能抽几支？",
+          "description": "从 1 到范围内球队数（全联盟为 32）任选。随机 NFL 球队的抽取不重复——如果需要全部球队的完整排名顺序，请改用\"全部洗牌\"模式。"
+        },
+        {
+          "title": "可以当作 NFL 球队转盘用吗？",
+          "description": "单队抽取与转转盘做的是同一件事——公平地随机出一支球队、结果可见——只是没有旋转动画。如果聚会需要转盘的仪式感，可以用\"全部洗牌\"抽好后一行一行逐个揭晓。"
+        },
+        {
+          "title": "球队名单是最新的吗？",
+          "description": "数据集包含 32 支现役 NFL 球队及其正确的联会与分区归属，已在 2026 赛季前对照 nfl.com/teams 核验，并且每个赛季开赛前复查。球队名称与所在地均采用当前官方用法。"
+        },
+        {
+          "title": "这个工具与 NFL 有官方关系吗？",
+          "description": "没有。这是一个非官方的球迷自制工具。NFL 球队名称与标识是 NFL 及其成员球队的商标；本站与 NFL 不存在任何隶属、赞助或背标关系。"
+        },
+        {
+          "title": "是免费的吗？",
+          "description": "完全免费，无需账号、没有注册墙、不限抽签次数。工具完全在你的浏览器中运行，联盟要求重抽多少次都可以。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今晚就来一次选秀抽签",
+      "description": "公平、不重复的随机 NFL 球队抽签，结果即复制即分享——免费、即时、无需账号。",
+      "buttons": [
+        {
+          "title": "随机抽队",
+          "url": "#random_nfl_team_generator",
+          "icon": "RiDiceLine"
+        },
+        {
+          "title": "浏览更多免费工具",
+          "url": "/ai-tools",
+          "icon": "RiAppsLine"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "继续激发创意",
+      "description": "把抽签结果变成故事、角色，或一支虚构的乐队——来自同一工坊的免费工具。",
+      "more_label": "浏览全部 AI 工具"
+    }
+  }
+}

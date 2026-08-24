@@ -389,6 +389,34 @@
       "city_nickname_generator": {
         "name": "도시 별명 생성기",
         "desc": "가상 도시를 위한 공식, 지역, 전설, 조롱적인 별명을 생성합니다."
+      },
+      "emoji_translator": {
+        "name": "이모지 번역기",
+        "desc": "메시지에 어울리는 이모지를 추가하거나, 텍스트를 이모지로 번역하거나, 문맥 속 이모지 메시지를 해석해 줍니다."
+      },
+      "elf_name_generator": {
+        "name": "엘프 이름 생성기",
+        "desc": "혈통·스타일·캐릭터 배경에 맞춰 발음과 의미가 담긴 오리지널 판타지 엘프 이름 10개를 생성합니다."
+      },
+      "pen_name_generator": {
+        "name": "펜네임 생성기",
+        "desc": "장르·브랜드 목표·타깃 시장에 맞춰 발음과 추천 이유가 담긴 오리지널 펜네임 아이디어 10개를 생성합니다."
+      },
+      "gang_name_generator": {
+        "name": "갱 이름 생성기",
+        "desc": "의미·평판·상징·라이벌 훅이 딸린 가상 갱·크루·패밀리 조직 이름 6개를 생성합니다."
+      },
+      "band_name_generator": {
+        "name": "밴드 이름 생성기",
+        "desc": "장르·무드·키워드로 밴드 이름을 생성합니다. 발음, 한 줄 바이오, 비주얼 방향, 사용 가능 확인 체크리스트 포함."
+      },
+      "random_nfl_team_generator": {
+        "name": "랜덤 NFL 팀 생성기",
+        "desc": "현재 32개 NFL 팀 중 한 팀을 뽑거나 전체를 섞습니다 — 공정한 암호화 랜덤, 중복 없음, 컨퍼런스·디비전 필터, 복사 바로 되는 배정 결과."
+      },
+      "middle_name_generator": {
+        "name": "미들 네임 생성기",
+        "desc": "소설 캐릭터나 필명을 완성하세요 — 퍼스트&라스트 네임을 유지한 세 가지 풀네임 방향에 리듬 메모, 이니셜 미리보기, 서사 신호를 함께 제공합니다."
       }
     },
     "tab_story": "스토리 생성기",
@@ -401,6 +429,8 @@
     "filter_title": "제목",
     "filter_poem": "시",
     "filter_social": "소셜",
+    "filter_name_generator": "이름 생성기",
+    "filter_utility": "유틸리티",
     "new_tools_section": "신규 추가",
     "results_count": "총 {count}개의 도구",
     "no_results": "일치하는 도구가 없습니다. 필터를 초기화해 보세요.",
@@ -408,7 +438,10 @@
     "view_all_cta": "전체 {count}+ 도구 보기",
     "view_all_sub": "허브 페이지에서 전체 카탈로그 탐색",
     "scroll_down": "아래로 스크롤",
-    "tools_hub_nav": "도구",
+    "tools_hub_nav": "전체 도구",
+    "group_writing": "글쓰기 도구",
+    "group_social": "소셜 미디어",
+    "group_name": "이름 생성기",
     "tools_hub_title": "무료 AI 도구",
     "tools_hub_description": "창작자를 위한 무료 AI 도구 모음. 새로운 도구가 계속 추가됩니다.",
     "tools_hub_empty_title": "더 많은 도구가 곧 준비됩니다",

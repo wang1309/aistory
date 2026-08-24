@@ -1,3 +1,5 @@
+import type { AccentColor } from "@/components/sections/accent";
+
 export type ModuleId = "ai-write" | "ai-tools";
 
 export type ToolCategory =
@@ -6,7 +8,9 @@ export type ToolCategory =
   | "plot"
   | "title"
   | "poem"
-  | "social";
+  | "social"
+  | "name"
+  | "utility";
 
 export type ToolBadge = "hot" | "new";
 
@@ -38,6 +42,16 @@ export interface Tool {
    * Remix icon name, e.g. "RiQuillPenLine".
    */
   icon: string;
+  /**
+   * Per-tool accent used for the tool-directory card cover. Falls back to
+   * the section accent when omitted.
+   */
+  accent?: AccentColor;
+  /**
+   * Optional cover image URL (e.g. R2-hosted webp). When present the card
+   * cover renders this image instead of the accent-gradient tile.
+   */
+  image?: string;
   badges?: ToolBadge[];
   /**
    * Higher number means higher priority when sorting.
@@ -58,6 +72,7 @@ export const tools: Tool[] = [
     category: "story",
     href: "/",
     icon: "RiBookOpenLine",
+    image: "https://r2.storiesgenerator.org/image/story_generator.webp",
     badges: ["hot"],
     priority: 100,
   },
@@ -69,6 +84,7 @@ export const tools: Tool[] = [
     category: "story",
     href: "/fantasy-generator",
     icon: "RiSparkling2Line",
+    image: "https://r2.storiesgenerator.org/image/fantasy_story_generator.webp",
     badges: ["hot"],
     priority: 95,
   },
@@ -80,6 +96,7 @@ export const tools: Tool[] = [
     category: "title",
     href: "/book-title-generator",
     icon: "RiQuillPenLine",
+    image: "https://r2.storiesgenerator.org/image/book_title_generator.webp",
     priority: 89,
   },
   {
@@ -90,6 +107,7 @@ export const tools: Tool[] = [
     category: "character",
     href: "/fanfic-generator",
     icon: "RiBookMarkedLine",
+    image: "https://r2.storiesgenerator.org/image/fanfic_story_generator.webp",
     badges: ["hot"],
     priority: 96,
   },
@@ -101,6 +119,7 @@ export const tools: Tool[] = [
     category: "social",
     href: "/dialogue-generator",
     icon: "RiChat3Line",
+    image: "https://r2.storiesgenerator.org/image/dialogue_generator.webp",
     badges: ["hot"],
     priority: 78,
   },
@@ -113,6 +132,8 @@ export const tools: Tool[] = [
     tab: "creative",
     href: "/incorrect-quote-generator",
     icon: "RiDoubleQuotesL",
+    // 文件名拼写以 R2 实际对象为准(incrorrect)
+    image: "https://r2.storiesgenerator.org/image/incrorrect_quote_generator.webp",
     badges: ["new"],
     priority: 77,
   },
@@ -125,6 +146,7 @@ export const tools: Tool[] = [
     tab: "creative",
     href: "/tiktok-comment-generator",
     icon: "RiMessage3Line",
+    image: "https://r2.storiesgenerator.org/image/tiktok_comment_generator.webp",
     badges: ["new"],
     priority: 76,
   },
@@ -137,6 +159,7 @@ export const tools: Tool[] = [
     tab: "creative",
     href: "/youtube-name-generator",
     icon: "RiPlayCircleLine",
+    image: "https://r2.storiesgenerator.org/image/youtube_name_generator.webp",
     badges: ["new"],
     priority: 75,
   },
@@ -149,6 +172,7 @@ export const tools: Tool[] = [
     tab: "creative",
     href: "/youtube-title-generator",
     icon: "RiYoutubeLine",
+    image: "https://r2.storiesgenerator.org/image/youtube_title_generator.webp",
     badges: ["new"],
     priority: 74,
   },
@@ -160,6 +184,7 @@ export const tools: Tool[] = [
     category: "story",
     href: "/comic-generator",
     icon: "RiBrushLine",
+    image: "https://r2.storiesgenerator.org/image/ai_comic_generator.webp",
     priority: 94,
   },
   {
@@ -170,6 +195,7 @@ export const tools: Tool[] = [
     category: "plot",
     href: "/plot-generator",
     icon: "RiMapLine",
+    image: "https://r2.storiesgenerator.org/image/plot_generator.webp",
     priority: 90,
   },
   {
@@ -180,6 +206,7 @@ export const tools: Tool[] = [
     category: "plot",
     href: "/story-outline-generator",
     icon: "RiNodeTree",
+    image: "https://r2.storiesgenerator.org/image/story_outline_generator.webp",
     badges: ["new"],
     priority: 72,
   },
@@ -191,6 +218,7 @@ export const tools: Tool[] = [
     category: "poem",
     href: "/poem-generator",
     icon: "RiQuillPenLine",
+    image: "https://r2.storiesgenerator.org/image/poem_generator.webp",
     priority: 60,
   },
   {
@@ -201,6 +229,7 @@ export const tools: Tool[] = [
     category: "title",
     href: "/poem-title-generator",
     icon: "RiStarLine",
+    image: "https://r2.storiesgenerator.org/image/poem_title_generator.webp",
     badges: ["hot"],
     priority: 91,
   },
@@ -212,6 +241,7 @@ export const tools: Tool[] = [
     category: "character",
     href: "/backstory-generator",
     icon: "RiUser3Line",
+    image: "https://r2.storiesgenerator.org/image/backstory_generator.webp",
     badges: ["hot"],
     priority: 99,
   },
@@ -223,6 +253,7 @@ export const tools: Tool[] = [
     category: "character",
     href: "/dnd-backstory-generator",
     icon: "RiDiceLine",
+    image: "https://r2.storiesgenerator.org/image/dnd_backstory_generator.webp",
     badges: ["hot"],
     priority: 97,
   },
@@ -234,6 +265,7 @@ export const tools: Tool[] = [
     category: "story",
     href: "/bedtime-story-generator",
     icon: "RiMoonLine",
+    image: "https://r2.storiesgenerator.org/image/bedtime_story_generator.webp",
     badges: ["new"],
     priority: 88,
   },
@@ -245,6 +277,7 @@ export const tools: Tool[] = [
     category: "story",
     href: "/romance-story-generator",
     icon: "RiHeartLine",
+    image: "https://r2.storiesgenerator.org/image/romance_story_generator.webp",
     badges: ["new"],
     priority: 86,
   },
@@ -257,6 +290,8 @@ export const tools: Tool[] = [
     tab: "creative",
     href: "/literature-review-generator",
     icon: "RiBookOpenLine",
+    // 文件名拼写以 R2 实际对象为准(liretature)
+    image: "https://r2.storiesgenerator.org/image/liretature_review_generator.webp",
     badges: ["new"],
     priority: 84,
   },
@@ -268,6 +303,7 @@ export const tools: Tool[] = [
     category: "plot",
     href: "/story-prompt-generator",
     icon: "RiLightbulbLine",
+    image: "https://r2.storiesgenerator.org/image/story_prompt_generator.webp",
     priority: 65,
   },
   {
@@ -279,8 +315,109 @@ export const tools: Tool[] = [
     tab: "creative",
     href: "/city-nickname-generator",
     icon: "RiMapPin2Line",
+    image: "https://r2.storiesgenerator.org/image/city_nickname_generator.webp",
     badges: ["new"],
     priority: 73,
+  },
+  {
+    slug: "emoji-translator",
+    nameKey: "ai_tools.tools.emoji_translator.name",
+    shortDescKey: "ai_tools.tools.emoji_translator.desc",
+    module: "ai-tools",
+    category: "social",
+    href: "/ai-tools/emoji-translator",
+    icon: "RiEmotionHappyLine",
+    accent: "orange",
+    image: "https://r2.storiesgenerator.org/image/emoji_translator1.webp",
+    badges: ["new"],
+    priority: 100,
+  },
+  {
+    slug: "elf-name-generator",
+    nameKey: "ai_tools.tools.elf_name_generator.name",
+    shortDescKey: "ai_tools.tools.elf_name_generator.desc",
+    module: "ai-tools",
+    category: "name",
+    href: "/ai-tools/elf-name-generator",
+    icon: "RiLeafLine",
+    accent: "orange",
+    image: "https://r2.storiesgenerator.org/image/elf_name_generator.webp",
+    badges: ["new"],
+    priority: 95,
+  },
+  {
+    slug: "pen-name-generator",
+    nameKey: "ai_tools.tools.pen_name_generator.name",
+    shortDescKey: "ai_tools.tools.pen_name_generator.desc",
+    module: "ai-tools",
+    category: "name",
+    href: "/ai-tools/pen-name-generator",
+    icon: "RiQuillPenLine",
+    accent: "orange",
+    image: "https://r2.storiesgenerator.org/image/pen_name_generator.webp",
+    badges: ["new"],
+    priority: 94,
+  },
+  {
+    slug: "gang-name-generator",
+    nameKey: "ai_tools.tools.gang_name_generator.name",
+    shortDescKey: "ai_tools.tools.gang_name_generator.desc",
+    module: "ai-tools",
+    category: "name",
+    href: "/ai-tools/gang-name-generator",
+    icon: "RiSwordLine",
+    accent: "rose",
+    image: "https://r2.storiesgenerator.org/image/gang_name_generator.webp",
+    badges: ["new"],
+    priority: 93,
+  },
+  {
+    slug: "band-name-generator",
+    nameKey: "ai_tools.tools.band_name_generator.name",
+    shortDescKey: "ai_tools.tools.band_name_generator.desc",
+    module: "ai-tools",
+    category: "name",
+    href: "/ai-tools/band-name-generator",
+    icon: "RiMicLine",
+    accent: "amber",
+    image: "https://r2.storiesgenerator.org/image/band_name_generator.webp",
+    badges: ["new"],
+    priority: 92,
+  },
+  {
+    slug: "random-nfl-team-generator",
+    nameKey: "ai_tools.tools.random_nfl_team_generator.name",
+    shortDescKey: "ai_tools.tools.random_nfl_team_generator.desc",
+    module: "ai-tools",
+    category: "name",
+    href: "/ai-tools/random-nfl-team-generator",
+    icon: "RiTrophyLine",
+    accent: "emerald",
+    image: "https://r2.storiesgenerator.org/image/random_nfl_team_generator.webp",
+    badges: ["new"],
+    priority: 91,
+    keywords: ["nfl", "football", "randomizer", "fantasy draft", "pool"],
+  },
+  {
+    slug: "middle-name-generator",
+    nameKey: "ai_tools.tools.middle_name_generator.name",
+    shortDescKey: "ai_tools.tools.middle_name_generator.desc",
+    module: "ai-tools",
+    category: "name",
+    href: "/ai-tools/middle-name-generator",
+    icon: "RiFingerprint2Line",
+    accent: "teal",
+    image: "https://r2.storiesgenerator.org/image/middle_name_generator.webp",
+    badges: ["new"],
+    priority: 90,
+    keywords: [
+      "middle name",
+      "middle names",
+      "character names",
+      "full name",
+      "initials",
+      "byline",
+    ],
   },
 ];
 
@@ -288,6 +425,31 @@ export function getToolsByModule(module: ModuleId): Tool[] {
   return tools
     .filter((tool) => tool.module === module)
     .sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
+}
+
+/**
+ * Coarse grouping used by the All Tools hub filter chips. Fine-grained
+ * categories stay untouched — this is only a roll-up for the hub page.
+ */
+export type ToolGroup = "writing" | "social" | "name";
+
+const CATEGORY_GROUP: Record<ToolCategory, ToolGroup> = {
+  story: "writing",
+  character: "writing",
+  plot: "writing",
+  title: "writing",
+  poem: "writing",
+  utility: "writing",
+  social: "social",
+  name: "name",
+};
+
+export function getToolGroup(tool: Tool): ToolGroup {
+  return CATEGORY_GROUP[tool.category];
+}
+
+export function getAllTools(): Tool[] {
+  return [...tools].sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
 }
 
 export function getTopTools(module: ModuleId, limit: number): Tool[] {

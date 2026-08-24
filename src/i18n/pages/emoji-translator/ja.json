@@ -1,0 +1,243 @@
+{
+  "emoji_translator": {
+    "metadata": {
+      "title": "絵文字翻訳機：絵文字の追加・翻訳・解説",
+      "description": "無料AI絵文字翻訳機。メッセージに合う絵文字を追加し、テキストを絵文字に翻訳し、文脈に沿って絵文字メッセージを解説します。ニュアンス別3パターンを理由と注意点付きで提供します。",
+      "keywords": "絵文字翻訳機, 絵文字翻訳 AI, テキストに絵文字追加, テキストを絵文字に, 絵文字の意味 解説, 絵文字生成, AI 絵文字"
+    },
+    "ui": {
+      "title": "絵文字翻訳機",
+      "title_highlight": "絵文字",
+      "subtitle": "メッセージに合う絵文字を追加したり、テキストを絵文字に翻訳したり、文脈に沿って絵文字メッセージを解説したりします。ニュアンス別3パターン、それぞれに理由と曖昧さへの注意が付きます。",
+      "theme_pills": ["3パターン", "ニュアンス調整", "文脈対応", "曖昧さの注意"],
+      "eyebrow": "AI絵文字ツール",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "絵文字翻訳機",
+      "form_title": "メッセージ",
+      "text_label": "メッセージ",
+      "text_placeholder": "メッセージを貼り付けるか入力してください。絵文字で飾ったり、絵文字に翻訳したり、含まれる絵文字を解説したりできます。",
+      "context_label": "文脈（任意）",
+      "context_placeholder": "例：親しい友人への返信、公開Instagramのキャプション、マッチングアプリのメッセージ",
+      "mode_label": "モード",
+      "mode_options": [
+        { "value": "add", "label": "絵文字を追加" },
+        { "value": "translate", "label": "絵文字に翻訳" },
+        { "value": "explain", "label": "絵文字を解説" }
+      ],
+      "scenario_label": "シナリオ",
+      "scenario_options": [
+        { "value": "caption", "label": "キャプション / 投稿" },
+        { "value": "chat_reply", "label": "チャット返信" },
+        { "value": "bio", "label": "プロフィール" },
+        { "value": "just_for_fun", "label": "気軽に楽しむ" }
+      ],
+      "tone_label": "ニュアンス",
+      "tone_options": [
+        { "value": "subtle", "label": "控えめ" },
+        { "value": "playful", "label": "遊び心" },
+        { "value": "bold", "label": "大胆" }
+      ],
+      "generate_button": "翻訳",
+      "generating_button": "翻訳中...",
+      "random_button": "ランダム",
+      "output_title": "絵文字の提案",
+      "empty_output": "メッセージを入力してモードを選ぶと、ニュアンス別3パターンがここに表示されます。",
+      "result_label": "パターン",
+      "reason_label": "この絵文字の理由",
+      "caution_label": "注意点",
+      "copy_button": "コピー"
+    },
+    "validation": {
+      "text_required": "翻訳するメッセージを入力してください。",
+      "text_too_long": "メッセージは500文字以内にしてください。",
+      "context_too_long": "文脈は300文字以内にしてください。",
+      "generic_error": "今は絵文字の提案を生成できません。もう一度お試しください。"
+    },
+    "success": {
+      "copied": "パターンをクリップボードにコピーしました。",
+      "generated": "絵文字の提案を生成しました。",
+      "random_prompt_selected": "ランダム例を読み込みました。"
+    },
+    "random_prompts": [
+      {
+        "text": "朝のコーヒーと良い本。これが私の幸せな場所。",
+        "context": "Instagramのキャプション",
+        "mode": "add",
+        "scenario": "caption",
+        "tone": "subtle"
+      },
+      {
+        "text": "今週末は暇？何か楽しいことしようよ。",
+        "context": "親しい友人へのメッセージ",
+        "mode": "add",
+        "scenario": "chat_reply",
+        "tone": "playful"
+      },
+      {
+        "text": "数ヶ月かけていたプロジェクトがついに完成した。",
+        "context": "SNSでの報告",
+        "mode": "translate",
+        "scenario": "caption",
+        "tone": "bold"
+      },
+      {
+        "text": "友達が 🌙✨ だけ送ってきた。これってどういう意味？",
+        "context": "夜遅くのチャット",
+        "mode": "explain",
+        "scenario": "chat_reply",
+        "tone": "playful"
+      },
+      {
+        "text": "新しいレシピに挑戦。キッチンは無事、夕飯も意外と美味しかった。",
+        "context": "気軽な投稿",
+        "mode": "add",
+        "scenario": "just_for_fun",
+        "tone": "playful"
+      }
+    ],
+    "errors": {
+      "generate_failed": "絵文字の提案を生成できませんでした。もう一度お試しください。",
+      "verification_failed": "認証に失敗しました。もう一度お試しください。"
+    },
+    "feature1": {
+      "name": "feature_intro",
+      "label": "概要",
+      "title": "この絵文字翻訳機が得意なこと",
+      "description": "メッセージ、キャプション、手軽なSNS返信のために作りました。絵文字をただ並べるのではなく、ニュアンス別3パターンとその理由を届けます。",
+      "items": [
+        {
+          "title": "3つのモード、1つのツール",
+          "description": "メッセージに絵文字を追加、テキストを絵文字に翻訳、絵文字メッセージの意味を解説 — ページを離れずに切り替えられます。",
+          "icon": "RiEmotionHappyLine"
+        },
+        {
+          "title": "絵文字だけでなく理由も",
+          "description": "すべてのパターンに絵文字選択の理由が付くので、送る前に纳得できます。",
+          "icon": "RiInformationLine"
+        },
+        {
+          "title": "曖昧さの注意表示",
+          "description": "絵文字が文脈で別の意味に読まれそうな場合、パターンが注意を示します。誤ったニュアンスの送信を防ぎます。",
+          "icon": "RiAlertLine"
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "使い方",
+      "title": "3ステップで絵文字翻訳機を使う",
+      "description": "元のメッセージからコピーできる3パターンまで、ほんの数秒です。",
+      "items": [
+        {
+          "title": "メッセージを入力",
+          "description": "飾る、翻訳する、解説するメッセージを貼り付けます。文脈を少し添えると結果が鋭くなります。",
+          "icon": "RiChat3Line"
+        },
+        {
+          "title": "モード・シナリオ・ニュアンスを選ぶ",
+          "description": "絵文字追加、絵文字に翻訳、絵文字解説のいずれかを選び、シナリオとニュアンスを設定します。",
+          "icon": "RiSettings3Line"
+        },
+        {
+          "title": "好きなパターンをコピー",
+          "description": "3パターンを確認し、理由と注意を読んで、一番合うものをコピーします。",
+          "icon": "RiFileCopyLine"
+        }
+      ]
+    },
+    "feature2": {
+      "name": "feature_benefits",
+      "label": "メリット",
+      "title": "絵文字翻訳機が使われる理由",
+      "description": "絵文字はニュアンスと意図を運びます。一つ間違えるとメッセージ全体の意味が変わります。",
+      "items": [
+        {
+          "title": "瞬間に合うニュアンス",
+          "description": "控えめ、遊び心、大胆 — ニュアンス調整で絵文字がメッセージの感覚と一致します。",
+          "icon": "RiMagicLine"
+        },
+        {
+          "title": "文脈を反映した提案",
+          "description": "キャプション、チャット返信、プロフィールのどれかを伝えると、メッセージが実際に届く場所に絵文字が合わせます。",
+          "icon": "RiFocus3Line"
+        },
+        {
+          "title": "曖昧なメッセージを解読",
+          "description": "解説モードでは絵文字メッセージの可能な解釈を示しつつ、意味が文脈に依存することも併記します。",
+          "icon": "RiSearchEyeLine"
+        }
+      ]
+    },
+    "feature3": {
+      "name": "use_cases",
+      "label": "活用例",
+      "title": "絵文字翻訳機を使う人",
+      "description": "絵文字がニュアンスを変えるメッセージ、キャプション、プロフィールを書くすべての人。",
+      "items": [
+        {
+          "title": "SNSクリエイター",
+          "description": "キャプションや返信に適した絵文字を添えて、ごちゃつかず生き生きとした投稿にします。",
+          "icon": "RiInstagramLine"
+        },
+        {
+          "title": "メッセージとマッチング",
+          "description": "そっけないメッセージを絵文字に翻訳して和らげたり、読み切れない絵文字返信を解説したりします。",
+          "icon": "RiChatSmile3Line"
+        },
+        {
+          "title": "プロフィール作者",
+          "description": "記号をびっしり詰めるより、よく選んだ絵文字一つ二つで短く表現豊かなプロフィールにします。",
+          "icon": "RiUserSmileLine"
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "よくある質問",
+      "title": "絵文字翻訳機 — よくある質問",
+      "items": [
+        {
+          "title": "絵文字翻訳機は何をしますか？",
+          "description": "メッセージを受け取り、絵文字3パターンを作ります。テキストに合う絵文字を追加したり、テキストを絵文字に翻訳したり、文脈に沿って絵文字メッセージの意味を解説したりできます。各パターンには理由と任意の注意が付きます。"
+        },
+        {
+          "title": "3つのモードは何ですか？",
+          "description": "「絵文字を追加」は原文を保ち、意味を強める絵文字だけを付け足します。「絵文字に翻訳」は同じ意味を絵文字中心で書き直します。「絵文字を解説」はメッセージ内の絵文字を可能な一つの読みとして解釈し、断定的な解釈はしません。"
+        },
+        {
+          "title": "なぜパターンに注意が付くのですか？",
+          "description": "絵文字の意味は文脈、関係性、文化に依存します。注意は、ある読みが誤解されうる場合に示され、送る前に考え直すきっかけを与えます。"
+        },
+        {
+          "title": "ツールはメッセージの意図を変えますか？",
+          "description": "「追加」モードでは原文が保たれ、絵文字だけが追加されます。「翻訳」モードでは同じ意味を絵文字で伝えるようメッセージが書き直されます。有害、性的、差別的な置き換えは行いません。"
+        },
+        {
+          "title": "絵文字翻訳機は無料ですか？",
+          "description": "はい。絵文字翻訳機は無料で、アカウントは不要です。"
+        },
+        {
+          "title": "対応言語は？",
+          "description": "インターフェースは日本語、英語、中国語、ドイツ語、韓国語、ロシア語に対応し、解説は選んだ言語で書かれます。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "どんなメッセージも適切な絵文字に翻訳",
+      "description": "絵文字の追加・翻訳・解説をニュアンス別3パターンで。無料、アカウント不要。",
+      "buttons": [
+        {
+          "title": "絵文字翻訳機を試す",
+          "url": "#emoji_translator",
+          "icon": "RiSparkling2Line"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "文章作成に役立つツールをもっと",
+      "description": "キャプションや返信、タイトルをさらに魅力的に。次はこれらのツールをどうぞ。",
+      "more_label": "すべてのAIツールを見る"
+    }
+  }
+}

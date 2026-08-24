@@ -78,6 +78,7 @@ const AI_WRITE_TITLES = new Set([
 ]);
 
 const TOOL_HUB_TITLE_BY_LOCALE_TITLE: Record<string, string> = {
+  "AI Write": "Writing Tools",
   "AI 写作": "AI 写作工具",
   "KI-Schreiben": "KI-Schreib-Tools",
   "AI ライティング": "AI ライティングツール",

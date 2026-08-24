@@ -38,6 +38,13 @@ const TOOL_ROUTES = new Set([
   '/romance-story-generator',
   '/city-nickname-generator',
   '/literature-review-generator',
+  '/ai-tools/emoji-translator',
+  '/ai-tools/elf-name-generator',
+  '/ai-tools/pen-name-generator',
+  '/ai-tools/gang-name-generator',
+  '/ai-tools/band-name-generator',
+  '/ai-tools/random-nfl-team-generator',
+  '/ai-tools/middle-name-generator',
 ])
 
 function getRouteTier(route: string): RouteTier {
@@ -124,6 +131,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/romance-story-generator',
     '/city-nickname-generator',
     '/literature-review-generator',
+    '/ai-tools/emoji-translator',
+    '/ai-tools/elf-name-generator',
+    '/ai-tools/pen-name-generator',
+    '/ai-tools/gang-name-generator',
+    '/ai-tools/band-name-generator',
+  '/ai-tools/random-nfl-team-generator',
+  '/ai-tools/middle-name-generator',
     '/posts',
     '/changelog'
   ]

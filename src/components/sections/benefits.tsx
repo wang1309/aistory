@@ -1,7 +1,6 @@
 import { Section as SectionType } from "@/types/blocks/section";
 import { getAccent, type AccentColor } from "./accent";
 import Icon from "@/components/icon";
-import Image from "next/image";
 
 interface Props {
   section: SectionType;
@@ -15,8 +14,6 @@ export default function Benefits({ section, accent = "orange" }: Props) {
   const HIGHLIGHT = "Story Generator";
   const titleParts = section.title?.split(HIGHLIGHT);
   const hasHighlight = titleParts && titleParts.length === 2;
-
-  const [featured, ...rest] = section.items;
 
   return (
     <section className="relative overflow-hidden py-28 sm:py-36">
@@ -79,104 +76,38 @@ export default function Benefits({ section, accent = "orange" }: Props) {
           )}
         </div>
 
-        {/* Asymmetric Bento Grid */}
-        <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-12">
-
-          {/* ── Featured card (left, 7 cols) ── */}
-          {featured && (
-            <div className="lg:col-span-7">
-              {/* Outer shell */}
-              <div className="group h-full rounded-[1.75rem] border border-border/15 bg-foreground/[0.012] p-1.5 transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/28 dark:bg-white/[0.015]">
-                {/* Inner core */}
-                <div className="h-full overflow-hidden rounded-[calc(1.75rem-0.375rem)] bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)]">
-                  {/* Image with zoom effect */}
-                  {featured.image?.src && (
-                    <div className="relative h-56 overflow-hidden sm:h-64">
-                      <Image
-                        src={featured.image.src}
-                        alt={featured.title || ""}
-                        fill
-                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.04]"
-                        loading="lazy"
-                      />
-                      {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
-                      {/* Top reflection */}
-                      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white/[0.05] to-transparent" />
+        {/* Ledger checklist — equal-weight steps, sequence carried by the index */}
+        <ol className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:gap-x-16">
+          {section.items.map((item, i) => (
+            <li key={i} className="border-t border-border/25 pt-7">
+              <div className="flex items-center justify-between gap-4">
+                <span
+                  aria-hidden="true"
+                  className={`text-sm font-bold tabular-nums tracking-[0.12em] ${a.text} opacity-70`}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {item.icon && (
+                  <div className="shrink-0 rounded-xl border border-border/15 bg-foreground/[0.02] p-1">
+                    <div className={`flex size-8 items-center justify-center rounded-lg ${a.iconBg}`}>
+                      <Icon name={item.icon} className={`size-4 ${a.text}`} />
                     </div>
-                  )}
-                  {/* Content */}
-                  <div className="p-6 sm:p-8">
-                    {featured.icon && (
-                      <div className="mb-5 inline-flex rounded-xl border border-border/15 bg-foreground/[0.02] p-1">
-                        <div className={`flex size-9 items-center justify-center rounded-lg transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110 ${a.iconBg}`}>
-                          <Icon name={featured.icon} className={`size-5 ${a.text}`} />
-                        </div>
-                      </div>
-                    )}
-                    <h3 className="text-lg font-bold tracking-tight text-foreground leading-snug">
-                      {featured.title}
-                    </h3>
-                    {featured.description && (
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground/60">
-                        {featured.description}
-                      </p>
-                    )}
                   </div>
-                </div>
+                )}
               </div>
-            </div>
-          )}
 
-          {/* ── Right column: 2 stacked cards (5 cols) ── */}
-          {rest.length > 0 && (
-            <div className="flex flex-col gap-5 lg:col-span-5">
-              {rest.map((item, i) => (
-                <div key={i} className="flex-1">
-                  {/* Outer shell */}
-                  <div className="group h-full rounded-[1.5rem] border border-border/15 bg-foreground/[0.012] p-1 transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/28 dark:bg-white/[0.015]">
-                    {/* Inner core */}
-                    <div className="h-full overflow-hidden rounded-[calc(1.5rem-0.25rem)] bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
-                      {/* Image */}
-                      {item.image?.src && (
-                        <div className="relative h-36 overflow-hidden">
-                          <Image
-                            src={item.image.src}
-                            alt={item.title || ""}
-                            fill
-                            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.04]"
-                            loading="lazy"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-card/75 to-transparent" />
-                          <div className="pointer-events-none absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-white/[0.04] to-transparent" />
-                        </div>
-                      )}
-                      {/* Content */}
-                      <div className="p-5 sm:p-6">
-                        {item.icon && (
-                          <div className="mb-4 inline-flex rounded-xl border border-border/15 bg-foreground/[0.02] p-0.5">
-                            <div className={`flex size-8 items-center justify-center rounded-lg transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110 ${a.iconBg}`}>
-                              <Icon name={item.icon} className={`size-4 ${a.text}`} />
-                            </div>
-                          </div>
-                        )}
-                        <h3 className="text-[0.95rem] font-bold tracking-tight text-foreground leading-snug">
-                          {item.title}
-                        </h3>
-                        {item.description && (
-                          <p className="mt-2 text-[0.825rem] leading-relaxed text-muted-foreground/58 line-clamp-3">
-                            {item.description}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+              <h3 className="mt-3 text-[0.95rem] font-bold tracking-tight text-foreground leading-snug">
+                {item.title}
+              </h3>
+              {item.description && (
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground/60">
+                  {item.description}
+                </p>
+              )}
+            </li>
+          ))}
+        </ol>
 
-        </div>
       </div>
     </section>
   );

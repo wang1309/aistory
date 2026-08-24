@@ -61,6 +61,8 @@ const COLUMN_GROUP: Record<ToolCategory, 0 | 1 | 2> = {
   plot: 1,
   poem: 1,
   social: 2,
+  name: 2,
+  utility: 2,
 };
 
 const COLUMN_DEFS: Array<{ icon: string; labelKey: string }> = [
@@ -363,10 +365,10 @@ export default function Header({ header }: { header: HeaderType }) {
                           variant: "ghost",
                         })
                       )}
-                      href={"/pricing" as any}
+                      href={"/ai-tools" as any}
                     >
-                      <Icon name="RiPriceTag3Line" className="size-4 shrink-0 mr-0" />
-                      {t("pricing.title")}
+                      <Icon name="RiToolsLine" className="size-4 shrink-0 mr-0" />
+                      {t("ai_tools.tools_hub_nav")}
                     </Link>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
@@ -378,10 +380,10 @@ export default function Header({ header }: { header: HeaderType }) {
                           variant: "ghost",
                         })
                       )}
-                      href={"/ai-tools" as any}
+                      href={"/pricing" as any}
                     >
-                      <Icon name="RiToolsLine" className="size-4 shrink-0 mr-0" />
-                      {t("ai_tools.tools_hub_nav")}
+                      <Icon name="RiPriceTag3Line" className="size-4 shrink-0 mr-0" />
+                      {t("pricing.title")}
                     </Link>
                   </NavigationMenuItem>
                 </NavigationMenuList>
@@ -585,18 +587,18 @@ export default function Header({ header }: { header: HeaderType }) {
                     {t("community.title")}
                   </Link>
                   <Link
-                    href={"/pricing" as any}
-                    className={mobileDrawerItemClassName}
-                  >
-                    <Icon name="RiPriceTag3Line" className="size-4 shrink-0" />
-                    {t("pricing.title")}
-                  </Link>
-                  <Link
                     href={"/ai-tools" as any}
                     className={mobileDrawerItemClassName}
                   >
                     <Icon name="RiToolsLine" className="size-4 shrink-0" />
                     {t("ai_tools.tools_hub_nav")}
+                  </Link>
+                  <Link
+                    href={"/pricing" as any}
+                    className={mobileDrawerItemClassName}
+                  >
+                    <Icon name="RiPriceTag3Line" className="size-4 shrink-0" />
+                    {t("pricing.title")}
                   </Link>
                 </div>
                 <div className="flex-1"></div>
