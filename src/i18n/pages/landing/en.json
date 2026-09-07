@@ -834,6 +834,11 @@
               "title": "AIStage",
               "url": "https://aistage.net/",
               "target": "_blank"
+            },
+            {
+              "title": "Lovecomic",
+              "url": "https://lovecomic.app/",
+              "target": "_blank"
             }
           ]
         }
