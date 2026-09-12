@@ -112,10 +112,10 @@ export default function StorySaveDialog({
       id: "saved",
       status: "saved" as StoryStatus,
       icon: "bookmark",
-      color: "text-indigo-500 dark:text-indigo-400",
-      bgColor: "bg-indigo-50 dark:bg-indigo-900/20",
+      color: "text-primary dark:text-primary",
+      bgColor: "bg-primary/10 dark:bg-primary/10",
       borderColor:
-        "group-hover:border-indigo-300 dark:group-hover:border-indigo-700",
+        "group-hover:border-primary/40 dark:group-hover:border-primary/60",
       title: labels.saved,
       desc: labels.savedDesc,
     },
@@ -123,10 +123,10 @@ export default function StorySaveDialog({
       id: "published",
       status: "published" as StoryStatus,
       icon: "sparkles",
-      color: "text-purple-500 dark:text-purple-400",
-      bgColor: "bg-purple-50 dark:bg-purple-900/20",
+      color: "text-primary dark:text-primary",
+      bgColor: "bg-primary/[0.06] dark:bg-primary/[0.06]",
       borderColor:
-        "group-hover:border-purple-300 dark:group-hover:border-purple-700",
+        "group-hover:border-primary/40 dark:group-hover:border-primary/60",
       title: labels.published,
       desc: labels.publishedDesc,
       isPremium: true,
@@ -142,19 +142,19 @@ export default function StorySaveDialog({
         {/* Header with decorative background */}
         <div className="relative p-8 pb-6 text-center overflow-hidden">
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 via-purple-500/5 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.05] via-primary/[0.04] to-transparent pointer-events-none" />
           {/* Decorative blobs */}
-          <div className="absolute -top-20 -left-20 w-40 h-40 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-20 -left-20 w-40 h-40 bg-primary/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center">
             {/* Animated Icon */}
             <div className="relative mb-5">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl blur-xl opacity-30 animate-pulse" />
-              <div className="relative size-16 rounded-2xl bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/40 dark:to-purple-900/40 flex items-center justify-center shadow-lg ring-1 ring-black/5 dark:ring-white/10">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/80 rounded-2xl blur-xl opacity-30 animate-pulse" />
+              <div className="relative size-16 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/10 dark:from-primary/20 dark:to-primary/15 flex items-center justify-center shadow-lg ring-1 ring-black/5 dark:ring-white/10">
                 <Icon
                   name="save"
-                  className="size-8 text-indigo-600 dark:text-indigo-400"
+                  className="size-8 text-primary dark:text-primary"
                 />
               </div>
             </div>
@@ -176,7 +176,7 @@ export default function StorySaveDialog({
               onClick={() => onSelect(opt.status)}
               disabled={isSaving}
               className={cn(
-                "w-full group relative flex items-start gap-4 p-4 rounded-2xl border transition-all duration-300 text-left outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2",
+                "w-full group relative flex items-start gap-4 p-4 rounded-2xl border transition-all duration-300 text-left outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
                 "bg-card/50 hover:bg-card border-border/50",
                 "hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/20",
                 "hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99]",
@@ -201,11 +201,11 @@ export default function StorySaveDialog({
               {/* Text Content */}
               <div className="flex-1 min-w-0 pt-0.5">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="font-semibold text-foreground group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors truncate">
+                  <span className="font-semibold text-foreground group-hover:text-primary dark:group-hover:text-primary transition-colors truncate">
                     {opt.title}
                   </span>
                   {opt.isPremium && (
-                    <span className="shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-sm animate-pulse">
+                    <span className="shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-primary to-primary/80 text-white shadow-sm animate-pulse">
                       HOT
                     </span>
                   )}

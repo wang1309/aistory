@@ -67,17 +67,17 @@ export default function GenerationProgress({
             className="w-full max-w-2xl mx-auto"
         >
             {/* Progress Container */}
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-indigo-50/80 via-purple-50/50 to-pink-50/30 dark:from-indigo-950/30 dark:via-purple-950/20 dark:to-pink-950/10 border border-indigo-100/50 dark:border-indigo-900/30 backdrop-blur-xl overflow-hidden">
+            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-primary/[0.08] via-primary/[0.04] to-transparent dark:from-primary/10 dark:via-primary/[0.05] dark:to-transparent border border-primary/15 dark:border-primary/15 backdrop-blur-xl overflow-hidden">
                 {/* Animated Background Blobs */}
-                <div className="absolute top-0 left-0 w-32 h-32 bg-indigo-400/20 dark:bg-indigo-500/10 rounded-full blur-3xl animate-blob" />
-                <div className="absolute bottom-0 right-0 w-40 h-40 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
+                <div className="absolute top-0 left-0 w-32 h-32 bg-primary/15 dark:bg-primary/10 rounded-full blur-3xl animate-blob" />
+                <div className="absolute bottom-0 right-0 w-40 h-40 bg-primary/10 dark:bg-primary/[0.06] rounded-full blur-3xl animate-blob animation-delay-2000" />
 
                 <div className="relative z-10 space-y-6">
                     {/* Header with Icon */}
                     <div className="flex items-center justify-center gap-3">
                         <div className="relative">
-                            <div className="absolute inset-0 bg-indigo-500/20 dark:bg-indigo-400/20 rounded-full blur-md animate-pulse" />
-                            <div className="relative size-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                            <div className="absolute inset-0 bg-primary/20 dark:bg-primary/20 rounded-full blur-md animate-pulse" />
+                            <div className="relative size-10 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
                                 <Icon name="sparkles" className="size-5 text-white animate-pulse" />
                             </div>
                         </div>
@@ -94,7 +94,7 @@ export default function GenerationProgress({
 
                             {/* Actual progress */}
                             <motion.div
-                                className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600 rounded-full relative overflow-hidden"
+                                className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary rounded-full relative overflow-hidden"
                                 initial={{ width: 0 }}
                                 animate={{ width: `${progress}%` }}
                                 transition={{ duration: 0.3, ease: "easeOut" }}
@@ -107,7 +107,7 @@ export default function GenerationProgress({
                         {/* Progress Percentage */}
                         <div className="flex items-center justify-between text-sm">
                             <span
-                                className="font-bold text-indigo-600 dark:text-indigo-400 tabular-nums"
+                                className="font-bold text-primary dark:text-primary tabular-nums"
                             >
                                 {Math.round(progress)}%
                             </span>
@@ -141,7 +141,7 @@ export default function GenerationProgress({
                         {[0, 1, 2].map((i) => (
                             <motion.div
                                 key={i}
-                                className="size-2 rounded-full bg-indigo-500/40 dark:bg-indigo-400/40"
+                                className="size-2 rounded-full bg-primary/40 dark:bg-primary/40"
                                 animate={{
                                     scale: [1, 1.5, 1],
                                     opacity: [0.4, 1, 0.4],

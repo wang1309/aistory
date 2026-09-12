@@ -884,7 +884,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
           {/* Title with italic gradient emphasis on "Plot" */}
           <h1 className="relative z-10 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
-            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+            <span className="text-gradient-ember italic">
               Plot
             </span>
             {" "}Generator

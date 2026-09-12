@@ -544,7 +544,7 @@ export default function YoutubeTitleGenerate({
               return (
                 <>
                   {titleText.slice(0, idx)}
-                  <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 bg-clip-text text-transparent dark:from-orange-400 dark:via-orange-500 dark:to-orange-300">
+                  <span className="text-gradient-ember">
                     {highlight}
                   </span>
                   {titleText.slice(idx + highlight.length)}

@@ -45,7 +45,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_WEB_URL}/story.png`,
+          url: `${process.env.NEXT_PUBLIC_WEB_URL}/share.png`,
           width: 1200,
           height: 630,
           alt: metadata.title,
@@ -56,7 +56,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: metadata.title,
       description: metadata.description,
-      images: [`${process.env.NEXT_PUBLIC_WEB_URL}/story.png`],
+      images: [`${process.env.NEXT_PUBLIC_WEB_URL}/share.png`],
     },
   };
 }

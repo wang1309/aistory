@@ -1030,7 +1030,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
 
           {/* Title with italic gradient emphasis on "DnD Backstory" */}
           <h1 className="relative z-10 font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+            <span className="text-gradient-ember italic">
               DnD Backstory
             </span>
             {" "}Generator

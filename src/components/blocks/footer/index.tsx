@@ -124,19 +124,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
 
           <div className="mt-8 flex flex-col justify-between gap-4 border-t pt-8 text-center text-sm font-medium text-muted-foreground lg:flex-row lg:items-center lg:text-left">
             {footer.copyright && (
-              <p>
-                {footer.copyright}
-                {process.env.NEXT_PUBLIC_SHOW_POWERED_BY === "false" ? null : (
-                  <a
-                    href="https://shipany.ai"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="ShipAny"
-                    className="px-2 text-primary"
-                  >
-                  </a>
-                )}
-              </p>
+              <p>{footer.copyright}</p>
             )}
 
             {footer.agreement && (

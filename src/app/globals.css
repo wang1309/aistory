@@ -35,6 +35,40 @@
     background-image: radial-gradient(circle, var(--tw-gradient-stops));
   }
 
+  /* ========== Brand gradient text (single source of truth) ========== */
+  .text-gradient-brand {
+    background-image: linear-gradient(
+      to right,
+      var(--primary),
+      color-mix(in oklch, var(--primary) 80%, transparent),
+      color-mix(in oklch, var(--primary) 60%, transparent)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-ember {
+    background-image: linear-gradient(
+      to right,
+      oklch(0.60 0.19 40),
+      oklch(0.66 0.19 50),
+      oklch(0.72 0.16 60)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .dark .text-gradient-ember {
+    background-image: linear-gradient(
+      to right,
+      oklch(0.72 0.16 45),
+      oklch(0.76 0.15 55),
+      oklch(0.80 0.13 65)
+    );
+  }
+
   /* ========== Modern Micro-Interactions ========== */
 
   /* Button Hover Effects */
@@ -47,7 +81,7 @@
   }
   .btn-hover-lift:active {
     transform: translateY(0);
-    transition: transform 100ms var(--ease-sharp);
+    transition: transform 100ms cubic-bezier(0.4, 0, 0.6, 1);
   }
 
   /* Card Hover Effects */
@@ -465,7 +499,7 @@
     }
   }
   .animate-bounce-in {
-    animation: bounceIn 0.5s var(--ease-bounce) forwards;
+    animation: bounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   }
 
   /* Slide In From Right */
@@ -555,7 +589,7 @@
     }
   }
   .animate-elastic-scale {
-    animation: elasticScale 0.4s var(--ease-bounce) forwards;
+    animation: elasticScale 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   }
 
   /* Shake Animation */
@@ -571,7 +605,7 @@
     }
   }
   .animate-shake {
-    animation: shake 0.5s var(--ease-sharp) forwards;
+    animation: shake 0.5s cubic-bezier(0.4, 0, 0.6, 1) forwards;
   }
 
   /* Fade In Up */

@@ -10,7 +10,6 @@ import { Label } from "@/components/ui/label";
 import { StepTabs } from "@/components/ui/step-tabs";
 import { ModernCard, ModernCardContent, ModernCardHeader } from "@/components/ui/modern-card";
 import { AnimatedContainer } from "@/components/ui/animated-container";
-import { GradientText } from "@/components/ui/gradient-text";
 import { EnhancedBadge } from "@/components/ui/enhanced-badge";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import Icon from "@/components/icon";
@@ -991,7 +990,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
         {/* Title with italic gradient emphasis on "Fanfiction" */}
         <h1 className="relative z-10 font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.9] mt-4">
           <span className="text-foreground">Free{" "}</span>
-          <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-400 dark:from-orange-300 dark:via-amber-300 dark:to-orange-200">
+          <span className="text-gradient-ember italic">
             Fanfiction
           </span>
           <span className="text-foreground"> Generator</span>

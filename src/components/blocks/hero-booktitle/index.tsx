@@ -666,7 +666,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
           {/* Title with italic gradient emphasis on highlight */}
           <h1 className="relative z-10 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
             {section.header.h1_prefix || "Free AI"}{" "}
-            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+            <span className="text-gradient-ember italic">
               {section.header.h1_highlight || "Book Title"}
             </span>
             {" "}{section.header.h1_suffix || "Generator"}

@@ -39,7 +39,7 @@ export async function generateMetadata({
       ? `${process.env.NEXT_PUBLIC_WEB_URL}/ai-tools/random-nfl-team-generator`
       : `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/ai-tools/random-nfl-team-generator`;
 
-  const ogImage = `${process.env.NEXT_PUBLIC_WEB_URL}/story.png`;
+  const ogImage = `${process.env.NEXT_PUBLIC_WEB_URL}/share.png`;
 
   return {
     title: metadata.title,

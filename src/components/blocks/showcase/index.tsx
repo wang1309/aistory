@@ -2,28 +2,18 @@
 
 import { Link } from "@/i18n/navigation";
 import { Section as SectionType } from "@/types/blocks/section";
+import SectionHeader from "@/components/sections/section-header";
 import OptimizedImage from "@/components/seo/optimized-image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
 export default function Showcase({ section }: { section: SectionType }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
+  const tCommon = useTranslations("common");
 
   if (section.disabled) return null;
 
-  // Split title to highlight "AI"
-  const HIGHLIGHT = "AI";
-  const titleParts = section.title?.split(new RegExp(`(${HIGHLIGHT})`, "g"));
-
   return (
     <section
-      ref={containerRef}
       id={section.name || "story_showcase"}
       className="relative py-28 lg:py-36 overflow-hidden"
     >
@@ -37,59 +27,23 @@ export default function Showcase({ section }: { section: SectionType }) {
       </div>
 
       <div className="container relative z-10">
-        {/* Header */}
-        <motion.div
-          style={{ opacity }}
-          className="mx-auto flex max-w-xl flex-col items-center gap-0 mb-16 text-center"
-        >
-          {section.label && (
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-              <span className="inline-block size-1.5 rounded-full bg-primary opacity-60" />
-              {section.label}
-            </span>
-          )}
-          {section.title && (
-            <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl leading-[1.1]">
-              {titleParts?.map((part, i) =>
-                part === HIGHLIGHT ? (
-                  <span key={i} className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                    {part}
-                  </span>
-                ) : (
-                  part
-                )
-              ) ?? section.title}
-            </h2>
-          )}
+        {/* Header — static SSR, consistent with every other section */}
+        <div className="mb-16">
+          <SectionHeader
+            label={section.label}
+            title={section.title}
+            description={section.description}
+            align="center"
+            highlight="AI"
+            accent="amber"
+            descriptionClassName="font-light"
+          />
+        </div>
 
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-2 mb-5 h-2.5 w-28 text-primary/25"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-
-          {section.description && (
-            <p className="max-w-md text-base text-muted-foreground/65 leading-relaxed font-light">
-              {section.description}
-            </p>
-          )}
-        </motion.div>
-
-        {/* Asymmetric bento grid */}
+        {/* Magazine story index — uniform 3×2, no orphan cells */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {section.items?.map((item, index) => (
-            <ShowcaseCard key={index} item={item} index={index} featured={index === 0} />
+            <ShowcaseCard key={index} item={item} index={index} ctaLabel={tCommon("read_story")} />
           ))}
         </div>
       </div>
@@ -100,31 +54,27 @@ export default function Showcase({ section }: { section: SectionType }) {
 function ShowcaseCard({
   item,
   index,
-  featured,
+  ctaLabel,
 }: {
   item: any;
   index: number;
-  featured?: boolean;
+  ctaLabel: string;
 }) {
   return (
-    <Link
-      href={item.url || ""}
-      target={item.target}
-      className={`block h-full ${featured ? "sm:col-span-2 lg:col-span-2" : ""}`}
-    >
+    <Link href={item.url || ""} target={item.target} className="block h-full">
       <motion.div
-        initial={{ opacity: 0, y: 24, scale: featured ? 0.97 : 1 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: index * 0.07, duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+        transition={{ delay: (index % 3) * 0.07, duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
         className="group h-full"
       >
-        {/* Outer shell */}
-        <div className={`h-full border border-border/15 bg-foreground/[0.012] transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/30 dark:bg-white/[0.015] ${featured ? "rounded-[1.75rem] p-1.5" : "rounded-[1.5rem] p-1"}`}>
+        {/* Outer shell — shared double-bezel language */}
+        <div className="h-full rounded-[1.5rem] border border-border/15 bg-foreground/[0.012] p-1.5 transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/30 dark:bg-white/[0.015]">
           {/* Inner core */}
-          <div className={`overflow-hidden bg-card flex flex-col h-full shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] ${featured ? "rounded-[calc(1.75rem-0.375rem)]" : "rounded-[calc(1.5rem-0.25rem)]"}`}>
+          <div className="flex h-full flex-col overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
             {/* Image */}
-            <div className={`relative w-full overflow-hidden ${featured ? "aspect-[16/8]" : "aspect-[4/3]"}`}>
+            <div className="relative aspect-[4/3] w-full overflow-hidden">
               <OptimizedImage
                 src={item.image?.src || ""}
                 alt={item.image?.alt || item.title || "Example"}
@@ -132,32 +82,30 @@ function ShowcaseCard({
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.04]"
               />
 
-              {/* Genre badge */}
-              {item.label && (
-                <span className="absolute top-3 left-3 z-10 rounded-full border border-white/15 bg-black/45 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white/90">
-                  {item.label}
-                </span>
-              )}
-
               {/* Subtle hover overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-card/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-100" />
             </div>
 
             {/* Content */}
-            <div className="flex flex-col flex-1 px-5 pt-5 pb-5">
-              <h3 className={`font-bold tracking-tight text-foreground leading-snug ${featured ? "text-base" : "text-[0.95rem]"} line-clamp-2`}>
+            <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
+              {item.label && (
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/80">
+                  {item.label}
+                </span>
+              )}
+              <h3 className="mt-1.5 font-display text-[1.05rem] font-bold tracking-tight text-foreground leading-snug line-clamp-2">
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm text-muted-foreground/55 leading-relaxed line-clamp-2 flex-1">
+              <p className="mt-2 line-clamp-2 flex-1 text-sm text-muted-foreground/55 leading-relaxed">
                 {item.description}
               </p>
 
               {/* Bottom CTA row */}
-              <div className="mt-4 pt-4 border-t border-border/10 flex items-center justify-between">
+              <div className="mt-4 flex items-center justify-between border-t border-border/10 pt-4">
                 <span className="text-xs font-semibold text-muted-foreground/50 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-foreground/70">
-                  Read Story
+                  {ctaLabel}
                 </span>
-                <span className="inline-flex size-7 items-center justify-center rounded-full bg-foreground/[0.04] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:bg-foreground/[0.09] group-hover:translate-x-0.5 group-hover:-translate-y-px">
+                <span className="inline-flex size-7 items-center justify-center rounded-full bg-foreground/[0.04] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:bg-foreground/[0.09]">
                   <svg viewBox="0 0 16 16" className="h-3 w-3 text-muted-foreground/40 transition-colors duration-300 group-hover:text-foreground/60" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" d="M5 3l6 5-6 5" />
                   </svg>

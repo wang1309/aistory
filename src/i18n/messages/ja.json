@@ -15,7 +15,9 @@
     "admin_system": "管理システム"
   },
   "common": {
-    "error": "エラーが発生しました。しばらくしてからもう一度お試しください。"
+    "error": "エラーが発生しました。しばらくしてからもう一度お試しください。",
+    "quick_try": "クイック体験",
+    "read_story": "物語を読む"
   },
   "sign_modal": {
     "sign_in_title": "ログイン",
@@ -38,7 +40,7 @@
   },
   "my_orders": {
     "title": "注文履歴",
-    "description": "ShipAnyで購入した注文。",
+    "description": "購入済みの注文。",
     "no_orders": "注文が見つかりません",
     "tip": "",
     "activate_order": "注文を有効化",
@@ -182,7 +184,7 @@
     "edit_invite_link": "招待リンクを編集",
     "copy_invite_link": "招待リンクをコピー",
     "invite_code": "招待コード",
-    "invite_tip": "友達1人を招待してShipAnyを購入すると、$50の報酬。",
+    "invite_tip": "友人1人をAI Story Generatorに招待すると報酬がもらえます。",
     "invite_balance": "招待報酬残高",
     "total_invite_count": "総招待数",
     "total_paid_count": "総支払数",
@@ -190,7 +192,7 @@
     "update_invite_code": "招待コードを設定",
     "update_invite_code_tip": "カスタム招待コードを入力してください",
     "update_invite_button": "保存",
-    "no_orders": "ShipAnyを購入する前に他の人を招待することはできません",
+    "no_orders": "初回購入後に友人を招待できます",
     "no_affiliates": "他の人を招待する権限がありません。許可を申請するには、お問い合わせください。",
     "table": {
       "invite_time": "招待日時",
@@ -253,7 +255,7 @@
     "submit": "送信",
     "loading": "送信中...",
     "contact_tip": "その他のお問い合わせ方法",
-    "rating_tip": "ShipAnyについてどう思いますか？",
+    "rating_tip": "AI Story Generatorの感想を教えてください",
     "placeholder": "ここにご意見をお書きください..."
   },
   "verification": {

@@ -37,7 +37,7 @@ export async function generateMetadata({
       ? `${process.env.NEXT_PUBLIC_WEB_URL}/ai-tools/elf-name-generator`
       : `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/ai-tools/elf-name-generator`;
 
-  const ogImage = `${process.env.NEXT_PUBLIC_WEB_URL}/story.png`;
+  const ogImage = `${process.env.NEXT_PUBLIC_WEB_URL}/share.png`;
 
   return {
     title: metadata.title,

@@ -231,8 +231,8 @@ export default function Header({ header }: { header: HeaderType }) {
   };
 
   return (
-    <section className="py-3 relative z-50">
-      <div className="container">
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/65">
+      <div className="container py-3">
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
             <Link
@@ -246,11 +246,10 @@ export default function Header({ header }: { header: HeaderType }) {
                   className="w-8"
                   width={32}
                   height={32}
-                  loading="lazy"
                 />
               )}
               {header.brand?.title && (
-                <span className="text-[1.3rem] font-display font-bold tracking-tight bg-gradient-to-r from-stone-600 via-amber-700 to-amber-600 dark:from-amber-200 dark:via-amber-300/90 dark:to-amber-200 bg-clip-text text-transparent transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                <span className="text-[1.3rem] font-display font-bold tracking-tight text-gradient-brand transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
                   {header.brand?.title || ""}
                 </span>
               )}
@@ -427,19 +426,18 @@ export default function Header({ header }: { header: HeaderType }) {
                   className="w-8"
                   width={32}
                   height={32}
-                  loading="lazy"
                 />
               )}
               {header.brand?.title && (
-                <span className="text-[1.3rem] font-display font-bold tracking-tight bg-gradient-to-r from-stone-600 via-amber-700 to-amber-600 dark:from-amber-200 dark:via-amber-300/90 dark:to-amber-200 bg-clip-text text-transparent">
+                <span className="text-[1.3rem] font-display font-bold tracking-tight text-gradient-brand">
                   {header.brand?.title || ""}
                 </span>
               )}
             </Link>
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
-                <Button variant="default" size="icon">
-                  <Menu className="size-4" />
+                <Button variant="ghost" size="icon" className="text-foreground">
+                  <Menu className="size-5" />
                 </Button>
               </SheetTrigger>
               <SheetContent
@@ -465,11 +463,10 @@ export default function Header({ header }: { header: HeaderType }) {
                           className="w-8"
                           width={32}
                           height={32}
-                          loading="lazy"
                         />
                       )}
                       {header.brand?.title && (
-                        <span className="text-[1.3rem] font-display font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-stone-600 via-amber-700 to-amber-600 dark:from-amber-200 dark:via-amber-300/90 dark:to-amber-200">
+                        <span className="text-[1.3rem] font-display font-bold tracking-tight text-gradient-brand">
                           {header.brand?.title || ""}
                         </span>
                       )}
@@ -639,6 +636,6 @@ export default function Header({ header }: { header: HeaderType }) {
           </div>
         </div>
       </div>
-    </section>
+    </header>
   );
 }

@@ -10,7 +10,7 @@ import { getHeroCtaAnimationStyle } from "./animation-style";
 import { Hero as HeroType } from "@/types/blocks/hero";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 
 const Prism = dynamic(() => import("@/components/Prism"), {
   ssr: false,
@@ -20,18 +20,18 @@ const Prism = dynamic(() => import("@/components/Prism"), {
 });
 
 const STORY_IMAGES = [
-  "https://r2.hellokittycoloringpages.com/image/dengtakashouren.avif",
-  "https://r2.hellokittycoloringpages.com/image/laorenyuhai.avif",
-  "https://r2.hellokittycoloringpages.com/image/lixiangguo.avif",
-  "https://r2.hellokittycoloringpages.com/image/shushangdenanjue.avif",
-  "https://r2.hellokittycoloringpages.com/image/yangzhiqiu.avif",
+  "https://r2.storiesgenerator.org/image/image_dengtakashouren.avif",
+  "https://r2.storiesgenerator.org/image/image_laorenyuhai.avif",
+  "https://r2.storiesgenerator.org/image/image_lixiangguo.avif",
+  "https://r2.storiesgenerator.org/image/image_shushangdenanjue.avif",
+  "https://r2.storiesgenerator.org/image/image_yangzhiqiu.avif",
 ];
 
 const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
   const [isMounted, setIsMounted] = useState(false);
   const [allowPrism, setAllowPrism] = useState(false);
   const [showDesktopCascade, setShowDesktopCascade] = useState(false);
-  const locale = useLocale();
+  const tCommon = useTranslations("common");
 
   useEffect(() => {
     setIsMounted(true);
@@ -101,15 +101,16 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
   const prismProps = useMemo(
     () => ({
       animationType: hero.prism_background?.animationType || "rotate",
-      timeScale: hero.prism_background?.timeScale ?? 0.5,
+      // Restrained by design: slower drift, softer glow — presence, not spectacle.
+      timeScale: hero.prism_background?.timeScale ?? 0.35,
       height: hero.prism_background?.height ?? 3.5,
       baseWidth: hero.prism_background?.baseWidth ?? 5.5,
       scale: hero.prism_background?.scale ?? 3.6,
       hueShift: hero.prism_background?.hueShift ?? 0,
       colorFrequency: hero.prism_background?.colorFrequency ?? 1,
       noise: hero.prism_background?.noise ?? 0.5,
-      glow: hero.prism_background?.glow ?? 1,
-      bloom: hero.prism_background?.bloom ?? 1,
+      glow: hero.prism_background?.glow ?? 0.8,
+      bloom: hero.prism_background?.bloom ?? 0.8,
       suspendWhenOffscreen: true,
     }),
     [hero.prism_background]
@@ -122,15 +123,15 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
   if (hero.disabled) return null;
 
   return (
-    <section className="min-h-[92vh] flex items-center justify-center py-24 lg:py-32 overflow-hidden">
+    <section className="min-h-[85vh] flex items-center justify-center py-24 lg:py-32 overflow-hidden">
       {/* Animated background */}
       <div className="pointer-events-none absolute inset-0">
         {allowPrism && isMounted ? (
           <>
-            <div className="absolute inset-0 opacity-70">
+            <div className="absolute inset-0 opacity-40 dark:opacity-30">
               <Prism {...prismProps} />
             </div>
-            <div className="absolute inset-0 bg-gradient-radial from-background/20 via-background/40 to-background/80" />
+            <div className="absolute inset-0 bg-gradient-radial from-background/30 via-background/50 to-background/85" />
           </>
         ) : (
           <>
@@ -216,7 +217,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
               {texts && texts.length > 1 ? (
                 <h1 className="text-balance font-display font-bold tracking-tight text-foreground text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.1]">
                   {texts[0]}
-                  <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+                  <span className="text-gradient-brand">
                     {highlightText}
                   </span>
                   {texts[1]}
@@ -273,11 +274,9 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                     >
                       {isPrimary ? (
                         <Button
-                          size="lg"
-                          className="w-full sm:w-auto h-12 sm:h-14 rounded-full px-7 text-sm font-semibold
-                            bg-foreground text-background hover:bg-foreground/85 active:scale-[0.97]
-                            dark:bg-white dark:text-[oklch(0.20_0.02_55)] dark:hover:bg-white/90
-                            transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                          variant="pill"
+                          size="pill"
+                          className="w-full sm:w-auto"
                           style={getHeroCtaAnimationStyle(isMounted)}
                         >
                           <span className="flex items-center gap-2.5">
@@ -292,12 +291,9 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                         </Button>
                       ) : (
                         <Button
-                          variant="outline"
-                          size="lg"
-                          className="w-full sm:w-auto h-12 sm:h-14 rounded-full px-7 text-sm font-semibold
-                            border border-border/30 bg-background/60 backdrop-blur-sm
-                            hover:border-border/60 active:scale-[0.97]
-                            transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                          variant="pillOutline"
+                          size="pill"
+                          className="w-full sm:w-auto"
                         >
                           <span className="flex items-center gap-2">
                             {item.icon && <Icon name={item.icon} className="size-4 shrink-0 opacity-60" />}
@@ -326,18 +322,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                     <svg viewBox="0 0 24 24" className="size-4 opacity-50" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                     </svg>
-                    <span>
-                      {({
-                        zh: "快速体验",
-                        ja: "クイック体験",
-                        ko: "빠른 체험",
-                        de: "Schnellstart",
-                        fr: "Essai Rapide",
-                        es: "Prueba Rápida",
-                        pt: "Teste Rápido",
-                        ru: "Быстрый старт",
-                      } as Record<string, string>)[locale] || "Quick Try"}
-                    </span>
+                    <span>{tCommon("quick_try")}</span>
                   </span>
                 </button>
               </div>

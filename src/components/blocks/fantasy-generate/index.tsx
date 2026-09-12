@@ -758,7 +758,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
           {/* Title with italic gradient emphasis on "Story" */}
           <h1 className="relative z-10 font-display text-5xl sm:text-7xl font-bold tracking-tighter leading-[0.9] mt-4">
             <span className="text-foreground">Fantasy{" "}</span>
-            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+            <span className="text-gradient-ember italic">
               Story
             </span>
             <span className="text-foreground"> Generator</span>

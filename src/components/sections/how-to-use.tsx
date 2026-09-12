@@ -1,6 +1,7 @@
 import { Section as SectionType } from "@/types/blocks/section";
 import { getAccent, type AccentColor } from "./accent";
 import Icon from "@/components/icon";
+import SectionHeader from "./section-header";
 
 interface Props {
   section: SectionType;
@@ -10,10 +11,6 @@ interface Props {
 export default function HowToUse({ section, accent = "orange" }: Props) {
   const a = getAccent(accent);
   if (section.disabled || !section.items?.length) return null;
-
-  const HIGHLIGHT = "AI Story Generators";
-  const titleParts = section.title?.split(HIGHLIGHT);
-  const hasHighlight = titleParts && titleParts.length === 2;
 
   return (
     <section className="relative overflow-hidden py-28 sm:py-36">
@@ -33,53 +30,15 @@ export default function HowToUse({ section, accent = "orange" }: Props) {
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mx-auto max-w-xl text-center">
-          {section.label && (
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">
-              <span className={`inline-block size-1.5 rounded-full ${a.solid} opacity-60`} />
-              {section.label}
-            </span>
-          )}
-
-          {section.title && (
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl leading-[1.1]">
-              {hasHighlight ? (
-                <>
-                  {titleParts[0]}
-                  <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                    {HIGHLIGHT}
-                  </span>
-                  {titleParts[1]}
-                </>
-              ) : (
-                section.title
-              )}
-            </h2>
-          )}
-
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-2 mb-5 h-2.5 w-28 text-primary/25"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-
-          {section.description && (
-            <p className="max-w-lg mx-auto text-base leading-relaxed text-muted-foreground/65 font-light">
-              {section.description}
-            </p>
-          )}
-        </div>
+        <SectionHeader
+          label={section.label}
+          title={section.title}
+          description={section.description}
+          accent={accent}
+          align="center"
+          highlight="AI Story Generators"
+          descriptionClassName="font-light"
+        />
 
         {/* Steps pipeline */}
         <div className="relative mt-20">

@@ -539,7 +539,7 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
 
           {/* Title: Romance in italic serif, Story Generator in roman */}
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-300 dark:to-amber-300">
+            <span className="text-gradient-ember italic">
               Romance
             </span>{" "}
             <span>Story Generator</span>

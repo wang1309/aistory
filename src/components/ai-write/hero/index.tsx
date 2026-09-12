@@ -198,7 +198,7 @@ export default function AiWriteHero() {
               </span>
               <span className="relative block mt-1">
                 <span
-                  className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent"
+                  className="text-gradient-brand"
                   style={{
                     backgroundSize: "200% 100%",
                   }}

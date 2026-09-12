@@ -607,7 +607,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                 ?
               </span>
               Story{" "}
-              <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 bg-clip-text italic text-transparent dark:from-orange-400 dark:via-orange-500 dark:to-orange-300">
+              <span className="text-gradient-ember italic">
                 Prompt
               </span>{" "}
               Generator

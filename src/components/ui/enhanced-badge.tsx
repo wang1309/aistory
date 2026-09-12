@@ -14,8 +14,6 @@ const badgeVariants = cva(
         success: "border-transparent bg-green-500 text-white hover:bg-green-500/80",
         warning: "border-transparent bg-orange-500 text-white hover:bg-orange-500/80",
         info: "border-transparent bg-blue-500 text-white hover:bg-blue-500/80",
-        premium: "border-transparent bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600",
-        recommended: "border-transparent bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600",
       },
       size: {
         default: "px-2.5 py-0.5 text-xs",

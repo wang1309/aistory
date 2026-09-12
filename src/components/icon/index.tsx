@@ -13,6 +13,12 @@ import {
   RiArrowDownSLine,
   RiArrowGoBackLine,
   RiArrowGoForwardLine,
+  RiCpuLine,
+  RiPlayLine,
+  RiStopLine,
+  RiThumbUpLine,
+  RiTranslate,
+  RiVolumeUpLine,
   RiArrowLeftLine,
   RiArrowLeftRightLine,
   RiArrowRightLine,
@@ -241,6 +247,14 @@ const remixIcons: Record<string, IconType> = {
   RiArrowDownSLine,
   RiArrowGoBackLine,
   RiArrowGoForwardLine,
+  RiCpuLine,
+  RiImageLine,
+  RiPlayLine,
+  RiStopLine,
+  RiText,
+  RiThumbUpLine,
+  RiTranslate,
+  RiVolumeUpLine,
   RiArrowLeftLine,
   RiArrowLeftRightLine,
   RiArrowRightLine,
@@ -345,7 +359,6 @@ const remixIcons: Record<string, IconType> = {
   RiHome4Line,
   RiHomeHeartLine,
   RiHomeLine,
-  RiImageLine,
   RiInformationLine,
   RiInputMethodFill,
   RiInstagramLine,
@@ -435,7 +448,6 @@ const remixIcons: Record<string, IconType> = {
   RiTableLine,
   RiTeamLine,
   RiTestTubeLine,
-  RiText,
   RiTimeLine,
   RiToolsLine,
   RiTrophyLine,
@@ -454,6 +466,76 @@ const remixIcons: Record<string, IconType> = {
   RiYoutubeLine,
 };
 
+/**
+ * Legacy/alias names that appeared in page copy (lucide-style kebab names,
+ * GoIcons names) or older code. Resolved to the canonical RemixIcon entry so
+ * unknown names degrade to a close brand icon instead of rendering nothing.
+ */
+const iconAliases: Record<string, string> = {
+  analyze: "RiLineChartLine",
+  "arrow-right": "RiArrowRightLine",
+  "book-open": "RiBookOpenLine",
+  BookOpen: "RiBookOpenLine",
+  building: "RiBuilding2Line",
+  check: "RiCheckLine",
+  "check-circle": "RiCheckboxCircleLine",
+  "chevron-down": "RiArrowDownSLine",
+  "chevron-right": "RiArrowRightSLine",
+  clapperboard: "RiClapperboardAiLine",
+  clock: "RiTimeLine",
+  close: "RiCloseLine",
+  copy: "RiFileCopyLine",
+  Copy: "RiFileCopyLine",
+  cpu: "RiCpuLine",
+  download: "RiDownloadLine",
+  edit: "RiEditLine",
+  feather: "RiQuillPenLine",
+  gamepad: "RiGamepadLine",
+  globe: "RiGlobalLine",
+  GoArrowUpRight: "RiArrowRightUpLine",
+  GoRocket: "RiRocket2Line",
+  GoThumbsup: "RiThumbUpLine",
+  "graduation-cap": "RiGraduationCapLine",
+  heart: "RiHeartLine",
+  Heart: "RiHeartLine",
+  history: "RiHistoryLine",
+  image: "RiImageLine",
+  Image: "RiImageLine",
+  info: "RiInformationLine",
+  languages: "RiTranslate",
+  lightbulb: "RiLightbulbLine",
+  megaphone: "RiMegaphoneLine",
+  "message-circle": "RiChat3Line",
+  palette: "RiPaletteLine",
+  "pen-tool": "RiPenNibLine",
+  Play: "RiPlayLine",
+  plus: "RiAddLine",
+  refresh: "RiRefreshLine",
+  "refresh-cw": "RiRefreshLine",
+  RiAlgorithmFill: "RiCpuLine",
+  RiGemLine: "RiSparkling2Line",
+  RiGitCompareLine: "RiArrowLeftRightLine",
+  RiLinkLine: "RiLinksLine",
+  RiScrollLine: "RiBookOpenLine",
+  RiSlidersLine: "RiEqualizerLine",
+  save: "RiSave3Line",
+  Search: "RiSearchLine",
+  settings: "RiSettings3Line",
+  "shield-check": "RiShieldCheckLine",
+  shuffle: "RiShuffleLine",
+  sliders: "RiEqualizerLine",
+  sparkles: "RiSparkling2Line",
+  Sparkles: "RiSparkling2Line",
+  Square: "RiStopLine",
+  "volume-2": "RiVolumeUpLine",
+  Volume2: "RiVolumeUpLine",
+  zap: "RiFlashlightLine",
+};
+
+function resolveIcon(name: string): IconType | undefined {
+  return remixIcons[name] ?? remixIcons[iconAliases[name]];
+}
+
 const Icon = memo(function Icon({
   name,
   className,
@@ -463,7 +545,7 @@ const Icon = memo(function Icon({
   className?: string;
   onClick?: () => void;
 }) {
-  const IconComponent = remixIcons[name];
+  const IconComponent = resolveIcon(name);
 
   if (!IconComponent) return null;
 

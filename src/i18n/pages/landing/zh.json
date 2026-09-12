@@ -301,7 +301,7 @@
   "faq": {
     "name": "faq",
     "label": "常见问题",
-    "title": "关于 AI 故事生成器的常见问题",
+    "title": "关于 **AI 故事生成器** 的常见问题",
     "description": "查找有关我们 AI 故事生成器的常见问题的答案",
     "items": [
       {

@@ -37,7 +37,7 @@ export async function generateMetadata({
       ? `${process.env.NEXT_PUBLIC_WEB_URL}/city-nickname-generator`
       : `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/city-nickname-generator`;
 
-  const ogImage = `${process.env.NEXT_PUBLIC_WEB_URL}/story.png`;
+  const ogImage = `${process.env.NEXT_PUBLIC_WEB_URL}/share.png`;
 
   return {
     title: metadata.title,

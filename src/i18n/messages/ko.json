@@ -15,7 +15,9 @@
     "admin_system": "관리자 시스템"
   },
   "common": {
-    "error": "문제가 발생했습니다. 나중에 다시 시도해 주세요."
+    "error": "문제가 발생했습니다. 나중에 다시 시도해 주세요.",
+    "quick_try": "빠른 체험",
+    "read_story": "이야기 읽기"
   },
   "sign_modal": {
     "sign_in_title": "로그인",
@@ -38,7 +40,7 @@
   },
   "my_orders": {
     "title": "내 주문",
-    "description": "ShipAny로 결제한 주문.",
+    "description": "결제한 주문.",
     "no_orders": "주문을 찾을 수 없습니다",
     "tip": "",
     "activate_order": "주문 활성화",
@@ -182,7 +184,7 @@
     "edit_invite_link": "초대 링크 편집",
     "copy_invite_link": "초대 링크 복사",
     "invite_code": "초대 코드",
-    "invite_tip": "친구 1명을 초대하여 ShipAny를 구매하면 $50 보상.",
+    "invite_tip": "친구 1명을 AI Story Generator에 초대하면 보상을 받습니다.",
     "invite_balance": "초대 보상 잔액",
     "total_invite_count": "총 초대 수",
     "total_paid_count": "총 결제 수",
@@ -190,7 +192,7 @@
     "update_invite_code": "초대 코드 설정",
     "update_invite_code_tip": "맞춤 초대 코드를 입력하세요",
     "update_invite_button": "저장",
-    "no_orders": "ShipAny를 구매하기 전에는 다른 사람을 초대할 수 없습니다",
+    "no_orders": "첫 구매 후 친구를 초대할 수 있습니다",
     "no_affiliates": "다른 사람을 초대할 수 있는 권한이 없습니다. 권한을 신청하려면 저희에게 연락하세요.",
     "table": {
       "invite_time": "초대 시간",
@@ -253,7 +255,7 @@
     "submit": "제출",
     "loading": "제출 중...",
     "contact_tip": "다른 연락 방법",
-    "rating_tip": "ShipAny에 대해 어떻게 생각하시나요?",
+    "rating_tip": "AI Story Generator는 어떠셨나요?",
     "placeholder": "여기에 의견을 남겨주세요..."
   },
   "verification": {

@@ -507,7 +507,7 @@ export default function BandNameGenerator({ section }: Props) {
           <h1 className="mt-4 break-words pb-1 font-display text-4xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-5xl">
             {titleParts.before}
             {titleParts.highlight && (
-              <span className="italic bg-gradient-to-r from-amber-600 via-orange-500 to-rose-500 bg-clip-text text-transparent dark:from-amber-400 dark:via-orange-300 dark:to-rose-300">
+              <span className="text-gradient-ember italic">
                 {titleParts.highlight}
               </span>
             )}

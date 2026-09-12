@@ -128,7 +128,7 @@ function ToolCard({
               <Icon
                 name={tool.icon}
                 className={cn(
-                  "absolute -bottom-5 -right-4 size-28 rotate-[10deg] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:rotate-[5deg] group-hover:scale-[1.06]",
+                  "absolute -bottom-5 -right-4 size-24 rotate-[10deg] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:rotate-[5deg] group-hover:scale-[1.06]",
                   a.coverGlyph
                 )}
               />

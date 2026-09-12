@@ -15,7 +15,9 @@
     "admin_system": "Admin-System"
   },
   "common": {
-    "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut."
+    "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.",
+    "quick_try": "Schnellstart",
+    "read_story": "Geschichte lesen"
   },
   "sign_modal": {
     "sign_in_title": "Anmelden",
@@ -38,7 +40,7 @@
   },
   "my_orders": {
     "title": "Meine Bestellungen",
-    "description": "Bestellungen bezahlt mit ShipAny.",
+    "description": "Bezahlte Bestellungen.",
     "no_orders": "Keine Bestellungen gefunden",
     "tip": "",
     "activate_order": "Bestellung aktivieren",
@@ -182,7 +184,7 @@
     "edit_invite_link": "Einladungslink bearbeiten",
     "copy_invite_link": "Einladungslink kopieren",
     "invite_code": "Einladungscode",
-    "invite_tip": "Laden Sie 1 Freund ein, ShipAny zu kaufen, Belohnung $50.",
+    "invite_tip": "Laden Sie 1 Freund zu AI Story Generator ein und erhalten Sie eine Belohnung.",
     "invite_balance": "Einladungsbelohnungssaldo",
     "total_invite_count": "Gesamtzahl der Einladungen",
     "total_paid_count": "Gesamtzahl bezahlter Einladungen",
@@ -190,7 +192,7 @@
     "update_invite_code": "Einladungscode festlegen",
     "update_invite_code_tip": "Geben Sie Ihren benutzerdefinierten Einladungscode ein",
     "update_invite_button": "Speichern",
-    "no_orders": "Sie können andere nicht einladen, bevor Sie ShipAny gekauft haben",
+    "no_orders": "Sie können Freunde einladen, nachdem Sie Ihren ersten Kauf getätigt haben",
     "no_affiliates": "Sie dürfen andere nicht einladen, bitte kontaktieren Sie uns, um eine Genehmigung zu beantragen.",
     "table": {
       "invite_time": "Einladungszeit",
@@ -253,7 +255,7 @@
     "submit": "Absenden",
     "loading": "Wird gesendet...",
     "contact_tip": "Andere Möglichkeiten, uns zu kontaktieren",
-    "rating_tip": "Wie fühlen Sie sich über ShipAny?",
+    "rating_tip": "Wie gefällt Ihnen AI Story Generator?",
     "placeholder": "Hinterlassen Sie hier Ihre Worte..."
   },
   "verification": {

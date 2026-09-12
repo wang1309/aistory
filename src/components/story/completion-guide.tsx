@@ -25,9 +25,9 @@ interface CompletionGuideProps {
 const secondaryButtonClass =
     "inline-flex h-11 w-full items-center justify-center gap-2 rounded-full border border-foreground/10 bg-foreground/[0.02] px-6 text-sm font-medium text-foreground/75 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-foreground/[0.05] hover:text-foreground dark:border-white/15 dark:bg-white/[0.04] sm:w-auto";
 
-// 主 CTA 样式:橙渐变胶囊,本次漏斗的视觉焦点
+// 主 CTA 样式:品牌琥珀实色胶囊,本次漏斗的视觉焦点
 const continueButtonClass =
-    "group inline-flex w-full h-[3.25rem] items-center justify-center gap-2 rounded-full px-7 text-sm sm:text-base font-semibold text-white shadow-lg shadow-orange-500/25 bg-gradient-to-r from-orange-600 to-amber-600 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:from-orange-500 hover:to-amber-500 hover:-translate-y-0.5 hover:shadow-orange-500/40 active:translate-y-0 sm:w-auto sm:min-w-[16rem]";
+    "group inline-flex w-full h-[3.25rem] items-center justify-center gap-2 rounded-full px-7 text-sm sm:text-base font-semibold text-primary-foreground shadow-lg shadow-primary/25 bg-primary transition-all duration-300 hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-primary/40 active:translate-y-0 sm:w-auto sm:min-w-[16rem]";
 
 export default function CompletionGuide({
     onCreateAnother,

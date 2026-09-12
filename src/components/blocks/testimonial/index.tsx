@@ -9,6 +9,7 @@ import {
 
 import AutoScroll from "embla-carousel-auto-scroll";
 import { Section as SectionType } from "@/types/blocks/section";
+import SectionHeader from "@/components/sections/section-header";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -30,11 +31,6 @@ export default function Testimonial({ section }: { section: SectionType }) {
 
   if (section.disabled) return null;
 
-  // Split title to highlight "AI Story Generator"
-  const HIGHLIGHT = "AI Story Generator";
-  const titleParts = section.title?.split(HIGHLIGHT);
-  const hasHighlight = titleParts && titleParts.length === 2;
-
   return (
     <section
       ref={containerRef}
@@ -54,52 +50,17 @@ export default function Testimonial({ section }: { section: SectionType }) {
         {/* Header */}
         <motion.div
           style={{ opacity }}
-          className="mx-auto flex max-w-xl flex-col items-center gap-0 mb-16 text-center"
+          className="mx-auto max-w-xl mb-16 text-center"
         >
-          {section.label && (
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-              <span className="inline-block size-1.5 rounded-full bg-primary opacity-60" />
-              {section.label}
-            </span>
-          )}
-          {section.title && (
-            <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl leading-[1.1]">
-              {hasHighlight ? (
-                <>
-                  {titleParts[0]}
-                  <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                    {HIGHLIGHT}
-                  </span>
-                  {titleParts[1]}
-                </>
-              ) : (
-                section.title
-              )}
-            </h2>
-          )}
-
-          {/* Decorative brush stroke */}
-          <div className="flex justify-center">
-            <svg
-              className="mt-2 mb-5 h-2.5 w-28 text-primary/25"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-
-          {section.description && (
-            <p className="max-w-md text-base text-muted-foreground/65 leading-relaxed font-light">
-              {section.description}
-            </p>
-          )}
+          <SectionHeader
+            label={section.label}
+            title={section.title}
+            description={section.description}
+            align="center"
+            highlight="AI Story Generator"
+            accent="amber"
+            descriptionClassName="font-light"
+          />
         </motion.div>
 
         {/* Carousel */}

@@ -80,77 +80,31 @@
   --font-weight-black: 900;
 
   --radius: 1.3rem;
-  --shadow-2xs: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-xs: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-sm: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
-    0px 1px 2px -1px hsl(202.82 89.12% 53.14% / 0);
-  --shadow: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
-    0px 1px 2px -1px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-md: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
-    0px 2px 4px -1px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-lg: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
-    0px 4px 6px -1px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-xl: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
-    0px 8px 10px -1px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-2xl: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
 
-  /* Modern Minimalist Design System Extensions */
-  /* ===== Gradients ===== */
-  --gradient-primary: linear-gradient(135deg, oklch(0.72 0.16 55) 0%, oklch(0.70 0.14 30) 50%, oklch(0.65 0.12 15) 100%);
-  --gradient-secondary: linear-gradient(135deg, oklch(0.82 0.16 82.53) 0%, oklch(0.71 0.18 151.71) 100%);
-  --gradient-accent: linear-gradient(135deg, oklch(0.95 0.03 55) 0%, oklch(0.90 0.04 40) 100%);
-  --gradient-hero: radial-gradient(1200px 800px at 50% 0%, oklch(0.90 0.06 65) 0%, transparent 50%);
+  /* ===== Shadow scale (warm umber base, matches the amber paper palette) ===== */
+  --shadow-2xs: 0 1px 2px 0 hsl(38 30% 20% / 0.04);
+  --shadow-xs: 0 1px 2px 0 hsl(38 30% 20% / 0.05);
+  --shadow-sm: 0 1px 3px 0 hsl(38 30% 20% / 0.06),
+    0 1px 2px -1px hsl(38 30% 20% / 0.05);
+  --shadow: 0 2px 4px 0 hsl(38 30% 20% / 0.05),
+    0 1px 2px -1px hsl(38 30% 20% / 0.06);
+  --shadow-md: 0 4px 8px -2px hsl(38 30% 20% / 0.08),
+    0 2px 4px -2px hsl(38 30% 20% / 0.05);
+  --shadow-lg: 0 10px 20px -4px hsl(38 30% 20% / 0.10),
+    0 3px 8px -3px hsl(38 30% 20% / 0.06);
+  --shadow-xl: 0 18px 36px -8px hsl(38 30% 20% / 0.14),
+    0 6px 12px -6px hsl(38 30% 20% / 0.08);
+  --shadow-2xl: 0 28px 60px -12px hsl(38 30% 20% / 0.20);
 
-  /* ===== Enhanced Spacing Scale ===== */
-  --space-2xs: 0.25rem;    /* 4px */
-  --space-xs: 0.5rem;      /* 8px */
-  --space-sm: 0.75rem;     /* 12px */
-  --space-md: 1rem;        /* 16px */
-  --space-lg: 1.5rem;      /* 24px */
-  --space-xl: 2rem;        /* 32px */
-  --space-2xl: 2.5rem;     /* 40px */
-  --space-3xl: 3rem;       /* 48px */
-  --space-4xl: 4rem;       /* 64px */
-  --space-5xl: 5rem;       /* 80px */
-  --space-6xl: 6rem;       /* 96px */
+  /* ===== Extended shadow scale (consumed as shadow-soft/medium/strong/elevated/card-hover) ===== */
+  --shadow-soft: 0 2px 8px -2px hsl(38 30% 20% / 0.08);
+  --shadow-medium: 0 4px 12px -2px hsl(38 30% 20% / 0.10);
+  --shadow-strong: 0 8px 24px -4px hsl(38 30% 20% / 0.12);
+  --shadow-elevated: 0 12px 32px -6px hsl(38 30% 20% / 0.15);
+  --shadow-card-hover: 0 16px 40px -8px hsl(38 30% 20% / 0.18);
 
-  /* ===== Enhanced Shadow System ===== */
-  --shadow-minimal: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-soft: 0 2px 8px -2px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 4px 12px -2px rgba(0, 0, 0, 0.12);
-  --shadow-strong: 0 8px 24px -4px rgba(0, 0, 0, 0.15);
-  --shadow-elevated: 0 12px 32px -6px rgba(0, 0, 0, 0.18);
-  --shadow-card-hover: 0 16px 40px -8px rgba(0, 0, 0, 0.2);
-  --shadow-inner-glow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
-
-  /* ===== Animation Timing ===== */
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --duration-slow: 350ms;
-  --duration-slower: 500ms;
-
+  /* ===== Motion ===== */
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  --ease-sharp: cubic-bezier(0.4, 0, 0.6, 1);
-
-  /* ===== Component Specific Tokens ===== */
-  --button-radius: 0.75rem;
-  --card-radius: 1rem;
-  --input-radius: 0.5rem;
-
-  --focus-ring: 0 0 0 3px oklch(0.68 0.16 243.35 / 0.3);
-  --focus-ring-accent: 0 0 0 3px oklch(0.94 0.02 250.85 / 0.3);
-
-  /* ===== Interactive States ===== */
-  --state-hover-opacity: 0.85;
-  --state-active-opacity: 0.75;
-  --state-disabled-opacity: 0.5;
-
-  /* ===== Enhanced Border System ===== */
-  --border-width-hairline: 0.5px;
-  --border-width-thin: 1px;
-  --border-width-medium: 1.5px;
-  --border-width-thick: 2px;
 
   /* ===== Background Patterns ===== */
   --bg-dots: radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px);
@@ -159,117 +113,66 @@
 }
 
 .dark {
-  --background: oklch(0.13 0.01 280);
+  /* Warm-tinted near-black (same hue family as light mode, hue ~60) */
+  --background: oklch(0.145 0.012 60);
   --foreground: oklch(0.93 0.01 75);
-  --card: oklch(0.18 0.015 270);
+  --card: oklch(0.195 0.012 65);
   --card-foreground: oklch(0.89 0.01 75);
-  --popover: oklch(0.13 0.01 280);
+  --popover: oklch(0.145 0.012 60);
   --popover-foreground: oklch(0.93 0.01 75);
   --primary: oklch(0.75 0.16 55);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.96 0.02 75);
   --secondary-foreground: oklch(0.19 0.02 55);
-  --muted: oklch(0.22 0.01 270);
+  --muted: oklch(0.235 0.012 65);
   --muted-foreground: oklch(0.56 0.02 60);
-  --accent: oklch(0.20 0.03 55);
+  --accent: oklch(0.22 0.03 55);
   --accent-foreground: oklch(0.75 0.16 55);
   --destructive: oklch(0.62 0.24 25.77);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.28 0.01 270);
-  --input: oklch(0.25 0.02 270);
+  --border: oklch(0.29 0.012 65);
+  --input: oklch(0.26 0.012 65);
   --ring: oklch(0.75 0.16 55);
   --chart-1: oklch(0.75 0.16 55);
   --chart-2: oklch(0.69 0.16 160.35);
   --chart-3: oklch(0.82 0.16 82.53);
   --chart-4: oklch(0.71 0.18 151.71);
   --chart-5: oklch(0.59 0.22 10.58);
-  --sidebar: oklch(0.18 0.015 270);
+  --sidebar: oklch(0.195 0.012 65);
   --sidebar-foreground: oklch(0.89 0.01 75);
   --sidebar-primary: oklch(0.75 0.16 55);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.20 0.03 55);
+  --sidebar-accent: oklch(0.22 0.03 55);
   --sidebar-accent-foreground: oklch(0.75 0.16 55);
-  --sidebar-border: oklch(0.32 0.015 270);
+  --sidebar-border: oklch(0.33 0.012 65);
   --sidebar-ring: oklch(0.75 0.16 55);
 
-  /* 字体家族 */
-  --font-sans: var(--font-dm-sans), var(--font-noto-sans-sc), 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: var(--font-source-serif), Georgia, 'Noto Serif SC', 'SimSun', serif;
-  --font-serif: Georgia, 'Noto Serif SC', 'SimSun', serif;
-  --font-mono: 'Fira Code', 'JetBrains Mono', 'Noto Sans Mono', Menlo, Monaco, 'Courier New', monospace;
-
   --radius: 1.3rem;
-  --shadow-2xs: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-xs: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-sm: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
-    0px 1px 2px -1px hsl(202.82 89.12% 53.14% / 0);
-  --shadow: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
-    0px 1px 2px -1px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-md: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
-    0px 2px 4px -1px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-lg: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
-    0px 4px 6px -1px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-xl: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0),
-    0px 8px 10px -1px hsl(202.82 89.12% 53.14% / 0);
-  --shadow-2xl: 0px 2px 0px 0px hsl(202.82 89.12% 53.14% / 0);
 
-  /* Modern Minimalist Design System Extensions - Dark Theme */
-  /* ===== Gradients ===== */
-  --gradient-primary: linear-gradient(135deg, oklch(0.75 0.16 55) 0%, oklch(0.70 0.14 30) 50%, oklch(0.65 0.12 15) 100%);
-  --gradient-secondary: linear-gradient(135deg, oklch(0.82 0.16 82.53) 0%, oklch(0.71 0.18 151.71) 100%);
-  --gradient-accent: linear-gradient(135deg, oklch(0.95 0.03 55) 0%, oklch(0.90 0.04 40) 100%);
-  --gradient-hero: radial-gradient(1200px 800px at 50% 0%, oklch(0.35 0.06 65) 0%, transparent 50%);
+  /* ===== Shadow scale (dark: pure black, deeper) ===== */
+  --shadow-2xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.35);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4),
+    0 1px 2px -1px rgb(0 0 0 / 0.35);
+  --shadow: 0 2px 4px 0 rgb(0 0 0 / 0.35),
+    0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.5),
+    0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 20px -4px rgb(0 0 0 / 0.55),
+    0 3px 8px -3px rgb(0 0 0 / 0.45);
+  --shadow-xl: 0 18px 36px -8px rgb(0 0 0 / 0.6),
+    0 6px 12px -6px rgb(0 0 0 / 0.5);
+  --shadow-2xl: 0 28px 60px -12px rgb(0 0 0 / 0.7);
 
-  /* Enhanced Spacing (Same as light) */
-  --space-2xs: 0.25rem;
-  --space-xs: 0.5rem;
-  --space-sm: 0.75rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 2.5rem;
-  --space-3xl: 3rem;
-  --space-4xl: 4rem;
-  --space-5xl: 5rem;
-  --space-6xl: 6rem;
+  /* ===== Extended shadow scale (dark) ===== */
+  --shadow-soft: 0 2px 8px -2px rgb(0 0 0 / 0.5);
+  --shadow-medium: 0 4px 12px -2px rgb(0 0 0 / 0.6);
+  --shadow-strong: 0 8px 24px -4px rgb(0 0 0 / 0.65);
+  --shadow-elevated: 0 12px 32px -6px rgb(0 0 0 / 0.7);
+  --shadow-card-hover: 0 16px 40px -8px rgb(0 0 0 / 0.75);
 
-  /* Enhanced Shadow System - Dark Theme */
-  --shadow-minimal: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
-  --shadow-soft: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
-  --shadow-medium: 0 4px 12px -2px rgba(0, 0, 0, 0.6);
-  --shadow-strong: 0 8px 24px -4px rgba(0, 0, 0, 0.65);
-  --shadow-elevated: 0 12px 32px -6px rgba(0, 0, 0, 0.7);
-  --shadow-card-hover: 0 16px 40px -8px rgba(0, 0, 0, 0.75);
-  --shadow-inner-glow: inset 0 2px 4px rgba(255, 255, 255, 0.05);
-
-  /* Animation Timing (Same as light) */
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --duration-slow: 350ms;
-  --duration-slower: 500ms;
-
+  /* ===== Motion ===== */
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  --ease-sharp: cubic-bezier(0.4, 0, 0.6, 1);
-
-  /* Component Specific Tokens (Same as light) */
-  --button-radius: 0.75rem;
-  --card-radius: 1rem;
-  --input-radius: 0.5rem;
-
-  --focus-ring: 0 0 0 3px oklch(0.68 0.16 243.35 / 0.5);
-  --focus-ring-accent: 0 0 0 3px oklch(0.94 0.02 250.85 / 0.5);
-
-  /* Interactive States (Same as light) */
-  --state-hover-opacity: 0.9;
-  --state-active-opacity: 0.8;
-  --state-disabled-opacity: 0.4;
-
-  /* Enhanced Border System (Same as light) */
-  --border-width-hairline: 0.5px;
-  --border-width-thin: 1px;
-  --border-width-medium: 1.5px;
-  --border-width-thick: 2px;
 
   /* Background Patterns - Dark Theme */
   --bg-dots: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
@@ -330,56 +233,14 @@
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
 
-  /* Modern Minimalist Extensions */
-  --gradient-primary: var(--gradient-primary);
-  --gradient-secondary: var(--gradient-secondary);
-  --gradient-accent: var(--gradient-accent);
-  --gradient-hero: var(--gradient-hero);
-
-  --space-2xs: var(--space-2xs);
-  --space-xs: var(--space-xs);
-  --space-sm: var(--space-sm);
-  --space-md: var(--space-md);
-  --space-lg: var(--space-lg);
-  --space-xl: var(--space-xl);
-  --space-2xl: var(--space-2xl);
-  --space-3xl: var(--space-3xl);
-  --space-4xl: var(--space-4xl);
-  --space-5xl: var(--space-5xl);
-  --space-6xl: var(--space-6xl);
-
-  --shadow-minimal: var(--shadow-minimal);
+  /* Extended shadow scale (shadow-soft/medium/strong/elevated/card-hover utilities) */
   --shadow-soft: var(--shadow-soft);
   --shadow-medium: var(--shadow-medium);
   --shadow-strong: var(--shadow-strong);
   --shadow-elevated: var(--shadow-elevated);
   --shadow-card-hover: var(--shadow-card-hover);
-  --shadow-inner-glow: var(--shadow-inner-glow);
-
-  --duration-fast: var(--duration-fast);
-  --duration-normal: var(--duration-normal);
-  --duration-slow: var(--duration-slow);
-  --duration-slower: var(--duration-slower);
 
   --ease-soft: var(--ease-soft);
-  --ease-bounce: var(--ease-bounce);
-  --ease-sharp: var(--ease-sharp);
-
-  --button-radius: var(--button-radius);
-  --card-radius: var(--card-radius);
-  --input-radius: var(--input-radius);
-
-  --focus-ring: var(--focus-ring);
-  --focus-ring-accent: var(--focus-ring-accent);
-
-  --state-hover-opacity: var(--state-hover-opacity);
-  --state-active-opacity: var(--state-active-opacity);
-  --state-disabled-opacity: var(--state-disabled-opacity);
-
-  --border-width-hairline: var(--border-width-hairline);
-  --border-width-thin: var(--border-width-thin);
-  --border-width-medium: var(--border-width-medium);
-  --border-width-thick: var(--border-width-thick);
 
   --bg-dots: var(--bg-dots);
   --bg-grid: var(--bg-grid);

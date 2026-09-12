@@ -37,7 +37,7 @@ export async function generateMetadata({
     canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/youtube-name-generator`;
   }
 
-  const ogImage = `${process.env.NEXT_PUBLIC_WEB_URL}/story.png`;
+  const ogImage = `${process.env.NEXT_PUBLIC_WEB_URL}/share.png`;
 
   return {
     title: metadata.title,
