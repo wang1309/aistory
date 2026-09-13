@@ -673,31 +673,6 @@
     "nav": {
       "items": [
         {
-          "title": "Über",
-          "children": [
-            {
-              "title": "Funktionen",
-              "url": "/#feature",
-              "target": "_self"
-            },
-            {
-              "title": "Beispiele",
-              "url": "/#story_showcase",
-              "target": "_self"
-            },
-            {
-              "title": "Änderungsprotokoll",
-              "url": "/changelog",
-              "target": "_self"
-            },
-            {
-              "title": "Blog",
-              "url": "/posts",
-              "target": "_self"
-            }
-          ]
-        },
-        {
           "title": "KI-Schreiben",
           "children": [
             {
@@ -779,6 +754,10 @@
               "title": "Liebesgeschichten-Generator",
               "url": "/romance-story-generator",
               "target": "_self"
+            },
+            {
+              "title": "Alle Tools",
+              "url": "/ai-tools"
             }
           ]
         },
@@ -802,14 +781,6 @@
               "category": "creative"
             },
             {
-              "title": "YouTube Name Generator",
-              "description": "Finde einen YouTube-Kanalnamen, mit dem du wirklich starten kannst.",
-              "url": "/youtube-name-generator",
-              "icon": "RiPlayCircleLine",
-              "target": "_self",
-              "category": "creative"
-            },
-            {
               "title": "YouTube-Titel-Generator",
               "description": "Wähle vor dem Upload einen stärkeren YouTube-Titel.",
               "url": "/youtube-title-generator",
@@ -818,12 +789,33 @@
               "category": "creative"
             },
             {
-              "title": "Stadtspitznamen-Generator",
-              "description": "Generiere offizielle, lokale, legendäre und spöttische Spitznamen für fiktive Städte.",
-              "url": "/city-nickname-generator",
-              "icon": "RiMapPin2Line",
-              "target": "_self",
-              "category": "creative"
+              "title": "Emoji-Übersetzer",
+              "url": "/emoji-translator"
+            }
+          ]
+        },
+        {
+          "title": "Über",
+          "children": [
+            {
+              "title": "Funktionen",
+              "url": "/#feature",
+              "target": "_self"
+            },
+            {
+              "title": "Beispiele",
+              "url": "/#story_showcase",
+              "target": "_self"
+            },
+            {
+              "title": "Änderungsprotokoll",
+              "url": "/changelog",
+              "target": "_self"
+            },
+            {
+              "title": "Blog",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },

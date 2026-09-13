@@ -673,31 +673,6 @@
     "nav": {
       "items": [
         {
-          "title": "About",
-          "children": [
-            {
-              "title": "Features",
-              "url": "/#feature",
-              "target": "_self"
-            },
-            {
-              "title": "Showcase",
-              "url": "/#story_showcase",
-              "target": "_self"
-            },
-            {
-              "title": "Changelog",
-              "url": "/changelog",
-              "target": "_self"
-            },
-            {
-              "title": "Blog",
-              "url": "/posts",
-              "target": "_self"
-            }
-          ]
-        },
-        {
           "title": "AI Write",
           "children": [
             {
@@ -779,6 +754,10 @@
               "title": "Romance Story Generator",
               "url": "/romance-story-generator",
               "target": "_self"
+            },
+            {
+              "title": "All Tools",
+              "url": "/ai-tools"
             }
           ]
         },
@@ -802,14 +781,6 @@
               "category": "creative"
             },
             {
-              "title": "YouTube Name Generator",
-              "description": "Find a YouTube channel name you can actually launch with.",
-              "url": "/youtube-name-generator",
-              "icon": "RiPlayCircleLine",
-              "target": "_self",
-              "category": "creative"
-            },
-            {
               "title": "YouTube Title Generator",
               "description": "Test stronger YouTube titles before you publish.",
               "url": "/youtube-title-generator",
@@ -818,12 +789,33 @@
               "category": "creative"
             },
             {
-              "title": "City Nickname Generator",
-              "description": "Generate official, local, legendary, and mocking nicknames for fictional cities.",
-              "url": "/city-nickname-generator",
-              "icon": "RiMapPin2Line",
-              "target": "_self",
-              "category": "creative"
+              "title": "Emoji Translator",
+              "url": "/emoji-translator"
+            }
+          ]
+        },
+        {
+          "title": "About",
+          "children": [
+            {
+              "title": "Features",
+              "url": "/#feature",
+              "target": "_self"
+            },
+            {
+              "title": "Showcase",
+              "url": "/#story_showcase",
+              "target": "_self"
+            },
+            {
+              "title": "Changelog",
+              "url": "/changelog",
+              "target": "_self"
+            },
+            {
+              "title": "Blog",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },

@@ -673,31 +673,6 @@
     "nav": {
       "items": [
         {
-          "title": "について",
-          "children": [
-            {
-              "title": "機能",
-              "url": "/#feature",
-              "target": "_self"
-            },
-            {
-              "title": "示例故事",
-              "url": "/#story_showcase",
-              "target": "_self"
-            },
-            {
-              "title": "変更履歴",
-              "url": "/changelog",
-              "target": "_self"
-            },
-            {
-              "title": "ブログ",
-              "url": "/posts",
-              "target": "_self"
-            }
-          ]
-        },
-        {
           "title": "AI ライティング",
           "children": [
             {
@@ -779,6 +754,10 @@
               "title": "ロマンス小説ジェネレーター",
               "url": "/romance-story-generator",
               "target": "_self"
+            },
+            {
+              "title": "すべてのツール",
+              "url": "/ai-tools"
             }
           ]
         },
@@ -802,14 +781,6 @@
               "category": "creative"
             },
             {
-              "title": "YouTube 名前ジェネレーター",
-              "description": "実際に公開できる YouTube チャンネル名を見つけよう。",
-              "url": "/youtube-name-generator",
-              "icon": "RiPlayCircleLine",
-              "target": "_self",
-              "category": "creative"
-            },
-            {
               "title": "YouTube タイトル生成器",
               "description": "公開前に強い YouTube タイトルを選ぶ。",
               "url": "/youtube-title-generator",
@@ -818,12 +789,33 @@
               "category": "creative"
             },
             {
-              "title": "都市ニックネームジェネレーター",
-              "description": "架空の都市のための公式、ローカル、伝説的、皮肉なニックネームを生成します。",
-              "url": "/city-nickname-generator",
-              "icon": "RiMapPin2Line",
-              "target": "_self",
-              "category": "creative"
+              "title": "絵文字翻訳機",
+              "url": "/emoji-translator"
+            }
+          ]
+        },
+        {
+          "title": "について",
+          "children": [
+            {
+              "title": "機能",
+              "url": "/#feature",
+              "target": "_self"
+            },
+            {
+              "title": "示例故事",
+              "url": "/#story_showcase",
+              "target": "_self"
+            },
+            {
+              "title": "変更履歴",
+              "url": "/changelog",
+              "target": "_self"
+            },
+            {
+              "title": "ブログ",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },

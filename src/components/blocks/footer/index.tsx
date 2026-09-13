@@ -2,9 +2,17 @@ import { Footer as FooterType } from "@/types/blocks/footer";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { getTopTools } from "@/services/tools";
+import { getToolsBySlugs } from "@/services/tools";
 
-const FOOTER_TOOL_COUNT = 8;
+const NAME_GENERATOR_TOOL_SLUGS = [
+  "elf-name-generator",
+  "pen-name-generator",
+  "gang-name-generator",
+  "band-name-generator",
+  "middle-name-generator",
+  "city-nickname-generator",
+  "youtube-name-generator",
+];
 
 export default function Footer({ footer }: { footer: FooterType }) {
   const t = useTranslations();
@@ -13,7 +21,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
     return null;
   }
 
-  const topTools = getTopTools("ai-write", FOOTER_TOOL_COUNT);
+  const nameTools = getToolsBySlugs(NAME_GENERATOR_TOOL_SLUGS);
 
   return (
     <section id={footer.name} className="border-t border-border bg-[oklch(0.955_0.009_85)] dark:bg-[oklch(0.165_0_0)]">
@@ -70,55 +78,50 @@ export default function Footer({ footer }: { footer: FooterType }) {
 
             {/* Link columns */}
             <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 lg:gap-x-12">
-              {footer.nav?.items?.map((item, i) => (
-                <div key={i} className="min-w-0">
-                  <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-foreground">
-                    {item.title}
-                  </p>
-                  <ul className="space-y-3 text-sm text-muted-foreground">
-                    {item.children?.map((iitem, ii) => (
-                      <li key={ii} className="transition-colors hover:text-foreground">
-                        <Link
-                          href={iitem.url || ""}
-                          target={iitem.target}
-                          className="[overflow-wrap:anywhere]"
-                        >
-                          {iitem.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-
-              {/* Generated tools column (from the tools registry) */}
-              {topTools.length > 0 && (
-                <div className="min-w-0">
-                  <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-foreground">
-                    {t("footer.free_tools")}
-                  </p>
-                  <ul className="space-y-3 text-sm text-muted-foreground">
-                    {topTools.map((tool) => (
-                      <li key={tool.slug} className="transition-colors hover:text-foreground">
-                        <Link href={tool.href as any} className="[overflow-wrap:anywhere]">
-                          {t(tool.nameKey)}
-                        </Link>
-                      </li>
-                    ))}
-                    <li className="pt-1">
-                      <Link
-                        href="/ai-tools"
-                        className="inline-flex items-center gap-1 font-medium text-foreground transition-colors hover:text-primary"
-                      >
-                        {t("ai_tools.tools_hub_nav")}
-                        <svg viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                          <path strokeLinecap="round" d="M6 3l5 5-5 5" />
-                        </svg>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              )}
+              {(footer.nav?.items ?? []).flatMap((item, i, arr) => {
+                const navColumn = (
+                  <div key={`nav-${i}`} className="min-w-0">
+                    <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-foreground">
+                      {item.title}
+                    </p>
+                    <ul className="space-y-3 text-sm text-muted-foreground">
+                      {item.children?.map((iitem, ii) => (
+                        <li key={ii} className="transition-colors hover:text-foreground">
+                          <Link
+                            href={iitem.url || ""}
+                            target={iitem.target}
+                            className="[overflow-wrap:anywhere]"
+                          >
+                            {iitem.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+                // The Name Generators registry column takes the slot between
+                // About and Friend (the last two nav columns).
+                if (i === arr.length - 2 && nameTools.length > 0) {
+                  return [
+                    <div key="name-generators" className="min-w-0">
+                      <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-foreground">
+                        {t("footer.name_generator")}
+                      </p>
+                      <ul className="space-y-3 text-sm text-muted-foreground">
+                        {nameTools.map((tool) => (
+                          <li key={tool.slug} className="transition-colors hover:text-foreground">
+                            <Link href={tool.href as any} className="[overflow-wrap:anywhere]">
+                              {t(tool.nameKey)}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>,
+                    navColumn,
+                  ];
+                }
+                return [navColumn];
+              })}
             </div>
           </div>
 

@@ -456,6 +456,12 @@ export function getTopTools(module: ModuleId, limit: number): Tool[] {
   return getToolsByModule(module).slice(0, limit);
 }
 
+export function getToolsBySlugs(slugs: string[]): Tool[] {
+  return slugs
+    .map((slug) => tools.find((tool) => tool.slug === slug))
+    .filter((tool): tool is Tool => Boolean(tool));
+}
+
 export function getNewTools(module: ModuleId): Tool[] {
   return getToolsByModule(module).filter((tool) =>
     tool.badges?.includes("new")

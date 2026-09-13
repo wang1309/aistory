@@ -673,31 +673,6 @@
     "nav": {
       "items": [
         {
-          "title": "소개",
-          "children": [
-            {
-              "title": "기능",
-              "url": "/#feature",
-              "target": "_self"
-            },
-            {
-              "title": "예시 스토리",
-              "url": "/#story_showcase",
-              "target": "_self"
-            },
-            {
-              "title": "변경 로그",
-              "url": "/changelog",
-              "target": "_self"
-            },
-            {
-              "title": "블로그",
-              "url": "/posts",
-              "target": "_self"
-            }
-          ]
-        },
-        {
           "title": "AI 글쓰기",
           "children": [
             {
@@ -779,6 +754,10 @@
               "title": "로맨스 소설 생성기",
               "url": "/romance-story-generator",
               "target": "_self"
+            },
+            {
+              "title": "전체 도구",
+              "url": "/ai-tools"
             }
           ]
         },
@@ -802,14 +781,6 @@
               "category": "creative"
             },
             {
-              "title": "YouTube 이름 생성기",
-              "description": "실제로 런칭할 수 있는 YouTube 채널명을 찾아보세요.",
-              "url": "/youtube-name-generator",
-              "icon": "RiPlayCircleLine",
-              "target": "_self",
-              "category": "creative"
-            },
-            {
               "title": "YouTube 제목 생성기",
               "description": "게시 전 더 강한 YouTube 제목을 선택하세요.",
               "url": "/youtube-title-generator",
@@ -818,12 +789,33 @@
               "category": "creative"
             },
             {
-              "title": "도시 별명 생성기",
-              "description": "가상 도시를 위한 공식, 지역, 전설, 조롱적인 별명을 생성합니다.",
-              "url": "/city-nickname-generator",
-              "icon": "RiMapPin2Line",
-              "target": "_self",
-              "category": "creative"
+              "title": "이모지 번역기",
+              "url": "/emoji-translator"
+            }
+          ]
+        },
+        {
+          "title": "소개",
+          "children": [
+            {
+              "title": "기능",
+              "url": "/#feature",
+              "target": "_self"
+            },
+            {
+              "title": "예시 스토리",
+              "url": "/#story_showcase",
+              "target": "_self"
+            },
+            {
+              "title": "변경 로그",
+              "url": "/changelog",
+              "target": "_self"
+            },
+            {
+              "title": "블로그",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },

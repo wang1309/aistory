@@ -673,31 +673,6 @@
     "nav": {
       "items": [
         {
-          "title": "О нас",
-          "children": [
-            {
-              "title": "Возможности",
-              "url": "/#feature",
-              "target": "_self"
-            },
-            {
-              "title": "Витрина",
-              "url": "/#story_showcase",
-              "target": "_self"
-            },
-            {
-              "title": "Изменения",
-              "url": "/changelog",
-              "target": "_self"
-            },
-            {
-              "title": "Блог",
-              "url": "/posts",
-              "target": "_self"
-            }
-          ]
-        },
-        {
           "title": "AI письмо",
           "children": [
             {
@@ -779,6 +754,10 @@
               "title": "Генератор романтических историй",
               "url": "/romance-story-generator",
               "target": "_self"
+            },
+            {
+              "title": "Все инструменты",
+              "url": "/ai-tools"
             }
           ]
         },
@@ -802,14 +781,6 @@
               "category": "creative"
             },
             {
-              "title": "YouTube генератор названий",
-              "description": "Найдите название YouTube-канала, с которым реально можно запускаться.",
-              "url": "/youtube-name-generator",
-              "icon": "RiPlayCircleLine",
-              "target": "_self",
-              "category": "creative"
-            },
-            {
               "title": "Генератор заголовков YouTube",
               "description": "Выбирайте сильный заголовок YouTube до публикации.",
               "url": "/youtube-title-generator",
@@ -818,12 +789,33 @@
               "category": "creative"
             },
             {
-              "title": "Генератор прозвищ городов",
-              "description": "Генерируйте официальные, местные, легендарные и насмешливые прозвища для вымышленных городов.",
-              "url": "/city-nickname-generator",
-              "icon": "RiMapPin2Line",
-              "target": "_self",
-              "category": "creative"
+              "title": "Переводчик эмодзи",
+              "url": "/emoji-translator"
+            }
+          ]
+        },
+        {
+          "title": "О нас",
+          "children": [
+            {
+              "title": "Возможности",
+              "url": "/#feature",
+              "target": "_self"
+            },
+            {
+              "title": "Витрина",
+              "url": "/#story_showcase",
+              "target": "_self"
+            },
+            {
+              "title": "Изменения",
+              "url": "/changelog",
+              "target": "_self"
+            },
+            {
+              "title": "Блог",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },

@@ -673,31 +673,6 @@
     "nav": {
       "items": [
         {
-          "title": "关于",
-          "children": [
-            {
-              "title": "功能特点",
-              "url": "/#feature",
-              "target": "_self"
-            },
-            {
-              "title": "示例故事",
-              "url": "/#story_showcase",
-              "target": "_self"
-            },
-            {
-              "title": "更新日志",
-              "url": "/changelog",
-              "target": "_self"
-            },
-            {
-              "title": "博客",
-              "url": "/posts",
-              "target": "_self"
-            }
-          ]
-        },
-        {
           "title": "AI 写作",
           "children": [
             {
@@ -779,6 +754,10 @@
               "title": "言情故事生成器",
               "url": "/romance-story-generator",
               "target": "_self"
+            },
+            {
+              "title": "全部工具",
+              "url": "/ai-tools"
             }
           ]
         },
@@ -802,14 +781,6 @@
               "category": "creative"
             },
             {
-              "title": "YouTube 频道名称生成器",
-              "description": "找到你敢直接上线的 YouTube 频道名称。",
-              "url": "/youtube-name-generator",
-              "icon": "RiPlayCircleLine",
-              "target": "_self",
-              "category": "creative"
-            },
-            {
               "title": "YouTube 标题生成器",
               "description": "发布前选出更强的 YouTube 标题。",
               "url": "/youtube-title-generator",
@@ -818,12 +789,33 @@
               "category": "creative"
             },
             {
-              "title": "城市昵称生成器",
-              "description": "为虚构城市生成官方、本地、传奇和讽刺昵称。",
-              "url": "/city-nickname-generator",
-              "icon": "RiMapPin2Line",
-              "target": "_self",
-              "category": "creative"
+              "title": "Emoji 翻译器",
+              "url": "/emoji-translator"
+            }
+          ]
+        },
+        {
+          "title": "关于",
+          "children": [
+            {
+              "title": "功能特点",
+              "url": "/#feature",
+              "target": "_self"
+            },
+            {
+              "title": "示例故事",
+              "url": "/#story_showcase",
+              "target": "_self"
+            },
+            {
+              "title": "更新日志",
+              "url": "/changelog",
+              "target": "_self"
+            },
+            {
+              "title": "博客",
+              "url": "/posts",
+              "target": "_self"
             }
           ]
         },
