@@ -1,0 +1,146 @@
+{
+  "pictionary_word_generator": {
+    "metadata": {
+      "title": "Pictionary Word Generator — Random Drawing Words by Category & Difficulty",
+      "description": "Free Pictionary word generator: draw random words by category and difficulty with a built-in timer, team scores, custom word lists, and no repeats. Perfect for game nights, classrooms, and team building.",
+      "keywords": "pictionary word generator, pictionary words, random drawing words, pictionary word list, pictionary ideas"
+    },
+    "ui": {
+      "title": "Pictionary Word Generator",
+      "title_highlight": "Word",
+      "subtitle": "Draw random Pictionary words by category and difficulty — with a built-in timer, team scores, custom word lists, and no repeats until you reset.",
+      "eyebrow": "Free · No sign-up",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Pictionary Word Generator",
+      "form_title": "Set up your round",
+      "category_label": "Category",
+      "category_options": [
+        { "value": "all", "label": "All categories" },
+        { "value": "animals", "label": "Animals" },
+        { "value": "food", "label": "Food" },
+        { "value": "objects", "label": "Objects" },
+        { "value": "actions", "label": "Actions" },
+        { "value": "places", "label": "Places" },
+        { "value": "fantasy", "label": "Movies & Fantasy" }
+      ],
+      "difficulty_label": "Difficulty",
+      "difficulty_options": [
+        { "value": "all", "label": "All levels" },
+        { "value": "easy", "label": "Easy" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "hard", "label": "Hard" }
+      ],
+      "count_label": "Words per draw",
+      "count_options": [
+        { "value": "1", "label": "1 word" },
+        { "value": "3", "label": "3 words" },
+        { "value": "5", "label": "5 words" },
+        { "value": "10", "label": "10 words" }
+      ],
+      "custom_toggle": "Use my own word list",
+      "custom_placeholder": "One word per line (or comma-separated) — e.g. photosynthesis, gravity, volcano…",
+      "custom_hint": "Paste your own words to draw from your list — great for classroom topics and house rules.",
+      "draw_button": "Draw words",
+      "reroll_button": "New words",
+      "reset_button": "Reset history",
+      "copy_button": "Copy list",
+      "output_title": "Your words",
+      "empty_output": "Pick your filters and hit Draw to start the round.",
+      "pool_label": "{count} words in play",
+      "timer_label": "Round timer",
+      "timer_options": [
+        { "value": "30", "label": "30 seconds" },
+        { "value": "60", "label": "60 seconds" },
+        { "value": "90", "label": "90 seconds" }
+      ],
+      "timer_start": "Start",
+      "timer_pause": "Pause",
+      "timer_reset": "Reset",
+      "timer_done": "Time's up!",
+      "score_title": "Score",
+      "team_a": "Team A",
+      "team_b": "Team B",
+      "score_reset": "Reset scores",
+      "disclaimer": "\"Pictionary\" is a trademark of Mattel, Inc. This tool is not affiliated with or endorsed by Mattel."
+    },
+    "validation": {
+      "no_words": "No words left in this pool — reset the history or widen your filters.",
+      "custom_invalid": "Paste at least one word (max 300 words, 60 characters each)."
+    },
+    "success": {
+      "drawn": "New words drawn",
+      "copied": "Word list copied"
+    },
+    "feature1": {
+      "name": "Filters",
+      "label": "Why this generator",
+      "title": "The right words for the room you have",
+      "description": "Six categories and three difficulty levels keep every round playable — from a first-grader's warm-up to a competitive closer.",
+      "items": [
+        { "title": "Category × difficulty matrix", "description": "Narrow the pool to animals for kids or hard actions for adults without rebuilding a list." },
+        { "title": "No repeats", "description": "Drawn words stay out until you reset the round history, so long sessions never stall on duplicates." },
+        { "title": "Custom word lists", "description": "Paste your own words — science vocabulary, movie-night themes, inside jokes — and draw from them directly." }
+      ]
+    },
+    "how_to_use": {
+      "name": "How to use",
+      "label": "Three steps",
+      "title": "From zero to first round in seconds",
+      "description": "No cards, no apps, no sign-up.",
+      "items": [
+        { "title": "Set the pool", "description": "Choose a category and difficulty, or paste your own word list." },
+        { "title": "Draw the words", "description": "Draw 1, 3, 5, or 10 words at once — the drawer sees only their own word." },
+        { "title": "Start the timer", "description": "Pick 30, 60, or 90 seconds and let the team guess before time runs out." },
+        { "title": "Keep score", "description": "Tap +1 for the guessing team and reset scores between games." }
+      ]
+    },
+    "feature2": {
+      "name": "Timer & score",
+      "label": "Built in",
+      "title": "Everything a round needs on one screen",
+      "description": "The generator, the timer, and the scoreboard used to live in three tabs — they are together here.",
+      "items": [
+        { "title": "Round timer", "description": "30, 60, or 90 second presets with start, pause, and a clear time's-up state." },
+        { "title": "Two-team scoreboard", "description": "Quick +1 taps keep the game moving faster than a paper tally." },
+        { "title": "Zero setup", "description": "Works on phones, tablets, and classroom projectors — nothing to install." }
+      ]
+    },
+    "feature3": {
+      "name": "Use cases",
+      "label": "Made for",
+      "title": "Game nights, classrooms, and team icebreakers",
+      "description": "The same pool serves very different rooms.",
+      "items": [
+        { "title": "Family game night", "description": "Easy animals and food words keep mixed ages laughing." },
+        { "title": "Classroom warm-ups", "description": "Paste this week's vocabulary and turn review into a five-minute game." },
+        { "title": "Team building", "description": "Hard actions and fantasy words make office and remote icebreakers competitive." }
+      ]
+    },
+    "faq": {
+      "name": "FAQ",
+      "label": "Questions",
+      "title": "Pictionary word generator FAQ",
+      "items": [
+        { "title": "Is this Pictionary word generator free?", "description": "Yes — every word, filter, the timer, and the scoreboard are free with no sign-up." },
+        { "title": "How many words are in the pool?", "description": "180 curated words across 6 categories and 3 difficulty levels, plus any custom words you paste in." },
+        { "title": "Can I use my own words?", "description": "Yes. Enable your own word list and paste up to 300 words — one per line or separated by commas." },
+        { "title": "What timer should I use?", "description": "60 seconds is the classic pace. Use 30 seconds for competitive groups and 90 seconds for kids." },
+        { "title": "Does it work for Charades or Catchphrase too?", "description": "Yes — the same words work for any drawing or guessing game that needs random prompts." },
+        { "title": "Is it okay for kids?", "description": "Yes. Every word in the pool is family-friendly; choose Easy for younger players." }
+      ]
+    },
+    "cta": {
+      "name": "CTA",
+      "title": "Need a story to go with your game?",
+      "description": "AI Story also generates stories, poems, and plot ideas for when the pencils go down.",
+      "buttons": [
+        { "title": "Explore AI tools", "url": "/ai-tools" }
+      ]
+    },
+    "related_tools": {
+      "title": "More free tools",
+      "description": "Party helpers and creative generators you can use next.",
+      "more_label": "View all tools"
+    }
+  }
+}

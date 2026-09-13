@@ -1,0 +1,146 @@
+{
+  "pictionary_word_generator": {
+    "metadata": {
+      "title": "你画我猜词语生成器 — 按分类与难度随机抽词",
+      "description": "免费你画我猜词语生成器：按分类和难度随机抽取画词，内置计时器、双队计分、自定义词表、不重复抽词。适合聚会、课堂和团队破冰。",
+      "keywords": "你画我猜词语生成器, 你画我猜词库, 画图猜词, 随机画词, 你画我猜题目"
+    },
+    "ui": {
+      "title": "你画我猜词语生成器",
+      "title_highlight": "词语",
+      "subtitle": "按分类和难度随机抽取你画我猜词语——内置计时器、双队计分、自定义词表，重置前绝不重复。",
+      "eyebrow": "免费 · 无需注册",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "你画我猜词语生成器",
+      "form_title": "设置本轮游戏",
+      "category_label": "分类",
+      "category_options": [
+        { "value": "all", "label": "全部分类" },
+        { "value": "animals", "label": "动物" },
+        { "value": "food", "label": "食物" },
+        { "value": "objects", "label": "物品" },
+        { "value": "actions", "label": "动作" },
+        { "value": "places", "label": "地点" },
+        { "value": "fantasy", "label": "电影与奇幻" }
+      ],
+      "difficulty_label": "难度",
+      "difficulty_options": [
+        { "value": "all", "label": "全部难度" },
+        { "value": "easy", "label": "简单" },
+        { "value": "medium", "label": "中等" },
+        { "value": "hard", "label": "困难" }
+      ],
+      "count_label": "每次抽词数量",
+      "count_options": [
+        { "value": "1", "label": "1 个词" },
+        { "value": "3", "label": "3 个词" },
+        { "value": "5", "label": "5 个词" },
+        { "value": "10", "label": "10 个词" }
+      ],
+      "custom_toggle": "使用我的词表",
+      "custom_placeholder": "每行一个词（或用逗号分隔），如：光合作用、万有引力、火山……",
+      "custom_hint": "粘贴自己的词表直接抽词——适合课堂词汇和自定义规则。",
+      "draw_button": "抽词",
+      "reroll_button": "换一批",
+      "reset_button": "重置历史",
+      "copy_button": "复制词表",
+      "output_title": "你的词语",
+      "empty_output": "选好筛选条件，点击抽词开始本轮。",
+      "pool_label": "词池共 {count} 个词",
+      "timer_label": "回合计时",
+      "timer_options": [
+        { "value": "30", "label": "30 秒" },
+        { "value": "60", "label": "60 秒" },
+        { "value": "90", "label": "90 秒" }
+      ],
+      "timer_start": "开始",
+      "timer_pause": "暂停",
+      "timer_reset": "重置",
+      "timer_done": "时间到！",
+      "score_title": "比分",
+      "team_a": "A 队",
+      "team_b": "B 队",
+      "score_reset": "清零比分",
+      "disclaimer": "\"Pictionary\" 是 Mattel, Inc. 的商标。本工具与 Mattel 无关联亦未获其认可。"
+    },
+    "validation": {
+      "no_words": "词池已抽空——请重置历史或放宽筛选条件。",
+      "custom_invalid": "请至少粘贴一个词（最多 300 个，每个不超过 60 字符）。"
+    },
+    "success": {
+      "drawn": "已抽取新词语",
+      "copied": "词表已复制"
+    },
+    "feature1": {
+      "name": "筛选",
+      "label": "为什么用这个",
+      "title": "给在场的人配对的词",
+      "description": "6 大分类 × 3 档难度，从小学课堂热身到成人对抗局都能排。",
+      "items": [
+        { "title": "分类 × 难度矩阵", "description": "给孩子收窄到动物，给成人上高难动作词，不用重编词表。" },
+        { "title": "不重复", "description": "抽过的词在重置前不会再次出现，长时间对局不会卡壳。" },
+        { "title": "自定义词表", "description": "粘贴自己的词——学科词汇、电影夜主题、内部梗——直接从词表抽。" }
+      ]
+    },
+    "how_to_use": {
+      "name": "使用方法",
+      "label": "三步开局",
+      "title": "几秒钟开始第一轮",
+      "description": "不用卡牌、不用装 App、不用注册。",
+      "items": [
+        { "title": "设置词池", "description": "选择分类和难度，或粘贴自己的词表。" },
+        { "title": "抽取词语", "description": "一次抽 1、3、5 或 10 个词——画者只看自己的词。" },
+        { "title": "开始计时", "description": "选 30、60 或 90 秒，在倒计时结束前让队友猜中。" },
+        { "title": "记录比分", "description": "猜中的队伍点 +1，换局之间一键清零。" }
+      ]
+    },
+    "feature2": {
+      "name": "计时与计分",
+      "label": "全部内置",
+      "title": "一个回合需要的都在同一屏",
+      "description": "生成器、计时器、记分板过去分散在三个工具里——这里合在一起。",
+      "items": [
+        { "title": "回合计时器", "description": "30/60/90 秒预设，支持开始、暂停和醒目的时间到状态。" },
+        { "title": "双队记分板", "description": "快捷 +1，比纸笔计分快得多。" },
+        { "title": "零准备", "description": "手机、平板、教室投影都能用——无需安装任何东西。" }
+      ]
+    },
+    "feature3": {
+      "name": "使用场景",
+      "label": "适合",
+      "title": "聚会、课堂与团队破冰",
+      "description": "同一个词池，服务完全不同的场合。",
+      "items": [
+        { "title": "家庭游戏夜", "description": "简单的动物和食物词让大小朋友笑作一团。" },
+        { "title": "课堂热身", "description": "粘贴本周词汇表，把复习变成五分钟游戏。" },
+        { "title": "团队建设", "description": "高难动作与奇幻词让办公室和远程破冰更有对抗感。" }
+      ]
+    },
+    "faq": {
+      "name": "常见问题",
+      "label": "问答",
+      "title": "你画我猜词语生成器 FAQ",
+      "items": [
+        { "title": "这个你画我猜词语生成器免费吗？", "description": "免费——所有词语、筛选、计时器和记分板均免费，无需注册。" },
+        { "title": "词池里有多少词？", "description": "180 个精选词，覆盖 6 大分类、3 档难度，还可以粘贴自定义词。" },
+        { "title": "可以用自己的词吗？", "description": "可以。开启自定义词表后最多粘贴 300 个词，每行一个或用逗号分隔。" },
+        { "title": "计时选多少秒合适？", "description": "60 秒是经典节奏；对抗局用 30 秒，小朋友玩用 90 秒。" },
+        { "title": "能用于 Charades 等其他游戏吗？", "description": "可以——同样的词适用于任何需要随机题目的画图或猜词游戏。" },
+        { "title": "适合孩子玩吗？", "description": "适合。词池全部为家庭友好词汇；低龄玩家选择\"简单\"难度即可。" }
+      ]
+    },
+    "cta": {
+      "name": "CTA",
+      "title": "游戏之余还想来个故事？",
+      "description": "AI Story 还能生成故事、诗歌和情节创意。",
+      "buttons": [
+        { "title": "浏览 AI 工具", "url": "/ai-tools" }
+      ]
+    },
+    "related_tools": {
+      "title": "更多免费工具",
+      "description": "下一个可以用的聚会助手与创意生成器。",
+      "more_label": "查看全部工具"
+    }
+  }
+}
