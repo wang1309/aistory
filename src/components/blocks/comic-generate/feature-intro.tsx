@@ -35,7 +35,7 @@ export default function ComicFeatureIntro({ section }: Props) {
             transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
           >
             {section.label && (
-              <p className="text-xs font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-400">
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary">
                 {section.label}
               </p>
             )}
@@ -53,7 +53,7 @@ export default function ComicFeatureIntro({ section }: Props) {
               <div className="mt-10 space-y-6">
                 {section.items.map((item, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       {item.icon && <Icon name={item.icon} className="h-5 w-5" />}
                     </div>
                     <div>

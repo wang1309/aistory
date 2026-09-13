@@ -424,7 +424,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                             ].map((d, i) => (
                                 <motion.span
                                     key={i}
-                                    className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                                    className="absolute rounded-full bg-primary"
                                     style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
@@ -438,7 +438,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                     {!reduceMotion && (
                         <>
                             <motion.div
-                                className="pointer-events-none absolute z-[1] text-orange-500/45 dark:text-orange-400/45 font-display italic"
+                                className="pointer-events-none absolute z-[1] text-primary font-display italic"
                                 style={{ left: "4%", top: "48%", fontSize: "3rem", lineHeight: 1 }}
                                 initial={{ opacity: 0, y: 0, rotate: -6 }}
                                 animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -8, 0], rotate: [-6, -2, -6] }}
@@ -448,7 +448,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                 ❝
                             </motion.div>
                             <motion.div
-                                className="pointer-events-none absolute z-[1] text-primary/45 dark:text-primary/45 font-display italic"
+                                className="pointer-events-none absolute z-[1] text-primary font-display italic"
                                 style={{ right: "5%", top: "40%", fontSize: "3rem", lineHeight: 1 }}
                                 initial={{ opacity: 0, y: 0, rotate: 6 }}
                                 animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -6, 0], rotate: [6, 2, 6] }}
@@ -466,7 +466,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                             {[0, 1, 2, 3].map((ringIdx) => (
                                 <motion.div
                                     key={ringIdx}
-                                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/55 dark:text-orange-400/55"
+                                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-primary"
                                     initial={{ opacity: 0, scale: 0.32 }}
                                     animate={{ opacity: [0, 0.85, 0.45, 0], scale: [0.32, 1.0, 1.4, 1.75] }}
                                     transition={{ duration: 7, delay: ringIdx * 1.75, repeat: Infinity, ease: "easeOut" }}
@@ -483,32 +483,32 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
 
                     {/* Italic punctuation watermark (poetic punctuation sprinkled) */}
                     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
-                        <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">。</span>
-                        <span className="absolute right-[7%] top-[14%] font-display italic font-bold text-xl text-primary/[0.07] dark:text-primary/[0.07]">、</span>
-                        <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06]">；</span>
-                        <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-primary/[0.07] dark:text-primary/[0.07]">！</span>
-                        <span className="absolute left-[28%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05]">？</span>
-                        <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06]">…</span>
+                        <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-primary">。</span>
+                        <span className="absolute right-[7%] top-[14%] font-display italic font-bold text-xl text-primary">、</span>
+                        <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-primary">；</span>
+                        <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-primary">！</span>
+                        <span className="absolute left-[28%] top-[8%] font-display italic font-bold text-base text-primary">？</span>
+                        <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-primary">…</span>
                     </div>
 
                     {/* Double-bezel icon container with quote-mark hover flare */}
                     <div className="group relative z-10 flex justify-center mb-6">
-                        <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+                        <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
                             ❝
                         </span>
                         <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
                             ❞
                         </span>
                         <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-                            <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                                <Icon name="RiStarLine" className="size-6 text-orange-600 dark:text-orange-400" />
+                            <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                                <Icon name="RiStarLine" className="size-6 text-primary" />
                             </div>
                         </div>
                     </div>
 
                     {/* Eyebrow badge */}
                     <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-                        <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+                        <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
                         AI Poetry Tool
                     </span>
 
@@ -523,15 +523,15 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
 
                     {/* Editorial decorative anchor: open-quote + halftone + close-quote */}
                     <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
-                        <span className="text-orange-500/35 dark:text-orange-400/35 text-sm font-display italic">❝</span>
+                        <span className="text-primary text-sm font-display italic">❝</span>
                         {[3, 5, 7, 5, 3].map((s, i) => (
-                            <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+                            <span key={i} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
                         ))}
-                        <span className="text-primary/45 dark:text-primary/45 text-base">✦</span>
+                        <span className="text-primary text-base">✦</span>
                         {[3, 5, 7, 5, 3].map((s, i) => (
-                            <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+                            <span key={i} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
                         ))}
-                        <span className="text-orange-500/35 dark:text-orange-400/35 text-sm font-display italic">❞</span>
+                        <span className="text-primary text-sm font-display italic">❞</span>
                     </div>
 
                     <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto mb-6">
@@ -542,8 +542,8 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                     {section.header.theme_pills?.length ? (
                         <div className="relative z-10 mb-6 flex flex-wrap items-center justify-center gap-2">
                             {section.header.theme_pills.map((pill: string, i: number) => (
-                                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
-                                    <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary">
+                                    <span className="inline-block size-1 rounded-full bg-primary/60" />
                                     {pill}
                                 </span>
                             ))}
@@ -563,7 +563,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                             <div className="space-y-3">
                                 <div className="flex items-center justify-between gap-4 flex-wrap">
                                     <label className="text-sm font-semibold flex items-center gap-2 text-foreground">
-                                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">1</span>
+                                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold tabular-nums text-primary">1</span>
                                         {section.form.poem_content.label}
                                     </label>
                                     {RANDOM_PROMPTS.length > 0 && (
@@ -571,7 +571,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                             variant="ghost"
                                             size="sm"
                                             onClick={handleRandomPrompt}
-                                            className="gap-1.5 text-orange-600 hover:text-orange-700 hover:bg-orange-500/10 dark:text-orange-400 dark:hover:text-orange-300 h-8 px-3 text-xs"
+                                            className="gap-1.5 text-primary hover:text-primary hover:bg-primary/10 dark:text-primary dark:hover:text-primary h-8 px-3 text-xs"
                                         >
                                             <Icon name="Sparkles" className="size-3.5" />
                                             {section.form.random_button || "Random prompt"}
@@ -585,7 +585,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                         value={poemContent}
                                         onChange={(e) => setPoemContent(e.target.value.slice(0, section.form.poem_content.max_length || 2000))}
                                         placeholder={section.form.poem_content.placeholder}
-                                        className="min-h-[160px] resize-none text-sm focus-visible:ring-orange-500/30"
+                                        className="min-h-[160px] resize-none text-sm focus-visible:ring-primary/30"
                                     />
                                     <div className="absolute bottom-2 right-3 text-xs text-muted-foreground/50">
                                         {contentLength} / {section.form.poem_content.max_length || 2000}
@@ -596,7 +596,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                 {!poemContent && section.form.examples && (
                                     <Collapsible open={isExamplesExpanded} onOpenChange={setIsExamplesExpanded}>
                                         <CollapsibleTrigger asChild>
-                                            <Button variant="ghost" className="text-xs font-medium text-orange-600 dark:text-orange-400 hover:bg-orange-500/10 gap-1.5 px-0 h-7">
+                                            <Button variant="ghost" className="text-xs font-medium text-primary hover:bg-primary/10 gap-1.5 px-0 h-7">
                                                 <Icon name="RiLightbulbLine" className="size-3" />
                                                 {section.form.examples.title}
                                             </Button>
@@ -624,7 +624,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                             {/* Options Section */}
                             <div className="pt-6 border-t border-border space-y-6">
                                 <div className="flex items-center gap-2">
-                                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">2</span>
+                                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold tabular-nums text-primary">2</span>
                                     <h3 className="text-sm font-semibold text-foreground">{section.form.usage_scene.label}</h3>
                                 </div>
 
@@ -698,7 +698,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                                 className={cn(
                                                     "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors border",
                                                     selectedStyles.includes(chip.id)
-                                                        ? "border-orange-500/40 bg-orange-500/[0.08] text-orange-600 dark:text-orange-400"
+                                                        ? "border-primary/40 bg-primary/[0.08] text-primary"
                                                         : "border-border bg-background hover:bg-muted/50 text-muted-foreground"
                                                 )}
                                             >
@@ -721,7 +721,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                                 className={cn(
                                                     "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors border",
                                                     selectedMoods.includes(chip.id)
-                                                        ? "border-orange-500/40 bg-orange-500/[0.08] text-orange-600 dark:text-orange-400"
+                                                        ? "border-primary/40 bg-primary/[0.08] text-primary"
                                                         : "border-border bg-background hover:bg-muted/50 text-muted-foreground"
                                                 )}
                                             >
@@ -737,7 +737,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                 <Button
                                     onClick={handleGenerate}
                                     disabled={isGenerating}
-                                    className="group w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 active:scale-[0.97] transition-all"
+                                    className="group w-full h-14 rounded-xl text-base font-semibold bg-primary hover:bg-primary/90 text-white dark:bg-primary/50 dark:hover:bg-primary/90 disabled:opacity-60 active:scale-[0.97] transition-all"
                                 >
                                     {isGenerating ? (
                                         <div className="flex items-center gap-2">
@@ -769,11 +769,11 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
 
                                 <div className="flex items-center justify-center gap-4">
                                     <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                                        <Icon name="RiCheckLine" className="size-3 text-orange-500" />
+                                        <Icon name="RiCheckLine" className="size-3 text-primary/50" />
                                         {section.generate_button.info.free}
                                     </span>
                                     <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                                        <Icon name="RiTimeLine" className="size-3 text-orange-500" />
+                                        <Icon name="RiTimeLine" className="size-3 text-primary/50" />
                                         {section.generate_button.info.time}
                                     </span>
                                 </div>
@@ -787,8 +787,8 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                     <div className="space-y-6">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                                <div className="p-2 rounded-lg bg-orange-500/10">
-                                    <Icon name="RiStarLine" className="size-4 text-orange-600 dark:text-orange-400" />
+                                <div className="p-2 rounded-lg bg-primary/10">
+                                    <Icon name="RiStarLine" className="size-4 text-primary" />
                                 </div>
                                 <div>
                                     <h3 className="text-base font-semibold text-foreground">{section.output.title}</h3>
@@ -822,19 +822,19 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                 {literaryTitles.length > 0 && (
                                     <div className="space-y-3">
                                         <h4 className="text-sm font-semibold text-foreground flex items-center gap-1.5">
-                                            <Icon name="RiBookOpenLine" className="size-4 text-orange-500" />
+                                            <Icon name="RiBookOpenLine" className="size-4 text-primary/50" />
                                             {section.output.literary_group_title}
                                         </h4>
                                         <div className="grid grid-cols-1 gap-3">
                                             {literaryTitles.map((titleObj, index) => (
                                                 <div
                                                     key={titleObj.id}
-                                                    className="group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] card-hover-lift transition-all duration-300"
+                                                    className="group relative p-5 rounded-xl bg-card border border-border hover:border-primary/30 hover:bg-primary/[0.02] card-hover-lift transition-all duration-300"
                                                     style={{ transitionDelay: `${index * 50}ms` }}
                                                 >
                                                     <div className="flex items-start justify-between gap-4">
                                                         <div className="flex-1">
-                                                            <p className="text-base font-medium text-foreground leading-tight group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors mb-1">
+                                                            <p className="text-base font-medium text-foreground leading-tight group-hover:text-primary dark:group-hover:text-primary transition-colors mb-1">
                                                                 {titleObj.title}
                                                             </p>
                                                             {titleObj.englishTitle && (
@@ -846,7 +846,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                                             onClick={() => handleCopyTitle(titleObj.id, titleObj.title)}
                                                             variant="ghost"
                                                             size="sm"
-                                                            className="flex-shrink-0 h-8 w-8 p-0 rounded-lg hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400"
+                                                            className="flex-shrink-0 h-8 w-8 p-0 rounded-lg hover:bg-primary/10 hover:text-primary dark:hover:text-primary"
                                                         >
                                                             {titleObj.copied ? (
                                                                 <Icon name="RiCheckLine" className="size-3.5" />
@@ -865,19 +865,19 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                 {platformTitles.length > 0 && (
                                     <div className="space-y-3">
                                         <h4 className="text-sm font-semibold text-foreground flex items-center gap-1.5">
-                                            <Icon name="RiShare2Line" className="size-4 text-orange-500" />
+                                            <Icon name="RiShare2Line" className="size-4 text-primary/50" />
                                             {section.output.platform_group_title}
                                         </h4>
                                         <div className="grid grid-cols-1 gap-3">
                                             {platformTitles.map((titleObj, index) => (
                                                 <div
                                                     key={titleObj.id}
-                                                    className="group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] card-hover-lift transition-all duration-300"
+                                                    className="group relative p-5 rounded-xl bg-card border border-border hover:border-primary/30 hover:bg-primary/[0.02] card-hover-lift transition-all duration-300"
                                                     style={{ transitionDelay: `${index * 50}ms` }}
                                                 >
                                                     <div className="flex items-start justify-between gap-4">
                                                         <div className="flex-1">
-                                                            <p className="text-base font-medium text-foreground leading-tight group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors mb-1">
+                                                            <p className="text-base font-medium text-foreground leading-tight group-hover:text-primary dark:group-hover:text-primary transition-colors mb-1">
                                                                 {titleObj.title}
                                                             </p>
                                                             {titleObj.englishTitle && (
@@ -889,7 +889,7 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                                                             onClick={() => handleCopyTitle(titleObj.id, titleObj.title)}
                                                             variant="ghost"
                                                             size="sm"
-                                                            className="flex-shrink-0 h-8 w-8 p-0 rounded-lg hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400"
+                                                            className="flex-shrink-0 h-8 w-8 p-0 rounded-lg hover:bg-primary/10 hover:text-primary dark:hover:text-primary"
                                                         >
                                                             {titleObj.copied ? (
                                                                 <Icon name="RiCheckLine" className="size-3.5" />

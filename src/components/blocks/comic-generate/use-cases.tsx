@@ -18,7 +18,7 @@ export default function ComicUseCases({ section }: Props) {
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           {section.label && (
-            <p className="text-xs font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-400">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
               {section.label}
             </p>
           )}
@@ -42,9 +42,9 @@ export default function ComicUseCases({ section }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, delay: i * 0.06, ease: [0.4, 0, 0.2, 1] }}
-              className="group rounded-xl border border-border bg-card p-5 transition-colors hover:border-orange-500/20 hover:bg-orange-500/[0.02]"
+              className="group rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/20 hover:bg-primary/[0.02]"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange-500/10 text-orange-600 transition-colors group-hover:bg-orange-500/15 dark:text-orange-400">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/15 dark:text-primary">
                 {item.icon && <Icon name={item.icon} className="h-4.5 w-4.5" />}
               </div>
               <h3 className="mt-3 font-semibold text-foreground">{item.title}</h3>

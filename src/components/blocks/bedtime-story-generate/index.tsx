@@ -114,7 +114,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
         id: "standard",
         name: t("ai_models.standard"),
         badge: "RECOMMENDED",
-        badgeColor: "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20",
+        badgeColor: "bg-primary/10 text-primary border-primary/20",
         icon: <Sparkles className="h-4 w-4" />,
         description: t("ai_models.standard_description"),
       },
@@ -122,7 +122,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
         id: "creative",
         name: t("ai_models.creative"),
         badge: "PRO",
-        badgeColor: "bg-primary/10 text-primary dark:text-primary border-primary/20",
+        badgeColor: "bg-primary/10 text-primary border-primary/20",
         icon: <Palette className="h-4 w-4" />,
         description: t("ai_models.creative_description"),
       },
@@ -492,10 +492,10 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
   });
 
   return (
-    <div id="bedtime_story_generator" className="min-h-screen bg-background text-foreground selection:bg-orange-500/20">
+    <div id="bedtime_story_generator" className="min-h-screen bg-background text-foreground selection:bg-primary/20">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
           style={{ backgroundImage: "var(--bg-grid)", backgroundSize: "40px 40px" }}
@@ -525,7 +525,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
             ].map((s, i) => (
               <motion.svg
                 key={i}
-                className="absolute text-orange-500 dark:text-orange-300"
+                className="absolute text-primary"
                 style={{
                   left: s.left,
                   top: s.top,
@@ -621,11 +621,11 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
           {/* Double-bezel icon container with breathing glow */}
           <div className="group flex justify-center mb-6">
             <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10 relative">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 relative">
                 {!reduceMotion && (
-                  <div className="absolute inset-0 rounded-xl bg-orange-500/20 blur-md group-hover:animate-moon-glow" aria-hidden="true" />
+                  <div className="absolute inset-0 rounded-xl bg-primary/20 blur-md group-hover:animate-moon-glow" aria-hidden="true" />
                 )}
-                <Moon className="size-6 text-orange-600 dark:text-orange-400 relative" />
+                <Moon className="size-6 text-primary relative" />
               </div>
             </div>
           </div>
@@ -653,9 +653,9 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
               {section.ui.theme_pills.map((pill: string, i: number) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -676,14 +676,14 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <Label className="text-sm font-semibold text-foreground flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-orange-500" />
+                    <Sparkles className="w-4 h-4 text-primary/50" />
                     {t("ui.story_idea")}
                   </Label>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={handleRandomPrompt}
-                    className="h-7 text-xs gap-1.5 text-orange-600 dark:text-orange-400 hover:bg-orange-500/10 px-2.5 rounded-full"
+                    className="h-7 text-xs gap-1.5 text-primary hover:bg-primary/10 px-2.5 rounded-full"
                   >
                     <Wand2 className="w-3 h-3" />
                     {t("ui.random_button")}
@@ -695,7 +695,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                     value={prompt}
                     onChange={(event) => setPrompt(event.target.value)}
                     placeholder={t("placeholders.story_idea")}
-                    className="min-h-[120px] resize-none bg-muted/50 border-border/50 focus:border-orange-500/50 focus:ring-orange-500/20 rounded-xl p-4 text-base leading-relaxed transition-all shadow-sm"
+                    className="min-h-[120px] resize-none bg-muted/50 border-border/50 focus:border-primary/50 focus:ring-primary/20 rounded-xl p-4 text-base leading-relaxed transition-all shadow-sm"
                   />
                   {prompt && (
                     <Button
@@ -794,7 +794,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                   <CollapsibleTrigger asChild>
                     <Button
                       variant="ghost"
-                      className="w-full flex justify-between items-center p-0 h-auto hover:bg-transparent text-xs font-medium text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                      className="w-full flex justify-between items-center p-0 h-auto hover:bg-transparent text-xs font-medium text-muted-foreground hover:text-primary dark:hover:text-primary transition-colors"
                     >
                       <span className="flex items-center gap-1.5">
                         <Settings2 className="w-3.5 h-3.5" />
@@ -876,7 +876,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="group w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
+                  className="group w-full h-12 text-base bg-primary font-semibold text-white shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-[0.97] disabled:opacity-60 dark:bg-primary/50 dark:shadow-primary/20 dark:hover:bg-primary/90 transition-all"
                 >
                   {isGenerating ? (
                     <>
@@ -910,19 +910,19 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
             ref={resultRef}
             className="relative h-[720px] max-h-[75vh] md:max-h-[60vh] lg:max-h-[75vh] min-h-[380px] sm:min-h-[520px] lg:sticky lg:top-24"
           >
-            <div className="absolute inset-0 bg-orange-500/5 rounded-[2rem] blur-2xl -z-10" />
+            <div className="absolute inset-0 bg-primary/5 rounded-[2rem] blur-2xl -z-10" />
 
             <div
               className={cn(
                 "h-full rounded-[2rem] border border-border backdrop-blur-xl overflow-hidden transition-all duration-500 flex flex-col card-hover-lift",
                 generatedStory
-                  ? "bg-card/80 shadow-2xl shadow-orange-500/10"
+                  ? "bg-card/80 shadow-2xl shadow-primary/10"
                   : "bg-card/40 shadow-xl border-dashed"
               )}
             >
               <div className="flex items-center justify-between px-6 py-4 border-b border-border/50 bg-muted/20">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400">
+                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
                     <BookOpen className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col">
@@ -992,12 +992,12 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                         <div className="relative mx-auto w-16 h-16">
                           {!reduceMotion && (
                             <motion.div
-                              className="absolute inset-0 rounded-full bg-orange-500/15 blur-md"
+                              className="absolute inset-0 rounded-full bg-primary/15 blur-md"
                               animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.9, 1.1, 0.9] }}
                               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                             />
                           )}
-                          <Moon className="absolute inset-0 m-auto w-7 h-7 text-orange-500" />
+                          <Moon className="absolute inset-0 m-auto w-7 h-7 text-primary/50" />
                         </div>
                         <p className="text-sm font-medium">{t("output.generating_message")}</p>
                       </div>
@@ -1007,7 +1007,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                           {!reduceMotion && (
                             <>
                               <motion.svg
-                                className="absolute text-orange-400/40"
+                                className="absolute text-primary/40"
                                 style={{ left: "8%", top: "5%", width: 14, height: 14 }}
                                 viewBox="0 0 24 24"
                                 fill="currentColor"
@@ -1018,7 +1018,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                                 <path d="M12 2c.4 3.6 1.4 6.4 5 7-3.6.6-4.6 3.4-5 7-.4-3.6-1.4-6.4-5-7 3.6-.6 4.6-3.4 5-7z" />
                               </motion.svg>
                               <motion.svg
-                                className="absolute text-orange-400/40"
+                                className="absolute text-primary/40"
                                 style={{ right: "10%", top: "20%", width: 10, height: 10 }}
                                 viewBox="0 0 24 24"
                                 fill="currentColor"
@@ -1031,8 +1031,8 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                             </>
                           )}
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-14 h-14 bg-orange-500/5 rounded-2xl flex items-center justify-center rotate-3">
-                              <Moon className="w-7 h-7 text-orange-400/70" />
+                            <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center rotate-3">
+                              <Moon className="w-7 h-7 text-primary/70" />
                             </div>
                           </div>
                         </div>

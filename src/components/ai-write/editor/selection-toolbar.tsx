@@ -252,7 +252,7 @@ export function SelectionToolbar({
             className={cn(
               "flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-medium transition",
               isAuthenticated
-                ? "text-muted-foreground hover:bg-orange-50 hover:text-orange-700 dark:hover:bg-orange-900/20 dark:hover:text-orange-300"
+                ? "text-muted-foreground hover:bg-primary/5 hover:text-primary dark:hover:bg-orange-900/20 dark:hover:text-primary"
                 : "cursor-not-allowed text-muted-foreground/50 hover:bg-muted"
             )}
           >
@@ -288,7 +288,7 @@ export function SelectionToolbar({
                   onAskAi(selectedText);
                 }
               }}
-              className="flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-medium text-orange-700 transition hover:bg-orange-100 dark:text-orange-300 dark:hover:bg-orange-900/30"
+              className="flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-medium text-primary transition hover:bg-primary/10 dark:text-primary/25 dark:hover:bg-orange-900/30"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -310,7 +310,7 @@ export function SelectionToolbar({
         </>
       ) : review.phase === "processing" ? (
         <div className="flex items-center gap-2 px-2 py-1">
-          <span className="inline-block size-3 animate-spin rounded-full border-2 border-orange-500 border-t-transparent" />
+          <span className="inline-block size-3 animate-spin rounded-full border-2 border-primary/50 border-t-transparent" />
           <span className="text-xs text-muted-foreground">{labels?.processing || "Processing..."}</span>
         </div>
       ) : (
@@ -327,7 +327,7 @@ export function SelectionToolbar({
             type="button"
             onMouseDown={preventButtonMouseDown}
             onClick={() => void doRetry()}
-            className="whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:bg-orange-50 hover:text-orange-700 dark:hover:bg-orange-900/20 dark:hover:text-orange-300"
+            className="whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:bg-primary/5 hover:text-primary dark:hover:bg-orange-900/20 dark:hover:text-primary"
           >
             {labels?.retry || "Retry"}
           </button>

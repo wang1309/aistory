@@ -338,12 +338,12 @@ export default function GangNameGenerator({ section }: Props) {
   return (
     <section
       id="gang_name_generator"
-      className="min-h-[100dvh] bg-background text-foreground selection:bg-orange-500/20"
+      className="min-h-[100dvh] bg-background text-foreground selection:bg-primary/20"
     >
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
       </div>
 
       <main className="container relative z-10 mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-24">
@@ -372,8 +372,8 @@ export default function GangNameGenerator({ section }: Props) {
         <div className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
           <div className="group mb-6 flex justify-center">
             <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="relative flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Swords className="relative size-6 text-orange-600 dark:text-orange-400" />
+              <div className="relative flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Swords className="relative size-6 text-primary" />
               </div>
             </div>
           </div>
@@ -401,9 +401,9 @@ export default function GangNameGenerator({ section }: Props) {
               {themePills.map((pill, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -475,7 +475,7 @@ export default function GangNameGenerator({ section }: Props) {
               </div>
 
               {inspirationName && (
-                <p className="rounded-md border border-orange-500/20 bg-orange-500/[0.04] px-3 py-2 text-xs text-orange-700 dark:text-orange-300 sm:col-span-2">
+                <p className="rounded-md border border-primary/20 bg-primary/[0.04] px-3 py-2 text-xs text-primary sm:col-span-2">
                   {ui.inspiration_hint} {inspirationName}
                 </p>
               )}
@@ -503,8 +503,8 @@ export default function GangNameGenerator({ section }: Props) {
                           value={value}
                           className={cn(
                             "h-11 flex-1 whitespace-normal sm:h-9",
-                            "data-[state=on]:border-orange-500/40 data-[state=on]:bg-orange-500/10 data-[state=on]:text-orange-700",
-                            "dark:data-[state=on]:border-orange-400/40 dark:data-[state=on]:bg-orange-400/10 dark:data-[state=on]:text-orange-300",
+                            "data-[state=on]:border-primary/40 data-[state=on]:bg-primary/10 data-[state=on]:text-primary",
+                            "dark:data-[state=on]:border-primary/40 dark:data-[state=on]:bg-primary/10 dark:data-[state=on]:text-primary/25",
                             isCreativeUsedUp && "opacity-60"
                           )}
                         >
@@ -588,7 +588,7 @@ export default function GangNameGenerator({ section }: Props) {
                   {LOADING_GLYPHS.map((glyph, i) => (
                     <span
                       key={glyph}
-                      className="gang-loading-glyph absolute font-display text-4xl text-orange-600 dark:text-orange-400"
+                      className="gang-loading-glyph absolute font-display text-4xl text-primary"
                       style={
                         {
                           "--glyph-index": i,
@@ -635,7 +635,7 @@ export default function GangNameGenerator({ section }: Props) {
                                 className={cn(
                                   "h-3.5 w-3.5",
                                   isFavorited &&
-                                    "fill-orange-600 text-orange-600 dark:fill-orange-400 dark:text-orange-400"
+                                    "fill-amber-600 text-amber-600 dark:fill-amber-400 dark:text-amber-400"
                                 )}
                               />
                             </Button>
@@ -714,9 +714,9 @@ export default function GangNameGenerator({ section }: Props) {
                       {favorites.map((profile) => (
                         <span
                           key={profile.name}
-                          className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-sm font-medium text-foreground"
+                          className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-sm font-medium text-foreground"
                         >
-                          <Heart className="size-3 fill-orange-600 text-orange-600 dark:fill-orange-400 dark:text-orange-400" />
+                          <Heart className="size-3 fill-amber-600 text-amber-600 dark:fill-amber-400 dark:text-amber-400" />
                           {profile.name}
                         </span>
                       ))}

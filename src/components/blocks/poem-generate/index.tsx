@@ -128,7 +128,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
       id: 'creative',
       name: section.ai_models.models.creative.name,
       badge: section.ai_models.models.creative.badge,
-      badgeColor: 'bg-orange-500/10 text-orange-600 border-orange-500/30',
+      badgeColor: 'bg-primary/10 text-primary border-primary/30',
       icon: <Palette className="h-4 w-4" />,
       speed: section.ai_models.models.creative.speed,
       description: section.ai_models.models.creative.description
@@ -940,7 +940,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
               ].map((d, i) => (
                 <motion.span
                   key={i}
-                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  className="absolute rounded-full bg-primary"
                   style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
@@ -954,21 +954,21 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
           {!reduceMotion && (
             <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
               <motion.div
-                className="absolute rounded-full bg-orange-500/8 dark:bg-orange-400/8 blur-3xl"
+                className="absolute rounded-full bg-primary blur-3xl"
                 style={{ width: 280, height: 280, left: "10%", top: "10%" }}
                 initial={{ x: 0, y: 0, opacity: 0 }}
                 animate={{ x: [0, 30, -20, 0], y: [0, -20, 25, 0], opacity: [0, 0.55, 0.35, 0] }}
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
               />
               <motion.div
-                className="absolute rounded-full bg-primary/8 dark:bg-primary/8 blur-3xl"
+                className="absolute rounded-full bg-primary blur-3xl"
                 style={{ width: 220, height: 220, right: "8%", top: "20%" }}
                 initial={{ x: 0, y: 0, opacity: 0 }}
                 animate={{ x: [0, -25, 18, 0], y: [0, 22, -15, 0], opacity: [0, 0.5, 0.3, 0] }}
                 transition={{ duration: 22, delay: 3, repeat: Infinity, ease: "easeInOut" }}
               />
               <motion.div
-                className="absolute rounded-full bg-orange-500/6 dark:bg-orange-400/6 blur-3xl"
+                className="absolute rounded-full bg-primary blur-3xl"
                 style={{ width: 200, height: 200, left: "40%", bottom: "5%" }}
                 initial={{ x: 0, y: 0, opacity: 0 }}
                 animate={{ x: [0, 20, -25, 0], y: [0, -18, 12, 0], opacity: [0, 0.45, 0.25, 0] }}
@@ -981,7 +981,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
           {!reduceMotion && (
             <>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-orange-500/45 dark:text-orange-400/45"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ left: "3%", top: "50%" }}
                 initial={{ opacity: 0, y: 0, rotate: -12 }}
                 animate={{ opacity: [0, 0.6, 0.6, 0], y: [0, -8, 0], rotate: [-12, -6, -12] }}
@@ -995,7 +995,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                 </svg>
               </motion.div>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-primary/45 dark:text-primary/45"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ right: "4%", top: "44%" }}
                 initial={{ opacity: 0, y: 0, rotate: 10 }}
                 animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -6, 0], rotate: [10, 4, 10] }}
@@ -1013,32 +1013,32 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
           {/* Calligraphic stroke watermark (丶丿一丨乙 — basic strokes, distinct from punctuation) */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
-            <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">丶</span>
-            <span className="absolute right-[7%] top-[14%] font-display italic font-bold text-xl text-primary/[0.07] dark:text-primary/[0.07]">丿</span>
-            <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06]">一</span>
-            <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-primary/[0.07] dark:text-primary/[0.07]">丨</span>
-            <span className="absolute left-[28%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05]">乙</span>
-            <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06]">丶</span>
+            <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-primary">丶</span>
+            <span className="absolute right-[7%] top-[14%] font-display italic font-bold text-xl text-primary">丿</span>
+            <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-primary">一</span>
+            <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-primary">丨</span>
+            <span className="absolute left-[28%] top-[8%] font-display italic font-bold text-base text-primary">乙</span>
+            <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-primary">丶</span>
           </div>
 
           {/* Double-bezel icon container with brush-stroke hover flare */}
           <div className="group relative z-10 flex justify-center mb-6">
-            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               丶
             </span>
             <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               丿
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Icon name="RiQuillPenLine" className="size-6 text-orange-600 dark:text-orange-400" />
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Icon name="RiQuillPenLine" className="size-6 text-primary" />
               </div>
             </div>
           </div>
 
           {/* Eyebrow badge */}
           <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             AI Poetry Writer
           </span>
 
@@ -1053,15 +1053,15 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
           {/* Editorial decorative anchor: brush stroke + halftone + sparkle + halftone + brush stroke */}
           <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
-            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm font-display italic">丶</span>
+            <span className="text-primary text-sm font-display italic">丶</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+              <span key={i} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <span className="text-primary/45 dark:text-primary/45 text-base">✦</span>
+            <span className="text-primary text-base">✦</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+              <span key={i} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm font-display italic">丿</span>
+            <span className="text-primary text-sm font-display italic">丿</span>
           </div>
 
           <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto mb-6">
@@ -1072,8 +1072,8 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
           {section.header.theme_pills?.length ? (
             <div className="relative z-10 mb-6 flex flex-wrap items-center justify-center gap-2">
               {section.header.theme_pills.map((pill: string, i: number) => (
-                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary">
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -1133,7 +1133,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                         className={cn(
                           "px-4 py-1.5 rounded-lg text-sm font-medium transition-colors border",
                           selectedRhymeScheme === key
-                            ? "border-orange-500/40 bg-orange-500/[0.08] text-orange-600 dark:text-orange-400"
+                            ? "border-primary/40 bg-primary/[0.08] text-primary"
                             : "border-border bg-background hover:bg-muted/50 text-muted-foreground"
                         )}
                       >
@@ -1148,14 +1148,14 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
               <div className="space-y-3 mb-8">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="poem-prompt" className="text-sm font-semibold flex items-center gap-2">
-                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">1</span>
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold tabular-nums text-primary">1</span>
                     {section.prompt.label}
                   </Label>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={handleRandomPrompt}
-                    className="gap-1.5 text-orange-600 hover:text-orange-700 hover:bg-orange-500/10 dark:text-orange-400 dark:hover:text-orange-300 h-8 px-3 text-xs"
+                    className="gap-1.5 text-primary hover:text-primary hover:bg-primary/10 dark:text-primary dark:hover:text-primary h-8 px-3 text-xs"
                   >
                     <Icon name="Sparkles" className="w-3.5 h-3.5" />
                     {section.prompt.random_button}
@@ -1169,7 +1169,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder={section.prompt.placeholder}
-                    className="min-h-[140px] resize-none text-sm focus-visible:ring-orange-500/30"
+                    className="min-h-[140px] resize-none text-sm focus-visible:ring-primary/30"
                     maxLength={maxCharacters}
                   />
                   <div className="absolute bottom-2 right-3 text-xs text-muted-foreground/50">
@@ -1200,7 +1200,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
               <div className="space-y-4 mb-8">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                   <Label className="text-sm font-semibold flex items-center gap-2">
-                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">2</span>
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold tabular-nums text-primary">2</span>
                     {section.ai_models.title}
                   </Label>
 
@@ -1237,25 +1237,25 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                         className={cn(
                           "group p-4 rounded-xl text-left transition-colors border",
                           isSelected
-                            ? "border-orange-500/40 bg-orange-500/[0.08]"
+                            ? "border-primary/40 bg-primary/[0.08]"
                             : "border-border bg-background hover:bg-muted/50"
                         )}
                       >
                         <div className="flex items-start justify-between mb-3">
                           <div className={cn(
                             "p-2 rounded-lg transition-colors",
-                            isSelected ? "bg-orange-500/10 text-orange-600 dark:text-orange-400" : "bg-muted text-muted-foreground"
+                            isSelected ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
                           )}>
                             {model.icon}
                           </div>
                           {isSelected && (
-                            <div className="size-2 rounded-full bg-orange-500 animate-pulse" />
+                            <div className="size-2 rounded-full bg-primary/50 animate-pulse" />
                           )}
                         </div>
 
                         <div className={cn(
                           "font-semibold text-sm mb-1",
-                          isSelected ? "text-orange-600 dark:text-orange-400" : "text-foreground"
+                          isSelected ? "text-primary" : "text-foreground"
                         )}>{model.name}</div>
                         <div className="text-xs text-muted-foreground leading-relaxed mb-3">{model.description}</div>
 
@@ -1352,7 +1352,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating || !selectedModel}
-                  className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 active:scale-[0.97] transition-all"
+                  className="w-full h-14 rounded-xl text-base font-semibold bg-primary hover:bg-primary/90 text-white dark:bg-primary/50 dark:hover:bg-primary/90 disabled:opacity-60 active:scale-[0.97] transition-all"
                 >
                   {isGenerating ? (
                     <div className="flex items-center gap-2">
@@ -1393,8 +1393,8 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                 {/* Output Header */}
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 py-4 border-b border-border gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-orange-500/10">
-                      <Icon name="feather" className="size-4 text-orange-600 dark:text-orange-400" />
+                    <div className="p-2 rounded-lg bg-primary/10">
+                      <Icon name="feather" className="size-4 text-primary" />
                     </div>
                     <div>
                       <h3 className="text-sm font-semibold text-foreground">{section.output.title}</h3>
@@ -1445,7 +1445,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                         <TabsTrigger
                           key={tab}
                           value={tab}
-                          className="rounded-none border-b-2 border-transparent px-0 pb-3 pt-0 text-sm data-[state=active]:border-orange-500 data-[state=active]:bg-transparent data-[state=active]:text-orange-600 dark:data-[state=active]:text-orange-400 text-muted-foreground hover:text-foreground transition-colors"
+                          className="rounded-none border-b-2 border-transparent px-0 pb-3 pt-0 text-sm data-[state=active]:border-primary/50 data-[state=active]:bg-transparent data-[state=active]:text-primary dark:data-[state=active]:text-primary text-muted-foreground hover:text-foreground transition-colors"
                         >
                           {section.output.tabs[tab as keyof typeof section.output.tabs]}
                         </TabsTrigger>
@@ -1467,14 +1467,14 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                     <TabsContent value="analysis" className="mt-0">
                       {isAnalyzing ? (
                         <div className="flex flex-col items-center justify-center py-16 gap-3">
-                          <div className="size-10 rounded-full border-2 border-orange-500/20 border-t-orange-500 animate-spin" />
+                          <div className="size-10 rounded-full border-2 border-primary/20 border-t-primary animate-spin" />
                           <span className="text-sm text-muted-foreground">{section.analysis.loading}</span>
                         </div>
                       ) : poemAnalysis ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                           <div className="space-y-6">
                             <div className="space-y-3">
-                              <h4 className="text-xs font-semibold tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                              <h4 className="text-xs font-semibold tracking-wide text-primary flex items-center gap-1.5">
                                 <Icon name="Image" className="size-3.5" />
                                 {section.analysis.imagery.title}
                               </h4>
@@ -1482,7 +1482,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                                 {poemAnalysis.imagery.map((img, idx) => {
                                   const imageText = typeof img === 'string' ? img : img.image;
                                   return (
-                                    <span key={idx} className="px-3 py-1 bg-orange-500/5 text-orange-600 dark:text-orange-400 rounded-md text-xs border border-orange-500/20">
+                                    <span key={idx} className="px-3 py-1 bg-primary/5 text-primary rounded-md text-xs border border-primary/20">
                                       {imageText}
                                     </span>
                                   );
@@ -1491,7 +1491,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                             </div>
 
                             <div className="space-y-3">
-                              <h4 className="text-xs font-semibold tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                              <h4 className="text-xs font-semibold tracking-wide text-primary flex items-center gap-1.5">
                                 <Icon name="Heart" className="size-3.5" />
                                 {section.analysis.emotion.title}
                               </h4>
@@ -1501,7 +1501,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
                           <div className="space-y-6">
                             <div className="space-y-3">
-                              <h4 className="text-xs font-semibold tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                              <h4 className="text-xs font-semibold tracking-wide text-primary flex items-center gap-1.5">
                                 <Icon name="BookOpen" className="size-3.5" />
                                 {section.analysis.theme.title}
                               </h4>
@@ -1509,13 +1509,13 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                             </div>
 
                             <div className="space-y-3">
-                              <h4 className="text-xs font-semibold tracking-wide text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
+                              <h4 className="text-xs font-semibold tracking-wide text-primary flex items-center gap-1.5">
                                 <Icon name="Sparkles" className="size-3.5" />
                                 {section.analysis.rhetoric.title}
                               </h4>
                               <div className="flex flex-wrap gap-1.5">
                                 {poemAnalysis.rhetoricalDevices.map((device, idx) => (
-                                  <span key={idx} className="px-3 py-1 bg-orange-500/5 text-orange-600 dark:text-orange-400 rounded-md text-xs border border-orange-500/20">
+                                  <span key={idx} className="px-3 py-1 bg-primary/5 text-primary rounded-md text-xs border border-primary/20">
                                     {device}
                                   </span>
                                 ))}
@@ -1541,7 +1541,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                               <div
                                 key={i}
                                 className={cn(
-                                  "w-1.5 bg-orange-500 rounded-full transition-all duration-150",
+                                  "w-1.5 bg-primary/50 rounded-full transition-all duration-150",
                                   isReading && !isPaused ? "animate-music-bar" : "h-1.5 opacity-20"
                                 )}
                                 style={{ animationDelay: `${i * 0.05}s` }}
@@ -1555,10 +1555,10 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                                 onClick={handleStartReading}
                                 disabled={!generatedPoem.trim()}
                                 className={cn(
-                                  "size-14 rounded-full bg-orange-600 dark:bg-orange-500 text-white flex items-center justify-center transition-all",
+                                  "size-14 rounded-full bg-primary text-white flex items-center justify-center transition-all",
                                   !generatedPoem.trim()
                                     ? "opacity-40 cursor-not-allowed"
-                                    : "hover:bg-orange-700 dark:hover:bg-orange-600"
+                                    : "hover:bg-primary/90 dark:hover:bg-primary/90"
                                 )}
                                 aria-label={section.audio.player.play}
                               >
@@ -1592,7 +1592,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                                   className={cn(
                                     "h-8 w-10 rounded-md text-xs font-medium transition-colors border",
                                     readingSpeed === speed
-                                      ? "border-orange-500/40 bg-orange-500/[0.08] text-orange-600 dark:text-orange-400"
+                                      ? "border-primary/40 bg-primary/[0.08] text-primary"
                                       : "border-border bg-background text-muted-foreground hover:bg-muted"
                                   )}
                                   aria-pressed={readingSpeed === speed}

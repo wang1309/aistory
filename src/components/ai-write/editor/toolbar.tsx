@@ -254,7 +254,7 @@ function ToolbarButton({
           size="sm"
           pressed={isActive}
           onPressedChange={command}
-          className="size-9 rounded-md p-0 sm:size-8 data-[state=on]:bg-orange-100 data-[state=on]:text-orange-700 dark:data-[state=on]:bg-orange-900/30 dark:data-[state=on]:text-orange-300"
+          className="size-9 rounded-md p-0 sm:size-8 data-[state=on]:bg-primary/10 data-[state=on]:text-primary dark:data-[state=on]:bg-orange-900/30 dark:data-[state=on]:text-primary/25"
         >
           <Icon className="size-4" />
         </Toggle>
@@ -607,7 +607,7 @@ export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete, focusMod
                   className={cn(
                     "inline-flex size-9 items-center justify-center rounded-md text-sm transition hover:bg-muted sm:size-8",
                     editor.isActive("highlight")
-                      ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
+                      ? "bg-primary/10 text-primary dark:bg-orange-900/30 dark:text-primary/25"
                       : "text-muted-foreground"
                   )}
                 >
@@ -675,7 +675,7 @@ export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete, focusMod
               className={cn(
                 "inline-flex size-9 items-center justify-center rounded-md text-sm transition hover:bg-muted sm:size-8",
                 editor.isActive("link")
-                  ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
+                  ? "bg-primary/10 text-primary dark:bg-orange-900/30 dark:text-primary/25"
                   : "text-muted-foreground"
               )}
             >
@@ -697,7 +697,7 @@ export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete, focusMod
                   className={cn(
                     "inline-flex size-9 items-center justify-center rounded-md text-sm transition hover:bg-muted sm:size-8",
                     editor.isActive("table")
-                      ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
+                      ? "bg-primary/10 text-primary dark:bg-orange-900/30 dark:text-primary/25"
                       : "text-muted-foreground"
                   )}
                 >
@@ -821,7 +821,7 @@ export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete, focusMod
                   className={cn(
                     "inline-flex size-9 items-center justify-center rounded-md text-sm transition hover:bg-muted sm:size-8",
                     autocompleteOn
-                      ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
+                      ? "bg-primary/10 text-primary dark:bg-orange-900/30 dark:text-primary/25"
                       : "text-muted-foreground"
                   )}
                 >
@@ -847,7 +847,7 @@ export function Toolbar({ editor, autocompleteOn, onToggleAutocomplete, focusMod
                   className={cn(
                     "inline-flex size-9 items-center justify-center rounded-md text-sm transition hover:bg-muted sm:size-8",
                     focusMode
-                      ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
+                      ? "bg-primary/10 text-primary dark:bg-orange-900/30 dark:text-primary/25"
                       : "text-muted-foreground"
                   )}
                 >

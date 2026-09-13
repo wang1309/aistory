@@ -164,7 +164,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
         id: "standard",
         name: t("ai_models.standard"),
         badge: "RECOMMENDED",
-        badgeColor: "bg-primary/10 text-primary dark:text-primary border-primary/20",
+        badgeColor: "bg-primary/10 text-primary border-primary/20",
         icon: <Sparkles className="h-4 w-4" />,
         description: t("ai_models.standard_description"),
       },
@@ -173,7 +173,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
         name: t("ai_models.creative"),
         badge: "PRO",
         badgeColor:
-          "bg-primary/10 text-primary dark:text-primary border-primary/20",
+          "bg-primary/10 text-primary border-primary/20",
         icon: <Palette className="h-4 w-4" />,
         description: t("ai_models.creative_description"),
       },
@@ -888,10 +888,10 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
   });
 
   return (
-    <div id="dnd_backstory_generator" className="min-h-screen bg-background text-foreground selection:bg-orange-500/20">
+    <div id="dnd_backstory_generator" className="min-h-screen bg-background text-foreground selection:bg-primary/20">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
           style={{ backgroundImage: "var(--bg-grid)", backgroundSize: "40px 40px" }}
@@ -930,7 +930,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
               ].map((d, i) => (
                 <motion.span
                   key={i}
-                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  className="absolute rounded-full bg-primary"
                   style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
@@ -944,7 +944,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
           {!reduceMotion && (
             <>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-orange-500/45 dark:text-orange-400/45"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ left: "3%", top: "52%" }}
                 initial={{ opacity: 0, y: 0, rotate: -10 }}
                 animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -8, 0], rotate: [-10, -4, -10] }}
@@ -958,7 +958,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                 </svg>
               </motion.div>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-primary/45 dark:text-primary/45"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ right: "5%", top: "44%" }}
                 initial={{ opacity: 0, y: 0, rotate: 12 }}
                 animate={{ opacity: [0, 0.5, 0.5, 0], y: [0, -6, 0], rotate: [12, 5, 12] }}
@@ -977,7 +977,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
           {/* Slowly rotating arcane rune ring */}
           {!reduceMotion && (
             <motion.div
-              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/30 dark:text-orange-400/30"
+              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-primary"
               initial={{ opacity: 0, rotate: 0 }}
               animate={{ opacity: [0, 0.55, 0.4], rotate: 360 }}
               transition={{ opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 60, repeat: Infinity, ease: "linear" } }}
@@ -999,32 +999,32 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
 
           {/* Stat block number watermark (STR/DEX/CON/INT/WIS/CHA style numerals) */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
-            <span className="absolute left-[6%] top-[22%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07] tabular-nums">18</span>
-            <span className="absolute right-[7%] top-[16%] font-display italic font-bold text-xl text-primary/[0.07] dark:text-primary/[0.07] tabular-nums">14</span>
-            <span className="absolute left-[10%] bottom-[14%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06] tabular-nums">16</span>
-            <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-primary/[0.07] dark:text-primary/[0.07] tabular-nums">12</span>
-            <span className="absolute left-[28%] top-[10%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05] tabular-nums">10</span>
-            <span className="absolute right-[26%] bottom-[8%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06] tabular-nums">8</span>
+            <span className="absolute left-[6%] top-[22%] font-display italic font-bold text-2xl text-primary tabular-nums">18</span>
+            <span className="absolute right-[7%] top-[16%] font-display italic font-bold text-xl text-primary tabular-nums">14</span>
+            <span className="absolute left-[10%] bottom-[14%] font-display italic font-bold text-lg text-primary tabular-nums">16</span>
+            <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-primary tabular-nums">12</span>
+            <span className="absolute left-[28%] top-[10%] font-display italic font-bold text-base text-primary tabular-nums">10</span>
+            <span className="absolute right-[26%] bottom-[8%] font-display italic font-bold text-xl text-primary tabular-nums">8</span>
           </div>
 
           {/* Double-bezel icon container with arcane hover flare */}
           <div className="group relative z-10 flex justify-center mb-6">
-            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               ✦
             </span>
             <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               ✧
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Sword className="size-6 text-orange-600 dark:text-orange-400" />
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Sword className="size-6 text-primary" />
               </div>
             </div>
           </div>
 
           {/* Eyebrow badge */}
           <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             D&D Character Builder
           </span>
 
@@ -1038,15 +1038,15 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
 
           {/* Arcane rune cluster decorative anchor */}
           <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
-            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">✦</span>
+            <span className="text-primary text-sm">✦</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+              <span key={i} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <span className="text-primary/45 dark:text-primary/45 text-base">⚔</span>
+            <span className="text-primary text-base">⚔</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+              <span key={i} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">✧</span>
+            <span className="text-primary text-sm">✧</span>
           </div>
 
           <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
@@ -1057,8 +1057,8 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
           {section?.ui?.theme_pills?.length ? (
             <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
               {section.ui.theme_pills.map((pill: string, i: number) => (
-                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary">
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -1079,14 +1079,14 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <Label className="text-sm font-semibold text-foreground flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-orange-500" />
+                    <Sparkles className="w-4 h-4 text-primary/50" />
                     {t("ui.character_concept")}
                   </Label>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={handleRandomPrompt}
-                    className="h-7 text-xs gap-1.5 text-orange-600 dark:text-orange-400 hover:bg-orange-500/10 px-2.5 rounded-full"
+                    className="h-7 text-xs gap-1.5 text-primary hover:bg-primary/10 px-2.5 rounded-full"
                   >
                     <Wand2 className="w-3 h-3" />
                     {t("ui.random_button")}
@@ -1098,7 +1098,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                     value={prompt}
                     onChange={(event) => setPrompt(event.target.value)}
                     placeholder={t("placeholders.character_concept")}
-                    className="min-h-[120px] resize-none bg-muted/50 border-border/50 focus:border-orange-500/50 focus:ring-orange-500/20 rounded-xl p-4 text-base leading-relaxed transition-all shadow-sm"
+                    className="min-h-[120px] resize-none bg-muted/50 border-border/50 focus:border-primary/50 focus:ring-primary/20 rounded-xl p-4 text-base leading-relaxed transition-all shadow-sm"
                   />
                   {prompt && (
                     <Button
@@ -1285,7 +1285,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                   <CollapsibleTrigger asChild>
                     <Button
                       variant="ghost"
-                      className="w-full flex justify-between items-center p-0 h-auto hover:bg-transparent text-xs font-medium text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                      className="w-full flex justify-between items-center p-0 h-auto hover:bg-transparent text-xs font-medium text-muted-foreground hover:text-primary dark:hover:text-primary transition-colors"
                     >
                       <span className="flex items-center gap-1.5">
                         <Settings2 className="w-3.5 h-3.5" />
@@ -1401,7 +1401,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="group w-full h-12 text-base bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
+                  className="group w-full h-12 text-base bg-primary font-semibold text-white shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-[0.97] disabled:opacity-60 dark:bg-primary/50 dark:shadow-primary/20 dark:hover:bg-primary/90 transition-all"
                 >
                   {isGenerating ? (
                     <>
@@ -1443,19 +1443,19 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
             ref={resultRef}
             className="relative flex h-[720px] max-h-[75vh] min-h-[400px] flex-col sm:min-h-[520px] md:sticky md:top-24"
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 to-orange-500/5 rounded-[2rem] blur-2xl -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-primary/5 rounded-[2rem] blur-2xl -z-10" />
 
             <div
               className={cn(
                 "flex-1 rounded-[2rem] border border-border backdrop-blur-xl overflow-hidden transition-all duration-500 flex flex-col card-hover-lift",
                 generatedBackstory
-                  ? "bg-card/80 shadow-2xl shadow-orange-500/10"
+                  ? "bg-card/80 shadow-2xl shadow-primary/10"
                   : "bg-card/40 shadow-xl border-dashed"
               )}
             >
               <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-4 border-b border-border/50 bg-muted/20">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400">
+                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
                     <ScrollText className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col">
@@ -1554,16 +1554,16 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                     {isGenerating ? (
                       <div className="space-y-6">
                         <div className="relative mx-auto w-16 h-16">
-                          <div className="absolute inset-0 rounded-full border-4 border-orange-500/20" />
-                          <div className="absolute inset-0 rounded-full border-4 border-t-orange-500 animate-spin" />
-                          <ShieldQuestion className="absolute inset-0 m-auto w-6 h-6 text-orange-500 animate-pulse" />
+                          <div className="absolute inset-0 rounded-full border-4 border-primary/20" />
+                          <div className="absolute inset-0 rounded-full border-4 border-t-primary animate-spin" />
+                          <ShieldQuestion className="absolute inset-0 m-auto w-6 h-6 text-primary/50 animate-pulse" />
                         </div>
                         <p className="text-sm font-medium animate-pulse">{t("output.generating_message")}</p>
                       </div>
                     ) : (
                       <div className="space-y-4 max-w-xs mx-auto">
-                        <div className="w-16 h-16 mx-auto bg-orange-500/5 rounded-2xl flex items-center justify-center rotate-3">
-                          <ScrollText className="w-8 h-8 text-orange-400/50" />
+                        <div className="w-16 h-16 mx-auto bg-primary/5 rounded-2xl flex items-center justify-center rotate-3">
+                          <ScrollText className="w-8 h-8 text-primary/50" />
                         </div>
                         <p className="text-muted-foreground text-sm">{t("output.empty_message")}</p>
                       </div>

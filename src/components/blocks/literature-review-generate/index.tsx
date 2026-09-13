@@ -470,13 +470,13 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-14 items-start">
           {/* 左栏:价值主张 + 学术诚信说明(server-translated,静态渲染) */}
           <div className="lg:sticky lg:top-24">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.05] px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-primary dark:text-primary">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.05] px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-primary">
               <GraduationCap className="size-3.5" />
               {t("ui.eyebrow")}
             </span>
 
             <h1 className="mt-5 font-display text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-foreground">
-              <span className="italic text-primary dark:text-primary">{t("ui.title_accent")}</span>{" "}
+              <span className="italic text-primary">{t("ui.title_accent")}</span>{" "}
               <span>{t("ui.title")}</span>
             </h1>
 
@@ -490,7 +490,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
             <div className="mt-8 divide-y divide-border/40 border-y border-border/40">
               {valuePoints.map((point: { title: string; description: string }, i: number) => (
                 <div key={i} className="flex gap-4 py-5">
-                  <span className="font-display text-sm font-semibold text-primary/80 dark:text-primary/80 tabular-nums pt-0.5">
+                  <span className="font-display text-sm font-semibold text-primary tabular-nums pt-0.5">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
@@ -516,7 +516,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
           {/* 右栏:纸面表单 */}
           <div className="rounded-3xl border border-border/50 bg-card shadow-sm">
             <div className="border-b border-border/40 px-6 sm:px-8 py-4 flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary">
+              <div className="p-2 rounded-lg bg-primary/10 text-primary">
                 <BookOpen className="size-5" />
               </div>
               <span className="text-sm font-semibold text-foreground">{t("ui.eyebrow")}</span>
@@ -526,14 +526,14 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
               <div className="space-y-2">
                 <div className="flex items-center justify-between gap-2">
                   <Label htmlFor="lr-topic" className="text-sm font-semibold text-foreground">
-                    {t("ui.topic_label")} <span className="text-primary dark:text-primary">*</span>
+                    {t("ui.topic_label")} <span className="text-primary">*</span>
                   </Label>
                   <div className="flex items-center gap-2">
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={handleRandomTopic}
-                      className="h-7 text-xs gap-1.5 text-primary dark:text-primary hover:bg-primary/10 px-2.5 rounded-full"
+                      className="h-7 text-xs gap-1.5 text-primary hover:bg-primary/10 px-2.5 rounded-full"
                     >
                       <Wand2 className="w-3 h-3" />
                       {t("ui.random_button")}
@@ -759,7 +759,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
           >
             <div className="flex flex-wrap items-center justify-between gap-2 px-6 sm:px-8 py-4 border-b border-border/40">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary">
+                <div className="p-2 rounded-lg bg-primary/10 text-primary">
                   <Library className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col">
@@ -837,7 +837,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
             {generatedReview && !isGenerating && (
               <div className="border-t border-primary/20 bg-primary/[0.04] px-6 sm:px-8 py-4">
                 <div className="flex items-start gap-3">
-                  <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary dark:text-primary" />
+                  <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" />
                   <div>
                     <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">
                       {t("output.evidence_warning_title")}

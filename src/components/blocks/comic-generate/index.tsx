@@ -146,7 +146,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
         id: "standard",
         name: t("ai_models.standard"),
         badge: "RECOMMENDED",
-        badgeColor: "bg-primary/10 text-primary dark:text-primary border-primary/20",
+        badgeColor: "bg-primary/10 text-primary border-primary/20",
         icon: <Sparkles className="h-4 w-4" />,
         description: t("ai_models.standard_description"),
       },
@@ -155,7 +155,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
         name: t("ai_models.creative"),
         badge: "PRO",
         badgeColor:
-          "bg-primary/10 text-primary dark:text-primary border-primary/20",
+          "bg-primary/10 text-primary border-primary/20",
         icon: <Palette className="h-4 w-4" />,
         description: t("ai_models.creative_description"),
       },
@@ -524,7 +524,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
       {/* Subtle warm top glow + dot texture */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
           style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }}
@@ -565,7 +565,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
               ].map((d, i) => (
                 <motion.span
                   key={i}
-                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  className="absolute rounded-full bg-primary"
                   style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
@@ -625,15 +625,15 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
 
           {/* Double-bezel icon container with hover speech bubble pop */}
           <div className="group relative z-10 flex justify-center mb-6">
-            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               ?
             </span>
             <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               !
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Wand2 className="size-6 text-orange-600 dark:text-orange-400" />
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Wand2 className="size-6 text-primary" />
               </div>
             </div>
           </div>
@@ -655,13 +655,13 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
           {/* Halftone dot cluster + POW burst decorative anchor */}
           <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={i} className="inline-block rounded-full bg-orange-500/30 dark:bg-orange-400/35" style={{ width: s, height: s }} />
+              <span key={i} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <svg className="size-3 text-orange-500/55 dark:text-orange-400/55" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <svg className="size-3 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 1l2 7 7-3-3 7 7 2-7 2 3 7-7-3-2 7-2-7-7 3 3-7-7-2 7-2-3-7 7 3z" />
             </svg>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={i} className="inline-block rounded-full bg-orange-500/30 dark:bg-orange-400/35" style={{ width: s, height: s }} />
+              <span key={i} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
           </div>
 
@@ -673,8 +673,8 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
           {section?.ui?.theme_pills?.length ? (
             <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
               {section.ui.theme_pills.map((pill: string, i: number) => (
-                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary">
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -767,7 +767,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                   placeholder={t("ui.story_prompt_placeholder")}
-                  className="min-h-[140px] resize-none text-sm focus-visible:ring-orange-500/30"
+                  className="min-h-[140px] resize-none text-sm focus-visible:ring-primary/30"
                 />
 
                 <Button
@@ -1003,8 +1003,8 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                         className={cn(
                           "flex flex-col items-center rounded-xl border p-2 sm:p-2.5 text-center text-xs transition-all min-w-0",
                           selectedModel === m.id
-                            ? "border-orange-500/50 bg-orange-500/10 text-orange-600 dark:border-orange-400/50 dark:text-orange-400"
-                            : "border-border hover:border-orange-300 hover:bg-orange-50/50 dark:hover:bg-orange-950/20"
+                            ? "border-primary/50 bg-primary/10 text-primary dark:border-primary/50 dark:text-primary"
+                            : "border-border hover:border-primary hover:bg-primary/50 dark:hover:bg-orange-950/20"
                         )}
                       >
                         {m.icon}
@@ -1024,7 +1024,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
               <Button
                 onClick={handleGenerate}
                 disabled={isGenerating}
-                className="group mt-5 w-full gap-2 bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600 transition-all"
+                className="group mt-5 w-full gap-2 bg-primary font-semibold text-white shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-[0.97] disabled:opacity-60 dark:bg-primary/50 dark:shadow-primary/20 dark:hover:bg-primary/90 transition-all"
                 size="lg"
               >
                 {isGenerating ? (
@@ -1066,9 +1066,9 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
           >
             <div className="h-full rounded-2xl border border-border bg-card shadow-sm card-hover-lift flex flex-col">
               {/* Output header */}
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border bg-orange-500/[0.03] px-4 py-3 sm:px-5 dark:bg-orange-500/[0.05]">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border bg-primary/[0.03] px-4 py-3 sm:px-5 dark:bg-primary/[0.05]">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-orange-500" />
+                  <Sparkles className="h-4 w-4 text-primary/50" />
                   <span className="text-sm font-semibold">{t("ui.output_title")}</span>
                   {wordCount > 0 && (
                     <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
@@ -1135,7 +1135,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                         ].map((d, i) => (
                           <motion.span
                             key={i}
-                            className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                            className="absolute rounded-full bg-primary"
                             style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: [0, d.peak, 0] }}
@@ -1177,7 +1177,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                           {[0, 1, 2].map((i) => (
                             <motion.span
                               key={i}
-                              className="size-2.5 rounded-full bg-orange-500 dark:bg-orange-400"
+                              className="size-2.5 rounded-full bg-primary"
                               animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.15, 0.8] }}
                               transition={{ duration: 1.4, delay: i * 0.2, repeat: Infinity, ease: "easeInOut" }}
                             />
@@ -1189,8 +1189,8 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                       </div>
                     ) : (
                       <div className="relative z-10 flex flex-col items-center gap-4">
-                        <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
-                          <BookOpen className="h-7 w-7 text-orange-500" />
+                        <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+                          <BookOpen className="h-7 w-7 text-primary/50" />
                           {/* Speech bubble accent */}
                           <span className="absolute -top-1.5 -right-1.5 flex size-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold italic text-white shadow-sm">
                             ?

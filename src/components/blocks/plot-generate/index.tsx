@@ -130,7 +130,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       id: 'creative',
       name: t('ai_models.creative'),
       badge: 'BEST',
-      badgeColor: 'bg-orange-500/10 text-orange-600 border-orange-500/30',
+      badgeColor: 'bg-primary/10 text-primary border-primary/30',
       icon: <Palette className="h-4 w-4" />,
       speed: '~60s',
       description: t('ai_models.creative_description')
@@ -744,11 +744,11 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   // ========== RENDER ==========
 
   return (
-    <div id="plot_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-orange-500/30">
+    <div id="plot_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-primary/30">
       {/* Subtle warm top glow + dot texture */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
 
@@ -780,7 +780,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
               ].map((d, i) => (
                 <motion.span
                   key={i}
-                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  className="absolute rounded-full bg-primary"
                   style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
@@ -794,7 +794,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           {!reduceMotion && (
             <>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-orange-500/50 dark:text-orange-400/50"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ left: "4%", top: "48%" }}
                 initial={{ opacity: 0, y: 0, rotate: -10 }}
                 animate={{ opacity: [0, 0.6, 0.6, 0], y: [0, -10, 0], rotate: [-10, -4, -10] }}
@@ -807,7 +807,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                 </svg>
               </motion.div>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-primary/50 dark:text-primary/50"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ right: "5%", top: "44%" }}
                 initial={{ opacity: 0, y: 0, rotate: 8 }}
                 animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -7, 0], rotate: [8, 3, 8] }}
@@ -827,7 +827,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           {/* Slowly drifting 6-node constellation network (narrative map) */}
           {!reduceMotion && (
             <motion.div
-              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/35 dark:text-orange-400/35"
+              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-primary"
               initial={{ opacity: 0, x: 0, y: 0 }}
               animate={{ opacity: [0, 0.6, 0.45], x: [0, 8, 0], y: [0, -6, 0] }}
               transition={{ opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }, x: { duration: 18, repeat: Infinity, ease: "easeInOut" }, y: { duration: 14, repeat: Infinity, ease: "easeInOut" } }}
@@ -853,32 +853,32 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
           {/* Editorial watermark: paragraph & section marks */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
-            <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">¶</span>
-            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-primary/[0.07] dark:text-primary/[0.07]">§</span>
-            <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06]">§</span>
-            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-primary/[0.07] dark:text-primary/[0.07]">¶</span>
-            <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05]">§</span>
-            <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06]">¶</span>
+            <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-primary">¶</span>
+            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-primary">§</span>
+            <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-primary">§</span>
+            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-primary">¶</span>
+            <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-primary">§</span>
+            <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-primary">¶</span>
           </div>
 
           {/* Double-bezel icon container with cartographer hover flare */}
           <div className="group relative z-10 flex justify-center mb-6">
-            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               ¶
             </span>
             <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               §
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Icon name="RiMapLine" className="size-6 text-orange-600 dark:text-orange-400" />
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Icon name="RiMapLine" className="size-6 text-primary" />
               </div>
             </div>
           </div>
 
           {/* Eyebrow badge */}
           <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             AI Writing Tool
           </span>
 
@@ -892,15 +892,15 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
           {/* Editorial decorative anchor: ¶ + halftone + ✦ + halftone + § */}
           <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
-            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">¶</span>
+            <span className="text-primary text-sm">¶</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+              <span key={i} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <span className="text-primary/45 dark:text-primary/45 text-base">✦</span>
+            <span className="text-primary text-base">✦</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+              <span key={i} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">§</span>
+            <span className="text-primary text-sm">§</span>
           </div>
 
           <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
@@ -911,8 +911,8 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           {section?.ui?.theme_pills?.length ? (
             <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
               {section.ui.theme_pills.map((pill: string, i: number) => (
-                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary">
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -937,14 +937,14 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="prompt" className="text-sm font-medium text-foreground flex items-center gap-2">
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">1</span>
+                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold tabular-nums text-primary">1</span>
                       {t('ui.story_concept')}
                     </Label>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={handleRandomPrompt}
-                      className="h-7 gap-1.5 text-xs text-orange-600 dark:text-orange-400 hover:bg-orange-500/10"
+                      className="h-7 gap-1.5 text-xs text-primary hover:bg-primary/10"
                       type="button"
                     >
                       <Icon name="sparkles" className="size-3" />
@@ -958,7 +958,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                     placeholder={t('placeholders.story_concept')}
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
-                    className="min-h-[140px] resize-none text-sm focus-visible:ring-orange-500/30"
+                    className="min-h-[140px] resize-none text-sm focus-visible:ring-primary/30"
                   />
                   <div className="text-right text-xs text-muted-foreground/50">
                     <span className={cn("tabular-nums", promptCharCount < 10 && prompt.length > 0 && "text-red-500")}>
@@ -1020,7 +1020,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                         className={cn(
                           "py-3 px-2 rounded-xl border text-xs font-medium transition-all duration-200",
                           complexity === level
-                            ? 'border-orange-500/40 bg-orange-500/[0.08] text-orange-600 dark:text-orange-400'
+                            ? 'border-primary/40 bg-primary/[0.08] text-primary'
                             : 'border-border bg-background hover:bg-muted/50 text-muted-foreground'
                         )}
                       >
@@ -1049,7 +1049,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                   className="w-full justify-between h-14 px-6 hover:bg-muted/50 text-foreground rounded-none"
                 >
                   <span className="flex items-center gap-3 text-sm font-medium">
-                    <div className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500">
+                    <div className="p-1.5 rounded-lg bg-primary/10 text-primary/50">
                       <Settings className="h-3.5 w-3.5" />
                     </div>
                     {t('ui.advanced_options')}
@@ -1070,7 +1070,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
                           <Label className="text-xs font-medium text-muted-foreground">{t('characters.main')}</Label>
-                          <span className="text-xs font-bold tabular-nums text-orange-600 dark:text-orange-400 px-2 py-0.5 rounded-full bg-orange-500/10">
+                          <span className="text-xs font-bold tabular-nums text-primary px-2 py-0.5 rounded-full bg-primary/10">
                             {mainCharacterCount}
                           </span>
                         </div>
@@ -1086,7 +1086,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
                           <Label className="text-xs font-medium text-muted-foreground">{t('characters.supporting')}</Label>
-                          <span className="text-xs font-bold tabular-nums text-orange-600 dark:text-orange-400 px-2 py-0.5 rounded-full bg-orange-500/10">
+                          <span className="text-xs font-bold tabular-nums text-primary px-2 py-0.5 rounded-full bg-primary/10">
                             {supportingCharacterCount}
                           </span>
                         </div>
@@ -1106,7 +1106,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
                           <Label className="text-xs font-medium text-muted-foreground">{t('plot_structure.plot_points')}</Label>
-                          <span className="text-xs font-bold tabular-nums text-orange-600 dark:text-orange-400 px-2 py-0.5 rounded-full bg-orange-500/10">
+                          <span className="text-xs font-bold tabular-nums text-primary px-2 py-0.5 rounded-full bg-primary/10">
                             {plotPointCount}
                           </span>
                         </div>
@@ -1122,7 +1122,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
                           <Label className="text-xs font-medium text-muted-foreground">{t('plot_structure.subplots')}</Label>
-                          <span className="text-xs font-bold tabular-nums text-orange-600 dark:text-orange-400 px-2 py-0.5 rounded-full bg-orange-500/10">
+                          <span className="text-xs font-bold tabular-nums text-primary px-2 py-0.5 rounded-full bg-primary/10">
                             {subPlotCount}
                           </span>
                         </div>
@@ -1152,7 +1152,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                             className={cn(
                               "cursor-pointer px-4 py-1.5 rounded-full border transition-all text-xs font-medium select-none",
                               conflictTypes.includes(type.value)
-                                ? "bg-orange-500 text-white border-orange-500"
+                                ? "bg-primary/50 text-white border-primary/50"
                                 : "border-border bg-background hover:bg-muted/50 text-muted-foreground"
                             )}
                           >
@@ -1216,7 +1216,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
               <Button
                 onClick={handleGenerateClick}
                 disabled={isGenerating || !prompt.trim() || !selectedModel}
-                className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 disabled:opacity-60 active:scale-[0.97] transition-all"
+                className="w-full h-14 rounded-xl text-base font-semibold bg-primary hover:bg-primary/90 text-white dark:bg-primary/50 dark:hover:bg-primary/90 disabled:opacity-60 active:scale-[0.97] transition-all"
               >
                 {isGenerating ? (
                   <div className="flex items-center justify-center gap-2">
@@ -1290,8 +1290,8 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                     <div className="absolute right-4 top-4 z-10">
                       <PlotHistoryDropdown onLoadPlot={handleLoadPlot} locale={locale} />
                     </div>
-                    <div className="size-20 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-6 border border-orange-500/20">
-                      <Icon name="book-open" className="size-8 text-orange-500/50" />
+                    <div className="size-20 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
+                      <Icon name="book-open" className="size-8 text-primary/50" />
                     </div>
                     <h3 className="text-base font-semibold mb-2 text-foreground">{t('preview.no_plot_generated')}</h3>
                     <p className="text-sm text-muted-foreground/60 max-w-xs leading-relaxed">
@@ -1306,7 +1306,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
             {generatedPlot && currentPlotId && (
               <div className="rounded-2xl border border-border bg-card p-5 flex flex-col sm:flex-row items-center justify-between gap-5">
                   <div className="flex items-start gap-4">
-                    <div className="p-2.5 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 shrink-0 border border-orange-500/20">
+                    <div className="p-2.5 rounded-xl bg-primary/10 text-primary shrink-0 border border-primary/20">
                       <Icon name="pen-tool" className="size-5" />
                     </div>
                     <div>
@@ -1318,7 +1318,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                   </div>
                   <Button
                     onClick={() => setShowPlotToStoryDialog(true)}
-                    className="h-10 px-6 text-sm font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 shrink-0 w-full sm:w-auto"
+                    className="h-10 px-6 text-sm font-semibold bg-primary hover:bg-primary/90 text-white dark:bg-primary/50 dark:hover:bg-primary/90 shrink-0 w-full sm:w-auto"
                   >
                     <BookOpen className="h-3.5 w-3.5 mr-1.5" /> {t('plot_to_story.generate_story')}
                   </Button>

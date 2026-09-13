@@ -100,7 +100,7 @@ const FLUID_EASE: [number, number, number, number] = [0.32, 0.72, 0, 1];
 /** Animated ellipsis — three dots that pulse in sequence. */
 function GeneratingDots({ reduceMotion }: { reduceMotion: boolean | null }) {
   if (reduceMotion) {
-    return <span className="text-orange-500">...</span>;
+    return <span className="text-primary/50">...</span>;
   }
 
   return (
@@ -108,7 +108,7 @@ function GeneratingDots({ reduceMotion }: { reduceMotion: boolean | null }) {
       {[0, 1, 2].map((i) => (
         <motion.span
           key={i}
-          className="inline-block size-1 rounded-full bg-orange-500 dark:bg-orange-400"
+          className="inline-block size-1 rounded-full bg-primary"
           animate={{ opacity: [0.2, 1, 0.2] }}
           transition={{
             duration: 1.2,
@@ -135,13 +135,13 @@ function ShimmerBar({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-full bg-orange-500/[0.08] dark:bg-orange-400/[0.08]",
+        "relative overflow-hidden rounded-full bg-primary",
         className
       )}
     >
       {!reduceMotion && (
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-500/25 to-transparent dark:via-orange-400/25"
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/25 to-transparent dark:via-primary/25"
           animate={{ x: ["-100%", "300%"] }}
           transition={{
             duration: 1.4,
@@ -183,10 +183,10 @@ function GeneratingState({
     >
       {/* Status header: bezel quote glyph + pulse dot + label */}
       <div className="flex items-center gap-3">
-        <div className="rounded-xl border border-orange-500/15 bg-orange-500/[0.06] p-1 dark:bg-orange-400/[0.06]">
+        <div className="rounded-xl border border-primary/15 bg-primary/[0.06] p-1 dark:bg-primary/[0.06]">
           <div className="flex size-7 items-center justify-center rounded-lg bg-background/70">
             <motion.span
-              className="font-display text-sm italic font-bold text-orange-600 dark:text-orange-400"
+              className="font-display text-sm italic font-bold text-primary"
               animate={
                 reduceMotion
                   ? {}
@@ -205,9 +205,9 @@ function GeneratingState({
 
         <span className="relative flex size-2 shrink-0">
           {!reduceMotion && (
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-orange-500/50 dark:bg-orange-400/50" />
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary" />
           )}
-          <span className="relative inline-flex size-2 rounded-full bg-orange-500 dark:bg-orange-400" />
+          <span className="relative inline-flex size-2 rounded-full bg-primary" />
         </span>
 
         <span className="text-sm font-medium text-foreground/80">
@@ -238,10 +238,10 @@ function GeneratingState({
       </div>
 
       {/* Progress sweep bar */}
-      <div className="relative h-1 overflow-hidden rounded-full bg-orange-500/10 dark:bg-orange-400/10">
+      <div className="relative h-1 overflow-hidden rounded-full bg-primary">
         {!reduceMotion && (
           <motion.div
-            className="absolute inset-y-0 w-1/3 rounded-full bg-gradient-to-r from-transparent via-orange-500 to-transparent dark:via-orange-400"
+            className="absolute inset-y-0 w-1/3 rounded-full bg-gradient-to-r from-transparent via-primary/50 to-transparent dark:via-primary"
             animate={{ x: ["-100%", "300%"] }}
             transition={{
               duration: 1.6,
@@ -606,12 +606,12 @@ export default function IncorrectQuoteGenerate({
   return (
     <section
       id="incorrect_quote_generator"
-      className="overflow-hidden py-16 text-foreground selection:bg-orange-500/20 lg:py-24"
+      className="overflow-hidden py-16 text-foreground selection:bg-primary/20 lg:py-24"
     >
       {/* Subtle warm top glow + dot texture */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
           style={{ backgroundImage: "var(--bg-grid)", backgroundSize: "40px 40px" }}
@@ -636,7 +636,7 @@ export default function IncorrectQuoteGenerate({
             {/* Floating opening quote — left */}
             {!reduceMotion && (
               <motion.div
-                className="pointer-events-none absolute z-[1] hidden text-orange-500/40 dark:text-orange-400/40 sm:block"
+                className="pointer-events-none absolute z-[1] hidden text-primary sm:block"
                 style={{ left: "8%", top: "26%" }}
                 initial={{ opacity: 0, y: 0, rotate: -8 }}
                 animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -10, 0], rotate: [-8, -3, -8] }}
@@ -650,7 +650,7 @@ export default function IncorrectQuoteGenerate({
             {/* Floating ellipsis — right */}
             {!reduceMotion && (
               <motion.div
-                className="pointer-events-none absolute z-[1] hidden text-orange-500/35 dark:text-orange-400/35 sm:block"
+                className="pointer-events-none absolute z-[1] hidden text-primary sm:block"
                 style={{ right: "10%", top: "36%" }}
                 initial={{ opacity: 0, y: 0 }}
                 animate={{ opacity: [0, 0.5, 0.5, 0], y: [0, 8, 0] }}
@@ -664,7 +664,7 @@ export default function IncorrectQuoteGenerate({
             {/* Floating guillemet — right bottom */}
             {!reduceMotion && (
               <motion.div
-                className="pointer-events-none absolute z-[1] hidden text-orange-500/30 dark:text-orange-400/30 sm:block"
+                className="pointer-events-none absolute z-[1] hidden text-primary sm:block"
                 style={{ right: "20%", bottom: "18%" }}
                 initial={{ opacity: 0, y: 0, rotate: 6 }}
                 animate={{ opacity: [0, 0.45, 0.45, 0], y: [0, -7, 0], rotate: [6, 10, 6] }}
@@ -678,7 +678,7 @@ export default function IncorrectQuoteGenerate({
             {/* Floating closing quote — left bottom */}
             {!reduceMotion && (
               <motion.div
-                className="pointer-events-none absolute z-[1] hidden text-orange-500/30 dark:text-orange-400/30 sm:block"
+                className="pointer-events-none absolute z-[1] hidden text-primary sm:block"
                 style={{ left: "14%", bottom: "22%" }}
                 initial={{ opacity: 0, y: 0, rotate: 0 }}
                 animate={{ opacity: [0, 0.4, 0.4, 0], y: [0, 6, 0], rotate: [0, -8, 0] }}
@@ -704,7 +704,7 @@ export default function IncorrectQuoteGenerate({
                 <motion.span
                   key={i}
                   className={cn(
-                    "absolute rounded-full bg-orange-500 dark:bg-orange-400",
+                    "absolute rounded-full bg-primary",
                     i >= 4 && "hidden sm:block"
                   )}
                   style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
@@ -716,39 +716,39 @@ export default function IncorrectQuoteGenerate({
 
             {/* Editorial watermark: scattered quote glyphs */}
             <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden select-none sm:block" aria-hidden="true">
-              <span className="absolute left-[6%] top-[20%] font-display text-2xl italic font-bold text-orange-500/[0.08] dark:text-orange-400/[0.08]">&ldquo;</span>
-              <span className="absolute right-[7%] top-[14%] font-display text-xl font-bold text-orange-500/[0.08] dark:text-orange-400/[0.08]">&hellip;</span>
-              <span className="absolute left-[10%] bottom-[16%] font-display text-lg italic font-bold text-orange-500/[0.07] dark:text-orange-400/[0.07]">&laquo;</span>
-              <span className="absolute right-[9%] bottom-[18%] font-display text-2xl italic font-bold text-orange-500/[0.08] dark:text-orange-400/[0.08]">&rdquo;</span>
-              <span className="absolute left-[28%] top-[8%] font-display text-base font-bold text-orange-500/[0.06] dark:text-orange-400/[0.06]">&hellip;</span>
-              <span className="absolute right-[26%] bottom-[6%] font-display text-xl italic font-bold text-orange-500/[0.07] dark:text-orange-400/[0.07]">&raquo;</span>
+              <span className="absolute left-[6%] top-[20%] font-display text-2xl italic font-bold text-primary">&ldquo;</span>
+              <span className="absolute right-[7%] top-[14%] font-display text-xl font-bold text-primary">&hellip;</span>
+              <span className="absolute left-[10%] bottom-[16%] font-display text-lg italic font-bold text-primary">&laquo;</span>
+              <span className="absolute right-[9%] bottom-[18%] font-display text-2xl italic font-bold text-primary">&rdquo;</span>
+              <span className="absolute left-[28%] top-[8%] font-display text-base font-bold text-primary">&hellip;</span>
+              <span className="absolute right-[26%] bottom-[6%] font-display text-xl italic font-bold text-primary">&raquo;</span>
             </div>
           </div>
 
           {/* Double-bezel icon container with quote hover flare */}
           <div className="group relative z-10 mb-6 flex justify-center">
             <span
-              className="pointer-events-none absolute left-[calc(50%-2.5rem)] top-0 font-display text-2xl italic font-bold text-orange-500/0 transition-all duration-500 group-hover:scale-110 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80"
+              className="pointer-events-none absolute left-[calc(50%-2.5rem)] top-0 font-display text-2xl italic font-bold text-primary/0 transition-all duration-500 group-hover:scale-110 group-hover:text-primary/80 dark:group-hover:text-primary/80"
               aria-hidden
             >
               &ldquo;
             </span>
             <span
-              className="pointer-events-none absolute right-[calc(50%-2.5rem)] top-0 font-display text-2xl italic font-bold text-orange-500/0 transition-all duration-500 group-hover:scale-110 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80"
+              className="pointer-events-none absolute right-[calc(50%-2.5rem)] top-0 font-display text-2xl italic font-bold text-primary/0 transition-all duration-500 group-hover:scale-110 group-hover:text-primary/80 dark:group-hover:text-primary/80"
               aria-hidden
             >
               &laquo;
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Icon name="RiDoubleQuotesL" className="size-6 text-orange-600 dark:text-orange-400" />
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Icon name="RiDoubleQuotesL" className="size-6 text-primary" />
               </div>
             </div>
           </div>
 
           {/* Eyebrow badge */}
           <span className="relative z-10 mb-5 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             {t("ui.eyebrow", "AI Quote Tool")}
           </span>
 
@@ -756,7 +756,7 @@ export default function IncorrectQuoteGenerate({
           <h1 className="relative z-10 mt-4 font-display text-4xl font-bold tracking-tight leading-[1.08] text-foreground sm:text-5xl lg:text-[3.25rem]">
             <span className="group relative inline-block">
               <span
-                className="pointer-events-none absolute -top-5 left-0 hidden font-display text-xl italic font-bold text-orange-500/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-orange-500/60 dark:group-hover:text-orange-400/60 md:block"
+                className="pointer-events-none absolute -top-5 left-0 hidden font-display text-xl italic font-bold text-primary/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-primary/60 dark:group-hover:text-primary/60 md:block"
                 aria-hidden
               >
                 &ldquo;
@@ -779,7 +779,7 @@ export default function IncorrectQuoteGenerate({
                 );
               })()}
               <span
-                className="pointer-events-none absolute -top-5 right-0 hidden font-display text-xl italic font-bold text-orange-500/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-orange-500/60 dark:group-hover:text-orange-400/60 md:block"
+                className="pointer-events-none absolute -top-5 right-0 hidden font-display text-xl italic font-bold text-primary/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-primary/60 dark:group-hover:text-primary/60 md:block"
                 aria-hidden
               >
                 &laquo;
@@ -788,7 +788,7 @@ export default function IncorrectQuoteGenerate({
           </h1>
 
           {/* Editorial decorative anchor: quote + halftone + ellipsis + halftone + guillemet */}
-          <div className="relative z-10 mb-5 mt-4 flex items-center justify-center gap-3 text-orange-500/40 dark:text-orange-400/30">
+          <div className="relative z-10 mb-5 mt-4 flex items-center justify-center gap-3 text-primary">
             <span className="font-display text-lg italic font-bold">&ldquo;</span>
             <span className="flex h-3 items-center gap-[2px]" aria-hidden>
               <span className="size-[3px] rounded-full bg-current opacity-90" />
@@ -819,9 +819,9 @@ export default function IncorrectQuoteGenerate({
               {section.ui.theme_pills.map((pill: string, i: number) => (
                 <span
                   key={`${pill}-${i}`}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -846,7 +846,7 @@ export default function IncorrectQuoteGenerate({
                     type="button"
                     variant="ghost"
                     onClick={handleRandomPrompt}
-                    className="h-11 justify-start px-3 text-sm text-orange-600 hover:bg-orange-500/10 dark:text-orange-400 sm:h-8 sm:justify-end sm:px-2.5 sm:text-xs"
+                    className="h-11 justify-start px-3 text-sm text-primary hover:bg-primary/10 dark:text-primary sm:h-8 sm:justify-end sm:px-2.5 sm:text-xs"
                   >
                     {t("ui.random_button", "Random")}
                   </Button>
@@ -963,7 +963,7 @@ export default function IncorrectQuoteGenerate({
                 <CollapsibleTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="flex min-h-11 w-full items-center justify-between px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-orange-600 dark:hover:text-orange-400 sm:min-h-0 sm:px-0"
+                    className="flex min-h-11 w-full items-center justify-between px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-primary dark:hover:text-primary sm:min-h-0 sm:px-0"
                   >
                     <span className="flex items-center gap-1.5">
                       <Settings2 className="h-3.5 w-3.5" />

@@ -452,11 +452,11 @@ export default function TiktokCommentGenerate({
     <section
       ref={sectionRef}
       id="tiktok_comment_generator"
-      className="overflow-hidden py-16 text-foreground selection:bg-orange-500/20 lg:py-24"
+      className="overflow-hidden py-16 text-foreground selection:bg-primary/20 lg:py-24"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
           style={{ backgroundImage: "var(--bg-grid)", backgroundSize: "40px 40px" }}
@@ -473,7 +473,7 @@ export default function TiktokCommentGenerate({
             key={`bubble-${i}`}
             aria-hidden
             className={cn(
-              "pointer-events-none absolute z-[1] hidden text-orange-500/60 dark:text-orange-400/60 md:block",
+              "pointer-events-none absolute z-[1] hidden text-primary md:block",
               b.pos,
               b.size
             )}
@@ -507,7 +507,7 @@ export default function TiktokCommentGenerate({
             <motion.div
               key={`heart-${i}`}
               aria-hidden
-              className="pointer-events-none absolute z-[1] hidden text-orange-500/50 dark:text-orange-400/50 md:block"
+              className="pointer-events-none absolute z-[1] hidden text-primary md:block"
               style={{ left: h.left, top: h.top }}
               initial={{ opacity: 0, y: 0, scale: 0.6 }}
               animate={{ opacity: [0, 0.75, 0.75, 0], y: [0, -50, -100], scale: [0.6, 1.1, 0.95] }}
@@ -528,7 +528,7 @@ export default function TiktokCommentGenerate({
             <motion.span
               key={`dust-${i}`}
               aria-hidden
-              className="absolute rounded-full bg-orange-500 dark:bg-orange-400 hidden md:block"
+              className="absolute rounded-full bg-primary hidden md:block"
               style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
               initial={{ opacity: 0 }}
               animate={{ opacity: [0, d.peak, d.peak * 0.6, 0] }}
@@ -538,14 +538,14 @@ export default function TiktokCommentGenerate({
         </div>
           <div className={cn("relative z-10 mb-6 flex justify-center", tkEnter(0))}>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Icon name="RiMessage3Line" className="size-6 text-orange-600 dark:text-orange-400" />
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Icon name="RiMessage3Line" className="size-6 text-primary" />
               </div>
             </div>
           </div>
 
           <span className={cn("relative z-10 mb-5 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground", tkEnter(80))}>
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             {t("ui.eyebrow", "AI Comment Tool")}
           </span>
 
@@ -581,9 +581,9 @@ export default function TiktokCommentGenerate({
               {section.ui.theme_pills.map((pill: string, i: number) => (
                 <span
                   key={`${pill}-${i}`}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -608,7 +608,7 @@ export default function TiktokCommentGenerate({
                     type="button"
                     variant="ghost"
                     onClick={handleRandomPrompt}
-                    className="h-11 justify-start px-3 text-sm text-orange-600 hover:bg-orange-500/10 dark:text-orange-400 sm:h-8 sm:justify-end sm:px-2.5 sm:text-xs"
+                    className="h-11 justify-start px-3 text-sm text-primary hover:bg-primary/10 dark:text-primary sm:h-8 sm:justify-end sm:px-2.5 sm:text-xs"
                   >
                     {t("ui.random_button", "Random")}
                   </Button>
@@ -686,7 +686,7 @@ export default function TiktokCommentGenerate({
                 <CollapsibleTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="flex min-h-11 w-full items-center justify-between px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-orange-600 dark:hover:text-orange-400 sm:min-h-0 sm:px-0"
+                    className="flex min-h-11 w-full items-center justify-between px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-primary dark:hover:text-primary sm:min-h-0 sm:px-0"
                   >
                     <span className="flex items-center gap-1.5">
                       <Settings2 className="h-3.5 w-3.5" />
@@ -810,7 +810,7 @@ export default function TiktokCommentGenerate({
                         ease: [0.32, 0.72, 0, 1],
                       }}
                       whileHover={reduceMotion ? undefined : { y: -2 }}
-                      className="group flex flex-col gap-2 rounded-lg border border-border/50 bg-muted/30 p-3 text-sm transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-orange-500/30 hover:bg-orange-500/[0.03]"
+                      className="group flex flex-col gap-2 rounded-lg border border-border/50 bg-muted/30 p-3 text-sm transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-primary/30 hover:bg-primary/[0.03]"
                     >
                       <span className="whitespace-pre-wrap break-words">
                         {reply}
@@ -840,12 +840,12 @@ export default function TiktokCommentGenerate({
                   ))}
                 </ul>
               ) : isGenerating ? (
-                <div className="flex min-h-72 flex-col items-center justify-center gap-4 rounded-lg border border-orange-500/20 bg-orange-500/[0.03] p-4 text-center">
+                <div className="flex min-h-72 flex-col items-center justify-center gap-4 rounded-lg border border-primary/20 bg-primary/[0.03] p-4 text-center">
                   <div className="flex items-end gap-1 h-8" aria-hidden>
                     {[0, 1, 2, 3, 4].map((i) => (
                       <span
                         key={i}
-                        className="w-1 rounded-full bg-orange-500 dark:bg-orange-400 animate-music-bar"
+                        className="w-1 rounded-full bg-primary animate-music-bar"
                         style={{
                           animationDelay: `${i * 0.15}s`,
                           animationDuration: `${0.8 + (i % 3) * 0.2}s`,
@@ -854,15 +854,15 @@ export default function TiktokCommentGenerate({
                       />
                     ))}
                   </div>
-                  <p className="text-sm text-orange-700/80 dark:text-orange-300/80">
+                  <p className="text-sm text-primary/80">
                     {t("ui.generating_output", "Generating your replies...")}
                   </p>
                 </div>
               ) : (
                 <div className="flex min-h-72 flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-border/40 bg-muted/20 p-4 text-center">
-                  <div className="flex size-12 items-center justify-center rounded-full bg-orange-500/5">
+                  <div className="flex size-12 items-center justify-center rounded-full bg-primary/5">
                     <MessageCircle
-                      className="size-5 text-orange-500/60 dark:text-orange-400/60 animate-pulse"
+                      className="size-5 text-primary animate-pulse"
                       strokeWidth={1.5}
                     />
                   </div>

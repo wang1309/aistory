@@ -46,7 +46,7 @@ export default function ComicHowToUse({ section }: Props) {
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           {section.label && (
-            <p className="text-xs font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-400">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
               {section.label}
             </p>
           )}
@@ -65,7 +65,7 @@ export default function ComicHowToUse({ section }: Props) {
         {/* Steps */}
         <div className="relative mt-16">
           {/* Horizontal connecting line (desktop) */}
-          <div className="absolute left-0 right-0 top-[52px] hidden h-px bg-gradient-to-r from-transparent via-orange-500/25 to-transparent lg:block" />
+          <div className="absolute left-0 right-0 top-[52px] hidden h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent lg:block" />
 
           <div className="grid gap-10 sm:grid-cols-3 lg:gap-8">
             {section.items.slice(0, 3).map((item, i) => (
@@ -78,11 +78,11 @@ export default function ComicHowToUse({ section }: Props) {
                 className="relative flex flex-col items-center text-center"
               >
                 {/* Step number + icon */}
-                <div className="relative z-10 flex h-[68px] w-[68px] items-center justify-center rounded-2xl border-2 border-orange-500/20 bg-card">
-                  <div className="absolute -top-2.5 -right-2.5 flex h-6 w-6 items-center justify-center rounded-full bg-orange-600 text-[10px] font-bold tabular-nums text-white dark:bg-orange-500">
+                <div className="relative z-10 flex h-[68px] w-[68px] items-center justify-center rounded-2xl border-2 border-primary/20 bg-card">
+                  <div className="absolute -top-2.5 -right-2.5 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[10px] font-bold tabular-nums text-white dark:bg-primary/50">
                     {steps[i]?.number || `${i + 1}`}
                   </div>
-                  <div className="text-orange-600 dark:text-orange-400">
+                  <div className="text-primary">
                     {steps[i]?.icon}
                   </div>
                 </div>

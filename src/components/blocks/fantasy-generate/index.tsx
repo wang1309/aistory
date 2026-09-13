@@ -607,7 +607,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
   // ========== RENDER ==========
 
   return (
-    <section id="fantasy_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-orange-500/30">
+    <section id="fantasy_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-primary/30">
       {/* Invisible Turnstile */}
       <TurnstileInvisible
         ref={turnstileRef}
@@ -618,7 +618,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
       {/* Subtle warm top glow + dot texture */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
 
@@ -640,7 +640,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
               ].map((d, i) => (
                 <motion.span
                   key={i}
-                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  className="absolute rounded-full bg-primary"
                   style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
@@ -654,7 +654,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
           {!reduceMotion && (
             <>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-orange-500/55 dark:text-orange-400/55"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ left: "3%", top: "44%" }}
                 initial={{ opacity: 0, y: 0, rotate: -10 }}
                 animate={{ opacity: [0, 0.7, 0.7, 0], y: [0, -10, 0], rotate: [-10, -3, -10] }}
@@ -669,7 +669,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                 </svg>
               </motion.div>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-primary/55 dark:text-primary/55"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ right: "4%", top: "40%" }}
                 initial={{ opacity: 0, y: 0, rotate: 12 }}
                 animate={{ opacity: [0, 0.65, 0.65, 0], y: [0, -7, 0], rotate: [12, 5, 12] }}
@@ -687,7 +687,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
           {/* Slowly rotating central crystal cluster with light refractions */}
           {!reduceMotion && (
             <motion.div
-              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/35 dark:text-orange-400/35"
+              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-primary"
               initial={{ opacity: 0, rotate: 0 }}
               animate={{ opacity: [0, 0.6, 0.45], rotate: 360 }}
               transition={{ opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 90, repeat: Infinity, ease: "linear" } }}
@@ -726,32 +726,32 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
 
           {/* Editorial watermark: crystal facets, sparks, diamonds */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
-            <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">❖</span>
-            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-primary/[0.08] dark:text-primary/[0.08]">✦</span>
-            <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.07] dark:text-orange-400/[0.07]">✧</span>
-            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-primary/[0.08] dark:text-primary/[0.08]">❖</span>
-            <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.06] dark:text-orange-400/[0.06]">✦</span>
-            <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-primary/[0.07] dark:text-primary/[0.07]">✧</span>
+            <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-primary">❖</span>
+            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-primary">✦</span>
+            <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-primary">✧</span>
+            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-primary">❖</span>
+            <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-primary">✦</span>
+            <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-primary">✧</span>
           </div>
 
           {/* Double-bezel icon container with crystal hover flare */}
           <div className="group relative z-10 flex justify-center mb-6">
-            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               ❖
             </span>
             <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               ✦
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Icon name="RiGemLine" className="size-6 text-orange-600 dark:text-orange-400" />
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Icon name="RiGemLine" className="size-6 text-primary" />
               </div>
             </div>
           </div>
 
           {/* Eyebrow badge */}
           <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             AI Fantasy Writer
           </span>
 
@@ -766,15 +766,15 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
 
           {/* Editorial decorative anchor: diamond + halftone + spark + halftone + four-star */}
           <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
-            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">❖</span>
+            <span className="text-primary text-sm">❖</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={`a-${i}`} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+              <span key={`a-${i}`} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <span className="text-primary/45 dark:text-primary/45 text-base">✧</span>
+            <span className="text-primary text-base">✧</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={`b-${i}`} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+              <span key={`b-${i}`} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <span className="text-orange-500/35 dark:text-orange-400/35 text-sm">✦</span>
+            <span className="text-primary text-sm">✦</span>
           </div>
 
           <p className="relative z-10 text-lg sm:text-xl text-muted-foreground/65 max-w-xl mx-auto font-light leading-relaxed">
@@ -785,8 +785,8 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
           {section?.ui?.theme_pills?.length ? (
             <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
               {section.ui.theme_pills.map((pill: string, i: number) => (
-                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary">
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -799,11 +799,11 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         {/* Mode Tabs */}
         <Tabs value={mode} onValueChange={(v) => setMode(v as "quick" | "worldbuilder")} className="mb-8">
           <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 glass-premium">
-            <TabsTrigger value="quick" className="data-[state=active]:bg-orange-500/20">
+            <TabsTrigger value="quick" className="data-[state=active]:bg-primary/20">
               <Sparkles className="w-4 h-4 mr-2" />
               {section.mode_tabs.quick}
             </TabsTrigger>
-            <TabsTrigger value="worldbuilder" className="data-[state=active]:bg-orange-500/20">
+            <TabsTrigger value="worldbuilder" className="data-[state=active]:bg-primary/20">
               <Globe className="w-4 h-4 mr-2" />
               {section.mode_tabs.worldbuilder}
             </TabsTrigger>
@@ -946,7 +946,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                       className={cn(
                         "flex items-center gap-2 px-4 py-2 rounded-full transition-all",
                         currentStep === step.id
-                          ? "bg-orange-500/20 text-orange-700 dark:text-orange-300"
+                          ? "bg-primary/20 text-primary"
                           : "text-muted-foreground hover:bg-muted/50"
                       )}
                     >
@@ -973,9 +973,9 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                         key={key}
                         onClick={() => setWbSubgenre(key)}
                         className={cn(
-                          "p-4 rounded-xl border-2 text-center transition-all hover:border-orange-500/50 active:scale-95",
+                          "p-4 rounded-xl border-2 text-center transition-all hover:border-primary/50 active:scale-95",
                           wbSubgenre === key
-                            ? "border-orange-500 bg-orange-500/10"
+                            ? "border-primary/50 bg-primary/10"
                             : "border-border"
                         )}
                       >
@@ -1082,7 +1082,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
 
                   {/* Protagonist */}
                   <div className="space-y-4">
-                    <h4 className="font-semibold text-orange-600 dark:text-orange-400">
+                    <h4 className="font-semibold text-primary">
                       {section.worldbuilder_mode.characters.protagonist.label}
                     </h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1216,7 +1216,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                 {currentStep < 5 ? (
                   <Button
                     onClick={() => setCurrentStep((s) => Math.min(5, s + 1))}
-                    className="bg-orange-600 hover:bg-orange-700"
+                    className="bg-primary hover:bg-primary/90"
                   >
                     {section.navigation.next}
                   </Button>
@@ -1241,9 +1241,9 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                 type="button"
                 onClick={() => setSelectedModel(model.id)}
                 className={cn(
-                  "card-hover-lift p-4 rounded-xl border-2 text-left transition-all hover:border-orange-500/50 active:scale-95 relative",
+                  "card-hover-lift p-4 rounded-xl border-2 text-left transition-all hover:border-primary/50 active:scale-95 relative",
                   selectedModel === model.id
-                    ? "border-orange-500 bg-orange-500/10"
+                    ? "border-primary/50 bg-primary/10"
                     : "border-border bg-card"
                 )}
               >
@@ -1263,7 +1263,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
                 </div>
                 {selectedModel === model.id && (
                   <div className="absolute bottom-2 right-2">
-                    <Icon name="mdi:check-circle" className="w-5 h-5 text-orange-500" />
+                    <Icon name="mdi:check-circle" className="w-5 h-5 text-primary/50" />
                   </div>
                 )}
               </button>
@@ -1278,11 +1278,11 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         </div>
 
         {/* Generate Button */}
-        <div className="glass-premium rounded-3xl p-8 bg-orange-50 dark:bg-orange-950/20 mb-8">
+        <div className="glass-premium rounded-3xl p-8 bg-primary/5 dark:bg-orange-950/20 mb-8">
           <Button
             onClick={handleGenerateClick}
             disabled={isGenerating}
-            className="w-full h-14 text-lg bg-orange-600 font-semibold text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 disabled:opacity-60 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
+            className="w-full h-14 text-lg bg-primary font-semibold text-white shadow-md shadow-primary/20 hover:bg-primary/90 disabled:opacity-60 dark:bg-primary/50 dark:shadow-primary/20 dark:hover:bg-primary/90"
             size="lg"
           >
             {isGenerating ? (
@@ -1319,7 +1319,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
             {isGenerating && !generatedStory && (
               <div className="flex items-center justify-center py-12">
                 <div className="text-center">
-                  <Icon name="mdi:loading" className="w-8 h-8 animate-spin mx-auto mb-4 text-orange-500" />
+                  <Icon name="mdi:loading" className="w-8 h-8 animate-spin mx-auto mb-4 text-primary/50" />
                   <p className="text-muted-foreground">{section.output.loading}</p>
                 </div>
               </div>

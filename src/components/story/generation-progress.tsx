@@ -67,16 +67,16 @@ export default function GenerationProgress({
             className="w-full max-w-2xl mx-auto"
         >
             {/* Progress Container */}
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-primary/[0.08] via-primary/[0.04] to-transparent dark:from-primary/10 dark:via-primary/[0.05] dark:to-transparent border border-primary/15 dark:border-primary/15 backdrop-blur-xl overflow-hidden">
+            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-primary/[0.08] via-primary/[0.04] to-transparent dark:from-primary/10 dark:via-primary/[0.05] dark:to-transparent border border-primary backdrop-blur-xl overflow-hidden">
                 {/* Animated Background Blobs */}
-                <div className="absolute top-0 left-0 w-32 h-32 bg-primary/15 dark:bg-primary/10 rounded-full blur-3xl animate-blob" />
-                <div className="absolute bottom-0 right-0 w-40 h-40 bg-primary/10 dark:bg-primary/[0.06] rounded-full blur-3xl animate-blob animation-delay-2000" />
+                <div className="absolute top-0 left-0 w-32 h-32 bg-primary rounded-full blur-3xl animate-blob" />
+                <div className="absolute bottom-0 right-0 w-40 h-40 bg-primary rounded-full blur-3xl animate-blob animation-delay-2000" />
 
                 <div className="relative z-10 space-y-6">
                     {/* Header with Icon */}
                     <div className="flex items-center justify-center gap-3">
                         <div className="relative">
-                            <div className="absolute inset-0 bg-primary/20 dark:bg-primary/20 rounded-full blur-md animate-pulse" />
+                            <div className="absolute inset-0 bg-primary rounded-full blur-md animate-pulse" />
                             <div className="relative size-10 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
                                 <Icon name="sparkles" className="size-5 text-white animate-pulse" />
                             </div>
@@ -107,7 +107,7 @@ export default function GenerationProgress({
                         {/* Progress Percentage */}
                         <div className="flex items-center justify-between text-sm">
                             <span
-                                className="font-bold text-primary dark:text-primary tabular-nums"
+                                className="font-bold text-primary tabular-nums"
                             >
                                 {Math.round(progress)}%
                             </span>
@@ -141,7 +141,7 @@ export default function GenerationProgress({
                         {[0, 1, 2].map((i) => (
                             <motion.div
                                 key={i}
-                                className="size-2 rounded-full bg-primary/40 dark:bg-primary/40"
+                                className="size-2 rounded-full bg-primary"
                                 animate={{
                                     scale: [1, 1.5, 1],
                                     opacity: [0.4, 1, 0.4],

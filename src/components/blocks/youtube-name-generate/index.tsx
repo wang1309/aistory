@@ -425,8 +425,8 @@ export default function YoutubeNameGenerate({
   }, [recommendedItem, sortedResults]);
 
   const scoreBarColor = (value: number) => {
-    if (value >= 8) return "bg-orange-600 dark:bg-orange-500";
-    if (value >= 6) return "bg-orange-500 dark:bg-orange-400";
+    if (value >= 8) return "bg-primary";
+    if (value >= 6) return "bg-primary";
     return "bg-muted-foreground/40";
   };
 
@@ -469,8 +469,8 @@ export default function YoutubeNameGenerate({
         className={cn(
           "group flex flex-col gap-3 rounded-lg border bg-card p-4 text-sm transition-all duration-300",
           saved
-            ? "border-orange-500/40 bg-orange-500/[0.03]"
-            : "border-border/50 hover:border-orange-500/30 hover:bg-orange-500/[0.02]"
+            ? "border-primary/40 bg-primary/[0.03]"
+            : "border-border/50 hover:border-primary/30 hover:bg-primary/[0.02]"
         )}
       >
         <div className="flex items-start justify-between gap-3">
@@ -484,7 +484,7 @@ export default function YoutubeNameGenerate({
               </Badge>
             </div>
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <span className="text-orange-500">@</span>
+              <span className="text-primary/50">@</span>
               <span className="font-mono">{item.suggestedHandle}</span>
             </div>
           </div>
@@ -497,7 +497,7 @@ export default function YoutubeNameGenerate({
             className={cn(
               "h-11 shrink-0 px-3 text-xs sm:h-8 active:scale-[0.98]",
               saved &&
-                "bg-orange-600 text-white hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600"
+                "bg-primary text-white hover:bg-primary dark:hover:bg-primary/90"
             )}
           >
             {saved ? (
@@ -534,7 +534,7 @@ export default function YoutubeNameGenerate({
             {item.handleValidation.formatValid ? (
               <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
             ) : (
-              <span className="text-primary dark:text-primary">!</span>
+              <span className="text-primary">!</span>
             )}
             <span className="text-muted-foreground">
               {item.handleValidation.formatValid
@@ -559,7 +559,7 @@ export default function YoutubeNameGenerate({
                   key={i}
                   type="button"
                   onClick={() => handleCopy(h, "success.copied_handle")}
-                  className="rounded border border-border/40 bg-muted/40 px-1.5 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-orange-500/30 hover:text-orange-600 dark:hover:text-orange-400"
+                  className="rounded border border-border/40 bg-muted/40 px-1.5 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/30 hover:text-primary dark:hover:text-primary"
                 >
                   @{h}
                 </button>
@@ -598,11 +598,11 @@ export default function YoutubeNameGenerate({
     <section
       ref={sectionRef}
       id="youtube_name_generator"
-      className="overflow-hidden py-16 text-foreground selection:bg-orange-500/20 lg:py-24"
+      className="overflow-hidden py-16 text-foreground selection:bg-primary/20 lg:py-24"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
           style={{ backgroundImage: "var(--bg-grid)", backgroundSize: "40px 40px" }}
@@ -618,7 +618,7 @@ export default function YoutubeNameGenerate({
             key={`play-${i}`}
             aria-hidden
             className={cn(
-              "pointer-events-none absolute z-[1] hidden rounded-full bg-orange-500/15 dark:bg-orange-400/15 md:block",
+              "pointer-events-none absolute z-[1] hidden rounded-full bg-primary md:block",
               b.pos,
               b.size
             )}
@@ -631,7 +631,7 @@ export default function YoutubeNameGenerate({
             transition={{ duration: b.dur, delay: b.delay, repeat: Infinity, ease: "easeInOut" }}
           >
             <Play
-              className="size-full text-orange-500/70 dark:text-orange-400/70"
+              className="size-full text-primary"
               strokeWidth={1.5}
               fill="currentColor"
             />
@@ -659,10 +659,10 @@ export default function YoutubeNameGenerate({
               transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
               aria-label={isIconPlaying ? "Pause ambient animation" : "Play ambient animation"}
               aria-pressed={!isIconPlaying}
-              className="group relative cursor-pointer rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-orange-500/50"
+              className="group relative cursor-pointer rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             >
-              <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-colors duration-300 group-hover:border-orange-500/30 dark:bg-white/[0.015]">
-                <div className="relative flex size-12 items-center justify-center overflow-hidden rounded-xl bg-orange-500/10">
+              <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-colors duration-300 group-hover:border-primary/30 dark:bg-white/[0.015]">
+                <div className="relative flex size-12 items-center justify-center overflow-hidden rounded-xl bg-primary/10">
                   {!reduceMotion && (
                     <motion.div
                       aria-hidden
@@ -695,7 +695,7 @@ export default function YoutubeNameGenerate({
                   >
                     <Icon
                       name={isIconPlaying ? "RiPlayCircleLine" : "RiPauseCircleLine"}
-                      className="size-6 text-orange-600 drop-shadow-[0_0_8px_rgba(249,115,22,0.5)] transition-[filter] duration-300 dark:text-orange-400"
+                      className="size-6 text-primary drop-shadow-[0_0_8px_rgba(249,115,22,0.5)] transition-[filter] duration-300 dark:text-primary"
                     />
                   </motion.div>
 
@@ -705,8 +705,8 @@ export default function YoutubeNameGenerate({
                       className="pointer-events-none absolute inset-0"
                       style={{ rotate: iconParticleRotation }}
                     >
-                      <span className="absolute left-1/2 top-0 size-1 -translate-x-1/2 rounded-full bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.85)]" />
-                      <span className="absolute bottom-1 right-1.5 size-1 rounded-full bg-orange-400 shadow-[0_0_8px_2px_rgba(251,146,60,0.7)]" />
+                      <span className="absolute left-1/2 top-0 size-1 -translate-x-1/2 rounded-full bg-primary/50 shadow-[0_0_6px_rgba(249,115,22,0.85)]" />
+                      <span className="absolute bottom-1 right-1.5 size-1 rounded-full bg-primary shadow-[0_0_8px_2px_rgba(251,146,60,0.7)]" />
                       <span className="absolute bottom-2 left-1.5 size-1 rounded-full bg-primary shadow-[0_0_8px_2px_rgba(36,86,214,0.55)]" />
                     </motion.div>
                   )}
@@ -721,7 +721,7 @@ export default function YoutubeNameGenerate({
               tkEnter(80)
             )}
           >
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             {t("ui.eyebrow", "AI Naming Tool")}
           </span>
 
@@ -772,9 +772,9 @@ export default function YoutubeNameGenerate({
               {section.ui.theme_pills.map((pill: string, i: number) => (
                 <span
                   key={`${pill}-${i}`}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -797,7 +797,7 @@ export default function YoutubeNameGenerate({
                     type="button"
                     variant="ghost"
                     onClick={handleRandomPrompt}
-                    className="h-11 justify-start px-3 text-sm text-orange-600 hover:bg-orange-500/10 dark:text-orange-400 sm:h-8 active:scale-[0.98] sm:justify-end sm:px-2.5 sm:text-xs"
+                    className="h-11 justify-start px-3 text-sm text-primary hover:bg-primary/10 dark:text-primary sm:h-8 active:scale-[0.98] sm:justify-end sm:px-2.5 sm:text-xs"
                   >
                     {t("ui.random_button", "Random example")}
                   </Button>
@@ -885,7 +885,7 @@ export default function YoutubeNameGenerate({
                 <CollapsibleTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="flex min-h-11 w-full items-center justify-between px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-orange-600 dark:hover:text-orange-400 sm:min-h-0 sm:px-0"
+                    className="flex min-h-11 w-full items-center justify-between px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-primary dark:hover:text-primary sm:min-h-0 sm:px-0"
                   >
                     <span className="flex items-center gap-1.5">
                       <Settings2 className="h-3.5 w-3.5" />
@@ -952,7 +952,7 @@ export default function YoutubeNameGenerate({
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="bg-orange-600 text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.98] active:bg-orange-800 dark:bg-orange-500 dark:hover:bg-orange-600"
+                  className="bg-primary text-white shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] active:bg-primary/80 dark:bg-primary/50 dark:hover:bg-primary/90"
                 >
                   {isGenerating
                     ? t("ui.generating_button", "Generating...")
@@ -988,12 +988,12 @@ export default function YoutubeNameGenerate({
             <CardContent className="space-y-4">
               {sortedResults.length === 0 ? (
                 isGenerating ? (
-                  <div className="flex min-h-72 flex-col items-center justify-center gap-4 rounded-lg border border-orange-500/20 bg-orange-500/[0.03] p-4 text-center">
+                  <div className="flex min-h-72 flex-col items-center justify-center gap-4 rounded-lg border border-primary/20 bg-primary/[0.03] p-4 text-center">
                     <div className="flex items-end gap-1 h-8" aria-hidden>
                       {[0, 1, 2, 3, 4].map((i) => (
                         <span
                           key={i}
-                          className="w-1 rounded-full bg-orange-500 dark:bg-orange-400 animate-music-bar"
+                          className="w-1 rounded-full bg-primary animate-music-bar"
                           style={{
                             animationDelay: `${i * 0.15}s`,
                             animationDuration: `${0.8 + (i % 3) * 0.2}s`,
@@ -1002,15 +1002,15 @@ export default function YoutubeNameGenerate({
                         />
                       ))}
                     </div>
-                    <p className="text-sm text-orange-700/80 dark:text-orange-300/80">
+                    <p className="text-sm text-primary/80">
                       {t("ui.generating_output", "Generating your names...")}
                     </p>
                   </div>
                 ) : (
                   <div className="flex min-h-72 flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-border/40 bg-muted/20 p-4 text-center">
-                    <div className="flex size-12 items-center justify-center rounded-full bg-orange-500/5">
+                    <div className="flex size-12 items-center justify-center rounded-full bg-primary/5">
                       <Play
-                        className="size-5 text-orange-500/60 dark:text-orange-400/60 animate-pulse"
+                        className="size-5 text-primary animate-pulse"
                         strokeWidth={1.5}
                         fill="currentColor"
                       />
@@ -1054,9 +1054,9 @@ export default function YoutubeNameGenerate({
 
         {sortedResults.length > 0 && (
           <div className="mx-auto mt-12 w-full max-w-6xl space-y-6">
-            <div className="rounded-xl border border-orange-500/20 bg-orange-500/[0.02] p-5 sm:p-6">
+            <div className="rounded-xl border border-primary/20 bg-primary/[0.02] p-5 sm:p-6">
               <div className="mb-4 flex items-center gap-2">
-                <Award className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                <Award className="h-5 w-5 text-primary" />
                 <h3 className="text-lg font-semibold">
                   {t("ui.recommendation_title", "Recommended launch name")}
                 </h3>
@@ -1068,7 +1068,7 @@ export default function YoutubeNameGenerate({
                       <span className="font-display text-2xl font-bold text-foreground">
                         {recommendedItem.name}
                       </span>
-                      <span className="font-mono text-sm text-orange-600 dark:text-orange-400">
+                      <span className="font-mono text-sm text-primary">
                         @{recommendedItem.suggestedHandle}
                       </span>
                     </div>
@@ -1092,7 +1092,7 @@ export default function YoutubeNameGenerate({
                       <Button
                         size="sm"
                         onClick={() => handleCopy(recommendedItem.name)}
-                        className="h-11 bg-orange-600 text-white hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 sm:h-9 active:scale-[0.98]"
+                        className="h-11 bg-primary text-white hover:bg-primary dark:hover:bg-primary/90 sm:h-9 active:scale-[0.98]"
                       >
                         <Copy className="mr-1.5 h-3.5 w-3.5" />
                         {t("ui.copy_name_button", "Copy name")}
@@ -1121,7 +1121,7 @@ export default function YoutubeNameGenerate({
                         <button
                           type="button"
                           onClick={() => handleCopy(backupItem.name)}
-                          className="font-medium text-orange-600 hover:underline dark:text-orange-400"
+                          className="font-medium text-primary hover:underline dark:text-primary"
                         >
                           {backupItem.name}
                         </button>{" "}
@@ -1143,7 +1143,7 @@ export default function YoutubeNameGenerate({
               <div className="mb-3 flex items-center justify-between gap-3">
                 <div>
                   <h3 className="flex items-center gap-2 text-lg font-semibold">
-                    <Sparkles className="h-4 w-4 text-orange-600 dark:text-orange-400" />
+                    <Sparkles className="h-4 w-4 text-primary" />
                     {t("ui.shortlist_title", "Your shortlist")}
                   </h3>
                   <p className="text-xs text-muted-foreground">
@@ -1178,7 +1178,7 @@ export default function YoutubeNameGenerate({
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: i * 0.05 }}
-                      className="relative flex flex-col gap-3 rounded-lg border border-orange-500/30 bg-orange-500/[0.02] p-4"
+                      className="relative flex flex-col gap-3 rounded-lg border border-primary/30 bg-primary/[0.02] p-4"
                     >
                       <button
                         type="button"
@@ -1192,7 +1192,7 @@ export default function YoutubeNameGenerate({
                         <div className="font-display text-base font-semibold">
                           {item.name}
                         </div>
-                        <div className="font-mono text-xs text-orange-600 dark:text-orange-400">
+                        <div className="font-mono text-xs text-primary">
                           @{item.suggestedHandle}
                         </div>
                         <Badge variant="secondary" className="text-[11px]">
@@ -1310,15 +1310,15 @@ function CategoryTabButton({ active, onClick, label, count }: CategoryTabButtonP
       className={cn(
         "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors",
         active
-          ? "border-orange-500/40 bg-orange-500/15 text-orange-700 dark:text-orange-300"
-          : "border-border/40 text-muted-foreground hover:border-orange-500/30 hover:text-foreground"
+          ? "border-primary/40 bg-primary/15 text-primary"
+          : "border-border/40 text-muted-foreground hover:border-primary/30 hover:text-foreground"
       )}
     >
       <span>{label}</span>
       <span
         className={cn(
           "rounded-full px-1.5 text-[11px]",
-          active ? "bg-orange-500/20" : "bg-muted"
+          active ? "bg-primary/20" : "bg-muted"
         )}
       >
         {count}

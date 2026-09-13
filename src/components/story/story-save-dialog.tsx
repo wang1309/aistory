@@ -112,8 +112,8 @@ export default function StorySaveDialog({
       id: "saved",
       status: "saved" as StoryStatus,
       icon: "bookmark",
-      color: "text-primary dark:text-primary",
-      bgColor: "bg-primary/10 dark:bg-primary/10",
+      color: "text-primary",
+      bgColor: "bg-primary",
       borderColor:
         "group-hover:border-primary/40 dark:group-hover:border-primary/60",
       title: labels.saved,
@@ -123,8 +123,8 @@ export default function StorySaveDialog({
       id: "published",
       status: "published" as StoryStatus,
       icon: "sparkles",
-      color: "text-primary dark:text-primary",
-      bgColor: "bg-primary/[0.06] dark:bg-primary/[0.06]",
+      color: "text-primary",
+      bgColor: "bg-primary",
       borderColor:
         "group-hover:border-primary/40 dark:group-hover:border-primary/60",
       title: labels.published,
@@ -154,7 +154,7 @@ export default function StorySaveDialog({
               <div className="relative size-16 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/10 dark:from-primary/20 dark:to-primary/15 flex items-center justify-center shadow-lg ring-1 ring-black/5 dark:ring-white/10">
                 <Icon
                   name="save"
-                  className="size-8 text-primary dark:text-primary"
+                  className="size-8 text-primary"
                 />
               </div>
             </div>

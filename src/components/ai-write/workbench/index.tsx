@@ -2299,9 +2299,9 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           {isDirty && storyUuid && (
             <span
               title={copy.unsavedTip}
-              className="flex items-center gap-1 text-xs text-orange-600 dark:text-orange-400"
+              className="flex items-center gap-1 text-xs text-primary"
             >
-              <span className="size-1.5 rounded-full bg-orange-500" />
+              <span className="size-1.5 rounded-full bg-primary/50" />
             </span>
           )}
           {lastSavedAt && !isDirty && (
@@ -2358,7 +2358,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                   setRightPanelTab("chat");
                   setChatVisible(true);
                 }}
-                className="flex size-7 items-center justify-center rounded-full bg-orange-600 text-white transition hover:bg-orange-500"
+                className="flex size-7 items-center justify-center rounded-full bg-primary text-white transition hover:bg-primary/90"
                 title="Chat"
               >
                 <Icon name="RiChatSmile2Line" className="size-3.5" />
@@ -2426,8 +2426,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             {!plainText.trim() && !title.trim() && (
               <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-orange-500/8">
-                    <Icon name="RiEdit2Line" className="size-6 text-orange-600/50" />
+                  <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-primary/8">
+                    <Icon name="RiEdit2Line" className="size-6 text-primary/50" />
                   </div>
                   <p className="text-sm text-muted-foreground/60">{copy.editorHint}</p>
                 </div>
@@ -2460,7 +2460,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
           <div className="pointer-events-none absolute bottom-3 right-3 z-20 flex w-fit items-center gap-2 rounded-full border border-border/60 bg-background/95 px-3 py-1 text-xs text-muted-foreground shadow-sm backdrop-blur sm:right-5">
             {autocompleteOn && user && plainText.length < 80 && (
               <span className="flex items-center gap-1.5">
-                <Icon name="RiMagicLine" className="size-3 text-orange-500" />
+                <Icon name="RiMagicLine" className="size-3 text-primary/50" />
                 {copy.autocompleteHint(80 - plainText.length)}
               </span>
             )}
@@ -2482,8 +2482,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             onMouseDown={startResize}
             onDoubleClick={() => setRightPanelWidth(DEFAULT_PANEL_WIDTH)}
             className={cn(
-              "group relative z-30 hidden w-1 cursor-col-resize bg-border/60 transition-colors hover:bg-orange-500/50 md:block",
-              isResizing && "bg-orange-500"
+              "group relative z-30 hidden w-1 cursor-col-resize bg-border/60 transition-colors hover:bg-primary/50 md:block",
+              isResizing && "bg-primary/50"
             )}
           >
             <div className="absolute inset-y-0 -left-1.5 -right-1.5" />
@@ -2492,8 +2492,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                 className={cn(
                   "flex size-5 items-center justify-center rounded-full border bg-background shadow-md transition",
                   isResizing
-                    ? "border-orange-500 text-orange-600"
-                    : "border-border/70 text-muted-foreground/60 group-hover:border-orange-300 group-hover:text-orange-600"
+                    ? "border-primary/50 text-primary"
+                    : "border-border/70 text-muted-foreground/60 group-hover:border-primary group-hover:text-primary"
                 )}
               >
                 <Icon
@@ -2527,7 +2527,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               className={cn(
                 "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition",
                 rightPanelTab === "chat"
-                  ? "bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/20 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/20"
+                  ? "bg-primary/10 text-primary ring-1 ring-primary/20 dark:bg-primary/10 dark:text-primary/25 dark:ring-primary/20"
                   : "text-muted-foreground/70 hover:bg-muted/60 hover:text-foreground"
               )}
             >
@@ -2542,7 +2542,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               className={cn(
                 "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition",
                 rightPanelTab === "bible"
-                  ? "bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/20 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/20"
+                  ? "bg-primary/10 text-primary ring-1 ring-primary/20 dark:bg-primary/10 dark:text-primary/25 dark:ring-primary/20"
                   : "text-muted-foreground/70 hover:bg-muted/60 hover:text-foreground"
               )}
             >
@@ -2557,7 +2557,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               className={cn(
                 "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition",
                 rightPanelTab === "fingerprint"
-                  ? "bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/20 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/20"
+                  ? "bg-primary/10 text-primary ring-1 ring-primary/20 dark:bg-primary/10 dark:text-primary/25 dark:ring-primary/20"
                   : "text-muted-foreground/70 hover:bg-muted/60 hover:text-foreground"
               )}
             >
@@ -2576,7 +2576,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                 className={cn(
                   "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition",
                   rightPanelTab === "history"
-                    ? "bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/20 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/20"
+                    ? "bg-primary/10 text-primary ring-1 ring-primary/20 dark:bg-primary/10 dark:text-primary/25 dark:ring-primary/20"
                     : "text-muted-foreground/70 hover:bg-muted/60 hover:text-foreground"
                 )}
               >
@@ -2631,8 +2631,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             <div key="history" className="animate-fade-in-up flex-1 overflow-auto px-4 py-4">
               {conversationList.length === 0 ? (
                 <div className="flex h-full flex-col items-center justify-center text-center">
-                  <div className="mx-auto mb-3 flex size-12 items-center justify-center rounded-2xl bg-orange-500/8 ring-1 ring-orange-500/10">
-                    <Icon name="RiHistoryLine" className="size-6 text-orange-600/60" />
+                  <div className="mx-auto mb-3 flex size-12 items-center justify-center rounded-2xl bg-primary/8 ring-1 ring-primary/10">
+                    <Icon name="RiHistoryLine" className="size-6 text-primary/60" />
                   </div>
                   <p className="max-w-[220px] text-[13px] leading-6 text-muted-foreground/70">
                     {copy.historyEmpty}
@@ -2656,7 +2656,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                         className={cn(
                           "group rounded-xl border p-3 transition",
                           isActive
-                            ? "border-orange-300 bg-orange-50/40 dark:border-orange-700/30 dark:bg-orange-900/10"
+                            ? "border-primary/25 bg-primary/40 dark:border-primary/30 dark:bg-orange-900/10"
                             : "border-border/30 bg-background/40 hover:border-border/50 hover:bg-muted/30"
                         )}
                       >
@@ -2696,8 +2696,8 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             {messages.length === 0 && !isStreaming ? (
               <div className="flex h-full flex-col">
                 <div className="flex flex-col items-center justify-center pb-8 pt-6 text-center">
-                  <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-orange-500/8 ring-1 ring-orange-500/10">
-                    <Icon name="RiChatSmile2Line" className="size-7 text-orange-600/70" />
+                  <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-primary/8 ring-1 ring-primary/10">
+                    <Icon name="RiChatSmile2Line" className="size-7 text-primary/70" />
                   </div>
                   <p className="max-w-[240px] text-[13px] leading-6 text-muted-foreground/80">
                     {copy.messagesEmpty}
@@ -2710,7 +2710,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                       <div key={group.id} className={cn(
                         "rounded-xl border overflow-hidden transition-colors",
                         isOpen
-                          ? "border-orange-200/60 bg-orange-50/30 dark:border-orange-700/30 dark:bg-orange-900/10"
+                          ? "border-primary/60 bg-primary/30 dark:border-primary/30 dark:bg-orange-900/10"
                           : "border-border/30 bg-background/40 hover:border-border/50"
                       )}>
                         <button
@@ -2738,7 +2738,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                                   setInstruction(preset.prompt);
                                   toast.success(copy.presetFilled);
                                 }}
-                                className="rounded-lg border border-border/40 bg-background px-2.5 py-1 text-[11px] font-medium text-foreground/70 transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-700 dark:hover:border-orange-600/40 dark:hover:bg-orange-900/20 dark:hover:text-orange-300"
+                                className="rounded-lg border border-border/40 bg-background px-2.5 py-1 text-[11px] font-medium text-foreground/70 transition hover:border-primary hover:bg-primary/5 hover:text-primary dark:hover:border-primary/40 dark:hover:bg-orange-900/20 dark:hover:text-primary"
                               >
                                 {preset.label}
                               </button>
@@ -2761,7 +2761,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                     )}
                   >
                     {message.role === "assistant" && (
-                      <div className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/10 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/15">
+                      <div className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/10 dark:bg-primary/10 dark:text-primary/25 dark:ring-primary/15">
                         <Icon name="RiSparkling2Line" className="size-4" />
                       </div>
                     )}
@@ -2870,20 +2870,20 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
 
                 {isStreaming && (
                   <div className="flex gap-2.5">
-                    <div className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 ring-1 ring-orange-500/10 dark:bg-orange-400/10 dark:text-orange-300 dark:ring-orange-400/15">
+                    <div className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/10 dark:bg-primary/10 dark:text-primary/25 dark:ring-primary/15">
                       <Icon name="RiSparkling2Line" className="size-4" />
                     </div>
                     <div className="min-w-0 max-w-[85%] rounded-2xl bg-background px-3.5 py-2.5 ring-1 ring-border/40 shadow-[0_1px_3px_-1px_rgba(0,0,0,0.06)] dark:ring-border/30">
                       {streamingText ? (
                         <p className="whitespace-pre-wrap break-words text-[13px] leading-relaxed text-foreground/90">
                           {streamingText}
-                          <span className="ml-0.5 inline-block w-[2px] animate-pulse bg-orange-500 text-transparent">|</span>
+                          <span className="ml-0.5 inline-block w-[2px] animate-pulse bg-primary/50 text-transparent">|</span>
                         </p>
                       ) : (
                         <div className="flex items-center gap-1 py-0.5">
-                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500/70" />
-                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500/70 [animation-delay:0.15s]" />
-                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-orange-500/70 [animation-delay:0.3s]" />
+                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-primary/70" />
+                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-primary/70 [animation-delay:0.15s]" />
+                          <span className="inline-block size-1.5 animate-pulse rounded-full bg-primary/70 [animation-delay:0.3s]" />
                         </div>
                       )}
                     </div>
@@ -2902,7 +2902,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                 type="button"
                 title={copy.newConversation}
                 onClick={handleNewConversation}
-                className="absolute right-2.5 top-2.5 z-10 flex size-7 items-center justify-center rounded-lg border border-border/40 bg-background/80 text-muted-foreground/70 shadow-sm backdrop-blur-sm transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 dark:hover:border-orange-600/40 dark:hover:bg-orange-900/20 dark:hover:text-orange-300"
+                className="absolute right-2.5 top-2.5 z-10 flex size-7 items-center justify-center rounded-lg border border-border/40 bg-background/80 text-muted-foreground/70 shadow-sm backdrop-blur-sm transition hover:border-primary hover:bg-primary/5 hover:text-primary dark:hover:border-primary/40 dark:hover:bg-orange-900/20 dark:hover:text-primary"
               >
                 <Icon name="RiAddLine" className="size-4" />
               </button>
@@ -2928,10 +2928,10 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
               </div>
             )}
             {replyToIndex !== null && messages[replyToIndex] && (
-              <div className="mb-2 flex items-start gap-2 rounded-lg border border-orange-200 bg-orange-50/60 px-3 py-2 text-xs dark:border-orange-700/30 dark:bg-orange-900/15">
-                <Icon name="RiReplyLine" className="size-3.5 shrink-0 mt-0.5 text-orange-600 dark:text-orange-400" />
+              <div className="mb-2 flex items-start gap-2 rounded-lg border border-primary/15 bg-primary/60 px-3 py-2 text-xs dark:border-primary/30 dark:bg-orange-900/15">
+                <Icon name="RiReplyLine" className="size-3.5 shrink-0 mt-0.5 text-primary" />
                 <div className="flex-1 min-w-0">
-                  <span className="text-orange-700 dark:text-orange-300 font-medium">{copy.replyTo}</span>
+                  <span className="text-primary font-medium">{copy.replyTo}</span>
                   <p className="mt-0.5 text-muted-foreground line-clamp-2 whitespace-pre-wrap">
                     {messages[replyToIndex].content}
                   </p>
@@ -2946,7 +2946,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                 </button>
               </div>
             )}
-            <div className="flex items-end gap-2 rounded-2xl border border-border/40 bg-background/60 p-2 shadow-sm transition focus-within:border-orange-300/60 focus-within:bg-background focus-within:ring-2 focus-within:ring-orange-500/10 dark:focus-within:border-orange-500/30">
+            <div className="flex items-end gap-2 rounded-2xl border border-border/40 bg-background/60 p-2 shadow-sm transition focus-within:border-primary/60 focus-within:bg-background focus-within:ring-2 focus-within:ring-primary/10 dark:focus-within:border-primary/30">
               <textarea
                 value={instruction}
                 onChange={(e) => setInstruction(e.target.value)}
@@ -2969,7 +2969,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
                   "h-8 w-8 shrink-0 rounded-xl p-0 text-white transition active:scale-95",
                   isStreaming
                     ? "bg-neutral-800 hover:bg-neutral-700 dark:bg-neutral-200 dark:text-neutral-900 dark:hover:bg-neutral-300"
-                    : "bg-orange-600 hover:bg-orange-500 shadow-sm shadow-orange-500/20"
+                    : "bg-primary hover:bg-primary/90 shadow-sm shadow-primary/20"
                 )}
                 disabled={!isStreaming && !instruction.trim()}
                 onClick={() => {

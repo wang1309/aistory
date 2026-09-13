@@ -155,7 +155,7 @@ export function RichTextEditor({
       Link.configure({
         openOnClick: false,
         HTMLAttributes: {
-          class: "text-orange-600 underline underline-offset-2 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 cursor-pointer",
+          class: "text-primary underline underline-offset-2 hover:text-primary dark:hover:text-primary cursor-pointer",
         },
       }),
       Table.configure({

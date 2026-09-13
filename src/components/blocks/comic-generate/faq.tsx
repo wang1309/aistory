@@ -21,7 +21,7 @@ export default function ComicFAQ({ section }: Props) {
         <div className="mx-auto max-w-3xl">
           <div className="text-center">
             {section.label && (
-              <p className="text-xs font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-400">
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary">
                 {section.label}
               </p>
             )}
@@ -44,13 +44,13 @@ export default function ComicFAQ({ section }: Props) {
                 <div key={i}>
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-orange-600 dark:hover:text-orange-400"
+                    className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-primary dark:hover:text-primary"
                   >
                     <div className="flex items-start gap-3">
                       <span className={cn(
                         "mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-colors",
                         isOpen
-                          ? "bg-orange-500/15 text-orange-600 dark:bg-orange-400/15 dark:text-orange-400"
+                          ? "bg-primary/15 text-primary dark:bg-primary/15 dark:text-primary"
                           : "bg-muted text-muted-foreground"
                       )}>
                         {i + 1}

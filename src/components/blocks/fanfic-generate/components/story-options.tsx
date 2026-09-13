@@ -94,7 +94,7 @@ export function StoryOptions({
           <div className="flex justify-between items-center mt-2">
             <span className={cn(
               "text-xs",
-              prompt.trim().length < 10 ? "text-orange-500" : "text-muted-foreground"
+              prompt.trim().length < 10 ? "text-primary/50" : "text-muted-foreground"
             )}>
               {prompt.trim().length} / 2000 字符
             </span>

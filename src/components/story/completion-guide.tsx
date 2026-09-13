@@ -57,17 +57,17 @@ export default function CompletionGuide({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-12 relative overflow-hidden rounded-[2rem] border border-orange-500/10 bg-gradient-to-br from-orange-500/[0.04] via-amber-500/[0.02] to-orange-500/[0.03]"
+            className="mt-12 relative overflow-hidden rounded-[2rem] border border-primary/10 bg-gradient-to-br from-primary/[0.04] via-amber-500/[0.02] to-primary/[0.03]"
         >
             {/* 单个柔光:克制暖意,夜间更轻 */}
-            <div className="pointer-events-none absolute -top-24 left-1/2 h-44 w-[30rem] -translate-x-1/2 rounded-full bg-orange-500/[0.08] blur-3xl dark:bg-orange-500/[0.05]" />
+            <div className="pointer-events-none absolute -top-24 left-1/2 h-44 w-[30rem] -translate-x-1/2 rounded-full bg-primary/[0.08] blur-3xl dark:bg-primary/[0.05]" />
 
             <div className="relative z-10 flex flex-col items-center gap-7 px-6 py-10 text-center sm:px-10 sm:py-12">
                 {/* 标题区:仅在传入文案时渲染 */}
                 {translations?.title ? (
                     <div className="flex flex-col items-center gap-2.5">
                         <div className="inline-flex items-center gap-2 text-foreground">
-                            <PartyPopper className="size-5 text-orange-500" />
+                            <PartyPopper className="size-5 text-primary/50" />
                             <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
                                 {translations.title}
                             </h3>
@@ -93,7 +93,7 @@ export default function CompletionGuide({
 
                         {continueHint ? (
                             <p className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
-                                <Icon name="RiCheckLine" className="size-3.5 text-orange-500/80" />
+                                <Icon name="RiCheckLine" className="size-3.5 text-primary/80" />
                                 {continueHint}
                             </p>
                         ) : null}
@@ -105,7 +105,7 @@ export default function CompletionGuide({
                     <div className="flex w-full flex-col items-center gap-2.5 sm:w-auto sm:flex-row">
                         {onCreateAnother ? (
                             <button type="button" onClick={onCreateAnother} className={secondaryButtonClass}>
-                                <Icon name="plus" className="size-4 text-orange-500/80" />
+                                <Icon name="plus" className="size-4 text-primary/80" />
                                 {translations?.create_another}
                             </button>
                         ) : null}
@@ -117,7 +117,7 @@ export default function CompletionGuide({
                                 disabled={isSaveDisabled}
                                 className={`${secondaryButtonClass} disabled:cursor-not-allowed disabled:opacity-50`}
                             >
-                                <Icon name="save" className="size-4 text-orange-500/80" />
+                                <Icon name="save" className="size-4 text-primary/80" />
                                 {translations?.share_action}
                             </button>
                         ) : null}

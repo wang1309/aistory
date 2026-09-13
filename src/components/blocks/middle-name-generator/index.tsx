@@ -369,12 +369,12 @@ export default function MiddleNameGenerator({ section }: Props) {
   return (
     <section
       id="middle_name_generator"
-      className="relative min-h-[100dvh] bg-background text-foreground selection:bg-orange-500/20"
+      className="relative min-h-[100dvh] bg-background text-foreground selection:bg-primary/20"
     >
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
       </div>
 
       <main className="container relative z-10 mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-24">
@@ -403,8 +403,8 @@ export default function MiddleNameGenerator({ section }: Props) {
         <div className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
           <div className="group mb-6 flex justify-center">
             <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="relative flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Fingerprint className="relative size-6 text-orange-600 dark:text-orange-400" />
+              <div className="relative flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Fingerprint className="relative size-6 text-primary" />
               </div>
             </div>
           </div>
@@ -432,9 +432,9 @@ export default function MiddleNameGenerator({ section }: Props) {
               {themePills.map((pill, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -579,8 +579,8 @@ export default function MiddleNameGenerator({ section }: Props) {
                           value={value}
                           className={cn(
                             "h-12 sm:h-11 flex-1 whitespace-normal text-sm sm:text-xs",
-                            "data-[state=on]:border-orange-500/40 data-[state=on]:bg-orange-500/10 data-[state=on]:text-orange-700",
-                            "dark:data-[state=on]:border-orange-400/40 dark:data-[state=on]:bg-orange-400/10 dark:data-[state=on]:text-orange-300",
+                            "data-[state=on]:border-primary/40 data-[state=on]:bg-primary/10 data-[state=on]:text-primary",
+                            "dark:data-[state=on]:border-primary/40 dark:data-[state=on]:bg-primary/10 dark:data-[state=on]:text-primary/25",
                             isCreativeUsedUp && "opacity-60"
                           )}
                         >
@@ -663,7 +663,7 @@ export default function MiddleNameGenerator({ section }: Props) {
                   {LOADING_GLYPHS.map((glyph, i) => (
                     <span
                       key={glyph}
-                      className="middle-loading-glyph absolute font-display text-4xl italic text-orange-600 dark:text-orange-400"
+                      className="middle-loading-glyph absolute font-display text-4xl italic text-primary"
                       style={
                         {
                           "--glyph-index": i,
@@ -714,7 +714,7 @@ export default function MiddleNameGenerator({ section }: Props) {
                                 className={cn(
                                   "h-3.5 w-3.5",
                                   isFavorited &&
-                                    "fill-orange-600 text-orange-600 dark:fill-orange-400 dark:text-orange-400"
+                                    "fill-amber-600 text-amber-600 dark:fill-amber-400 dark:text-amber-400"
                                 )}
                               />
                             </Button>
@@ -741,7 +741,7 @@ export default function MiddleNameGenerator({ section }: Props) {
                               {ui.initials_label}: {initials}
                             </span>
                             {avoidedLetters.size > 0 && initialsBlocked && (
-                              <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[11px] font-medium text-primary dark:text-primary">
+                              <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[11px] font-medium text-primary">
                                 {ui.initials_warning}
                               </span>
                             )}
@@ -763,7 +763,7 @@ export default function MiddleNameGenerator({ section }: Props) {
                               {direction.tags.map((tag, tagIndex) => (
                                 <span
                                   key={tagIndex}
-                                  className="rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-orange-700 dark:text-orange-300"
+                                  className="rounded-full border border-primary/20 bg-primary/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-primary"
                                 >
                                   {tag}
                                 </span>
@@ -774,7 +774,7 @@ export default function MiddleNameGenerator({ section }: Props) {
                             <Link
                               href="/dialogue-generator"
                               onClick={() => onContinueToDialogue(direction)}
-                              className="mt-auto inline-flex min-h-11 items-center gap-1.5 text-xs font-medium text-orange-700 underline-offset-4 hover:underline dark:text-orange-300"
+                              className="mt-auto inline-flex min-h-11 items-center gap-1.5 text-xs font-medium text-primary underline-offset-4 hover:underline dark:text-primary/25"
                             >
                               <MessagesSquare className="size-3.5" />
                               {ui.continue_button}
@@ -797,9 +797,9 @@ export default function MiddleNameGenerator({ section }: Props) {
                       {favorites.map((direction) => (
                         <span
                           key={direction.fullName}
-                          className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-sm font-medium text-foreground"
+                          className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-sm font-medium text-foreground"
                         >
-                          <Heart className="size-3 fill-orange-600 text-orange-600 dark:fill-orange-400 dark:text-orange-400" />
+                          <Heart className="size-3 fill-amber-600 text-amber-600 dark:fill-amber-400 dark:text-amber-400" />
                           {direction.fullName}
                         </span>
                       ))}
@@ -811,7 +811,7 @@ export default function MiddleNameGenerator({ section }: Props) {
                   <Card>
                     <CardHeader className="pb-3">
                       <CardTitle className="flex items-center gap-2 text-base">
-                        <Sparkles className="size-4 text-orange-600 dark:text-orange-400" />
+                        <Sparkles className="size-4 text-primary" />
                         {section.continuation.title}
                       </CardTitle>
                     </CardHeader>
@@ -825,9 +825,9 @@ export default function MiddleNameGenerator({ section }: Props) {
                         <Link
                           href="/dialogue-generator"
                           onClick={() => onContinuation("dialogue")}
-                          className="group flex min-w-[13rem] flex-1 items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-orange-500/40"
+                          className="group flex min-w-[13rem] flex-1 items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-primary/40"
                         >
-                          <MessagesSquare className="mt-0.5 size-4 shrink-0 text-orange-600 dark:text-orange-400" />
+                          <MessagesSquare className="mt-0.5 size-4 shrink-0 text-primary" />
                           <span>
                             <span className="block text-sm font-medium text-foreground">
                               {section.continuation.dialogue_label}
@@ -840,9 +840,9 @@ export default function MiddleNameGenerator({ section }: Props) {
                         <Link
                           href="/backstory-generator"
                           onClick={() => onContinuation("backstory")}
-                          className="group flex min-w-[13rem] flex-1 items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-orange-500/40"
+                          className="group flex min-w-[13rem] flex-1 items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-primary/40"
                         >
-                          <BookOpen className="mt-0.5 size-4 shrink-0 text-orange-600 dark:text-orange-400" />
+                          <BookOpen className="mt-0.5 size-4 shrink-0 text-primary" />
                           <span>
                             <span className="block text-sm font-medium text-foreground">
                               {section.continuation.backstory_label}
@@ -855,9 +855,9 @@ export default function MiddleNameGenerator({ section }: Props) {
                         <Link
                           href="/story-prompt-generator"
                           onClick={() => onContinuation("prompt")}
-                          className="group flex min-w-[13rem] flex-1 items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-orange-500/40"
+                          className="group flex min-w-[13rem] flex-1 items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-primary/40"
                         >
-                          <Lightbulb className="mt-0.5 size-4 shrink-0 text-orange-600 dark:text-orange-400" />
+                          <Lightbulb className="mt-0.5 size-4 shrink-0 text-primary" />
                           <span>
                             <span className="block text-sm font-medium text-foreground">
                               {section.continuation.prompt_label}

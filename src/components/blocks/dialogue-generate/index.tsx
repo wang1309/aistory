@@ -628,7 +628,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
       {/* Subtle warm top glow + dot texture */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
 
@@ -650,7 +650,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
             {/* Central twin speech bubbles with resonance arcs (gentle breathe) */}
             {!reduceMotion && (
               <motion.svg
-                className="absolute left-1/2 top-1/2 h-[440px] w-[520px] -translate-x-1/2 -translate-y-1/2 text-orange-500/[0.07] dark:text-orange-400/[0.05]"
+                className="absolute left-1/2 top-1/2 h-[440px] w-[520px] -translate-x-1/2 -translate-y-1/2 text-primary"
                 viewBox="0 0 260 220"
                 fill="none"
                 aria-hidden
@@ -704,7 +704,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
             {/* Floating quote mark glyph — left */}
             {!reduceMotion && (
               <motion.div
-                className="pointer-events-none absolute z-[1] text-orange-500/40 dark:text-orange-400/40"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ left: "8%", top: "26%" }}
                 initial={{ opacity: 0, y: 0, rotate: -8 }}
                 animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -10, 0], rotate: [-8, -3, -8] }}
@@ -718,7 +718,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
             {/* Floating ellipsis glyph — right */}
             {!reduceMotion && (
               <motion.div
-                className="pointer-events-none absolute z-[1] text-orange-500/35 dark:text-orange-400/35"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ right: "10%", top: "36%" }}
                 initial={{ opacity: 0, y: 0 }}
                 animate={{ opacity: [0, 0.5, 0.5, 0], y: [0, 8, 0] }}
@@ -732,7 +732,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
             {/* Floating guillemet — right bottom */}
             {!reduceMotion && (
               <motion.div
-                className="pointer-events-none absolute z-[1] text-orange-500/30 dark:text-orange-400/30"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ right: "20%", bottom: "18%" }}
                 initial={{ opacity: 0, y: 0, rotate: 6 }}
                 animate={{ opacity: [0, 0.45, 0.45, 0], y: [0, -7, 0], rotate: [6, 10, 6] }}
@@ -746,7 +746,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
             {/* Floating closing quote — left bottom */}
             {!reduceMotion && (
               <motion.div
-                className="pointer-events-none absolute z-[1] text-orange-500/30 dark:text-orange-400/30"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ left: "14%", bottom: "22%" }}
                 initial={{ opacity: 0, y: 0, rotate: 0 }}
                 animate={{ opacity: [0, 0.4, 0.4, 0], y: [0, 6, 0], rotate: [0, -8, 0] }}
@@ -771,7 +771,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
               ].map((d, i) => (
                 <motion.span
                   key={i}
-                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  className="absolute rounded-full bg-primary"
                   style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
@@ -781,33 +781,33 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
 
             {/* Editorial watermark: quote + ellipsis + guillemet (scattered glyphs) */}
             <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
-              <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">&ldquo;</span>
-              <span className="absolute right-[7%] top-[14%] font-display font-bold text-xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">&hellip;</span>
-              <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.07] dark:text-orange-400/[0.07]">&laquo;</span>
-              <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">&rdquo;</span>
-              <span className="absolute left-[28%] top-[8%] font-display font-bold text-base text-orange-500/[0.06] dark:text-orange-400/[0.06]">&hellip;</span>
-              <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">&raquo;</span>
+              <span className="absolute left-[6%] top-[20%] font-display italic font-bold text-2xl text-primary">&ldquo;</span>
+              <span className="absolute right-[7%] top-[14%] font-display font-bold text-xl text-primary">&hellip;</span>
+              <span className="absolute left-[10%] bottom-[16%] font-display italic font-bold text-lg text-primary">&laquo;</span>
+              <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-primary">&rdquo;</span>
+              <span className="absolute left-[28%] top-[8%] font-display font-bold text-base text-primary">&hellip;</span>
+              <span className="absolute right-[26%] bottom-[6%] font-display italic font-bold text-xl text-primary">&raquo;</span>
             </div>
           </div>
 
           {/* Double-bezel icon container with quote hover flare */}
           <div className="group relative z-10 flex justify-center mb-6">
-            <span className="pointer-events-none absolute left-[calc(50%-2.5rem)] top-0 font-display text-2xl italic font-bold text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110" aria-hidden>
+            <span className="pointer-events-none absolute left-[calc(50%-2.5rem)] top-0 font-display text-2xl italic font-bold text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110" aria-hidden>
               &ldquo;
             </span>
-            <span className="pointer-events-none absolute right-[calc(50%-2.5rem)] top-0 font-display text-2xl italic font-bold text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110" aria-hidden>
+            <span className="pointer-events-none absolute right-[calc(50%-2.5rem)] top-0 font-display text-2xl italic font-bold text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110" aria-hidden>
               &laquo;
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Icon name="RiDoubleQuotesL" className="size-6 text-orange-600 dark:text-orange-400" />
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Icon name="RiDoubleQuotesL" className="size-6 text-primary" />
               </div>
             </div>
           </div>
 
           {/* Eyebrow badge */}
           <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             {t("ui.eyebrow")}
           </span>
 
@@ -815,7 +815,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
           <h1 className="relative z-10 font-display text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.08] mt-4">
             <span className="group relative inline-block">
               <span
-                className="pointer-events-none absolute -top-5 left-0 hidden md:block font-display text-xl italic font-bold text-orange-500/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-orange-500/60 dark:group-hover:text-orange-400/60"
+                className="pointer-events-none absolute -top-5 left-0 hidden md:block font-display text-xl italic font-bold text-primary/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-primary/60 dark:group-hover:text-primary/60"
                 aria-hidden
               >
                 &ldquo;
@@ -838,7 +838,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                 );
               })()}
               <span
-                className="pointer-events-none absolute -top-5 right-0 hidden md:block font-display text-xl italic font-bold text-orange-500/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-orange-500/60 dark:group-hover:text-orange-400/60"
+                className="pointer-events-none absolute -top-5 right-0 hidden md:block font-display text-xl italic font-bold text-primary/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-primary/60 dark:group-hover:text-primary/60"
                 aria-hidden
               >
                 &laquo;
@@ -847,7 +847,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
           </h1>
 
           {/* Editorial decorative anchor: quote + halftone + ellipsis + halftone + guillemet */}
-          <div className="relative z-10 mt-4 mb-5 flex items-center justify-center gap-3 text-orange-500/40 dark:text-orange-400/30">
+          <div className="relative z-10 mt-4 mb-5 flex items-center justify-center gap-3 text-primary">
             <span className="font-display text-lg italic font-bold">&ldquo;</span>
             <span className="flex h-3 items-center gap-[2px]" aria-hidden>
               <span className="size-[3px] rounded-full bg-current opacity-90" />
@@ -875,9 +875,9 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
               {section.ui.theme_pills.map((pill: string, i: number) => (
                 <span
                   key={`${pill}-${i}`}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -1161,7 +1161,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                 <Button
                   onClick={handleGenerateClick}
                   disabled={isGenerating}
-                  className="w-full h-12 text-lg font-semibold bg-orange-600 hover:bg-orange-700 disabled:opacity-60 text-white shadow-md shadow-orange-600/20 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
+                  className="w-full h-12 text-lg font-semibold bg-primary hover:bg-primary/90 disabled:opacity-60 text-white shadow-md shadow-primary/20 dark:bg-primary/50 dark:shadow-primary/20 dark:hover:bg-primary/90"
                   size="lg"
                 >
                   {isGenerating ? (

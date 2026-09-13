@@ -428,8 +428,8 @@ export default function YoutubeTitleGenerate({
         className={cn(
           "group flex flex-col gap-3 rounded-lg border bg-card p-4 text-sm transition-all duration-300",
           saved
-            ? "border-orange-500/40 bg-orange-500/[0.03]"
-            : "border-border/50 hover:border-orange-500/30 hover:bg-orange-500/[0.02]"
+            ? "border-primary/40 bg-primary/[0.03]"
+            : "border-border/50 hover:border-primary/30 hover:bg-primary/[0.02]"
         )}
       >
         <div className="flex items-start justify-between gap-3">
@@ -450,7 +450,7 @@ export default function YoutubeTitleGenerate({
             className={cn(
               "h-11 shrink-0 px-3 text-xs sm:h-8 active:scale-[0.98]",
               saved &&
-                "bg-orange-600 text-white hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600"
+                "bg-primary text-white hover:bg-primary dark:hover:bg-primary/90"
             )}
           >
             {saved ? (
@@ -506,11 +506,11 @@ export default function YoutubeTitleGenerate({
   return (
     <section
       id="youtube_title_generator"
-      className="overflow-hidden py-16 text-foreground selection:bg-orange-500/20 lg:py-24"
+      className="overflow-hidden py-16 text-foreground selection:bg-primary/20 lg:py-24"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
           style={{ backgroundImage: "var(--bg-grid)", backgroundSize: "40px 40px" }}
@@ -529,7 +529,7 @@ export default function YoutubeTitleGenerate({
 
         <div className="relative mx-auto mb-10 max-w-2xl text-center sm:mb-14">
           <span className="relative z-10 mb-5 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             {t("ui.eyebrow", "AI Title Tool")}
           </span>
 
@@ -565,9 +565,9 @@ export default function YoutubeTitleGenerate({
               {section.ui.theme_pills.map((pill: string, i: number) => (
                 <span
                   key={`${pill}-${i}`}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -592,7 +592,7 @@ export default function YoutubeTitleGenerate({
                     type="button"
                     variant="ghost"
                     onClick={handleRandomPrompt}
-                    className="h-11 justify-start px-3 text-sm text-orange-600 hover:bg-orange-500/10 dark:text-orange-400 sm:h-8 active:scale-[0.98] sm:justify-end sm:px-2.5 sm:text-xs"
+                    className="h-11 justify-start px-3 text-sm text-primary hover:bg-primary/10 dark:text-primary sm:h-8 active:scale-[0.98] sm:justify-end sm:px-2.5 sm:text-xs"
                   >
                     {t("ui.random_button", "Random example")}
                   </Button>
@@ -689,7 +689,7 @@ export default function YoutubeTitleGenerate({
                 <CollapsibleTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="flex min-h-11 w-full items-center justify-between px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-orange-600 dark:hover:text-orange-400 sm:min-h-0 sm:px-0"
+                    className="flex min-h-11 w-full items-center justify-between px-3 text-xs font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-primary dark:hover:text-primary sm:min-h-0 sm:px-0"
                   >
                     <span className="flex items-center gap-1.5">
                       <Settings2 className="h-3.5 w-3.5" />
@@ -742,7 +742,7 @@ export default function YoutubeTitleGenerate({
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="w-full h-12 text-base font-semibold bg-orange-600 text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] active:bg-orange-800 dark:bg-orange-500 dark:hover:bg-orange-600"
+                  className="w-full h-12 text-base font-semibold bg-primary text-white shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-[0.97] active:bg-primary/80 dark:bg-primary/50 dark:hover:bg-primary/90"
                 >
                   {isGenerating
                     ? t("ui.generating_button", "Generating...")
@@ -778,12 +778,12 @@ export default function YoutubeTitleGenerate({
             <CardContent className="space-y-4">
               {titles.length === 0 ? (
                 isGenerating ? (
-                  <div className="flex min-h-72 flex-col items-center justify-center gap-4 rounded-lg border border-orange-500/20 bg-orange-500/[0.03] p-4 text-center">
+                  <div className="flex min-h-72 flex-col items-center justify-center gap-4 rounded-lg border border-primary/20 bg-primary/[0.03] p-4 text-center">
                     <div className="flex items-end gap-1 h-8" aria-hidden>
                       {[0, 1, 2, 3, 4].map((i) => (
                         <span
                           key={i}
-                          className="w-1 rounded-full bg-orange-500 dark:bg-orange-400 animate-music-bar"
+                          className="w-1 rounded-full bg-primary animate-music-bar"
                           style={{
                             animationDelay: `${i * 0.15}s`,
                             animationDuration: `${0.8 + (i % 3) * 0.2}s`,
@@ -792,15 +792,15 @@ export default function YoutubeTitleGenerate({
                         />
                       ))}
                     </div>
-                    <p className="text-sm text-orange-700/80 dark:text-orange-300/80">
+                    <p className="text-sm text-primary/80">
                       {t("ui.generating_output", "Generating your titles...")}
                     </p>
                   </div>
                 ) : (
                   <div className="flex min-h-72 flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-border/40 bg-muted/20 p-4 text-center">
-                    <div className="flex size-12 items-center justify-center rounded-full bg-orange-500/5">
+                    <div className="flex size-12 items-center justify-center rounded-full bg-primary/5">
                       <Lightbulb
-                        className="size-5 text-orange-500/60 dark:text-orange-400/60 animate-pulse"
+                        className="size-5 text-primary animate-pulse"
                         strokeWidth={1.5}
                       />
                     </div>
@@ -843,9 +843,9 @@ export default function YoutubeTitleGenerate({
 
         {titles.length > 0 && (
           <div className="mx-auto mt-12 w-full max-w-6xl space-y-6">
-            <div className="rounded-xl border border-orange-500/20 bg-orange-500/[0.02] p-5 sm:p-6">
+            <div className="rounded-xl border border-primary/20 bg-primary/[0.02] p-5 sm:p-6">
               <div className="mb-4 flex items-center gap-2">
-                <Award className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                <Award className="h-5 w-5 text-primary" />
                 <h3 className="text-lg font-semibold">
                   {t("ui.recommendation_title", "Recommended final title")}
                 </h3>
@@ -880,7 +880,7 @@ export default function YoutubeTitleGenerate({
                       <Button
                         size="sm"
                         onClick={() => handleCopy(recommendedItem.title)}
-                        className="h-11 bg-orange-600 text-white hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 sm:h-9 active:scale-[0.98]"
+                        className="h-11 bg-primary text-white hover:bg-primary dark:hover:bg-primary/90 sm:h-9 active:scale-[0.98]"
                       >
                         <Copy className="mr-1.5 h-3.5 w-3.5" />
                         {t("ui.copy_title_button", "Copy title")}
@@ -894,7 +894,7 @@ export default function YoutubeTitleGenerate({
                         <button
                           type="button"
                           onClick={() => handleCopy(backupItem.title)}
-                          className="font-medium text-orange-600 hover:underline dark:text-orange-400"
+                          className="font-medium text-primary hover:underline dark:text-primary"
                         >
                           {backupItem.title}
                         </button>
@@ -926,7 +926,7 @@ export default function YoutubeTitleGenerate({
               <div className="mb-3 flex items-center justify-between gap-3">
                 <div>
                   <h3 className="flex items-center gap-2 text-lg font-semibold">
-                    <Sparkles className="h-4 w-4 text-orange-600 dark:text-orange-400" />
+                    <Sparkles className="h-4 w-4 text-primary" />
                     {t("ui.shortlist_title", "Your shortlist")}
                   </h3>
                   <p className="text-xs text-muted-foreground">
@@ -964,7 +964,7 @@ export default function YoutubeTitleGenerate({
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: i * 0.05 }}
-                      className="relative flex flex-col gap-3 rounded-lg border border-orange-500/30 bg-orange-500/[0.02] p-4"
+                      className="relative flex flex-col gap-3 rounded-lg border border-primary/30 bg-primary/[0.02] p-4"
                     >
                       <button
                         type="button"

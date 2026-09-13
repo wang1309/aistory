@@ -247,12 +247,12 @@ export default function RandomNflTeamGenerator({ section }: Props) {
   return (
     <section
       id="random_nfl_team_generator"
-      className="min-h-[100dvh] bg-background text-foreground selection:bg-orange-500/20"
+      className="min-h-[100dvh] bg-background text-foreground selection:bg-primary/20"
     >
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
       </div>
 
       <main className="container relative z-10 mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-24">
@@ -281,8 +281,8 @@ export default function RandomNflTeamGenerator({ section }: Props) {
         <div className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
           <div className="group mb-6 flex justify-center">
             <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="relative flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Trophy className="relative size-6 text-orange-600 dark:text-orange-400" />
+              <div className="relative flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Trophy className="relative size-6 text-primary" />
               </div>
             </div>
           </div>
@@ -310,9 +310,9 @@ export default function RandomNflTeamGenerator({ section }: Props) {
               {themePills.map((pill, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -488,7 +488,7 @@ export default function RandomNflTeamGenerator({ section }: Props) {
                               <p className="mt-0.5 break-words text-base font-semibold leading-snug text-foreground">
                                 {team.name}
                               </p>
-                              <span className="mt-1.5 inline-flex items-center rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-2 py-0.5 text-[11px] font-medium text-orange-700 dark:text-orange-300">
+                              <span className="mt-1.5 inline-flex items-center rounded-full border border-primary/20 bg-primary/[0.04] px-2 py-0.5 text-[11px] font-medium text-primary">
                                 {teamBadge(team)}
                               </span>
                             </div>
@@ -513,7 +513,7 @@ export default function RandomNflTeamGenerator({ section }: Props) {
                             key={team.abbr}
                             className="flex items-baseline gap-2 rounded-md px-2 py-1.5 text-sm odd:bg-muted/40"
                           >
-                            <span className="w-6 shrink-0 text-right text-xs font-semibold text-orange-600 dark:text-orange-400">
+                            <span className="w-6 shrink-0 text-right text-xs font-semibold text-primary">
                               {i + 1}
                             </span>
                             <span className="min-w-0 flex-1">
@@ -577,9 +577,9 @@ export default function RandomNflTeamGenerator({ section }: Props) {
                         <Link
                           href="/ai-tools/gang-name-generator"
                           onClick={() => onContinuation("squad_name")}
-                          className="group flex items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-orange-500/40"
+                          className="group flex items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-primary/40"
                         >
-                          <Users className="mt-0.5 size-4 shrink-0 text-orange-600 dark:text-orange-400" />
+                          <Users className="mt-0.5 size-4 shrink-0 text-primary" />
                           <span>
                             <span className="block text-sm font-medium text-foreground">
                               {section.continuation.squad_name_label}
@@ -592,9 +592,9 @@ export default function RandomNflTeamGenerator({ section }: Props) {
                         <Link
                           href="/backstory-generator"
                           onClick={() => onContinuation("backstory")}
-                          className="group flex items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-orange-500/40"
+                          className="group flex items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-primary/40"
                         >
-                          <BookOpen className="mt-0.5 size-4 shrink-0 text-orange-600 dark:text-orange-400" />
+                          <BookOpen className="mt-0.5 size-4 shrink-0 text-primary" />
                           <span>
                             <span className="block text-sm font-medium text-foreground">
                               {section.continuation.backstory_label}
@@ -607,9 +607,9 @@ export default function RandomNflTeamGenerator({ section }: Props) {
                         <Link
                           href="/story-prompt-generator"
                           onClick={() => onContinuation("prompt")}
-                          className="group flex items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-orange-500/40"
+                          className="group flex items-start gap-2.5 rounded-lg border border-border/40 bg-background/60 p-3 transition-colors hover:border-primary/40"
                         >
-                          <Lightbulb className="mt-0.5 size-4 shrink-0 text-orange-600 dark:text-orange-400" />
+                          <Lightbulb className="mt-0.5 size-4 shrink-0 text-primary" />
                           <span>
                             <span className="block text-sm font-medium text-foreground">
                               {section.continuation.prompt_label}

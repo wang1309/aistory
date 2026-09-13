@@ -15,8 +15,8 @@ export default function ComicCTA({ section }: Props) {
 
   return (
     <section className="relative overflow-hidden py-20 sm:py-24">
-      {/* Warm orange tinted background */}
-      <div className="absolute inset-0 bg-orange-600/[0.04] dark:bg-orange-500/[0.06]" />
+      {/* Subtle primary tinted background */}
+      <div className="absolute inset-0 bg-primary" />
 
       {/* Comic panel grid decoration */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
@@ -62,8 +62,8 @@ export default function ComicCTA({ section }: Props) {
                     className={cn(
                       "inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-colors",
                       isPrimary
-                        ? "bg-orange-600 text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 dark:bg-orange-500 dark:shadow-orange-500/20 dark:hover:bg-orange-600"
-                        : "border border-border bg-card text-foreground hover:border-orange-500/30 hover:bg-orange-50 dark:hover:bg-orange-950/20"
+                        ? "bg-primary text-white shadow-md shadow-primary/20 hover:bg-primary dark:shadow-primary/20 dark:hover:bg-primary/90"
+                        : "border border-border bg-card text-foreground hover:border-primary/30 hover:bg-primary/5 dark:hover:bg-orange-950/20"
                     )}
                   >
                     {btn.icon && <Icon name={btn.icon} className="h-4 w-4" />}

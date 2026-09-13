@@ -28,7 +28,7 @@ export default function ComicBenefits({ section }: Props) {
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           {section.label && (
-            <p className="text-xs font-semibold uppercase tracking-widest text-orange-600 dark:text-orange-400">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
               {section.label}
             </p>
           )}
@@ -53,7 +53,7 @@ export default function ComicBenefits({ section }: Props) {
           viewport={{ once: true, margin: "-80px" }}
           className="mt-14 flex items-start gap-5 rounded-2xl border border-border bg-card p-6 sm:p-8"
         >
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
             {first.icon && <Icon name={first.icon} className="h-6 w-6" />}
           </div>
           <div>
@@ -79,7 +79,7 @@ export default function ComicBenefits({ section }: Props) {
                 viewport={{ once: true, margin: "-80px" }}
                 className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 sm:p-6"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   {item.icon && <Icon name={item.icon} className="h-5 w-5" />}
                 </div>
                 <div>

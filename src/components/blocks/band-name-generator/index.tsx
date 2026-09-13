@@ -425,7 +425,7 @@ export default function BandNameGenerator({ section }: Props) {
                       onClick={() => onCheckLink(link.key)}
                       className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-foreground transition-colors pointer-coarse:py-2.5 hover:border-primary/40"
                     >
-                      <ExternalLink className="size-3 text-primary dark:text-primary" />
+                      <ExternalLink className="size-3 text-primary" />
                       {ui.check_links[link.key]}
                     </a>
                   ))}
@@ -495,7 +495,7 @@ export default function BandNameGenerator({ section }: Props) {
           <div className="group mb-6 flex justify-center">
             <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
               <div className="relative flex size-12 items-center justify-center rounded-xl bg-primary/10">
-                <Music2 className="relative size-6 text-primary dark:text-primary" />
+                <Music2 className="relative size-6 text-primary" />
               </div>
             </div>
           </div>
@@ -523,7 +523,7 @@ export default function BandNameGenerator({ section }: Props) {
               {themePills.map((pill, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary dark:text-primary"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
                   <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
@@ -577,7 +577,7 @@ export default function BandNameGenerator({ section }: Props) {
               )}
 
               {mode === "template" && (
-                <p className="rounded-md border border-primary/20 bg-primary/[0.04] px-3 py-2 text-xs text-primary dark:text-primary sm:col-span-2">
+                <p className="rounded-md border border-primary/20 bg-primary/[0.04] px-3 py-2 text-xs text-primary sm:col-span-2">
                   {ui.template_note}
                 </p>
               )}
@@ -599,7 +599,7 @@ export default function BandNameGenerator({ section }: Props) {
               </div>
 
               {inspirationName && (
-                <p className="rounded-md border border-primary/20 bg-primary/[0.04] px-3 py-2 text-xs text-primary dark:text-primary sm:col-span-2">
+                <p className="rounded-md border border-primary/20 bg-primary/[0.04] px-3 py-2 text-xs text-primary sm:col-span-2">
                   {ui.inspiration_hint} {inspirationName}
                 </p>
               )}
@@ -722,7 +722,7 @@ export default function BandNameGenerator({ section }: Props) {
                   {LOADING_GLYPHS.map((glyph, i) => (
                     <span
                       key={glyph}
-                      className="band-loading-glyph absolute text-4xl text-primary dark:text-primary"
+                      className="band-loading-glyph absolute text-4xl text-primary"
                       style={
                         {
                           "--glyph-index": i,

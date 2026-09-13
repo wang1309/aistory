@@ -271,12 +271,12 @@ export default function CityNicknameGenerate({ section }: Props) {
   return (
     <section
       id="city_nickname_generator"
-      className="min-h-[100dvh] bg-background text-foreground selection:bg-orange-500/20"
+      className="min-h-[100dvh] bg-background text-foreground selection:bg-primary/20"
     >
       {/* Ambient background: warm radial halo + map grid */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
           style={{ backgroundImage: "var(--bg-grid)", backgroundSize: "40px 40px" }}
@@ -292,7 +292,7 @@ export default function CityNicknameGenerate({ section }: Props) {
           {CITY_LIGHTS.map((light, i) => (
             <motion.span
               key={i}
-              className="absolute rounded-full bg-orange-500 text-orange-500 dark:bg-orange-400 dark:text-orange-400"
+              className="absolute rounded-full bg-primary/50 text-primary/50 dark:bg-primary dark:text-primary"
               style={{
                 left: light.left,
                 top: light.top,
@@ -332,14 +332,14 @@ export default function CityNicknameGenerate({ section }: Props) {
           {/* Double-bezel icon container with breathing glow */}
           <div className="group mb-6 flex justify-center">
             <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="relative flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
+              <div className="relative flex size-12 items-center justify-center rounded-xl bg-primary/10">
                 {!reduceMotion && (
                   <div
-                    className="absolute inset-0 rounded-xl bg-orange-500/20 blur-md group-hover:animate-moon-glow"
+                    className="absolute inset-0 rounded-xl bg-primary/20 blur-md group-hover:animate-moon-glow"
                     aria-hidden="true"
                   />
                 )}
-                <MapPin className="relative size-6 text-orange-600 dark:text-orange-400" />
+                <MapPin className="relative size-6 text-primary" />
               </div>
             </div>
           </div>
@@ -371,9 +371,9 @@ export default function CityNicknameGenerate({ section }: Props) {
               {themePills.map((pill, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -479,7 +479,7 @@ export default function CityNicknameGenerate({ section }: Props) {
                 <CollapsibleTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="flex h-auto w-full items-center justify-between p-0 text-xs font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-orange-600 dark:hover:text-orange-400"
+                    className="flex h-auto w-full items-center justify-between p-0 text-xs font-medium text-muted-foreground transition-colors hover:bg-transparent hover:text-primary dark:hover:text-primary"
                   >
                     <span className="flex items-center gap-1.5">
                       <Settings2 className="h-3.5 w-3.5" />
@@ -661,7 +661,7 @@ export default function CityNicknameGenerate({ section }: Props) {
                     <p className="mt-0.5 text-xs text-muted-foreground line-clamp-1">
                       {item.input.knownFor}
                     </p>
-                    <p className="mt-1 text-xs text-orange-500">
+                    <p className="mt-1 text-xs text-primary/50">
                       {item.results.length} nicknames
                     </p>
                   </CardContent>

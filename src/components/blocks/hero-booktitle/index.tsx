@@ -528,11 +528,11 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
   const descriptionLength = useMemo(() => description.length, [description]);
 
   return (
-    <section id="book_title_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-orange-500/20">
+    <section id="book_title_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-primary/20">
       {/* Subtle warm top glow + dot texture */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
 
@@ -564,7 +564,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
               ].map((d, i) => (
                 <motion.span
                   key={i}
-                  className="absolute rounded-full bg-orange-500 dark:bg-orange-400"
+                  className="absolute rounded-full bg-primary"
                   style={{ left: d.left, top: d.top, width: d.size, height: d.size }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, d.peak, d.peak * 0.5, 0] }}
@@ -578,7 +578,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
           {!reduceMotion && (
             <>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-orange-500/55 dark:text-orange-400/55"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ left: "4%", top: "44%" }}
                 initial={{ opacity: 0, y: 0, rotate: -8 }}
                 animate={{ opacity: [0, 0.7, 0.7, 0], y: [0, -10, 0], rotate: [-8, -2, -8] }}
@@ -588,7 +588,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                 <span className="font-display italic text-4xl leading-none">❦</span>
               </motion.div>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-primary/55 dark:text-primary/55"
+                className="pointer-events-none absolute z-[1] text-primary"
                 style={{ right: "5%", top: "40%" }}
                 initial={{ opacity: 0, y: 0, rotate: 10 }}
                 animate={{ opacity: [0, 0.65, 0.65, 0], y: [0, -7, 0], rotate: [10, 4, 10] }}
@@ -603,7 +603,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
           {/* Slowly swaying open book with title-lines (manuscript motif) */}
           {!reduceMotion && (
             <motion.div
-              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500/35 dark:text-orange-400/35"
+              className="pointer-events-none absolute z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-primary"
               initial={{ opacity: 0, rotate: 0 }}
               animate={{ opacity: [0, 0.6, 0.45], rotate: [0, 1.5, 0, -1.5, 0] }}
               transition={{ opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 18, repeat: Infinity, ease: "easeInOut" } }}
@@ -634,32 +634,32 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
           {/* Editorial watermark: floriated ornaments, sparks, diamonds */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
-            <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.08] dark:text-orange-400/[0.08]">❦</span>
-            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-primary/[0.08] dark:text-primary/[0.08]">✦</span>
-            <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.07] dark:text-orange-400/[0.07]">❧</span>
-            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-primary/[0.08] dark:text-primary/[0.08]">❦</span>
-            <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.06] dark:text-orange-400/[0.06]">✦</span>
-            <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-primary/[0.07] dark:text-primary/[0.07]">❧</span>
+            <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-primary">❦</span>
+            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-primary">✦</span>
+            <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-primary">❧</span>
+            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-primary">❦</span>
+            <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-primary">✦</span>
+            <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-primary">❧</span>
           </div>
 
           {/* Double-bezel icon container with atelier hover flare */}
           <div className="group relative z-10 flex justify-center mb-6">
-            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
+            <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               ❦
             </span>
             <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               ✦
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-orange-500/10">
-                <Icon name="RiBookOpenLine" className="size-6 text-orange-600 dark:text-orange-400" />
+              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                <Icon name="RiBookOpenLine" className="size-6 text-primary" />
               </div>
             </div>
           </div>
 
           {/* Eyebrow badge */}
           <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-5">
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             AI Writing Tool
           </span>
 
@@ -674,15 +674,15 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
           {/* Editorial decorative anchor: floriated + halftone + spark + halftone + rotated floral */}
           <div className="relative z-10 mt-3 mb-5 flex justify-center items-center gap-2">
-            <span className="text-orange-500/40 dark:text-orange-400/40 text-base">❦</span>
+            <span className="text-primary text-base">❦</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={`a-${i}`} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+              <span key={`a-${i}`} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <span className="text-primary/50 dark:text-primary/50 text-sm">✦</span>
+            <span className="text-primary text-sm">✦</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
-              <span key={`b-${i}`} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
+              <span key={`b-${i}`} className="inline-block rounded-full bg-primary" style={{ width: s, height: s }} />
             ))}
-            <span className="text-orange-500/40 dark:text-orange-400/40 text-base">❧</span>
+            <span className="text-primary text-base">❧</span>
           </div>
 
           <p className="relative z-10 text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto">
@@ -693,8 +693,8 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
           {section?.ui?.theme_pills?.length ? (
             <div className="relative z-10 mt-7 flex flex-wrap items-center justify-center gap-2">
               {section.ui.theme_pills.map((pill: string, i: number) => (
-                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300">
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                <span key={i} className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary">
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -715,7 +715,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <label className="text-sm font-medium text-foreground flex items-center gap-2">
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">1</span>
+                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold tabular-nums text-primary">1</span>
                       {section.form.description.label}
                     </label>
                     <span className="text-xs text-muted-foreground/60">
@@ -729,7 +729,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                       value={description}
                       onChange={(e) => setDescription(e.target.value.slice(0, section.form.description.max_length))}
                       placeholder={section.form.description.placeholder}
-                      className="min-h-[140px] resize-none text-sm focus-visible:ring-orange-500/30"
+                      className="min-h-[140px] resize-none text-sm focus-visible:ring-primary/30"
                     />
                   </div>
 
@@ -738,7 +738,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                     <div className="mt-4">
                       <Collapsible open={isExamplesExpanded} onOpenChange={setIsExamplesExpanded}>
                         <CollapsibleTrigger asChild>
-                          <Button variant="ghost" className="h-11 text-xs font-medium text-orange-600 dark:text-orange-400 hover:bg-orange-500/10 gap-2 px-3 focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2">
+                          <Button variant="ghost" className="h-11 text-xs font-medium text-primary hover:bg-primary/10 gap-2 px-3 focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2">
                             <Icon name="RiLightbulbLine" className="size-4" />
                             {section.form.examples?.title || "Need inspiration?"}
                           </Button>
@@ -756,7 +756,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                                           setExamplePrompt(prompt);
                                           setTimeout(() => setIsExamplesExpanded(false), 300);
                                         }}
-                                        className="min-h-[44px] w-full text-left p-3 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-all text-sm text-muted-foreground hover:text-foreground line-clamp-2 focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2"
+                                        className="min-h-[44px] w-full text-left p-3 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-all text-sm text-muted-foreground hover:text-foreground line-clamp-2 focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
                                       >
                                         {prompt}
                                       </button>
@@ -774,7 +774,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                 {/* Options Grid */}
                 <div className="border-t border-border pt-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/10 text-[10px] font-bold tabular-nums text-orange-600 dark:text-orange-400">2</span>
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold tabular-nums text-primary">2</span>
                     <h3 className="text-sm font-medium text-foreground">{section.form.genre.label.split(" ")[0]} / {section.form.tone.label} / {section.form.style.label}</h3>
                   </div>
 
@@ -844,7 +844,7 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                     onClick={handleGenerate}
                     disabled={isGenerating}
                     aria-busy={isGenerating}
-                    className="w-full h-14 rounded-xl text-base font-semibold bg-orange-600 hover:bg-orange-700 text-white dark:bg-orange-500 dark:hover:bg-orange-600 shadow-md shadow-orange-600/20 active:scale-[0.97] transition-all focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2"
+                    className="w-full h-14 rounded-xl text-base font-semibold bg-primary hover:bg-primary/90 text-white dark:bg-primary/50 dark:hover:bg-primary/90 shadow-md shadow-primary/20 active:scale-[0.97] transition-all focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
                   >
                     {isGenerating ? (
                       <div className="flex items-center gap-2">
@@ -864,11 +864,11 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                   {/* Info Pills */}
                   <div className="flex items-center gap-4 flex-wrap justify-center">
                     <span className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
-                      <Icon name="RiCheckLine" className="size-3 text-orange-500" />
+                      <Icon name="RiCheckLine" className="size-3 text-primary/50" />
                       {section.generate_button.info.free}
                     </span>
                     <span className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
-                      <Icon name="RiTimeLine" className="size-3 text-orange-500" />
+                      <Icon name="RiTimeLine" className="size-3 text-primary/50" />
                       {section.generate_button.info.time}
                     </span>
                   </div>
@@ -897,8 +897,8 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
           <div>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                 <div className="p-2 rounded-xl bg-orange-500/10 border border-orange-500/20">
-                    <Icon name="RiStarLine" className="size-5 text-orange-600 dark:text-orange-400" />
+                 <div className="p-2 rounded-xl bg-primary/10 border border-primary/20">
+                    <Icon name="RiStarLine" className="size-5 text-primary" />
                  </div>
                  <div>
                     <h3 className="text-lg font-bold tracking-tight text-foreground">{section.output.title}</h3>
@@ -930,17 +930,17 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                   <div
                     key={titleObj.id}
                     className={cn(
-                      "group relative p-5 rounded-xl bg-card border border-border hover:border-orange-500/30 hover:bg-orange-500/[0.02] card-hover-lift transition-all duration-300",
+                      "group relative p-5 rounded-xl bg-card border border-border hover:border-primary/30 hover:bg-primary/[0.02] card-hover-lift transition-all duration-300",
                       titleObj.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
                     )}
                     style={{ transitionDelay: `${index * 80}ms` }}
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-3">
-                          <div className="flex-shrink-0 w-7 h-7 rounded-full bg-orange-500/10 flex items-center justify-center text-xs font-bold text-orange-600 dark:text-orange-400 border border-orange-500/20 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300">
+                          <div className="flex-shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary border border-primary/20 group-hover:bg-primary/90 group-hover:text-white transition-colors duration-300">
                             {index + 1}
                           </div>
-                          <p className="text-base font-medium text-foreground leading-snug tracking-tight group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200">
+                          <p className="text-base font-medium text-foreground leading-snug tracking-tight group-hover:text-primary dark:group-hover:text-primary transition-colors duration-200">
                             {titleObj.title}
                           </p>
                       </div>
@@ -950,10 +950,10 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
                         size="icon"
                         aria-label={titleObj.copied ? "Copied" : "Copy title"}
                         className={cn(
-                          "flex-shrink-0 h-11 w-11 rounded-lg transition-all duration-200 focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2",
+                          "flex-shrink-0 h-11 w-11 rounded-lg transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2",
                           titleObj.copied
                             ? "bg-green-500 text-white"
-                            : "text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-500/10 opacity-0 group-hover:opacity-100"
+                            : "text-muted-foreground hover:text-primary dark:hover:text-primary hover:bg-primary/10 opacity-0 group-hover:opacity-100"
                         )}
                       >
                         {titleObj.copied ? <Icon name="RiCheckLine" className="size-5" /> : <Icon name="RiFileCopyLine" className="size-5" />}

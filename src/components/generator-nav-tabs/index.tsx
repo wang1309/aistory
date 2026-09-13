@@ -153,7 +153,7 @@ export default function GeneratorNavTabs() {
           "whitespace-nowrap select-none",
           !useMarquee && "snap-start",
           isActive
-            ? "bg-orange-500/15 text-orange-600 dark:text-orange-400 ring-1 ring-orange-500/30"
+            ? "bg-primary/15 text-primary ring-1 ring-primary/30"
             : "text-muted-foreground hover:text-foreground hover:bg-muted/60",
         ].join(" ")}
         aria-current={isActive ? "page" : undefined}

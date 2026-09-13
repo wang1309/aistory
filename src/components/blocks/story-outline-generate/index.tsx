@@ -224,11 +224,11 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
     <section
       ref={sectionRef}
       id="story_outline_generator"
-      className="overflow-hidden py-16 text-foreground selection:bg-orange-500/20 lg:py-24"
+      className="overflow-hidden py-16 text-foreground selection:bg-primary/20 lg:py-24"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-primary/[0.04] via-primary/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
           style={{ backgroundImage: "var(--bg-grid)", backgroundSize: "40px 40px" }}
@@ -244,7 +244,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
             key={`spark-${i}`}
             aria-hidden
             className={cn(
-              "pointer-events-none absolute z-[1] hidden rounded-full bg-orange-500/15 dark:bg-orange-400/15 md:block",
+              "pointer-events-none absolute z-[1] hidden rounded-full bg-primary md:block",
               b.pos,
               b.size
             )}
@@ -272,7 +272,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
         <div className="relative mx-auto mb-10 max-w-2xl text-center sm:mb-14">
           <div className={cn("relative z-10 mb-6 flex justify-center", tkEnter(0))}>
             <div className="group relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] dark:bg-white/[0.015]">
-              <div className="relative flex size-12 items-center justify-center overflow-hidden rounded-xl bg-orange-500/10">
+              <div className="relative flex size-12 items-center justify-center overflow-hidden rounded-xl bg-primary/10">
                 {!reduceMotion && (
                   <motion.div
                     aria-hidden
@@ -304,7 +304,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
                 >
                   <Icon
                     name="RiNodeTree"
-                    className="size-6 text-orange-600 drop-shadow-[0_0_8px_rgba(249,115,22,0.5)] dark:text-orange-400"
+                    className="size-6 text-primary drop-shadow-[0_0_8px_rgba(249,115,22,0.5)] dark:text-primary"
                   />
                 </motion.div>
               </div>
@@ -317,7 +317,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
               tkEnter(80)
             )}
           >
-            <span className="inline-block size-1.5 rounded-full bg-orange-500 opacity-60" />
+            <span className="inline-block size-1.5 rounded-full bg-primary/50 opacity-60" />
             {t("ui.eyebrow", "AI Story Tool")}
           </span>
 
@@ -368,9 +368,9 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
               {section.ui.theme_pills.map((pill: string, i: number) => (
                 <span
                   key={`${pill}-${i}`}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.04] px-3 py-1 text-xs font-medium text-orange-700 dark:text-orange-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/[0.04] px-3 py-1 text-xs font-medium text-primary"
                 >
-                  <span className="inline-block size-1 rounded-full bg-orange-500/60" />
+                  <span className="inline-block size-1 rounded-full bg-primary/60" />
                   {pill}
                 </span>
               ))}
@@ -381,7 +381,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
         <GeneratorNavTabs />
 
         <div className="mx-auto mt-8 grid w-full max-w-6xl gap-6 pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-        <Card className="border-orange-500/20">
+        <Card className="border-primary/20">
           <CardContent className="space-y-5 pt-6">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
@@ -476,7 +476,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
               <Button
                 onClick={handleGenerate}
                 disabled={isGenerating}
-                className="w-full h-12 text-base font-semibold bg-orange-600 text-white shadow-md shadow-orange-600/20 hover:bg-orange-700 active:scale-[0.97] disabled:opacity-60 dark:bg-orange-500 dark:hover:bg-orange-600"
+                className="w-full h-12 text-base font-semibold bg-primary text-white shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-[0.97] disabled:opacity-60 dark:bg-primary/50 dark:hover:bg-primary/90"
               >
                 <Sparkles className="mr-2 h-5 w-5" />
                 {isGenerating
@@ -488,7 +488,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
         </Card>
 
         <div className="space-y-4 lg:flex lg:self-start lg:flex-col">
-          <Card className="border-orange-500/20 lg:flex lg:min-h-[28rem] lg:max-h-[34rem] lg:flex-col lg:overflow-hidden">
+          <Card className="border-primary/20 lg:flex lg:min-h-[28rem] lg:max-h-[34rem] lg:flex-col lg:overflow-hidden">
             <CardHeader className="lg:shrink-0 flex flex-row items-center justify-between gap-2">
               <CardTitle>{t("ui.output_title", "Your story outline")}</CardTitle>
               {outline && (
@@ -543,7 +543,7 @@ export default function StoryOutlineGenerate({ section }: StoryOutlineGeneratePr
                       ))}
                     </div>
                   </div>
-                  <div className="rounded-lg border border-orange-500/20 bg-orange-50/60 p-4 dark:bg-orange-950/10">
+                  <div className="rounded-lg border border-primary/20 bg-primary/60 p-4 dark:bg-orange-950/10">
                     <p className="text-sm font-medium">{t("ui.next_step_label", "Next step")}</p>
                     <p className="mt-1 text-sm text-muted-foreground">{outline.nextStepTeaser}</p>
                   </div>
