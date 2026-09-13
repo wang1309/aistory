@@ -425,6 +425,10 @@
       "middle_name_generator": {
         "name": "Middle Name Generator",
         "desc": "Complete a fictional character or pen name — three full-name directions that keep your first and last name, with cadence notes, initials preview, and story signals."
+      },
+      "pictionary_word_generator": {
+        "name": "Pictionary Word Generator",
+        "desc": "Draw random Pictionary words by category and difficulty — built-in timer, team scores, custom word lists, and no repeats."
       }
     },
     "tab_story": "Story Generator",
