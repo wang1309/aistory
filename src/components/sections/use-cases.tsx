@@ -16,14 +16,14 @@ export default function UseCases({ section, accent = "orange" }: Props) {
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Layered background — replaces flat a.sectionBg */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,oklch(0.95_0.04_65),transparent)] dark:bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,oklch(0.16_0.025_55),transparent)]" />
+        <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,oklch(0.17_0_0),transparent)]" />
         <div
           className="absolute -left-[8%] bottom-[5%] h-[380px] w-[380px] rounded-full opacity-[0.08] dark:opacity-[0.05]"
-          style={{ background: "radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, oklch(0.95 0 0) 0%, transparent 70%)" }}
         />
         <div
           className="absolute -right-[5%] top-[15%] h-[280px] w-[280px] rounded-full opacity-[0.06] dark:opacity-[0.04]"
-          style={{ background: "radial-gradient(circle, oklch(0.88 0.04 45) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, oklch(0.95 0 0) 0%, transparent 70%)" }}
         />
       </div>
 

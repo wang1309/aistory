@@ -18,7 +18,7 @@ export default function LiteratureReviewExample({ section }: Props) {
     <section className="py-16 sm:py-20">
       <div className="container max-w-4xl mx-auto px-4">
         {section.label && (
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-amber-600 dark:text-amber-400 mb-3">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3">
             {section.label}
           </p>
         )}
@@ -46,18 +46,18 @@ export default function LiteratureReviewExample({ section }: Props) {
           <ol className="divide-y divide-border/40">
             {(section.items || []).map((item, i) => (
               <li key={i} className="px-6 sm:px-8 py-6 sm:py-7 flex gap-4 sm:gap-6">
-                <span className="hidden sm:block font-display text-sm font-semibold text-amber-600/70 dark:text-amber-400/70 tabular-nums pt-1">
+                <span className="hidden sm:block font-display text-sm font-semibold text-primary/70 tabular-nums pt-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <code className="rounded-md bg-amber-500/10 px-2 py-0.5 text-sm font-semibold text-amber-800 dark:text-amber-300">
+                    <code className="rounded-md bg-primary/10 px-2 py-0.5 text-sm font-semibold text-primary">
                       {item.title}
                     </code>
                     <span className="text-sm text-muted-foreground/75">{item.description}</span>
                   </div>
                   {item.content && (
-                    <blockquote className="mt-3 border-l-2 border-amber-500/30 pl-4 text-sm italic leading-relaxed text-muted-foreground/70 font-display">
+                    <blockquote className="mt-3 border-l-2 border-border pl-4 text-sm italic leading-relaxed text-muted-foreground/70 font-display">
                       {item.content}
                     </blockquote>
                   )}

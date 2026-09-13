@@ -19,6 +19,9 @@
     "quick_try": "Быстрый старт",
     "read_story": "Читать историю"
   },
+  "footer": {
+    "free_tools": "Бесплатные инструменты для письма"
+  },
   "sign_modal": {
     "sign_in_title": "Вход в систему",
     "sign_in_description": "Войдите в свой аккаунт",

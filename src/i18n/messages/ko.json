@@ -19,6 +19,9 @@
     "quick_try": "빠른 체험",
     "read_story": "이야기 읽기"
   },
+  "footer": {
+    "free_tools": "무료 글쓰기 도구"
+  },
   "sign_modal": {
     "sign_in_title": "로그인",
     "sign_in_description": "계정에 로그인",

@@ -17,15 +17,6 @@ export default function Showcase({ section }: { section: SectionType }) {
       id={section.name || "story_showcase"}
       className="relative py-28 lg:py-36 overflow-hidden"
     >
-      {/* Ambient background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.96_0.03_65),transparent)] dark:bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.15_0.02_55),transparent)]" />
-        <div
-          className="absolute -left-[8%] bottom-[5%] h-[350px] w-[350px] rounded-full opacity-[0.07] dark:opacity-[0.04]"
-          style={{ background: "radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)" }}
-        />
-      </div>
-
       <div className="container relative z-10">
         {/* Header — static SSR, consistent with every other section */}
         <div className="mb-16">

@@ -16,14 +16,14 @@ export default function HowToUse({ section, accent = "orange" }: Props) {
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Layered background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-x-0 top-0 h-[500px] bg-[radial-gradient(ellipse_65%_45%_at_50%_0%,oklch(0.96_0.035_65),transparent)] dark:bg-[radial-gradient(ellipse_65%_45%_at_50%_0%,oklch(0.15_0.02_55),transparent)]" />
+        <div className="absolute inset-x-0 top-0 h-[500px] bg-[radial-gradient(ellipse_65%_45%_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_65%_45%_at_50%_0%,oklch(0.17_0_0),transparent)]" />
         <div
           className="absolute -right-[6%] top-[15%] h-[320px] w-[320px] rounded-full opacity-[0.07] dark:opacity-[0.04]"
-          style={{ background: "radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, oklch(0.95 0 0) 0%, transparent 70%)" }}
         />
         <div
           className="absolute -left-[5%] bottom-[10%] h-[280px] w-[280px] rounded-full opacity-[0.06] dark:opacity-[0.035]"
-          style={{ background: "radial-gradient(circle, oklch(0.88 0.04 80) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, oklch(0.95 0 0) 0%, transparent 70%)" }}
         />
       </div>
 
@@ -53,7 +53,7 @@ export default function HowToUse({ section, accent = "orange" }: Props) {
                   {/* Ambient glow behind node */}
                   <div
                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full opacity-20 dark:opacity-10 transition-opacity duration-500 group-hover:opacity-30"
-                    style={{ background: `radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)` }}
+                    style={{ background: `radial-gradient(circle, oklch(0.95 0 0) 0%, transparent 70%)` }}
                   />
 
                   {/* Outer shell */}

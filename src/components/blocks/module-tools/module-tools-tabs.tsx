@@ -35,7 +35,7 @@ export function ModuleToolsTabs({
         <div
           role="tablist"
           aria-label="Tool categories"
-          className="inline-flex items-center gap-1 rounded-full border border-border/20 bg-background/70 p-1 shadow-[0_8px_30px_-12px_rgba(38,28,12,0.18)] backdrop-blur-md dark:border-white/10"
+          className="inline-flex items-center gap-1 rounded-full border border-border bg-background p-1 shadow-sm dark:border-input"
         >
           {tabs.map((tab) => {
             const isActive = tab.id === active.id;
@@ -56,7 +56,7 @@ export function ModuleToolsTabs({
                 {isActive && (
                   <motion.span
                     layoutId="module-tools-tab-pill"
-                    className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-primary/15 via-primary/10 to-primary/[0.04] ring-1 ring-primary/25 transition-shadow duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                    className="absolute inset-0 -z-10 rounded-full bg-muted ring-1 ring-border"
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   />
                 )}

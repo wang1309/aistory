@@ -11,14 +11,13 @@ const HappyUsers = memo(function HappyUsers() {
 
   return (
     <div className="mx-auto mt-12 sm:mt-16 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-4 motion-safe:duration-700 motion-safe:delay-700">
-      {/* Glassmorphic container */}
-      <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 rounded-2xl border border-border bg-card px-6 py-4 shadow-sm">
+      <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
 
-        {/* Avatar stack with enhanced styling */}
-        <div className="flex items-center -space-x-3">
+        {/* Avatar stack */}
+        <div className="flex items-center -space-x-2.5">
           {avatarIndices.map((_, index) => (
             <Avatar
-              className="size-12 sm:size-14 border-2 border-background shadow-md ring-2 ring-white/10 transition-transform hover:scale-110 hover:z-10"
+              className="size-9 sm:size-10 border-2 border-card"
               key={index}
             >
               <AvatarImage
@@ -30,23 +29,19 @@ const HappyUsers = memo(function HappyUsers() {
         </div>
 
         {/* Rating and text */}
-        <div className="flex flex-col items-center sm:items-start gap-2">
-          {/* Stars with glow effect */}
-          <div className="flex items-center gap-1">
+        <div className="flex flex-col items-center sm:items-start gap-1">
+          <div className="flex items-center gap-0.5">
             {starIndices.map((_, index) => (
-              <div key={index} className="relative">
-                <Star className="size-5 fill-yellow-400 text-yellow-400 drop-shadow-[0_0_4px_rgba(250,204,21,0.5)]" />
-              </div>
+              <Star key={index} className="size-3.5 fill-amber-400 text-amber-400" />
             ))}
           </div>
 
-          {/* Text with better hierarchy */}
-          <div className="flex flex-col sm:flex-row items-center gap-1.5">
-            <p className="text-sm font-semibold text-foreground">
+          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-1.5">
+            <p className="text-sm font-medium text-foreground">
               from 999+ happy users
             </p>
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <span className="inline-block size-1.5 rounded-full bg-green-500 animate-pulse" />
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <span className="inline-block size-1.5 rounded-full bg-green-500" />
               <span>Growing daily</span>
             </div>
           </div>

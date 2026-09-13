@@ -155,7 +155,7 @@ export default function FanficWhat({ section }: { section: FanficWhatType | unde
                     {block.title && (
                       <div className="flex items-center gap-3 mb-6">
                         <div className="flex-shrink-0 p-2.5 rounded-xl bg-white/10 border border-white/10 shadow-inner backdrop-blur-md">
-                          {index % 3 === 0 ? <Zap className="w-6 h-6 text-amber-400" /> :
+                          {index % 3 === 0 ? <Zap className="w-6 h-6 text-primary" /> :
                            index % 3 === 1 ? <BookOpen className="w-6 h-6 text-pink-400" /> :
                            <Star className="w-6 h-6 text-teal-400" />}
                         </div>

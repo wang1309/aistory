@@ -31,9 +31,9 @@ export default function FeatureIntro({ section, accent = "orange" }: Props) {
       {/* Ambient background gradients */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-[10%] bottom-[10%] h-[400px] w-[400px] rounded-full opacity-[0.08] dark:opacity-[0.05]"
-          style={{ background: "radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)" }} />
+          style={{ background: "radial-gradient(circle, oklch(0.95 0 0) 0%, transparent 70%)" }} />
         <div className="absolute -right-[5%] top-[10%] h-[320px] w-[320px] rounded-full opacity-[0.06] dark:opacity-[0.04]"
-          style={{ background: "radial-gradient(circle, oklch(0.88 0.04 80) 0%, transparent 70%)" }} />
+          style={{ background: "radial-gradient(circle, oklch(0.95 0 0) 0%, transparent 70%)" }} />
       </div>
 
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">

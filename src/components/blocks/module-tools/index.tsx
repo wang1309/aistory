@@ -82,15 +82,6 @@ export default async function ModuleToolsSection({
 
   return (
     <section className="relative overflow-hidden py-28 sm:py-36">
-      {/* Ambient background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-x-0 top-0 h-[450px] bg-[radial-gradient(ellipse_55%_40%_at_50%_0%,oklch(0.96_0.035_65),transparent)] dark:bg-[radial-gradient(ellipse_55%_40%_at_50%_0%,oklch(0.15_0.02_55),transparent)]" />
-        <div
-          className="absolute -left-[6%] bottom-[8%] h-[320px] w-[320px] rounded-full opacity-[0.06] dark:opacity-[0.04]"
-          style={{ background: "radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)" }}
-        />
-      </div>
-
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <SectionHeader

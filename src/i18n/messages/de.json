@@ -19,6 +19,9 @@
     "quick_try": "Schnellstart",
     "read_story": "Geschichte lesen"
   },
+  "footer": {
+    "free_tools": "Kostenlose Schreibtools"
+  },
   "sign_modal": {
     "sign_in_title": "Anmelden",
     "sign_in_description": "Bei Ihrem Konto anmelden",

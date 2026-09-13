@@ -122,7 +122,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
         id: "creative",
         name: t("ai_models.creative"),
         badge: "PRO",
-        badgeColor: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+        badgeColor: "bg-primary/10 text-primary dark:text-primary border-primary/20",
         icon: <Palette className="h-4 w-4" />,
         description: t("ai_models.creative_description"),
       },
@@ -494,7 +494,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
   return (
     <div id="bedtime_story_generator" className="min-h-screen bg-background text-foreground selection:bg-orange-500/20">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
         <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"

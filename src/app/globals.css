@@ -35,25 +35,33 @@
     background-image: radial-gradient(circle, var(--tw-gradient-stops));
   }
 
-  /* ========== Brand gradient text (single source of truth) ========== */
+  /* ========== Brand gradient text (single source of truth) ==========
+     Neutral ink gradient — headline keyword emphasis, type.ai-style:
+     near-black fading toward a cool slate instead of a loud hue. */
   .text-gradient-brand {
     background-image: linear-gradient(
       to right,
-      var(--primary),
-      color-mix(in oklch, var(--primary) 80%, transparent),
-      color-mix(in oklch, var(--primary) 60%, transparent)
+      var(--foreground) 35%,
+      oklch(0.42 0.03 262)
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
+  .dark .text-gradient-brand {
+    background-image: linear-gradient(
+      to right,
+      oklch(0.96 0 0) 35%,
+      oklch(0.68 0.04 262)
+    );
+  }
+
   .text-gradient-ember {
     background-image: linear-gradient(
       to right,
-      oklch(0.60 0.19 40),
-      oklch(0.66 0.19 50),
-      oklch(0.72 0.16 60)
+      oklch(0.2 0 0),
+      oklch(0.35 0.02 262)
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -63,9 +71,8 @@
   .dark .text-gradient-ember {
     background-image: linear-gradient(
       to right,
-      oklch(0.72 0.16 45),
-      oklch(0.76 0.15 55),
-      oklch(0.80 0.13 65)
+      oklch(0.93 0 0),
+      oklch(0.72 0.03 262)
     );
   }
 
@@ -416,8 +423,8 @@
   }
 
   :root {
-    --meteor-color: 251 191 36;
-    --meteor-glow: rgba(251, 191, 36, 0.8);
+    --meteor-color: 37 99 235;
+    --meteor-glow: rgba(37, 99, 235, 0.6);
   }
   .dark {
     --meteor-color: 255 255 255;
@@ -788,60 +795,61 @@
     animation: music-bar 1.2s infinite ease-in-out alternate;
   }
 
-  /* ===== Hero Cinematic Animations ===== */
-  @keyframes hero-orb-1 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(8%, 12%) scale(1.05); }
-    66% { transform: translate(-5%, 5%) scale(0.97); }
-  }
-  @keyframes hero-orb-2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-10%, -8%) scale(1.03); }
-    66% { transform: translate(6%, -3%) scale(0.98); }
-  }
-  @keyframes hero-orb-3 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(5%, -10%) scale(1.04); }
-    66% { transform: translate(-8%, 6%) scale(0.96); }
-  }
+  /* ===== Hero Animations =====
+     Orb effects removed in the neutral redesign — hero sits on a clean
+     canvas. Only the restrained story-image cascade and a barely-there CTA
+     presence ring remain. */
   @keyframes hero-cta-breathe {
-    0%, 100% { box-shadow: 0 0 0 0 oklch(0.5 0 0 / 0); }
-    50% { box-shadow: 0 0 0 6px oklch(0.5 0 0 / 0.06); }
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.3 0.05 262 / 0); }
+    50% { box-shadow: 0 0 0 4px oklch(0.3 0.05 262 / 0.05); }
   }
 
-  /* Hero Story Image Cascade */
-  @keyframes hero-story-cascade {
-    0% {
-      transform: translateY(-130%) translateX(-15%) scale(0.8) rotate(-1.5deg);
-      opacity: 0;
+  /* Hero Story Image Cascade (toned down: gentle drift, minimal rotation) */
+  @keyframes hero-drift-up {
+    from {
+      transform: translateY(0);
     }
-    14% {
-      transform: translateY(-54%) translateX(0%) scale(0.98) rotate(-0.3deg);
-      opacity: 0.8;
-    }
-    20% {
-      transform: translateY(-50%) translateX(0%) scale(1) rotate(0deg);
-      opacity: 1;
-    }
-    54% {
-      transform: translateY(-50%) translateX(0%) scale(1) rotate(0deg);
-      opacity: 1;
-    }
-    76% {
-      transform: translateY(-44%) translateX(55%) scale(0.93) rotate(1.2deg);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translateY(-40%) translateX(120%) scale(0.85) rotate(2deg);
-      opacity: 0;
+    to {
+      transform: translateY(-50%);
     }
   }
-  .animate-hero-story-cascade {
-    animation-name: hero-story-cascade;
-    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  @keyframes hero-drift-down {
+    from {
+      transform: translateY(-50%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  .animate-hero-drift-up {
+    animation-name: hero-drift-up;
+    animation-duration: 40s;
+    animation-timing-function: linear;
     animation-iteration-count: infinite;
-    animation-fill-mode: forwards;
-    will-change: transform, opacity;
+    will-change: transform;
+  }
+  .animate-hero-drift-down {
+    animation-name: hero-drift-down;
+    animation-duration: 40s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+  .hero-drift-mask {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
   }
 
   @keyframes sg-orb-a {
@@ -856,9 +864,10 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    [style*="hero-orb"], [style*="hero-cta-breathe"],
+    [style*="hero-cta-breathe"],
     [style*="sg-orb"],
-    .animate-hero-story-cascade {
+    .animate-hero-drift-up,
+    .animate-hero-drift-down {
       animation: none !important;
     }
   }
@@ -870,6 +879,10 @@
   }
   body {
     @apply bg-background text-foreground overflow-x-hidden;
+    /* Ultra-subtle paper grain: static SVG turbulence tile, zero JS.
+       Opaque surfaces (cards, footer, hero media) cover it, so the grain
+       reads only on the canvas — a faint film-grain in dark mode. */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
   }
 }
 
@@ -893,7 +906,7 @@ pre {
 
 .ProseMirror .is-empty::before {
   content: attr(data-placeholder);
-  color: oklch(0.75 0.012 75);
+  color: oklch(0.75 0 0);
   float: left;
   height: 0;
   pointer-events: none;
@@ -905,7 +918,7 @@ pre {
 }
 
 .dark .ProseMirror .is-empty::before {
-  color: oklch(0.55 0.012 75);
+  color: oklch(0.55 0 0);
 }
 
 /* Table styles */
@@ -920,7 +933,7 @@ pre {
 .ProseMirror th,
 .ProseMirror td {
   min-width: 80px;
-  border: 1px solid oklch(0.85 0.01 75);
+  border: 1px solid oklch(0.85 0 0);
   padding: 0.5rem 0.75rem;
   vertical-align: top;
   position: relative;
@@ -928,24 +941,24 @@ pre {
 
 .ProseMirror th {
   font-weight: 600;
-  background: oklch(0.97 0.005 75);
+  background: oklch(0.97 0 0);
 }
 
 .dark .ProseMirror th,
 .dark .ProseMirror td {
-  border-color: oklch(0.35 0.01 75);
+  border-color: oklch(0.35 0 0);
 }
 
 .dark .ProseMirror th {
-  background: oklch(0.25 0.005 75);
+  background: oklch(0.25 0 0);
 }
 
 .ProseMirror .selectedCell {
-  background: oklch(0.95 0.05 75);
+  background: oklch(0.95 0.02 262);
 }
 
 .dark .ProseMirror .selectedCell {
-  background: oklch(0.3 0.03 75);
+  background: oklch(0.3 0.02 262);
 }
 
 /* Task list styles */
@@ -969,7 +982,7 @@ pre {
 .ProseMirror ul[data-type="taskList"] li label input[type="checkbox"] {
   width: 1rem;
   height: 1rem;
-  accent-color: oklch(0.65 0.18 40);
+  accent-color: oklch(0.55 0.16 262);
   cursor: pointer;
 }
 
@@ -1058,16 +1071,16 @@ pre {
 
 /* Placeholder — occupies the drop target position */
 .drag-placeholder {
-  background: oklch(0.95 0.02 40);
-  border: 2px dashed oklch(0.75 0.12 40);
+  background: oklch(0.95 0.015 262);
+  border: 2px dashed oklch(0.75 0.08 262);
   border-radius: 4px;
   margin: 2px 0;
   transition: height 0.15s ease;
 }
 
 .dark .drag-placeholder {
-  background: oklch(0.22 0.02 40);
-  border-color: oklch(0.45 0.1 40);
+  background: oklch(0.22 0.015 262);
+  border-color: oklch(0.45 0.08 262);
 }
 
 /* Body state during drag */

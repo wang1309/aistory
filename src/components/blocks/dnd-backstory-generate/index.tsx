@@ -164,7 +164,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
         id: "standard",
         name: t("ai_models.standard"),
         badge: "RECOMMENDED",
-        badgeColor: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+        badgeColor: "bg-primary/10 text-primary dark:text-primary border-primary/20",
         icon: <Sparkles className="h-4 w-4" />,
         description: t("ai_models.standard_description"),
       },
@@ -173,7 +173,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
         name: t("ai_models.creative"),
         badge: "PRO",
         badgeColor:
-          "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+          "bg-primary/10 text-primary dark:text-primary border-primary/20",
         icon: <Palette className="h-4 w-4" />,
         description: t("ai_models.creative_description"),
       },
@@ -890,7 +890,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
   return (
     <div id="dnd_backstory_generator" className="min-h-screen bg-background text-foreground selection:bg-orange-500/20">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
         <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
@@ -958,7 +958,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                 </svg>
               </motion.div>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-amber-500/45 dark:text-amber-400/45"
+                className="pointer-events-none absolute z-[1] text-primary/45 dark:text-primary/45"
                 style={{ right: "5%", top: "44%" }}
                 initial={{ opacity: 0, y: 0, rotate: 12 }}
                 animate={{ opacity: [0, 0.5, 0.5, 0], y: [0, -6, 0], rotate: [12, 5, 12] }}
@@ -1000,9 +1000,9 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
           {/* Stat block number watermark (STR/DEX/CON/INT/WIS/CHA style numerals) */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
             <span className="absolute left-[6%] top-[22%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07] tabular-nums">18</span>
-            <span className="absolute right-[7%] top-[16%] font-display italic font-bold text-xl text-amber-500/[0.07] dark:text-amber-400/[0.07] tabular-nums">14</span>
+            <span className="absolute right-[7%] top-[16%] font-display italic font-bold text-xl text-primary/[0.07] dark:text-primary/[0.07] tabular-nums">14</span>
             <span className="absolute left-[10%] bottom-[14%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06] tabular-nums">16</span>
-            <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-amber-500/[0.07] dark:text-amber-400/[0.07] tabular-nums">12</span>
+            <span className="absolute right-[9%] bottom-[18%] font-display italic font-bold text-2xl text-primary/[0.07] dark:text-primary/[0.07] tabular-nums">12</span>
             <span className="absolute left-[28%] top-[10%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05] tabular-nums">10</span>
             <span className="absolute right-[26%] bottom-[8%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06] tabular-nums">8</span>
           </div>
@@ -1012,7 +1012,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
             <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
               ✦
             </span>
-            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               ✧
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
@@ -1042,7 +1042,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
             {[3, 5, 7, 5, 3].map((s, i) => (
               <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
             ))}
-            <span className="text-amber-500/45 dark:text-amber-400/45 text-base">⚔</span>
+            <span className="text-primary/45 dark:text-primary/45 text-base">⚔</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
               <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
             ))}

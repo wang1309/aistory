@@ -19,6 +19,9 @@
     "quick_try": "クイック体験",
     "read_story": "物語を読む"
   },
+  "footer": {
+    "free_tools": "無料の執筆ツール"
+  },
   "sign_modal": {
     "sign_in_title": "ログイン",
     "sign_in_description": "アカウントにログイン",

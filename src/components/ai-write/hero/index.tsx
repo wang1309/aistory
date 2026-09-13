@@ -147,7 +147,7 @@ export default function AiWriteHero() {
 
       {/* Warm radial glow */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_30%_20%,oklch(0.96_0.02_65),transparent)] dark:bg-[radial-gradient(ellipse_70%_50%_at_30%_20%,oklch(0.16_0.02_55),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_30%_20%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_70%_50%_at_30%_20%,oklch(0.17_0_0),transparent)]" />
         <div
           className="absolute inset-0 opacity-[0.025] dark:opacity-[0.03]"
           style={{
@@ -315,7 +315,7 @@ export default function AiWriteHero() {
                   <Button
                     onClick={handleStart}
                     disabled={sending}
-                    className="group h-9 rounded-full bg-foreground px-4 text-[13px] font-medium text-background hover:bg-foreground/85 active:scale-[0.97] dark:bg-white dark:text-[oklch(0.20_0.02_55)] dark:hover:bg-white/90"
+                    className="group h-9 rounded-full bg-foreground px-4 text-[13px] font-medium text-background hover:bg-foreground/85 active:scale-[0.97] dark:bg-white dark:text-[oklch(0.15_0_0)] dark:hover:bg-white/90"
                     style={{
                       transition:
                         "all 400ms cubic-bezier(0.32,0.72,0,1)",

@@ -138,12 +138,12 @@ function ToolColumn({
   }, [colItems, checkScroll]);
 
   return (
-    <div className="relative rounded-[1.1rem] border border-black/[0.04] bg-gradient-to-b from-white/80 to-white/40 p-2 dark:border-white/[0.04] dark:from-white/[0.03] dark:to-transparent">
+    <div className="relative rounded-xl border border-border bg-card p-2">
       <div className="flex items-center gap-2 px-2 pb-2 pt-1">
-        <span className="flex size-6 items-center justify-center rounded-full bg-amber-500/10 text-amber-600 ring-1 ring-amber-500/20 dark:bg-amber-400/10 dark:text-amber-300 dark:ring-amber-400/20">
+        <span className="flex size-6 items-center justify-center rounded-full bg-primary/10 text-primary">
           <Icon name={COLUMN_DEFS[colIdx].icon} className="size-3.5" />
         </span>
-        <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
           {t(COLUMN_DEFS[colIdx].labelKey)}
         </span>
       </div>
@@ -156,10 +156,10 @@ function ToolColumn({
           <li key={wt.tool.slug}>
             <NavigationMenuLink asChild>
               <Link
-                className="group/item relative flex select-none items-center gap-3 rounded-lg px-2.5 py-2 leading-none no-underline outline-hidden transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-amber-500/[0.07] hover:pl-3 focus:bg-amber-500/[0.07] dark:hover:bg-amber-400/[0.07]"
+                className="group/item relative flex select-none items-center gap-3 rounded-lg px-2.5 py-2 leading-none no-underline outline-hidden transition-colors duration-200 hover:bg-accent focus:bg-accent"
                 href={wt.href as any}
               >
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-black/[0.04] text-muted-foreground transition-colors duration-300 group-hover/item:bg-amber-500/15 group-hover/item:text-amber-700 dark:bg-white/[0.04] dark:group-hover/item:bg-amber-400/15 dark:group-hover/item:text-amber-300">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground transition-colors duration-200 group-hover/item:bg-primary/10 group-hover/item:text-primary">
                   <Icon name={wt.icon} className="size-3.5" />
                 </span>
                 <Tooltip>
@@ -186,7 +186,7 @@ function ToolColumn({
           type="button"
           onClick={scrollDown}
           aria-label={t("ai_tools.scroll_down")}
-          className="absolute bottom-1 left-1/2 z-20 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border border-amber-500/30 bg-popover/95 text-amber-700 shadow-md backdrop-blur-sm transition hover:border-amber-500/50 hover:bg-amber-500/15 dark:border-amber-400/30 dark:text-amber-300 dark:hover:border-amber-400/50 dark:hover:bg-amber-400/15"
+          className="absolute bottom-1 left-1/2 z-20 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border border-border bg-popover text-foreground shadow-md transition hover:bg-accent"
         >
           <Icon name="RiArrowDownSLine" className="size-4" />
         </button>
@@ -249,7 +249,7 @@ export default function Header({ header }: { header: HeaderType }) {
                 />
               )}
               {header.brand?.title && (
-                <span className="text-[1.3rem] font-display font-bold tracking-tight text-gradient-brand transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                <span className="text-[1.3rem] font-display font-bold tracking-tight text-foreground">
                   {header.brand?.title || ""}
                 </span>
               )}
@@ -274,12 +274,7 @@ export default function Header({ header }: { header: HeaderType }) {
                             <span>{item.title}</span>
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
-                            <div className="relative w-[42rem] max-w-[calc(100vw-2.5rem)] overflow-hidden rounded-[1.6rem] border border-black/[0.06] bg-popover/95 p-2.5 shadow-[0_24px_60px_-24px_rgba(38,28,12,0.28)] backdrop-blur-2xl dark:border-white/[0.06] xl:w-[48rem] xl:p-3 2xl:w-[52rem]">
-                              <div
-                                aria-hidden
-                                className="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-gradient-to-br from-amber-300/30 via-amber-500/15 to-transparent blur-3xl dark:from-amber-400/20 dark:via-amber-500/10"
-                              />
-
+                            <div className="relative w-[42rem] max-w-[calc(100vw-2.5rem)] overflow-hidden rounded-2xl border border-border bg-popover p-2.5 shadow-xl xl:w-[48rem] xl:p-3 2xl:w-[52rem]">
                               <div className="relative grid grid-cols-3 gap-2 xl:gap-3">
                                 {toolColumns.map((colItems, colIdx) => (
                                   <ToolColumn
@@ -293,20 +288,20 @@ export default function Header({ header }: { header: HeaderType }) {
 
                               <Link
                                 href={AI_WRITE_TOOL_HUB_URL as any}
-                                className="group/cta mt-3 flex items-center gap-3 rounded-[1.1rem] border border-amber-500/20 bg-gradient-to-r from-amber-500/10 via-amber-400/[0.06] to-amber-500/[0.04] px-3 py-2.5 no-underline outline-hidden transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-amber-500/40 hover:from-amber-500/15 hover:to-amber-500/[0.08] dark:border-amber-400/20 dark:hover:border-amber-400/40"
+                                className="group/cta mt-3 flex items-center gap-3 rounded-xl border border-border bg-card px-3 py-2.5 no-underline outline-hidden transition-colors duration-200 hover:border-foreground/20 hover:bg-accent"
                               >
-                                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-amber-700 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
+                                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-foreground text-background">
                                   <Icon name="RiGridLine" className="size-4" />
                                 </span>
                                 <div className="min-w-0 flex-1">
-                                  <div className="text-[13px] font-semibold text-amber-800 dark:text-amber-200">
+                                  <div className="text-[13px] font-semibold text-foreground">
                                     {t("ai_tools.view_all_cta", { count: toolTotal })}
                                   </div>
-                                  <div className="text-[10px] text-amber-700/70 dark:text-amber-300/60">
+                                  <div className="text-[10px] text-muted-foreground">
                                     {t("ai_tools.view_all_sub")}
                                   </div>
                                 </div>
-                                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-700 transition-transform duration-300 group-hover/cta:translate-x-0.5 dark:bg-amber-400/15 dark:text-amber-300">
+                                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted text-foreground transition-transform duration-200 group-hover/cta:translate-x-0.5">
                                   <Icon name="RiArrowRightLine" className="size-4" />
                                 </span>
                               </Link>
@@ -429,7 +424,7 @@ export default function Header({ header }: { header: HeaderType }) {
                 />
               )}
               {header.brand?.title && (
-                <span className="text-[1.3rem] font-display font-bold tracking-tight text-gradient-brand">
+                <span className="text-[1.3rem] font-display font-bold tracking-tight text-foreground">
                   {header.brand?.title || ""}
                 </span>
               )}
@@ -466,7 +461,7 @@ export default function Header({ header }: { header: HeaderType }) {
                         />
                       )}
                       {header.brand?.title && (
-                        <span className="text-[1.3rem] font-display font-bold tracking-tight text-gradient-brand">
+                        <span className="text-[1.3rem] font-display font-bold tracking-tight text-foreground">
                           {header.brand?.title || ""}
                         </span>
                       )}
@@ -486,7 +481,7 @@ export default function Header({ header }: { header: HeaderType }) {
                             <AccordionTrigger className="rounded-xl px-5 py-3 text-left text-base font-semibold hover:no-underline [&>svg]:ml-4 [&>svg]:shrink-0 [&>svg]:text-muted-foreground">
                               <span className="flex min-w-0 items-center gap-3">
                                 {item.icon && (
-                                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
+                                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
                                     <Icon
                                       name={item.icon}
                                       className="size-4 shrink-0"
@@ -497,20 +492,20 @@ export default function Header({ header }: { header: HeaderType }) {
                               </span>
                             </AccordionTrigger>
                             <AccordionContent className="px-5 pb-2 pt-1">
-                              <div className="flex flex-col gap-3 rounded-[1.35rem] border border-black/[0.05] bg-black/[0.015] p-3 dark:border-white/[0.05] dark:bg-white/[0.02]">
+                              <div className="flex flex-col gap-3 rounded-2xl border border-border bg-muted/40 p-3">
                                 {toolColumns.map((colItems, colIdx) => (
                                   <div
                                     key={colIdx}
-                                    className="rounded-[1.1rem] border border-black/[0.04] bg-white/70 p-2.5 dark:border-white/[0.04] dark:bg-white/[0.02]"
+                                    className="rounded-xl border border-border bg-card p-2.5"
                                   >
                                     <div className="mb-1.5 flex items-center gap-2 px-1.5 pt-0.5">
-                                      <span className="flex size-6 items-center justify-center rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
+                                      <span className="flex size-6 items-center justify-center rounded-full bg-primary/10 text-primary">
                                         <Icon
                                           name={COLUMN_DEFS[colIdx].icon}
                                           className="size-3.5"
                                         />
                                       </span>
-                                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-700/90 dark:text-amber-300/90">
+                                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
                                         {t(COLUMN_DEFS[colIdx].labelKey)}
                                       </span>
                                     </div>
@@ -520,7 +515,7 @@ export default function Header({ header }: { header: HeaderType }) {
                                         className="relative flex select-none items-center gap-3 rounded-lg px-2.5 py-2.5 leading-none outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                         href={wt.href as any}
                                       >
-                                        <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-black/[0.04] text-muted-foreground dark:bg-white/[0.04]">
+                                        <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground">
                                           <Icon
                                             name={wt.icon}
                                             className="size-4 shrink-0"
@@ -539,9 +534,9 @@ export default function Header({ header }: { header: HeaderType }) {
                                 ))}
                                 <Link
                                   href={AI_WRITE_TOOL_HUB_URL as any}
-                                  className="flex items-center gap-3 rounded-[1.1rem] border border-amber-500/20 bg-amber-500/[0.06] px-3.5 py-3 text-sm font-semibold text-amber-800 transition-colors hover:bg-amber-500/10 dark:border-amber-400/20 dark:text-amber-200 dark:hover:bg-amber-400/10"
+                                  className="flex items-center gap-3 rounded-xl border border-border bg-card px-3.5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent"
                                 >
-                                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-amber-500/12 text-amber-700 dark:bg-amber-400/12 dark:text-amber-300">
+                                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-foreground text-background">
                                     <Icon
                                       name="RiGridLine"
                                       className="size-4 shrink-0"

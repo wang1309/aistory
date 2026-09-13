@@ -110,10 +110,10 @@ export default async function LocaleLayout({
         <AppContextProvider>
           <ThemeProvider>
             {children}
-            {/* 顶部路由加载进度条:amber 品牌色,点击导航到新页面渲染前的空档给用户即时反馈 */}
+            {/* 顶部路由加载进度条:primary 品牌色,点击导航到新页面渲染前的空档给用户即时反馈 */}
             <NextTopLoader
-              color="#f59e0b"
-              shadow="0 0 10px rgba(245,158,11,0.7), 0 0 5px rgba(245,158,11,0.5)"
+              color="#2456d6"
+              shadow="0 0 10px rgba(36,86,214,0.5), 0 0 5px rgba(36,86,214,0.35)"
               height={3}
             />
             <VerificationModal />

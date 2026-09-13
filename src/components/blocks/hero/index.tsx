@@ -1,7 +1,6 @@
 "use client";
 
 import { memo, useMemo, useState, useEffect } from "react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import HappyUsers from "./happy-users";
@@ -12,67 +11,48 @@ import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
-const Prism = dynamic(() => import("@/components/Prism"), {
-  ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 bg-background opacity-50" />
-  ),
-});
-
-const STORY_IMAGES = [
+const COLUMN_A = [
   "https://r2.storiesgenerator.org/image/image_dengtakashouren.avif",
   "https://r2.storiesgenerator.org/image/image_laorenyuhai.avif",
   "https://r2.storiesgenerator.org/image/image_lixiangguo.avif",
+];
+
+const COLUMN_B = [
   "https://r2.storiesgenerator.org/image/image_shushangdenanjue.avif",
   "https://r2.storiesgenerator.org/image/image_yangzhiqiu.avif",
+  "https://r2.storiesgenerator.org/image/yinhediguo.webp",
 ];
+
+function StoryCard({ src, index }: { src: string; index: number }) {
+  return (
+    <div
+      className={`shrink-0 rounded-xl border border-border bg-card p-1.5 shadow-lg ${
+        index % 2 === 0 ? "rotate-[0.75deg]" : "-rotate-[0.75deg]"
+      }`}
+    >
+      <div className="relative overflow-hidden rounded-[calc(0.75rem-0.375rem)]">
+        <Image
+          src={src}
+          alt={`story-${index}`}
+          width={240}
+          height={320}
+          className="w-[220px] h-[300px] object-cover"
+          sizes="220px"
+          quality={75}
+        />
+      </div>
+    </div>
+  );
+}
 
 const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
   const [isMounted, setIsMounted] = useState(false);
-  const [allowPrism, setAllowPrism] = useState(false);
   const [showDesktopCascade, setShowDesktopCascade] = useState(false);
   const tCommon = useTranslations("common");
 
   useEffect(() => {
     setIsMounted(true);
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    if (reduceMotion || !isDesktop || !hero.prism_background?.enabled) {
-      return;
-    }
-
-    let idleCallback: number | undefined;
-    let timer: number | undefined;
-    const idleWindow = window as unknown as {
-      requestIdleCallback?: typeof window.requestIdleCallback;
-      cancelIdleCallback?: typeof window.cancelIdleCallback;
-    };
-    const enablePrism = () => {
-      if (idleWindow.requestIdleCallback) {
-        idleCallback = idleWindow.requestIdleCallback(() => setAllowPrism(true), {
-          timeout: 4_000,
-        });
-      } else {
-        timer = window.setTimeout(() => setAllowPrism(true), 1_000);
-      }
-    };
-
-    if (document.readyState === "complete") {
-      enablePrism();
-    } else {
-      window.addEventListener("load", enablePrism, { once: true });
-    }
-
-    return () => {
-      window.removeEventListener("load", enablePrism);
-      if (idleCallback !== undefined && idleWindow.cancelIdleCallback) {
-        idleWindow.cancelIdleCallback(idleCallback);
-      }
-      if (timer !== undefined) {
-        window.clearTimeout(timer);
-      }
-    };
-  }, [hero.prism_background?.enabled]);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 1024px)");
@@ -98,24 +78,6 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
     [hero.description]
   );
 
-  const prismProps = useMemo(
-    () => ({
-      animationType: hero.prism_background?.animationType || "rotate",
-      // Restrained by design: slower drift, softer glow — presence, not spectacle.
-      timeScale: hero.prism_background?.timeScale ?? 0.35,
-      height: hero.prism_background?.height ?? 3.5,
-      baseWidth: hero.prism_background?.baseWidth ?? 5.5,
-      scale: hero.prism_background?.scale ?? 3.6,
-      hueShift: hero.prism_background?.hueShift ?? 0,
-      colorFrequency: hero.prism_background?.colorFrequency ?? 1,
-      noise: hero.prism_background?.noise ?? 0.5,
-      glow: hero.prism_background?.glow ?? 0.8,
-      bloom: hero.prism_background?.bloom ?? 0.8,
-      suspendWhenOffscreen: true,
-    }),
-    [hero.prism_background]
-  );
-
   // The title and CTA are the mobile LCP candidates, so the SSR output must be
   // visible before hydration instead of waiting for an entrance animation.
   const enter = (_delay: number) => "translate-y-0 opacity-100";
@@ -124,47 +86,6 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
 
   return (
     <section className="min-h-[85vh] flex items-center justify-center py-24 lg:py-32 overflow-hidden">
-      {/* Animated background */}
-      <div className="pointer-events-none absolute inset-0">
-        {allowPrism && isMounted ? (
-          <>
-            <div className="absolute inset-0 opacity-40 dark:opacity-30">
-              <Prism {...prismProps} />
-            </div>
-            <div className="absolute inset-0 bg-gradient-radial from-background/30 via-background/50 to-background/85" />
-          </>
-        ) : (
-          <>
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,oklch(0.96_0.03_65),transparent)] dark:bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,oklch(0.16_0.02_55),transparent)]" />
-            <div
-              className="hidden lg:block absolute -left-[20%] top-[10%] h-[600px] w-[600px] rounded-full opacity-30 dark:opacity-15"
-              style={{
-                background: "radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)",
-                animation: "hero-orb-1 20s ease-in-out infinite",
-              }}
-            />
-            <div
-              className="hidden lg:block absolute -right-[10%] bottom-[5%] h-[500px] w-[500px] rounded-full opacity-20 dark:opacity-10"
-              style={{
-                background: "radial-gradient(circle, oklch(0.88 0.04 85) 0%, transparent 70%)",
-                animation: "hero-orb-2 25s ease-in-out infinite",
-              }}
-            />
-            <div
-              className="hidden lg:block absolute left-[40%] top-[60%] h-[400px] w-[400px] rounded-full opacity-15 dark:opacity-8"
-              style={{
-                background: "radial-gradient(circle, oklch(0.92 0.05 35) 0%, transparent 70%)",
-                animation: "hero-orb-3 18s ease-in-out infinite",
-              }}
-            />
-            <div
-              className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]"
-              style={{ backgroundImage: "var(--bg-grid)", backgroundSize: "48px 48px" }}
-            />
-          </>
-        )}
-      </div>
-
       <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -195,7 +116,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                   href={hero.announcement.url as any}
                   className="group relative inline-flex items-center gap-2 transition-all"
                 >
-                  <div className="relative flex items-center gap-2 rounded-full border border-border/30 bg-background/60 px-4 py-1.5 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/50">
+                  <div className="relative flex items-center gap-2 rounded-full border border-border bg-background px-4 py-1.5 transition-colors duration-300 hover:border-foreground/25">
                     {hero.announcement.label && (
                       <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary uppercase tracking-wider">
                         {hero.announcement.label}
@@ -229,30 +150,13 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
               )}
             </div>
 
-            {/* Decorative brush stroke */}
-            <svg
-              className={`-mt-2 h-2.5 w-32 text-primary/20 ${enter(350)} mx-auto lg:mx-0`}
-              style={{ transitionDelay: isMounted ? "350ms" : "0ms" }}
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                fill="none"
-              />
-            </svg>
-
             {/* Description */}
             <div
               className={`mt-7 max-w-2xl ${enter(400)}`}
               style={{ transitionDelay: isMounted ? "400ms" : "0ms" }}
             >
               <p
-                className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light text-balance"
+                className="text-base sm:text-lg text-muted-foreground leading-relaxed text-balance"
                 dangerouslySetInnerHTML={descriptionHtml}
               />
             </div>
@@ -282,7 +186,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                           <span className="flex items-center gap-2.5">
                             {item.icon && <Icon name={item.icon} className="size-4 shrink-0 opacity-70" />}
                             <span>{item.title}</span>
-                            <span className="inline-flex size-5 items-center justify-center rounded-full bg-background/15 dark:bg-black/10 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px]">
+                            <span className="inline-flex size-5 items-center justify-center rounded-full bg-background/15 dark:bg-black/10 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
                               <svg viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" d="M6 3l5 5-5 5" />
                               </svg>
@@ -316,7 +220,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                   className="group w-full sm:w-auto h-12 sm:h-14 rounded-full px-7 text-sm font-semibold
                     bg-foreground/5 text-foreground hover:bg-foreground/10 active:scale-[0.97]
                     dark:bg-white/[0.06] dark:hover:bg-white/[0.12]
-                    transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                    transition-all duration-300 ease-out"
                 >
                   <span className="flex items-center justify-center gap-2.5">
                     <svg viewBox="0 0 24 24" className="size-4 opacity-50" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -334,8 +238,8 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                 className={`mt-12 ${enter(850)}`}
                 style={{ transitionDelay: isMounted ? "850ms" : "0ms" }}
               >
-                <div className="inline-flex items-center gap-2 rounded-full border border-border/20 bg-foreground/[0.02] px-4 py-1.5 text-sm text-muted-foreground/60">
-                  <Icon name="sparkles" className="size-3.5 text-primary/50" />
+                <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-1.5 text-sm text-muted-foreground">
+                  <Icon name="sparkles" className="size-3.5 text-primary/60" />
                   {hero.tip}
                 </div>
               </div>
@@ -352,53 +256,21 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
             )}
           </div>
 
-          {/* ───── RIGHT COLUMN — Animated Story Cascade ───── */}
+          {/* ───── RIGHT COLUMN — Dual-Column Story Drift ───── */}
           <div className="relative hidden lg:flex items-center justify-center overflow-hidden min-h-[580px]">
             {showDesktopCascade && (
-              <>
-            {/* Decorative ambient glow */}
-            <div className="pointer-events-none absolute -inset-12">
-              <div
-                className="absolute top-[15%] left-[20%] h-[320px] w-[320px] rounded-full opacity-25 dark:opacity-12"
-                style={{ background: "radial-gradient(circle, oklch(0.88 0.06 50) 0%, transparent 65%)" }}
-              />
-              <div
-                className="absolute bottom-[10%] right-[15%] h-[260px] w-[260px] rounded-full opacity-20 dark:opacity-10"
-                style={{ background: "radial-gradient(circle, oklch(0.85 0.04 80) 0%, transparent 65%)" }}
-              />
-            </div>
-
-            {/* Image flow container */}
-            <div className="relative h-[580px] w-full overflow-hidden">
-              {STORY_IMAGES.map((src, i) => (
-                <div
-                  key={i}
-                  className="absolute left-[12%] top-1/2 opacity-0 animate-hero-story-cascade"
-                  style={{
-                    animationDelay: `${i * 2.8}s`,
-                    animationDuration: "14s",
-                  }}
-                >
-                  {/* Double-bezel frame */}
-                  <div className="rounded-[1.5rem] border border-border/15 bg-foreground/[0.02] p-1.5 dark:bg-white/[0.03] shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_40px_-12px_rgba(0,0,0,0.45)]">
-                    <div className="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)]">
-                      <Image
-                        src={src}
-                        alt={`story-${i}`}
-                        width={240}
-                        height={320}
-                        className="w-[220px] h-[300px] object-cover"
-                        sizes="220px"
-                        quality={75}
-                      />
-                      {/* Top reflection */}
-                      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white/[0.08] to-transparent dark:from-white/[0.04]" />
-                    </div>
-                  </div>
+              <div className="hero-drift-mask relative flex h-[580px] w-full justify-center gap-5">
+                <div className="animate-hero-drift-up flex flex-col gap-5">
+                  {[...COLUMN_A, ...COLUMN_A].map((src, i) => (
+                    <StoryCard key={`${src}-${i}`} src={src} index={i} />
+                  ))}
                 </div>
-              ))}
-            </div>
-              </>
+                <div className="animate-hero-drift-down -mt-40 flex flex-col gap-5">
+                  {[...COLUMN_B, ...COLUMN_B].map((src, i) => (
+                    <StoryCard key={`${src}-${i}`} src={src} index={i} />
+                  ))}
+                </div>
+              </div>
             )}
           </div>
 

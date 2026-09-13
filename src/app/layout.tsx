@@ -3,13 +3,13 @@ import "@/app/globals.css";
 import Script from "next/script";
 import { getLocale, setRequestLocale } from "next-intl/server";
 import { cn } from "@/lib/utils";
-import { DM_Sans, Source_Serif_4, Noto_Sans_SC } from "next/font/google";
+import { Inter, Source_Serif_4, Noto_Sans_SC } from "next/font/google";
 
-// DM Sans — 几何感温暖的无衬线字体，适合创意工具
-const dmSans = DM_Sans({
+// Inter — 中性专业的无衬线正文字体（type.ai 同款），适合正式可信的品牌调性
+const inter = Inter({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-dm-sans",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -52,7 +52,7 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body
-        className={cn(dmSans.variable, sourceSerif.variable, notoSansSC.variable, "font-sans antialiased")}
+        className={cn(inter.variable, sourceSerif.variable, notoSansSC.variable, "font-sans antialiased")}
         style={{
           paddingTop: "env(safe-area-inset-top)",
           paddingBottom: "env(safe-area-inset-bottom)",

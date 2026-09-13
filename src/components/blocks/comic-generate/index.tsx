@@ -146,7 +146,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
         id: "standard",
         name: t("ai_models.standard"),
         badge: "RECOMMENDED",
-        badgeColor: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+        badgeColor: "bg-primary/10 text-primary dark:text-primary border-primary/20",
         icon: <Sparkles className="h-4 w-4" />,
         description: t("ai_models.standard_description"),
       },
@@ -155,7 +155,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
         name: t("ai_models.creative"),
         badge: "PRO",
         badgeColor:
-          "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+          "bg-primary/10 text-primary dark:text-primary border-primary/20",
         icon: <Palette className="h-4 w-4" />,
         description: t("ai_models.creative_description"),
       },
@@ -523,7 +523,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
     <div className="min-h-screen bg-background overflow-hidden">
       {/* Subtle warm top glow + dot texture */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
         <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
@@ -628,7 +628,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
             <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
               ?
             </span>
-            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-1 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               !
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
@@ -1192,7 +1192,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                         <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
                           <BookOpen className="h-7 w-7 text-orange-500" />
                           {/* Speech bubble accent */}
-                          <span className="absolute -top-1.5 -right-1.5 flex size-5 items-center justify-center rounded-full bg-amber-400 text-[10px] font-bold italic text-white shadow-sm">
+                          <span className="absolute -top-1.5 -right-1.5 flex size-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold italic text-white shadow-sm">
                             ?
                           </span>
                         </div>

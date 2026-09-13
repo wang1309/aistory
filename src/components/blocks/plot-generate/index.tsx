@@ -121,7 +121,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       id: 'standard',
       name: t('ai_models.standard'),
       badge: 'RECOMMENDED',
-      badgeColor: 'bg-amber-500/10 text-amber-600 border-amber-500/30',
+      badgeColor: 'bg-primary/10 text-primary border-primary/30',
       icon: <Sparkles className="h-4 w-4" />,
       speed: '~40s',
       description: t('ai_models.standard_description')
@@ -747,7 +747,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     <div id="plot_generator" className="min-h-screen overflow-hidden bg-background text-foreground selection:bg-orange-500/30">
       {/* Subtle warm top glow + dot texture */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
         <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
         <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '40px 40px' }} />
       </div>
@@ -807,7 +807,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                 </svg>
               </motion.div>
               <motion.div
-                className="pointer-events-none absolute z-[1] text-amber-500/50 dark:text-amber-400/50"
+                className="pointer-events-none absolute z-[1] text-primary/50 dark:text-primary/50"
                 style={{ right: "5%", top: "44%" }}
                 initial={{ opacity: 0, y: 0, rotate: 8 }}
                 animate={{ opacity: [0, 0.55, 0.55, 0], y: [0, -7, 0], rotate: [8, 3, 8] }}
@@ -854,9 +854,9 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           {/* Editorial watermark: paragraph & section marks */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
             <span className="absolute left-[5%] top-[20%] font-display italic font-bold text-2xl text-orange-500/[0.07] dark:text-orange-400/[0.07]">¶</span>
-            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">§</span>
+            <span className="absolute right-[6%] top-[14%] font-display italic font-bold text-xl text-primary/[0.07] dark:text-primary/[0.07]">§</span>
             <span className="absolute left-[9%] bottom-[16%] font-display italic font-bold text-lg text-orange-500/[0.06] dark:text-orange-400/[0.06]">§</span>
-            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-amber-500/[0.07] dark:text-amber-400/[0.07]">¶</span>
+            <span className="absolute right-[8%] bottom-[18%] font-display italic font-bold text-2xl text-primary/[0.07] dark:text-primary/[0.07]">¶</span>
             <span className="absolute left-[26%] top-[8%] font-display italic font-bold text-base text-orange-500/[0.05] dark:text-orange-400/[0.05]">§</span>
             <span className="absolute right-[24%] bottom-[6%] font-display italic font-bold text-xl text-orange-500/[0.06] dark:text-orange-400/[0.06]">¶</span>
           </div>
@@ -866,7 +866,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
             <span className="pointer-events-none absolute left-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-orange-500/0 transition-all duration-500 group-hover:text-orange-500/80 dark:group-hover:text-orange-400/80 group-hover:scale-110">
               ¶
             </span>
-            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-amber-500/0 transition-all duration-500 group-hover:text-amber-500/80 dark:group-hover:text-amber-400/80 group-hover:scale-110">
+            <span className="pointer-events-none absolute right-[calc(50%-2.75rem)] top-0 font-display italic font-bold text-2xl text-primary/0 transition-all duration-500 group-hover:text-primary/80 dark:group-hover:text-primary/80 group-hover:scale-110">
               §
             </span>
             <div className="rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
@@ -896,7 +896,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
             {[3, 5, 7, 5, 3].map((s, i) => (
               <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
             ))}
-            <span className="text-amber-500/45 dark:text-amber-400/45 text-base">✦</span>
+            <span className="text-primary/45 dark:text-primary/45 text-base">✦</span>
             {[3, 5, 7, 5, 3].map((s, i) => (
               <span key={i} className="inline-block rounded-full bg-orange-500/25 dark:bg-orange-400/30" style={{ width: s, height: s }} />
             ))}

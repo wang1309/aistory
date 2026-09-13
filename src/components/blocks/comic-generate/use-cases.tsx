@@ -13,7 +13,7 @@ export default function ComicUseCases({ section }: Props) {
 
   return (
     <section className="relative overflow-hidden py-20 sm:py-24">
-      <div className="absolute inset-0 bg-[oklch(0.98_0.01_65)] dark:bg-[oklch(0.15_0.01_65)]" />
+      <div className="absolute inset-0 bg-[oklch(0.958_0.008_85)] dark:bg-[oklch(0.165_0_0)]" />
 
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">

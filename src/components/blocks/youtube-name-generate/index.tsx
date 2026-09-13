@@ -534,7 +534,7 @@ export default function YoutubeNameGenerate({
             {item.handleValidation.formatValid ? (
               <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
             ) : (
-              <span className="text-amber-600 dark:text-amber-400">!</span>
+              <span className="text-primary dark:text-primary">!</span>
             )}
             <span className="text-muted-foreground">
               {item.handleValidation.formatValid
@@ -601,7 +601,7 @@ export default function YoutubeNameGenerate({
       className="overflow-hidden py-16 text-foreground selection:bg-orange-500/20 lg:py-24"
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.93_0.05_65),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.18_0.04_65),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_900px_400px_at_50%_0%,oklch(0.17_0_0),transparent)]" />
         <div className="absolute inset-x-0 top-0 h-[500px] bg-gradient-to-b from-orange-500/[0.04] via-orange-500/[0.02] to-transparent" />
         <div
           className="absolute inset-0 opacity-[0.04] dark:opacity-[0.05]"
@@ -707,7 +707,7 @@ export default function YoutubeNameGenerate({
                     >
                       <span className="absolute left-1/2 top-0 size-1 -translate-x-1/2 rounded-full bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.85)]" />
                       <span className="absolute bottom-1 right-1.5 size-1 rounded-full bg-orange-400 shadow-[0_0_8px_2px_rgba(251,146,60,0.7)]" />
-                      <span className="absolute bottom-2 left-1.5 size-1 rounded-full bg-amber-400 shadow-[0_0_8px_2px_rgba(252,211,77,0.7)]" />
+                      <span className="absolute bottom-2 left-1.5 size-1 rounded-full bg-primary shadow-[0_0_8px_2px_rgba(36,86,214,0.55)]" />
                     </motion.div>
                   )}
                 </div>

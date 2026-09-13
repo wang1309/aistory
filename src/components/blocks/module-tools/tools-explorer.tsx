@@ -191,10 +191,10 @@ function SearchInput({
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           className={cn(
-            "w-full rounded-full border border-border/25 bg-background/70 py-3 pl-11 pr-10 text-sm text-foreground shadow-[0_8px_30px_-12px_rgba(38,28,12,0.18)] outline-hidden transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] backdrop-blur-md",
+            "w-full rounded-full border border-border bg-background py-3 pl-11 pr-10 text-sm text-foreground shadow-sm outline-hidden transition-colors duration-200",
             "placeholder:text-muted-foreground/45",
-            "focus:border-primary/35 focus:bg-background/90 focus:shadow-[0_12px_40px_-12px_rgba(38,28,12,0.25)]",
-            "dark:border-white/10 dark:bg-white/[0.03]"
+            "focus:border-primary/40 focus:outline-none",
+            "dark:border-input dark:bg-input/30"
           )}
         />
         {value && (

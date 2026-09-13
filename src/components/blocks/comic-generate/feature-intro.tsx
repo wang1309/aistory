@@ -14,7 +14,7 @@ export default function ComicFeatureIntro({ section }: Props) {
   return (
     <section className="relative overflow-hidden py-20 sm:py-24">
       {/* Subtle warm background */}
-      <div className="absolute inset-0 bg-[oklch(0.98_0.01_65)] dark:bg-[oklch(0.15_0.01_65)]" />
+      <div className="absolute inset-0 bg-[oklch(0.958_0.008_85)] dark:bg-[oklch(0.165_0_0)]" />
 
       {/* Comic panel grid decoration (right side, desktop only) */}
       <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">

@@ -16,10 +16,10 @@ export default function Benefits({ section, accent = "orange" }: Props) {
     <section className="relative overflow-hidden py-28 sm:py-36">
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.95_0.04_65),transparent)] dark:bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.16_0.02_55),transparent)]" />
+        <div className="absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.17_0_0),transparent)]" />
         <div
           className="absolute -right-[10%] top-[20%] h-[350px] w-[350px] rounded-full opacity-[0.07] dark:opacity-[0.04]"
-          style={{ background: "radial-gradient(circle, oklch(0.88 0.04 80) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, oklch(0.95 0 0) 0%, transparent 70%)" }}
         />
       </div>
 

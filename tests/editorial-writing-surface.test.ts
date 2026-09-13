@@ -9,22 +9,37 @@ const generatorSource = readFileSync(
 );
 
 test("editorial hero exposes a visible quick-start writing affordance", () => {
-  assert.match(heroSource, /data-testid="hero-quick-start"/);
-  assert.match(heroSource, /rounded-md bg-foreground/);
+  assert.match(heroSource, /id="hero-quick-start-btn"/);
+  assert.match(heroSource, /variant="pill"[\s\S]{0,80}size="pill"/);
   assert.doesNotMatch(heroSource, /min-h-\[92vh\]/);
   assert.doesNotMatch(heroSource, /bg-clip-text text-transparent/);
 });
 
-test("story generator uses a compact model control and suppresses metadata on mobile", () => {
-  assert.match(generatorSource, /data-testid="story-model-control"/);
-  assert.match(generatorSource, /hidden sm:flex/);
-  assert.doesNotMatch(generatorSource, /grid grid-cols-3 gap-2/);
+test("hero sits on a clean neutral canvas with a toned-down drift", () => {
+  // Decorative orb / WebGL layers are gone in the neutral redesign.
+  assert.doesNotMatch(heroSource, /hero-orb/);
+  assert.doesNotMatch(heroSource, /Prism/);
+  assert.doesNotMatch(heroSource, /sg-orb/);
+  // No warm-tinted ambient radials anywhere in the hero.
+  assert.doesNotMatch(heroSource, /oklch\(0\.9\d_[\d.]+_(55|65|75|80)\)/);
+  // The dual-column story drift remains as the hero's visual anchor.
+  assert.match(heroSource, /animate-hero-drift/);
 });
 
-test("paper theme uses a clay action accent and warm charcoal dark surface", () => {
+test("story generator keeps its compact model control on a neutral canvas", () => {
+  assert.match(generatorSource, /grid grid-cols-3 gap-2/);
+  assert.match(generatorSource, /selection:bg-primary\/15/);
+  assert.doesNotMatch(generatorSource, /sg-orb/);
+  assert.doesNotMatch(generatorSource, /oklch\(0\.9\d_[\d.]+_(45|55|65|75|80)\)/);
+});
+
+test("neutral theme uses an ink canvas, cool primary, and tight radius", () => {
   const themeSource = readFileSync("src/app/theme.css", "utf8");
 
-  assert.match(themeSource, /--primary: oklch\(0\.67 0\.14 55\)/);
-  assert.match(themeSource, /--background: oklch\(0\.16 0\.01 55\)/);
-  assert.match(themeSource, /--radius: 0\.5rem/);
+  assert.match(themeSource, /--primary: oklch\(0\.54 0\.2 262\)/);
+  assert.match(themeSource, /--background: oklch\(0\.975 0\.008 85\)/);
+  assert.match(themeSource, /--card: oklch\(1 0 0\)/);
+  assert.match(themeSource, /--radius: 0\.75rem/);
+  assert.match(themeSource, /hsl\(226 25% 12%/);
+  assert.match(themeSource, /var\(--font-inter\)/);
 });

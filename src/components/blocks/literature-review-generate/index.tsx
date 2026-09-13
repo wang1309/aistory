@@ -470,17 +470,17 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-14 items-start">
           {/* 左栏:价值主张 + 学术诚信说明(server-translated,静态渲染) */}
           <div className="lg:sticky lg:top-24">
-            <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/25 bg-amber-500/[0.05] px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-amber-700 dark:text-amber-400">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.05] px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-primary dark:text-primary">
               <GraduationCap className="size-3.5" />
               {t("ui.eyebrow")}
             </span>
 
             <h1 className="mt-5 font-display text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-foreground">
-              <span className="italic text-amber-700 dark:text-amber-400">{t("ui.title_accent")}</span>{" "}
+              <span className="italic text-primary dark:text-primary">{t("ui.title_accent")}</span>{" "}
               <span>{t("ui.title")}</span>
             </h1>
 
-            <div className="mt-4 h-px w-24 bg-amber-500/40" aria-hidden="true" />
+            <div className="mt-4 h-px w-24 bg-primary/40" aria-hidden="true" />
 
             <p className="mt-5 text-base leading-relaxed text-muted-foreground/80 font-light">
               {t("ui.subtitle")}
@@ -490,7 +490,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
             <div className="mt-8 divide-y divide-border/40 border-y border-border/40">
               {valuePoints.map((point: { title: string; description: string }, i: number) => (
                 <div key={i} className="flex gap-4 py-5">
-                  <span className="font-display text-sm font-semibold text-amber-600/80 dark:text-amber-400/80 tabular-nums pt-0.5">
+                  <span className="font-display text-sm font-semibold text-primary/80 dark:text-primary/80 tabular-nums pt-0.5">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
@@ -502,7 +502,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
             </div>
 
             {/* 学术诚信说明 */}
-            <div className="mt-6 rounded-2xl border border-amber-500/20 bg-amber-500/[0.04] p-5">
+            <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/[0.04] p-5">
               <div className="flex items-center gap-2 text-sm font-semibold text-amber-800 dark:text-amber-300">
                 <ShieldCheck className="size-4" />
                 {t("ui.integrity_note_title")}
@@ -516,7 +516,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
           {/* 右栏:纸面表单 */}
           <div className="rounded-3xl border border-border/50 bg-card shadow-sm">
             <div className="border-b border-border/40 px-6 sm:px-8 py-4 flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-amber-500/10 text-amber-700 dark:text-amber-400">
+              <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary">
                 <BookOpen className="size-5" />
               </div>
               <span className="text-sm font-semibold text-foreground">{t("ui.eyebrow")}</span>
@@ -526,14 +526,14 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
               <div className="space-y-2">
                 <div className="flex items-center justify-between gap-2">
                   <Label htmlFor="lr-topic" className="text-sm font-semibold text-foreground">
-                    {t("ui.topic_label")} <span className="text-amber-600 dark:text-amber-400">*</span>
+                    {t("ui.topic_label")} <span className="text-primary dark:text-primary">*</span>
                   </Label>
                   <div className="flex items-center gap-2">
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={handleRandomTopic}
-                      className="h-7 text-xs gap-1.5 text-amber-700 dark:text-amber-400 hover:bg-amber-500/10 px-2.5 rounded-full"
+                      className="h-7 text-xs gap-1.5 text-primary dark:text-primary hover:bg-primary/10 px-2.5 rounded-full"
                     >
                       <Wand2 className="w-3 h-3" />
                       {t("ui.random_button")}
@@ -549,7 +549,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                   value={topic}
                   onChange={(event) => setTopic(event.target.value)}
                   placeholder={t("placeholders.topic")}
-                  className="min-h-[100px] resize-none bg-background border-border/50 border-l-2 border-l-amber-500/30 focus-visible:border-amber-500/50 focus-visible:ring-amber-500/20 rounded-xl p-4 text-base leading-relaxed transition-all"
+                  className="min-h-[100px] resize-none bg-background border-border/50 border-l-2 border-l-primary/30 focus-visible:border-primary/50 focus-visible:ring-primary/20 rounded-xl p-4 text-base leading-relaxed transition-all"
                 />
                 <p className="text-xs text-muted-foreground/60">{t("ui.topic_hint")}</p>
               </div>
@@ -649,7 +649,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                 <CollapsibleTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="w-full flex justify-between items-center p-0 h-auto hover:bg-transparent text-xs font-medium text-muted-foreground hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
+                    className="w-full flex justify-between items-center p-0 h-auto hover:bg-transparent text-xs font-medium text-muted-foreground hover:text-primary dark:hover:text-primary transition-colors"
                   >
                     <span className="flex items-center gap-1.5">
                       <Settings2 className="w-3.5 h-3.5" />
@@ -668,7 +668,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                       value={researchQuestion}
                       onChange={(event) => setResearchQuestion(event.target.value)}
                       placeholder={t("placeholders.research_question")}
-                      className="h-10 bg-background border-border/50 focus-visible:border-amber-500/50 focus-visible:ring-amber-500/20 rounded-lg"
+                      className="h-10 bg-background border-border/50 focus-visible:border-primary/50 focus-visible:ring-primary/20 rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
@@ -680,7 +680,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                       value={assignmentBrief}
                       onChange={(event) => setAssignmentBrief(event.target.value)}
                       placeholder={t("placeholders.assignment_brief")}
-                      className="min-h-[70px] resize-none bg-background border-border/50 focus-visible:border-amber-500/50 focus-visible:ring-amber-500/20 rounded-lg p-3 text-sm leading-relaxed"
+                      className="min-h-[70px] resize-none bg-background border-border/50 focus-visible:border-primary/50 focus-visible:ring-primary/20 rounded-lg p-3 text-sm leading-relaxed"
                     />
                   </div>
                   <div className="space-y-2">
@@ -692,7 +692,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                       value={discipline}
                       onChange={(event) => setDiscipline(event.target.value)}
                       placeholder={t("placeholders.discipline")}
-                      className="h-10 bg-background border-border/50 focus-visible:border-amber-500/50 focus-visible:ring-amber-500/20 rounded-lg"
+                      className="h-10 bg-background border-border/50 focus-visible:border-primary/50 focus-visible:ring-primary/20 rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
@@ -704,7 +704,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                       value={themesOrSources}
                       onChange={(event) => setThemesOrSources(event.target.value)}
                       placeholder={t("placeholders.themes_sources")}
-                      className="min-h-[110px] resize-none bg-background border-border/50 border-l-2 border-l-amber-500/20 focus-visible:border-amber-500/50 focus-visible:ring-amber-500/20 rounded-lg p-3 text-sm leading-relaxed"
+                      className="min-h-[110px] resize-none bg-background border-border/50 border-l-2 border-l-primary/20 focus-visible:border-primary/50 focus-visible:ring-primary/20 rounded-lg p-3 text-sm leading-relaxed"
                     />
                     <p className="text-xs text-muted-foreground/60">{t("ui.themes_sources_hint")}</p>
                   </div>
@@ -715,7 +715,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="group w-full min-h-12 h-auto whitespace-normal py-3 text-base bg-amber-600 font-semibold text-white shadow-md shadow-amber-600/20 hover:bg-amber-700 active:scale-[0.98] disabled:opacity-60 dark:bg-amber-500 dark:text-[oklch(0.20_0.02_55)] dark:shadow-amber-500/20 dark:hover:bg-amber-400"
+                  className="group w-full min-h-12 h-auto whitespace-normal py-3 text-base bg-primary font-semibold text-white shadow-md shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] disabled:opacity-60 dark:bg-primary dark:text-primary-foreground dark:shadow-primary/20 dark:hover:bg-primary/90"
                 >
                   {isGenerating ? (
                     <>
@@ -759,7 +759,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
           >
             <div className="flex flex-wrap items-center justify-between gap-2 px-6 sm:px-8 py-4 border-b border-border/40">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-amber-500/10 text-amber-700 dark:text-amber-400">
+                <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary">
                   <Library className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col">
@@ -816,15 +816,15 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                   {isGenerating ? (
                     <div className="space-y-5">
                       <div className="relative mx-auto w-14 h-14">
-                        <div className="absolute inset-0 rounded-full border-4 border-amber-500/20" />
-                        <div className="absolute inset-0 rounded-full border-4 border-t-amber-500 animate-spin" />
+                        <div className="absolute inset-0 rounded-full border-4 border-primary/20" />
+                        <div className="absolute inset-0 rounded-full border-4 border-t-primary animate-spin" />
                       </div>
                       <p className="text-sm font-medium animate-pulse">{t("output.generating_message")}</p>
                     </div>
                   ) : (
                     <div className="space-y-4 max-w-sm mx-auto">
-                      <div className="w-14 h-14 mx-auto bg-amber-500/5 rounded-2xl flex items-center justify-center">
-                        <Library className="w-7 h-7 text-amber-500/50" />
+                      <div className="w-14 h-14 mx-auto bg-primary/5 rounded-2xl flex items-center justify-center">
+                        <Library className="w-7 h-7 text-primary/50" />
                       </div>
                       <p className="text-muted-foreground text-sm">{t("output.empty_message")}</p>
                     </div>
@@ -835,9 +835,9 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
 
             {/* Evidence to Verify:与草稿正文分离的常驻警示 */}
             {generatedReview && !isGenerating && (
-              <div className="border-t border-amber-500/20 bg-amber-500/[0.04] px-6 sm:px-8 py-4">
+              <div className="border-t border-primary/20 bg-primary/[0.04] px-6 sm:px-8 py-4">
                 <div className="flex items-start gap-3">
-                  <ShieldCheck className="mt-0.5 size-4 shrink-0 text-amber-600 dark:text-amber-400" />
+                  <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary dark:text-primary" />
                   <div>
                     <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">
                       {t("output.evidence_warning_title")}

@@ -1192,27 +1192,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   return (
     <section
       id="craft_story"
-      className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-orange-500/20"
+      className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-primary/15"
     >
-      {/* Background */}
+      {/* Background — clean neutral canvas with a whisper of grid */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,oklch(0.95_0.04_65),transparent)] dark:bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,oklch(0.18_0.03_55),transparent)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_30%_at_80%_20%,oklch(0.94_0.03_45),transparent)] dark:bg-[radial-gradient(ellipse_40%_30%_at_80%_20%,oklch(0.15_0.02_45),transparent)] opacity-60" />
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '48px 48px' }} />
-        <div
-          className="absolute -left-[15%] top-[5%] h-[500px] w-[500px] rounded-full opacity-25 dark:opacity-[0.12]"
-          style={{
-            background: "radial-gradient(circle, oklch(0.90 0.06 55) 0%, transparent 70%)",
-            animation: "sg-orb-a 22s ease-in-out infinite",
-          }}
-        />
-        <div
-          className="absolute -right-[8%] bottom-[8%] h-[420px] w-[420px] rounded-full opacity-[0.18] dark:opacity-[0.08]"
-          style={{
-            background: "radial-gradient(circle, oklch(0.88 0.04 80) 0%, transparent 70%)",
-            animation: "sg-orb-b 28s ease-in-out infinite",
-          }}
-        />
       </div>
 
       <div ref={sectionRef} className="w-full max-w-6xl mx-auto px-6 py-24 sm:py-32 relative">
@@ -1284,9 +1268,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
           style={{ transitionDelay: sectionVisible ? "400ms" : "0ms" }}
         >
           {/* Outer shell — aluminium tray */}
-          <div className="rounded-[2rem] border border-border/10 bg-foreground/[0.02] p-2 dark:bg-white/[0.02]">
-            {/* Inner core — glass panel */}
-            <div className="overflow-hidden rounded-[calc(2rem-0.5rem)] bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)]">
+          <div className="rounded-2xl border border-border bg-muted/40 p-2">
+            {/* Inner core — panel */}
+            <div className="overflow-hidden rounded-[calc(1rem-0.25rem)] bg-card border border-border/50 shadow-sm">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
 
               {/* Left: Editor + Generate (8 cols) */}
@@ -1405,7 +1389,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   <div className="rounded-full border border-border/20 bg-foreground/[0.015] dark:bg-white/[0.02] p-1">
                     <Button
                       onClick={handleGenerateClick}
-                      className="w-full h-12 text-sm font-semibold bg-foreground text-background hover:bg-foreground/85 disabled:opacity-50 rounded-full border-none transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] dark:bg-white dark:text-[oklch(0.20_0.02_55)] dark:hover:bg-white/90"
+                      className="w-full h-12 text-sm font-semibold bg-foreground text-background hover:bg-foreground/85 disabled:opacity-50 rounded-full border-none transition-all duration-300 ease-out active:scale-[0.98] dark:bg-white dark:text-[oklch(0.15_0_0)] dark:hover:bg-white/90"
                       style={getCtaBreatheAnimationStyle({
                         isActive: sectionVisible,
                         delay: "1s",
@@ -1601,8 +1585,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
         {(isGenerating || generatedStory) && (
           <div ref={outputRef} className="mt-6">
             {/* Outer bezel */}
-            <div className="rounded-[1.5rem] border border-border/15 bg-foreground/[0.015] p-1.5 dark:bg-white/[0.02]">
-              <div className="overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-card">
+            <div className="rounded-xl border border-border bg-muted/40 p-1.5">
+              <div className="overflow-hidden rounded-[calc(0.75rem-0.25rem)] bg-card border border-border/50 shadow-sm">
               {/* Header */}
               <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-8 border-b border-border/10 gap-4">
                 <div className="flex items-center gap-4">
@@ -1669,7 +1653,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   <div className="prose prose-lg md:prose-xl dark:prose-invert max-w-4xl mx-auto font-serif leading-loose tracking-wide text-foreground">
                     <div className="whitespace-pre-wrap">
                       {generatedStory}
-                      {isGenerating && <span className="inline-block w-2 h-6 ml-1 bg-orange-500 animate-pulse" />}
+                      {isGenerating && <span className="inline-block w-2 h-6 ml-1 bg-foreground/70 animate-pulse" />}
                     </div>
                   </div>
                 )}

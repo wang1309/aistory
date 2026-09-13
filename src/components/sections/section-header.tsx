@@ -95,23 +95,13 @@ export default function SectionHeader({
       )}
 
       {brush && title && (
-        <svg
+        <div
           className={cn(
-            "mt-2 mb-5 h-2.5 w-28 text-primary/25",
+            "mt-3 mb-5 h-px w-12 rounded-full bg-foreground/20",
             centered && "mx-auto"
           )}
-          viewBox="0 0 160 12"
-          fill="none"
-          preserveAspectRatio="none"
           aria-hidden="true"
-        >
-          <path
-            d="M2 8c30-5 60-6 90-3s40 4 66-1"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
+        />
       )}
 
       {description && (

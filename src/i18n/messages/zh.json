@@ -19,6 +19,9 @@
     "quick_try": "快速体验",
     "read_story": "阅读故事"
   },
+  "footer": {
+    "free_tools": "免费写作工具"
+  },
   "sign_modal": {
     "sign_in_title": "登录",
     "sign_in_description": "登录您的账户",
