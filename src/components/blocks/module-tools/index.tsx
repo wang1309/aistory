@@ -48,7 +48,6 @@ export default async function ModuleToolsSection({
   const tools = moduleTools.filter((tool) =>
     excludeSlug ? tool.slug !== excludeSlug : true
   );
-  const newTools = tools.filter((tool) => tool.badges?.includes("new"));
 
   if (!tools.length) return null;
 
@@ -69,17 +68,10 @@ export default async function ModuleToolsSection({
   });
 
   const toolCards = tools.map(toCard);
-  const newToolCards = newTools.map(toCard);
 
-  // Only carve out a "New" cluster when it is a true subset: when every tool in
-  // the module is new, the label is meaningless and the main grid would end up
-  // empty (every slug excluded), surfacing a false "no results" state.
-  // Hub(groupedChips)模式保持单一连续网格,避免 New 区尾行留白断层。
-  const splitNewTools =
-    !groupedChips &&
-    newToolCards.length > 0 &&
-    newToolCards.length < toolCards.length;
-
+  // Single continuous grid (new tools are flagged via badges instead of being
+  // carved out into a separate cluster — a partial cluster row leaves ragged
+  // empty cells mid-section). A tail CTA tile fills the last row's remainder.
   return (
     <section className="relative overflow-hidden py-28 sm:py-36">
       <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -94,12 +86,7 @@ export default async function ModuleToolsSection({
           descriptionClassName="font-light"
         />
 
-        <ToolsExplorer
-            tools={toolCards}
-            newTools={splitNewTools ? newToolCards : []}
-            accent={accent}
-            groupedChips={groupedChips}
-          />
+        <ToolsExplorer tools={toolCards} accent={accent} groupedChips={groupedChips} />
       </div>
     </section>
   );

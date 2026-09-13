@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "@/i18n/navigation";
 import Icon from "@/components/icon";
 import { cn } from "@/lib/utils";
 import { AnimatedToolsGrid, type ToolCardData } from "./animated-tools-grid";
@@ -11,7 +12,6 @@ import { useTranslations } from "next-intl";
 
 interface ToolsExplorerProps {
   tools: ToolCardData[];
-  newTools?: ToolCardData[];
   accent?: AccentColor;
   /**
    * true 时筛选项切到粗粒度三大组(Writing/Social/Name),
@@ -42,7 +42,6 @@ const GROUP_CHIPS: { id: ToolGroup | "all"; labelKey: string }[] = [
 
 export function ToolsExplorer({
   tools,
-  newTools = [],
   accent = "orange",
   groupedChips = false,
 }: ToolsExplorerProps) {
@@ -61,17 +60,9 @@ export function ToolsExplorer({
     );
   }, [chips, groupedChips, tools]);
 
-  const hasFilter = query.trim() !== "" || activeCategory !== "all";
-  const showNewSection = !hasFilter && newTools.length > 0;
-  const newToolSlugs = useMemo(
-    () => new Set(newTools.map((tool) => tool.slug)),
-    [newTools]
-  );
-
   const filteredTools = useMemo(() => {
     const q = query.trim().toLowerCase();
     return tools.filter((tool) => {
-      if (showNewSection && newToolSlugs.has(tool.slug)) return false;
       if (
         activeCategory !== "all" &&
         (groupedChips ? tool.group : tool.category) !== activeCategory
@@ -84,14 +75,7 @@ export function ToolsExplorer({
       }
       return true;
     });
-  }, [
-    tools,
-    query,
-    activeCategory,
-    showNewSection,
-    newToolSlugs,
-    groupedChips,
-  ]);
+  }, [tools, query, activeCategory, groupedChips]);
 
   return (
     <div className="mt-10">
@@ -138,20 +122,6 @@ export function ToolsExplorer({
           exit={{ opacity: 0, y: -4 }}
           transition={{ duration: 0.32, ease: [0.32, 0.72, 0, 1] }}
         >
-          {showNewSection && (
-            <div className="mb-10">
-              <div className="mb-4 flex items-center gap-2">
-                <span className="flex size-6 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600 ring-1 ring-emerald-500/20 dark:bg-emerald-400/10 dark:text-emerald-300 dark:ring-emerald-400/20">
-                  <Icon name="RiSparkling2Line" className="size-3.5" />
-                </span>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-emerald-700/90 dark:text-emerald-300/90">
-                  {t("ai_tools.new_tools_section")}
-                </span>
-              </div>
-              <AnimatedToolsGrid tools={newTools} accent={accent} className="mt-0" />
-            </div>
-          )}
-
           {filteredTools.length > 0 ? (
             <AnimatedToolsGrid tools={filteredTools} accent={accent} />
           ) : (
@@ -166,6 +136,29 @@ export function ToolsExplorer({
           )}
         </motion.div>
       </AnimatePresence>
+
+      {/* Hub entry: standalone centered button below the grid */}
+      <div className="mt-10 flex justify-center">
+        <Link
+          href="/ai-tools"
+          className={cn(
+            "group inline-flex items-center gap-1.5 rounded-full border border-border/30 bg-background px-5 py-2 text-sm font-semibold text-foreground transition-colors",
+            "hover:border-border/50 hover:bg-foreground/[0.04]"
+          )}
+        >
+          {t("ai_tools.tools_hub_nav")}
+          <svg
+            viewBox="0 0 16 16"
+            className="size-3.5 text-muted-foreground/50 transition-colors duration-300 group-hover:text-foreground/70"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" d="M5 3l6 5-6 5" />
+          </svg>
+        </Link>
+      </div>
     </div>
   );
 }
