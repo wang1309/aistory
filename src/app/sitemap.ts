@@ -45,6 +45,7 @@ const TOOL_ROUTES = new Set([
   '/ai-tools/band-name-generator',
   '/ai-tools/random-nfl-team-generator',
   '/ai-tools/middle-name-generator',
+  '/ai-tools/pictionary-word-generator',
 ])
 
 function getRouteTier(route: string): RouteTier {
@@ -138,6 +139,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/ai-tools/band-name-generator',
   '/ai-tools/random-nfl-team-generator',
   '/ai-tools/middle-name-generator',
+  '/ai-tools/pictionary-word-generator',
     '/posts',
     '/changelog'
   ]
