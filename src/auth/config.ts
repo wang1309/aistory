@@ -100,6 +100,7 @@ if (
     GitHubProvider({
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
+      issuer: "https://github.com/login/oauth",
     })
   );
 }
