@@ -1,11 +1,11 @@
-import type { AgnesChatMessage } from "../_lib";
+import type { GrSaiChatMessage } from "../_lib";
 
 const INPUT_PRICE_PER_MILLION_TOKENS = 0.15;
 const OUTPUT_PRICE_PER_MILLION_TOKENS = 0.3;
 const CREDIT_VALUE_USD = 0.001;
 const ONE_MILLION = 1_000_000;
 
-function estimateContentTokens(content: AgnesChatMessage["content"]) {
+function estimateContentTokens(content: GrSaiChatMessage["content"]) {
   if (typeof content === "string") {
     return Math.max(1, Math.ceil(content.length / 4));
   }
@@ -23,7 +23,7 @@ function estimateContentTokens(content: AgnesChatMessage["content"]) {
   }, 0);
 }
 
-export function estimateMessageTokens(messages: AgnesChatMessage[]) {
+export function estimateMessageTokens(messages: GrSaiChatMessage[]) {
   return messages.reduce((total, message) => {
     return total + 4 + estimateContentTokens(message.content);
   }, 0);
@@ -50,7 +50,7 @@ export function estimateMaxContinueChatCredits({
   messages,
   maxTokens,
 }: {
-  messages: AgnesChatMessage[];
+  messages: GrSaiChatMessage[];
   maxTokens: number;
 }) {
   return calculateContinueChatCredits({

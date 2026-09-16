@@ -1,12 +1,12 @@
 import { respErr } from "@/lib/resp";
 import {
-  buildAgnesChatRequest,
-  createAgnesHeaders,
-  type AgnesChatRequestInput,
+  buildGrSaiChatRequest,
+  createGrSaiHeaders,
+  type GrSaiChatRequestInput,
 } from "./_lib";
 
-function getAgnesBaseUrl() {
-  return (process.env.AGNES_BASE_URL || "https://apihub.agnes-ai.com").replace(
+function getGrSaiBaseUrl() {
+  return (process.env.GRSAI_BASE_URL || "https://api.grsai.com").replace(
     /\/$/,
     ""
   );
@@ -14,32 +14,32 @@ function getAgnesBaseUrl() {
 
 export async function POST(req: Request) {
   try {
-    const body = (await req.json()) as AgnesChatRequestInput;
+    const body = (await req.json()) as GrSaiChatRequestInput;
 
     if (!Array.isArray(body?.messages) || body.messages.length === 0) {
       return respErr("messages are required");
     }
 
-    const apiKey = process.env.AGNES_API_KEY;
+    const apiKey = process.env.GRSAI_API_KEY;
     if (!apiKey) {
-      return respErr("AGNES_API_KEY not configured");
+      return respErr("GRSAI_API_KEY not configured");
     }
 
-    const payload = buildAgnesChatRequest(body);
-    const response = await fetch(`${getAgnesBaseUrl()}/v1/chat/completions`, {
+    const payload = buildGrSaiChatRequest(body);
+    const response = await fetch(`${getGrSaiBaseUrl()}/v1/chat/completions`, {
       method: "POST",
-      headers: createAgnesHeaders(apiKey),
+      headers: createGrSaiHeaders(apiKey),
       body: JSON.stringify(payload),
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      return respErr(`Agnes API error: ${response.status} ${errorText}`);
+      return respErr(`GRSAI API error: ${response.status} ${errorText}`);
     }
 
     if (payload.stream) {
       if (!response.body) {
-        return respErr("No response body from Agnes API");
+        return respErr("No response body from GRSAI API");
       }
 
       return new Response(response.body, {
@@ -57,6 +57,6 @@ export async function POST(req: Request) {
     const data = await response.json();
     return Response.json(data, { status: response.status });
   } catch (error) {
-    return respErr(`Agnes chat proxy failed: ${error}`);
+    return respErr(`GRSAI chat proxy failed: ${error}`);
   }
 }

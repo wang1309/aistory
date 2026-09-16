@@ -1,11 +1,11 @@
-export type AgnesChatMessage = {
+export type GrSaiChatMessage = {
   role: string;
   content: string | Array<Record<string, unknown>>;
   name?: string;
   tool_call_id?: string;
 };
 
-export type AgnesChatTool = {
+export type GrSaiChatTool = {
   type: "function";
   function: {
     name: string;
@@ -14,22 +14,20 @@ export type AgnesChatTool = {
   };
 };
 
-export type AgnesChatRequestInput = {
+export type GrSaiChatRequestInput = {
   model?: string;
-  messages: AgnesChatMessage[];
+  messages: GrSaiChatMessage[];
   temperature?: number;
   top_p?: number;
   max_tokens?: number;
   stream?: boolean;
-  tools?: AgnesChatTool[];
+  tools?: GrSaiChatTool[];
   tool_choice?: string | Record<string, unknown>;
-  chat_template_kwargs?: Record<string, unknown>;
-  thinking?: Record<string, unknown>;
 };
 
-export function buildAgnesChatRequest(input: AgnesChatRequestInput) {
+export function buildGrSaiChatRequest(input: GrSaiChatRequestInput) {
   return {
-    model: input.model || "agnes-2.5-flash",
+    model: input.model || "gemini-3.1-flash-lite",
     messages: input.messages,
     ...(input.temperature !== undefined
       ? { temperature: input.temperature }
@@ -41,14 +39,10 @@ export function buildAgnesChatRequest(input: AgnesChatRequestInput) {
     ...(input.tool_choice !== undefined
       ? { tool_choice: input.tool_choice }
       : {}),
-    ...(input.chat_template_kwargs
-      ? { chat_template_kwargs: input.chat_template_kwargs }
-      : {}),
-    ...(input.thinking ? { thinking: input.thinking } : {}),
   };
 }
 
-export function createAgnesHeaders(apiKey: string) {
+export function createGrSaiHeaders(apiKey: string) {
   return {
     "Content-Type": "application/json",
     Authorization: `Bearer ${apiKey}`,

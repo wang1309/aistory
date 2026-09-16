@@ -6,13 +6,13 @@ import {
 } from "@/services/credit";
 import { getUserUuid } from "@/services/user";
 import {
-  buildAgnesChatRequest,
-  createAgnesHeaders,
-  type AgnesChatRequestInput,
+  buildGrSaiChatRequest,
+  createGrSaiHeaders,
+  type GrSaiChatRequestInput,
 } from "../_lib";
 import { calculateContinueChatCredits, estimateMaxContinueChatCredits, estimateMessageTokens } from "./_lib";
 
-type ContinueChatRequest = AgnesChatRequestInput & {
+type ContinueChatRequest = GrSaiChatRequestInput & {
   max_tokens: number;
   storyId?: string;
   metadata?: Record<string, unknown>;
@@ -28,7 +28,7 @@ export type ContinueChatDependencies = {
   getUserUuid: typeof getUserUuid;
   getUserCredits: typeof getUserCredits;
   decreaseCredits: typeof decreaseCredits;
-  fetchAgnes: (payload: AgnesChatRequestInput) => Promise<Response>;
+  fetchGrSai: (payload: GrSaiChatRequestInput) => Promise<Response>;
 };
 
 function getDefaultDependencies(): ContinueChatDependencies {
@@ -36,20 +36,20 @@ function getDefaultDependencies(): ContinueChatDependencies {
     getUserUuid,
     getUserCredits,
     decreaseCredits,
-    fetchAgnes: async (payload) => {
-      const apiKey = process.env.AGNES_API_KEY;
+    fetchGrSai: async (payload) => {
+      const apiKey = process.env.GRSAI_API_KEY;
       if (!apiKey) {
-        throw new Error("AGNES_API_KEY not configured");
+        throw new Error("GRSAI_API_KEY not configured");
       }
 
-      const baseUrl = (process.env.AGNES_BASE_URL || "https://apihub.agnes-ai.com").replace(
+      const baseUrl = (process.env.GRSAI_BASE_URL || "https://api.grsai.com").replace(
         /\/$/,
         ""
       );
 
       return fetch(`${baseUrl}/v1/chat/completions`, {
         method: "POST",
-        headers: createAgnesHeaders(apiKey),
+        headers: createGrSaiHeaders(apiKey),
         body: JSON.stringify(payload),
       });
     },
@@ -114,19 +114,19 @@ export function createContinueChatHandler(
         return respErr("insufficient credits");
       }
 
-      const upstreamPayload = buildAgnesChatRequest({
+      const upstreamPayload = buildGrSaiChatRequest({
         ...body,
         stream: true,
       });
 
-      const upstream = await deps.fetchAgnes(upstreamPayload);
+      const upstream = await deps.fetchGrSai(upstreamPayload);
       if (!upstream.ok) {
         const errorText = await upstream.text();
-        return respErr(`Agnes API error: ${upstream.status} ${errorText}`);
+        return respErr(`GRSAI API error: ${upstream.status} ${errorText}`);
       }
 
       if (!upstream.body) {
-        return respErr("No response body from Agnes API");
+        return respErr("No response body from GRSAI API");
       }
 
       const decoder = new TextDecoder();
