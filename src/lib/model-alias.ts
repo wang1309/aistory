@@ -1,5 +1,5 @@
 const MODEL_ALIASES: Record<string, string> = {
-  generic: "agnes-2.0-flash",
+  generic: "agnes-2.5-flash",
 };
 
 export function resolveModelAlias(alias: string | null | undefined): string | null {

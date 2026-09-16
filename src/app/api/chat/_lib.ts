@@ -29,7 +29,7 @@ export type AgnesChatRequestInput = {
 
 export function buildAgnesChatRequest(input: AgnesChatRequestInput) {
   return {
-    model: input.model || "agnes-2.0-flash",
+    model: input.model || "agnes-2.5-flash",
     messages: input.messages,
     ...(input.temperature !== undefined
       ? { temperature: input.temperature }
