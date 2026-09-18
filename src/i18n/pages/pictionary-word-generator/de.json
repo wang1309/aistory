@@ -1,0 +1,158 @@
+{
+  "pictionary_word_generator": {
+    "metadata": {
+      "title": "Pictionary Wortgenerator – Kostenlose Zufallsbegriffe",
+      "description": "Kostenloser Pictionary Wortgenerator mit 450 Begriffen in 10 Kategorien und 3 Stufen. Timer, Punkte und eigene Listen — ganz ohne Anmeldung.",
+      "keywords": "pictionary wortgenerator, pictionary begriffe, zufällige zeichnen wörter, pictionary ideen, zeichnen raten"
+    },
+    "ui": {
+      "title": "Pictionary Wortgenerator",
+      "title_highlight": "Wort",
+      "subtitle": "Dieser kostenlose Pictionary Wortgenerator zieht zufällige Begriffe nach Kategorie und Schwierigkeit — mit Timer, Team-Punkten, eigenen Wortlisten und ohne Wiederholungen bis zum Zurücksetzen.",
+      "eyebrow": "Kostenlos · Keine Anmeldung",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Pictionary Wortgenerator",
+      "form_title": "Runde einstellen",
+      "category_label": "Kategorie",
+      "category_options": [
+        { "value": "all", "label": "Alle Kategorien" },
+        { "value": "animals", "label": "Tiere" },
+        { "value": "food", "label": "Essen" },
+        { "value": "objects", "label": "Gegenstände" },
+        { "value": "actions", "label": "Aktionen" },
+        { "value": "places", "label": "Orte" },
+        { "value": "fantasy", "label": "Filme & Fantasy" },
+        { "value": "sports", "label": "Sport" },
+        { "value": "jobs", "label": "Berufe" },
+        { "value": "nature", "label": "Natur & Outdoor" },
+        { "value": "transport", "label": "Verkehrsmittel" }
+      ],
+      "difficulty_label": "Schwierigkeit",
+      "difficulty_options": [
+        { "value": "all", "label": "Alle Stufen" },
+        { "value": "easy", "label": "Leicht" },
+        { "value": "medium", "label": "Mittel" },
+        { "value": "hard", "label": "Schwer" }
+      ],
+      "count_label": "Begriffe pro Zug",
+      "count_options": [
+        { "value": "1", "label": "1 Begriff" },
+        { "value": "3", "label": "3 Begriffe" },
+        { "value": "5", "label": "5 Begriffe" },
+        { "value": "10", "label": "10 Begriffe" }
+      ],
+      "custom_toggle": "Eigene Wortliste verwenden",
+      "custom_placeholder": "Ein Begriff pro Zeile (oder mit Kommas getrennt) — z. B. Photosynthese, Schwerkraft, Vulkan…",
+      "custom_hint": "Füge deine eigenen Begriffe ein und ziehe direkt daraus — ideal für Unterrichtsthemen und eigene Regeln.",
+      "draw_button": "Begriffe ziehen",
+      "reroll_button": "Neue Begriffe",
+      "reset_button": "Verlauf zurücksetzen",
+      "copy_button": "Liste kopieren",
+      "output_title": "Deine Begriffe",
+      "empty_output": "Wähle deine Filter und ziehe Begriffe, um die Runde zu starten.",
+      "pool_label": "{count} Begriffe im Spiel",
+      "timer_label": "Runden-Timer",
+      "timer_options": [
+        { "value": "30", "label": "30 Sekunden" },
+        { "value": "60", "label": "60 Sekunden" },
+        { "value": "90", "label": "90 Sekunden" },
+        { "value": "custom", "label": "Benutzerdefiniert" }
+      ],
+      "timer_custom_label": "Eigene Länge (Sekunden)",
+      "timer_start": "Start",
+      "timer_pause": "Pause",
+      "timer_reset": "Zurücksetzen",
+      "timer_done": "Die Zeit ist um!",
+      "score_title": "Punkte",
+      "team_a": "Team A",
+      "team_b": "Team B",
+      "score_reset": "Punkte zurücksetzen",
+      "disclaimer": "\"Pictionary\" ist eine Marke von Mattel, Inc. Dieses Tool ist nicht mit Mattel verbunden oder von ihr unterstützt."
+    },
+    "validation": {
+      "no_words": "Keine Begriffe mehr im Pool — setze den Verlauf zurück oder erweitere deine Filter.",
+      "custom_invalid": "Füge mindestens einen Begriff ein (max. 300 Begriffe, je 60 Zeichen)."
+    },
+    "success": {
+      "drawn": "Neue Begriffe gezogen",
+      "copied": "Wortliste kopiert"
+    },
+    "feature1": {
+      "name": "Filter",
+      "label": "Warum dieser Generator",
+      "title": "Die richtigen Begriffe für deine Runde",
+      "description": "Dieser Pictionary Wortgenerator hält mit zehn Kategorien und drei Schwierigkeitsstufen jede Runde spielbar — vom Aufwärmen für Erstklässler bis zum Wettkampf-Abschluss.",
+      "items": [
+        { "title": "Kategorie-×-Schwierigkeits-Matrix", "description": "Eng den Pool auf Tiere für Kinder oder schwere Aktionen für Erwachsene ein — ohne neue Liste zu bauen." },
+        { "title": "Keine Wiederholungen", "description": "Gezogene Begriffe bleiben draußen, bis du den Verlauf zurücksetzt — lange Spielsessions haken nie an Duplikaten." },
+        { "title": "Eigene Wortlisten", "description": "Füge eigene Begriffe ein — Fachvokabeln, Filmmottos, Insider-Witze — und ziehe direkt daraus." }
+      ]
+    },
+    "how_to_use": {
+      "name": "Anleitung",
+      "label": "Drei Schritte",
+      "title": "In Sekunden zur ersten Runde",
+      "description": "Dieser Pictionary Wortgenerator braucht keine Karten, keine Apps, keine Anmeldung.",
+      "items": [
+        { "title": "Pool einstellen", "description": "Wähle Kategorie und Schwierigkeit oder füge deine eigene Wortliste ein." },
+        { "title": "Begriffe ziehen", "description": "Ziehe 1, 3, 5 oder 10 Begriffe auf einmal — der Zeichner sieht nur sein eigenes Wort." },
+        { "title": "Timer starten", "description": "Wähle 30, 60 oder 90 Sekunden und lasse das Team raten, bevor die Zeit abläuft." },
+        { "title": "Punkte zählen", "description": "Tippe +1 für die ratende Mannschaft und setze die Punkte zwischen den Spielen zurück." }
+      ]
+    },
+    "feature2": {
+      "name": "Timer & Punkte",
+      "label": "Eingebaut",
+      "title": "Alles, was eine Runde braucht, auf einem Bildschirm",
+      "description": "Pictionary Wortgenerator, Timer und Anzeigetafel lebten bisher in drei Tabs — hier sind sie zusammen.",
+      "items": [
+        { "title": "Runden-Timer", "description": "30-, 60- oder 90-Sekunden-Voreinstellungen mit Start, Pause und klarem Zeit-abgelaufen-Zustand." },
+        { "title": "Anzeigetafel für zwei Teams", "description": "Schnelle +1-Tipps halten das Spiel schneller in Gang als ein Papierstrichzettel." },
+        { "title": "Kein Setup", "description": "Funktioniert auf Handys, Tablets und Klassenzimmer-Projektoren — nichts zu installieren." }
+      ]
+    },
+    "feature3": {
+      "name": "Anwendungsfälle",
+      "label": "Gemacht für",
+      "title": "Spielnächte, Klassenzimmer und Team-Eisbrecher",
+      "description": "Ein Pictionary Wortgenerator, sehr unterschiedliche Runden — derselbe Pool bedient sie alle.",
+      "items": [
+        { "title": "Familienspielnacht", "description": "Einfache Tier- und Essenbegriffe lassen gemischte Altersgruppen zusammen lachen." },
+        { "title": "Aufwärmen im Unterricht", "description": "Füge die Vokabeln der Woche ein und mach aus Wiederholung ein Fünf-Minuten-Spiel." },
+        { "title": "Teambuilding", "description": "Schwere Aktions- und Fantasybegriffe machen Büro- und Remote-Eisbrecher wettkampfähig." }
+      ]
+    },
+    "word_list": {
+      "name": "Wortliste",
+      "label": "Der ganze Pool",
+      "title": "Pictionary Wortliste nach Kategorien",
+      "description": "Jeder Begriff dieser Pictionary Wortliste steckt im Pictionary Wortgenerator oben — 450 Begriffe in 10 Kategorien und 3 Stufen. Zufällig ziehen oder in Ruhe planen."
+    },
+    "faq": {
+      "name": "FAQ",
+      "label": "Fragen",
+      "title": "Pictionary Wortgenerator FAQ",
+      "items": [
+        { "title": "Ist dieser Pictionary Wortgenerator kostenlos?", "description": "Ja — jeder Begriff, jeder Filter, der Timer und die Anzeigetafel sind kostenlos und ohne Anmeldung." },
+        { "title": "Wie viele Begriffe sind im Pool?", "description": "Der Pictionary Wortgenerator enthält 450 kuratierte Begriffe in 10 Kategorien und 3 Schwierigkeitsstufen, plus alle eigenen Begriffe, die du einfügst." },
+        { "title": "Kann ich eigene Begriffe verwenden?", "description": "Ja. Aktiviere deine eigene Wortliste und füge bis zu 300 Begriffe ein — einer pro Zeile oder mit Kommas getrennt." },
+        { "title": "Welchen Timer soll ich verwenden?", "description": "60 Sekunden ist das klassische Tempo. 30 Sekunden für Wettkampfgruppen, 90 Sekunden für Kinder." },
+        { "title": "Funktioniert er auch für Scharaden oder Catchphrase?", "description": "Ja — dieselben Begriffe funktionieren für jedes Zeichen- oder Ratespiel, das zufällige Aufgaben braucht." },
+        { "title": "Ist er für Kinder geeignet?", "description": "Ja. Jeder Begriff im Pool ist familienfreundlich; wähle Leicht für jüngere Spieler." }
+      ]
+    },
+    "cta": {
+      "name": "CTA",
+      "title": "Du brauchst eine Geschichte zu deinem Spiel?",
+      "description": "AI Story generiert auch Geschichten, Gedichte und Plotideen — für wenn die Stifte ruhen.",
+      "buttons": [
+        { "title": "KI-Tools entdecken", "url": "/ai-tools" }
+      ]
+    },
+    "related_tools": {
+      "title": "Weitere kostenlose Tools",
+      "description": "Party-Helfer und kreative Generatoren für den nächsten Einsatz.",
+      "more_label": "Alle Tools ansehen"
+    }
+  }
+}

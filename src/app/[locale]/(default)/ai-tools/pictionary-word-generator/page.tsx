@@ -1,0 +1,199 @@
+import PictionaryWordGenerator from "@/components/blocks/pictionary-word-generator";
+import FeatureIntro from "@/components/sections/feature-intro";
+import HowToUse from "@/components/sections/how-to-use";
+import Benefits from "@/components/sections/benefits";
+import UseCases from "@/components/sections/use-cases";
+import FAQ from "@/components/sections/faq";
+import CTA from "@/components/sections/cta";
+import RelatedTools from "@/components/blocks/related-tools";
+import PictionaryWordList from "@/components/sections/pictionary-word-list";
+import { buildLanguageAlternates } from "@/lib/seo";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+
+export const revalidate = 60;
+export const dynamic = "force-static";
+export const dynamicParams = true;
+
+const OG_LOCALE_MAP: Record<string, string> = {
+  en: "en_US",
+  zh: "zh_CN",
+  de: "de_DE",
+  ja: "ja_JP",
+  ko: "ko_KR",
+  ru: "ru_RU",
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const messages = await import(
+    `@/i18n/pages/pictionary-word-generator/${locale}.json`
+  );
+  const section = messages.default.pictionary_word_generator;
+  const metadata = section.metadata;
+
+  const canonicalUrl =
+    locale === "en"
+      ? `${process.env.NEXT_PUBLIC_WEB_URL}/ai-tools/pictionary-word-generator`
+      : `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/ai-tools/pictionary-word-generator`;
+
+  const ogImage = `${process.env.NEXT_PUBLIC_WEB_URL}/share.png`;
+
+  return {
+    title: metadata.title,
+    description: metadata.description,
+    keywords: metadata.keywords,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: buildLanguageAlternates("/ai-tools/pictionary-word-generator"),
+    },
+    openGraph: {
+      title: metadata.title,
+      description: metadata.description,
+      url: canonicalUrl,
+      siteName: "AI Story",
+      locale: OG_LOCALE_MAP[locale] ?? "en_US",
+      type: "website",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: metadata.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metadata.title,
+      description: metadata.description,
+      images: [ogImage],
+    },
+  };
+}
+
+export default async function PictionaryWordGeneratorPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const tAiTools = await getTranslations({ locale, namespace: "ai_tools" });
+
+  const messages = await import(
+    `@/i18n/pages/pictionary-word-generator/${locale}.json`
+  );
+  const section = messages.default.pictionary_word_generator;
+  const homeUrl = process.env.NEXT_PUBLIC_WEB_URL || "";
+  const currentUrl = `${homeUrl}${locale === "en" ? "" : `/${locale}`}/ai-tools/pictionary-word-generator`;
+  const homePath = `${homeUrl}${locale === "en" ? "" : `/${locale}`}`;
+
+  const graph: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: section.ui?.breadcrumb_home ?? "Home",
+            item: homePath,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: tAiTools("tools_hub_nav"),
+            item: `${homePath}/ai-tools`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: section.ui?.breadcrumb_current ?? "Pictionary Word Generator",
+            item: currentUrl,
+          },
+        ],
+      },
+      {
+        "@type": "WebApplication",
+        name: section.ui?.title ?? "Pictionary Word Generator",
+        description: section.metadata.description,
+        url: currentUrl,
+        inLanguage: locale,
+        applicationCategory: "GameApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+      },
+      ...(section.faq?.items?.length
+        ? [
+            {
+              "@type": "FAQPage",
+              inLanguage: locale,
+              mainEntity: section.faq.items.map(
+                (item: { title?: string; description?: string }) => ({
+                  "@type": "Question",
+                  name: item.title,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: item.description,
+                  },
+                })
+              ),
+            },
+          ]
+        : []),
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+      />
+      <PictionaryWordGenerator section={section} />
+      {section.feature1 && (
+        <FeatureIntro section={section.feature1} accent="rose" />
+      )}
+      {section.how_to_use && (
+        <HowToUse section={section.how_to_use} accent="rose" />
+      )}
+      {section.feature2 && <Benefits section={section.feature2} accent="rose" />}
+      {section.feature3 && (
+        <UseCases section={section.feature3} accent="rose" />
+      )}
+      {section.word_list && (
+        <PictionaryWordList
+          section={section.word_list}
+          categories={section.ui?.category_options ?? []}
+          difficulties={section.ui?.difficulty_options ?? []}
+          accent="rose"
+        />
+      )}
+      {section.faq && <FAQ section={section.faq} accent="rose" />}
+      <RelatedTools
+        currentSlug="pictionary-word-generator"
+        relatedSlugs={[
+          "emoji-translator",
+          "random-nfl-team-generator",
+          "band-name-generator",
+          "gang-name-generator",
+        ]}
+        title={section.related_tools.title}
+        description={section.related_tools.description}
+        moreHref="/ai-tools"
+        moreLabel={section.related_tools.more_label}
+        accent="rose"
+      />
+      {section.cta && <CTA section={section.cta} accent="rose" locale={locale} />}
+    </>
+  );
+}

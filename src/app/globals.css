@@ -642,7 +642,7 @@
     }
   }
   .animate-card-rise {
-    animation: cardRise 250ms var(--ease-soft) both;
+    animation: cardRise 250ms var(--ease-soft) backwards;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -658,6 +658,33 @@
     }
     to {
       opacity: 1;
+    }
+  }
+
+  /* Pictionary draw roll — tumbling dice indicator (transform-only) */
+  @keyframes dice-roll {
+    0% {
+      transform: rotate(0deg) translateY(0);
+    }
+    25% {
+      transform: rotate(-14deg) translateY(-6px);
+    }
+    50% {
+      transform: rotate(0deg) translateY(0);
+    }
+    75% {
+      transform: rotate(14deg) translateY(-6px);
+    }
+    100% {
+      transform: rotate(0deg) translateY(0);
+    }
+  }
+  .dice-rolling {
+    animation: dice-roll 0.5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dice-rolling {
+      animation: none;
     }
   }
 

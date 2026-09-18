@@ -422,6 +422,10 @@
       "middle_name_generator": {
         "name": "Zweitname-Generator",
         "desc": "Vervollständige eine fiktive Figur oder ein Pseudonym — drei Gesamtnamens-Richtungen, die Vor- und Nachnamen bewahren, mit Klangnotizen, Initialen-Vorschau und Geschichtssignalen."
+      },
+      "pictionary_word_generator": {
+        "name": "Pictionary Wortgenerator",
+        "desc": "Zufällige Pictionary-Begriffe nach Kategorie und Schwierigkeit — mit Timer, Team-Punkten, eigenen Wortlisten und ohne Wiederholungen."
       }
     },
     "tab_story": "Geschichtengenerator",
