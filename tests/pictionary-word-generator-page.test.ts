@@ -59,7 +59,7 @@ test("every locale has metadata, ui, validation, success, faq, related_tools", (
     }
     assert.equal(
       (ui.category_options as unknown[]).length,
-      7,
+      11,
       `${locale} category options`
     );
     assert.equal(
@@ -79,7 +79,19 @@ test("option values stay as stable English enums across locales", () => {
     >;
     assert.deepEqual(
       ui.category_options.map((option) => option.value),
-      ["all", "animals", "food", "objects", "actions", "places", "fantasy"]
+      [
+        "all",
+        "animals",
+        "food",
+        "objects",
+        "actions",
+        "places",
+        "fantasy",
+        "sports",
+        "jobs",
+        "nature",
+        "transport",
+      ]
     );
     assert.deepEqual(
       ui.difficulty_options.map((option) => option.value),
@@ -91,7 +103,7 @@ test("option values stay as stable English enums across locales", () => {
     );
     assert.deepEqual(
       ui.timer_options.map((option) => option.value),
-      ["30", "60", "90"]
+      ["30", "60", "90", "custom"]
     );
   }
 });

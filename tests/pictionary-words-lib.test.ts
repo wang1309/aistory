@@ -10,23 +10,27 @@ import {
   type PictionaryEntry,
 } from "@/lib/pictionary-words";
 
-test("library ships 180 curated words across 6 categories and 3 difficulties", () => {
-  assert.equal(PICTIONARY_WORDS.length, 180);
+test("library ships 450 curated words across 10 categories and 3 difficulties", () => {
+  assert.equal(PICTIONARY_WORDS.length, 450);
   const categories = new Set(PICTIONARY_WORDS.map((w) => w.category));
   assert.deepEqual([...categories].sort(), [
     "actions",
     "animals",
     "fantasy",
     "food",
+    "jobs",
+    "nature",
     "objects",
     "places",
+    "sports",
+    "transport",
   ]);
   for (const category of categories) {
     for (const difficulty of ["easy", "medium", "hard"] as const) {
       const count = PICTIONARY_WORDS.filter(
         (w) => w.category === category && w.difficulty === difficulty
       ).length;
-      assert.ok(count >= 10, `${category}/${difficulty} has only ${count} words`);
+      assert.ok(count >= 15, `${category}/${difficulty} has only ${count} words`);
     }
   }
 });
@@ -45,13 +49,13 @@ test("filterPictionaryWords combines category and difficulty", () => {
     category: "all",
     difficulty: "all",
   });
-  assert.equal(all.length, 180);
+  assert.equal(all.length, 450);
 
   const easyAnimals = filterPictionaryWords(PICTIONARY_WORDS, {
     category: "animals",
     difficulty: "easy",
   });
-  assert.equal(easyAnimals.length, 10);
+  assert.equal(easyAnimals.length, 15);
   assert.ok(
     easyAnimals.every((w) => w.category === "animals" && w.difficulty === "easy")
   );
@@ -72,7 +76,7 @@ test("drawPictionaryWords excludes already drawn words", () => {
     category: "animals",
     difficulty: "easy",
   });
-  const exclude = new Set(pool.map((w) => w.word.toLowerCase()).slice(0, 9));
+  const exclude = new Set(pool.map((w) => w.word.toLowerCase()).slice(0, 14));
   const drawn = drawPictionaryWords(pool, 10, exclude);
   assert.equal(drawn.length, 1);
   assert.ok(!exclude.has(drawn[0]!.word));
@@ -108,7 +112,7 @@ test("buildPictionaryPool appends custom words and keeps curated filtering", () 
     { category: "all", difficulty: "all" },
     ["mitochondria", "plate tectonics"]
   );
-  assert.equal(custom.length, 182);
+  assert.equal(custom.length, 452);
   const tail: PictionaryEntry[] = custom.slice(-2);
   assert.ok(tail.every((entry) => entry.category === "custom"));
 
@@ -116,5 +120,5 @@ test("buildPictionaryPool appends custom words and keeps curated filtering", () 
     { category: "animals", difficulty: "easy" },
     ["mitochondria"]
   );
-  assert.equal(filtered.length, 11);
+  assert.equal(filtered.length, 16);
 });

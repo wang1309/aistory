@@ -8,7 +8,7 @@
     "ui": {
       "title": "你画我猜词语生成器",
       "title_highlight": "词语",
-      "subtitle": "按分类和难度随机抽取你画我猜词语——内置计时器、双队计分、自定义词表，重置前绝不重复。",
+      "subtitle": "这款免费的你画我猜词语生成器按分类和难度随机抽词——内置计时器、双队计分、自定义词表，重置前绝不重复。",
       "eyebrow": "免费 · 无需注册",
       "breadcrumb_home": "首页",
       "breadcrumb_current": "你画我猜词语生成器",
@@ -21,7 +21,11 @@
         { "value": "objects", "label": "物品" },
         { "value": "actions", "label": "动作" },
         { "value": "places", "label": "地点" },
-        { "value": "fantasy", "label": "电影与奇幻" }
+        { "value": "fantasy", "label": "电影与奇幻" },
+        { "value": "sports", "label": "体育运动" },
+        { "value": "jobs", "label": "职业与工作" },
+        { "value": "nature", "label": "自然与户外" },
+        { "value": "transport", "label": "交通工具" }
       ],
       "difficulty_label": "难度",
       "difficulty_options": [
@@ -51,8 +55,10 @@
       "timer_options": [
         { "value": "30", "label": "30 秒" },
         { "value": "60", "label": "60 秒" },
-        { "value": "90", "label": "90 秒" }
+        { "value": "90", "label": "90 秒" },
+        { "value": "custom", "label": "自定义" }
       ],
+      "timer_custom_label": "自定义时长（秒）",
       "timer_start": "开始",
       "timer_pause": "暂停",
       "timer_reset": "重置",
@@ -75,7 +81,7 @@
       "name": "筛选",
       "label": "为什么用这个",
       "title": "给在场的人配对的词",
-      "description": "6 大分类 × 3 档难度，从小学课堂热身到成人对抗局都能排。",
+      "description": "这款你画我猜词语生成器提供 10 大分类 × 3 档难度，从小学课堂热身到成人对抗局都能排。",
       "items": [
         { "title": "分类 × 难度矩阵", "description": "给孩子收窄到动物，给成人上高难动作词，不用重编词表。" },
         { "title": "不重复", "description": "抽过的词在重置前不会再次出现，长时间对局不会卡壳。" },
@@ -86,7 +92,7 @@
       "name": "使用方法",
       "label": "三步开局",
       "title": "几秒钟开始第一轮",
-      "description": "不用卡牌、不用装 App、不用注册。",
+      "description": "这款你画我猜词语生成器不用卡牌、不用装 App、不用注册。",
       "items": [
         { "title": "设置词池", "description": "选择分类和难度，或粘贴自己的词表。" },
         { "title": "抽取词语", "description": "一次抽 1、3、5 或 10 个词——画者只看自己的词。" },
@@ -98,7 +104,7 @@
       "name": "计时与计分",
       "label": "全部内置",
       "title": "一个回合需要的都在同一屏",
-      "description": "生成器、计时器、记分板过去分散在三个工具里——这里合在一起。",
+      "description": "你画我猜词语生成器、计时器、记分板过去分散在三个工具里——这里合在一起。",
       "items": [
         { "title": "回合计时器", "description": "30/60/90 秒预设，支持开始、暂停和醒目的时间到状态。" },
         { "title": "双队记分板", "description": "快捷 +1，比纸笔计分快得多。" },
@@ -109,12 +115,18 @@
       "name": "使用场景",
       "label": "适合",
       "title": "聚会、课堂与团队破冰",
-      "description": "同一个词池，服务完全不同的场合。",
+      "description": "一个你画我猜词语生成器，服务完全不同的场合——词池是同一个。",
       "items": [
         { "title": "家庭游戏夜", "description": "简单的动物和食物词让大小朋友笑作一团。" },
         { "title": "课堂热身", "description": "粘贴本周词汇表，把复习变成五分钟游戏。" },
         { "title": "团队建设", "description": "高难动作与奇幻词让办公室和远程破冰更有对抗感。" }
       ]
+    },
+    "word_list": {
+      "name": "词表",
+      "label": "完整词池",
+      "title": "你画我猜词表 — 按分类整理",
+      "description": "这份你画我猜词表中的每个词都收录于上方你画我猜词语生成器——10 大分类、3 档难度共 450 个。可随机抽取，也可按列表安排场次。"
     },
     "faq": {
       "name": "常见问题",
@@ -122,7 +134,7 @@
       "title": "你画我猜词语生成器 FAQ",
       "items": [
         { "title": "这个你画我猜词语生成器免费吗？", "description": "免费——所有词语、筛选、计时器和记分板均免费，无需注册。" },
-        { "title": "词池里有多少词？", "description": "180 个精选词，覆盖 6 大分类、3 档难度，还可以粘贴自定义词。" },
+        { "title": "词池里有多少词？", "description": "这款你画我猜词语生成器内置 450 个精选词，覆盖 10 大分类、3 档难度，还可以粘贴自定义词。" },
         { "title": "可以用自己的词吗？", "description": "可以。开启自定义词表后最多粘贴 300 个词，每行一个或用逗号分隔。" },
         { "title": "计时选多少秒合适？", "description": "60 秒是经典节奏；对抗局用 30 秒，小朋友玩用 90 秒。" },
         { "title": "能用于 Charades 等其他游戏吗？", "description": "可以——同样的词适用于任何需要随机题目的画图或猜词游戏。" },

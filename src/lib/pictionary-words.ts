@@ -4,7 +4,11 @@ export type PictionaryCategory =
   | "objects"
   | "actions"
   | "places"
-  | "fantasy";
+  | "fantasy"
+  | "sports"
+  | "jobs"
+  | "nature"
+  | "transport";
 
 export type PictionaryDifficulty = "easy" | "medium" | "hard";
 
@@ -22,9 +26,9 @@ export interface PictionaryPoolFilter {
 }
 
 /**
- * 180 curated drawing prompts: 6 categories x 3 difficulties x 10 words.
+ * 450 curated drawing prompts: 10 categories x 3 difficulties x 15 words.
  * Every word is family-friendly and drawable without text or spelling.
- * Content owners: keep ~10 words per (category, difficulty) cell and never
+ * Content owners: keep ~15 words per (category, difficulty) cell and never
  * duplicate a word — tests/pictionary-words-lib.test.ts enforces both.
  */
 const CURATED: Record<
@@ -32,34 +36,54 @@ const CURATED: Record<
   Record<PictionaryDifficulty, string[]>
 > = {
   animals: {
-    easy: ["Cat", "Dog", "Fish", "Bird", "Horse", "Cow", "Rabbit", "Mouse", "Snake", "Frog"],
-    medium: ["Kangaroo", "Penguin", "Dolphin", "Eagle", "Camel", "Octopus", "Owl", "Shark", "Squirrel", "Flamingo"],
-    hard: ["Hedgehog", "Jellyfish", "Chameleon", "Armadillo", "Porcupine", "Pelican", "Sloth", "Platypus", "Praying Mantis", "Walrus"],
+    easy: ["Cat", "Dog", "Fish", "Bird", "Horse", "Cow", "Rabbit", "Mouse", "Snake", "Frog", "Pig", "Duck", "Turtle", "Chicken", "Snail"],
+    medium: ["Kangaroo", "Penguin", "Dolphin", "Eagle", "Camel", "Octopus", "Owl", "Shark", "Squirrel", "Flamingo", "Zebra", "Koala", "Gorilla", "Peacock", "Crab"],
+    hard: ["Hedgehog", "Jellyfish", "Chameleon", "Armadillo", "Porcupine", "Pelican", "Sloth", "Platypus", "Praying Mantis", "Walrus", "Scorpion", "Iguana", "Ostrich", "Narwhal", "Antelope"],
   },
   food: {
-    easy: ["Pizza", "Apple", "Banana", "Cake", "Egg", "Bread", "Ice Cream", "Cheese", "Carrot", "Taco"],
-    medium: ["Spaghetti", "Pineapple", "Hamburger", "Pancake", "Popcorn", "Sushi", "Coconut", "Meatball", "Croissant", "Milkshake"],
-    hard: ["Dumpling", "Avocado", "Marshmallow", "Pretzel", "Watermelon", "Lasagna", "Omelette", "Lollipop", "Kebab", "Fondue"],
+    easy: ["Pizza", "Apple", "Banana", "Cake", "Egg", "Bread", "Ice Cream", "Cheese", "Carrot", "Taco", "Milk", "Corn", "Grape", "Cookie", "Hot Dog"],
+    medium: ["Spaghetti", "Pineapple", "Hamburger", "Pancake", "Popcorn", "Sushi", "Coconut", "Meatball", "Croissant", "Milkshake", "Salad", "Donut", "Ramen", "Bagel", "French Fries"],
+    hard: ["Dumpling", "Avocado", "Marshmallow", "Pretzel", "Watermelon", "Lasagna", "Omelette", "Lollipop", "Kebab", "Fondue", "Burrito", "Guacamole", "Gingerbread", "Macaron", "Curry"],
   },
   objects: {
-    easy: ["Chair", "Book", "Shoe", "Clock", "Phone", "Key", "Cup", "Hat", "Door", "Lamp"],
-    medium: ["Umbrella", "Ladder", "Telescope", "Backpack", "Guitar", "Scissors", "Toothbrush", "Camera", "Wheelbarrow", "Candle"],
-    hard: ["Stapler", "Accordion", "Compass", "Hourglass", "Megaphone", "Typewriter", "Tripod", "Abacus", "Periscope", "Windmill"],
+    easy: ["Chair", "Book", "Shoe", "Clock", "Phone", "Key", "Cup", "Hat", "Door", "Lamp", "Spoon", "Ball", "Brush", "Sock", "Ring"],
+    medium: ["Umbrella", "Ladder", "Telescope", "Backpack", "Guitar", "Scissors", "Toothbrush", "Camera", "Wheelbarrow", "Candle", "Magnet", "Helmet", "Envelope", "Anchor", "Whistle"],
+    hard: ["Stapler", "Accordion", "Compass", "Hourglass", "Megaphone", "Typewriter", "Tripod", "Abacus", "Periscope", "Windmill", "Microscope", "Sundial", "Protractor", "Chandelier", "Knitting Needles"],
   },
   actions: {
-    easy: ["Run", "Sleep", "Jump", "Dance", "Swim", "Clap", "Sing", "Cry", "Laugh", "Wave"],
-    medium: ["Juggle", "Sneeze", "Climb", "Whisper", "Dig", "Yawn", "March", "Chew", "Skate", "Stretch"],
-    hard: ["Meditate", "Negotiate", "Floss", "Levitate", "Photocopy", "Gossip", "Tiptoe", "Stagger", "Pantomime", "Punt"],
+    easy: ["Run", "Sleep", "Jump", "Dance", "Swim", "Clap", "Sing", "Cry", "Laugh", "Wave", "Eat", "Write", "Kick", "Pull", "Hug"],
+    medium: ["Juggle", "Sneeze", "Climb", "Whisper", "Dig", "Yawn", "March", "Chew", "Skate", "Stretch", "Paint", "Dive", "Bow", "Knit", "Row"],
+    hard: ["Meditate", "Negotiate", "Floss", "Levitate", "Photocopy", "Gossip", "Tiptoe", "Stagger", "Pantomime", "Punt", "Hypnotize", "Somersault", "Backflip", "Barter", "Hitchhike"],
   },
   places: {
-    easy: ["Beach", "Park", "School", "Farm", "Zoo", "Store", "Castle", "Bridge", "Pool", "Mountain"],
-    medium: ["Desert", "Museum", "Airport", "Lighthouse", "Stadium", "Jungle", "Cave", "Library", "Volcano", "Harbor"],
-    hard: ["Igloo", "Pyramid", "Aquarium", "Observatory", "Labyrinth", "Vineyard", "Monastery", "Glacier", "Swamp", "Submarine"],
+    easy: ["Beach", "Park", "School", "Farm", "Zoo", "Store", "Castle", "Bridge", "Pool", "Mountain", "House", "Forest", "Church", "Market", "Island"],
+    medium: ["Desert", "Museum", "Airport", "Lighthouse", "Stadium", "Jungle", "Cave", "Library", "Volcano", "Harbor", "Waterfall", "Playground", "Barn", "Tunnel", "Temple"],
+    hard: ["Igloo", "Pyramid", "Aquarium", "Observatory", "Labyrinth", "Vineyard", "Monastery", "Glacier", "Swamp", "Submarine", "Greenhouse", "Dam", "Amphitheater", "Quarry", "Catacomb"],
   },
   fantasy: {
-    easy: ["Superhero", "Pirate", "Robot", "Wizard", "Dragon", "Princess", "Ghost", "Alien", "Fairy", "Knight"],
-    medium: ["Mermaid", "Vampire", "Zombie", "Ninja", "Genie", "Troll", "Unicorn", "Snowman", "Mummy", "Giant"],
-    hard: ["Werewolf", "Sphinx", "Kraken", "Phoenix", "Cyclops", "Banshee", "Golem", "Leprechaun", "Minotaur", "Yeti"],
+    easy: ["Superhero", "Pirate", "Robot", "Wizard", "Dragon", "Princess", "Ghost", "Alien", "Fairy", "Knight", "Witch", "Dinosaur", "Angel", "Monster", "Magic Wand"],
+    medium: ["Mermaid", "Vampire", "Zombie", "Ninja", "Genie", "Troll", "Unicorn", "Snowman", "Mummy", "Giant", "Elf", "Gnome", "Ogre", "Frankenstein", "Scarecrow"],
+    hard: ["Werewolf", "Sphinx", "Kraken", "Phoenix", "Cyclops", "Banshee", "Golem", "Leprechaun", "Minotaur", "Yeti", "Hydra", "Griffin", "Chimera", "Poltergeist", "Sasquatch"],
+  },
+  sports: {
+    easy: ["Soccer", "Basketball", "Tennis", "Baseball", "Swimming", "Cycling", "Golf", "Ping Pong", "Fishing", "Jump Rope", "Hide and Seek", "Tag", "Tug of War", "Relay Race", "Sack Race"],
+    medium: ["Volleyball", "Boxing", "Karate", "Fencing", "Badminton", "Bowling", "Skiing", "Surfing", "Skateboard", "Archery", "Wrestling", "Gymnastics", "Darts", "Billiards", "Rock Climbing"],
+    hard: ["Pole Vault", "Curling", "Javelin", "Shot Put", "Hurdles", "Decathlon", "Kayaking", "Bobsled", "Luge", "Equestrian", "Squash", "Handball", "Lacrosse", "Water Polo", "Triathlon"],
+  },
+  jobs: {
+    easy: ["Doctor", "Teacher", "Chef", "Farmer", "Firefighter", "Police Officer", "Nurse", "Mail Carrier", "Pilot", "Bus Driver", "Baker", "Barber", "Lifeguard", "Gardener", "Janitor"],
+    medium: ["Astronaut", "Dentist", "Magician", "Detective", "Librarian", "Veterinarian", "Architect", "Plumber", "Journalist", "Photographer", "Tailor", "Mechanic", "Zookeeper", "Barista", "Surgeon"],
+    hard: ["Accountant", "Blacksmith", "Sculptor", "Electrician", "Archaeologist", "Cartographer", "Beekeeper", "Locksmith", "Glassblower", "Astronomer", "Chimney Sweep", "Miner", "Fisherman", "Welder", "Potter"],
+  },
+  nature: {
+    easy: ["Tree", "Flower", "Sun", "Moon", "Rainbow", "Star", "Cloud", "River", "Rock", "Leaf", "Snow", "Rain", "Grass", "Seed", "Hill"],
+    medium: ["Cactus", "Mushroom", "Tornado", "Icicle", "Coral", "Lightning", "Thunder", "Boulder", "Canal", "Pond", "Cliff", "Dune", "Moss", "Fern", "Bamboo"],
+    hard: ["Avalanche", "Geyser", "Quicksand", "Meteor", "Fossil", "Stalactite", "Oasis", "Mesa", "Fjord", "Eclipse", "Aurora", "Landslide", "Sandstorm", "Permafrost", "Algae"],
+  },
+  transport: {
+    easy: ["Car", "Bus", "Train", "Bicycle", "Boat", "Truck", "Airplane", "Motorcycle", "Ship", "Taxi", "Scooter", "Tram", "Canoe", "Sled", "Rocket"],
+    medium: ["Helicopter", "Tractor", "Ferry", "Subway", "Hot Air Balloon", "Hang Glider", "Sailboat", "Ambulance", "Fire Truck", "Cable Car", "Jet Ski", "Campervan", "Gondola", "Streetcar", "Seaplane"],
+    hard: ["Steamboat", "Zipline", "Monorail", "Segway", "Rickshaw", "Steam Locomotive", "Airship", "Catamaran", "Hovercraft", "Paraglider", "Dog Sled", "Chariot", "Funicular", "Hydrofoil", "Airboat"],
   },
 };
 

@@ -54,6 +54,7 @@ export interface PictionaryWordGeneratorPage {
     pool_label: string;
     timer_label: string;
     timer_options: PictionaryOption[];
+    timer_custom_label?: string;
     timer_start: string;
     timer_pause: string;
     timer_reset: string;
@@ -76,6 +77,13 @@ export interface PictionaryWordGeneratorPage {
   how_to_use?: PictionarySection;
   feature2?: PictionarySection;
   feature3?: PictionarySection;
+  word_list?: {
+    name?: string;
+    label?: string;
+    title?: string;
+    description?: string;
+    disabled?: boolean;
+  };
   faq?: PictionarySection;
   cta?: {
     name?: string;

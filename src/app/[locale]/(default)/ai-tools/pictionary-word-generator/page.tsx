@@ -6,6 +6,7 @@ import UseCases from "@/components/sections/use-cases";
 import FAQ from "@/components/sections/faq";
 import CTA from "@/components/sections/cta";
 import RelatedTools from "@/components/blocks/related-tools";
+import PictionaryWordList from "@/components/sections/pictionary-word-list";
 import { buildLanguageAlternates } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
@@ -64,6 +65,12 @@ export async function generateMetadata({
           alt: metadata.title,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metadata.title,
+      description: metadata.description,
+      images: [ogImage],
     },
   };
 }
@@ -162,6 +169,14 @@ export default async function PictionaryWordGeneratorPage({
       {section.feature2 && <Benefits section={section.feature2} accent="rose" />}
       {section.feature3 && (
         <UseCases section={section.feature3} accent="rose" />
+      )}
+      {section.word_list && (
+        <PictionaryWordList
+          section={section.word_list}
+          categories={section.ui?.category_options ?? []}
+          difficulties={section.ui?.difficulty_options ?? []}
+          accent="rose"
+        />
       )}
       {section.faq && <FAQ section={section.faq} accent="rose" />}
       <RelatedTools

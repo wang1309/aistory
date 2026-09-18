@@ -1,14 +1,14 @@
 {
   "pictionary_word_generator": {
     "metadata": {
-      "title": "Pictionary Wortgenerator — Zufällige Zeichnen-Begriffe nach Kategorie & Schwierigkeit",
-      "description": "Kostenloser Pictionary Wortgenerator: Ziehe zufällige Begriffe nach Kategorie und Schwierigkeit — mit Timer, Team-Punkten, eigenen Wortlisten und ohne Wiederholungen. Perfekt für Spielnächte, Klassenzimmer und Teambuilding.",
+      "title": "Pictionary Wortgenerator – Kostenlose Zufallsbegriffe",
+      "description": "Kostenloser Pictionary Wortgenerator mit 450 Begriffen in 10 Kategorien und 3 Stufen. Timer, Punkte und eigene Listen — ganz ohne Anmeldung.",
       "keywords": "pictionary wortgenerator, pictionary begriffe, zufällige zeichnen wörter, pictionary ideen, zeichnen raten"
     },
     "ui": {
       "title": "Pictionary Wortgenerator",
       "title_highlight": "Wort",
-      "subtitle": "Ziehe zufällige Pictionary-Begriffe nach Kategorie und Schwierigkeit — mit Timer, Team-Punkten, eigenen Wortlisten und ohne Wiederholungen bis zum Zurücksetzen.",
+      "subtitle": "Dieser kostenlose Pictionary Wortgenerator zieht zufällige Begriffe nach Kategorie und Schwierigkeit — mit Timer, Team-Punkten, eigenen Wortlisten und ohne Wiederholungen bis zum Zurücksetzen.",
       "eyebrow": "Kostenlos · Keine Anmeldung",
       "breadcrumb_home": "Startseite",
       "breadcrumb_current": "Pictionary Wortgenerator",
@@ -21,7 +21,11 @@
         { "value": "objects", "label": "Gegenstände" },
         { "value": "actions", "label": "Aktionen" },
         { "value": "places", "label": "Orte" },
-        { "value": "fantasy", "label": "Filme & Fantasy" }
+        { "value": "fantasy", "label": "Filme & Fantasy" },
+        { "value": "sports", "label": "Sport" },
+        { "value": "jobs", "label": "Berufe" },
+        { "value": "nature", "label": "Natur & Outdoor" },
+        { "value": "transport", "label": "Verkehrsmittel" }
       ],
       "difficulty_label": "Schwierigkeit",
       "difficulty_options": [
@@ -51,8 +55,10 @@
       "timer_options": [
         { "value": "30", "label": "30 Sekunden" },
         { "value": "60", "label": "60 Sekunden" },
-        { "value": "90", "label": "90 Sekunden" }
+        { "value": "90", "label": "90 Sekunden" },
+        { "value": "custom", "label": "Benutzerdefiniert" }
       ],
+      "timer_custom_label": "Eigene Länge (Sekunden)",
       "timer_start": "Start",
       "timer_pause": "Pause",
       "timer_reset": "Zurücksetzen",
@@ -75,7 +81,7 @@
       "name": "Filter",
       "label": "Warum dieser Generator",
       "title": "Die richtigen Begriffe für deine Runde",
-      "description": "Sechs Kategorien und drei Schwierigkeitsstufen halten jede Runde spielbar — vom Aufwärmen für Erstklässler bis zum Wettkampf-Abschluss.",
+      "description": "Dieser Pictionary Wortgenerator hält mit zehn Kategorien und drei Schwierigkeitsstufen jede Runde spielbar — vom Aufwärmen für Erstklässler bis zum Wettkampf-Abschluss.",
       "items": [
         { "title": "Kategorie-×-Schwierigkeits-Matrix", "description": "Eng den Pool auf Tiere für Kinder oder schwere Aktionen für Erwachsene ein — ohne neue Liste zu bauen." },
         { "title": "Keine Wiederholungen", "description": "Gezogene Begriffe bleiben draußen, bis du den Verlauf zurücksetzt — lange Spielsessions haken nie an Duplikaten." },
@@ -86,7 +92,7 @@
       "name": "Anleitung",
       "label": "Drei Schritte",
       "title": "In Sekunden zur ersten Runde",
-      "description": "Keine Karten, keine Apps, keine Anmeldung.",
+      "description": "Dieser Pictionary Wortgenerator braucht keine Karten, keine Apps, keine Anmeldung.",
       "items": [
         { "title": "Pool einstellen", "description": "Wähle Kategorie und Schwierigkeit oder füge deine eigene Wortliste ein." },
         { "title": "Begriffe ziehen", "description": "Ziehe 1, 3, 5 oder 10 Begriffe auf einmal — der Zeichner sieht nur sein eigenes Wort." },
@@ -98,7 +104,7 @@
       "name": "Timer & Punkte",
       "label": "Eingebaut",
       "title": "Alles, was eine Runde braucht, auf einem Bildschirm",
-      "description": "Generator, Timer und Anzeigetafel lebten bisher in drei Tabs — hier sind sie zusammen.",
+      "description": "Pictionary Wortgenerator, Timer und Anzeigetafel lebten bisher in drei Tabs — hier sind sie zusammen.",
       "items": [
         { "title": "Runden-Timer", "description": "30-, 60- oder 90-Sekunden-Voreinstellungen mit Start, Pause und klarem Zeit-abgelaufen-Zustand." },
         { "title": "Anzeigetafel für zwei Teams", "description": "Schnelle +1-Tipps halten das Spiel schneller in Gang als ein Papierstrichzettel." },
@@ -109,12 +115,18 @@
       "name": "Anwendungsfälle",
       "label": "Gemacht für",
       "title": "Spielnächte, Klassenzimmer und Team-Eisbrecher",
-      "description": "Derselbe Pool bedient sehr unterschiedliche Runden.",
+      "description": "Ein Pictionary Wortgenerator, sehr unterschiedliche Runden — derselbe Pool bedient sie alle.",
       "items": [
         { "title": "Familienspielnacht", "description": "Einfache Tier- und Essenbegriffe lassen gemischte Altersgruppen zusammen lachen." },
         { "title": "Aufwärmen im Unterricht", "description": "Füge die Vokabeln der Woche ein und mach aus Wiederholung ein Fünf-Minuten-Spiel." },
         { "title": "Teambuilding", "description": "Schwere Aktions- und Fantasybegriffe machen Büro- und Remote-Eisbrecher wettkampfähig." }
       ]
+    },
+    "word_list": {
+      "name": "Wortliste",
+      "label": "Der ganze Pool",
+      "title": "Pictionary Wortliste nach Kategorien",
+      "description": "Jeder Begriff dieser Pictionary Wortliste steckt im Pictionary Wortgenerator oben — 450 Begriffe in 10 Kategorien und 3 Stufen. Zufällig ziehen oder in Ruhe planen."
     },
     "faq": {
       "name": "FAQ",
@@ -122,7 +134,7 @@
       "title": "Pictionary Wortgenerator FAQ",
       "items": [
         { "title": "Ist dieser Pictionary Wortgenerator kostenlos?", "description": "Ja — jeder Begriff, jeder Filter, der Timer und die Anzeigetafel sind kostenlos und ohne Anmeldung." },
-        { "title": "Wie viele Begriffe sind im Pool?", "description": "180 kuratierte Begriffe in 6 Kategorien und 3 Schwierigkeitsstufen, plus alle eigenen Begriffe, die du einfügst." },
+        { "title": "Wie viele Begriffe sind im Pool?", "description": "Der Pictionary Wortgenerator enthält 450 kuratierte Begriffe in 10 Kategorien und 3 Schwierigkeitsstufen, plus alle eigenen Begriffe, die du einfügst." },
         { "title": "Kann ich eigene Begriffe verwenden?", "description": "Ja. Aktiviere deine eigene Wortliste und füge bis zu 300 Begriffe ein — einer pro Zeile oder mit Kommas getrennt." },
         { "title": "Welchen Timer soll ich verwenden?", "description": "60 Sekunden ist das klassische Tempo. 30 Sekunden für Wettkampfgruppen, 90 Sekunden für Kinder." },
         { "title": "Funktioniert er auch für Scharaden oder Catchphrase?", "description": "Ja — dieselben Begriffe funktionieren für jedes Zeichen- oder Ratespiel, das zufällige Aufgaben braucht." },
