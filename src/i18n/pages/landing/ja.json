@@ -791,6 +791,10 @@
             {
               "title": "絵文字翻訳機",
               "url": "/emoji-translator"
+            },
+            {
+              "title": "ピクショナリー単語ジェネレーター",
+              "url": "/ai-tools/pictionary-word-generator"
             }
           ]
         },

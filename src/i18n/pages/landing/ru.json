@@ -791,6 +791,10 @@
             {
               "title": "Переводчик эмодзи",
               "url": "/emoji-translator"
+            },
+            {
+              "title": "Генератор слов для Пикшонари",
+              "url": "/ai-tools/pictionary-word-generator"
             }
           ]
         },

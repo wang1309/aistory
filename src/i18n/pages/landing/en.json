@@ -791,6 +791,10 @@
             {
               "title": "Emoji Translator",
               "url": "/emoji-translator"
+            },
+            {
+              "title": "Pictionary Word Generator",
+              "url": "/ai-tools/pictionary-word-generator"
             }
           ]
         },

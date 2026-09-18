@@ -791,6 +791,10 @@
             {
               "title": "이모지 번역기",
               "url": "/emoji-translator"
+            },
+            {
+              "title": "픽셔너리 단어 생성기",
+              "url": "/ai-tools/pictionary-word-generator"
             }
           ]
         },
