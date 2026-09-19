@@ -1,7 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useOpenPanel } from "@openpanel/nextjs";
+import { Link } from "@/i18n/navigation";
 import { toast } from "sonner";
 import {
   Copy,
@@ -54,6 +56,7 @@ function formatClock(totalSeconds: number): string {
 export default function PictionaryWordGenerator({ section }: Props) {
   const { track } = useOpenPanel();
   const ui = section.ui;
+  const tAiTools = useTranslations("ai_tools");
 
   const [filter, setFilter] = useState<PictionaryPoolFilter>({
     category: "all",
@@ -233,6 +236,27 @@ export default function PictionaryWordGenerator({ section }: Props) {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-16 sm:py-20">
+        {/* Breadcrumb pill */}
+        <div className="mb-8 flex justify-start">
+          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
+            <Link
+              href="/"
+              className="transition-colors hover:text-foreground/80"
+            >
+              {ui.breadcrumb_home}
+            </Link>
+            <span className="mx-2 text-muted-foreground/40">/</span>
+            <Link
+              href="/ai-tools"
+              className="transition-colors hover:text-foreground/80"
+            >
+              {tAiTools("tools_hub_nav")}
+            </Link>
+            <span className="mx-2 text-muted-foreground/40">/</span>
+            <span className="text-foreground/80">{ui.breadcrumb_current}</span>
+          </div>
+        </div>
+
         <div className="text-center">
           <div className="group mb-6 flex justify-center">
             <div className="relative rounded-2xl border border-border/15 bg-foreground/[0.012] p-1.5 dark:bg-white/[0.015]">
