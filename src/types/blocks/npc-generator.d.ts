@@ -56,6 +56,13 @@ export interface NpcGeneratorPage {
     stat_challenge_rating: string;
     stat_actions: string;
     stat_abilities: string;
+    stat_ability_str: string;
+    stat_ability_dex: string;
+    stat_ability_con: string;
+    stat_ability_int: string;
+    stat_ability_wis: string;
+    stat_ability_cha: string;
+    stat_action_punctuation: string;
     copied_markdown: string;
     copied_text: string;
     copy_failed: string;

@@ -137,7 +137,7 @@ export default function NpcResultCard({
                 key={row.field}
                 className={cn(
                   "flex items-start justify-between gap-3 rounded-lg border border-border/60 px-3 py-2",
-                  row.fullWidth && "sm:col-span-2",
+                  row.fullWidth && "sm:col-span-2 xl:col-span-1",
                   locked && "border-primary/30 bg-primary/[0.04]"
                 )}
               >

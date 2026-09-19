@@ -13,19 +13,29 @@ export type NpcStatBlockLabels = Pick<
   | "stat_challenge_rating"
   | "stat_actions"
   | "stat_abilities"
+  | "stat_ability_str"
+  | "stat_ability_dex"
+  | "stat_ability_con"
+  | "stat_ability_int"
+  | "stat_ability_wis"
+  | "stat_ability_cha"
+  | "stat_action_punctuation"
 >;
 
-const ABILITY_COLUMNS: Array<{
-  key: keyof Dnd5eNpcStatBlock["abilities"];
-  label: string;
-}> = [
-  { key: "str", label: "STR" },
-  { key: "dex", label: "DEX" },
-  { key: "con", label: "CON" },
-  { key: "int", label: "INT" },
-  { key: "wis", label: "WIS" },
-  { key: "cha", label: "CHA" },
+const ABILITY_COLUMNS: Array<keyof Dnd5eNpcStatBlock["abilities"]> = [
+  "str",
+  "dex",
+  "con",
+  "int",
+  "wis",
+  "cha",
 ];
+
+type AbilityKey = (typeof ABILITY_COLUMNS)[number];
+
+function abilityLabel(labels: NpcStatBlockLabels, key: AbilityKey): string {
+  return labels[`stat_ability_${key}` as const];
+}
 
 interface NpcStatBlockProps {
   statBlock: Dnd5eNpcStatBlock;
@@ -79,11 +89,11 @@ export default function NpcStatBlock({ statBlock, labels }: NpcStatBlockProps) {
             <tr>
               {ABILITY_COLUMNS.map((ability) => (
                 <th
-                  key={ability.key}
+                  key={ability}
                   scope="col"
                   className="pb-1 font-semibold text-muted-foreground"
                 >
-                  {ability.label}
+                  {abilityLabel(labels, ability)}
                 </th>
               ))}
             </tr>
@@ -92,10 +102,10 @@ export default function NpcStatBlock({ statBlock, labels }: NpcStatBlockProps) {
             <tr className="border-t border-border/60">
               {ABILITY_COLUMNS.map((ability) => (
                 <td
-                  key={ability.key}
+                  key={ability}
                   className="pt-1.5 font-medium tabular-nums text-foreground"
                 >
-                  {statBlock.abilities[ability.key]}
+                  {statBlock.abilities[ability]}
                 </td>
               ))}
             </tr>
@@ -108,7 +118,10 @@ export default function NpcStatBlock({ statBlock, labels }: NpcStatBlockProps) {
         <ul className="space-y-2 text-muted-foreground">
           {statBlock.actions.map((action, index) => (
             <li key={`${action.name}-${index}`}>
-              <strong className="font-semibold text-foreground">{action.name}.</strong>{" "}
+              <strong className="font-semibold text-foreground">
+                {action.name}
+                {labels.stat_action_punctuation}
+              </strong>{" "}
               {action.text}
             </li>
           ))}
