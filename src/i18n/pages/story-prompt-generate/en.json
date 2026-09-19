@@ -75,6 +75,7 @@
   "story_prompt_generate": {
     "header": {
       "title": "Story Prompt Generator",
+      "title_highlight": "Story Prompt",
       "subtitle": "Generate creative story prompts instantly. Perfect for writers seeking inspiration or AI-ready prompts."
     },
     "feature_intro": {

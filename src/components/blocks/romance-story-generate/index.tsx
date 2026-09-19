@@ -99,6 +99,20 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
     [section]
   );
 
+  const fullTitle = section?.ui?.title ?? "";
+  const titleHighlight = section?.ui?.title_highlight ?? "";
+  const titleParts = useMemo(() => {
+    if (titleHighlight && fullTitle.includes(titleHighlight)) {
+      const idx = fullTitle.indexOf(titleHighlight);
+      return {
+        before: fullTitle.slice(0, idx),
+        highlight: titleHighlight,
+        after: fullTitle.slice(idx + titleHighlight.length),
+      };
+    }
+    return { before: fullTitle, highlight: "", after: "" };
+  }, [fullTitle, titleHighlight]);
+
   const AI_MODELS = useMemo(
     () => [
       {
@@ -537,12 +551,15 @@ export default function RomanceStoryGenerate({ section }: RomanceStoryGeneratePr
             AI Romance Writer
           </span>
 
-          {/* Title: Romance in italic serif, Story Generator in roman */}
+          {/* Title from i18n ui.title, gradient emphasis via ui.title_highlight */}
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-            <span className="text-gradient-ember italic">
-              Romance
-            </span>{" "}
-            <span>Story Generator</span>
+            {titleParts.before}
+            {titleParts.highlight && (
+              <span className="text-gradient-ember italic">
+                {titleParts.highlight}
+              </span>
+            )}
+            {titleParts.after}
           </h1>
 
           {/* Heart-with-arrow decorative SVG (Cupid motif, replaces brush stroke) */}

@@ -510,6 +510,20 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
     [section]
   );
   const tones = useMemo(() => Object.entries(section?.tones || {}), [section]);
+
+  const fullTitle = section?.ui?.title ?? "";
+  const titleHighlight = section?.ui?.title_highlight ?? "";
+  const titleParts = useMemo(() => {
+    if (titleHighlight && fullTitle.includes(titleHighlight)) {
+      const idx = fullTitle.indexOf(titleHighlight);
+      return {
+        before: fullTitle.slice(0, idx),
+        highlight: titleHighlight,
+        after: fullTitle.slice(idx + titleHighlight.length),
+      };
+    }
+    return { before: fullTitle, highlight: "", after: "" };
+  }, [fullTitle, titleHighlight]);
   const narrationModes = useMemo(
     () => Object.entries(section?.narration_modes || {}),
     [section]
@@ -643,13 +657,15 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
             AI Creative Tool
           </span>
 
-          {/* Title with italic gradient emphasis on "Comic" */}
+          {/* Title from i18n ui.title, gradient emphasis via ui.title_highlight */}
           <h1 className="relative z-10 font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-            AI{" "}
-            <span className="text-gradient-ember italic">
-              Comic
-            </span>
-            {" "}Generator
+            {titleParts.before}
+            {titleParts.highlight && (
+              <span className="text-gradient-ember italic">
+                {titleParts.highlight}
+              </span>
+            )}
+            {titleParts.after}
           </h1>
 
           {/* Halftone dot cluster + POW burst decorative anchor */}

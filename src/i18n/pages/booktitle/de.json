@@ -111,6 +111,9 @@
     },
     "header": {
       "title": "KOSTENLOSER KI-BUCHTITEL-GENERATOR",
+      "h1_prefix": "Kostenloser",
+      "h1_highlight": "KI-Buchtitel-Generator",
+      "h1_suffix": "für Autoren & Verlage",
       "subtitle": "Finden Sie den perfekten Titel für Ihr Buch mit KI-gestützter Kreativität.",
       "meta_title": "Kostenloser Buchtitel-Generator ｜ KI-Story-Generator",
       "meta_description": "Finden Sie den perfekten Namen für Ihren nächsten Bestseller! Unser KI-Buchtitel-Generator erstellt kreative, SEO-freundliche Titel für jedes Genre — schnell und kostenlos."

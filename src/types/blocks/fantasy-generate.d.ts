@@ -6,6 +6,7 @@
 export interface FantasyGenerate {
   header: {
     title: string;
+    title_highlight?: string;
     subtitle: string;
     meta_title: string;
     meta_description: string;

@@ -2,65 +2,38 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/icon";
 
-interface HeroCopy {
+export interface AiWriteHeroCopy {
   eyebrow: string;
   heading: string;
   highlight: string;
   description: string;
-  inputPlaceholder: string;
-  inputButton: string;
-  inputButtonSending: string;
-  inkMarks: string[];
+  input_placeholder: string;
+  input_button: string;
+  input_button_sending: string;
+  draft_label?: string;
+  char_count_zero?: string;
+  enter_hint?: string;
+  ink_marks?: string[];
 }
 
-function getHeroCopy(locale: string): HeroCopy {
-  if (locale.startsWith("zh")) {
-    return {
-      eyebrow: "创意写作工作台",
-      heading: "你的风格，",
-      highlight: "你的故事",
-      description:
-        "不是另一个千篇一律的 AI 写作工具。它记住你的角色，学习你的笔触，在你停顿的地方接续 — 像一个真正读过你作品的搭档。",
-      inputPlaceholder: "写下你故事的开头…",
-      inputButton: "开始写作",
-      inputButtonSending: "正在打开…",
-      inkMarks: ["奇幻", "言情", "悬疑", "同人", "诗歌", "科幻"],
-    };
-  }
-  if (locale.startsWith("de")) {
-    return {
-      eyebrow: "Kreatives Schreibatelier",
-      heading: "Dein Stil,",
-      highlight: "deine Geschichte",
-      description:
-        "Nicht noch ein generisches AI-Tool. Es merkt sich deine Charaktere, lernt deinen Stil und schreibt weiter, wo du pausierst — wie ein Partner, der dein Werk wirklich gelesen hat.",
-      inputPlaceholder: "Schreibe den Anfang deiner Geschichte…",
-      inputButton: "Loslegen",
-      inputButtonSending: "Öffne…",
-      inkMarks: ["Fantasy", "Romanze", "Mystery", "Fanfic", "Poesie", "Sci-Fi"],
-    };
-  }
-  return {
-    eyebrow: "Creative Writing Workbench",
-    heading: "Your voice,",
-    highlight: "your story",
-    description:
-      "Not another generic AI writing tool. It remembers your characters, learns your style, and picks up where you pause — like a partner who has actually read your work.",
-    inputPlaceholder: "Write the opening of your story…",
-    inputButton: "Start Writing",
-    inputButtonSending: "Opening…",
-    inkMarks: ["Fantasy", "Romance", "Mystery", "Fanfic", "Poetry", "Sci-Fi"],
-  };
-}
-
-export default function AiWriteHero() {
-  const locale = useLocale();
+export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
   const router = useRouter();
-  const copy = getHeroCopy(locale);
+  const copy = {
+    eyebrow: hero?.eyebrow ?? "",
+    heading: hero?.heading ?? "",
+    highlight: hero?.highlight ?? "",
+    description: hero?.description ?? "",
+    inputPlaceholder: hero?.input_placeholder ?? "",
+    inputButton: hero?.input_button ?? "",
+    inputButtonSending: hero?.input_button_sending ?? "",
+    draftLabel: hero?.draft_label || "Draft",
+    charCountZero: hero?.char_count_zero || "0 chars",
+    enterHint: hero?.enter_hint || "Press Enter to open the editor",
+    inkMarks: hero?.ink_marks ?? [],
+  };
   const [prompt, setPrompt] = useState("");
   const [sending, setSending] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -286,7 +259,7 @@ export default function AiWriteHero() {
                     <span className="size-2.5 rounded-full bg-foreground/[0.08] dark:bg-white/[0.08]" />
                   </div>
                   <span className="ml-2 text-[10px] uppercase tracking-[0.15em] text-muted-foreground/40">
-                    {locale.startsWith("zh") ? "草稿" : locale.startsWith("de") ? "Entwurf" : "Draft"}
+                    {copy.draftLabel}
                   </span>
                 </div>
 
@@ -304,11 +277,7 @@ export default function AiWriteHero() {
                 {/* Action bar */}
                 <div className="flex items-center justify-between border-t border-border/15 px-5 py-3.5">
                   <span className="text-[11px] text-muted-foreground/30 tabular-nums">
-                    {prompt.length > 0
-                      ? `${prompt.length}`
-                      : locale.startsWith("zh")
-                        ? "0 字"
-                        : "0 chars"}
+                    {prompt.length > 0 ? `${prompt.length}` : copy.charCountZero}
                   </span>
 
                   {/* Button with nested icon */}
@@ -338,11 +307,7 @@ export default function AiWriteHero() {
 
             {/* Subtle caption below card */}
             <p className="mt-4 text-center text-[11px] tracking-wide text-muted-foreground/30">
-              {locale.startsWith("zh")
-                ? "按 Enter 直接进入编辑器"
-                : locale.startsWith("de")
-                  ? "Enter drücken, um den Editor zu öffnen"
-                  : "Press Enter to open the editor"}
+              {copy.enterHint}
             </p>
           </div>
         </div>

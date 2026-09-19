@@ -127,6 +127,20 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
     return value || path;
   };
 
+  const fullTitle = section?.header?.title ?? "";
+  const titleHighlight = section?.header?.title_highlight ?? "";
+  const titleParts = useMemo(() => {
+    if (titleHighlight && fullTitle.includes(titleHighlight)) {
+      const idx = fullTitle.indexOf(titleHighlight);
+      return {
+        before: fullTitle.slice(0, idx),
+        highlight: titleHighlight,
+        after: fullTitle.slice(idx + titleHighlight.length),
+      };
+    }
+    return { before: fullTitle, highlight: "", after: "" };
+  }, [fullTitle, titleHighlight]);
+
   // State
   const [selectedGenres, setSelectedGenres] = useState<string[]>(["fantasy"]);
   const [selectedLength, setSelectedLength] = useState<string>("medium");
@@ -606,11 +620,13 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
               >
                 ?
               </span>
-              Story{" "}
-              <span className="text-gradient-ember italic">
-                Prompt
-              </span>{" "}
-              Generator
+              {titleParts.before}
+              {titleParts.highlight && (
+                <span className="text-gradient-ember italic">
+                  {titleParts.highlight}
+                </span>
+              )}
+              {titleParts.after}
               <span
                 className="pointer-events-none absolute -top-6 right-[18%] hidden md:block font-display text-2xl text-primary/0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-primary/60 dark:group-hover:text-primary/60"
                 aria-hidden

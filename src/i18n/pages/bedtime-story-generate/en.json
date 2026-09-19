@@ -7,6 +7,7 @@
     },
     "ui": {
       "title": "Bedtime Story Generator",
+      "title_highlight": "Bedtime Story",
       "subtitle": "Personalized bedtime stories for kids, ready to read aloud in 5 minutes.",
       "breadcrumb_home": "Home",
       "breadcrumb_current": "Bedtime Story Generator",

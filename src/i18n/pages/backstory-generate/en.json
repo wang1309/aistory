@@ -14,6 +14,7 @@
         },
         "ui": {
             "title": "Free Backstory Generator",
+            "title_highlight": "Backstory",
             "subtitle": "Create rich, structured character backstories with AI",
             "breadcrumb_home": "Home",
             "breadcrumb_current": "Backstory Generator",

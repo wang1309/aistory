@@ -101,6 +101,20 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
   const RANDOM_PROMPTS = useMemo(() => section.random_prompts, [section]);
   const LANGUAGE_OPTIONS = useMemo(() => section.prompt.language_options, [section]);
 
+  const fullTitle = section?.header?.title ?? "";
+  const titleHighlight = section?.header?.title_highlight ?? "";
+  const titleParts = useMemo(() => {
+    if (titleHighlight && fullTitle.includes(titleHighlight)) {
+      const idx = fullTitle.indexOf(titleHighlight);
+      return {
+        before: fullTitle.slice(0, idx),
+        highlight: titleHighlight,
+        after: fullTitle.slice(idx + titleHighlight.length),
+      };
+    }
+    return { before: fullTitle, highlight: "", after: "" };
+  }, [fullTitle, titleHighlight]);
+
   const QUICK_ADD_EMOTIONS = useMemo(() => section.prompt.quick_add_chips.emotions, [section]);
   const QUICK_ADD_IMAGERY = useMemo(() => section.prompt.quick_add_chips.imagery, [section]);
   const QUICK_ADD_SCENES = useMemo(() => section.prompt.quick_add_chips.scenes, [section]);
@@ -1042,13 +1056,15 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
             AI Poetry Writer
           </span>
 
-          {/* Title with italic gradient emphasis on "Poem" */}
+          {/* Title from i18n header.title, gradient emphasis via header.title_highlight */}
           <h1 className="relative z-10 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
-            AI{" "}
-            <span className="text-gradient-ember italic">
-              Poem
-            </span>
-            {" "}Generator
+            {titleParts.before}
+            {titleParts.highlight && (
+              <span className="text-gradient-ember italic">
+                {titleParts.highlight}
+              </span>
+            )}
+            {titleParts.after}
           </h1>
 
           {/* Editorial decorative anchor: brush stroke + halftone + sparkle + halftone + brush stroke */}

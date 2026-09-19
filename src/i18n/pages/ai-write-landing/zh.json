@@ -12,12 +12,24 @@
       "breadcrumb_current": "AI 写作"
     },
     "hero": {
-      "heading": "你的 AI 写作搭档，",
-      "highlight": "不是写作机器",
-      "description": "大多数 AI 写作工具会把你的文字磨平成通用文本。AI Write 不同 — 它记住你的角色，学习你的风格，帮你写出<strong>你的</strong>故事，而不是统计学上的平均值。",
-      "input_placeholder": "描述你想写的故事…",
+      "eyebrow": "创意写作工作台",
+      "heading": "你的风格，",
+      "highlight": "你的故事",
+      "description": "不是另一个千篇一律的 AI 写作工具。它记住你的角色，学习你的笔触，在你停顿的地方接续 — 像一个真正读过你作品的搭档。",
+      "input_placeholder": "写下你故事的开头…",
       "input_button": "开始写作",
-      "input_button_sending": "正在打开…"
+      "input_button_sending": "正在打开…",
+      "draft_label": "草稿",
+      "char_count_zero": "0 字",
+      "enter_hint": "按 Enter 直接进入编辑器",
+      "ink_marks": [
+        "奇幻",
+        "言情",
+        "悬疑",
+        "同人",
+        "诗歌",
+        "科幻"
+      ]
     },
     "pain_points": {
       "name": "pain_points",

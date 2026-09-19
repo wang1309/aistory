@@ -155,6 +155,20 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
     [section]
   );
 
+  const fullTitle = section?.ui?.title ?? "";
+  const titleHighlight = section?.ui?.title_highlight ?? "";
+  const titleParts = useMemo(() => {
+    if (titleHighlight && fullTitle.includes(titleHighlight)) {
+      const idx = fullTitle.indexOf(titleHighlight);
+      return {
+        before: fullTitle.slice(0, idx),
+        highlight: titleHighlight,
+        after: fullTitle.slice(idx + titleHighlight.length),
+      };
+    }
+    return { before: fullTitle, highlight: "", after: "" };
+  }, [fullTitle, titleHighlight]);
+
   const AI_MODELS = useMemo(
     () => [
       {
@@ -1057,12 +1071,15 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
             D&D Character Builder
           </span>
 
-          {/* Title with italic gradient emphasis on "DnD Backstory" */}
+          {/* Title from i18n ui.title, gradient emphasis via ui.title_highlight */}
           <h1 className="relative z-10 font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-            <span className="text-gradient-ember italic">
-              DnD Backstory
-            </span>
-            {" "}Generator
+            {titleParts.before}
+            {titleParts.highlight && (
+              <span className="text-gradient-ember italic">
+                {titleParts.highlight}
+              </span>
+            )}
+            {titleParts.after}
           </h1>
 
           {/* Arcane rune cluster decorative anchor */}

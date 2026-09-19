@@ -1,6 +1,7 @@
 export interface FanficGenerate {
   header: {
     title: string;
+    title_highlight?: string;
     subtitle: string;
   };
   breadcrumb?: {

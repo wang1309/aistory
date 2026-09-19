@@ -138,6 +138,20 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
   const moralLessons = useMemo(() => Object.entries(section?.moral_lessons || {}), [section]);
   const randomPrompts = useMemo(() => section?.random_prompts || [], [section]);
 
+  const fullTitle = section?.ui?.title ?? "";
+  const titleHighlight = section?.ui?.title_highlight ?? "";
+  const titleParts = useMemo(() => {
+    if (titleHighlight && fullTitle.includes(titleHighlight)) {
+      const idx = fullTitle.indexOf(titleHighlight);
+      return {
+        before: fullTitle.slice(0, idx),
+        highlight: titleHighlight,
+        after: fullTitle.slice(idx + titleHighlight.length),
+      };
+    }
+    return { before: fullTitle, highlight: "", after: "" };
+  }, [fullTitle, titleHighlight]);
+
   const [prompt, setPrompt] = useState("");
   const [selectedModel, setSelectedModel] = useState("standard");
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
@@ -635,12 +649,15 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
             AI Storyteller
           </span>
 
-          {/* Title with italic gradient on "Bedtime Story" */}
+          {/* Title from i18n ui.title, gradient emphasis via ui.title_highlight */}
           <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4 pb-1">
-            <span className="text-gradient-ember italic">
-              Bedtime Story
-            </span>
-            {" "}Generator
+            {titleParts.before}
+            {titleParts.highlight && (
+              <span className="text-gradient-ember italic">
+                {titleParts.highlight}
+              </span>
+            )}
+            {titleParts.after}
           </h1>
 
           <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed font-light max-w-xl mx-auto mt-5">

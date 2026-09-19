@@ -174,7 +174,7 @@ export default async function AiWriteLandingPage({
         />
       )}
 
-      <AiWriteHero />
+      <AiWriteHero hero={section.hero} />
       {pain_points && (
         <FeatureIntro section={pain_points} accent="orange" />
       )}

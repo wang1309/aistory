@@ -12,12 +12,24 @@
       "breadcrumb_current": "AI Write"
     },
     "hero": {
-      "heading": "あなたのAI執筆パートナー、",
-      "highlight": "執筆マシンではなく",
-      "description": "ほとんどのAIツールはあなたの声を一般的なテキストに平坦化します。AI Writeは違います — あなたのキャラクターを覚え、スタイルを学び、<strong>あなたの</strong>物語を書く手助けをします。統計的な平均ではありません。",
-      "input_placeholder": "書きたい物語を説明してください…",
+      "eyebrow": "クリエイティブ執筆ワークベンチ",
+      "heading": "あなたのスタイル、",
+      "highlight": "あなたの物語",
+      "description": "どこにでもあるAIライティングツールではありません。キャラクターを覚え、あなたの文体を学び、書き手が立ち止まった場所から物語を続けます — あなたの作品を本当に読んだ相棒のように。",
+      "input_placeholder": "物語の書き出しを綴ってみてください…",
       "input_button": "執筆開始",
-      "input_button_sending": "開いています…"
+      "input_button_sending": "開いています…",
+      "draft_label": "下書き",
+      "char_count_zero": "0 文字",
+      "enter_hint": "Enterキーでエディターが開きます",
+      "ink_marks": [
+        "ファンタジー",
+        "ロマンス",
+        "ミステリー",
+        "二次創作",
+        "詩",
+        "SF"
+      ]
     },
     "pain_points": {
       "name": "pain_points",

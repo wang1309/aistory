@@ -1,6 +1,7 @@
 export interface StoryPromptGenerate {
   header: {
     title: string;
+    title_highlight?: string;
     subtitle: string;
   };
   ui: {

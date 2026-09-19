@@ -111,6 +111,9 @@
     },
     "header": {
       "title": "免费AI书名生成器",
+      "h1_prefix": "免费AI",
+      "h1_highlight": "书名生成器",
+      "h1_suffix": "为作者与出版商打造",
       "subtitle": "借助AI的创造力，为您的书籍找到完美的标题。",
       "meta_title": "免费书名生成器 ｜ AI故事生成器",
       "meta_description": "为您的下一本畅销书找到完美名称！我们的AI书名生成器为每个类型创作创意、SEO友好的标题 — 快速且免费。"

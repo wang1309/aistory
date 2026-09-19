@@ -94,6 +94,20 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
         return value || path;
     };
 
+    const fullTitle = section?.ui?.title ?? "";
+    const titleHighlight = section?.ui?.title_highlight ?? "";
+    const titleParts = useMemo(() => {
+        if (titleHighlight && fullTitle.includes(titleHighlight)) {
+            const idx = fullTitle.indexOf(titleHighlight);
+            return {
+                before: fullTitle.slice(0, idx),
+                highlight: titleHighlight,
+                after: fullTitle.slice(idx + titleHighlight.length),
+            };
+        }
+        return { before: fullTitle, highlight: "", after: "" };
+    }, [fullTitle, titleHighlight]);
+
     // ========== AI MODELS ==========
     const AI_MODELS = useMemo(() => [
         {
@@ -842,13 +856,15 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                         AI Character Builder
                     </span>
 
-                    {/* Title with italic gradient emphasis on "Backstory" */}
+                    {/* Title from i18n ui.title, gradient emphasis via ui.title_highlight */}
                     <h1 className="relative z-10 font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.08] mt-4">
-                        Free{" "}
-                        <span className="text-gradient-ember italic">
-                            Backstory
-                        </span>
-                        {" "}Generator
+                        {titleParts.before}
+                        {titleParts.highlight && (
+                            <span className="text-gradient-ember italic">
+                                {titleParts.highlight}
+                            </span>
+                        )}
+                        {titleParts.after}
                     </h1>
 
                     {/* Editorial decorative anchor: rune + halftone + quill + halftone + rune */}

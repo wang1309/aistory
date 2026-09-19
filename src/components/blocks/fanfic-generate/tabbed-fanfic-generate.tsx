@@ -94,6 +94,20 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const reduceMotion = useReducedMotion();
   const creativeQuota = useCreativeQuotaPage("fanfic-generator");
 
+  const fullTitle = section?.header?.title ?? "";
+  const titleHighlight = section?.header?.title_highlight ?? "";
+  const titleParts = useMemo(() => {
+    if (titleHighlight && fullTitle.includes(titleHighlight)) {
+      const idx = fullTitle.indexOf(titleHighlight);
+      return {
+        before: fullTitle.slice(0, idx),
+        highlight: titleHighlight,
+        after: fullTitle.slice(idx + titleHighlight.length),
+      };
+    }
+    return { before: fullTitle, highlight: "", after: "" };
+  }, [fullTitle, titleHighlight]);
+
   // ========== STATE MANAGEMENT ==========
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -987,13 +1001,15 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
           AI Fanfiction Writer
         </span>
 
-        {/* Title with italic gradient emphasis on "Fanfiction" */}
+        {/* Title from i18n header.title, gradient emphasis via header.title_highlight */}
         <h1 className="relative z-10 font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.9] mt-4">
-          <span className="text-foreground">Free{" "}</span>
-          <span className="text-gradient-ember italic">
-            Fanfiction
-          </span>
-          <span className="text-foreground"> Generator</span>
+          <span className="text-foreground">{titleParts.before}</span>
+          {titleParts.highlight && (
+            <span className="text-gradient-ember italic">
+              {titleParts.highlight}
+            </span>
+          )}
+          <span className="text-foreground">{titleParts.after}</span>
         </h1>
 
         {/* Editorial decorative anchor: heart + halftone + sparkle + halftone + star */}

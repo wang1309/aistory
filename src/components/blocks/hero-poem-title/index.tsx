@@ -94,6 +94,20 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
     const locale = useLocale();
     const reduceMotion = useReducedMotion();
 
+    const fullTitle = section?.header?.title ?? "";
+    const titleHighlight = section?.header?.title_highlight ?? "";
+    const titleParts = useMemo(() => {
+        if (titleHighlight && fullTitle.includes(titleHighlight)) {
+            const idx = fullTitle.indexOf(titleHighlight);
+            return {
+                before: fullTitle.slice(0, idx),
+                highlight: titleHighlight,
+                after: fullTitle.slice(idx + titleHighlight.length),
+            };
+        }
+        return { before: fullTitle, highlight: "", after: "" };
+    }, [fullTitle, titleHighlight]);
+
     // Form state
     const [poemContent, setPoemContent] = useState("");
     const [selectedLanguage, setSelectedLanguage] = useState<string>("zh");
@@ -512,13 +526,15 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
                         AI Poetry Tool
                     </span>
 
-                    {/* Title with italic gradient emphasis on "Poem" */}
+                    {/* Title from i18n header.title, gradient emphasis via header.title_highlight */}
                     <h1 className="relative z-10 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15] mt-4">
-                        AI{" "}
-                        <span className="text-gradient-ember italic">
-                            Poem
-                        </span>
-                        {" "}Title Generator
+                        {titleParts.before}
+                        {titleParts.highlight && (
+                            <span className="text-gradient-ember italic">
+                                {titleParts.highlight}
+                            </span>
+                        )}
+                        {titleParts.after}
                     </h1>
 
                     {/* Editorial decorative anchor: open-quote + halftone + close-quote */}

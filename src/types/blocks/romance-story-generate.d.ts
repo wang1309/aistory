@@ -8,6 +8,7 @@ export interface RomanceStoryGenerate {
   };
   ui: {
     title: string;
+    title_highlight?: string;
     subtitle: string;
     breadcrumb_home: string;
     breadcrumb_current: string;

@@ -14,6 +14,7 @@
     },
     "header": {
       "title": "AI Poem Generator",
+      "title_highlight": "Poem",
       "subtitle": "Create Unique Poetry with AI - Modern, Classical, Haiku, Sonnet & Love Poem Generator",
       "theme_pills": ["Haiku", "Sonnet", "Free Verse", "Love Poem"]
     },

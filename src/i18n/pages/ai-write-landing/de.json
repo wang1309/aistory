@@ -12,12 +12,24 @@
       "breadcrumb_current": "AI Write"
     },
     "hero": {
-      "heading": "Ihr AI-Schreibpartner,",
-      "highlight": "Keine Schreibmaschine",
-      "description": "Die meisten AI-Tools verwässern Ihren Stil zu generischem Text. AI Write ist anders — es erinnert sich an Ihre Charaktere, lernt Ihren Stil und hilft Ihnen, <strong>Ihre</strong> Geschichte zu schreiben, nicht einen statistischen Durchschnitt.",
-      "input_placeholder": "Beschreiben Sie die Geschichte, die Sie schreiben möchten…",
-      "input_button": "Schreiben beginnen",
-      "input_button_sending": "Wird geöffnet…"
+      "eyebrow": "Kreatives Schreibatelier",
+      "heading": "Dein Stil,",
+      "highlight": "deine Geschichte",
+      "description": "Nicht noch ein generisches AI-Tool. Es merkt sich deine Charaktere, lernt deinen Stil und schreibt weiter, wo du pausierst — wie ein Partner, der dein Werk wirklich gelesen hat.",
+      "input_placeholder": "Schreibe den Anfang deiner Geschichte…",
+      "input_button": "Loslegen",
+      "input_button_sending": "Öffne…",
+      "draft_label": "Entwurf",
+      "char_count_zero": "0 Zeichen",
+      "enter_hint": "Enter drücken, um den Editor zu öffnen",
+      "ink_marks": [
+        "Fantasy",
+        "Romanze",
+        "Mystery",
+        "Fanfic",
+        "Poesie",
+        "Sci-Fi"
+      ]
     },
     "pain_points": {
       "name": "pain_points",

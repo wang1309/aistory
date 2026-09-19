@@ -3,6 +3,7 @@ import { Section } from "./section";
 export interface PoemGenerate {
   header: {
     title: string;
+    title_highlight?: string;
     subtitle: string;
     theme_pills?: string[];
   };

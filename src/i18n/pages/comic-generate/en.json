@@ -7,6 +7,7 @@
   "comic_generate": {
     "ui": {
       "title": "AI Comic Generator",
+      "title_highlight": "Comic",
       "subtitle": "Create comic dialogue, narration, and panel-by-panel scripts from any story idea.",
       "breadcrumb_home": "Home",
       "breadcrumb_current": "AI Comic Generator",

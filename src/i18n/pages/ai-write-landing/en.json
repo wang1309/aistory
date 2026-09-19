@@ -12,12 +12,24 @@
       "breadcrumb_current": "AI Write"
     },
     "hero": {
-      "heading": "Your AI Writing Partner,",
-      "highlight": "Not a Writing Machine",
-      "description": "Most AI tools generate a disposable draft. AI Write helps you keep developing the same story: it remembers your characters, learns your style, and supports the next chapter without flattening your voice.",
-      "input_placeholder": "Describe the story you want to write…",
+      "eyebrow": "Creative Writing Workbench",
+      "heading": "Your voice,",
+      "highlight": "your story",
+      "description": "Not another generic AI writing tool. It remembers your characters, learns your style, and picks up where you pause — like a partner who has actually read your work.",
+      "input_placeholder": "Write the opening of your story…",
       "input_button": "Start Writing",
-      "input_button_sending": "Opening…"
+      "input_button_sending": "Opening…",
+      "draft_label": "Draft",
+      "char_count_zero": "0 chars",
+      "enter_hint": "Press Enter to open the editor",
+      "ink_marks": [
+        "Fantasy",
+        "Romance",
+        "Mystery",
+        "Fanfic",
+        "Poetry",
+        "Sci-Fi"
+      ]
     },
     "pain_points": {
       "name": "pain_points",

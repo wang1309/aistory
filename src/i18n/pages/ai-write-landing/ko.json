@@ -12,12 +12,24 @@
       "breadcrumb_current": "AI Write"
     },
     "hero": {
-      "heading": "당신의 AI 집필 파트너,",
-      "highlight": "글쓰기 기계가 아닙니다",
-      "description": "대부분의 AI 도구는 당신의 목소리를 일반적인 텍스트로 평탄화합니다. AI Write는 다릅니다 — 캐릭터를 기억하고, 스타일을 학습하며, <strong>당신의</strong> 이야기를 쓰도록 돕습니다. 통계적 평균이 아닙니다.",
-      "input_placeholder": "쓰고 싶은 이야기를 설명하세요…",
+      "eyebrow": "창작 워크벤치",
+      "heading": "당신의 스타일,",
+      "highlight": "당신의 이야기",
+      "description": "흔한 AI 글쓰기 도구가 아닙니다. 캐릭터를 기억하고, 당신의 문체를 학습하며, 당신이 멈춘 지점에서 이어 씁니다 — 당신의 작품을 정말 읽어 본 파트너처럼.",
+      "input_placeholder": "이야기의 첫 문장을 적어보세요…",
       "input_button": "집필 시작",
-      "input_button_sending": "여는 중…"
+      "input_button_sending": "여는 중…",
+      "draft_label": "초안",
+      "char_count_zero": "0자",
+      "enter_hint": "Enter 키로 에디터를 열 수 있습니다",
+      "ink_marks": [
+        "판타지",
+        "로맨스",
+        "미스터리",
+        "2차 창작",
+        "시",
+        "SF"
+      ]
     },
     "pain_points": {
       "name": "pain_points",
