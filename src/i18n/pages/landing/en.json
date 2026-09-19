@@ -844,6 +844,11 @@
               "title": "Lovecomic",
               "url": "https://lovecomic.app/",
               "target": "_blank"
+            },
+            {
+              "title": "AI Story Generator on Launchtory",
+              "url": "https://launchtory.com/projects/storiesgenerator-org",
+              "target": "_blank"
             }
           ]
         }
@@ -930,6 +935,22 @@
           "image": {
             "src": "https://pitchwall.co/images/featured/pitchwall-light.png",
             "alt": "Featured on PitchWall"
+          }
+        },
+        {
+          "title": "Featured on DailyPings",
+          "url": "https://dailypings.com/p/ai-story-generator",
+          "image": {
+            "src": "https://dailypings.com/badge-light.svg",
+            "alt": "Featured on DailyPings"
+          }
+        },
+        {
+          "title": "Featured on neeed.directory",
+          "url": "https://neeed.directory",
+          "image": {
+            "src": "https://neeed.directory/badges/neeed-badge-light.svg",
+            "alt": "Featured on neeed.directory"
           }
         }
       ]
