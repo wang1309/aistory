@@ -795,6 +795,10 @@
             {
               "title": "ピクショナリー単語ジェネレーター",
               "url": "/ai-tools/pictionary-word-generator"
+            },
+            {
+              "title": "NPCジェネレーター",
+              "url": "/ai-tools/npc-generator"
             }
           ]
         },

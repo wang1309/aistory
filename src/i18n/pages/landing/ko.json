@@ -795,6 +795,10 @@
             {
               "title": "픽셔너리 단어 생성기",
               "url": "/ai-tools/pictionary-word-generator"
+            },
+            {
+              "title": "NPC 생성기",
+              "url": "/ai-tools/npc-generator"
             }
           ]
         },

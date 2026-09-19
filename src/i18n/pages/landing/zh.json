@@ -795,6 +795,10 @@
             {
               "title": "你画我猜词语生成器",
               "url": "/ai-tools/pictionary-word-generator"
+            },
+            {
+              "title": "NPC 生成器",
+              "url": "/ai-tools/npc-generator"
             }
           ]
         },

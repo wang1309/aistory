@@ -795,6 +795,10 @@
             {
               "title": "Генератор слов для Пикшонари",
               "url": "/ai-tools/pictionary-word-generator"
+            },
+            {
+              "title": "Генератор NPC",
+              "url": "/ai-tools/npc-generator"
             }
           ]
         },
