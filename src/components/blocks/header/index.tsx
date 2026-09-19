@@ -249,7 +249,7 @@ export default function Header({ header }: { header: HeaderType }) {
                 />
               )}
               {header.brand?.title && (
-                <span className="text-[1.3rem] font-display font-bold tracking-tight text-foreground">
+                <span className="truncate whitespace-nowrap text-[1.3rem] font-display font-bold tracking-tight text-foreground">
                   {header.brand?.title || ""}
                 </span>
               )}
@@ -424,7 +424,7 @@ export default function Header({ header }: { header: HeaderType }) {
                 />
               )}
               {header.brand?.title && (
-                <span className="text-[1.3rem] font-display font-bold tracking-tight text-foreground">
+                <span className="truncate whitespace-nowrap text-[1.3rem] font-display font-bold tracking-tight text-foreground">
                   {header.brand?.title || ""}
                 </span>
               )}
@@ -461,7 +461,7 @@ export default function Header({ header }: { header: HeaderType }) {
                         />
                       )}
                       {header.brand?.title && (
-                        <span className="text-[1.3rem] font-display font-bold tracking-tight text-foreground">
+                        <span className="truncate whitespace-nowrap text-[1.3rem] font-display font-bold tracking-tight text-foreground">
                           {header.brand?.title || ""}
                         </span>
                       )}
