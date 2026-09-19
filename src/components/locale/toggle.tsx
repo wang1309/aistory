@@ -6,7 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { useRouter } from "@/i18n/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { Globe } from "lucide-react";
 import { localeNames, localeFlags } from "@/i18n/locale";
@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 
 export default function LocaleToggle({ isIcon = false }: { isIcon?: boolean }) {
   const router = useRouter();
+  const pathname = usePathname();
   const currentLocale = useLocale();
   const [selectedLocale, setSelectedLocale] = useState(currentLocale);
 
@@ -23,7 +24,7 @@ export default function LocaleToggle({ isIcon = false }: { isIcon?: boolean }) {
 
   const handleSwitchLanguage = (newLocale: string) => {
     if (newLocale !== currentLocale) {
-      router.replace("/", { locale: newLocale });
+      router.replace(pathname, { locale: newLocale });
     }
   };
 
