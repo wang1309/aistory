@@ -1031,7 +1031,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                   <CreativeQuotaHint
                     pageKey="comic-generator"
                     selectedModel={selectedModel}
-                    used={creativeQuota.used}
+                    used={creativeQuota.used} limit={creativeQuota.limit}
                   />
                 </div>
               </div>

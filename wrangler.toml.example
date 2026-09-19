@@ -11,3 +11,4 @@ directory = ".open-next/assets"
 enabled = true
 
 [vars]
+FREE_CREATIVE_DAILY_LIMIT = "3"

@@ -1282,7 +1282,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                     );
                   })}
                 </div>
-                <CreativeQuotaHint pageKey="poem-generator" selectedModel={selectedModel} used={creativeQuota.used} />
+                <CreativeQuotaHint pageKey="poem-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
               </div>
 
               {/* Advanced Mode Options */}

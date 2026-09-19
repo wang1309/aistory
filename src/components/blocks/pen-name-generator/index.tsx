@@ -577,7 +577,7 @@ export default function PenNameGenerator({ section }: Props) {
                 <CreativeQuotaHint
                   pageKey="pen-name-generator"
                   selectedModel={mode}
-                  used={creativeQuota.used}
+                  used={creativeQuota.used} limit={creativeQuota.limit}
                 />
 
                 {mode === "creative" && creativeQuota.used >= getCreativeLimit() && (

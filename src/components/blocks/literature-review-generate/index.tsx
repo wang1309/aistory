@@ -735,7 +735,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                 <CreativeQuotaHint
                   pageKey="literature-review-generator"
                   selectedModel={selectedModel}
-                  used={creativeQuota.used}
+                  used={creativeQuota.used} limit={creativeQuota.limit}
                   className="mt-3"
                 />
                 {/* 生成按钮旁的披露:AI 文本需核查;未提供来源则不声称引用 */}

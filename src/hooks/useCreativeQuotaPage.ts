@@ -23,6 +23,8 @@ export function useCreativeQuotaPage(pageKey: CreativePageKey) {
   const t = useTranslations("story_paywall");
   const quota = useCreativeQuota(pageKey);
   const { setUsed } = quota;
+  // null = 尚未从 status API 确认真实 limit,数值判定回退 getCreativeLimit()
+  const [limit, setLimit] = useState<number | null>(null);
   const [paywallOpen, setPaywallOpen] = useState(false);
   const [leftCredits, setLeftCredits] = useState<number | null>(null);
   const [creditCost, setCreditCost] = useState<number | null>(null);
@@ -34,6 +36,9 @@ export function useCreativeQuotaPage(pageKey: CreativePageKey) {
       .then((status) => {
         if (!cancelled && status && typeof status.used === "number") {
           setUsed(status.used);
+          if (typeof status.limit === "number" && status.limit > 0) {
+            setLimit(status.limit);
+          }
           setLeftCredits(
             typeof status.leftCredits === "number" ? status.leftCredits : null
           );
@@ -53,7 +58,7 @@ export function useCreativeQuotaPage(pageKey: CreativePageKey) {
   const handleQuotaError = useCallback(
     (status: number, data: unknown): boolean => {
       if (isCreativeQuotaError(status, data, "free_quota_exceeded")) {
-        quota.exhaust();
+        quota.exhaust(limit ?? undefined);
         track(
           "creative_quota_sign_in_cta_click",
           buildCreativeQuotaSignInTrackingPayload(
@@ -78,7 +83,7 @@ export function useCreativeQuotaPage(pageKey: CreativePageKey) {
 
       return false;
     },
-    [pageKey, quota, requireAuth, t, track]
+    [limit, pageKey, quota, requireAuth, t, track]
   );
 
   const shouldBlockBeforeRequest = useCallback(
@@ -87,9 +92,9 @@ export function useCreativeQuotaPage(pageKey: CreativePageKey) {
         hasUser: !!user,
         selectedModel,
         used: quota.used,
-        limit: getCreativeLimit(),
+        limit: limit ?? getCreativeLimit(),
       }),
-    [quota.used, user]
+    [limit, quota.used, user]
   );
 
   const guardAnonymousCreativeQuota = useCallback(
@@ -124,7 +129,7 @@ export function useCreativeQuotaPage(pageKey: CreativePageKey) {
           hasUser: !!user,
           selectedModel,
           used: quota.used,
-          limit: getCreativeLimit(),
+          limit: limit ?? getCreativeLimit(),
           credits: leftCredits,
           cost: creditCost,
         })
@@ -136,12 +141,13 @@ export function useCreativeQuotaPage(pageKey: CreativePageKey) {
       setPaywallOpen(true);
       return true;
     },
-    [creditCost, leftCredits, quota.used, t, user]
+    [creditCost, leftCredits, limit, quota.used, t, user]
   );
 
   const increment = useCallback(() => {
-    const charged = quota.used >= getCreativeLimit();
-    const next = quota.increment();
+    const effectiveLimit = limit ?? getCreativeLimit();
+    const charged = quota.used >= effectiveLimit;
+    const next = quota.increment(effectiveLimit);
 
     if (charged && creditCost !== null) {
       setLeftCredits((current) =>
@@ -150,18 +156,19 @@ export function useCreativeQuotaPage(pageKey: CreativePageKey) {
     }
 
     return next;
-  }, [creditCost, quota]);
+  }, [creditCost, limit, quota]);
 
   const anonymousCreativeExhausted =
     shouldOptimisticallyGateCreativeAnonymousUsage({
       hasUser: !!user,
       selectedModel: "creative",
       used: quota.used,
-      limit: getCreativeLimit(),
+      limit: limit ?? getCreativeLimit(),
     });
 
   return {
     ...quota,
+    limit,
     paywallOpen,
     setPaywallOpen,
     creditCost,

@@ -1098,7 +1098,7 @@ export default function IncorrectQuoteGenerate({
                 <CreativeQuotaHint
                   pageKey="incorrect-quote-generator"
                   selectedModel={mode}
-                  used={creativeQuota.used}
+                  used={creativeQuota.used} limit={creativeQuota.limit}
                 />
               </div>
             </CardContent>

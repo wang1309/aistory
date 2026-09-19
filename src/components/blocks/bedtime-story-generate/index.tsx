@@ -913,7 +913,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                 <CreativeQuotaHint
                   pageKey="bedtime-story-generator"
                   selectedModel={selectedModel}
-                  used={creativeQuota.used}
+                  used={creativeQuota.used} limit={creativeQuota.limit}
                   className="mt-3"
                 />
               </div>

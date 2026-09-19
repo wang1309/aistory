@@ -1480,7 +1480,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                              </button>
                            ))}
                          </div>
-                         <CreativeQuotaHint pageKey="fanfic-generator" selectedModel={selectedModel} used={creativeQuota.used} />
+                         <CreativeQuotaHint pageKey="fanfic-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
                        </div>
 
                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">

@@ -1288,7 +1288,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
           <CreativeQuotaHint
             pageKey="fantasy-generator"
             selectedModel={selectedModel}
-            used={creativeQuota.used}
+            used={creativeQuota.used} limit={creativeQuota.limit}
             className="mt-3"
           />
         </div>

@@ -1052,7 +1052,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                       </button>
                     ))}
                   </div>
-                  <CreativeQuotaHint pageKey="dialogue-generator" selectedModel={selectedModel} used={creativeQuota.used} />
+                  <CreativeQuotaHint pageKey="dialogue-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
                 </div>
 
                 {/* Language */}

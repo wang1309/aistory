@@ -430,6 +430,10 @@
       "npc_generator": {
         "name": "NPC-Generator",
         "desc": "Erstelle einen spielbereiten NPC für D&D 5e oder Fantasy-RPGs – mit Plot-Hooks und optionalen Werten."
+      },
+      "story_summarizer": {
+        "name": "Geschichten-Zusammenfasser",
+        "desc": "Fasse eine Geschichte oder ein Kapitel in Handlungspunkte, Charakterentwicklungen, Themen und Konflikt zusammen."
       }
     },
     "tab_story": "Geschichtengenerator",

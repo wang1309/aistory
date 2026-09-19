@@ -1118,7 +1118,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                     )}
                                 </Button>
                                 <GeneratorShortcutHints />
-                                <CreativeQuotaHint pageKey="backstory-generator" selectedModel={selectedModel} used={creativeQuota.used} />
+                                <CreativeQuotaHint pageKey="backstory-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
                             </div>
                         </div>
                     </motion.div>

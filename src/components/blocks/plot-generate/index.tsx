@@ -1252,7 +1252,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                 )}
               </Button>
               <GeneratorShortcutHints showQuickSave />
-              <CreativeQuotaHint pageKey="plot-generator" selectedModel={selectedModel} used={creativeQuota.used} />
+              <CreativeQuotaHint pageKey="plot-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
             </div>
           </div>
 

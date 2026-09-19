@@ -680,7 +680,7 @@ export default function BandNameGenerator({ section }: Props) {
                   <CreativeQuotaHint
                     pageKey="band-name-generator"
                     selectedModel={mode === "ai" ? modelMode : null}
-                    used={creativeQuota.used}
+                    used={creativeQuota.used} limit={creativeQuota.limit}
                   />
 
                   {mode === "ai" &&

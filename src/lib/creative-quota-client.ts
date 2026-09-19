@@ -57,19 +57,28 @@ export function markCreativeUsed(n: number, pageKey: CreativePageKey = "story-ge
 }
 
 /** creative 生成成功后 +1,返回新的已用次数 */
-export function markCreativeIncrement(pageKey: CreativePageKey = "story-generator"): number {
-  const next = incrementCreativeUsedCount(getCreativeUsed(pageKey), CREATIVE_QUOTA_LIMIT);
+export function markCreativeIncrement(
+  pageKey: CreativePageKey = "story-generator",
+  limit: number = CREATIVE_QUOTA_LIMIT
+): number {
+  const next = incrementCreativeUsedCount(getCreativeUsed(pageKey), limit);
   markCreativeUsed(next, pageKey);
   return next;
 }
 
 /** 后端返回 429 时,同步本地为已用完 */
-export function markCreativeQuotaExhausted(pageKey: CreativePageKey = "story-generator"): void {
-  markCreativeUsed(CREATIVE_QUOTA_LIMIT, pageKey);
+export function markCreativeQuotaExhausted(
+  pageKey: CreativePageKey = "story-generator",
+  limit: number = CREATIVE_QUOTA_LIMIT
+): void {
+  markCreativeUsed(limit, pageKey);
 }
 
-export function isCreativeExhausted(pageKey: CreativePageKey = "story-generator"): boolean {
-  return getCreativeUsed(pageKey) >= CREATIVE_QUOTA_LIMIT;
+export function isCreativeExhausted(
+  pageKey: CreativePageKey = "story-generator",
+  limit: number = CREATIVE_QUOTA_LIMIT
+): boolean {
+  return getCreativeUsed(pageKey) >= limit;
 }
 
 export function useCreativeQuota(pageKey: CreativePageKey) {
@@ -82,14 +91,14 @@ export function useCreativeQuota(pageKey: CreativePageKey) {
   return {
     used,
     setUsed,
-    increment: () => {
-      const next = markCreativeIncrement(pageKey);
+    increment: (limit?: number) => {
+      const next = markCreativeIncrement(pageKey, limit);
       setUsed(next);
       return next;
     },
-    exhaust: () => {
-      markCreativeQuotaExhausted(pageKey);
-      setUsed(CREATIVE_QUOTA_LIMIT);
+    exhaust: (limit?: number) => {
+      markCreativeQuotaExhausted(pageKey, limit);
+      setUsed(limit ?? CREATIVE_QUOTA_LIMIT);
     },
   };
 }

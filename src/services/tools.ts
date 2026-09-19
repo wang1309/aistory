@@ -430,6 +430,18 @@ export const tools: Tool[] = [
     priority: 98,
   },
   {
+    slug: "story-summarizer",
+    nameKey: "ai_tools.tools.story_summarizer.name",
+    shortDescKey: "ai_tools.tools.story_summarizer.desc",
+    module: "ai-write",
+    category: "story",
+    href: "/story-summarizer",
+    icon: "RiArticleLine",
+    badges: ["new"],
+    priority: 97,
+    keywords: ["story summarizer", "chapter summarizer", "story summary", "plot summary"],
+  },
+  {
     slug: "middle-name-generator",
     nameKey: "ai_tools.tools.middle_name_generator.name",
     shortDescKey: "ai_tools.tools.middle_name_generator.desc",

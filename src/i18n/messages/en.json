@@ -433,6 +433,10 @@
       "npc_generator": {
         "name": "NPC Generator",
         "desc": "Create a table-ready NPC for D&D 5e or fantasy RPGs with plot hooks and optional stats."
+      },
+      "story_summarizer": {
+        "name": "Story Summarizer",
+        "desc": "Summarize a story or chapter into plot beats, character changes, themes, and conflict."
       }
     },
     "tab_story": "Story Generator",

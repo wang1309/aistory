@@ -627,7 +627,7 @@ export default function MiddleNameGenerator({ section }: Props) {
                 <CreativeQuotaHint
                   pageKey="middle-name-generator"
                   selectedModel={mode}
-                  used={creativeQuota.used}
+                  used={creativeQuota.used} limit={creativeQuota.limit}
                 />
 
                 {mode === "creative" &&

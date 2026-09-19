@@ -580,7 +580,7 @@ export default function ElfNameGenerator({ section }: Props) {
                   <CreativeQuotaHint
                     pageKey="elf-name-generator"
                     selectedModel={mode}
-                    used={creativeQuota.used}
+                    used={creativeQuota.used} limit={creativeQuota.limit}
                   />
 
                   {mode === "creative" && creativeQuota.used >= getCreativeLimit() && (

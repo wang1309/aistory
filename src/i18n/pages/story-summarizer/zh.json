@@ -1,0 +1,194 @@
+{
+  "story_summarizer": {
+    "metadata": {
+      "title": "故事总结器 — 免费总结任意故事或章节",
+      "description": "粘贴故事或章节，这个免费故事总结器几秒内返回结构化总结：情节节点、人物变化、主题与核心冲突。无需注册。",
+      "keywords": "故事总结器, 章节总结器, 总结故事, 故事摘要生成器, 情节总结工具"
+    },
+    "ui": {
+      "eyebrow": "免费故事总结工具",
+      "title": "故事总结器",
+      "title_highlight": "总结器",
+      "subtitle": "粘贴故事或章节，获得一份清晰的结构化总结——情节节点、人物变化、主题与核心冲突。默认跟随原文语言，也可以选择任意输出语言。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "故事总结器",
+      "story_text_label": "故事文本",
+      "story_text_hint": "粘贴你想总结的故事、章节或片段。粘贴的内容不会被保存。",
+      "character_limit_hint": "最多 20,000 字符。更长的内容请分段总结。",
+      "summary_length_label": "目标长度",
+      "spoiler_mode_label": "剧透程度",
+      "ai_model_label": "AI 模型",
+      "output_language_label": "输出语言",
+      "output_language_auto": "跟随故事语言",
+      "generate": "总结故事",
+      "generating": "正在总结…",
+      "sign_in_to_continue": "登录后继续",
+      "output_empty": "总结结果将显示在这里。在左侧粘贴故事或章节，然后点击总结。",
+      "copy_result": "复制总结",
+      "result_title": "故事总结",
+      "summary": "概要",
+      "plot_beats": "情节节点",
+      "characters": "人物",
+      "character_role": "角色定位",
+      "character_change": "人物变化",
+      "themes": "主题",
+      "central_conflict": "核心冲突",
+      "continue_ai_write": "继续使用 AI 写作",
+      "continue_hint": "打开 AI 写作继续创作——进入编辑器后即可使用故事圣经与一致性检查。"
+    },
+    "placeholders": {
+      "story_text": "在此粘贴你的故事或章节…"
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "最快速度获得总结，适合日常使用。",
+      "creative": "创意",
+      "creative_description": "表达更丰富细腻的总结，会消耗创意额度。"
+    },
+    "summary_lengths": {
+      "50": "约50词",
+      "150": "约150词",
+      "500": "约500词"
+    },
+    "spoiler_modes": {
+      "full": "完整总结",
+      "premise": "仅前提"
+    },
+    "validation": {
+      "enter_story_text": "请粘贴你要总结的故事文本。",
+      "story_text_too_long": "粘贴的文本超过 20,000 字符上限，请分段总结。"
+    },
+    "success": {
+      "result_copied": "总结已复制到剪贴板。"
+    },
+    "errors": {
+      "generation_failed": "暂时无法总结这个故事，请重试。",
+      "copy_failed": "复制失败，请重试。"
+    },
+    "feature_intro": {
+      "title": "一眼看懂任何故事",
+      "description": "故事总结器把粘贴的文本变成固定、易扫读的结构，让你不用重读全文就能看清发生了什么、谁发生了变化、故事究竟讲了什么。",
+      "items": [
+        {
+          "title": "结构化，而不只是更短",
+          "description": "每个结果都包含固定的五个部分：概要、情节节点、人物、主题与核心冲突。"
+        },
+        {
+          "title": "保持你的语言",
+          "description": "总结以你粘贴文本的语言输出——不做翻译，也不改变叙述口吻。"
+        },
+        {
+          "title": "仅前提模式",
+          "description": "选择\"仅前提\"可获得不透露后续反转和结局的防剧透概览。"
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "如何总结一个故事",
+      "description": "三步：从粘贴文本到结构化总结。",
+      "items": [
+        {
+          "title": "粘贴文本",
+          "description": "把章节、短篇或片段（最多 20,000 字符）粘贴到输入框，内容不会被保存。"
+        },
+        {
+          "title": "选择长度与剧透程度",
+          "description": "选择约 50、150 或 500 词的近似目标，以及是否允许透露后续情节。"
+        },
+        {
+          "title": "生成总结",
+          "description": "故事总结器会以你文本的语言返回固定的五个部分。"
+        },
+        {
+          "title": "复制或继续创作",
+          "description": "复制结果，或打开 AI 写作，继续使用故事圣经与一致性检查。"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "写作者为什么用它",
+      "description": "这是一个给你工作笔记的章节总结器，而不是一大段口水文字。",
+      "items": [
+        {
+          "title": "边写边积累系列笔记",
+          "description": "在写作或修改时，把每章的情节节点与人物变化整理成笔记，随时粘贴进你的大纲。"
+        },
+        {
+          "title": "阅读与工作坊准备",
+          "description": "在给反馈之前，先获得一份公平、结构化的稿件概览。"
+        },
+        {
+          "title": "可控剧透的分享",
+          "description": "\"仅前提\"让点评伙伴或早期读者尝到味道，却不泄露结局。"
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "你可以总结什么",
+      "description": "任何能粘贴的叙事文本——总结器只依据你提供的文本工作。",
+      "items": [
+        {
+          "title": "小说章节",
+          "description": "把写好的章节浓缩为情节节点与人物变化，放进你的大纲。"
+        },
+        {
+          "title": "短篇故事",
+          "description": "在动手修改结局之前，先看清故事的形状。"
+        },
+        {
+          "title": "同人文更新",
+          "description": "为掉队的读者回顾漫长的章节或剧情线。"
+        },
+        {
+          "title": "读书会与课堂阅读",
+          "description": "在讨论前快速回顾情节、人物与主题。"
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "故事总结器常见问题",
+      "description": "工具如何工作、如何处理你的文本，以及结果应该怎么期待。",
+      "items": [
+        {
+          "title": "故事总结器免费吗？",
+          "description": "免费。在每日公平使用额度内可以免费总结故事，登录后每天可获得更多次数。"
+        },
+        {
+          "title": "你保存我粘贴的故事文本吗？",
+          "description": "不保存。粘贴的文本只用于生成总结，不会存入你的账户或我们的数据库，仅记录匿名的使用次数。"
+        },
+        {
+          "title": "文本最多能有多长？",
+          "description": "每次总结最多 20,000 字符。长篇稿件请按章节或场景拆分，逐段总结。"
+        },
+        {
+          "title": "总结用什么语言输出？",
+          "description": "默认情况下，总结跟随你粘贴文本的语言：英文章节得到英文总结，日文章节得到日文总结。你也可以在\"输出语言\"下拉框中选择固定语言，让结果以其他语言输出。"
+        },
+        {
+          "title": "50、150、500 词是精确字数吗？",
+          "description": "不是。它们只是控制详略程度的近似目标，实际长度会随故事而变化。"
+        },
+        {
+          "title": "\"仅前提\"是什么意思？",
+          "description": "\"仅前提\"只总结故事设定，并在所有部分避免透露后续反转、结局或最终状态，适合简介与防剧透分享；但无法覆盖每位读者各自的剧透敏感点。"
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "总结故事，然后继续写作",
+      "description": "把总结当作你的笔记，然后打开 AI 写作，在故事圣经与一致性检查的陪伴下起草下一章。",
+      "buttons": [
+        {
+          "title": "打开 AI 写作",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "更多故事工具",
+      "description": "为刚刚总结的故事做规划、大纲与深挖。",
+      "more_label": "查看全部工具"
+    }
+  }
+}

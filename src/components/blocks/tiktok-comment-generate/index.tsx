@@ -786,7 +786,7 @@ export default function TiktokCommentGenerate({
                 <CreativeQuotaHint
                   pageKey="tiktok-comment-generator"
                   selectedModel={mode}
-                  used={creativeQuota.used}
+                  used={creativeQuota.used} limit={creativeQuota.limit}
                 />
               </div>
             </CardContent>

@@ -433,6 +433,10 @@
       "npc_generator": {
         "name": "NPC 生成器",
         "desc": "为 D&D 5e 或奇幻 RPG 生成可直接上桌的 NPC，附带剧情钩子与可选属性。"
+      },
+      "story_summarizer": {
+        "name": "故事总结器",
+        "desc": "把故事或章节总结成情节节点、人物变化、主题与核心冲突。"
       }
     },
     "tab_story": "故事生成器",

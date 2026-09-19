@@ -1477,7 +1477,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                   )}
                 </Button>
                 <GeneratorShortcutHints className="mt-3" />
-                <CreativeQuotaHint pageKey="dnd-backstory-generator" selectedModel={selectedModel} used={creativeQuota.used} />
+                <CreativeQuotaHint pageKey="dnd-backstory-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
               </div>
             </div>
           </motion.div>

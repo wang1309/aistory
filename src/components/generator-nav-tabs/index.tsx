@@ -18,6 +18,7 @@ const TABS: NavTab[] = [
   { href: "/fantasy-generator", labelKey: "ai_tools.tools.fantasy_generator.name" },
   { href: "/plot-generator", labelKey: "ai_tools.tools.plot_generator.name" },
   { href: "/story-outline-generator", labelKey: "ai_tools.tools.story_outline_generator.name" },
+  { href: "/story-summarizer", labelKey: "ai_tools.tools.story_summarizer.name" },
   { href: "/poem-generator", labelKey: "ai_tools.tools.poem_generator.name" },
   { href: "/comic-generator", labelKey: "ai_tools.tools.comic_generator.name" },
   { href: "/backstory-generator", labelKey: "ai_tools.tools.backstory_generator.name" },

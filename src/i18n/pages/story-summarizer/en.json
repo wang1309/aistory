@@ -1,0 +1,194 @@
+{
+  "story_summarizer": {
+    "metadata": {
+      "title": "Story Summarizer — Free AI Summary Writer for Stories",
+      "description": "Free AI summarizer and summary writer: write a summary of any story or chapter — plot beats, characters, themes, central conflict. No sign-up needed.",
+      "keywords": "story summarizer, summary writer, write a summary, ai summarizer free, chapter summarizer, summarize a story, story summary generator, plot summary tool"
+    },
+    "ui": {
+      "eyebrow": "Free story summary tool",
+      "title": "Story Summarizer",
+      "title_highlight": "Summarizer",
+      "subtitle": "Paste a story or chapter and this free AI summarizer returns a clean, structured summary — plot beats, character changes, themes, and the central conflict. Need to write a summary in another language? Pick any output language.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Story Summarizer",
+      "story_text_label": "Story text",
+      "story_text_hint": "Paste the story, chapter, or excerpt you want the story summarizer to condense. Nothing you paste is saved.",
+      "character_limit_hint": "Up to 20,000 characters. For longer material, summarize it in parts.",
+      "summary_length_label": "Target length",
+      "spoiler_mode_label": "Spoiler detail",
+      "ai_model_label": "AI model",
+      "output_language_label": "Output language",
+      "output_language_auto": "Follow story language",
+      "generate": "Summarize story",
+      "generating": "Summarizing…",
+      "sign_in_to_continue": "Sign in to continue",
+      "output_empty": "Your summary will appear here. Paste a story or chapter on the left and press Summarize.",
+      "copy_result": "Copy summary",
+      "result_title": "Story summary",
+      "summary": "Summary",
+      "plot_beats": "Plot beats",
+      "characters": "Characters",
+      "character_role": "Role",
+      "character_change": "Change",
+      "themes": "Themes",
+      "central_conflict": "Central conflict",
+      "continue_ai_write": "Continue in AI Write",
+      "continue_hint": "Open AI Write to keep drafting — Story Bible and Consistency Check are available once you are inside the editor."
+    },
+    "placeholders": {
+      "story_text": "Paste your story or chapter here…"
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quickest summaries for everyday use.",
+      "creative": "Creative",
+      "creative_description": "Richer, more expressive summaries. Uses your creative quota."
+    },
+    "summary_lengths": {
+      "50": "~50 words",
+      "150": "~150 words",
+      "500": "~500 words"
+    },
+    "spoiler_modes": {
+      "full": "Full summary",
+      "premise": "Premise only"
+    },
+    "validation": {
+      "enter_story_text": "Please paste the story text you want to summarize.",
+      "story_text_too_long": "The pasted text is over the 20,000-character limit. Summarize it in parts."
+    },
+    "success": {
+      "result_copied": "Summary copied to your clipboard."
+    },
+    "errors": {
+      "generation_failed": "Could not summarize the story. Please try again.",
+      "copy_failed": "Could not copy the summary. Please try again."
+    },
+    "feature_intro": {
+      "title": "Understand any story at a glance",
+      "description": "A summary writer for fiction: the story summarizer turns pasted prose into a fixed, scannable structure, so you can see what happens, who changes, and what the story is really about — without rereading everything.",
+      "items": [
+        {
+          "title": "Structured, not just shorter",
+          "description": "Every result has the same five sections: summary, plot beats, characters, themes, and central conflict."
+        },
+        {
+          "title": "Keeps your language",
+          "description": "The summary is written in the same language as the text you paste — no translation step, no switch in voice."
+        },
+        {
+          "title": "Premise-only mode",
+          "description": "Choose Premise only for a spoiler-safe overview that stops before later twists and the ending."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "How to write a summary of a story",
+      "description": "From pasted text to structured summary in three steps.",
+      "items": [
+        {
+          "title": "Paste your text",
+          "description": "Copy a chapter, short story, or excerpt — up to 20,000 characters — into the box. Nothing is stored."
+        },
+        {
+          "title": "Pick length and spoiler detail",
+          "description": "Choose an approximate target of 50, 150, or 500 words, and whether later reveals may appear."
+        },
+        {
+          "title": "Generate the summary",
+          "description": "The story summarizer returns the five fixed sections in the language of your text."
+        },
+        {
+          "title": "Copy or keep writing",
+          "description": "Copy the result, or open AI Write to continue with Story Bible and Consistency Check."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "Why writers use it",
+      "description": "A chapter summarizer that gives you a working notes page, not a wall of prose.",
+      "items": [
+        {
+          "title": "Series-bible notes as you draft",
+          "description": "Capture plot beats and character changes per chapter while you write or revise, ready to paste into your outline."
+        },
+        {
+          "title": "Reading and workshop prep",
+          "description": "Get a fair, structured overview of a manuscript segment before you give feedback."
+        },
+        {
+          "title": "Spoiler-controlled sharing",
+          "description": "Premise only gives critique partners or early readers a taste without giving away the ending."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "What you can summarize",
+      "description": "Any narrative prose you can paste — the story summarizer works with the text you give it.",
+      "items": [
+        {
+          "title": "Novel chapters",
+          "description": "Condense a drafted chapter into beats and character changes for your outline."
+        },
+        {
+          "title": "Short stories",
+          "description": "See the shape of a story before you start revising its ending."
+        },
+        {
+          "title": "Fan fiction updates",
+          "description": "Recap long chapters or arcs for readers who fell behind."
+        },
+        {
+          "title": "Book-club and class reading",
+          "description": "Refresh the plot, characters, and themes before a discussion."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Story Summarizer FAQ",
+      "description": "How the tool works, what it does with your text, and what to expect from the results.",
+      "items": [
+        {
+          "title": "Is the story summarizer free?",
+          "description": "Yes. This free AI summarizer works within a daily fair-use limit, and signing in gives you more daily summaries."
+        },
+        {
+          "title": "Do you store the story text I paste?",
+          "description": "No. Your pasted text is sent to generate the summary and is not saved to your account or our database. Only anonymous usage counts are recorded."
+        },
+        {
+          "title": "How long can my text be?",
+          "description": "Up to 20,000 characters per summary. For a long manuscript, split it into chapters or scenes and summarize each part."
+        },
+        {
+          "title": "Which language is the summary written in?",
+          "description": "By default the summary follows the language of the text you paste: an English chapter gets an English summary, a Japanese chapter a Japanese one. You can also pick a fixed output language from the dropdown if you want the result in another language."
+        },
+        {
+          "title": "Are the 50, 150, and 500 word options exact?",
+          "description": "No. They are approximate targets that steer the level of detail; the exact length varies with the story."
+        },
+        {
+          "title": "What does Premise only mean?",
+          "description": "Premise only summarizes the setup and avoids revealing later twists, the ending, or final outcomes in every section. It suits blurbs and spoiler-safe sharing, though it cannot account for every reader's own spoiler sensitivity."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "Write a summary, then keep writing",
+      "description": "Use the summary as your notes, then open AI Write to draft the next chapter with Story Bible and Consistency Check by your side.",
+      "buttons": [
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "More story tools",
+      "description": "Plan, outline, and deepen the story you just summarized.",
+      "more_label": "View all tools"
+    }
+  }
+}

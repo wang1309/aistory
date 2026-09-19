@@ -1,0 +1,194 @@
+{
+  "story_summarizer": {
+    "metadata": {
+      "title": "Story Summarizer – Geschichten und Kapitel kostenlos zusammenfassen",
+      "description": "Geschichte oder Kapitel einfügen und in Sekunden eine strukturierte Zusammenfassung erhalten: Handlungspunkte, Charakterentwicklungen, Themen und der zentrale Konflikt. Kostenlos und ohne Anmeldung.",
+      "keywords": "story summarizer, geschichte zusammenfassen, kapitel zusammenfassen, inhaltsangabe generator, handlung zusammenfassen"
+    },
+    "ui": {
+      "eyebrow": "Kostenloses Zusammenfassungs-Tool",
+      "title": "Geschichten-Zusammenfasser",
+      "title_highlight": "Zusammenfasser",
+      "subtitle": "Füge eine Geschichte oder ein Kapitel ein und erhalte eine klare, strukturierte Zusammenfassung – Handlungspunkte, Charakterentwicklungen, Themen und den zentralen Konflikt. Standardmäßig in der Sprache deines Textes, optional in jeder anderen Ausgabesprache.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Geschichten-Zusammenfasser",
+      "story_text_label": "Story-Text",
+      "story_text_hint": "Füge die Geschichte, das Kapitel oder den Auszug ein, den du zusammenfassen möchtest. Eingefügter Text wird nicht gespeichert.",
+      "character_limit_hint": "Bis zu 20.000 Zeichen. Längere Materialien am besten in Teilen zusammenfassen.",
+      "summary_length_label": "Ziellänge",
+      "spoiler_mode_label": "Spoilerdetail",
+      "ai_model_label": "KI-Modell",
+      "output_language_label": "Ausgabesprache",
+      "output_language_auto": "Wie Story-Sprache",
+      "generate": "Geschichte zusammenfassen",
+      "generating": "Wird zusammenfasst…",
+      "sign_in_to_continue": "Zum Fortfahren anmelden",
+      "output_empty": "Hier erscheint deine Zusammenfassung. Füge links eine Geschichte oder ein Kapitel ein und klicke auf Zusammenfassen.",
+      "copy_result": "Zusammenfassung kopieren",
+      "result_title": "Geschichtenzusammenfassung",
+      "summary": "Zusammenfassung",
+      "plot_beats": "Handlungspunkte",
+      "characters": "Charaktere",
+      "character_role": "Rolle",
+      "character_change": "Veränderung",
+      "themes": "Themen",
+      "central_conflict": "Zentraler Konflikt",
+      "continue_ai_write": "In AI Write weiterschreiben",
+      "continue_hint": "Öffne AI Write, um weiterzuschreiben – Story Bible und Consistency Check stehen im Editor zur Verfügung."
+    },
+    "placeholders": {
+      "story_text": "Füge hier deine Geschichte oder dein Kapitel ein…"
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schnellste Zusammenfassungen für den Alltag.",
+      "creative": "Kreativ",
+      "creative_description": "Ausdrucksstärkere, detailreichere Zusammenfassungen. Nutzt dein Kreativ-Kontingent."
+    },
+    "summary_lengths": {
+      "50": "~50 Wörter",
+      "150": "~150 Wörter",
+      "500": "~500 Wörter"
+    },
+    "spoiler_modes": {
+      "full": "Volle Zusammenfassung",
+      "premise": "Nur Prämisse"
+    },
+    "validation": {
+      "enter_story_text": "Bitte füge den Story-Text ein, den du zusammenfassen möchtest.",
+      "story_text_too_long": "Der eingefügte Text überschreitet das Limit von 20.000 Zeichen. Fasse ihn in Teilen zusammen."
+    },
+    "success": {
+      "result_copied": "Zusammenfassung in die Zwischenablage kopiert."
+    },
+    "errors": {
+      "generation_failed": "Die Geschichte konnte nicht zusammengefasst werden. Bitte versuche es erneut.",
+      "copy_failed": "Die Zusammenfassung konnte nicht kopiert werden. Bitte versuche es erneut."
+    },
+    "feature_intro": {
+      "title": "Jede Geschichte auf einen Blick verstehen",
+      "description": "Der Story Summarizer verwandelt eingefügten Text in eine feste, übersichtliche Struktur – so siehst du, was passiert, wer sich verändert und worum es wirklich geht, ohne alles erneut zu lesen.",
+      "items": [
+        {
+          "title": "Strukturiert, nicht nur kürzer",
+          "description": "Jedes Ergebnis hat dieselben fünf Abschnitte: Zusammenfassung, Handlungspunkte, Charaktere, Themen und zentraler Konflikt."
+        },
+        {
+          "title": "Bleibt in deiner Sprache",
+          "description": "Die Zusammenfassung entsteht in derselben Sprache wie der eingefügte Text – ohne Übersetzungsschritt."
+        },
+        {
+          "title": "Nur-Prämisse-Modus",
+          "description": "Wähle „Nur Prämisse“ für eine spoilervertrauliche Übersicht ohne spätere Wendungen und ohne Ende."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "So fasst du eine Geschichte zusammen",
+      "description": "In drei Schritten vom eingefügten Text zur strukturierten Zusammenfassung.",
+      "items": [
+        {
+          "title": "Text einfügen",
+          "description": "Kapitel, Kurzgeschichte oder Auszug – bis zu 20.000 Zeichen – in das Feld einfügen. Nichts wird gespeichert."
+        },
+        {
+          "title": "Länge und Spoilerdetail wählen",
+          "description": "Ziel von ca. 50, 150 oder 500 Wörtern wählen und festlegen, ob spätere Auflösungen erscheinen dürfen."
+        },
+        {
+          "title": "Zusammenfassung erzeugen",
+          "description": "Der Story Summarizer liefert die fünf festen Abschnitte in der Sprache deines Textes."
+        },
+        {
+          "title": "Kopieren oder weiterschreiben",
+          "description": "Ergebnis kopieren oder AI Write öffnen und mit Story Bible und Consistency Check weiterarbeiten."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "Warum Autorinnen und Autoren es nutzen",
+      "description": "Ein Kapitel-Zusammenfasser, der eine brauchbare Notizseite liefert, keine Textwand.",
+      "items": [
+        {
+          "title": "Serien-Notizen beim Schreiben",
+          "description": "Halte Handlungspunkte und Charakterentwicklungen kapitelweise fest, bereit für deine Gliederung."
+        },
+        {
+          "title": "Lektüre- und Workshop-Vorbereitung",
+          "description": "Verschaffe dir vor dem Feedback einen fairen, strukturierten Überblick über einen Manuskriptabschnitt."
+        },
+        {
+          "title": "Spoilergesteuertes Teilen",
+          "description": "„Nur Prämisse“ gibt Feedbackpartnern oder frühen Lesern einen Vorgeschmack, ohne das Ende zu verraten."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "Was du zusammenfassen kannst",
+      "description": "Jeden narrativen Text, den du einfügen kannst – der Summarizer arbeitet mit dem Text, den du lieferst.",
+      "items": [
+        {
+          "title": "Romankapitel",
+          "description": "Verdichte ein geschriebenes Kapitel zu Handlungspunkten und Charakterentwicklungen für deine Gliederung."
+        },
+        {
+          "title": "Kurzgeschichten",
+          "description": "Sieh die Form einer Geschichte, bevor du mit dem Überarbeiten des Endes beginnst."
+        },
+        {
+          "title": "Fanfiction-Updates",
+          "description": "Fasse lange Kapitel oder Handlungsbögen für Leserinnen zusammen, die den Anschluss verloren haben."
+        },
+        {
+          "title": "Buchclub- und Unterrichtsstoff",
+          "description": "Frische Handlung, Charaktere und Themen vor der Diskussion auf."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Story Summarizer FAQ",
+      "description": "Wie das Tool funktioniert, was mit deinem Text passiert und was du von den Ergebnissen erwarten kannst.",
+      "items": [
+        {
+          "title": "Ist der Story Summarizer kostenlos?",
+          "description": "Ja. Innerhalb eines täglichen Fair-Use-Limits kannst du kostenlos Geschichten zusammenfassen. Nach der Anmeldung stehen mehr Zusammenfassungen pro Tag zur Verfügung."
+        },
+        {
+          "title": "Wird der eingefügte Text gespeichert?",
+          "description": "Nein. Der eingefügte Text wird nur zur Erzeugung der Zusammenfassung übermittelt und weder in deinem Konto noch in unserer Datenbank gespeichert. Nur anonyme Nutzungszähler werden erfasst."
+        },
+        {
+          "title": "Wie lang darf mein Text sein?",
+          "description": "Bis zu 20.000 Zeichen pro Zusammenfassung. Teile lange Manuskripte in Kapitel oder Szenen und fasse jeden Teil einzeln zusammen."
+        },
+        {
+          "title": "In welcher Sprache erscheint die Zusammenfassung?",
+          "description": "Standardmäßig folgt die Zusammenfassung der Sprache des eingefügten Texts: ein englischsprachiges Kapitel erhält eine englische Zusammenfassung, ein japanisches eine japanische. Über die Ausgabesprache-Auswahl kannst du optional eine feste Sprache für das Ergebnis wählen."
+        },
+        {
+          "title": "Sind die Optionen 50, 150 und 500 Wörter exakt?",
+          "description": "Nein. Es sind ungefähre Ziele, die den Detailgrad steuern; die genaue Länge variiert mit der Geschichte."
+        },
+        {
+          "title": "Was bedeutet „Nur Prämisse“?",
+          "description": "„Nur Prämisse“ fasst den Aufbau zusammen und vermeidet in allen Abschnitten spätere Wendungen, das Ende oder Endzustände zu verraten. Geeignet für Klappentexte und spoilervertrauliches Teilen – individuelle Spoilerempfindlichkeiten kann es jedoch nicht abdecken."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "Geschichte zusammenfassen und weiterschreiben",
+      "description": "Nutze die Zusammenfassung als Notizen und öffne AI Write, um das nächste Kapitel zu entwerfen – mit Story Bible und Consistency Check an deiner Seite.",
+      "buttons": [
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Weitere Story-Tools",
+      "description": "Plane, gliedere und vertiefe die Geschichte, die du gerade zusammengefasst hast.",
+      "more_label": "Alle Tools ansehen"
+    }
+  }
+}

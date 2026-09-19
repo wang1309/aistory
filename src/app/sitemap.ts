@@ -47,6 +47,7 @@ const TOOL_ROUTES = new Set([
   '/ai-tools/middle-name-generator',
   '/ai-tools/pictionary-word-generator',
   '/ai-tools/npc-generator',
+  '/story-summarizer',
 ])
 
 function getRouteTier(route: string): RouteTier {
@@ -142,6 +143,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   '/ai-tools/middle-name-generator',
   '/ai-tools/pictionary-word-generator',
   '/ai-tools/npc-generator',
+  '/story-summarizer',
     '/posts',
     '/changelog'
   ]

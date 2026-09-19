@@ -676,7 +676,7 @@
           "title": "AI 글쓰기",
           "children": [
             {
-              "title": "AI 글쓰기 도구 전체보기",
+              "title": "AI 글쓰기",
               "url": "/ai-write",
               "target": "_self"
             },
@@ -713,6 +713,11 @@
             {
               "title": "스토리 개요 생성기",
               "url": "/story-outline-generator",
+              "target": "_self"
+            },
+            {
+              "title": "스토리 요약기",
+              "url": "/story-summarizer",
               "target": "_self"
             },
             {
