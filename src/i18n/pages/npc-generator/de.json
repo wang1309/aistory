@@ -1,0 +1,981 @@
+{
+  "npc_generator": {
+    "metadata": {
+      "title": "Kostenloser NPC-Generator für D&D 5e & Fantasy-RPGs",
+      "description": "Erzeuge einen tischfertigen NPC für D&D 5e oder Fantasy-RPGs mit Name, Motivation, Geheimnis, Plot-Hook und einem optionalen 5e-kompatiblen Statblock.",
+      "keywords": "npc generator, dnd npc generator, zufälliger npc generator, dnd 5e npc generator, fantasy npc generator"
+    },
+    "ui": {
+      "title": "Kostenloser NPC-Generator für D&D 5e & Fantasy-RPGs",
+      "title_highlight": "NPC-Generator",
+      "subtitle": "Erhalte mit einem Klick einen tischfertigen NPC für deine Runde — Name, Rolle, Motivation, Geheimnis und Plot-Hook, dazu ein optionaler Statblock. Für Spielleiter, die gerade jetzt eine Figur brauchen, ganz ohne Anmeldung.",
+      "eyebrow": "Kostenloses NPC-Tool",
+      "theme_pills": [
+        "Fantasy-RPG-Modus",
+        "D&D 5e-Statblocks",
+        "Feldsperren & Rerolls",
+        "Keine Anmeldung"
+      ],
+      "breadcrumb_home": "Start",
+      "breadcrumb_current": "NPC-Generator",
+      "fantasy_mode": "Fantasy-RPG",
+      "dnd5e_mode": "D&D 5e",
+      "system_label": "Modus",
+      "race_label": "Volk",
+      "presentation_label": "Erscheinung",
+      "role_label": "Rolle",
+      "tone_label": "Ton",
+      "cr_tier_label": "Stärkelevel",
+      "cr_tier_commoner": "Einfach",
+      "cr_tier_trained": "Geübt",
+      "cr_tier_veteran": "Veteran",
+      "cr_tier_elite": "Elite",
+      "generate": "NPC erzeugen",
+      "reroll_npc": "Neuer NPC",
+      "reroll_field": "Neu würfeln",
+      "lock_field": "Festhalten",
+      "unlock_field": "Lösen",
+      "copy_markdown": "Markdown kopieren",
+      "copy_text": "Klartext kopieren",
+      "expand_backstory": "Zu einer vollständigen Hintergrundgeschichte ausbauen",
+      "stat_block": "Statblock",
+      "non_combat_notice": "Der Fantasy-RPG-Modus erzeugt nur Rollspieldetails; er verwendet keine D&D-5e-Regeln.",
+      "empty_state": "Wähle deine Optionen und erzeuge deinen ersten NPC.",
+      "field_name": "Name",
+      "field_race": "Volk",
+      "field_presentation": "Erscheinung",
+      "field_role": "Rolle",
+      "field_appearance": "Aussehen",
+      "field_mannerism": "Eigenart",
+      "field_personality": "Persönlichkeit",
+      "field_motivation": "Motivation",
+      "field_secret": "Geheimnis",
+      "field_hook": "Plot-Hook",
+      "stat_armor_class": "Rüstungsklasse",
+      "stat_hit_points": "Trefferpunkte",
+      "stat_speed": "Bewegungsrate",
+      "stat_passive_perception": "Passive Wahrnehmung",
+      "stat_languages": "Sprachen",
+      "stat_challenge_rating": "Herausforderungsgrad",
+      "stat_actions": "Aktionen",
+      "stat_abilities": "Werte",
+      "copied_markdown": "Markdown in die Zwischenablage kopiert.",
+      "copied_text": "Klartext in die Zwischenablage kopiert.",
+      "copy_failed": "Kopieren fehlgeschlagen. Bitte kopiere den Text von Hand.",
+      "prefill_failed": "Der Hintergrundgenerator ließ sich mit diesem NPC nicht öffnen. Kopiere die Details und füge sie dort von Hand ein."
+    },
+    "generator_data": {
+      "names": {
+        "given": [
+          "Alvar",
+          "Brunhild",
+          "Cedrik",
+          "Dietlinde",
+          "Egil",
+          "Frieda",
+          "Gero",
+          "Hildrun",
+          "Ivo",
+          "Josta",
+          "Konrad",
+          "Liesel",
+          "Meinhard",
+          "Nantwin",
+          "Oda",
+          "Rüdiger",
+          "Svanhild",
+          "Traude",
+          "Ulf",
+          "Waltraud",
+          "Ylva",
+          "Zisko"
+        ],
+        "family": [
+          "Achterberg",
+          "Bernstein",
+          "Drachenfels",
+          "Eichwald",
+          "Falkenstein",
+          "Graumoor",
+          "Hohenfels",
+          "Ilsenstein",
+          "Kaltbach",
+          "Lindenblatt",
+          "Morgenrot",
+          "Nebeltal",
+          "Odenwald",
+          "Rabenstein",
+          "Steinbach",
+          "Tannheim",
+          "Ulmenhof",
+          "Wolfsbrunn",
+          "Zinnenberg",
+          "Felsheim",
+          "Adlertal",
+          "Heidenmauer"
+        ]
+      },
+      "races": [
+        {
+          "value": "human",
+          "label": "Mensch"
+        },
+        {
+          "value": "elf",
+          "label": "Elf"
+        },
+        {
+          "value": "dwarf",
+          "label": "Zwerg"
+        },
+        {
+          "value": "halfling",
+          "label": "Halbling"
+        },
+        {
+          "value": "orc",
+          "label": "Ork"
+        },
+        {
+          "value": "tiefling",
+          "label": "Tiefling"
+        },
+        {
+          "value": "random",
+          "label": "Zufällig"
+        }
+      ],
+      "presentations": [
+        {
+          "value": "any",
+          "label": "Beliebig"
+        },
+        {
+          "value": "woman",
+          "label": "Frau"
+        },
+        {
+          "value": "man",
+          "label": "Mann"
+        },
+        {
+          "value": "nonbinary",
+          "label": "Nichtbinär"
+        }
+      ],
+      "roles": [
+        {
+          "value": "guard",
+          "label": "Wache",
+          "archetype": "martial"
+        },
+        {
+          "value": "merchant",
+          "label": "Händler",
+          "archetype": "skilled"
+        },
+        {
+          "value": "innkeeper",
+          "label": "Wirt",
+          "archetype": "common"
+        },
+        {
+          "value": "scout",
+          "label": "Kundschafter",
+          "archetype": "skilled"
+        },
+        {
+          "value": "priest",
+          "label": "Priester",
+          "archetype": "spellcaster"
+        },
+        {
+          "value": "scholar",
+          "label": "Gelehrter",
+          "archetype": "spellcaster"
+        },
+        {
+          "value": "bandit",
+          "label": "Bandit",
+          "archetype": "martial"
+        },
+        {
+          "value": "noble",
+          "label": "Adliger",
+          "archetype": "common"
+        },
+        {
+          "value": "random",
+          "label": "Zufällig",
+          "archetype": "common"
+        }
+      ],
+      "tones": [
+        {
+          "value": "heroic",
+          "label": "Heroisch"
+        },
+        {
+          "value": "grim",
+          "label": "Finster"
+        },
+        {
+          "value": "mysterious",
+          "label": "Geheimnisvoll"
+        },
+        {
+          "value": "whimsical",
+          "label": "Verspielt"
+        },
+        {
+          "value": "random",
+          "label": "Zufällig"
+        }
+      ],
+      "appearances": [
+        "Abgewetterter Umhang, mit einer angelaufenen Brosche gehalten.",
+        "Sonnverbrannte Haut und Hände voller Tausrillen.",
+        "Ein langer Zopf, durchflochten mit kleinen Knochenperlen.",
+        "Ein aufgerissener Ärmel, mit unpassendem Stoff geflickt.",
+        "Eine tiefe Narbe quer über der linken Augenbraue.",
+        "Stiefel mit durchgelaufenen Absätzen, frisch neu genäht.",
+        "Silbergraues Haar kurz geschnitten, trotz jungen Gesichts.",
+        "Ein klirrender Gürtel voller Schlüssel, Haken und kleiner Werkzeuge.",
+        "Tintenflecken vom Handgelenk bis zu den Knöcheln der Hand.",
+        "Ein abgebrochener Schneidezahn und ein schiefes, entspanntes Grinsen.",
+        "Sommersprossen über der Nase und ein Klecks Mehl auf der Wange.",
+        "Eine schwere Reisetasche, die älter wirkt als ihre Besitzerin.",
+        "Ein eingekerbtes Ohr, Mal einer alten Haferraufe.",
+        "Ein feiner Mantel, an den Ärmeln abgetragen.",
+        "Brandmale an den Fingerspitzen der bevorzugten Hand.",
+        "Ein Anhänger aus gedrehtem Eisen, immer auf der Haut getragen.",
+        "Augen im blassen Grau von Wintereis auf einem Fluss.",
+        "Ein Hinken, das den Schritt trotzdem nie verlangsamt.",
+        "Ringe an jedem Finger, keiner gleicht dem anderen.",
+        "Ein breitkrempiger Hut mit einer Feder von keinem Vogel, den jemand kennt.",
+        "Handschuhe mit verschlissenen Fingerspitzen — vom Schreiben oder vom Schlossknacken."
+      ],
+      "mannerisms": [
+        "Zählt jede Münze zweimal, bevor sie den Besitzer wechselt.",
+        "Klopft beim Nachdenken mit einem Fingergelenk auf den Tisch.",
+        "Setzt sich nie mit der Tür im Rücken.",
+        "Pfeift bei der Arbeit eine alte Marschmelodie.",
+        "Wiederholt beim ersten Kennenlernen dreimal deinen Namen.",
+        "Legt eine Hand auf ein Messer, das die Scheide nie verlässt.",
+        "Lacht einen Takt zu spät und vertuscht es mit einem Husten.",
+        "Schnuppert in jeden Raum hinein, bevor sie ihn betritt.",
+        "Blinzelt, als stünde in jedem Wort Kleingedrucktes.",
+        "Lenkt jedes Gespräch auf dasselbe Thema zurück.",
+        "Füttert zwischen den Sätzen die Vögel mit Krümeln.",
+        "Richtet Schiefes — Tassen, Bilderrahmen, Kragen — ohne es zu merken.",
+        "Ritzt Strichlisten in die Tischplatte.",
+        "Beantwortet Fragen zuerst mit Gegenfragen.",
+        "Summt beim Lügen, doch niemand hat es bisher angesprochen.",
+        "Stellt jedes Getränk nach genau zwei Schlucken ab.",
+        "Fährt beim Reden mit dem Daumen über alte Narben.",
+        "Begrüßt Fremde wie alte Freunde und Freunde wie Fremde.",
+        "Vollendet keinen Satz, wenn der Wind umschlägt.",
+        "Führt ein kleines Verzeichnis der Gefallen, die man ihr schuldet und die sie schuldet.",
+        "Stellt sich immer dorthin, wo Eingang und Geldkasse zugleich im Blick sind."
+      ],
+      "personalities": [
+        "Achtsam und praktisch veranlagt, langsam im Vertrauen, aber lebenslang treu.",
+        "Warm an der Oberfläche, darunter ein Verzeichnis voller Groll.",
+        "Endlos neugierig darauf, was die Dinge kosten und warum.",
+        "Müde vom Kämpfen, zu stur zum Gehen.",
+        "Heiter auf die Art von Menschen, die viel begraben haben.",
+        "Stolz auf ein Handwerk, das die Stadt scheinbar nicht mehr braucht.",
+        "Gütig zu Kindern und Tieren, kühl zu allen anderen.",
+        "Angetrieben von einer Schuld, die nirgendwo niedergeschrieben steht.",
+        "Aberglaubisch, was Flüsse, Türen und die Zahl Neun angeht.",
+        "Überzeugt, dass die Welt eine Geschichte ist — und hasst die Rolle, die ihr zugedacht wurde.",
+        "Sanft, solange niemand den Plan bedroht.",
+        "Ehrgeizig auf die stille, geduldige Art, die laute Rivalen überdauert.",
+        "Misstrauisch gegenüber Magie, Priestern und jeder angebotenen Hilfe.",
+        "Gebunden an einen Eid, der einer heute toten Person geschworen wurde.",
+        "Optimistisch genug, die Miete auf ein gutes Ergebnis zu setzen.",
+        "Fürchtet die Langeweile mehr als die Banditen.",
+        "Ehrlich, behält sich aber vor, den Augenblick zu wählen.",
+        "Wahrt den Frieden im Raum, wie andere eine Klinge halten.",
+        "Verfolgt von einem Erfolg, der ein Misserfolg hätte sein sollen.",
+        "Liebt das Gerücht mehr als die Wahrheit, kennt aber den Unterschied.",
+        "Geduldig mit allen — außer mit Menschen, die Essen verschwenden."
+      ],
+      "motivations": [
+        "Will den Familienhof vor dem Winter zurückkaufen.",
+        "Spart jeden Kupfer, um irgendwohin zu ziehen, wo niemand ihren Namen kennt.",
+        "Sucht die Person, die ihren Bruder vom Schlachtfeld getragen hat.",
+        "Muss beweisen, dass die Lieferung gestohlen und nicht verkauft wurde.",
+        "Hofft, dass die Gruppe sie vor dem Stadtrat bestätigt.",
+        "Ist auf der Suche nach einem Gelehrten, der einen alten Brief lesen kann.",
+        "Will sich niederlassen und vorher ein einziges Mal das Meer sehen.",
+        "Arbeitet eine Geldstrafe ab, die wegen einer Tat verhängt wurde, die sie nicht begangen hat.",
+        "Sucht ein Heilmittel für eine Krankheit, gegen die die Kräuter hier nichts ausrichten.",
+        "Will ein Familienerbstück zurückholen, das als Beweisstück einbehalten wird.",
+        "Sammelt Zeugenaussagen gegen einen korrupten Magistrat.",
+        "Hofft, in die Gilde aufgenommen zu werden, bevor ihr Gönner in Ruhestand geht.",
+        "Braucht Münzen für die Lehrgeld ihrer Tochter.",
+        "Jagt dem Wolfsrudel nach, das die Herde — und den Hirten — geholt hat.",
+        "Will einen Schrein wiederherstellen, den die Stadt vergessen hat.",
+        "Sucht jemanden, der mutig genug ist, eine Botschaft zu überbringen.",
+        "Wollte in die Lehre bei einem Meister gehen, der letzten Frühling starb.",
+        "Will den Namen hinter der Freundlichkeit eines Fremden erfahren.",
+        "Ist entschlossen, den Gebirgspass vor dem ersten Schnee zu erreichen.",
+        "Hofft, ein Geheimnis gegen einen Neuanfang in einer anderen Stadt zu tauschen.",
+        "Will die Lieder ihres Vaters noch einmal so singen hören, wie er sie sang."
+      ],
+      "secrets": [
+        "Schuldet einem Schmuggler mit langem Gedächtnis einen Gefallen.",
+        "Kann eine Sprache lesen, die in der Stadt niemand kennt.",
+        "War die einzige Zeugin des Mühlenbrands — und hat die Lampe entzündet.",
+        "Verbirgt das uneheliche Kind eines Adligen als Lehrling.",
+        "Verkaufte die Karte, die die jetzige Fehde entfachte.",
+        "Bezahlt still die Schulden eines Feindes.",
+        "Fälscht seit Jahren die Unterschriften der Gilde.",
+        "Ist eine Fahnenflüchtige aus einer Armee, die Fahnenflüchtige noch immer erhängt.",
+        "Hat etwas unter dem alten Schrein vergraben und nie ein Sterbenswörtchen davon gesagt.",
+        "Nimmt Befehle von jemandem entgegen, dem die Gruppe erst später begegnen wird.",
+        "Kann trotz der Priestergewandung keinen einzigen Zauber wirken.",
+        "Weiß, aus welchem Brunnen das Gift kam.",
+        "Ist der Grund, warum die Brückenmaut verdoppelt wurde.",
+        "Auf ihren Kopf ist im benachbarten Herzogtum ein Kopfgeld ausgesetzt.",
+        "Trägt Briefe zwischen zwei Häusern, die nicht mehr miteinander sprechen.",
+        "Hat niemanden vergiftet, lässt die Stadt es aber zu ihrem Schutz glauben.",
+        "Wurde bezahlt, um die letzte Wahl zum Hafenmeister zu verlieren.",
+        "Hört bei Hochwasser den Fluss sprechen und schreibt alles auf.",
+        "Ist nicht die Person, deren Name die Gruppe genannt wurde.",
+        "Hütet den einzigen Schlüssel zur Gruft — er steht in keiner Inventarliste der Kirche.",
+        "Hat ihren eigenen Namen an eine Hexe verkauft und antwortet auf einen geliehenen."
+      ],
+      "hooks": [
+        "Bittet die Gruppe, einer Streife nachzugehen, die nie zurückkehrte.",
+        "Bietet eine kostenlose Übernachtung für eine diskrete Lieferung.",
+        "Warnt die Gruppe, dass die Oststraße von jemandem in Uniform beobachtet wird.",
+        "Fleht die Gruppe an, eine verschlossene Kassette aus einer gesunkenen Fähre zu bergen.",
+        "Will eine Eskorte zu einem Schrein, den Banditen immer wieder inspizieren.",
+        "Lädt die Gruppe zu einem Abendessen, bei dem jeder eine eigene Agenda hat.",
+        "Tauscht Gerüchte gegen Münzen — und hat bereits eines über die Gruppe.",
+        "Braucht jemanden, der einen Ringkampf gewinnt, ohne den Meister zu verletzen.",
+        "Bittet die Gruppe, einen versiegelten Brief zu tragen — ungeöffnet, ohne Fragen.",
+        "Verspricht eine Abkürzung, wenn die Gruppe ihr fehlendes Maultier findet.",
+        "Will eine Zeugin bei einer Schuldeintreibung, die hässlich enden könnte.",
+        "Bittet die Gruppe, einen Streit zwischen zwei Fischerfamilien zu schlichten.",
+        "Verspricht den Ort eines Schmugglerverstecks für ein Fläschchen seltener Tinte.",
+        "Braucht jemanden, der eine Hochzeit genau eine Stunde hinauszögert.",
+        "Bittet die Gruppe, einen Sarg zu eskortieren, den niemand öffnen darf.",
+        "Will wissen, wer im Canyon den Wölfen Futter hinträgt.",
+        "Bietet eine Karte zu einer heißen Quelle, die auf keiner Karte verzeichnet ist.",
+        "Braucht jemanden, der ein Familienschwert aus einer verstummten Pfandleihe holt.",
+        "Bittet die Gruppe, sich als Händler auszugeben, um einen neuen Zöllner zu prüfen.",
+        "Will die Gruppe im Morgengrauen auf dem Markt — schweigend.",
+        "Bietet ein Vermögen für eine einzige Nacht Schutz vor dem Mann mit dem Verzeichnis."
+      ],
+      "dnd5eTemplates": {
+        "martial": {
+          "commoner": {
+            "armorClass": 12,
+            "hitPoints": 11,
+            "speed": "9 m",
+            "abilities": {
+              "str": 13,
+              "dex": 12,
+              "con": 12,
+              "int": 10,
+              "wis": 10,
+              "cha": 10
+            },
+            "passivePerception": 11,
+            "languages": [
+              "Gemeinsprache"
+            ],
+            "challengeRating": "0",
+            "actions": [
+              {
+                "name": "Langschwert",
+                "text": "Nahkampfwaffenangriff: +3 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 5 (1W8 + 1) Hiebschaden."
+              }
+            ]
+          },
+          "trained": {
+            "armorClass": 14,
+            "hitPoints": 22,
+            "speed": "9 m",
+            "abilities": {
+              "str": 14,
+              "dex": 12,
+              "con": 14,
+              "int": 10,
+              "wis": 11,
+              "cha": 10
+            },
+            "passivePerception": 12,
+            "languages": [
+              "Gemeinsprache"
+            ],
+            "challengeRating": "1/4",
+            "actions": [
+              {
+                "name": "Langschwert",
+                "text": "Nahkampfwaffenangriff: +4 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 6 (1W8 + 2) Hiebschaden."
+              },
+              {
+                "name": "Schildstoß",
+                "text": "Nahkampfwaffenangriff: +4 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 4 (1W4 + 2) Wuchtschaden, und ist das Ziel eine Kreatur, muss es einen Stärkerettungswurf (SG 12) bestehen, sonst wird es 1,5 m weggestoßen."
+              }
+            ]
+          },
+          "veteran": {
+            "armorClass": 16,
+            "hitPoints": 44,
+            "speed": "9 m",
+            "abilities": {
+              "str": 16,
+              "dex": 12,
+              "con": 16,
+              "int": 11,
+              "wis": 12,
+              "cha": 11
+            },
+            "passivePerception": 13,
+            "languages": [
+              "Gemeinsprache",
+              "Zwergisch"
+            ],
+            "challengeRating": "2",
+            "actions": [
+              {
+                "name": "Langschwert",
+                "text": "Nahkampfwaffenangriff: +5 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 7 (1W8 + 3) Hiebschaden."
+              },
+              {
+                "name": "Präziser Hieb",
+                "text": "Nahkampfwaffenangriff: +5 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 7 (1W8 + 3) Hiebschaden, zusätzlich 3 (1W6) Hiebschaden, wenn sich der Veteran in diesem Zug mindestens 3 m geradlinig auf das Ziel zubewegt hat."
+              }
+            ]
+          },
+          "elite": {
+            "armorClass": 18,
+            "hitPoints": 76,
+            "speed": "9 m",
+            "abilities": {
+              "str": 18,
+              "dex": 14,
+              "con": 16,
+              "int": 12,
+              "wis": 13,
+              "cha": 12
+            },
+            "passivePerception": 14,
+            "languages": [
+              "Gemeinsprache",
+              "Zwergisch",
+              "Riesisch"
+            ],
+            "challengeRating": "5",
+            "actions": [
+              {
+                "name": "Langschwert",
+                "text": "Nahkampfwaffenangriff: +7 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 8 (1W8 + 4) Hiebschaden."
+              },
+              {
+                "name": "Schildstoß",
+                "text": "Nahkampfwaffenangriff: +7 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 6 (1W4 + 4) Wuchtschaden, und ist das Ziel eine Kreatur, muss es einen Stärkerettungswurf (SG 13) bestehen, sonst wird es 1,5 m weggestoßen."
+              },
+              {
+                "name": "Präziser Hieb",
+                "text": "Nahkampfwaffenangriff: +7 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 8 (1W8 + 4) Hiebschaden, zusätzlich 3 (1W6) Hiebschaden, wenn sich der Veteran in diesem Zug mindestens 3 m geradlinig auf das Ziel zubewegt hat."
+              }
+            ]
+          }
+        },
+        "skilled": {
+          "commoner": {
+            "armorClass": 12,
+            "hitPoints": 9,
+            "speed": "9 m",
+            "abilities": {
+              "str": 10,
+              "dex": 14,
+              "con": 11,
+              "int": 12,
+              "wis": 11,
+              "cha": 12
+            },
+            "passivePerception": 12,
+            "languages": [
+              "Gemeinsprache"
+            ],
+            "challengeRating": "0",
+            "actions": [
+              {
+                "name": "Dolch",
+                "text": "Nahkampf- oder Fernkampfwaffenangriff: +4 auf Treffer, Reichweite 1,5 m oder 6/18 m, ein Ziel. Treffer: 4 (1W4 + 2) Stichschaden."
+              }
+            ]
+          },
+          "trained": {
+            "armorClass": 13,
+            "hitPoints": 18,
+            "speed": "9 m",
+            "abilities": {
+              "str": 11,
+              "dex": 16,
+              "con": 12,
+              "int": 13,
+              "wis": 12,
+              "cha": 12
+            },
+            "passivePerception": 13,
+            "languages": [
+              "Gemeinsprache",
+              "Halblingisch"
+            ],
+            "challengeRating": "1/4",
+            "actions": [
+              {
+                "name": "Kurzschwert",
+                "text": "Nahkampfwaffenangriff: +5 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 6 (1W6 + 3) Stichschaden."
+              },
+              {
+                "name": "Heimtückischer Schnitt",
+                "text": "Nahkampfwaffenangriff: +5 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 6 (1W6 + 3) Stichschaden, zusätzlich 3 (1W6) Stichschaden, wenn sich ein Verbündeter des Kundschafters innerhalb 1,5 m beim Ziel befindet."
+              }
+            ]
+          },
+          "veteran": {
+            "armorClass": 15,
+            "hitPoints": 38,
+            "speed": "9 m",
+            "abilities": {
+              "str": 12,
+              "dex": 17,
+              "con": 13,
+              "int": 13,
+              "wis": 13,
+              "cha": 12
+            },
+            "passivePerception": 14,
+            "languages": [
+              "Gemeinsprache",
+              "Elfisch"
+            ],
+            "challengeRating": "2",
+            "actions": [
+              {
+                "name": "Kurzschwert",
+                "text": "Nahkampfwaffenangriff: +5 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 6 (1W6 + 3) Stichschaden."
+              },
+              {
+                "name": "Heimtückischer Schnitt",
+                "text": "Nahkampfwaffenangriff: +5 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 6 (1W6 + 3) Stichschaden, zusätzlich 7 (2W6) Stichschaden, wenn der Kundschafter beim Angriffswurf Vorteil hat oder sich ein Verbündeter innerhalb 1,5 m beim Ziel befindet."
+              }
+            ]
+          },
+          "elite": {
+            "armorClass": 16,
+            "hitPoints": 63,
+            "speed": "9 m",
+            "abilities": {
+              "str": 13,
+              "dex": 18,
+              "con": 14,
+              "int": 14,
+              "wis": 13,
+              "cha": 13
+            },
+            "passivePerception": 15,
+            "languages": [
+              "Gemeinsprache",
+              "Elfisch",
+              "Goblinisch"
+            ],
+            "challengeRating": "5",
+            "actions": [
+              {
+                "name": "Kurzschwert",
+                "text": "Nahkampfwaffenangriff: +7 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 7 (1W6 + 4) Stichschaden."
+              },
+              {
+                "name": "Dolch",
+                "text": "Nahkampf- oder Fernkampfwaffenangriff: +7 auf Treffer, Reichweite 1,5 m oder 6/18 m, ein Ziel. Treffer: 6 (1W4 + 4) Stichschaden."
+              },
+              {
+                "name": "Heimtückischer Schnitt",
+                "text": "Nahkampfwaffenangriff: +7 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 7 (1W6 + 4) Stichschaden, zusätzlich 7 (2W6) Stichschaden, wenn der Kundschafter beim Angriffswurf Vorteil hat oder sich ein Verbündeter innerhalb 1,5 m beim Ziel befindet."
+              }
+            ]
+          }
+        },
+        "spellcaster": {
+          "commoner": {
+            "armorClass": 11,
+            "hitPoints": 9,
+            "speed": "9 m",
+            "abilities": {
+              "str": 8,
+              "dex": 12,
+              "con": 11,
+              "int": 14,
+              "wis": 13,
+              "cha": 13
+            },
+            "passivePerception": 11,
+            "languages": [
+              "Gemeinsprache",
+              "Drakonisch"
+            ],
+            "challengeRating": "0",
+            "actions": [
+              {
+                "name": "Funke",
+                "text": "Fernzauberangriff: +4 auf Treffer, Reichweite 36 m, ein Ziel. Treffer: 5 (1W6 + 2) Feuerschaden."
+              }
+            ]
+          },
+          "trained": {
+            "armorClass": 12,
+            "hitPoints": 16,
+            "speed": "9 m",
+            "abilities": {
+              "str": 9,
+              "dex": 12,
+              "con": 12,
+              "int": 15,
+              "wis": 13,
+              "cha": 14
+            },
+            "passivePerception": 12,
+            "languages": [
+              "Gemeinsprache",
+              "Drakonisch"
+            ],
+            "challengeRating": "1/4",
+            "actions": [
+              {
+                "name": "Funke",
+                "text": "Fernzauberangriff: +4 auf Treffer, Reichweite 36 m, ein Ziel. Treffer: 5 (1W6 + 2) Feuerschaden."
+              },
+              {
+                "name": "Frostpeitsche",
+                "text": "Nahkampfzauberangriff: +4 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 6 (1W8 + 2) Kälteschaden, und die Bewegungsrate des Ziels sinkt bis zum Ende seines nächsten Zugs um 3 m."
+              }
+            ]
+          },
+          "veteran": {
+            "armorClass": 13,
+            "hitPoints": 31,
+            "speed": "9 m",
+            "abilities": {
+              "str": 9,
+              "dex": 13,
+              "con": 13,
+              "int": 16,
+              "wis": 14,
+              "cha": 14
+            },
+            "passivePerception": 13,
+            "languages": [
+              "Gemeinsprache",
+              "Drakonisch",
+              "Himmlisch"
+            ],
+            "challengeRating": "2",
+            "actions": [
+              {
+                "name": "Funke",
+                "text": "Fernzauberangriff: +5 auf Treffer, Reichweite 36 m, ein Ziel. Treffer: 10 (2W6 + 3) Feuerschaden."
+              },
+              {
+                "name": "Frostpeitsche",
+                "text": "Nahkampfzauberangriff: +5 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 8 (1W10 + 3) Kälteschaden, und die Bewegungsrate des Ziels sinkt bis zum Ende seines nächsten Zugs um 3 m."
+              }
+            ]
+          },
+          "elite": {
+            "armorClass": 14,
+            "hitPoints": 58,
+            "speed": "9 m",
+            "abilities": {
+              "str": 10,
+              "dex": 14,
+              "con": 14,
+              "int": 17,
+              "wis": 15,
+              "cha": 15
+            },
+            "passivePerception": 14,
+            "languages": [
+              "Gemeinsprache",
+              "Drakonisch",
+              "Infernalisch"
+            ],
+            "challengeRating": "5",
+            "actions": [
+              {
+                "name": "Funke",
+                "text": "Fernzauberangriff: +6 auf Treffer, Reichweite 36 m, ein Ziel. Treffer: 10 (2W6 + 3) Feuerschaden."
+              },
+              {
+                "name": "Frostpeitsche",
+                "text": "Nahkampfzauberangriff: +6 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 12 (2W8 + 3) Kälteschaden, und die Bewegungsrate des Ziels sinkt bis zum Ende seines nächsten Zugs um 3 m."
+              },
+              {
+                "name": "Lichtbogenausbruch",
+                "text": "Der Zauberwirker wählt einen sichtbaren Punkt innerhalb 18 m. Jede Kreatur innerhalb 3 m um diesen Punkt muss einen Geschicklichkeitsrettungswurf (SG 14) bestehen, sonst erleidet sie 9 (2W8) Blitzschaden."
+              }
+            ]
+          }
+        },
+        "common": {
+          "commoner": {
+            "armorClass": 10,
+            "hitPoints": 9,
+            "speed": "9 m",
+            "abilities": {
+              "str": 10,
+              "dex": 10,
+              "con": 11,
+              "int": 11,
+              "wis": 11,
+              "cha": 12
+            },
+            "passivePerception": 10,
+            "languages": [
+              "Gemeinsprache"
+            ],
+            "challengeRating": "0",
+            "actions": [
+              {
+                "name": "Eiserne Pfanne",
+                "text": "Nahkampfwaffenangriff: +2 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 2 (1W4) Wuchtschaden."
+              }
+            ]
+          },
+          "trained": {
+            "armorClass": 11,
+            "hitPoints": 16,
+            "speed": "9 m",
+            "abilities": {
+              "str": 11,
+              "dex": 11,
+              "con": 12,
+              "int": 12,
+              "wis": 12,
+              "cha": 13
+            },
+            "passivePerception": 11,
+            "languages": [
+              "Gemeinsprache"
+            ],
+            "challengeRating": "1/8",
+            "actions": [
+              {
+                "name": "Eiserne Pfanne",
+                "text": "Nahkampfwaffenangriff: +2 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 2 (1W4) Wuchtschaden."
+              },
+              {
+                "name": "Geworfener Krug",
+                "text": "Fernkampfwaffenangriff: +2 auf Treffer, Reichweite 3/9 m, ein Ziel. Treffer: 2 (1W4) Wuchtschaden."
+              }
+            ]
+          },
+          "veteran": {
+            "armorClass": 12,
+            "hitPoints": 27,
+            "speed": "9 m",
+            "abilities": {
+              "str": 12,
+              "dex": 11,
+              "con": 13,
+              "int": 13,
+              "wis": 13,
+              "cha": 14
+            },
+            "passivePerception": 12,
+            "languages": [
+              "Gemeinsprache"
+            ],
+            "challengeRating": "1",
+            "actions": [
+              {
+                "name": "Eiserne Pfanne",
+                "text": "Nahkampfwaffenangriff: +3 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 3 (1W4 + 1) Wuchtschaden."
+              },
+              {
+                "name": "Fester Griff",
+                "text": "Nahkampfwaffenangriff: +3 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 3 (1W4 + 1) Wuchtschaden, und das Ziel ist festgehalten (Entrinnen SG 11)."
+              }
+            ]
+          },
+          "elite": {
+            "armorClass": 13,
+            "hitPoints": 49,
+            "speed": "9 m",
+            "abilities": {
+              "str": 12,
+              "dex": 12,
+              "con": 14,
+              "int": 14,
+              "wis": 14,
+              "cha": 16
+            },
+            "passivePerception": 13,
+            "languages": [
+              "Gemeinsprache"
+            ],
+            "challengeRating": "2",
+            "actions": [
+              {
+                "name": "Eiserne Pfanne",
+                "text": "Nahkampfwaffenangriff: +3 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 3 (1W4 + 1) Wuchtschaden."
+              },
+              {
+                "name": "Kopfstoß",
+                "text": "Nahkampfwaffenangriff: +3 auf Treffer, Reichweite 1,5 m, ein Ziel. Treffer: 4 (1W6 + 1) Wuchtschaden."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "feature_intro": {
+      "name": "Über",
+      "label": "NPC-Generator",
+      "title": "Ein tischfertiger NPC, ein Klick",
+      "description": "Dieser kostenlose NPC-Generator baut in Sekunden eine Figur für deine Runde: Name, Rolle, Aussehen, Eigenart, Persönlichkeit, Motivation, Geheimnis und Plot-Hook — dazu optional ein D&D-5e-kompatibler Statblock. Keine Anmeldung nötig.",
+      "items": [
+        {
+          "title": "Alles, was eine Szene braucht",
+          "description": "Name, Rolle, Aussehen, Persönlichkeit, Motivation, Geheimnis und Hook entstehen gemeinsam — der NPC ist spielbereit, sobald er auftaucht."
+        },
+        {
+          "title": "Erzählkarte oder 5e-Statblock",
+          "description": "Der Fantasy-RPG-Modus liefert reine Rollspieldetails, der D&D-5e-Modus ergänzt Rüstungsklasse, Trefferpunkte und Aktionen in vier Stärkeleveln."
+        },
+        {
+          "title": "Kostenlos und sofort",
+          "description": "Erzeuge NPCs direkt im Browser, ohne Konto — plane eine ganze Stadt an einem Nachmittag."
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "Anleitung",
+      "label": "Vier Schritte",
+      "title": "Von der leeren Seite zum NPC am Tisch",
+      "description": "Der NPC-Generator ist für Vorbereitungspaniken genauso gebaut wie für improvisierte Städtchen.",
+      "items": [
+        {
+          "title": "Modus wählen",
+          "description": "Fantasy-RPG für rein erzählerische NPCs oder D&D 5e für einen optionalen Statblock."
+        },
+        {
+          "title": "Erzeugen",
+          "description": "Lege Volk, Erscheinung, Rolle, Ton und Stärkelevel fest — oder lasse alles auf Zufällig und überlasse es den Würfeln."
+        },
+        {
+          "title": "Festhalten und neu würfeln",
+          "description": "Behalte die Teile, die dir gefallen, indem du Felder festhältst, und würfle den Rest neu, bis die Figur sitzt."
+        },
+        {
+          "title": "Kopieren oder ausbauen",
+          "description": "Kopiere die Karte als Markdown oder Klartext in deine Notizen — oder schicke sie an den Hintergrundgenerator für eine ausführlichere Geschichte."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "Funktionen",
+      "label": "Für den Tisch gebaut",
+      "title": "Kleine Werkzeuge, die einen NPC in Sekunden spielbar machen",
+      "description": "Jeder Teil dieses zufälligen NPC-Generators zielt darauf, eine Figur mit möglichst wenig Reibung ins Spiel zu bringen.",
+      "items": [
+        {
+          "title": "Erzählkarte plus Statblock",
+          "description": "Die Karte deckt das Rollenspiel ab, der optionale 5e-kompatible Statblock den Kampf — du rätst mitten im Gefecht nie wieder Werte."
+        },
+        {
+          "title": "Feldweises Festhalten",
+          "description": "Halte Name und Motivation fest und würfle nur den Rest neu — kontrollierter Zufall statt ganz neuer Karte."
+        },
+        {
+          "title": "Vier Stärkelevel",
+          "description": "Von Einfach bis Elite skaliert der Statblock vom Bauern als Zeugen bis zum Mini-Boss."
+        },
+        {
+          "title": "Zwei Exportformate",
+          "description": "Markdown bewahrt die Formatierung für dein Kampagnen-Wiki; Klartext fügt sich sauber in jedes Notizprogramm oder virtuelle Spielpult ein."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "Anwendungsfälle",
+      "label": "Gemacht für",
+      "title": "Wo ein schneller NPC die Runde rettet",
+      "description": "Von der geplanten Vorbereitung bis zu dem Moment, in dem drei Spieler in eine unbenannte Taverne spazieren.",
+      "items": [
+        {
+          "title": "Vorbereitung",
+          "description": "Arbeite die benannte Besetzung vor Spielnabend aus, ohne jede Figur von Grund auf zu bauen."
+        },
+        {
+          "title": "Improvisierte Städte",
+          "description": "Erzeuge Ladenbesitzer, Wachen und Klatschbasen auf der Stelle, wenn Spieler jemanden zum Freund machen, den du nie benannt hast."
+        },
+        {
+          "title": "One-Shot-Abende",
+          "description": "Baue in Minuten einen ganzen Nebencast für einen eigenständigen Abend auf."
+        },
+        {
+          "title": "Nebenfiguren für Helden",
+          "description": "Erschaffe Familie, Rivalen und Gönner für Spielerfiguren — mit genug Detail, um über mehrere Kapitel wiederzukehren."
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "FAQ",
+      "label": "Fragen",
+      "title": "NPC-Generator FAQ",
+      "items": [
+        {
+          "title": "Ist dieser NPC-Generator kostenlos?",
+          "description": "Ja. Jeder Name, jede Wortliste, jede Statblock-Vorlage und jede Exportoption ist kostenlos, und es gibt keine Anmeldung."
+        },
+        {
+          "title": "Was ist der Unterschied zwischen Fantasy-RPG- und D&D-5e-Modus?",
+          "description": "Der Fantasy-RPG-Modus erzeugt nur Rollspieldetails — er verwendet keine D&D-5e-Regeln und liefert keine Zahlen. Der D&D-5e-Modus ergänzt einen Statblock mit Rüstungsklasse, Trefferpunkten, Werten und Aktionen."
+        },
+        {
+          "title": "Ist der Statblock offiziell?",
+          "description": "Nein. Er ist eine schnelle 5e-kompatible Referenz aus eigenen Vorlagen, damit ein Kampf ohne Blättern läuft. Es ist kein offizielles Balancing — passe ihn frei an deinen Tisch an."
+        },
+        {
+          "title": "Wie funktionieren Festhalten und Neuwürfeln?",
+          "description": "Erzeuge eine Karte, halte die Felder fest, die bleiben sollen — Name, Geheimnis, was auch immer — und würfle den Rest neu. Festgehaltene Felder ändern sich nicht, bis du sie löst."
+        },
+        {
+          "title": "Werden meine NPCs gespeichert?",
+          "description": "Nein. Die Erzeugung läuft auf Abruf, und nichts von dem, was du erstellst, wird auf einem Server gespeichert. Was du behältst, lebt in deinen Notizen und deiner Zwischenablage."
+        },
+        {
+          "title": "Wie funktioniert die Übergabe an die Hintergrundgeschichte?",
+          "description": "Schicke einen fertigen NPC an den DnD-Hintergrundgenerator, und seine Details werden zum Ausgangspunkt einer längeren, bearbeitbaren Figurengeschichte."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "Weiter",
+      "title": "Gib deinem NPC eine vollständige Geschichte",
+      "description": "Schicke die Karte an den DnD-Hintergrundgenerator und baue die Figur zu einer kompletten Hintergrundgeschichte mit Bindungen, Schwächen und einem prägenden Ereignis aus.",
+      "buttons": [
+        {
+          "title": "DnD-Hintergrundgenerator öffnen",
+          "url": "/dnd-backstory-generator"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Weitere kostenlose Tools",
+      "description": "Begleitende Generatoren für Namen, Geschichten und alles andere am Tisch.",
+      "more_label": "Alle Tools ansehen"
+    }
+  }
+}

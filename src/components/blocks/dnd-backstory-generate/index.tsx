@@ -76,6 +76,7 @@ import {
   consumePendingAuthResume,
   writePendingAuthResume,
 } from "@/lib/auth-resume";
+import { consumeNpcBackstoryPrefill } from "@/lib/npc-backstory-prefill";
 
 const DND_DRAFT_KEY = "dnd-backstory-generator:prompt";
 
@@ -87,6 +88,11 @@ function calculateWordCount(text: string): number {
   const withoutCJK = text.replace(cjkRegex, " ").trim();
   const englishCount = withoutCJK ? withoutCJK.split(/\s+/).filter(Boolean).length : 0;
   return cjkCount + englishCount;
+}
+
+function resolveKnownOption(options: ReadonlyArray<[string, unknown]>, value: string): string {
+  const normalized = value.trim().toLowerCase().replace(/[\s-]+/g, "_");
+  return options.some(([key]) => key === normalized) ? normalized : "custom";
 }
 
 function downloadTextFile(text: string, filename: string, mime: string) {
@@ -328,6 +334,29 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
     value: prompt,
     onRestore: (draft) => setPrompt(draft),
   });
+
+  useEffect(() => {
+    let prefill: ReturnType<typeof consumeNpcBackstoryPrefill> = null;
+    try {
+      prefill = consumeNpcBackstoryPrefill(window.sessionStorage);
+    } catch {
+      prefill = null;
+    }
+    if (!prefill) return;
+
+    const raceValue = resolveKnownOption(raceOptions, prefill.race);
+    setRace(raceValue);
+    setCustomRace(raceValue === "custom" ? prefill.race : "");
+    const classValue = resolveKnownOption(classOptions, prefill.characterClass);
+    setCharacterClass(classValue);
+    setCustomCharacterClass(classValue === "custom" ? prefill.characterClass : "");
+    setPrompt(prefill.prompt);
+    setBackground(prefill.background);
+    setMotivation(prefill.motivation);
+    setSecret(prefill.secret);
+    setHookType(prefill.hookType);
+    setUseCase(prefill.useCase);
+  }, [raceOptions, classOptions]);
 
   useEffect(() => {
     if (!isGenerating || !generatedBackstory) return;

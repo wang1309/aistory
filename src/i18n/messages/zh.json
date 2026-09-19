@@ -429,6 +429,10 @@
       "pictionary_word_generator": {
         "name": "你画我猜词语生成器",
         "desc": "按分类和难度抽取随机你画我猜词语——内置计时器、双队计分、自定义词表，且不重复。"
+      },
+      "npc_generator": {
+        "name": "NPC 生成器",
+        "desc": "为 D&D 5e 或奇幻 RPG 生成可直接上桌的 NPC，附带剧情钩子与可选属性。"
       }
     },
     "tab_story": "故事生成器",

@@ -76,8 +76,10 @@ Markdown 的可粘贴文本。复制失败显示本地化 toast，不能因为 C
 ### 背景故事深化
 
 5e 卡结果底部出现「Expand into DnD Backstory」。点击后使用站内 `router.push` 前往
-`/dnd-backstory-generator`，并通过现有 `GENERATOR_PREFILL_KEY` sessionStorage 约定
-传递以下字段：
+`/dnd-backstory-generator`，并通过新建的 `NPC_BACKSTORY_PREFILL_KEY`
+sessionStorage 约定传递以下字段。该 key 仅供当前浏览器标签页使用，DnD Backstory
+页面在读取后立即删除；不能复用现有 AI Write 的 `GENERATOR_PREFILL_KEY`，后者使用
+localStorage 且数据形状不同：
 
 - `race`：NPC 的种族/血统；
 - `characterClass`：职业或 5e 原型；
@@ -199,7 +201,7 @@ FeatureIntro、HowToUse、Benefits、UseCases、FAQ、RelatedTools 和 CTA。
    - 源码级验证 client block 不含 `fetch`、Turnstile、creative quota、AI auth/paywall、
      `localStorage` 或分析事件；
    - 验证模式切换、锁定、字段重掷、整卡重掷、两种复制和仅 5e 可见的深化入口；
-   - 验证预填使用 `GENERATOR_PREFILL_KEY` 并固定 `useCase: "npc"`。
+   - 验证预填使用 `NPC_BACKSTORY_PREFILL_KEY` 并固定 `useCase: "npc"`。
 
 3. `tests/npc-generator-page.test.ts`
    - 验证路由、英文 H1、metadata alternates、BreadcrumbList、WebApplication、

@@ -419,6 +419,17 @@ export const tools: Tool[] = [
     ],
   },
   {
+    slug: "npc-generator",
+    nameKey: "ai_tools.tools.npc_generator.name",
+    shortDescKey: "ai_tools.tools.npc_generator.desc",
+    module: "ai-tools",
+    category: "character",
+    href: "/ai-tools/npc-generator",
+    icon: "RiDiceLine",
+    badges: ["new"],
+    priority: 98,
+  },
+  {
     slug: "middle-name-generator",
     nameKey: "ai_tools.tools.middle_name_generator.name",
     shortDescKey: "ai_tools.tools.middle_name_generator.desc",

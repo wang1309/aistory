@@ -1,0 +1,981 @@
+{
+  "npc_generator": {
+    "metadata": {
+      "title": "Free NPC Generator for D&D 5e & Fantasy RPGs",
+      "description": "Generate a table-ready NPC for D&D 5e or fantasy RPGs with a name, motivation, secret, plot hook, and an optional 5e-compatible stat block. Free, no sign-up.",
+      "keywords": "npc generator, dnd npc generator, random npc generator, dnd 5e npc generator, fantasy npc generator"
+    },
+    "ui": {
+      "title": "Free NPC Generator",
+      "title_highlight": "NPC Generator",
+      "subtitle": "Get a table-ready NPC for your session in one click — name, role, motivation, secret, and plot hook, plus an optional stat block. Built for DMs who need a character right now, with no login required.",
+      "eyebrow": "Free NPC Tool for DMs",
+      "theme_pills": [
+        "Fantasy RPG mode",
+        "D&D 5e stat blocks",
+        "Field locks & rerolls",
+        "No sign-up"
+      ],
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "NPC Generator",
+      "fantasy_mode": "Fantasy RPG",
+      "dnd5e_mode": "D&D 5e",
+      "system_label": "Mode",
+      "race_label": "Race",
+      "presentation_label": "Presentation",
+      "role_label": "Role",
+      "tone_label": "Tone",
+      "cr_tier_label": "Power level",
+      "cr_tier_commoner": "Commoner",
+      "cr_tier_trained": "Trained",
+      "cr_tier_veteran": "Veteran",
+      "cr_tier_elite": "Elite",
+      "generate": "Generate NPC",
+      "reroll_npc": "New NPC",
+      "reroll_field": "Reroll",
+      "lock_field": "Lock",
+      "unlock_field": "Unlock",
+      "copy_markdown": "Copy Markdown",
+      "copy_text": "Copy plain text",
+      "expand_backstory": "Expand into a full backstory",
+      "stat_block": "Stat block",
+      "non_combat_notice": "Fantasy RPG mode creates roleplay details only; it does not use D&D 5e rules.",
+      "empty_state": "Choose your options and generate your first NPC.",
+      "field_name": "Name",
+      "field_race": "Race",
+      "field_presentation": "Presentation",
+      "field_role": "Role",
+      "field_appearance": "Appearance",
+      "field_mannerism": "Mannerism",
+      "field_personality": "Personality",
+      "field_motivation": "Motivation",
+      "field_secret": "Secret",
+      "field_hook": "Plot hook",
+      "stat_armor_class": "Armor Class",
+      "stat_hit_points": "Hit Points",
+      "stat_speed": "Speed",
+      "stat_passive_perception": "Passive Perception",
+      "stat_languages": "Languages",
+      "stat_challenge_rating": "Challenge Rating",
+      "stat_actions": "Actions",
+      "stat_abilities": "Abilities",
+      "copied_markdown": "Markdown copied to your clipboard.",
+      "copied_text": "Plain text copied to your clipboard.",
+      "copy_failed": "Copy failed. Please copy the text manually.",
+      "prefill_failed": "Could not open the backstory generator with this NPC. Copy the details and paste them instead."
+    },
+    "generator_data": {
+      "names": {
+        "given": [
+          "Arin",
+          "Brann",
+          "Cael",
+          "Dara",
+          "Eldric",
+          "Fenna",
+          "Gareth",
+          "Halia",
+          "Ivar",
+          "Jorunn",
+          "Kel",
+          "Lyra",
+          "Merek",
+          "Nessa",
+          "Orin",
+          "Petra",
+          "Rowan",
+          "Sable",
+          "Thane",
+          "Wren",
+          "Ysolde",
+          "Zarek"
+        ],
+        "family": [
+          "Ashdown",
+          "Blackwood",
+          "Coldwater",
+          "Duskmere",
+          "Eastvale",
+          "Fenwick",
+          "Grayharrow",
+          "Hollard",
+          "Ironwood",
+          "Juniper",
+          "Kellerton",
+          "Longmoor",
+          "Marsh",
+          "Northgate",
+          "Oakhaven",
+          "Pryde",
+          "Quill",
+          "Ravencrest",
+          "Thornbury",
+          "Vale",
+          "Westmarch",
+          "Winterbourne"
+        ]
+      },
+      "races": [
+        {
+          "value": "human",
+          "label": "Human"
+        },
+        {
+          "value": "elf",
+          "label": "Elf"
+        },
+        {
+          "value": "dwarf",
+          "label": "Dwarf"
+        },
+        {
+          "value": "halfling",
+          "label": "Halfling"
+        },
+        {
+          "value": "orc",
+          "label": "Orc"
+        },
+        {
+          "value": "tiefling",
+          "label": "Tiefling"
+        },
+        {
+          "value": "random",
+          "label": "Random"
+        }
+      ],
+      "presentations": [
+        {
+          "value": "any",
+          "label": "Any"
+        },
+        {
+          "value": "woman",
+          "label": "Woman"
+        },
+        {
+          "value": "man",
+          "label": "Man"
+        },
+        {
+          "value": "nonbinary",
+          "label": "Nonbinary"
+        }
+      ],
+      "roles": [
+        {
+          "value": "guard",
+          "label": "Guard",
+          "archetype": "martial"
+        },
+        {
+          "value": "merchant",
+          "label": "Merchant",
+          "archetype": "skilled"
+        },
+        {
+          "value": "innkeeper",
+          "label": "Innkeeper",
+          "archetype": "common"
+        },
+        {
+          "value": "scout",
+          "label": "Scout",
+          "archetype": "skilled"
+        },
+        {
+          "value": "priest",
+          "label": "Priest",
+          "archetype": "spellcaster"
+        },
+        {
+          "value": "scholar",
+          "label": "Scholar",
+          "archetype": "spellcaster"
+        },
+        {
+          "value": "bandit",
+          "label": "Bandit",
+          "archetype": "martial"
+        },
+        {
+          "value": "noble",
+          "label": "Noble",
+          "archetype": "common"
+        },
+        {
+          "value": "random",
+          "label": "Random",
+          "archetype": "common"
+        }
+      ],
+      "tones": [
+        {
+          "value": "heroic",
+          "label": "Heroic"
+        },
+        {
+          "value": "grim",
+          "label": "Grim"
+        },
+        {
+          "value": "mysterious",
+          "label": "Mysterious"
+        },
+        {
+          "value": "whimsical",
+          "label": "Whimsical"
+        },
+        {
+          "value": "random",
+          "label": "Random"
+        }
+      ],
+      "appearances": [
+        "Weathered cloak pinned with a tarnished brooch.",
+        "Sunburned skin and rope-calloused hands.",
+        "A long braid threaded with small bone beads.",
+        "One torn sleeve patched with mismatched cloth.",
+        "A deep scar crossing the left eyebrow.",
+        "Boots worn through at the heels, freshly re-stitched.",
+        "Silver hair cropped short despite a young face.",
+        "A jangling belt of keys, hooks, and small tools.",
+        "Ink stains from wrist to knuckles.",
+        "A chipped front tooth and an easy, crooked grin.",
+        "Freckles across the nose and a smudge of flour on the cheek.",
+        "A heavy traveler's pack that looks older than its owner.",
+        "One notched ear, the mark of an old dockside quarrel.",
+        "A fine coat gone shabby at the cuffs.",
+        "Burn marks on the fingertips of the favored hand.",
+        "A pendant of twisted iron worn against the skin.",
+        "Eyes the pale gray of winter river ice.",
+        "A limp that never quite slows the stride.",
+        "Rings on every finger, none of them matching.",
+        "A wide-brimmed hat with a feather from no bird anyone knows.",
+        "Gloves worn through at the fingertips, from writing or picking locks."
+      ],
+      "mannerisms": [
+        "Counts every coin twice before it changes hands.",
+        "Taps a knuckle against the table when thinking.",
+        "Never sits with a door at their back.",
+        "Whistles an old marching tune while working.",
+        "Repeats your name three times when you meet.",
+        "Keeps one hand resting on a knife that never leaves the sheath.",
+        "Laughs a beat too late, then covers it with a cough.",
+        "Sniffs the air before entering any room.",
+        "Squints as if reading fine print in everything you say.",
+        "Circles every conversation back to a single topic.",
+        "Feeds crumbs to the birds between sentences.",
+        "Straightens crooked things — cups, frames, collars — without noticing.",
+        "Keeps a tally scratched into the tabletop.",
+        "Answers questions with questions first.",
+        "Hums when lying, though nobody has called it out yet.",
+        "Sets down any drink after exactly two sips.",
+        "Traces old scars with a thumb while talking.",
+        "Greets strangers like old friends and friends like strangers.",
+        "Never finishes a sentence when the wind changes.",
+        "Keeps a small ledger of favors owed and owed back.",
+        "Always stands where they can see both the entrance and the money."
+      ],
+      "personalities": [
+        "Watchful and practical, slow to trust but loyal for life.",
+        "Warm on the surface, with a ledger of grudges underneath.",
+        "Endlessly curious about what things cost and why.",
+        "Tired of fighting, too stubborn to leave.",
+        "Cheerful in the way of people who have buried a lot.",
+        "Proud of a craft no one in town seems to need anymore.",
+        "Kind to children and animals, cold to everyone else.",
+        "Driven by a debt that is not written down anywhere.",
+        "Superstitious about rivers, doors, and the number nine.",
+        "Convinced the world is a story and hates the role it was given.",
+        "Gentle until someone threatens the plan.",
+        "Ambitious in the quiet, patient way that outlasts loud rivals.",
+        "Suspicious of magic, priests, and anyone offering help.",
+        "Bound by an oath spoken to someone now dead.",
+        "Optimistic enough to bet the rent on a good outcome.",
+        "More frightened of boredom than of bandits.",
+        "Honest, but reserves the right to choose the moment.",
+        "Keeps peace in the room the way others keep a blade.",
+        "Haunted by a success that should have been a failure.",
+        "Loves a rumor more than the truth, but knows the difference.",
+        "Patient with everyone except people who waste food."
+      ],
+      "motivations": [
+        "Wants to buy back the family farm before winter.",
+        "Is saving every copper to move somewhere no one knows their name.",
+        "Seeks the person who carried their brother away from the battlefield.",
+        "Needs to prove the shipment was stolen, not sold.",
+        "Hopes the party will vouch for them with the town council.",
+        "Is searching for a scholar who can read an old letter.",
+        "Wants to see the sea once before settling down.",
+        "Is working off a fine imposed for a crime they didn't commit.",
+        "Seeks a cure for a sickness the local herbs can't touch.",
+        "Wants to reclaim a family heirloom held as evidence.",
+        "Is collecting testimony against a corrupt magistrate.",
+        "Hopes to earn a place in the guild before their sponsor retires.",
+        "Needs coin for a daughter's apprenticeship fee.",
+        "Is hunting the wolf pack that took the flock — and the shepherd.",
+        "Wants to restore a shrine the town has forgotten.",
+        "Is looking for someone brave enough to deliver a message.",
+        "Seeks an apprenticeship with a master who died last spring.",
+        "Wants to learn the name behind a stranger's kindness.",
+        "Is determined to reach the mountain pass before the first snow.",
+        "Hopes to trade a secret for a fresh start in another town.",
+        "Wants to hear their father's songs sung the way he sang them."
+      ],
+      "secrets": [
+        "Owes a favor to a smuggler with a long memory.",
+        "Can read a language the town has never heard of.",
+        "Was the only witness to the mill fire — and lit the lamp.",
+        "Keeps a noble's illegitimate child hidden as an apprentice.",
+        "Sold the map that started the current feud.",
+        "Is quietly paying off the debts of an enemy.",
+        "Has been forging the guild's signatures for years.",
+        "Is a deserter from an army that still hangs deserters.",
+        "Buried something under the old shrine and never told a soul.",
+        "Takes orders from someone the party will meet later.",
+        "Cannot cast a single spell despite the priest's robes.",
+        "Knows which well the poison came from.",
+        "Is the reason the bridge tolls doubled.",
+        "Has a bounty on their head in the next duchy.",
+        "Carries letters between two houses that are not speaking.",
+        "Poisoned no one, but let the town believe it for protection.",
+        "Was paid to lose the last election for harbormaster.",
+        "Hears the river speak during floods and writes it down.",
+        "Is not the person whose name the party was given.",
+        "Keeps the only key to the crypt, and it is not in the church's inventory.",
+        "Sold their own name to a witch and answers to a borrowed one."
+      ],
+      "hooks": [
+        "Asks the party to investigate a patrol that never returned.",
+        "Offers free lodging for a night in exchange for a discreet delivery.",
+        "Warns the party that the road east is watched by someone in uniform.",
+        "Begs the party to recover a lockbox from a sunken ferry.",
+        "Wants an escort to a shrine that bandits keep inspecting.",
+        "Invites the party to a dinner where everyone has an agenda.",
+        "Trades rumors for coin, and already has one about the party.",
+        "Needs someone to win a wrestling match without hurting the champion.",
+        "Asks the party to carry a sealed letter — unopened, no questions.",
+        "Offers to reveal a shortcut if the party finds their missing mule.",
+        "Wants a witness at a debt collection that might turn ugly.",
+        "Asks the party to judge a dispute between two fishing families.",
+        "Promises the location of a smuggler's cache for a vial of rare ink.",
+        "Needs the party to stall a wedding for exactly one hour.",
+        "Asks the party to escort a coffin nobody is allowed to open.",
+        "Wants the party to find out who has been feeding the wolves in the ravine.",
+        "Offers a map to a hot spring that is not on any chart.",
+        "Needs someone to retrieve a family sword from a pawnbroker gone quiet.",
+        "Asks the party to pose as merchants to test a new toll collector.",
+        "Wants the party in the market square at dawn, saying nothing.",
+        "Offers a fortune for one night's protection from the man with the ledger."
+      ],
+      "dnd5eTemplates": {
+        "martial": {
+          "commoner": {
+            "armorClass": 12,
+            "hitPoints": 11,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 13,
+              "dex": 12,
+              "con": 12,
+              "int": 10,
+              "wis": 10,
+              "cha": 10
+            },
+            "passivePerception": 11,
+            "languages": [
+              "Common"
+            ],
+            "challengeRating": "0",
+            "actions": [
+              {
+                "name": "Longsword",
+                "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8 + 1) slashing damage."
+              }
+            ]
+          },
+          "trained": {
+            "armorClass": 14,
+            "hitPoints": 22,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 14,
+              "dex": 12,
+              "con": 14,
+              "int": 10,
+              "wis": 11,
+              "cha": 10
+            },
+            "passivePerception": 12,
+            "languages": [
+              "Common"
+            ],
+            "challengeRating": "1/4",
+            "actions": [
+              {
+                "name": "Longsword",
+                "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) slashing damage."
+              },
+              {
+                "name": "Shield Bash",
+                "text": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage, and if the target is a creature it must succeed on a DC 12 Strength saving throw or be pushed 5 feet away."
+              }
+            ]
+          },
+          "veteran": {
+            "armorClass": 16,
+            "hitPoints": 44,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 16,
+              "dex": 12,
+              "con": 16,
+              "int": 11,
+              "wis": 12,
+              "cha": 11
+            },
+            "passivePerception": 13,
+            "languages": [
+              "Common",
+              "Dwarvish"
+            ],
+            "challengeRating": "2",
+            "actions": [
+              {
+                "name": "Longsword",
+                "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) slashing damage."
+              },
+              {
+                "name": "Precise Strike",
+                "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) slashing damage, plus 3 (1d6) slashing damage if the veteran moved at least 10 feet in a straight line toward the target this turn."
+              }
+            ]
+          },
+          "elite": {
+            "armorClass": 18,
+            "hitPoints": 76,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 18,
+              "dex": 14,
+              "con": 16,
+              "int": 12,
+              "wis": 13,
+              "cha": 12
+            },
+            "passivePerception": 14,
+            "languages": [
+              "Common",
+              "Dwarvish",
+              "Giant"
+            ],
+            "challengeRating": "5",
+            "actions": [
+              {
+                "name": "Longsword",
+                "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage."
+              },
+              {
+                "name": "Shield Bash",
+                "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 6 (1d4 + 4) bludgeoning damage, and if the target is a creature it must succeed on a DC 13 Strength saving throw or be pushed 5 feet away."
+              },
+              {
+                "name": "Precise Strike",
+                "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage, plus 3 (1d6) slashing damage if the veteran moved at least 10 feet in a straight line toward the target this turn."
+              }
+            ]
+          }
+        },
+        "skilled": {
+          "commoner": {
+            "armorClass": 12,
+            "hitPoints": 9,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 10,
+              "dex": 14,
+              "con": 11,
+              "int": 12,
+              "wis": 11,
+              "cha": 12
+            },
+            "passivePerception": 12,
+            "languages": [
+              "Common"
+            ],
+            "challengeRating": "0",
+            "actions": [
+              {
+                "name": "Dagger",
+                "text": "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
+              }
+            ]
+          },
+          "trained": {
+            "armorClass": 13,
+            "hitPoints": 18,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 11,
+              "dex": 16,
+              "con": 12,
+              "int": 13,
+              "wis": 12,
+              "cha": 12
+            },
+            "passivePerception": 13,
+            "languages": [
+              "Common",
+              "Halfling"
+            ],
+            "challengeRating": "1/4",
+            "actions": [
+              {
+                "name": "Shortsword",
+                "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage."
+              },
+              {
+                "name": "Sneaky Cut",
+                "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage, plus 3 (1d6) piercing damage if an ally of the scout is within 5 feet of the target."
+              }
+            ]
+          },
+          "veteran": {
+            "armorClass": 15,
+            "hitPoints": 38,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 12,
+              "dex": 17,
+              "con": 13,
+              "int": 13,
+              "wis": 13,
+              "cha": 12
+            },
+            "passivePerception": 14,
+            "languages": [
+              "Common",
+              "Elvish"
+            ],
+            "challengeRating": "2",
+            "actions": [
+              {
+                "name": "Shortsword",
+                "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage."
+              },
+              {
+                "name": "Sneaky Cut",
+                "text": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage, plus 7 (2d6) piercing damage if the scout has advantage on the attack roll or an ally is within 5 feet of the target."
+              }
+            ]
+          },
+          "elite": {
+            "armorClass": 16,
+            "hitPoints": 63,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 13,
+              "dex": 18,
+              "con": 14,
+              "int": 14,
+              "wis": 13,
+              "cha": 13
+            },
+            "passivePerception": 15,
+            "languages": [
+              "Common",
+              "Elvish",
+              "Goblin"
+            ],
+            "challengeRating": "5",
+            "actions": [
+              {
+                "name": "Shortsword",
+                "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 7 (1d6 + 4) piercing damage."
+              },
+              {
+                "name": "Dagger",
+                "text": "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d4 + 4) piercing damage."
+              },
+              {
+                "name": "Sneaky Cut",
+                "text": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 7 (1d6 + 4) piercing damage, plus 7 (2d6) piercing damage if the scout has advantage on the attack roll or an ally is within 5 feet of the target."
+              }
+            ]
+          }
+        },
+        "spellcaster": {
+          "commoner": {
+            "armorClass": 11,
+            "hitPoints": 9,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 8,
+              "dex": 12,
+              "con": 11,
+              "int": 14,
+              "wis": 13,
+              "cha": 13
+            },
+            "passivePerception": 11,
+            "languages": [
+              "Common",
+              "Draconic"
+            ],
+            "challengeRating": "0",
+            "actions": [
+              {
+                "name": "Spark",
+                "text": "Ranged Spell Attack: +4 to hit, range 120 ft., one target. Hit: 5 (1d6 + 2) fire damage."
+              }
+            ]
+          },
+          "trained": {
+            "armorClass": 12,
+            "hitPoints": 16,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 9,
+              "dex": 12,
+              "con": 12,
+              "int": 15,
+              "wis": 13,
+              "cha": 14
+            },
+            "passivePerception": 12,
+            "languages": [
+              "Common",
+              "Draconic"
+            ],
+            "challengeRating": "1/4",
+            "actions": [
+              {
+                "name": "Spark",
+                "text": "Ranged Spell Attack: +4 to hit, range 120 ft., one target. Hit: 5 (1d6 + 2) fire damage."
+              },
+              {
+                "name": "Frost Lash",
+                "text": "Melee Spell Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) cold damage, and the target's speed drops by 10 feet until the end of its next turn."
+              }
+            ]
+          },
+          "veteran": {
+            "armorClass": 13,
+            "hitPoints": 31,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 9,
+              "dex": 13,
+              "con": 13,
+              "int": 16,
+              "wis": 14,
+              "cha": 14
+            },
+            "passivePerception": 13,
+            "languages": [
+              "Common",
+              "Draconic",
+              "Celestial"
+            ],
+            "challengeRating": "2",
+            "actions": [
+              {
+                "name": "Spark",
+                "text": "Ranged Spell Attack: +5 to hit, range 120 ft., one target. Hit: 10 (2d6 + 3) fire damage."
+              },
+              {
+                "name": "Frost Lash",
+                "text": "Melee Spell Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d10 + 3) cold damage, and the target's speed drops by 10 feet until the end of its next turn."
+              }
+            ]
+          },
+          "elite": {
+            "armorClass": 14,
+            "hitPoints": 58,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 10,
+              "dex": 14,
+              "con": 14,
+              "int": 17,
+              "wis": 15,
+              "cha": 15
+            },
+            "passivePerception": 14,
+            "languages": [
+              "Common",
+              "Draconic",
+              "Infernal"
+            ],
+            "challengeRating": "5",
+            "actions": [
+              {
+                "name": "Spark",
+                "text": "Ranged Spell Attack: +6 to hit, range 120 ft., one target. Hit: 10 (2d6 + 3) fire damage."
+              },
+              {
+                "name": "Frost Lash",
+                "text": "Melee Spell Attack: +6 to hit, reach 5 ft., one target. Hit: 12 (2d8 + 3) cold damage, and the target's speed drops by 10 feet until the end of its next turn."
+              },
+              {
+                "name": "Arc Burst",
+                "text": "The caster picks a point within 60 feet that it can see. Each creature within 10 feet of that point must succeed on a DC 14 Dexterity saving throw or take 9 (2d8) lightning damage."
+              }
+            ]
+          }
+        },
+        "common": {
+          "commoner": {
+            "armorClass": 10,
+            "hitPoints": 9,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 10,
+              "dex": 10,
+              "con": 11,
+              "int": 11,
+              "wis": 11,
+              "cha": 12
+            },
+            "passivePerception": 10,
+            "languages": [
+              "Common"
+            ],
+            "challengeRating": "0",
+            "actions": [
+              {
+                "name": "Cast-Iron Pan",
+                "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage."
+              }
+            ]
+          },
+          "trained": {
+            "armorClass": 11,
+            "hitPoints": 16,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 11,
+              "dex": 11,
+              "con": 12,
+              "int": 12,
+              "wis": 12,
+              "cha": 13
+            },
+            "passivePerception": 11,
+            "languages": [
+              "Common"
+            ],
+            "challengeRating": "1/8",
+            "actions": [
+              {
+                "name": "Cast-Iron Pan",
+                "text": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage."
+              },
+              {
+                "name": "Thrown Tankard",
+                "text": "Ranged Weapon Attack: +2 to hit, range 10/30 ft., one target. Hit: 2 (1d4) bludgeoning damage."
+              }
+            ]
+          },
+          "veteran": {
+            "armorClass": 12,
+            "hitPoints": 27,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 12,
+              "dex": 11,
+              "con": 13,
+              "int": 13,
+              "wis": 13,
+              "cha": 14
+            },
+            "passivePerception": 12,
+            "languages": [
+              "Common"
+            ],
+            "challengeRating": "1",
+            "actions": [
+              {
+                "name": "Cast-Iron Pan",
+                "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage."
+              },
+              {
+                "name": "Firm Grapple",
+                "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage, and the target is grappled (escape DC 11)."
+              }
+            ]
+          },
+          "elite": {
+            "armorClass": 13,
+            "hitPoints": 49,
+            "speed": "30 ft.",
+            "abilities": {
+              "str": 12,
+              "dex": 12,
+              "con": 14,
+              "int": 14,
+              "wis": 14,
+              "cha": 16
+            },
+            "passivePerception": 13,
+            "languages": [
+              "Common"
+            ],
+            "challengeRating": "2",
+            "actions": [
+              {
+                "name": "Cast-Iron Pan",
+                "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage."
+              },
+              {
+                "name": "Headbutt",
+                "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "feature_intro": {
+      "name": "About",
+      "label": "NPC generator",
+      "title": "A table-ready NPC in one click",
+      "description": "This free NPC generator builds an instant character for your session: a name, a role, an appearance, a mannerism, a personality, a motivation, a secret, and a plot hook — plus an optional D&D 5e-compatible stat block. No sign-up.",
+      "items": [
+        {
+          "title": "Everything a scene needs",
+          "description": "Name, role, appearance, personality, motivation, secret, and hook are generated together, so the NPC is playable the moment it appears."
+        },
+        {
+          "title": "Narrative card or 5e stat block",
+          "description": "Use Fantasy RPG mode for pure roleplay details, or D&D 5e mode to add armor class, hit points, and actions tuned to four power levels."
+        },
+        {
+          "title": "Free and instant",
+          "description": "Generate NPCs right in your browser with no account — plan a whole town in an afternoon."
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "How to use",
+      "label": "Four steps",
+      "title": "From blank page to NPC at the table",
+      "description": "The NPC generator is built for mid-prep panics and improvised towns alike.",
+      "items": [
+        {
+          "title": "Choose a mode",
+          "description": "Pick Fantasy RPG for narrative-only NPCs or switch the NPC generator to D&D 5e for an optional stat block."
+        },
+        {
+          "title": "Generate",
+          "description": "Set race, presentation, role, tone, and power level — or leave them on Random and let the dice decide."
+        },
+        {
+          "title": "Lock and reroll",
+          "description": "Keep the parts you love by locking a field, then reroll the rest until the character clicks."
+        },
+        {
+          "title": "Copy or expand",
+          "description": "Copy the card as Markdown or plain text for your notes, or send it to the backstory generator for a fuller history."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "Features",
+      "label": "Built for the table",
+      "title": "Small tools that make an NPC usable in seconds",
+      "description": "Every part of this random NPC generator aims at getting a character into play with minimal friction.",
+      "items": [
+        {
+          "title": "Narrative card plus stat block",
+          "description": "The card covers roleplay; the optional 5e-compatible stat block covers combat so you never guess numbers mid-fight."
+        },
+        {
+          "title": "Per-field locks",
+          "description": "Lock the name and motivation you like and reroll only the rest — controlled randomness instead of another full sheet."
+        },
+        {
+          "title": "Four power levels",
+          "description": "Commoner to Elite templates scale the stat block from peasant witness to miniboss."
+        },
+        {
+          "title": "Two export formats",
+          "description": "Markdown keeps formatting for your campaign wiki; plain text drops cleanly into any notes app or virtual tabletop."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "Use cases",
+      "label": "Made for",
+      "title": "Where a quick NPC saves the session",
+      "description": "From scheduled prep to the moment three players walk into an unnamed tavern, an NPC generator keeps the story moving.",
+      "items": [
+        {
+          "title": "Session prep",
+          "description": "Flesh out the named cast before game night without building each one from scratch."
+        },
+        {
+          "title": "Improvised towns",
+          "description": "When players befriend someone you never named, the random NPC generator produces shopkeeps, guards, and gossips on the spot."
+        },
+        {
+          "title": "One-shot nights",
+          "description": "Spin up a whole supporting cast for a standalone evening in minutes."
+        },
+        {
+          "title": "PC side characters",
+          "description": "Create family, rivals, and patrons for player characters, with enough detail to recur across arcs."
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "FAQ",
+      "label": "Questions",
+      "title": "NPC generator FAQ",
+      "items": [
+        {
+          "title": "Is this NPC generator free?",
+          "description": "Yes. Every name, word bank, stat block template, and export option is free, and there is no sign-up."
+        },
+        {
+          "title": "What is the difference between Fantasy RPG and D&D 5e mode?",
+          "description": "Fantasy RPG mode generates roleplay details only — it does not use D&D 5e rules and produces no numbers. D&D 5e mode adds a stat block with armor class, hit points, abilities, and actions."
+        },
+        {
+          "title": "Is the stat block official?",
+          "description": "No. It is a quick 5e-compatible reference built from original templates so a fight runs without page-flipping. It is not official balance, so adjust it freely for your table."
+        },
+        {
+          "title": "How do locks and rerolls work?",
+          "description": "Generate a card, lock the fields you want to keep — the name, the secret, anything — and reroll the rest. Locked fields never change until you unlock them."
+        },
+        {
+          "title": "Do you save my NPCs?",
+          "description": "No. Generation happens on the fly and nothing you create is stored on a server. What you keep lives in your notes and your clipboard."
+        },
+        {
+          "title": "How does the backstory handoff work?",
+          "description": "Send a finished NPC to the DnD Backstory Generator and its details become the starting point for a longer character history you can edit."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "CTA",
+      "title": "Give your NPC a full history",
+      "description": "Happy with what the NPC generator gave you? Send the card to the DnD Backstory Generator to expand this character into a complete backstory with bonds, flaws, and a defining event.",
+      "buttons": [
+        {
+          "title": "Open DnD Backstory Generator",
+          "url": "/dnd-backstory-generator"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "More free tools",
+      "description": "Companion generators for names, stories, and the rest of your table.",
+      "more_label": "View all tools"
+    }
+  }
+}

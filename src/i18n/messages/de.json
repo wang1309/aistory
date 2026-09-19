@@ -426,6 +426,10 @@
       "pictionary_word_generator": {
         "name": "Pictionary Wortgenerator",
         "desc": "Zufällige Pictionary-Begriffe nach Kategorie und Schwierigkeit — mit Timer, Team-Punkten, eigenen Wortlisten und ohne Wiederholungen."
+      },
+      "npc_generator": {
+        "name": "NPC-Generator",
+        "desc": "Erstelle einen spielbereiten NPC für D&D 5e oder Fantasy-RPGs – mit Plot-Hooks und optionalen Werten."
       }
     },
     "tab_story": "Geschichtengenerator",

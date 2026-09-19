@@ -8,6 +8,8 @@
 
 **Tech Stack:** Next.js 15 App Router, React 19, TypeScript, Tailwind CSS 4, next-intl, GRSAI OpenAI-compatible chat completions, Cloudflare Turnstile, existing creative quota, OpenPanel, Node `node:test` through `tsx`.
 
+**Git policy:** This plan does not automatically stage or commit implementation changes. Leave implementation and test changes in the working tree; the repository owner will review the complete diff and commit manually.
+
 ---
 
 ## File Map
@@ -219,12 +221,9 @@ The working tree already contains unrelated NPC Generator edits in several regis
 
   Expected: all six tests pass.
 
-- [ ] **Step 5: Commit the isolated contract.**
+- [ ] **Step 5: Leave the tested contract changes unstaged for owner review.**
 
-  ```bash
-  git add src/lib/creative-quota-core.ts src/app/api/story-summarizer/_lib.ts tests/story-summarizer-lib.test.ts
-  git commit -m "feat: add story summarizer contract"
-  ```
+  Do not run `git add` or `git commit`; keep the changes in the working tree.
 
 ### Task 2: Add the protected, non-streaming structured API
 
@@ -359,12 +358,9 @@ The working tree already contains unrelated NPC Generator edits in several regis
 
   Expected: all eight tests pass.
 
-- [ ] **Step 5: Commit the API.**
+- [ ] **Step 5: Leave the tested API changes unstaged for owner review.**
 
-  ```bash
-  git add src/app/api/story-summarizer/route.ts tests/story-summarizer-route.test.ts
-  git commit -m "feat: add story summarizer API"
-  ```
+  Do not run `git add` or `git commit`; keep the changes in the working tree.
 
 ### Task 3: Build the paste-only generator and its privacy-safe result workflow
 
@@ -536,12 +532,9 @@ The working tree already contains unrelated NPC Generator edits in several regis
 
   Expected: both component tests pass; the page/localization checks added in the next task are not present yet.
 
-- [ ] **Step 6: Commit the interactive surface.**
+- [ ] **Step 6: Leave the tested interactive changes unstaged for owner review.**
 
-  ```bash
-  git add src/components/blocks/story-summarizer/index.tsx src/types/blocks/story-summarizer.d.ts tests/story-summarizer-page.test.ts
-  git commit -m "feat: add story summarizer interface"
-  ```
+  Do not run `git add` or `git commit`; keep the changes in the working tree.
 
 ### Task 4: Add the locale-aware SEO page and complete six-locale content
 
@@ -678,12 +671,9 @@ The working tree already contains unrelated NPC Generator edits in several regis
 
   Expected: all four tests pass.
 
-- [ ] **Step 6: Commit page and content.**
+- [ ] **Step 6: Leave the tested page and content changes unstaged for owner review.**
 
-  ```bash
-  git add 'src/app/[locale]/(default)/ai-tools/story-summarizer/page.tsx' src/i18n/pages/story-summarizer src/types/blocks/story-summarizer.d.ts tests/story-summarizer-page.test.ts
-  git commit -m "feat: add story summarizer page"
-  ```
+  Do not run `git add` or `git commit`; keep the changes in the working tree.
 
 ### Task 5: Register the tool in the hub, sitemap, and every shared message bundle
 
@@ -806,12 +796,9 @@ The working tree already contains unrelated NPC Generator edits in several regis
 
   Expected: all Story Summarizer tests pass.
 
-- [ ] **Step 5: Commit registrations and localized card copy.**
+- [ ] **Step 5: Leave registrations and localized card copy unstaged for owner review.**
 
-  ```bash
-  git add src/services/tools.ts src/app/sitemap.ts src/i18n/messages/en.json src/i18n/messages/zh.json src/i18n/messages/de.json src/i18n/messages/ko.json src/i18n/messages/ja.json src/i18n/messages/ru.json tests/story-summarizer-site-registration.test.ts
-  git commit -m "feat: register story summarizer"
-  ```
+  Do not run `git add` or `git commit`; keep the changes in the working tree.
 
 ### Task 6: Verify privacy guards, formatting, build, and the finished feature
 
@@ -858,7 +845,7 @@ The working tree already contains unrelated NPC Generator edits in several regis
 
   Expected: exit code 0. Verify the static page can load all six dynamic locale JSON imports and that no type errors arise from `CreativePageKey`, `StorySummarizerPage`, or the JSON-LD graph.
 
-- [ ] **Step 5: Inspect the final diff and commit any verification fixes.**
+- [ ] **Step 5: Inspect the final diff and leave verification fixes unstaged.**
 
   Run:
 
@@ -867,12 +854,7 @@ The working tree already contains unrelated NPC Generator edits in several regis
   git status --short
   ```
 
-  Expected: no whitespace errors; the diff contains only Story Summarizer files plus deliberate localized/register/sitemap changes. Preserve all pre-existing NPC Generator worktree changes. If verification required a final Story Summarizer correction, commit only those paths:
-
-  ```bash
-  git add src/lib/creative-quota-core.ts src/app/api/story-summarizer/_lib.ts src/app/api/story-summarizer/route.ts src/components/blocks/story-summarizer/index.tsx src/types/blocks/story-summarizer.d.ts 'src/app/[locale]/(default)/ai-tools/story-summarizer/page.tsx' src/i18n/pages/story-summarizer src/services/tools.ts src/app/sitemap.ts src/i18n/messages/en.json src/i18n/messages/zh.json src/i18n/messages/de.json src/i18n/messages/ko.json src/i18n/messages/ja.json src/i18n/messages/ru.json tests/story-summarizer-lib.test.ts tests/story-summarizer-route.test.ts tests/story-summarizer-page.test.ts tests/story-summarizer-site-registration.test.ts
-  git commit -m "fix: verify story summarizer"
-  ```
+  Expected: no whitespace errors; the diff contains only Story Summarizer files plus deliberate localized/register/sitemap changes. Preserve all pre-existing NPC Generator worktree changes. Do not stage or commit verification fixes; the repository owner will review and commit them manually.
 
 ## Requirement Coverage Review
 

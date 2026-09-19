@@ -429,6 +429,10 @@
       "pictionary_word_generator": {
         "name": "Pictionary Word Generator",
         "desc": "Draw random Pictionary words by category and difficulty — built-in timer, team scores, custom word lists, and no repeats."
+      },
+      "npc_generator": {
+        "name": "NPC Generator",
+        "desc": "Create a table-ready NPC for D&D 5e or fantasy RPGs with plot hooks and optional stats."
       }
     },
     "tab_story": "Story Generator",

@@ -1,0 +1,76 @@
+import type { Section } from "./section";
+import type { NpcGeneratorData } from "@/lib/npc-generator";
+
+export interface NpcGeneratorPage {
+  metadata: {
+    title: string;
+    description: string;
+    keywords: string;
+  };
+  ui: {
+    title: string;
+    title_highlight: string;
+    subtitle: string;
+    eyebrow: string;
+    theme_pills: string[];
+    breadcrumb_home: string;
+    breadcrumb_current: string;
+    fantasy_mode: string;
+    dnd5e_mode: string;
+    system_label: string;
+    race_label: string;
+    presentation_label: string;
+    role_label: string;
+    tone_label: string;
+    cr_tier_label: string;
+    cr_tier_commoner: string;
+    cr_tier_trained: string;
+    cr_tier_veteran: string;
+    cr_tier_elite: string;
+    generate: string;
+    reroll_npc: string;
+    reroll_field: string;
+    lock_field: string;
+    unlock_field: string;
+    copy_markdown: string;
+    copy_text: string;
+    expand_backstory: string;
+    stat_block: string;
+    non_combat_notice: string;
+    empty_state: string;
+    field_name: string;
+    field_race: string;
+    field_presentation: string;
+    field_role: string;
+    field_appearance: string;
+    field_mannerism: string;
+    field_personality: string;
+    field_motivation: string;
+    field_secret: string;
+    field_hook: string;
+    stat_armor_class: string;
+    stat_hit_points: string;
+    stat_speed: string;
+    stat_passive_perception: string;
+    stat_languages: string;
+    stat_challenge_rating: string;
+    stat_actions: string;
+    stat_abilities: string;
+    copied_markdown: string;
+    copied_text: string;
+    copy_failed: string;
+    prefill_failed: string;
+  };
+  generator_data: NpcGeneratorData;
+  feature_intro?: Section;
+  how_to_use?: Section;
+  feature_benefits?: Section;
+  feature_section?: Section;
+  faq_section?: Section;
+  cta_section?: Section;
+  related_tools: {
+    title: string;
+    description: string;
+    more_label: string;
+  };
+}
