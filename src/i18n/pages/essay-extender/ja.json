@@ -1,0 +1,200 @@
+{
+  "essay_extender": {
+    "metadata": {
+      "title": "Essay Extender: AIでエッセイを目標文字数まで拡張",
+      "description": "AIでエッセイを目標語数まで拡張。深みを加え、流れを改善し、中身のない水増しではなくあなたの意図を保ちます。",
+      "keywords": "essay extender, ai essay extender, make essay longer ai, essay word extender, エッセイ 拡張, 文字数を増やす"
+    },
+    "ui": {
+      "eyebrow": "無料エッセイ拡張ツール",
+      "title": "Essay Extender",
+      "title_highlight": "Extender",
+      "subtitle": "下書きを貼り付けて目標語数を設定。このAIエッセイエクステンダーが、アイデア・例・流れを深めながら必要な長さまで拡張し、意味と文体はそのまま保ちます。",
+      "breadcrumb_home": "ホーム",
+      "breadcrumb_current": "Essay Extender",
+      "source_text_label": "下書き",
+      "source_text_hint": "拡張したいエッセイや段落の下書きを貼り付けてください。貼り付けた内容は保存されません。",
+      "character_limit_hint": "最大10,000文字。",
+      "target_word_count_label": "目標総語数",
+      "target_word_count_hint": "現在の語数を超える整数、最大3,000。",
+      "target_shortcuts": [500, 1000, 1500, 2000],
+      "tone_label": "トーン",
+      "focus_label": "拡張の重点",
+      "tone_options": [
+        { "value": "academic", "label": "アカデミック" },
+        { "value": "natural", "label": "ナチュラル" },
+        { "value": "formal", "label": "フォーマル" }
+      ],
+      "focus_options": [
+        { "value": "balanced", "label": "バランス" },
+        { "value": "develop_ideas", "label": "アイデアを深める" },
+        { "value": "add_examples", "label": "例を追加" },
+        { "value": "improve_flow", "label": "流れを改善" }
+      ],
+      "additional_requirements_label": "追加の要件（任意）",
+      "additional_requirements_hint": "維持・拡張・回避したい内容。最大500文字。",
+      "ai_model_label": "AIモデル",
+      "output_language_label": "出力言語",
+      "output_language_auto": "下書きの言語に合わせる",
+      "generate": "エッセイを拡張",
+      "generating": "拡張中…",
+      "sign_in_to_continue": "続けるにはログイン",
+      "output_empty": "拡張されたエッセイがここに表示されます。左側に下書きを貼り付け、目標語数を設定して「エッセイを拡張」を押してください。",
+      "copy_result": "拡張結果をコピー",
+      "result_title": "拡張されたエッセイ",
+      "actual_word_count": "実際",
+      "target_word_count": "目標",
+      "added_word_count": "追加",
+      "continue_ai_write": "AI Writeで続ける",
+      "continue_hint": "AI Writeを開いて執筆を続けましょう — エディタ内でStory Bibleと一貫性チェックが使えます。"
+    },
+    "placeholders": {
+      "source_text": "ここにエッセイや下書きを貼り付け…",
+      "additional_requirements": "例：2段落目を展開し、結論は短く保つ。"
+    },
+    "ai_models": {
+      "fast": "高速",
+      "fast_description": "日常使いに最速の拡張。",
+      "creative": "クリエイティブ",
+      "creative_description": "より豊かで表現力のある拡張。クリエイティブ枠を使用します。"
+    },
+    "validation": {
+      "enter_source_text": "拡張したいエッセイ本文を貼り付けてください。",
+      "source_text_too_long": "貼り付けたテキストが10,000文字の上限を超えています。分割して拡張してください。",
+      "requirements_too_long": "追加の要件が500文字の上限を超えています。",
+      "invalid_target_word_count": "目標語数は現在の語数より多く最大3,000以下の整数である必要があります。"
+    },
+    "success": {
+      "result_copied": "拡張されたエッセイをクリップボードにコピーしました。"
+    },
+    "errors": {
+      "generation_failed": "エッセイを拡張できませんでした。もう一度お試しください。",
+      "copy_failed": "コピーできませんでした。もう一度お試しください。"
+    },
+    "feature_intro": {
+      "title": "水増しなしで目標文字数に到達",
+      "description": "下書きを目標語数まで育てるエッセイエクステンダー — 論証を深め、根拠を補い、つながりを滑らかにしながら、意味・トーン・文体を保ちます。埋め草は入りません。",
+      "items": [
+        {
+          "title": "推測ではなく本当の目標",
+          "description": "必要な総語数を設定すると、拡張機能が下書きをその目標へ育て、追加された語数を表示します。"
+        },
+        {
+          "title": "意味はあなたのまま",
+          "description": "原文のすべての文が保護され、展開されます — 矛盾したり、歪めたり、置き換えられたりすることはありません。"
+        },
+        {
+          "title": "トーンと言語の制御",
+          "description": "アカデミック・ナチュラル・フォーマルのトーンを選び、下書きの言語を保つか、出力言語を固定できます。"
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "AIでエッセイを長くする方法",
+      "description": "貼り付けた下書きから、より長く深いエッセイまでの4ステップ。",
+      "items": [
+        {
+          "title": "下書きを貼り付け",
+          "description": "エッセイや段落（最大10,000文字）をボックスに貼り付けます。保存はされません。"
+        },
+        {
+          "title": "目標語数を設定",
+          "description": "現在の語数より大きい総数を入力するか、ショートカットボタンを使用 — 最大3,000語。"
+        },
+        {
+          "title": "トーン・重点・言語を選択",
+          "description": "エッセイのトーン、拡張を集中させる方向、出力言語を選びます。"
+        },
+        {
+          "title": "拡張・確認・コピー",
+          "description": "実際・目標・追加の語数を比較し、拡張されたエッセイをコピーします。"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "書き手が使う理由",
+      "description": "中身を加えるAIエッセイ拡張ツール — 言い換えの反復ではありません。",
+      "items": [
+        {
+          "title": "分量要件を満たす",
+          "description": "課題やブリーフが特定の分量を求めるとき、文を膨らませるのではなく意図的に拡張します。"
+        },
+        {
+          "title": "薄い部分を充実",
+          "description": "成長をアイデア・例・流れに集中させ、短い段落を十分に論証された段落へ変えます。"
+        },
+        {
+          "title": "あなたの声を保持",
+          "description": "トーン制御と意味の保護により、結果はあなたが書いたように読めます — 実際にあなたのテキストが土台だからです。"
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "拡張できるもの",
+      "description": "貼り付けられるあらゆる散文の下書き — エッセイエクステンダーは提供されたテキストで動作します。",
+      "items": [
+        {
+          "title": "学校・大学のエッセイ",
+          "description": "論証を保ったまま、短い下書きを指定の分量まで育てます。"
+        },
+        {
+          "title": "出願書類",
+          "description": "薄い志望理由書に、より具体的な詳細と内省を加えます。"
+        },
+        {
+          "title": "記事とブログ",
+          "description": "公開前に中身の薄いセクションを深め、痩せたコンテンツのまま出さないようにします。"
+        },
+        {
+          "title": "報告書と提案書",
+          "description": "箇条書きの下書きを、完全でつながりの良い散文へ仕上げます。"
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Essay Extender FAQ",
+      "description": "ツールの仕組み、テキストの取り扱い、結果への期待。",
+      "items": [
+        {
+          "title": "目標語数はどう機能しますか？",
+          "description": "希望する総分量を設定します — 現在の語数より大きい最大3,000の整数。拡張機能は下書きをその総量へ育て、実際・目標・追加の語数を報告します。結果は目標に非常に近いものになりますが、正確な一致ではありません。"
+        },
+        {
+          "title": "どの言語が使えますか？",
+          "description": "デフォルトでは拡張されたエッセイは下書きの言語に従います：英語の下書きは英語のまま、スペイン語の下書きはスペイン語のまま。別の言語での結果が必要な場合は、ドロップダウンで出力言語を固定できます。"
+        },
+        {
+          "title": "トーンと拡張の重点とは？",
+          "description": "トーンはエッセイの読み心地 — アカデミック・ナチュラル・フォーマル — を決めます。重点は成長の向かう先を決めます：バランスの取れた拡張、既存アイデアの深化、具体的な例、より滑らかな流れとつながり。"
+        },
+        {
+          "title": "下書きは非公開ですか？",
+          "description": "はい。貼り付けた下書きは拡張の生成に使われるだけで、アカウントやデータベースには保存されません。記録されるのは匿名の利用回数のみで、あなたのテキストや生成結果は決して記録されません。"
+        },
+        {
+          "title": "引用や事実をでっち上げますか？",
+          "description": "いいえ。拡張機能は引用、出典、研究、統計、人名、事実をでっち上げないよう指示されています。代わりに論証、言い換え、明確に根拠のある例で展開します。学術課題を提出する前に、事実関係は必ずご自身で確認してください。"
+        },
+        {
+          "title": "Essay Extenderは無料ですか？",
+          "description": "はい。ツールは1日のフェアユース限度内で動作し、ログインすると1日の拡張回数が増えます。"
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "エッセイを拡張して、書き続ける",
+      "description": "拡張された下書きを土台に、AI Writeを開いてStory Bibleと一貫性チェックとともに執筆を続けましょう。",
+      "buttons": [
+        {
+          "title": "AI Writeを開く",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "他のライティングツール",
+      "description": "今拡張したテキストを要約し、構成し、さらに深めましょう。",
+      "more_label": "すべてのツールを見る"
+    }
+  }
+}

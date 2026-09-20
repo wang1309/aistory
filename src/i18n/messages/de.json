@@ -20,7 +20,8 @@
     "read_story": "Geschichte lesen"
   },
   "footer": {
-    "name_generator": "Namensgeneratoren"
+    "name_generator": "Namensgeneratoren",
+    "rewrite": "Umschreib-Tools"
   },
   "sign_modal": {
     "sign_in_title": "Anmelden",
@@ -136,6 +137,7 @@
     "no_content": "Kein Inhalt",
     "all": "Alle",
     "category": "Kategorie",
+    "featured": "Empfohlen",
     "author": "Autor",
     "home": "Startseite",
     "index_label": "Inhalt",
@@ -434,6 +436,10 @@
       "story_summarizer": {
         "name": "Geschichten-Zusammenfasser",
         "desc": "Fasse eine Geschichte oder ein Kapitel in Handlungspunkte, Charakterentwicklungen, Themen und Konflikt zusammen."
+      },
+      "essay_extender": {
+        "name": "Aufsatz-Erweiterer",
+        "desc": "Erweitere einen Aufsatz auf die Zielwortanzahl – mit Tiefe, Beispielen und besserem Fluss, ohne den Sinn zu verlieren."
       }
     },
     "tab_story": "Geschichtengenerator",

@@ -442,6 +442,18 @@ export const tools: Tool[] = [
     keywords: ["story summarizer", "chapter summarizer", "story summary", "plot summary"],
   },
   {
+    slug: "essay-extender",
+    nameKey: "ai_tools.tools.essay_extender.name",
+    shortDescKey: "ai_tools.tools.essay_extender.desc",
+    module: "ai-write",
+    category: "utility",
+    href: "/essay-extender",
+    icon: "RiArticleLine",
+    badges: ["new"],
+    priority: 96,
+    keywords: ["essay extender", "ai essay extender", "make essay longer ai", "essay word extender"],
+  },
+  {
     slug: "middle-name-generator",
     nameKey: "ai_tools.tools.middle_name_generator.name",
     shortDescKey: "ai_tools.tools.middle_name_generator.desc",

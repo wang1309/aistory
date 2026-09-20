@@ -16,7 +16,7 @@ import {
   shouldOptimisticallyGateCreativeCreditUsage,
 } from "@/lib/creative-quota-core";
 
-assert.equal(CREATIVE_PAGE_KEYS.length, 20);
+assert.equal(CREATIVE_PAGE_KEYS.length, 22);
 assert.equal(
   buildCreativeQuotaKey("2026-07-14", "user:u1", "poem-generator"),
   "free-quota:2026-07-14:user:u1:poem-generator:creative"

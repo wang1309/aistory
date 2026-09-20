@@ -1,0 +1,200 @@
+{
+  "essay_extender": {
+    "metadata": {
+      "title": "Essay Extender: Make Your Essay Longer with AI",
+      "description": "Extend an essay to a target word count with AI. Add depth, improve flow, and preserve your meaning without filler. Free AI essay extender, no sign-up needed.",
+      "keywords": "essay extender, ai essay extender, make essay longer ai, essay word extender"
+    },
+    "ui": {
+      "eyebrow": "Free essay expansion tool",
+      "title": "Essay Extender",
+      "title_highlight": "Extender",
+      "subtitle": "Paste a draft, choose a target word count, and this AI essay extender grows your essay to the length you need — deepening ideas, examples, and flow while keeping your meaning and voice intact.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Essay Extender",
+      "source_text_label": "Your draft",
+      "source_text_hint": "Paste the essay or draft paragraph you want to expand. Nothing you paste is saved.",
+      "character_limit_hint": "Up to 10,000 characters.",
+      "target_word_count_label": "Target total word count",
+      "target_word_count_hint": "A whole number above your current word count, up to 3,000.",
+      "target_shortcuts": [500, 1000, 1500, 2000],
+      "tone_label": "Tone",
+      "focus_label": "Expansion focus",
+      "tone_options": [
+        { "value": "academic", "label": "Academic" },
+        { "value": "natural", "label": "Natural" },
+        { "value": "formal", "label": "Formal" }
+      ],
+      "focus_options": [
+        { "value": "balanced", "label": "Balanced" },
+        { "value": "develop_ideas", "label": "Develop ideas" },
+        { "value": "add_examples", "label": "Add examples" },
+        { "value": "improve_flow", "label": "Improve flow" }
+      ],
+      "additional_requirements_label": "Additional requirements (optional)",
+      "additional_requirements_hint": "Anything specific to keep, expand, or avoid. Up to 500 characters.",
+      "ai_model_label": "AI model",
+      "output_language_label": "Output language",
+      "output_language_auto": "Follow draft language",
+      "generate": "Extend essay",
+      "generating": "Extending…",
+      "sign_in_to_continue": "Sign in to continue",
+      "output_empty": "Your expanded essay will appear here. Paste your draft on the left, set a target word count, and let the essay extender do the rest.",
+      "copy_result": "Copy expanded essay",
+      "result_title": "Expanded essay",
+      "actual_word_count": "Actual",
+      "target_word_count": "Target",
+      "added_word_count": "Added",
+      "continue_ai_write": "Continue in AI Write",
+      "continue_hint": "Open AI Write to keep drafting — Story Bible and Consistency Check are available once you are inside the editor."
+    },
+    "placeholders": {
+      "source_text": "Paste your essay or draft here…",
+      "additional_requirements": "e.g. Expand the second paragraph and keep the conclusion short."
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quickest expansions for everyday use.",
+      "creative": "Creative",
+      "creative_description": "Richer, more expressive expansions. Uses your creative quota."
+    },
+    "validation": {
+      "enter_source_text": "Please paste the essay text you want to extend.",
+      "source_text_too_long": "The pasted text is over the 10,000-character limit. Extend it in parts.",
+      "requirements_too_long": "Additional requirements are over the 500-character limit.",
+      "invalid_target_word_count": "The target word count must be a whole number greater than your current word count and at most 3,000."
+    },
+    "success": {
+      "result_copied": "Expanded essay copied to your clipboard."
+    },
+    "errors": {
+      "generation_failed": "Could not extend the essay. Please try again.",
+      "copy_failed": "Could not copy the essay. Please try again."
+    },
+    "feature_intro": {
+      "title": "Reach your word count without padding",
+      "description": "An essay extender that grows your draft toward a target total — deepening arguments, illustrating points, and smoothing transitions — while preserving your meaning, tone, and voice instead of stuffing in filler.",
+      "items": [
+        {
+          "title": "A real target, not a guess",
+          "description": "Set the total word count you need; the extender expands your draft toward it and shows how many words were added."
+        },
+        {
+          "title": "Your meaning stays yours",
+          "description": "Every sentence of the original is preserved and elaborated — never contradicted, distorted, or replaced."
+        },
+        {
+          "title": "Tone and language control",
+          "description": "Choose academic, natural, or formal tone, keep your draft's language, or pick a fixed output language."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "How to make an essay longer with AI",
+      "description": "How the essay extender takes you from a pasted draft to a longer, deeper essay in four steps.",
+      "items": [
+        {
+          "title": "Paste your draft",
+          "description": "Copy your essay or paragraph — up to 10,000 characters — into the box. Nothing is stored."
+        },
+        {
+          "title": "Set your target word count",
+          "description": "Type a total above your current count or use a shortcut — up to 3,000 words."
+        },
+        {
+          "title": "Pick tone, focus, and language",
+          "description": "Choose how the essay should sound, where the expansion should concentrate, and the output language."
+        },
+        {
+          "title": "Extend, review, and copy",
+          "description": "Compare actual, target, and added word counts, then copy the expanded essay."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "Why writers use it",
+      "description": "An AI essay extender that adds substance — not repetition with extra words.",
+      "items": [
+        {
+          "title": "Meets length requirements",
+          "description": "When an assignment or brief demands a specific total, expand deliberately instead of padding sentences."
+        },
+        {
+          "title": "Develops thin sections",
+          "description": "Concentrate growth on ideas, examples, or flow so short paragraphs become fully argued ones."
+        },
+        {
+          "title": "Keeps your voice",
+          "description": "Tone control and meaning preservation keep the result sounding like you wrote it — because you did."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "What you can extend",
+      "description": "Any prose draft you can paste — the essay extender works with the text you give it.",
+      "items": [
+        {
+          "title": "School and college essays",
+          "description": "Grow a short draft toward an assigned word count — the essay extender keeps the argument intact."
+        },
+        {
+          "title": "Application statements",
+          "description": "Expand a sparse personal statement with more concrete detail and reflection."
+        },
+        {
+          "title": "Articles and blog posts",
+          "description": "Deepen underwritten sections before publishing instead of shipping thin content."
+        },
+        {
+          "title": "Reports and proposals",
+          "description": "Flesh out bullet-point drafts into full, well-connected prose."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Essay Extender FAQ",
+      "description": "How the tool works, what it does with your text, and what to expect from the results.",
+      "items": [
+        {
+          "title": "How does the target word count work?",
+          "description": "You set the total length you want — any whole number above your current word count, up to 3,000. The extender expands your draft toward that total and reports the actual, target, and added word counts. Treat the result as very close to the target rather than an exact match."
+        },
+        {
+          "title": "Which languages can I use?",
+          "description": "By default the expanded essay follows the language of your draft: an English draft stays English, a Spanish draft stays Spanish. You can also pick a fixed output language from the dropdown if you want the result in another language."
+        },
+        {
+          "title": "What do tone and expansion focus do?",
+          "description": "Tone sets how the essay sounds — academic, natural, or formal. Focus sets where the growth goes: balanced expansion, deeper development of existing ideas, concrete examples, or smoother flow and transitions."
+        },
+        {
+          "title": "Is my draft text private?",
+          "description": "Yes. The essay extender sends your pasted draft to generate the expansion and does not save it to your account or our database. Only anonymous usage counts are recorded — never your text or the generated result."
+        },
+        {
+          "title": "Will it invent citations or facts?",
+          "description": "No. The extender is instructed not to invent quotations, citations, studies, statistics, names, or facts. It elaborates with reasoning, restatement, and clearly grounded examples instead. Always verify factual claims before submitting academic work."
+        },
+        {
+          "title": "Is the essay extender free?",
+          "description": "Yes. The tool works within a daily fair-use limit, and signing in gives you more daily expansions."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "Extend the essay, then keep writing",
+      "description": "Use the essay extender result as your base, then open AI Write to keep drafting with Story Bible and Consistency Check by your side.",
+      "buttons": [
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "More writing tools",
+      "description": "Summarize, outline, and deepen the text you just extended.",
+      "more_label": "View all tools"
+    }
+  }
+}

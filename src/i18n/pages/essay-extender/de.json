@@ -1,0 +1,200 @@
+{
+  "essay_extender": {
+    "metadata": {
+      "title": "Essay Extender: Aufsatz mit KI verlängern",
+      "description": "Erweitere einen Aufsatz mit KI auf eine Zielwortanzahl. Mehr Tiefe, besserer Fluss und dein Sinn bleibt erhalten – ohne Füllmaterial.",
+      "keywords": "essay extender, ai essay extender, make essay longer ai, essay word extender, aufsatz verlängern, text erweitern"
+    },
+    "ui": {
+      "eyebrow": "Kostenloses Aufsatz-Erweiterungstool",
+      "title": "Essay Extender",
+      "title_highlight": "Extender",
+      "subtitle": "Füge einen Entwurf ein, wähle eine Zielwortanzahl, und dieser KI-Aufsatz-Extender bringt deinen Text auf die gewünschte Länge – vertieft Ideen, Beispiele und Fluss und bewahrt dabei Sinn und Stimme.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Essay Extender",
+      "source_text_label": "Dein Entwurf",
+      "source_text_hint": "Füge den Aufsatz oder Absatz ein, den du erweitern möchtest. Nichts wird gespeichert.",
+      "character_limit_hint": "Bis zu 10.000 Zeichen.",
+      "target_word_count_label": "Gesamt-Zielwortanzahl",
+      "target_word_count_hint": "Eine ganze Zahl über deiner aktuellen Wortanzahl, maximal 3.000.",
+      "target_shortcuts": [500, 1000, 1500, 2000],
+      "tone_label": "Ton",
+      "focus_label": "Erweiterungsschwerpunkt",
+      "tone_options": [
+        { "value": "academic", "label": "Akademisch" },
+        { "value": "natural", "label": "Natürlich" },
+        { "value": "formal", "label": "Formell" }
+      ],
+      "focus_options": [
+        { "value": "balanced", "label": "Ausgewogen" },
+        { "value": "develop_ideas", "label": "Ideen vertiefen" },
+        { "value": "add_examples", "label": "Beispiele ergänzen" },
+        { "value": "improve_flow", "label": "Fluss verbessern" }
+      ],
+      "additional_requirements_label": "Zusätzliche Anforderungen (optional)",
+      "additional_requirements_hint": "Was soll erhalten, erweitert oder vermieden werden? Bis zu 500 Zeichen.",
+      "ai_model_label": "KI-Modell",
+      "output_language_label": "Ausgabesprache",
+      "output_language_auto": "Sprache des Entwurfs folgen",
+      "generate": "Aufsatz erweitern",
+      "generating": "Wird erweitert…",
+      "sign_in_to_continue": "Zum Fortfahren anmelden",
+      "output_empty": "Dein erweiterter Aufsatz erscheint hier. Füge links deinen Entwurf ein, lege die Zielwortanzahl fest und klicke auf Aufsatz erweitern.",
+      "copy_result": "Erweiterten Aufsatz kopieren",
+      "result_title": "Erweiterter Aufsatz",
+      "actual_word_count": "Ist",
+      "target_word_count": "Ziel",
+      "added_word_count": "Hinzugefügt",
+      "continue_ai_write": "In AI Write fortfahren",
+      "continue_hint": "Öffne AI Write, um weiterzuschreiben – Story Bible und Konsistenzprüfung stehen im Editor bereit."
+    },
+    "placeholders": {
+      "source_text": "Füge hier deinen Aufsatz oder Entwurf ein…",
+      "additional_requirements": "z. B. Den zweiten Absatz ausbauen und das Fazit kurz halten."
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schnellste Erweiterungen für den Alltag.",
+      "creative": "Kreativ",
+      "creative_description": "Ausdrucksstärkere Erweiterungen. Nutzt dein Kreativ-Kontingent."
+    },
+    "validation": {
+      "enter_source_text": "Bitte füge den Aufsatz ein, den du erweitern möchtest.",
+      "source_text_too_long": "Der eingefügte Text überschreitet das Limit von 10.000 Zeichen. Erweitere ihn in Teilen.",
+      "requirements_too_long": "Die zusätzlichen Anforderungen überschreiten das Limit von 500 Zeichen.",
+      "invalid_target_word_count": "Die Zielwortanzahl muss eine ganze Zahl über deiner aktuellen Wortanzahl und höchstens 3.000 sein."
+    },
+    "success": {
+      "result_copied": "Erweiterter Aufsatz in die Zwischenablage kopiert."
+    },
+    "errors": {
+      "generation_failed": "Der Aufsatz konnte nicht erweitert werden. Bitte versuche es erneut.",
+      "copy_failed": "Kopieren fehlgeschlagen. Bitte versuche es erneut."
+    },
+    "feature_intro": {
+      "title": "Deine Wortanzahl erreichen – ohne Polster",
+      "description": "Ein Aufsatz-Extender, der deinen Entwurf auf die Zielwortanzahl bringt – vertieft Argumente, belegt Punkte und glättet Übergänge – und dabei Bedeutung, Ton und Stimme bewahrt statt Füllmaterial einzustreuen.",
+      "items": [
+        {
+          "title": "Ein echtes Ziel, keine Schätzung",
+          "description": "Lege die Gesamtwortanzahl fest; der Extender bringt deinen Entwurf dahin und zeigt, wie viele Wörter hinzugekommen sind."
+        },
+        {
+          "title": "Deine Bedeutung bleibt deine",
+          "description": "Jeder Satz des Originals wird bewahrt und ausgeführt – nie widersprochen, verzerrt oder ersetzt."
+        },
+        {
+          "title": "Ton- und Sprachkontrolle",
+          "description": "Wähle akademischen, natürlichen oder formellen Ton, behalte die Sprache deines Entwurfs oder lege eine feste Ausgabesprache fest."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "So machst du einen Aufsatz mit KI länger",
+      "description": "In vier Schritten vom eingefügten Entwurf zum längeren, tieferen Aufsatz.",
+      "items": [
+        {
+          "title": "Entwurf einfügen",
+          "description": "Kopiere deinen Aufsatz oder Absatz – bis zu 10.000 Zeichen – in das Feld. Nichts wird gespeichert."
+        },
+        {
+          "title": "Zielwortanzahl festlegen",
+          "description": "Gib eine Summe über deiner aktuellen Anzahl ein oder nutze einen Kurzwahl-Button – bis zu 3.000 Wörter."
+        },
+        {
+          "title": "Ton, Schwerpunkt und Sprache wählen",
+          "description": "Bestimme, wie der Aufsatz klingen soll, wohin die Erweiterung gehen soll und in welcher Sprache."
+        },
+        {
+          "title": "Erweitern, prüfen, kopieren",
+          "description": "Vergleiche Ist-, Ziel- und hinzugefügte Wortanzahl und kopiere den erweiterten Aufsatz."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "Warum Autoren es nutzen",
+      "description": "Ein KI-Aufsatz-Extender, der Substanz hinzufügt – keine Wiederholung mit mehr Wörtern.",
+      "items": [
+        {
+          "title": "Erfüllt Längenvorgaben",
+          "description": "Wenn eine Aufgabe eine bestimmte Wortanzahl verlangt, erweitere gezielt statt Sätze aufzublähen."
+        },
+        {
+          "title": "Entwickelt dünne Abschnitte",
+          "description": "Konzentriere das Wachstum auf Ideen, Beispiele oder Fluss, damit kurze Absätze zu voll ausgearbeiteten werden."
+        },
+        {
+          "title": "Bewahrt deine Stimme",
+          "description": "Tonkontrolle und Bedeutungserhalt sorgen dafür, dass das Ergebnis klingt wie von dir geschrieben – denn es basiert auf deinem Text."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "Was du erweitern kannst",
+      "description": "Jeder Prosatext, den du einfügen kannst – der Essay Extender arbeitet mit deinem Text.",
+      "items": [
+        {
+          "title": "Schul- und Universitätsaufsätze",
+          "description": "Bringe einen kurzen Entwurf auf die vorgegebene Wortanzahl, ohne das Argument zu verlieren."
+        },
+        {
+          "title": "Bewerbungsschreiben",
+          "description": "Erweitere eine schlanke persönliche Erklärung um konkretere Details und Reflexion."
+        },
+        {
+          "title": "Artikel und Blogbeiträge",
+          "description": "Vertiefe dünn ausgeführte Abschnitte vor der Veröffentlichung statt mageren Content zu verbreiten."
+        },
+        {
+          "title": "Berichte und Anträge",
+          "description": "Führe Stichpunktentwürfe zu vollständigem, gut verbundenem Prosatext aus."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Essay Extender FAQ",
+      "description": "Wie das Tool funktioniert, was mit deinem Text passiert und was du von den Ergebnissen erwarten kannst.",
+      "items": [
+        {
+          "title": "Wie funktioniert die Zielwortanzahl?",
+          "description": "Du legst die gewünschte Gesamtlänge fest – jede ganze Zahl über deiner aktuellen Wortanzahl, bis zu 3.000. Der Extender bringt deinen Entwurf auf diese Summe und meldet Ist-, Ziel- und hinzugefügte Wortanzahl. Das Ergebnis liegt sehr nahe am Ziel, ist aber keine exakte Übereinstimmung."
+        },
+        {
+          "title": "Welche Sprachen kann ich verwenden?",
+          "description": "Standardmäßig folgt der erweiterte Aufsatz der Sprache deines Entwurfs: Ein englischer Entwurf bleibt englisch, ein spanischer bleibt spanisch. Du kannst auch eine feste Ausgabesprache wählen, wenn du das Ergebnis in einer anderen Sprache möchtest."
+        },
+        {
+          "title": "Was bewirken Ton und Erweiterungsschwerpunkt?",
+          "description": "Der Ton bestimmt, wie der Aufsatz klingt – akademisch, natürlich oder formell. Der Schwerpunkt legt fest, wohin das Wachstum geht: ausgewogene Erweiterung, tiefere Ausarbeitung bestehender Ideen, konkrete Beispiele oder flüssigere Übergänge."
+        },
+        {
+          "title": "Ist mein Entwurf privat?",
+          "description": "Ja. Dein eingefügter Entwurf wird nur zur Erzeugung der Erweiterung verwendet und nicht in deinem Konto oder unserer Datenbank gespeichert. Es werden nur anonyme Nutzungszähler erfasst – niemals dein Text oder das Ergebnis."
+        },
+        {
+          "title": "Erfindet das Tool Zitate oder Fakten?",
+          "description": "Nein. Der Extender wird angewiesen, keine Zitate, Quellenangaben, Studien, Statistiken, Namen oder Fakten zu erfinden. Er arbeitet mit Begründung, Umformulierung und klar belegten Beispielen. Prüfe faktische Aussagen immer, bevor du akademische Arbeiten abgibst."
+        },
+        {
+          "title": "Ist der Essay Extender kostenlos?",
+          "description": "Ja. Das Tool funktioniert innerhalb eines täglichen Fair-Use-Limits, und nach der Anmeldung erhältst du mehr tägliche Erweiterungen."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "Aufsatz erweitern, dann weiterschreiben",
+      "description": "Nutze den erweiterten Entwurf als Basis und öffne AI Write, um mit Story Bible und Konsistenzprüfung weiterzuarbeiten.",
+      "buttons": [
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Weitere Schreibtools",
+      "description": "Fasse zusammen, gliedere und vertiefe den Text, den du gerade erweitert hast.",
+      "more_label": "Alle Tools ansehen"
+    }
+  }
+}

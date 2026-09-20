@@ -20,6 +20,7 @@ export const CREATIVE_PAGE_KEYS = [
   "tiktok-comment-generator",
   "oc-generator",
   "story-summarizer",
+  "essay-extender",
 ] as const;
 
 export type CreativePageKey = (typeof CREATIVE_PAGE_KEYS)[number];

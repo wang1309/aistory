@@ -1,0 +1,200 @@
+{
+  "essay_extender": {
+    "metadata": {
+      "title": "Essay Extender: AI로 에세이 분량 늘리기",
+      "description": "AI로 에세이를 목표 단어 수까지 확장하세요. 깊이를 더하고 흐름을 개선하며 filler 없이 원래 의미를 지킵니다.",
+      "keywords": "essay extender, ai essay extender, make essay longer ai, essay word extender, 에세이 확장, 글자수 늘리기"
+    },
+    "ui": {
+      "eyebrow": "무료 에세이 확장 도구",
+      "title": "Essay Extender",
+      "title_highlight": "Extender",
+      "subtitle": "초안을 붙여넣고 목표 단어 수를 정하세요. 이 AI 에세이 확장기가 아이디어, 예시, 흐름을 깊게 다듬어 원하는 분량으로 늘리고, 의미와 목소리는 그대로 지켜줍니다.",
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "Essay Extender",
+      "source_text_label": "내 초안",
+      "source_text_hint": "확장하고 싶은 에세이나 문단 초안을 붙여넣으세요. 붙여넣은 내용은 저장되지 않습니다.",
+      "character_limit_hint": "최대 10,000자.",
+      "target_word_count_label": "목표 총 단어 수",
+      "target_word_count_hint": "현재 단어 수보다 많은 정수, 최대 3,000.",
+      "target_shortcuts": [500, 1000, 1500, 2000],
+      "tone_label": "어조",
+      "focus_label": "확장 초점",
+      "tone_options": [
+        { "value": "academic", "label": "학술적" },
+        { "value": "natural", "label": "자연스러움" },
+        { "value": "formal", "label": "격식있음" }
+      ],
+      "focus_options": [
+        { "value": "balanced", "label": "균형" },
+        { "value": "develop_ideas", "label": "아이디어 심화" },
+        { "value": "add_examples", "label": "예시 추가" },
+        { "value": "improve_flow", "label": "흐름 개선" }
+      ],
+      "additional_requirements_label": "추가 요구사항 (선택)",
+      "additional_requirements_hint": "유지하거나, 확장하거나, 피해야 할 내용. 최대 500자.",
+      "ai_model_label": "AI 모델",
+      "output_language_label": "출력 언어",
+      "output_language_auto": "초안 언어 따르기",
+      "generate": "에세이 확장",
+      "generating": "확장 중…",
+      "sign_in_to_continue": "계속하려면 로그인",
+      "output_empty": "확장된 에세이가 여기에 표시됩니다. 왼쪽에 초안을 붙여넣고 목표 단어 수를 정한 뒤 에세이 확장을 누르세요.",
+      "copy_result": "확장된 에세이 복사",
+      "result_title": "확장된 에세이",
+      "actual_word_count": "실제",
+      "target_word_count": "목표",
+      "added_word_count": "추가",
+      "continue_ai_write": "AI Write에서 이어서",
+      "continue_hint": "AI Write를 열어 계속 집필하세요 — 에디터 안에서 Story Bible과 일관성 검사를 사용할 수 있습니다."
+    },
+    "placeholders": {
+      "source_text": "여기에 에세이나 초안을 붙여넣으세요…",
+      "additional_requirements": "예: 두 번째 문단을 확장하고 결론은 짧게 유지."
+    },
+    "ai_models": {
+      "fast": "빠름",
+      "fast_description": "일상적인 사용에 가장 빠른 확장.",
+      "creative": "크리에이티브",
+      "creative_description": "더 풍부하고 표현력 있는 확장. 크리에이티브 쿼터를 사용합니다."
+    },
+    "validation": {
+      "enter_source_text": "확장할 에세이 본문을 붙여넣어 주세요.",
+      "source_text_too_long": "붙여넣은 텍스트가 10,000자 한도를 초과했습니다. 나누어 확장해 주세요.",
+      "requirements_too_long": "추가 요구사항이 500자 한도를 초과했습니다.",
+      "invalid_target_word_count": "목표 단어 수는 현재 단어 수보다 많고 최대 3,000 이하의 정수여야 합니다."
+    },
+    "success": {
+      "result_copied": "확장된 에세이가 클립보드에 복사되었습니다."
+    },
+    "errors": {
+      "generation_failed": "에세이를 확장하지 못했습니다. 다시 시도해 주세요.",
+      "copy_failed": "복사하지 못했습니다. 다시 시도해 주세요."
+    },
+    "feature_intro": {
+      "title": "채우지 않고 목표 분량에 도달",
+      "description": "초안을 목표 분량까지 키우는 에세이 확장기 — 논지를 깊게 하고, 근거를 보태고, 전환을 매끄럽게 하면서 의미·어조·목소리를 지킵니다. filler는 없습니다.",
+      "items": [
+        {
+          "title": "추측이 아닌 실제 목표",
+          "description": "필요한 총 단어 수를 정하세요. 확장기가 초안을 그 목표로 키우고 추가된 단어 수를 보여줍니다."
+        },
+        {
+          "title": "의미는 그대로 당신 것",
+          "description": "원문의 모든 문장이 보존되고 확장됩니다 — 결코 모순되거나 왜곡되거나 대체되지 않습니다."
+        },
+        {
+          "title": "어조와 언어 제어",
+          "description": "학술적·자연스러움·격식있는 어조 중 고르고, 초안 언어를 유지하거나 출력 언어를 지정할 수 있습니다."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "AI로 에세이를 길게 만드는 방법",
+      "description": "붙여넣은 초안에서 더 길고 깊은 에세이까지 네 단계.",
+      "items": [
+        {
+          "title": "초안 붙여넣기",
+          "description": "에세이나 문단(최대 10,000자)을 입력창에 붙여넣으세요. 저장되지 않습니다."
+        },
+        {
+          "title": "목표 단어 수 설정",
+          "description": "현재보다 많은 총량을 입력하거나 단축 버튼을 사용하세요 — 최대 3,000 단어."
+        },
+        {
+          "title": "어조·초점·언어 선택",
+          "description": "에세이의 어조, 확장이 집중될 방향, 출력 언어를 고르세요."
+        },
+        {
+          "title": "확장, 확인, 복사",
+          "description": "실제·목표·추가 단어 수를 비교하고 확장된 에세이를 복사하세요."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "작가들이 사용하는 이유",
+      "description": "실질을 더하는 AI 에세이 확장기 — 단어만 늘린 반복이 아닙니다.",
+      "items": [
+        {
+          "title": "분량 요건 충족",
+          "description": "과제나 브리프가 특정 분량을 요구할 때, 문장을 부풀리는 대신 의도적으로 확장하세요."
+        },
+        {
+          "title": "얇은 부분 발전",
+          "description": "성장을 아이디어·예시·흐름에 집중해 짧은 문단을 완전히 논증된 문단으로 만드세요."
+        },
+        {
+          "title": "당신의 목소리 유지",
+          "description": "어조 제어와 의미 보존 덕분에 결과물은 당신이 쓴 것처럼 읽힙니다 — 실제로 당신의 글 위에 있으니까요."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "무엇을 확장할 수 있나요",
+      "description": "붙여넣을 수 있는 모든 산문 초안 — 에세이 확장기는 당신이 제공한 텍스트로 작동합니다.",
+      "items": [
+        {
+          "title": "학교·대학 에세이",
+          "description": "논지를 유지하면서 짧은 초안을 지정된 분량까지 키우세요."
+        },
+        {
+          "title": "지원서 에세이",
+          "description": "성의 없는 개인문에 구체적 세부사항과 성찰을 더하세요."
+        },
+        {
+          "title": "아티클과 블로그",
+          "description": "밋밋한 콘텐츠를 내보내기 전에 부족한 섹션을 깊게 다듬으세요."
+        },
+        {
+          "title": "보고서와 제안서",
+          "description": "요점 중심 초안을 완결된, 잘 연결된 산문으로 발전시키세요."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Essay Extender FAQ",
+      "description": "도구의 작동 방식, 텍스트 처리 방식, 결과에 대한 기대치.",
+      "items": [
+        {
+          "title": "목표 단어 수는 어떻게 작동하나요?",
+          "description": "원하는 총 분량을 정하세요 — 현재 단어 수보다 많은 최대 3,000의 정수. 확장기가 초안을 그 총량으로 키우고 실제·목표·추가 단어 수를 보고합니다. 결과는 목표에 매우 근접하지만 정확히 일치하지는 않습니다."
+        },
+        {
+          "title": "어떤 언어를 쓸 수 있나요?",
+          "description": "기본적으로 확장된 에세이는 초안의 언어를 따릅니다: 영어 초안은 영어로, 스페인어 초안은 스페인어로 유지됩니다. 다른 언어의 결과를 원하면 드롭다운에서 출력 언어를 고정할 수도 있습니다."
+        },
+        {
+          "title": "어조와 확장 초점은 무엇인가요?",
+          "description": "어조는 에세이의 느낌을 — 학술적·자연스러움·격식있음 — 정합니다. 초점은 성장이 향하는 곳을 정합니다: 균형 잡힌 확장, 기존 아이디어의 심화, 구체적 예시, 더 매끄러운 흐름과 전환."
+        },
+        {
+          "title": "내 초안은 비공개인가요?",
+          "description": "네. 붙여넣은 초안은 확장 생성에만 사용되며 계정이나 데이터베이스에 저장되지 않습니다. 익명 사용 횟수만 기록됩니다 — 당신의 텍스트나 결과는 절대 기록되지 않습니다."
+        },
+        {
+          "title": "인용이나 사실을 지어내나요?",
+          "description": "아니요. 확장기는 인용, 출처, 연구, 통계, 인명, 사실을 지어내지 않도록 지시받습니다. 대신 논증, 바꿔 쓰기, 명확히 근거한 예시로 확장합니다. 학술 과제 제출 전에는 사실 관계를 반드시 확인하세요."
+        },
+        {
+          "title": "Essay Extender는 무료인가요?",
+          "description": "네. 도구는 일일 공정 사용 한도 내에서 작동하며, 로그인하면 하루에 더 많은 확장을 사용할 수 있습니다."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "에세이를 확장하고, 계속 쓰세요",
+      "description": "확장된 초안을 베이스로 삼고 AI Write를 열어 Story Bible과 일관성 검사와 함께 계속 집필하세요.",
+      "buttons": [
+        {
+          "title": "AI Write 열기",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "더 많은 글쓰기 도구",
+      "description": "방금 확장한 텍스트를 요약하고, 개요를 잡고, 더 깊게 만드세요.",
+      "more_label": "모든 도구 보기"
+    }
+  }
+}

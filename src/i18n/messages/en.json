@@ -20,7 +20,8 @@
     "read_story": "Read Story"
   },
   "footer": {
-    "name_generator": "Name Generators"
+    "name_generator": "Name Generators",
+    "rewrite": "Rewrite Tools"
   },
   "sign_modal": {
     "sign_in_title": "Sign In",
@@ -139,6 +140,7 @@
     "no_content": "No content",
     "all": "All",
     "category": "Category",
+    "featured": "Featured",
     "author": "Author",
     "home": "Home",
     "index_label": "Index",
@@ -437,6 +439,10 @@
       "story_summarizer": {
         "name": "Story Summarizer",
         "desc": "Summarize a story or chapter into plot beats, character changes, themes, and conflict."
+      },
+      "essay_extender": {
+        "name": "Essay Extender",
+        "desc": "Extend an essay to a target word count with depth, examples, and better flow — without losing your meaning."
       }
     },
     "tab_story": "Story Generator",

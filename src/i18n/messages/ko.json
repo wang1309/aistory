@@ -20,7 +20,8 @@
     "read_story": "이야기 읽기"
   },
   "footer": {
-    "name_generator": "이름 생성기"
+    "name_generator": "이름 생성기",
+    "rewrite": "리라이트 도구"
   },
   "sign_modal": {
     "sign_in_title": "로그인",
@@ -136,6 +137,7 @@
     "no_content": "콘텐츠 없음",
     "all": "전체",
     "category": "카테고리",
+    "featured": "추천",
     "author": "작성자",
     "home": "홈",
     "index_label": "목차",
@@ -434,6 +436,10 @@
       "story_summarizer": {
         "name": "스토리 요약기",
         "desc": "이야기나 장을 플롯 전개, 인물 변화, 주제, 갈등으로 요약합니다."
+      },
+      "essay_extender": {
+        "name": "에세이 확장기",
+        "desc": "에세이를 목표 단어 수까지 확장합니다 — 깊이, 예시, 더 나은 흐름을 더하고 의미는 그대로."
       }
     },
     "tab_story": "스토리 생성기",

@@ -39,7 +39,8 @@ export type AuthSourcePage =
   | "pen-name-generator"
   | "gang-name-generator"
   | "oc-generator"
-  | "story-summarizer";
+  | "story-summarizer"
+  | "essay-extender";
 
 export const AUTH_ATTEMPT_STORAGE_KEY = "auth-funnel:pending-attempt";
 

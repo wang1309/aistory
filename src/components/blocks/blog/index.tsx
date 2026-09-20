@@ -5,14 +5,26 @@ import { Link } from "@/i18n/navigation";
 import { Category } from "@/types/category";
 import { useTranslations } from "next-intl";
 
+function formatPostDate(iso: string, locale?: string) {
+  try {
+    return new Intl.DateTimeFormat(locale || "en", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(new Date(iso));
+  } catch {
+    return iso;
+  }
+}
+
 export default function Blog({
   blog,
   categories,
   category,
 }: {
   blog: BlogType;
-  categories: Category[];
-  category: string;
+  categories: Pick<Category, "uuid" | "name" | "title">[];
+  category?: string;
 }) {
   const t = useTranslations();
 
@@ -27,7 +39,7 @@ export default function Blog({
     <section className="w-full py-16 md:py-24">
       <div className="container">
         {/* Editorial masthead */}
-        <header className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
+        <header className="mb-10 max-w-2xl md:mb-14">
           <p className="mb-4 font-sans text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             {blog.label || t("blog.title")}
           </p>
@@ -62,9 +74,15 @@ export default function Blog({
         {/* Posts */}
         {items.length > 0 ? (
           <div className="flex flex-col gap-14 md:gap-20">
-            {lead && <LeadCard item={lead} readMore={blog.read_more_text} />}
+            {lead && (
+              <LeadCard
+                item={lead}
+                readMore={blog.read_more_text}
+                featuredLabel={t("blog.featured")}
+              />
+            )}
             {rest.length > 0 && (
-              <div className="grid grid-cols-1 gap-x-10 gap-y-14 border-t border-border pt-14 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-x-10 gap-y-14 border-t border-border pt-14 md:grid-cols-2 xl:grid-cols-3">
                 {rest.map((item, idx) => (
                   <PostCard
                     key={idx}
@@ -171,26 +189,94 @@ function CoverMedia({
   );
 }
 
-function LeadCard({ item, readMore }: { item: BlogItem; readMore?: string }) {
+function MetaRow({
+  item,
+  className,
+}: {
+  item: BlogItem;
+  className?: string;
+}) {
+  const date = item.created_at
+    ? formatPostDate(item.created_at, item.locale)
+    : null;
+
+  if (!item.author_name && !date) {
+    return null;
+  }
+
+  return (
+    <div
+      className={`flex flex-wrap items-center gap-x-3 gap-y-1 font-sans text-xs text-muted-foreground ${className ?? ""}`}
+    >
+      {item.author_name && (
+        <span className="inline-flex items-center gap-1.5">
+          {item.author_avatar_url && (
+            <img
+              src={item.author_avatar_url}
+              alt=""
+              loading="lazy"
+              className="size-5 rounded-full border border-border object-cover"
+            />
+          )}
+          <span className="font-medium text-foreground/80">
+            {item.author_name}
+          </span>
+        </span>
+      )}
+      {item.author_name && date && (
+        <span aria-hidden="true" className="text-border">
+          ·
+        </span>
+      )}
+      {date && <time dateTime={item.created_at}>{date}</time>}
+    </div>
+  );
+}
+
+function LeadCard({
+  item,
+  readMore,
+  featuredLabel,
+}: {
+  item: BlogItem;
+  readMore?: string;
+  featuredLabel?: string;
+}) {
   return (
     <PostLink
       item={item}
       className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      <article className="transition-[transform,color] duration-300 ease-out group-hover:-translate-y-1">
+      <article className="grid items-center gap-8 md:grid-cols-12 lg:gap-12">
         <CoverMedia
           item={item}
-          className="aspect-[16/9] rounded-2xl md:aspect-[2/1]"
+          className="aspect-[16/9] rounded-2xl md:col-span-7 md:aspect-[16/10]"
         />
-        <div className="mt-6 md:mt-8">
-          <h2 className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary md:text-4xl lg:text-5xl">
+        <div className="md:col-span-5">
+          {(featuredLabel || item.category_title) && (
+            <p className="mb-3 flex flex-wrap items-center gap-x-2 font-sans text-xs font-medium uppercase tracking-[0.2em]">
+              {featuredLabel && <span className="text-primary">{featuredLabel}</span>}
+              {featuredLabel && item.category_title && (
+                <span aria-hidden="true" className="text-border">
+                  ·
+                </span>
+              )}
+              {item.category_title && (
+                <span className="text-muted-foreground">
+                  {item.category_title}
+                </span>
+              )}
+            </p>
+          )}
+          <h2 className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary md:text-4xl">
             {item.title}
           </h2>
           {item.description && (
-            <p className="mt-4 max-w-2xl font-sans text-base leading-[1.7] text-muted-foreground md:text-lg">
+            <p className="mt-4 font-sans text-base leading-[1.7] text-muted-foreground md:text-lg">
               {item.description}
             </p>
           )}
+          <MetaRow item={item} className="mt-5" />
           {readMore && (
             <span className="mt-6 inline-flex items-center gap-2 font-sans text-sm font-medium text-primary">
               {readMore}
@@ -212,6 +298,11 @@ function PostCard({ item, readMore }: { item: BlogItem; readMore?: string }) {
       <article className="transition-[transform,color] duration-300 ease-out group-hover:-translate-y-0.5">
         <CoverMedia item={item} className="aspect-[16/9] rounded-xl" />
         <div className="mt-5">
+          {item.category_title && (
+            <p className="mb-2 font-sans text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
+              {item.category_title}
+            </p>
+          )}
           <h3 className="font-display text-xl font-semibold leading-[1.25] text-foreground transition-colors duration-300 group-hover:text-primary md:text-2xl">
             {item.title}
           </h3>
@@ -220,11 +311,16 @@ function PostCard({ item, readMore }: { item: BlogItem; readMore?: string }) {
               {item.description}
             </p>
           )}
-          {readMore && (
-            <span className="mt-4 inline-flex items-center gap-2 font-sans text-sm font-medium text-primary">
-              {readMore}
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </span>
+          {(item.author_name || item.created_at || readMore) && (
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+              <MetaRow item={item} />
+              {readMore && (
+                <span className="inline-flex items-center gap-2 font-sans text-xs font-medium text-primary">
+                  {readMore}
+                  <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              )}
+            </div>
           )}
         </div>
       </article>

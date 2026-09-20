@@ -58,19 +58,28 @@ export default async function PostsPage({
     posts = await getPostsByLocale(locale);
   }
 
+  const categoryMap = new Map(
+    (categories ?? []).map((c) => [c.uuid, c])
+  );
+  const items = ((posts ?? []) as unknown as BlogItem[]).map((item) => ({
+    ...item,
+    category_title:
+      (item.category_uuid && categoryMap.get(item.category_uuid)?.title) ||
+      undefined,
+  }));
+  const categoryList = (categories ?? []).map((c) => ({
+    uuid: c.uuid,
+    name: c.name,
+    title: c.title,
+  }));
+
   const blog: BlogType = {
     title: t("blog.title"),
     description: t("blog.description"),
     label: t("blog.index_label"),
-    items: posts as unknown as BlogItem[],
+    items,
     read_more_text: t("blog.read_more_text"),
   };
 
-  return (
-    <Blog
-      blog={blog}
-      categories={categories as any}
-      category={category as any}
-    />
-  );
+  return <Blog blog={blog} categories={categoryList} category={category} />;
 }

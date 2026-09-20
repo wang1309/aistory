@@ -12,6 +12,8 @@ export interface BlogItem {
   content?: string;
   url?: string;
   target?: string;
+  category_uuid?: string;
+  category_title?: string;
 }
 
 export interface Blog {

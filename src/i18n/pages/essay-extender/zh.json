@@ -1,0 +1,200 @@
+{
+  "essay_extender": {
+    "metadata": {
+      "title": "Essay Extender：用 AI 把文章扩写到目标字数",
+      "description": "用 AI 把文章扩写到目标字数。加深论述、改善行文流畅度，在不注水的前提下保留你的原意。",
+      "keywords": "essay extender, ai essay extender, make essay longer ai, essay word extender, 作文扩写, 文章加长, AI扩写作文"
+    },
+    "ui": {
+      "eyebrow": "免费文章扩写工具",
+      "title": "Essay Extender",
+      "title_highlight": "Extender",
+      "subtitle": "粘贴草稿，设定目标字数，这款 AI 作文扩写工具会把你的文章扩到所需篇幅——深化观点、例子和行文，同时完整保留你的原意和语气。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "Essay Extender",
+      "source_text_label": "你的草稿",
+      "source_text_hint": "粘贴你想扩写的文章或段落草稿。你粘贴的内容不会被保存。",
+      "character_limit_hint": "最多 10,000 字符。",
+      "target_word_count_label": "目标总字数",
+      "target_word_count_hint": "须为高于当前字数的整数，最多 3,000。",
+      "target_shortcuts": [500, 1000, 1500, 2000],
+      "tone_label": "语气",
+      "focus_label": "扩写重点",
+      "tone_options": [
+        { "value": "academic", "label": "学术" },
+        { "value": "natural", "label": "自然" },
+        { "value": "formal", "label": "正式" }
+      ],
+      "focus_options": [
+        { "value": "balanced", "label": "均衡扩写" },
+        { "value": "develop_ideas", "label": "深化观点" },
+        { "value": "add_examples", "label": "补充例子" },
+        { "value": "improve_flow", "label": "改善行文" }
+      ],
+      "additional_requirements_label": "补充要求（可选）",
+      "additional_requirements_hint": "需要保留、展开或避免的内容。最多 500 字符。",
+      "ai_model_label": "AI 模型",
+      "output_language_label": "输出语言",
+      "output_language_auto": "跟随草稿语言",
+      "generate": "扩写文章",
+      "generating": "扩写中…",
+      "sign_in_to_continue": "登录后继续",
+      "output_empty": "扩写结果会显示在这里。在左侧粘贴草稿，设定目标字数，然后点击扩写文章。",
+      "copy_result": "复制扩写结果",
+      "result_title": "扩写后的文章",
+      "actual_word_count": "实际",
+      "target_word_count": "目标",
+      "added_word_count": "新增",
+      "continue_ai_write": "在 AI Write 中继续",
+      "continue_hint": "打开 AI Write 继续写作——进入编辑器后即可使用 Story Bible 和一致性检查。"
+    },
+    "placeholders": {
+      "source_text": "在这里粘贴你的文章或草稿…",
+      "additional_requirements": "例如：展开第二段，结论保持简短。"
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "速度最快的日常扩写。",
+      "creative": "创意",
+      "creative_description": "更丰富、更有表现力的扩写。消耗创意额度。"
+    },
+    "validation": {
+      "enter_source_text": "请先粘贴你要扩写的文章内容。",
+      "source_text_too_long": "粘贴的内容超过 10,000 字符上限，请分段扩写。",
+      "requirements_too_long": "补充要求超过 500 字符上限。",
+      "invalid_target_word_count": "目标字数必须是高于当前字数且不超过 3,000 的整数。"
+    },
+    "success": {
+      "result_copied": "扩写结果已复制到剪贴板。"
+    },
+    "errors": {
+      "generation_failed": "扩写失败，请重试。",
+      "copy_failed": "复制失败，请重试。"
+    },
+    "feature_intro": {
+      "title": "达到目标字数，不用注水",
+      "description": "这是一款真正把草稿扩到目标篇幅的作文扩写工具——深化论证、充实例证、理顺过渡，同时保留你的原意、语气和风格，而不是堆砌废话。",
+      "items": [
+        {
+          "title": "真实目标，不是猜数字",
+          "description": "设定你需要的总字数，扩写器会朝这个目标扩展草稿，并显示实际新增了多少词。"
+        },
+        {
+          "title": "原意始终属于你",
+          "description": "原文的每一句话都会被保留并展开——绝不歪曲、篡改或替换。"
+        },
+        {
+          "title": "语气与语言可控",
+          "description": "可选学术、自然或正式语气；默认跟随草稿语言，也可以固定输出语言。"
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "如何用 AI 把作文变长",
+      "description": "四步，从粘贴草稿到更长、更充实的文章。",
+      "items": [
+        {
+          "title": "粘贴草稿",
+          "description": "把你的文章或段落（最多 10,000 字符）粘贴到输入框。内容不会被保存。"
+        },
+        {
+          "title": "设定目标字数",
+          "description": "输入一个高于当前字数的总数，或使用快捷按钮——最多 3,000 词。"
+        },
+        {
+          "title": "选择语气、重点和语言",
+          "description": "选择文章应有的语气、扩写应集中的方向以及输出语言。"
+        },
+        {
+          "title": "扩写、检查并复制",
+          "description": "对比实际、目标和新增字数，然后复制扩写后的文章。"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "写作者为什么用它",
+      "description": "一款增加实质内容的 AI 扩写工具——不是换着说法重复。",
+      "items": [
+        {
+          "title": "满足篇幅要求",
+          "description": "当作业或简报要求特定字数时，进行有针对性的扩展，而不是硬凑句子。"
+        },
+        {
+          "title": "充实单薄的部分",
+          "description": "把扩写集中在观点、例子或行文上，让单薄的段落变成论证充分的段落。"
+        },
+        {
+          "title": "保留你的声音",
+          "description": "语气控制和原意保留让结果读起来就像你写的——因为它确实基于你的文字。"
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "可以扩写什么",
+      "description": "任何你能粘贴的文稿草稿——扩写器基于你提供的文本工作。",
+      "items": [
+        {
+          "title": "中学与大学论文",
+          "description": "在保持论证完整的前提下，把短草稿扩到规定的字数。"
+        },
+        {
+          "title": "申请文书",
+          "description": "为单薄的个人陈述补充更具体的细节与反思。"
+        },
+        {
+          "title": "文章与博客",
+          "description": "发布前充实内容不足的章节，而不是发布干瘪的内容。"
+        },
+        {
+          "title": "报告与提案",
+          "description": "把要点式草稿扩写成完整、衔接自然的正式文体。"
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Essay Extender 常见问题",
+      "description": "工具如何工作、如何处理你的文本，以及结果的预期。",
+      "items": [
+        {
+          "title": "目标字数是怎么工作的？",
+          "description": "你设定想要的总字数——任何高于当前字数、最多 3,000 的整数。扩写器会朝这个总数扩展草稿，并报告实际、目标和新增字数。结果会非常接近目标，但不保证一字不差。"
+        },
+        {
+          "title": "支持哪些语言？",
+          "description": "默认情况下，扩写结果跟随草稿语言：英文草稿输出英文，西班牙文草稿输出西班牙文。如果你想要其他语言的结果，也可以在下拉框中固定输出语言。"
+        },
+        {
+          "title": "语气和扩写重点有什么用？",
+          "description": "语气决定文章的读感——学术、自然或正式。重点决定增量投向哪里：均衡扩写、深化已有观点、具体例子，或更顺畅的行文与过渡。"
+        },
+        {
+          "title": "我的草稿内容隐私吗？",
+          "description": "隐私。你粘贴的草稿只用于生成扩写结果，不会保存到你的账户或我们的数据库。系统只记录匿名使用次数——绝不会记录你的文本或生成结果。"
+        },
+        {
+          "title": "它会编造引用或事实吗？",
+          "description": "不会。扩写器被明确要求不得编造引文、引用、研究、统计数据、人名或事实。它通过推理、重述和有依据的例子来展开。提交学术作业前请自行核实事实性表述。"
+        },
+        {
+          "title": "Essay Extender 免费吗？",
+          "description": "免费。工具在每日公平使用额度内可用，登录后每天可获得更多扩写次数。"
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "扩写完文章，继续写作",
+      "description": "把扩写后的草稿作为底稿，打开 AI Write 继续创作，Story Bible 和一致性检查随时可用。",
+      "buttons": [
+        {
+          "title": "打开 AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "更多写作工具",
+      "description": "为你刚扩写的文本做摘要、列提纲、继续深化。",
+      "more_label": "查看全部工具"
+    }
+  }
+}

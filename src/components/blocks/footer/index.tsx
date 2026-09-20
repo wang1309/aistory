@@ -2,7 +2,7 @@ import { Footer as FooterType } from "@/types/blocks/footer";
 import Icon from "@/components/icon";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { getToolsBySlugs } from "@/services/tools";
+import { getToolsBySlugs, type Tool } from "@/services/tools";
 
 const NAME_GENERATOR_TOOL_SLUGS = [
   "elf-name-generator",
@@ -14,6 +14,8 @@ const NAME_GENERATOR_TOOL_SLUGS = [
   "youtube-name-generator",
 ];
 
+const REWRITE_TOOL_SLUGS = ["essay-extender"];
+
 export default function Footer({ footer }: { footer: FooterType }) {
   const t = useTranslations();
 
@@ -22,6 +24,24 @@ export default function Footer({ footer }: { footer: FooterType }) {
   }
 
   const nameTools = getToolsBySlugs(NAME_GENERATOR_TOOL_SLUGS);
+  const rewriteTools = getToolsBySlugs(REWRITE_TOOL_SLUGS);
+
+  const renderToolColumn = (key: string, title: string, tools: Tool[]) => (
+    <div key={key} className="min-w-0">
+      <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-foreground">
+        {title}
+      </p>
+      <ul className="space-y-3 text-sm text-muted-foreground">
+        {tools.map((tool) => (
+          <li key={tool.slug} className="transition-colors hover:text-foreground">
+            <Link href={tool.href as any} className="[overflow-wrap:anywhere]">
+              {t(tool.nameKey)}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 
   return (
     <section id={footer.name} className="border-t border-border bg-[oklch(0.955_0.009_85)] dark:bg-[oklch(0.165_0_0)]">
@@ -99,24 +119,16 @@ export default function Footer({ footer }: { footer: FooterType }) {
                     </ul>
                   </div>
                 );
-                // The Name Generators registry column takes the slot between
-                // About and Friend (the last two nav columns).
-                if (i === arr.length - 2 && nameTools.length > 0) {
+                // Registry-driven tool columns take the slot between About
+                // and Friend (the last two nav columns).
+                if (i === arr.length - 2 && (nameTools.length > 0 || rewriteTools.length > 0)) {
                   return [
-                    <div key="name-generators" className="min-w-0">
-                      <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-foreground">
-                        {t("footer.name_generator")}
-                      </p>
-                      <ul className="space-y-3 text-sm text-muted-foreground">
-                        {nameTools.map((tool) => (
-                          <li key={tool.slug} className="transition-colors hover:text-foreground">
-                            <Link href={tool.href as any} className="[overflow-wrap:anywhere]">
-                              {t(tool.nameKey)}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>,
+                    ...(nameTools.length > 0
+                      ? [renderToolColumn("name-generators", t("footer.name_generator"), nameTools)]
+                      : []),
+                    ...(rewriteTools.length > 0
+                      ? [renderToolColumn("rewrite", t("footer.rewrite"), rewriteTools)]
+                      : []),
                     navColumn,
                   ];
                 }

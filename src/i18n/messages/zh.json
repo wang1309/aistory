@@ -20,7 +20,8 @@
     "read_story": "阅读故事"
   },
   "footer": {
-    "name_generator": "名字生成器"
+    "name_generator": "名字生成器",
+    "rewrite": "改写工具"
   },
   "sign_modal": {
     "sign_in_title": "登录",
@@ -139,6 +140,7 @@
     "no_content": "暂无内容",
     "all": "全部",
     "category": "分类",
+    "featured": "精选",
     "author": "作者",
     "home": "首页",
     "index_label": "目录",
@@ -437,6 +439,10 @@
       "story_summarizer": {
         "name": "故事总结器",
         "desc": "把故事或章节总结成情节节点、人物变化、主题与核心冲突。"
+      },
+      "essay_extender": {
+        "name": "作文扩写器",
+        "desc": "把文章扩写到目标字数——加深论述、补充例子、优化行文，不丢原意。"
       }
     },
     "tab_story": "故事生成器",
