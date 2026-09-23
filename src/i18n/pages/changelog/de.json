@@ -6,6 +6,19 @@
     "description": "Bleiben Sie auf dem Laufenden über unsere neuesten Funktionen, Verbesserungen, Fehlerbehebungen und Sicherheitsupdates",
     "items": [
       {
+        "version": "v1.3.18",
+        "date": "2026-09-23",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Absatz-Umschreiber-Landingpage gestartet (/paragraph-rewriter): ein Absatz, zwei vergleichbare KI-Fassungen",
+              "Fünf Umschreibungsziele (klarer, kürzer, formeller, natürlicher, umstrukturiert), Wort-für-Wort-Diff mit dem Original, Ausgabesprache wählbar sowie Fast-/Creative-Modelle in sechs Sprachen"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.17",
         "date": "2026-06-30",
         "changes": [
