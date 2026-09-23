@@ -28,13 +28,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import { Header as HeaderType } from "@/types/blocks/header";
 import Icon from "@/components/icon";
@@ -49,26 +43,24 @@ import { buildAiWriteHeaderNav } from "@/components/ai-write/workbench/_lib";
 import {
   getToolsByModule,
   type Tool,
-  type ToolCategory,
 } from "@/services/tools";
+import {
+  CATEGORY_LABEL_KEYS,
+  CATEGORY_ORDER,
+} from "@/components/blocks/module-tools/tools-directory";
 
 const AI_WRITE_TOOL_HUB_URL = "/ai-write-tool";
 
-const COLUMN_GROUP: Record<ToolCategory, 0 | 1 | 2> = {
-  story: 0,
-  title: 1,
-  poem: 1,
-  social: 2,
-  name: 2,
-  utility: 2,
-  rewriting: 2,
+/** 行式分组的图标(与 /ai-write-tool 目录分组一一对应)。 */
+const CATEGORY_ICONS: Record<string, string> = {
+  story: "RiBookOpenLine",
+  title: "RiQuillPenLine",
+  poem: "RiQuillPenLine",
+  social: "RiChat3Line",
+  name: "RiChat3Line",
+  utility: "RiEdit2Line",
+  rewriting: "RiEdit2Line",
 };
-
-const COLUMN_DEFS: Array<{ icon: string; labelKey: string }> = [
-  { icon: "RiBookOpenLine", labelKey: "ai_tools.column_story" },
-  { icon: "RiQuillPenLine", labelKey: "ai_tools.column_title_structure" },
-  { icon: "RiChat3Line", labelKey: "ai_tools.column_creative" },
-];
 
 type HeaderToolItem = {
   tool: Tool;
@@ -79,92 +71,72 @@ type HeaderToolItem = {
   badge?: "hot" | "new";
 };
 
-function useHeaderToolColumns() {
+type HeaderToolRow = {
+  id: string;
+  label: string;
+  icon: string;
+  items: HeaderToolItem[];
+};
+
+function useHeaderToolRows() {
   const t = useTranslations();
   const all = getToolsByModule("ai-write");
   // story-generator 的 href 是主页 "/",Header 下拉里再放一次属于冗余入口
   const forHeader = all.filter((tool) => tool.slug !== "story-generator");
-  const columns: HeaderToolItem[][] = [[], [], []];
-  for (const tool of forHeader) {
-    const colIdx = COLUMN_GROUP[tool.category];
-    columns[colIdx].push({
-      tool,
-      name: t(tool.nameKey),
-      description: t(tool.shortDescKey),
-      href: tool.href,
-      icon: tool.icon,
-      badge: tool.badges?.includes("hot")
-        ? "hot"
-        : tool.badges?.includes("new")
-        ? "new"
-        : undefined,
-    });
-  }
-  return { columns, total: all.length };
+  const toItem = (tool: Tool): HeaderToolItem => ({
+    tool,
+    name: t(tool.nameKey),
+    description: t(tool.shortDescKey),
+    href: tool.href,
+    icon: tool.icon,
+    badge: tool.badges?.includes("hot")
+      ? "hot"
+      : tool.badges?.includes("new")
+      ? "new"
+      : undefined,
+  });
+  // 与 /ai-write-tool 目录同源:同顺序、同文案(ai_tools.category_*/filter_*),空分组自动跳过
+  const rows: HeaderToolRow[] = CATEGORY_ORDER.map((id) => ({
+    id,
+    label: t(CATEGORY_LABEL_KEYS[id]),
+    icon: CATEGORY_ICONS[id] ?? "RiBookOpenLine",
+    items: forHeader.filter((tool) => tool.category === id).map(toItem),
+  })).filter((row) => row.items.length > 0);
+  return { rows, total: all.length };
 }
 
-function ToolColumn({
-  colIdx,
-  colItems,
+function ToolRow({
+  row,
   renderBadge,
 }: {
-  colIdx: number;
-  colItems: HeaderToolItem[];
+  row: HeaderToolRow;
   renderBadge: (badge?: "hot" | "new") => ReactNode;
 }) {
-  const t = useTranslations();
-  const listRef = useRef<HTMLUListElement>(null);
-  const [canScrollDown, setCanScrollDown] = useState(false);
-
-  const checkScroll = useCallback(() => {
-    const el = listRef.current;
-    if (!el) return;
-    const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight;
-    setCanScrollDown(distanceFromBottom > 8);
-  }, []);
-
-  const scrollDown = useCallback(() => {
-    const el = listRef.current;
-    if (!el) return;
-    el.scrollTo({
-      top: el.scrollTop + el.clientHeight * 0.75,
-      behavior: "smooth",
-    });
-  }, []);
-
-  useEffect(() => {
-    checkScroll();
-  }, [colItems, checkScroll]);
-
   return (
-    <div className="relative rounded-xl border border-border bg-card p-2">
-      <div className="flex items-center gap-2 px-2 pb-2 pt-1">
-        <span className="flex size-6 items-center justify-center rounded-full bg-primary/10 text-primary">
-          <Icon name={COLUMN_DEFS[colIdx].icon} className="size-3.5" />
+    <div className="grid grid-cols-[9.5rem_1fr] gap-2 px-1 py-2.5">
+      <div className="flex items-start gap-2 pt-1">
+        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <Icon name={row.icon} className="size-3.5" />
         </span>
-        <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-          {t(COLUMN_DEFS[colIdx].labelKey)}
+        <span className="text-[10px] font-semibold uppercase leading-snug tracking-[0.18em] text-muted-foreground">
+          {row.label}
         </span>
       </div>
-      <ul
-        ref={listRef}
-        onScroll={checkScroll}
-        className="flex max-h-[28rem] flex-col overflow-y-auto scroll-smooth pr-1"
-      >
-        {colItems.map((wt) => (
+      <ul className="grid grid-cols-3 gap-x-1 gap-y-1">
+        {row.items.map((wt) => (
           <li key={wt.tool.slug}>
             <NavigationMenuLink asChild>
               <Link
-                className="group/item relative flex select-none items-center gap-3 rounded-lg px-2.5 py-2 leading-none no-underline outline-hidden transition-colors duration-200 hover:bg-accent focus:bg-accent"
+                className="group/item relative flex select-none items-center gap-2.5 rounded-lg px-2.5 py-2.5 no-underline outline-hidden transition-colors duration-200 hover:bg-accent focus:bg-accent"
                 href={wt.href as any}
               >
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground transition-colors duration-200 group-hover/item:bg-primary/10 group-hover/item:text-primary">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground transition-colors duration-200 group-hover/item:bg-primary/10 group-hover/item:text-primary">
                   <Icon name={wt.icon} className="size-3.5" />
                 </span>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <span
-                      className="min-w-0 flex-1 truncate pr-7 text-[13px] font-medium text-foreground/90 group-hover/item:text-foreground"
+                      className="min-w-0 flex-1 truncate text-[13px] font-medium text-foreground/90 group-hover/item:text-foreground"
                       tabIndex={-1}
                     >
                       {wt.name}
@@ -180,16 +152,6 @@ function ToolColumn({
           </li>
         ))}
       </ul>
-      {canScrollDown && (
-        <button
-          type="button"
-          onClick={scrollDown}
-          aria-label={t("ai_tools.scroll_down")}
-          className="absolute bottom-1 left-1/2 z-20 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border border-border bg-popover text-foreground shadow-md transition hover:bg-accent"
-        >
-          <Icon name="RiArrowDownSLine" className="size-4" />
-        </button>
-      )}
     </div>
   );
 }
@@ -197,7 +159,7 @@ function ToolColumn({
 export default function Header({ header }: { header: HeaderType }) {
   const t = useTranslations();
   const navItems = buildAiWriteHeaderNav(header.nav?.items || []);
-  const { columns: toolColumns, total: toolTotal } = useHeaderToolColumns();
+  const { rows: toolRows, total: toolTotal } = useHeaderToolRows();
   const mobileDrawerItemClassName =
     "mx-5 flex items-center gap-3 rounded-xl px-5 py-3 font-semibold transition-colors hover:bg-accent hover:text-accent-foreground";
 
@@ -218,7 +180,7 @@ export default function Header({ header }: { header: HeaderType }) {
     return (
       <span
         className={cn(
-          "pointer-events-none absolute right-1.5 top-1.5 z-10 inline-flex items-center rounded-full px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider",
+          "pointer-events-none ml-auto inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider",
           badge === "hot"
             ? "bg-rose-500/15 text-rose-600 dark:bg-rose-400/15 dark:text-rose-300"
             : "bg-emerald-500/15 text-emerald-600 dark:bg-emerald-400/15 dark:text-emerald-300"
@@ -273,13 +235,12 @@ export default function Header({ header }: { header: HeaderType }) {
                             <span>{item.title}</span>
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
-                            <div className="relative w-[42rem] max-w-[calc(100vw-2.5rem)] overflow-hidden rounded-2xl border border-border bg-popover p-2.5 shadow-xl xl:w-[48rem] xl:p-3 2xl:w-[52rem]">
-                              <div className="relative grid grid-cols-3 gap-2 xl:gap-3">
-                                {toolColumns.map((colItems, colIdx) => (
-                                  <ToolColumn
-                                    key={colIdx}
-                                    colIdx={colIdx}
-                                    colItems={colItems}
+                            <div className="relative w-[42rem] max-w-[calc(100vw-2.5rem)] overflow-hidden rounded-2xl border border-border bg-popover p-2.5 shadow-xl xl:w-[54rem] xl:p-3 2xl:w-[58rem]">
+                              <div className="relative max-h-[26rem] divide-y divide-border/70 overflow-y-auto scroll-smooth">
+                                {toolRows.map((row) => (
+                                  <ToolRow
+                                    key={row.id}
+                                    row={row}
                                     renderBadge={renderToolBadge}
                                   />
                                 ))}
@@ -492,23 +453,23 @@ export default function Header({ header }: { header: HeaderType }) {
                             </AccordionTrigger>
                             <AccordionContent className="px-5 pb-2 pt-1">
                               <div className="flex flex-col gap-3 rounded-2xl border border-border bg-muted/40 p-3">
-                                {toolColumns.map((colItems, colIdx) => (
+                                {toolRows.map((row) => (
                                   <div
-                                    key={colIdx}
+                                    key={row.id}
                                     className="rounded-xl border border-border bg-card p-2.5"
                                   >
                                     <div className="mb-1.5 flex items-center gap-2 px-1.5 pt-0.5">
                                       <span className="flex size-6 items-center justify-center rounded-full bg-primary/10 text-primary">
                                         <Icon
-                                          name={COLUMN_DEFS[colIdx].icon}
+                                          name={row.icon}
                                           className="size-3.5"
                                         />
                                       </span>
                                       <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                                        {t(COLUMN_DEFS[colIdx].labelKey)}
+                                        {row.label}
                                       </span>
                                     </div>
-                                    {colItems.map((wt) => (
+                                    {row.items.map((wt) => (
                                       <Link
                                         key={wt.tool.slug}
                                         className="relative flex select-none items-center gap-3 rounded-lg px-2.5 py-2.5 leading-none outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
@@ -521,7 +482,7 @@ export default function Header({ header }: { header: HeaderType }) {
                                           />
                                         </span>
                                         <div
-                                          className="min-w-0 flex-1 truncate pr-8 text-sm font-semibold"
+                                          className="min-w-0 flex-1 truncate text-sm font-semibold"
                                           title={wt.name}
                                         >
                                           {wt.name}
