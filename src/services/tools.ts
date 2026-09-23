@@ -4,13 +4,12 @@ export type ModuleId = "ai-write" | "ai-tools";
 
 export type ToolCategory =
   | "story"
-  | "character"
-  | "plot"
   | "title"
   | "poem"
   | "social"
   | "name"
-  | "utility";
+  | "utility"
+  | "rewriting";
 
 export type ToolBadge = "hot" | "new";
 
@@ -93,7 +92,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.book_title_generator.name",
     shortDescKey: "ai_tools.tools.book_title_generator.desc",
     module: "ai-write",
-    category: "title",
+    category: "story",
     href: "/book-title-generator",
     icon: "RiQuillPenLine",
     image: "https://r2.storiesgenerator.org/image/book_title_generator.webp",
@@ -104,7 +103,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.fanfic_generator.name",
     shortDescKey: "ai_tools.tools.fanfic_generator.desc",
     module: "ai-write",
-    category: "character",
+    category: "story",
     href: "/fanfic-generator",
     icon: "RiBookMarkedLine",
     image: "https://r2.storiesgenerator.org/image/fanfic_story_generator.webp",
@@ -168,7 +167,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.youtube_title_generator.name",
     shortDescKey: "ai_tools.tools.youtube_title_generator.desc",
     module: "ai-write",
-    category: "title",
+    category: "social",
     tab: "creative",
     href: "/youtube-title-generator",
     icon: "RiYoutubeLine",
@@ -192,7 +191,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.plot_generator.name",
     shortDescKey: "ai_tools.tools.plot_generator.desc",
     module: "ai-write",
-    category: "plot",
+    category: "story",
     href: "/plot-generator",
     icon: "RiMapLine",
     image: "https://r2.storiesgenerator.org/image/plot_generator.webp",
@@ -203,7 +202,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.story_outline_generator.name",
     shortDescKey: "ai_tools.tools.story_outline_generator.desc",
     module: "ai-write",
-    category: "plot",
+    category: "story",
     href: "/story-outline-generator",
     icon: "RiNodeTree",
     image: "https://r2.storiesgenerator.org/image/story_outline_generator.webp",
@@ -226,7 +225,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.poem_title_generator.name",
     shortDescKey: "ai_tools.tools.poem_title_generator.desc",
     module: "ai-write",
-    category: "title",
+    category: "poem",
     href: "/poem-title-generator",
     icon: "RiStarLine",
     image: "https://r2.storiesgenerator.org/image/poem_title_generator.webp",
@@ -238,7 +237,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.backstory_generator.name",
     shortDescKey: "ai_tools.tools.backstory_generator.desc",
     module: "ai-write",
-    category: "character",
+    category: "story",
     href: "/backstory-generator",
     icon: "RiUser3Line",
     image: "https://r2.storiesgenerator.org/image/backstory_generator.webp",
@@ -250,7 +249,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.dnd_backstory_generator.name",
     shortDescKey: "ai_tools.tools.dnd_backstory_generator.desc",
     module: "ai-write",
-    category: "character",
+    category: "story",
     href: "/dnd-backstory-generator",
     icon: "RiDiceLine",
     image: "https://r2.storiesgenerator.org/image/dnd_backstory_generator.webp",
@@ -300,7 +299,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.story_prompt_generator.name",
     shortDescKey: "ai_tools.tools.story_prompt_generator.desc",
     module: "ai-write",
-    category: "plot",
+    category: "story",
     href: "/story-prompt-generator",
     icon: "RiLightbulbLine",
     image: "https://r2.storiesgenerator.org/image/story_prompt_generator.webp",
@@ -423,7 +422,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.npc_generator.name",
     shortDescKey: "ai_tools.tools.npc_generator.desc",
     module: "ai-tools",
-    category: "character",
+    category: "story",
     href: "/ai-tools/npc-generator",
     icon: "RiDiceLine",
     badges: ["new"],
@@ -434,7 +433,7 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.story_summarizer.name",
     shortDescKey: "ai_tools.tools.story_summarizer.desc",
     module: "ai-write",
-    category: "story",
+    category: "rewriting",
     href: "/story-summarizer",
     icon: "RiArticleLine",
     badges: ["new"],
@@ -446,12 +445,30 @@ export const tools: Tool[] = [
     nameKey: "ai_tools.tools.essay_extender.name",
     shortDescKey: "ai_tools.tools.essay_extender.desc",
     module: "ai-write",
-    category: "utility",
+    category: "rewriting",
     href: "/essay-extender",
     icon: "RiArticleLine",
     badges: ["new"],
     priority: 96,
     keywords: ["essay extender", "ai essay extender", "make essay longer ai", "essay word extender"],
+  },
+  {
+    slug: "paragraph-rewriter",
+    nameKey: "ai_tools.tools.paragraph_rewriter.name",
+    shortDescKey: "ai_tools.tools.paragraph_rewriter.desc",
+    module: "ai-write",
+    category: "rewriting",
+    href: "/paragraph-rewriter",
+    icon: "RiEdit2Line",
+    badges: ["new"],
+    priority: 95,
+    keywords: [
+      "paragraph rewriter",
+      "rewrite paragraph",
+      "ai paragraph rewriter",
+      "paraphrase paragraph",
+      "make paragraph clearer",
+    ],
   },
   {
     slug: "middle-name-generator",
@@ -490,11 +507,10 @@ export type ToolGroup = "writing" | "social" | "name";
 
 const CATEGORY_GROUP: Record<ToolCategory, ToolGroup> = {
   story: "writing",
-  character: "writing",
-  plot: "writing",
   title: "writing",
   poem: "writing",
   utility: "writing",
+  rewriting: "writing",
   social: "social",
   name: "name",
 };

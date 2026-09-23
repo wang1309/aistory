@@ -21,6 +21,7 @@
   },
   "footer": {
     "name_generator": "ネームジェネレーター",
+    "story_generator": "ストーリージェネレーター",
     "rewrite": "リライトツール"
   },
   "sign_modal": {
@@ -311,6 +312,9 @@
     "column_title_structure": "タイトル & 構造",
     "column_creative": "クリエイティブ",
     "category_creative": "クリエイティブ",
+    "category_social": "ソーシャルメディア",
+    "category_rewriting": "リライト＆編集",
+    "category_story": "ストーリー＆ライティング",
     "category_featured": "ハブ",
     "tools": {
       "story_generator": {
@@ -440,6 +444,10 @@
       "essay_extender": {
         "name": "エッセイエクステンダー",
         "desc": "エッセイを目標語数まで拡張 — 深み・例・流れを加え、意味はそのまま保ちます。"
+      },
+      "paragraph_rewriter": {
+        "name": "段落リライター",
+        "desc": "明確さ・トーン・構成の観点で段落を書き換え、変更点を確認できます。"
       }
     },
     "tab_story": "ストーリージェネレーター",
@@ -447,8 +455,6 @@
     "search_placeholder": "ツール名や用途で検索...",
     "filter_all": "すべて",
     "filter_story": "ストーリー",
-    "filter_character": "キャラクター",
-    "filter_plot": "プロット",
     "filter_title": "タイトル",
     "filter_poem": "詩",
     "filter_social": "ソーシャル",

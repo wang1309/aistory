@@ -1,0 +1,200 @@
+{
+  "paragraph_rewriter": {
+    "metadata": {
+      "title": "免费 AI 段落与句子改写器",
+      "description": "一款免费的 AI 工具，既是段落改写器，也是句子改写器。选择更清晰、更简洁、更正式或更自然，对比两个改写版本，复制最满意的那一版。",
+      "keywords": "paragraph rewriter, sentence rewriter, ai rewriter, rewrite my paragraph, rewrite paragraph, AI paragraph rewriter, make paragraph clearer, formal paragraph rewriter,段落改写"
+    },
+    "ui": {
+      "eyebrow": "AI 写作工具",
+      "title": "改写任意段落或句子，让表达更清晰",
+      "title_highlight": "更清晰",
+      "subtitle": "段落改写器让你选定一个改写目标，对比两个改写版本，确认每一处改动后再复制。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "Paragraph Rewriter",
+      "source_text_label": "要改写的段落",
+      "source_text_hint": "粘贴一个段落或一小段文字。你粘贴的内容不会被保存。",
+      "character_limit_hint": "最多 3,000 字符。",
+      "goal_label": "改写目标",
+      "output_language_label": "输出语言",
+      "output_language_auto": "跟随输入语言",
+      "additional_requirements_label": "补充要求（可选）",
+      "additional_requirements_hint": "告诉改写器需要保留或避免什么。最多 500 字符。",
+      "ai_model_label": "AI 模型",
+      "generate": "改写段落",
+      "generating": "改写中…",
+      "sign_in_to_continue": "登录后继续",
+      "result_title": "检查改写结果",
+      "output_empty": "两个改写版本会显示在这里。",
+      "choose_variant": "选择一个版本进行对比",
+      "option_a": "版本 A",
+      "option_b": "版本 B",
+      "selected_variant": "已选中",
+      "original_text": "原文",
+      "rewritten_text": "选中的改写",
+      "changed_text_hint": "高亮部分标记了有改动的措辞。使用结果前，请先核对事实、引文和引用。",
+      "copy_result": "复制选中的改写",
+      "regenerate": "再改写一次",
+      "continue_ai_write": "在 AI Write 中继续",
+      "continue_hint": "需要的不是局部改写，而是更长的初稿？试试作文扩写器。"
+    },
+    "placeholders": {
+      "source_text": "在这里粘贴你要改写的段落…",
+      "additional_requirements": "例如：保持友好的语气，不要改动任何数字。"
+    },
+    "goals": {
+      "clearer": "更清晰",
+      "shorter": "更简洁",
+      "formal": "更正式",
+      "natural": "更自然",
+      "restructure": "重组结构"
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "快速的日常改写。",
+      "creative": "创意",
+      "creative_description": "更有表现力的改写选项。消耗创意额度。"
+    },
+    "validation": {
+      "enter_source_text": "请先粘贴你要改写的段落。",
+      "source_text_too_long": "粘贴的内容超过 3,000 字符上限，请分段改写。",
+      "requirements_too_long": "补充要求超过 500 字符上限。"
+    },
+    "success": {
+      "result_copied": "选中的改写结果已复制到剪贴板。"
+    },
+    "errors": {
+      "generation_failed": "改写失败，请重试。",
+      "copy_failed": "复制失败，请重试。"
+    },
+    "feature_intro": {
+      "title": "改写一个段落，五种方向",
+      "description": "这是一款针对你粘贴文字的段落改写工具——选定一个改写目标，得到两个改写版本，并在复制之前看清每一处改动。",
+      "items": [
+        {
+          "title": "一次只盯一个目标",
+          "description": "可选更清晰、更简洁、更正式、更自然或重组结构——改写器只专注这一处修改，而不是把全文都动一遍。"
+        },
+        {
+          "title": "两个版本可以对比",
+          "description": "每次改写都会给出两个版本并排展示，你可以保留更合心意的措辞，而不是被动接受唯一的答案。"
+        },
+        {
+          "title": "改动一目了然",
+          "description": "选中的改写会高亮有变化的措辞，原文始终留在屏幕上，方便逐句核对。"
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "如何用 AI 改写段落",
+      "description": "四步，从粘贴文字到检查完成的改写。",
+      "items": [
+        {
+          "title": "粘贴你的段落",
+          "description": "把一个段落或一小段文字（最多 3,000 字符）粘贴到段落改写器中。内容不会被保存。"
+        },
+        {
+          "title": "选定一个改写目标",
+          "description": "选择更清晰、更简洁、更正式、更自然或重组结构，并按需补充要求。"
+        },
+        {
+          "title": "对比两个改写版本",
+          "description": "并排阅读版本 A 和版本 B，选择最适合你语境的那一版。"
+        },
+        {
+          "title": "检查改动并复制",
+          "description": "对照原文查看高亮的措辞，核实事实和引用，然后复制选中的改写。"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "写作者为什么用它",
+      "description": "一款目标专注的 AI 段落改写工具——一个目标、两个候选、每处改动都看得见。",
+      "items": [
+        {
+          "title": "改写目标专注",
+          "description": "每次只设定一个目标，改写会更有分寸——你的论证、例子和语气都留在原位。"
+        },
+        {
+          "title": "两个可审阅的备选",
+          "description": "花几秒钟对比两个版本，往往能挑出比单一答案更好的措辞。"
+        },
+        {
+          "title": "随时提醒保护事实",
+          "description": "有变化的措辞会被高亮，并提醒你在使用结果前核对事实、引文和引用。"
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "可以改写什么",
+      "description": "任何你能粘贴的单个段落或短文——段落改写器基于你提供的文本工作。",
+      "items": [
+        {
+          "title": "学术段落",
+          "description": "把论文或作业中的一段改得更精炼或更正式——提交前请先核对事实与引用。"
+        },
+        {
+          "title": "职场邮件",
+          "description": "让一段话对读者更正式或更自然——发送前请再确认人名、日期和数字。"
+        },
+        {
+          "title": "产品与营销文案",
+          "description": "重组段落让行文更紧凑、卖点更突出——发布前请核实每一项表述和参数。"
+        },
+        {
+          "title": "博客与文章段落",
+          "description": "把写作中途晦涩难懂的段落改清晰或重新组织——使用前请对照原文检查引文与出处。"
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Paragraph Rewriter 常见问题",
+      "description": "工具如何工作、如何处理你的文本，以及结果的预期。",
+      "items": [
+        {
+          "title": "为什么会给出两个改写版本？",
+          "description": "每次改写都会产生版本 A 和版本 B——同一目标下的两种不同处理。并排阅读更容易选出贴合语境的措辞；如果都不够理想，也可以再改写一次。"
+        },
+        {
+          "title": "各种改写目标有什么区别？",
+          "description": "每次只选一个目标：更清晰会简化费解的表达，更简洁会压缩篇幅，更正式会提升语体，更自然会放松生硬的措辞，重组结构会调整段落的行文顺序。一次一个目标，改动才够聚焦。"
+        },
+        {
+          "title": "改写结果是什么语言？",
+          "description": "默认情况下，改写结果跟随你粘贴段落的语言：英文段落输出英文，德文段落输出德文。如果你想要其他语言的结果，也可以在下拉框中固定输出语言。"
+        },
+        {
+          "title": "我的段落内容隐私吗？",
+          "description": "隐私。你粘贴的段落只用于生成改写结果，不会保存到你的账户或我们的数据库。系统只记录匿名使用次数——绝不会记录你的文本或生成结果。"
+        },
+        {
+          "title": "事实、引文和引用会保留吗？",
+          "description": "改写器被要求在换措辞的同时保留事实内容、引文和引用，但重新表述仍可能引入偏差。高亮部分标出了措辞变动之处——使用结果前，请务必对照原文逐一核对。"
+        },
+        {
+          "title": "和作文扩写器有什么不同？",
+          "description": "段落改写器处理你已有的文字，把它朝着某个改写目标重塑；作文扩写器则是把初稿扩写到目标字数，加深论述、补充例子。想改措辞用改写器，想加篇幅用作文扩写器。"
+        },
+        {
+          "title": "可以逐句改写我的段落吗？",
+          "description": "可以。无论粘贴的是一个句子还是整段文字，AI 改写器都会按你提供的长度处理，差异对比会清楚标出哪些词句发生了变化。"
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "段落改好了，继续写作",
+      "description": "当段落读起来符合预期，打开 AI Write 继续写它周围的章节——Story Bible 和一致性检查在编辑器内随时可用。",
+      "buttons": [
+        {
+          "title": "打开 AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "更多写作工具",
+      "description": "作文扩写器帮你加长初稿，故事总结器负责精简，文献综述生成器和故事大纲生成器帮你规划下一步。",
+      "more_label": "查看全部工具"
+    }
+  }
+}

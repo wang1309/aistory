@@ -1,0 +1,200 @@
+{
+  "paragraph_rewriter": {
+    "metadata": {
+      "title": "Kostenloser KI-Absatz- & Satz-Umschreiber",
+      "description": "Kostenloser KI-Absatz-Umschreiber und Satz-Umschreiber: Wähle klarer, kürzer, formeller oder natürlicher, vergleiche zwei Varianten und kopiere die beste.",
+      "keywords": "paragraph rewriter, absatz umschreiben, ki absatz umschreiber, satz umschreiben, ki umschreiber, meinen absatz umschreiben, text klarer formulieren, formeller absatz"
+    },
+    "ui": {
+      "eyebrow": "KI-SCHREIBTOOL",
+      "title": "Absatz oder Satz mit mehr Klarheit umschreiben",
+      "title_highlight": "mehr Klarheit",
+      "subtitle": "Der Absatz-Umschreiber lässt dich ein Bearbeitungsziel wählen, zwei Umschreibungen vergleichen und jede Änderung prüfen, bevor du kopierst.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Paragraph Rewriter",
+      "source_text_label": "Umzuschreibender Absatz",
+      "source_text_hint": "Füge einen Absatz oder kurzen Text ein. Nichts wird gespeichert.",
+      "character_limit_hint": "Bis zu 3.000 Zeichen.",
+      "goal_label": "Umschreibungsziel",
+      "output_language_label": "Ausgabesprache",
+      "output_language_auto": "Sprache der Eingabe folgen",
+      "additional_requirements_label": "Zusätzliche Anforderungen (optional)",
+      "additional_requirements_hint": "Sage dem Umschreiber, was erhalten oder vermieden werden soll. Bis zu 500 Zeichen.",
+      "ai_model_label": "KI-Modell",
+      "generate": "Absatz umschreiben",
+      "generating": "Wird umgeschrieben…",
+      "sign_in_to_continue": "Zum Fortfahren anmelden",
+      "result_title": "Umschreibungen prüfen",
+      "output_empty": "Deine beiden Umschreibungen erscheinen hier.",
+      "choose_variant": "Wähle eine Umschreibung zum Vergleich",
+      "option_a": "Option A",
+      "option_b": "Option B",
+      "selected_variant": "Ausgewählt",
+      "original_text": "Original",
+      "rewritten_text": "Gewählte Umschreibung",
+      "changed_text_hint": "Hervorgehobene Stellen zeigen geänderte Formulierungen. Prüfe Fakten, Zitate und Quellenangaben, bevor du das Ergebnis verwendest.",
+      "copy_result": "Gewählte Umschreibung kopieren",
+      "regenerate": "Erneut umschreiben",
+      "continue_ai_write": "In AI Write fortfahren",
+      "continue_hint": "Brauchst du eher einen längeren Entwurf als eine lokale Umschreibung? Probiere den Essay Extender."
+    },
+    "placeholders": {
+      "source_text": "Füge hier den Absatz ein, den du umschreiben möchtest…",
+      "additional_requirements": "z. B. Den Ton freundlich halten und keine Zahlen ändern."
+    },
+    "goals": {
+      "clearer": "Klarer",
+      "shorter": "Kürzer",
+      "formal": "Formeller",
+      "natural": "Natürlicher",
+      "restructure": "Umbauen"
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schnelle Umschreibungen für den Alltag.",
+      "creative": "Kreativ",
+      "creative_description": "Ausdrucksstärkere Umschreibungen. Nutzt dein Kreativ-Kontingent."
+    },
+    "validation": {
+      "enter_source_text": "Bitte füge den Absatz ein, den du umschreiben möchtest.",
+      "source_text_too_long": "Der eingefügte Text überschreitet das Limit von 3.000 Zeichen. Schreibe ihn in Teilen um.",
+      "requirements_too_long": "Die zusätzlichen Anforderungen überschreiten das Limit von 500 Zeichen."
+    },
+    "success": {
+      "result_copied": "Gewählte Umschreibung in die Zwischenablage kopiert."
+    },
+    "errors": {
+      "generation_failed": "Der Absatz konnte nicht umgeschrieben werden. Bitte versuche es erneut.",
+      "copy_failed": "Kopieren fehlgeschlagen. Bitte versuche es erneut."
+    },
+    "feature_intro": {
+      "title": "Ein Absatz, fünf Richtungen",
+      "description": "Ein Absatz-Umschreiber, der mit deinem eingefügten Text arbeitet – wähle ein einzelnes Bearbeitungsziel, erhalte zwei Varianten und sehe genau, was sich geändert hat, bevor etwas in deine Zwischenablage gelangt.",
+      "items": [
+        {
+          "title": "Ein Ziel nach dem anderen",
+          "description": "Wähle klarer, kürzer, formeller, natürlicher oder umbauen – der Umschreiber konzentriert sich auf diese eine Änderung statt alles auf einmal zu verändern."
+        },
+        {
+          "title": "Zwei Varianten zum Vergleichen",
+          "description": "Jeder Durchlauf liefert zwei Umschreibungen nebeneinander, damit du die Formulierung behältst, die dir besser gefällt."
+        },
+        {
+          "title": "Änderungen, die man sieht",
+          "description": "Geänderte Formulierungen werden in der gewählten Umschreibung hervorgehoben, und dein Original bleibt zum zeilenweisen Abgleich auf dem Bildschirm."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "So schreibst du einen Absatz mit KI um",
+      "description": "In vier Schritten vom eingefügten Text zur geprüften Umschreibung.",
+      "items": [
+        {
+          "title": "Absatz einfügen",
+          "description": "Kopiere einen Absatz oder kurzen Text – bis zu 3.000 Zeichen – in den Absatz-Umschreiber. Nichts wird gespeichert."
+        },
+        {
+          "title": "Ein Umschreibungsziel wählen",
+          "description": "Entscheide dich für klarer, kürzer, formeller, natürlicher oder umbauen und ergänze bei Bedarf Anforderungen."
+        },
+        {
+          "title": "Zwei Varianten vergleichen",
+          "description": "Lies Option A und Option B nebeneinander und wähle die Version, die zu deinem Kontext passt."
+        },
+        {
+          "title": "Änderungen prüfen und kopieren",
+          "description": "Gleiche die hervorgehobenen Formulierungen mit dem Original ab, prüfe Fakten und Quellenangaben und kopiere die gewählte Umschreibung."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "Warum Autoren es nutzen",
+      "description": "Ein KI-Absatz-Umschreiber mit Fokus – ein Ziel, zwei Kandidaten, jede Änderung sichtbar.",
+      "items": [
+        {
+          "title": "Ein fokussiertes Bearbeitungsziel",
+          "description": "Ein klares Ziel pro Durchlauf hält die Umschreibung präzise – Argument, Beispiele und Stimme bleiben an ihrem Platz."
+        },
+        {
+          "title": "Zwei prüfbare Alternativen",
+          "description": "Der Vergleich zweier Varianten dauert Sekunden und bringt oft eine bessere Formulierung hervor als eine einzelne Antwort."
+        },
+        {
+          "title": "Erinnerungen zum Schutz deiner Fakten",
+          "description": "Geänderte Formulierungen werden hervorgehoben, und du wirst daran erinnert, Fakten, Zitate und Quellenangaben zu prüfen, bevor du das Ergebnis verwendest."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "Was du umschreiben kannst",
+      "description": "Jeden einzelnen Absatz oder kurzen Text, den du einfügen kannst – der Paragraph Rewriter arbeitet mit deinem Text.",
+      "items": [
+        {
+          "title": "Akademische Absätze",
+          "description": "Mache einen Absatz von Aufsatz oder Hausarbeit prägnanter oder formeller – prüfe danach Fakten und Quellenangaben, bevor du abgibst."
+        },
+        {
+          "title": "Berufliche E-Mails",
+          "description": "Bringe eine Nachricht für dein Gegenüber auf den passenden Ton – und lies Namen, Daten und Zahlen vor dem Senden noch einmal durch."
+        },
+        {
+          "title": "Produkt- und Marketingtexte",
+          "description": "Baue einen Absatz für mehr Fluss oder einen kürzeren Pitch um – und prüfe jede Aussage und Angabe, bevor du veröffentlichst."
+        },
+        {
+          "title": "Blog- und Artikelpassagen",
+          "description": "Kläre oder strukturiere eine dichte Passage im Entwurf neu – und gleiche Zitate und Quellen vor der Verwendung mit dem Original ab."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Paragraph Rewriter FAQ",
+      "description": "Wie das Tool funktioniert, was mit deinem Text passiert und was du von den Ergebnissen erwarten kannst.",
+      "items": [
+        {
+          "title": "Warum bekomme ich zwei Umschreibungen?",
+          "description": "Jeder Durchlauf erzeugt Option A und Option B – zwei unterschiedliche Umsetzungen desselben Ziels. Der nebeneinanderliegende Vergleich macht es leicht, die Formulierung zu wählen, die zu deinem Kontext passt. Wenn keine passt, starte einfach einen weiteren Durchlauf."
+        },
+        {
+          "title": "Was bewirken die Umschreibungsziele?",
+          "description": "Du wählst ein Ziel pro Durchlauf: Klarer vereinfacht verworrene Formulierungen, Kürzer strafft die Länge, Formeller hebt das Register, Natürlicher lockert steife Formulierungen, und Umbauen ordnet den Ablauf des Absatzes neu. Ein Ziel nach dem anderen hält die Änderung fokussiert."
+        },
+        {
+          "title": "In welcher Sprache erscheint die Umschreibung?",
+          "description": "Standardmäßig folgt die Umschreibung der Sprache deines Absatzes: Ein deutscher Absatz bleibt deutsch, ein englischer bleibt englisch. Du kannst auch eine feste Ausgabesprache wählen, wenn du das Ergebnis in einer anderen Sprache möchtest."
+        },
+        {
+          "title": "Ist mein Absatz privat?",
+          "description": "Ja. Dein eingefügter Text wird nur zur Erzeugung der Umschreibungen verwendet und nicht in deinem Konto oder unserer Datenbank gespeichert. Es werden nur anonyme Nutzungszähler erfasst – niemals dein Text oder das Ergebnis."
+        },
+        {
+          "title": "Bleiben Fakten, Zitate und Quellenangaben erhalten?",
+          "description": "Der Umschreiber wird angewiesen, Fakten, Zitate und Quellenangaben beim Umformulieren zu bewahren, aber ein Umformulieren kann dennoch Fehler einführen. Hervorgehobene Stellen zeigen, wo sich Formulierungen verschoben haben – prüfe sie immer gegen dein Original, bevor du das Ergebnis verwendest."
+        },
+        {
+          "title": "Worin unterscheidet sich das vom Essay Extender?",
+          "description": "Der Paragraph Rewriter arbeitet mit einem Text, den du bereits hast, und formt ihn zu einem Bearbeitungsziel um. Der Essay Extender bringt einen Entwurf auf eine Zielwortanzahl und ergänzt Tiefe und Beispiele. Nutze den Umschreiber für bessere Formulierungen und den Essay Extender, wenn du mehr Länge brauchst."
+        },
+        {
+          "title": "Kann er meinen Absatz Satz für Satz umschreiben?",
+          "description": "Ja. Füge einen einzelnen Satz oder einen ganzen Absatz ein – der KI-Umschreiber arbeitet mit jeder Länge, und die Gegenüberstellung zeigt genau, welche Wörter und Sätze sich geändert haben."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "Absatz feinschliff, dann weiterschreiben",
+      "description": "Wenn dein Absatz so klingt, wie du es möchtest, öffne AI Write und schreibe die umliegenden Abschnitte – mit Story Bible und Konsistenzprüfung im Editor.",
+      "buttons": [
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Weitere Schreibtools",
+      "description": "Der Essay Extender bringt Entwürfe auf Länge, der Geschichten-Zusammenfasser verdichtet sie, und Literaturübersicht-Generator und Story-Outline-Generator planen den nächsten Schritt.",
+      "more_label": "Alle Tools ansehen"
+    }
+  }
+}

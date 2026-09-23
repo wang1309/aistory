@@ -190,6 +190,7 @@ export default async function AiWriteLandingPage({
         description={t("ai_tools.section_description_hub")}
         accent="orange"
         locale={locale}
+        layout="grouped"
       />
 
       {cta_section && <CTA section={cta_section} accent="orange" />}

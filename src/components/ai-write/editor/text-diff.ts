@@ -94,3 +94,65 @@ export function computeDiffRanges(
 
   return mergeRanges(ranges);
 }
+
+export type DiffSegment = { text: string; changed: boolean };
+
+export type ParagraphDiff = {
+  original: DiffSegment[];
+  modified: DiffSegment[];
+};
+
+const PARAGRAPH_DIFF_MAX_TOKEN_PAIRS = 250_000;
+
+function segmentsFromTokens(text: string, commonTokenIndexes: Set<number>): DiffSegment[] {
+  const tokens = tokenizeWords(text);
+  if (tokens.length === 0) return text ? [{ text, changed: true }] : [];
+
+  const segments: DiffSegment[] = [];
+  let cursor = 0;
+  const append = (value: string, changed: boolean) => {
+    if (!value) return;
+    const previous = segments.at(-1);
+    if (previous && previous.changed === changed) previous.text += value;
+    else segments.push({ text: value, changed });
+  };
+
+  tokens.forEach((token, index) => {
+    append(text.slice(cursor, token.start), false);
+    append(token.text, !commonTokenIndexes.has(index));
+    cursor = token.end;
+  });
+  append(text.slice(cursor), false);
+  return segments;
+}
+
+export function computeParagraphDiff(original: string, modified: string): ParagraphDiff {
+  if (original === modified) {
+    return {
+      original: original ? [{ text: original, changed: false }] : [],
+      modified: modified ? [{ text: modified, changed: false }] : [],
+    };
+  }
+
+  const originalTokens = tokenizeWords(original);
+  const modifiedTokens = tokenizeWords(modified);
+  if (originalTokens.length * modifiedTokens.length > PARAGRAPH_DIFF_MAX_TOKEN_PAIRS) {
+    return {
+      original: original ? [{ text: original, changed: true }] : [],
+      modified: modified ? [{ text: modified, changed: true }] : [],
+    };
+  }
+
+  const originalCommon = lcsMarkNew(
+    modifiedTokens.map((token) => token.text.toLowerCase()),
+    originalTokens.map((token) => token.text.toLowerCase())
+  );
+  const modifiedCommon = lcsMarkNew(
+    originalTokens.map((token) => token.text.toLowerCase()),
+    modifiedTokens.map((token) => token.text.toLowerCase())
+  );
+  return {
+    original: segmentsFromTokens(original, originalCommon),
+    modified: segmentsFromTokens(modified, modifiedCommon),
+  };
+}

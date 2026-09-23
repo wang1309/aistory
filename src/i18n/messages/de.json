@@ -21,6 +21,7 @@
   },
   "footer": {
     "name_generator": "Namensgeneratoren",
+    "story_generator": "Geschichten-Generator",
     "rewrite": "Umschreib-Tools"
   },
   "sign_modal": {
@@ -311,6 +312,9 @@
     "column_title_structure": "Titel & Struktur",
     "column_creative": "Kreativ",
     "category_creative": "Kreativ",
+    "category_social": "Social Media",
+    "category_rewriting": "Umschreiben & Bearbeiten",
+    "category_story": "Geschichte & Schreiben",
     "category_featured": "Hub",
     "tools": {
       "story_generator": {
@@ -440,6 +444,10 @@
       "essay_extender": {
         "name": "Aufsatz-Erweiterer",
         "desc": "Erweitere einen Aufsatz auf die Zielwortanzahl – mit Tiefe, Beispielen und besserem Fluss, ohne den Sinn zu verlieren."
+      },
+      "paragraph_rewriter": {
+        "name": "Absatz-Umschreiber",
+        "desc": "Schreibe einen Absatz für Klarheit, Ton oder Struktur um und prüfe die Änderungen."
       }
     },
     "tab_story": "Geschichtengenerator",
@@ -447,8 +455,6 @@
     "search_placeholder": "Tools nach Name oder Szenario suchen...",
     "filter_all": "Alle",
     "filter_story": "Geschichte",
-    "filter_character": "Charakter",
-    "filter_plot": "Handlung",
     "filter_title": "Titel",
     "filter_poem": "Gedicht",
     "filter_social": "Sozial",

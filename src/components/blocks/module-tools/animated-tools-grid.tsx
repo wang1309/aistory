@@ -28,22 +28,32 @@ export interface ToolCardData {
   badges?: ToolBadge[];
 }
 
+export type ToolCardVariant = "media" | "compact";
+
 interface AnimatedToolsGridProps {
   tools: ToolCardData[];
   badgeCategoryLabel?: string;
   accent?: AccentColor;
   className?: string;
+  /**
+   * media: 封面图/渐变卡(默认,工具目录与相关推荐用);
+   * compact: 无图紧凑卡(首页用,零图片请求)。
+   */
+  variant?: ToolCardVariant;
 }
 
 export function AnimatedToolsGrid({
   tools,
   accent = "orange",
   className,
+  variant = "media",
 }: AnimatedToolsGridProps) {
   return (
     <div
       className={cn(
-        "grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4",
+        variant === "compact"
+          ? "grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+          : "grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4",
         className ?? "mt-16"
       )}
     >
@@ -55,13 +65,110 @@ export function AnimatedToolsGrid({
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.55, delay: Math.min(i, 5) * 0.07, ease: [0.32, 0.72, 0, 1] }}
         >
-          <ToolCard
-            tool={tool}
-            accent={accent}
-          />
+          {variant === "compact" ? (
+            <CompactToolCard
+              tool={tool}
+              accent={accent}
+            />
+          ) : (
+            <ToolCard
+              tool={tool}
+              accent={accent}
+            />
+          )}
         </motion.div>
       ))}
     </div>
+  );
+}
+
+function CardBadges({ tool }: { tool: ToolCardData }) {
+  if (!tool.badges || tool.badges.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap gap-1">
+      {tool.badges.map((badge) => (
+        <span
+          key={badge.label}
+          className={cn(
+            "rounded-full px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider",
+            badge.type === "hot"
+              ? "bg-red-500/[0.08] text-red-500/70"
+              : "bg-teal-500/[0.08] text-teal-500/70"
+          )}
+        >
+          {badge.label}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ArrowAffordance() {
+  return (
+    <span
+      className={cn(
+        "inline-flex size-6 shrink-0 items-center justify-center rounded-full",
+        "transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+        "bg-foreground/[0.03] group-hover:bg-foreground/[0.07] group-hover:translate-x-0.5 group-hover:-translate-y-px"
+      )}
+    >
+      <svg viewBox="0 0 16 16" className="size-3 text-muted-foreground/35 transition-colors duration-300 group-hover:text-foreground/60" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path strokeLinecap="round" d="M5 3l6 5-6 5" />
+      </svg>
+    </span>
+  );
+}
+
+function CompactToolCard({
+  tool,
+  accent,
+}: {
+  tool: ToolCardData;
+  accent: AccentColor;
+}) {
+  // Per-tool accent (tool-directory identity) wins; section accent is the fallback.
+  const a = getAccent(tool.accent ?? accent);
+
+  return (
+    <Link
+      href={tool.href}
+      className={cn(
+        "group flex h-full flex-col rounded-2xl p-4",
+        "border border-border/15 bg-foreground/[0.012]",
+        "transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+        "hover:border-border/30 hover:bg-foreground/[0.02]",
+        "dark:bg-white/[0.015] dark:hover:bg-white/[0.025]"
+      )}
+    >
+      <div className="flex items-center gap-3">
+        {/* Accent icon tile — replaces the media cover as the card's identity */}
+        <span
+          className={cn(
+            "flex size-10 shrink-0 items-center justify-center rounded-xl",
+            "transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.06]",
+            a.iconBg
+          )}
+        >
+          <Icon name={tool.icon} className={cn("size-5", a.text)} />
+        </span>
+
+        <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1">
+          <h3 className="text-sm font-bold tracking-tight leading-snug text-foreground">
+            {tool.name}
+          </h3>
+          <CardBadges tool={tool} />
+        </div>
+
+        <ArrowAffordance />
+      </div>
+
+      {tool.description && (
+        <p className="mt-2.5 text-[0.8125rem] leading-relaxed text-muted-foreground/55 line-clamp-2">
+          {tool.description}
+        </p>
+      )}
+    </Link>
   );
 }
 
@@ -143,35 +250,11 @@ function ToolCard({
               <h3 className="text-sm font-bold tracking-tight leading-snug text-foreground">
                 {tool.name}
               </h3>
-              {tool.badges && tool.badges.length > 0 && (
-                <div className="flex flex-wrap gap-1">
-                  {tool.badges.map((badge) => (
-                    <span
-                      key={badge.label}
-                      className={cn(
-                        "rounded-full px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider",
-                        badge.type === "hot"
-                          ? "bg-red-500/[0.08] text-red-500/70"
-                          : "bg-teal-500/[0.08] text-teal-500/70"
-                      )}
-                    >
-                      {badge.label}
-                    </span>
-                  ))}
-                </div>
-              )}
+              <CardBadges tool={tool} />
             </div>
             {/* Arrow affordance */}
-            <span
-              className={cn(
-                "mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full",
-                "transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
-                "bg-foreground/[0.03] group-hover:bg-foreground/[0.07] group-hover:translate-x-0.5 group-hover:-translate-y-px"
-              )}
-            >
-              <svg viewBox="0 0 16 16" className="size-3 text-muted-foreground/35 transition-colors duration-300 group-hover:text-foreground/60" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" d="M5 3l6 5-6 5" />
-              </svg>
+            <span className="mt-0.5">
+              <ArrowAffordance />
             </span>
           </div>
 

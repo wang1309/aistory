@@ -21,6 +21,7 @@ export const CREATIVE_PAGE_KEYS = [
   "oc-generator",
   "story-summarizer",
   "essay-extender",
+  "paragraph-rewriter",
 ] as const;
 
 export type CreativePageKey = (typeof CREATIVE_PAGE_KEYS)[number];

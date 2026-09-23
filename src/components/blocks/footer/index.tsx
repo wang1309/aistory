@@ -1,8 +1,11 @@
 import { Footer as FooterType } from "@/types/blocks/footer";
 import Icon from "@/components/icon";
-import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { getToolsBySlugs, type Tool } from "@/services/tools";
+import FooterColumn, {
+  type FooterColumnGroup,
+  type FooterColumnLink,
+} from "./footer-column";
 
 const NAME_GENERATOR_TOOL_SLUGS = [
   "elf-name-generator",
@@ -14,7 +17,7 @@ const NAME_GENERATOR_TOOL_SLUGS = [
   "youtube-name-generator",
 ];
 
-const REWRITE_TOOL_SLUGS = ["essay-extender"];
+const REWRITE_TOOL_SLUGS = ["essay-extender", "paragraph-rewriter"];
 
 export default function Footer({ footer }: { footer: FooterType }) {
   const t = useTranslations();
@@ -26,22 +29,21 @@ export default function Footer({ footer }: { footer: FooterType }) {
   const nameTools = getToolsBySlugs(NAME_GENERATOR_TOOL_SLUGS);
   const rewriteTools = getToolsBySlugs(REWRITE_TOOL_SLUGS);
 
-  const renderToolColumn = (key: string, title: string, tools: Tool[]) => (
-    <div key={key} className="min-w-0">
-      <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-foreground">
-        {title}
-      </p>
-      <ul className="space-y-3 text-sm text-muted-foreground">
-        {tools.map((tool) => (
-          <li key={tool.slug} className="transition-colors hover:text-foreground">
-            <Link href={tool.href as any} className="[overflow-wrap:anywhere]">
-              {t(tool.nameKey)}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+  const navItems = footer.nav?.items ?? [];
+  // Creative 列没有稳定 id,标题又是多语言的,靠它独有的 /ai-tools/ 子链接
+  // 识别(locale 与列顺序无关);它现在作为子分类折叠进 AI Write。
+  const creativeItem = navItems.find((nav) =>
+    nav.children?.some(
+      (c) =>
+        c.url?.startsWith("/ai-tools/") || c.url === "/incorrect-quote-generator"
+    )
   );
+
+  const toColumnLinks = (tools: Tool[]): FooterColumnLink[] =>
+    tools.map((tool) => ({
+      title: t(tool.nameKey),
+      url: tool.href as string,
+    }));
 
   return (
     <section id={footer.name} className="border-t border-border bg-[oklch(0.955_0.009_85)] dark:bg-[oklch(0.165_0_0)]">
@@ -96,43 +98,80 @@ export default function Footer({ footer }: { footer: FooterType }) {
               )}
             </div>
 
-            {/* Link columns */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 lg:gap-x-12">
-              {(footer.nav?.items ?? []).flatMap((item, i, arr) => {
-                const navColumn = (
-                  <div key={`nav-${i}`} className="min-w-0">
-                    <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-foreground">
-                      {item.title}
-                    </p>
-                    <ul className="space-y-3 text-sm text-muted-foreground">
-                      {item.children?.map((iitem, ii) => (
-                        <li key={ii} className="transition-colors hover:text-foreground">
-                          <Link
-                            href={iitem.url || ""}
-                            target={iitem.target}
-                            className="[overflow-wrap:anywhere]"
-                          >
-                            {iitem.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-                // Registry-driven tool columns take the slot between About
-                // and Friend (the last two nav columns).
-                if (i === arr.length - 2 && (nameTools.length > 0 || rewriteTools.length > 0)) {
-                  return [
-                    ...(nameTools.length > 0
-                      ? [renderToolColumn("name-generators", t("footer.name_generator"), nameTools)]
-                      : []),
-                    ...(rewriteTools.length > 0
-                      ? [renderToolColumn("rewrite", t("footer.rewrite"), rewriteTools)]
-                      : []),
-                    navColumn,
+            {/* Link columns: independent accordion cells in a responsive grid.
+                AI Write keeps a static always-open title; its tool groups
+                (Story / Name Generators / Rewrite / Creative) nest as collapsed
+                sub-categories. About/Friend stay flat accordions. */}
+            <div className="grid min-w-0 grid-cols-1 gap-y-4 sm:grid-cols-2 lg:max-w-4xl lg:grid-cols-3 lg:gap-x-10">
+              {navItems.map((item, i) => {
+                const navChildren = (item.children ?? []).map((iitem) => ({
+                  title: iitem.title ?? "",
+                  url: iitem.url,
+                  target: iitem.target,
+                }));
+
+                // First nav column (AI Write) hosts every tool group as a
+                // collapsible sub-category.
+                if (i === 0) {
+                  const groups: FooterColumnGroup[] = [
+                    {
+                      id: "story-generator",
+                      title: t("footer.story_generator"),
+                      items: navChildren,
+                    },
                   ];
+                  if (nameTools.length > 0) {
+                    groups.push({
+                      id: "name-generators",
+                      title: t("footer.name_generator"),
+                      items: toColumnLinks(nameTools),
+                    });
+                  }
+                  if (rewriteTools.length > 0) {
+                    groups.push({
+                      id: "rewrite",
+                      title: t("footer.rewrite"),
+                      items: toColumnLinks(rewriteTools),
+                    });
+                  }
+                  if (creativeItem) {
+                    groups.push({
+                      id: "creative",
+                      title: creativeItem.title ?? "",
+                      items: (creativeItem.children ?? []).map((iitem) => ({
+                        title: iitem.title ?? "",
+                        url: iitem.url,
+                        target: iitem.target,
+                      })),
+                    });
+                  }
+                  return (
+                    <FooterColumn
+                      key={`nav-${i}`}
+                      columnId={`nav-${i}`}
+                      title={item.title ?? ""}
+                      collapsible={false}
+                      groups={groups}
+                    />
+                  );
                 }
-                return [navColumn];
+
+                // Creative now nests under AI Write — not a top-level column.
+                if (item === creativeItem) {
+                  return null;
+                }
+
+                // About/Friend stay flat, always-open columns (collapsible
+                // disabled for now).
+                return (
+                  <FooterColumn
+                    key={`nav-${i}`}
+                    columnId={`nav-${i}`}
+                    title={item.title ?? ""}
+                    collapsible={false}
+                    items={navChildren}
+                  />
+                );
               })}
             </div>
           </div>

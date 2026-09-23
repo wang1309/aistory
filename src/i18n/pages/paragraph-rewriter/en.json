@@ -1,0 +1,200 @@
+{
+  "paragraph_rewriter": {
+    "metadata": {
+      "title": "Free AI Paragraph Rewriter & Sentence Rewriter",
+      "description": "A free AI rewriter that doubles as a paragraph rewriter and sentence rewriter. Pick clearer, shorter, formal, or natural, compare two options, and copy the best.",
+      "keywords": "paragraph rewriter, sentence rewriter, ai rewriter, rewrite my paragraph, rewrite paragraph, AI paragraph rewriter, make paragraph clearer, formal paragraph rewriter"
+    },
+    "ui": {
+      "eyebrow": "AI WRITING TOOL",
+      "title": "Rewrite any paragraph or sentence with more clarity",
+      "title_highlight": "more clarity",
+      "subtitle": "The paragraph rewriter lets you choose one editing goal, compare two rewrite options, and review every change before you copy.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Paragraph Rewriter",
+      "source_text_label": "Paragraph to rewrite",
+      "source_text_hint": "Paste one paragraph or short passage. Your text is not saved.",
+      "character_limit_hint": "Up to 3,000 characters.",
+      "goal_label": "Rewrite goal",
+      "output_language_label": "Output language",
+      "output_language_auto": "Follow input language",
+      "additional_requirements_label": "Additional requirements (optional)",
+      "additional_requirements_hint": "Tell the rewriter what to preserve or avoid. Up to 500 characters.",
+      "ai_model_label": "AI model",
+      "generate": "Rewrite paragraph",
+      "generating": "Rewriting...",
+      "sign_in_to_continue": "Sign in to continue",
+      "result_title": "Review rewrites",
+      "output_empty": "Your two rewrite options will appear here.",
+      "choose_variant": "Choose a rewrite to compare",
+      "option_a": "Option A",
+      "option_b": "Option B",
+      "selected_variant": "Selected",
+      "original_text": "Original",
+      "rewritten_text": "Selected rewrite",
+      "changed_text_hint": "Highlighted text marks wording that changed. Review facts, quotations, and citations before using the result.",
+      "copy_result": "Copy selected rewrite",
+      "regenerate": "Rewrite again",
+      "continue_ai_write": "Continue in AI Write",
+      "continue_hint": "Need a longer draft rather than a local rewrite? Try Essay Extender."
+    },
+    "placeholders": {
+      "source_text": "Paste the paragraph you want to rewrite…",
+      "additional_requirements": "e.g. Keep the tone friendly and don't change any numbers."
+    },
+    "goals": {
+      "clearer": "Clearer",
+      "shorter": "Shorter",
+      "formal": "More formal",
+      "natural": "More natural",
+      "restructure": "Restructure"
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick rewrites for everyday editing.",
+      "creative": "Creative",
+      "creative_description": "More expressive rewrite options. Uses your creative quota."
+    },
+    "validation": {
+      "enter_source_text": "Please paste the paragraph you want to rewrite.",
+      "source_text_too_long": "The pasted text is over the 3,000-character limit. Rewrite it in parts.",
+      "requirements_too_long": "Additional requirements are over the 500-character limit."
+    },
+    "success": {
+      "result_copied": "Selected rewrite copied to your clipboard."
+    },
+    "errors": {
+      "generation_failed": "Could not rewrite the paragraph. Please try again.",
+      "copy_failed": "Could not copy the rewrite. Please try again."
+    },
+    "feature_intro": {
+      "title": "Rewrite one paragraph, five directions",
+      "description": "A paragraph rewriter that works on the passage you paste — pick a single editing goal, get two rewrite options, and see exactly what changed before anything reaches your clipboard.",
+      "items": [
+        {
+          "title": "One goal at a time",
+          "description": "Choose clearer, shorter, more formal, more natural, or restructure — the rewriter concentrates on that single edit instead of changing everything at once."
+        },
+        {
+          "title": "Two options to compare",
+          "description": "Every run produces two rewrite options side by side, so you can keep the wording you prefer instead of accepting a single take."
+        },
+        {
+          "title": "Changes you can see",
+          "description": "Wording that changed is highlighted in the selected rewrite, and your original text stays on screen for a line-by-line check."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "How to rewrite a paragraph with AI",
+      "description": "From a pasted passage to a reviewed rewrite in four steps.",
+      "items": [
+        {
+          "title": "Paste your paragraph",
+          "description": "Paste one paragraph or a short passage into the paragraph rewriter. Your text stays in the form and is never saved."
+        },
+        {
+          "title": "Choose one rewrite goal",
+          "description": "Pick clearer, shorter, more formal, more natural, or restructure, and add optional requirements."
+        },
+        {
+          "title": "Compare two rewrite options",
+          "description": "Read Option A and Option B side by side and select the version that fits your context."
+        },
+        {
+          "title": "Review changes and copy",
+          "description": "Check the highlighted wording against the original, verify facts and citations, then copy the selected rewrite."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "Why writers use it",
+      "description": "A focused AI paragraph rewriter — one goal, two candidates, and every change visible.",
+      "items": [
+        {
+          "title": "A focused editing goal",
+          "description": "Naming one goal per run keeps the rewrite surgical — your argument, examples, and voice stay in place."
+        },
+        {
+          "title": "Two reviewable alternatives",
+          "description": "Comparing two options takes seconds and often surfaces better phrasing than a single answer would."
+        },
+        {
+          "title": "Reminders to protect your facts",
+          "description": "Changed wording is highlighted and you are reminded to review facts, quotations, and citations before using the result."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "What you can rewrite",
+      "description": "Any single paragraph or short passage you can paste — the paragraph rewriter works with the text you give it.",
+      "items": [
+        {
+          "title": "Academic paragraphs",
+          "description": "Tighten or formalize a paragraph of an essay or paper — then review facts and citations before submitting."
+        },
+        {
+          "title": "Professional emails",
+          "description": "Make a message more formal or more natural for its audience — and reread names, dates, and figures before sending."
+        },
+        {
+          "title": "Product and marketing copy",
+          "description": "Restructure a paragraph for sharper flow or a shorter pitch — then verify every claim and specification before publishing."
+        },
+        {
+          "title": "Blog and article passages",
+          "description": "Clarify or restructure a dense passage mid-draft — and check quotations and sources against the original before use."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Paragraph Rewriter FAQ",
+      "description": "How the tool works, what it does with your text, and what to expect from the results.",
+      "items": [
+        {
+          "title": "Why do I get two rewrite options?",
+          "description": "Each run produces Option A and Option B — two different takes on the same goal. Reading them side by side makes it easy to choose the wording that fits your context, or to run another pass if neither is quite right."
+        },
+        {
+          "title": "What do the rewrite goals do?",
+          "description": "You pick one goal per run: Clearer simplifies confusing wording, Shorter trims length, More formal raises the register, More natural relaxes stiff phrasing, and Restructure reorders the flow of the paragraph. One goal at a time keeps the edit focused."
+        },
+        {
+          "title": "Which language is the rewrite in?",
+          "description": "By default the rewrite follows the language of your pasted paragraph: an English paragraph stays English, a German paragraph stays German. You can also pick a fixed output language from the dropdown if you want the result in another language."
+        },
+        {
+          "title": "Is my paragraph private?",
+          "description": "Yes. The paragraph rewriter sends your pasted text to generate the rewrites and does not save it to your account or our database. Only anonymous usage counts are recorded — never your text or the generated result."
+        },
+        {
+          "title": "Will it keep facts, quotations, and citations intact?",
+          "description": "The rewriter is instructed to preserve factual content, quotations, and citations while rewording, but rephrasing can still introduce errors. Highlighted changes mark where wording moved — always review them against your original before using the result."
+        },
+        {
+          "title": "How is this different from Essay Extender?",
+          "description": "The paragraph rewriter works on a passage you already have, reshaping it toward one editing goal. Essay Extender grows a draft toward a target word count, adding depth and examples. Use the rewriter to fix wording, and Essay Extender when you need more length."
+        },
+        {
+          "title": "Can it rewrite my paragraph sentence by sentence?",
+          "description": "Yes. Paste a single sentence or a full passage — the AI rewriter works at whatever length you bring, and the diff review shows exactly which words and sentences changed."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "Polish the paragraph, then keep writing",
+      "description": "Once your paragraph reads the way you want, open AI Write to draft the sections around it — with Story Bible and Consistency Check available inside the editor.",
+      "buttons": [
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "More writing tools",
+      "description": "Essay Extender grows drafts, Story Summarizer condenses them, and Literature Review Generator and Story Outline Generator plan what comes next.",
+      "more_label": "View all tools"
+    }
+  }
+}

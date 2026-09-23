@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import test from "node:test";
 import {
   CREATIVE_PAGE_KEYS,
   buildCreativeQuotaKey,
@@ -16,11 +17,18 @@ import {
   shouldOptimisticallyGateCreativeCreditUsage,
 } from "@/lib/creative-quota-core";
 
-assert.equal(CREATIVE_PAGE_KEYS.length, 22);
+assert.equal(CREATIVE_PAGE_KEYS.length, 23);
 assert.equal(
   buildCreativeQuotaKey("2026-07-14", "user:u1", "poem-generator"),
   "free-quota:2026-07-14:user:u1:poem-generator:creative"
 );
+test("Paragraph Rewriter uses a page-scoped creative quota key", () => {
+  assert.ok(CREATIVE_PAGE_KEYS.includes("paragraph-rewriter"));
+  assert.equal(
+    buildCreativeQuotaKey("2026-09-21", "visitor-123", "paragraph-rewriter"),
+    "free-quota:2026-09-21:visitor-123:paragraph-rewriter:creative"
+  );
+});
 assert.equal(
   buildCreativeMergeKey("2026-07-14", "visitor:v1", "user:u1", "poem-generator"),
   "free-quota:2026-07-14:merge:visitor:v1:user:u1:poem-generator:creative"

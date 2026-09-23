@@ -21,6 +21,7 @@
   },
   "footer": {
     "name_generator": "Генераторы имён",
+    "story_generator": "Генератор историй",
     "rewrite": "Инструменты перезаписи"
   },
   "sign_modal": {
@@ -311,6 +312,9 @@
     "column_title_structure": "Заголовки и структура",
     "column_creative": "Творчество",
     "category_creative": "Творчество",
+    "category_social": "Социальные медиа",
+    "category_rewriting": "Переписывание и редактирование",
+    "category_story": "История и написание",
     "category_featured": "Хаб",
     "tools": {
       "story_generator": {
@@ -440,6 +444,10 @@
       "essay_extender": {
         "name": "Расширитель эссе",
         "desc": "Расширяет эссе до целевого объёма — с глубиной, примерами и лучшей связностью, не теряя смысла."
+      },
+      "paragraph_rewriter": {
+        "name": "Переписчик абзацев",
+        "desc": "Переписывает абзац ради ясности, тона или структуры — и показывает, что изменилось."
       }
     },
     "tab_story": "Генератор историй",
@@ -447,8 +455,6 @@
     "search_placeholder": "Поиск инструмента по названию или сценарию...",
     "filter_all": "Все",
     "filter_story": "История",
-    "filter_character": "Персонаж",
-    "filter_plot": "Сюжет",
     "filter_title": "Заголовок",
     "filter_poem": "Стих",
     "filter_social": "Социальные",

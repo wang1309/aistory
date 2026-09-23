@@ -21,6 +21,7 @@
   },
   "footer": {
     "name_generator": "名字生成器",
+    "story_generator": "故事生成器",
     "rewrite": "改写工具"
   },
   "sign_modal": {
@@ -314,6 +315,9 @@
     "column_title_structure": "标题与结构",
     "column_creative": "创意",
     "category_creative": "创意",
+    "category_social": "社交媒体",
+    "category_rewriting": "改写与编辑",
+    "category_story": "故事与写作",
     "category_featured": "工具集",
     "tools": {
       "story_generator": {
@@ -443,6 +447,10 @@
       "essay_extender": {
         "name": "作文扩写器",
         "desc": "把文章扩写到目标字数——加深论述、补充例子、优化行文，不丢原意。"
+      },
+      "paragraph_rewriter": {
+        "name": "段落改写器",
+        "desc": "按清晰度、语气或结构改写段落，改动一目了然。"
       }
     },
     "tab_story": "故事生成器",
@@ -450,8 +458,6 @@
     "search_placeholder": "搜索工具名称或使用场景...",
     "filter_all": "全部",
     "filter_story": "故事",
-    "filter_character": "角色",
-    "filter_plot": "情节",
     "filter_title": "标题",
     "filter_poem": "诗歌",
     "filter_social": "社交",

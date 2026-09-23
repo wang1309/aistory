@@ -167,6 +167,7 @@ export default async function LandingPage({
           description={t("ai_tools.section_description_home")}
           accent="orange"
           locale={locale}
+          variant="compact"
         />
       </Suspense>
 

@@ -21,6 +21,7 @@
   },
   "footer": {
     "name_generator": "이름 생성기",
+    "story_generator": "스토리 생성기",
     "rewrite": "리라이트 도구"
   },
   "sign_modal": {
@@ -311,6 +312,9 @@
     "column_title_structure": "제목 & 구조",
     "column_creative": "크리에이티브",
     "category_creative": "크리에이티브",
+    "category_social": "소셜 미디어",
+    "category_rewriting": "리라이트 & 편집",
+    "category_story": "스토리 & 글쓰기",
     "category_featured": "허브",
     "tools": {
       "story_generator": {
@@ -440,6 +444,10 @@
       "essay_extender": {
         "name": "에세이 확장기",
         "desc": "에세이를 목표 단어 수까지 확장합니다 — 깊이, 예시, 더 나은 흐름을 더하고 의미는 그대로."
+      },
+      "paragraph_rewriter": {
+        "name": "문단 바꿔쓰기 도구",
+        "desc": "명확성, 어조, 구조에 맞춰 문단을 바꿔 쓰고 변경 사항을 검토하세요."
       }
     },
     "tab_story": "스토리 생성기",
@@ -447,8 +455,6 @@
     "search_placeholder": "도구 이름이나 용도로 검색...",
     "filter_all": "전체",
     "filter_story": "스토리",
-    "filter_character": "캐릭터",
-    "filter_plot": "플롯",
     "filter_title": "제목",
     "filter_poem": "시",
     "filter_social": "소셜",

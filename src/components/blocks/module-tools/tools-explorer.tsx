@@ -5,7 +5,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import Icon from "@/components/icon";
 import { cn } from "@/lib/utils";
-import { AnimatedToolsGrid, type ToolCardData } from "./animated-tools-grid";
+import {
+  AnimatedToolsGrid,
+  type ToolCardData,
+  type ToolCardVariant,
+} from "./animated-tools-grid";
 import type { AccentColor } from "@/components/sections/accent";
 import type { ToolGroup } from "@/services/tools";
 import { useTranslations } from "next-intl";
@@ -18,18 +22,19 @@ interface ToolsExplorerProps {
    * false(默认)保持细分类目 chips。All Tools hub 用 true。
    */
   groupedChips?: boolean;
+  /** 卡片变体,透传给 AnimatedToolsGrid。首页传 "compact" 走无图紧凑卡。 */
+  variant?: ToolCardVariant;
 }
 
 const FILTER_CHIPS: { id: string; labelKey: string }[] = [
   { id: "all", labelKey: "ai_tools.filter_all" },
   { id: "story", labelKey: "ai_tools.filter_story" },
-  { id: "character", labelKey: "ai_tools.filter_character" },
-  { id: "plot", labelKey: "ai_tools.filter_plot" },
   { id: "title", labelKey: "ai_tools.filter_title" },
   { id: "poem", labelKey: "ai_tools.filter_poem" },
   { id: "social", labelKey: "ai_tools.filter_social" },
   { id: "name", labelKey: "ai_tools.filter_name_generator" },
   { id: "utility", labelKey: "ai_tools.filter_utility" },
+  { id: "rewriting", labelKey: "ai_tools.category_rewriting" },
 ];
 
 // All Tools hub 的粗粒度筛选:顺序即展示顺序
@@ -44,21 +49,45 @@ export function ToolsExplorer({
   tools,
   accent = "orange",
   groupedChips = false,
+  variant = "media",
 }: ToolsExplorerProps) {
   const t = useTranslations();
+  // compact(首页)走 tab 分类模式:无 all,默认 story,徽标显示数量;
+  // media(工具目录/hub)保持原 chips + all + 统计行。
+  const isTabMode = variant === "compact";
   const [query, setQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [selectedId, setSelectedId] = useState<string>(() =>
+    isTabMode ? "story" : "all"
+  );
 
   const chips = groupedChips ? GROUP_CHIPS : FILTER_CHIPS;
 
-  // 细分类目模式下只显示当前数据里存在的分类;大组模式下三组恒有值
+  // 细分类目模式下只显示当前数据里存在的分类;大组模式下三组恒有值。
+  // tab 模式去掉 all,只留数据里真实存在的细分类目。
   const availableChips = useMemo(() => {
     if (groupedChips) return chips;
     const categoriesInTools = new Set(tools.map((tool) => tool.category));
-    return chips.filter(
-      (chip) => chip.id === "all" || categoriesInTools.has(chip.id)
+    return chips.filter((chip) =>
+      isTabMode
+        ? chip.id !== "all" && categoriesInTools.has(chip.id)
+        : chip.id === "all" || categoriesInTools.has(chip.id)
     );
-  }, [chips, groupedChips, tools]);
+  }, [chips, groupedChips, tools, isTabMode]);
+
+  // 选中项不在可用列表时(tab 模式没有 all 兜底)回落到第一个可用分类
+  const activeCategory = availableChips.some((chip) => chip.id === selectedId)
+    ? selectedId
+    : (availableChips[0]?.id ?? selectedId);
+
+  // 各分类工具数,tab 徽标用(tab 模式下取代原统计行)
+  const categoryCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const tool of tools) {
+      const key = groupedChips ? (tool.group ?? "") : tool.category;
+      counts.set(key, (counts.get(key) ?? 0) + 1);
+    }
+    return counts;
+  }, [tools, groupedChips]);
 
   const filteredTools = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -85,7 +114,17 @@ export function ToolsExplorer({
         placeholder={t("ai_tools.search_placeholder")}
       />
 
-      {availableChips.length > 1 && (
+      {isTabMode && availableChips.length > 1 && (
+        <CategoryTabs
+          tabs={availableChips}
+          activeId={activeCategory}
+          counts={categoryCounts}
+          labelFor={(key) => t(key)}
+          onSelect={setSelectedId}
+        />
+      )}
+
+      {!isTabMode && availableChips.length > 1 && (
         <div className="mt-5 flex flex-wrap items-center justify-center gap-1.5">
           {availableChips.map((chip) => {
             const isActive = activeCategory === chip.id;
@@ -93,7 +132,7 @@ export function ToolsExplorer({
               <button
                 key={chip.id}
                 type="button"
-                onClick={() => setActiveCategory(chip.id)}
+                onClick={() => setSelectedId(chip.id)}
                 className={cn(
                   "inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
                   isActive
@@ -108,11 +147,13 @@ export function ToolsExplorer({
         </div>
       )}
 
-      <div className="mt-4 flex items-center justify-center">
-        <span className="text-xs text-muted-foreground/60">
-          {t("ai_tools.results_count", { count: filteredTools.length })}
-        </span>
-      </div>
+      {!isTabMode && (
+        <div className="mt-4 flex items-center justify-center">
+          <span className="text-xs text-muted-foreground/60">
+            {t("ai_tools.results_count", { count: filteredTools.length })}
+          </span>
+        </div>
+      )}
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -123,13 +164,13 @@ export function ToolsExplorer({
           transition={{ duration: 0.32, ease: [0.32, 0.72, 0, 1] }}
         >
           {filteredTools.length > 0 ? (
-            <AnimatedToolsGrid tools={filteredTools} accent={accent} />
+            <AnimatedToolsGrid tools={filteredTools} accent={accent} variant={variant} />
           ) : (
             <EmptyState
               message={t("ai_tools.no_results")}
               onReset={() => {
                 setQuery("");
-                setActiveCategory("all");
+                setSelectedId(isTabMode ? "story" : "all");
               }}
               resetLabel={t("ai_tools.clear_filters")}
             />
@@ -228,6 +269,75 @@ function EmptyState({
         <Icon name="RiRefreshLine" className="size-3.5" />
         {resetLabel}
       </button>
+    </div>
+  );
+}
+
+/**
+ * 首页(compact)的分类 tab:胶囊分段器 + 滑动 pill + 数量徽标。
+ * 视觉范式与 module-tools-tabs 保持一致;layoutId 独立命名空间,避免跨实例冲突。
+ */
+function CategoryTabs({
+  tabs,
+  activeId,
+  counts,
+  labelFor,
+  onSelect,
+}: {
+  tabs: { id: string; labelKey: string }[];
+  activeId: string;
+  counts: Map<string, number>;
+  labelFor: (labelKey: string) => string;
+  onSelect: (id: string) => void;
+}) {
+  return (
+    <div className="mt-5 flex justify-center">
+      <div className="max-w-full overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div
+          role="tablist"
+          aria-label="Tool categories"
+          className="mx-auto flex w-fit items-center gap-1 rounded-full border border-border bg-background p-1 shadow-sm dark:border-input"
+        >
+          {tabs.map((tab) => {
+            const isActive = tab.id === activeId;
+            const count = counts.get(tab.id) ?? 0;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => onSelect(tab.id)}
+                className={cn(
+                  "group relative inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] sm:px-4 sm:text-[13px]",
+                  isActive
+                    ? "text-foreground"
+                    : "text-muted-foreground/70 hover:text-foreground/80"
+                )}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="tools-explorer-tab-pill"
+                    className="absolute inset-0 -z-10 rounded-full bg-muted ring-1 ring-border"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <span>{labelFor(tab.labelKey)}</span>
+                <span
+                  className={cn(
+                    "inline-flex min-w-[1.25rem] items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-semibold transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+                    isActive
+                      ? "bg-primary/15 text-primary"
+                      : "bg-foreground/[0.04] text-muted-foreground/60"
+                  )}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

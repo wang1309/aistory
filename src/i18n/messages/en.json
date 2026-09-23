@@ -21,6 +21,7 @@
   },
   "footer": {
     "name_generator": "Name Generators",
+    "story_generator": "Story Generator",
     "rewrite": "Rewrite Tools"
   },
   "sign_modal": {
@@ -314,6 +315,9 @@
     "column_title_structure": "Title & Structure",
     "column_creative": "Creative",
     "category_creative": "Creative",
+    "category_social": "Social Media",
+    "category_rewriting": "Rewriting & Editing",
+    "category_story": "Story & Writing",
     "category_featured": "Hub",
     "tools": {
       "story_generator": {
@@ -443,6 +447,10 @@
       "essay_extender": {
         "name": "Essay Extender",
         "desc": "Extend an essay to a target word count with depth, examples, and better flow — without losing your meaning."
+      },
+      "paragraph_rewriter": {
+        "name": "Paragraph Rewriter",
+        "desc": "Rewrite a paragraph for clarity, tone, or structure, then review the changes."
       }
     },
     "tab_story": "Story Generator",
@@ -450,8 +458,6 @@
     "search_placeholder": "Search tools by name or scenario...",
     "filter_all": "All",
     "filter_story": "Story",
-    "filter_character": "Character",
-    "filter_plot": "Plot",
     "filter_title": "Title",
     "filter_poem": "Poem",
     "filter_social": "Social",
