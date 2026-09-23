@@ -50,6 +50,7 @@ const TOOL_ROUTES = new Set([
   '/story-summarizer',
   '/essay-extender',
   '/paragraph-rewriter',
+  '/ai-tools/ai-humanizer',
 ])
 
 function getRouteTier(route: string): RouteTier {
@@ -58,10 +59,12 @@ function getRouteTier(route: string): RouteTier {
 
 function lastModForTier(tier: RouteTier): Date {
   switch (tier) {
+    // home: 首页改版时手动刷新（最近一次：2026-09-23 工具导航接入 ai-humanizer）
     case 'home':
-      return new Date('2026-06-19')
+      return new Date('2026-09-23')
+    // tool: 上新/改版工具页时手动刷新（最近一次：2026-09-23 ai-humanizer 上线）
     case 'tool':
-      return new Date('2026-06-20')
+      return new Date('2026-09-23')
     case 'legal':
       return new Date('2026-05-01')
     default:
@@ -148,6 +151,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   '/story-summarizer',
   '/essay-extender',
   '/paragraph-rewriter',
+  '/ai-tools/ai-humanizer',
     '/posts',
     '/changelog'
   ]

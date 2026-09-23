@@ -445,6 +445,10 @@
       "paragraph_rewriter": {
         "name": "Absatz-Umschreiber",
         "desc": "Schreibe einen Absatz für Klarheit, Ton oder Struktur um und prüfe die Änderungen."
+      },
+      "ai_humanizer": {
+        "name": "AI Humanizer",
+        "desc": "Schreibt KI-klingenden Text natürlicher um und zeigt dir genau, welche Probleme behoben wurden."
       }
     },
     "tab_story": "Geschichtengenerator",

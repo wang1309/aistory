@@ -17,7 +17,7 @@ import {
   shouldOptimisticallyGateCreativeCreditUsage,
 } from "@/lib/creative-quota-core";
 
-assert.equal(CREATIVE_PAGE_KEYS.length, 23);
+assert.equal(CREATIVE_PAGE_KEYS.length, 24);
 assert.equal(
   buildCreativeQuotaKey("2026-07-14", "user:u1", "poem-generator"),
   "free-quota:2026-07-14:user:u1:poem-generator:creative"
@@ -27,6 +27,13 @@ test("Paragraph Rewriter uses a page-scoped creative quota key", () => {
   assert.equal(
     buildCreativeQuotaKey("2026-09-21", "visitor-123", "paragraph-rewriter"),
     "free-quota:2026-09-21:visitor-123:paragraph-rewriter:creative"
+  );
+});
+test("AI Humanizer uses a page-scoped creative quota key", () => {
+  assert.ok(CREATIVE_PAGE_KEYS.includes("ai-humanizer"));
+  assert.equal(
+    buildCreativeQuotaKey("2026-09-23", "visitor-123", "ai-humanizer"),
+    "free-quota:2026-09-23:visitor-123:ai-humanizer:creative"
   );
 });
 assert.equal(

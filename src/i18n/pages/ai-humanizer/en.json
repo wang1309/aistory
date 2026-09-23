@@ -1,0 +1,291 @@
+{
+  "ai_humanizer": {
+    "metadata": {
+      "title": "Free AI Humanizer — Make AI Text Sound More Natural",
+      "description": "This free AI humanizer rewrites AI-sounding text so it reads more naturally. Compare two options and see exactly which issues — like hollow transitions or stacked qualifiers — were fixed.",
+      "keywords": "ai humanizer, humanize ai text, make ai text sound human, remove ai tone, natural writing rewriter, ai text rewriter"
+    },
+    "ui": {
+      "eyebrow": "AI WRITING TOOL",
+      "title": "AI Humanizer: Make AI Text Read Like a Human Wrote It",
+      "title_highlight": "AI Humanizer",
+      "subtitle": "This AI humanizer rewrites AI-sounding text into natural prose — compare two options side by side and see exactly which issues were fixed before you copy.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "AI Humanizer",
+      "source_text_label": "Text to humanize",
+      "source_text_hint": "Paste a paragraph or short passage. Your text is not saved.",
+      "character_limit_hint": "Up to 3,000 characters.",
+      "action_paste": "Paste",
+      "action_clear": "Clear",
+      "trust_badge_privacy": "100% Private & Not Stored",
+      "trust_badge_fidelity": "Preserves Core Facts & Data",
+      "trust_badge_diagnosis": "Visual Issue Diagnosis",
+      "examples_label": "Try an example:",
+      "example_1_label": "💼 Business Jargon",
+      "example_1_text": "In today's fast-paced digital landscape, this robust solution seamlessly leverages strategic synergies to empower key stakeholders and unlock unprecedented growth opportunities.",
+      "example_2_label": "🎓 Academic Preamble",
+      "example_2_text": "It is important to delve into the multi-faceted landscape of this phenomenon. Moreover, furthermore, this serves as a testament to the transformative potential of modern paradigms.",
+      "example_3_label": "🤖 False Contrast",
+      "example_3_text": "This isn't merely an export button — it is a gateway to a revolutionary era of productivity that completely transforms how workflows operate.",
+      "output_language_label": "Output language",
+      "output_language_auto": "Follow input language",
+      "additional_requirements_label": "Additional requirements (optional)",
+      "additional_requirements_hint": "Tell the rewriter what to preserve or avoid. Up to 500 characters.",
+      "ai_model_label": "AI model",
+      "generate": "Humanize text",
+      "generating": "Humanizing...",
+      "sign_in_to_continue": "Sign in to continue",
+      "result_title": "Review rewrites",
+      "output_empty": "Your two rewrite options will appear here.",
+      "choose_variant": "Choose a rewrite to compare",
+      "option_a": "Option A",
+      "option_b": "Option B",
+      "selected_variant": "Selected",
+      "original_text": "Original",
+      "rewritten_text": "Selected rewrite",
+      "changed_text_hint": "Highlighted text marks wording that changed. Review facts, quotations, and citations before using the result.",
+      "detected_issues_label": "Issues fixed in this option",
+      "detected_issues_empty": "No structural AI-writing patterns were flagged in this option.",
+      "view_mode_unified": "Inline Diff",
+      "view_mode_split": "Side-by-side",
+      "view_mode_clean": "Clean Text",
+      "fullscreen_view": "Fullscreen View",
+      "fullscreen_close": "Close",
+      "loading_step_1": "Scanning AI patterns & sentence rhythm...",
+      "loading_desc_1": "Detecting repetitive structures & hollow fillers",
+      "loading_step_2": "Eliminating false contrasts & buzzwords...",
+      "loading_desc_2": "Restructuring qualifiers and rigid phrasing",
+      "loading_step_3": "Infusing human cadence & natural burstiness...",
+      "loading_desc_3": "Balancing sentence lengths and authentic voice",
+      "loading_step_4": "Polishing expressions & generating options...",
+      "loading_desc_4": "Preparing two distinct humanized versions",
+      "copy_result": "Copy selected rewrite",
+      "regenerate": "Humanize again",
+      "continue_ai_write": "Continue in AI Write",
+      "continue_hint": "Need a longer draft rather than a local rewrite? Try Essay Extender."
+    },
+    "placeholders": {
+      "source_text": "Paste the AI-sounding text you want to humanize…",
+      "additional_requirements": "e.g. Keep the technical terms and don't shorten the quotes."
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick rewrites for everyday editing.",
+      "creative": "Creative",
+      "creative_description": "More expressive rewrite options. Uses your creative quota."
+    },
+    "validation": {
+      "enter_source_text": "Please paste the text you want to humanize.",
+      "source_text_too_long": "The pasted text is over the 3,000-character limit. Humanize it in parts.",
+      "requirements_too_long": "Additional requirements are over the 500-character limit."
+    },
+    "success": {
+      "result_copied": "Selected rewrite copied to your clipboard."
+    },
+    "errors": {
+      "generation_failed": "Could not humanize the text. Please try again.",
+      "copy_failed": "Could not copy the rewrite. Please try again."
+    },
+    "patterns": {
+      "zh_a1": { "label": "False-contrast opener" },
+      "zh_a2": { "label": "Dramatic one-line fragments" },
+      "zh_a3": { "label": "Empty aphorism / false depth" },
+      "zh_a4": { "label": "Throat-clearing preamble" },
+      "zh_a5": { "label": "Arguing with an imaginary objection" },
+      "zh_b6": { "label": "Forced rule-of-three" },
+      "zh_b7": { "label": "Repeated sentence-opening subject" },
+      "zh_b8": { "label": "Em-dash as universal connector" },
+      "zh_b9": { "label": "Stacked qualifiers" },
+      "zh_b10": { "label": "Invented compound jargon" },
+      "zh_b11": { "label": "Passive voice / missing subject" },
+      "zh_c12": { "label": "Hollow high-frequency AI vocabulary" },
+      "zh_c13": { "label": "Grandiose significance framing" },
+      "zh_c14": { "label": "Vague relationship framing" },
+      "zh_c15": { "label": "Sentence-final praise tail" },
+      "zh_c16": { "label": "Promotional puffery" },
+      "zh_c17": { "label": "Borrowed authority / vague attribution" },
+      "zh_c18": { "label": "Avoiding plain copula verbs" },
+      "zh_d19": { "label": "Decorative bold" },
+      "zh_d20": { "label": "Decorative heading formatting" },
+      "zh_d21": { "label": "Mismatched quotation punctuation" },
+      "zh_e22": { "label": "Customer-service filler tone" },
+      "zh_e23": { "label": "Repeated knowledge-boundary disclaimer" },
+      "zh_e24": { "label": "Heading echoed in the first sentence" },
+      "zh_e25": { "label": "Meta-commentary about the previous draft" },
+      "zh_f26": { "label": "Nested modifier stacking" },
+      "zh_f27": { "label": "Verbose \"进行 + verb\" construction" },
+      "zh_f28": { "label": "Stacked passive-voice clauses" },
+      "zh_f29": { "label": "Four-character idiom padding" },
+      "zh_f30": { "label": "\"As X develops\" background opener" },
+      "zh_f31": { "label": "Content-free closing wish" },
+      "en_padding_01": { "label": "False-contrast opener" },
+      "en_padding_02": { "label": "Throat-clearing preamble" },
+      "en_padding_03": { "label": "Arguing with an imaginary objection" },
+      "en_rhythm_01": { "label": "Forced rule-of-three" },
+      "en_rhythm_02": { "label": "Stacked qualifiers" },
+      "en_inflation_01": { "label": "Hollow buzzword inflation" },
+      "en_inflation_02": { "label": "Grandiose significance framing" },
+      "en_formatting_01": { "label": "Decorative bold" },
+      "en_chat_01": { "label": "Customer-service filler tone" },
+      "en_chat_02": { "label": "Repeated knowledge-boundary disclaimer" },
+      "en_lang_em_dash": { "label": "Em-dash as universal connector" },
+      "en_lang_lexicon": { "label": "Over-represented AI vocabulary" },
+      "en_lang_transition_stack": { "label": "Mechanical paragraph-opening transitions" },
+      "en_lang_correlative": { "label": "\"Not only X, but also Y\" false elevation" },
+      "en_lang_participial_opener": { "label": "Abstract participial-phrase opener" },
+      "ja_padding_01": { "label": "Generic scene-setting opener (Japanese)" },
+      "ja_padding_02": { "label": "False-elevation opener (Japanese)" },
+      "ja_rhythm_01": { "label": "Monotone sentence endings (Japanese)" },
+      "ja_rhythm_02": { "label": "Restated synonym padding (Japanese)" },
+      "ja_inflation_01": { "label": "Abstract phrasing, missing specifics (Japanese)" },
+      "ja_inflation_02": { "label": "Weak-causation ending (Japanese)" },
+      "ja_formatting_01": { "label": "Decorative bold (Japanese)" },
+      "ja_chat_01": { "label": "Customer-service filler tone (Japanese)" },
+      "ja_lang_renkeishi": { "label": "Overused mechanical connector (これにより)" },
+      "ja_lang_keyword_repeat": { "label": "Over-repeated keyword" },
+      "ja_lang_desu_masu_lock": { "label": "Locked です/ます register" },
+      "ja_lang_mitasanai_hikaku": { "label": "Near-miss metaphor" },
+      "ko_padding_01": { "label": "Generic scene-setting opener (Korean)" },
+      "ko_padding_02": { "label": "False-elevation opener (Korean)" },
+      "ko_rhythm_01": { "label": "Monotone sentence endings (Korean)" },
+      "ko_rhythm_02": { "label": "Restated synonym padding (Korean)" },
+      "ko_inflation_01": { "label": "Abstract phrasing, missing specifics (Korean)" },
+      "ko_inflation_02": { "label": "Weak-causation ending (Korean)" },
+      "ko_formatting_01": { "label": "Decorative bold (Korean)" },
+      "ko_chat_01": { "label": "Customer-service filler tone (Korean)" },
+      "ko_lang_beonyeoktu": { "label": "Translation-style phrasing (번역투)" },
+      "ko_lang_hyeongsik_lock": { "label": "Locked formal-neutral tone" },
+      "ko_lang_jondaemal_mismatch": { "label": "Inconsistent honorific level" },
+      "ko_lang_keyword_repeat": { "label": "Over-repeated keyword" }
+    },
+    "feature_intro": {
+      "title": "An AI humanizer that fixes tone, not meaning",
+      "description": "An AI humanizer that works on the passage you paste — it fixes concrete AI-writing patterns, shows you which ones it fixed, and never adds a fact you didn't write.",
+      "items": [
+        {
+          "title": "Two options to compare",
+          "description": "Every run produces two rewrite options side by side, so you can keep the wording you prefer instead of accepting a single take."
+        },
+        {
+          "title": "Issues shown, not hidden",
+          "description": "Each option lists the specific patterns it fixed — like hollow transitions or stacked qualifiers — instead of a black-box 'made it more natural'."
+        },
+        {
+          "title": "Changes you can see",
+          "description": "Wording that changed is highlighted in the selected rewrite, and your original text stays on screen for a line-by-line check."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "How to use the AI Humanizer",
+      "description": "From a pasted passage to a reviewed, natural-sounding rewrite in four steps.",
+      "items": [
+        {
+          "title": "Paste your text",
+          "description": "Paste a paragraph or short passage into the AI humanizer. Your text stays in the form and is never saved."
+        },
+        {
+          "title": "Set output language and requirements",
+          "description": "Follow the input language or pick another, and add optional requirements about tone or wording to preserve."
+        },
+        {
+          "title": "Compare two rewrite options",
+          "description": "Read Option A and Option B side by side, along with the specific issues each one fixed."
+        },
+        {
+          "title": "Review changes and copy",
+          "description": "Check the highlighted wording against the original, verify facts and citations, then copy the selected rewrite."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "Why writers use this AI Humanizer",
+      "description": "A focused AI humanizer — two candidates, every fixed issue labeled, and every change visible.",
+      "items": [
+        {
+          "title": "Structural fixes, not word-swapping",
+          "description": "The rewriter targets structural AI-writing patterns — hollow openers, forced triads, stacked qualifiers — rather than just swapping a few buzzwords."
+        },
+        {
+          "title": "Transparent about what changed",
+          "description": "The detected-issues list turns editorial judgment into something you can see and check, instead of a black box."
+        },
+        {
+          "title": "Reminders to protect your facts",
+          "description": "Changed wording is highlighted and you are reminded to review facts, quotations, and citations before using the result."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "What the AI Humanizer can rewrite",
+      "description": "Any single paragraph or short passage you can paste — the AI humanizer works with the text you give it.",
+      "items": [
+        {
+          "title": "AI-drafted blog posts",
+          "description": "Smooth out hollow transitions and buzzword inflation from a first AI draft — then verify every claim before publishing."
+        },
+        {
+          "title": "Marketing and product copy",
+          "description": "Cut promotional puffery and forced triads while keeping the features and specs you actually listed."
+        },
+        {
+          "title": "Academic and report drafts",
+          "description": "Reduce mechanical transition stacking and vague attribution — then reread citations and figures before submitting."
+        },
+        {
+          "title": "Emails and messages",
+          "description": "Remove customer-service filler tone from an AI-assisted reply while keeping the actual information."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "AI Humanizer FAQ",
+      "description": "How the tool works, what it does with your text, and what to expect from the results.",
+      "items": [
+        {
+          "title": "Does this help my text pass an AI detector?",
+          "description": "The AI Humanizer is built to make text read more naturally and less mechanically — it is not designed or tested to defeat any specific AI-detection tool, and we don't make claims about detector scores or pass rates."
+        },
+        {
+          "title": "Why do I get two rewrite options?",
+          "description": "Each run produces Option A and Option B — two different natural-sounding takes on the same passage. Reading them side by side makes it easy to choose the wording that fits your context."
+        },
+        {
+          "title": "What are the 'issues fixed' tags?",
+          "description": "Each option lists the specific AI-writing patterns it corrected, such as hollow transitions, forced three-item lists, or stacked qualifiers. This shows you the reasoning behind the rewrite instead of a single vague result."
+        },
+        {
+          "title": "Which language is the rewrite in?",
+          "description": "By default the rewrite follows the language of your pasted text: an English passage stays English, a Chinese passage stays Chinese. You can also pick a fixed output language from the dropdown."
+        },
+        {
+          "title": "Is my text private?",
+          "description": "Yes. The AI Humanizer sends your pasted text to generate the rewrites and does not save it to your account or our database. Only anonymous usage counts are recorded — never your text or the generated result."
+        },
+        {
+          "title": "Will it keep facts, quotations, and citations intact?",
+          "description": "The rewriter is instructed to preserve factual content, quotations, and citations while rewording, but rephrasing can still introduce errors. Highlighted changes mark where wording moved — always review them against your original before using the result."
+        },
+        {
+          "title": "How is this different from Paragraph Rewriter?",
+          "description": "Paragraph Rewriter targets a general goal you pick, like clearer or more formal. AI Humanizer specifically targets AI-sounding patterns and shows you which ones it found and fixed."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "Humanize the passage, then keep writing",
+      "description": "Once your text reads the way you want, open AI Write to draft the sections around it — with Story Bible and Consistency Check available inside the editor.",
+      "buttons": [
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "More writing tools",
+      "description": "Paragraph Rewriter targets a specific editing goal, Essay Extender grows drafts, and Story Summarizer condenses them.",
+      "more_label": "View all tools"
+    }
+  }
+}

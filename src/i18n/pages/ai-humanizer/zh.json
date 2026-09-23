@@ -1,0 +1,291 @@
+{
+  "ai_humanizer": {
+    "metadata": {
+      "title": "免费 AI Humanizer（AI 味祛除器）— 让 AI 文本读起来更自然",
+      "description": "这款 AI Humanizer 把带有 AI 腔调的文本改写得更自然。对比两个改写选项，清楚看到修正了哪些问题——比如空洞过渡句或堆叠限定词。",
+      "keywords": "AI Humanizer, AI味祛除器, AI文本人性化, 去除AI腔调, 让AI文本更自然, AI文本改写器, 人性化写作"
+    },
+    "ui": {
+      "eyebrow": "AI 写作工具",
+      "title": "AI 味祛除器（AI Humanizer）：让 AI 文本读起来像人写的",
+      "title_highlight": "AI 味祛除器",
+      "subtitle": "这款 AI Humanizer 把带 AI 腔调的文本改写得更自然——对比两个改写版本，复制前清楚看到具体修正了哪些问题。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "AI 味祛除器",
+      "source_text_label": "待处理文本",
+      "source_text_hint": "粘贴一段文字或短文。你的文本不会被保存。",
+      "character_limit_hint": "最多 3,000 字符。",
+      "action_paste": "粘贴",
+      "action_clear": "清空",
+      "trust_badge_privacy": "100% 隐私安全 · 阅后即焚",
+      "trust_badge_fidelity": "严格保留核心事实与数据",
+      "trust_badge_diagnosis": "可视化 AI 腔调诊断",
+      "examples_label": "快速试用示例：",
+      "example_1_label": "💼 商业黑话套话",
+      "example_1_text": "在当今瞬息万变的数字化时代背景下，我们通过赋能全链路闭环生态，深度打通底层逻辑，全面提升协同效率，打造极具前瞻性的创新解决方案。",
+      "example_2_label": "🎓 论文空洞铺垫",
+      "example_2_text": "随着人工智能技术的飞速发展与广泛应用，深入探讨其内在机制与实践价值显得至关重要。毋庸置疑，这充分彰显了新时代科技创新的深远意义。",
+      "example_3_label": "🤖 假对比与排比",
+      "example_3_text": "这不仅是一个简单的导出功能，更是通往全新高效生产力的重要桥梁。该方案稳定可靠、快速响应、易于维护，标志着团队协作新时代的到来。",
+      "output_language_label": "输出语言",
+      "output_language_auto": "跟随原文语言",
+      "additional_requirements_label": "附加要求(可选)",
+      "additional_requirements_hint": "告诉改写器需要保留或避免的内容，最多 500 字符。",
+      "ai_model_label": "AI 模型",
+      "generate": "去除 AI 腔调",
+      "generating": "处理中...",
+      "sign_in_to_continue": "登录后继续",
+      "result_title": "查看改写结果",
+      "output_empty": "两个改写选项将显示在这里。",
+      "choose_variant": "选择一个改写版本进行对比",
+      "option_a": "选项 A",
+      "option_b": "选项 B",
+      "selected_variant": "已选中",
+      "original_text": "原文",
+      "rewritten_text": "选中的改写",
+      "changed_text_hint": "高亮文字标记了改动的措辞。使用结果前请核对事实、引文和引用来源。",
+      "detected_issues_label": "此选项修正的问题",
+      "detected_issues_empty": "此选项未检测到结构性 AI 写作模式。",
+      "view_mode_unified": "内联对比",
+      "view_mode_split": "双栏对照",
+      "view_mode_clean": "纯净成稿",
+      "fullscreen_view": "全屏放大查看",
+      "fullscreen_close": "退出全屏",
+      "loading_step_1": "扫描 AI 腔调与句式节奏...",
+      "loading_desc_1": "检测重复结构、空洞铺垫与假性对比",
+      "loading_step_2": "过滤空泛过渡与堆叠限定词...",
+      "loading_desc_2": "重构僵硬措辞，剔除高频流行词拔高",
+      "loading_step_3": "注入人类写作的自然起伏与韵律...",
+      "loading_desc_3": "平衡句子长短变化，保留作者真实声音",
+      "loading_step_4": "润色自然表达并生成对比版本...",
+      "loading_desc_4": "准备两套不同方向的自然改写候选稿",
+      "copy_result": "复制选中的改写",
+      "regenerate": "重新处理",
+      "continue_ai_write": "继续在 AI Write 中写作",
+      "continue_hint": "需要更长的草稿而不是局部改写？试试作文扩写器。"
+    },
+    "placeholders": {
+      "source_text": "粘贴你想要处理的带 AI 腔调的文本…",
+      "additional_requirements": "例如：保留专业术语，不要缩短引用内容。"
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "适合日常编辑的快速改写。",
+      "creative": "创意",
+      "creative_description": "更具表现力的改写选项，会消耗你的创意额度。"
+    },
+    "validation": {
+      "enter_source_text": "请粘贴你想要处理的文本。",
+      "source_text_too_long": "粘贴的文本超过 3,000 字符上限，请分段处理。",
+      "requirements_too_long": "附加要求超过 500 字符上限。"
+    },
+    "success": {
+      "result_copied": "选中的改写已复制到剪贴板。"
+    },
+    "errors": {
+      "generation_failed": "无法处理该文本，请重试。",
+      "copy_failed": "无法复制改写结果，请重试。"
+    },
+    "patterns": {
+      "zh_a1": { "label": "不是X而是Y 铺垫" },
+      "zh_a2": { "label": "戏剧性单句碎片" },
+      "zh_a3": { "label": "格言式伪深度" },
+      "zh_a4": { "label": "起跑式铺垫" },
+      "zh_a5": { "label": "与假想敌辩论" },
+      "zh_b6": { "label": "强凑三段式" },
+      "zh_b7": { "label": "句式开头复读" },
+      "zh_b8": { "label": "破折号当万能连接" },
+      "zh_b9": { "label": "限定词堆叠" },
+      "zh_b10": { "label": "生造复合词" },
+      "zh_b11": { "label": "被动句缺主语" },
+      "zh_c12": { "label": "AI 高频空词" },
+      "zh_c13": { "label": "意义拔高" },
+      "zh_c14": { "label": "模糊关联表述" },
+      "zh_c15": { "label": "句尾补充式拔高" },
+      "zh_c16": { "label": "宣传语式空泛赞美" },
+      "zh_c17": { "label": "借权威/模糊归因" },
+      "zh_c18": { "label": "回避是/有句式" },
+      "zh_d19": { "label": "粗体当装饰" },
+      "zh_d20": { "label": "装饰性标题排版" },
+      "zh_d21": { "label": "引号标点不匹配" },
+      "zh_e22": { "label": "客服腔" },
+      "zh_e23": { "label": "重复的知识边界免责声明" },
+      "zh_e24": { "label": "首句复读标题" },
+      "zh_e25": { "label": "谈论上一稿的编辑过程" },
+      "zh_f26": { "label": "层叠的\"的\"字修饰" },
+      "zh_f27": { "label": "冗长的\"进行+动词\"结构" },
+      "zh_f28": { "label": "被字句堆叠" },
+      "zh_f29": { "label": "四字词排比堆砌" },
+      "zh_f30": { "label": "\"随着……的发展\"式开头" },
+      "zh_f31": { "label": "无内容的套话收尾" },
+      "en_padding_01": { "label": "假性对比式铺垫(英文)" },
+      "en_padding_02": { "label": "起跑式铺垫(英文)" },
+      "en_padding_03": { "label": "与假想敌辩论(英文)" },
+      "en_rhythm_01": { "label": "强凑三段式(英文)" },
+      "en_rhythm_02": { "label": "限定词堆叠(英文)" },
+      "en_inflation_01": { "label": "空洞流行语拔高(英文)" },
+      "en_inflation_02": { "label": "意义拔高(英文)" },
+      "en_formatting_01": { "label": "粗体当装饰(英文)" },
+      "en_chat_01": { "label": "客服腔(英文)" },
+      "en_chat_02": { "label": "重复的知识边界免责声明(英文)" },
+      "en_lang_em_dash": { "label": "破折号当万能连接(英文特有)" },
+      "en_lang_lexicon": { "label": "AI 高频词表(英文特有)" },
+      "en_lang_transition_stack": { "label": "段首机械转折词堆叠(英文特有)" },
+      "en_lang_correlative": { "label": "not only...but also 假拔高(英文特有)" },
+      "en_lang_participial_opener": { "label": "分词短语抽象开头(英文特有)" },
+      "ja_padding_01": { "label": "泛泛背景式铺垫(日语)" },
+      "ja_padding_02": { "label": "假性拔高开头(日语)" },
+      "ja_rhythm_01": { "label": "文末单调重复(日语)" },
+      "ja_rhythm_02": { "label": "同义反复堆砌(日语)" },
+      "ja_inflation_01": { "label": "抽象表述缺具体信息(日语)" },
+      "ja_inflation_02": { "label": "因果薄弱式收尾(日语)" },
+      "ja_formatting_01": { "label": "粗体当装饰(日语)" },
+      "ja_chat_01": { "label": "客服腔(日语)" },
+      "ja_lang_renkeishi": { "label": "\"这により\"等连接词滥用(日语特有)" },
+      "ja_lang_keyword_repeat": { "label": "关键词过度重复(日语特有)" },
+      "ja_lang_desu_masu_lock": { "label": "です/ます语域锁死(日语特有)" },
+      "ja_lang_mitasanai_hikaku": { "label": "貌合神离的比喻(日语特有)" },
+      "ko_padding_01": { "label": "泛泛背景式铺垫(韩语)" },
+      "ko_padding_02": { "label": "假性拔高开头(韩语)" },
+      "ko_rhythm_01": { "label": "文末单调重复(韩语)" },
+      "ko_rhythm_02": { "label": "同义反复堆砌(韩语)" },
+      "ko_inflation_01": { "label": "抽象表述缺具体信息(韩语)" },
+      "ko_inflation_02": { "label": "因果薄弱式收尾(韩语)" },
+      "ko_formatting_01": { "label": "粗体当装饰(韩语)" },
+      "ko_chat_01": { "label": "客服腔(韩语)" },
+      "ko_lang_beonyeoktu": { "label": "翻译体表达(번역투)(韩语特有)" },
+      "ko_lang_hyeongsik_lock": { "label": "格式体/中性语气锁死(韩语特有)" },
+      "ko_lang_jondaemal_mismatch": { "label": "敬语级别前后不一致(韩语特有)" },
+      "ko_lang_keyword_repeat": { "label": "关键词过度重复(韩语特有)" }
+    },
+    "feature_intro": {
+      "title": "AI 味祛除器：只改腔调，不丢原意",
+      "description": "一个作用于你粘贴的文本的 AI 味祛除器——它修正具体的 AI 写作模式，向你展示修正了哪些问题，绝不添加你没写过的事实。",
+      "items": [
+        {
+          "title": "两个选项可对比",
+          "description": "每次运行都会生成两个并排的改写选项，你可以挑选自己更喜欢的措辞，而不是只能接受单一结果。"
+        },
+        {
+          "title": "问题清晰展示，不是黑箱",
+          "description": "每个选项都列出具体修正的模式——比如空洞过渡句或堆叠限定词——而不是笼统地说\"变自然了\"。"
+        },
+        {
+          "title": "改动清晰可见",
+          "description": "选中的改写会高亮标记改动的措辞，原文始终留在屏幕上方便逐行核对。"
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "如何使用 AI 味祛除器",
+      "description": "从粘贴文本到查看自然改写结果，只需四步。",
+      "items": [
+        {
+          "title": "粘贴你的文本",
+          "description": "将一段文字或短文粘贴到 AI 味祛除器中。你的文本会留在表单里，不会被保存。"
+        },
+        {
+          "title": "设置输出语言和要求",
+          "description": "跟随原文语言，或选择其他语言，还可以添加需要保留的语气或措辞要求。"
+        },
+        {
+          "title": "对比两个改写选项",
+          "description": "并排阅读选项 A 和选项 B，以及每个选项具体修正的问题。"
+        },
+        {
+          "title": "核对改动并复制",
+          "description": "将高亮的措辞与原文对照，核实事实和引用，然后复制选中的改写。"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "为什么写作者选择这款 AI 味祛除器",
+      "description": "一个专注的 AI 味祛除器——两个候选、每个修正问题都有标签、每处改动都可见。",
+      "items": [
+        {
+          "title": "结构性修正,不是换词游戏",
+          "description": "改写器针对结构性的 AI 写作模式——空洞的开场白、强凑的三段式、堆叠的限定词——而不只是替换几个流行词。"
+        },
+        {
+          "title": "改动依据透明可查",
+          "description": "检测到的问题清单把编辑判断变成你可以看到、可以核查的东西，而不是一个黑箱。"
+        },
+        {
+          "title": "提醒你核实事实",
+          "description": "改动的措辞会被高亮标记，并提醒你在使用结果前核对事实、引文和引用来源。"
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "AI 味祛除器可以处理哪些文本",
+      "description": "任何你能粘贴的一段文字或短文——AI 味祛除器处理你给它的文本。",
+      "items": [
+        {
+          "title": "AI 生成的博客初稿",
+          "description": "去掉初稿中空洞的过渡句和流行词拔高，发布前再核实每一个论点。"
+        },
+        {
+          "title": "营销和产品文案",
+          "description": "删掉宣传式的空泛赞美和强凑的三段式，同时保留你列出的真实功能和参数。"
+        },
+        {
+          "title": "学术和报告草稿",
+          "description": "减少机械的转折词堆叠和模糊归因，提交前再重新核对引用和数据。"
+        },
+        {
+          "title": "邮件和消息",
+          "description": "去掉 AI 辅助回复里的客服腔，同时保留真实信息。"
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "AI 味祛除器 常见问题",
+      "description": "这个工具如何工作、会怎样处理你的文本、以及可以期待什么样的结果。",
+      "items": [
+        {
+          "title": "这能帮我的文本通过 AI 检测工具吗?",
+          "description": "AI 味祛除器的目标是让文本读起来更自然、更不机械化——它不是为绕过任何特定的 AI 检测工具而设计或测试的，我们也不对检测分数或通过率做任何承诺。"
+        },
+        {
+          "title": "为什么会得到两个改写选项?",
+          "description": "每次运行会生成选项 A 和选项 B——针对同一段文本的两种不同的自然化处理。并排阅读能让你轻松挑出更适合你语境的措辞。"
+        },
+        {
+          "title": "\"修正的问题\"标签是什么?",
+          "description": "每个选项都列出了它纠正的具体 AI 写作模式，比如空洞过渡句、强凑的三项列表或堆叠的限定词。这让你看到改写背后的依据，而不是一个笼统模糊的结果。"
+        },
+        {
+          "title": "改写会用什么语言?",
+          "description": "默认情况下改写会跟随你粘贴文本的语言:英文文本保持英文,中文文本保持中文。你也可以从下拉菜单中选择固定的输出语言。"
+        },
+        {
+          "title": "我的文本是私密的吗?",
+          "description": "是的。AI 味祛除器会发送你粘贴的文本以生成改写结果,但不会保存到你的账户或我们的数据库中。只会记录匿名使用次数——绝不会记录你的文本或生成结果。"
+        },
+        {
+          "title": "它会保留事实、引文和引用来源吗?",
+          "description": "改写器被要求在改写措辞时保留事实内容、引文和引用来源,但重新表述仍可能引入错误。高亮的改动标记了措辞变动的位置——使用结果前请始终对照原文核对。"
+        },
+        {
+          "title": "这和段落改写器有什么区别?",
+          "description": "段落改写器针对你选择的通用目标,比如更清晰或更正式。AI 味祛除器专门针对 AI 腔调的写作模式,并向你展示它发现并修正了哪些问题。"
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "处理完这段文本，继续写下去",
+      "description": "文本读起来符合你的预期后，打开 AI Write 继续围绕它撰写后续章节——编辑器内置 Story Bible 和一致性检查。",
+      "buttons": [
+        {
+          "title": "打开 AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "更多写作工具",
+      "description": "段落改写器针对具体的编辑目标，作文扩写器扩写草稿，故事摘要生成器则用于精简内容。",
+      "more_label": "查看全部工具"
+    }
+  }
+}

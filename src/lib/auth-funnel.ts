@@ -41,7 +41,8 @@ export type AuthSourcePage =
   | "oc-generator"
   | "story-summarizer"
   | "essay-extender"
-  | "paragraph-rewriter";
+  | "paragraph-rewriter"
+  | "ai-humanizer";
 
 export const AUTH_ATTEMPT_STORAGE_KEY = "auth-funnel:pending-attempt";
 

@@ -17,7 +17,7 @@ const NAME_GENERATOR_TOOL_SLUGS = [
   "youtube-name-generator",
 ];
 
-const REWRITE_TOOL_SLUGS = ["essay-extender", "paragraph-rewriter"];
+const REWRITE_TOOL_SLUGS = ["essay-extender", "paragraph-rewriter", "ai-humanizer"];
 
 export default function Footer({ footer }: { footer: FooterType }) {
   const t = useTranslations();

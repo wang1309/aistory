@@ -448,6 +448,10 @@
       "paragraph_rewriter": {
         "name": "Paragraph Rewriter",
         "desc": "Rewrite a paragraph for clarity, tone, or structure, then review the changes."
+      },
+      "ai_humanizer": {
+        "name": "AI Humanizer",
+        "desc": "Rewrite AI-sounding text so it reads more naturally, with the specific issues it fixed shown to you."
       }
     },
     "tab_story": "Story Generator",

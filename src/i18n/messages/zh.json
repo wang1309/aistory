@@ -448,6 +448,10 @@
       "paragraph_rewriter": {
         "name": "段落改写器",
         "desc": "按清晰度、语气或结构改写段落，改动一目了然。"
+      },
+      "ai_humanizer": {
+        "name": "AI 味祛除器",
+        "desc": "把带 AI 腔调的文本改写得更自然，并展示具体修正了哪些问题。"
       }
     },
     "tab_story": "故事生成器",

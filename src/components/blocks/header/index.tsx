@@ -114,7 +114,7 @@ function ToolRow({
 }) {
   return (
     <div className="grid grid-cols-[9.5rem_1fr] gap-2 px-1 py-2.5">
-      <div className="flex items-start gap-2 pt-1">
+      <div className="flex items-center gap-2">
         <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
           <Icon name={row.icon} className="size-3.5" />
         </span>

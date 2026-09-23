@@ -1,0 +1,283 @@
+{
+  "ai_humanizer": {
+    "metadata": {
+      "title": "Kostenloser AI Humanizer — KI-Text natürlicher klingen lassen",
+      "description": "Schreibt KI-klingenden Text natürlicher um. Vergleiche zwei Optionen und sieh genau, welche Probleme behoben wurden — etwa hohle Übergänge oder gestapelte Einschränkungen.",
+      "keywords": "ai humanizer, ki-text menschlich machen, ki-ton entfernen, natürlicher text umschreiber, ai text umschreiber"
+    },
+    "ui": {
+      "eyebrow": "KI-SCHREIBWERKZEUG",
+      "title": "AI Humanizer: Lass KI-Text wie von einem Menschen geschrieben wirken",
+      "title_highlight": "AI Humanizer",
+      "subtitle": "Dieser AI Humanizer schreibt KI-klingenden Text natürlicher um — vergleiche zwei Optionen und sieh genau, welche Probleme behoben wurden, bevor du kopierst.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "AI Humanizer",
+      "source_text_label": "Zu humanisierender Text",
+      "source_text_hint": "Füge einen Absatz oder kurzen Textabschnitt ein. Dein Text wird nicht gespeichert.",
+      "character_limit_hint": "Bis zu 3.000 Zeichen.",
+      "action_paste": "Einfügen",
+      "action_clear": "Löschen",
+      "trust_badge_privacy": "100% Privat · Nicht gespeichert",
+      "trust_badge_fidelity": "Bewahrt Fakten & Zahlen",
+      "trust_badge_diagnosis": "Visuelle Musterdiagnose",
+      "examples_label": "Beispiel ausprobieren:",
+      "example_1_label": "💼 Business-Floskeln",
+      "example_1_text": "In der heutigen dynamischen digitalen Landschaft nutzt diese robuste Lösung strategische Synergien, um Stakeholder nahtlos zu stärken und beispiellose Chancen freizuschalten.",
+      "example_2_label": "🎓 Akademische Einleitung",
+      "example_2_text": "Es ist von entscheidender Bedeutung, tiefer in die vielschichtige Dimension dieses Themas einzutauchen. Dies dient als Beweis für das transformative Potenzial moderner Ansätze.",
+      "example_3_label": "🤖 Falscher Kontrast",
+      "example_3_text": "Dies ist nicht nur eine Schaltfläche, sondern ein Tor zu einer revolutionären Ära der Produktivität, die Arbeitsabläufe grundlegend verändert.",
+      "output_language_label": "Ausgabesprache",
+      "output_language_auto": "Eingabesprache übernehmen",
+      "additional_requirements_label": "Zusätzliche Anforderungen (optional)",
+      "additional_requirements_hint": "Teile dem Umschreiber mit, was erhalten oder vermieden werden soll. Bis zu 500 Zeichen.",
+      "ai_model_label": "KI-Modell",
+      "generate": "Text humanisieren",
+      "generating": "Wird humanisiert...",
+      "sign_in_to_continue": "Zum Fortfahren anmelden",
+      "result_title": "Umschreibungen prüfen",
+      "output_empty": "Deine zwei Umschreibungsoptionen erscheinen hier.",
+      "choose_variant": "Wähle eine Umschreibung zum Vergleich",
+      "option_a": "Option A",
+      "option_b": "Option B",
+      "selected_variant": "Ausgewählt",
+      "original_text": "Original",
+      "rewritten_text": "Ausgewählte Umschreibung",
+      "changed_text_hint": "Hervorgehobener Text markiert geänderte Formulierungen. Prüfe Fakten, Zitate und Quellenangaben, bevor du das Ergebnis verwendest.",
+      "detected_issues_label": "In dieser Option behobene Probleme",
+      "detected_issues_empty": "In dieser Option wurden keine strukturellen KI-Schreibmuster erkannt.",
+      "view_mode_unified": "Inline-Vergleich",
+      "view_mode_split": "Nebeneinander",
+      "view_mode_clean": "Reiner Text",
+      "fullscreen_view": "Vollbildansicht",
+      "fullscreen_close": "Schließen",
+      "copy_result": "Ausgewählte Umschreibung kopieren",
+      "regenerate": "Erneut humanisieren",
+      "continue_ai_write": "In AI Write fortsetzen",
+      "continue_hint": "Brauchst du einen längeren Entwurf statt einer lokalen Umschreibung? Probiere den Aufsatz-Erweiterer."
+    },
+    "placeholders": {
+      "source_text": "Füge den KI-klingenden Text ein, den du humanisieren möchtest…",
+      "additional_requirements": "z. B. Fachbegriffe beibehalten und Zitate nicht verkürzen."
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schnelle Umschreibungen für die alltägliche Bearbeitung.",
+      "creative": "Kreativ",
+      "creative_description": "Ausdrucksstärkere Umschreibungsoptionen. Verbraucht dein kreatives Kontingent."
+    },
+    "validation": {
+      "enter_source_text": "Bitte füge den Text ein, den du humanisieren möchtest.",
+      "source_text_too_long": "Der eingefügte Text überschreitet das Limit von 3.000 Zeichen. Humanisiere ihn in Teilen.",
+      "requirements_too_long": "Die zusätzlichen Anforderungen überschreiten das Limit von 500 Zeichen."
+    },
+    "success": {
+      "result_copied": "Ausgewählte Umschreibung in die Zwischenablage kopiert."
+    },
+    "errors": {
+      "generation_failed": "Der Text konnte nicht humanisiert werden. Bitte versuche es erneut.",
+      "copy_failed": "Die Umschreibung konnte nicht kopiert werden. Bitte versuche es erneut."
+    },
+    "patterns": {
+      "zh_a1": { "label": "Falscher Kontrast-Einstieg" },
+      "zh_a2": { "label": "Dramatische Ein-Satz-Fragmente" },
+      "zh_a3": { "label": "Leerer Aphorismus / falsche Tiefe" },
+      "zh_a4": { "label": "Räusper-Präambel" },
+      "zh_a5": { "label": "Streit mit imaginärem Einwand" },
+      "zh_b6": { "label": "Erzwungene Dreiergruppe" },
+      "zh_b7": { "label": "Wiederholtes Satz-Subjekt" },
+      "zh_b8": { "label": "Gedankenstrich als Allzweck-Verbinder" },
+      "zh_b9": { "label": "Gestapelte Einschränkungen" },
+      "zh_b10": { "label": "Erfundener Fachjargon" },
+      "zh_b11": { "label": "Passiv ohne Subjekt" },
+      "zh_c12": { "label": "Hohles KI-Vokabular" },
+      "zh_c13": { "label": "Übertriebene Bedeutungsrahmung" },
+      "zh_c14": { "label": "Vage Beziehungsangabe" },
+      "zh_c15": { "label": "Lobender Schlusssatz" },
+      "zh_c16": { "label": "Werbliche Übertreibung" },
+      "zh_c17": { "label": "Entlehnte Autorität / vage Zuschreibung" },
+      "zh_c18": { "label": "Vermeidung einfacher Kopula-Verben" },
+      "zh_d19": { "label": "Dekorative Fettung" },
+      "zh_d20": { "label": "Dekorative Überschriftenformatierung" },
+      "zh_d21": { "label": "Uneinheitliche Anführungszeichen" },
+      "zh_e22": { "label": "Kundenservice-Floskelton" },
+      "zh_e23": { "label": "Wiederholter Wissensgrenzen-Disclaimer" },
+      "zh_e24": { "label": "Überschrift im ersten Satz wiederholt" },
+      "zh_e25": { "label": "Meta-Kommentar zum vorherigen Entwurf" },
+      "zh_f26": { "label": "Verschachtelte Modifikatoren (Chinesisch)" },
+      "zh_f27": { "label": "Umständliche 进行-Konstruktion (Chinesisch)" },
+      "zh_f28": { "label": "Gestapelte Passivsätze (Chinesisch)" },
+      "zh_f29": { "label": "Vierzeichen-Idiom-Füllung (Chinesisch)" },
+      "zh_f30": { "label": "\"Mit der Entwicklung von...\"-Einstieg (Chinesisch)" },
+      "zh_f31": { "label": "Inhaltsleerer Schlusswunsch" },
+      "en_padding_01": { "label": "Falscher Kontrast-Einstieg (Englisch)" },
+      "en_padding_02": { "label": "Räusper-Präambel (Englisch)" },
+      "en_padding_03": { "label": "Streit mit imaginärem Einwand (Englisch)" },
+      "en_rhythm_01": { "label": "Erzwungene Dreiergruppe (Englisch)" },
+      "en_rhythm_02": { "label": "Gestapelte Einschränkungen (Englisch)" },
+      "en_inflation_01": { "label": "Hohle Schlagwort-Übertreibung (Englisch)" },
+      "en_inflation_02": { "label": "Übertriebene Bedeutungsrahmung (Englisch)" },
+      "en_formatting_01": { "label": "Dekorative Fettung (Englisch)" },
+      "en_chat_01": { "label": "Kundenservice-Floskelton (Englisch)" },
+      "en_chat_02": { "label": "Wiederholter Wissensgrenzen-Disclaimer (Englisch)" },
+      "en_lang_em_dash": { "label": "Gedankenstrich als Allzweck-Verbinder (Englisch)" },
+      "en_lang_lexicon": { "label": "Überrepräsentiertes KI-Vokabular (Englisch)" },
+      "en_lang_transition_stack": { "label": "Mechanisch gestapelte Absatz-Übergänge (Englisch)" },
+      "en_lang_correlative": { "label": "\"Not only X, but also Y\"-Übertreibung (Englisch)" },
+      "en_lang_participial_opener": { "label": "Abstrakter Partizip-Einstieg (Englisch)" },
+      "ja_padding_01": { "label": "Allgemeiner Szenen-Einstieg (Japanisch)" },
+      "ja_padding_02": { "label": "Falscher Erhöhungs-Einstieg (Japanisch)" },
+      "ja_rhythm_01": { "label": "Monotone Satzenden (Japanisch)" },
+      "ja_rhythm_02": { "label": "Wiederholte Synonym-Füllung (Japanisch)" },
+      "ja_inflation_01": { "label": "Abstrakte Formulierung ohne Details (Japanisch)" },
+      "ja_inflation_02": { "label": "Schwaches Kausal-Satzende (Japanisch)" },
+      "ja_formatting_01": { "label": "Dekorative Fettung (Japanisch)" },
+      "ja_chat_01": { "label": "Kundenservice-Floskelton (Japanisch)" },
+      "ja_lang_renkeishi": { "label": "Überstrapazierter Verbinder (これにより)" },
+      "ja_lang_keyword_repeat": { "label": "Überstrapaziertes Schlüsselwort" },
+      "ja_lang_desu_masu_lock": { "label": "Fixiertes です/ます-Register" },
+      "ja_lang_mitasanai_hikaku": { "label": "Knapp verfehlte Metapher" },
+      "ko_padding_01": { "label": "Allgemeiner Szenen-Einstieg (Koreanisch)" },
+      "ko_padding_02": { "label": "Falscher Erhöhungs-Einstieg (Koreanisch)" },
+      "ko_rhythm_01": { "label": "Monotone Satzenden (Koreanisch)" },
+      "ko_rhythm_02": { "label": "Wiederholte Synonym-Füllung (Koreanisch)" },
+      "ko_inflation_01": { "label": "Abstrakte Formulierung ohne Details (Koreanisch)" },
+      "ko_inflation_02": { "label": "Schwaches Kausal-Satzende (Koreanisch)" },
+      "ko_formatting_01": { "label": "Dekorative Fettung (Koreanisch)" },
+      "ko_chat_01": { "label": "Kundenservice-Floskelton (Koreanisch)" },
+      "ko_lang_beonyeoktu": { "label": "Übersetzungsartiger Satzbau (번역투)" },
+      "ko_lang_hyeongsik_lock": { "label": "Fixierter formell-neutraler Ton" },
+      "ko_lang_jondaemal_mismatch": { "label": "Uneinheitliche Höflichkeitsstufe" },
+      "ko_lang_keyword_repeat": { "label": "Überstrapaziertes Schlüsselwort" }
+    },
+    "feature_intro": {
+      "title": "Ein AI Humanizer, der den Ton korrigiert – nicht die Aussage",
+      "description": "Ein AI Humanizer, der mit dem eingefügten Textabschnitt arbeitet — er behebt konkrete KI-Schreibmuster, zeigt dir, welche behoben wurden, und fügt niemals eine Tatsache hinzu, die du nicht geschrieben hast.",
+      "items": [
+        {
+          "title": "Zwei Optionen zum Vergleich",
+          "description": "Jeder Durchlauf erzeugt zwei Umschreibungsoptionen nebeneinander, sodass du die Formulierung wählen kannst, die dir zusagt."
+        },
+        {
+          "title": "Probleme werden gezeigt, nicht versteckt",
+          "description": "Jede Option listet die konkreten behobenen Muster auf — statt eines Blackbox-'natürlicher gemacht'."
+        },
+        {
+          "title": "Änderungen sichtbar machen",
+          "description": "Geänderte Formulierungen werden in der ausgewählten Umschreibung hervorgehoben, während dein Originaltext zum zeilengenauen Vergleich sichtbar bleibt."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "So nutzt du den AI Humanizer",
+      "description": "Von eingefügtem Text zu einer geprüften, natürlich klingenden Umschreibung in vier Schritten.",
+      "items": [
+        {
+          "title": "Text einfügen",
+          "description": "Füge einen Absatz oder kurzen Textabschnitt in den AI Humanizer ein. Dein Text bleibt im Formular und wird nie gespeichert."
+        },
+        {
+          "title": "Ausgabesprache und Anforderungen festlegen",
+          "description": "Folge der Eingabesprache oder wähle eine andere, und füge optionale Anforderungen zu Ton oder zu erhaltenden Formulierungen hinzu."
+        },
+        {
+          "title": "Zwei Umschreibungsoptionen vergleichen",
+          "description": "Lies Option A und Option B nebeneinander, zusammen mit den jeweils behobenen Problemen."
+        },
+        {
+          "title": "Änderungen prüfen und kopieren",
+          "description": "Vergleiche die hervorgehobenen Formulierungen mit dem Original, prüfe Fakten und Zitate, und kopiere dann die ausgewählte Umschreibung."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "Warum Autoren diesen AI Humanizer nutzen",
+      "description": "Ein fokussierter AI Humanizer — zwei Kandidaten, jedes behobene Problem beschriftet, jede Änderung sichtbar.",
+      "items": [
+        {
+          "title": "Strukturelle Korrekturen statt Wortaustausch",
+          "description": "Der Umschreiber zielt auf strukturelle KI-Schreibmuster ab — hohle Einstiege, erzwungene Dreiergruppen, gestapelte Einschränkungen — statt nur ein paar Schlagwörter zu ersetzen."
+        },
+        {
+          "title": "Transparent, was geändert wurde",
+          "description": "Die Liste der erkannten Probleme macht die redaktionelle Entscheidung sichtbar und überprüfbar statt einer Blackbox."
+        },
+        {
+          "title": "Erinnerung zum Schutz deiner Fakten",
+          "description": "Geänderte Formulierungen werden hervorgehoben, und du wirst erinnert, Fakten, Zitate und Quellenangaben vor der Verwendung zu prüfen."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "Was der AI Humanizer umschreiben kann",
+      "description": "Jeder Absatz oder kurze Textabschnitt, den du einfügen kannst — der AI Humanizer arbeitet mit dem Text, den du ihm gibst.",
+      "items": [
+        {
+          "title": "KI-verfasste Blogbeiträge",
+          "description": "Glätte hohle Übergänge und Schlagwort-Übertreibungen aus einem ersten KI-Entwurf — und prüfe jede Aussage vor der Veröffentlichung."
+        },
+        {
+          "title": "Marketing- und Produkttexte",
+          "description": "Entferne werbliche Übertreibung und erzwungene Dreiergruppen, während die tatsächlich aufgeführten Funktionen erhalten bleiben."
+        },
+        {
+          "title": "Akademische Entwürfe und Berichte",
+          "description": "Reduziere mechanisch gestapelte Übergänge und vage Zuschreibungen — und prüfe vor der Abgabe erneut Zitate und Zahlen."
+        },
+        {
+          "title": "E-Mails und Nachrichten",
+          "description": "Entferne den Kundenservice-Floskelton aus einer KI-unterstützten Antwort, während die eigentliche Information erhalten bleibt."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "AI Humanizer FAQ",
+      "description": "Wie das Werkzeug funktioniert, was es mit deinem Text macht, und was du von den Ergebnissen erwarten kannst.",
+      "items": [
+        {
+          "title": "Hilft das, KI-Erkennungstools zu bestehen?",
+          "description": "Der AI Humanizer soll Text natürlicher und weniger mechanisch wirken lassen — er ist nicht darauf ausgelegt oder getestet, ein bestimmtes KI-Erkennungstool zu überwinden, und wir machen keine Angaben zu Erkennungs-Scores oder Bestehensraten."
+        },
+        {
+          "title": "Warum erhalte ich zwei Umschreibungsoptionen?",
+          "description": "Jeder Durchlauf erzeugt Option A und Option B — zwei unterschiedliche, natürlich klingende Varianten desselben Textabschnitts. Der direkte Vergleich erleichtert die Wahl der passenden Formulierung."
+        },
+        {
+          "title": "Was sind die 'behobene Probleme'-Tags?",
+          "description": "Jede Option listet die konkreten korrigierten KI-Schreibmuster auf, etwa hohle Übergänge, erzwungene Dreierlisten oder gestapelte Einschränkungen. So siehst du die Begründung hinter der Umschreibung statt eines vagen Einzelergebnisses."
+        },
+        {
+          "title": "In welcher Sprache ist die Umschreibung?",
+          "description": "Standardmäßig folgt die Umschreibung der Sprache deines eingefügten Textes: ein englischer Text bleibt Englisch, ein deutscher Text bleibt Deutsch. Du kannst auch eine feste Ausgabesprache aus dem Dropdown wählen."
+        },
+        {
+          "title": "Ist mein Text privat?",
+          "description": "Ja. Der AI Humanizer sendet deinen eingefügten Text zur Erzeugung der Umschreibungen und speichert ihn nicht in deinem Konto oder unserer Datenbank. Nur anonyme Nutzungszahlen werden erfasst — niemals dein Text oder das erzeugte Ergebnis."
+        },
+        {
+          "title": "Bleiben Fakten, Zitate und Quellenangaben erhalten?",
+          "description": "Der Umschreiber ist angewiesen, Fakteninhalte, Zitate und Quellenangaben beim Umformulieren zu erhalten, aber Umformulierung kann trotzdem Fehler einführen. Hervorgehobene Änderungen markieren, wo sich die Formulierung geändert hat — prüfe sie immer gegen dein Original, bevor du das Ergebnis verwendest."
+        },
+        {
+          "title": "Wie unterscheidet sich das vom Absatz-Umschreiber?",
+          "description": "Der Absatz-Umschreiber verfolgt ein allgemeines Ziel, das du wählst, etwa klarer oder formeller. Der AI Humanizer zielt speziell auf KI-klingende Muster ab und zeigt dir, welche er gefunden und behoben hat."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "Textabschnitt humanisieren, dann weiterschreiben",
+      "description": "Sobald dein Text so klingt, wie du es möchtest, öffne AI Write, um die umgebenden Abschnitte zu verfassen — mit Story Bible und Konsistenzprüfung direkt im Editor.",
+      "buttons": [
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Weitere Schreibwerkzeuge",
+      "description": "Der Absatz-Umschreiber verfolgt ein spezifisches Bearbeitungsziel, der Aufsatz-Erweiterer erweitert Entwürfe, und der Story-Zusammenfasser fasst sie zusammen.",
+      "more_label": "Alle Werkzeuge ansehen"
+    }
+  }
+}

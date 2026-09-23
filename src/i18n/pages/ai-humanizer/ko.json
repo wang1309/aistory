@@ -1,0 +1,283 @@
+{
+  "ai_humanizer": {
+    "metadata": {
+      "title": "무료 AI 휴머나이저 — AI 텍스트를 더 자연스럽게",
+      "description": "AI 특유의 어색한 텍스트를 더 자연스럽게 다시 씁니다. 두 가지 옵션을 비교하고 공허한 전환구나 중복된 한정어 등 구체적으로 어떤 문제가 수정되었는지 확인하세요.",
+      "keywords": "AI 휴머나이저, AI 텍스트 인간화, AI 어투 제거, 자연스러운 글쓰기 리라이터, AI 텍스트 리라이터"
+    },
+    "ui": {
+      "eyebrow": "AI 글쓰기 도구",
+      "title": "AI 휴머나이저로 AI 특유의 텍스트를 사람이 쓴 것처럼",
+      "title_highlight": "AI 휴머나이저",
+      "subtitle": "이 AI 휴머나이저는 AI 어투의 텍스트를 더 자연스럽게 다시 씁니다. 두 가지 수정본을 비교하고, 복사하기 전에 정확히 어떤 문제가 수정되었는지 확인하세요.",
+      "breadcrumb_home": "홈",
+      "breadcrumb_current": "AI 휴머나이저",
+      "source_text_label": "처리할 텍스트",
+      "source_text_hint": "문단이나 짧은 글을 붙여넣으세요. 텍스트는 저장되지 않습니다.",
+      "character_limit_hint": "최대 3,000자.",
+      "action_paste": "붙여넣기",
+      "action_clear": "지우기",
+      "trust_badge_privacy": "100% 개인정보 보호 · 저장 안 됨",
+      "trust_badge_fidelity": "핵심 사실 및 데이터 엄격 보존",
+      "trust_badge_diagnosis": "AI 문체 시각적 진단",
+      "examples_label": "예시 바로 시도하기:",
+      "example_1_label": "💼 비즈니스 상투어",
+      "example_1_text": "급변하는 디지털 환경 속에서 본 솔루션은 유기적 시너지를 통해 이해관계자의 역량을 강화하고 전례 없는 성장 기회를 창출하는 데 기여합니다.",
+      "example_2_label": "🎓 공허한 서두",
+      "example_2_text": "최근 인공지능 기술의 급격한 발전과 함께 이 현상의 다각적인 면모를 심층적으로 살펴보는 것이 매우 중요합니다. 이는 혁신의 깊은 의미를 잘 보여줍니다.",
+      "example_3_label": "🤖 번역투 및 거짓 대비",
+      "example_3_text": "이것은 단순한 내보내기 버튼이 아니라 생산성의 새로운 시대로 향하는 중요한 관문입니다. 본 시스템은 신속하고 안정적이며 유지 관리가 용이합니다.",
+      "output_language_label": "출력 언어",
+      "output_language_auto": "입력 언어 따르기",
+      "additional_requirements_label": "추가 요구사항 (선택)",
+      "additional_requirements_hint": "유지하거나 피해야 할 내용을 알려주세요. 최대 500자.",
+      "ai_model_label": "AI 모델",
+      "generate": "AI 어투 제거",
+      "generating": "처리 중...",
+      "sign_in_to_continue": "계속하려면 로그인",
+      "result_title": "수정본 검토",
+      "output_empty": "두 가지 수정 옵션이 여기에 표시됩니다.",
+      "choose_variant": "비교할 수정본 선택",
+      "option_a": "옵션 A",
+      "option_b": "옵션 B",
+      "selected_variant": "선택됨",
+      "original_text": "원문",
+      "rewritten_text": "선택한 수정본",
+      "changed_text_hint": "강조된 텍스트는 변경된 표현을 나타냅니다. 결과를 사용하기 전에 사실, 인용문, 출처를 확인하세요.",
+      "detected_issues_label": "이 옵션에서 수정된 문제",
+      "detected_issues_empty": "이 옵션에서는 구조적인 AI 글쓰기 패턴이 감지되지 않았습니다.",
+      "view_mode_unified": "인라인 비교",
+      "view_mode_split": "양옆 비교",
+      "view_mode_clean": "최종 완성본",
+      "fullscreen_view": "전체 화면으로 보기",
+      "fullscreen_close": "닫기",
+      "copy_result": "선택한 수정본 복사",
+      "regenerate": "다시 처리",
+      "continue_ai_write": "AI Write에서 계속하기",
+      "continue_hint": "부분 수정이 아니라 더 긴 초안이 필요하신가요? 에세이 확장기를 사용해 보세요."
+    },
+    "placeholders": {
+      "source_text": "처리하고 싶은 AI 어투의 텍스트를 붙여넣으세요…",
+      "additional_requirements": "예: 전문 용어는 유지하고 인용문은 줄이지 마세요."
+    },
+    "ai_models": {
+      "fast": "빠름",
+      "fast_description": "일상적인 편집을 위한 빠른 수정.",
+      "creative": "크리에이티브",
+      "creative_description": "더 표현력 있는 수정 옵션입니다. 크리에이티브 사용량을 소모합니다."
+    },
+    "validation": {
+      "enter_source_text": "처리하고 싶은 텍스트를 붙여넣어 주세요.",
+      "source_text_too_long": "붙여넣은 텍스트가 3,000자 제한을 초과했습니다. 나누어서 처리해 주세요.",
+      "requirements_too_long": "추가 요구사항이 500자 제한을 초과했습니다."
+    },
+    "success": {
+      "result_copied": "선택한 수정본이 클립보드에 복사되었습니다."
+    },
+    "errors": {
+      "generation_failed": "텍스트를 처리할 수 없습니다. 다시 시도해 주세요.",
+      "copy_failed": "수정본을 복사할 수 없습니다. 다시 시도해 주세요."
+    },
+    "patterns": {
+      "zh_a1": { "label": "거짓 대비 도입부" },
+      "zh_a2": { "label": "극적인 한 문장 파편" },
+      "zh_a3": { "label": "공허한 격언식 표현" },
+      "zh_a4": { "label": "본론 지연형 서두" },
+      "zh_a5": { "label": "가상의 반론에 대한 변론" },
+      "zh_b6": { "label": "억지 삼단 구성" },
+      "zh_b7": { "label": "문장 시작 주어 반복" },
+      "zh_b8": { "label": "만능 연결어로 쓰인 대시" },
+      "zh_b9": { "label": "한정어 중복" },
+      "zh_b10": { "label": "조어식 합성 전문어" },
+      "zh_b11": { "label": "주어 없는 피동문" },
+      "zh_c12": { "label": "공허한 AI 고빈도 어휘" },
+      "zh_c13": { "label": "의미 과장" },
+      "zh_c14": { "label": "모호한 관계 서술" },
+      "zh_c15": { "label": "문말 찬사 덧붙임" },
+      "zh_c16": { "label": "홍보성 과장 표현" },
+      "zh_c17": { "label": "권위 빌리기/모호한 귀속" },
+      "zh_c18": { "label": "'이다/있다' 회피" },
+      "zh_d19": { "label": "장식용 볼드체" },
+      "zh_d20": { "label": "장식적인 제목 서식" },
+      "zh_d21": { "label": "불일치하는 인용부호" },
+      "zh_e22": { "label": "고객 서비스식 어투" },
+      "zh_e23": { "label": "반복되는 지식 한계 안내문" },
+      "zh_e24": { "label": "첫 문장에서 제목 반복" },
+      "zh_e25": { "label": "이전 초안에 대한 메타 언급" },
+      "zh_f26": { "label": "중첩된 수식어 (중국어)" },
+      "zh_f27": { "label": "장황한 '진행+동사' 구문 (중국어)" },
+      "zh_f28": { "label": "피동문 중첩 (중국어)" },
+      "zh_f29": { "label": "사자성어 나열 (중국어)" },
+      "zh_f30": { "label": "'~의 발전에 따라' 식 도입부 (중국어)" },
+      "zh_f31": { "label": "내용 없는 마무리 인사" },
+      "en_padding_01": { "label": "거짓 대비 도입부 (영어)" },
+      "en_padding_02": { "label": "본론 지연형 서두 (영어)" },
+      "en_padding_03": { "label": "가상의 반론에 대한 변론 (영어)" },
+      "en_rhythm_01": { "label": "억지 삼단 구성 (영어)" },
+      "en_rhythm_02": { "label": "한정어 중복 (영어)" },
+      "en_inflation_01": { "label": "공허한 유행어 과장 (영어)" },
+      "en_inflation_02": { "label": "의미 과장 (영어)" },
+      "en_formatting_01": { "label": "장식용 볼드체 (영어)" },
+      "en_chat_01": { "label": "고객 서비스식 어투 (영어)" },
+      "en_chat_02": { "label": "반복되는 지식 한계 안내문 (영어)" },
+      "en_lang_em_dash": { "label": "만능 연결어로 쓰인 대시 (영어 특유)" },
+      "en_lang_lexicon": { "label": "과도하게 사용되는 AI 어휘 (영어 특유)" },
+      "en_lang_transition_stack": { "label": "문단 서두의 기계적 전환어 반복 (영어 특유)" },
+      "en_lang_correlative": { "label": "not only...but also 식 거짓 과장 (영어 특유)" },
+      "en_lang_participial_opener": { "label": "분사구를 이용한 추상적 도입부 (영어 특유)" },
+      "ja_padding_01": { "label": "일반적인 배경 설명 도입부 (일본어)" },
+      "ja_padding_02": { "label": "거짓 대비 도입부 (일본어)" },
+      "ja_rhythm_01": { "label": "문장 끝맺음의 단조로운 반복 (일본어)" },
+      "ja_rhythm_02": { "label": "동의어 반복 (일본어)" },
+      "ja_inflation_01": { "label": "구체성이 없는 추상적 표현 (일본어)" },
+      "ja_inflation_02": { "label": "인과관계가 약한 문장 마무리 (일본어)" },
+      "ja_formatting_01": { "label": "장식용 볼드체 (일본어)" },
+      "ja_chat_01": { "label": "고객 서비스식 어투 (일본어)" },
+      "ja_lang_renkeishi": { "label": "\"これにより\" 등 접속어 과다 사용 (일본어 특유)" },
+      "ja_lang_keyword_repeat": { "label": "키워드 과도한 반복 (일본어 특유)" },
+      "ja_lang_desu_masu_lock": { "label": "です/ます체로 고정됨 (일본어 특유)" },
+      "ja_lang_mitasanai_hikaku": { "label": "어색하게 들어맞지 않는 비유 (일본어 특유)" },
+      "ko_padding_01": { "label": "일반적인 배경 설명 도입부" },
+      "ko_padding_02": { "label": "거짓 대비 도입부" },
+      "ko_rhythm_01": { "label": "문장 끝맺음의 단조로운 반복" },
+      "ko_rhythm_02": { "label": "동의어 반복" },
+      "ko_inflation_01": { "label": "구체성이 없는 추상적 표현" },
+      "ko_inflation_02": { "label": "인과관계가 약한 문장 마무리" },
+      "ko_formatting_01": { "label": "장식용 볼드체" },
+      "ko_chat_01": { "label": "고객 서비스식 어투" },
+      "ko_lang_beonyeoktu": { "label": "번역투 문장" },
+      "ko_lang_hyeongsik_lock": { "label": "격식체·중립 어조 고정" },
+      "ko_lang_jondaemal_mismatch": { "label": "존댓말 사용 불일치" },
+      "ko_lang_keyword_repeat": { "label": "키워드 과도한 반복" }
+    },
+    "feature_intro": {
+      "title": "의미는 그대로, AI 어투만 제거하는 AI 휴머나이저",
+      "description": "붙여넣은 텍스트에 대해 작동하는 AI 휴머나이저 — 구체적인 AI 글쓰기 패턴을 수정하고, 무엇을 수정했는지 보여주며, 작성하지 않은 사실을 추가하지 않습니다.",
+      "items": [
+        {
+          "title": "비교 가능한 두 가지 옵션",
+          "description": "매번 두 가지 수정 옵션이 나란히 생성되어, 하나의 결과만 받아들이는 대신 선호하는 표현을 선택할 수 있습니다."
+        },
+        {
+          "title": "문제를 숨기지 않고 보여줌",
+          "description": "각 옵션은 수정한 구체적인 패턴 — 공허한 전환구나 중복된 한정어 등 — 을 나열하며, 모호하게 '더 자연스러워졌다'고만 말하지 않습니다."
+        },
+        {
+          "title": "눈에 보이는 변경사항",
+          "description": "선택한 수정본에서는 변경된 표현이 강조 표시되며, 원문도 화면에 남아 한 줄씩 확인할 수 있습니다."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "AI 휴머나이저 사용법",
+      "description": "텍스트 붙여넣기부터 검토된 자연스러운 수정본까지 네 단계로.",
+      "items": [
+        {
+          "title": "텍스트 붙여넣기",
+          "description": "문단이나 짧은 글을 AI 휴머나이저에 붙여넣으세요. 텍스트는 양식에만 남고 저장되지 않습니다."
+        },
+        {
+          "title": "출력 언어와 요구사항 설정",
+          "description": "입력 언어를 따르거나 다른 언어를 선택하고, 유지하고 싶은 어조나 표현에 대한 추가 요구사항을 입력하세요."
+        },
+        {
+          "title": "두 가지 수정 옵션 비교",
+          "description": "옵션 A와 옵션 B를 각각 수정된 구체적인 문제와 함께 나란히 살펴보세요."
+        },
+        {
+          "title": "변경사항 검토 후 복사",
+          "description": "강조된 표현을 원문과 대조하고 사실과 인용문을 확인한 다음, 선택한 수정본을 복사하세요."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "작가들이 이 AI 휴머나이저를 사용하는 이유",
+      "description": "집중된 AI 휴머나이저 — 두 가지 후보, 수정된 각 문제에 대한 라벨, 모든 변경사항이 보이는 투명성.",
+      "items": [
+        {
+          "title": "단어 교체가 아닌 구조적 수정",
+          "description": "이 리라이터는 몇 개의 유행어를 바꾸는 것이 아니라 공허한 도입부, 억지 삼단 구성, 중복된 한정어 같은 구조적인 AI 글쓰기 패턴을 목표로 합니다."
+        },
+        {
+          "title": "무엇이 바뀌었는지 투명하게 공개",
+          "description": "감지된 문제 목록은 편집 판단을 블랙박스가 아니라 확인 가능한 것으로 만들어 줍니다."
+        },
+        {
+          "title": "사실 확인을 위한 안내",
+          "description": "변경된 표현은 강조 표시되며, 결과를 사용하기 전에 사실, 인용문, 출처를 확인하도록 안내합니다."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "AI 휴머나이저로 처리할 수 있는 내용",
+      "description": "붙여넣을 수 있는 어떤 문단이나 짧은 글이든 — AI 휴머나이저는 당신이 제공한 텍스트로 작동합니다.",
+      "items": [
+        {
+          "title": "AI로 작성한 블로그 게시물",
+          "description": "초안의 공허한 전환구와 유행어 과장을 다듬고, 게시 전에 모든 주장을 확인하세요."
+        },
+        {
+          "title": "마케팅 및 제품 소개 문구",
+          "description": "실제로 나열한 기능과 사양은 유지하면서 홍보성 과장 표현과 억지 삼단 구성을 줄이세요."
+        },
+        {
+          "title": "학술 및 보고서 초안",
+          "description": "기계적인 전환어 반복과 모호한 귀속 표현을 줄이고, 제출 전에 인용문과 데이터를 다시 확인하세요."
+        },
+        {
+          "title": "이메일 및 메시지",
+          "description": "실제 정보는 유지하면서 AI 지원 답장에서 고객 서비스식 어투를 제거하세요."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "AI 휴머나이저 FAQ",
+      "description": "이 도구가 어떻게 작동하는지, 텍스트에 어떤 처리를 하는지, 결과에서 무엇을 기대할 수 있는지.",
+      "items": [
+        {
+          "title": "이 도구가 AI 탐지기를 통과하는 데 도움이 되나요?",
+          "description": "AI 휴머나이저는 텍스트를 더 자연스럽고 덜 기계적으로 읽히도록 만드는 것을 목표로 합니다 — 특정 AI 탐지 도구를 회피하기 위해 설계되거나 테스트된 것이 아니며, 탐지 점수나 통과율에 대해 어떠한 주장도 하지 않습니다."
+        },
+        {
+          "title": "왜 두 가지 수정 옵션이 나오나요?",
+          "description": "매번 옵션 A와 옵션 B — 같은 글에 대한 두 가지 다른 자연스러운 표현 — 이 생성됩니다. 나란히 읽어보면 상황에 맞는 표현을 쉽게 선택할 수 있습니다."
+        },
+        {
+          "title": "'수정된 문제' 태그는 무엇인가요?",
+          "description": "각 옵션은 공허한 전환구, 억지 삼항 목록, 중복된 한정어 등 수정한 구체적인 AI 글쓰기 패턴을 나열합니다. 이를 통해 모호한 단일 결과가 아니라 수정의 근거를 확인할 수 있습니다."
+        },
+        {
+          "title": "수정본은 어떤 언어로 나오나요?",
+          "description": "기본적으로 수정본은 붙여넣은 텍스트의 언어를 따릅니다: 영어 텍스트는 영어로, 한국어 텍스트는 한국어로 유지됩니다. 드롭다운에서 고정된 출력 언어를 선택할 수도 있습니다."
+        },
+        {
+          "title": "내 텍스트는 비공개로 유지되나요?",
+          "description": "네. AI 휴머나이저는 수정본을 생성하기 위해 붙여넣은 텍스트를 전송하지만, 계정이나 데이터베이스에 저장하지 않습니다. 익명 사용 횟수만 기록되며, 텍스트나 생성된 결과는 절대 기록되지 않습니다."
+        },
+        {
+          "title": "사실, 인용문, 출처는 그대로 유지되나요?",
+          "description": "리라이터는 표현을 바꾸는 동안 사실 내용, 인용문, 출처를 유지하도록 지시받지만, 표현을 바꾸는 과정에서 오류가 생길 수 있습니다. 강조된 변경사항은 표현이 바뀐 위치를 나타냅니다 — 결과를 사용하기 전에 항상 원문과 대조하여 확인하세요."
+        },
+        {
+          "title": "문단 바꿔쓰기 도구와는 어떻게 다른가요?",
+          "description": "문단 바꿔쓰기 도구는 더 명확하게 또는 더 격식 있게처럼 선택한 일반적인 목표를 다룹니다. AI 휴머나이저는 특히 AI 특유의 패턴을 목표로 하며, 무엇을 발견하고 수정했는지 보여줍니다."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "글을 다듬은 후 계속 작성하기",
+      "description": "텍스트가 원하는 대로 읽히면 AI Write를 열어 주변 섹션을 작성하세요 — 편집기 안에서 Story Bible과 일관성 검사를 바로 사용할 수 있습니다.",
+      "buttons": [
+        {
+          "title": "AI Write 열기",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "더 많은 글쓰기 도구",
+      "description": "문단 바꿔쓰기 도구는 특정 편집 목표를 다루고, 에세이 확장기는 초안을 확장하며, 스토리 요약기는 내용을 압축합니다.",
+      "more_label": "모든 도구 보기"
+    }
+  }
+}
