@@ -2,14 +2,22 @@
 
 import googleOneTap from "google-one-tap";
 import { signIn } from "next-auth/react";
-import { useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import { isAuthEnabled, isGoogleOneTapEnabled } from "@/lib/auth";
 
 export default function useOneTapLogin() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
+  const initialized = useRef(false);
 
-  const oneTapLogin = async function () {
+  const handleLogin = useCallback(async (credentials: string) => {
+    await signIn("google-one-tap", {
+      credential: credentials,
+      redirect: false,
+    });
+  }, []);
+
+  const oneTapLogin = useCallback(() => {
     const options = {
       client_id: process.env.NEXT_PUBLIC_AUTH_GOOGLE_ID,
       auto_select: false,
@@ -17,39 +25,39 @@ export default function useOneTapLogin() {
       context: "signin",
     };
 
-    // console.log("onetap login trigger", options);
-
     googleOneTap(options, (response: any) => {
-      console.log("onetap login ok", response);
-      handleLogin(response.credential);
+      void handleLogin(response.credential);
     });
-  };
-
-  const handleLogin = async function (credentials: string) {
-    const res = await signIn("google-one-tap", {
-      credential: credentials,
-      redirect: false,
-    });
-    console.log("signIn ok", res);
-  };
+  }, [handleLogin]);
 
   useEffect(() => {
-    // console.log("one tap login status", status, session);
-
-    if (!isAuthEnabled() || !isGoogleOneTapEnabled()) {
+    if (
+      !isAuthEnabled() ||
+      !isGoogleOneTapEnabled() ||
+      status !== "unauthenticated"
+    ) {
       return;
     }
 
-    if (status === "unauthenticated") {
+    const events = ["pointerdown", "keydown", "touchstart"] as const;
+    const initializeOnce = () => {
+      if (initialized.current) return;
+      initialized.current = true;
+
+      for (const event of events) {
+        window.removeEventListener(event, initializeOnce);
+      }
       oneTapLogin();
+    };
 
-      const intervalId = setInterval(() => {
-        oneTapLogin();
-      }, 3000);
-
-      return () => {
-        clearInterval(intervalId);
-      };
+    for (const event of events) {
+      window.addEventListener(event, initializeOnce, { once: true, passive: true });
     }
-  }, [status]);
+
+    return () => {
+      for (const event of events) {
+        window.removeEventListener(event, initializeOnce);
+      }
+    };
+  }, [oneTapLogin, status]);
 }

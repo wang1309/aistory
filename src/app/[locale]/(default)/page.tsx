@@ -10,6 +10,7 @@ import UseCases from "@/components/sections/use-cases";
 import HowToUse from "@/components/sections/how-to-use";
 import SectionFAQ from "@/components/sections/faq";
 import SectionCTA from "@/components/sections/cta";
+import Hero from "@/components/blocks/hero";
 
 export const revalidate = 3600; // 1 hour
 export const dynamic = "force-static";
@@ -20,9 +21,6 @@ const StoryGenerate = nextDynamic(() => import("@/components/blocks/story-genera
 });
 const ModuleToolsSection = nextDynamic(() => import("@/components/blocks/module-tools"));
 const Branding = nextDynamic(() => import("@/components/blocks/branding"));
-const Hero = nextDynamic(() => import("@/components/blocks/hero"), {
-  loading: () => <HeroSkeleton />,
-});
 const Showcase = nextDynamic(() => import("@/components/blocks/showcase"));
 const Stats = nextDynamic(() => import("@/components/blocks/stats"));
 const Pricing = nextDynamic(() => import("@/components/blocks/pricing"));
@@ -31,22 +29,6 @@ const Testimonial = nextDynamic(() => import("@/components/blocks/testimonial"))
 // Loading placeholder components
 function SectionSkeleton() {
   return <div className="w-full h-96 bg-muted/5 animate-pulse" />;
-}
-
-function HeroSkeleton() {
-  return (
-    <div className="min-h-[92vh] flex items-center justify-center">
-      <div className="container px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center gap-6">
-        <div className="h-6 w-32 rounded-full bg-muted/10 animate-pulse" />
-        <div className="h-16 w-3/4 max-w-3xl rounded-2xl bg-muted/10 animate-pulse" />
-        <div className="h-6 w-1/2 max-w-xl rounded-lg bg-muted/10 animate-pulse" />
-        <div className="flex gap-4 mt-4">
-          <div className="h-16 w-40 rounded-full bg-muted/10 animate-pulse" />
-          <div className="h-16 w-40 rounded-full bg-muted/10 animate-pulse" />
-        </div>
-      </div>
-    </div>
-  );
 }
 
 function CardGridSkeleton({ cols = 3 }: { cols?: number }) {
