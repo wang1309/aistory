@@ -837,6 +837,11 @@
               "title": "博客",
               "url": "/posts",
               "target": "_self"
+            },
+            {
+              "title": "LLMs.txt",
+              "url": "/llms.txt",
+              "target": "_self"
             }
           ]
         },

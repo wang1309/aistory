@@ -142,17 +142,32 @@ function LinkList({
 }) {
   return (
     <ul className={cn("space-y-3 text-sm text-muted-foreground", className)}>
-      {items.map((item, i) => (
-        <li key={i} className="transition-colors hover:text-foreground">
-          <Link
-            href={item.url || ""}
-            target={item.target}
-            className="[overflow-wrap:anywhere]"
-          >
-            {item.title}
-          </Link>
-        </li>
-      ))}
+      {items.map((item, i) => {
+        // 指向文件类路径(如 /llms.txt)的链接必须用原生 <a>:
+        // next-intl Link 会给非默认语言加 locale 前缀(/de/llms.txt → 404)。
+        const isFileHref =
+          !!item.url && /^\/[^/]+\.[^/]+$/.test(item.url);
+        return (
+          <li key={i} className="transition-colors hover:text-foreground">
+            {isFileHref ? (
+              <a
+                href={item.url || ""}
+                className="[overflow-wrap:anywhere]"
+              >
+                {item.title}
+              </a>
+            ) : (
+              <Link
+                href={item.url || ""}
+                target={item.target}
+                className="[overflow-wrap:anywhere]"
+              >
+                {item.title}
+              </Link>
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }
