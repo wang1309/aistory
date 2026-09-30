@@ -770,6 +770,14 @@
           "title": "クリエイティブ",
           "children": [
             {
+              "title": "ラップ歌詞ジェネレーター",
+              "description": "オリジナルのラップバース、フック、フリースタイル、ディスをフロー・ライム密度・言語の設定つきで生成。",
+              "url": "/ai-tools/rap-lyric-generator",
+              "icon": "RiMicLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
               "title": "誤引用ジェネレーター",
               "description": "ファンダムキャラやグループ向けに、わざとズレた短い会話を生成。",
               "url": "/incorrect-quote-generator",

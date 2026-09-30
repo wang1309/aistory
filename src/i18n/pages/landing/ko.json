@@ -770,6 +770,14 @@
           "title": "크리에이티브",
           "children": [
             {
+              "title": "랩 가사 생성기",
+              "description": "오리지널 랩 버스, 훅, 프리스타일, 디스를 플로우, 운 밀도, 언어 설정과 함께 생성합니다.",
+              "url": "/ai-tools/rap-lyric-generator",
+              "icon": "RiMicLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
               "title": "잘못된 인용 생성기",
               "description": "팬덤 캐릭터와 그룹을 위한 짧고 일부러 어긋난 인용 대사 생성.",
               "url": "/incorrect-quote-generator",

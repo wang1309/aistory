@@ -94,6 +94,7 @@ export default async function PoemTitleGeneratorPage({
             <FAQ section={faq} accent="orange" />
             <RelatedTools
               currentSlug="poem-title-generator"
+              relatedSlugs={["rap-lyric-generator"]}
               limit={6}
               title={t("ai_tools.related_title")}
               description={t("ai_tools.section_description_hub")}

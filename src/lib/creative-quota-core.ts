@@ -23,6 +23,7 @@ export const CREATIVE_PAGE_KEYS = [
   "essay-extender",
   "paragraph-rewriter",
   "ai-humanizer",
+  "rap-lyric-generator",
 ] as const;
 
 export type CreativePageKey = (typeof CREATIVE_PAGE_KEYS)[number];

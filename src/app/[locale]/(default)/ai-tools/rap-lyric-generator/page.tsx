@@ -1,4 +1,4 @@
-import EssayExtender from "@/components/blocks/essay-extender";
+import RapLyricGenerator from "@/components/blocks/rap-lyric-generator";
 import RelatedTools from "@/components/blocks/related-tools";
 import FeatureIntro from "@/components/sections/feature-intro";
 import HowToUse from "@/components/sections/how-to-use";
@@ -7,12 +7,14 @@ import UseCases from "@/components/sections/use-cases";
 import FAQ from "@/components/sections/faq";
 import CTA from "@/components/sections/cta";
 import { buildLanguageAlternates } from "@/lib/seo";
-import type { EssayExtenderPage } from "@/types/blocks/essay-extender";
-import { setRequestLocale } from "next-intl/server";
+import type { RapLyricGeneratorPage } from "@/types/blocks/rap-lyric-generator";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
 export const dynamicParams = true;
+
+const ROUTE = "/ai-tools/rap-lyric-generator";
 
 const OG_LOCALE_MAP: Record<string, string> = {
   en: "en_US",
@@ -29,17 +31,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = await import(`@/i18n/pages/essay-extender/${locale}.json`);
-  const section = messages.default.essay_extender as EssayExtenderPage;
+  const messages = await import(`@/i18n/pages/rap-lyric-generator/${locale}.json`);
+  const section = messages.default.rap_lyric_generator as RapLyricGeneratorPage;
   const metadata = section.metadata;
   const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org";
 
-  const canonicalUrl =
-    locale === "en"
-      ? `${webUrl}/essay-extender`
-      : `${webUrl}/${locale}/essay-extender`;
-
-  const ogImage = `${webUrl}/share.png`;
+  const canonicalUrl = locale === "en" ? `${webUrl}${ROUTE}` : `${webUrl}/${locale}${ROUTE}`;
+  const ogImage = `${webUrl}/imgs/rap-lyric-generator/cover.webp`;
 
   return {
     title: metadata.title,
@@ -47,7 +45,7 @@ export async function generateMetadata({
     keywords: metadata.keywords,
     alternates: {
       canonical: canonicalUrl,
-      languages: buildLanguageAlternates("/essay-extender"),
+      languages: buildLanguageAlternates(ROUTE),
     },
     openGraph: {
       title: metadata.title,
@@ -59,8 +57,8 @@ export async function generateMetadata({
       images: [
         {
           url: ogImage,
-          width: 1200,
-          height: 630,
+          width: 1280,
+          height: 720,
           alt: metadata.title,
         },
       ],
@@ -74,18 +72,19 @@ export async function generateMetadata({
   };
 }
 
-export default async function EssayExtenderPage({
+export default async function RapLyricGeneratorPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const tAiTools = await getTranslations({ locale, namespace: "ai_tools" });
 
-  const messages = await import(`@/i18n/pages/essay-extender/${locale}.json`);
-  const section = messages.default.essay_extender as EssayExtenderPage;
+  const messages = await import(`@/i18n/pages/rap-lyric-generator/${locale}.json`);
+  const section = messages.default.rap_lyric_generator as RapLyricGeneratorPage;
   const homeUrl = process.env.NEXT_PUBLIC_WEB_URL || "https://storiesgenerator.org";
-  const currentUrl = `${homeUrl}${locale === "en" ? "" : `/${locale}`}/essay-extender`;
+  const currentUrl = `${homeUrl}${locale === "en" ? "" : `/${locale}`}${ROUTE}`;
   const homePath = `${homeUrl}${locale === "en" ? "" : `/${locale}`}`;
   const schemaLocale = OG_LOCALE_MAP[locale]?.replace("_", "-") ?? "en-US";
 
@@ -104,18 +103,24 @@ export default async function EssayExtenderPage({
           {
             "@type": "ListItem",
             position: 2,
-            name: section.ui?.breadcrumb_current ?? "Essay Extender",
+            name: tAiTools("tools_hub_nav"),
+            item: `${homePath}/ai-tools`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: section.ui?.breadcrumb_current ?? "Rap Lyric Generator",
             item: currentUrl,
           },
         ],
       },
       {
         "@type": "WebApplication",
-        name: section.ui?.title ?? "Essay Extender",
+        name: section.ui?.title ?? "AI Rap Lyric Generator",
         description: section.metadata.description,
         url: currentUrl,
         inLanguage: schemaLocale,
-        applicationCategory: "WritingApplication",
+        applicationCategory: "MultimediaApplication",
         operatingSystem: "Web",
         offers: {
           "@type": "Offer",
@@ -150,31 +155,25 @@ export default async function EssayExtenderPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
       />
-      <EssayExtender section={section} />
+      <RapLyricGenerator section={section} />
       {section.feature_intro && (
         <FeatureIntro section={section.feature_intro} accent="amber" />
       )}
-      {section.how_to_use && (
-        <HowToUse section={section.how_to_use} accent="amber" />
-      )}
+      {section.how_to_use && <HowToUse section={section.how_to_use} accent="amber" />}
       {section.feature_benefits && (
         <Benefits section={section.feature_benefits} accent="amber" />
       )}
+      {section.formats_section && (
+        <UseCases section={section.formats_section} accent="amber" />
+      )}
+      {section.craft_section && <Benefits section={section.craft_section} accent="amber" />}
       {section.feature_section && (
         <UseCases section={section.feature_section} accent="amber" />
       )}
-      {section.faq_section && (
-        <FAQ section={section.faq_section} accent="amber" />
-      )}
+      {section.faq_section && <FAQ section={section.faq_section} accent="amber" />}
       <RelatedTools
-        currentSlug="essay-extender"
-        relatedSlugs={[
-          "rap-lyric-generator",
-          "literature-review-generator",
-          "story-summarizer",
-          "story-outline-generator",
-          "plot-generator",
-        ]}
+        currentSlug="rap-lyric-generator"
+        relatedSlugs={["poem-generator", "story-prompt-generator", "poem-title-generator"]}
         title={section.related_tools.title}
         description={section.related_tools.description}
         moreHref="/ai-tools"

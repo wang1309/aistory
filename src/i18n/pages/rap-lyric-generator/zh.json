@@ -1,0 +1,325 @@
+{
+  "rap_lyric_generator": {
+    "metadata": {
+      "title": "AI 说唱歌词生成器：16 小节、Hook 与 Freestyle",
+      "description": "说唱歌词生成器：写原创说唱歌曲歌词——16 小节 verse、hook、freestyle 与 diss，flow、押韵密度与语言可调。",
+      "keywords": "说唱歌词生成器, rap lyric generator, rap song lyrics, rap song lyrics generator, 16 bar rap generator, rap hook generator, freestyle rap generator, rap battle lyrics, rap maker, free rap lyrics, 干净说唱歌词, 怎么写说唱歌词"
+    },
+    "ui": {
+      "eyebrow": "免费说唱创作工具",
+      "title": "AI 说唱歌词生成器",
+      "title_highlight": "说唱歌词",
+      "subtitle": "这个 AI 说唱歌词生成器把主题变成原创的说唱歌曲歌词：带标签的 16 小节 verse、hook、freestyle 或 diss。格式、flow、押韵密度与语言由你设定，再把初稿改成自己的声音。",
+      "breadcrumb_home": "首页",
+      "breadcrumb_current": "说唱歌词生成器",
+      "topic_label": "这首说唱写什么？",
+      "topic_hint": "一两句话即可，写清主题、处境或情绪都够用。最多 800 字符，你输入的内容不会被保存。",
+      "character_limit_hint": "最多 800 个字符。",
+      "topic_examples_label": "试试这些起点",
+      "topic_examples": [
+        "夜班护士终于拿到学位的那天",
+        "押上全部身家买最后一班车回家",
+        "城市关掉路灯后的天台"
+      ],
+      "format_label": "格式",
+      "style_label": "Flow",
+      "content_rating_label": "内容分级",
+      "rhyme_density_label": "押韵密度",
+      "language_label": "输出语言",
+      "format_options": [
+        {
+          "value": "verse_16",
+          "label": "16 小节 verse"
+        },
+        {
+          "value": "hook",
+          "label": "Hook / 副歌"
+        },
+        {
+          "value": "freestyle",
+          "label": "Freestyle"
+        },
+        {
+          "value": "diss_track",
+          "label": "Diss track"
+        }
+      ],
+      "style_options": [
+        {
+          "value": "trap",
+          "label": "Trap"
+        },
+        {
+          "value": "drill",
+          "label": "Drill"
+        },
+        {
+          "value": "boom_bap",
+          "label": "Boom bap"
+        },
+        {
+          "value": "melodic",
+          "label": "Melodic"
+        }
+      ],
+      "content_rating_options": [
+        {
+          "value": "clean",
+          "label": "Clean（干净）"
+        },
+        {
+          "value": "explicit",
+          "label": "Explicit（直白）"
+        }
+      ],
+      "rhyme_density_options": [
+        {
+          "value": "light",
+          "label": "稀疏"
+        },
+        {
+          "value": "balanced",
+          "label": "均衡"
+        },
+        {
+          "value": "dense",
+          "label": "密集"
+        }
+      ],
+      "ai_model_label": "AI 模型",
+      "generate": "开始写词",
+      "generating": "正在写作…",
+      "sign_in_to_continue": "登录后继续",
+      "result_title": "你的歌词",
+      "output_empty": "歌词会显示在这里。在左侧描述主题，选好格式与 flow，生成器就会写出第一版草稿。",
+      "safety_note": "生成的歌词均为原创，不是任何已有歌曲的复制。请不要要求模仿他人的歌词或特定艺人的风格，发布前请自行审阅内容。",
+      "status_idle": "随时可以开始。",
+      "status_writing": "正在写词…",
+      "status_done": "草稿完成。可复制、重新生成或重置。",
+      "copy_result": "复制歌词",
+      "regenerate": "重新生成",
+      "reset": "重置",
+      "line_count": "行数"
+    },
+    "placeholders": {
+      "topic": "例如：夜班护士终于拿到学位的那天"
+    },
+    "ai_models": {
+      "fast": "快速",
+      "fast_description": "适合快速记录想法的初稿。",
+      "standard": "标准",
+      "standard_description": "质量与速度均衡，适合大多数创作场景。",
+      "creative": "创意",
+      "creative_description": "用词更密、押韵方式更大胆，会消耗你的创意额度。"
+    },
+    "validation": {
+      "enter_topic": "请先描述这首说唱的主题。",
+      "topic_too_long": "主题超过了 800 字符上限，请精简为一个主题加一个处境。"
+    },
+    "success": {
+      "result_copied": "歌词已复制到剪贴板。"
+    },
+    "errors": {
+      "generation_failed": "歌词生成失败，请重试。",
+      "no_content": "AI 服务没有返回歌词，请重试。",
+      "copy_failed": "歌词复制失败，请重试。"
+    },
+    "feature_intro": {
+      "title": "有控制项的说唱歌曲歌词生成器，不是一句盲盒提示词",
+      "description": "这里的格式、flow、押韵密度、内容分级都是真正的设置项。你在引导写作，而不是指望一句话刚好写出 16 小节、押韵干净、副歌好记的成品。",
+      "items": [
+        {
+          "title": "先决定说唱的形状",
+          "description": "可以选择 16 小节 verse、可循环的 hook、freestyle 连段或 diss 段落，段落标签会随格式一起返回。"
+        },
+        {
+          "title": "用音乐语言描述 flow",
+          "description": "Trap 的三连音律动、drill 的滑音、boom bap 的叙事、melodic 的歌唱式表达。讲音乐特质，不点艺人名字，你拿到的是可用的草稿，而不是无法发行的模仿。"
+        },
+        {
+          "title": "押韵密度由你决定",
+          "description": "稀疏押韵让句子口语、清晰；密集押韵堆叠多音节韵脚与内韵，适合练技术。"
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "如何用 AI 写说唱歌词",
+      "description": "四个步骤，从模糊的想法到能录音的歌词，也说明一个真正说得通的说唱歌词生成器为什么需要设置，而不是一句长提示词。",
+      "items": [
+        {
+          "title": "描述主题",
+          "description": "一个主题、一段处境或一种情绪，最多 800 字符。细节越具体，可写的意象就越多。「终于拿到学位的夜班护士」永远比「关于努力」好用。"
+        },
+        {
+          "title": "选择格式",
+          "description": "16 小节 verse、hook、freestyle 连段或 diss 段落。输出会带对应标签，你一眼就知道拿到的是什么。"
+        },
+        {
+          "title": "设置 flow、分级与押韵密度",
+          "description": "Trap、drill、boom bap 或 melodic；clean 或 explicit；稀疏、均衡或密集。每一项都会作为明确的写作要求下发给模型，而不是让它猜。"
+        },
+        {
+          "title": "生成之后再改写",
+          "description": "保留设置随时重新生成，复制你喜欢的版本，再把你自己的句子切进去。草稿是脚手架，不是成品。"
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "写词的人为什么用这个说唱歌词生成器",
+      "description": "第一版草稿就符合你的限制条件，把修改时间用在 flow 与咬字上，而不是补结构。",
+      "items": [
+        {
+          "title": "跳出空白页",
+          "description": "明确的小节数与段落标签，帮你跨过卡住大多数新手的那八小节。"
+        },
+        {
+          "title": "练技术句式",
+          "description": "把押韵密度切到密集来练多音节韵脚，做干净的 track 时再切回稀疏。"
+        },
+        {
+          "title": "结构上就是干净的",
+          "description": "Clean 输出按可印刷、可播出的标准来写，不需要再手动删改。"
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "可以用它写什么",
+      "description": "每种格式都是一个起点，最终要用你自己的声音重写。这是纯歌词工具：没有伴奏、没有音频、也不生成完整歌曲。",
+      "items": [
+        {
+          "title": "Cyphers 与开放麦",
+          "description": "生成 16 小节 verse 备战一轮 round，用同一个主题反复重生成，直到律动对味。"
+        },
+        {
+          "title": "Hook 与副歌",
+          "description": "写出四句可重复的 hook，可以直接放在 intro、outro 或制作人做的采样翻转上。"
+        },
+        {
+          "title": "可直接上伴奏的草稿",
+          "description": "在录音棚里起草，把最满意的句子切进去，剩下的当作练习素材。"
+        },
+        {
+          "title": "虚构对练的 diss",
+          "description": "对着一个虚构对手写 battle，背后没有真人——是练习素材，不含骚扰，也不针对任何真实姓名。"
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "说唱歌词生成器常见问题",
+      "description": "关于原创性、各项设置的实际作用、这个工具不做什么，以及你的输入会被如何处理。",
+      "items": [
+        {
+          "title": "说唱歌词生成器是什么？",
+          "description": "它是一个带旋钮的说唱歌词制作器：你描述主题，选定结构——16 小节 verse、hook、freestyle 或 diss 段落——它就按这个结构产出文本。不做 beats、不出音频、不生成完整歌曲。产出的是可以编辑、可以数拍、可以上台表演的文本。"
+        },
+        {
+          "title": "会抄已有歌曲吗？",
+          "description": "不会。每次生成都是针对你的主题重新写作。生成器被明确要求不得复制、引用或改写任何已有歌曲的歌词，也不得以任何真实录音艺人的口吻或致敬方式写作。"
+        },
+        {
+          "title": "可以模仿某位 rapper 吗？",
+          "description": "不可以，这是刻意设计的。风格通过音乐特质表达——律动、口径、三连音感、旋律范围——而不是点名艺人，所以你拿到的是可用的草稿，而不是无法发行的模仿。"
+        },
+        {
+          "title": "怎么用它写 16 小节 verse？",
+          "description": "描述主题，选择 16 小节 verse 格式，设定 flow 与押韵密度，然后生成。结果会带 [Verse] 标签和十六个编号小节。设置不用重复输入，可以就同一个主题反复重生成做对比。"
+        },
+        {
+          "title": "怎么写出押得住的说唱歌词？",
+          "description": "先用均衡，等内容立住了再切到密集。密集会要求大部分句子用多音节韵脚与内韵，同时保证词句清晰。内容表达优先时保持稀疏。"
+        },
+        {
+          "title": "四种格式有什么区别？",
+          "description": "16 小节 verse 给你一整段 verse 共十六个编号小节；hook 给你写两遍的四句副歌；freestyle 给你十二句不带编号的连段；diss 给你八句针对虚构对手的段落。"
+        },
+        {
+          "title": "可以用来写 diss track 吗？",
+          "description": "可以，但有一条硬线：对手是虚构的。生成器被要求编造不存在的名字与恩怨，不能指向任何真实人物、艺人、团体或品牌，并且不写威胁、不写伤害意愿、不写针对性骚扰。对真实人物的说唱对歌词属于骚扰行为，本工具不写。"
+        },
+        {
+          "title": "能生成带伴奏的完整歌曲吗？",
+          "description": "不能。这是纯歌词工具。伴奏、配器、演唱与整曲生成是另一类产品，涉及另一套版权问题，混为一谈反而容易让写词的人踩坑。想继续发展成完整作品，把歌词带进你的 DAW，或者带进 AI Write。"
+        },
+        {
+          "title": "生成的词可以商用吗？",
+          "description": "输出是原创写作，没有复制任何已有歌词，你可以继续创作。发行前请确认发行方的条款，以及采样、版权与你所在地区的说唱相关权利规定。"
+        },
+        {
+          "title": "我的主题会被保存吗？",
+          "description": "主题只会发送给 AI 服务用于生成歌词，不会保存到你的账号或我们的数据库。我们只记录匿名使用次数，绝不记录你的主题文本或生成的歌词。"
+        },
+        {
+          "title": "支持哪些语言？",
+          "description": "输出语言选择器跟随本站支持的语言。生成前先选好语言，段落标签也会用该语言返回。"
+        },
+        {
+          "title": "免费吗？",
+          "description": "是。匿名访客每天可以免费生成说唱歌词到每日上限；登录也是免费的。四种格式、flow 风格与押韵密度在每次生成时全部开放；需要更大用量，登录继续即可。"
+        },
+        {
+          "title": "押韵密度改变了什么？",
+          "description": "稀疏大约三句押一次，表达更口语；均衡大约每两句押一次，句尾音色统一；密集几乎每句都押，并加入多音节韵脚与内韵，同时保证词句清晰。"
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "把草稿写成完整的作品",
+      "description": "把你喜欢的句子带进 AI Write，改写成完整的作品，写作过程中还有 Story Bible 与一致性检查陪着你。",
+      "buttons": [
+        {
+          "title": "打开 AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "更多写作工具",
+      "description": "从歌词走向标题、提示词与完整草稿。",
+      "more_label": "查看全部工具"
+    },
+    "formats_section": {
+      "title": "四种说唱格式，四种不同用途",
+      "description": "同一个说唱歌词生成器可以写四种格式。选你真正卡住的那一部分对应的格式。",
+      "items": [
+        {
+          "title": "16 小节 verse",
+          "description": "十六个编号小节，按常速算大约 30 到 40 秒。这是最多人搜索 16 小节说唱生成器时想要的格式，也是大多数 cypher round 的基本单位。"
+        },
+        {
+          "title": "Hook / 副歌",
+          "description": "四句写两遍，重复结构已经内建。可以直接放在 intro、outro，或者观众会跟着喊的那一段。"
+        },
+        {
+          "title": "Freestyle",
+          "description": "十二句连续小节，不编号，更接近 cypher 热场而不是写好的 track。适合快速找律动和意象。"
+        },
+        {
+          "title": "Diss track",
+          "description": "八句针对一个只存在于歌词里的虚构对手。这就是写 rap battle lyrics（说唱对歌词）的模式：纯竞技对垒，没有威胁、没有骚扰、不含任何真实姓名。"
+        }
+      ]
+    },
+    "craft_section": {
+      "title": "小节数与押韵方式速查",
+      "description": "决定歌词立不立得住的几个技术细节。读一遍，生成的草稿会更容易判断。",
+      "items": [
+        {
+          "title": "小节怎么数",
+          "description": "一句就是一节。十六小节在常速下大约 30 到 40 秒，正好塞得进大多数 intro，以及从副歌回到 verse 的空隙。这个生成器会把小节编号，数数这件事不用你做。"
+        },
+        {
+          "title": "常用的押韵方式",
+          "description": "同韵贯穿整段听着自信但选择面窄；AABB 交替两个韵脚最好写也最稳；ABAB 每个双行留一个开放位置，句子还有转弯的余地。"
+        },
+        {
+          "title": "多音节押韵",
+          "description": "对上三个以上音节而不是一个，是说唱里最难练的技术。把密度切到密集就是在练这个，也是提升耳朵最快的方式。"
+        },
+        {
+          "title": "Clean 与 Explicit",
+          "description": "Clean 保持可印刷、可播出，不出现脏话、歧视性词汇或暴力描写；Explicit 允许常见的强口吻用词，但不使用针对真实人物的歧视或贬低表达。"
+        }
+      ]
+    }
+  }
+}

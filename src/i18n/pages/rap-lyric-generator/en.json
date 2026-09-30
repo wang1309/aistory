@@ -1,0 +1,325 @@
+{
+  "rap_lyric_generator": {
+    "metadata": {
+      "title": "AI Rap Lyric Generator: 16 Bars, Hooks, Freestyles",
+      "description": "Rap lyric generator for original rap song lyrics: 16-bar verses, hooks, freestyles, and diss sections, with flow, rhyme density, and language controls.",
+      "keywords": "rap lyric generator, ai rap lyric generator, rap song lyrics, rap song lyrics generator, 16 bar rap generator, rap hook generator, freestyle rap generator, rap battle lyrics, rap maker, free rap lyrics, clean rap lyrics, how to write rap lyrics"
+    },
+    "ui": {
+      "eyebrow": "Free rap writing tool",
+      "title": "AI Rap Lyric Generator",
+      "title_highlight": "Rap Lyric",
+      "subtitle": "This AI rap lyric generator turns a subject into original rap song lyrics: a labelled 16-bar verse, hook, freestyle, or diss. You set the format, flow, rhyme density, and language, then rewrite the draft in your own voice.",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Rap Lyric Generator",
+      "topic_label": "What is the rap about?",
+      "topic_hint": "One or two sentences works best. A subject, a situation, or a mood is enough — up to 800 characters, and nothing you type is saved.",
+      "character_limit_hint": "Up to 800 characters.",
+      "topic_examples_label": "Try a starting point",
+      "topic_examples": [
+        "A night-shift nurse who finally finishes her degree",
+        "Betting everything on one last train home",
+        "Rooftop quiet after the city turns the lights off"
+      ],
+      "format_label": "Format",
+      "style_label": "Flow",
+      "content_rating_label": "Content rating",
+      "rhyme_density_label": "Rhyme density",
+      "language_label": "Output language",
+      "format_options": [
+        {
+          "value": "verse_16",
+          "label": "16-bar verse"
+        },
+        {
+          "value": "hook",
+          "label": "Hook / chorus"
+        },
+        {
+          "value": "freestyle",
+          "label": "Freestyle"
+        },
+        {
+          "value": "diss_track",
+          "label": "Diss track"
+        }
+      ],
+      "style_options": [
+        {
+          "value": "trap",
+          "label": "Trap"
+        },
+        {
+          "value": "drill",
+          "label": "Drill"
+        },
+        {
+          "value": "boom_bap",
+          "label": "Boom bap"
+        },
+        {
+          "value": "melodic",
+          "label": "Melodic"
+        }
+      ],
+      "content_rating_options": [
+        {
+          "value": "clean",
+          "label": "Clean"
+        },
+        {
+          "value": "explicit",
+          "label": "Explicit"
+        }
+      ],
+      "rhyme_density_options": [
+        {
+          "value": "light",
+          "label": "Light"
+        },
+        {
+          "value": "balanced",
+          "label": "Balanced"
+        },
+        {
+          "value": "dense",
+          "label": "Dense"
+        }
+      ],
+      "ai_model_label": "AI model",
+      "generate": "Write the rap",
+      "generating": "Writing…",
+      "sign_in_to_continue": "Sign in to continue",
+      "result_title": "Your lyrics",
+      "output_empty": "Your bars will appear here. Describe the subject on the left, pick a format and flow, and the generator writes the first draft.",
+      "safety_note": "Generated lyrics are written from scratch and are not copies of any existing song. They are a starting draft — never ask for someone else's lyrics or for a specific artist's style, and read the result before you publish it.",
+      "status_idle": "Ready when you are.",
+      "status_writing": "Writing bars…",
+      "status_done": "Draft finished. Copy it, regenerate, or reset.",
+      "copy_result": "Copy lyrics",
+      "regenerate": "Regenerate",
+      "reset": "Reset",
+      "line_count": "Lines"
+    },
+    "placeholders": {
+      "topic": "e.g. A night-shift nurse who finally finishes her degree"
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick drafts for sketching out an idea.",
+      "standard": "Standard",
+      "standard_description": "Balanced writing that suits most sessions.",
+      "creative": "Creative",
+      "creative_description": "Denser phrasing and more adventurous rhyme schemes. Uses your creative quota."
+    },
+    "validation": {
+      "enter_topic": "Please describe what the rap is about.",
+      "topic_too_long": "The topic is over the 800-character limit. Shorten it to a subject and a situation."
+    },
+    "success": {
+      "result_copied": "Lyrics copied to your clipboard."
+    },
+    "errors": {
+      "generation_failed": "Could not write the lyrics. Please try again.",
+      "no_content": "The AI service returned no lyrics. Please try again.",
+      "copy_failed": "Could not copy the lyrics. Please try again."
+    },
+    "feature_intro": {
+      "title": "A rap song lyrics generator with controls, not a blank prompt",
+      "description": "Format, flow, rhyme density, and content rating are real settings here. You steer the writing instead of hoping one sentence lands on a 16-bar verse with clean rhymes and a hookable refrain.",
+      "items": [
+        {
+          "title": "The shape of the rap is a choice",
+          "description": "Ask for a 16-bar verse, a repeating hook, a freestyle run, or a diss section, and the section label comes back already in place."
+        },
+        {
+          "title": "Flow is described musically",
+          "description": "Trap triplet pockets, drill slides, boom bap storytelling, melodic phrasing. Musical terms, not artist names — you get a usable draft instead of an impersonation you cannot release."
+        },
+        {
+          "title": "Rhyme density is yours to set",
+          "description": "Light keeps lines conversational and clear. Dense stacks multisyllabic and internal rhymes for technical practice."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "How to write rap lyrics with an AI generator",
+      "description": "Four steps from a rough idea to bars you can record, and the reason a real rap lyric generator needs controls instead of one long prompt.",
+      "items": [
+        {
+          "title": "Describe the subject",
+          "description": "A subject, a situation, or a mood — up to 800 characters. Concrete detail gives the generator something to write images from. \"A night-shift nurse who finally finishes her degree\" beats \"something about hard work\" every time."
+        },
+        {
+          "title": "Choose the format",
+          "description": "A 16-bar verse, a hook, a freestyle run, or a diss section. The output label matches the format, so you know instantly what you are reading."
+        },
+        {
+          "title": "Set flow, rating, and rhyme density",
+          "description": "Trap, drill, boom bap, or melodic. Clean or explicit. Light, balanced, or dense rhymes. The generator applies each choice as a writing instruction instead of guessing."
+        },
+        {
+          "title": "Generate, then rewrite",
+          "description": "Regenerate as many drafts as you want with the settings intact, copy the version you like, and cut your own lines into it. The draft is scaffolding, not a finished track."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "Why writers use this rap lyric generator",
+      "description": "A first draft that already respects your constraints, so your editing time goes into flow and delivery instead of structure.",
+      "items": [
+        {
+          "title": "Beats off a blank page",
+          "description": "A bar count and a section label give you a running start on the eight-bar problem that stalls most new writers."
+        },
+        {
+          "title": "Practise technical patterns",
+          "description": "Switch rhyme density to dense to drill multisyllabic schemes, then back to light for a conversational track."
+        },
+        {
+          "title": "Crisp by construction",
+          "description": "Clean output is written to stay printable and broadcast-safe, so a clean setting needs no manual scrubbing."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "What you can write with it",
+      "description": "Every format is a starting point you rewrite in your own voice. This is a lyrics tool: no beats, no recording, no complete songs.",
+      "items": [
+        {
+          "title": "Cyphers and open-mic sets",
+          "description": "Generate a 16-bar verse to practise a round, then regenerate it with the same topic until the pocket feels right."
+        },
+        {
+          "title": "Hooks and choruses",
+          "description": "Write a four-line hook that repeats, ready to sit over an intro, an outro, or a producer's sample flip."
+        },
+        {
+          "title": "Beat-ready drafts",
+          "description": "Draft bars in the booth, cut your best lines into them, and keep the rest as practice."
+        },
+        {
+          "title": "Fictional diss practice",
+          "description": "Battle a made-up opponent with no real person behind it — sparring material with nothing aimed at a real name."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "Rap Lyric Generator FAQ",
+      "description": "How the generator handles originality, what each control changes, what it will not do, and what happens to your input.",
+      "items": [
+        {
+          "title": "What is a rap lyric generator?",
+          "description": "It is a lyrics tool that works like a rap maker with dials: you describe the subject, pick a structure — 16-bar verse, hook, freestyle, or diss section — and it makes the bars in that shape. No beats, no audio, no full songs. The output is text you can edit, count, and perform."
+        },
+        {
+          "title": "Will it copy an existing song?",
+          "description": "No. Every run is written from scratch for your topic. The generator is explicitly instructed never to reproduce, quote, or paraphrase lyrics from any existing song, and never to write in the voice of or as a tribute to a real recording artist."
+        },
+        {
+          "title": "Can I make it sound like a specific rapper?",
+          "description": "No, and that is deliberate. Style is expressed through musical qualities — pocket, cadence, triplet feel, melodic range — rather than by naming artists, so you get a usable draft instead of an impersonation you cannot release."
+        },
+        {
+          "title": "How do I write a 16 bar verse with it?",
+          "description": "Describe the subject, pick the 16-bar verse format, choose your flow and rhyme density, and generate. You get the section label plus sixteen numbered bars. Regenerate as many times as you like to compare drafts on the same topic without re-entering the settings."
+        },
+        {
+          "title": "How do I write rap lyrics with rhymes that land?",
+          "description": "Start balanced, then move to dense once the content works. Dense asks for multisyllabic and internal rhymes across most lines while keeping every word intelligible. Keep it light when clarity matters more than showing off."
+        },
+        {
+          "title": "What is the difference between the formats?",
+          "description": "A 16-bar verse gives one complete verse with sixteen numbered bars. A hook gives a four-line chorus written twice. A freestyle gives twelve continuous bars with no numbering. A diss gives eight bars aimed at a fictional opponent."
+        },
+        {
+          "title": "Can I use it to write a diss track?",
+          "description": "Yes, with one hard limit: the target is invented. The generator is instructed to create a made-up name and a made-up rivalry that cannot be traced to any real person, artist, group, or company, and to include no threats, no wishes of harm, and no targeted harassment. Rap battle lyrics against real people are harassment, and this tool does not write them."
+        },
+        {
+          "title": "Will it make a full song with beats?",
+          "description": "No. This is a lyrics-only tool — a rap maker for words, not audio. Beats, instrumentation, voice, and full-song generation are separate products with separate copyright questions, and pretending otherwise gets a writer into trouble. Take the bars into your DAW, or into AI Write if you want to develop them into full written tracks."
+        },
+        {
+          "title": "Can I use the lyrics commercially?",
+          "description": "The output is written from scratch and no existing lyrics are reproduced, so you can write with it. Check the terms of your distributor and of any sample, clearance, and local right-to-be-a-rapper rules before you release."
+        },
+        {
+          "title": "Is my topic private?",
+          "description": "Yes. Your topic is sent to the AI service to generate the lyrics and is not saved to your account or our database. Only anonymous usage counts are recorded — never your topic text or the generated lyrics."
+        },
+        {
+          "title": "Which languages can I write in?",
+          "description": "The output language selector follows the languages the site supports. Pick your language before generating and the section label comes back in that language too."
+        },
+        {
+          "title": "Is it free?",
+          "description": "Yes. Anonymous visitors can generate free rap lyrics up to a daily limit, and signing in is free too. All four formats, flow styles, and rhyme densities are open on every run; if you need more volume, sign in and continue."
+        },
+        {
+          "title": "What does rhyme density change?",
+          "description": "Light rhymes about one line in three and keeps phrasing conversational. Balanced rhymes roughly every other line with a consistent end sound. Dense rhymes most lines and adds multisyllabic and internal rhymes while keeping the words intelligible."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "Turn the draft into finished writing",
+      "description": "Take the bars you like into AI Write and keep rewriting them into a full track, with Story Bible and Consistency Check while you work.",
+      "buttons": [
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Other writing tools",
+      "description": "Move from bars to titles, prompts, and full drafts.",
+      "more_label": "View all tools"
+    },
+    "formats_section": {
+      "title": "Four rap formats, four different jobs",
+      "description": "The same rap lyric generator writes four formats. Pick the one that matches the part of the track you are actually stuck on.",
+      "items": [
+        {
+          "title": "16-bar verse",
+          "description": "Sixteen numbered bars, roughly 30 to 40 seconds over a standard beat. This is the format most people mean when they look for a 16 bar rap generator, and the unit most cypher rounds are built on."
+        },
+        {
+          "title": "Hook / chorus",
+          "description": "Four lines written twice, so the repetition is already built in. Use it for an intro, an outro, or the part the room repeats back at you."
+        },
+        {
+          "title": "Freestyle",
+          "description": "Twelve continuous bars with no numbering, closer to a cypher warm-up than a written track. Good for finding pocket and imagery fast."
+        },
+        {
+          "title": "Diss track",
+          "description": "Eight bars aimed at a fictional opponent that exists only in the lyrics. This is the mode for rap battle lyrics: competitive sparring with no threats, no harassment, and no real names involved."
+        }
+      ]
+    },
+    "craft_section": {
+      "title": "Bar counts and rhyme schemes, briefly",
+      "description": "The craft details that decide whether bars feel right. Read this once and the generated drafts make more sense.",
+      "items": [
+        {
+          "title": "How to count bars",
+          "description": "One bar is one line. Sixteen bars land at roughly 30 to 40 seconds on a normal tempo, so a verse fits most intros and most chorus-to-verse gaps. This generator numbers them, which makes counting unnecessary."
+        },
+        {
+          "title": "The rhyme schemes that matter",
+          "description": "Monorhyme stacks one sound across a whole verse and sounds confident but narrow. AABB alternates two rhymes and is the easiest to write clean. ABAB keeps one open slot per couplet, which leaves you room to turn a line."
+        },
+        {
+          "title": "Multisyllabic rhymes",
+          "description": "Matching three or more syllables instead of one is the hardest drill in rap. The dense setting asks for exactly that, and is the fastest way to train your ear."
+        },
+        {
+          "title": "Clean versus explicit",
+          "description": "Clean output stays printable and broadcast-safe, with no profanity, slurs, or violence. Explicit allows strong common rap vocabulary while keeping slurs and demeaning language aimed at real people out."
+        }
+      ]
+    }
+  }
+}

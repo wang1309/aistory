@@ -176,6 +176,7 @@ export default async function AiHumanizerPage({
       <RelatedTools
         currentSlug="ai-humanizer"
         relatedSlugs={[
+          "rap-lyric-generator",
           "paragraph-rewriter",
           "essay-extender",
           "story-summarizer",

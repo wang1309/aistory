@@ -342,6 +342,10 @@
         "name": "Poem-Generator",
         "desc": "Verfassen Sie moderne Gedichte, klassische Poesie oder Haikus mit Unterstützung der KI."
       },
+      "rap_lyric_generator": {
+        "name": "Raptext-Generator",
+        "desc": "Raptext-Generator für originale 16-Bars-Verse, Hooks, Freestyles und Diss – mit Reglern für Flow, Reimdichte und Sprache."
+      },
       "poem_title_generator": {
         "name": "Gedichttitel-Generator",
         "desc": "Erzeugt kreative, stimmungsvolle Titel für Ihre Gedichte – von literarisch bis social‑media‑tauglich, auch mehrsprachig."

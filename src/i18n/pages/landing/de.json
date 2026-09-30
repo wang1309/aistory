@@ -770,6 +770,14 @@
           "title": "Kreativ",
           "children": [
             {
+              "title": "Raptext-Generator",
+              "description": "Originale 16-Bars-Verse, Hooks, Freestyles und Diss erzeugen – mit Flow-, Reimdichte- und Sprachreglern.",
+              "url": "/ai-tools/rap-lyric-generator",
+              "icon": "RiMicLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
               "title": "Falsch-Zitat-Generator",
               "description": "Kurze, absichtlich falsche Quote-Dialoge für Fandom-Charaktere und Gruppen.",
               "url": "/incorrect-quote-generator",

@@ -1,0 +1,325 @@
+{
+  "rap_lyric_generator": {
+    "metadata": {
+      "title": "KI-Raptext-Generator: 16 Bars, Hooks, Freestyles",
+      "description": "Raptext-Generator für originale Rap-Songtexte: 16-Bars-Verse, Hooks, Freestyles, Diss – mit Flow-, Reimdichte- und Sprachreglern.",
+      "keywords": "Raptext-Generator, rap lyric generator, rap song lyrics, rap song lyrics generator, 16 bar rap generator, rap hook generator, freestyle rap generator, rap battle lyrics, rap maker, free rap lyrics, saubere Raptexte, Raptexte schreiben"
+    },
+    "ui": {
+      "eyebrow": "Kostenloses Rap-Schreibwerkzeug",
+      "title": "KI-Raptext-Generator",
+      "title_highlight": "Raptext",
+      "subtitle": "Dieser AI-Raptext-Generator macht aus einem Thema originale Rap-Songtexte: einen 16-Bars-Verse, Hook, Freestyle oder Diss. Format, Flow, Reimdichte und Sprache stellst du ein, den Entwurf schreibst du in deine eigene Stimme um.",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Raptext-Generator",
+      "topic_label": "Worum geht es im Rap?",
+      "topic_hint": "Ein bis zwei Sätze reichen. Ein Thema, eine Situation oder eine Stimmung genügt – bis zu 800 Zeichen, und nichts davon wird gespeichert.",
+      "character_limit_hint": "Bis zu 800 Zeichen.",
+      "topic_examples_label": "Einstiegsideen",
+      "topic_examples": [
+        "Eine Nachtschicht-Pflegekraft, die endlich ihren Abschluss macht",
+        "Alles auf die letzte Zugfahrt nach Hause setzen",
+        "Stille auf dem Dach, nachdem die Stadt das Licht ausmacht"
+      ],
+      "format_label": "Format",
+      "style_label": "Flow",
+      "content_rating_label": "Inhaltsebene",
+      "rhyme_density_label": "Reimdichte",
+      "language_label": "Ausgabesprache",
+      "format_options": [
+        {
+          "value": "verse_16",
+          "label": "16-Bars-Verse"
+        },
+        {
+          "value": "hook",
+          "label": "Hook / Refrain"
+        },
+        {
+          "value": "freestyle",
+          "label": "Freestyle"
+        },
+        {
+          "value": "diss_track",
+          "label": "Diss-Track"
+        }
+      ],
+      "style_options": [
+        {
+          "value": "trap",
+          "label": "Trap"
+        },
+        {
+          "value": "drill",
+          "label": "Drill"
+        },
+        {
+          "value": "boom_bap",
+          "label": "Boom bap"
+        },
+        {
+          "value": "melodic",
+          "label": "Melodic"
+        }
+      ],
+      "content_rating_options": [
+        {
+          "value": "clean",
+          "label": "Clean"
+        },
+        {
+          "value": "explicit",
+          "label": "Explicit"
+        }
+      ],
+      "rhyme_density_options": [
+        {
+          "value": "light",
+          "label": "Leicht"
+        },
+        {
+          "value": "balanced",
+          "label": "Ausgewogen"
+        },
+        {
+          "value": "dense",
+          "label": "Dicht"
+        }
+      ],
+      "ai_model_label": "KI-Modell",
+      "generate": "Rap schreiben",
+      "generating": "Wird geschrieben…",
+      "sign_in_to_continue": "Anmelden, um fortzufahren",
+      "result_title": "Deine Textzeilen",
+      "output_empty": "Deine Bars erscheinen hier. Beschreibe links das Thema, wähle Format und Flow – der Generator schreibt den ersten Entwurf.",
+      "safety_note": "Erzeugte Textzeilen werden neu geschrieben und sind keine Kopien bestehender Songs. Frage nie nach den Lyrics anderer oder dem Stil einer bestimmten Künstlerin oder eines bestimmten Künstlers, und lies das Ergebnis, bevor du es veröffentlichst.",
+      "status_idle": "Bereit, wenn du es bist.",
+      "status_writing": "Bars werden geschrieben…",
+      "status_done": "Entwurf fertig. Kopieren, neu generieren oder zurücksetzen.",
+      "copy_result": "Text kopieren",
+      "regenerate": "Neu generieren",
+      "reset": "Zurücksetzen",
+      "line_count": "Zeilen"
+    },
+    "placeholders": {
+      "topic": "z. B. Eine Nachtschicht-Pflegekraft, die endlich ihren Abschluss macht"
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schnelle Entwürfe, um eine Idee festzuhalten.",
+      "standard": "Standard",
+      "standard_description": "Ausgewogene Qualität für die meisten Sessions.",
+      "creative": "Kreativ",
+      "creative_description": "Dichtere Phrasen und gewagtere Reimschemata. Nutzt dein Kreativkontingent."
+    },
+    "validation": {
+      "enter_topic": "Bitte beschreibe, worum es im Rap geht.",
+      "topic_too_long": "Das Thema überschreitet 800 Zeichen. Kürze es auf ein Thema und eine Situation."
+    },
+    "success": {
+      "result_copied": "Text in die Zwischenablage kopiert."
+    },
+    "errors": {
+      "generation_failed": "Der Text konnte nicht erstellt werden. Bitte versuche es erneut.",
+      "no_content": "Der KI-Dienst hat keinen Text geliefert. Bitte versuche es erneut.",
+      "copy_failed": "Der Text konnte nicht kopiert werden. Bitte versuche es erneut."
+    },
+    "feature_intro": {
+      "title": "Ein Rap-Songtexte-Generator mit Reglern, kein leerer Prompt",
+      "description": "Format, Flow, Reimdichte und Inhaltsebene sind hier echte Einstellungen. Du lenkst das Schreiben, statt zu hoffen, dass ein Satz nebenbei einen 16-Bars-Verse mit sauberen Reimen und merkfähigem Refrain abwirft.",
+      "items": [
+        {
+          "title": "Die Form des Raps ist eine Wahl",
+          "description": "16-Bars-Verse, wiederkehrender Hook, Freestyle-Block oder Diss-Abschnitt – die Abschnittsmarkierung kommt passend zum Format zurück."
+        },
+        {
+          "title": "Flow wird musikalisch beschrieben",
+          "description": "Trap-Dreier, Drill-Slides, Boom-bap-Storytelling, melodisches Phrasieren. Musikalische Begriffe statt Künstlernamen – du bekommst einen brauchbaren Entwurf statt einer Nachahmung, die du nicht veröffentlichen kannst."
+        },
+        {
+          "title": "Die Reimdichte bestimmst du",
+          "description": "Leicht bleibt gesprochen und klar. Dicht stapelt mehrsilbige und innere Reime für technisches Training."
+        }
+      ]
+    },
+    "how_to_use": {
+      "title": "So schreibst du Raptexte mit einem KI-Generator",
+      "description": "Vier Schritte von einer groben Idee zu aufnehmbaren Bars – und warum ein brauchbarer Raptext-Generator Regler braucht statt eines langen Prompts.",
+      "items": [
+        {
+          "title": "Thema beschreiben",
+          "description": "Ein Thema, eine Situation oder eine Stimmung – bis zu 800 Zeichen. Konkrete Details geben dem Generator etwas, woraus er Bilder bauen kann. „Eine Nachtschicht-Pflegekraft, die endlich ihren Abschluss macht“ schlägt „etwas über harte Arbeit“ immer."
+        },
+        {
+          "title": "Format wählen",
+          "description": "16-Bars-Verse, Hook, Freestyle oder Diss-Track. Die Ausgabemarkierung entspricht dem Format, du weißt sofort, was du liest."
+        },
+        {
+          "title": "Flow, Ebene und Reimdichte setzen",
+          "description": "Trap, Drill, Boom bap oder Melodic. Clean oder Explicit. Leicht, ausgewogen oder dicht. Jede Auswahl wird als klare Schreibvorgabe weitergegeben statt geraten."
+        },
+        {
+          "title": "Erzeugen, dann umschreiben",
+          "description": "Generiere so oft du willst – die Einstellungen bleiben stehen –, kopiere die beste Fassung und setze eigene Bars ein. Der Entwurf ist Gerüst, kein fertiger Track."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "title": "Warum Schreibende diesen Raptext-Generator nutzen",
+      "description": "Ein Erstentwurf, der deine Vorgaben einhält – so fließt die Bearbeitungszeit in Flow und Betonung statt in Struktur.",
+      "items": [
+        {
+          "title": "Raus aus der Leerseite",
+          "description": "Feste Barzahl und Abschnittsmarkierung geben dir einen Start, der die berühmten ersten acht Bars durchbricht."
+        },
+        {
+          "title": "Technische Muster üben",
+          "description": "Für mehrsilbige Reimschemata auf Dicht stellen, für einen ruhigen Track zurück auf Leicht."
+        },
+        {
+          "title": "Sauber konstruiert",
+          "description": "Clean wird druck- und sendefähig geschrieben, ein Clean-Setting braucht also kein Nachbessern von Hand."
+        }
+      ]
+    },
+    "feature_section": {
+      "title": "Was du damit schreiben kannst",
+      "description": "Jedes Format ist ein Anfang, den du in deiner eigenen Stimme neu schreibst. Das ist ein Lyrics-Werkzeug: keine Beats, keine Aufnahme, keine fertigen Songs.",
+      "items": [
+        {
+          "title": "Cyphers und Open Mic",
+          "description": "Erstelle einen 16-Bars-Verse für eine Runde und generiere mit demselben Thema neu, bis der Pocket sitzt."
+        },
+        {
+          "title": "Hooks und Refrains",
+          "description": "Ein vierzeiliger Hook zum Wiederholen – für Intro, Outro oder einen Sample-Flip deines Producers."
+        },
+        {
+          "title": "Beat-fertige Entwürfe",
+          "description": "Im Studio entwerfen, die besten Zeilen hineinschneiden, den Rest als Übung behalten."
+        },
+        {
+          "title": "Diss-Übungen mit fiktivem Gegner",
+          "description": "Battel gegen eine erfundene Figur ohne echte Person dahinter – Sparring-Material, das auf keinen realen Namen zielt."
+        }
+      ]
+    },
+    "faq_section": {
+      "title": "FAQ zum Raptext-Generator",
+      "description": "Wie der Generator mit Originalität umgeht, was die Regler ändern, was er nicht tut und was mit deiner Eingabe passiert.",
+      "items": [
+        {
+          "title": "Was ist ein Raptext-Generator?",
+          "description": "Es ist ein Textwerkzeug wie ein Rap-Maker mit Reglern: Du beschreibst das Thema, wählst eine Struktur – 16-Bars-Verse, Hook, Freestyle oder Diss – und er schreibt die Bars in dieser Form. Keine Beats, kein Audio, keine kompletten Songs. Heraus kommt Text, den du bearbeiten, zählen und vorführen kannst."
+        },
+        {
+          "title": "Kopiert er einen bestehenden Song?",
+          "description": "Nein. Jeder Durchlauf wird für dein Thema neu geschrieben. Der Generator ist ausdrücklich angewiesen, keine Lyrics bestehender Songs zu reproduzieren, zu zitieren oder umzuschreiben und niemals im Stil oder als Hommage an eine reale Aufnahmekünstlerin oder einen realen Aufnahmekünstler zu schreiben."
+        },
+        {
+          "title": "Kann ich es wie einen bestimmten Rapper klingen lassen?",
+          "description": "Nein, und das ist Absicht. Stil wird über musikalische Eigenschaften beschrieben – Pocket, Kadenz, Triplet-Gefühl, melodische Spanne – statt über Künstlernamen. Du bekommst einen brauchbaren Entwurf statt einer Nachahmung, die du nicht veröffentlichen könntest."
+        },
+        {
+          "title": "Wie schreibe ich damit einen 16-Bars-Verse?",
+          "description": "Thema beschreiben, das 16-Bars-Format wählen, Flow und Reimdichte setzen, generieren. Du erhältst die Abschnittsmarkierung plus sechzehn nummerierte Bars. Du kannst beliebig oft neu generieren, ohne die Einstellungen erneut einzugeben."
+        },
+        {
+          "title": "Wie schreibe ich Raptexte mit Reimen, die sitzen?",
+          "description": "Starte ausgewogen und wechsle auf Dicht, wenn der Inhalt trägt. Dicht verlangt mehrsilbige und innere Reime in den meisten Zeilen, ohne die Wörter unverständlich zu machen. Bleib leicht, wenn Klarheit wichtiger ist als Show."
+        },
+        {
+          "title": "Was unterscheidet die Formate?",
+          "description": "Ein 16-Bars-Verse liefert einen kompletten Verse mit sechzehn nummerierten Bars. Ein Hook liefert einen vierzeiligen Refrain, zweimal geschrieben. Ein Freestyle liefert zwölf fortlaufende Bars ohne Nummerierung. Ein Diss liefert acht Bars gegen eine erfundene Figur."
+        },
+        {
+          "title": "Kann ich damit einen Diss-Track schreiben?",
+          "description": "Ja, mit einer harten Grenze: Der Gegner ist erfunden. Der Generator bekommt die Anweisung, einen ausgedachten Namen und eine erfundene Rivalität zu bauen, die zu keiner echten Person, keinem Artist, keiner Gruppe oder Firma zurückverfolgt werden kann – ohne Drohungen, ohne Wunsch nach Schaden, ohne gezielte Schikane. Rap-Battle-Texte gegen echte Personen sind Belästigung, und dieses Tool schreibt sie nicht."
+        },
+        {
+          "title": "Macht er einen fertigen Song mit Beat?",
+          "description": "Nein. Das ist ein reines Lyrics-Werkzeug. Beats, Instrumentation, Stimme und Songproduktion sind eigene Produkte mit eigenen Urheberrechtsfragen. Nimm die Bars in deine DAW oder in AI Write, wenn du sie zu fertigen Texten ausbauen willst."
+        },
+        {
+          "title": "Darf ich den Text kommerziell nutzen?",
+          "description": "Die Ausgabe wird neu geschrieben und enthält keine bestehenden Lyrics, du kannst also damit weiterarbeiten. Prüfe vor der Veröffentlichung die Bedingungen deines Distributors sowie Sample-, Lizenz- und lokale Rap-Regeln."
+        },
+        {
+          "title": "Bleibt mein Thema privat?",
+          "description": "Dein Thema wird zur Generierung an den KI-Dienst gesendet und nicht in deinem Konto oder unserer Datenbank gespeichert. Wir erfassen nur anonyme Nutzungszahlen – niemals dein Thema oder die erzeugten Textzeilen."
+        },
+        {
+          "title": "In welchen Sprachen kann ich schreiben?",
+          "description": "Die Sprachauswahl folgt den von der Seite unterstützten Sprachen. Wähle sie vor der Generierung, dann kommt auch die Abschnittsmarkierung in dieser Sprache zurück."
+        },
+        {
+          "title": "Ist er kostenlos?",
+          "description": "Ja. Anonyme Besucherinnen können bis zum Tageslimit kostenlose Raptexte generieren, und die Anmeldung kostet auch nichts. Alle vier Formate, Flow-Stile und Reimdichten sind bei jedem Durchlauf frei; für mehr Volumen einfach anmelden und weitermachen."
+        },
+        {
+          "title": "Was verändert die Reimdichte?",
+          "description": "Leicht reimt ungefähr jede dritte Zeile und bleibt gesprochen. Ausgewogen reimt etwa jede zweite Zeile mit gleichem Endklang. Dicht reimt fast jede Zeile und ergänzt mehrsilbige und innere Reime, ohne die Wörter unverständlich zu machen."
+        }
+      ]
+    },
+    "cta_section": {
+      "title": "Aus dem Entwurf wird fertiges Schreiben",
+      "description": "Nimm die Bars, die dir gefallen, mit in AI Write und schreibe sie zu einem fertigen Track aus – mit Story Bible und Konsistenzprüfung an deiner Seite.",
+      "buttons": [
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write"
+        }
+      ]
+    },
+    "related_tools": {
+      "title": "Weitere Schreibwerkzeuge",
+      "description": "Von Bars zu Titeln, Prompts und vollständigen Entwürfen.",
+      "more_label": "Alle Werkzeuge ansehen"
+    },
+    "formats_section": {
+      "title": "Vier Rap-Formate, vier Aufgaben",
+      "description": "Derselbe Raptext-Generator schreibt vier Formate. Nimm das, das zu dem Teil passt, an dem du hängst.",
+      "items": [
+        {
+          "title": "16-Bars-Verse",
+          "description": "Sechzehn nummerierte Bars, bei normalem Tempo rund 30 bis 40 Sekunden. Das ist das Format, das die meisten meinen, wenn sie einen 16-Bars-Rap-Generator suchen, und die Grundeinheit der meisten Cypher-Runden."
+        },
+        {
+          "title": "Hook / Refrain",
+          "description": "Vier Zeilen, zweimal geschrieben – die Wiederholung steckt schon drin. Für Intro, Outro oder die Stelle, die der Raum mitsingt."
+        },
+        {
+          "title": "Freestyle",
+          "description": "Zwölf fortlaufende Bars ohne Nummerierung, näher an einem Cypher-Aufwärmen als an einem geschriebenen Track. Gut, um Pocket und Bilder schnell zu finden."
+        },
+        {
+          "title": "Diss-Track",
+          "description": "Acht Bars gegen einen fiktiven Gegner, der nur im Text existiert. Das ist der Modus für Rap-Battle-Texte: sportliches Duell ohne Drohungen, ohne Belästigung und ohne echte Namen."
+        }
+      ]
+    },
+    "craft_section": {
+      "title": "Barzahl und Reimschemata, kurz erklärt",
+      "description": "Die Handwerkdetails, an denen Bars sitzen. Einmal lesen – die Entwürfe machen danach mehr Sinn.",
+      "items": [
+        {
+          "title": "Bars zählen",
+          "description": "Eine Bar ist eine Zeile. Sechzehn Bars landen bei normalem Tempo bei etwa 30 bis 40 Sekunden – passend für die meisten Intros und für die Lücke zwischen Refrain und Verse. Dieser Generator nummeriert sie, Zählen entfällt."
+        },
+        {
+          "title": "Die Reimschemata, auf die es ankommt",
+          "description": "Monorhyme stapelt einen Klang über den ganzen Verse: selbstbewusst, aber eng. AABB wechselt zwei Reime und ist am leichtsten sauber zu schreiben. ABAB lässt pro Couplet eine offene Stelle – so kannst du eine Zeile noch wenden."
+        },
+        {
+          "title": "Mehrsilbige Reime",
+          "description": "Drei oder mehr Silben zu treffen statt einer ist die schwerste Übung im Rap. Die Einstellung Dicht verlangt genau das und trainiert dein Gehör am schnellsten."
+        },
+        {
+          "title": "Clean oder Explicit",
+          "description": "Clean bleibt druck- und sendefähig: keine Kraftausdrücke, keine Beleidigungen, keine Gewalt. Explicit erlaubt die übliche raue Rap-Sprache, aber keine Herabsetzung realer Personen."
+        }
+      ]
+    }
+  }
+}

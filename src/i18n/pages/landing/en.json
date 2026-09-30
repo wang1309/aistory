@@ -770,6 +770,14 @@
           "title": "Creative",
           "children": [
             {
+              "title": "Rap Lyric Generator",
+              "description": "Generate original rap verses, hooks, freestyles, and diss sections with flow, rhyme density, and language controls.",
+              "url": "/ai-tools/rap-lyric-generator",
+              "icon": "RiMicLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
               "title": "Incorrect Quote Generator",
               "description": "Funny, intentionally wrong quote exchanges for fandom characters and groups.",
               "url": "/incorrect-quote-generator",

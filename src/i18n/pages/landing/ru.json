@@ -770,6 +770,14 @@
           "title": "Творчество",
           "children": [
             {
+              "title": "Генератор рэп-текста",
+              "description": "Оригинальные куплеты, припевы, фристайлы и диссы с настройками флоу, плотности рифм и языка.",
+              "url": "/ai-tools/rap-lyric-generator",
+              "icon": "RiMicLine",
+              "target": "_self",
+              "category": "creative"
+            },
+            {
               "title": "Генератор неверных цитат",
               "description": "Короткие намеренно неправильные диалоги для фандомных персонажей и групп.",
               "url": "/incorrect-quote-generator",

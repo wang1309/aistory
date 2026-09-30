@@ -221,6 +221,17 @@ export const tools: Tool[] = [
     priority: 60,
   },
   {
+    slug: "rap-lyric-generator",
+    nameKey: "ai_tools.tools.rap_lyric_generator.name",
+    shortDescKey: "ai_tools.tools.rap_lyric_generator.desc",
+    module: "ai-tools",
+    category: "poem",
+    href: "/ai-tools/rap-lyric-generator",
+    icon: "RiMicLine",
+    image: "/imgs/rap-lyric-generator/cover.webp",
+    priority: 61,
+  },
+  {
     slug: "poem-title-generator",
     nameKey: "ai_tools.tools.poem_title_generator.name",
     shortDescKey: "ai_tools.tools.poem_title_generator.desc",

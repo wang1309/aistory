@@ -345,6 +345,10 @@
         "name": "Poem Generator",
         "desc": "Create poems in modern, classical, or haiku styles with the help of AI."
       },
+      "rap_lyric_generator": {
+        "name": "Rap Lyric Generator",
+        "desc": "Write original rap lyrics with a 16-bar verse, hook, freestyle, or diss generator — controls for flow, rhyme density, and language."
+      },
       "poem_title_generator": {
         "name": "Poem Title Generator",
         "desc": "Generate creative, evocative titles for your poems – literary or viral-ready, in multiple languages."

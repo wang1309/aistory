@@ -155,6 +155,7 @@ export default async function PoemGeneratorPage({
 
       <RelatedTools
         currentSlug="poem-generator"
+        relatedSlugs={["rap-lyric-generator", "poem-title-generator"]}
         limit={6}
         title={t("ai_tools.related_title")}
         description={t("ai_tools.section_description_hub")}
