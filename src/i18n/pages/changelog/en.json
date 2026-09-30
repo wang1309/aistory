@@ -6,6 +6,19 @@
     "description": "Stay updated with our latest features, improvements, bug fixes, and security updates",
     "items": [
       {
+        "version": "v1.3.19",
+        "date": "2026-09-30",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "Launched the Rap Lyric Generator landing page (/ai-tools/rap-lyric-generator): turn any subject into original rap song lyrics with labelled sections",
+              "Supports four formats (16-bar verse, hook, freestyle, diss track) with flow, rhyme density, content rating, and language controls, plus a free daily quota and fast/standard/creative models in six languages"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.18",
         "date": "2026-09-23",
         "changes": [

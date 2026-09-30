@@ -6,6 +6,19 @@
     "description": "了解我们最新的功能改进、问题修复和安全更新",
     "items": [
       {
+        "version": "v1.3.19",
+        "date": "2026-09-30",
+        "changes": [
+          {
+            "type": "feature",
+            "items": [
+              "说唱歌词生成器落地页上线（/ai-tools/rap-lyric-generator）：把任意主题写成带分节标签的原创说唱歌词",
+              "支持四种格式（16 小节主歌、Hook、Freestyle、Diss track）与律动、押韵密度、内容分级、输出语言控制，含每日免费额度和快速/标准/创意三种模型，覆盖六种语言"
+            ]
+          }
+        ]
+      },
+      {
         "version": "v1.3.18",
         "date": "2026-09-23",
         "changes": [
