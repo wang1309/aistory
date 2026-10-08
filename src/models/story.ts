@@ -158,7 +158,7 @@ export async function getStoriesByUser(
     .select()
     .from(sg_stories)
     .where(where)
-    .orderBy(desc(sg_stories.created_at))
+    .orderBy(desc(sg_stories.updated_at))
     .limit(limit)
     .offset(offset);
 

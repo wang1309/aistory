@@ -1,6 +1,10 @@
 import { redirect } from "@/i18n/navigation";
 import { newStripeClient } from "@/integrations/stripe";
 import { handleCheckoutSession } from "@/services/stripe";
+import {
+  appendPaymentSuccessMarker,
+  getPaymentSuccessPath,
+} from "@/lib/payment-resume";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -25,7 +29,13 @@ export async function GET(req: Request) {
 
     console.log("stripe callback session: ", session);
 
-    redirectUrl = process.env.NEXT_PUBLIC_PAY_SUCCESS_URL || "/";
+    redirectUrl = appendPaymentSuccessMarker(
+      getPaymentSuccessPath({
+        resumePath: session.metadata?.resume_path,
+        configuredSuccessPath: process.env.NEXT_PUBLIC_PAY_SUCCESS_URL,
+        locale,
+      })
+    );
   } catch (e) {
     console.log("handle stripe callback failed: ", e);
     redirectUrl = process.env.NEXT_PUBLIC_PAY_FAIL_URL || "/";

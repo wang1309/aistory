@@ -38,6 +38,7 @@ export default async function MyStoriesPage({ searchParams }: PageProps) {
       description={t("my_stories.description")}
       emptyMessage={t("my_stories.no_stories")}
       untitledLabel={t("my_stories.table.untitled")}
+      resumeLatestLabel={t("my_stories.resume_latest")}
       pagination={{
         page,
         pageSize,

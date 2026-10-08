@@ -5,6 +5,10 @@
     "keywords": "AI 故事生成器, 免费故事生成器, 无限故事, AI 创意写作, 故事创意, 情节生成器, 角色发展, 写作提示, AI 故事创作, 小说生成器",
     "siteName": "AI 故事生成器"
   },
+  "payment_return": {
+    "title": "支付成功",
+    "description": "额度已到账，可以继续刚才的创作。"
+  },
   "user": {
     "sign_in": "登录",
     "sign_out": "退出登录",
@@ -74,6 +78,7 @@
     "title": "我的故事",
     "description": "查看并管理你用 AI 生成并保存的故事。",
     "no_stories": "暂时还没有保存到云端的故事",
+    "resume_latest": "继续最近创作",
     "back_to_list": "返回我的故事列表",
     "edit_title": "编辑标题",
     "edit_title_description": "为这篇故事设置一个更容易记住的标题。",
@@ -521,6 +526,10 @@
     "popular": "最受欢迎",
     "title": "积分不足",
     "description": "升级套餐,继续使用 Creative 模型创作。",
+    "resume_story": "充值后即可返回这里，继续用 Creative 完成这段故事。",
+    "resume_writing": "充值后即可返回这里，继续用 Creative 完成这段文本。",
+    "resume_name": "充值后即可返回这里，继续用 Creative 生成名称。",
+    "resume_creation": "充值后即可返回这里，继续用 Creative 完成本次创作。",
     "loading": "加载中...",
     "empty": "暂时无法加载套餐。",
     "credits": "积分",

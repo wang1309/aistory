@@ -9,11 +9,13 @@ import {
   RiDeleteBinLine,
   RiCalendarLine,
   RiFileTextLine,
+  RiArrowRightLine,
 } from "react-icons/ri";
 import { Link } from "@/i18n/navigation";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
+import { useOpenPanel } from "@openpanel/nextjs";
 import {
   Dialog,
   DialogContent,
@@ -25,6 +27,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import StoryStatusBadge from "./story-status-badge";
+import { buildContinueRoute } from "@/components/ai-write/workbench/_lib";
 
 interface StoryItem {
   uuid: string;
@@ -43,6 +46,7 @@ interface StoriesListProps {
   description: string;
   emptyMessage: string;
   untitledLabel: string;
+  resumeLatestLabel: string;
   pagination?: {
     page: number;
     pageSize: number;
@@ -412,9 +416,12 @@ export default function StoriesList({
   description,
   emptyMessage,
   untitledLabel,
+  resumeLatestLabel,
   pagination,
 }: StoriesListProps) {
   const [headerVisible, setHeaderVisible] = useState(false);
+  const { track } = useOpenPanel();
+  const latestStory = !pagination || pagination.page === 1 ? stories[0] : undefined;
 
   useEffect(() => {
     setHeaderVisible(true);
@@ -429,15 +436,38 @@ export default function StoriesList({
           headerVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
         )}
       >
-        <div className="flex items-center gap-3 mb-1">
-          <div className="flex size-8 items-center justify-center rounded-full bg-primary/10">
-            <RiBookOpenLine className="size-4 text-primary" />
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div className="mb-1 flex items-center gap-3">
+              <div className="flex size-8 items-center justify-center rounded-full bg-primary/10">
+                <RiBookOpenLine className="size-4 text-primary" />
+              </div>
+              <h3 className="font-display text-xl font-bold tracking-tight">{title}</h3>
+            </div>
+            {description && (
+              <p className="ml-11 text-sm text-muted-foreground/60">{description}</p>
+            )}
           </div>
-          <h3 className="font-display text-xl font-bold tracking-tight">{title}</h3>
+          {latestStory && (
+            <Link
+              href={buildContinueRoute({
+                storyUuid: latestStory.uuid,
+                source: "my-stories",
+              }) as any}
+              onClick={() =>
+                track("my_stories_continue_click", {
+                  source_page: "my-stories",
+                  entry_point: "latest_story",
+                  story_status: latestStory.status || "draft",
+                })
+              }
+              className="group inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <span>{resumeLatestLabel}</span>
+              <RiArrowRightLine className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </Link>
+          )}
         </div>
-        {description && (
-          <p className="ml-11 text-sm text-muted-foreground/60">{description}</p>
-        )}
       </div>
 
       {/* Story Cards */}

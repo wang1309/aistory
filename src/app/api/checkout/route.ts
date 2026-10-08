@@ -10,10 +10,12 @@ import { PricingItem } from "@/types/blocks/pricing";
 import { newStripeClient } from "@/integrations/stripe";
 import { Order } from "@/types/order";
 import { newCreemClient } from "@/integrations/creem";
+import { normalizePaymentResumePath } from "@/lib/payment-resume";
 
 export async function POST(req: Request) {
   try {
-    let { product_id, currency, locale } = await req.json();
+    let { product_id, currency, locale, resume_path } = await req.json();
+    const resumePath = normalizePaymentResumePath(resume_path, locale);
 
     let cancel_url = `${
       process.env.NEXT_PUBLIC_PAY_CANCEL_URL || process.env.NEXT_PUBLIC_WEB_URL
@@ -135,6 +137,7 @@ export async function POST(req: Request) {
         order: order as any,
         locale,
         cancel_url,
+        resumePath,
       });
 
       return respData(result);
@@ -145,6 +148,7 @@ export async function POST(req: Request) {
       order: order as any,
       locale,
       cancel_url,
+      resumePath,
     });
 
     return respData(result);
@@ -158,10 +162,12 @@ async function stripeCheckout({
   order,
   locale,
   cancel_url,
+  resumePath,
 }: {
   order: Order;
   locale: string;
   cancel_url: string;
+  resumePath: string | null;
 }) {
   const intervals = ["month", "year"];
   const is_subscription = intervals.includes(order.interval);
@@ -195,6 +201,7 @@ async function stripeCheckout({
       user_email: order.user_email,
       credits: order.credits,
       user_uuid: order.user_uuid,
+      ...(resumePath ? { resume_path: resumePath } : {}),
     },
     mode: is_subscription ? "subscription" : "payment",
     success_url: `${process.env.NEXT_PUBLIC_WEB_URL}/api/pay/callback/stripe?locale=${locale}&session_id={CHECKOUT_SESSION_ID}&order_no=${order.order_no}`,
@@ -237,10 +244,12 @@ async function creemCheckout({
   order,
   locale,
   cancel_url,
+  resumePath,
 }: {
   order: Order;
   locale: string;
   cancel_url: string;
+  resumePath: string | null;
 }) {
   const client = newCreemClient();
 
@@ -273,6 +282,7 @@ async function creemCheckout({
         user_email: order.user_email,
         credits: order.credits,
         user_uuid: order.user_uuid,
+        ...(resumePath ? { resume_path: resumePath } : {}),
       },
     },
   });

@@ -13,10 +13,12 @@ import { ThemeProvider } from "@/providers/theme";
 import { cn } from "@/lib/utils";
 import VerificationModal from "@/components/verification-modal";
 import Analytics from "@/components/analytics";
+import PaymentReturnNotice from "@/components/payment/payment-return-notice";
 import NextTopLoader from "nextjs-toploader";
 import { Metadata } from "next";
 import { buildLanguageAlternates } from "@/lib/seo";
 import { Inter, Source_Serif_4, Noto_Sans_SC } from "next/font/google";
+import { Suspense } from "react";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -203,6 +205,9 @@ export default async function LocaleLayout({
                   height={3}
                 />
                 <VerificationModal />
+                <Suspense fallback={null}>
+                  <PaymentReturnNotice />
+                </Suspense>
                 <Analytics />
               </ThemeProvider>
             </AppContextProvider>

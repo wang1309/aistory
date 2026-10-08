@@ -54,6 +54,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
         product_id: item.product_id,
         currency: checkoutCurrency,
         locale: locale || "en",
+        resume_path: `${window.location.pathname}${window.location.search}${window.location.hash}`,
       };
 
       setIsLoading(true);

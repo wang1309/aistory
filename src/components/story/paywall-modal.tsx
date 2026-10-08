@@ -10,13 +10,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowRight, Loader2, Sparkles } from "lucide-react";
+import { ArrowRight, CircleCheck, Loader2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { useAppContext } from "@/contexts/app";
 import type { PricingItem } from "@/types/blocks/pricing";
 import { useOpenPanel } from "@openpanel/nextjs";
 import type { CreativePageKey } from "@/lib/creative-quota-core";
 import { buildCreativePaywallTrackingPayload } from "@/lib/creative-tracking";
+import { getCreativePaywallTask } from "@/lib/creative-paywall-copy";
 
 type Props = {
   open: boolean;
@@ -45,6 +46,13 @@ export default function PaywallModal({
   const [loading, setLoading] = useState(false);
   const [checkingOut, setCheckingOut] = useState<string | null>(null);
   const wasOpen = useRef(false);
+  const paywallTask = getCreativePaywallTask(sourcePage);
+  const resumeMessage = {
+    story: t("resume_story"),
+    writing: t("resume_writing"),
+    name: t("resume_name"),
+    creation: t("resume_creation"),
+  }[paywallTask];
 
   useEffect(() => {
     if (open && !wasOpen.current && sourcePage) {
@@ -122,6 +130,7 @@ export default function PaywallModal({
           product_id: item.product_id,
           currency: item.currency,
           locale,
+          resume_path: `${window.location.pathname}${window.location.search}${window.location.hash}`,
         }),
       });
       if (response.status === 401) {
@@ -217,6 +226,10 @@ export default function PaywallModal({
             <DialogDescription className="mt-1.5 text-[13px] leading-relaxed">
               {t("description")}
             </DialogDescription>
+            <p className="mt-3 flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
+              <CircleCheck className="mt-0.5 size-3.5 shrink-0 text-primary" />
+              <span>{resumeMessage}</span>
+            </p>
           </DialogHeader>
 
           {/* 套餐卡片(点击直接 checkout) */}

@@ -5,6 +5,10 @@
     "keywords": "AI story generator, free story generator, unlimited stories, creative writing AI, story ideas, plot generator, character development, writing prompts, storytelling AI, fiction generator",
     "siteName": "AI Story Generator"
   },
+  "payment_return": {
+    "title": "Payment complete",
+    "description": "Your credits are ready. Continue where you left off."
+  },
   "user": {
     "sign_in": "Sign In",
     "sign_out": "Sign Out",
@@ -74,6 +78,7 @@
     "title": "My Stories",
     "description": "Browse and manage stories you've generated and saved with AI.",
     "no_stories": "No stories saved to your library yet",
+    "resume_latest": "Continue latest story",
     "back_to_list": "Back to my stories",
     "edit_title": "Edit title",
     "edit_title_description": "Give this story a clearer, more memorable title.",
@@ -521,6 +526,10 @@
     "popular": "Most popular",
     "title": "Insufficient credits",
     "description": "Upgrade a plan to keep creating with the Creative model.",
+    "resume_story": "Add credits to continue this story with Creative. After payment, you'll return to this tool.",
+    "resume_writing": "Add credits to continue working on this text with Creative. After payment, you'll return to this tool.",
+    "resume_name": "Add credits to keep creating names with Creative. After payment, you'll return to this tool.",
+    "resume_creation": "Add credits to continue this creation with Creative. After payment, you'll return to this tool.",
     "loading": "Loading plans...",
     "empty": "Unable to load plans right now.",
     "credits": "credits",

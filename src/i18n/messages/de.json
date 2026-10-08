@@ -5,6 +5,10 @@
     "keywords": "KI-Geschichtengenerator, kostenloser Geschichtengenerator, unbegrenzte Geschichten, kreatives Schreiben KI, Geschichtenideen, Handlungsgenerator, Charakterentwicklung, Schreibanregungen, Erzähl-KI, Fiktionsgenerator, Ghostwriter KI, Roman schreiben lassen",
     "siteName": "KI-Geschichtengenerator"
   },
+  "payment_return": {
+    "title": "Zahlung abgeschlossen",
+    "description": "Dein Guthaben ist bereit. Mach dort weiter, wo du aufgehört hast."
+  },
   "user": {
     "sign_in": "Anmelden",
     "sign_out": "Abmelden",
@@ -71,6 +75,7 @@
     "title": "Meine Stories",
     "description": "Durchsuche und verwalte Stories, die du mit KI erstellt und gespeichert hast.",
     "no_stories": "Du hast noch keine Stories in deiner Bibliothek gespeichert.",
+    "resume_latest": "Neueste Story fortsetzen",
     "back_to_list": "Zurück zu meinen Stories",
     "edit_title": "Titel bearbeiten",
     "edit_title_description": "Gib dieser Story einen klaren, gut merkbaren Titel.",
@@ -518,6 +523,10 @@
     "popular": "Beliebteste",
     "title": "Nicht genügend Guthaben",
     "description": "Upgrade auf einen Plan, um mit dem Creative-Modell weiterzuschreiben.",
+    "resume_story": "Füge Credits hinzu, um diese Geschichte mit Creative fortzusetzen. Nach der Zahlung kehrst du zu diesem Tool zurück.",
+    "resume_writing": "Füge Credits hinzu, um mit Creative an diesem Text weiterzuarbeiten. Nach der Zahlung kehrst du zu diesem Tool zurück.",
+    "resume_name": "Füge Credits hinzu, um mit Creative weitere Namen zu erstellen. Nach der Zahlung kehrst du zu diesem Tool zurück.",
+    "resume_creation": "Füge Credits hinzu, um diese Kreation mit Creative fortzusetzen. Nach der Zahlung kehrst du zu diesem Tool zurück.",
     "loading": "Wird geladen...",
     "empty": "Pläne konnten derzeit nicht geladen werden.",
     "credits": "Credits",

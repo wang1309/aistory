@@ -1,6 +1,10 @@
 import { redirect } from "@/i18n/navigation";
 import { newCreemClient } from "@/integrations/creem";
 import { updateOrder } from "@/services/order";
+import {
+  appendPaymentSuccessMarker,
+  getPaymentSuccessPath,
+} from "@/lib/payment-resume";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -43,7 +47,14 @@ export async function GET(req: Request) {
 
     await updateOrder({ order_no, paid_email, paid_detail });
 
-    redirectUrl = process.env.NEXT_PUBLIC_PAY_SUCCESS_URL || "/";
+    const metadata = result.metadata as Record<string, unknown> | undefined;
+    redirectUrl = appendPaymentSuccessMarker(
+      getPaymentSuccessPath({
+        resumePath: metadata?.resume_path,
+        configuredSuccessPath: process.env.NEXT_PUBLIC_PAY_SUCCESS_URL,
+        locale,
+      })
+    );
   } catch (e) {
     console.log("handle creem callback failed:", e);
     redirectUrl = process.env.NEXT_PUBLIC_PAY_FAIL_URL || "/";
