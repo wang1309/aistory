@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
@@ -77,19 +78,14 @@ export async function POST(req: Request) {
     });
     const quotaError = creativeQuotaErrorResponse(quotaGate);
     if (quotaError) return quotaError;
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-    if (!apiKey) return withCreativeVisitorCookie(respErr("API KEY not configured"), quotaGate);
-
     const finalPrompt = buildLiteratureReviewPrompt(parsed.value);
 
     const modelMap: Record<string, string> = {
-      fast: "gemini-2.5-flash",
-      standard: "gemini-3.1-flash-lite",
-      creative: "gemini-3-flash",
+      fast: resolveModelTier("fast"),
+      standard: resolveModelTier("standard"),
+      creative: resolveModelTier("creative"),
     };
-    const actualModel = modelMap[model] || "gemini-3.1-flash-lite";
+    const actualModel = modelMap[model] || resolveModelTier("standard");
 
     const requestBody = {
       model: actualModel,
@@ -104,18 +100,11 @@ export async function POST(req: Request) {
       ],
     };
 
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody),
-    });
+    const response = await fetchChatCompletion({ body: requestBody });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.log("GRSAI API error (Literature Review):", response.status, errorText);
+      console.log("AI API error (Literature Review):", response.status, errorText);
       return withCreativeVisitorCookie(respErr(`API request failed: ${response.status}`), quotaGate);
     }
     if (!response.body) return withCreativeVisitorCookie(respErr("No response body from AI service"), quotaGate);

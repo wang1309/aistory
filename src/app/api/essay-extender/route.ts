@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respData, respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
@@ -59,8 +60,8 @@ interface EssayExtenderRequest {
 }
 
 const MODEL_MAP: Record<string, string> = {
-  fast: "gemini-3.1-flash-lite",
-  creative: "gemini-3-flash",
+  fast: resolveModelTier("standard"),
+  creative: resolveModelTier("creative"),
 };
 
 const SYSTEM_PROMPT =
@@ -93,31 +94,19 @@ export async function POST(req: Request) {
     });
     const quotaError = creativeQuotaErrorResponse(quotaGate);
     if (quotaError) return quotaError;
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-    if (!apiKey) return withCreativeVisitorCookie(respErr("API KEY not configured"), quotaGate);
-
     const finalPrompt = buildEssayExtenderPrompt(input.value);
 
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    const response = await fetchChatCompletion({ body: {
         model: MODEL_MAP[selectedModel],
         stream: false,
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: finalPrompt },
         ],
-      }),
-    });
+      } });
 
     if (!response.ok) {
-      console.log("GRSAI API error (Essay Extender):", response.status);
+      console.log("AI API error (Essay Extender):", response.status);
       return withCreativeVisitorCookie(respErr(`API request failed: ${response.status}`), quotaGate);
     }
 

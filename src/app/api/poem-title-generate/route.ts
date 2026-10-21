@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
@@ -218,13 +219,6 @@ export async function POST(req: Request) {
         }
 
         console.log("✓ Turnstile verification passed, proceeding with title generation");
-
-        const apiKey = process.env.GRSAI_API_KEY;
-        const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-        if (!apiKey) {
-            return respErr("API KEY not found");
-        }
-
         // Build prompt
         const options: PoemTitleGenerateOptions = {
             poemContent: poemContent.trim(),
@@ -244,7 +238,7 @@ export async function POST(req: Request) {
         console.log("Moods:", moods);
 
         const requestBody = {
-            model: "gemini-3.1-flash-lite",
+            model: resolveModelTier("standard"),
             stream: true,
             messages: [
                 { role: "system", content: promptData.system },
@@ -252,17 +246,10 @@ export async function POST(req: Request) {
             ],
         };
 
-        // Call GRSAI API with streaming
-        const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey}`,
-            },
-            body: JSON.stringify(requestBody),
-        });
+        // Call AI API with streaming
+        const response = await fetchChatCompletion({ body: requestBody });
 
-        console.log("=== GRSAI API Response Status ===", response.status, response.statusText);
+        console.log("=== AI API Response Status ===", response.status, response.statusText);
 
         if (!response.ok) {
             const errorText = await response.text();

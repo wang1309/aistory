@@ -1,3 +1,4 @@
+import { resolveModelTier } from "@/lib/llm/models";
 import type {
   NormalizedTiktokCommentRequest,
   TiktokCommentGenerateRequest,
@@ -161,18 +162,18 @@ export function resolveTiktokCommentModelConfig(mode: TiktokCommentModelMode): {
   switch (mode) {
     case "fast":
       return {
-        modelName: "gemini-2.5-flash",
+        modelName: resolveModelTier("fast"),
         temperature: 0.7,
       };
     case "creative":
       return {
-        modelName: "gemini-3-flash",
+        modelName: resolveModelTier("creative"),
         temperature: 0.9,
       };
     case "standard":
     default:
       return {
-        modelName: "gemini-3.1-flash-lite",
+        modelName: resolveModelTier("standard"),
         temperature: 0.75,
       };
   }

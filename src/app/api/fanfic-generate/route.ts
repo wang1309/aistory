@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
@@ -173,13 +174,6 @@ export async function POST(req: Request) {
     if (quotaError) return quotaError;
 
     console.log("✓ Turnstile verification passed, proceeding with fanfic generation");
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-    if (!apiKey) {
-      return withCreativeVisitorCookie(respErr("API KEY not found"), quotaGate);
-    }
-
     // Map fanfic-specific parameters to story generation parameters
     const format = "prose"; // Fanfic is always prose format
     const perspective = "third-person-limited"; // Default perspective for fanfic
@@ -291,12 +285,12 @@ Please ensure:
 
     // Map logical model keys to actual model names (same convention as story-generate)
     const modelMap: Record<string, string> = {
-      fast: "gemini-2.5-flash",
-      standard: "gemini-3.1-flash-lite",
-      creative: "gemini-3-flash",
+      fast: resolveModelTier("fast"),
+      standard: resolveModelTier("standard"),
+      creative: resolveModelTier("creative"),
     };
 
-    const actualModel = modelMap[normalizedModel] || "gemini-3.1-flash-lite";
+    const actualModel = modelMap[normalizedModel] || resolveModelTier("standard");
     console.log("=== Model mapping ===", { requestedModel: modelInput, normalizedModel, actualModel });
 
     const requestBody = {
@@ -308,19 +302,12 @@ Please ensure:
       ],
     };
 
-    console.log("=== Request to GRSAI API ===", JSON.stringify(requestBody, null, 2));
+    console.log("=== Request to AI API ===", JSON.stringify(requestBody, null, 2));
 
-    // Call GRSAI API with streaming
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(requestBody),
-    });
+    // Call AI API with streaming
+    const response = await fetchChatCompletion({ body: requestBody });
 
-    console.log("=== GRSAI API Response Status ===", response.status, response.statusText);
+    console.log("=== AI API Response Status ===", response.status, response.statusText);
 
     if (!response.ok) {
       const errorText = await response.text();

@@ -1,3 +1,4 @@
+import { resolveModelTier } from "@/lib/llm/models";
 import type {
   GeneratedYoutubeName,
   NormalizedYoutubeNameRequest,
@@ -229,7 +230,7 @@ export function resolveYoutubeNameModelConfig(): {
   temperature: number;
 } {
   return {
-    modelName: "gemini-3.1-flash-lite",
+    modelName: resolveModelTier("standard"),
     temperature: 0.85,
   };
 }

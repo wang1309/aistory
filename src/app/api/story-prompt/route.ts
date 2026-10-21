@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr, respData } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
@@ -279,25 +280,18 @@ export async function POST(req: Request) {
     if (!isValidToken) {
       return respErr("Verification failed");
     }
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-    if (!apiKey) {
-      return respErr("API KEY not found");
-    }
-
     // Build the prompt
     const finalPrompt = buildPromptGenerationRequest(requestData);
     console.log("=== Generated System Prompt ===", finalPrompt.substring(0, 500) + "...");
 
     // Map model keys
     const modelMap: Record<string, string> = {
-      fast: "gemini-2.5-flash",
-      standard: "gemini-3.1-flash-lite",
-      creative: "gemini-3-flash",
+      fast: resolveModelTier("fast"),
+      standard: resolveModelTier("standard"),
+      creative: resolveModelTier("creative"),
     };
 
-    const actualModel = modelMap[model] || "gemini-3.1-flash-lite";
+    const actualModel = modelMap[model] || resolveModelTier("standard");
 
     const requestBody = {
       model: actualModel,
@@ -312,14 +306,7 @@ export async function POST(req: Request) {
     };
 
     // Call API with streaming
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(requestBody),
-    });
+    const response = await fetchChatCompletion({ body: requestBody });
 
     if (!response.ok) {
       const errorText = await response.text();

@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
@@ -182,13 +183,6 @@ export async function POST(req: Request) {
     }
 
     console.log("✓ Turnstile verification passed, proceeding with title generation");
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-    if (!apiKey) {
-      return respErr("API KEY not found");
-    }
-
     // Map genre, tone, and style to display names
     const genreDisplay = genre && genre !== "none" ? (genreMap[genre] || genre) : undefined;
     const toneDisplay = tone && tone !== "none" ? (toneMap[tone] || tone) : undefined;
@@ -231,26 +225,19 @@ Return only the titles, one per line.`;
     console.log("Output Language:", `${currentLanguage.english} (${currentLanguage.native})`);
 
     const requestBody = {
-      model: "gemini-3.1-flash-lite",
+      model: resolveModelTier("standard"),
       stream: true,
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt },
       ],
     };
-    console.log("=== Request to GRSAI API ===", JSON.stringify(requestBody, null, 2));
+    console.log("=== Request to AI API ===", JSON.stringify(requestBody, null, 2));
 
-    // Call GRSAI API with streaming
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(requestBody),
-    });
+    // Call AI API with streaming
+    const response = await fetchChatCompletion({ body: requestBody });
 
-    console.log("=== GRSAI API Response Status ===", response.status, response.statusText);
+    console.log("=== AI API Response Status ===", response.status, response.statusText);
 
     if (!response.ok) {
       const errorText = await response.text();

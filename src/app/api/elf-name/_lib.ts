@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import type {
   ElfHeritage,
   ElfNameForm,
@@ -278,18 +279,18 @@ export function resolveElfNameModelConfig(mode: ElfNameModelMode): {
   switch (mode) {
     case "fast":
       return {
-        modelName: "gemini-2.5-flash",
+        modelName: resolveModelTier("fast"),
         temperature: 0.7,
       };
     case "creative":
       return {
-        modelName: "gemini-3-flash",
+        modelName: resolveModelTier("creative"),
         temperature: 0.9,
       };
     case "standard":
     default:
       return {
-        modelName: "gemini-3.1-flash-lite",
+        modelName: resolveModelTier("standard"),
         temperature: 0.75,
       };
   }
@@ -298,15 +299,8 @@ export function resolveElfNameModelConfig(mode: ElfNameModelMode): {
 export async function generateElfNames(
   input: NormalizedElfNameRequest
 ): Promise<ElfNameGeneratorResponse> {
-  const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
   const { modelName, temperature } = resolveElfNameModelConfig(input.mode);
-  const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.GRSAI_API_KEY}`,
-    },
-    body: JSON.stringify({
+  const response = await fetchChatCompletion({ body: {
       model: modelName,
       stream: false,
       temperature,
@@ -316,8 +310,7 @@ export async function generateElfNames(
           content: buildElfNamePrompt(input),
         },
       ],
-    }),
-  });
+    } });
 
   if (!response.ok) {
     throw new Error(`upstream responded with status ${response.status}`);

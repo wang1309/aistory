@@ -451,6 +451,7 @@ export default function IncorrectQuoteGenerate({
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
         let buffer = "";
+        let rawBody = "";
         let accumulated = "";
 
         while (true) {
@@ -459,7 +460,9 @@ export default function IncorrectQuoteGenerate({
             break;
           }
 
-          buffer += decoder.decode(value, { stream: true });
+          const chunk = decoder.decode(value, { stream: true });
+          rawBody += chunk;
+          buffer += chunk;
           const lines = buffer.split("\n");
           buffer = lines.pop() || "";
 
@@ -481,7 +484,26 @@ export default function IncorrectQuoteGenerate({
         }
 
         if (!accumulated.trim()) {
-          throw new Error("empty result");
+          // The route returns { code, message } with HTTP 200 for some upstream
+          // failures; surface that message instead of a generic "empty result".
+          const trimmed = rawBody.trim();
+          if (trimmed) {
+            try {
+              const parsed = JSON.parse(trimmed) as { message?: unknown };
+              if (typeof parsed?.message === "string" && parsed.message) {
+                throw new Error(`empty result: ${parsed.message}`);
+              }
+            } catch (error) {
+              if (
+                error instanceof Error &&
+                error.message.startsWith("empty result:")
+              ) {
+                throw error;
+              }
+            }
+          }
+
+          throw new Error("empty result: the model returned no text");
         }
 
         saveCompletedQuote(accumulated);

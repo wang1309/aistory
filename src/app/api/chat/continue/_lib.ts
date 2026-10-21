@@ -29,6 +29,18 @@ export function estimateMessageTokens(messages: GrSaiChatMessage[]) {
   }, 0);
 }
 
+/**
+ * Rough fallback used when the provider does not return a final `usage` chunk.
+ * Keeps the same ~4 chars/token heuristic as the prompt estimator.
+ */
+export function estimateCompletionTokens(text: string) {
+  if (!text) {
+    return 0;
+  }
+
+  return Math.max(1, Math.ceil(text.length / 4));
+}
+
 export function calculateContinueChatCredits({
   promptTokens,
   completionTokens,

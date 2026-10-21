@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import type {
   CityGenre,
   CityNicknameGenerateRequest,
@@ -126,15 +127,8 @@ export function groupCityNicknameResults(results: CityNicknameResult[]) {
 export async function generateCityNicknames(
   input: NormalizedCityNicknameRequest
 ) {
-  const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-  const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.GRSAI_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: "gemini-3.1-flash-lite",
+  const response = await fetchChatCompletion({ body: {
+      model: resolveModelTier("standard"),
       stream: false,
       temperature: 0.9,
       messages: [
@@ -143,8 +137,7 @@ export async function generateCityNicknames(
           content: buildCityNicknamePrompt(input),
         },
       ],
-    }),
-  });
+    } });
 
   const json = await response.json();
   const content = json?.choices?.[0]?.message?.content ?? "";

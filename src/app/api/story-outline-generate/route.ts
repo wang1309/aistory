@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import type {
@@ -55,31 +56,16 @@ export async function POST(req: Request) {
     if (!isValidToken) {
       return respErr("verification failed");
     }
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-
-    if (!apiKey) {
-      return respErr("API KEY not found");
-    }
-
     const prompt = buildStoryOutlinePrompt(normalized);
 
-    const upstream = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: "gemini-3.1-flash-lite",
+    const upstream = await fetchChatCompletion({ body: {
+        model: resolveModelTier("standard"),
         stream: false,
         temperature: 0.8,
         max_tokens: 4096,
         response_format: { type: "json_object" },
         messages: [{ role: "user", content: prompt }],
-      }),
-    });
+      } });
 
     if (!upstream.ok) {
       console.error("Story outline upstream API error", upstream.status);

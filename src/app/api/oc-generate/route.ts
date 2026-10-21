@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { NextResponse } from "next/server";
 
@@ -52,24 +53,11 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
   }
 }
 
-const UPSTREAM_MODEL = "gemini-2.5-flash";
+const UPSTREAM_MODEL = "fast";
 
 async function callUpstream(prompt: string): Promise<string> {
-  const apiKey = process.env.GRSAI_API_KEY;
-  const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-
-  if (!apiKey) {
-    throw new Error("API KEY not found");
-  }
-
-  const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: UPSTREAM_MODEL,
+  const response = await fetchChatCompletion({ body: {
+      model: resolveModelTier(UPSTREAM_MODEL),
       stream: false,
       messages: [
         {
@@ -79,8 +67,7 @@ async function callUpstream(prompt: string): Promise<string> {
         },
         { role: "user", content: prompt },
       ],
-    }),
-  });
+    } });
 
   if (!response.ok) {
     const errorText = await response.text();
@@ -137,7 +124,7 @@ export async function POST(req: Request) {
 
   // The public UI has no model selector; the internal "creative" key activates
   // the existing page-scoped quota and credit flow while the provider model
-  // stays fixed at gemini-2.5-flash.
+  // stays pinned to the fast tier.
   const quotaGate = await prepareCreativeQuota({
     pageKey: "oc-generator",
     model: "creative",

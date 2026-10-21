@@ -14,6 +14,8 @@
     "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf:upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "llm:probe": "npx tsx scripts/apimart-probe.ts",
+    "llm:smoke": "npx tsx scripts/apimart-smoke.ts",
     "docker:build": "docker build -f Dockerfile -t shipany-template-one:latest .",
     "db:generate": "npx drizzle-kit generate --config=src/db/config.ts",
     "db:migrate": "npx drizzle-kit migrate --config=src/db/config.ts",

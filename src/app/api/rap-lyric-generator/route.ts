@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
@@ -22,9 +23,9 @@ interface RapLyricRequest {
 
 /** Same provider mapping as the poem generator so rap and poetry share quality and cost. */
 const MODEL_MAP: Record<string, string> = {
-  fast: "gemini-2.5-flash",
-  standard: "gemini-3.1-flash-lite",
-  creative: "gemini-3-flash",
+  fast: resolveModelTier("fast"),
+  standard: resolveModelTier("standard"),
+  creative: resolveModelTier("creative"),
 };
 
 const SYSTEM_PROMPT =
@@ -87,37 +88,25 @@ export async function POST(req: Request) {
     });
     const quotaError = creativeQuotaErrorResponse(quotaGate);
     if (quotaError) return quotaError;
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-    if (!apiKey) return withCreativeVisitorCookie(respErr("API KEY not configured"), quotaGate);
-
     const finalPrompt = buildRapLyricPrompt(parsed.value);
 
     let response: Response;
     try {
-      response = await fetch(`${baseUrl}/v1/chat/completions`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      response = await fetchChatCompletion({ body: {
           model: MODEL_MAP[parsed.value.model],
           stream: true,
           messages: [
             { role: "system", content: SYSTEM_PROMPT },
             { role: "user", content: finalPrompt },
           ],
-        }),
-      });
+        } });
     } catch (error) {
       console.log("Rap lyric upstream request failed", error instanceof Error ? error.name : "unknown");
       return withCreativeVisitorCookie(respErr("Generation failed. Please try again."), quotaGate);
     }
 
     if (!response.ok) {
-      console.log("GRSAI API error (Rap Lyric):", response.status);
+      console.log("AI API error (Rap Lyric):", response.status);
       return withCreativeVisitorCookie(respErr(`API request failed: ${response.status}`), quotaGate);
     }
 

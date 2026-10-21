@@ -1,3 +1,6 @@
+import { fetchChatCompletion } from "@/lib/llm/client";
+import { extractDeltaText, extractUsage } from "@/lib/llm/normalize";
+import { logger } from "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import {
   CreditsTransType,
@@ -7,10 +10,14 @@ import {
 import { getUserUuid } from "@/services/user";
 import {
   buildGrSaiChatRequest,
-  createGrSaiHeaders,
   type GrSaiChatRequestInput,
 } from "../_lib";
-import { calculateContinueChatCredits, estimateMaxContinueChatCredits, estimateMessageTokens } from "./_lib";
+import {
+  calculateContinueChatCredits,
+  estimateCompletionTokens,
+  estimateMaxContinueChatCredits,
+  estimateMessageTokens,
+} from "./_lib";
 
 type ContinueChatRequest = GrSaiChatRequestInput & {
   max_tokens: number;
@@ -28,7 +35,7 @@ export type ContinueChatDependencies = {
   getUserUuid: typeof getUserUuid;
   getUserCredits: typeof getUserCredits;
   decreaseCredits: typeof decreaseCredits;
-  fetchGrSai: (payload: GrSaiChatRequestInput) => Promise<Response>;
+  fetchCompletion: (payload: GrSaiChatRequestInput) => Promise<Response>;
 };
 
 function getDefaultDependencies(): ContinueChatDependencies {
@@ -36,41 +43,33 @@ function getDefaultDependencies(): ContinueChatDependencies {
     getUserUuid,
     getUserCredits,
     decreaseCredits,
-    fetchGrSai: async (payload) => {
-      const apiKey = process.env.GRSAI_API_KEY;
-      if (!apiKey) {
-        throw new Error("GRSAI_API_KEY not configured");
-      }
-
-      const baseUrl = (process.env.GRSAI_BASE_URL || "https://api.grsai.com").replace(
-        /\/$/,
-        ""
-      );
-
-      return fetch(`${baseUrl}/v1/chat/completions`, {
-        method: "POST",
-        headers: createGrSaiHeaders(apiKey),
-        body: JSON.stringify(payload),
-      });
-    },
+    fetchCompletion: async (payload) => fetchChatCompletion({ body: payload }),
   };
 }
 
-function parseUsageFromSseLine(line: string): Usage | null {
-  if (!line.startsWith("data: ")) {
-    return null;
+function parseSseLine(line: string): {
+  usage: Usage | null;
+  content: string;
+} {
+  const trimmed = line.replace(/\r$/, "").trim();
+
+  if (!trimmed.startsWith("data:")) {
+    return { usage: null, content: "" };
   }
 
-  const data = line.slice(6);
-  if (data === "[DONE]") {
-    return null;
+  const data = trimmed.slice(5).trimStart();
+  if (!data || data === "[DONE]") {
+    return { usage: null, content: "" };
   }
 
   try {
-    const parsed = JSON.parse(data) as { usage?: Usage };
-    return parsed.usage || null;
+    const parsed = JSON.parse(data);
+    return {
+      usage: extractUsage(parsed),
+      content: extractDeltaText(parsed),
+    };
   } catch {
-    return null;
+    return { usage: null, content: "" };
   }
 }
 
@@ -119,20 +118,21 @@ export function createContinueChatHandler(
         stream: true,
       });
 
-      const upstream = await deps.fetchGrSai(upstreamPayload);
+      const upstream = await deps.fetchCompletion(upstreamPayload);
       if (!upstream.ok) {
         const errorText = await upstream.text();
-        return respErr(`GRSAI API error: ${upstream.status} ${errorText}`);
+        return respErr(`AI API error: ${upstream.status} ${errorText}`);
       }
 
       if (!upstream.body) {
-        return respErr("No response body from GRSAI API");
+        return respErr("No response body from AI API");
       }
 
       const decoder = new TextDecoder();
       const encoder = new TextEncoder();
       let buffer = "";
       let finalUsage: Usage | null = null;
+      let completionText = "";
 
       const stream = new ReadableStream({
         async start(controller) {
@@ -152,9 +152,12 @@ export function createContinueChatHandler(
               buffer = lines.pop() || "";
 
               for (const line of lines) {
-                const usage = parseUsageFromSseLine(line);
-                if (usage) {
-                  finalUsage = usage;
+                const parsed = parseSseLine(line);
+                if (parsed.usage) {
+                  finalUsage = parsed.usage;
+                }
+                if (parsed.content) {
+                  completionText += parsed.content;
                 }
               }
 
@@ -162,21 +165,41 @@ export function createContinueChatHandler(
             }
 
             if (buffer) {
-              const usage = parseUsageFromSseLine(buffer);
-              if (usage) {
-                finalUsage = usage;
+              const parsed = parseSseLine(buffer);
+              if (parsed.usage) {
+                finalUsage = parsed.usage;
+              }
+              if (parsed.content) {
+                completionText += parsed.content;
               }
             }
+
+            let credits: number | null = null;
 
             if (
               finalUsage?.prompt_tokens !== undefined &&
               finalUsage.completion_tokens !== undefined
             ) {
-              const credits = calculateContinueChatCredits({
+              credits = calculateContinueChatCredits({
                 promptTokens: finalUsage.prompt_tokens,
                 completionTokens: finalUsage.completion_tokens,
               });
+            } else if (completionText) {
+              // APIMart's streaming response does not document a usage chunk.
+              // Estimate from the generated text so credit billing still works.
+              credits = calculateContinueChatCredits({
+                promptTokens: estimateMessageTokens(body.messages),
+                completionTokens: estimateCompletionTokens(completionText),
+              });
 
+              logger.error("[llm] stream usage missing; billed estimated tokens", {
+                route: "chat-continue",
+                completionChars: completionText.length,
+                credits,
+              });
+            }
+
+            if (credits !== null) {
               await deps.decreaseCredits({
                 user_uuid,
                 trans_type: CreditsTransType.ChatContinue,
@@ -184,7 +207,7 @@ export function createContinueChatHandler(
               });
             }
           } catch (error) {
-            console.log("continue chat stream or billing failed:", error);
+            logger.error("continue chat stream or billing failed:", error);
           } finally {
             controller.close();
           }

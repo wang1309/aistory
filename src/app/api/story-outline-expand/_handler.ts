@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import { respErr } from "@/lib/resp";
 import {
   CreditsAmount,
@@ -29,28 +30,14 @@ function getDefaultDeps(): ExpandDeps {
     getUserCredits,
     decreaseCredits,
     fetchModel: async (prompt: string) => {
-      const apiKey = process.env.GRSAI_API_KEY;
-      if (!apiKey) {
-        throw new Error("API KEY not found");
-      }
-
-      const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-
-      return fetch(`${baseUrl}/v1/chat/completions`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          model: "gemini-3.1-flash-lite",
+      return fetchChatCompletion({ body: {
+          model: resolveModelTier("standard"),
           stream: false,
           temperature: 0.7,
           max_tokens: 4096,
           response_format: { type: "json_object" },
           messages: [{ role: "user", content: prompt }],
-        }),
-      });
+        } });
     },
   };
 }

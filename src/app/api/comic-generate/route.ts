@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import { buildComicPrompt } from "@/lib/comic-prompt";
 import { ComicGenerateRequest } from "@/types/comic";
 import {
@@ -8,14 +9,6 @@ import {
 } from "@/lib/creative-quota";
 
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || "";
-const GRSAI_API_KEY = process.env.GRSAI_API_KEY || "";
-const GRSAI_BASE_URL = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-
-const modelMap: Record<string, string> = {
-  fast: "gemini-2.5-flash",
-  standard: "gemini-3.1-flash-lite",
-  creative: "gemini-3-flash",
-};
 
 async function verifyTurnstileToken(token: string): Promise<boolean> {
   if (!TURNSTILE_SECRET_KEY) {
@@ -83,13 +76,6 @@ export async function POST(req: Request) {
     const quotaError = creativeQuotaErrorResponse(quotaGate);
     if (quotaError) return quotaError;
 
-    if (!GRSAI_API_KEY) {
-      return withCreativeVisitorCookie(new Response(
-        JSON.stringify({ error: "API key not configured" }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
-      ), quotaGate);
-    }
-
     const finalPrompt = buildComicPrompt({
       prompt,
       model,
@@ -104,15 +90,9 @@ export async function POST(req: Request) {
       readingFormat,
     });
 
-    const modelName = modelMap[model] || modelMap.standard;
+    const modelName = resolveModelTier(model);
 
-    const response = await fetch(`${GRSAI_BASE_URL}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${GRSAI_API_KEY}`,
-      },
-      body: JSON.stringify({
+    const response = await fetchChatCompletion({ body: {
         model: modelName,
         messages: [
           {
@@ -128,12 +108,11 @@ export async function POST(req: Request) {
         stream: true,
         temperature: model === "creative" ? 0.9 : 0.75,
         max_tokens: 4096,
-      }),
-    });
+      } });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("GRSAI API error:", errorText);
+      console.error("AI API error:", errorText);
       return withCreativeVisitorCookie(new Response(
         JSON.stringify({ error: "Failed to generate comic script" }),
         { status: 500, headers: { "Content-Type": "application/json" } }

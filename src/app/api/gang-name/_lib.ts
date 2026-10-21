@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import type {
   GangFlavor,
   GangGroupType,
@@ -293,18 +294,18 @@ export function resolveGangNameModelConfig(mode: GangNameModelMode): {
   switch (mode) {
     case "fast":
       return {
-        modelName: "gemini-2.5-flash",
+        modelName: resolveModelTier("fast"),
         temperature: 0.7,
       };
     case "creative":
       return {
-        modelName: "gemini-3-flash",
+        modelName: resolveModelTier("creative"),
         temperature: 0.9,
       };
     case "standard":
     default:
       return {
-        modelName: "gemini-3.1-flash-lite",
+        modelName: resolveModelTier("standard"),
         temperature: 0.75,
       };
   }
@@ -313,15 +314,8 @@ export function resolveGangNameModelConfig(mode: GangNameModelMode): {
 export async function generateGangNames(
   input: NormalizedGangNameRequest
 ): Promise<GangNameGeneratorResponse> {
-  const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
   const { modelName, temperature } = resolveGangNameModelConfig(input.mode);
-  const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.GRSAI_API_KEY}`,
-    },
-    body: JSON.stringify({
+  const response = await fetchChatCompletion({ body: {
       model: modelName,
       stream: false,
       temperature,
@@ -331,8 +325,7 @@ export async function generateGangNames(
           content: buildGangNamePrompt(input),
         },
       ],
-    }),
-  });
+    } });
 
   if (!response.ok) {
     throw new Error(`upstream responded with status ${response.status}`);

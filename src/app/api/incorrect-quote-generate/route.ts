@@ -1,3 +1,4 @@
+import { fetchChatCompletion } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import {
@@ -72,25 +73,11 @@ export async function POST(req: Request) {
     });
     const quotaError = creativeQuotaErrorResponse(quotaGate);
     if (quotaError) return quotaError;
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-
-    if (!apiKey) {
-      return withCreativeVisitorCookie(respErr("API KEY not found"), quotaGate);
-    }
-
     const prompt = buildIncorrectQuotePrompt(normalized);
     const { modelName, temperature } = resolveIncorrectQuoteModelConfig(
       normalized.mode
     );
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
+    const response = await fetchChatCompletion({ body: {
         model: modelName,
         messages: [
           {
@@ -101,8 +88,7 @@ export async function POST(req: Request) {
         stream: true,
         temperature,
         max_tokens: 2048,
-      }),
-    });
+      } });
 
     if (!response.ok) {
       console.error("Incorrect quote upstream API error", response.status);

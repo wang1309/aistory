@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import { respErr } from "@/lib/resp";
 import { buildPoemAnalysisPrompt } from "@/lib/poem-prompt-builder";
 import type { PoemAnalyzeOptions, PoemAnalysis } from "@/types/poem";
@@ -23,20 +24,13 @@ export async function POST(req: Request) {
       console.log("Validation failed: poemType is empty");
       return respErr("Please provide poem type");
     }
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-    if (!apiKey) {
-      return respErr("API KEY not found");
-    }
-
     // 使用 poem-prompt-builder 构建分析提示词
     const analysisPrompt = buildPoemAnalysisPrompt(poemContent, poemType, locale || 'en');
     console.log("=== Generated Analysis Prompt ===", analysisPrompt.substring(0, 300) + "...");
 
     // 使用快速模型进行分析
     const requestBody = {
-      model: "gemini-3.1-flash-lite", // 使用快速模型
+      model: resolveModelTier("standard"), // 使用快速模型
       stream: false, // 分析不需要流式响应
       messages: [
         {
@@ -47,19 +41,12 @@ export async function POST(req: Request) {
       ],
     };
 
-    console.log("=== Request to GRSAI API (Analysis) ===");
+    console.log("=== Request to AI API (Analysis) ===");
 
-    // 调用 GRSAI API（非流式响应）
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(requestBody),
-    });
+    // 调用 AI API（非流式响应）
+    const response = await fetchChatCompletion({ body: requestBody });
 
-    console.log("=== GRSAI API Response Status ===", response.status, response.statusText);
+    console.log("=== AI API Response Status ===", response.status, response.statusText);
 
     if (!response.ok) {
       const errorText = await response.text();

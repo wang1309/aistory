@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { buildPoemPrompt } from "@/lib/poem-prompt-builder";
@@ -146,13 +147,6 @@ export async function POST(req: Request) {
     if (quotaError) return quotaError;
 
     console.log("✓ Turnstile verification passed, proceeding with poem generation");
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-    if (!apiKey) {
-      return withCreativeVisitorCookie(respErr("API KEY not found"), quotaGate);
-    }
-
     // 构建 Poem 生成参数
     const poemOptions: PoemGenerateOptions = {
       prompt,
@@ -174,12 +168,12 @@ export async function POST(req: Request) {
 
     // 模型映射（复用 Story Generator 的模型）
     const modelMap: Record<string, string> = {
-      "fast": "gemini-2.5-flash",
-      "standard": "gemini-3.1-flash-lite",
-      "creative": "gemini-3-flash",
+      "fast": resolveModelTier("fast"),
+      "standard": resolveModelTier("standard"),
+      "creative": resolveModelTier("creative"),
     };
 
-    const actualModel = modelMap[model] || "gemini-3.1-flash-lite";
+    const actualModel = modelMap[model] || resolveModelTier("standard");
     console.log("=== Model mapping ===", { requestedModel: model, actualModel });
 
     const requestBody = {
@@ -193,19 +187,12 @@ export async function POST(req: Request) {
         { role: "user", content: finalPrompt },
       ],
     };
-    console.log("=== Request to GRSAI API ===", JSON.stringify(requestBody, null, 2));
+    console.log("=== Request to AI API ===", JSON.stringify(requestBody, null, 2));
 
-    // 调用 GRSAI API（流式响应）
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(requestBody),
-    });
+    // 调用 AI API（流式响应）
+    const response = await fetchChatCompletion({ body: requestBody });
 
-    console.log("=== GRSAI API Response Status ===", response.status, response.statusText);
+    console.log("=== AI API Response Status ===", response.status, response.statusText);
 
     if (!response.ok) {
       const errorText = await response.text();

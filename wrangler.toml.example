@@ -12,3 +12,6 @@ enabled = true
 
 [vars]
 FREE_CREATIVE_DAILY_LIMIT = "3"
+# Text generation provider: "grsai" (default) or "apimart".
+# APIMART_API_KEY must be set with `wrangler secret put APIMART_API_KEY`.
+AI_PROVIDER = "grsai"

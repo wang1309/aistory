@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import { respErr } from "@/lib/resp";
 import type { PlotData } from "@/types/plot";
 
@@ -84,13 +85,6 @@ export async function POST(req: Request) {
     console.log("✓ Turnstile verification passed");
 
     // API Key 检查
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-    if (!apiKey) {
-      console.log("GRSAI_API_KEY not found");
-      return respErr("API KEY not configured");
-    }
-
     // 构建 Story 生成参数（从 Plot 继承 + 用户覆盖）
     const storyPrompt = `Based on the following story plot outline, write a complete and engaging story.
 
@@ -216,15 +210,15 @@ Please expand this outline into a full narrative story. Maintain the structure, 
 
     // 模型映射
     const modelMap: Record<string, string> = {
-      "fast": "gemini-2.5-flash",
-      "standard": "gemini-3.1-flash-lite",
-      "creative": "gemini-3-flash",
+      "fast": resolveModelTier("fast"),
+      "standard": resolveModelTier("standard"),
+      "creative": resolveModelTier("creative"),
     };
 
-    const actualModel = modelMap[model] || "gemini-3.1-flash-lite";
+    const actualModel = modelMap[model] || resolveModelTier("standard");
     console.log("=== Model mapping ===", { requestedModel: model, actualModel });
 
-    // 构建 GRSAI API 请求
+    // 构建 AI API 请求
     const requestBody = {
       model: actualModel,
       stream: true,
@@ -242,21 +236,14 @@ Please expand this outline into a full narrative story. Maintain the structure, 
       ],
     };
 
-    console.log("=== Calling GRSAI API for story generation ===");
+    console.log("=== Calling AI API for story generation ===");
 
-    // 调用 GRSAI API
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody),
-    });
+    // 调用 AI API
+    const response = await fetchChatCompletion({ body: requestBody });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.log("GRSAI API error:", response.status, errorText);
+      console.log("AI API error:", response.status, errorText);
       return respErr(`API request failed: ${response.status}`);
     }
 
@@ -265,7 +252,7 @@ Please expand this outline into a full narrative story. Maintain the structure, 
       return respErr("No response body from AI service");
     }
 
-    console.log("✓ GRSAI API response received, starting streaming");
+    console.log("✓ AI API response received, starting streaming");
 
     // 处理流式响应
     let insideThinkTag = false;

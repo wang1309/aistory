@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import type {
   EmojiTranslatorMode,
   EmojiTranslatorResponse,
@@ -174,15 +175,8 @@ export function parseEmojiTranslatorResponse(
 export async function generateEmojiTranslation(
   input: NormalizedEmojiTranslatorRequest
 ): Promise<EmojiTranslatorResponse> {
-  const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-  const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.GRSAI_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: "gemini-3.1-flash-lite",
+  const response = await fetchChatCompletion({ body: {
+      model: resolveModelTier("standard"),
       stream: false,
       temperature: 0.7,
       messages: [
@@ -191,8 +185,7 @@ export async function generateEmojiTranslation(
           content: buildEmojiTranslatorPrompt(input),
         },
       ],
-    }),
-  });
+    } });
 
   if (!response.ok) {
     throw new Error(`upstream responded with status ${response.status}`);

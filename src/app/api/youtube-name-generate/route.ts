@@ -1,3 +1,4 @@
+import { fetchChatCompletion } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import {
@@ -57,32 +58,17 @@ export async function POST(req: Request) {
     if (!isValidToken) {
       return respErr("verification failed");
     }
-
-    const apiKey = process.env.GRSAI_API_KEY;
-    const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-
-    if (!apiKey) {
-      return respErr("API KEY not found");
-    }
-
     const prompt = buildYoutubeNamePrompt(normalized);
     const { modelName, temperature } = resolveYoutubeNameModelConfig();
 
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
+    const response = await fetchChatCompletion({ body: {
         model: modelName,
         messages: [{ role: "user", content: prompt }],
         stream: false,
         temperature,
         max_tokens: 4096,
         response_format: { type: "json_object" },
-      }),
-    });
+      } });
 
     if (!response.ok) {
       console.error("YouTube name upstream API error", response.status);

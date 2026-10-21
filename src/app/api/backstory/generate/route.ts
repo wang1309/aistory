@@ -1,3 +1,4 @@
+import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
@@ -244,13 +245,6 @@ export async function POST(req: Request) {
         console.log("✓ Turnstile verification passed, proceeding with backstory generation");
 
         // API Key check
-        const apiKey = process.env.GRSAI_API_KEY;
-        const baseUrl = process.env.GRSAI_BASE_URL || "https://api.grsai.com";
-        if (!apiKey) {
-            console.log("GRSAI_API_KEY not found");
-            return withCreativeVisitorCookie(respErr("API KEY not configured"), quotaGate);
-        }
-
         // Build AI Prompt
         const finalPrompt = buildBackstoryPrompt({
             prompt: prompt.trim(),
@@ -265,15 +259,15 @@ export async function POST(req: Request) {
 
         // Model mapping
         const modelMap: Record<string, string> = {
-            "fast": "gemini-2.5-flash",
-            "standard": "gemini-3.1-flash-lite",
-            "creative": "gemini-3-flash",
+            "fast": resolveModelTier("fast"),
+            "standard": resolveModelTier("standard"),
+            "creative": resolveModelTier("creative"),
         };
 
-        const actualModel = modelMap[model] || "gemini-3.1-flash-lite";
+        const actualModel = modelMap[model] || resolveModelTier("standard");
         console.log("=== Model mapping ===", { requestedModel: model, actualModel });
 
-        // Build GRSAI API request
+        // Build AI API request
         const requestBody = {
             model: actualModel,
             stream: true,
@@ -289,21 +283,14 @@ export async function POST(req: Request) {
             ],
         };
 
-        console.log("=== Calling GRSAI API ===");
+        console.log("=== Calling AI API ===");
 
-        // Call GRSAI API
-        const response = await fetch(`${baseUrl}/v1/chat/completions`, {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${apiKey}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(requestBody),
-        });
+        // Call AI API
+        const response = await fetchChatCompletion({ body: requestBody });
 
         if (!response.ok) {
             const errorText = await response.text();
-            console.log("GRSAI API error:", response.status, errorText);
+            console.log("AI API error:", response.status, errorText);
             return withCreativeVisitorCookie(respErr(`API request failed: ${response.status}`), quotaGate);
         }
 
@@ -314,7 +301,7 @@ export async function POST(req: Request) {
 
         await commitCreativeQuotaCharge(quotaGate);
 
-        console.log("✓ GRSAI API response received, starting streaming");
+        console.log("✓ AI API response received, starting streaming");
 
         // Handle streaming response - Use buffer for Cloudflare Workers compatibility
         const encoder = new TextEncoder();
