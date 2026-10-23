@@ -176,7 +176,7 @@ export async function generateEmojiTranslation(
   input: NormalizedEmojiTranslatorRequest
 ): Promise<EmojiTranslatorResponse> {
   const response = await fetchChatCompletion({ body: {
-      model: resolveModelTier("standard"),
+      model: resolveModelTier("fast"),
       stream: false,
       temperature: 0.7,
       messages: [

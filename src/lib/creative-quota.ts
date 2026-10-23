@@ -16,7 +16,9 @@ import {
   readCreativeQuota,
   type CreativePageKey,
   type CreativeQuotaStatus,
+  type QuotaTier,
 } from "@/lib/free-quota";
+import { resolveQuotaTier } from "@/lib/creative-quota-core";
 
 type GateKind =
   | "skip"
@@ -29,11 +31,26 @@ type GateKind =
 export type CreativeQuotaGate = {
   kind: GateKind;
   pageKey: CreativePageKey;
+  tier: QuotaTier | null;
   userUuid: string;
   quota: CreativeQuotaStatus | null;
   cost: number;
   setCookie?: string;
 };
+
+export function getQuotaCreditCost(tier: QuotaTier): number {
+  if (tier === "standard") {
+    return (
+      Number(process.env.SG_STANDARD_COST) ||
+      CreditsAmount.StoryGenerateStandardCost
+    );
+  }
+
+  return (
+    Number(process.env.SG_CREATIVE_COST) ||
+    CreditsAmount.StoryGenerateCreativeCost
+  );
+}
 
 export async function prepareCreativeQuota({
   pageKey,
@@ -48,6 +65,7 @@ export async function prepareCreativeQuota({
   const userUuid = await getUserUuid();
   const base = {
     pageKey,
+    tier: null as QuotaTier | null,
     userUuid,
     quota: null,
     cost: 0,
@@ -61,49 +79,65 @@ export async function prepareCreativeQuota({
 
   await incrementIpHardCap();
 
-  if (model !== "creative") {
+  const tier = resolveQuotaTier(model);
+  if (!tier) {
     return { ...base, kind: "skip" };
   }
 
   const visitorIdentity = visitor.visitorIdentity;
   const accountIdentity = userUuid ? `user:${userUuid}` : null;
   if (accountIdentity) {
-    await migrateLegacyStoryCreativeQuota(accountIdentity);
-    await mergePageCreativeQuota(pageKey, visitorIdentity, accountIdentity);
+    if (tier === "creative") {
+      await migrateLegacyStoryCreativeQuota(accountIdentity);
+    }
+    await mergePageCreativeQuota(
+      pageKey,
+      visitorIdentity,
+      accountIdentity,
+      tier
+    );
   }
 
   const identity = accountIdentity || visitorIdentity;
-  const quota = await readCreativeQuota(pageKey, identity);
+  const quota = await readCreativeQuota(pageKey, identity, tier);
   if (quota.used < quota.limit) {
-    await incrementPageCreativeQuota(pageKey, identity);
-    return { ...base, kind: "free", quota, setCookie: visitor.setCookie };
+    await incrementPageCreativeQuota(pageKey, identity, tier);
+    return {
+      ...base,
+      tier,
+      kind: "free",
+      quota,
+      setCookie: visitor.setCookie,
+    };
   }
 
   if (!userUuid) {
-    return { ...base, kind: "free_quota_exceeded", quota };
+    return { ...base, tier, kind: "free_quota_exceeded", quota };
   }
 
-  const cost =
-    Number(process.env.SG_CREATIVE_COST) || CreditsAmount.StoryGenerateCreativeCost;
+  const cost = getQuotaCreditCost(tier);
   const credits = await getUserCredits(userUuid);
   if ((credits.left_credits || 0) < cost) {
-    return { ...base, kind: "insufficient_credits", quota, cost };
+    return { ...base, tier, kind: "insufficient_credits", quota, cost };
   }
 
-  return { ...base, kind: "credits", quota, cost };
+  return { ...base, tier, kind: "credits", quota, cost };
 }
 
 export async function commitCreativeQuotaCharge(gate: CreativeQuotaGate): Promise<void> {
-  if (gate.kind !== "credits" || !gate.userUuid) return;
+  if (gate.kind !== "credits" || !gate.userUuid || !gate.tier) return;
 
   try {
     await decreaseCredits({
       user_uuid: gate.userUuid,
-      trans_type: CreditsTransType.StoryGenerateCreative,
+      trans_type:
+        gate.tier === "standard"
+          ? CreditsTransType.StoryGenerateStandard
+          : CreditsTransType.StoryGenerateCreative,
       credits: gate.cost,
     });
   } catch (error) {
-    console.log("Creative quota credit charge failed", error instanceof Error ? error.name : "unknown");
+    console.log("Quota credit charge failed", error instanceof Error ? error.name : "unknown");
   }
 }
 
@@ -114,24 +148,28 @@ export function withCreativeVisitorCookie(response: Response, gate: CreativeQuot
 export function creativeQuotaErrorResponse(gate: CreativeQuotaGate): Response | null {
   if (gate.kind === "skip" || gate.kind === "free" || gate.kind === "credits") return null;
 
+  const tier = gate.tier || "creative";
   const response = Response.json(
     gate.kind === "rate_limited"
       ? {
           code: "rate_limited",
+          tier: gate.tier,
           message: "too many requests today, please try again later",
           remaining: 0,
         }
       : gate.kind === "free_quota_exceeded"
         ? {
             code: "free_quota_exceeded",
-            message: "daily free creative limit reached, login to continue",
+            tier,
+            message: `daily free ${tier} limit reached, login to continue`,
             remaining: 0,
             limit: gate.quota?.limit || 3,
             need: "login",
           }
         : {
             code: "insufficient_credits",
-            message: "insufficient credits for creative model",
+            tier,
+            message: `insufficient credits for ${tier} model`,
             remaining: 0,
             need: gate.cost,
             left: 0,

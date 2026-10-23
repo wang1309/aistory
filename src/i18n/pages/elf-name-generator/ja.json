@@ -73,7 +73,7 @@
       "custom_heritage_too_long": "カスタム文化は160文字以内で入力してください。",
       "inspiration_too_long": "インスピレーション名は100文字以内で入力してください。",
       "generic_error": "現在エルフ名を生成できません。もう一度お試しください。",
-      "creative_limit_reached": "本日のCreative無料回数を使い切りました。ログインでクレジットを追加できます。"
+      "creative_limit_reached": "本日の無料回数を使い切りました。ログインでクレジットを追加できます。"
     },
     "success": {
       "copied": "名前をクリップボードにコピーしました。",

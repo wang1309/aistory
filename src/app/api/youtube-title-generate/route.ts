@@ -67,7 +67,7 @@ export async function POST(req: Request) {
     const prompt = buildYoutubeTitlePrompt(normalized);
 
     const upstream = await fetchChatCompletion({ body: {
-        model: resolveModelTier("standard"),
+        model: resolveModelTier("fast"),
         stream: false,
         temperature: 0.8,
         max_tokens: 4096,

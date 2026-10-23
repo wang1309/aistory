@@ -52,6 +52,7 @@ import {
 } from "@/lib/activation-funnel";
 import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
 import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { getCreativeQuotaLimitReachedMessage } from "@/lib/creative-quota-core";
 import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 
 // ========== HELPER FUNCTIONS ==========
@@ -156,6 +157,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
 
   const [prompt, setPrompt] = useState("");
   const [selectedModel, setSelectedModel] = useState<string | null>("standard");
+  const activeQuota = creativeQuota.forModel(selectedModel);
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [selectedPoemType, setSelectedPoemType] = useState<'modern' | 'classical' | 'format' | 'lyric'>('format');
 
@@ -506,7 +508,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
     if (
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
-        message: "Daily free Creative quota reached. Please sign in to continue.",
+        message: getCreativeQuotaLimitReachedMessage(locale),
       }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
@@ -627,7 +629,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
           wordCount: accumulatedPoem.length,
         })
       );
-      if (selectedModel === "creative") creativeQuota.increment();
+      creativeQuota.increment(selectedModel);
 
       // Success!
       toast.success(section.toasts.success_generated);
@@ -1282,7 +1284,13 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                     );
                   })}
                 </div>
-                <CreativeQuotaHint pageKey="poem-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
+                <CreativeQuotaHint
+                  pageKey="poem-generator"
+                  selectedModel={selectedModel}
+                  used={activeQuota?.used ?? 0}
+                  limit={activeQuota?.limit ?? null}
+                  creditCost={activeQuota?.creditCost ?? null}
+                />
               </div>
 
               {/* Advanced Mode Options */}
@@ -1379,7 +1387,7 @@ export default function PoemGenerate({ section }: { section: PoemGenerateType })
                     <div className="flex items-center gap-2">
                       <Icon name="Sparkles" className="size-4" />
                       <span>
-                        {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                        {activeQuota?.anonymousExhausted
                           ? "Sign in to continue"
                           : section.generate_button.text}
                       </span>

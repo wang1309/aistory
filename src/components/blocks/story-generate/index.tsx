@@ -57,9 +57,6 @@ import {
   GENERATOR_PREFILL_KEY,
 } from "@/components/ai-write/workbench/continue-intent";
 import { useOpenPanel } from "@openpanel/nextjs";
-import {
-  getCreativeLimit,
-} from "@/lib/creative-quota-client";
 import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
 const CreativeQuotaPaywall = dynamic(
   () =>
@@ -203,6 +200,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   const [prompt, setPrompt] = useState("");
   const [selectedModel, setSelectedModel] = useState<string | null>("standard");
+  const activeQuota = creativeQuota.forModel(selectedModel);
   const [selectedFormat, setSelectedFormat] = useState("none");
   const [selectedTone, setSelectedTone] = useState("none");
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
@@ -694,10 +692,8 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             wordCount: calculateWordCount(accumulatedText),
           })
         );
-        // creative 免费额度:localStorage 镜像 +1(后端 KV 已 +1)
-        if (selectedModel === "creative") {
-          creativeQuota.increment();
-        }
+        // 免费额度:localStorage 镜像 +1(后端 KV 已 +1)
+        creativeQuota.increment(selectedModel);
         // Check if this is first time and trigger confetti
         const isFirstTime = await triggerFirstTimeConfetti();
 
@@ -1185,9 +1181,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   // ========== RENDER ==========
 
-  // creative 每日免费额度已用完(匿名)→ 按钮文案切换为登录引导
+  // 当前档位每日免费额度已用完(匿名)→ 按钮文案切换为登录引导
   const creativeQuotaExhausted =
-    creativeQuota.anonymousCreativeExhausted;
+    activeQuota?.anonymousExhausted ?? false;
 
   return (
     <section
@@ -1362,9 +1358,9 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                             isSelected
                               ? 'bg-foreground/[0.04] border border-foreground/[0.12] ring-1 ring-primary/20'
                               : 'bg-background border border-border/10 hover:border-border/25 hover:bg-foreground/[0.02]'
-                          } ${model.id === "creative" && creativeQuota.used >= getCreativeLimit() ? 'opacity-60' : ''}`}
+                          } ${creativeQuota.forModel(model.id)?.exhausted ? 'opacity-60' : ''}`}
                         >
-                          {model.id === "creative" && creativeQuota.used >= getCreativeLimit() && (
+                          {creativeQuota.forModel(model.id)?.exhausted && (
                             <span className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-amber-500 ring-2 ring-background" title={section.quota.creative_used_up} />
                           )}
                           <div className={`flex items-center justify-center size-8 rounded-lg border transition-all duration-300 ${
@@ -1418,19 +1414,19 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                     </Button>
                   </div>
                   <GeneratorShortcutHints showQuickSave />
-                  {selectedModel === "creative" && (
+                  {activeQuota && (
                     <div className="mt-2 text-center text-[10px] text-muted-foreground">
-                      {creativeQuota.used >= getCreativeLimit() ? (
+                      {activeQuota.exhausted ? (
                         user ? (
                           <span className="text-amber-600 dark:text-amber-500">
-                            {section.quota.creative_credits_hint.replace("{cost}", String(creativeQuota.creditCost ?? 5))}
+                            {section.quota.creative_credits_hint.replace("{cost}", String(activeQuota.effectiveCreditCost))}
                           </span>
                         ) : (
                           <span className="text-amber-600 dark:text-amber-500">{section.quota.creative_used_up}</span>
                         )
                       ) : (
                         <span>
-                          {section.quota.remaining_today}: {getCreativeLimit() - creativeQuota.used}/{getCreativeLimit()}
+                          {section.quota.remaining_today}: {activeQuota.remaining}/{activeQuota.effectiveLimit}
                         </span>
                       )}
                     </div>

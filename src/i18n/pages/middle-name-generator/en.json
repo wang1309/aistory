@@ -181,7 +181,7 @@
       "name_too_long": "Names must be 60 characters or fewer.",
       "avoid_initials_too_long": "Initials to avoid must be 12 characters or fewer.",
       "note_too_long": "Note must be 160 characters or fewer.",
-      "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits.",
+      "creative_limit_reached": "Today's free uses are used up. Log in to get more credits.",
       "generic_error": "We couldn't generate middle names right now. Please try again."
     },
     "success": {

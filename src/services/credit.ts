@@ -25,6 +25,7 @@ export enum CreditsTransType {
   ChatContinue = "chat_continue", // cost for streaming continue chat
   StoryOutlineExpand = "story_outline_expand", // cost for story outline chapter expansion
   StoryGenerateCreative = "story_generate_creative", // cost for creative model story generation
+  StoryGenerateStandard = "story_generate_standard", // cost for standard model generation after free quota
 }
 
 export enum CreditsAmount {
@@ -32,6 +33,7 @@ export enum CreditsAmount {
   PingCost = 1,
   StoryOutlineExpand = 5,
   StoryGenerateCreativeCost = 5,
+  StoryGenerateStandardCost = 3,
 }
 
 export async function getUserCredits(user_uuid: string): Promise<UserCredits> {

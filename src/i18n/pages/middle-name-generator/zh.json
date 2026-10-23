@@ -181,7 +181,7 @@
       "name_too_long": "名字需在 60 个字符以内。",
       "avoid_initials_too_long": "需要避开的缩写需在 12 个字符以内。",
       "note_too_long": "备注需在 160 个字符以内。",
-      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。",
+      "creative_limit_reached": "今日免费次数已用完,登录可获得更多积分。",
       "generic_error": "暂时无法生成中间名,请重试。"
     },
     "success": {

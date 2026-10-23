@@ -186,6 +186,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
   const [tone, setTone] = useState("dramatic");
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [selectedModel, setSelectedModel] = useState("standard");
+  const activeQuota = creativeQuota.forModel(selectedModel);
   const [narrationMode, setNarrationMode] = useState("light");
   const [readingFormat, setReadingFormat] = useState("ltr");
   const [setting, setSetting] = useState("");
@@ -385,7 +386,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
         }
       }
 
-      if (accumulated.trim() && opts.model === "creative") creativeQuota.increment();
+      if (accumulated.trim()) creativeQuota.increment(opts.model);
       toast.success(t("success.script_generated"));
 
       if (window.innerWidth < 1024) {
@@ -1031,7 +1032,9 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                   <CreativeQuotaHint
                     pageKey="comic-generator"
                     selectedModel={selectedModel}
-                    used={creativeQuota.used} limit={creativeQuota.limit}
+                    used={activeQuota?.used ?? 0}
+                    limit={activeQuota?.limit ?? null}
+                    creditCost={activeQuota?.creditCost ?? null}
                   />
                 </div>
               </div>
@@ -1063,7 +1066,7 @@ export default function ComicGenerate({ section }: ComicGenerateProps) {
                         </svg>
                       )}
                     </span>
-                    {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                    {activeQuota?.anonymousExhausted
                       ? "Sign in to continue"
                       : t("ui.generate_button")}
                   </>

@@ -1,6 +1,12 @@
 import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import { respErr } from "@/lib/resp";
 import type { PlotData } from "@/types/plot";
+import {
+  commitCreativeQuotaCharge,
+  creativeQuotaErrorResponse,
+  prepareCreativeQuota,
+  withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 /**
  * 验证 Cloudflare Turnstile Token
@@ -96,6 +102,20 @@ Please expand this outline into a full narrative story. Maintain the structure, 
 
     // 合并参数：Plot 默认值 + 用户覆盖
     const model = overrides?.model || plot.model || 'standard';
+    const quotaModel =
+      model === 'fast' || model === 'standard' || model === 'creative'
+        ? model
+        : 'standard';
+
+    // Plot→Story 是 plot 页面的第二次生成，复用 plot-generator 的额度。
+    const quotaGate = await prepareCreativeQuota({
+      pageKey: "plot-generator",
+      model: quotaModel,
+      request: req,
+    });
+    const quotaError = creativeQuotaErrorResponse(quotaGate);
+    if (quotaError) return quotaError;
+
     const locale = overrides?.locale || plot.locale || 'en';
     const format = overrides?.format || 'prose';
     const length = overrides?.length || 'medium';
@@ -215,8 +235,8 @@ Please expand this outline into a full narrative story. Maintain the structure, 
       "creative": resolveModelTier("creative"),
     };
 
-    const actualModel = modelMap[model] || resolveModelTier("standard");
-    console.log("=== Model mapping ===", { requestedModel: model, actualModel });
+    const actualModel = modelMap[quotaModel] || resolveModelTier("standard");
+    console.log("=== Model mapping ===", { requestedModel: quotaModel, actualModel });
 
     // 构建 AI API 请求
     const requestBody = {
@@ -244,13 +264,21 @@ Please expand this outline into a full narrative story. Maintain the structure, 
     if (!response.ok) {
       const errorText = await response.text();
       console.log("AI API error:", response.status, errorText);
-      return respErr(`API request failed: ${response.status}`);
+      return withCreativeVisitorCookie(
+        respErr(`API request failed: ${response.status}`),
+        quotaGate
+      );
     }
 
     if (!response.body) {
       console.log("Response body is null");
-      return respErr("No response body from AI service");
+      return withCreativeVisitorCookie(
+        respErr("No response body from AI service"),
+        quotaGate
+      );
     }
+
+    await commitCreativeQuotaCharge(quotaGate);
 
     console.log("✓ AI API response received, starting streaming");
 
@@ -317,14 +345,17 @@ Please expand this outline into a full narrative story. Maintain the structure, 
 
     const readableStream = response.body.pipeThrough(transformStream);
 
-    return new Response(readableStream, {
-      headers: {
-        "Content-Type": "text/event-stream; charset=utf-8",
-        "Cache-Control": "no-cache, no-transform",
-        "Connection": "keep-alive",
-        "X-Content-Type-Options": "nosniff",
-      },
-    });
+    return withCreativeVisitorCookie(
+      new Response(readableStream, {
+        headers: {
+          "Content-Type": "text/event-stream; charset=utf-8",
+          "Cache-Control": "no-cache, no-transform",
+          "Connection": "keep-alive",
+          "X-Content-Type-Options": "nosniff",
+        },
+      }),
+      quotaGate
+    );
   } catch (error) {
     console.log("Plot→Story generation error:", error);
     return respErr(`Story generation from plot failed: ${error}`);

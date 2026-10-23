@@ -15,26 +15,33 @@ import { Card } from "@/components/ui/card";
 import Icon from "@/components/icon";
 import { Zap, Sparkles, Palette } from "lucide-react";
 import { toast } from "sonner";
+import { useLocale } from "next-intl";
 import { useAppContext } from "@/contexts/app";
 import { PlotStorage } from "@/lib/plot-storage";
 import { StoryStorage } from "@/lib/story-storage";
 import type { PlotData } from "@/types/plot";
 import { useRouter } from "@/i18n/navigation";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import type { CreativeQuotaPageState } from "@/hooks/useCreativeQuotaPage";
+import { getCreativeQuotaLimitReachedMessage } from "@/lib/creative-quota-core";
 
 interface PlotToStoryDialogProps {
   plotId: string | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
   translations: any; // Pass translations from parent component
+  creativeQuota: CreativeQuotaPageState;
 }
 
 export default function PlotToStoryDialog({
   plotId,
   open,
   onOpenChange,
-  translations
+  translations,
+  creativeQuota
 }: PlotToStoryDialogProps) {
   const router = useRouter();
+  const locale = useLocale();
   const { setShowVerificationModal, setVerificationCallback } = useAppContext();
 
   // Helper function to get nested translations from translations data
@@ -55,6 +62,8 @@ export default function PlotToStoryDialog({
   const [selectedFormat, setSelectedFormat] = useState('prose');
   const [selectedLength, setSelectedLength] = useState('medium');
   const [selectedLanguage, setSelectedLanguage] = useState(plot?.locale || 'en');
+
+  const activeQuota = creativeQuota.forModel(selectedModel);
 
   // Generation state
   const [isGenerating, setIsGenerating] = useState(false);
@@ -85,10 +94,28 @@ export default function PlotToStoryDialog({
       return;
     }
 
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel,
+        message: getCreativeQuotaLimitReachedMessage(locale),
+      }) ||
+      creativeQuota.guardCreativeCreditQuota({ selectedModel })
+    ) {
+      return;
+    }
+
     // Set verification callback and show modal
     setVerificationCallback(() => handleVerificationSuccess);
     setShowVerificationModal(true);
-  }, [plot, setVerificationCallback, setShowVerificationModal, translations]);
+  }, [
+    plot,
+    setVerificationCallback,
+    setShowVerificationModal,
+    translations,
+    creativeQuota,
+    selectedModel,
+    locale,
+  ]);
 
   const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
     if (!plot) return;
@@ -126,8 +153,9 @@ export default function PlotToStoryDialog({
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || `HTTP ${response.status}`);
+        const errorData = await response.json().catch(() => null);
+        if (creativeQuota.handleQuotaError(response.status, errorData)) return;
+        throw new Error(errorData?.message || `HTTP ${response.status}`);
       }
 
       const reader = response.body?.getReader();
@@ -180,6 +208,7 @@ export default function PlotToStoryDialog({
         // Link plot to story
         PlotStorage.linkPlotToStory(plot.id, savedStory.id);
 
+        creativeQuota.increment(selectedModel);
         toast.success(t('success.story_generated'));
       }
 
@@ -189,7 +218,7 @@ export default function PlotToStoryDialog({
     } finally {
       setIsGenerating(false);
     }
-  }, [plot, selectedModel, selectedFormat, selectedLength, selectedLanguage, onOpenChange, router, translations]);
+  }, [plot, selectedModel, selectedFormat, selectedLength, selectedLanguage, onOpenChange, router, translations, creativeQuota]);
 
   if (!plot) {
     return null;
@@ -236,6 +265,13 @@ export default function PlotToStoryDialog({
                     <SelectItem value="creative"><Palette className="h-4 w-4 inline mr-1" />{t('ai_models.creative')}</SelectItem>
                   </SelectContent>
                 </Select>
+                <CreativeQuotaHint
+                  pageKey="plot-generator"
+                  selectedModel={selectedModel}
+                  used={activeQuota?.used ?? 0}
+                  limit={activeQuota?.limit ?? null}
+                  creditCost={activeQuota?.creditCost ?? null}
+                />
               </div>
 
               {/* Format */}

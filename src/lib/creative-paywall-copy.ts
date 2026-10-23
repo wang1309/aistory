@@ -27,6 +27,7 @@ const WRITING_TOOLS = new Set<CreativePageKey>([
   "paragraph-rewriter",
   "rap-lyric-generator",
   "story-summarizer",
+  "story-prompt-generator",
   "tiktok-comment-generator",
 ]);
 

@@ -178,6 +178,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
     // ========== STATE MANAGEMENT ==========
     const [prompt, setPrompt] = useState("");
     const [selectedModel, setSelectedModel] = useState<string | null>('standard');
+    const activeQuota = creativeQuota.forModel(selectedModel);
     const [selectedLanguage, setSelectedLanguage] = useState(locale);
     const [selectedWorldview, setSelectedWorldview] = useState('fantasy');
     const [selectedRoleType, setSelectedRoleType] = useState('protagonist');
@@ -410,7 +411,7 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
             }
 
             if (accumulatedContent.trim()) {
-                if (selectedModel === "creative") creativeQuota.increment();
+                creativeQuota.increment(selectedModel);
                 track(
                     ACTIVATION_EVENTS.generationSucceeded,
                     buildActivationTrackingPayload({
@@ -1111,14 +1112,20 @@ export default function BackstoryGenerate({ section }: BackstoryGenerateProps) {
                                                     </svg>
                                                 )}
                                             </span>
-                                            {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                                            {activeQuota?.anonymousExhausted
                                                 ? "Sign in to continue"
                                                 : t('ui.generate_button')}
                                         </>
                                     )}
                                 </Button>
                                 <GeneratorShortcutHints />
-                                <CreativeQuotaHint pageKey="backstory-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
+                                <CreativeQuotaHint
+                                    pageKey="backstory-generator"
+                                    selectedModel={selectedModel}
+                                    used={activeQuota?.used ?? 0}
+                                    limit={activeQuota?.limit ?? null}
+                                    creditCost={activeQuota?.creditCost ?? null}
+                                />
                             </div>
                         </div>
                     </motion.div>

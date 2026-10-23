@@ -26,6 +26,10 @@ import {
 } from "lucide-react";
 import TurnstileInvisible, { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 import { GeneratorShortcutHints } from "@/components/generator-shortcut-hints";
+import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
+import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
+import { getCreativeQuotaLimitReachedMessage } from "@/lib/creative-quota-core";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import type { StoryPromptGenerate as StoryPromptGenerateType } from "@/types/blocks/story-prompt-generate";
@@ -147,6 +151,9 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
   const [selectedTone, setSelectedTone] = useState<string>("light");
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [selectedModel, setSelectedModel] = useState<string>("standard");
+
+  const creativeQuota = useCreativeQuotaPage("story-prompt-generator");
+  const activeQuota = creativeQuota.forModel(selectedModel);
   
   // Advanced options
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -206,9 +213,20 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
       toast.error(t("toasts.no_genre"));
       return;
     }
+
+    if (
+      creativeQuota.guardAnonymousCreativeQuota({
+        selectedModel,
+        message: getCreativeQuotaLimitReachedMessage(locale),
+      }) ||
+      creativeQuota.guardCreativeCreditQuota({ selectedModel })
+    ) {
+      return;
+    }
+
     setIsGenerating(true);
     turnstileRef.current?.execute();
-  }, [selectedGenres, section]);
+  }, [selectedGenres, section, creativeQuota, selectedModel, locale]);
 
   // Handle verification success
   const handleVerificationSuccess = useCallback(async (turnstileToken: string) => {
@@ -254,8 +272,9 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || `HTTP ${response.status}`);
+        const errorData = await response.json().catch(() => null);
+        if (creativeQuota.handleQuotaError(response.status, errorData)) return;
+        throw new Error(errorData?.message || `HTTP ${response.status}`);
       }
 
       const reader = response.body?.getReader();
@@ -301,6 +320,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
           colors: ["#ea580c", "#f97316", "#fb923c"],
         });
         toast.success(t("toasts.prompt_generated"));
+        creativeQuota.increment(selectedModel);
         
         // Scroll to results on mobile
         if (window.innerWidth < 1024 && resultRef.current) {
@@ -315,7 +335,7 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
     } finally {
       setIsGenerating(false);
     }
-  }, [selectedGenres, selectedLength, selectedTone, selectedLanguage, selectedModel, worldview, protagonist, goal, conflict, constraints, audience]);
+  }, [selectedGenres, selectedLength, selectedTone, selectedLanguage, selectedModel, worldview, protagonist, goal, conflict, constraints, audience, creativeQuota]);
 
   const handleTurnstileSuccess = useCallback((token: string) => {
     handleVerificationSuccess(token);
@@ -832,6 +852,14 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
                   </div>
                 </div>
 
+                <CreativeQuotaHint
+                  pageKey="story-prompt-generator"
+                  selectedModel={selectedModel}
+                  used={activeQuota?.used ?? 0}
+                  limit={activeQuota?.limit ?? null}
+                  creditCost={activeQuota?.creditCost ?? null}
+                />
+
                 {/* Advanced Options */}
                 <Collapsible open={showAdvanced} onOpenChange={setShowAdvanced}>
                   <CollapsibleTrigger asChild>
@@ -1127,6 +1155,12 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
           </motion.div>
         </div>
       </main>
+
+      <CreativeQuotaPaywall
+        open={creativeQuota.paywallOpen}
+        onClose={() => creativeQuota.setPaywallOpen(false)}
+        sourcePage="story-prompt-generator"
+      />
     </div>
   );
 }

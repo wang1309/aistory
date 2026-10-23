@@ -181,7 +181,7 @@
       "name_too_long": "이름은 60자 이하여야 합니다.",
       "avoid_initials_too_long": "피할 이니셜은 12자 이하여야 합니다.",
       "note_too_long": "메모는 160자 이하여야 합니다.",
-      "creative_limit_reached": "오늘의 무료 Creative 사용횟수가 끝났습니다. 로그인하면 크레딧을 받을 수 있어요.",
+      "creative_limit_reached": "오늘의 무료 사용횟수가 끝났습니다. 로그인하면 크레딧을 받을 수 있어요.",
       "generic_error": "지금은 미들 네임을 생성할 수 없습니다. 다시 시도해 주세요."
     },
     "success": {

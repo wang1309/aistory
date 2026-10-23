@@ -11,7 +11,11 @@ directory = ".open-next/assets"
 enabled = true
 
 [vars]
+FREE_STANDARD_DAILY_LIMIT = "3"
 FREE_CREATIVE_DAILY_LIMIT = "3"
+SG_STANDARD_COST = "3"
+SG_CREATIVE_COST = "5"
+FREE_IP_DAILY_HARD_CAP = "100"
 # Text generation provider: "grsai" (default) or "apimart".
 # APIMART_API_KEY must be set with `wrangler secret put APIMART_API_KEY`.
 AI_PROVIDER = "grsai"

@@ -62,7 +62,7 @@
       "verification_failed": "인증에 실패했습니다. 다시 시도해 주세요."
     },
     "toasts": {
-      "creative_limit_reached": "오늘 Creative 무료 횟수가 모두 소진되었습니다. 로그인하여 계속하세요."
+      "creative_limit_reached": "오늘 무료 횟수가 모두 소진되었습니다. 로그인하여 계속하세요."
     },
     "ai_models": {
       "fast": "빠름",

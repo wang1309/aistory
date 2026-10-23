@@ -84,7 +84,7 @@
       "cue_too_long": "Wort oder Schauplatz darf höchstens 120 Zeichen haben.",
       "inspiration_too_long": "Inspiration darf höchstens 100 Zeichen haben.",
       "generic_error": "Bandennamen konnten gerade nicht generiert werden. Bitte erneut versuchen.",
-      "creative_limit_reached": "Die kostenlosen Creative-Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten."
+      "creative_limit_reached": "Die kostenlosen Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten."
     },
     "success": {
       "copied": "Name in die Zwischenablage kopiert.",

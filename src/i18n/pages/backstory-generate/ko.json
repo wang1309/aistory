@@ -230,7 +230,7 @@
             ]
         },
         "toasts": {
-            "creative_limit_reached": "오늘 Creative 무료 횟수가 모두 소진되었습니다. 로그인하여 계속하세요."
+            "creative_limit_reached": "오늘 무료 횟수가 모두 소진되었습니다. 로그인하여 계속하세요."
         }
     }
 }

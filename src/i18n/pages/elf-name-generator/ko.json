@@ -73,7 +73,7 @@
       "custom_heritage_too_long": "나만의 문화 설명은 160자 이하여야 합니다.",
       "inspiration_too_long": "영감 이름은 100자 이하여야 합니다.",
       "generic_error": "지금은 엘프 이름을 생성할 수 없습니다. 다시 시도해 주세요.",
-      "creative_limit_reached": "오늘의 무료 Creative 사용횟수가 끝났습니다. 로그인하면 크레딧을 받을 수 있어요."
+      "creative_limit_reached": "오늘의 무료 사용횟수가 끝났습니다. 로그인하면 크레딧을 받을 수 있어요."
     },
     "success": {
       "copied": "이름이 클립보드에 복사되었습니다.",

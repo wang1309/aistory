@@ -2,6 +2,12 @@ import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
 import "@/lib/logger";
 import { respErr, respData } from "@/lib/resp";
 import { isIdentityVerifiedInKv, markIdentityVerifiedInKv } from "@/lib/turnstile-kv";
+import {
+  commitCreativeQuotaCharge,
+  creativeQuotaErrorResponse,
+  prepareCreativeQuota,
+  withCreativeVisitorCookie,
+} from "@/lib/creative-quota";
 
 interface PromptGenerateRequest {
   genres: string[];
@@ -280,18 +286,32 @@ export async function POST(req: Request) {
     if (!isValidToken) {
       return respErr("Verification failed");
     }
-    // Build the prompt
-    const finalPrompt = buildPromptGenerationRequest(requestData);
-    console.log("=== Generated System Prompt ===", finalPrompt.substring(0, 500) + "...");
 
-    // Map model keys
+    // Map model keys. Normalize unknown/missing values to standard so the
+    // quota gate cannot be bypassed with an unrecognized model name.
     const modelMap: Record<string, string> = {
       fast: resolveModelTier("fast"),
       standard: resolveModelTier("standard"),
       creative: resolveModelTier("creative"),
     };
+    const quotaModel =
+      model === "fast" || model === "standard" || model === "creative"
+        ? model
+        : "standard";
 
-    const actualModel = modelMap[model] || resolveModelTier("standard");
+    const quotaGate = await prepareCreativeQuota({
+      pageKey: "story-prompt-generator",
+      model: quotaModel,
+      request: req,
+    });
+    const quotaError = creativeQuotaErrorResponse(quotaGate);
+    if (quotaError) return quotaError;
+
+    // Build the prompt
+    const finalPrompt = buildPromptGenerationRequest(requestData);
+    console.log("=== Generated System Prompt ===", finalPrompt.substring(0, 500) + "...");
+
+    const actualModel = modelMap[quotaModel];
 
     const requestBody = {
       model: actualModel,
@@ -311,12 +331,20 @@ export async function POST(req: Request) {
     if (!response.ok) {
       const errorText = await response.text();
       console.log("API Error:", response.status, errorText);
-      return respErr(`API Error: ${response.status}`);
+      return withCreativeVisitorCookie(
+        respErr(`API Error: ${response.status}`),
+        quotaGate
+      );
     }
 
     if (!response.body) {
-      return respErr("No response body from API");
+      return withCreativeVisitorCookie(
+        respErr("No response body from API"),
+        quotaGate
+      );
     }
+
+    await commitCreativeQuotaCharge(quotaGate);
 
     // Stream processing
     const encoder = new TextEncoder();
@@ -380,13 +408,16 @@ export async function POST(req: Request) {
 
     const transformedStream = response.body.pipeThrough(transformStream);
 
-    return new Response(transformedStream, {
-      headers: {
-        "Content-Type": "text/plain; charset=utf-8",
-        "Cache-Control": "no-cache, no-transform",
-        "X-Content-Type-Options": "nosniff",
-      },
-    });
+    return withCreativeVisitorCookie(
+      new Response(transformedStream, {
+        headers: {
+          "Content-Type": "text/plain; charset=utf-8",
+          "Cache-Control": "no-cache, no-transform",
+          "X-Content-Type-Options": "nosniff",
+        },
+      }),
+      quotaGate
+    );
   } catch (e) {
     console.log("Story prompt generation failed:", e);
     return respErr("Bad request: " + e);

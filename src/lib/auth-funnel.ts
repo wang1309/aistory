@@ -40,6 +40,7 @@ export type AuthSourcePage =
   | "gang-name-generator"
   | "oc-generator"
   | "story-summarizer"
+  | "story-prompt-generator"
   | "essay-extender"
   | "paragraph-rewriter"
   | "ai-humanizer"

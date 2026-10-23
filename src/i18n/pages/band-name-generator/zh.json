@@ -99,7 +99,7 @@
       "cue_too_long": "关键词需控制在 120 个字符以内。",
       "inspiration_too_long": "参考名需控制在 100 个字符以内。",
       "generic_error": "暂时无法生成乐队名字,请重试。",
-      "creative_limit_reached": "今日 Creative 免费次数已用完，登录可获得更多积分。"
+      "creative_limit_reached": "今日免费次数已用完，登录可获得更多积分。"
     },
     "success": {
       "copied": "名字已复制到剪贴板。",

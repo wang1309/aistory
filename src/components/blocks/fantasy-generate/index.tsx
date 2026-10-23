@@ -23,6 +23,7 @@ import { Wand2, Sparkles, Zap, Palette, PenTool, BookOpen, Globe, Users, Scroll,
 import { motion, useReducedMotion } from "framer-motion";
 import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
 import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { getCreativeQuotaLimitReachedMessage } from "@/lib/creative-quota-core";
 import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
@@ -105,6 +106,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
 
   // AI model state
   const [selectedModel, setSelectedModel] = useState("standard");
+  const activeQuota = creativeQuota.forModel(selectedModel);
 
   // Generation state
   const [isGenerating, setIsGenerating] = useState(false);
@@ -209,7 +211,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
     if (
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
-        message: "Daily free Creative quota reached. Please sign in to continue.",
+        message: getCreativeQuotaLimitReachedMessage(locale),
       }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
@@ -335,7 +337,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         }
 
         if (accumulatedText.trim()) {
-          if (selectedModel === "creative") creativeQuota.increment();
+          creativeQuota.increment(selectedModel);
           confetti({
             particleCount: 100,
             spread: 70,
@@ -1288,7 +1290,9 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
           <CreativeQuotaHint
             pageKey="fantasy-generator"
             selectedModel={selectedModel}
-            used={creativeQuota.used} limit={creativeQuota.limit}
+            used={activeQuota?.used ?? 0}
+            limit={activeQuota?.limit ?? null}
+            creditCost={activeQuota?.creditCost ?? null}
             className="mt-3"
           />
         </div>
@@ -1309,7 +1313,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
             ) : (
               <>
                 <Wand2 className="w-5 h-5 mr-2" />
-                {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                {activeQuota?.anonymousExhausted
                   ? "Sign in to continue"
                   : section.generate_button.text}
               </>

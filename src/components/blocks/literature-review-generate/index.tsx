@@ -134,6 +134,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
   const [reviewLength, setReviewLength] = useState("medium");
   const [tone, setTone] = useState("neutral");
   const [selectedModel, setSelectedModel] = useState("standard");
+  const activeQuota = creativeQuota.forModel(selectedModel);
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [showAdvanced, setShowAdvanced] = useState(false);
 
@@ -293,7 +294,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
         }
 
         if (accumulatedContent.trim()) {
-          if (opts.model === "creative") creativeQuota.increment();
+          creativeQuota.increment(opts.model);
           StoryStorage.saveStory({
             title: (opts.topic.trim() || "Literature Review").slice(0, 30),
             prompt: opts.topic.trim(),
@@ -725,7 +726,7 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                   ) : (
                     <>
                       <Library className="w-5 h-5 mr-2 shrink-0" />
-                      {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                      {activeQuota?.anonymousExhausted
                         ? t("ui.sign_in_to_continue")
                         : t("ui.generate_button")}
                     </>
@@ -735,7 +736,9 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
                 <CreativeQuotaHint
                   pageKey="literature-review-generator"
                   selectedModel={selectedModel}
-                  used={creativeQuota.used} limit={creativeQuota.limit}
+                  used={activeQuota?.used ?? 0}
+                  limit={activeQuota?.limit ?? null}
+                  creditCost={activeQuota?.creditCost ?? null}
                   className="mt-3"
                 />
                 {/* 生成按钮旁的披露:AI 文本需核查;未提供来源则不声称引用 */}

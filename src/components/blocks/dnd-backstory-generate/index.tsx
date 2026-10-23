@@ -70,6 +70,7 @@ import { useOpenPanel } from "@openpanel/nextjs";
 import { ACTIVATION_EVENTS, buildActivationTrackingPayload } from "@/lib/activation-funnel";
 import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
 import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { getCreativeQuotaLimitReachedMessage } from "@/lib/creative-quota-core";
 import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 import {
   buildPostAuthResumeTrackingPayload,
@@ -213,6 +214,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
 
   const [prompt, setPrompt] = useState("");
   const [selectedModel, setSelectedModel] = useState("standard");
+  const activeQuota = creativeQuota.forModel(selectedModel);
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [race, setRace] = useState("human");
   const [customRace, setCustomRace] = useState("");
@@ -420,7 +422,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
     if (
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
-        message: t("toasts.creative_limit_reached"),
+        message: getCreativeQuotaLimitReachedMessage(locale),
       }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
@@ -516,7 +518,7 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
         }
 
         if (accumulatedContent.trim()) {
-          if (opts.model === "creative") creativeQuota.increment();
+          creativeQuota.increment(opts.model);
           track(
             ACTIVATION_EVENTS.generationSucceeded,
             buildActivationTrackingPayload({
@@ -1470,14 +1472,20 @@ export default function DndBackstoryGenerate({ section }: DndBackstoryGeneratePr
                           </svg>
                         )}
                       </span>
-                      {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                      {activeQuota?.anonymousExhausted
                         ? "Sign in to continue"
                         : t("ui.generate_button")}
                     </>
                   )}
                 </Button>
                 <GeneratorShortcutHints className="mt-3" />
-                <CreativeQuotaHint pageKey="dnd-backstory-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
+                <CreativeQuotaHint
+                  pageKey="dnd-backstory-generator"
+                  selectedModel={selectedModel}
+                  used={activeQuota?.used ?? 0}
+                  limit={activeQuota?.limit ?? null}
+                  creditCost={activeQuota?.creditCost ?? null}
+                />
               </div>
             </div>
           </motion.div>

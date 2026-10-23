@@ -58,6 +58,7 @@ import {
 } from "@/lib/activation-funnel";
 import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
 import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { getCreativeQuotaLimitReachedMessage } from "@/lib/creative-quota-core";
 import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 
 // ========== HELPER FUNCTIONS ==========
@@ -175,6 +176,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
   // ========== STATE MANAGEMENT ==========
   const [prompt, setPrompt] = useState("");
   const [selectedModel, setSelectedModel] = useState<string | null>('standard');
+  const activeQuota = creativeQuota.forModel(selectedModel);
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
 
   // Plot-specific parameters
@@ -316,7 +318,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
     if (
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
-        message: t('toasts.creative_limit_reached'),
+        message: getCreativeQuotaLimitReachedMessage(locale),
       }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
@@ -420,7 +422,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
 
       // Save to LocalStorage
       if (accumulatedContent.trim()) {
-        if (selectedModel === "creative") creativeQuota.increment();
+        creativeQuota.increment(selectedModel);
         track(
           ACTIVATION_EVENTS.generationSucceeded,
           buildActivationTrackingPayload({
@@ -1244,7 +1246,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                   <div className="flex items-center justify-center gap-2">
                     <Icon name="sparkles" className="size-4" />
                     <span>
-                      {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                      {activeQuota?.anonymousExhausted
                         ? "Sign in to continue"
                         : t('ui.generate_plot')}
                     </span>
@@ -1252,7 +1254,13 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
                 )}
               </Button>
               <GeneratorShortcutHints showQuickSave />
-              <CreativeQuotaHint pageKey="plot-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
+              <CreativeQuotaHint
+                pageKey="plot-generator"
+                selectedModel={selectedModel}
+                used={activeQuota?.used ?? 0}
+                limit={activeQuota?.limit ?? null}
+                creditCost={activeQuota?.creditCost ?? null}
+              />
             </div>
           </div>
 
@@ -1369,6 +1377,7 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
           open={showPlotToStoryDialog}
           onOpenChange={setShowPlotToStoryDialog}
           translations={section}
+          creativeQuota={creativeQuota}
         />
         <StorySaveDialog
           open={isSaveDialogOpen}

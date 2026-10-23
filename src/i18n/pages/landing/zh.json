@@ -628,7 +628,7 @@
       "success_generated": "故事生成成功！",
       "success_copied": "故事已复制到剪贴板！",
       "success_pdf_exported": "PDF导出成功！",
-      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。",
+      "creative_limit_reached": "今日免费次数已用完,登录可获得更多积分。",
       "insufficient_credits": "积分不足",
       "rate_limited": "今日请求过多,请稍后再试。"
     },

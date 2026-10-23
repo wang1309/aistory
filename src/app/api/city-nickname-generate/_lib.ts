@@ -128,7 +128,7 @@ export async function generateCityNicknames(
   input: NormalizedCityNicknameRequest
 ) {
   const response = await fetchChatCompletion({ body: {
-      model: resolveModelTier("standard"),
+      model: resolveModelTier("fast"),
       stream: false,
       temperature: 0.9,
       messages: [

@@ -1,4 +1,4 @@
-import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
+import { fetchChatCompletion, isModelTier, resolveModelTier } from "@/lib/llm";
 import { buildDialoguePrompt } from "@/lib/dialogue-prompt";
 import { DialogueGenerateRequest } from "@/types/dialogue";
 import {
@@ -69,9 +69,11 @@ export async function POST(req: Request) {
       );
     }
 
+    const quotaModel = isModelTier(model) ? model : "standard";
+
     const quotaGate = await prepareCreativeQuota({
       pageKey: "dialogue-generator",
-      model,
+      model: quotaModel,
       request: req,
     });
     const quotaError = creativeQuotaErrorResponse(quotaGate);
@@ -79,7 +81,7 @@ export async function POST(req: Request) {
 
     const finalPrompt = buildDialoguePrompt({
       prompt,
-      model,
+      model: quotaModel,
       locale: locale || "en",
       characters,
       dialogueType,
@@ -89,7 +91,7 @@ export async function POST(req: Request) {
       includeNarration,
     });
 
-    const modelName = resolveModelTier(model);
+    const modelName = resolveModelTier(quotaModel);
 
     const response = await fetchChatCompletion({ body: {
         model: modelName,

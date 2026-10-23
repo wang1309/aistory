@@ -98,6 +98,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
 
   const [prompt, setPrompt] = useState("");
   const [selectedModel, setSelectedModel] = useState<string>("standard");
+  const activeQuota = creativeQuota.forModel(selectedModel);
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [dialogueType, setDialogueType] = useState("conversation");
   const [tone, setTone] = useState("casual");
@@ -380,8 +381,8 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
             wordCount: accumulatedDialogue.split(/\s+/).filter(Boolean).length,
           })
         );
-        if (selectedModel === "creative" && accumulatedDialogue.trim()) {
-          creativeQuota.increment();
+        if (accumulatedDialogue.trim()) {
+          creativeQuota.increment(selectedModel);
         }
 
         toast.success(t("success.dialogue_generated"));
@@ -1052,7 +1053,13 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                       </button>
                     ))}
                   </div>
-                  <CreativeQuotaHint pageKey="dialogue-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
+                  <CreativeQuotaHint
+                    pageKey="dialogue-generator"
+                    selectedModel={selectedModel}
+                    used={activeQuota?.used ?? 0}
+                    limit={activeQuota?.limit ?? null}
+                    creditCost={activeQuota?.creditCost ?? null}
+                  />
                 </div>
 
                 {/* Language */}
@@ -1172,7 +1179,7 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
                   ) : (
                     <>
                       <Icon name="RiChat3Line" className="w-5 h-5 mr-2" />
-                      {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                      {activeQuota?.anonymousExhausted
                         ? "Sign in to continue"
                         : t("ui.generate_button")}
                     </>

@@ -73,7 +73,7 @@
       "custom_heritage_too_long": "自定义文化不能超过 160 字符。",
       "inspiration_too_long": "灵感名字不能超过 100 字符。",
       "generic_error": "暂时无法生成精灵名字,请重试。",
-      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。"
+      "creative_limit_reached": "今日免费次数已用完,登录可获得更多积分。"
     },
     "success": {
       "copied": "名字已复制到剪贴板。",

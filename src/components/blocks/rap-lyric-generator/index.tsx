@@ -26,6 +26,7 @@ import { LANGUAGE_OPTIONS } from "@/lib/language-options";
 import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
 import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
 import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
+import { getCreativeQuotaLimitReachedMessage } from "@/lib/creative-quota-core";
 import {
   RAP_LYRIC_TOPIC_LIMIT,
   type RapLyricContentRating,
@@ -64,6 +65,7 @@ export default function RapLyricGenerator({ section }: RapLyricGeneratorProps) {
   const [rhymeDensity, setRhymeDensity] = useState<RapLyricRhymeDensity>(DEFAULT_RHYME_DENSITY);
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [selectedModel, setSelectedModel] = useState<RapLyricModel>(DEFAULT_MODEL);
+  const activeQuota = creativeQuota.forModel(selectedModel);
 
   const [lyrics, setLyrics] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -162,7 +164,7 @@ export default function RapLyricGenerator({ section }: RapLyricGeneratorProps) {
           return;
         }
 
-        if (selectedModel === "creative") creativeQuota.increment();
+        creativeQuota.increment(selectedModel);
       } catch {
         toast.error(t("errors.generation_failed"));
       } finally {
@@ -181,7 +183,7 @@ export default function RapLyricGenerator({ section }: RapLyricGeneratorProps) {
     if (
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
-        message: "Daily free Creative quota reached. Please sign in to continue.",
+        message: getCreativeQuotaLimitReachedMessage(locale),
       }) ||
       creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
@@ -453,8 +455,7 @@ export default function RapLyricGenerator({ section }: RapLyricGeneratorProps) {
                     <Sparkles className="mr-2 size-5 shrink-0 animate-pulse" aria-hidden="true" />
                     {t("ui.generating")}
                   </>
-                ) : selectedModel === "creative" &&
-                  creativeQuota.anonymousCreativeExhausted ? (
+                ) : activeQuota?.anonymousExhausted ? (
                   <>
                     <Sparkles className="mr-2 size-5 shrink-0" aria-hidden="true" />
                     {t("ui.sign_in_to_continue")}
@@ -481,8 +482,9 @@ export default function RapLyricGenerator({ section }: RapLyricGeneratorProps) {
             <CreativeQuotaHint
               pageKey="rap-lyric-generator"
               selectedModel={selectedModel}
-              used={creativeQuota.used}
-              limit={creativeQuota.limit}
+              used={activeQuota?.used ?? 0}
+              limit={activeQuota?.limit ?? null}
+              creditCost={activeQuota?.creditCost ?? null}
               className="mt-3"
             />
           </div>

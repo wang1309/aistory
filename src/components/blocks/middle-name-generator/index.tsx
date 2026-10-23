@@ -40,7 +40,6 @@ import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
 import { useAppContext } from "@/contexts/app";
 import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
 import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
-import { getCreativeLimit } from "@/lib/creative-quota-client";
 import type {
   MiddleNameCadence,
   MiddleNameDirection,
@@ -142,6 +141,7 @@ export default function MiddleNameGenerator({ section }: Props) {
   const [avoidInitials, setAvoidInitials] = useState("");
   const [note, setNote] = useState("");
   const [mode, setMode] = useState<MiddleNameModelMode>("standard");
+  const activeQuota = creativeQuota.forModel(mode);
   const [results, setResults] = useState<MiddleNameGeneratorResponse | null>(null);
   const [favorites, setFavorites] = useState<MiddleNameDirection[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -195,9 +195,7 @@ export default function MiddleNameGenerator({ section }: Props) {
           return;
         }
         setResults(json as MiddleNameGeneratorResponse);
-        if (mode === "creative") {
-          creativeQuota.increment();
-        }
+        creativeQuota.increment(mode);
         toast.success(section.success.generated);
         // Privacy: never include entered names in analytics payloads.
         track("middle_name_generated", {
@@ -571,8 +569,7 @@ export default function MiddleNameGenerator({ section }: Props) {
                   >
                     {MODEL_MODES.map((value) => {
                       const isCreativeUsedUp =
-                        value === "creative" &&
-                        creativeQuota.used >= getCreativeLimit();
+                        creativeQuota.forModel(value)?.exhausted ?? false;
                       return (
                         <ToggleGroupItem
                           key={value}
@@ -606,8 +603,7 @@ export default function MiddleNameGenerator({ section }: Props) {
                   <Wand2 className="mr-2 h-4 w-4 sm:h-3.5 sm:w-3.5" />
                   {isGenerating
                     ? ui.generating_button
-                    : mode === "creative" &&
-                        creativeQuota.anonymousCreativeExhausted
+                    : activeQuota?.anonymousExhausted
                       ? ui.sign_in_button
                       : ui.generate_button}
                 </Button>
@@ -627,17 +623,18 @@ export default function MiddleNameGenerator({ section }: Props) {
                 <CreativeQuotaHint
                   pageKey="middle-name-generator"
                   selectedModel={mode}
-                  used={creativeQuota.used} limit={creativeQuota.limit}
+                  used={activeQuota?.used ?? 0}
+                  limit={activeQuota?.limit ?? null}
+                  creditCost={activeQuota?.creditCost ?? null}
                 />
 
-                {mode === "creative" &&
-                  creativeQuota.used >= getCreativeLimit() && (
-                    <p className="text-center text-[10px] text-amber-600 dark:text-amber-500">
-                      {user
-                        ? `Credits cost: ${creativeQuota.creditCost ?? 5}`
-                        : section.validation.creative_limit_reached}
-                    </p>
-                  )}
+                {activeQuota?.exhausted && (
+                  <p className="text-center text-[10px] text-amber-600 dark:text-amber-500">
+                    {user
+                      ? `Credits cost: ${activeQuota.effectiveCreditCost}`
+                      : section.validation.creative_limit_reached}
+                  </p>
+                )}
               </div>
             </CardContent>
           </Card>

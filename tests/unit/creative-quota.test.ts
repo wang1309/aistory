@@ -2,10 +2,15 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   CREATIVE_PAGE_KEYS,
+  QUOTA_TIERS,
   buildCreativeQuotaKey,
   buildCreativeMergeKey,
   buildLegacyCreativeQuotaKey,
   buildCreativeMigrationKey,
+  buildQuotaKey,
+  buildQuotaMergeKey,
+  isQuotaTier,
+  resolveQuotaTier,
   mergeUsedCounts,
   migrateCreativeUsedCount,
   incrementCreativeUsedCount,
@@ -16,8 +21,18 @@ import {
   shouldOptimisticallyGateCreativeAnonymousUsage,
   shouldOptimisticallyGateCreativeCreditUsage,
 } from "@/lib/creative-quota-core";
+import { getQuotaDailyLimit } from "@/lib/free-quota";
 
-assert.equal(CREATIVE_PAGE_KEYS.length, 24);
+assert.equal(CREATIVE_PAGE_KEYS.length, 26);
+assert.deepEqual([...QUOTA_TIERS], ["standard", "creative"]);
+assert.equal(resolveQuotaTier("fast"), null);
+assert.equal(resolveQuotaTier("standard"), "standard");
+assert.equal(resolveQuotaTier("creative"), "creative");
+assert.equal(resolveQuotaTier("unknown-model"), "standard");
+assert.equal(resolveQuotaTier(undefined), null);
+assert.equal(isQuotaTier("standard"), true);
+assert.equal(isQuotaTier("creative"), true);
+assert.equal(isQuotaTier("fast"), false);
 assert.equal(
   buildCreativeQuotaKey("2026-07-14", "user:u1", "poem-generator"),
   "free-quota:2026-07-14:user:u1:poem-generator:creative"
@@ -36,9 +51,42 @@ test("AI Humanizer uses a page-scoped creative quota key", () => {
     "free-quota:2026-09-23:visitor-123:ai-humanizer:creative"
   );
 });
+test("Story Prompt Generator uses a page-scoped quota key", () => {
+  assert.ok(CREATIVE_PAGE_KEYS.includes("story-prompt-generator"));
+  assert.equal(
+    buildCreativeQuotaKey(
+      "2026-10-23",
+      "visitor-123",
+      "story-prompt-generator"
+    ),
+    "free-quota:2026-10-23:visitor-123:story-prompt-generator:creative"
+  );
+});
 assert.equal(
   buildCreativeMergeKey("2026-07-14", "visitor:v1", "user:u1", "poem-generator"),
   "free-quota:2026-07-14:merge:visitor:v1:user:u1:poem-generator:creative"
+);
+assert.equal(
+  buildQuotaKey("2026-10-23", "user:u1", "story-generator", "standard"),
+  "free-quota:2026-10-23:user:u1:story-generator:standard"
+);
+assert.equal(
+  buildQuotaKey("2026-10-23", "visitor:v1", "plot-generator", "creative"),
+  "free-quota:2026-10-23:visitor:v1:plot-generator:creative"
+);
+assert.equal(
+  buildQuotaMergeKey(
+    "2026-10-23",
+    "visitor:v1",
+    "user:u1",
+    "story-generator",
+    "standard"
+  ),
+  "free-quota:2026-10-23:merge:visitor:v1:user:u1:story-generator:standard"
+);
+assert.notEqual(
+  buildQuotaKey("2026-10-23", "user:u1", "story-generator", "standard"),
+  buildQuotaKey("2026-10-23", "user:u1", "story-generator", "creative")
 );
 assert.equal(
   buildLegacyCreativeQuotaKey("2026-07-14", "user:u1"),
@@ -95,6 +143,15 @@ assert.equal(
     used: 3,
     limit: 3,
   }),
+  true
+);
+assert.equal(
+  shouldOptimisticallyGateCreativeAnonymousUsage({
+    hasUser: false,
+    selectedModel: "fast",
+    used: 3,
+    limit: 3,
+  }),
   false
 );
 assert.equal(
@@ -107,11 +164,11 @@ assert.equal(
 );
 assert.equal(
   getCreativeQuotaLimitReachedMessage("en"),
-  "Daily free Creative quota reached. Please sign in to continue."
+  "Daily free quota reached. Please sign in to continue."
 );
 assert.equal(
   getCreativeQuotaLimitReachedMessage("zh"),
-  "今日 Creative 免费额度已用完，请登录后继续。"
+  "今日免费额度已用完，请登录后继续。"
 );
 assert.equal(
   shouldOptimisticallyGateCreativeAnonymousUsage({
@@ -140,9 +197,9 @@ assert.equal(
     used: 3,
     limit: 3,
     credits: 0,
-    cost: 5,
+    cost: 3,
   }),
-  false
+  true
 );
 assert.equal(
   shouldOptimisticallyGateCreativeCreditUsage({
@@ -206,5 +263,31 @@ assert.deepEqual(
     creditCost: 5,
   }
 );
+
+test("quota limits are tier-specific and env-configurable", () => {
+  const originalStandard = process.env.FREE_STANDARD_DAILY_LIMIT;
+  const originalCreative = process.env.FREE_CREATIVE_DAILY_LIMIT;
+
+  try {
+    process.env.FREE_STANDARD_DAILY_LIMIT = "7";
+    process.env.FREE_CREATIVE_DAILY_LIMIT = "2";
+    assert.equal(getQuotaDailyLimit("standard"), 7);
+    assert.equal(getQuotaDailyLimit("creative"), 2);
+
+    process.env.FREE_STANDARD_DAILY_LIMIT = "invalid";
+    assert.equal(getQuotaDailyLimit("standard"), 3);
+  } finally {
+    if (originalStandard === undefined) {
+      delete process.env.FREE_STANDARD_DAILY_LIMIT;
+    } else {
+      process.env.FREE_STANDARD_DAILY_LIMIT = originalStandard;
+    }
+    if (originalCreative === undefined) {
+      delete process.env.FREE_CREATIVE_DAILY_LIMIT;
+    } else {
+      process.env.FREE_CREATIVE_DAILY_LIMIT = originalCreative;
+    }
+  }
+});
 
 console.log("creative quota core tests passed");

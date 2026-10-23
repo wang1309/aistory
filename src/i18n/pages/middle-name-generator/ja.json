@@ -181,7 +181,7 @@
       "name_too_long": "名前は60文字以内で入力してください。",
       "avoid_initials_too_long": "避けたいイニシャルは12文字以内で入力してください。",
       "note_too_long": "メモは160文字以内で入力してください。",
-      "creative_limit_reached": "本日のCreative無料回数を使い切りました。ログインでクレジットを追加できます。",
+      "creative_limit_reached": "本日の無料回数を使い切りました。ログインでクレジットを追加できます。",
       "generic_error": "現在ミドルネームを生成できません。もう一度お試しください。"
     },
     "success": {

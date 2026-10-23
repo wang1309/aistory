@@ -1,4 +1,4 @@
-import { fetchChatCompletion, resolveModelTier } from "@/lib/llm";
+import { fetchChatCompletion, isModelTier, resolveModelTier } from "@/lib/llm";
 import { buildComicPrompt } from "@/lib/comic-prompt";
 import { ComicGenerateRequest } from "@/types/comic";
 import {
@@ -68,9 +68,11 @@ export async function POST(req: Request) {
       );
     }
 
+    const quotaModel = isModelTier(model) ? model : "standard";
+
     const quotaGate = await prepareCreativeQuota({
       pageKey: "comic-generator",
-      model,
+      model: quotaModel,
       request: req,
     });
     const quotaError = creativeQuotaErrorResponse(quotaGate);
@@ -78,7 +80,7 @@ export async function POST(req: Request) {
 
     const finalPrompt = buildComicPrompt({
       prompt,
-      model,
+      model: quotaModel,
       locale: locale || "en",
       characters,
       comicStyle,
@@ -90,7 +92,7 @@ export async function POST(req: Request) {
       readingFormat,
     });
 
-    const modelName = resolveModelTier(model);
+    const modelName = resolveModelTier(quotaModel);
 
     const response = await fetchChatCompletion({ body: {
         model: modelName,

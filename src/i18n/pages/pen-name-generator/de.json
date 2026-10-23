@@ -86,7 +86,7 @@
       "cue_too_long": "Besondere Wünsche dürfen höchstens 120 Zeichen lang sein.",
       "inspiration_too_long": "Der Inspirationsname darf höchstens 100 Zeichen lang sein.",
       "generic_error": "Pseudonyme konnten gerade nicht generiert werden. Bitte erneut versuchen.",
-      "creative_limit_reached": "Die kostenlosen Creative-Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten."
+      "creative_limit_reached": "Die kostenlosen Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten."
     },
     "success": {
       "copied": "Name in die Zwischenablage kopiert.",

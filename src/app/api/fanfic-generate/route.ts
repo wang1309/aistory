@@ -165,9 +165,24 @@ export async function POST(req: Request) {
       return respErr("verification failed");
     }
 
+    const modelInput =
+      typeof requestedModel === "string" && requestedModel
+        ? requestedModel
+        : "creative"; // Default logical model key
+
+    const modelAliasMap: Record<string, string> = {
+      fast: "fast",
+      standard: "standard",
+      creative: "creative",
+      character_focused: "fast",
+      depth: "creative",
+    };
+
+    const normalizedModel = modelAliasMap[modelInput] || "creative";
+
     const quotaGate = await prepareCreativeQuota({
       pageKey: "fanfic-generator",
-      model: requestedModel,
+      model: normalizedModel,
       request: req,
     });
     const quotaError = creativeQuotaErrorResponse(quotaGate);
@@ -198,19 +213,6 @@ export async function POST(req: Request) {
       "bold": "adventure",
     };
 
-    const modelInput = typeof requestedModel === "string" && requestedModel
-      ? requestedModel
-      : "creative"; // Default logical model key
-
-    const modelAliasMap: Record<string, string> = {
-      fast: "fast",
-      standard: "standard",
-      creative: "creative",
-      character_focused: "fast",
-      depth: "creative",
-    };
-
-    const normalizedModel = modelAliasMap[modelInput] || "creative";
     const mappedLength = lengthMap[options.length || "medium"] || "medium";
     const mappedGenre = oocMap[options.ooc || "none"] || "fantasy";
 

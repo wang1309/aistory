@@ -238,7 +238,7 @@ export async function POST(req: Request) {
         console.log("Moods:", moods);
 
         const requestBody = {
-            model: resolveModelTier("standard"),
+            model: resolveModelTier("fast"),
             stream: true,
             messages: [
                 { role: "system", content: promptData.system },

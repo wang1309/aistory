@@ -726,6 +726,7 @@ export default function AiHumanizer({ section }: AiHumanizerProps) {
               selectedModel={selectedModel}
               used={creativeQuota.used}
               limit={creativeQuota.limit}
+              creditCost={creativeQuota.creditCost}
               className="mt-3"
             />
           </div>

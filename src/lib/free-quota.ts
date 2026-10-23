@@ -6,19 +6,24 @@ import {
   buildCreativeMigrationKey,
   buildCreativeQuotaKey,
   buildLegacyCreativeQuotaKey,
+  buildQuotaKey,
+  buildQuotaMergeKey,
   CREATIVE_PAGE_KEYS,
   getCreativeQuotaStatus,
   mergeUsedCounts,
   migrateCreativeUsedCount,
+  QUOTA_TIERS,
   type CreativePageKey,
   type CreativeQuotaStatus,
+  type QuotaTier,
 } from "@/lib/creative-quota-core";
 
 /**
  * 每日免费额度计数(Cloudflare KV)
  *
- * - creative 模型每天 N 次(默认 3),按 identity 计数(user:uuid 优先,回退 ip:ip)
- * - IP 级 hard cap:防匿名脚本刷量(默认 50/天),仅按 IP
+ * - standard / creative 模型每天各 N 次(默认 3),各自独立计数,
+ *   按 identity 计数(user:uuid 优先,回退 visitor cookie)
+ * - IP 级 hard cap:防匿名脚本刷量(默认 100/天),仅按 IP
  * - fail-open:KV 不可用时不阻断主流程,仅打日志
  * - key 按 UTC 日期滚动,TTL 30h(覆盖一天 + 缓冲)
  *
@@ -30,19 +35,23 @@ const FREE_QUOTA_KV_TTL_SECONDS = 30 * 60 * 60; // 30h
 const CREATIVE_VISITOR_COOKIE = "creative_visitor_id";
 const CREATIVE_VISITOR_MAX_AGE = 60 * 60 * 24 * 90;
 
-export { CREATIVE_PAGE_KEYS };
-export type { CreativePageKey, CreativeQuotaStatus };
+export { CREATIVE_PAGE_KEYS, QUOTA_TIERS };
+export type { CreativePageKey, CreativeQuotaStatus, QuotaTier };
 
 // ========== 配置(env 可调,支持一键关闭/收紧) ==========
 
-function getCreativeDailyLimit(): number {
-  const v = Number(process.env.FREE_CREATIVE_DAILY_LIMIT);
+export function getQuotaDailyLimit(tier: QuotaTier = "creative"): number {
+  const envKey =
+    tier === "standard"
+      ? "FREE_STANDARD_DAILY_LIMIT"
+      : "FREE_CREATIVE_DAILY_LIMIT";
+  const v = Number(process.env[envKey]);
   return Number.isFinite(v) && v > 0 ? v : 3;
 }
 
 function getIpDailyHardCap(): number {
   const v = Number(process.env.FREE_IP_DAILY_HARD_CAP);
-  return Number.isFinite(v) && v > 0 ? v : 50;
+  return Number.isFinite(v) && v > 0 ? v : 100;
 }
 
 // ========== KV 双通道(照抄 turnstile-kv 模式) ==========
@@ -205,12 +214,37 @@ export function appendCreativeVisitorCookie(response: Response, setCookie?: stri
   return response;
 }
 
+export function getQuotaKey(
+  dateKey: string,
+  identity: string,
+  pageKey: CreativePageKey,
+  tier: QuotaTier = "creative"
+) {
+  return buildQuotaKey(dateKey, identity, pageKey, tier);
+}
+
 export function getCreativeQuotaKey(
   dateKey: string,
   identity: string,
   pageKey: CreativePageKey
 ) {
   return buildCreativeQuotaKey(dateKey, identity, pageKey);
+}
+
+export function getQuotaMergeKey(
+  dateKey: string,
+  visitorIdentity: string,
+  userIdentity: string,
+  pageKey: CreativePageKey,
+  tier: QuotaTier = "creative"
+) {
+  return buildQuotaMergeKey(
+    dateKey,
+    visitorIdentity,
+    userIdentity,
+    pageKey,
+    tier
+  );
 }
 
 export function getCreativeMergeKey(
@@ -230,12 +264,13 @@ export async function migrateLegacyStoryCreativeQuota(identity: string): Promise
 
   const legacyRaw = await kvGet(buildLegacyCreativeQuotaKey(dateKey, identity));
   if (legacyRaw !== null) {
-    const limit = getCreativeDailyLimit();
+    const limit = getQuotaDailyLimit("creative");
     const current = await readCreativeQuota("story-generator", identity);
     await writeCreativeQuota(
       "story-generator",
       identity,
-      migrateCreativeUsedCount(Number(legacyRaw) || 0, current.used, limit)
+      migrateCreativeUsedCount(Number(legacyRaw) || 0, current.used, limit),
+      "creative"
     );
   }
 
@@ -244,20 +279,24 @@ export async function migrateLegacyStoryCreativeQuota(identity: string): Promise
 
 export async function readCreativeQuota(
   pageKey: CreativePageKey,
-  identity: string
+  identity: string,
+  tier: QuotaTier = "creative"
 ): Promise<CreativeQuotaStatus> {
-  const limit = getCreativeDailyLimit();
-  const raw = await kvGet(getCreativeQuotaKey(getTodayUtcKey(), identity, pageKey));
+  const limit = getQuotaDailyLimit(tier);
+  const raw = await kvGet(
+    getQuotaKey(getTodayUtcKey(), identity, pageKey, tier)
+  );
   return getCreativeQuotaStatus(raw ? Number(raw) || 0 : 0, limit);
 }
 
 export async function writeCreativeQuota(
   pageKey: CreativePageKey,
   identity: string,
-  used: number
+  used: number,
+  tier: QuotaTier = "creative"
 ): Promise<void> {
   await kvPut(
-    getCreativeQuotaKey(getTodayUtcKey(), identity, pageKey),
+    getQuotaKey(getTodayUtcKey(), identity, pageKey, tier),
     String(Math.max(0, used)),
     FREE_QUOTA_KV_TTL_SECONDS
   );
@@ -265,27 +304,35 @@ export async function writeCreativeQuota(
 
 export async function incrementPageCreativeQuota(
   pageKey: CreativePageKey,
-  identity: string
+  identity: string,
+  tier: QuotaTier = "creative"
 ): Promise<CreativeQuotaStatus> {
-  const current = await readCreativeQuota(pageKey, identity);
+  const current = await readCreativeQuota(pageKey, identity, tier);
   const used = current.used + 1;
-  await writeCreativeQuota(pageKey, identity, used);
+  await writeCreativeQuota(pageKey, identity, used, tier);
   return getCreativeQuotaStatus(used, current.limit);
 }
 
 export async function mergePageCreativeQuota(
   pageKey: CreativePageKey,
   visitorIdentity: string,
-  userIdentity: string
+  userIdentity: string,
+  tier: QuotaTier = "creative"
 ): Promise<void> {
   const dateKey = getTodayUtcKey();
-  const mergeKey = getCreativeMergeKey(dateKey, visitorIdentity, userIdentity, pageKey);
+  const mergeKey = getQuotaMergeKey(
+    dateKey,
+    visitorIdentity,
+    userIdentity,
+    pageKey,
+    tier
+  );
   if (await kvGet(mergeKey)) return;
 
-  const visitor = await readCreativeQuota(pageKey, visitorIdentity);
-  const account = await readCreativeQuota(pageKey, userIdentity);
+  const visitor = await readCreativeQuota(pageKey, visitorIdentity, tier);
+  const account = await readCreativeQuota(pageKey, userIdentity, tier);
   const merged = mergeUsedCounts(account.used, visitor.used, account.limit);
-  await writeCreativeQuota(pageKey, userIdentity, merged);
+  await writeCreativeQuota(pageKey, userIdentity, merged, tier);
   await kvPut(mergeKey, "1", FREE_QUOTA_KV_TTL_SECONDS);
 }
 
@@ -322,7 +369,7 @@ export type QuotaStatus = {
  * fail-open:identity 解析失败或 KV 不可用时返回 used=0(放行)。
  */
 export async function checkCreativeQuota(): Promise<QuotaStatus> {
-  const limit = getCreativeDailyLimit();
+  const limit = getQuotaDailyLimit("creative");
   const identity = await getTurnstileIdentity();
   if (!identity) {
     return { used: 0, limit, remaining: limit };

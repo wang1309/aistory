@@ -84,7 +84,7 @@
       "cue_too_long": "词或场景需控制在 120 字以内。",
       "inspiration_too_long": "灵感名称需控制在 100 字以内。",
       "generic_error": "暂时无法生成帮派名称,请重试。",
-      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。"
+      "creative_limit_reached": "今日免费次数已用完,登录可获得更多积分。"
     },
     "success": {
       "copied": "名称已复制到剪贴板。",

@@ -628,7 +628,7 @@
       "success_generated": "Story generated successfully!",
       "success_copied": "Story copied to clipboard!",
       "success_pdf_exported": "PDF exported successfully!",
-      "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits.",
+      "creative_limit_reached": "Today's free uses are used up. Log in to get more credits.",
       "insufficient_credits": "Insufficient credits",
       "rate_limited": "Too many requests today. Please try again later."
     },

@@ -45,6 +45,7 @@ import { useAppContext } from "@/contexts/app";
 import { useOpenPanel } from "@openpanel/nextjs";
 import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
 import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { getCreativeQuotaLimitReachedMessage } from "@/lib/creative-quota-core";
 import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 import CompletionGuide from "@/components/story/completion-guide";
 import StorySaveDialog from "@/components/story/story-save-dialog";
@@ -154,6 +155,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
 
   const [prompt, setPrompt] = useState("");
   const [selectedModel, setSelectedModel] = useState("standard");
+  const activeQuota = creativeQuota.forModel(selectedModel);
   const [selectedLanguage, setSelectedLanguage] = useState(locale);
   const [ageGroup, setAgeGroup] = useState("preschool");
   const [storyTheme, setStoryTheme] = useState("adventure");
@@ -233,7 +235,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
     if (
       creativeQuota.guardAnonymousCreativeQuota({
         selectedModel,
-        message: t("toasts.creative_limit_reached"),
+        message: getCreativeQuotaLimitReachedMessage(locale),
       }) || creativeQuota.guardCreativeCreditQuota({ selectedModel })
     ) {
       return;
@@ -301,7 +303,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
         }
 
         if (accumulatedContent.trim()) {
-          if (opts.model === "creative") creativeQuota.increment();
+          creativeQuota.increment(opts.model);
           StoryStorage.saveStory({
             title: (opts.prompt.trim() || "Bedtime Story").slice(0, 30),
             prompt: opts.prompt.trim(),
@@ -903,7 +905,7 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                   ) : (
                     <>
                       <Moon className="w-5 h-5 mr-2 group-hover:animate-moon-glow" />
-                      {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                      {activeQuota?.anonymousExhausted
                         ? "Sign in to continue"
                         : t("ui.generate_button")}
                     </>
@@ -913,7 +915,9 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
                 <CreativeQuotaHint
                   pageKey="bedtime-story-generator"
                   selectedModel={selectedModel}
-                  used={creativeQuota.used} limit={creativeQuota.limit}
+                  used={activeQuota?.used ?? 0}
+                  limit={activeQuota?.limit ?? null}
+                  creditCost={activeQuota?.creditCost ?? null}
                   className="mt-3"
                 />
               </div>

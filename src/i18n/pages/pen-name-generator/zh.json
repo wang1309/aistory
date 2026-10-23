@@ -81,7 +81,7 @@
       "cue_too_long": "特殊要求不能超过 120 个字符。",
       "inspiration_too_long": "灵感名字不能超过 100 个字符。",
       "generic_error": "暂时无法生成笔名,请重试。",
-      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。"
+      "creative_limit_reached": "今日免费次数已用完,登录可获得更多积分。"
     },
     "success": {
       "copied": "名字已复制到剪贴板。",

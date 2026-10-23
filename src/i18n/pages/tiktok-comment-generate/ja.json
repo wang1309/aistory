@@ -62,7 +62,7 @@
       "verification_failed": "認証に失敗しました。もう一度お試しください。"
     },
     "toasts": {
-      "creative_limit_reached": "今日のCreative無料回数を使い切りました。ログインして続行。"
+      "creative_limit_reached": "今日の無料回数を使い切りました。ログインして続行。"
     },
     "ai_models": {
       "fast": "高速",

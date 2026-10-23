@@ -230,7 +230,7 @@ export function resolveYoutubeNameModelConfig(): {
   temperature: number;
 } {
   return {
-    modelName: resolveModelTier("standard"),
+    modelName: resolveModelTier("fast"),
     temperature: 0.85,
   };
 }

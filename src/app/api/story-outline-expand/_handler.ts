@@ -31,7 +31,7 @@ function getDefaultDeps(): ExpandDeps {
     decreaseCredits,
     fetchModel: async (prompt: string) => {
       return fetchChatCompletion({ body: {
-          model: resolveModelTier("standard"),
+          model: resolveModelTier("fast"),
           stream: false,
           temperature: 0.7,
           max_tokens: 4096,

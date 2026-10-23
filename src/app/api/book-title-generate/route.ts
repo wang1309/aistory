@@ -225,7 +225,7 @@ Return only the titles, one per line.`;
     console.log("Output Language:", `${currentLanguage.english} (${currentLanguage.native})`);
 
     const requestBody = {
-      model: resolveModelTier("standard"),
+      model: resolveModelTier("fast"),
       stream: true,
       messages: [
         { role: "system", content: systemPrompt },

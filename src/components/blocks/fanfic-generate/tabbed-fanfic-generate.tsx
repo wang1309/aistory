@@ -63,6 +63,7 @@ import {
 } from "@/lib/activation-funnel";
 import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
 import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
+import { getCreativeQuotaLimitReachedMessage } from "@/lib/creative-quota-core";
 import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
 
 // ========== HELPER FUNCTIONS ==========
@@ -128,6 +129,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
   const [prompt, setPrompt] = useState("");
   const [language, setLanguage] = useState(locale);
   const [selectedModel, setSelectedModel] = useState<string>('standard');
+  const activeQuota = creativeQuota.forModel(selectedModel);
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedFanfic, setGeneratedFanfic] = useState('');
@@ -513,7 +515,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
           wordCount: count,
         })
       );
-      if (currentState.selectedModel === "creative") creativeQuota.increment();
+      creativeQuota.increment(currentState.selectedModel);
 
       // Generate tags
       const presetWork = sourceType === 'preset' ? getWorkById(selectedPresetWork) : null;
@@ -573,7 +575,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
         selectedModel: latestStateRef.current.selectedModel,
         message:
           section.tabbed?.messages?.error_generation ||
-          "Daily free Creative quota reached. Please sign in to continue.",
+          getCreativeQuotaLimitReachedMessage(locale),
       }) || creativeQuota.guardCreativeCreditQuota({
         selectedModel: latestStateRef.current.selectedModel,
       })
@@ -1480,7 +1482,13 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                              </button>
                            ))}
                          </div>
-                         <CreativeQuotaHint pageKey="fanfic-generator" selectedModel={selectedModel} used={creativeQuota.used} limit={creativeQuota.limit} />
+                         <CreativeQuotaHint
+                           pageKey="fanfic-generator"
+                           selectedModel={selectedModel}
+                           used={activeQuota?.used ?? 0}
+                           limit={activeQuota?.limit ?? null}
+                           creditCost={activeQuota?.creditCost ?? null}
+                         />
                        </div>
 
                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
@@ -1559,7 +1567,7 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
                         >
                           <Sparkles className="mr-2 size-5" />
                           <span className="pr-7">
-                            {selectedModel === "creative" && creativeQuota.anonymousCreativeExhausted
+                            {activeQuota?.anonymousExhausted
                               ? "Sign in to continue"
                               : section.tabbed?.form?.generation?.start_button}
                           </span>

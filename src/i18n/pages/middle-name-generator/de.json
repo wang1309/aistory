@@ -181,7 +181,7 @@
       "name_too_long": "Namen dürfen höchstens 60 Zeichen lang sein.",
       "avoid_initials_too_long": "Zu vermeidende Initialen: höchstens 12 Zeichen.",
       "note_too_long": "Notiz: höchstens 160 Zeichen.",
-      "creative_limit_reached": "Die kostenlosen Creative-Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten.",
+      "creative_limit_reached": "Die kostenlosen Nutzungen für heute sind aufgebraucht. Melde dich an, um mehr Credits zu erhalten.",
       "generic_error": "Zweitnamen konnten gerade nicht generiert werden. Bitte erneut versuchen."
     },
     "success": {

@@ -35,7 +35,6 @@ import { useCreativeQuotaPage } from "@/hooks/useCreativeQuotaPage";
 import { useAppContext } from "@/contexts/app";
 import { CreativeQuotaHint } from "@/components/blocks/creative-quota-hint";
 import { CreativeQuotaPaywall } from "@/components/blocks/creative-quota-paywall";
-import { getCreativeLimit, getCreativeUsed } from "@/lib/creative-quota-client";
 import type {
   GangFlavor,
   GangGroupType,
@@ -115,6 +114,7 @@ export default function GangNameGenerator({ section }: Props) {
   const [tone, setTone] = useState<GangTone>("menacing");
   const [flavor, setFlavor] = useState<GangFlavor>("none");
   const [mode, setMode] = useState<GangNameModelMode>("standard");
+  const activeQuota = creativeQuota.forModel(mode);
   const [cue, setCue] = useState("");
   const [inspirationName, setInspirationName] = useState("");
   const [results, setResults] = useState<GangNameGeneratorResponse | null>(null);
@@ -165,9 +165,7 @@ export default function GangNameGenerator({ section }: Props) {
           return;
         }
         setResults(json as GangNameGeneratorResponse);
-        if (mode === "creative") {
-          creativeQuota.increment();
-        }
+        creativeQuota.increment(mode);
         toast.success(section.success.generated);
         track("gang_name_generated", {
           locale,
@@ -332,9 +330,6 @@ export default function GangNameGenerator({ section }: Props) {
     []
   );
 
-  const creativeQuotaExhausted =
-    creativeQuota.anonymousCreativeExhausted;
-
   return (
     <section
       id="gang_name_generator"
@@ -495,8 +490,7 @@ export default function GangNameGenerator({ section }: Props) {
                   >
                     {MODEL_MODES.map((value) => {
                       const isCreativeUsedUp =
-                        value === "creative" &&
-                        creativeQuota.used >= getCreativeLimit();
+                        creativeQuota.forModel(value)?.exhausted ?? false;
                       return (
                         <ToggleGroupItem
                           key={value}
@@ -531,8 +525,7 @@ export default function GangNameGenerator({ section }: Props) {
                     <Wand2 className="mr-2 h-4 w-4" />
                     {isGenerating
                       ? ui.generating_button
-                      : mode === "creative" &&
-                          creativeQuota.anonymousCreativeExhausted
+                      : activeQuota?.anonymousExhausted
                         ? ui.sign_in_button
                         : ui.generate_button}
                   </Button>
@@ -552,13 +545,15 @@ export default function GangNameGenerator({ section }: Props) {
                   <CreativeQuotaHint
                     pageKey="gang-name-generator"
                     selectedModel={mode}
-                    used={creativeQuota.used} limit={creativeQuota.limit}
+                    used={activeQuota?.used ?? 0}
+                    limit={activeQuota?.limit ?? null}
+                    creditCost={activeQuota?.creditCost ?? null}
                   />
 
-                  {mode === "creative" && creativeQuota.used >= getCreativeLimit() && (
+                  {activeQuota?.exhausted && (
                     <p className="text-center text-[10px] text-amber-600 dark:text-amber-500">
                       {user
-                        ? `Credits cost: ${creativeQuota.creditCost ?? 5}`
+                        ? `Credits cost: ${activeQuota.effectiveCreditCost}`
                         : section.validation.creative_limit_reached}
                     </p>
                   )}

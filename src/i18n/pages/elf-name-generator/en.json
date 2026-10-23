@@ -73,7 +73,7 @@
       "custom_heritage_too_long": "Custom culture must be 160 characters or fewer.",
       "inspiration_too_long": "Inspiration name must be 100 characters or fewer.",
       "generic_error": "We couldn't generate elf names right now. Please try again.",
-      "creative_limit_reached": "Today's free Creative uses are used up. Log in to get more credits."
+      "creative_limit_reached": "Today's free uses are used up. Log in to get more credits."
     },
     "success": {
       "copied": "Name copied to clipboard.",

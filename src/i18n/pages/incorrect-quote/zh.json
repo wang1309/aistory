@@ -59,7 +59,7 @@
       "verification_failed": "验证失败，请重试。"
     },
     "toasts": {
-      "creative_limit_reached": "今日 Creative 免费次数已用完,登录可获得更多积分。"
+      "creative_limit_reached": "今日免费次数已用完,登录可获得更多积分。"
     },
     "ai_models": {
       "fast": "快速",

@@ -128,6 +128,7 @@ export default function TiktokCommentGenerate({
   const [tone, setTone] = useState<TiktokCommentTone>("warm");
   const [length, setLength] = useState<TiktokCommentLength>("short");
   const [mode, setMode] = useState<TiktokCommentModelMode>("standard");
+  const activeQuota = creativeQuota.forModel(mode);
   const [outputLanguage, setOutputLanguage] = useState(locale);
   const [isGenerating, setIsGenerating] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -303,9 +304,7 @@ export default function TiktokCommentGenerate({
 
         saveCompletedReplies(accumulated);
         setLastCompletedOutput(accumulated);
-        if (mode === "creative") {
-          creativeQuota.increment();
-        }
+        creativeQuota.increment(mode);
         toast.success(t("success.generated", "TikTok replies generated."));
       } catch (error) {
         console.error("TikTok comment generation failed:", error);
@@ -342,7 +341,7 @@ export default function TiktokCommentGenerate({
         selectedModel: mode,
         message: t(
           "toasts.creative_limit_reached",
-          "Today's free Creative uses are used up. Log in to get more credits."
+          "Today's free uses are used up. Log in to get more credits."
         ),
       }) || creativeQuota.guardCreativeCreditQuota({ selectedModel: mode })
     ) {
@@ -778,15 +777,16 @@ export default function TiktokCommentGenerate({
                 >
                   {isGenerating
                     ? t("ui.generating_button", "Generating...")
-                    : mode === "creative" &&
-                        creativeQuota.anonymousCreativeExhausted
+                    : activeQuota?.anonymousExhausted
                       ? "Sign in to continue"
                       : t("ui.generate_button", "Generate replies")}
                 </Button>
                 <CreativeQuotaHint
                   pageKey="tiktok-comment-generator"
                   selectedModel={mode}
-                  used={creativeQuota.used} limit={creativeQuota.limit}
+                  used={activeQuota?.used ?? 0}
+                  limit={activeQuota?.limit ?? null}
+                  creditCost={activeQuota?.creditCost ?? null}
                 />
               </div>
             </CardContent>

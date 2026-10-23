@@ -20,6 +20,7 @@ export const CREATIVE_PAGE_KEYS = [
   "tiktok-comment-generator",
   "oc-generator",
   "story-summarizer",
+  "story-prompt-generator",
   "essay-extender",
   "paragraph-rewriter",
   "ai-humanizer",
@@ -27,6 +28,33 @@ export const CREATIVE_PAGE_KEYS = [
 ] as const;
 
 export type CreativePageKey = (typeof CREATIVE_PAGE_KEYS)[number];
+
+/** Model tiers that consume a daily free quota. `fast` is unlimited. */
+export const QUOTA_TIERS = ["standard", "creative"] as const;
+
+export type QuotaTier = (typeof QUOTA_TIERS)[number];
+
+export function isQuotaTier(
+  model: string | null | undefined
+): model is QuotaTier {
+  return model === "standard" || model === "creative";
+}
+
+/**
+ * Resolve the quota tier for a requested model.
+ *
+ * - fast / empty => null (unlimited)
+ * - creative => creative
+ * - standard / unknown => standard (fail closed: unknown values fall back to
+ *   the standard model in every quota-enabled route, so they must be counted)
+ */
+export function resolveQuotaTier(
+  model?: string | null
+): QuotaTier | null {
+  const value = (model || "").trim().toLowerCase();
+  if (!value || value === "fast") return null;
+  return value === "creative" ? "creative" : "standard";
+}
 
 export type CreativeQuotaStatus = {
   used: number;
@@ -40,12 +68,31 @@ export type CreativeQuotaClientStatus = CreativeQuotaStatus & {
   leftCredits?: number;
 };
 
+export function buildQuotaKey(
+  dateKey: string,
+  identity: string,
+  pageKey: CreativePageKey,
+  tier: QuotaTier
+): string {
+  return `free-quota:${dateKey}:${identity}:${pageKey}:${tier}`;
+}
+
 export function buildCreativeQuotaKey(
   dateKey: string,
   identity: string,
   pageKey: CreativePageKey
 ): string {
-  return `free-quota:${dateKey}:${identity}:${pageKey}:creative`;
+  return buildQuotaKey(dateKey, identity, pageKey, "creative");
+}
+
+export function buildQuotaMergeKey(
+  dateKey: string,
+  visitorIdentity: string,
+  userIdentity: string,
+  pageKey: CreativePageKey,
+  tier: QuotaTier
+): string {
+  return `free-quota:${dateKey}:merge:${visitorIdentity}:${userIdentity}:${pageKey}:${tier}`;
 }
 
 export function buildCreativeMergeKey(
@@ -54,7 +101,13 @@ export function buildCreativeMergeKey(
   userIdentity: string,
   pageKey: CreativePageKey
 ): string {
-  return `free-quota:${dateKey}:merge:${visitorIdentity}:${userIdentity}:${pageKey}:creative`;
+  return buildQuotaMergeKey(
+    dateKey,
+    visitorIdentity,
+    userIdentity,
+    pageKey,
+    "creative"
+  );
 }
 
 export function buildLegacyCreativeQuotaKey(dateKey: string, identity: string): string {
@@ -109,7 +162,7 @@ export function shouldOptimisticallyGateCreativeAnonymousUsage({
   used: number;
   limit: number;
 }) {
-  return !hasUser && selectedModel === "creative" && used >= limit;
+  return !hasUser && isQuotaTier(selectedModel) && used >= limit;
 }
 
 export function shouldOptimisticallyGateCreativeCreditUsage({
@@ -129,7 +182,7 @@ export function shouldOptimisticallyGateCreativeCreditUsage({
 }) {
   return (
     hasUser &&
-    selectedModel === "creative" &&
+    isQuotaTier(selectedModel) &&
     used >= limit &&
     credits !== null &&
     cost !== null &&
@@ -168,14 +221,38 @@ export function formatCreativeQuotaHint({
   if (locale.startsWith("zh")) {
     return `今日已用：${normalizedUsed}/${limit} · 今日剩余：${remaining}/${limit}`;
   }
+  if (locale.startsWith("de")) {
+    return `Heute verwendet: ${normalizedUsed}/${limit} · Heute übrig: ${remaining}/${limit}`;
+  }
+  if (locale.startsWith("ko")) {
+    return `오늘 사용: ${normalizedUsed}/${limit} · 오늘 남음: ${remaining}/${limit}`;
+  }
+  if (locale.startsWith("ja")) {
+    return `本日の使用: ${normalizedUsed}/${limit} · 本日の残り: ${remaining}/${limit}`;
+  }
+  if (locale.startsWith("ru")) {
+    return `Использовано сегодня: ${normalizedUsed}/${limit} · Осталось сегодня: ${remaining}/${limit}`;
+  }
 
   return `Used today: ${normalizedUsed}/${limit} · Remaining today: ${remaining}/${limit}`;
 }
 
 export function getCreativeQuotaLimitReachedMessage(locale: string) {
   if (locale.startsWith("zh")) {
-    return "今日 Creative 免费额度已用完，请登录后继续。";
+    return "今日免费额度已用完，请登录后继续。";
+  }
+  if (locale.startsWith("de")) {
+    return "Tageslimit erreicht. Bitte melde dich an, um fortzufahren.";
+  }
+  if (locale.startsWith("ko")) {
+    return "오늘의 무료 사용량을 모두 사용했습니다. 계속하려면 로그인하세요.";
+  }
+  if (locale.startsWith("ja")) {
+    return "本日の無料利用回数を使い切りました。続けるにはサインインしてください。";
+  }
+  if (locale.startsWith("ru")) {
+    return "Дневной бесплатный лимит исчерпан. Войдите, чтобы продолжить.";
   }
 
-  return "Daily free Creative quota reached. Please sign in to continue.";
+  return "Daily free quota reached. Please sign in to continue.";
 }

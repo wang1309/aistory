@@ -57,7 +57,7 @@ interface ParagraphRewriterRequest {
 }
 
 const MODEL_MAP: Record<string, string> = {
-  fast: resolveModelTier("standard"),
+  fast: resolveModelTier("fast"),
   creative: resolveModelTier("creative"),
 };
 

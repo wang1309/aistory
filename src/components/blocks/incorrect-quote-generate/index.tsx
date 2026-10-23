@@ -273,6 +273,7 @@ export default function IncorrectQuoteGenerate({
   const [tone, setTone] = useState<IncorrectQuoteTone>("absurd");
   const [length, setLength] = useState<IncorrectQuoteLength>("mini_exchange");
   const [mode, setMode] = useState<IncorrectQuoteMode>("standard");
+  const activeQuota = creativeQuota.forModel(mode);
   const [outputLanguage, setOutputLanguage] = useState(locale);
   const [safety, setSafety] = useState<IncorrectQuoteSafetyOptions>({
     noRomance: false,
@@ -508,9 +509,7 @@ export default function IncorrectQuoteGenerate({
 
         saveCompletedQuote(accumulated);
         setLastCompletedQuote(accumulated);
-        if (mode === "creative") {
-          creativeQuota.increment();
-        }
+        creativeQuota.increment(mode);
         track(
           ACTIVATION_EVENTS.generationSucceeded,
           buildActivationTrackingPayload({
@@ -567,7 +566,7 @@ export default function IncorrectQuoteGenerate({
         selectedModel: mode,
         message: t(
           "toasts.creative_limit_reached",
-          "Today's free Creative uses are used up. Log in to get more credits."
+          "Today's free uses are used up. Log in to get more credits."
         ),
       }) || creativeQuota.guardCreativeCreditQuota({ selectedModel: mode })
     ) {
@@ -1112,15 +1111,16 @@ export default function IncorrectQuoteGenerate({
                 >
                   {isGenerating
                     ? t("ui.generating_button", "Generating...")
-                    : mode === "creative" &&
-                        creativeQuota.anonymousCreativeExhausted
+                    : activeQuota?.anonymousExhausted
                       ? "Sign in to continue"
                       : t("ui.generate_button", "Generate incorrect quote")}
                 </Button>
                 <CreativeQuotaHint
                   pageKey="incorrect-quote-generator"
                   selectedModel={mode}
-                  used={creativeQuota.used} limit={creativeQuota.limit}
+                  used={activeQuota?.used ?? 0}
+                  limit={activeQuota?.limit ?? null}
+                  creditCost={activeQuota?.creditCost ?? null}
                 />
               </div>
             </CardContent>

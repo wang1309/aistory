@@ -30,7 +30,7 @@ export async function POST(req: Request) {
 
     // 使用快速模型进行分析
     const requestBody = {
-      model: resolveModelTier("standard"), // 使用快速模型
+      model: resolveModelTier("fast"), // 使用快速模型
       stream: false, // 分析不需要流式响应
       messages: [
         {
