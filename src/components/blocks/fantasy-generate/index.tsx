@@ -151,7 +151,7 @@ export default function FantasyGenerate({ section }: { section: FantasyGenerateT
         id: "creative",
         name: section.ai_models.models.creative.name,
         badge: section.ai_models.models.creative.badge,
-        badgeColor: "bg-purple-500/10 text-purple-600 border-purple-500/30",
+        badgeColor: "bg-accent-copper/10 text-accent-copper border-accent-copper/30",
         icon: <Palette className="h-4 w-4" />,
         speed: section.ai_models.models.creative.speed,
         description: section.ai_models.models.creative.description,

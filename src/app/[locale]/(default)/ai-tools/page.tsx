@@ -87,6 +87,7 @@ export default async function AiToolsPage({
         accent="orange"
         groupedChips
         locale={locale}
+        variant="compact"
       />
     </>
   );

@@ -82,6 +82,7 @@ export function ToolsExplorer({
   // 各分类工具数,tab 徽标用(tab 模式下取代原统计行)
   const categoryCounts = useMemo(() => {
     const counts = new Map<string, number>();
+    counts.set("all", tools.length);
     for (const tool of tools) {
       const key = groupedChips ? (tool.group ?? "") : tool.category;
       counts.set(key, (counts.get(key) ?? 0) + 1);
@@ -134,10 +135,10 @@ export function ToolsExplorer({
                 type="button"
                 onClick={() => setSelectedId(chip.id)}
                 className={cn(
-                  "inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
+                  "inline-flex items-center rounded-[2px] border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.06em] transition-all duration-300",
                   isActive
-                    ? "border-primary/30 bg-primary/10 text-primary"
-                    : "border-border/20 bg-background/60 text-muted-foreground/70 hover:border-border/40 hover:text-foreground/80"
+                    ? "border-primary/40 bg-accent-sage text-primary"
+                    : "border-border bg-card/60 text-muted-foreground hover:border-primary/30 hover:text-foreground"
                 )}
               >
                 {t(chip.labelKey)}
@@ -183,8 +184,8 @@ export function ToolsExplorer({
         <Link
           href="/ai-tools"
           className={cn(
-            "group inline-flex items-center gap-1.5 rounded-full border border-border/30 bg-background px-5 py-2 text-sm font-semibold text-foreground transition-colors",
-            "hover:border-border/50 hover:bg-foreground/[0.04]"
+            "group inline-flex items-center gap-1.5 rounded-[2px] border border-border bg-card px-5 py-2 text-[13px] font-semibold text-foreground transition-colors",
+            "hover:border-primary/40 hover:bg-accent-sage/50"
           )}
         >
           {t("ai_tools.tools_hub_nav")}
@@ -225,9 +226,9 @@ function SearchInput({
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           className={cn(
-            "w-full rounded-full border border-border bg-background py-3 pl-11 pr-10 text-sm text-foreground shadow-sm outline-hidden transition-colors duration-200",
-            "placeholder:text-muted-foreground/45",
-            "focus:border-primary/40 focus:outline-none",
+            "w-full rounded-[2px] border border-border bg-card py-3 pl-11 pr-10 text-[13px] text-foreground shadow-xs outline-hidden transition-colors duration-200",
+            "placeholder:text-muted-foreground/60",
+            "focus:border-primary/50 focus:outline-none",
             "dark:border-input dark:bg-input/30"
           )}
         />
@@ -264,7 +265,7 @@ function EmptyState({
       <button
         type="button"
         onClick={onReset}
-        className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-border/30 bg-background px-4 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-foreground/[0.04]"
+        className="mt-2 inline-flex items-center gap-1.5 rounded-[2px] border border-border bg-card px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.06em] text-foreground transition-colors hover:border-primary/40 hover:bg-accent-sage/50"
       >
         <Icon name="RiRefreshLine" className="size-3.5" />
         {resetLabel}
@@ -296,7 +297,7 @@ function CategoryTabs({
         <div
           role="tablist"
           aria-label="Tool categories"
-          className="mx-auto flex w-fit items-center gap-1 rounded-full border border-border bg-background p-1 shadow-sm dark:border-input"
+          className="mx-auto flex w-fit items-center gap-1 rounded-[2px] border border-border bg-card p-1 shadow-xs dark:border-input"
         >
           {tabs.map((tab) => {
             const isActive = tab.id === activeId;
@@ -309,26 +310,19 @@ function CategoryTabs({
                 aria-selected={isActive}
                 onClick={() => onSelect(tab.id)}
                 className={cn(
-                  "group relative inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] sm:px-4 sm:text-[13px]",
+                  "group relative inline-flex shrink-0 items-center gap-1.5 rounded-[2px] px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.06em] transition-colors duration-300 sm:px-4 sm:text-[12px]",
                   isActive
-                    ? "text-foreground"
-                    : "text-muted-foreground/70 hover:text-foreground/80"
+                    ? "bg-foreground text-background"
+                    : "text-muted-foreground hover:text-foreground"
                 )}
               >
-                {isActive && (
-                  <motion.span
-                    layoutId="tools-explorer-tab-pill"
-                    className="absolute inset-0 -z-10 rounded-full bg-muted ring-1 ring-border"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                  />
-                )}
                 <span>{labelFor(tab.labelKey)}</span>
                 <span
                   className={cn(
                     "inline-flex min-w-[1.25rem] items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-semibold transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
                     isActive
-                      ? "bg-primary/15 text-primary"
-                      : "bg-foreground/[0.04] text-muted-foreground/60"
+                      ? "bg-background/20 text-background"
+                      : "bg-foreground/[0.04] text-muted-foreground"
                   )}
                 >
                   {count}

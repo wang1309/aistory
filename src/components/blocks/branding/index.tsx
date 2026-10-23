@@ -4,10 +4,10 @@ export default function Branding({ section }: { section: SectionType }) {
   if (section.disabled) return null;
 
   return (
-    <section id={section.name} className="py-16">
+    <section id={section.name} className="py-[60px]">
       <div className="container flex flex-col items-center gap-6">
         {section.title && (
-          <p className="text-center text-sm font-medium tracking-wide text-muted-foreground/40 uppercase">
+          <p className="text-center text-[10px] font-semibold uppercase tracking-[0.19em] text-muted-foreground/70">
             {section.title}
           </p>
         )}

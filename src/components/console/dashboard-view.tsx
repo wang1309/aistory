@@ -46,14 +46,14 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 const ACCENT_MAP: Record<string, string> = {
-  total_stories: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
+  total_stories: "bg-accent-sage text-primary dark:text-primary",
   total_words: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
   creation_days: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
   streak: "bg-rose-500/10 text-rose-600 dark:text-rose-400",
 };
 
 const GLOW_MAP: Record<string, string> = {
-  total_stories: "bg-indigo-500/[0.03]",
+  total_stories: "bg-accent-sage/40",
   total_words: "bg-emerald-500/[0.03]",
   creation_days: "bg-amber-500/[0.03]",
   streak: "bg-rose-500/[0.03]",
@@ -249,7 +249,7 @@ function ActivityHeatmap({ data, labels }: { data: DailyStoryStat[]; labels: Das
                           className={cn(
                             "w-full max-w-[8px] rounded-t-sm transition-all duration-300",
                             value > 0
-                              ? "bg-indigo-400/70 dark:bg-indigo-500/80"
+                              ? "bg-primary/60 dark:bg-primary/80"
                               : "bg-muted/30"
                           )}
                           style={{ height: `${heightPx}px` }}

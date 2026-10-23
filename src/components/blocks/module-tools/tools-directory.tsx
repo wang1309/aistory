@@ -64,7 +64,7 @@ export function ToolsDirectory({
         {groups.map((group) => (
           <div key={group.id} id={group.id} className="scroll-mt-28">
             <div className="flex items-baseline gap-2.5">
-              <h3 className="font-display text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+              <h3 className="font-display text-[22px] font-normal tracking-[-0.02em] text-foreground sm:text-[26px]">
                 {group.label}
               </h3>
               <span className="text-xs font-semibold tabular-nums text-muted-foreground/50">
@@ -86,8 +86,8 @@ export function ToolsDirectory({
         <Link
           href="/ai-tools"
           className={cn(
-            "group inline-flex items-center gap-1.5 rounded-full border border-border/30 bg-background px-5 py-2 text-sm font-semibold text-foreground transition-colors",
-            "hover:border-border/50 hover:bg-foreground/[0.04]"
+            "group inline-flex items-center gap-1.5 rounded-[2px] border border-border bg-card px-5 py-2 text-[13px] font-semibold text-foreground transition-colors",
+            "hover:border-primary/40 hover:bg-accent-sage/50"
           )}
         >
           {hubLabel}

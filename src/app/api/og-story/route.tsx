@@ -31,8 +31,9 @@ export async function GET(request: NextRequest) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#0f172a',
-            backgroundImage: 'radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.15) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
+            backgroundColor: '#f3eee5',
+            backgroundImage: 'radial-gradient(circle, rgba(51, 66, 50, 0.07) 1px, transparent 1px)',
+            backgroundSize: '8px 8px',
             padding: '60px',
           }}
         >
@@ -45,11 +46,11 @@ export async function GET(request: NextRequest) {
               justifyContent: 'center',
               width: '100%',
               maxWidth: '1000px',
-              backgroundColor: 'rgba(30, 41, 59, 0.8)',
-              borderRadius: '32px',
+              backgroundColor: '#fbf8f1',
+              borderRadius: '4px',
               padding: '60px',
-              border: '2px solid rgba(99, 102, 241, 0.3)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+              border: '2px solid #d8d8c9',
+              boxShadow: '10px 10px 0 rgba(36, 77, 61, 0.12)',
             }}
           >
             {/* Icon */}
@@ -60,9 +61,9 @@ export async function GET(request: NextRequest) {
                 justifyContent: 'center',
                 width: '100px',
                 height: '100px',
-                borderRadius: '24px',
-                backgroundColor: 'rgba(99, 102, 241, 0.2)',
-                border: '2px solid rgba(99, 102, 241, 0.4)',
+                borderRadius: '50%',
+                backgroundColor: '#e0e8dc',
+                border: '2px solid #244d3d',
                 marginBottom: '32px',
               }}
             >
@@ -75,14 +76,14 @@ export async function GET(request: NextRequest) {
               >
                 <path
                   d="M4 19.5C4 18.1193 5.11929 17 6.5 17H20"
-                  stroke="#818cf8"
+                  stroke="#244d3d"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
                   d="M6.5 2H20V22H6.5C5.11929 22 4 20.8807 4 19.5V4.5C4 3.11929 5.11929 2 6.5 2Z"
-                  stroke="#818cf8"
+                  stroke="#244d3d"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -95,7 +96,7 @@ export async function GET(request: NextRequest) {
               style={{
                 fontSize: '54px',
                 fontWeight: '900',
-                color: '#f1f5f9',
+                color: '#1d2822',
                 textAlign: 'center',
                 marginBottom: '32px',
                 lineHeight: '1.2',
@@ -124,9 +125,9 @@ export async function GET(request: NextRequest) {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  backgroundColor: 'rgba(99, 102, 241, 0.15)',
+                  backgroundColor: '#e8eee8',
                   padding: '16px 32px',
-                  borderRadius: '16px',
+                  borderRadius: '2px',
                   border: '1px solid rgba(99, 102, 241, 0.3)',
                 }}
               >
@@ -139,7 +140,7 @@ export async function GET(request: NextRequest) {
                 >
                   <path
                     d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"
-                    stroke="#818cf8"
+                    stroke="#244d3d"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -149,7 +150,7 @@ export async function GET(request: NextRequest) {
                   style={{
                     fontSize: '32px',
                     fontWeight: '700',
-                    color: '#e0e7ff',
+                    color: '#244d3d',
                   }}
                 >
                   {wordCount} {t.words}
@@ -162,9 +163,9 @@ export async function GET(request: NextRequest) {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  backgroundColor: 'rgba(139, 92, 246, 0.15)',
+                  backgroundColor: '#eadbd1',
                   padding: '16px 32px',
-                  borderRadius: '16px',
+                  borderRadius: '2px',
                   border: '1px solid rgba(139, 92, 246, 0.3)',
                 }}
               >
@@ -177,21 +178,21 @@ export async function GET(request: NextRequest) {
                 >
                   <path
                     d="M12 2L2 7L12 12L22 7L12 2Z"
-                    stroke="#a78bfa"
+                    stroke="#8a5227"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                   <path
                     d="M2 17L12 22L22 17"
-                    stroke="#a78bfa"
+                    stroke="#8a5227"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                   <path
                     d="M2 12L12 17L22 12"
-                    stroke="#a78bfa"
+                    stroke="#8a5227"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -201,7 +202,7 @@ export async function GET(request: NextRequest) {
                   style={{
                     fontSize: '32px',
                     fontWeight: '700',
-                    color: '#ddd6fe',
+                    color: '#8a5227',
                   }}
                 >
                   {model}
@@ -214,7 +215,7 @@ export async function GET(request: NextRequest) {
               style={{
                 width: '100%',
                 height: '2px',
-                backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                backgroundColor: '#d8d8c9',
                 marginBottom: '32px',
               }}
             />
@@ -227,7 +228,7 @@ export async function GET(request: NextRequest) {
                 gap: '16px',
                 fontSize: '36px',
                 fontWeight: '700',
-                color: '#818cf8',
+                color: '#244d3d',
               }}
             >
               <span>{t.tryItYourself}</span>
@@ -240,7 +241,7 @@ export async function GET(request: NextRequest) {
               >
                 <path
                   d="M5 12H19M19 12L12 5M19 12L12 19"
-                  stroke="#818cf8"
+                  stroke="#244d3d"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -258,7 +259,7 @@ export async function GET(request: NextRequest) {
               marginTop: '40px',
               fontSize: '28px',
               fontWeight: '600',
-              color: '#94a3b8',
+              color: '#6d756e',
             }}
           >
             <span>✨</span>

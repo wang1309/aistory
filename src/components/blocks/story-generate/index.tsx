@@ -5,7 +5,6 @@ import { Zap, Sparkles, Palette, Castle, Rocket, Heart, Search, PenTool } from "
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
-import { getCtaBreatheAnimationStyle } from "@/components/blocks/hero/animation-style";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/icon";
@@ -23,13 +22,6 @@ const StoryShareDialog = dynamic(() => import("@/components/story/story-share-di
   ssr: false,
   loading: () => null,
 });
-const GeneratorShortcutHints = dynamic(
-  () => import("@/components/generator-shortcut-hints").then((m) => m.GeneratorShortcutHints),
-  {
-    ssr: false,
-    loading: () => null,
-  }
-);
 
 import type { TurnstileInvisibleHandle } from "@/components/TurnstileInvisible";
 const TurnstileInvisible = dynamic(() => import("@/components/TurnstileInvisible"), {
@@ -173,7 +165,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       id: 'fast',
       name: section.ai_models.models.fastest.name,
       badge: section.ai_models.models.fastest.badge,
-      badgeColor: 'bg-green-500/10 text-green-600 border-green-500/30',
+      badgeColor: 'bg-accent-sage text-primary border-primary/30',
       icon: <Zap className="h-4 w-4" />,
       speed: section.ai_models.models.fastest.speed,
       description: section.ai_models.models.fastest.description
@@ -182,7 +174,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       id: 'standard',
       name: section.ai_models.models.eloquent.name,
       badge: section.ai_models.models.eloquent.badge,
-      badgeColor: 'bg-blue-500/10 text-blue-600 border-blue-500/30',
+      badgeColor: 'bg-accent-blue text-foreground border-foreground/20',
       icon: <PenTool className="h-4 w-4" />,
       speed: section.ai_models.models.eloquent.speed,
       description: section.ai_models.models.eloquent.description
@@ -191,7 +183,7 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
       id: 'creative',
       name: section.ai_models.models.creative.name,
       badge: section.ai_models.models.creative.badge,
-      badgeColor: 'bg-purple-500/10 text-purple-600 border-purple-500/30',
+      badgeColor: 'bg-accent-rose text-accent-copper border-accent-copper/30',
       icon: <Palette className="h-4 w-4" />,
       speed: section.ai_models.models.creative.speed,
       description: section.ai_models.models.creative.description
@@ -409,6 +401,11 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
 
   useEffect(() => {
     if (isGenerating && outputRef.current) {
+      // Desktop keeps the two-column workspace in place; only mobile needs to
+      // travel down to the output panel after generation starts.
+      if (window.innerWidth >= 1024) {
+        return;
+      }
       try {
         const element = outputRef.current;
         const rect = element.getBoundingClientRect();
@@ -459,16 +456,29 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
     });
   }, []); // Empty deps because using functional setState
 
+  // Bring the editor back into view after an example / preset fills the prompt.
+  const focusPrompt = useCallback(() => {
+    window.setTimeout(() => {
+      if (!promptRef.current) return;
+      promptRef.current.focus();
+      if (window.innerWidth < 1024) {
+        promptRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 50);
+  }, []);
+
   // Story preset handler - replaces entire prompt with template
   const handlePresetClick = useCallback((preset: typeof STORY_PRESETS[number]) => {
     setPrompt(PRESET_TEMPLATES[preset.title as keyof typeof PRESET_TEMPLATES] || preset.desc);
-  }, [PRESET_TEMPLATES]);
+    focusPrompt();
+  }, [PRESET_TEMPLATES, focusPrompt]);
 
   // Random prompt generator
   const handleRandomPrompt = useCallback(() => {
     const randomIndex = Math.floor(Math.random() * RANDOM_PROMPTS.length);
     setPrompt(RANDOM_PROMPTS[randomIndex]);
-  }, [RANDOM_PROMPTS]);
+    focusPrompt();
+  }, [RANDOM_PROMPTS, focusPrompt]);
 
   // Confetti celebration for first-time story generation
   const triggerFirstTimeConfetti = useCallback(async () => {
@@ -1185,30 +1195,26 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
   const creativeQuotaExhausted =
     activeQuota?.anonymousExhausted ?? false;
 
+  const selectedModelName =
+    AI_MODELS.find((model) => model.id === selectedModel)?.name ?? "";
+
   return (
     <section
       id="craft_story"
-      className="min-h-screen relative overflow-hidden bg-background text-foreground selection:bg-primary/15"
+      className="relative scroll-mt-24 overflow-hidden border-y border-border/60 bg-muted text-foreground selection:bg-primary/15"
     >
-      {/* Background — clean neutral canvas with a whisper of grid */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]" style={{ backgroundImage: 'var(--bg-grid)', backgroundSize: '48px 48px' }} />
-      </div>
-
-      <div ref={sectionRef} className="w-full max-w-6xl mx-auto px-6 py-24 sm:py-32 relative">
+      <div ref={sectionRef} className="relative mx-auto w-full max-w-[1210px] px-5 py-[56px] sm:px-8 sm:py-[80px]">
 
         {/* Header */}
-        <div className="relative text-center mb-12">
+        <div className="relative mb-8 text-center sm:text-left">
 
-          {/* Eyebrow badge */}
+          {/* Eyebrow */}
           <div
-            className={`inline-flex items-center justify-center mb-6 ${sgEnter(0)}`}
+            className={`mb-5 flex justify-center sm:justify-start ${sgEnter(0)}`}
             style={{ transitionDelay: sectionVisible ? "0ms" : "0ms" }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider">
-              <svg viewBox="0 0 16 16" className="size-3 opacity-70" fill="currentColor">
-                <path d="M8 1.5a.5.5 0 0 1 .447.276l1.506 3.052 3.366.489a.5.5 0 0 1 .277.853L11.1 8.566l.575 3.353a.5.5 0 0 1-.725.527L8 10.807l-2.95 1.64a.5.5 0 0 1-.725-.528l.575-3.352-2.496-2.432a.5.5 0 0 1 .277-.853l3.366-.49L7.553 1.776A.5.5 0 0 1 8 1.5z"/>
-              </svg>
+            <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.19em] text-accent-copper">
+              <span className="inline-block size-1.5 rounded-full bg-accent-copper" />
               AI Story Generator
             </span>
           </div>
@@ -1218,115 +1224,108 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
             className={`${sgEnter(100)}`}
             style={{ transitionDelay: sectionVisible ? "100ms" : "0ms" }}
           >
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-[3rem] font-bold tracking-tight mb-1 leading-[1.15]">
+            <h2 className="font-display text-[clamp(2.35rem,5vw,4rem)] font-normal leading-[0.98] tracking-[-0.06em]">
               {section.header.title}
             </h2>
           </div>
 
-          {/* Decorative brush stroke */}
-          <div
-            className={`flex justify-center ${sgEnter(200)}`}
-            style={{ transitionDelay: sectionVisible ? "200ms" : "0ms" }}
-          >
-            <svg
-              className="mt-1 mb-5 h-3 w-36 text-primary/30"
-              viewBox="0 0 160 12"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 8c30-5 60-6 90-3s40 4 66-1"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                fill="none"
-              />
-            </svg>
-          </div>
-
           {/* Subtitle */}
           <div
-            className={`${sgEnter(250)}`}
+            className={`mt-4 ${sgEnter(250)}`}
             style={{ transitionDelay: sectionVisible ? "250ms" : "0ms" }}
           >
-            <p className="text-base sm:text-lg text-muted-foreground/65 leading-relaxed max-w-xl mx-auto font-light">
+            <p className="mx-auto max-w-xl font-serif text-[17px] leading-[1.55] text-muted-foreground sm:mx-0">
               {section.header.subtitle}
             </p>
           </div>
 
         </div>
 
-        <GeneratorNavTabs />
+        <div className="hidden border-y border-border/70 bg-card md:block">
+          <GeneratorNavTabs autoMarquee={false} />
+        </div>
 
-        {/* Main Workbench Panel — Double-bezel */}
+        {/* Main Workbench Panel — two-column workspace */}
         <div
-          className={`relative mt-8 ${sgEnter(400)}`}
+          className={`relative mt-5 ${sgEnter(400)}`}
           style={{ transitionDelay: sectionVisible ? "400ms" : "0ms" }}
         >
-          {/* Outer shell — aluminium tray */}
-          <div className="rounded-2xl border border-border bg-muted/40 p-2">
-            {/* Inner core — panel */}
-            <div className="overflow-hidden rounded-[calc(1rem-0.25rem)] bg-card border border-border/50 shadow-sm">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+          <div className="overflow-hidden rounded-[2px] border border-border bg-card shadow-[6px_7px_0_rgba(36,77,61,0.08)] dark:shadow-[6px_7px_0_rgba(0,0,0,0.45)]">
+            <div className="relative grid grid-cols-1 lg:grid-cols-[1.6fr_1fr]">
 
-              {/* Left: Editor + Generate (8 cols) */}
-              <div className="lg:col-span-8 p-5 sm:p-8 flex flex-col lg:border-r border-border/10">
-                <div className="flex items-center justify-between mb-4">
-                  <label className="text-sm font-semibold text-foreground">
+              {/* Left: editor + controls */}
+              <div className="flex flex-col p-5 sm:p-7">
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                  <label
+                    htmlFor="story-prompt-input"
+                    className="text-[16px] font-semibold tracking-[-0.01em] text-foreground"
+                  >
                     {section.prompt.label}
+                    {section.prompt.required && (
+                      <span className="ml-2 align-middle text-[10px] font-normal uppercase tracking-[0.12em] text-muted-foreground/60">
+                        {section.prompt.required}
+                      </span>
+                    )}
                   </label>
                   <button
-                    onClick={handleRandomPrompt}
                     type="button"
-                    className="group flex items-center gap-2 px-3 py-1.5 rounded-full bg-foreground/[0.03] hover:bg-foreground/[0.06] text-xs font-medium transition-all duration-300"
+                    onClick={handleRandomPrompt}
+                    className="group inline-flex items-center gap-2 rounded-[2px] border border-border bg-transparent px-3 py-1.5 text-[11px] font-semibold text-muted-foreground transition-colors hover:border-primary/40 hover:bg-accent-sage/50 hover:text-foreground"
                   >
-                    <Icon name="sparkles" className="size-3.5 text-muted-foreground/40 group-hover:text-foreground/60 transition-colors" />
-                    <span className="text-muted-foreground group-hover:text-foreground transition-colors">{section.prompt.random_button}</span>
+                    <Icon name="sparkles" className="size-3.5 text-muted-foreground/50 transition-colors group-hover:text-accent-copper" />
+                    <span>{section.prompt.random_button}</span>
                   </button>
                 </div>
 
-                <div className="relative mb-4">
-                  <Textarea
-                    id="story-prompt-input"
-                    ref={promptRef}
-                    value={prompt}
-                    onChange={(e) => {
-                      const newValue = e.target.value;
-                      if (newValue.length <= 2000) {
-                        setPrompt(e.target.value);
-                      }
-                    }}
-                    placeholder={section.prompt.placeholder}
-                    className="min-h-[200px] text-base p-5 rounded-xl bg-background border border-border/15 focus:border-foreground/20 focus-visible:ring-foreground/5 transition-all resize-none"
-                  />
-                  <div className="pointer-events-none absolute bottom-3 right-4 text-xs font-medium text-muted-foreground/40">
-                    {prompt.length} / 2000
-                  </div>
+                <Textarea
+                  id="story-prompt-input"
+                  ref={promptRef}
+                  value={prompt}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    if (newValue.length <= 2000) {
+                      setPrompt(e.target.value);
+                    }
+                  }}
+                  placeholder={section.prompt.placeholder}
+                  className="min-h-[170px] max-h-[320px] resize-y rounded-[2px] border border-border bg-[#f7f4eb] p-4 font-serif text-[16px] leading-[1.6] text-foreground transition-all focus:border-primary/50 focus-visible:ring-primary/20 dark:bg-input/40"
+                />
+
+                <div className="mt-2 flex flex-wrap items-start justify-between gap-2">
+                  <p className="max-w-[460px] text-[11px] leading-relaxed text-muted-foreground/65">
+                    {section.generate_button.tip}
+                  </p>
+                  <span className="ml-auto shrink-0 text-[11px] font-medium tabular-nums text-muted-foreground/60">
+                    {section.prompt.character_counter.replace("{count}", String(prompt.length))}
+                  </span>
                 </div>
 
-                {/* Quick chips + Language inline */}
-                <div className="flex flex-wrap items-center gap-2 mb-6">
-                  <span className="text-xs font-medium text-muted-foreground/60 shrink-0">
+                {/* Quick adds + language */}
+                <div className="mt-4 flex flex-wrap items-center gap-2">
+                  <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground/60">
                     {section.prompt.quick_adds_label}
                   </span>
                   {QUICK_ADD_CHIPS.map((chip) => (
                     <button
                       key={chip}
+                      type="button"
                       onClick={() => handleQuickAdd(chip)}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-foreground/[0.03] hover:bg-foreground/[0.06] text-muted-foreground/60 hover:text-foreground transition-all duration-300"
+                      className="rounded-[2px] border border-border bg-transparent px-3 py-1.5 text-[11px] font-semibold text-muted-foreground transition-colors hover:border-primary/40 hover:bg-accent-sage/50 hover:text-foreground"
                     >
                       + {chip}
                     </button>
                   ))}
-                  <div className="ml-auto flex items-center gap-2 shrink-0">
-                    <span className="text-xs font-medium text-muted-foreground/50">{section.prompt.language_label}</span>
+                  <div className="ml-auto flex shrink-0 items-center gap-2 max-sm:ml-0">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground/60">
+                      {section.prompt.language_label}
+                    </span>
                     <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
-                      <SelectTrigger className="w-auto border-0 bg-transparent hover:bg-muted/50 rounded-full gap-2 px-3 text-sm font-medium focus:ring-0 text-foreground">
+                      <SelectTrigger className="h-9 w-auto gap-2 rounded-[2px] border border-border bg-transparent px-3 text-[12px] font-medium text-foreground hover:bg-accent-sage/50 focus:ring-0">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="rounded-xl p-1 min-w-[200px]">
+                      <SelectContent className="min-w-[200px] rounded-[2px] p-1">
                         {Object.entries(LANGUAGE_OPTIONS).map(([code, option]) => (
-                          <SelectItem key={code} value={code} className="rounded-lg my-0.5 cursor-pointer">
+                          <SelectItem key={code} value={code} className="my-0.5 cursor-pointer rounded-[2px]">
                             <span className="mr-2 text-base opacity-80">{option.flag}</span>
                             <span className="font-medium">{option.native}</span>
                           </SelectItem>
@@ -1336,43 +1335,45 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   </div>
                 </div>
 
-                {/* Divider */}
-                <div className="h-px bg-border/10 mb-5" />
-
-                {/* Model Selection — horizontal 3-col */}
-                <div className="mb-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <h3 className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest shrink-0">
+                {/* Model selection */}
+                <div className="mt-6">
+                  <div className="flex flex-wrap items-end justify-between gap-2">
+                    <h3 className="font-display text-[19px] font-normal leading-tight tracking-[-0.02em] text-foreground">
                       {section.ai_models.title}
                     </h3>
-                    <div className="h-px flex-1 bg-border/10" />
+                    <p className="max-w-[300px] text-right text-[11px] leading-snug text-muted-foreground/65 max-sm:text-left">
+                      {section.ai_models.hint}
+                    </p>
                   </div>
-                  <div className="grid grid-cols-3 gap-2">
+
+                  <div className="mt-3 grid grid-cols-3 gap-2 max-sm:grid-cols-1">
                     {AI_MODELS.map((model) => {
                       const isSelected = selectedModel === model.id;
                       return (
                         <button
                           key={model.id}
+                          type="button"
                           onClick={() => setSelectedModel(model.id)}
-                          className={`group relative flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl text-center transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                          className={`group relative flex min-h-[132px] flex-col items-start border p-4 text-left transition-all duration-300 ${
                             isSelected
-                              ? 'bg-foreground/[0.04] border border-foreground/[0.12] ring-1 ring-primary/20'
-                              : 'bg-background border border-border/10 hover:border-border/25 hover:bg-foreground/[0.02]'
-                          } ${creativeQuota.forModel(model.id)?.exhausted ? 'opacity-60' : ''}`}
+                              ? "border-primary bg-accent-sage ring-1 ring-primary shadow-[4px_4px_0_rgba(36,77,61,0.12)]"
+                              : "border-border bg-transparent hover:border-primary/40 hover:bg-card"
+                          } ${creativeQuota.forModel(model.id)?.exhausted ? "opacity-60" : ""}`}
                         >
                           {creativeQuota.forModel(model.id)?.exhausted && (
-                            <span className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-amber-500 ring-2 ring-background" title={section.quota.creative_used_up} />
+                            <span
+                              className="absolute right-2 top-2 size-1.5 rounded-full bg-warning ring-2 ring-background"
+                              title={section.quota.creative_used_up}
+                            />
                           )}
-                          <div className={`flex items-center justify-center size-8 rounded-lg border transition-all duration-300 ${
-                            isSelected ? 'border-primary/25 bg-primary/[0.08] text-primary/70' : 'border-border/10 bg-foreground/[0.03] text-muted-foreground/40 group-hover:text-muted-foreground/70'
-                          }`}>
-                            {model.icon}
-                          </div>
-                          <div className={`text-xs font-semibold transition-colors ${isSelected ? 'text-foreground' : 'text-foreground/60 group-hover:text-foreground'}`}>
+                          <span className={`font-display text-[20px] leading-tight tracking-[-0.02em] transition-colors ${isSelected ? "text-foreground" : "text-foreground/80 group-hover:text-foreground"}`}>
                             {model.name}
-                          </div>
-                          <span className={`text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full border ${model.badgeColor}`}>
+                          </span>
+                          <span className="mt-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground/65">
                             {model.badge}
+                          </span>
+                          <span className="mt-auto pt-4 text-[12px] font-semibold leading-snug text-primary">
+                            {model.description}
                           </span>
                         </button>
                       );
@@ -1380,60 +1381,97 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                   </div>
                 </div>
 
-                {/* Generate Button — inside the panel */}
-                <div id="generate-button" className="relative group">
-                  <div className="rounded-full border border-border/20 bg-foreground/[0.015] dark:bg-white/[0.02] p-1">
+                {/* Advanced options — inline, collapsed by default */}
+                <div className="mt-4 border-t border-border pt-1">
+                  <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center gap-2 py-2">
+                      <Icon name="chevron-down" className="size-3.5 text-muted-foreground/60 transition-transform duration-300 group-open:rotate-180" />
+                      <span className="text-[13px] font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+                        {section.advanced_options.title}
+                      </span>
+                      {selectedOptionsCount > 0 && (
+                        <span className="inline-flex size-4 items-center justify-center rounded-full bg-accent-sage text-[9px] font-bold text-accent-copper">
+                          {selectedOptionsCount}
+                        </span>
+                      )}
+                      <span className="ml-auto text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground/45">
+                        {section.advanced_options.optional_badge}
+                      </span>
+                    </summary>
+
+                    <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
+                      {[
+                        { label: section.advanced_options.format.label, value: selectedFormat, setter: handleFormatChange, opts: section.advanced_options.format.options },
+                        { label: section.advanced_options.genre.label, value: selectedGenre, setter: handleGenreChange, opts: section.advanced_options.genre.options },
+                        { label: section.advanced_options.tone.label, value: selectedTone, setter: handleToneChange, opts: section.advanced_options.tone.options },
+                        { label: section.advanced_options.perspective.label, value: selectedPerspective, setter: handlePerspectiveChange, opts: section.advanced_options.perspective.options },
+                        { label: section.advanced_options.audience.label, value: selectedAudience, setter: handleAudienceChange, opts: section.advanced_options.audience.options },
+                        { label: section.advanced_options.length.label, value: selectedLength, setter: handleLengthChange, opts: section.advanced_options.length.options }
+                      ].map((field, i) => (
+                        <div key={i} className="space-y-1">
+                          <label className="ml-0.5 text-[10px] font-medium text-muted-foreground">{field.label}</label>
+                          <Select value={field.value} onValueChange={field.setter}>
+                            <SelectTrigger className="h-9 w-full rounded-[2px] border-border bg-card text-[11px] text-foreground transition-colors hover:bg-accent-sage/40 focus:ring-0">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent className="rounded-[2px]">
+                              {Object.entries(field.opts).map(([k, v]) => (
+                                <SelectItem key={k} value={k === 'funny' ? 'humorous' : k} className="cursor-pointer text-[11px]">{v as string}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      ))}
+                    </div>
+                  </details>
+                </div>
+
+                {/* Generate */}
+                <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div id="generate-button" className="w-full sm:w-auto">
                     <Button
                       onClick={handleGenerateClick}
-                      className="w-full h-12 text-sm font-semibold bg-foreground text-background hover:bg-foreground/85 disabled:opacity-50 rounded-full border-none transition-all duration-300 ease-out active:scale-[0.98] dark:bg-white dark:text-[oklch(0.15_0_0)] dark:hover:bg-white/90"
-                      style={getCtaBreatheAnimationStyle({
-                        isActive: sectionVisible,
-                        delay: "1s",
-                      })}
+                      className="h-12 w-full rounded-[2px] border-none bg-primary px-8 text-[13px] font-semibold text-primary-foreground shadow-[4px_4px_0_rgba(36,77,61,0.16)] transition-all duration-300 hover:bg-primary/90 hover:shadow-[6px_6px_0_rgba(36,77,61,0.16)] active:scale-[0.99] disabled:opacity-50 sm:w-auto"
                     >
-                      <div className="flex items-center justify-center gap-3">
+                      <span className="flex items-center justify-center gap-2.5">
                         {isGenerating ? (
                           <>
-                            <div className="size-4 border-2 border-white/30 border-t-white dark:border-black/30 dark:border-t-black rounded-full animate-spin" />
+                            <span className="size-4 animate-spin rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground" />
                             <span className="animate-pulse">{section.generate_button.generating}</span>
                           </>
                         ) : (
-                          <>
-                            <span className="inline-flex size-6 items-center justify-center rounded-full bg-background/15 dark:bg-black/10">
-                              <Sparkles className="size-3.5" />
-                            </span>
-                            <span>{creativeQuotaExhausted ? section.generate_button.sign_in_for_more : section.generate_button.text}</span>
-                            <span className="inline-flex size-6 items-center justify-center rounded-full bg-background/10 dark:bg-black/10 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
-                              <svg viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M3 13L13 3M13 3H6M13 3v7" strokeLinecap="round" strokeLinejoin="round"/>
-                              </svg>
-                            </span>
-                          </>
+                          <span>{creativeQuotaExhausted ? section.generate_button.sign_in_for_more : section.generate_button.text}</span>
                         )}
-                      </div>
+                      </span>
                     </Button>
                   </div>
-                  <GeneratorShortcutHints showQuickSave />
+
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground/65 sm:justify-end sm:text-right">
+                    <span>{section.generate_button.info.credit}</span>
+                    <span className="size-0.5 rounded-full bg-border" />
+                    <span>{section.generate_button.info.time}</span>
+                    <span className="size-0.5 rounded-full bg-border" />
+                    <span>{section.generate_button.info.quality}</span>
+                  </div>
+                </div>
+
+                <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px]">
+                  <span className="inline-flex items-center gap-2 text-muted-foreground">
+                    <span className="size-1.5 rounded-full bg-primary" />
+                    <span className="font-semibold text-foreground">{selectedModelName}</span>
+                    <span className="text-primary">{section.ai_models.selected}</span>
+                  </span>
                   {activeQuota && (
-                    <div className="mt-2 text-center text-[10px] text-muted-foreground">
-                      {activeQuota.exhausted ? (
-                        user ? (
-                          <span className="text-amber-600 dark:text-amber-500">
-                            {section.quota.creative_credits_hint.replace("{cost}", String(activeQuota.effectiveCreditCost))}
-                          </span>
-                        ) : (
-                          <span className="text-amber-600 dark:text-amber-500">{section.quota.creative_used_up}</span>
-                        )
-                      ) : (
-                        <span>
-                          {section.quota.remaining_today}: {activeQuota.remaining}/{activeQuota.effectiveLimit}
-                        </span>
-                      )}
-                    </div>
+                    <span className={activeQuota.exhausted ? "text-warning" : "text-muted-foreground/60"}>
+                      {activeQuota.exhausted
+                        ? user
+                          ? section.quota.creative_credits_hint.replace("{cost}", String(activeQuota.effectiveCreditCost))
+                          : section.quota.creative_used_up
+                        : `${section.quota.remaining_today}: ${activeQuota.remaining}/${activeQuota.effectiveLimit}`}
+                    </span>
                   )}
                 </div>
 
-                {/* 积分不足 paywall 弹窗 */}
                 {creativeQuota.paywallOpen && (
                   <CreativeQuotaPaywall
                     open={creativeQuota.paywallOpen}
@@ -1441,224 +1479,165 @@ export default function StoryGenerate({ section }: { section: StoryGenerateType 
                     sourcePage="story-generator"
                   />
                 )}
-
-                {/* Usage hints */}
-                <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-muted-foreground/40">
-                  <span>{locale === 'zh' ? '免费额度' : 'Free Credit'}</span>
-                  <div className="hidden sm:block w-px h-3 bg-border/30" />
-                  <span>{locale === 'zh' ? '预计耗时: ~10秒' : 'Est. ~10 seconds'}</span>
-                  <div className="hidden sm:block w-px h-3 bg-border/30" />
-                  <span>{locale === 'zh' ? '优质内容' : 'Premium Quality'}</span>
-                </div>
               </div>
 
-              {/* Right: Sidebar (4 cols) */}
-              <div className="lg:col-span-4 bg-foreground/[0.015] dark:bg-white/[0.02] p-5 sm:p-6 border-t lg:border-t-0 border-border/10">
-                <div className="sticky top-20 space-y-5">
+              {/* Right: output workspace */}
+              <div
+                ref={outputRef}
+                className="flex min-h-0 flex-col overflow-hidden border-t border-border bg-[#f7f4eb]/60 p-3 dark:bg-input/20 sm:p-4 lg:absolute lg:inset-y-0 lg:right-0 lg:w-[38.4615%] lg:border-l lg:border-t-0"
+              >
+                <div className="mb-3 flex justify-end">
+                  <StoryHistoryDropdown
+                    onLoadStory={handleLoadStory}
+                    locale={locale}
+                  />
+                </div>
 
-                  {/* History */}
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
-                      {locale === 'zh' ? '历史记录' : 'HISTORY'}
-                    </h3>
-                    <StoryHistoryDropdown
-                      onLoadStory={handleLoadStory}
-                      locale={locale}
-                    />
-                  </div>
-
-                  {/* Presets */}
-                  <div className="pt-4 border-t border-border/10">
-                    <h3 className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-3">
-                      {section.presets.title}
-                    </h3>
-                    <div className="space-y-1.5">
-                      {STORY_PRESETS.map((preset) => (
+                {!isGenerating && !generatedStory && (
+                  <div className="flex min-h-[420px] flex-1 flex-col rounded-[2px] border border-dashed border-border/80 bg-card/40 p-5 sm:p-6 lg:min-h-0">
+                    <div className="flex flex-1 flex-col items-center justify-center">
+                      <div className="flex w-full max-w-[320px] flex-col items-center text-center">
+                        <div className="flex size-16 items-center justify-center rounded-full bg-accent-sage">
+                          <Sparkles className="size-6 text-accent-copper" />
+                        </div>
+                        <p className="mt-5 font-display text-[22px] font-normal leading-tight tracking-[-0.02em] text-foreground">
+                          {locale === 'zh' ? '你的故事将在这里呈现' : 'Your story will appear here'}
+                        </p>
+                        <p className="mt-2 max-w-[280px] font-serif text-[14px] leading-relaxed text-muted-foreground">
+                          {locale === 'zh' ? '填写提示词，点击生成按钮开始创作' : 'Fill in a prompt above and click generate'}
+                        </p>
                         <button
-                          key={preset.title}
-                          onClick={() => handlePresetClick(preset)}
-                          className="group w-full text-left px-3 py-2.5 rounded-xl bg-background hover:bg-foreground/[0.02] border border-border/10 hover:border-border/25 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                          type="button"
+                          onClick={handleRandomPrompt}
+                          className="mt-5 inline-flex h-10 items-center gap-2 rounded-[2px] border border-border bg-card px-5 text-[12px] font-semibold text-foreground transition-colors hover:border-primary/40 hover:bg-accent-sage/50"
                         >
-                          <div className="flex items-center gap-2.5">
-                            <span className="text-foreground/30 group-hover:text-foreground/60 group-hover:scale-110 transition-all duration-300 shrink-0">
-                              {preset.icon}
-                            </span>
-                            <div className="min-w-0">
-                              <div className="font-medium text-foreground/80 group-hover:text-foreground transition-colors text-xs truncate">
-                                {preset.title}
-                              </div>
-                              <div className="text-[10px] text-muted-foreground/50 truncate">
-                                {preset.desc}
-                              </div>
-                            </div>
-                          </div>
+                          <Sparkles className="size-3.5 text-accent-copper" />
+                          <span>{section.prompt.random_button}</span>
                         </button>
-                      ))}
+
+                        <div className="mt-6 w-full border-t border-border/70 pt-4 text-left">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground/65">
+                            {section.presets.title}
+                          </p>
+                          <div className="mt-2 grid grid-cols-2 gap-2">
+                            {STORY_PRESETS.map((preset) => (
+                              <button
+                                key={preset.title}
+                                type="button"
+                                onClick={() => handlePresetClick(preset)}
+                                className="group flex items-start gap-2 rounded-[2px] border border-border bg-card/70 p-2.5 text-left transition-colors hover:border-primary/40 hover:bg-accent-sage/40"
+                              >
+                                <span className="mt-0.5 shrink-0 text-accent-copper/70">{preset.icon}</span>
+                                <span className="min-w-0">
+                                  <span className="block truncate text-[11px] font-semibold text-foreground">{preset.title}</span>
+                                  <span className="block truncate text-[10px] text-muted-foreground">{preset.desc}</span>
+                                </span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                )}
 
-                  {/* Advanced Options */}
-                  <div className="pt-4 border-t border-border/10">
-                    <details className="group">
-                      <summary className="list-none flex items-center justify-between cursor-pointer py-1">
-                        <div className="flex items-center gap-2">
-                          <Icon name="sliders" className="size-3.5 text-muted-foreground/50" />
-                          <span className="text-xs font-semibold text-foreground/70 group-hover:text-foreground transition-colors">
-                            {section.advanced_options.title}
-                          </span>
-                          {selectedOptionsCount > 0 && (
-                            <span className="inline-flex items-center justify-center size-4 rounded-full bg-primary/10 text-primary text-[9px] font-bold">
-                              {selectedOptionsCount}
-                            </span>
-                          )}
-                        </div>
-                        <Icon name="chevron-down" className="size-3 text-muted-foreground/40 group-open:rotate-180 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]" />
-                      </summary>
-
-                      <div className="mt-3 space-y-3">
-                        {[
-                          { label: section.advanced_options.format.label, value: selectedFormat, setter: handleFormatChange, opts: section.advanced_options.format.options },
-                          { label: section.advanced_options.genre.label, value: selectedGenre, setter: handleGenreChange, opts: section.advanced_options.genre.options },
-                          { label: section.advanced_options.tone.label, value: selectedTone, setter: handleToneChange, opts: section.advanced_options.tone.options },
-                          { label: section.advanced_options.perspective.label, value: selectedPerspective, setter: handlePerspectiveChange, opts: section.advanced_options.perspective.options },
-                          { label: section.advanced_options.audience.label, value: selectedAudience, setter: handleAudienceChange, opts: section.advanced_options.audience.options },
-                          { label: section.advanced_options.length.label, value: selectedLength, setter: handleLengthChange, opts: section.advanced_options.length.options }
-                        ].map((field, i) => (
-                          <div key={i} className="space-y-1">
-                            <label className="text-[10px] font-medium text-muted-foreground/50 ml-0.5">{field.label}</label>
-                            <Select value={field.value} onValueChange={field.setter}>
-                              <SelectTrigger className="w-full bg-background border-border/20 rounded-lg text-xs hover:bg-muted/50 transition-colors focus:ring-0 text-foreground h-8">
-                                <SelectValue />
-                              </SelectTrigger>
-                              <SelectContent className="rounded-xl">
-                                {Object.entries(field.opts).map(([k, v]) => (
-                                  <SelectItem key={k} value={k === 'funny' ? 'humorous' : k} className="text-xs cursor-pointer">{v as string}</SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                          </div>
-                        ))}
-                      </div>
-                    </details>
+                {isGenerating && !generatedStory && (
+                  <div className="flex min-h-[420px] flex-1 flex-col items-center justify-center rounded-[2px] border border-dashed border-border/80 bg-card/40 p-4 lg:min-h-0">
+                    <div className="w-full max-w-md [&>div]:border-0 [&>div]:bg-transparent [&>div]:p-4 [&>div]:shadow-none">
+                      <GenerationProgress
+                        isGenerating={isGenerating}
+                        tips={progressTips}
+                        estimatedDuration={15}
+                      />
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {generatedStory && (
+                  <div className="flex h-[560px] flex-col overflow-hidden rounded-[2px] border border-border bg-card lg:h-auto lg:min-h-0 lg:flex-1">
+                    <div className="flex items-start justify-between gap-3 border-b border-border/70 p-4">
+                      <div className="min-w-0">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-accent-copper">
+                          {section.output.title}
+                        </p>
+                        <p className="mt-1 text-[11px] text-muted-foreground">
+                          {section.output.word_count.replace("{count}", wordCount.toLocaleString())} · {isGenerating ? section.output.status_writing : section.output.status_complete}
+                        </p>
+                      </div>
+                    </div>
+
+                    {!isGenerating && (
+                      <div className="flex flex-wrap gap-1.5 border-b border-border/70 p-3">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={handleGenerateClick}
+                          className="gap-1.5 text-[11px]"
+                        >
+                          <Icon name="refresh-cw" className="size-3.5" />
+                          {locale === 'zh' ? '重新生成' : 'Regenerate'}
+                        </Button>
+
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            if (!generatedStory.trim()) {
+                              toast.error(section.toasts.error_no_content);
+                              return;
+                            }
+                            setShareDialogOpen(true);
+                          }}
+                          className="gap-1.5 text-[11px]"
+                        >
+                          <Icon name="RiShareLine" className="size-3.5" />
+                          {shareTranslations.title}
+                        </Button>
+
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            navigator.clipboard.writeText(generatedStory);
+                            toast.success(section.toasts.success_copied);
+                          }}
+                          className="gap-1.5 text-[11px]"
+                        >
+                          <Icon name="copy" className="size-3.5" />
+                          {section.output.button_copy}
+                        </Button>
+
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={handleExportPdf}
+                          disabled={isExportingPdf}
+                          className="gap-1.5 text-[11px]"
+                        >
+                          <Icon name="download" className="size-3.5" />
+                          PDF
+                        </Button>
+                      </div>
+                    )}
+
+                    <div
+                      ref={outputScrollRef}
+                      className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-5"
+                    >
+                      <div className="prose prose-sm max-w-none font-serif text-[16px] leading-[1.9] tracking-normal text-foreground dark:prose-invert">
+                        <div className="whitespace-pre-wrap">
+                          {generatedStory}
+                          {isGenerating && <span className="ml-1 inline-block h-6 w-2 animate-pulse bg-foreground/70" />}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
+
             </div>
           </div>
         </div>
-
-        {/* Ghost Preview — shown when no story generated yet */}
-        {!isGenerating && !generatedStory && (
-          <div
-            className={`mt-6 ${sgEnter(500)}`}
-            style={{ transitionDelay: sectionVisible ? "500ms" : "0ms" }}
-          >
-            <div className="rounded-[1.5rem] border border-border/[0.08] bg-foreground/[0.008] dark:bg-white/[0.01] px-8 py-10 md:px-12 md:py-12">
-              <div className="max-w-2xl mx-auto space-y-3 mb-8">
-                {['w-2/3', 'w-full', 'w-11/12', 'w-3/4', 'w-full', 'w-5/6', 'w-full', 'w-4/5', 'w-2/3', 'w-11/12'].map((width, i) => (
-                  <div
-                    key={i}
-                    className={`h-3 ${width} rounded-full bg-foreground/[0.05] dark:bg-white/[0.05] animate-pulse`}
-                    style={{ animationDelay: `${i * 0.07}s` }}
-                  />
-                ))}
-              </div>
-              <div className="flex flex-col items-center justify-center gap-2">
-                <div className="flex items-center justify-center size-10 rounded-xl bg-foreground/[0.03] dark:bg-white/[0.03]">
-                  <Icon name="book-open" className="size-5 text-muted-foreground/25" />
-                </div>
-                <p className="text-sm font-medium text-muted-foreground/35">
-                  {locale === 'zh' ? '你的故事将在这里呈现' : 'Your story will appear here'}
-                </p>
-                <p className="text-xs text-muted-foreground/25">
-                  {locale === 'zh' ? '填写提示词，点击生成按钮开始创作' : 'Fill in a prompt above and click generate'}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-        {(isGenerating || generatedStory) && (
-          <div ref={outputRef} className="mt-6">
-            {/* Outer bezel */}
-            <div className="rounded-xl border border-border bg-muted/40 p-1.5">
-              <div className="overflow-hidden rounded-[calc(0.75rem-0.25rem)] bg-card border border-border/50 shadow-sm">
-              {/* Header */}
-              <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-8 border-b border-border/10 gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center size-10 rounded-xl bg-foreground/[0.04] dark:bg-white/[0.06]">
-                    <Icon name="book-open" className="size-5 text-foreground/40" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold tracking-tight text-foreground">{section.output.title}</h3>
-                    {generatedStory && (
-                      <div className="text-sm text-muted-foreground/60 dark:text-muted-foreground/80 font-light mt-1">
-                        {wordCount.toLocaleString()} words • {section.output.status_complete}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {generatedStory && !isGenerating && (
-                  <div className="flex items-center gap-2 flex-wrap justify-center">
-                    <Button variant="ghost" size="sm" onClick={handleGenerateClick} className="gap-1.5 text-xs">
-                      <Icon name="refresh-cw" className="size-3.5" /> {locale === 'zh' ? '重新生成' : 'Regenerate'}
-                    </Button>
-
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => {
-                        if (!generatedStory.trim()) {
-                          toast.error(section.toasts.error_no_content);
-                          return;
-                        }
-                        setShareDialogOpen(true);
-                      }}
-                      className="gap-1.5 text-xs"
-                    >
-                      <Icon name="RiShareLine" className="size-3.5" />
-                      {shareTranslations.title}
-                    </Button>
-
-                    <Button variant="ghost" size="sm" onClick={() => { navigator.clipboard.writeText(generatedStory); toast.success(section.toasts.success_copied); }} className="gap-1.5 text-xs">
-                      <Icon name="copy" className="size-3.5" /> {section.output.button_copy}
-                    </Button>
-                    <Button variant="ghost" size="sm" onClick={handleExportPdf} disabled={isExportingPdf} className="gap-1.5 text-xs">
-                      <Icon name="download" className="size-3.5" /> PDF
-                    </Button>
-                  </div>
-                )}
-              </div>
-
-              {/* Content */}
-              <div
-                ref={outputScrollRef}
-                className="p-8 md:p-16 min-h-[320px] min-h-[320px] max-h-[480px] overflow-y-auto"
-              >
-                {isGenerating && !generatedStory ? (
-                  <div className="h-full flex flex-col items-center justify-center gap-6 py-20">
-                    {/* Generation Progress Component */}
-                    <GenerationProgress
-                      isGenerating={isGenerating}
-                      tips={progressTips}
-                      estimatedDuration={15}
-                    />
-                  </div>
-                ) : (
-                  <div className="prose prose-lg md:prose-xl dark:prose-invert max-w-4xl mx-auto font-serif leading-loose tracking-wide text-foreground">
-                    <div className="whitespace-pre-wrap">
-                      {generatedStory}
-                      {isGenerating && <span className="inline-block w-2 h-6 ml-1 bg-foreground/70 animate-pulse" />}
-                    </div>
-                  </div>
-                )}
-              </div>
-              </div>
-            </div>
-          </div>
-
-        )}
 
         {/* Completion Guide */}
         {generatedStory && !isGenerating && (

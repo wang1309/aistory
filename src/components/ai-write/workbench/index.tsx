@@ -2266,7 +2266,7 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
 
   return (
     <section
-      className="fixed inset-0 z-[60] flex flex-col overflow-hidden bg-background"
+      className="dense-ui fixed inset-0 z-[60] flex flex-col overflow-hidden bg-background"
       data-continue-entry={continueEntrySource ? "continue-entry" : "default-entry"}
     >
       {/* Breadcrumb bar */}

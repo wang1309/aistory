@@ -23,11 +23,11 @@ interface CompletionGuideProps {
 
 // 次要操作按钮统一样式:克制描边,不与主 CTA 抢视觉
 const secondaryButtonClass =
-    "inline-flex h-11 w-full items-center justify-center gap-2 rounded-full border border-foreground/10 bg-foreground/[0.02] px-6 text-sm font-medium text-foreground/75 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-foreground/[0.05] hover:text-foreground dark:border-white/15 dark:bg-white/[0.04] sm:w-auto";
+    "inline-flex h-11 w-full items-center justify-center gap-2 rounded-[2px] border border-border bg-transparent px-6 text-[13px] font-semibold text-foreground transition-all duration-300 hover:border-primary/40 hover:bg-accent-sage/50 sm:w-auto";
 
-// 主 CTA 样式:品牌琥珀实色胶囊,本次漏斗的视觉焦点
+// 主 CTA 样式:品牌绿直角按钮,硬偏移阴影
 const continueButtonClass =
-    "group inline-flex w-full h-[3.25rem] items-center justify-center gap-2 rounded-full px-7 text-sm sm:text-base font-semibold text-primary-foreground shadow-lg shadow-primary/25 bg-primary transition-all duration-300 hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-primary/40 active:translate-y-0 sm:w-auto sm:min-w-[16rem]";
+    "group inline-flex h-[3.25rem] w-full items-center justify-center gap-2 rounded-[3px] bg-primary px-7 text-[13px] font-semibold text-primary-foreground shadow-[4px_4px_0_rgba(36,77,61,0.16)] transition-all duration-300 hover:-translate-y-px hover:bg-primary/90 hover:shadow-[6px_6px_0_rgba(36,77,61,0.16)] active:translate-y-0 sm:w-auto sm:min-w-[16rem]";
 
 export default function CompletionGuide({
     onCreateAnother,
@@ -57,18 +57,15 @@ export default function CompletionGuide({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-12 relative overflow-hidden rounded-[2rem] border border-primary/10 bg-gradient-to-br from-primary/[0.04] via-amber-500/[0.02] to-primary/[0.03]"
+            className="relative mt-12 overflow-hidden rounded-[2px] border border-border bg-card shadow-[8px_9px_0_rgba(36,77,61,0.08)] dark:shadow-[8px_9px_0_rgba(0,0,0,0.45)]"
         >
-            {/* 单个柔光:克制暖意,夜间更轻 */}
-            <div className="pointer-events-none absolute -top-24 left-1/2 h-44 w-[30rem] -translate-x-1/2 rounded-full bg-primary/[0.08] blur-3xl dark:bg-primary/[0.05]" />
-
             <div className="relative z-10 flex flex-col items-center gap-7 px-6 py-10 text-center sm:px-10 sm:py-12">
                 {/* 标题区:仅在传入文案时渲染 */}
                 {translations?.title ? (
                     <div className="flex flex-col items-center gap-2.5">
                         <div className="inline-flex items-center gap-2 text-foreground">
-                            <PartyPopper className="size-5 text-primary/50" />
-                            <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
+                            <PartyPopper className="size-5 text-accent-copper/70" />
+                            <h3 className="font-display text-[24px] font-normal tracking-[-0.03em] sm:text-[28px]">
                                 {translations.title}
                             </h3>
                         </div>

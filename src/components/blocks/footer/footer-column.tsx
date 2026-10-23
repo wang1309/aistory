@@ -67,13 +67,13 @@ export default function FooterColumn({
           aria-controls={panelId}
           className="flex w-full items-center justify-between gap-3 text-left"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-foreground">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground">
             {title}
           </span>
           <Chevron open={open} className="size-3.5" />
         </button>
       ) : (
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-foreground">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground">
           {title}
         </p>
       )}
@@ -148,7 +148,7 @@ function LinkList({
         const isFileHref =
           !!item.url && /^\/[^/]+\.[^/]+$/.test(item.url);
         return (
-          <li key={i} className="transition-colors hover:text-foreground">
+          <li key={i} className="transition-colors hover:text-accent-copper">
             {isFileHref ? (
               <a
                 href={item.url || ""}

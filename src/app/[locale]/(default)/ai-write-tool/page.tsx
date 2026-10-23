@@ -78,6 +78,7 @@ export default async function AiWriteToolPage({
         description={t("ai_tools.section_description_hub")}
         locale={locale}
         layout="grouped"
+        variant="compact"
       />
     </>
   );

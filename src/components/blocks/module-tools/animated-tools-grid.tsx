@@ -91,10 +91,10 @@ function CardBadges({ tool }: { tool: ToolCardData }) {
         <span
           key={badge.label}
           className={cn(
-            "rounded-full px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider",
+            "rounded-[2px] px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider",
             badge.type === "hot"
-              ? "bg-red-500/[0.08] text-red-500/70"
-              : "bg-teal-500/[0.08] text-teal-500/70"
+              ? "bg-accent-rose text-accent-copper"
+              : "bg-accent-sage text-primary"
           )}
         >
           {badge.label}
@@ -109,8 +109,8 @@ function ArrowAffordance() {
     <span
       className={cn(
         "inline-flex size-6 shrink-0 items-center justify-center rounded-full",
-        "transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
-        "bg-foreground/[0.03] group-hover:bg-foreground/[0.07] group-hover:translate-x-0.5 group-hover:-translate-y-px"
+        "transition-all duration-300",
+        "bg-accent-sage text-accent-copper group-hover:translate-x-0.5 group-hover:-translate-y-px"
       )}
     >
       <svg viewBox="0 0 16 16" className="size-3 text-muted-foreground/35 transition-colors duration-300 group-hover:text-foreground/60" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -134,19 +134,19 @@ function CompactToolCard({
     <Link
       href={tool.href}
       className={cn(
-        "group flex h-full flex-col rounded-2xl p-4",
-        "border border-border/15 bg-foreground/[0.012]",
-        "transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
-        "hover:border-border/30 hover:bg-foreground/[0.02]",
-        "dark:bg-white/[0.015] dark:hover:bg-white/[0.025]"
+        "group flex h-full flex-col rounded-[2px] p-4",
+        "border border-border bg-card shadow-[4px_4px_0_rgba(36,77,61,0.06)]",
+        "transition-all duration-300",
+        "hover:-translate-y-1 hover:border-primary/30 hover:shadow-[6px_6px_0_rgba(36,77,61,0.08)]",
+        "dark:shadow-[4px_4px_0_rgba(0,0,0,0.45)]"
       )}
     >
       <div className="flex items-center gap-3">
         {/* Accent icon tile — replaces the media cover as the card's identity */}
         <span
           className={cn(
-            "flex size-10 shrink-0 items-center justify-center rounded-xl",
-            "transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.06]",
+            "flex size-10 shrink-0 items-center justify-center rounded-full",
+            "transition-transform duration-300 group-hover:scale-[1.06]",
             a.iconBg
           )}
         >
@@ -154,7 +154,7 @@ function CompactToolCard({
         </span>
 
         <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1">
-          <h3 className="text-sm font-bold tracking-tight leading-snug text-foreground">
+          <h3 className="font-display text-[17px] font-normal leading-snug tracking-[-0.01em] text-foreground">
             {tool.name}
           </h3>
           <CardBadges tool={tool} />
@@ -164,7 +164,7 @@ function CompactToolCard({
       </div>
 
       {tool.description && (
-        <p className="mt-2.5 text-[0.8125rem] leading-relaxed text-muted-foreground/55 line-clamp-2">
+        <p className="mt-2.5 text-[12.5px] leading-relaxed text-muted-foreground line-clamp-2">
           {tool.description}
         </p>
       )}
@@ -187,21 +187,21 @@ function ToolCard({
       href={tool.href}
       className={cn(
         "group flex h-full flex-col",
-        "rounded-2xl",
+        "rounded-[2px]",
         // 双壳卡(外壳 4px 缝)只用于渐变封面;真实图片封面须贴满,
         // 否则图片两侧会露出缝
-        tool.image ? "p-0" : "p-1",
-        "border border-border/15 bg-foreground/[0.012]",
-        "transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
-        "hover:border-border/30 hover:bg-foreground/[0.02]",
-        "dark:bg-white/[0.015] dark:hover:bg-white/[0.025]"
+        tool.image ? "p-0" : "p-[6px]",
+        "border border-border bg-card shadow-[5px_7px_0_rgba(36,77,61,0.07)]",
+        "transition-all duration-300",
+        "hover:-translate-y-1 hover:border-primary/30 hover:shadow-[7px_9px_0_rgba(36,77,61,0.09)]",
+        "dark:shadow-[5px_7px_0_rgba(0,0,0,0.45)]"
       )}
     >
       {/* Inner core */}
       <div
         className={cn(
-          "flex h-full flex-col overflow-hidden bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]",
-          tool.image ? "rounded-2xl" : "rounded-[calc(1rem-0.25rem)]"
+          "flex h-full flex-col overflow-hidden bg-card",
+          tool.image ? "rounded-[2px]" : "rounded-[1px]"
         )}
       >
         {/* Cover */}
@@ -247,7 +247,7 @@ function ToolCard({
         <div className="flex flex-1 flex-col px-4 py-3.5 sm:px-5 sm:py-4">
           <div className="flex items-start justify-between gap-3">
             <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
-              <h3 className="text-sm font-bold tracking-tight leading-snug text-foreground">
+              <h3 className="font-display text-[19px] font-normal tracking-[-0.01em] leading-snug text-foreground">
                 {tool.name}
               </h3>
               <CardBadges tool={tool} />
@@ -259,7 +259,7 @@ function ToolCard({
           </div>
 
           {tool.description && (
-            <p className="mt-1 text-[0.8125rem] leading-relaxed text-muted-foreground/55 line-clamp-2">
+            <p className="mt-1 text-[12.5px] leading-relaxed text-muted-foreground line-clamp-2">
               {tool.description}
             </p>
           )}

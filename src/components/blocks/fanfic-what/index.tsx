@@ -90,7 +90,7 @@ export default function FanficWhat({ section }: { section: FanficWhatType | unde
         {/* Mesh Gradient Blobs */}
         <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-teal-500/20 blur-[100px] animate-blob mix-blend-screen" />
         <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-pink-500/20 blur-[100px] animate-blob animation-delay-2000 mix-blend-screen" />
-        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-violet-500/10 blur-[120px] animate-blob animation-delay-4000 mix-blend-screen" />
+        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-accent-copper/10 blur-[120px] animate-blob animation-delay-4000 mix-blend-screen" />
         
         {/* Noise Texture */}
         <div className="absolute inset-0 bg-noise mix-blend-overlay opacity-30" />
@@ -111,7 +111,7 @@ export default function FanficWhat({ section }: { section: FanficWhatType | unde
                 <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
                   <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
                   <span className="inline-flex h-full w-full cursor-default items-center justify-center rounded-full bg-slate-950/90 px-5 py-2 text-sm font-medium text-white backdrop-blur-3xl">
-                    <Sparkles className="w-4 h-4 mr-2 text-purple-400" />
+                    <Sparkles className="w-4 h-4 mr-2 text-accent-copper" />
                     {section.label}
                   </span>
                 </span>
@@ -149,7 +149,7 @@ export default function FanficWhat({ section }: { section: FanficWhatType | unde
                   className="group relative overflow-hidden rounded-3xl glass-premium p-8 hover:-translate-y-2 transition-all duration-500"
                 >
                   {/* Card Glow Effect */}
-                  <div className="absolute -inset-px bg-gradient-to-r from-teal-500/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                  <div className="absolute -inset-px bg-gradient-to-r from-primary/15 via-accent-copper/10 to-accent-rose/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
                   
                   <div className="relative z-10 h-full flex flex-col">
                     {block.title && (

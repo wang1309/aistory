@@ -216,7 +216,7 @@ export default function Changelog({ changelog }: { changelog: ChangelogType }) {
                                     >
                                       <Link
                                         href={href as any}
-                                        className="inline-flex items-start gap-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                                        className="inline-flex items-start gap-2 hover:text-accent-copper dark:hover:text-accent-copper transition-colors"
                                       >
                                         {content}
                                       </Link>

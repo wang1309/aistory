@@ -1,3 +1,61 @@
 @import "tailwindcss";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
+
+/* Editorial skin for the docs surface — keeps fumadocs structure but pulls
+   colors from the product's paper / forest-green / copper palette. */
+:root {
+  --color-fd-background: #f3eee5;
+  --color-fd-foreground: #1d2822;
+  --color-fd-muted: #e8eee8;
+  --color-fd-muted-foreground: #5f6b63;
+  --color-fd-popover: #fbf8f1;
+  --color-fd-popover-foreground: #1d2822;
+  --color-fd-card: #fbf8f1;
+  --color-fd-card-foreground: #1d2822;
+  --color-fd-border: #d8d8c9;
+  --color-fd-primary: #244d3d;
+  --color-fd-primary-foreground: #fbf8f1;
+  --color-fd-secondary: #e0e8dc;
+  --color-fd-secondary-foreground: #17382d;
+  --color-fd-accent: #eadbd1;
+  --color-fd-accent-foreground: #5c3421;
+  --color-fd-ring: #3f7d61;
+  --color-fd-info: #3f7d61;
+  --color-fd-warning: #a9762a;
+  --color-fd-error: #a63d2f;
+  --color-fd-success: #3f7d61;
+}
+
+.dark {
+  --color-fd-background: #121713;
+  --color-fd-foreground: #eee9df;
+  --color-fd-muted: #1c2a22;
+  --color-fd-muted-foreground: #9ba79d;
+  --color-fd-popover: #1a211c;
+  --color-fd-popover-foreground: #eee9df;
+  --color-fd-card: #1a211c;
+  --color-fd-card-foreground: #eee9df;
+  --color-fd-border: #344037;
+  --color-fd-primary: #8fc7a9;
+  --color-fd-primary-foreground: #10231b;
+  --color-fd-secondary: #24312a;
+  --color-fd-secondary-foreground: #dbe7de;
+  --color-fd-accent: #2c2823;
+  --color-fd-accent-foreground: #e8d9c6;
+  --color-fd-ring: #8fc7a9;
+  --color-fd-info: #8fc7a9;
+  --color-fd-warning: #d2a06a;
+  --color-fd-error: #d07a6b;
+  --color-fd-success: #8fc7a9;
+}
+
+/* Match the editorial display face used across the product pages. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-source-serif, Georgia), "Noto Serif SC", "SimSun",
+    serif;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}

@@ -1,4 +1,4 @@
-import { getAccent, type AccentColor } from "./accent";
+import { type AccentColor } from "./accent";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -29,7 +29,7 @@ function renderHighlightedTitle(title: string, highlight?: string) {
     return (
       <>
         {before}
-        <span className="text-gradient-brand">{markerMatch[1]}</span>
+        <span className="text-primary">{markerMatch[1]}</span>
         {after}
       </>
     );
@@ -41,7 +41,7 @@ function renderHighlightedTitle(title: string, highlight?: string) {
       i < parts.length - 1
         ? [
             part,
-            <span key={i} className="text-gradient-brand">
+            <span key={i} className="text-primary">
               {highlight}
             </span>,
           ]
@@ -56,7 +56,6 @@ export default function SectionHeader({
   label,
   title,
   description,
-  accent = "orange",
   highlight,
   align = "left",
   heading = "h2",
@@ -64,21 +63,20 @@ export default function SectionHeader({
   className,
   descriptionClassName,
 }: Props) {
-  const a = getAccent(accent);
   const centered = align === "center";
   const Heading = heading;
 
   return (
     <div
       className={cn(
-        centered && "mx-auto max-w-xl text-center",
-        !centered && "max-w-2xl",
+        centered && "mx-auto max-w-[730px] text-center",
+        !centered && "max-w-[730px]",
         className
       )}
     >
       {label && (
-        <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">
-          <span className={cn("inline-block size-1.5 rounded-full", a.solid, centered && "opacity-60")} />
+        <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.19em] text-accent-copper">
+          <span className={cn("inline-block size-1.5 rounded-full bg-accent-copper", centered && "opacity-70")} />
           {label}
         </span>
       )}
@@ -86,8 +84,8 @@ export default function SectionHeader({
       {title && (
         <Heading
           className={cn(
-            "font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]",
-            label && (centered ? "mt-5" : "mt-6")
+            "font-display text-[clamp(2.35rem,4.6vw,3.9rem)] font-normal leading-[0.98] tracking-[-0.065em] text-foreground",
+            label && (centered ? "mt-5" : "mt-5")
           )}
         >
           {renderHighlightedTitle(title, highlight)}
@@ -97,7 +95,7 @@ export default function SectionHeader({
       {brush && title && (
         <div
           className={cn(
-            "mt-3 mb-5 h-px w-12 rounded-full bg-foreground/20",
+            "mt-5 mb-5 h-px w-12 bg-accent-copper/60",
             centered && "mx-auto"
           )}
           aria-hidden="true"
@@ -107,8 +105,8 @@ export default function SectionHeader({
       {description && (
         <p
           className={cn(
-            "text-[1.05rem] leading-relaxed text-muted-foreground/65",
-            centered && "mx-auto max-w-lg",
+            "font-serif text-[17px] leading-[1.55] text-muted-foreground sm:text-[18px]",
+            centered && "mx-auto max-w-[620px]",
             brush && title ? "" : label || title ? "mt-5" : "",
             descriptionClassName
           )}

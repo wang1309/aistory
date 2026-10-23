@@ -37,25 +37,25 @@ export interface Accent {
  * sites — they render identically regardless of the name passed.
  */
 const neutral: Accent = {
-  text: "text-primary dark:text-primary",
-  iconBg: "bg-primary/10",
-  border: "border-primary/20",
+  text: "text-accent-copper",
+  iconBg: "bg-accent-sage",
+  border: "border-accent-copper/25",
   solid: "bg-primary",
-  shadow: "shadow-primary/20 dark:shadow-primary/20",
-  hoverBorder: "hover:border-primary/25",
-  hoverBg: "hover:bg-primary/[0.04] dark:hover:bg-primary/[0.08]",
+  shadow: "shadow-[4px_4px_0_rgba(36,77,61,0.14)]",
+  hoverBorder: "hover:border-primary/40",
+  hoverBg: "hover:bg-accent-sage/60",
   btnPrimary:
-    "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:bg-primary/90 dark:shadow-primary/20 dark:hover:bg-primary/90",
+    "bg-primary text-primary-foreground shadow-[4px_4px_0_rgba(36,77,61,0.14)] hover:bg-primary/90 hover:-translate-x-px hover:-translate-y-px",
   btnSecondary:
-    "hover:border-primary/30 hover:bg-primary/[0.04] dark:hover:bg-primary/[0.08]",
-  badge: "bg-primary/10 text-primary",
-  numActive: "bg-primary/10 text-primary",
-  line: "via-primary/30",
-  tint: "bg-primary/[0.04] dark:bg-primary/[0.06]",
-  sectionBg: "bg-[oklch(0.958_0.008_85)] dark:bg-[oklch(0.165_0_0)]",
+    "border border-border bg-transparent hover:border-primary/40 hover:bg-card",
+  badge: "bg-accent-sage text-accent-copper",
+  numActive: "bg-accent-sage text-accent-copper",
+  line: "via-accent-copper/30",
+  tint: "bg-accent-sage/40",
+  sectionBg: "bg-muted",
   cover:
-    "bg-gradient-to-br from-foreground/[0.07] via-foreground/[0.03] to-transparent dark:from-white/[0.07] dark:via-white/[0.03]",
-  coverGlyph: "text-foreground/[0.08] dark:text-white/[0.07]",
+    "bg-gradient-to-br from-accent-sage via-card to-accent-rose/40",
+  coverGlyph: "text-primary/10",
 };
 
 const accents: Record<AccentColor, Accent> = {

@@ -102,7 +102,7 @@ export default function FAQ({ section }: { section: SectionType }) {
                 >
                   {/* Glow for active state */}
                   {openIndex === index && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 via-purple-500/5 to-pink-500/5 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent-copper/5 to-accent-rose/20 pointer-events-none" />
                   )}
 
                   <button

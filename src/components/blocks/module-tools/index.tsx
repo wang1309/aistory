@@ -118,8 +118,8 @@ export default async function ModuleToolsSection({
   // carved out into a separate cluster — a partial cluster row leaves ragged
   // empty cells mid-section). A tail CTA tile fills the last row's remainder.
   return (
-    <section className="relative overflow-hidden py-28 sm:py-36">
-      <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-[68px] sm:py-[100px]">
+      <div className="relative mx-auto max-w-[1210px] px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <SectionHeader
           label={label}

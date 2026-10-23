@@ -200,8 +200,8 @@ export default async function LocaleLayout({
                 {children}
                 {/* 顶部路由加载进度条:primary 品牌色,点击导航到新页面渲染前的空档给用户即时反馈 */}
                 <NextTopLoader
-                  color="#2456d6"
-                  shadow="0 0 10px rgba(36,86,214,0.5), 0 0 5px rgba(36,86,214,0.35)"
+                  color="#244d3d"
+                  shadow="0 0 10px rgba(36,77,61,0.45), 0 0 5px rgba(36,77,61,0.3)"
                   height={3}
                 />
                 <VerificationModal />

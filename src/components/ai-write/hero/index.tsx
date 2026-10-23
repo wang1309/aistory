@@ -107,29 +107,7 @@ export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
   const cubic = "transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]";
 
   return (
-    <section className="relative flex min-h-[92vh] items-center overflow-hidden py-20 lg:py-28">
-      {/* Subtle paper noise overlay */}
-      <div
-        className="pointer-events-none fixed inset-0 z-50 opacity-[0.018] dark:opacity-[0.025]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "180px 180px",
-        }}
-      />
-
-      {/* Warm radial glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_30%_20%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_70%_50%_at_30%_20%,oklch(0.17_0_0),transparent)]" />
-        <div
-          className="absolute inset-0 opacity-[0.025] dark:opacity-[0.03]"
-          style={{
-            backgroundImage: "var(--bg-grid)",
-            backgroundSize: "48px 48px",
-          }}
-        />
-      </div>
-
+    <section className="relative flex min-h-[92vh] items-center overflow-hidden py-[68px] sm:py-[100px]">
       <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-12">
           {/* Left column — editorial headline */}
@@ -149,8 +127,8 @@ export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
               }`}
               style={{ transitionDelay: "100ms" }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/80 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] font-medium text-muted-foreground backdrop-blur-sm">
-                <span className="inline-block size-1.5 rounded-full bg-primary/70" />
+              <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.19em] text-accent-copper">
+                <span className="inline-block size-1.5 rounded-full bg-accent-copper" />
                 {copy.eyebrow}
               </span>
             </div>
@@ -158,7 +136,7 @@ export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
             {/* Heading */}
             <h1
               aria-label={`${copy.heading} ${copy.highlight}`}
-              className="text-balance font-display font-bold tracking-tight text-foreground text-[clamp(2.75rem,6vw,5.5rem)] leading-[1.05]"
+              className="text-balance font-display font-normal tracking-[-0.07em] text-foreground text-[clamp(3.1rem,6.2vw,4.9rem)] leading-[0.96]"
             >
               <span className="block">
                 {mounted ? copy.heading.slice(0, typed.head) : copy.heading}
@@ -170,12 +148,7 @@ export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
                 )}
               </span>
               <span className="relative block mt-1">
-                <span
-                  className="text-gradient-brand"
-                  style={{
-                    backgroundSize: "200% 100%",
-                  }}
-                >
+                <span className="text-primary">
                   {mounted
                     ? copy.highlight.slice(0, typed.high)
                     : copy.highlight}
@@ -213,7 +186,7 @@ export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
               }`}
               style={{ transitionDelay: "200ms" }}
             >
-              <p className="text-[1.05rem] text-balance leading-relaxed text-muted-foreground/75 font-light sm:text-lg">
+              <p className="text-balance font-serif text-[18px] leading-[1.55] text-muted-foreground sm:text-[20px]">
                 {copy.description}
               </p>
             </div>
@@ -230,7 +203,7 @@ export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
               {copy.inkMarks.map((mark) => (
                 <span
                   key={mark}
-                  className="rounded-full px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground/50 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-primary/70 hover:bg-primary/[0.06]"
+                  className="rounded-[2px] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.06em] text-muted-foreground transition-colors duration-300 hover:bg-accent-sage/50 hover:text-accent-copper"
                 >
                   {mark}
                 </span>
@@ -247,10 +220,10 @@ export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
             }`}
             style={{ transitionDelay: "250ms" }}
           >
-            {/* Outer bezel */}
-            <div className="rounded-[1.75rem] border border-border/30 bg-foreground/[0.02] p-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_32px_-8px_rgba(0,0,0,0.08)] dark:bg-white/[0.03] dark:shadow-[0_1px_2px_rgba(0,0,0,0.3),0_8px_32px_-8px_rgba(0,0,0,0.5)]">
+            {/* Outer frame */}
+            <div className="rounded-[2px] border border-border bg-card p-[6px] shadow-[8px_9px_0_rgba(36,77,61,0.08)] dark:shadow-[8px_9px_0_rgba(0,0,0,0.45)]">
               {/* Inner core */}
-              <div className="overflow-hidden rounded-[1.25rem] bg-card">
+              <div className="overflow-hidden rounded-[1px] bg-card">
                 {/* Title bar */}
                 <div className="flex items-center gap-2 border-b border-border/20 px-5 py-3">
                   <div className="flex gap-1.5">
@@ -271,7 +244,7 @@ export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
                   onKeyDown={handleKeyDown}
                   placeholder={copy.inputPlaceholder}
                   rows={6}
-                  className="w-full resize-none bg-transparent px-5 pt-4 pb-2 text-[0.95rem] leading-[1.75] tracking-wide text-foreground/90 outline-none placeholder:text-muted-foreground/30 placeholder:font-light"
+                  className="w-full resize-none bg-transparent px-5 pb-2 pt-4 font-serif text-[16px] leading-[1.7] tracking-normal text-foreground/90 outline-none placeholder:font-light placeholder:text-muted-foreground/50"
                 />
 
                 {/* Action bar */}
@@ -284,7 +257,7 @@ export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
                   <Button
                     onClick={handleStart}
                     disabled={sending}
-                    className="group h-9 rounded-full bg-foreground px-4 text-[13px] font-medium text-background hover:bg-foreground/85 active:scale-[0.97] dark:bg-white dark:text-[oklch(0.15_0_0)] dark:hover:bg-white/90"
+                    className="group h-9 rounded-[2px] bg-primary px-4 text-[12px] font-semibold text-primary-foreground shadow-[3px_3px_0_rgba(36,77,61,0.16)] hover:bg-primary/90 active:scale-[0.98]"
                     style={{
                       transition:
                         "all 400ms cubic-bezier(0.32,0.72,0,1)",
@@ -295,7 +268,7 @@ export default function AiWriteHero({ hero }: { hero: AiWriteHeroCopy }) {
                     ) : (
                       <span className="flex items-center gap-2">
                         {copy.inputButton}
-                        <span className="inline-flex size-5.5 items-center justify-center rounded-full bg-background/15 dark:bg-black/10 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px]">
+                        <span className="inline-flex size-5.5 items-center justify-center rounded-full bg-primary-foreground/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px]">
                           <Icon name="RiArrowRightLine" className="size-3 opacity-70" />
                         </span>
                       </span>

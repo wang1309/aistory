@@ -67,28 +67,22 @@ export default function GenerationProgress({
             className="w-full max-w-2xl mx-auto"
         >
             {/* Progress Container */}
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-primary/[0.08] via-primary/[0.04] to-transparent dark:from-primary/10 dark:via-primary/[0.05] dark:to-transparent border border-primary backdrop-blur-xl overflow-hidden">
-                {/* Animated Background Blobs */}
-                <div className="absolute top-0 left-0 w-32 h-32 bg-primary rounded-full blur-3xl animate-blob" />
-                <div className="absolute bottom-0 right-0 w-40 h-40 bg-primary rounded-full blur-3xl animate-blob animation-delay-2000" />
+            <div className="relative overflow-hidden rounded-[2px] border border-border bg-card p-8 shadow-[6px_7px_0_rgba(36,77,61,0.08)] backdrop-blur-xl dark:shadow-[6px_7px_0_rgba(0,0,0,0.45)]">
 
                 <div className="relative z-10 space-y-6">
                     {/* Header with Icon */}
                     <div className="flex items-center justify-center gap-3">
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-primary rounded-full blur-md animate-pulse" />
-                            <div className="relative size-10 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
-                                <Icon name="sparkles" className="size-5 text-white animate-pulse" />
-                            </div>
+                        <div className="relative size-10 rounded-full bg-accent-sage flex items-center justify-center">
+                            <Icon name="sparkles" className="size-5 text-accent-copper animate-pulse" />
                         </div>
-                        <h3 className="text-xl font-bold text-foreground">
+                        <h3 className="font-display text-[22px] font-normal tracking-[-0.02em] text-foreground">
                             Creating Your Story...
                         </h3>
                     </div>
 
                     {/* Progress Bar */}
                     <div className="space-y-3">
-                        <div className="relative h-3 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+                        <div className="relative h-3 overflow-hidden rounded-full bg-accent-sage">
                             {/* Background shimmer */}
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
 

@@ -58,7 +58,7 @@ function getRelativeDate(dateStr: string | Date | null | undefined) {
 }
 
 const TAG_TONES = [
-  "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 ring-indigo-500/15",
+  "bg-accent-sage text-primary dark:text-primary ring-primary/20",
   "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 ring-emerald-500/15",
   "bg-amber-500/10 text-amber-600 dark:text-amber-300 ring-amber-500/15",
   "bg-rose-500/10 text-rose-600 dark:text-rose-300 ring-rose-500/15",
@@ -96,15 +96,15 @@ export default function StoryCard({
         visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       )}
     >
-      <div className="group relative h-full rounded-2xl border border-border/40 bg-black/[0.02] p-1.5 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-border/60 dark:bg-white/[0.02]">
-        <div className="relative flex h-full flex-col rounded-[1.125rem] border border-border/30 bg-card p-5 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-border/60 group-hover:shadow-[0_12px_40px_-16px_rgba(0,0,0,0.10)] md:p-6">
+      <div className="group relative h-full rounded-[2px] border border-border bg-transparent p-[6px] transition-all duration-300 hover:border-primary/30 dark:bg-white/[0.01]">
+        <div className="relative flex h-full flex-col rounded-[1px] border border-border bg-card p-5 shadow-[4px_4px_0_rgba(36,77,61,0.05)] transition-all duration-300 group-hover:border-primary/25 group-hover:shadow-[6px_6px_0_rgba(36,77,61,0.07)] md:p-6 dark:shadow-[4px_4px_0_rgba(0,0,0,0.45)]">
           <Link
             href={`/story/${story.uuid}` as any}
             className="flex flex-1 flex-col gap-4"
           >
             {/* Header: title + relative date */}
             <div className="flex items-start justify-between gap-3">
-              <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug tracking-tight transition-colors duration-300 group-hover:text-primary">
+              <h3 className="line-clamp-2 font-display text-[18px] font-normal leading-snug tracking-[-0.02em] transition-colors duration-300 group-hover:text-primary">
                 {title}
               </h3>
               {relativeDate && (
@@ -116,7 +116,7 @@ export default function StoryCard({
             </div>
 
             {/* Excerpt */}
-            <p className="line-clamp-3 text-xs leading-relaxed text-muted-foreground/70">
+            <p className="line-clamp-3 text-[12.5px] leading-relaxed text-muted-foreground">
               {excerpt}
               {excerpt.length >= 140 ? "…" : ""}
             </p>
@@ -147,7 +147,7 @@ export default function StoryCard({
           )}
 
           {/* Footer */}
-          <div className="mt-5 flex items-center justify-between gap-3 border-t border-border/30 pt-4">
+          <div className="mt-5 flex items-center justify-between gap-3 border-t border-border pt-4">
             <div className="flex items-center gap-3 text-[10px] font-medium text-muted-foreground/50">
               {wordCount > 0 && (
                 <span className="inline-flex items-center gap-1">

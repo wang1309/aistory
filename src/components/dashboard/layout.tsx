@@ -13,6 +13,7 @@ export default function DashboardLayout({
 }) {
   return (
     <SidebarProvider
+      className="dense-ui"
       style={
         {
           "--sidebar-width": "calc(var(--spacing) * 60)",

@@ -46,8 +46,8 @@ export default function Footer({ footer }: { footer: FooterType }) {
     }));
 
   return (
-    <section id={footer.name} className="border-t border-border bg-[oklch(0.955_0.009_85)] dark:bg-[oklch(0.165_0_0)]">
-      <div className="max-w-7xl mx-auto px-8 py-16">
+    <section id={footer.name} className="border-t border-border/80 bg-footer">
+      <div className="mx-auto max-w-7xl px-8 py-16">
         <footer>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,20rem)_1fr]">
             {/* Brand column */}
@@ -66,7 +66,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
                       />
                     )}
                     {footer.brand.title && (
-                      <p className="min-w-0 text-2xl font-display font-bold tracking-tight text-foreground [overflow-wrap:anywhere]">
+                      <p className="min-w-0 font-display text-[1.4rem] tracking-[-0.03em] text-foreground [overflow-wrap:anywhere]">
                         {footer.brand.title}
                       </p>
                     )}
@@ -86,7 +86,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
                         href={item.url || ""}
                         target={item.target}
                         aria-label={item.title || item.icon}
-                        className="inline-flex size-9 items-center justify-center rounded-full border border-border bg-background transition-colors hover:border-foreground/25"
+                        className="inline-flex size-9 items-center justify-center rounded-full border border-border bg-card transition-colors hover:border-accent-copper/60 hover:text-accent-copper"
                       >
                         {item.icon && (
                           <Icon name={item.icon} className="size-4" />
@@ -216,7 +216,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
             </div>
           )}
 
-          <div className="mt-10 flex flex-col justify-between gap-4 border-t border-border pt-8 text-center text-sm text-muted-foreground lg:flex-row lg:items-center lg:text-left">
+          <div className="mt-10 flex flex-col justify-between gap-4 border-t border-border pt-8 text-center text-[11px] uppercase tracking-[0.06em] text-muted-foreground lg:flex-row lg:items-center lg:text-left">
             {footer.copyright && (
               <p>{footer.copyright}</p>
             )}

@@ -49,7 +49,7 @@ export const FAQSimple01 = ({ section }: FAQSimple01Props) => {
                 <div className="absolute inset-0 bg-background" />
                 
                 {/* Mesh Gradient Blobs */}
-                <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-purple-500/10 blur-[120px] animate-blob mix-blend-screen" />
+                <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-accent-copper/10 blur-[120px] animate-blob mix-blend-screen" />
                 <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-teal-500/10 blur-[100px] animate-blob animation-delay-2000 mix-blend-screen" />
                 <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-pink-500/5 blur-[120px] animate-pulse-slow mix-blend-screen" />
 
@@ -71,7 +71,7 @@ export const FAQSimple01 = ({ section }: FAQSimple01Props) => {
                             <span className="relative inline-flex overflow-hidden rounded-full p-[1px]">
                                 <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
                                 <span className="inline-flex h-full w-full cursor-default items-center justify-center rounded-full bg-slate-950/90 px-5 py-2 text-sm font-medium text-white backdrop-blur-3xl">
-                                    <Sparkles className="w-4 h-4 mr-2 text-purple-400" />
+                                    <Sparkles className="w-4 h-4 mr-2 text-accent-copper" />
                                     FAQ
                                 </span>
                             </span>
@@ -98,9 +98,9 @@ export const FAQSimple01 = ({ section }: FAQSimple01Props) => {
                                     variants={itemVariants}
                                     className="w-full group"
                                 >
-                                    <div className="h-full relative overflow-hidden rounded-3xl glass-premium p-8 hover:-translate-y-1 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/10">
+                                    <div className="h-full relative overflow-hidden rounded-3xl glass-premium p-8 hover:-translate-y-1 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10">
                                         {/* Hover Gradient Glow */}
-                                        <div className="absolute -inset-px bg-gradient-to-br from-teal-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                                        <div className="absolute -inset-px bg-gradient-to-br from-primary/10 via-accent-copper/10 to-accent-rose/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
                                         
                                         <div className="relative z-10 flex flex-col items-center text-center h-full">
                                             {/* Icon Orb */}
@@ -161,7 +161,7 @@ export const FAQSimple01 = ({ section }: FAQSimple01Props) => {
                             <Button 
                                 size="lg" 
                                 asChild
-                                className="rounded-full h-12 px-8 bg-gradient-to-r from-teal-600 to-purple-600 hover:from-teal-500 hover:to-purple-500 text-white border-0 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300 hover:-translate-y-0.5"
+                                className="h-12 rounded-[3px] bg-primary px-8 text-white shadow-[4px_4px_0_rgba(36,77,61,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90"
                             >
                                 <a href="mailto:contact@storiesgenerator.org">
                                     {section.cta.button}

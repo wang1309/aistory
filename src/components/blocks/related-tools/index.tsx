@@ -98,20 +98,20 @@ export default async function RelatedTools({
   }));
 
   return (
-    <section className="relative py-20 sm:py-24" data-nosnippet>
+    <section className="relative py-[68px] sm:py-[100px]" data-nosnippet>
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
           {eyebrow && (
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/25 bg-background/80 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="inline-block size-1.5 rounded-full bg-primary opacity-60" />
+            <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.19em] text-accent-copper">
+              <span className="inline-block size-1.5 rounded-full bg-accent-copper opacity-70" />
               {eyebrow}
             </span>
           )}
-          <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          <h2 className="mt-4 font-display text-[clamp(1.9rem,3.5vw,2.6rem)] font-normal tracking-[-0.04em] text-foreground">
             {title}
           </h2>
           {description && (
-            <p className="mx-auto mt-3 max-w-md text-center font-light text-sm leading-relaxed text-muted-foreground/65 sm:text-base">
+            <p className="mx-auto mt-3 max-w-md text-center font-serif text-[16px] leading-relaxed text-muted-foreground sm:text-[17px]">
               {description}
             </p>
           )}
@@ -129,13 +129,12 @@ export default async function RelatedTools({
             <Link
               href={moreHref}
               className={cn(
-                "group inline-flex items-center gap-2.5 rounded-full",
-                "border border-border/20 bg-background/80 px-5 py-2.5",
-                "text-sm font-medium text-foreground",
-                "transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
-                "hover:border-border/40 hover:bg-foreground/[0.02]",
-                "active:scale-[0.98]",
-                "dark:hover:bg-white/[0.02]"
+                "group inline-flex items-center gap-2.5 rounded-[2px]",
+                "border border-border bg-card px-5 py-2.5",
+                "text-[13px] font-semibold text-foreground",
+                "transition-all duration-300",
+                "hover:border-primary/40 hover:bg-accent-sage/50",
+                "active:scale-[0.98]"
               )}
             >
               {moreLabel}

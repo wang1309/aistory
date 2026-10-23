@@ -44,7 +44,7 @@ export default function FanficFeature1({ section }: { section: FanficFeature1Typ
         <div className="absolute inset-0 bg-background" />
         
         {/* Mesh Gradient Blobs */}
-        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-purple-500/15 blur-[120px] animate-blob mix-blend-screen" />
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px] animate-blob mix-blend-screen" />
         <div className="absolute top-[30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-teal-500/15 blur-[100px] animate-blob animation-delay-2000 mix-blend-screen" />
         <div className="absolute bottom-[-10%] left-[20%] w-[700px] h-[700px] rounded-full bg-pink-500/10 blur-[120px] animate-blob animation-delay-4000 mix-blend-screen" />
         
@@ -108,7 +108,7 @@ export default function FanficFeature1({ section }: { section: FanficFeature1Typ
                   <div className="relative h-full overflow-hidden rounded-3xl glass-premium p-8 hover:-translate-y-2 transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:hover:shadow-[0_8px_30px_rgb(255,255,255,0.05)]">
                     
                     {/* Hover Gradient Glow */}
-                    <div className="absolute -inset-px bg-gradient-to-br from-teal-500/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                    <div className="absolute -inset-px bg-gradient-to-br from-primary/15 via-accent-copper/10 to-accent-rose/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
                     
                     <div className="relative z-10 flex flex-col h-full">
                       {/* Icon Orb */}
@@ -157,7 +157,7 @@ export default function FanficFeature1({ section }: { section: FanficFeature1Typ
             >
               {/* Background Glows */}
               <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] mix-blend-screen" />
-              <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px] mix-blend-screen" />
+              <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-copper/10 rounded-full blur-[100px] mix-blend-screen" />
               
               <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 p-12">
                 {statistics.map((stat, index) => (

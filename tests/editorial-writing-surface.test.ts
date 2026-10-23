@@ -33,13 +33,14 @@ test("story generator keeps its compact model control on a neutral canvas", () =
   assert.doesNotMatch(generatorSource, /oklch\(0\.9\d_[\d.]+_(45|55|65|75|80)\)/);
 });
 
-test("neutral theme uses an ink canvas, cool primary, and tight radius", () => {
+test("editorial theme uses a paper canvas, forest primary, and 2px radius", () => {
   const themeSource = readFileSync("src/app/theme.css", "utf8");
 
-  assert.match(themeSource, /--primary: oklch\(0\.54 0\.2 262\)/);
-  assert.match(themeSource, /--background: oklch\(0\.975 0\.008 85\)/);
-  assert.match(themeSource, /--card: oklch\(1 0 0\)/);
-  assert.match(themeSource, /--radius: 0\.75rem/);
-  assert.match(themeSource, /hsl\(226 25% 12%/);
-  assert.match(themeSource, /var\(--font-inter\)/);
+  assert.match(themeSource, /--primary: #244d3d/);
+  assert.match(themeSource, /--background: #f3eee5/);
+  assert.match(themeSource, /--card: #fbf8f1/);
+  assert.match(themeSource, /--muted: #e8eee8/);
+  assert.match(themeSource, /--radius: 0\.125rem/);
+  assert.match(themeSource, /--accent-copper: #8a5227/);
+  assert.match(themeSource, /var\(--font-inter/);
 });

@@ -152,17 +152,18 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
     pricing.items?.filter((item) => !item.group || item.group === group) || [];
 
   return (
-    <section id={pricing.name} className="relative py-24 md:py-32 lg:py-40">
+    <section id={pricing.name} className="relative py-[68px] sm:py-[100px]">
       <div className="container max-w-6xl">
         {/* Header */}
-        <div className="mx-auto mb-16 max-w-2xl text-center md:mb-20">
-          <div className="mb-6 inline-flex items-center rounded-full border border-border/60 bg-card px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+        <div className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
+          <div className="mb-5 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.19em] text-accent-copper">
+            <span className="inline-block size-1.5 rounded-full bg-accent-copper" />
             {pricing.label}
           </div>
-          <h2 className="mb-5 font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+          <h2 className="mb-4 font-display text-[clamp(2.35rem,5vw,3.75rem)] font-normal leading-[0.98] tracking-[-0.06em]">
             {pricing.title}
           </h2>
-          <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="font-serif text-[17px] leading-relaxed text-muted-foreground md:text-[18px]">
             {pricing.description}
           </p>
         </div>
@@ -222,24 +223,24 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
               <div
                 key={index}
                 className={cn(
-                  "group/card relative rounded-3xl p-2 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]",
+                  "group/card relative rounded-[2px] p-2 transition-all duration-300",
                   isFeatured
-                    ? "md:-mt-4 md:mb-4 md:scale-[1.03]"
+                    ? "md:-mt-4 md:mb-4"
                     : "hover:-translate-y-1"
                 )}
               >
-                {/* Outer glow for featured */}
+                {/* Feature backdrop */}
                 {isFeatured && (
-                  <div className="absolute -inset-px rounded-3xl bg-gradient-to-b from-primary/20 via-primary/5 to-transparent opacity-60" />
+                  <div className="absolute -inset-px rounded-[2px] bg-accent-sage" />
                 )}
 
                 {/* Card body */}
                 <div
                   className={cn(
-                    "relative h-full rounded-[1.25rem] p-6 md:p-8",
+                    "relative h-full rounded-[2px] p-6 md:p-8",
                     isFeatured
-                      ? "bg-gradient-to-b from-primary/[0.07] to-card border border-primary/20 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.08)]"
-                      : "bg-card border border-border/60 shadow-[0_2px_20px_-8px_rgba(0,0,0,0.05)]"
+                      ? "border border-primary/30 bg-card shadow-[8px_9px_0_rgba(36,77,61,0.10)]"
+                      : "border border-border bg-card shadow-[5px_6px_0_rgba(36,77,61,0.06)]"
                   )}
                 >
                   <div className="flex h-full flex-col justify-between gap-8">
@@ -247,7 +248,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
                     <div>
                       {/* Title row */}
                       <div className="mb-6 flex items-center gap-3">
-                        <h3 className="text-lg font-bold tracking-tight">
+                        <h3 className="font-display text-[22px] font-normal tracking-[-0.02em]">
                           {item.title}
                         </h3>
                         {item.label && (
@@ -265,7 +266,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
                           </span>
                         )}
                         {item.price && (
-                          <span className="text-5xl font-extrabold tracking-tight md:text-[3.5rem]">
+                          <span className="font-display text-5xl font-normal tracking-[-0.04em] md:text-[3.5rem]">
                             {item.price}
                           </span>
                         )}
@@ -346,10 +347,10 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
                       {item.button && (
                         <Button
                           className={cn(
-                            "group relative h-12 w-full overflow-hidden rounded-xl text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+                            "group relative h-12 w-full overflow-hidden rounded-[2px] text-sm font-semibold transition-all duration-300",
                             isFeatured
-                              ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:brightness-110 active:scale-[0.98]"
-                              : "bg-secondary text-secondary-foreground hover:bg-secondary/90 active:scale-[0.98]"
+                              ? "bg-primary text-primary-foreground shadow-[4px_4px_0_rgba(36,77,61,0.14)] hover:-translate-y-px hover:shadow-[6px_6px_0_rgba(36,77,61,0.14)]"
+                              : "border border-border bg-transparent text-foreground hover:border-primary/40 hover:bg-accent-sage/50"
                           )}
                           disabled={isLoading}
                           onClick={() => {
@@ -386,10 +387,10 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
         {/* FAQ Section */}
         {pricing.faq && pricing.faq.length > 0 && (
           <div className="mx-auto mt-20 max-w-3xl md:mt-24">
-            <h3 className="mb-10 text-center font-display text-2xl font-bold tracking-tight md:text-3xl">
+            <h3 className="mb-8 text-center font-display text-[clamp(1.75rem,3vw,2.25rem)] font-normal tracking-[-0.03em]">
               Frequently Asked Questions
             </h3>
-            <div className="flex flex-col gap-3">
+            <div className="border-t border-border">
               {pricing.faq.map((item, i) => (
                 <FAQItem key={i} question={item.question} answer={item.answer} />
               ))}
@@ -405,36 +406,29 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div
-      className={cn(
-        "rounded-2xl border transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
-        open
-          ? "border-primary/20 bg-primary/[0.03] shadow-[0_4px_24px_-8px_rgba(0,0,0,0.06)]"
-          : "border-border/50 bg-card hover:border-border/80"
-      )}
-    >
+    <div className="border-b border-border">
       <button
-        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+        className="flex w-full items-center justify-between gap-4 py-5 text-left"
         onClick={() => setOpen(!open)}
       >
-        <span className="text-sm font-semibold tracking-tight md:text-base">
+        <span className="flex-1 font-display text-[16px] font-normal tracking-[-0.01em] md:text-[18px]">
           {question}
         </span>
         <ChevronDown
           className={cn(
-            "size-4 shrink-0 text-muted-foreground transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
-            open && "rotate-180 text-primary"
+            "size-4 shrink-0 text-muted-foreground transition-transform duration-300",
+            open && "rotate-180 text-accent-copper"
           )}
         />
       </button>
       <div
         className={cn(
-          "grid transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+          "grid transition-all duration-300",
           open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         )}
       >
         <div className="overflow-hidden">
-          <p className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">
+          <p className="pb-5 pr-8 text-[13.5px] leading-relaxed text-muted-foreground">
             {answer}
           </p>
         </div>

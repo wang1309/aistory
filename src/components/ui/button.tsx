@@ -10,25 +10,25 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 hover:-translate-x-px hover:-translate-y-px hover:shadow-sm active:translate-x-0 active:translate-y-0",
         destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+          "bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
         outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+          "border border-border bg-transparent shadow-xs hover:border-primary/50 hover:bg-card hover:text-accent-foreground dark:border-input dark:hover:bg-input/40",
         secondary:
           "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
-        pill: "rounded-full bg-foreground text-background hover:bg-foreground/85 dark:bg-white dark:text-[oklch(0.15_0_0)] dark:hover:bg-white/90 active:scale-[0.97] shadow-sm shadow-foreground/10",
+        pill: "rounded-[3px] bg-primary text-primary-foreground hover:bg-primary/90 shadow-[4px_4px_0_rgba(36,77,61,0.16)] hover:-translate-x-px hover:-translate-y-px hover:shadow-[6px_6px_0_rgba(36,77,61,0.16)] active:translate-x-0 active:translate-y-0 dark:shadow-[4px_4px_0_rgba(0,0,0,0.45)]",
         pillOutline:
-          "rounded-full border border-border bg-background hover:border-foreground/25 hover:bg-background active:scale-[0.97]",
+          "rounded-[3px] border border-border bg-transparent hover:border-primary/60 hover:bg-card active:scale-[0.98]",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        pill: "h-12 sm:h-14 rounded-full px-7 text-sm font-semibold",
+        sm: "h-8 rounded-[2px] gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-10 rounded-[2px] px-6 has-[>svg]:px-4",
+        pill: "h-12 sm:h-14 rounded-[3px] px-7 text-[13px] font-semibold tracking-[0.02em]",
         icon: "size-9",
       },
     },

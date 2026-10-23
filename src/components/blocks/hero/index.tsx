@@ -4,7 +4,6 @@ import { memo, useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import HappyUsers from "./happy-users";
-import { getHeroCtaAnimationStyle } from "./animation-style";
 
 import { Hero as HeroType } from "@/types/blocks/hero";
 import Icon from "@/components/icon";
@@ -26,11 +25,11 @@ const COLUMN_B = [
 function StoryCard({ src, index }: { src: string; index: number }) {
   return (
     <div
-      className={`shrink-0 rounded-xl border border-border bg-card p-1.5 shadow-lg ${
-        index % 2 === 0 ? "rotate-[0.75deg]" : "-rotate-[0.75deg]"
+      className={`shrink-0 rounded-[2px] border border-border bg-card p-[6px] shadow-[6px_8px_0_rgba(36,77,61,0.10)] dark:shadow-[6px_8px_0_rgba(0,0,0,0.45)] ${
+        index % 3 === 0 ? "-rotate-[3deg]" : index % 3 === 1 ? "rotate-[2.5deg]" : "-rotate-[1.5deg]"
       }`}
     >
-      <div className="relative overflow-hidden rounded-[calc(0.75rem-0.375rem)]">
+      <div className="relative overflow-hidden rounded-[1px]">
         <Image
           src={src}
           alt={`story-${index}`}
@@ -85,9 +84,9 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
   if (hero.disabled) return null;
 
   return (
-    <section className="min-h-[85vh] flex items-center justify-center py-24 lg:py-32 overflow-hidden">
-      <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden pb-[62px] pt-[84px] lg:pb-[62px] lg:pt-[105px]">
+      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-[72px]">
 
           {/* ───── LEFT COLUMN — Text Content ───── */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -136,15 +135,15 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
             {/* Title */}
             <div className={`max-w-xl ${enter(200)}`} style={{ transitionDelay: isMounted ? "200ms" : "0ms" }}>
               {texts && texts.length > 1 ? (
-                <h1 className="text-balance font-display font-bold tracking-tight text-foreground text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.1]">
+                <h1 className="text-balance font-display font-normal tracking-[-0.075em] text-foreground text-[clamp(2.5rem,5.4vw,4.25rem)] leading-[0.96]">
                   {texts[0]}
-                  <span className="text-gradient-brand">
+                  <span className="text-primary">
                     {highlightText}
                   </span>
                   {texts[1]}
                 </h1>
               ) : (
-                <h1 className="text-balance font-display font-bold tracking-tight text-foreground text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.1]">
+                <h1 className="text-balance font-display font-normal tracking-[-0.075em] text-foreground text-[clamp(2.5rem,5.4vw,4.25rem)] leading-[0.96]">
                   {hero.title}
                 </h1>
               )}
@@ -156,7 +155,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
               style={{ transitionDelay: isMounted ? "400ms" : "0ms" }}
             >
               <p
-                className="text-base sm:text-lg text-muted-foreground leading-relaxed text-balance"
+                className="max-w-[510px] font-serif text-[18px] leading-[1.5] text-muted-foreground text-balance sm:text-[21px]"
                 dangerouslySetInnerHTML={descriptionHtml}
               />
             </div>
@@ -164,7 +163,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
             {/* Buttons */}
             {hero.buttons && (
               <div
-                className={`mt-10 flex flex-col sm:flex-row gap-3 items-center justify-center lg:justify-start ${enter(550)}`}
+                className={`mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start ${enter(550)}`}
                 style={{ transitionDelay: isMounted ? "550ms" : "0ms" }}
               >
                 {hero.buttons.map((item, i) => {
@@ -181,12 +180,11 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                           variant="pill"
                           size="pill"
                           className="w-full sm:w-auto"
-                          style={getHeroCtaAnimationStyle(isMounted)}
                         >
                           <span className="flex items-center gap-2.5">
                             {item.icon && <Icon name={item.icon} className="size-4 shrink-0 opacity-70" />}
                             <span>{item.title}</span>
-                            <span className="inline-flex size-5 items-center justify-center rounded-full bg-background/15 dark:bg-black/10 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
+                            <span className="inline-flex size-5 items-center justify-center rounded-full bg-primary-foreground/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
                               <svg viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" d="M6 3l5 5-5 5" />
                               </svg>
@@ -217,10 +215,7 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
                     window.dispatchEvent(event);
                     document.getElementById("craft_story")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="group w-full sm:w-auto h-12 sm:h-14 rounded-full px-7 text-sm font-semibold
-                    bg-foreground/5 text-foreground hover:bg-foreground/10 active:scale-[0.97]
-                    dark:bg-white/[0.06] dark:hover:bg-white/[0.12]
-                    transition-all duration-300 ease-out"
+                  className="group h-12 w-full rounded-[3px] border border-border bg-transparent px-7 text-[13px] font-semibold text-foreground transition-all duration-300 ease-out hover:border-primary/60 hover:bg-card active:scale-[0.98] sm:h-14 sm:w-auto"
                 >
                   <span className="flex items-center justify-center gap-2.5">
                     <svg viewBox="0 0 24 24" className="size-4 opacity-50" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -258,8 +253,12 @@ const Hero = memo(function Hero({ hero }: { hero: HeroType }) {
 
           {/* ───── RIGHT COLUMN — Dual-Column Story Drift ───── */}
           <div className="relative hidden lg:flex items-center justify-center overflow-hidden min-h-[580px]">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-[23px] inset-y-[6px] -rotate-[3deg] rounded-[2px] bg-accent-sage dark:bg-[#1d2a22]"
+            />
             {showDesktopCascade && (
-              <div className="hero-drift-mask relative flex h-[580px] w-full justify-center gap-5">
+              <div className="hero-drift-mask relative flex h-[580px] w-full justify-center gap-6">
                 <div className="animate-hero-drift-up flex flex-col gap-5">
                   {[...COLUMN_A, ...COLUMN_A].map((src, i) => (
                     <StoryCard key={`${src}-${i}`} src={src} index={i} />

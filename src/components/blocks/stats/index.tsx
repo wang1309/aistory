@@ -5,10 +5,10 @@ export default function Stats({ section }: { section: SectionType }) {
   if (section.disabled) return null;
 
   return (
-    <section id={section.name} className="relative py-28 sm:py-36">
+    <section id={section.name} className="relative py-[68px] sm:py-[100px]">
       <div className="container flex flex-col items-center gap-4">
         {section.label && (
-          <div className="flex items-center gap-2 text-sm font-medium tracking-wide text-primary">
+          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.19em] text-accent-copper">
             {section.icon && <Icon name={section.icon} className="h-4 w-auto opacity-60" />}
             {section.label}
           </div>

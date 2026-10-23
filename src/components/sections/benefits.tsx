@@ -13,17 +13,8 @@ export default function Benefits({ section, accent = "orange" }: Props) {
   if (section.disabled || !section.items?.length) return null;
 
   return (
-    <section className="relative overflow-hidden py-28 sm:py-36">
-      {/* Ambient background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div
-          className="absolute -right-[10%] top-[20%] h-[350px] w-[350px] rounded-full opacity-[0.07] dark:opacity-[0.04]"
-          style={{ background: "radial-gradient(circle, oklch(0.95 0 0) 0%, transparent 70%)" }}
-        />
-      </div>
-
-      <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-[68px] sm:py-[100px]">
+      <div className="relative mx-auto max-w-[1210px] px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <SectionHeader
@@ -34,31 +25,32 @@ export default function Benefits({ section, accent = "orange" }: Props) {
           highlight="Story Generator"
         />
 
-        {/* Ledger checklist — equal-weight steps, sequence carried by the index */}
-        <ol className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:gap-x-16">
+        {/* Numbered editorial cards */}
+        <ol className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {section.items.map((item, i) => (
-            <li key={i} className="border-t border-border/25 pt-7">
+            <li
+              key={i}
+              className="group flex h-full flex-col border border-border bg-card p-[22px] shadow-[5px_6px_0_rgba(36,77,61,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[7px_9px_0_rgba(36,77,61,0.08)] dark:shadow-[5px_6px_0_rgba(0,0,0,0.45)]"
+            >
               <div className="flex items-center justify-between gap-4">
                 <span
                   aria-hidden="true"
-                  className={`text-sm font-bold tabular-nums tracking-[0.12em] ${a.text} opacity-70`}
+                  className={`font-display text-[13px] tracking-[0.12em] ${a.text}`}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {item.icon && (
-                  <div className="shrink-0 rounded-xl border border-border/15 bg-foreground/[0.02] p-1">
-                    <div className={`flex size-8 items-center justify-center rounded-lg ${a.iconBg}`}>
-                      <Icon name={item.icon} className={`size-4 ${a.text}`} />
-                    </div>
+                  <div className={`flex size-9 items-center justify-center rounded-full ${a.iconBg}`}>
+                    <Icon name={item.icon} className={`size-4 ${a.text}`} />
                   </div>
                 )}
               </div>
 
-              <h3 className="mt-3 text-[0.95rem] font-bold tracking-tight text-foreground leading-snug">
+              <h3 className="mt-5 font-display text-[21px] font-normal leading-[1.2] tracking-[-0.02em] text-foreground">
                 {item.title}
               </h3>
               {item.description && (
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground/60">
+                <p className="mt-2.5 text-[13.5px] leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
               )}

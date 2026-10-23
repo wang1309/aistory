@@ -46,6 +46,7 @@ export function RandomToolsGrid({
     <AnimatedToolsGrid
       tools={picked}
       accent={accent}
+      variant="compact"
       className={className}
     />
   );

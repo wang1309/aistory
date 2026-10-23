@@ -138,7 +138,7 @@ export default function CreationActivity({ data }: CreationActivityProps) {
                     title={title}
                   >
                     <div
-                      className="w-1/2 rounded-sm bg-indigo-400/80 dark:bg-indigo-500"
+                      className="w-1/2 rounded-sm bg-primary/70 dark:bg-primary/80"
                       style={{ height: `${heightPx}px` }}
                     />
                     {showLabel && (

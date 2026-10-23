@@ -191,6 +191,7 @@ export default async function AiWriteLandingPage({
         accent="orange"
         locale={locale}
         layout="grouped"
+        variant="compact"
       />
 
       {cta_section && <CTA section={cta_section} accent="orange" />}

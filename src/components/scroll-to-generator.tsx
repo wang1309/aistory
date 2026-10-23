@@ -106,7 +106,7 @@ export default function ScrollToGenerator({
     >
       <Button
         size="icon"
-        className="h-12 w-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-background/80 backdrop-blur-md border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 hover:scale-110 group"
+        className="group h-12 w-12 rounded-[3px] border border-border bg-card/90 text-primary shadow-[4px_4px_0_rgba(36,77,61,0.12)] backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-accent-sage hover:shadow-[6px_6px_0_rgba(36,77,61,0.14)] dark:shadow-[4px_4px_0_rgba(0,0,0,0.45)]"
         aria-label="Scroll to generator"
         onClick={scrollToTarget}
       >

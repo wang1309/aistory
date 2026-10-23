@@ -4,6 +4,7 @@ import { Section as SectionType } from "@/types/blocks/section";
 import { getAccent, type AccentColor } from "./accent";
 import SectionHeader from "./section-header";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface Props {
   section: SectionType;
@@ -17,18 +18,9 @@ export default function FAQ({ section, accent = "orange" }: Props) {
   if (section.disabled || !section.items?.length) return null;
 
   return (
-    <section className="relative overflow-hidden py-28 sm:py-36">
-      {/* Ambient background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.97_0_0),transparent)] dark:bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,oklch(0.17_0_0),transparent)]" />
-        <div
-          className="absolute -left-[6%] bottom-[8%] h-[350px] w-[350px] rounded-full opacity-[0.07] dark:opacity-[0.04]"
-          style={{ background: "radial-gradient(circle, oklch(0.95 0 0) 0%, transparent 70%)" }}
-        />
-      </div>
-
-      <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-16 lg:grid-cols-[1fr_1.5fr]">
+    <section className="relative overflow-hidden border-y border-border/60 bg-muted py-[68px] sm:py-[100px]">
+      <div className="relative mx-auto max-w-[1210px] px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
 
           {/* Left column — sticky heading */}
           <div className="lg:sticky lg:top-32 lg:self-start">
@@ -38,56 +30,29 @@ export default function FAQ({ section, accent = "orange" }: Props) {
               description={section.description}
               accent={accent}
               highlight="AI Story Generator"
-              descriptionClassName="max-w-md text-base font-light"
+              descriptionClassName="max-w-md font-light"
             />
           </div>
 
-          {/* Right column — accordion */}
-          <div className="space-y-4">
+          {/* Right column — flat editorial accordion */}
+          <div className="border-t border-border">
             {section.items.map((item, i) => {
               const isOpen = openIndex === i;
               return (
-                <div
-                  key={i}
-                  className={`group relative rounded-[1.25rem] border transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                    isOpen
-                      ? "border-border/40 bg-card shadow-[0_2px_20px_-6px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_20px_-6px_rgba(0,0,0,0.3)]"
-                      : "border-border/15 bg-card/60 hover:border-border/25"
-                  }`}
-                >
-                  {/* Left accent bar — only when open */}
-                  <div
-                    className={`absolute left-0 top-3 bottom-3 w-px transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                      isOpen ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={{ background: "linear-gradient(to bottom, transparent, oklch(0.72 0.16 55 / 0.4), transparent)" }}
-                  />
-
+                <div key={i} className="border-b border-border">
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     aria-expanded={isOpen}
-                    className="flex w-full min-h-[44px] items-center gap-3 px-4 py-4 text-left sm:gap-4 sm:px-6 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
+                    className="flex w-full min-h-[44px] items-center gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
                   >
-                    {/* Double-bezel number badge */}
-                    <div className={`shrink-0 rounded-lg border p-0.5 transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? "border-primary/20" : "border-border/15 bg-foreground/[0.02]"}`}>
-                      <span className={`flex size-6 items-center justify-center rounded-md text-[10px] font-semibold tabular-nums transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? a.iconBg + " " + a.text : "bg-foreground/[0.04] text-muted-foreground/50"}`}>
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-
-                    <span className="flex-1 text-[0.95rem] font-semibold text-foreground">{item.title}</span>
-
-                    {/* Chevron in circular container */}
-                    <span className={`inline-flex size-7 shrink-0 items-center justify-center rounded-full transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? "bg-foreground/[0.06]" : "bg-foreground/[0.03]"}`}>
-                      <svg
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        className={`size-4 text-muted-foreground/40 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? "rotate-180" : ""}`}
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      >
-                        <path strokeLinecap="round" d="M4 6l4 4 4-4" />
-                      </svg>
+                    <span className={cn("hidden shrink-0 font-display text-[12px] tracking-[0.12em] sm:inline", a.text)}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex-1 font-display text-[17px] font-normal leading-snug tracking-[-0.01em] text-foreground sm:text-[18px]">
+                      {item.title}
+                    </span>
+                    <span className="shrink-0 text-[22px] font-normal leading-none text-muted-foreground">
+                      {isOpen ? "−" : "+"}
                     </span>
                   </button>
 
@@ -99,8 +64,8 @@ export default function FAQ({ section, accent = "orange" }: Props) {
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <div className="px-4 pb-5 sm:px-6 sm:pl-[4.25rem]">
-                        <p className="text-sm leading-[1.7] text-muted-foreground/60">{item.description}</p>
+                      <div className="pb-5 pr-8 sm:pl-9">
+                        <p className="text-[13.5px] leading-[1.75] text-muted-foreground">{item.description}</p>
                       </div>
                     </div>
                   </div>
