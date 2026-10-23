@@ -771,12 +771,10 @@ export default function PlotGenerate({ section }: PlotGenerateProps) {
       <div className="relative mx-auto w-full max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <div className="mb-10">
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5">
-            <PlotBreadcrumb
-              homeText={t('ui.breadcrumb_home')}
-              currentText={t('ui.breadcrumb_current')}
-            />
-          </div>
+          <PlotBreadcrumb
+            homeText={t('ui.breadcrumb_home')}
+            currentText={t('ui.breadcrumb_current')}
+          />
         </div>
 
         {/* Header */}

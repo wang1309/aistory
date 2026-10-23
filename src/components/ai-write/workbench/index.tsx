@@ -2289,8 +2289,11 @@ If no issues found, return: {"issues":[],"summary":"No significant consistency i
             AI Write
           </button>
           <Icon name="RiArrowRightSLine" className="hidden size-3.5 shrink-0 opacity-40 sm:block" />
-          <span className="truncate text-foreground">
-            {storyUuid ? copy.storyBadge : copy.draftBadge}
+          <span className="flex min-w-0 items-center gap-2 font-semibold text-foreground">
+            <span className="size-1.5 shrink-0 rounded-full bg-accent-copper" aria-hidden="true" />
+            <span className="truncate">
+              {storyUuid ? copy.storyBadge : copy.draftBadge}
+            </span>
           </span>
 
           <span className="ml-2 hidden text-xs text-muted-foreground/70 sm:inline">

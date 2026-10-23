@@ -460,12 +460,10 @@ export default function LiteratureReviewGenerate({ section }: LiteratureReviewGe
 
       <main className="relative container max-w-6xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
         <div className="mb-8 flex justify-start">
-          <div className="inline-flex items-center rounded-full border border-border/30 bg-background px-4 py-1.5 text-xs text-muted-foreground">
-            <LiteratureReviewBreadcrumb
-              homeText={t("ui.breadcrumb_home")}
-              currentText={t("ui.breadcrumb_current")}
-            />
-          </div>
+          <LiteratureReviewBreadcrumb
+            homeText={t("ui.breadcrumb_home")}
+            currentText={t("ui.breadcrumb_current")}
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-14 items-start">

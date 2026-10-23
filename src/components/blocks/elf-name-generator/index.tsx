@@ -1,5 +1,7 @@
 "use client";
 
+import PageBreadcrumb from "@/components/blocks/breadcrumb";
+
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useOpenPanel } from "@openpanel/nextjs";
@@ -297,25 +299,13 @@ export default function ElfNameGenerator({ section }: Props) {
       </div>
 
       <main className="container relative z-10 mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-24">
-        {/* Breadcrumb pill */}
+        {/* Breadcrumb */}
         <div className="mb-10 flex justify-start">
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
-            <Link
-              href="/"
-              className="transition-colors hover:text-foreground/80"
-            >
-              {ui.breadcrumb_home}
-            </Link>
-            <span className="mx-2 text-muted-foreground/40">/</span>
-            <Link
-              href="/ai-tools"
-              className="transition-colors hover:text-foreground/80"
-            >
-              {tAiTools("tools_hub_nav")}
-            </Link>
-            <span className="mx-2 text-muted-foreground/40">/</span>
-            <span className="text-foreground/80">{ui.breadcrumb_current}</span>
-          </div>
+          <PageBreadcrumb
+            homeText={ui.breadcrumb_home}
+            hubText={tAiTools("tools_hub_nav")}
+            currentText={ui.breadcrumb_current}
+          />
         </div>
 
         {/* Hero copy */}

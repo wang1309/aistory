@@ -519,12 +519,10 @@ export default function YoutubeTitleGenerate({
 
       <div className="container relative mx-auto px-4 md:px-6">
         <div className="mb-10">
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
-            <YoutubeTitleBreadcrumb
-              homeText={t("ui.breadcrumb_home", "Home")}
-              currentText={t("ui.breadcrumb_current", "YouTube Title Generator")}
-            />
-          </div>
+          <YoutubeTitleBreadcrumb
+            homeText={t("ui.breadcrumb_home", "Home")}
+            currentText={t("ui.breadcrumb_current", "YouTube Title Generator")}
+          />
         </div>
 
         <div className="relative mx-auto mb-10 max-w-2xl text-center sm:mb-14">

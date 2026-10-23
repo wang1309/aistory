@@ -636,12 +636,10 @@ export default function DialogueGenerate({ section }: DialogueGenerateProps) {
       <div className="container relative px-4 md:px-6 mx-auto">
         {/* Breadcrumb */}
         <div className="mb-10">
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5">
-            <DialogueBreadcrumb
-              homeText={t("ui.breadcrumb_home")}
-              currentText={t("ui.breadcrumb_current")}
-            />
-          </div>
+          <DialogueBreadcrumb
+            homeText={t("ui.breadcrumb_home")}
+            currentText={t("ui.breadcrumb_current")}
+          />
         </div>
 
         {/* Header */}

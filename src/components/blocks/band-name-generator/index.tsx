@@ -1,5 +1,7 @@
 "use client";
 
+import PageBreadcrumb from "@/components/blocks/breadcrumb";
+
 import { useCallback, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
@@ -462,30 +464,13 @@ export default function BandNameGenerator({ section }: Props) {
       </div>
 
       <main className="container relative z-10 mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-24">
-        {/* Breadcrumb pill */}
+        {/* Breadcrumb */}
         <div className="mb-10 flex justify-start">
-          <nav
-            aria-label={ui.breadcrumb_current}
-            className="inline-flex max-w-full items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground"
-          >
-            <Link
-              href="/"
-              className="shrink-0 transition-colors hover:text-foreground/80"
-            >
-              {ui.breadcrumb_home}
-            </Link>
-            <span className="mx-2 shrink-0 text-muted-foreground/40">/</span>
-            <Link
-              href="/ai-tools"
-              className="min-w-0 truncate transition-colors hover:text-foreground/80"
-            >
-              {tAiTools("tools_hub_nav")}
-            </Link>
-            <span className="mx-2 shrink-0 text-muted-foreground/40">/</span>
-            <span className="min-w-0 truncate text-foreground/80">
-              {ui.breadcrumb_current}
-            </span>
-          </nav>
+          <PageBreadcrumb
+            homeText={ui.breadcrumb_home}
+            hubText={tAiTools("tools_hub_nav")}
+            currentText={ui.breadcrumb_current}
+          />
         </div>
 
         {/* Hero copy */}

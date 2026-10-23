@@ -317,14 +317,12 @@ export default function CityNicknameGenerate({ section }: Props) {
       )}
 
       <main className="container relative z-10 mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-24">
-        {/* Breadcrumb pill */}
+        {/* Breadcrumb */}
         <div className="mb-10 flex justify-start">
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
-            <CityNicknameBreadcrumb
-              homeText={ui.breadcrumb_home}
-              currentText={ui.breadcrumb_current}
-            />
-          </div>
+          <CityNicknameBreadcrumb
+            homeText={ui.breadcrumb_home}
+            currentText={ui.breadcrumb_current}
+          />
         </div>
 
         {/* Hero copy */}

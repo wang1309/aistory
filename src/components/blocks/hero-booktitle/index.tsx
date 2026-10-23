@@ -538,14 +538,12 @@ export default function HeroBooktitle({ section }: { section: HeroBooktitleType 
 
       <div className="relative mx-auto w-full max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <nav className="mb-10" aria-label="Breadcrumb">
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5">
-            <BookTitleBreadcrumb
-              homeText={section.breadcrumb.home}
-              currentText={section.breadcrumb.current}
-            />
-          </div>
-        </nav>
+        <div className="mb-10">
+          <BookTitleBreadcrumb
+            homeText={section.breadcrumb.home}
+            currentText={section.breadcrumb.current}
+          />
+        </div>
 
         {/* Header */}
         <div className="relative mx-auto max-w-2xl text-center mb-14">

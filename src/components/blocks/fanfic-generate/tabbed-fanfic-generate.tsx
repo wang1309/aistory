@@ -884,12 +884,10 @@ export default function TabbedFanficGenerate({ section }: { section: FanficGener
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 lg:py-20 relative">
       {/* Breadcrumb */}
       <div className="mb-10 flex justify-start">
-        <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5">
-          <FanficBreadcrumb
-            homeText={section.breadcrumb?.home || 'Home'}
-            currentText={section.breadcrumb?.current || 'AI Fanfic Generator'}
-          />
-        </div>
+        <FanficBreadcrumb
+          homeText={section.breadcrumb?.home || 'Home'}
+          currentText={section.breadcrumb?.current || 'AI Fanfic Generator'}
+        />
       </div>
 
       {/* Header */}

@@ -1,5 +1,7 @@
 "use client";
 
+import PageBreadcrumb from "@/components/blocks/breadcrumb";
+
 import { useCallback, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
@@ -205,17 +207,11 @@ export default function NpcGenerator({ section }: NpcGeneratorProps) {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-16 sm:py-20 lg:py-24">
         <div className="mb-10 flex justify-start">
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
-            <Link href="/" className="transition-colors hover:text-foreground/80">
-              {section.ui.breadcrumb_home}
-            </Link>
-            <span className="mx-2 text-muted-foreground/40">/</span>
-            <Link href="/ai-tools" className="transition-colors hover:text-foreground/80">
-              {tAiTools("tools_hub_nav")}
-            </Link>
-            <span className="mx-2 text-muted-foreground/40">/</span>
-            <span className="text-foreground/80">{section.ui.breadcrumb_current}</span>
-          </div>
+          <PageBreadcrumb
+            homeText={section.ui.breadcrumb_home}
+            hubText={tAiTools("tools_hub_nav")}
+            currentText={section.ui.breadcrumb_current}
+          />
         </div>
 
         <div className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">

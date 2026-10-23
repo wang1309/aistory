@@ -1,5 +1,7 @@
 "use client";
 
+import PageBreadcrumb from "@/components/blocks/breadcrumb";
+
 import { useCallback, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { ArrowRight, BookOpen, Copy, Sparkles, Zap } from "lucide-react";
@@ -249,13 +251,10 @@ export default function StorySummarizer({ section }: StorySummarizerProps) {
 
       <main className="relative container max-w-6xl mx-auto px-4 py-12 sm:py-16 lg:py-20">
         <div className="mb-10">
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
-            <Link href="/" className="transition-colors hover:text-foreground/80">
-              {t("ui.breadcrumb_home")}
-            </Link>
-            <span className="mx-2 text-muted-foreground/40">/</span>
-            <span className="text-foreground/80">{t("ui.breadcrumb_current")}</span>
-          </div>
+          <PageBreadcrumb
+            homeText={t("ui.breadcrumb_home")}
+            currentText={t("ui.breadcrumb_current")}
+          />
         </div>
 
         <div className="relative mx-auto max-w-2xl text-center">

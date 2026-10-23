@@ -1,37 +1,12 @@
 "use client";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Link } from "@/i18n/navigation";
+import PageBreadcrumb from "@/components/blocks/breadcrumb";
 
-interface RomanceStoryBreadcrumbProps {
+interface WrapperProps {
   homeText: string;
   currentText: string;
 }
 
-export default function RomanceStoryBreadcrumb({
-  homeText,
-  currentText,
-}: RomanceStoryBreadcrumbProps) {
-  return (
-    <Breadcrumb>
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href="/">{homeText}</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>{currentText}</BreadcrumbPage>
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
-  );
+export default function RomanceStoryBreadcrumb({ homeText, currentText }: WrapperProps) {
+  return <PageBreadcrumb homeText={homeText} currentText={currentText} />;
 }

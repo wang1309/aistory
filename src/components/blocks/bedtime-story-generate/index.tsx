@@ -625,12 +625,10 @@ export default function BedtimeStoryGenerate({ section }: BedtimeStoryGeneratePr
         )}
 
         <div className="mb-10 flex justify-start">
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
-            <BedtimeStoryBreadcrumb
-              homeText={t("ui.breadcrumb_home")}
-              currentText={t("ui.breadcrumb_current")}
-            />
-          </div>
+          <BedtimeStoryBreadcrumb
+            homeText={t("ui.breadcrumb_home")}
+            currentText={t("ui.breadcrumb_current")}
+          />
         </div>
 
         <div className="mx-auto max-w-2xl text-center mb-10 sm:mb-14 lg:mb-18">

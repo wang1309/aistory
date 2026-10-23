@@ -413,12 +413,10 @@ export default function HeroPoemTitle({ section }: { section: HeroPoemTitleType 
             <div className="relative mx-auto w-full max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 {/* Breadcrumb */}
                 <div className="mb-10">
-                    <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5">
-                        <PoemTitleBreadcrumb
-                            homeText={section.breadcrumb.home}
-                            currentText={section.breadcrumb.current}
-                        />
-                    </div>
+                    <PoemTitleBreadcrumb
+                      homeText={section.breadcrumb.home}
+                      currentText={section.breadcrumb.current}
+                    />
                 </div>
 
                 {/* Header */}

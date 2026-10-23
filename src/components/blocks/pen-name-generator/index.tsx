@@ -1,5 +1,7 @@
 "use client";
 
+import PageBreadcrumb from "@/components/blocks/breadcrumb";
+
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useOpenPanel } from "@openpanel/nextjs";
@@ -352,25 +354,13 @@ export default function PenNameGenerator({ section }: Props) {
       </div>
 
       <main className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 py-12 sm:py-16 lg:py-20">
-        {/* Breadcrumb pill */}
+        {/* Breadcrumb */}
         <div className="mb-10 flex justify-start">
-          <div className="inline-flex items-center min-w-0 max-w-full rounded-full border border-border/20 bg-background/80 px-3 sm:px-4 py-1.5 text-xs text-muted-foreground">
-            <Link
-              href="/"
-              className="transition-colors hover:text-foreground/80 truncate max-w-[80px] sm:max-w-[120px]"
-            >
-              {ui.breadcrumb_home}
-            </Link>
-            <span className="mx-1.5 sm:mx-2 text-muted-foreground/40 shrink-0">/</span>
-            <Link
-              href="/ai-tools"
-              className="transition-colors hover:text-foreground/80 truncate max-w-[100px] sm:max-w-[140px]"
-            >
-              {tAiTools("tools_hub_nav")}
-            </Link>
-            <span className="mx-1.5 sm:mx-2 text-muted-foreground/40 shrink-0">/</span>
-            <span className="text-foreground/80 truncate max-w-[120px] sm:max-w-[160px]">{ui.breadcrumb_current}</span>
-          </div>
+          <PageBreadcrumb
+            homeText={ui.breadcrumb_home}
+            hubText={tAiTools("tools_hub_nav")}
+            currentText={ui.breadcrumb_current}
+          />
         </div>
 
         {/* Hero copy */}

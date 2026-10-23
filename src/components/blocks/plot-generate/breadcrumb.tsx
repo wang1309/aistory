@@ -1,36 +1,12 @@
 "use client";
 
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Link } from "@/i18n/navigation";
+import PageBreadcrumb from "@/components/blocks/breadcrumb";
 
-interface PlotBreadcrumbProps {
+interface WrapperProps {
   homeText: string;
   currentText: string;
 }
 
-export default function PlotBreadcrumb({ homeText, currentText }: PlotBreadcrumbProps) {
-  return (
-    <Breadcrumb>
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href="/">
-              {homeText}
-            </Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>{currentText}</BreadcrumbPage>
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
-  );
+export default function PlotBreadcrumb({ homeText, currentText }: WrapperProps) {
+  return <PageBreadcrumb homeText={homeText} currentText={currentText} />;
 }

@@ -1,5 +1,6 @@
 import {
   Breadcrumb,
+  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
@@ -21,7 +22,7 @@ export default function DashboardHeader({ crumb }: { crumb?: Crumb }) {
           <>
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
-              <BreadcrumbList>
+              <BreadcrumbList className="flex-wrap">
                 {crumb.items.map((item, index) => {
                   if (item.is_active) {
                     return (
@@ -33,13 +34,10 @@ export default function DashboardHeader({ crumb }: { crumb?: Crumb }) {
 
                   return (
                     <Fragment key={index}>
-                      <BreadcrumbItem className="hidden md:block">
-                        <Link
-                          href={item.url || ""}
-                          className="hover:text-primary"
-                        >
-                          {item.title}
-                        </Link>
+                      <BreadcrumbItem className="hidden md:inline-flex">
+                        <BreadcrumbLink asChild>
+                          <Link href={item.url || ""}>{item.title}</Link>
+                        </BreadcrumbLink>
                       </BreadcrumbItem>
                       <BreadcrumbSeparator className="hidden md:block" />
                     </Fragment>

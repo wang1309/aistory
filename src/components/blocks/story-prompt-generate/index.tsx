@@ -437,12 +437,10 @@ export default function StoryPromptGenerate({ section }: StoryPromptGenerateProp
           transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
           className="mb-8 flex justify-start"
         >
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
-            <StoryPromptBreadcrumb
-              homeText={t("ui.breadcrumb_home")}
-              currentText={t("ui.breadcrumb_current")}
-            />
-          </div>
+          <StoryPromptBreadcrumb
+            homeText={t("ui.breadcrumb_home")}
+            currentText={t("ui.breadcrumb_current")}
+          />
         </motion.div>
 
         {/* Header */}

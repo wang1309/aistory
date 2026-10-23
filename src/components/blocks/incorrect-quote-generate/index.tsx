@@ -642,12 +642,10 @@ export default function IncorrectQuoteGenerate({
       <div className="container relative mx-auto px-4 md:px-6">
         {/* Breadcrumb */}
         <div className="mb-10">
-          <div className="inline-flex items-center rounded-full border border-border/20 bg-background/80 px-4 py-1.5 text-xs text-muted-foreground">
-            <IncorrectQuoteBreadcrumb
-              homeText={t("ui.breadcrumb_home", "Home")}
-              currentText={t("ui.breadcrumb_current", "Incorrect Quote Generator")}
-            />
-          </div>
+          <IncorrectQuoteBreadcrumb
+            homeText={t("ui.breadcrumb_home", "Home")}
+            currentText={t("ui.breadcrumb_current", "Incorrect Quote Generator")}
+          />
         </div>
 
         {/* Header */}
