@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add six SEO-ready, independently configurable genre story generators without changing existing public genre URLs.
+**Goal:** Add five SEO-ready, independently configurable genre story generators without changing existing public genre URLs.
 
-**Architecture:** Six fixed App Router pages will delegate to one server page builder and one client generator, while a shared typed configuration defines valid genres, UI fields, routes, and creative-quota page keys. A single API route validates its JSON request with a pure `_lib.ts` module, applies the same Turnstile/quota/LLM streaming pipeline used by current generators, and emits a genre-specific prompt.
+**Architecture:** Five fixed App Router pages will delegate to one server page builder and one client generator, while a shared typed configuration defines valid genres, UI fields, routes, and creative-quota page keys. A single API route validates its JSON request with a pure `_lib.ts` module, applies the same Turnstile/quota/LLM streaming pipeline used by current generators, and emits a genre-specific prompt.
 
 **Tech Stack:** Next.js 15 App Router, React 19, TypeScript, next-intl, Tailwind CSS 4, Node `node:test` through `tsx`, existing creative-quota and `fetchChatCompletion` helpers.
 
@@ -14,7 +14,7 @@
 
 | File | Responsibility |
 | --- | --- |
-| `src/lib/genre-story-generators.ts` | One typed source for the six slugs, routes, quota keys, icons, and allowed selector values. |
+| `src/lib/genre-story-generators.ts` | One typed source for the five slugs, routes, quota keys, icons, and allowed selector values. |
 | `src/types/blocks/genre-story-generate.d.ts` | Locale-data contract consumed by the shared client and server page components. |
 | `src/app/api/genre-story-generate/_lib.ts` | Pure request parsing, per-genre field validation, and prompt construction. |
 | `src/app/api/genre-story-generate/route.ts` | Turnstile, quota, model resolution, shared LLM streaming response. |
@@ -26,8 +26,8 @@
 | `src/components/blocks/adventure-story-player/index.tsx` | Browser-playable Adventure branch reader: scene, two-to-three choice controls, continuation requests, and bounded history. |
 | `src/components/blocks/adventure-story-seo-content/index.tsx` | Adventure-only examples, ideas, prompts, interactive-play explainer, tabletop boundary, title tool, and controlled internal links. |
 | `src/components/pages/genre-story-generator-page.tsx` | Shared server page markup, metadata factory, JSON-LD, and content sections. |
-| `src/app/[locale]/(default)/{six-slugs}/page.tsx` | Thin fixed URL entry points exporting a per-genre page and metadata factory. |
-| `src/i18n/pages/{genre-story-generate}/{locale}.json` | Six per-page locale directories, each carrying only that page's unique content. |
+| `src/app/[locale]/(default)/{five-slugs}/page.tsx` | Thin fixed URL entry points exporting a per-genre page and metadata factory. |
+| `src/i18n/pages/{genre-story-generate}/{locale}.json` | Five per-page locale directories, each carrying only that page's unique content. |
 | `src/services/tools.ts`, `src/lib/creative-quota-core.ts`, `src/app/sitemap.ts`, `src/i18n/messages/*.json` | Discovery, quota whitelisting, sitemap, and translated tool cards. |
 | `tests/genre-story-generate-*.test.ts` | Pure logic, route wiring, page structure, and site registration coverage. |
 | `tests/horror-story-generator-seo.test.ts`, `tests/genre-story-title-generate-*.test.ts`, `tests/adventure-story-*.test.ts` | Genre-page SEO contracts, browser-branch protocol/player behavior, visible keyword-layout sections, internal-link rules, and exactly-five-title behavior. |
@@ -72,7 +72,7 @@ Internal-link rules:
 - Link the exact anchor `AI story generator` to `/`.
 - Link to existing supporting tools only: `/plot-generator`, `/story-prompt-generator`, `/book-title-generator`, and `/ai-write`.
 - Do not create routes or dead links for scary, spooky, ghost, Halloween, creepypasta, analog-horror, or Christmas-horror variants. Mention them only as readable subtopics until a distinct product experience justifies a page.
-- A future indexable `horror writing prompts` article should link back here using natural `horror story generator` anchor text; creating that article is outside this six-generator implementation.
+- A future indexable `horror writing prompts` article should link back here using natural `horror story generator` anchor text; creating that article is outside this five-generator implementation.
 
 ## Approved Mystery landing-page SEO brief
 
@@ -166,7 +166,7 @@ Internal-link rules:
 - Create: `src/app/api/genre-story-generate/_lib.ts`
 - Test: `tests/genre-story-generate-lib.test.ts`
 
-- [ ] **Step 1: Write failing tests for the six supported routes and validation behavior.**
+- [ ] **Step 1: Write failing tests for the five supported routes and validation behavior.**
 
 ```ts
 import assert from "node:assert/strict";
@@ -187,7 +187,6 @@ test("all planned genre generators have fixed route and quota identities", () =>
     "mystery-story-generator",
     "sci-fi-story-generator",
     "adventure-story-generator",
-    "children-story-generator",
     "historical-story-generator",
   ]);
   for (const slug of GENRE_STORY_GENERATOR_SLUGS) {
@@ -244,9 +243,9 @@ test("adventure preserves its setting input and defines the browser-branching co
 
 test("genre prompts retain each genre's creative contract", () => {
   const mystery = parseGenreStoryRequest({ genre: "mystery", prompt: "A vanished map", model: "standard" });
-  const children = parseGenreStoryRequest({ genre: "children", prompt: "A lost kite", model: "standard", options: { ageBand: "6_8", safety: "gentle" } });
+  const historical = parseGenreStoryRequest({ genre: "historical", prompt: "A courier crosses a divided city in 1919.", model: "standard", options: { timePeriod: "1919", historicalContext: "postwar reconstruction" } });
   assert.match(buildGenreStoryPrompt(mystery.value!), /clues, misdirection, and final solution/i);
-  assert.match(buildGenreStoryPrompt(children.value!), /age-appropriate|safe for children/i);
+  assert.match(buildGenreStoryPrompt(historical.value!), /historical context|documented/i);
 });
 ```
 
@@ -257,7 +256,7 @@ Expected: FAIL because `@/lib/genre-story-generators` and `@/app/api/genre-story
 
 - [ ] **Step 3: Add the configuration, types, parser, and prompt builder.**
 
-Implement a `GenreStoryKind` union of `"horror" | "mystery" | "sci_fi" | "adventure" | "children" | "historical"`, and make each configuration record contain `slug`, `href`, `pageKey`, `icon`, `genre`, `i18nNamespace`, `messageKey`, and the allowed option keys. `getGenreStoryGenerator` must accept a route slug, while `getGenreStoryGeneratorByGenre` validates a user-supplied genre against that same configuration before any route uses it.
+Implement a `GenreStoryKind` union of `"horror" | "mystery" | "sci_fi" | "adventure" | "historical"`, and make each configuration record contain `slug`, `href`, `pageKey`, `icon`, `genre`, `i18nNamespace`, `messageKey`, and the allowed option keys. `getGenreStoryGenerator` must accept a route slug, while `getGenreStoryGeneratorByGenre` validates a user-supplied genre against that same configuration before any route uses it.
 
 Use this request shape in `_lib.ts`:
 
@@ -288,7 +287,6 @@ const GENRE_REQUIREMENTS: Record<GenreStoryKind, string> = {
   mystery: "Plant fair clues, distinguish red herrings from evidence, and make the final solution logically follow from the clues. For hook output, write exactly two lines that establish the case and a compelling unanswered question.",
   sci_fi: "Apply the selected science-fiction mode and world rules consistently; show the human consequences of the technology.",
   adventure: "Give the protagonist a concrete goal, escalating obstacles, travel or discovery, an opposing force, and an earned payoff. For branching_path output, return [SCENE] followed by [CHOICES], then two or three meaningful numbered choices. Each choice must state a distinct immediate consequence and remain playable in a browser text path.",
-  children: "Keep the language, conflict, and emotional stakes age-appropriate; follow the safety boundary and make the educational goal natural rather than preachy.",
   historical: "Respect the stated era and place, separate documented historical context from invented characters and plot, and never present invented details as fact.",
 };
 ```
@@ -335,10 +333,10 @@ test("genre story route uses the shared validator, optional Turnstile, quota, an
   assert.doesNotMatch(route, /https:\/\/api\.grsai\.com/);
 });
 
-test("all six page keys can be queried by the quota status endpoint", () => {
+test("all five page keys can be queried by the quota status endpoint", () => {
   for (const pageKey of [
     "horror-story-generator", "mystery-story-generator", "sci-fi-story-generator",
-    "adventure-story-generator", "children-story-generator", "historical-story-generator",
+    "adventure-story-generator", "historical-story-generator",
   ]) assert.match(quota, new RegExp(`"${pageKey}"`));
 });
 ```
@@ -346,11 +344,11 @@ test("all six page keys can be queried by the quota status endpoint", () => {
 - [ ] **Step 2: Run the route test to confirm it fails.**
 
 Run: `npx tsx --test tests/genre-story-generate-route.test.ts`  
-Expected: FAIL because the route is absent and the six quota keys are absent.
+Expected: FAIL because the route is absent and the five quota keys are absent.
 
 - [ ] **Step 3: Implement the API route.**
 
-Add the six page keys to `CREATIVE_PAGE_KEYS`. In `POST`, parse the JSON through `parseGenreStoryRequest`; reject parser errors with `respErr`. Resolve the configuration from the parsed genre, then apply this guard before calling the provider:
+Add the five page keys to `CREATIVE_PAGE_KEYS`. In `POST`, parse the JSON through `parseGenreStoryRequest`; reject parser errors with `respErr`. Resolve the configuration from the parsed genre, then apply this guard before calling the provider:
 
 ```ts
 const secretKey = process.env.TURNSTILE_SECRET_KEY;
@@ -393,7 +391,6 @@ git commit -m "feat: add genre story generation API"
 - Create: `src/app/[locale]/(default)/mystery-story-generator/page.tsx`
 - Create: `src/app/[locale]/(default)/sci-fi-story-generator/page.tsx`
 - Create: `src/app/[locale]/(default)/adventure-story-generator/page.tsx`
-- Create: `src/app/[locale]/(default)/children-story-generator/page.tsx`
 - Create: `src/app/[locale]/(default)/historical-story-generator/page.tsx`
 - Test: `tests/genre-story-generate-page.test.ts`
 
@@ -406,7 +403,7 @@ import test from "node:test";
 
 const slugs = [
   "horror-story-generator", "mystery-story-generator", "sci-fi-story-generator",
-  "adventure-story-generator", "children-story-generator", "historical-story-generator",
+  "adventure-story-generator", "historical-story-generator",
 ];
 
 test("every genre has a fixed page entry point", () => {
@@ -467,7 +464,7 @@ Render every item in `section.genre_fields` only when its `key` is in `generator
 
 For `generator.genre === "horror"`, render the approved selector labels and values in the first viewport: `horror`, `spooky`, `psychological`, `supernatural`; `two_sentence`, `short`, `full`; intensity; and ending. Below the form, render exactly three static editorial example-output cards from locale data. They must be labelled as examples and must not masquerade as a live user result.
 
-- [ ] **Step 4: Implement the shared server page and six wrappers.**
+- [ ] **Step 4: Implement the shared server page and five wrappers.**
 
 `createGenreStoryGeneratorMetadata(slug)` must dynamically import `@/i18n/pages/${generator.i18nNamespace}/${locale}.json`, select `messages.default[generator.messageKey]`, and return title, description, Open Graph, Twitter, a locale-aware canonical URL, and `buildLanguageAlternates(generator.href)`. It must not return a `keywords` property. `createGenreStoryGeneratorPage(slug)` must call `setRequestLocale`, render the three JSON-LD objects, then render this section sequence:
 
@@ -512,7 +509,7 @@ Expected: PASS.
 - [ ] **Step 6: Commit shared presentation code.**
 
 ```bash
-git add src/components/blocks/genre-story-generate/index.tsx src/components/pages/genre-story-generator-page.tsx 'src/app/[locale]/(default)/horror-story-generator/page.tsx' 'src/app/[locale]/(default)/mystery-story-generator/page.tsx' 'src/app/[locale]/(default)/sci-fi-story-generator/page.tsx' 'src/app/[locale]/(default)/adventure-story-generator/page.tsx' 'src/app/[locale]/(default)/children-story-generator/page.tsx' 'src/app/[locale]/(default)/historical-story-generator/page.tsx' tests/genre-story-generate-page.test.ts
+git add src/components/blocks/genre-story-generate/index.tsx src/components/pages/genre-story-generator-page.tsx 'src/app/[locale]/(default)/horror-story-generator/page.tsx' 'src/app/[locale]/(default)/mystery-story-generator/page.tsx' 'src/app/[locale]/(default)/sci-fi-story-generator/page.tsx' 'src/app/[locale]/(default)/adventure-story-generator/page.tsx' 'src/app/[locale]/(default)/historical-story-generator/page.tsx' tests/genre-story-generate-page.test.ts
 git commit -m "feat: add shared genre story pages"
 ```
 
@@ -523,7 +520,6 @@ git commit -m "feat: add shared genre story pages"
 - Create: `src/i18n/pages/mystery-story-generate/{en,zh,de,ko,ja,ru}.json`
 - Create: `src/i18n/pages/sci-fi-story-generate/{en,zh,de,ko,ja,ru}.json`
 - Create: `src/i18n/pages/adventure-story-generate/{en,zh,de,ko,ja,ru}.json`
-- Create: `src/i18n/pages/children-story-generate/{en,zh,de,ko,ja,ru}.json`
 - Create: `src/i18n/pages/historical-story-generate/{en,zh,de,ko,ja,ru}.json`
 - Modify: `src/i18n/messages/en.json`
 - Modify: `src/i18n/messages/zh.json`
@@ -541,7 +537,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const locales = ["en", "zh", "de", "ko", "ja", "ru"];
-const genres = ["horror", "mystery", "sci_fi", "adventure", "children", "historical"];
+const genres = ["horror", "mystery", "sci_fi", "adventure", "historical"];
 
 test("all locales ship complete, unique genre page content", () => {
   for (const locale of locales) {
@@ -550,7 +546,6 @@ test("all locales ship complete, unique genre page content", () => {
       mystery: "mystery-story-generate",
       sci_fi: "sci-fi-story-generate",
       adventure: "adventure-story-generate",
-      children: "children-story-generate",
       historical: "historical-story-generate",
     })) {
       const page = JSON.parse(readFileSync(`src/i18n/pages/${namespace}/${locale}.json`, "utf8"));
@@ -567,7 +562,7 @@ test("all locales ship complete, unique genre page content", () => {
 test("tool cards exist in every shared message bundle", () => {
   for (const locale of locales) {
     const messages = JSON.parse(readFileSync(`src/i18n/messages/${locale}.json`, "utf8"));
-    for (const key of ["horror_story_generator", "mystery_story_generator", "sci_fi_story_generator", "adventure_story_generator", "children_story_generator", "historical_story_generator"]) {
+    for (const key of ["horror_story_generator", "mystery_story_generator", "sci_fi_story_generator", "adventure_story_generator", "historical_story_generator"]) {
       assert.ok(messages.ai_tools?.tools?.[key]?.name, `${locale}/${key} missing name`);
       assert.ok(messages.ai_tools?.tools?.[key]?.desc, `${locale}/${key} missing desc`);
     }
@@ -582,11 +577,11 @@ Expected: FAIL because the locale directory and tool-card keys do not exist.
 
 - [ ] **Step 3: Author the locale bundles.**
 
-Every page directory must contain all six locale files, each with one genre-specific root key: `horror_story_generate`, `mystery_story_generate`, `sci_fi_story_generate`, `adventure_story_generate`, `children_story_generate`, or `historical_story_generate`. Each root object must supply `metadata` with only title and description (no `keywords` metadata), `ui`, `placeholders`, `ai_models`, `common_fields`, `genre_fields`, `random_prompts`, `validation`, `success`, `errors`, `output`, `completion_guide`, `feature_intro`, `how_to_use`, `feature_benefits`, `feature_section`, `faq_section`, and `cta_section`.
+Every page directory must contain all six locale files, each with one genre-specific root key: `horror_story_generate`, `mystery_story_generate`, `sci_fi_story_generate`, `adventure_story_generate`, or `historical_story_generate`. Each root object must supply `metadata` with only title and description (no `keywords` metadata), `ui`, `placeholders`, `ai_models`, `common_fields`, `genre_fields`, `random_prompts`, `validation`, `success`, `errors`, `output`, `completion_guide`, `feature_intro`, `how_to_use`, `feature_benefits`, `feature_section`, `faq_section`, and `cta_section`.
 
-Use the approved exact input keys: `horrorMode`, `scareIntensity`, `endingType`; `subgenre`, `mysteryIntensity`, `includeTwist`; `sciFiSubgenre`, `scienceMode`, `includeTwist`; `adventureSetting`; `ageBand`, `learningGoal`, `vocabularyLevel`, `safety`; `timePeriod`, `location`, `historicalContext`, `fictionRatio`. The Adventure length options are `hook`, `short`, `full_outline`, and `branching_path`; the other genre pages retain their approved length option sets. Page prose and FAQs must explain the corresponding fields; do not use a find-and-replace title template. Horror, Mystery, Sci-Fi, and Adventure receive their specialized hero examples and SEO content in Tasks 5–8.
+Use the approved exact input keys: `horrorMode`, `scareIntensity`, `endingType`; `subgenre`, `mysteryIntensity`, `includeTwist`; `sciFiSubgenre`, `scienceMode`, `includeTwist`; `adventureSetting`; `timePeriod`, `location`, `historicalContext`, `fictionRatio`. The Adventure length options are `hook`, `short`, `full_outline`, and `branching_path`; the other genre pages retain their approved length option sets. Page prose and FAQs must explain the corresponding fields; do not use a find-and-replace title template. Horror, Mystery, Sci-Fi, and Adventure receive their specialized hero examples and SEO content in Tasks 5–8.
 
-Add translated `name` and `desc` entries under `ai_tools.tools` for all six snake-case tool keys in every global messages file.
+Add translated `name` and `desc` entries under `ai_tools.tools` for all five snake-case tool keys in every global messages file.
 
 - [ ] **Step 4: Re-run locale tests.**
 
@@ -596,7 +591,7 @@ Expected: PASS.
 - [ ] **Step 5: Commit locale content.**
 
 ```bash
-git add src/i18n/pages/horror-story-generate src/i18n/pages/mystery-story-generate src/i18n/pages/sci-fi-story-generate src/i18n/pages/adventure-story-generate src/i18n/pages/children-story-generate src/i18n/pages/historical-story-generate src/i18n/messages/en.json src/i18n/messages/zh.json src/i18n/messages/de.json src/i18n/messages/ko.json src/i18n/messages/ja.json src/i18n/messages/ru.json tests/genre-story-generate-content.test.ts
+git add src/i18n/pages/horror-story-generate src/i18n/pages/mystery-story-generate src/i18n/pages/sci-fi-story-generate src/i18n/pages/adventure-story-generate src/i18n/pages/historical-story-generate src/i18n/messages/en.json src/i18n/messages/zh.json src/i18n/messages/de.json src/i18n/messages/ko.json src/i18n/messages/ja.json src/i18n/messages/ru.json tests/genre-story-generate-content.test.ts
 git commit -m "feat: add genre story generator content"
 ```
 
@@ -1041,7 +1036,7 @@ git add src/lib/adventure-branching.ts src/lib/genre-story-generators.ts src/app
 git commit -m "feat: add adventure story SEO experience"
 ```
 
-### Task 9: Register all six tools and verify sitemap coverage
+### Task 9: Register all five tools and verify sitemap coverage
 
 **Files:**
 - Modify: `src/services/tools.ts`
@@ -1060,7 +1055,7 @@ import { tools } from "@/services/tools";
 
 const slugs = [
   "horror-story-generator", "mystery-story-generator", "sci-fi-story-generator",
-  "adventure-story-generator", "children-story-generator", "historical-story-generator",
+  "adventure-story-generator", "historical-story-generator",
 ];
 
 test("all genre generators are discoverable story tools", () => {
@@ -1093,11 +1088,11 @@ test("the two hardcoded sitemap route lists remain synchronized", () => {
 - [ ] **Step 2: Run the registration test to confirm it fails.**
 
 Run: `npx tsx --test tests/genre-story-generate-site-registration.test.ts`  
-Expected: FAIL because none of the six tools or sitemap routes is registered.
+Expected: FAIL because none of the five tools or sitemap routes is registered.
 
 - [ ] **Step 3: Register each tool and both sitemap entries.**
 
-Add six `Tool` objects with `module: "ai-write"`, `category: "story"`, `href` equal to the fixed root URL, `nameKey` and `shortDescKey` matching Task 4, and already-exported icons: `RiMoonLine`, `RiSearchLine`, `RiRocketLine`, `RiRouteLine`, `RiBookOpenLine`, and `RiHistoryLine`. Use priorities below the existing story generators, ordered Horror 84, Mystery 83, Sci-Fi 82, Adventure 81, Children 80, Historical 79.
+Add five `Tool` objects with `module: "ai-write"`, `category: "story"`, `href` equal to the fixed root URL, `nameKey` and `shortDescKey` matching Task 4, and already-exported icons: `RiMoonLine`, `RiSearchLine`, `RiRocketLine`, `RiRouteLine`, and `RiHistoryLine`. Use priorities below the existing story generators, ordered Horror 84, Mystery 83, Sci-Fi 82, Adventure 81, Historical 80.
 
 Insert every fixed route once in `TOOL_ROUTES` and once in the static `routes` array. Do not add aliases, redirects, old URL modifications, or generated story URLs to the sitemap.
 
@@ -1126,7 +1121,7 @@ Expected: exit code 0.
 - [ ] **Step 2: Build the production application.**
 
 Run: `pnpm build`  
-Expected: exit code 0 and successful static generation for all six locale-aware routes.
+Expected: exit code 0 and successful static generation for all five locale-aware routes.
 
 - [ ] **Step 3: Inspect the final change set.**
 
@@ -1139,7 +1134,7 @@ If a verification command identifies a defect, fix it with a new test when appro
 
 ## Self-review
 
-- Spec coverage: Tasks 1–2 implement six typed, genre-specific generation contracts; Task 3 supplies six fixed canonical pages, shared UX, JSON-LD, alternates, saving, and continuation; Task 4 provides all six locales and unique SEO content; Tasks 5–8 add the approved Horror, Mystery, Sci-Fi, and Adventure retrieval layouts plus the shared five-title tool and Adventure browser-branch player; Task 9 registers cards, quota keys, and both Sitemap lists; Task 10 runs targeted tests, lint, and build.
+- Spec coverage: Tasks 1–2 implement five typed, genre-specific generation contracts; Task 3 supplies five fixed canonical pages, shared UX, JSON-LD, alternates, saving, and continuation; Task 4 provides all six locales and unique SEO content for those five pages; Tasks 5–8 add the approved Horror, Mystery, Sci-Fi, and Adventure retrieval layouts plus the shared five-title tool and Adventure browser-branch player; Task 9 registers cards, quota keys, and both Sitemap lists; Task 10 runs targeted tests, lint, and build.
 - Scope: Old genre URLs, `/story-generate`, community pages, redirects, and the second-phase tool cluster are explicitly untouched. `Murder Mystery Generator` remains an on-page Mystery section rather than a planned child route. Sci-Fi naming and information-content opportunities are not silently added as generator or `/blog` routes. Adventure campaign, choose-your-own-adventure, superhero, and information-content opportunities are not silently added as routes or `/blog` URLs. The information article is separately editorial work and is not silently added to the existing `/posts` architecture.
 - Type consistency: Route slug, `pageKey`, `GenreStoryKind`, locale `genre_fields.key`, i18n namespace/root key, and API `options` are connected through `src/lib/genre-story-generators.ts`; fixed page wrappers pass slugs while API requests pass kind values.
 - No placeholders: all planned routes, field keys, quota identities, prompt contracts, test files, and commands are named above.
