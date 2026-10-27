@@ -5,13 +5,12 @@
 
 ## 目标
 
-在不更改、替代或重定向现有题材页面 URL 的前提下，新增五个具备独立生成体验的题材故事生成器：
+在不更改、替代或重定向现有题材页面 URL 的前提下，新增四个具备独立生成体验的题材故事生成器：
 
 - `/horror-story-generator`
 - `/mystery-story-generator`
 - `/sci-fi-story-generator`
 - `/adventure-story-generator`
-- `/historical-story-generator`
 
 这些页面补齐当前题材覆盖，不创建现有页面的同义或近义重复 URL。现有 `/fantasy-generator`、`/romance-story-generator`、`/bedtime-story-generator`、`/fanfic-generator`、`/comic-generator` 与 `/poem-generator` 继续作为各自主题的 canonical 页面。
 
@@ -132,7 +131,7 @@ Adventure 页链接 `AI story generator` 至首页，并以 `horror story genera
 
 实现 `/api/genre-story-generate`，并将可测试逻辑放到 `src/app/api/genre-story-generate/_lib.ts`。纯函数负责：
 
-- 识别五种允许的题材；
+- 识别四种允许的题材；
 - 验证通用与题材专属输入；
 - 忽略或拒绝其他题材不允许的字段；
 - 为每个题材创建对应的系统提示与用户提示。
@@ -147,15 +146,14 @@ Adventure 页链接 `AI story generator` 至首页，并以 `horror story genera
 | Mystery | 子类型、强度、是否 twist；在故事构想中填写场景、受害者与嫌疑人 | 线索、误导与真相必须保持逻辑一致。 |
 | Sci-Fi | 子类型、硬度、是否 twist；在故事构想中填写世界、冲突和科技规则 | 将科技规则及其后果落实到情节中。 |
 | Adventure | 场景、篇幅或输出形式 | 生成明确目标、行程阻碍与行动推进；选择分支路径时提供两到三个可点击、可继续的文字选项。 |
-| Historical | 时代、地点、历史背景、虚构比例 | 明确历史事实与虚构人物/情节的边界。 |
 
 通用输入包括故事构想、长度、语气、叙事视角、受众、输出语言与模型档位。所有题材均使用其路由名作为创作额度的 page key，防止跨页面绕过匿名额度。
 
 ## 页面组织
 
-页面入口保留为五个固定路由，保证路由发现性及各页独立 metadata；页面内部调用共享的服务器页面构建器和客户端生成器，避免复制 SEO 结构、配额交互和流式渲染代码。每个 locale JSON 保持题材内容独立，不以只替换题材名称的模板生成。
+页面入口保留为四个固定路由，保证路由发现性及各页独立 metadata；页面内部调用共享的服务器页面构建器和客户端生成器，避免复制 SEO 结构、配额交互和流式渲染代码。每个 locale JSON 保持题材内容独立，不以只替换题材名称的模板生成。
 
-共享配置、类型、生成器、纯 API 逻辑和页面构建器各自只处理一类职责，避免将题材条件散落到五个页面中。
+共享配置、类型、生成器、纯 API 逻辑和页面构建器各自只处理一类职责，避免将题材条件散落到四个页面中。
 
 ## 测试与验收
 
