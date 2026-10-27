@@ -70,6 +70,34 @@ FAQ 必须可见并与 JSON-LD 逐题一致：`Is there a free mystery story gen
 
 Mystery 页链接 `AI story generator` 至首页、`horror story generator` 至 Horror 页。`Murder Mystery Generator` 仅作为本页的内容板块和现有生成器中的子类型，不规划独立子页或对应内链。用户提供的信息型 URL `/blog/mystery-story-ideas` 与现有项目的 `/posts/[slug]` 架构冲突：在未获批进行全站博客迁移和永久重定向前，文章 canonical 应为 `/posts/mystery-story-ideas`，上线前不从工具页创建死链。Thriller 与 Crime 也仅在存在独立工具体验后才建立页面或链接。
 
+### Sci-Fi 落地页关键词布局
+
+`/sci-fi-story-generator` 是唯一的 Sci-Fi canonical URL。`sci fi`、`sci-fi` 与 `science fiction` 属于同一主题簇：页面使用可读的连字符写法作为主词，借由 title、H1、首屏、生成器与完整的可见内容覆盖其余自然变体；不为这些写法另开 URL。
+
+英文页固定使用：
+
+- Title：`Sci-Fi Story Generator – Free AI Science Fiction Plot Maker`
+- Meta description：`Generate a sci-fi plot, world and cast in seconds — hard SF, space opera, cyberpunk or dystopian. Free AI sci-fi story generator with ideas, prompts and titles, no sign-up.`
+- H1：`Free AI Sci-Fi Story Generator`
+- H1 下首句：`Pick a subgenre and a length — get a full plot outline, a short story, or a one-line hook built around your world.`
+
+不设置 HTML `meta keywords`，也不得在仍存在模型额度限制时使用“Unlimited”。首屏直接提供可用工具，包含 Hard SF/Space opera/Cyberpunk/Dystopian/Time travel/First contact/AI uprising/Post-apocalyptic 八种子类型、Hook/Short/Full outline 三种篇幅、Hard SF ↔ Space opera 的硬度选择，以及 twist 选项。首屏同时显示三条明确标作示例输出的编辑样例：一段 space-opera 开场、一个 AI 觉醒三幕大纲、一份飞船或殖民地设定清单。信任文案使用 `Free • No sign-up required • Start instantly`，不得承诺不限量。
+
+Sci-Fi 页在生成器后展示下列可见、可维护的内容模块：
+
+1. `Sci-Fi Story Ideas & Plot Outlines`，含 `Sci-fi story ideas with a twist`；
+2. `Sci-Fi Writing Prompts by Subgenre`，为八种子类型各提供一条具体 prompt 示例；
+3. `Worldbuilding: Settings, Species, Tech`，包含可读的角色示例，说明设定、物种、技术规则与情节后果的关系；
+4. `Sci-Fi Story Titles`，含剧情输入和恰好五个标题的页内小工具；
+5. `How to Generate a Sci-Fi Story in 4 Steps`，按 world → conflict → tech rule → twist 展开；
+6. `Make It Believable: The One Rule of Hard SF`，解释一条技术规则应如何始终产生可见后果；
+7. `Sci-Fi vs Fantasy: Which Generator Do You Need?`，清晰比较科学推演与魔法/神话规则；
+8. `Who Uses a Sci-Fi Story Generator`、`What is a Sci-Fi Story Generator?` 与可见 FAQ。
+
+FAQ 必须可见并与 JSON-LD 逐题一致：`Is there a free sci-fi story generator?`、`Can AI write a good science fiction story?`、`Can I generate a fantasy story instead?`、`Can I generate a romance sci-fi story?`、`What is a sci-fi backstory generator?`、`How long a story can it generate?`、`What's the difference between sci-fi and fantasy?`。FAQ schema 只表达可见、可维护的问答，不承诺富结果展示。
+
+Sci-Fi 页链接 `AI story generator` 至首页、`horror story generator` 至 Horror 页、`mystery story generator` 至 Mystery 页，并以 `fantasy story generator` 锚文本链接至现有 canonical `/fantasy-generator`。`sci fi name generator` 是不同的命名任务，不得硬塞入故事生成器的 title、H1 或主体段落；本次不规划对应路由或空链接。`sci fi story ideas` 与 `sci fi writing prompts` 是信息型内容机会：现有内容系统使用 `/posts/[slug]`，未单独获批和发布前不得创建 `/blog/...` URL 或死链。上述文章、主工具页与相邻题材页发布后可自然回链本页并使用 `sci-fi story generator` 锚文本。
+
 ## 生成器与 API
 
 实现一个共享的客户端题材生成器。各页面通过类型受限的题材配置提供标题、路由、配额 page key、允许字段、默认值及题材专属选项；组件只呈现当前题材允许的输入。
@@ -89,7 +117,7 @@ Mystery 页链接 `AI story generator` 至首页、`horror story generator` 至 
 | --- | --- | --- |
 | Horror | 恐怖类型、恐怖强度、结局类型 | 避免将心理恐怖、超自然和怪物恐怖混为同一模板。 |
 | Mystery | 子类型、强度、是否 twist；在故事构想中填写场景、受害者与嫌疑人 | 线索、误导与真相必须保持逻辑一致。 |
-| Sci-Fi | 科技主题、时代、硬/软科幻、世界规则 | 将科技规则及其后果落实到情节中。 |
+| Sci-Fi | 子类型、硬度、是否 twist；在故事构想中填写世界、冲突和科技规则 | 将科技规则及其后果落实到情节中。 |
 | Adventure | 任务、地点、对手、风险 | 生成明确目标、行程阻碍与行动推进。 |
 | Children | 读者年龄、教育目标、词汇难度、安全边界 | 符合年龄、正向且无不适龄内容。 |
 | Historical | 时代、地点、历史背景、虚构比例 | 明确历史事实与虚构人物/情节的边界。 |

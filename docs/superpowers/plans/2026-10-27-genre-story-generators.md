@@ -525,7 +525,7 @@ Expected: FAIL because the locale directory and tool-card keys do not exist.
 
 Every page directory must contain all six locale files, each with one genre-specific root key: `horror_story_generate`, `mystery_story_generate`, `sci_fi_story_generate`, `adventure_story_generate`, `children_story_generate`, or `historical_story_generate`. Each root object must supply `metadata` with only title and description (no `keywords` metadata), `ui`, `placeholders`, `ai_models`, `common_fields`, `genre_fields`, `random_prompts`, `validation`, `success`, `errors`, `output`, `completion_guide`, `feature_intro`, `how_to_use`, `feature_benefits`, `feature_section`, `faq_section`, and `cta_section`.
 
-Use the approved exact input keys: `horrorMode`, `scareIntensity`, `endingType`; `subgenre`, `mysteryIntensity`, `includeTwist`; `technologyTheme`, `era`, `scienceMode`, `worldRule`; `mission`, `location`, `opponent`, `riskLevel`; `ageBand`, `learningGoal`, `vocabularyLevel`, `safety`; `timePeriod`, `location`, `historicalContext`, `fictionRatio`. Page prose and FAQs must explain the corresponding fields; do not use a find-and-replace title template. The Horror locale roots additionally supply `hero_examples` with exactly three labelled cards and `horror_seo`, which Task 5 defines and renders.
+Use the approved exact input keys: `horrorMode`, `scareIntensity`, `endingType`; `subgenre`, `mysteryIntensity`, `includeTwist`; `sciFiSubgenre`, `scienceMode`, `includeTwist`; `mission`, `location`, `opponent`, `riskLevel`; `ageBand`, `learningGoal`, `vocabularyLevel`, `safety`; `timePeriod`, `location`, `historicalContext`, `fictionRatio`. Page prose and FAQs must explain the corresponding fields; do not use a find-and-replace title template. Horror, Mystery, and Sci-Fi receive their specialized hero examples and SEO content in Tasks 5–7.
 
 Add translated `name` and `desc` entries under `ai_tools.tools` for all six snake-case tool keys in every global messages file.
 
@@ -627,7 +627,7 @@ Expected: FAIL because the title API and SEO component do not exist; the locale 
 
 - [ ] **Step 3: Implement the isolated five-title API.**
 
-`parseGenreStoryTitleRequest` accepts a supported `genre`, a nonempty `description` of 10–1,200 characters, and an optional locale. Task 5 enables `horror`; Task 6 adds `mystery`. `buildGenreStoryTitlePrompt` must return an instruction that requests exactly five distinct, marketable titles for that genre, one title per line, no numbering, no explanation, no existing-franchise names, and the requested output language.
+`parseGenreStoryTitleRequest` accepts a supported `genre`, a nonempty `description` of 10–1,200 characters, and an optional locale. Task 5 enables `horror`; Task 6 adds `mystery`; Task 7 adds `sci_fi`. `buildGenreStoryTitlePrompt` must return an instruction that requests exactly five distinct, marketable titles for that genre, one title per line, no numbering, no explanation, no existing-franchise names, and the requested output language.
 
 The route uses the same optional Turnstile behavior as the genre-story route. It resolves `fast` with `resolveModelTier("fast")`, obtains the page key from the validated generator configuration, streams newline-safe output through the existing `0:"..."` protocol, and caps rendered client output at the first five nonempty lines. This makes the UI contract exactly five titles even if a provider misbehaves. The route must use `prepareCreativeQuota`, `fetchChatCompletion`, `commitCreativeQuotaCharge`, and `withCreativeVisitorCookie`; it must not call provider URLs directly.
 
@@ -764,7 +764,105 @@ git add src/components/blocks/mystery-story-seo-content src/app/api/genre-story-
 git commit -m "feat: add mystery story SEO experience"
 ```
 
-### Task 7: Register all six tools and verify sitemap coverage
+### Task 7: Implement the Sci-Fi keyword layout with the shared title tool
+
+**Files:**
+- Create: `src/components/blocks/sci-fi-story-seo-content/index.tsx`
+- Modify: `src/app/api/genre-story-title-generate/_lib.ts`
+- Modify: `src/components/blocks/genre-story-title-generator/index.tsx`
+- Modify: `src/components/pages/genre-story-generator-page.tsx`
+- Modify: `src/types/blocks/genre-story-generate.d.ts`
+- Modify: `src/i18n/pages/sci-fi-story-generate/{en,zh,de,ko,ja,ru}.json`
+- Test: `tests/sci-fi-story-generator-seo.test.ts`
+- Test: `tests/genre-story-title-generate-lib.test.ts`
+
+- [ ] **Step 1: Write failing tests for Sci-Fi metadata, hero controls, retrieval sections, FAQ, safe links, and title support.**
+
+```ts
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import test from "node:test";
+import { parseGenreStoryTitleRequest } from "@/app/api/genre-story-title-generate/_lib";
+
+const page = JSON.parse(readFileSync("src/i18n/pages/sci-fi-story-generate/en.json", "utf8"));
+const sciFi = page.sci_fi_story_generate;
+
+test("Sci-Fi uses the approved TDH and first-viewport controls", () => {
+  assert.equal(sciFi.metadata.title, "Sci-Fi Story Generator – Free AI Science Fiction Plot Maker");
+  assert.equal(sciFi.metadata.description, "Generate a sci-fi plot, world and cast in seconds — hard SF, space opera, cyberpunk or dystopian. Free AI sci-fi story generator with ideas, prompts and titles, no sign-up.");
+  assert.equal(sciFi.ui.title, "Free AI Sci-Fi Story Generator");
+  assert.equal(sciFi.ui.subtitle, "Pick a subgenre and a length — get a full plot outline, a short story, or a one-line hook built around your world.");
+  assert.equal("keywords" in sciFi.metadata, false);
+  assert.equal(sciFi.hero_examples.length, 3);
+  const fields = Object.fromEntries(sciFi.genre_fields.map((field: { key: string; options: Record<string, string> }) => [field.key, field.options]));
+  assert.deepEqual(Object.keys(fields.sciFiSubgenre), ["hard_sf", "space_opera", "cyberpunk", "dystopian", "time_travel", "first_contact", "ai_uprising", "post_apocalyptic"]);
+  assert.deepEqual(Object.keys(sciFi.common_fields.length.options), ["hook", "short", "full_outline"]);
+  assert.deepEqual(Object.keys(fields.scienceMode), ["hard_sf", "space_opera"]);
+});
+
+test("Sci-Fi has answer-bearing sections and only live canonical links", () => {
+  for (const title of [
+    "Sci-Fi Story Ideas & Plot Outlines", "Sci-Fi Writing Prompts by Subgenre", "Worldbuilding: Settings, Species, Tech",
+    "Sci-Fi Story Titles", "How to Generate a Sci-Fi Story in 4 Steps", "Make It Believable: The One Rule of Hard SF",
+    "Sci-Fi vs Fantasy: Which Generator Do You Need?", "Who Uses a Sci-Fi Story Generator",
+    "What is a Sci-Fi Story Generator?", "Frequently Asked Questions",
+  ]) assert.ok(sciFi.sci_fi_seo.headings.includes(title), title);
+  assert.deepEqual(sciFi.sci_fi_seo.internal_links.map((link: { href: string }) => link.href), ["/", "/horror-story-generator", "/mystery-story-generator", "/fantasy-generator"]);
+  assert.equal(sciFi.sci_fi_seo.name_generator.href, null);
+  assert.equal(sciFi.sci_fi_seo.story_ideas.href, null);
+  assert.equal(sciFi.sci_fi_seo.writing_prompts.href, null);
+});
+
+test("Sci-Fi keeps all approved questions visibly present", () => {
+  const questions = sciFi.faq_section.items.map((item: { title: string }) => item.title);
+  for (const question of [
+    "Is there a free sci-fi story generator?", "Can AI write a good science fiction story?",
+    "Can I generate a fantasy story instead?", "Can I generate a romance sci-fi story?",
+    "What is a sci-fi backstory generator?", "How long a story can it generate?",
+    "What's the difference between sci-fi and fantasy?",
+  ]) assert.ok(questions.includes(question), question);
+});
+
+test("the shared title parser accepts Sci-Fi without accepting adjacent non-story tasks", () => {
+  assert.equal(parseGenreStoryTitleRequest({ genre: "sci_fi", description: "A generation ship reaches a planet whose ruins predict every colonist's death." }).ok, true);
+  assert.equal(parseGenreStoryTitleRequest({ genre: "sci_fi_name", description: "Names for alien captains" }).ok, false);
+});
+```
+
+- [ ] **Step 2: Run the tests to confirm the Sci-Fi specialization is absent.**
+
+Run: `npx tsx --test tests/sci-fi-story-generator-seo.test.ts tests/genre-story-title-generate-lib.test.ts`
+Expected: FAIL because the base Sci-Fi locale lacks `hero_examples` and `sci_fi_seo`, the renderer does not exist, and the title parser does not yet accept `sci_fi`.
+
+- [ ] **Step 3: Extend the shared title path for Sci-Fi.**
+
+Add `sci_fi` to the supported title-generator genres and resolve its `pageKey` from the shared generator configuration. The Sci-Fi prompt must ask for exactly five distinct titles that reflect the supplied setting, conflict, technology rule, or world consequence. Preserve the no-numbering, no-franchise-name, exactly-five-line contract and existing Horror/Mystery behavior.
+
+- [ ] **Step 4: Implement `SciFiStorySeoContent` and render it after the shared generator.**
+
+The component receives typed `sci_fi_seo`, uses `GenreStoryTitleGenerator` with `genre="sci_fi"`, renders the approved H2/H3 list, and begins each section with a concise, answer-bearing paragraph. It must show one prompt example for each of the eight subgenres; explain worldbuilding as settings, species, and tech rules with downstream plot consequences; and make the four-step section visibly follow `world → conflict → tech rule → twist`.
+
+The comparison section must distinguish science-fiction's extrapolated rules and consequences from fantasy's magic or mythic rules. It links the `fantasy story generator` anchor to the existing canonical `/fantasy-generator`; it does not propose or create a duplicate fantasy URL. Render this component only when `generator.genre === "sci_fi"` immediately after `<GenreStoryGenerate>`.
+
+Allow only `/`, `/horror-story-generator`, `/mystery-story-generator`, and `/fantasy-generator` as Sci-Fi SEO-content hrefs. `sci fi name generator`, `sci fi story ideas`, and `sci fi writing prompts` remain visible explanatory text with `href: null` until an independently approved and published page exists. Do not create a name-generator, blog, romance, or genre-alias route in this milestone.
+
+- [ ] **Step 5: Complete Sci-Fi locale data in all six languages.**
+
+Each Sci-Fi locale root adds `hero_examples`, `sci_fi_seo`, eight subgenre options, `scienceMode`, `includeTwist`, seven visible FAQ items, and shared title-tool labels. English uses the approved TDH and headings verbatim. The three labelled editorial examples are a space-opera opening, an AI-awakening three-act outline, and a ship-or-colony setting sheet. Use `Free • No sign-up required • Start instantly`; do not add `meta keywords`, `Unlimited`, or links to nonexistent name-generator or blog URLs.
+
+- [ ] **Step 6: Re-run the Sci-Fi, title, and baseline content tests.**
+
+Run: `npx tsx --test tests/genre-story-generate-content.test.ts tests/sci-fi-story-generator-seo.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts`
+Expected: PASS.
+
+- [ ] **Step 7: Commit the Sci-Fi specialization.**
+
+```bash
+git add src/components/blocks/sci-fi-story-seo-content src/app/api/genre-story-title-generate/_lib.ts src/components/blocks/genre-story-title-generator/index.tsx src/components/pages/genre-story-generator-page.tsx src/types/blocks/genre-story-generate.d.ts src/i18n/pages/sci-fi-story-generate tests/sci-fi-story-generator-seo.test.ts tests/genre-story-title-generate-lib.test.ts
+git commit -m "feat: add sci-fi story SEO experience"
+```
+
+### Task 8: Register all six tools and verify sitemap coverage
 
 **Files:**
 - Modify: `src/services/tools.ts`
@@ -826,7 +924,7 @@ Insert every fixed route once in `TOOL_ROUTES` and once in the static `routes` a
 
 - [ ] **Step 4: Run all new targeted tests.**
 
-Run: `npx tsx --test tests/genre-story-generate-lib.test.ts tests/genre-story-generate-route.test.ts tests/genre-story-generate-page.test.ts tests/genre-story-generate-content.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts tests/mystery-story-generator-seo.test.ts tests/genre-story-generate-site-registration.test.ts`
+Run: `npx tsx --test tests/genre-story-generate-lib.test.ts tests/genre-story-generate-route.test.ts tests/genre-story-generate-page.test.ts tests/genre-story-generate-content.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts tests/mystery-story-generator-seo.test.ts tests/sci-fi-story-generator-seo.test.ts tests/genre-story-generate-site-registration.test.ts`
 Expected: PASS.
 
 - [ ] **Step 5: Commit registrations.**
@@ -836,7 +934,7 @@ git add src/services/tools.ts src/app/sitemap.ts tests/genre-story-generate-site
 git commit -m "feat: register genre story generators"
 ```
 
-### Task 8: Perform production-level verification
+### Task 9: Perform production-level verification
 
 **Files:**
 - Modify only if verification exposes a defect in the files above.
@@ -862,7 +960,7 @@ If a verification command identifies a defect, fix it with a new test when appro
 
 ## Self-review
 
-- Spec coverage: Tasks 1–2 implement six typed, genre-specific generation contracts; Task 3 supplies six fixed canonical pages, shared UX, JSON-LD, alternates, saving, and continuation; Task 4 provides all six locales and unique SEO content; Tasks 5–6 add the approved Horror and Mystery retrieval layouts plus the shared five-title tool; Task 7 registers cards, quota keys, and both Sitemap lists; Task 8 runs targeted tests, lint, and build.
-- Scope: Old genre URLs, `/story-generate`, community pages, redirects, and the second-phase tool cluster are explicitly untouched. `Murder Mystery Generator` remains an on-page Mystery section rather than a planned child route. The information article is separately editorial work and is not silently added to the existing `/posts` architecture.
+- Spec coverage: Tasks 1–2 implement six typed, genre-specific generation contracts; Task 3 supplies six fixed canonical pages, shared UX, JSON-LD, alternates, saving, and continuation; Task 4 provides all six locales and unique SEO content; Tasks 5–7 add the approved Horror, Mystery, and Sci-Fi retrieval layouts plus the shared five-title tool; Task 8 registers cards, quota keys, and both Sitemap lists; Task 9 runs targeted tests, lint, and build.
+- Scope: Old genre URLs, `/story-generate`, community pages, redirects, and the second-phase tool cluster are explicitly untouched. `Murder Mystery Generator` remains an on-page Mystery section rather than a planned child route. Sci-Fi naming and information-content opportunities are not silently added as generator or `/blog` routes. The information article is separately editorial work and is not silently added to the existing `/posts` architecture.
 - Type consistency: Route slug, `pageKey`, `GenreStoryKind`, locale `genre_fields.key`, i18n namespace/root key, and API `options` are connected through `src/lib/genre-story-generators.ts`; fixed page wrappers pass slugs while API requests pass kind values.
 - No placeholders: all planned routes, field keys, quota identities, prompt contracts, test files, and commands are named above.
