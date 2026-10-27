@@ -20,12 +20,38 @@
 
 每个新 URL 使用独立页面入口及独立 locale JSON，覆盖 `en`、`zh`、`de`、`ko`、`ja`、`ru`。页面须提供：
 
-- 专属 title、description、keywords、Open Graph 与 Twitter metadata；
+- 专属 title、description、Open Graph 与 Twitter metadata；不设置 `meta keywords`；
 - 该 URL 的 canonical 与 `buildLanguageAlternates`；
 - BreadcrumbList、WebApplication、FAQPage JSON-LD；
 - 题材专属的 Hero、功能说明、使用场景、FAQ、CTA 与 RelatedTools 内容。
 
 不得新增 `fantasy-story-generator`、`romance-generator` 或 `ai-fantasy-story-generator` 等与现有内容竞争的页面。新页面在 `src/services/tools.ts`、六个全局消息文件的 `ai_tools.tools`、以及 `src/app/sitemap.ts` 的静态 `routes` 数组和 `TOOL_ROUTES` 集合中注册。
+
+### Horror 落地页关键词布局
+
+`/horror-story-generator` 是唯一的 Horror canonical URL；不再创建 `/ai-horror-story-generator`。`AI` 变体通过 title、H1、首屏、工具文案和可见内容承接，避免两个 URL 相互竞争。
+
+英文页固定使用以下 TDH：
+
+- Title：`Free Horror Story Generator – AI Scary Story Maker`
+- Meta description：`Generate creepy plots, cursed characters and two-sentence scares in seconds. Free AI horror story generator — horror story ideas, titles and prompts, no sign-up.`
+- H1：`Free AI Horror Story Generator`
+- H1 下首句：`Turn one line of an idea into a full horror story, a plot outline or a two-sentence scare — pick a subgenre and generate.`
+
+不设置或维护 HTML `meta keywords`。首屏必须直接包含可用生成器，而不是只有 CTA：Horror/Spooky/Psychological/Supernatural 题材、Two-sentence/Short/Full 长度、强度与结局选项，以及三张明确标作示例输出的编辑样例卡。信任文案应如实表述为免费且无需注册开始；不得在仍存在模型额度限制时声称“Unlimited”。
+
+Horror 页在生成器后渲染下列可见、可维护的内容模块：
+
+1. `Horror Story Ideas & Plots`，包含 `Horror story ideas with a twist` 和 `Plot structures that actually scare`；
+2. `Horror Story Prompts by Subgenre`，覆盖 psychological、supernatural、body、folk、creepypasta 与 analog horror；
+3. `Horror Story Titles`，含剧情输入和恰好五个标题的页内小工具；
+4. `Two-Sentence Horror Stories`，含 12 条原创、可读的示例；
+5. `How to Generate a Horror Story with AI`、`Who Uses a Horror Story Generator`、`What is a Horror Story Generator?` 与可见 FAQ；
+6. `From Horror Story to Video`，提供适合视频化的场景节拍、旁白和视觉提示交接，但在没有视频渲染能力前不得自称视频生成器或承诺生成视频文件。
+
+FAQ 必须展示并与 JSON-LD 逐题一致：`How can I create my own scary story?`、`Can you make me a horror story?`、`Can ChatGPT write horror stories?`、`What is the scariest story ever?`、`What is the best free horror story generator?`、`Can I make a horror story video from the generated story?`。FAQ schema 只表达页面上真实可见的问答，不承诺富结果展示。
+
+Horror 页优先内部链接到首页 `/`，锚文本为 `AI story generator`；也可链接到已经存在的 `/plot-generator`、`/story-prompt-generator`、`/book-title-generator` 与 `/ai-write`。不得为尚不存在的 scary、spooky、ghost、Halloween、creepypasta 或 Christmas-horror 路由制造空链接或开设近义页面。未来仅在真实、可索引的对应内容上线后再使用这些精确锚文本；现有或未来的 horror-writing-prompts 内容应回链本页面并使用自然的 `horror story generator` 锚文本。
 
 ## 生成器与 API
 
