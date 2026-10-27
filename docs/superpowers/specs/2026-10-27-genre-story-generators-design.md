@@ -98,6 +98,35 @@ FAQ 必须可见并与 JSON-LD 逐题一致：`Is there a free sci-fi story gene
 
 Sci-Fi 页链接 `AI story generator` 至首页、`horror story generator` 至 Horror 页、`mystery story generator` 至 Mystery 页，并以 `fantasy story generator` 锚文本链接至现有 canonical `/fantasy-generator`。`sci fi name generator` 是不同的命名任务，不得硬塞入故事生成器的 title、H1 或主体段落；本次不规划对应路由或空链接。`sci fi story ideas` 与 `sci fi writing prompts` 是信息型内容机会：现有内容系统使用 `/posts/[slug]`，未单独获批和发布前不得创建 `/blog/...` URL 或死链。上述文章、主工具页与相邻题材页发布后可自然回链本页并使用 `sci-fi story generator` 锚文本。
 
+### Adventure 落地页关键词布局
+
+`/adventure-story-generator` 是唯一的 Adventure canonical URL。页面服务的任务是：帮助用户在浏览器内生成并阅读冒险故事、剧情大纲或有两到三个可点选分支的互动路径；它不声称提供原生应用或完整游戏引擎。
+
+英文页固定使用：
+
+- Title：`Adventure Story Generator – Free AI Adventure Plot Maker`
+- Meta description：`Generate an adventure story, quest or plot in seconds — pirates, lost worlds, space, or a playable choose-your-path. Free AI adventure story generator, no sign-up.`
+- H1：`Free AI Adventure Story Generator`
+- H1 下首句：`Pick a setting and a length — get a full adventure plot, a short story, or a playable branching path you can read right here.`
+
+不设置 HTML `meta keywords`，也不得在仍存在模型额度限制时使用“Unlimited”。首屏必须直接包含可用工具：Pirate/Lost world/Space/Fantasy kingdom/Survival/Mystery quest 六种场景，以及 One-line hook/Short story/Full plot outline/Playable branching path 四种篇幅或输出形式。选择 Playable branching path 后，结果必须在浏览器中展示当前场景与两到三个可点选选择；选择后继续生成下一个场景与选择。首屏展示三条明确标作示例输出的编辑样例：一个海盗寻宝开场、一份遗迹探险三幕大纲、一段有两到三个选择的分支剧情。信任文案使用 `Free • No sign-up • Play in browser`，不得承诺不限量。
+
+Adventure 页在生成器后展示下列可见、可维护的内容模块：
+
+1. `Adventure Story Ideas & Plots`，包含 `Adventure story ideas with a twist`；
+2. `Adventure Writing Prompts by Setting`，为六种场景各提供一条具体 prompt 示例；
+3. `Choose Your Own Adventure`，提供分支选择器并说明每个选择会如何继续当前故事；
+4. `Play It Instead of Reading It`，以可在浏览器中继续点击的文字互动模式承接互动游戏与文本冒险需求；
+5. `Adventure Story Titles`，含剧情输入和恰好五个标题的页内小工具；
+6. `From Adventure to Tabletop`，短块说明如何把任务、遭遇和地点改写为桌游素材；
+7. `How to Generate an Adventure Story in 4 Steps`，按 setting → inciting incident → escalating obstacles → payoff 展开；
+8. `What Makes an Adventure Story Work`，解释冲突升级、代价、地图与目标；
+9. `Adventure vs Fantasy: Which Generator Do You Need?`、受众说明、定义段与 FAQ。
+
+FAQ 必须可见并与 JSON-LD 逐题一致：`Is there a free adventure story generator?`、`Can I use it online without installing anything?`、`Can I play the story as a game?`、`Can I make a text-based adventure RPG?`、`Can I generate a DnD adventure or campaign?`、`Can teachers use it with students?`。FAQ schema 只表达页面上真实可见的问答：浏览器中的分支路径可阅读和继续点击，但不承诺原生应用、多人游戏或完整 RPG 规则引擎。
+
+Adventure 页链接 `AI story generator` 至首页，并以 `horror story generator`、`mystery story generator`、`sci-fi story generator` 链接已规划的相邻题材页，以 `fantasy story generator` 锚文本链接现有 canonical `/fantasy-generator`。当前没有与 `DnD campaign generator` 或 `DnD adventure generator` 相符的独立工具：`From Adventure to Tabletop` 在本次保留为可读内容，不得虚构链接或把现有 backstory 工具伪装成 campaign generator。`DnD campaign generator`、`choose your own adventure generator`、`superhero story generator` 仅记录为未来需单独获批、具备独立体验后才能创建的候选任务，不属于本次 P1。`adventure story ideas` 与 `adventure story` 是信息型内容机会，遵循现有 `/posts/[slug]` 架构；未单独获批和发布前不得创建 `/blog/...` URL 或死链。发布后的文章、主工具页和相邻题材页应使用自然的 `adventure story generator` 锚文本回链本页，不使用无意义的 `adv`。
+
 ## 生成器与 API
 
 实现一个共享的客户端题材生成器。各页面通过类型受限的题材配置提供标题、路由、配额 page key、允许字段、默认值及题材专属选项；组件只呈现当前题材允许的输入。
@@ -118,7 +147,7 @@ Sci-Fi 页链接 `AI story generator` 至首页、`horror story generator` 至 H
 | Horror | 恐怖类型、恐怖强度、结局类型 | 避免将心理恐怖、超自然和怪物恐怖混为同一模板。 |
 | Mystery | 子类型、强度、是否 twist；在故事构想中填写场景、受害者与嫌疑人 | 线索、误导与真相必须保持逻辑一致。 |
 | Sci-Fi | 子类型、硬度、是否 twist；在故事构想中填写世界、冲突和科技规则 | 将科技规则及其后果落实到情节中。 |
-| Adventure | 任务、地点、对手、风险 | 生成明确目标、行程阻碍与行动推进。 |
+| Adventure | 场景、篇幅或输出形式 | 生成明确目标、行程阻碍与行动推进；选择分支路径时提供两到三个可点击、可继续的文字选项。 |
 | Children | 读者年龄、教育目标、词汇难度、安全边界 | 符合年龄、正向且无不适龄内容。 |
 | Historical | 时代、地点、历史背景、虚构比例 | 明确历史事实与虚构人物/情节的边界。 |
 

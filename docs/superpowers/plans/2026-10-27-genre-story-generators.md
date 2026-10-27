@@ -22,12 +22,15 @@
 | `src/components/blocks/genre-story-generate/index.tsx` | Shared client form, request lifecycle, streamed result, save, and continue-in-editor interactions. |
 | `src/components/blocks/genre-story-title-generator/index.tsx` | Reusable title input, Turnstile lifecycle, request state, and five-result renderer for supported genre pages. |
 | `src/components/blocks/horror-story-seo-content/index.tsx` | Horror-only examples, idea/plot and prompt sections, five-title mini-generator, two-sentence examples, video-adaptation hand-off, and controlled internal links. |
+| `src/lib/adventure-branching.ts` | Pure parser and validator for the streamed Adventure scene-and-choices protocol. |
+| `src/components/blocks/adventure-story-player/index.tsx` | Browser-playable Adventure branch reader: scene, two-to-three choice controls, continuation requests, and bounded history. |
+| `src/components/blocks/adventure-story-seo-content/index.tsx` | Adventure-only examples, ideas, prompts, interactive-play explainer, tabletop boundary, title tool, and controlled internal links. |
 | `src/components/pages/genre-story-generator-page.tsx` | Shared server page markup, metadata factory, JSON-LD, and content sections. |
 | `src/app/[locale]/(default)/{six-slugs}/page.tsx` | Thin fixed URL entry points exporting a per-genre page and metadata factory. |
 | `src/i18n/pages/{genre-story-generate}/{locale}.json` | Six per-page locale directories, each carrying only that page's unique content. |
 | `src/services/tools.ts`, `src/lib/creative-quota-core.ts`, `src/app/sitemap.ts`, `src/i18n/messages/*.json` | Discovery, quota whitelisting, sitemap, and translated tool cards. |
 | `tests/genre-story-generate-*.test.ts` | Pure logic, route wiring, page structure, and site registration coverage. |
-| `tests/horror-story-generator-seo.test.ts`, `tests/genre-story-title-generate-*.test.ts` | Genre-page SEO contracts, visible keyword-layout sections, internal-link rules, and exactly-five-title behavior. |
+| `tests/horror-story-generator-seo.test.ts`, `tests/genre-story-title-generate-*.test.ts`, `tests/adventure-story-*.test.ts` | Genre-page SEO contracts, browser-branch protocol/player behavior, visible keyword-layout sections, internal-link rules, and exactly-five-title behavior. |
 
 ## Approved Horror landing-page SEO brief
 
@@ -113,6 +116,48 @@ Internal-link rules:
 
 The information article is separately editorial work and must be published through the existing posts system before it can receive an internal link.
 
+## Approved Adventure landing-page SEO brief
+
+**Evidence boundary:** The keyword groups, volumes, trend observations, and SERP descriptions supplied for Adventure are strategy inputs; this repository does not contain Search Console, analytics, or a current live-SERP sample that independently validates them. Before release, record a baseline for the primary query and validate the query mix. After release, monitor impressions, clicks, CTR, generation starts, branching-path starts, choice selections, completion rate, and relevant search-result appearance; do not promise ranking or engagement outcomes.
+
+**Searcher task:** For writers, tabletop GMs, teachers, and interactive-fiction hobbyists searching for an adventure-story generator, the page turns a setting and premise into a plot, short story, or browser-playable text path with two or three choices per scene.
+
+**Canonical decision:** Keep `/adventure-story-generator` as the sole Adventure URL. Its branching mode is a browser-playable text interaction; it must not claim to be a native app, a multiplayer game, or a complete RPG rules engine.
+
+| Element | Required English copy / behavior |
+| --- | --- |
+| Title | `Adventure Story Generator – Free AI Adventure Plot Maker` |
+| Meta description | `Generate an adventure story, quest or plot in seconds — pirates, lost worlds, space, or a playable choose-your-path. Free AI adventure story generator, no sign-up.` |
+| H1 | `Free AI Adventure Story Generator` |
+| First sentence | `Pick a setting and a length — get a full adventure plot, a short story, or a playable branching path you can read right here.` |
+| Meta keywords | Do not add a `keywords` metadata tag. |
+| Trust line | Use `Free • No sign-up • Play in browser`; do not claim `Unlimited` while standard/creative usage has quotas. |
+
+The hero must contain the usable generator, not an onward CTA. Its fields are **setting** `pirate`, `lost_world`, `space`, `fantasy_kingdom`, `survival`, `mystery_quest`; **length/output** `hook`, `short`, `full_outline`, `branching_path`. In `branching_path`, the result must render in-browser as a current scene plus two or three clickable choices, and every choice must request and render the next scene plus its choices. Display three clearly labelled editorial examples immediately after the form: a pirate-treasure opening, a ruins-exploration three-act outline, and a branching scene with two or three choices.
+
+The visible English H2/H3 structure is:
+
+1. `Adventure Story Ideas & Plots`, including `Adventure story ideas with a twist`.
+2. `Adventure Writing Prompts by Setting`, with one concrete prompt for each of the six hero settings.
+3. `Choose Your Own Adventure`, with the branching choice selector.
+4. `Play It Instead of Reading It`, with a browser-playable text interaction and clear scope boundaries.
+5. `Adventure Story Titles`, with the shared premise-to-five-titles tool.
+6. `From Adventure to Tabletop`, a short bridge for GM-ready hooks, locations, and encounters; it must not link to an absent campaign-generator route.
+7. `How to Generate an Adventure Story in 4 Steps`, covering setting → inciting incident → escalating obstacles → payoff.
+8. `What Makes an Adventure Story Work`, covering escalating conflict, cost, maps, and goals.
+9. `Adventure vs Fantasy: Which Generator Do You Need?`.
+10. `Who Uses an Adventure Story Generator`, covering novelists, tabletop GMs, teachers and students, and interactive-fiction hobbyists.
+11. `What is an Adventure Story Generator?` and `Frequently Asked Questions`.
+
+Visible FAQs and their JSON-LD counterparts must be identical: `Is there a free adventure story generator?`, `Can I use it online without installing anything?`, `Can I play the story as a game?`, `Can I make a text-based adventure RPG?`, `Can I generate a DnD adventure or campaign?`, and `Can teachers use it with students?`.
+
+Internal-link rules:
+
+- Link `AI story generator` to `/`, `horror story generator` to `/horror-story-generator`, `mystery story generator` to `/mystery-story-generator`, `sci-fi story generator` to `/sci-fi-story-generator`, and `fantasy story generator` to the existing canonical `/fantasy-generator`.
+- There is no matching DnD campaign/adventure generator in this repository. Keep `From Adventure to Tabletop` as readable main-page content; do not create a route, link, or P1 commitment for `DnD campaign generator` without separate approval and a distinct product specification.
+- `choose your own adventure generator` and `superhero story generator` are related but distinct tasks. Do not add routes or dead anchors for them in this scope.
+- `adventure story ideas` and `adventure story` articles belong in the existing `/posts/[slug]` system, not a new `/blog/...` URL. Until each is independently approved and published, keep its destination absent rather than adding an empty anchor. Backlinks use the descriptive `adventure story generator` anchor, not `adv`.
+
 ### Task 1: Define the genre configuration and test the pure request contract
 
 **Files:**
@@ -183,6 +228,20 @@ test("horror preserves the approved hero options", () => {
   });
 });
 
+test("adventure preserves its setting input and defines the browser-branching contract", () => {
+  const parsed = parseGenreStoryRequest({
+    genre: "adventure",
+    prompt: "A pirate captain races through a drowned city for a map to a lost island.",
+    length: "branching_path",
+    options: { adventureSetting: "pirate", scienceMode: "hard_sf" },
+  });
+  assert.equal(parsed.ok, true);
+  assert.deepEqual(parsed.value?.options, { adventureSetting: "pirate" });
+  assert.match(buildGenreStoryPrompt(parsed.value!), /\[SCENE\]/);
+  assert.match(buildGenreStoryPrompt(parsed.value!), /\[CHOICES\]/);
+  assert.match(buildGenreStoryPrompt(parsed.value!), /two or three meaningful choices/i);
+});
+
 test("genre prompts retain each genre's creative contract", () => {
   const mystery = parseGenreStoryRequest({ genre: "mystery", prompt: "A vanished map", model: "standard" });
   const children = parseGenreStoryRequest({ genre: "children", prompt: "A lost kite", model: "standard", options: { ageBand: "6_8", safety: "gentle" } });
@@ -228,7 +287,7 @@ const GENRE_REQUIREMENTS: Record<GenreStoryKind, string> = {
   horror: "Build dread through the selected horror mode and intensity; honour the requested ending without gratuitous gore. For two-sentence output, deliver one compact setup and one unmistakable turn.",
   mystery: "Plant fair clues, distinguish red herrings from evidence, and make the final solution logically follow from the clues. For hook output, write exactly two lines that establish the case and a compelling unanswered question.",
   sci_fi: "Apply the selected science-fiction mode and world rules consistently; show the human consequences of the technology.",
-  adventure: "Give the protagonist a concrete mission, escalating obstacles, travel or discovery, an opposing force, and an earned resolution.",
+  adventure: "Give the protagonist a concrete goal, escalating obstacles, travel or discovery, an opposing force, and an earned payoff. For branching_path output, return [SCENE] followed by [CHOICES], then two or three meaningful numbered choices. Each choice must state a distinct immediate consequence and remain playable in a browser text path.",
   children: "Keep the language, conflict, and emotional stakes age-appropriate; follow the safety boundary and make the educational goal natural rather than preachy.",
   historical: "Respect the stated era and place, separate documented historical context from invented characters and plot, and never present invented details as fact.",
 };
@@ -525,7 +584,7 @@ Expected: FAIL because the locale directory and tool-card keys do not exist.
 
 Every page directory must contain all six locale files, each with one genre-specific root key: `horror_story_generate`, `mystery_story_generate`, `sci_fi_story_generate`, `adventure_story_generate`, `children_story_generate`, or `historical_story_generate`. Each root object must supply `metadata` with only title and description (no `keywords` metadata), `ui`, `placeholders`, `ai_models`, `common_fields`, `genre_fields`, `random_prompts`, `validation`, `success`, `errors`, `output`, `completion_guide`, `feature_intro`, `how_to_use`, `feature_benefits`, `feature_section`, `faq_section`, and `cta_section`.
 
-Use the approved exact input keys: `horrorMode`, `scareIntensity`, `endingType`; `subgenre`, `mysteryIntensity`, `includeTwist`; `sciFiSubgenre`, `scienceMode`, `includeTwist`; `mission`, `location`, `opponent`, `riskLevel`; `ageBand`, `learningGoal`, `vocabularyLevel`, `safety`; `timePeriod`, `location`, `historicalContext`, `fictionRatio`. Page prose and FAQs must explain the corresponding fields; do not use a find-and-replace title template. Horror, Mystery, and Sci-Fi receive their specialized hero examples and SEO content in Tasks 5–7.
+Use the approved exact input keys: `horrorMode`, `scareIntensity`, `endingType`; `subgenre`, `mysteryIntensity`, `includeTwist`; `sciFiSubgenre`, `scienceMode`, `includeTwist`; `adventureSetting`; `ageBand`, `learningGoal`, `vocabularyLevel`, `safety`; `timePeriod`, `location`, `historicalContext`, `fictionRatio`. The Adventure length options are `hook`, `short`, `full_outline`, and `branching_path`; the other genre pages retain their approved length option sets. Page prose and FAQs must explain the corresponding fields; do not use a find-and-replace title template. Horror, Mystery, Sci-Fi, and Adventure receive their specialized hero examples and SEO content in Tasks 5–8.
 
 Add translated `name` and `desc` entries under `ai_tools.tools` for all six snake-case tool keys in every global messages file.
 
@@ -627,7 +686,7 @@ Expected: FAIL because the title API and SEO component do not exist; the locale 
 
 - [ ] **Step 3: Implement the isolated five-title API.**
 
-`parseGenreStoryTitleRequest` accepts a supported `genre`, a nonempty `description` of 10–1,200 characters, and an optional locale. Task 5 enables `horror`; Task 6 adds `mystery`; Task 7 adds `sci_fi`. `buildGenreStoryTitlePrompt` must return an instruction that requests exactly five distinct, marketable titles for that genre, one title per line, no numbering, no explanation, no existing-franchise names, and the requested output language.
+`parseGenreStoryTitleRequest` accepts a supported `genre`, a nonempty `description` of 10–1,200 characters, and an optional locale. Task 5 enables `horror`; Task 6 adds `mystery`; Task 7 adds `sci_fi`; Task 8 adds `adventure`. `buildGenreStoryTitlePrompt` must return an instruction that requests exactly five distinct, marketable titles for that genre, one title per line, no numbering, no explanation, no existing-franchise names, and the requested output language.
 
 The route uses the same optional Turnstile behavior as the genre-story route. It resolves `fast` with `resolveModelTier("fast")`, obtains the page key from the validated generator configuration, streams newline-safe output through the existing `0:"..."` protocol, and caps rendered client output at the first five nonempty lines. This makes the UI contract exactly five titles even if a provider misbehaves. The route must use `prepareCreativeQuota`, `fetchChatCompletion`, `commitCreativeQuotaCharge`, and `withCreativeVisitorCookie`; it must not call provider URLs directly.
 
@@ -862,7 +921,127 @@ git add src/components/blocks/sci-fi-story-seo-content src/app/api/genre-story-t
 git commit -m "feat: add sci-fi story SEO experience"
 ```
 
-### Task 8: Register all six tools and verify sitemap coverage
+### Task 8: Implement the Adventure keyword layout and browser-playable branching path
+
+**Files:**
+- Create: `src/lib/adventure-branching.ts`
+- Create: `src/components/blocks/adventure-story-player/index.tsx`
+- Create: `src/components/blocks/adventure-story-seo-content/index.tsx`
+- Modify: `src/lib/genre-story-generators.ts`
+- Modify: `src/app/api/genre-story-generate/_lib.ts`
+- Modify: `src/components/blocks/genre-story-generate/index.tsx`
+- Modify: `src/app/api/genre-story-title-generate/_lib.ts`
+- Modify: `src/components/pages/genre-story-generator-page.tsx`
+- Modify: `src/types/blocks/genre-story-generate.d.ts`
+- Modify: `src/i18n/pages/adventure-story-generate/{en,zh,de,ko,ja,ru}.json`
+- Test: `tests/adventure-story-generator-seo.test.ts`
+- Test: `tests/adventure-story-player.test.ts`
+- Modify: `tests/genre-story-generate-lib.test.ts`
+- Modify: `tests/genre-story-title-generate-lib.test.ts`
+
+- [ ] **Step 1: Write failing tests for the Adventure TDH, form, live-link boundaries, title support, and branch-output parser.**
+
+```ts
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import test from "node:test";
+import { parseAdventureBranchNode } from "@/lib/adventure-branching";
+import { parseGenreStoryTitleRequest } from "@/app/api/genre-story-title-generate/_lib";
+
+const page = JSON.parse(readFileSync("src/i18n/pages/adventure-story-generate/en.json", "utf8"));
+const adventure = page.adventure_story_generate;
+
+test("Adventure uses the approved TDH and playable-branching hero controls", () => {
+  assert.equal(adventure.metadata.title, "Adventure Story Generator – Free AI Adventure Plot Maker");
+  assert.equal(adventure.metadata.description, "Generate an adventure story, quest or plot in seconds — pirates, lost worlds, space, or a playable choose-your-path. Free AI adventure story generator, no sign-up.");
+  assert.equal(adventure.ui.title, "Free AI Adventure Story Generator");
+  assert.equal(adventure.ui.subtitle, "Pick a setting and a length — get a full adventure plot, a short story, or a playable branching path you can read right here.");
+  assert.equal("keywords" in adventure.metadata, false);
+  assert.equal(adventure.hero_examples.length, 3);
+  const fields = Object.fromEntries(adventure.genre_fields.map((field: { key: string; options: Record<string, string> }) => [field.key, field.options]));
+  assert.deepEqual(Object.keys(fields.adventureSetting), ["pirate", "lost_world", "space", "fantasy_kingdom", "survival", "mystery_quest"]);
+  assert.deepEqual(Object.keys(adventure.common_fields.length.options), ["hook", "short", "full_outline", "branching_path"]);
+  assert.equal(adventure.ui.trust_line, "Free • No sign-up • Play in browser");
+});
+
+test("Adventure has answer-bearing sections and never invents related-tool URLs", () => {
+  for (const title of [
+    "Adventure Story Ideas & Plots", "Adventure Writing Prompts by Setting", "Choose Your Own Adventure",
+    "Play It Instead of Reading It", "Adventure Story Titles", "From Adventure to Tabletop",
+    "How to Generate an Adventure Story in 4 Steps", "What Makes an Adventure Story Work",
+    "Adventure vs Fantasy: Which Generator Do You Need?", "Who Uses an Adventure Story Generator",
+    "What is an Adventure Story Generator?", "Frequently Asked Questions",
+  ]) assert.ok(adventure.adventure_seo.headings.includes(title), title);
+  assert.deepEqual(adventure.adventure_seo.internal_links.map((link: { href: string }) => link.href), ["/", "/horror-story-generator", "/mystery-story-generator", "/sci-fi-story-generator", "/fantasy-generator"]);
+  assert.equal(adventure.adventure_seo.dnd_campaign.href, null);
+  assert.equal(adventure.adventure_seo.choose_your_own.href, null);
+  assert.equal(adventure.adventure_seo.superhero.href, null);
+  assert.equal(adventure.adventure_seo.story_ideas.href, null);
+});
+
+test("Adventure keeps all approved questions visibly present", () => {
+  const questions = adventure.faq_section.items.map((item: { title: string }) => item.title);
+  for (const question of [
+    "Is there a free adventure story generator?", "Can I use it online without installing anything?",
+    "Can I play the story as a game?", "Can I make a text-based adventure RPG?",
+    "Can I generate a DnD adventure or campaign?", "Can teachers use it with students?",
+  ]) assert.ok(questions.includes(question), question);
+});
+
+test("branch output requires a scene and two or three visible choices", () => {
+  assert.deepEqual(parseAdventureBranchNode("[SCENE]\\nThe sea gate opens.\\n[CHOICES]\\n1. Sail inside\\n2. Dive below").choices, ["Sail inside", "Dive below"]);
+  assert.equal(parseAdventureBranchNode("[SCENE]\\nThe sea gate opens.\\n[CHOICES]\\n1. Sail inside").ok, false);
+  assert.equal(parseAdventureBranchNode("[SCENE]\\nThe sea gate opens.\\n[CHOICES]\\n1. A\\n2. B\\n3. C\\n4. D").ok, false);
+});
+
+test("the shared title parser accepts Adventure without accepting a future DnD campaign task", () => {
+  assert.equal(parseGenreStoryTitleRequest({ genre: "adventure", description: "Pirates cross a drowned city to reach a buried observatory." }).ok, true);
+  assert.equal(parseGenreStoryTitleRequest({ genre: "dnd_campaign", description: "A campaign for three players" }).ok, false);
+});
+```
+
+- [ ] **Step 2: Run the tests to confirm the Adventure specialization is absent.**
+
+Run: `npx tsx --test tests/adventure-story-generator-seo.test.ts tests/adventure-story-player.test.ts tests/genre-story-title-generate-lib.test.ts`
+Expected: FAIL because the locale data, branch parser/player, Adventure SEO component, and title support do not yet exist.
+
+- [ ] **Step 3: Define and validate the Adventure branching protocol.**
+
+Create `src/lib/adventure-branching.ts` with a pure `parseAdventureBranchNode(output)` function. It accepts the streamed model output only when it contains exactly one nonempty `[SCENE]` block followed by `[CHOICES]` and two or three numbered, nonempty choice lines. It returns `{ ok: true, scene, choices }` on success and `{ ok: false, message }` otherwise. Trim each choice label, reject duplicate choices, reject more than 4,000 total characters, and never render an unparsed model response as interactive controls.
+
+Extend the genre request contract with an optional Adventure-only `branchContext` containing prior scene/choice turns. Reject it for non-Adventure genres, reject more than eight turns, and reject a serialized context longer than 12,000 characters. For `length: "branching_path"`, `buildGenreStoryPrompt` requests the exact `[SCENE]` / `[CHOICES]` protocol and two or three choices. For a valid continuation request, include the accepted prior turns plus the selected choice and request the next node only. Every branch request uses the existing Turnstile, quota, and LLM route; no separate provider path is introduced.
+
+- [ ] **Step 4: Build the browser player and wire it into the shared generator.**
+
+`AdventureStoryPlayer` receives the parsed initial node, original Adventure form state, locale strings, and the shared API endpoint. It renders the scene in an `aria-live="polite"` region and two or three buttons. A click appends the selected choice to local bounded history, disables the current choices, streams the continuation from `/api/genre-story-generate`, validates it with `parseAdventureBranchNode`, and renders the next node. It keeps the previous node visible if a continuation fails, exposes the translated error text, offers `Start over`, and stops accepting further choices after eight turns with a clear restart action.
+
+Modify `GenreStoryGenerate` to keep the raw streamed output for Adventure. When the active genre is `adventure` and `length === "branching_path"`, parse it and mount `AdventureStoryPlayer`; for every other genre/length retain the existing plain streamed-story renderer. The player is an in-browser text path, not a claim of native installation, multiplayer, or a full RPG engine.
+
+- [ ] **Step 5: Extend the shared title tool and implement `AdventureStorySeoContent`.**
+
+Add `adventure` to supported title-generator genres. The title prompt requests exactly five distinctive Adventure titles that reflect the selected setting, journey, danger, destination, or payoff. Preserve the exact-five-line and no-franchise-name constraints for Horror, Mystery, and Sci-Fi.
+
+`AdventureStorySeoContent` receives typed `adventure_seo`, renders the approved H2/H3 structure, uses `GenreStoryTitleGenerator` with `genre="adventure"`, and begins each section with a direct answer. Its Choose and Play sections must lead users to the working in-page branching experience rather than an empty CTA. Its Tabletop section may explain how to adapt an output for a GM but must keep DnD campaign/adventure links absent. The comparison section links `fantasy story generator` only to `/fantasy-generator`.
+
+Render this component only for `generator.genre === "adventure"` after `<GenreStoryGenerate>`. Allow only `/`, `/horror-story-generator`, `/mystery-story-generator`, `/sci-fi-story-generator`, and `/fantasy-generator` as Adventure SEO-content hrefs. Render all other opportunity terms as unlinked readable content until a separately approved page exists.
+
+- [ ] **Step 6: Complete Adventure locale data in all six languages.**
+
+Each Adventure locale root adds `hero_examples`, `adventure_seo`, six setting options, the four approved length/output options, six visible FAQ items, branching-player labels, and shared title-tool labels. English uses the approved TDH, trust line, headings, and FAQ text verbatim. The examples are a pirate-treasure opening, a ruins-exploration three-act outline, and a branch scene with two or three choices. Describe browser play accurately: readers can click choices to continue text scenes, but the product is not a native app, multiplayer experience, or full RPG rules engine. Do not add `meta keywords`, `Unlimited`, `/blog/...`, DnD campaign/adventure, choose-your-own-adventure, or superhero route links.
+
+- [ ] **Step 7: Re-run the Adventure, title, pure-generation, and baseline content tests.**
+
+Run: `npx tsx --test tests/genre-story-generate-lib.test.ts tests/genre-story-generate-route.test.ts tests/genre-story-generate-content.test.ts tests/adventure-story-generator-seo.test.ts tests/adventure-story-player.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts`
+Expected: PASS.
+
+- [ ] **Step 8: Commit the Adventure specialization.**
+
+```bash
+git add src/lib/adventure-branching.ts src/lib/genre-story-generators.ts src/app/api/genre-story-generate/_lib.ts src/components/blocks/genre-story-generate/index.tsx src/components/blocks/adventure-story-player src/components/blocks/adventure-story-seo-content src/app/api/genre-story-title-generate/_lib.ts src/components/pages/genre-story-generator-page.tsx src/types/blocks/genre-story-generate.d.ts src/i18n/pages/adventure-story-generate tests/adventure-story-generator-seo.test.ts tests/adventure-story-player.test.ts tests/genre-story-generate-lib.test.ts tests/genre-story-title-generate-lib.test.ts
+git commit -m "feat: add adventure story SEO experience"
+```
+
+### Task 9: Register all six tools and verify sitemap coverage
 
 **Files:**
 - Modify: `src/services/tools.ts`
@@ -924,7 +1103,7 @@ Insert every fixed route once in `TOOL_ROUTES` and once in the static `routes` a
 
 - [ ] **Step 4: Run all new targeted tests.**
 
-Run: `npx tsx --test tests/genre-story-generate-lib.test.ts tests/genre-story-generate-route.test.ts tests/genre-story-generate-page.test.ts tests/genre-story-generate-content.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts tests/mystery-story-generator-seo.test.ts tests/sci-fi-story-generator-seo.test.ts tests/genre-story-generate-site-registration.test.ts`
+Run: `npx tsx --test tests/genre-story-generate-lib.test.ts tests/genre-story-generate-route.test.ts tests/genre-story-generate-page.test.ts tests/genre-story-generate-content.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts tests/mystery-story-generator-seo.test.ts tests/sci-fi-story-generator-seo.test.ts tests/adventure-story-generator-seo.test.ts tests/adventure-story-player.test.ts tests/genre-story-generate-site-registration.test.ts`
 Expected: PASS.
 
 - [ ] **Step 5: Commit registrations.**
@@ -934,7 +1113,7 @@ git add src/services/tools.ts src/app/sitemap.ts tests/genre-story-generate-site
 git commit -m "feat: register genre story generators"
 ```
 
-### Task 9: Perform production-level verification
+### Task 10: Perform production-level verification
 
 **Files:**
 - Modify only if verification exposes a defect in the files above.
@@ -960,7 +1139,7 @@ If a verification command identifies a defect, fix it with a new test when appro
 
 ## Self-review
 
-- Spec coverage: Tasks 1–2 implement six typed, genre-specific generation contracts; Task 3 supplies six fixed canonical pages, shared UX, JSON-LD, alternates, saving, and continuation; Task 4 provides all six locales and unique SEO content; Tasks 5–7 add the approved Horror, Mystery, and Sci-Fi retrieval layouts plus the shared five-title tool; Task 8 registers cards, quota keys, and both Sitemap lists; Task 9 runs targeted tests, lint, and build.
-- Scope: Old genre URLs, `/story-generate`, community pages, redirects, and the second-phase tool cluster are explicitly untouched. `Murder Mystery Generator` remains an on-page Mystery section rather than a planned child route. Sci-Fi naming and information-content opportunities are not silently added as generator or `/blog` routes. The information article is separately editorial work and is not silently added to the existing `/posts` architecture.
+- Spec coverage: Tasks 1–2 implement six typed, genre-specific generation contracts; Task 3 supplies six fixed canonical pages, shared UX, JSON-LD, alternates, saving, and continuation; Task 4 provides all six locales and unique SEO content; Tasks 5–8 add the approved Horror, Mystery, Sci-Fi, and Adventure retrieval layouts plus the shared five-title tool and Adventure browser-branch player; Task 9 registers cards, quota keys, and both Sitemap lists; Task 10 runs targeted tests, lint, and build.
+- Scope: Old genre URLs, `/story-generate`, community pages, redirects, and the second-phase tool cluster are explicitly untouched. `Murder Mystery Generator` remains an on-page Mystery section rather than a planned child route. Sci-Fi naming and information-content opportunities are not silently added as generator or `/blog` routes. Adventure campaign, choose-your-own-adventure, superhero, and information-content opportunities are not silently added as routes or `/blog` URLs. The information article is separately editorial work and is not silently added to the existing `/posts` architecture.
 - Type consistency: Route slug, `pageKey`, `GenreStoryKind`, locale `genre_fields.key`, i18n namespace/root key, and API `options` are connected through `src/lib/genre-story-generators.ts`; fixed page wrappers pass slugs while API requests pass kind values.
 - No placeholders: all planned routes, field keys, quota identities, prompt contracts, test files, and commands are named above.
