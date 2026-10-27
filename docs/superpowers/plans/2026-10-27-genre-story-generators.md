@@ -18,15 +18,16 @@
 | `src/types/blocks/genre-story-generate.d.ts` | Locale-data contract consumed by the shared client and server page components. |
 | `src/app/api/genre-story-generate/_lib.ts` | Pure request parsing, per-genre field validation, and prompt construction. |
 | `src/app/api/genre-story-generate/route.ts` | Turnstile, quota, model resolution, shared LLM streaming response. |
-| `src/app/api/horror-title-generate/{_lib.ts,route.ts}` | Horror-only five-title mini-generator and its isolated, testable streaming API boundary. |
+| `src/app/api/genre-story-title-generate/{_lib.ts,route.ts}` | Reusable, genre-aware five-title mini-generator and its isolated, testable streaming API boundary. |
 | `src/components/blocks/genre-story-generate/index.tsx` | Shared client form, request lifecycle, streamed result, save, and continue-in-editor interactions. |
+| `src/components/blocks/genre-story-title-generator/index.tsx` | Reusable title input, Turnstile lifecycle, request state, and five-result renderer for supported genre pages. |
 | `src/components/blocks/horror-story-seo-content/index.tsx` | Horror-only examples, idea/plot and prompt sections, five-title mini-generator, two-sentence examples, video-adaptation hand-off, and controlled internal links. |
 | `src/components/pages/genre-story-generator-page.tsx` | Shared server page markup, metadata factory, JSON-LD, and content sections. |
 | `src/app/[locale]/(default)/{six-slugs}/page.tsx` | Thin fixed URL entry points exporting a per-genre page and metadata factory. |
 | `src/i18n/pages/{genre-story-generate}/{locale}.json` | Six per-page locale directories, each carrying only that page's unique content. |
 | `src/services/tools.ts`, `src/lib/creative-quota-core.ts`, `src/app/sitemap.ts`, `src/i18n/messages/*.json` | Discovery, quota whitelisting, sitemap, and translated tool cards. |
 | `tests/genre-story-generate-*.test.ts` | Pure logic, route wiring, page structure, and site registration coverage. |
-| `tests/horror-story-generator-seo.test.ts`, `tests/horror-title-generate-*.test.ts` | Horror TDH, visible keyword-layout sections, internal-link rules, and exactly-five-title behavior. |
+| `tests/horror-story-generator-seo.test.ts`, `tests/genre-story-title-generate-*.test.ts` | Genre-page SEO contracts, visible keyword-layout sections, internal-link rules, and exactly-five-title behavior. |
 
 ## Approved Horror landing-page SEO brief
 
@@ -70,6 +71,48 @@ Internal-link rules:
 - Do not create routes or dead links for scary, spooky, ghost, Halloween, creepypasta, analog-horror, or Christmas-horror variants. Mention them only as readable subtopics until a distinct product experience justifies a page.
 - A future indexable `horror writing prompts` article should link back here using natural `horror story generator` anchor text; creating that article is outside this six-generator implementation.
 
+## Approved Mystery landing-page SEO brief
+
+**Evidence boundary:** The supplied keyword groupings, volumes, SERP observations, and competitor engagement observations are strategy inputs, not verified Search Console or live-SERP facts in this repository. Record a baseline and validate query mix, CTR, generation starts, and completion rate after release; no ranking or dwell-time result is guaranteed.
+
+**Searcher task:** For writers, teachers, tabletop GMs, and short-form creators searching for an AI mystery-story or plot generator, the page turns a setting, victim, and suspect list into a clue-driven plot, a short story, or a two-line hook.
+
+**Canonical decision:** Keep `/mystery-story-generator` as the main tool page; never use `/mystery-story-generate`. The approved English TDH is:
+
+| Element | Required English copy / behavior |
+| --- | --- |
+| Title | `Free Mystery Story Generator – AI Mystery Plot Maker` |
+| Meta description | `Generate a mystery plot, clue trail and twist ending in seconds. Free AI mystery story generator — mystery story ideas, titles and prompts, no sign-up.` |
+| H1 | `Free AI Mystery Story Generator` |
+| First sentence | `Give it a setting, a victim and a suspect list — get a full mystery plot, a short story or a two-line hook you can build on.` |
+| Meta keywords | Do not add a `keywords` metadata tag. |
+| Trust line | Use `Free • No sign-up required • Start instantly`; do not claim `Unlimited` while standard/creative usage has quotas. |
+
+The Mystery hero contains the usable form and three labelled editorial example cards: a locked-room clue list, a noir opening, and a three-suspect wheel. Its first-viewport fields are subgenre `murder`, `cozy`, `locked_room`, `detective`, `noir`, `psychological`; length `hook`, `short`, `full_outline`; intensity; and a twist toggle.
+
+The visible English H2/H3 structure is:
+
+1. `Mystery Story Ideas & Plot Outlines`, including `Mystery story ideas with a twist`.
+2. `Mystery Story Prompts by Subgenre`, covering Murder, Cozy, Locked-room, Detective, Noir, and Psychological.
+3. `Murder Mystery Generator`, kept short on the main page and linked only once the separate canonical child page is live.
+4. `Mystery Story Titles`, using the shared premise-to-five-titles tool.
+5. `How to Build a Mystery Plot Step by Step`, covering crime, clues, suspects, and reveal.
+6. `Clues, Red Herrings and the Twist`.
+7. `Mystery vs Thriller: Which Generator Do You Need?`.
+8. `Who Uses a Mystery Story Generator`, covering novelists, D&D/tabletop GMs, teachers, and short-form video creators.
+9. `What is a Mystery Story Generator?` and `Frequently Asked Questions`.
+
+Visible FAQs and their JSON-LD counterparts must be identical: `Is there a free mystery story generator?`, `Can AI write a good mystery story?`, `How do I come up with a mystery plot?`, `Can I generate a fantasy mystery story?`, `Can I generate a romance mystery story?`, `What's the difference between a mystery and a thriller?`, and `Can I generate a crime story instead?`.
+
+Internal-link rules:
+
+- Link `AI story generator` to `/` and `horror story generator` to `/horror-story-generator`.
+- Link `murder mystery generator` only after `/murder-mystery-generator` exists as a distinct tool; until then render readable text, not a dead anchor.
+- Link `mystery story ideas` only after the information article is published. Current production architecture uses `/posts/[slug]`, so its canonical must be `/posts/mystery-story-ideas`, not `/blog/mystery-story-ideas`. Moving to `/blog` requires an approved site-wide migration and permanent redirects for all existing `/posts` URLs.
+- Do not create thriller or crime tool pages for this brief alone. Link to those routes only if a separate tool with an independent user task exists.
+
+**Approved follow-on gates:** `/murder-mystery-generator` is a P1, separate canonical candidate because it serves a more specific task, but it is outside the initial six-route build until it has its own TDH, distinct case-design inputs, content, tests, registry entry, sitemap entry, and unique canonical UX. The information article is separately editorial work and must be published through the existing posts system before it can receive an internal link.
+
 ### Task 1: Define the genre configuration and test the pure request contract
 
 **Files:**
@@ -85,6 +128,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   GENRE_STORY_GENERATOR_SLUGS,
+  getGenreStoryGeneratorByGenre,
   getGenreStoryGenerator,
 } from "@/lib/genre-story-generators";
 import {
@@ -106,6 +150,7 @@ test("all planned genre generators have fixed route and quota identities", () =>
     assert.equal(generator?.href, `/${slug}`);
     assert.equal(generator?.pageKey, slug);
   }
+  assert.equal(getGenreStoryGeneratorByGenre("mystery")?.slug, "mystery-story-generator");
 });
 
 test("parser rejects an unknown genre and an empty idea", () => {
@@ -118,10 +163,10 @@ test("parser keeps only fields allowed by the selected genre", () => {
     genre: "mystery",
     prompt: "A vanished map",
     model: "standard",
-    options: { caseType: "locked_room", clueDensity: "dense", scareIntensity: "intense" },
+    options: { subgenre: "locked_room", mysteryIntensity: "high", includeTwist: "yes", scareIntensity: "intense" },
   });
   assert.equal(parsed.ok, true);
-  assert.deepEqual(parsed.value?.options, { caseType: "locked_room", clueDensity: "dense" });
+  assert.deepEqual(parsed.value?.options, { subgenre: "locked_room", mysteryIntensity: "high", includeTwist: "yes" });
 });
 
 test("horror preserves the approved hero options", () => {
@@ -153,7 +198,7 @@ Expected: FAIL because `@/lib/genre-story-generators` and `@/app/api/genre-story
 
 - [ ] **Step 3: Add the configuration, types, parser, and prompt builder.**
 
-Implement a `GenreStoryKind` union of `"horror" | "mystery" | "sci_fi" | "adventure" | "children" | "historical"`, and make each configuration record contain `slug`, `href`, `pageKey`, `icon`, `genre`, `i18nNamespace`, `messageKey`, and the allowed option keys. `getGenreStoryGenerator` must accept a route slug, not a user-supplied genre.
+Implement a `GenreStoryKind` union of `"horror" | "mystery" | "sci_fi" | "adventure" | "children" | "historical"`, and make each configuration record contain `slug`, `href`, `pageKey`, `icon`, `genre`, `i18nNamespace`, `messageKey`, and the allowed option keys. `getGenreStoryGenerator` must accept a route slug, while `getGenreStoryGeneratorByGenre` validates a user-supplied genre against that same configuration before any route uses it.
 
 Use this request shape in `_lib.ts`:
 
@@ -176,12 +221,12 @@ export function parseGenreStoryRequest(raw: GenreStoryRequest):
   | { ok: false; error: string };
 ```
 
-Cap the idea at 2,000 characters. Normalize model to `fast | standard | creative` with `standard` as the fallback. For non-Horror genres, normalize missing common selectors to `medium`, `balanced`, `third_person`, and `general`; for Horror, accept only `two_sentence | short | full` length and default to `short`. Keep only options listed for the parsed genre. Horror must expose only `horror | spooky | psychological | supernatural` for `horrorMode`, plus `scareIntensity` and `endingType`. Use these exact per-genre contracts in `buildGenreStoryPrompt`:
+Cap the idea at 2,000 characters. Normalize model to `fast | standard | creative` with `standard` as the fallback. Normalize common selector values through each generator configuration: Horror accepts `two_sentence | short | full` and defaults to `short`; Mystery accepts `hook | short | full_outline` and defaults to `short`; other genres use their configured defaults. Keep only options listed for the parsed genre. Horror exposes `horror | spooky | psychological | supernatural` for `horrorMode`, plus `scareIntensity` and `endingType`; Mystery exposes `murder | cozy | locked_room | detective | noir | psychological` for `subgenre`, plus `mysteryIntensity` and `includeTwist`. Use these exact per-genre contracts in `buildGenreStoryPrompt`:
 
 ```ts
 const GENRE_REQUIREMENTS: Record<GenreStoryKind, string> = {
   horror: "Build dread through the selected horror mode and intensity; honour the requested ending without gratuitous gore. For two-sentence output, deliver one compact setup and one unmistakable turn.",
-  mystery: "Plant fair clues, distinguish red herrings from evidence, and make the final solution logically follow from the clues.",
+  mystery: "Plant fair clues, distinguish red herrings from evidence, and make the final solution logically follow from the clues. For hook output, write exactly two lines that establish the case and a compelling unanswered question.",
   sci_fi: "Apply the selected science-fiction mode and world rules consistently; show the human consequences of the technology.",
   adventure: "Give the protagonist a concrete mission, escalating obstacles, travel or discovery, an opposing force, and an earned resolution.",
   children: "Keep the language, conflict, and emotional stakes age-appropriate; follow the safety boundary and make the educational goal natural rather than preachy.",
@@ -480,7 +525,7 @@ Expected: FAIL because the locale directory and tool-card keys do not exist.
 
 Every page directory must contain all six locale files, each with one genre-specific root key: `horror_story_generate`, `mystery_story_generate`, `sci_fi_story_generate`, `adventure_story_generate`, `children_story_generate`, or `historical_story_generate`. Each root object must supply `metadata` with only title and description (no `keywords` metadata), `ui`, `placeholders`, `ai_models`, `common_fields`, `genre_fields`, `random_prompts`, `validation`, `success`, `errors`, `output`, `completion_guide`, `feature_intro`, `how_to_use`, `feature_benefits`, `feature_section`, `faq_section`, and `cta_section`.
 
-Use the approved exact input keys: `horrorMode`, `scareIntensity`, `endingType`; `caseType`, `clueDensity`, `detectiveViewpoint`, `revealStyle`; `technologyTheme`, `era`, `scienceMode`, `worldRule`; `mission`, `location`, `opponent`, `riskLevel`; `ageBand`, `learningGoal`, `vocabularyLevel`, `safety`; `timePeriod`, `location`, `historicalContext`, `fictionRatio`. Page prose and FAQs must explain the corresponding fields; do not use a find-and-replace title template. The Horror locale roots additionally supply `hero_examples` with exactly three labelled cards and `horror_seo`, which Task 5 defines and renders.
+Use the approved exact input keys: `horrorMode`, `scareIntensity`, `endingType`; `subgenre`, `mysteryIntensity`, `includeTwist`; `technologyTheme`, `era`, `scienceMode`, `worldRule`; `mission`, `location`, `opponent`, `riskLevel`; `ageBand`, `learningGoal`, `vocabularyLevel`, `safety`; `timePeriod`, `location`, `historicalContext`, `fictionRatio`. Page prose and FAQs must explain the corresponding fields; do not use a find-and-replace title template. The Horror locale roots additionally supply `hero_examples` with exactly three labelled cards and `horror_seo`, which Task 5 defines and renders.
 
 Add translated `name` and `desc` entries under `ai_tools.tools` for all six snake-case tool keys in every global messages file.
 
@@ -496,17 +541,18 @@ git add src/i18n/pages/horror-story-generate src/i18n/pages/mystery-story-genera
 git commit -m "feat: add genre story generator content"
 ```
 
-### Task 5: Implement the Horror keyword layout and five-title mini-generator
+### Task 5: Implement the Horror keyword layout and reusable five-title mini-generator
 
 **Files:**
-- Create: `src/app/api/horror-title-generate/_lib.ts`
-- Create: `src/app/api/horror-title-generate/route.ts`
+- Create: `src/app/api/genre-story-title-generate/_lib.ts`
+- Create: `src/app/api/genre-story-title-generate/route.ts`
 - Create: `src/components/blocks/horror-story-seo-content/index.tsx`
+- Create: `src/components/blocks/genre-story-title-generator/index.tsx`
 - Modify: `src/components/pages/genre-story-generator-page.tsx`
 - Modify: `src/types/blocks/genre-story-generate.d.ts`
 - Modify: `src/i18n/pages/horror-story-generate/{en,zh,de,ko,ja,ru}.json`
-- Test: `tests/horror-title-generate-lib.test.ts`
-- Test: `tests/horror-title-generate-route.test.ts`
+- Test: `tests/genre-story-title-generate-lib.test.ts`
+- Test: `tests/genre-story-title-generate-route.test.ts`
 - Test: `tests/horror-story-generator-seo.test.ts`
 
 - [ ] **Step 1: Write failing tests for exact Horror metadata, layout, links, and title output.**
@@ -515,7 +561,7 @@ git commit -m "feat: add genre story generator content"
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { buildHorrorTitlePrompt, parseHorrorTitleRequest } from "@/app/api/horror-title-generate/_lib";
+import { buildGenreStoryTitlePrompt, parseGenreStoryTitleRequest } from "@/app/api/genre-story-title-generate/_lib";
 
 const page = JSON.parse(readFileSync("src/i18n/pages/horror-story-generate/en.json", "utf8"));
 const horror = page.horror_story_generate;
@@ -558,17 +604,17 @@ test("Horror keeps all approved questions visibly present", () => {
   ]) assert.ok(questions.includes(question), question);
 });
 
-test("title mini-generator accepts a premise and requires exactly five lines", () => {
-  const parsed = parseHorrorTitleRequest({ description: "A child hears knocking inside the walls every midnight." });
+test("title mini-generator accepts a Horror premise and requires exactly five lines", () => {
+  const parsed = parseGenreStoryTitleRequest({ genre: "horror", description: "A child hears knocking inside the walls every midnight." });
   assert.equal(parsed.ok, true);
-  assert.match(buildHorrorTitlePrompt(parsed.value!), /exactly 5/i);
-  assert.match(buildHorrorTitlePrompt(parsed.value!), /one title per line/i);
+  assert.match(buildGenreStoryTitlePrompt(parsed.value!), /exactly 5/i);
+  assert.match(buildGenreStoryTitlePrompt(parsed.value!), /one title per line/i);
 });
 
-test("Horror title route uses optional Turnstile, page quota identity, and shared LLM", () => {
-  const source = readFileSync("src/app/api/horror-title-generate/route.ts", "utf8");
+test("genre title route uses optional Turnstile, configured page quota identity, and shared LLM", () => {
+  const source = readFileSync("src/app/api/genre-story-title-generate/route.ts", "utf8");
   assert.match(source, /if \(!secretKey\) return true/);
-  assert.match(source, /pageKey: "horror-story-generator"/);
+  assert.match(source, /pageKey: generator\.pageKey/);
   assert.match(source, /fetchChatCompletion/);
   assert.match(source, /resolveModelTier\("fast"\)/);
 });
@@ -576,29 +622,27 @@ test("Horror title route uses optional Turnstile, page quota identity, and share
 
 - [ ] **Step 2: Run the tests to confirm the Horror-only pieces are missing.**
 
-Run: `npx tsx --test tests/horror-title-generate-lib.test.ts tests/horror-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts`
+Run: `npx tsx --test tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts`
 Expected: FAIL because the title API and SEO component do not exist; the locale data was added in Task 4 but does not yet have a renderer or title behavior.
 
 - [ ] **Step 3: Implement the isolated five-title API.**
 
-`parseHorrorTitleRequest` accepts a nonempty `description` of 10–1,200 characters and an optional locale. `buildHorrorTitlePrompt` must return an instruction that requests exactly five distinct, marketable Horror titles, one title per line, no numbering, no explanation, no existing-franchise names, and the requested output language.
+`parseGenreStoryTitleRequest` accepts a supported `genre`, a nonempty `description` of 10–1,200 characters, and an optional locale. Task 5 enables `horror`; Task 6 adds `mystery`. `buildGenreStoryTitlePrompt` must return an instruction that requests exactly five distinct, marketable titles for that genre, one title per line, no numbering, no explanation, no existing-franchise names, and the requested output language.
 
-The route uses the same optional Turnstile behavior as the genre-story route. It always resolves `fast` with `resolveModelTier("fast")`, calls `prepareCreativeQuota` with `pageKey: "horror-story-generator"`, streams newline-safe output through the existing `0:"..."` protocol, and caps rendered client output at the first five nonempty lines. This makes the UI contract exactly five titles even if a provider misbehaves. The route must use `fetchChatCompletion`, `commitCreativeQuotaCharge`, and `withCreativeVisitorCookie`; it must not call provider URLs directly.
+The route uses the same optional Turnstile behavior as the genre-story route. It resolves `fast` with `resolveModelTier("fast")`, obtains the page key from the validated generator configuration, streams newline-safe output through the existing `0:"..."` protocol, and caps rendered client output at the first five nonempty lines. This makes the UI contract exactly five titles even if a provider misbehaves. The route must use `prepareCreativeQuota`, `fetchChatCompletion`, `commitCreativeQuotaCharge`, and `withCreativeVisitorCookie`; it must not call provider URLs directly.
 
 - [ ] **Step 4: Implement the Horror SEO component and wire it after the shared generator.**
 
-`HorrorStorySeoContent` receives the typed `horror_seo` object. It renders the approved H2/H3 list from the SEO brief, starts each section with an answer-bearing paragraph, and uses locale data rather than hardcoded prose. It renders:
+`HorrorStorySeoContent` receives the typed `horror_seo` object. It renders the approved H2/H3 list from the SEO brief, starts each section with an answer-bearing paragraph, and uses locale data rather than hardcoded prose. It delegates the interactive title behavior to the reusable component:
 
 ```tsx
 <section aria-labelledby="horror-titles">
   <h2 id="horror-titles">{section.title_generator.title}</h2>
-  <Textarea value={description} onChange={(event) => setDescription(event.target.value)} />
-  <Button onClick={handleGenerateTitles}>{section.title_generator.submit_label}</Button>
-  <ol>{titles.map((title) => <li key={title}>{title}</li>)}</ol>
+  <GenreStoryTitleGenerator genre="horror" section={section.title_generator} />
 </section>
 ```
 
-The component uses a dedicated `TurnstileInvisible` ref for the title action; it calls `/api/horror-title-generate` only after success. It presents provider errors through the translated error string and does not claim unlimited generations. Its video-adaptation block must visibly include the locale `capability_notice` and link to `/ai-write` as the current continuation workflow, not to a nonexistent video route.
+`HorrorStorySeoContent` embeds `GenreStoryTitleGenerator` with `genre="horror"`. The shared title component uses a dedicated `TurnstileInvisible` ref and calls `/api/genre-story-title-generate` only after success. It presents provider errors through the translated error string and does not claim unlimited generations. The Horror video-adaptation block must visibly include the locale `capability_notice` and link to `/ai-write` as the current continuation workflow, not to a nonexistent video route.
 
 Modify `createGenreStoryGeneratorPage` to render this component immediately after `<GenreStoryGenerate>` only when `generator.genre === "horror"`:
 
@@ -616,17 +660,112 @@ In each Horror locale JSON, add `hero_examples`, the exact four Horror-mode valu
 
 - [ ] **Step 6: Re-run Horror tests and the earlier content test.**
 
-Run: `npx tsx --test tests/genre-story-generate-content.test.ts tests/horror-title-generate-lib.test.ts tests/horror-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts`
+Run: `npx tsx --test tests/genre-story-generate-content.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts`
 Expected: PASS.
 
 - [ ] **Step 7: Commit the Horror specialization.**
 
 ```bash
-git add src/app/api/horror-title-generate src/components/blocks/horror-story-seo-content src/components/pages/genre-story-generator-page.tsx src/types/blocks/genre-story-generate.d.ts src/i18n/pages/horror-story-generate tests/horror-title-generate-lib.test.ts tests/horror-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts
+git add src/app/api/genre-story-title-generate src/components/blocks/genre-story-title-generator src/components/blocks/horror-story-seo-content src/components/pages/genre-story-generator-page.tsx src/types/blocks/genre-story-generate.d.ts src/i18n/pages/horror-story-generate tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts
 git commit -m "feat: add horror story SEO experience"
 ```
 
-### Task 6: Register all six tools and verify sitemap coverage
+### Task 6: Implement the Mystery keyword layout with the shared title tool
+
+**Files:**
+- Create: `src/components/blocks/mystery-story-seo-content/index.tsx`
+- Modify: `src/app/api/genre-story-title-generate/_lib.ts`
+- Modify: `src/app/api/genre-story-title-generate/route.ts`
+- Modify: `src/components/pages/genre-story-generator-page.tsx`
+- Modify: `src/types/blocks/genre-story-generate.d.ts`
+- Modify: `src/i18n/pages/mystery-story-generate/{en,zh,de,ko,ja,ru}.json`
+- Test: `tests/mystery-story-generator-seo.test.ts`
+- Test: `tests/genre-story-title-generate-lib.test.ts`
+- Test: `tests/genre-story-title-generate-route.test.ts`
+
+- [ ] **Step 1: Write failing tests for the Mystery TDH, form values, SEO blocks, FAQs, and reusable title genre.**
+
+```ts
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import test from "node:test";
+import { parseGenreStoryTitleRequest } from "@/app/api/genre-story-title-generate/_lib";
+
+const page = JSON.parse(readFileSync("src/i18n/pages/mystery-story-generate/en.json", "utf8"));
+const mystery = page.mystery_story_generate;
+
+test("Mystery uses the approved TDH and first-viewport controls", () => {
+  assert.equal(mystery.metadata.title, "Free Mystery Story Generator – AI Mystery Plot Maker");
+  assert.equal(mystery.metadata.description, "Generate a mystery plot, clue trail and twist ending in seconds. Free AI mystery story generator — mystery story ideas, titles and prompts, no sign-up.");
+  assert.equal(mystery.ui.title, "Free AI Mystery Story Generator");
+  assert.equal(mystery.ui.subtitle, "Give it a setting, a victim and a suspect list — get a full mystery plot, a short story or a two-line hook you can build on.");
+  assert.equal("keywords" in mystery.metadata, false);
+  assert.equal(mystery.hero_examples.length, 3);
+  const fields = Object.fromEntries(mystery.genre_fields.map((field: { key: string; options: Record<string, string> }) => [field.key, field.options]));
+  assert.deepEqual(Object.keys(fields.subgenre), ["murder", "cozy", "locked_room", "detective", "noir", "psychological"]);
+  assert.deepEqual(Object.keys(mystery.common_fields.length.options), ["hook", "short", "full_outline"]);
+});
+
+test("Mystery has answer-bearing content and no dead canonical links", () => {
+  for (const title of [
+    "Mystery Story Ideas & Plot Outlines", "Mystery Story Prompts by Subgenre", "Murder Mystery Generator",
+    "Mystery Story Titles", "How to Build a Mystery Plot Step by Step", "Clues, Red Herrings and the Twist",
+    "Mystery vs Thriller: Which Generator Do You Need?", "Who Uses a Mystery Story Generator",
+    "What is a Mystery Story Generator?", "Frequently Asked Questions",
+  ]) assert.ok(mystery.mystery_seo.headings.includes(title), title);
+  assert.deepEqual(mystery.mystery_seo.internal_links.map((link: { href: string }) => link.href), ["/", "/horror-story-generator"]);
+  assert.equal(mystery.mystery_seo.murder_mystery.href, null);
+  assert.equal(mystery.mystery_seo.story_ideas.href, null);
+});
+
+test("Mystery keeps all approved questions visibly present", () => {
+  const questions = mystery.faq_section.items.map((item: { title: string }) => item.title);
+  for (const question of [
+    "Is there a free mystery story generator?", "Can AI write a good mystery story?",
+    "How do I come up with a mystery plot?", "Can I generate a fantasy mystery story?",
+    "Can I generate a romance mystery story?", "What's the difference between a mystery and a thriller?",
+    "Can I generate a crime story instead?",
+  ]) assert.ok(questions.includes(question), question);
+});
+
+test("the shared title parser accepts Mystery without accepting an arbitrary genre", () => {
+  assert.equal(parseGenreStoryTitleRequest({ genre: "mystery", description: "A detective finds three alibis that cannot all be true." }).ok, true);
+  assert.equal(parseGenreStoryTitleRequest({ genre: "crime", description: "A detective finds three alibis that cannot all be true." }).ok, false);
+});
+```
+
+- [ ] **Step 2: Run the tests to confirm the Mystery specialization is absent.**
+
+Run: `npx tsx --test tests/mystery-story-generator-seo.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts`
+Expected: FAIL because the baseline Mystery locale data lacks `mystery_seo` and the shared title parser does not yet accept `mystery`.
+
+- [ ] **Step 3: Extend the reusable title path for Mystery.**
+
+Add `mystery` to the allowed title-generator genres and resolve its `pageKey` via `getGenreStoryGenerator` rather than a route-local conditional. The Mystery title prompt must ask for exactly five distinctive mystery titles and favor clues, suspects, a case, atmosphere, or a reveal without revealing the solution. Preserve the existing Horror behavior and all five-line output safeguards.
+
+- [ ] **Step 4: Implement `MysteryStorySeoContent` and render it after the shared generator.**
+
+The component receives typed `mystery_seo`, uses `GenreStoryTitleGenerator` with `genre="mystery"`, renders the approved H2/H3 list, and leads each section with a concise direct answer. Its four-step block must visibly follow `crime → clues → suspects → reveal`; its comparison section must distinguish Mystery's puzzle/solution focus from Thriller's danger/urgency focus without claiming that a Thriller generator exists.
+
+Render the component only for `generator.genre === "mystery"` immediately after `<GenreStoryGenerate>`. The Murder Mystery block and Mystery Story Ideas block render as explanatory content with `href: null` until their respective canonical pages are actually published. The only links in this milestone are `/` with the `AI story generator` anchor and `/horror-story-generator` with the `horror story generator` anchor.
+
+- [ ] **Step 5: Complete Mystery locale data in all six languages.**
+
+Each Mystery locale root adds `hero_examples`, `mystery_seo`, the approved form values, seven visible FAQ items, and the shared title-tool labels. English uses the approved TDH and headings verbatim. Provide three clearly labelled editorial examples: a locked-room clue list, a noir opening, and a three-suspect wheel. Do not add `meta keywords`, `Unlimited`, links to nonexistent murder/blog/thriller/crime pages, or a title that asserts the tool can solve real crimes.
+
+- [ ] **Step 6: Re-run the Mystery, title, and baseline content tests.**
+
+Run: `npx tsx --test tests/genre-story-generate-content.test.ts tests/mystery-story-generator-seo.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts`
+Expected: PASS.
+
+- [ ] **Step 7: Commit the Mystery specialization.**
+
+```bash
+git add src/components/blocks/mystery-story-seo-content src/app/api/genre-story-title-generate src/components/pages/genre-story-generator-page.tsx src/types/blocks/genre-story-generate.d.ts src/i18n/pages/mystery-story-generate tests/mystery-story-generator-seo.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts
+git commit -m "feat: add mystery story SEO experience"
+```
+
+### Task 7: Register all six tools and verify sitemap coverage
 
 **Files:**
 - Modify: `src/services/tools.ts`
@@ -688,7 +827,7 @@ Insert every fixed route once in `TOOL_ROUTES` and once in the static `routes` a
 
 - [ ] **Step 4: Run all new targeted tests.**
 
-Run: `npx tsx --test tests/genre-story-generate-lib.test.ts tests/genre-story-generate-route.test.ts tests/genre-story-generate-page.test.ts tests/genre-story-generate-content.test.ts tests/horror-title-generate-lib.test.ts tests/horror-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts tests/genre-story-generate-site-registration.test.ts`
+Run: `npx tsx --test tests/genre-story-generate-lib.test.ts tests/genre-story-generate-route.test.ts tests/genre-story-generate-page.test.ts tests/genre-story-generate-content.test.ts tests/genre-story-title-generate-lib.test.ts tests/genre-story-title-generate-route.test.ts tests/horror-story-generator-seo.test.ts tests/mystery-story-generator-seo.test.ts tests/genre-story-generate-site-registration.test.ts`
 Expected: PASS.
 
 - [ ] **Step 5: Commit registrations.**
@@ -698,7 +837,7 @@ git add src/services/tools.ts src/app/sitemap.ts tests/genre-story-generate-site
 git commit -m "feat: register genre story generators"
 ```
 
-### Task 7: Perform production-level verification
+### Task 8: Perform production-level verification
 
 **Files:**
 - Modify only if verification exposes a defect in the files above.
@@ -724,7 +863,7 @@ If a verification command identifies a defect, fix it with a new test when appro
 
 ## Self-review
 
-- Spec coverage: Tasks 1–2 implement six typed, genre-specific generation contracts; Task 3 supplies six fixed canonical pages, shared UX, JSON-LD, alternates, saving, and continuation; Task 4 provides all six locales and unique SEO content; Task 5 adds the approved Horror-specific tool and retrieval layout; Task 6 registers cards, quota keys, and both Sitemap lists; Task 7 runs targeted tests, lint, and build.
-- Scope: Old genre URLs, `/story-generate`, community pages, redirects, and the second-phase tool cluster are explicitly untouched.
+- Spec coverage: Tasks 1–2 implement six typed, genre-specific generation contracts; Task 3 supplies six fixed canonical pages, shared UX, JSON-LD, alternates, saving, and continuation; Task 4 provides all six locales and unique SEO content; Tasks 5–6 add the approved Horror and Mystery retrieval layouts plus the shared five-title tool; Task 7 registers cards, quota keys, and both Sitemap lists; Task 8 runs targeted tests, lint, and build.
+- Scope: Old genre URLs, `/story-generate`, community pages, redirects, and the second-phase tool cluster are explicitly untouched. `/murder-mystery-generator` and the information article are recorded as gated follow-ons; they are not silently added to the initial six-route build or to the existing `/posts` architecture.
 - Type consistency: Route slug, `pageKey`, `GenreStoryKind`, locale `genre_fields.key`, i18n namespace/root key, and API `options` are connected through `src/lib/genre-story-generators.ts`; fixed page wrappers pass slugs while API requests pass kind values.
 - No placeholders: all planned routes, field keys, quota identities, prompt contracts, test files, and commands are named above.

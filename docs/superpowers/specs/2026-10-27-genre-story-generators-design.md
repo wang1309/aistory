@@ -53,6 +53,23 @@ FAQ 必须展示并与 JSON-LD 逐题一致：`How can I create my own scary sto
 
 Horror 页优先内部链接到首页 `/`，锚文本为 `AI story generator`；也可链接到已经存在的 `/plot-generator`、`/story-prompt-generator`、`/book-title-generator` 与 `/ai-write`。不得为尚不存在的 scary、spooky、ghost、Halloween、creepypasta 或 Christmas-horror 路由制造空链接或开设近义页面。未来仅在真实、可索引的对应内容上线后再使用这些精确锚文本；现有或未来的 horror-writing-prompts 内容应回链本页面并使用自然的 `horror story generator` 锚文本。
 
+### Mystery 落地页关键词布局
+
+`/mystery-story-generator` 是 Mystery 主工具页；不使用 `/mystery-story-generate`。英文页固定使用：
+
+- Title：`Free Mystery Story Generator – AI Mystery Plot Maker`
+- Meta description：`Generate a mystery plot, clue trail and twist ending in seconds. Free AI mystery story generator — mystery story ideas, titles and prompts, no sign-up.`
+- H1：`Free AI Mystery Story Generator`
+- H1 下首句：`Give it a setting, a victim and a suspect list — get a full mystery plot, a short story or a two-line hook you can build on.`
+
+不设置 HTML `meta keywords`，也不得在仍存在模型额度限制时使用“Unlimited”。首屏直接提供 mystery 工具，包含 Murder/Cozy/Locked-room/Detective/Noir/Psychological、Hook/Short/Full outline、强度和 twist 选项，并展示三条标作示例输出的编辑样例：密室 clue 清单、noir 开场、三嫌疑人轮盘。
+
+Mystery 页在生成器后展示：`Mystery Story Ideas & Plot Outlines`（含 `Mystery story ideas with a twist`）、`Mystery Story Prompts by Subgenre`、`Murder Mystery Generator` 短块、`Mystery Story Titles` 五标题小工具、`How to Build a Mystery Plot Step by Step`、`Clues, Red Herrings and the Twist`、`Mystery vs Thriller: Which Generator Do You Need?`、受众说明、定义段与 FAQ。页面必须解释证据、误导、嫌疑人和揭示之间的逻辑关系，而不是只重复关键词。
+
+FAQ 必须可见并与 JSON-LD 逐题一致：`Is there a free mystery story generator?`、`Can AI write a good mystery story?`、`How do I come up with a mystery plot?`、`Can I generate a fantasy mystery story?`、`Can I generate a romance mystery story?`、`What's the difference between a mystery and a thriller?`、`Can I generate a crime story instead?`。
+
+Mystery 页链接 `AI story generator` 至首页、`horror story generator` 至 Horror 页。`murder mystery generator` 只在独立 `/murder-mystery-generator` 上线后才可成为链接；这是 P1 后续页面，必须先具备独立 TDH、案件设计输入、内容、测试、注册与 Sitemap 才能上线。用户提供的信息型 URL `/blog/mystery-story-ideas` 与现有项目的 `/posts/[slug]` 架构冲突：在未获批进行全站博客迁移和永久重定向前，文章 canonical 应为 `/posts/mystery-story-ideas`，上线前不从工具页创建死链。Thriller 与 Crime 也仅在存在独立工具体验后才建立页面或链接。
+
 ## 生成器与 API
 
 实现一个共享的客户端题材生成器。各页面通过类型受限的题材配置提供标题、路由、配额 page key、允许字段、默认值及题材专属选项；组件只呈现当前题材允许的输入。
@@ -71,7 +88,7 @@ Horror 页优先内部链接到首页 `/`，锚文本为 `AI story generator`；
 | 路由 | 题材专属输入 | 输出约束 |
 | --- | --- | --- |
 | Horror | 恐怖类型、恐怖强度、结局类型 | 避免将心理恐怖、超自然和怪物恐怖混为同一模板。 |
-| Mystery | 案件类型、线索密度、侦探视角、揭示方式 | 线索、误导与真相必须保持逻辑一致。 |
+| Mystery | 子类型、强度、是否 twist；在故事构想中填写场景、受害者与嫌疑人 | 线索、误导与真相必须保持逻辑一致。 |
 | Sci-Fi | 科技主题、时代、硬/软科幻、世界规则 | 将科技规则及其后果落实到情节中。 |
 | Adventure | 任务、地点、对手、风险 | 生成明确目标、行程阻碍与行动推进。 |
 | Children | 读者年龄、教育目标、词汇难度、安全边界 | 符合年龄、正向且无不适龄内容。 |
