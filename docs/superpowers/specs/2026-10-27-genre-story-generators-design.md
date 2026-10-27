@@ -68,7 +68,7 @@ Mystery 页在生成器后展示：`Mystery Story Ideas & Plot Outlines`（含 `
 
 FAQ 必须可见并与 JSON-LD 逐题一致：`Is there a free mystery story generator?`、`Can AI write a good mystery story?`、`How do I come up with a mystery plot?`、`Can I generate a fantasy mystery story?`、`Can I generate a romance mystery story?`、`What's the difference between a mystery and a thriller?`、`Can I generate a crime story instead?`。
 
-Mystery 页链接 `AI story generator` 至首页、`horror story generator` 至 Horror 页。`murder mystery generator` 只在独立 `/murder-mystery-generator` 上线后才可成为链接；这是 P1 后续页面，必须先具备独立 TDH、案件设计输入、内容、测试、注册与 Sitemap 才能上线。用户提供的信息型 URL `/blog/mystery-story-ideas` 与现有项目的 `/posts/[slug]` 架构冲突：在未获批进行全站博客迁移和永久重定向前，文章 canonical 应为 `/posts/mystery-story-ideas`，上线前不从工具页创建死链。Thriller 与 Crime 也仅在存在独立工具体验后才建立页面或链接。
+Mystery 页链接 `AI story generator` 至首页、`horror story generator` 至 Horror 页。`Murder Mystery Generator` 仅作为本页的内容板块和现有生成器中的子类型，不规划独立子页或对应内链。用户提供的信息型 URL `/blog/mystery-story-ideas` 与现有项目的 `/posts/[slug]` 架构冲突：在未获批进行全站博客迁移和永久重定向前，文章 canonical 应为 `/posts/mystery-story-ideas`，上线前不从工具页创建死链。Thriller 与 Crime 也仅在存在独立工具体验后才建立页面或链接。
 
 ## 生成器与 API
 

@@ -94,7 +94,7 @@ The visible English H2/H3 structure is:
 
 1. `Mystery Story Ideas & Plot Outlines`, including `Mystery story ideas with a twist`.
 2. `Mystery Story Prompts by Subgenre`, covering Murder, Cozy, Locked-room, Detective, Noir, and Psychological.
-3. `Murder Mystery Generator`, kept short on the main page and linked only once the separate canonical child page is live.
+3. `Murder Mystery Generator`, kept short on the main page as a content section and supported by the existing Murder subgenre control; it does not create a separate route.
 4. `Mystery Story Titles`, using the shared premise-to-five-titles tool.
 5. `How to Build a Mystery Plot Step by Step`, covering crime, clues, suspects, and reveal.
 6. `Clues, Red Herrings and the Twist`.
@@ -107,11 +107,11 @@ Visible FAQs and their JSON-LD counterparts must be identical: `Is there a free 
 Internal-link rules:
 
 - Link `AI story generator` to `/` and `horror story generator` to `/horror-story-generator`.
-- Link `murder mystery generator` only after `/murder-mystery-generator` exists as a distinct tool; until then render readable text, not a dead anchor.
+- Keep `Murder Mystery Generator` as readable main-page content, not an internal link or a separate route in this scope.
 - Link `mystery story ideas` only after the information article is published. Current production architecture uses `/posts/[slug]`, so its canonical must be `/posts/mystery-story-ideas`, not `/blog/mystery-story-ideas`. Moving to `/blog` requires an approved site-wide migration and permanent redirects for all existing `/posts` URLs.
 - Do not create thriller or crime tool pages for this brief alone. Link to those routes only if a separate tool with an independent user task exists.
 
-**Approved follow-on gates:** `/murder-mystery-generator` is a P1, separate canonical candidate because it serves a more specific task, but it is outside the initial six-route build until it has its own TDH, distinct case-design inputs, content, tests, registry entry, sitemap entry, and unique canonical UX. The information article is separately editorial work and must be published through the existing posts system before it can receive an internal link.
+The information article is separately editorial work and must be published through the existing posts system before it can receive an internal link.
 
 ### Task 1: Define the genre configuration and test the pure request contract
 
@@ -714,7 +714,6 @@ test("Mystery has answer-bearing content and no dead canonical links", () => {
     "What is a Mystery Story Generator?", "Frequently Asked Questions",
   ]) assert.ok(mystery.mystery_seo.headings.includes(title), title);
   assert.deepEqual(mystery.mystery_seo.internal_links.map((link: { href: string }) => link.href), ["/", "/horror-story-generator"]);
-  assert.equal(mystery.mystery_seo.murder_mystery.href, null);
   assert.equal(mystery.mystery_seo.story_ideas.href, null);
 });
 
@@ -864,6 +863,6 @@ If a verification command identifies a defect, fix it with a new test when appro
 ## Self-review
 
 - Spec coverage: Tasks 1–2 implement six typed, genre-specific generation contracts; Task 3 supplies six fixed canonical pages, shared UX, JSON-LD, alternates, saving, and continuation; Task 4 provides all six locales and unique SEO content; Tasks 5–6 add the approved Horror and Mystery retrieval layouts plus the shared five-title tool; Task 7 registers cards, quota keys, and both Sitemap lists; Task 8 runs targeted tests, lint, and build.
-- Scope: Old genre URLs, `/story-generate`, community pages, redirects, and the second-phase tool cluster are explicitly untouched. `/murder-mystery-generator` and the information article are recorded as gated follow-ons; they are not silently added to the initial six-route build or to the existing `/posts` architecture.
+- Scope: Old genre URLs, `/story-generate`, community pages, redirects, and the second-phase tool cluster are explicitly untouched. `Murder Mystery Generator` remains an on-page Mystery section rather than a planned child route. The information article is separately editorial work and is not silently added to the existing `/posts` architecture.
 - Type consistency: Route slug, `pageKey`, `GenreStoryKind`, locale `genre_fields.key`, i18n namespace/root key, and API `options` are connected through `src/lib/genre-story-generators.ts`; fixed page wrappers pass slugs while API requests pass kind values.
 - No placeholders: all planned routes, field keys, quota identities, prompt contracts, test files, and commands are named above.
