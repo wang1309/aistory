@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "AI Story Generator - Create Unlimited Stories Free",
+    "title": "AI Story Generator - Create Stories Free",
     "description": "Create captivating stories instantly with AI. Free forever, no sign up needed. Generate unique plots & characters in seconds. Start your creative journey today! ✓",
-    "keywords": "AI story generator, free story generator, unlimited stories, creative writing AI, story ideas, plot generator, character development, writing prompts, storytelling AI, fiction generator",
+    "keywords": "AI story generator, free story generator, creative writing AI, story ideas, plot generator, character development, writing prompts, storytelling AI, fiction generator",
     "siteName": "AI Story Generator"
   },
   "payment_return": {
@@ -323,6 +323,22 @@
     "category_story": "Story & Writing",
     "category_featured": "Hub",
     "tools": {
+      "horror_story_generator": {
+        "name": "Horror Story Generator",
+        "desc": "Generate creepy plots, cursed characters, and two-sentence scares with AI horror controls."
+      },
+      "mystery_story_generator": {
+        "name": "Mystery Story Generator",
+        "desc": "Build a fair clue trail, suspect list, and twist ending with an AI mystery plot maker."
+      },
+      "sci_fi_story_generator": {
+        "name": "Sci-Fi Story Generator",
+        "desc": "Create hard SF, space opera, cyberpunk, or dystopian stories with consistent world rules."
+      },
+      "adventure_story_generator": {
+        "name": "Adventure Story Generator",
+        "desc": "Turn a setting and premise into a quest, plot, or static branching outline."
+      },
       "story_generator": {
         "name": "Story Generator",
         "desc": "Turn a single idea into a full story in seconds with AI, across multiple genres and languages."
@@ -397,7 +413,7 @@
       },
       "bedtime_story_generator": {
         "name": "Bedtime Story Generator",
-        "desc": "Create personalized, age-appropriate bedtime stories for children with AI. Free and unlimited."
+        "desc": "Create personalized, age-appropriate bedtime stories for children with AI. Free to start."
       },
       "romance_story_generator": {
         "name": "Romance Story Generator",

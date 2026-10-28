@@ -25,6 +25,10 @@ export const CREATIVE_PAGE_KEYS = [
   "paragraph-rewriter",
   "ai-humanizer",
   "rap-lyric-generator",
+  "horror-story-generator",
+  "mystery-story-generator",
+  "sci-fi-story-generator",
+  "adventure-story-generator",
 ] as const;
 
 export type CreativePageKey = (typeof CREATIVE_PAGE_KEYS)[number];

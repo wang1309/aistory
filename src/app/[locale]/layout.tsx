@@ -64,7 +64,6 @@ export async function generateMetadata({
       default: title,
     },
     description: description,
-    keywords: t("metadata.keywords") || "",
     alternates: {
       canonical: canonicalUrl,
       languages: buildLanguageAlternates("/"),

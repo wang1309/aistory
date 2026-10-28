@@ -19,6 +19,13 @@ const NAME_GENERATOR_TOOL_SLUGS = [
 
 const REWRITE_TOOL_SLUGS = ["essay-extender", "paragraph-rewriter", "ai-humanizer"];
 
+const GENRE_STORY_TOOL_SLUGS = [
+  "horror-story-generator",
+  "mystery-story-generator",
+  "sci-fi-story-generator",
+  "adventure-story-generator",
+];
+
 export default function Footer({ footer }: { footer: FooterType }) {
   const t = useTranslations();
 
@@ -28,6 +35,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
 
   const nameTools = getToolsBySlugs(NAME_GENERATOR_TOOL_SLUGS);
   const rewriteTools = getToolsBySlugs(REWRITE_TOOL_SLUGS);
+  const genreStoryTools = getToolsBySlugs(GENRE_STORY_TOOL_SLUGS);
 
   const navItems = footer.nav?.items ?? [];
   // Creative 列没有稳定 id,标题又是多语言的,靠它独有的 /ai-tools/ 子链接
@@ -113,11 +121,36 @@ export default function Footer({ footer }: { footer: FooterType }) {
                 // First nav column (AI Write) hosts every tool group as a
                 // collapsible sub-category.
                 if (i === 0) {
+                  const storyItems: FooterColumnLink[] = navChildren.map((item) => ({
+                    title: item.title,
+                    url: item.url,
+                    target: item.target,
+                  }));
+                  const existingUrls = new Set(
+                    storyItems.map((item) => item.url).filter(Boolean)
+                  );
+                  const genreLinks = toColumnLinks(genreStoryTools).filter(
+                    (link) => link.url && !existingUrls.has(link.url)
+                  );
+                  const fantasyIndex = storyItems.findIndex(
+                    (item) => item.url === "/fantasy-generator"
+                  );
+                  const allToolsIndex = storyItems.findIndex(
+                    (item) => item.url === "/ai-tools"
+                  );
+                  const insertAt =
+                    fantasyIndex >= 0
+                      ? fantasyIndex + 1
+                      : allToolsIndex >= 0
+                        ? allToolsIndex
+                        : storyItems.length;
+                  storyItems.splice(insertAt, 0, ...genreLinks);
+
                   const groups: FooterColumnGroup[] = [
                     {
                       id: "story-generator",
                       title: t("footer.story_generator"),
-                      items: navChildren,
+                      items: storyItems,
                     },
                   ];
                   if (nameTools.length > 0) {

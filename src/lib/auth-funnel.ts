@@ -44,7 +44,11 @@ export type AuthSourcePage =
   | "essay-extender"
   | "paragraph-rewriter"
   | "ai-humanizer"
-  | "rap-lyric-generator";
+  | "rap-lyric-generator"
+  | "horror-story-generator"
+  | "mystery-story-generator"
+  | "sci-fi-story-generator"
+  | "adventure-story-generator";
 
 export const AUTH_ATTEMPT_STORAGE_KEY = "auth-funnel:pending-attempt";
 

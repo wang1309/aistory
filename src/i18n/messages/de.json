@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "KI-Geschichtengenerator - Unbegrenzte Geschichten Kostenlos",
+    "title": "KI-Geschichtengenerator - Kostenlose Geschichten Sofort",
     "description": "Fesselnde Geschichten sofort mit KI erstellen. Kostenlos forever, ohne Anmeldung. Einzigartige Plots & Charaktere in Sekunden. Starte jetzt deine kreative Reise! ✓",
-    "keywords": "KI-Geschichtengenerator, kostenloser Geschichtengenerator, unbegrenzte Geschichten, kreatives Schreiben KI, Geschichtenideen, Handlungsgenerator, Charakterentwicklung, Schreibanregungen, Erzähl-KI, Fiktionsgenerator, Ghostwriter KI, Roman schreiben lassen",
+    "keywords": "KI-Geschichtengenerator, kostenloser Geschichtengenerator, kreatives Schreiben KI, Geschichtenideen, Handlungsgenerator, Charakterentwicklung, Schreibanregungen, Erzähl-KI, Fiktionsgenerator, Ghostwriter KI, Roman schreiben lassen",
     "siteName": "KI-Geschichtengenerator"
   },
   "payment_return": {
@@ -320,6 +320,22 @@
     "category_story": "Geschichte & Schreiben",
     "category_featured": "Hub",
     "tools": {
+      "horror_story_generator": {
+        "name": "Horrorgeschichten-Generator",
+        "desc": "Erzeuge mit KI gruselige Plots, verfluchte Figuren und Zwei-Satz-Schocker."
+      },
+      "mystery_story_generator": {
+        "name": "Mystery-Geschichten-Generator",
+        "desc": "Baue mit KI eine faire Spurenkette, Verdächtige und eine überraschende Auflösung."
+      },
+      "sci_fi_story_generator": {
+        "name": "Sci-Fi-Geschichten-Generator",
+        "desc": "Erschaffe Hard SF, Space Opera, Cyberpunk oder Dystopie mit konsistenten Weltregeln."
+      },
+      "adventure_story_generator": {
+        "name": "Abenteuergeschichten-Generator",
+        "desc": "Verwandle Setting und Prämisse in eine Quest, einen Plot oder eine statische Verzweigungsgliederung."
+      },
       "story_generator": {
         "name": "Geschichtengenerator",
         "desc": "Geben Sie eine Idee ein und lassen Sie in Sekunden eine vollständige Geschichte in mehreren Genres und Sprachen erstellen."

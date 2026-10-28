@@ -15,6 +15,10 @@ const STORY_GENERATORS = new Set<CreativePageKey>([
   "dnd-backstory-generator",
   "fanfic-generator",
   "fantasy-generator",
+  "horror-story-generator",
+  "mystery-story-generator",
+  "sci-fi-story-generator",
+  "adventure-story-generator",
   "plot-generator",
   "romance-story-generator",
 ]);

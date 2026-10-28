@@ -35,6 +35,10 @@ const TOOL_ROUTES = new Set([
   '/comic-generator',
   '/bedtime-story-generator',
   '/fantasy-generator',
+  '/horror-story-generator',
+  '/mystery-story-generator',
+  '/sci-fi-story-generator',
+  '/adventure-story-generator',
   '/romance-story-generator',
   '/city-nickname-generator',
   '/literature-review-generator',
@@ -63,9 +67,9 @@ function lastModForTier(tier: RouteTier): Date {
     // home: 首页改版时手动刷新（最近一次：2026-09-23 工具导航接入 ai-humanizer）
     case 'home':
       return new Date('2026-09-23')
-    // tool: 上新/改版工具页时手动刷新（最近一次：2026-09-23 ai-humanizer 上线）
+    // tool: 上新/改版工具页时手动刷新（最近一次：2026-10-28 四个题材故事生成器上线）
     case 'tool':
-      return new Date('2026-09-23')
+      return new Date('2026-10-28')
     case 'legal':
       return new Date('2026-05-01')
     default:
@@ -137,6 +141,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/comic-generator',
     '/bedtime-story-generator',
     '/fantasy-generator',
+    '/horror-story-generator',
+    '/mystery-story-generator',
+    '/sci-fi-story-generator',
+    '/adventure-story-generator',
     '/romance-story-generator',
     '/city-nickname-generator',
     '/literature-review-generator',

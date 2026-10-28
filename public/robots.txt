@@ -8,7 +8,11 @@ Disallow: /*?*q=
 Disallow: /admin/
 Disallow: /api/
 Disallow: /console/
-Disallow: /_next/
+
+# Next.js static assets must stay crawlable so Google can render pages
+# and fetch optimized images.
+Allow: /_next/static/
+Allow: /_next/image
 
 # Allow legal pages for SEO
 Allow: /privacy-policy
