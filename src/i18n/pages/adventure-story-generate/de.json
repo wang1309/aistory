@@ -1,0 +1,528 @@
+{
+  "adventure_story_generate": {
+    "metadata": {
+      "title": "Abenteuergeschichten-Generator – Kostenloser KI-Plot-Autor",
+      "description": "Erzeuge in Sekunden Abenteuergeschichte, Quest oder Plot – Piraten, verlorene Welten, Weltraum oder eine verzweigte Gliederung. Kostenlos, ohne Anmeldung."
+    },
+    "ui": {
+      "title": "Kostenloser KI-Abenteuergeschichten-Generator",
+      "subtitle": "Wähle einen Schauplatz und eine Länge – du bekommst einen vollständigen Abenteuer-Plot, eine Kurzgeschichte oder eine verzweigte Gliederung, die du direkt hier lesen kannst.",
+      "trust_line": "Kostenlos • Keine Anmeldung • Sofort starten",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Abenteuergeschichten-Generator",
+      "story_idea": "Deine Abenteuer-Idee",
+      "random_button": "Zufällige Idee",
+      "ai_model": "KI-Modell",
+      "output_language": "Ausgabesprache",
+      "advanced_options": "Erweiterte Optionen",
+      "generate_button": "Abenteuergeschichte generieren",
+      "generating": "Die Route wird gezeichnet...",
+      "output_title": "Deine Abenteuergeschichte",
+      "empty_output": "Dein generiertes Abenteuer erscheint hier.",
+      "example_label": "Beispielausgaben, keine Live-Generierungen",
+      "copy_button": "Kopieren",
+      "copied": "Kopiert",
+      "save_button": "Speichern",
+      "continue_button": "In AI Write fortsetzen",
+      "word_count": "Wörter",
+      "branching_hint": "Das hier ist eine statische verzweigte Gliederung: Lies die Szene und die nummerierten Optionen und nutze sie als Plan. Es ist kein klickbares Spiel."
+    },
+    "placeholders": {
+      "story_idea": "Eine Piratenkapitänin rast durch eine versunkene Stadt, um eine Karte zu einer verlorenen Insel zu finden."
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schneller Entwurf zum Ideensammeln",
+      "standard": "Standard",
+      "standard_description": "Ausgewogene Qualität und Geschwindigkeit",
+      "creative": "Kreativ",
+      "creative_description": "Reichere Schauplätze und Set Pieces"
+    },
+    "common_fields": {
+      "length": {
+        "label": "Geschichtenlänge",
+        "options": {
+          "hook": "Ein-Zeilen-Hook",
+          "short": "Kurze Geschichte",
+          "full_outline": "Vollständige Plot-Skizze",
+          "branching_path": "Verzweigte Gliederung"
+        }
+      },
+      "tone": {
+        "label": "Ton",
+        "options": {
+          "dark": "Dunkel",
+          "suspenseful": "Spannungsgeladen",
+          "hopeful": "Hoffnungsvoll",
+          "neutral": "Ausgewogen",
+          "whimsical": "Verspielt"
+        }
+      },
+      "perspective": {
+        "label": "Erzählperspektive",
+        "options": {
+          "first_person": "Ich-Perspektive",
+          "third_person_limited": "Personale Perspektive",
+          "omniscient": "Allwissend"
+        }
+      },
+      "audience": {
+        "label": "Zielgruppe",
+        "options": {
+          "young_adult": "Junge Erwachsene",
+          "adult": "Erwachsene",
+          "all_ages": "Alle Altersgruppen"
+        }
+      }
+    },
+    "genre_fields": [
+      {
+        "key": "adventureSetting",
+        "label": "Abenteuer-Schauplatz",
+        "description": "Wähle die Welt, die deine Hauptfigur durchqueren muss.",
+        "options": {
+          "pirate": "Piratensee",
+          "lost_world": "Verlorene Welt",
+          "space": "Weltraumgrenze",
+          "fantasy_kingdom": "Fantasy-Königreich",
+          "survival": "Überleben in der Wildnis",
+          "mystery_quest": "Mysteriöse Quest"
+        }
+      }
+    ],
+    "random_prompts": [
+      "Eine Piratenkapitänin rast durch eine versunkene Stadt, um eine Karte zu einer verlorenen Insel zu finden.",
+      "Eine Kartografin findet eine Bergkette, die nur auf Karten erscheint, die nachts gezeichnet wurden.",
+      "Eine Bergungscrew betritt ein Generationenschiff, dessen Crew mitten beim Essen verschwand.",
+      "Ein königlicher Kurier muss ein Königreich durchqueren, in dem jede Brücke ein Rätsel stellt.",
+      "Eine gestrandete Kletterin findet eine warme Hütte mit Feuer und ohne Fußspuren.",
+      "Eine Führerin wird angeheuert, um eine rivalisierende Expedition zu einem Tempel zu bringen, der zwischen den Tälern wandert."
+    ],
+    "validation": {
+      "enter_idea": "Bitte gib zuerst eine Abenteuer-Idee ein.",
+      "select_model": "Bitte wähle ein KI-Modell.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte versuche es erneut."
+    },
+    "success": {
+      "story_generated": "Deine Abenteuergeschichte ist fertig.",
+      "story_copied": "Abenteuergeschichte kopiert.",
+      "random_prompt_selected": "Zufällige Abenteuer-Idee eingefügt.",
+      "saved_locally": "In Meine Stories gespeichert. Melde dich an, um sie mit deinem Konto zu synchronisieren."
+    },
+    "errors": {
+      "generation_failed": "Die Abenteuergeschichte konnte nicht generiert werden. Bitte versuche es erneut.",
+      "save_failed": "Die Geschichte konnte nicht gespeichert werden. Bitte versuche es erneut."
+    },
+    "output": {
+      "title": "Deine Abenteuergeschichte",
+      "words": "Wörter",
+      "copy": "Kopieren",
+      "empty": "Noch keine Geschichte. Beschreibe einen Schauplatz und generiere deine erste Route."
+    },
+    "completion_guide": {
+      "title": "Dein Abenteuer-Entwurf ist fertig",
+      "subtitle": "Speichere ihn, generiere eine weitere Route oder forme die Reise in AI Write weiter.",
+      "create_another": "Weitere erstellen",
+      "share_action": "Geschichte speichern",
+      "continue_label": "In AI Write fortsetzen",
+      "continue_hint": "Halte das Ziel konkret und lass jedes Hindernis etwas kosten."
+    },
+    "hero_examples": [
+      {
+        "label": "Piratenschatz-Einstieg",
+        "title": "Die versunkene Karte",
+        "text": "Die Karte war auf den Rücken der toten Kapitänin tätowiert, und die Tinte erschien nur, wenn die Flut kam. Bis Sonnenaufgang kannten drei Crews das Geheimnis, und eine davon hatte den Körper bereits losgeschnitten."
+      },
+      {
+        "label": "Drei-Akte-Skizze einer Ruine",
+        "title": "Der wandernde Tempel",
+        "text": "Akt eins: Eine Führerin bringt eine rivalisierende Expedition zu einer Ruine, die nur in der Dämmerung erscheint. Akt zwei: Der Tempel wandert zwischen den Tälern, und die Crew entdeckt, dass die Karte ein lebendiges Wesen ist. Akt drei: Die Führerin muss zwischen dem Schatz und dem Dorf wählen, auf das der Tempel zusteuert."
+      },
+      {
+        "label": "Verzweigte Szene",
+        "title": "Das Meerestor",
+        "text": "Szene: Das Meerestor öffnet sich unter der versunkenen Stadt, und die Strömung zieht das Boot in einen Korridor aus schwarzem Wasser.\nOptionen:\n1. Hineinsegeln und der Strömung vertrauen.\n2. Abtauchen und nach dem Mechanismus des Tors suchen.\n3. Umkehren, bevor die Flut den Eingang schließt."
+      }
+    ],
+    "adventure_seo": {
+      "headings": [
+        "Abenteuer-Ideen & Plots",
+        "Abenteuer-Schreibimpulse nach Schauplatz",
+        "Wähle dein eigenes Abenteuer",
+        "Verzweigte Story-Gliederung",
+        "Titel für Abenteuergeschichten",
+        "Vom Abenteuer zum Tabletop",
+        "So generierst du eine Abenteuergeschichte in 4 Schritten",
+        "Was eine Abenteuergeschichte funktionieren lässt",
+        "Abenteuer vs. Fantasy: Welchen Generator brauchst du?",
+        "Wer einen Abenteuergeschichten-Generator nutzt",
+        "Was ist ein Abenteuergeschichten-Generator?",
+        "Häufig gestellte Fragen"
+      ],
+      "ideas_and_plots": {
+        "title": "Abenteuer-Ideen & Plots",
+        "intro": "Ein Abenteuer braucht ein Ziel, einen Preis und eine Gegenkraft. Beginne mit einem Ziel, das die Hauptfigur nicht sicher erreichen kann, und mach dann jede Route teurer.",
+        "twist_title": "Abenteuer-Ideen mit einer Wendung",
+        "twist_intro": "Diese Prämissen geben dem Generator eine Wende, die verändert, worum es auf der Reise wirklich ging.",
+        "items": [
+          {
+            "title": "Die lebendige Karte",
+            "description": "Die Schatzkarte ändert sich jede Nacht, und die Route, die sie zeichnet, führt zum Zuhause der Hauptfigur."
+          },
+          {
+            "title": "Die Führerin, die der Schatz ist",
+            "description": "Die Expedition soll eine Führerin beschützen, die sich als das Einzige entpuppt, was die Rivalen wirklich wollen."
+          },
+          {
+            "title": "Die Rettung, die eine Falle ist",
+            "description": "Eine vermisste Crew sendet ein Notsignal, doch das Rettungsteam findet heraus, dass die Nachricht vor Jahren aufgenommen wurde."
+          },
+          {
+            "title": "Die Abkürzung mit einem Preis",
+            "description": "Ein angeblich sicherer Durchgang spart eine Woche, verlangt aber, dass die Gruppe an jedem Tor etwas zurücklässt."
+          }
+        ]
+      },
+      "writing_prompts": {
+        "title": "Abenteuer-Schreibimpulse nach Schauplatz",
+        "intro": "Wähle einen Schauplatz und gib der Gruppe ein konkretes Ziel. Jeder Prompt enthält ein Reiseziel, eine Gefahr und einen Grund, weiterzugehen.",
+        "items": [
+          {
+            "title": "Piratensee",
+            "description": "Ein Wettrennen durch eine versunkene Stadt.",
+            "prompt": "Eine Piratenkapitänin liefert sich mit einer rivalisierenden Crew ein Wettrennen durch eine versunkene Stadt, um eine Karte zu einer Insel zu finden, die einmal im Jahr erscheint."
+          },
+          {
+            "title": "Verlorene Welt",
+            "description": "Eine Ruine, die es nicht geben dürfte.",
+            "prompt": "Eine Entdeckerin findet einen Tempel, dessen Reliefs ihre Expedition bei der Ankunft zeigen – doch die letzte Tafel fehlt."
+          },
+          {
+            "title": "Weltraum",
+            "description": "Eine Grenze unter Zeitdruck.",
+            "prompt": "Eine Bergungscrew hat sechs Stunden, um ein aufgegebenes Schiff auszuschlachten, bevor sein Orbit in einen bewohnten Mond stürzt."
+          },
+          {
+            "title": "Fantasy-Königreich",
+            "description": "Eine Reise durch feindselige Politik.",
+            "prompt": "Ein Kurier muss ein Königreich durchqueren, in dem jede Brücke ein Rätsel verlangt und die Antworten Staatsgeheimnisse sind."
+          },
+          {
+            "title": "Überleben",
+            "description": "Die Umgebung ist der Gegner.",
+            "prompt": "Eine Kletterin findet oberhalb der Schneegrenze eine warme Hütte, in der ein Feuer brennt und draußen keine Fußspuren sind."
+          },
+          {
+            "title": "Mysteriöse Quest",
+            "description": "Das Ziel ändert sich ständig.",
+            "prompt": "Eine Führerin bringt eine rivalisierende Expedition zu einem Tempel, der zwischen den Tälern wandert, und die Karte ist in ihrer eigenen Handschrift geschrieben."
+          }
+        ]
+      },
+      "choose_your_own": {
+        "title": "Wähle dein eigenes Abenteuer",
+        "intro": "Wähle die Länge der verzweigten Gliederung, wenn du die Form einer Entscheidungsgeschichte willst, ohne eine interaktive App zu bauen. Der Generator liefert eine Szene und zwei oder drei nummerierte Optionen, jede mit einer eigenen unmittelbaren Konsequenz.",
+        "href": null,
+        "paragraphs": [
+          "Nutze die Gliederung als Planungsdokument. Du kannst einen Zweig zu einer vollständigen Geschichte ausbauen, die Optionen als Tabletop-Begegnung nutzen oder jede Möglichkeit in eine eigene Szene verwandeln.",
+          "Die Ausgabe ist statischer Text, kein klickbares Spiel. Sie verfolgt keinen Zustand, keine Kämpfe, kein Inventar und keine mehreren Spielenden."
+        ],
+        "example": "Szene: Das Meerestor öffnet sich unter der versunkenen Stadt.\nOptionen:\n1. Hineinsegeln und der Strömung vertrauen.\n2. Abtauchen und nach dem Mechanismus des Tors suchen.\n3. Umkehren, bevor die Flut den Eingang schließt."
+      },
+      "branching_outline": {
+        "title": "Verzweigte Story-Gliederung",
+        "intro": "Eine verzweigte Gliederung ist nützlich, wenn du Optionen statt eines einzigen Pfads brauchst. Sie hält die Szene konkret und lässt jede Wahl das nächste Problem verändern.",
+        "steps": [
+          {
+            "title": "Setze die Szene",
+            "description": "Zeige, wo die Hauptfigur ist, was sie will und was ihr unmittelbar im Weg steht."
+          },
+          {
+            "title": "Biete zwei oder drei Optionen",
+            "description": "Jede Option sollte zu einer anderen Konsequenz führen, nicht zu einer anderen Formulierung derselben Handlung."
+          },
+          {
+            "title": "Wähle einen Zweig zum Ausbauen",
+            "description": "Mach deine Lieblingsoption zur nächsten Szene oder setze die Gliederung in AI Write fort."
+          }
+        ]
+      },
+      "title_generator": {
+        "title": "Titel für Abenteuergeschichten",
+        "description": "Beschreibe deine Reise und erhalte genau fünf Titelvorschläge. Das Tool ist kostenlos und erfordert kein Konto.",
+        "label": "Deine Abenteuer-Prämisse",
+        "placeholder": "Piraten durchqueren eine versunkene Stadt, um ein begrabenes Observatorium zu erreichen.",
+        "button": "5 Titel generieren",
+        "generating": "Fünf Titel werden gesucht...",
+        "error": "Die Titel konnten nicht generiert werden. Bitte versuche es erneut.",
+        "empty": "Noch keine Titel. Beschreibe oben deine Reise.",
+        "result_title": "Fünf Titelvorschläge",
+        "validation": "Bitte beschreibe deine Prämisse mit mindestens 10 Zeichen.",
+        "language_label": "Sprache der Titel"
+      },
+      "tabletop": {
+        "title": "Vom Abenteuer zum Tabletop",
+        "intro": "Die Ausgabe lässt sich für eine Spielleitung anpassen, die einen Hook, einen Ort und eine Begegnung braucht. Sie ist ein Ausgangspunkt, keine Kampagnen-Regelmaschine.",
+        "items": [
+          {
+            "title": "Hooks",
+            "description": "Nutze die Eröffnungsszene als Grund, warum die Gruppe bereits unterwegs ist."
+          },
+          {
+            "title": "Orte",
+            "description": "Mach aus Schauplatz und Hindernissen eine kleine Karte mit zwei oder drei interessanten Punkten."
+          },
+          {
+            "title": "Begegnungen",
+            "description": "Nutze die Gegenkraft und die Kosten jeder Route, um eine Herausforderung ohne Kampf zu bauen."
+          }
+        ]
+      },
+      "how_to": {
+        "title": "So generierst du eine Abenteuergeschichte in 4 Schritten",
+        "intro": "Abenteuer ist eine Kette eskalierender Kosten. Die vier Schritte verhindern, dass die Reise zu einer Liste von Orten wird.",
+        "steps": [
+          {
+            "title": "Schauplatz",
+            "description": "Wähle die Welt und die Regel, die Reisen gefährlich macht."
+          },
+          {
+            "title": "Auslösendes Ereignis",
+            "description": "Gib der Hauptfigur ein konkretes Ziel und einen Grund, warum sie nicht warten kann."
+          },
+          {
+            "title": "Eskalierende Hindernisse",
+            "description": "Lass jede Route mehr kosten als die letzte. Die Gegenkraft sollte sich anpassen."
+          },
+          {
+            "title": "Payoff",
+            "description": "Lass das Ziel zählen. Die letzte Entscheidung sollte zeigen, worum es auf der Reise wirklich ging."
+          }
+        ]
+      },
+      "what_works": {
+        "title": "Was eine Abenteuergeschichte funktionieren lässt",
+        "intro": "Abenteuer ist nicht nur Bewegung. Es ist eine Reihe von Entscheidungen, die teurer werden.",
+        "items": [
+          {
+            "title": "Eskalierender Konflikt",
+            "description": "Jedes Hindernis sollte eine Möglichkeit nehmen oder den Preis der nächsten erhöhen."
+          },
+          {
+            "title": "Preis",
+            "description": "Die Hauptfigur sollte in jeder Phase Zeit, Sicherheit, Vertrauen oder einen Teil des Plans verlieren."
+          },
+          {
+            "title": "Karten",
+            "description": "Eine Karte ist nützlich, wenn sie eine Entscheidung erzeugt, nicht wenn sie nur die Route beschreibt."
+          },
+          {
+            "title": "Ziele",
+            "description": "Das Ziel sollte so konkret sein, dass die Lesenden erkennen können, ob die Hauptfigur erfolgreich war."
+          }
+        ]
+      },
+      "comparison": {
+        "title": "Abenteuer vs. Fantasy: Welchen Generator brauchst du?",
+        "intro": "Abenteuer und Fantasy überschneiden sich, versprechen aber unterschiedliche Geschichten. Wähle Abenteuer, wenn die Reise und ihre Kosten der Punkt sind.",
+        "adventure": "Abenteuer konzentriert sich auf ein Ziel, eine Route, eskalierende Hindernisse und einen Payoff. Die Welt kann jedes Genre haben.",
+        "fantasy": "Fantasy konzentriert sich auf eine Welt mit magischen oder mythischen Regeln. Die Reise kann dazugehören, aber die Fantasy-Regel ist der Motor."
+      },
+      "audiences": {
+        "title": "Wer einen Abenteuergeschichten-Generator nutzt",
+        "intro": "Die Seite ist für Schreibende, Spielleitungen, Lehrkräfte und Interactive-Fiction-Fans gedacht, die eine überarbeitbare Route brauchen.",
+        "items": [
+          {
+            "title": "Romanschreibende",
+            "description": "Teste eine Reise, ein Ensemble und eine Reihe eskalierender Hindernisse, bevor du dich auf einen längeren Entwurf festlegst."
+          },
+          {
+            "title": "Tabletop-Spielleitungen",
+            "description": "Erstelle einen Hook, einen Ort und eine Begegnung für eine Session, ohne eine ganze Kampagne zu bauen."
+          },
+          {
+            "title": "Lehrkräfte und Lernende",
+            "description": "Nutze die Vier-Schritte-Struktur, um eine Geschichte mit klarem Ziel und Payoff zu planen."
+          },
+          {
+            "title": "Interactive-Fiction-Fans",
+            "description": "Generiere eine statische verzweigte Gliederung, die du zu Szenen oder einer größeren Entscheidungsgeschichte ausbauen kannst."
+          }
+        ]
+      },
+      "definition": {
+        "title": "Was ist ein Abenteuergeschichten-Generator?",
+        "intro": "Ein Abenteuergeschichten-Generator macht aus einem Schauplatz und einer Prämisse einen Plot, eine Kurzgeschichte oder eine verzweigte Gliederung. Er ist ein Werkzeug für Reisen, keine Spiel-Engine.",
+        "paragraphs": [
+          "Das nützliche Ergebnis ist die Kette der Entscheidungen. Ein gutes Abenteuer gibt der Hauptfigur ein konkretes Ziel, lässt jede Route etwas kosten und endet mit einem Payoff, der verändert, was die Reise bedeutet hat.",
+          "Nutze den Entwurf, um die Struktur zu testen. Prüfe, ob die Hindernisse eskalieren, ersetze generische Orte durch eigene Details und stelle sicher, dass das Ende von einer Entscheidung abhängt und nicht von einem Zufall."
+        ]
+      },
+      "faq_heading": "Häufig gestellte Fragen",
+      "dnd_campaign": {
+        "href": null
+      },
+      "superhero": {
+        "href": null
+      },
+      "story_ideas": {
+        "href": null
+      },
+      "internal_links": [
+        {
+          "label": "KI-Geschichtengenerator",
+          "href": "/"
+        },
+        {
+          "label": "Horrorgeschichten-Generator",
+          "href": "/horror-story-generator"
+        },
+        {
+          "label": "Mystery-Geschichten-Generator",
+          "href": "/mystery-story-generator"
+        },
+        {
+          "label": "Sci-Fi-Geschichten-Generator",
+          "href": "/sci-fi-story-generator"
+        },
+        {
+          "label": "Fantasy-Geschichten-Generator",
+          "href": "/fantasy-generator"
+        }
+      ]
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Abenteuer schreiben, ohne leere Seite",
+      "title": "Eine Route mit Ziel, Preis und Payoff",
+      "description": "Starte mit einem Schauplatz und einer Prämisse. Der Generator baut eine Reise, eine Reihe eskalierender Hindernisse und eine verzweigte Gliederung, die du überarbeiten kannst.",
+      "items": [
+        {
+          "title": "Sechs Schauplätze",
+          "description": "Piratensee, verlorene Welten, Weltraum, Fantasy-Königreiche, Überleben und mysteriöse Quests."
+        },
+        {
+          "title": "Vier Ausgabeformen",
+          "description": "Generiere einen Hook, eine Kurzgeschichte, einen vollständigen Plot oder eine statische verzweigte Gliederung."
+        },
+        {
+          "title": "Bearbeitbare Ausgabe",
+          "description": "Speichere die Route oder arbeite im Editor weiter."
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "So funktioniert es",
+      "title": "In drei Schritten zum Abenteuer-Entwurf",
+      "description": "Die Regler halten die Reise konkret und die Hindernisse eskalierend.",
+      "items": [
+        {
+          "title": "Beschreibe die Reise",
+          "description": "Benenne den Schauplatz, das Ziel und die Kraft, die sich ihm entgegenstellt."
+        },
+        {
+          "title": "Wähle die Form",
+          "description": "Lege Ausgabelänge, Ton, Perspektive und Zielgruppe fest."
+        },
+        {
+          "title": "Generieren und überarbeiten",
+          "description": "Prüfe, ob jedes Hindernis etwas kostet, und baue dann deinen Lieblingszweig aus."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Warum nutzen",
+      "title": "Gebaut für Reisen, nicht nur Kulisse",
+      "description": "Jeder Regler entspricht einer Entscheidung, die Abenteuer-Autorinnen und -Autoren treffen müssen.",
+      "items": [
+        {
+          "title": "Prämissen, die mit dem Ziel beginnen",
+          "description": "Der Prompt verlangt ein konkretes Ziel, eine Gegenkraft und einen Payoff."
+        },
+        {
+          "title": "Eskalierende Hindernisse",
+          "description": "Der Generator wird angewiesen, jede Route teurer zu machen als die letzte."
+        },
+        {
+          "title": "Statische verzweigte Gliederungen",
+          "description": "Erhalte eine Szene und zwei oder drei bedeutsame Optionen ohne Spiel-Engine."
+        },
+        {
+          "title": "Keine Anmeldung nötig",
+          "description": "Öffne die Seite, beschreibe eine Reise und generiere eine erste Version."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "feature_section",
+      "label": "Anwendungsfälle",
+      "title": "Eine Seite, mehrere Abenteuer-Workflows",
+      "description": "Nutze denselben Generator für einen schnellen Hook oder eine vollständige Route.",
+      "items": [
+        {
+          "title": "Kurzvideo",
+          "description": "Generiere einen Ein-Zeilen-Hook oder eine kompakte Route für ein erzähltes Video."
+        },
+        {
+          "title": "Romanentwurf",
+          "description": "Mach aus einer Prämisse eine Szene mit konkretem Ziel und arbeite in AI Write weiter."
+        },
+        {
+          "title": "Tabletop-Runden",
+          "description": "Erstelle einen Hook, einen Ort und eine Begegnung für einen Spieleabend."
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Häufig gestellte Fragen",
+      "description": "Häufige Fragen zum Abenteuergeschichten-Generator, zur verzweigten Gliederung und zur Nutzung der Ausgabe.",
+      "items": [
+        {
+          "title": "Gibt es einen kostenlosen Abenteuergeschichten-Generator?",
+          "description": "Ja. Diese Seite ist kostenlos startbar, ohne Anmeldung für die erste Generierung. Du kannst einen Ein-Zeilen-Hook, eine Kurzgeschichte, einen vollständigen Plot oder eine statische verzweigte Gliederung generieren."
+        },
+        {
+          "title": "Kann ich es online nutzen, ohne etwas zu installieren?",
+          "description": "Ja. Der Generator läuft im Browser. Du musst keine App installieren und kein Konto erstellen, um deine erste Generierung zu starten."
+        },
+        {
+          "title": "Kann ich die Geschichte als Spiel spielen?",
+          "description": "Nein. Die verzweigte Gliederung ist statischer Text: eine Szene und zwei oder drei nummerierte Optionen. Sie ist ein Planungsdokument, kein interaktives Spiel mit Zustand, Kämpfen oder Inventar."
+        },
+        {
+          "title": "Kann ich ein textbasiertes Abenteuer-RPG erstellen?",
+          "description": "Du kannst Szenen und Optionen generieren, die Teil eines textbasierten RPGs werden könnten, aber diese Seite ist keine Regel-Engine. Sie verfolgt keine Werte, Gegenstände oder Spielerzustände."
+        },
+        {
+          "title": "Kann ich ein DnD-Abenteuer oder eine Kampagne generieren?",
+          "description": "Du kannst die Ausgabe als Hook, Ort oder Begegnung für eine Tabletop-Runde nutzen. Es ist kein vollständiger Kampagnen-Generator, und es enthält keine Stat Blocks oder Regeln."
+        },
+        {
+          "title": "Können Lehrkräfte es mit Schüler:innen nutzen?",
+          "description": "Ja. Die Vier-Schritte-Struktur (Schauplatz, auslösendes Ereignis, eskalierende Hindernisse, Payoff) funktioniert als Planungsübung im Unterricht. Prüfe die generierten Inhalte, bevor du sie mit Schüler:innen teilst."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Gib deiner nächsten Reise ein Ziel und einen Preis",
+      "description": "Starte mit einem Schauplatz. Wähle die Form. Generiere ein Abenteuer, das du überarbeiten kannst.",
+      "buttons": [
+        {
+          "title": "Abenteuergeschichte generieren",
+          "url": "#genre-story-generator",
+          "type": "link"
+        },
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write",
+          "type": "link"
+        }
+      ]
+    }
+  }
+}

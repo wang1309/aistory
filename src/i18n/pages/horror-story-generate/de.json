@@ -1,0 +1,499 @@
+{
+  "horror_story_generate": {
+    "metadata": {
+      "title": "Kostenloser Horrorgeschichten-Generator – KI-Gruselstorys",
+      "description": "Erzeuge gruselige Plots, verfluchte Figuren und Zwei-Satz-Schocks. Kostenloser KI-Horrorgeschichten-Generator mit Ideen, Titeln und Prompts, ohne Anmeldung."
+    },
+    "ui": {
+      "title": "Kostenloser KI-Horrorgeschichten-Generator",
+      "subtitle": "Mach aus einer kurzen Idee eine vollständige Horrorgeschichte, eine Plot-Skizze oder einen Zwei-Satz-Schock – wähle ein Subgenre und leg los.",
+      "trust_line": "Kostenlos • Keine Anmeldung nötig • Sofort starten",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Horrorgeschichten-Generator",
+      "story_idea": "Deine Horror-Idee",
+      "random_button": "Zufällige Idee",
+      "ai_model": "KI-Modell",
+      "output_language": "Ausgabesprache",
+      "advanced_options": "Erweiterte Optionen",
+      "generate_button": "Horrorgeschichte generieren",
+      "generating": "Deine Horrorgeschichte entsteht...",
+      "output_title": "Deine Horrorgeschichte",
+      "empty_output": "Deine generierte Geschichte erscheint hier.",
+      "example_label": "Beispielausgaben, keine Live-Generierungen",
+      "copy_button": "Kopieren",
+      "copied": "Kopiert",
+      "save_button": "Speichern",
+      "continue_button": "In AI Write fortsetzen",
+      "word_count": "Wörter"
+    },
+    "placeholders": {
+      "story_idea": "Ein Radio wiederholt die Todesfälle von morgen, und nur ein Zuhörer bemerkt es."
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schneller Entwurf zum Ideensammeln",
+      "standard": "Standard",
+      "standard_description": "Ausgewogene Qualität und Geschwindigkeit",
+      "creative": "Kreativ",
+      "creative_description": "Reichere Atmosphäre und mehr Details"
+    },
+    "common_fields": {
+      "length": {
+        "label": "Geschichtenlänge",
+        "options": {
+          "two_sentence": "Zwei-Satz-Schock",
+          "short": "Kurze Geschichte",
+          "full": "Vollständige Geschichte"
+        }
+      },
+      "tone": {
+        "label": "Ton",
+        "options": {
+          "dark": "Dunkel",
+          "suspenseful": "Spannungsgeladen",
+          "hopeful": "Hoffnungsvoll",
+          "neutral": "Ausgewogen",
+          "whimsical": "Verspielt"
+        }
+      },
+      "perspective": {
+        "label": "Erzählperspektive",
+        "options": {
+          "first_person": "Ich-Perspektive",
+          "third_person_limited": "Personale Perspektive",
+          "omniscient": "Allwissend"
+        }
+      },
+      "audience": {
+        "label": "Zielgruppe",
+        "options": {
+          "young_adult": "Junge Erwachsene",
+          "adult": "Erwachsene",
+          "all_ages": "Alle Altersgruppen"
+        }
+      }
+    },
+    "genre_fields": [
+      {
+        "key": "horrorMode",
+        "label": "Horror-Modus",
+        "description": "Wähle die Art des Grauens.",
+        "options": {
+          "horror": "Horror",
+          "spooky": "Gruselig",
+          "psychological": "Psychologisch",
+          "supernatural": "Übernatürlich"
+        }
+      },
+      {
+        "key": "scareIntensity",
+        "label": "Schock-Intensität",
+        "description": "Wie stark soll die Geschichte eskalieren?",
+        "options": {
+          "low": "Niedrig",
+          "medium": "Mittel",
+          "high": "Hoch"
+        }
+      },
+      {
+        "key": "endingType",
+        "label": "Ende",
+        "description": "Bestimme die letzte Wendung.",
+        "options": {
+          "twist": "Wendung",
+          "tragic": "Tragisch",
+          "ambiguous": "Offen",
+          "hopeful": "Hoffnungsvoll"
+        }
+      }
+    ],
+    "random_prompts": [
+      "Ein Radio wiederholt die Todesfälle von morgen, und nur ein Zuhörer bemerkt es.",
+      "Jeder Spiegel im Haus zeigt einen Raum, den es nicht gibt.",
+      "Eine Nachtschwester bekommt eine Patientin, die ihre Kindheitsnarbe trägt.",
+      "Die Vogelscheuche des Dorfes ändert ihre Pose, sobald die Kirchenglocke läutet.",
+      "Eine Familie erbt ein Haus, in dem die Wände sich an jeden Streit erinnern.",
+      "Eine Podcasterin nimmt in einem leeren Raum eine Stimme auf, die ihren Namen sagt."
+    ],
+    "validation": {
+      "enter_idea": "Bitte gib zuerst eine Horror-Idee ein.",
+      "select_model": "Bitte wähle ein KI-Modell.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte versuche es erneut."
+    },
+    "success": {
+      "story_generated": "Deine Horrorgeschichte ist fertig.",
+      "story_copied": "Horrorgeschichte kopiert.",
+      "random_prompt_selected": "Zufällige Horror-Idee eingefügt.",
+      "saved_locally": "In Meine Stories gespeichert. Melde dich an, um sie mit deinem Konto zu synchronisieren."
+    },
+    "errors": {
+      "generation_failed": "Die Horrorgeschichte konnte nicht generiert werden. Bitte versuche es erneut.",
+      "save_failed": "Die Geschichte konnte nicht gespeichert werden. Bitte versuche es erneut."
+    },
+    "output": {
+      "title": "Deine Horrorgeschichte",
+      "words": "Wörter",
+      "copy": "Kopieren",
+      "empty": "Noch keine Geschichte. Gib eine Idee ein und generiere deinen ersten Entwurf."
+    },
+    "completion_guide": {
+      "title": "Dein Horror-Entwurf ist fertig",
+      "subtitle": "Speichere ihn, generiere eine weitere Variante oder forme ihn in AI Write weiter.",
+      "create_another": "Weitere erstellen",
+      "share_action": "Geschichte speichern",
+      "continue_label": "In AI Write fortsetzen",
+      "continue_hint": "Behalte dieselben Figuren und steigere das Grauen."
+    },
+    "hero_examples": [
+      {
+        "label": "Beispiel-Einstieg",
+        "title": "Die letzte Sendung",
+        "text": "Die Radiomoderatorin war seit drei Jahren tot, doch ihre Sendung lief weiter, jeden Abend um Mitternacht. Heute las sie die Namen aller vor, die vor dem Morgen sterben würden. Meiner war der letzte."
+      },
+      {
+        "label": "Beispiel-Plot",
+        "title": "Das Haus, das zuhört",
+        "text": "Eine Familie zieht in ein Farmhaus, in dem die Wände Fragmente alter Streitgespräche wiederholen. Als die Mutter ein Gespräch hört, das noch nicht stattgefunden hat, begreift sie: Das Haus erinnert sich nicht an die Vergangenheit. Es probt die Zukunft."
+      },
+      {
+        "label": "Zwei-Satz-Schock",
+        "title": "Unter dem Bett",
+        "text": "Meine Tochter bat mich, unter ihrem Bett nach Monstern zu schauen. Ich sah nach – und sie war schon dort, lächelnd."
+      }
+    ],
+    "horror_seo": {
+      "ideas_and_plots": {
+        "title": "Horror-Ideen & Plots",
+        "intro": "Eine Horrorgeschichte braucht eine klare Quelle des Grauens, eine Figur, die nicht einfach gehen kann, und ein Schlussbild, das nach der letzten Seite bleibt. Beginne mit einem einzigen falschen Detail und lass die Figuren es so erklären, dass alles schlimmer wird.",
+        "twist_title": "Horror-Ideen mit einer Wendung",
+        "twist_intro": "Eine Wendung funktioniert, wenn sie die ganze Geschichte neu lesen lässt, statt sie zu ersetzen. Diese Prämissen geben dem Generator eine Wende, die schon im Aufbau angelegt ist.",
+        "ideas": [
+          {
+            "title": "Der Ersatz",
+            "description": "Eine trauernde Mutter adoptiert ein Kind, das jedes Familienritual kennt. Die Wendung: Das Kind ersetzt nicht ihren verlorenen Sohn, sondern die Mutter."
+          },
+          {
+            "title": "Der hilfsbereite Geist",
+            "description": "Ein Geist warnt eine Familie vor jedem Unfall, bevor er passiert. Als sie sich bedanken, bittet er um einen kleinen Gefallen: wieder in einen Körper gelassen zu werden."
+          },
+          {
+            "title": "Die perfekte Nachbarschaft",
+            "description": "Jedes Haus in der Straße hat denselben Albtraum. Die Nachbarn vergleichen ihre Notizen und entdecken, dass sie alle aus demselben leeren Raum träumen."
+          },
+          {
+            "title": "Die geerbte Stimme",
+            "description": "Eine Sängerin erbt die Stimme ihrer Großmutter. Jedes Lied, das sie singt, bringt eine Person zurück, die es zum ersten Mal hörte – aber nie auf dieselbe Weise."
+          }
+        ],
+        "structure_title": "Plot-Strukturen, die wirklich gruseln",
+        "structure_items": [
+          {
+            "title": "Das falsche Detail",
+            "description": "Beginne mit einer alltäglichen Szene und einem Detail, das nicht passt. Lass die Figuren es ignorieren und mach das Detail dann unmöglich wegzuerklären."
+          },
+          {
+            "title": "Der engere Raum",
+            "description": "Jeder Fluchtversuch nimmt eine Möglichkeit weg. Die letzte Wahl sollte etwas kosten, das die Figur nicht ersetzen kann."
+          },
+          {
+            "title": "Der faire Hinweis",
+            "description": "Lege die Wahrheit früh und offen an. Die Auflösung sollte Lust machen, zur ersten Seite zurückzukehren, nicht das Gefühl geben, betrogen worden zu sein."
+          },
+          {
+            "title": "Das letzte Bild",
+            "description": "Ende mit einem konkreten Bild oder einer Handlung, nicht mit einem Absatz Erklärung. Überlasse den letzten Schritt des Grauens der Fantasie der Lesenden."
+          }
+        ]
+      },
+      "prompts_by_subgenre": {
+        "title": "Horror-Prompts nach Subgenre",
+        "intro": "Wähle ein Subgenre, wenn du schon weißt, welche Art von Angst du willst. Jeder Prompt gibt dem Generator einen Schauplatz, einen Druckpunkt und eine Wende, auf die er hinarbeiten kann.",
+        "items": [
+          {
+            "title": "Psychologisch",
+            "description": "Das Grauen kommt aus der Wahrnehmung der Figur.",
+            "prompt": "Eine Therapeutin erkennt, dass ihr Patient ihre eigenen Kindheitserinnerungen beschreibt, als gehörten sie jemand anderem."
+          },
+          {
+            "title": "Übernatürlich",
+            "description": "Ein Spuk mit klaren Regeln und einem echten Preis.",
+            "prompt": "Eine Familie zieht in ein Haus, in dem vor Mitternacht jede Tür geschlossen sein muss – sonst erfährt etwas im Flur ihre Namen."
+          },
+          {
+            "title": "Body Horror",
+            "description": "Der Körper wird zum Schauplatz der Geschichte.",
+            "prompt": "Das neue Tattoo einer Tänzerin bewegt sich nach jeder Vorstellung von selbst, und das Motiv kommt ihrem Herzen jedes Mal einen Schritt näher."
+          },
+          {
+            "title": "Folk Horror",
+            "description": "Die Freundlichkeit einer Gemeinschaft verbirgt einen Handel.",
+            "prompt": "Ein Dorf nimmt eine gestrandete Reisende auf und bittet nur um eines: dass sie sich nach Sonnenuntergang bei niemandem bedankt."
+          },
+          {
+            "title": "Creepypasta",
+            "description": "Ein gefundenes Dokument mit einem unzuverlässigen Zeugen.",
+            "prompt": "Ein Forumsthread sammelt Berichte über eine Kindersendung, die nur erscheint, wenn der Zuschauer allein ist."
+          },
+          {
+            "title": "Analog Horror",
+            "description": "Das Grauen kommt über beschädigtes Bildmaterial.",
+            "prompt": "Ein lokaler Kanal sendet immer wieder eine Wetterwarnung für einen Sturm, der noch nicht passiert ist."
+          }
+        ]
+      },
+      "title_generator": {
+        "title": "Titel für Horrorgeschichten",
+        "description": "Beschreibe deine Prämisse und erhalte genau fünf Titelvorschläge. Das Tool ist kostenlos und erfordert kein Konto.",
+        "label": "Deine Horror-Prämisse",
+        "placeholder": "Ein Kind hört jede Mitternacht ein Klopfen in den Wänden.",
+        "button": "5 Titel generieren",
+        "generating": "Fünf Titel werden gesucht...",
+        "error": "Die Titel konnten nicht generiert werden. Bitte versuche es erneut.",
+        "empty": "Noch keine Titel. Beschreibe oben deine Prämisse.",
+        "result_title": "Fünf Titelvorschläge",
+        "validation": "Bitte beschreibe deine Prämisse mit mindestens 10 Zeichen.",
+        "language_label": "Sprache der Titel"
+      },
+      "two_sentence_stories": {
+        "title": "Zwei-Satz-Horrorgeschichten",
+        "intro": "Ein Zwei-Satz-Schock braucht einen vollständigen Aufbau und eine unmissverständliche Wende. Diese Originalbeispiele zeigen die Form; nutze die Zwei-Satz-Länge für deine eigene Geschichte.",
+        "items": [
+          "Meine Tochter bat mich, unter dem Bett nach Monstern zu schauen. Ich sah nach, und sie war schon dort, lächelnd.",
+          "Das Krankenhaus rief an, um mir zu sagen, dass meine Testergebnisse normal seien. Die Anruferin sprach mit der Stimme meiner Mutter, und sie ist letztes Jahr gestorben.",
+          "Jede Nacht um 3 Uhr spielt mein Handy eine Sprachnachricht von meiner eigenen Nummer ab. Ich habe sie endlich angehört: Ich war es selbst, die mich anflehte, die Tür nicht zu öffnen.",
+          "Für das neue Haus galt eine Regel: Öffne nach Einbruch der Dunkelheit niemals die Kellertür. Heute Nacht klopfte es im Rhythmus des geheimen Codes unserer Familie.",
+          "Ich habe meinem Hund beigebracht, Fremde anzubellen. Seit einer Stunde bellt er den leeren Stuhl neben mir an.",
+          "Der Spiegel im Flur zeigt unser Zimmer genau so, wie es ist – bis auf die Gestalt, die hinter mir steht. Ich wohne allein.",
+          "Im Rezeptbuch meiner Großmutter gibt es eine Seite für „den Besuch“. Die Zutaten liegen schon in meiner Küche, und ich habe sie nicht gekauft.",
+          "Das Babyphon fängt ein Schlaflied aus dem Kinderzimmer auf. Wir haben kein Kinderzimmer, und vor uns war das Haus leer.",
+          "Ich wachte auf, weil mein Partner meine Schulter schüttelte. Am anderen Ende des Raums schlief mein Partner noch immer, mit dem Gesicht zur Wand.",
+          "Die Vermisstenplakate der Stadt aktualisieren sich jeden Morgen von selbst. Heute trägt eines mein Gesicht und das Datum von morgen.",
+          "Mein Smart Speaker beantwortet ständig Fragen, die ich nur gedacht habe. Letzte Nacht beantwortete er die eine, die ich nie ausgesprochen habe.",
+          "Das Bestattungsinstitut rief an, um meinen Termin zu bestätigen. Ich habe keinen gebucht, aber sie haben bereits meine Maße."
+        ]
+      },
+      "how_to": {
+        "title": "So generierst du eine Horrorgeschichte mit KI",
+        "intro": "Der Generator funktioniert am besten, wenn du ihm einen konkreten Druckpunkt gibst statt der allgemeinen Bitte um „etwas Gruseliges“.",
+        "steps": [
+          {
+            "title": "Beginne mit einem falschen Detail",
+            "description": "Schreibe eine normale Situation und füge ein einziges Detail hinzu, das dort nicht hingehört. Dieses Detail ist der Motor der Geschichte."
+          },
+          {
+            "title": "Wähle die Art des Grauens",
+            "description": "Wähle psychologisch, übernatürlich, gruselig oder den Horror-Modus und lege dann Intensität und Ende fest. Die Regler verändern das Tempo, nicht nur die Adjektive."
+          },
+          {
+            "title": "Gib der Figur etwas zu verlieren",
+            "description": "Benenne, was die Hauptfigur nicht verlieren darf. Eine Horrorgeschichte wird spannend, wenn jede Flucht eine weitere Möglichkeit nimmt."
+          },
+          {
+            "title": "Ende mit dem Bild",
+            "description": "Nutze die Zwei-Satz- oder Kurzlänge, wenn du einen scharfen letzten Schlag willst. Halte die letzte Zeile konkret und lass die Lesenden die Angst zu Ende denken."
+          }
+        ]
+      },
+      "audiences": {
+        "title": "Wer einen Horrorgeschichten-Generator nutzt",
+        "intro": "Die Seite ist für Menschen gedacht, die einen brauchbaren Entwurf brauchen, keine Vorlesung über Horrortheorie.",
+        "items": [
+          {
+            "title": "Romanschreibende",
+            "description": "Teste eine Prämisse, finde die Wendung und generiere eine Szene, die zeigt, ob die Idee ein längeres Werk tragen kann."
+          },
+          {
+            "title": "Erzählende",
+            "description": "Bereite eine Geschichte fürs Lagerfeuer, eine Tabletop-Begegnung oder eine kurze Lesung mit klarem Aufbau und Payoff vor."
+          },
+          {
+            "title": "TikTok- und YouTube-Creator",
+            "description": "Entwirf einen Zwei-Satz-Schock, ein erzähltes Kurzstück oder eine Liste von Szenen-Beats vor dem Dreh."
+          },
+          {
+            "title": "Hobby-Schreibende",
+            "description": "Schreibe zum Spaß, probiere ein Subgenre aus, das du noch nicht genutzt hast, oder mach aus einem zufälligen Bild einen ersten Entwurf."
+          }
+        ]
+      },
+      "video_adaptation": {
+        "title": "Von der Horrorgeschichte zum Video",
+        "intro": "Der generierte Entwurf lässt sich als Skriptgerüst für Voiceover, Storyboards oder ein Kurzvideo nutzen. Du bekommst Szenen-Beats und visuelle Hinweise, keinen fertigen Schnitt.",
+        "capability_notice": "Stories Generator erstellt ein videotaugliches Skript; eine Videodatei wird nicht gerendert.",
+        "items": [
+          "Nutze das Eröffnungsbild als erste Einstellung und halte die ersten zehn Sekunden konkret.",
+          "Markiere Wendung, Auflösung und Schlussbild als getrennte Beats, bevor du schneidest.",
+          "Lies das Voiceover laut und streiche jeden Satz, der erklärt, was das Bild schon zeigt."
+        ],
+        "link": {
+          "label": "In AI Write fortsetzen",
+          "href": "/ai-write"
+        }
+      },
+      "definition": {
+        "title": "Was ist ein Horrorgeschichten-Generator?",
+        "intro": "Ein Horrorgeschichten-Generator ist ein Schreibwerkzeug, das aus einer Prämisse eine strukturierte Gruselgeschichte, eine Plot-Skizze oder einen Zwei-Satz-Schock macht. Er ist ein Entwurfspartner, kein Ersatz für dein Urteil.",
+        "paragraphs": [
+          "Das Nützliche ist nicht der erste Satz, sondern die Struktur: eine Quelle des Grauens, eine Figur unter Druck, ein fairer Hinweis und ein Schlussbild. Der Generator liefert eine Version dieser Struktur, die du bearbeiten kannst.",
+          "Nutze die Ausgabe als Entwurf. Prüfe die Logik der Auflösung, ersetze generische Details durch eigene Beobachtungen und stelle sicher, dass die Geschichte nicht von einer Wendung lebt, die der Aufbau nicht verdient hat."
+        ]
+      },
+      "faq_heading": "Häufig gestellte Fragen",
+      "internal_links": [
+        {
+          "label": "KI-Geschichtengenerator",
+          "href": "/"
+        },
+        {
+          "label": "Plot-Generator",
+          "href": "/plot-generator"
+        },
+        {
+          "label": "Story-Prompt-Generator",
+          "href": "/story-prompt-generator"
+        },
+        {
+          "label": "Buchtitel-Generator",
+          "href": "/book-title-generator"
+        },
+        {
+          "label": "AI-Write-Editor",
+          "href": "/ai-write"
+        }
+      ]
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Horror schreiben, ohne leere Seite",
+      "title": "Ein erster Entwurf, der schon weiß, wovor er sich fürchtet",
+      "description": "Starte mit einer Prämisse und wähle die Art des Grauens. Der Generator liefert einen vollständigen Entwurf oder einen scharfen Zwei-Satz-Schock – und du kannst in AI Write weiterarbeiten.",
+      "items": [
+        {
+          "title": "Genrespezifische Regler",
+          "description": "Wähle Horror-Modus, Schock-Intensität und Ende, bevor du generierst."
+        },
+        {
+          "title": "Drei nützliche Längen",
+          "description": "Schreibe einen Zwei-Satz-Schock, eine kurze Geschichte oder einen vollständigen Entwurf."
+        },
+        {
+          "title": "Bearbeitbare Ausgabe",
+          "description": "Speichere das Ergebnis oder arbeite im Editor weiter."
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "So funktioniert es",
+      "title": "In drei Schritten zum brauchbaren Horror-Entwurf",
+      "description": "Die Regler sorgen dafür, dass die Geschichte konkret bleibt statt generisch.",
+      "items": [
+        {
+          "title": "Beschreibe das falsche Detail",
+          "description": "Schreibe die normale Situation und das eine, was nicht dazugehört."
+        },
+        {
+          "title": "Wähle den Druck",
+          "description": "Lege Modus, Intensität, Ende, Länge und Perspektive fest."
+        },
+        {
+          "title": "Generieren und überarbeiten",
+          "description": "Nutze den Entwurf als Ausgangspunkt und schärfe dann Auflösung und Schlussbild."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Warum nutzen",
+      "title": "Gebaut für Schreibende, die einen Entwurf brauchen, keine Prompt-Sammlung",
+      "description": "Jeder Regler entspricht einer erzählerischen Entscheidung, die du erklären und überarbeiten kannst.",
+      "items": [
+        {
+          "title": "Konkrete Prämissen",
+          "description": "Der Prompt fragt nach einer Quelle des Grauens, einem Preis und einem Schlussbild."
+        },
+        {
+          "title": "Faire Wendungen",
+          "description": "Die Vorgaben für Mystery und Horror verlangen Hinweise, die die Lesenden hätten bemerken können."
+        },
+        {
+          "title": "Nützliche Längensteuerung",
+          "description": "Wechsle vom Zwei-Satz-Schock zum vollständigen Entwurf, ohne das Tool zu wechseln."
+        },
+        {
+          "title": "Keine Anmeldung nötig",
+          "description": "Öffne die Seite, schreibe eine Idee und generiere eine erste Version."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "feature_section",
+      "label": "Anwendungsfälle",
+      "title": "Eine Seite, mehrere Horror-Workflows",
+      "description": "Nutze denselben Generator für einen schnellen Schock oder eine längere Schreibsession.",
+      "items": [
+        {
+          "title": "Kurzvideo",
+          "description": "Generiere einen Zwei-Satz-Schock oder ein kurzes erzähltes Stück für ein vertikales Video."
+        },
+        {
+          "title": "Romanentwurf",
+          "description": "Mach aus einer Prämisse eine Szene mit klarer Wende und arbeite in AI Write weiter."
+        },
+        {
+          "title": "Tabletop und Lagerfeuer",
+          "description": "Erstelle einen in sich geschlossenen Horror-Beat für eine Session oder eine Live-Lesung."
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Häufig gestellte Fragen",
+      "description": "Häufige Fragen zum Horrorgeschichten-Generator, zur Ausgabe und zur Nutzung.",
+      "items": [
+        {
+          "title": "Wie kann ich meine eigene Gruselgeschichte schreiben?",
+          "description": "Beginne mit einer alltäglichen Situation und einem falschen Detail. Füge eine Figur hinzu, die nicht einfach gehen kann, wähle Horror-Modus und Ende und generiere einen Entwurf. Überarbeite dann die Auflösung so, dass sie aus den angelegten Hinweisen folgt."
+        },
+        {
+          "title": "Kannst du mir eine Horrorgeschichte schreiben?",
+          "description": "Ja. Gib eine Prämisse ein, wähle Länge und Regler, und der Generator schreibt einen Entwurf, den du kopieren, speichern oder in AI Write fortsetzen kannst. Ob die Geschichte gut genug zum Veröffentlichen ist, entscheidest weiterhin du."
+        },
+        {
+          "title": "Kann ChatGPT Horrorgeschichten schreiben?",
+          "description": "Allgemeine Chat-Modelle können Horror schreiben, doch dieses Tool ist auf horrorspezifische Regler ausgelegt: Modus, Schock-Intensität, Art des Endes und Länge. Diese Regler machen es leichter, einen brauchbaren Entwurf statt einer generischen Antwort zu bekommen."
+        },
+        {
+          "title": "Was ist die gruseligste Geschichte aller Zeiten?",
+          "description": "Darauf gibt es keine einzelne Antwort. Angst hängt von der Leserschaft und der Situation ab. Ein nützlicher Test: Wird früh ein konkretes Detail angelegt, und wirkt das Schlussbild dadurch unvermeidlich statt beliebig?"
+        },
+        {
+          "title": "Was ist der beste kostenlose Horrorgeschichten-Generator?",
+          "description": "Das beste Tool ist das, das dir Kontrolle über Prämisse, Länge und Ton gibt und dich das Ergebnis bearbeiten lässt. Diese Seite ist kostenlos startbar, ohne Anmeldung für die erste Generierung."
+        },
+        {
+          "title": "Kann ich aus der generierten Geschichte ein Horrorvideo machen?",
+          "description": "Du kannst den Entwurf als Skriptgerüst für Voiceover, Storyboards oder ein Kurzvideo nutzen. Stories Generator erstellt ein videotaugliches Skript; eine Videodatei wird nicht gerendert. Setze in AI Write fort, um Szenen und Voiceover zu formen."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Mach aus deinem nächsten Albtraum einen ersten Entwurf",
+      "description": "Starte mit einem falschen Detail. Wähle die Art des Grauens. Generiere eine Horrorgeschichte, die du überarbeiten kannst.",
+      "buttons": [
+        {
+          "title": "Horrorgeschichte generieren",
+          "url": "#genre-story-generator",
+          "type": "link"
+        },
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write",
+          "type": "link"
+        }
+      ]
+    }
+  }
+}

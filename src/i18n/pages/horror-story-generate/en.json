@@ -1,0 +1,499 @@
+{
+  "horror_story_generate": {
+    "metadata": {
+      "title": "Free Horror Story Generator – AI Scary Story Maker",
+      "description": "Generate creepy plots, cursed characters and two-sentence scares in seconds. Free AI horror story generator with ideas, titles and prompts, no sign-up."
+    },
+    "ui": {
+      "title": "Free AI Horror Story Generator",
+      "subtitle": "Turn one line of an idea into a full horror story, a plot outline or a two-sentence scare — pick a subgenre and generate.",
+      "trust_line": "Free • No sign-up required • Start instantly",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Horror Story Generator",
+      "story_idea": "Your horror idea",
+      "random_button": "Random idea",
+      "ai_model": "AI model",
+      "output_language": "Output language",
+      "advanced_options": "Advanced options",
+      "generate_button": "Generate horror story",
+      "generating": "Writing your horror story...",
+      "output_title": "Your horror story",
+      "empty_output": "Your generated story will appear here.",
+      "example_label": "Example outputs, not live generations",
+      "copy_button": "Copy",
+      "copied": "Copied",
+      "save_button": "Save",
+      "continue_button": "Continue in AI Write",
+      "word_count": "words"
+    },
+    "placeholders": {
+      "story_idea": "A radio repeats tomorrow's deaths, and only one listener notices."
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick draft for brainstorming",
+      "standard": "Standard",
+      "standard_description": "Balanced quality and speed",
+      "creative": "Creative",
+      "creative_description": "Richer atmosphere and detail"
+    },
+    "common_fields": {
+      "length": {
+        "label": "Story length",
+        "options": {
+          "two_sentence": "Two-sentence scare",
+          "short": "Short story",
+          "full": "Full story"
+        }
+      },
+      "tone": {
+        "label": "Tone",
+        "options": {
+          "dark": "Dark",
+          "suspenseful": "Suspenseful",
+          "hopeful": "Hopeful",
+          "neutral": "Balanced",
+          "whimsical": "Whimsical"
+        }
+      },
+      "perspective": {
+        "label": "Point of view",
+        "options": {
+          "first_person": "First person",
+          "third_person_limited": "Third person limited",
+          "omniscient": "Omniscient"
+        }
+      },
+      "audience": {
+        "label": "Audience",
+        "options": {
+          "young_adult": "Young adult",
+          "adult": "Adult",
+          "all_ages": "All ages"
+        }
+      }
+    },
+    "genre_fields": [
+      {
+        "key": "horrorMode",
+        "label": "Horror mode",
+        "description": "Choose the flavour of dread.",
+        "options": {
+          "horror": "Horror",
+          "spooky": "Spooky",
+          "psychological": "Psychological",
+          "supernatural": "Supernatural"
+        }
+      },
+      {
+        "key": "scareIntensity",
+        "label": "Scare intensity",
+        "description": "How hard should the story push?",
+        "options": {
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High"
+        }
+      },
+      {
+        "key": "endingType",
+        "label": "Ending",
+        "description": "Pick the final turn.",
+        "options": {
+          "twist": "Twist",
+          "tragic": "Tragic",
+          "ambiguous": "Ambiguous",
+          "hopeful": "Hopeful"
+        }
+      }
+    ],
+    "random_prompts": [
+      "A radio repeats tomorrow's deaths, and only one listener notices.",
+      "Every mirror in the house shows a room that does not exist.",
+      "A night-shift nurse receives a patient who has her childhood scar.",
+      "The town's scarecrow changes pose whenever the church bell rings.",
+      "A family inherits a house where the walls remember every argument.",
+      "A podcaster records a voice in an empty room saying her name."
+    ],
+    "validation": {
+      "enter_idea": "Please enter a horror idea first.",
+      "select_model": "Please select an AI model.",
+      "verification_failed": "Verification failed. Please try again."
+    },
+    "success": {
+      "story_generated": "Your horror story is ready.",
+      "story_copied": "Horror story copied.",
+      "random_prompt_selected": "Random horror idea added.",
+      "saved_locally": "Saved in My Stories. Sign in to sync it to your account."
+    },
+    "errors": {
+      "generation_failed": "The horror story could not be generated. Please try again.",
+      "save_failed": "The story could not be saved. Please try again."
+    },
+    "output": {
+      "title": "Your horror story",
+      "words": "words",
+      "copy": "Copy",
+      "empty": "No story yet. Add an idea and generate your first draft."
+    },
+    "completion_guide": {
+      "title": "Your horror draft is ready",
+      "subtitle": "Save it, generate another variation, or continue shaping it in AI Write.",
+      "create_another": "Create another",
+      "share_action": "Save story",
+      "continue_label": "Continue in AI Write",
+      "continue_hint": "Keep the same characters and escalate the dread."
+    },
+    "hero_examples": [
+      {
+        "label": "Example opening",
+        "title": "The Last Broadcast",
+        "text": "The radio host had been dead for three years, but her show still went out at midnight. Tonight she read the names of everyone who would die before morning. Mine was last."
+      },
+      {
+        "label": "Example plot",
+        "title": "The House That Listens",
+        "text": "A family moves into a farmhouse where the walls repeat fragments of old arguments. When the mother hears a conversation that has not happened yet, she realises the house is not remembering the past. It is rehearsing the future."
+      },
+      {
+        "label": "Two-sentence scare",
+        "title": "Under the Bed",
+        "text": "My daughter asked me to check under the bed for monsters. I looked, and she was already there, smiling."
+      }
+    ],
+    "horror_seo": {
+      "ideas_and_plots": {
+        "title": "Horror Story Ideas & Plots",
+        "intro": "A horror story needs one clear source of dread, a character who cannot simply walk away, and a final image that stays after the page ends. Start with a single wrong detail, then let the characters explain it in a way that makes it worse.",
+        "twist_title": "Horror story ideas with a twist",
+        "twist_intro": "A twist works when it re-reads the whole story rather than replacing it. These premises give the generator a turn that is already planted in the setup.",
+        "ideas": [
+          {
+            "title": "The replacement",
+            "description": "A grieving mother adopts a child who knows every family ritual. The twist is that the child is not replacing her lost son; she is replacing the mother."
+          },
+          {
+            "title": "The helpful ghost",
+            "description": "A ghost warns a family about every accident before it happens. When they thank it, it asks for one small favour: to be let back inside a body."
+          },
+          {
+            "title": "The perfect neighbourhood",
+            "description": "Every house on the street has the same nightmare. The neighbours meet to compare notes and discover they are all dreaming from the same empty room."
+          },
+          {
+            "title": "The inherited voice",
+            "description": "A singer inherits her grandmother's voice. Each song she performs brings back one person who heard it the first time, but never the same way."
+          }
+        ],
+        "structure_title": "Plot structures that actually scare",
+        "structure_items": [
+          {
+            "title": "The wrong detail",
+            "description": "Open with one ordinary scene and one detail that does not fit. Let the characters ignore it, then make the detail impossible to explain away."
+          },
+          {
+            "title": "The narrowing room",
+            "description": "Each attempt to escape removes one option. The final choice should cost something the character cannot replace."
+          },
+          {
+            "title": "The fair clue",
+            "description": "Plant the truth early in plain sight. The reveal should make the reader want to return to the first page, not feel cheated."
+          },
+          {
+            "title": "The final image",
+            "description": "End on a concrete image or action, not a paragraph of explanation. Let the reader complete the last step of the dread."
+          }
+        ]
+      },
+      "prompts_by_subgenre": {
+        "title": "Horror Story Prompts by Subgenre",
+        "intro": "Pick a subgenre when you already know the kind of fear you want. Each prompt below gives the generator a setting, a pressure point, and a turn to build toward.",
+        "items": [
+          {
+            "title": "Psychological",
+            "description": "Dread comes from the character's own perception.",
+            "prompt": "A therapist realises her patient is describing her own childhood memories as if they belonged to someone else."
+          },
+          {
+            "title": "Supernatural",
+            "description": "A rule-bound haunting with a clear cost.",
+            "prompt": "A family moves into a house where every door must be closed before midnight, or something in the hallway learns their names."
+          },
+          {
+            "title": "Body Horror",
+            "description": "The body becomes the setting of the story.",
+            "prompt": "A dancer's new tattoo moves on its own after every performance, and the design is always one step closer to her heart."
+          },
+          {
+            "title": "Folk Horror",
+            "description": "A community's kindness hides a bargain.",
+            "prompt": "A village welcomes a stranded traveller and asks only that she never thank anyone after sunset."
+          },
+          {
+            "title": "Creepypasta",
+            "description": "A found document with an unreliable witness.",
+            "prompt": "A forum thread collects reports of a children's TV show that only appears when the viewer is alone."
+          },
+          {
+            "title": "Analog Horror",
+            "description": "Dread arrives through degraded media.",
+            "prompt": "A local access channel keeps broadcasting a weather warning for a storm that has not happened yet."
+          }
+        ]
+      },
+      "title_generator": {
+        "title": "Horror Story Titles",
+        "description": "Describe your premise and get exactly five title options. The tool is free and does not require an account.",
+        "label": "Your horror premise",
+        "placeholder": "A child hears knocking inside the walls every midnight.",
+        "button": "Generate 5 titles",
+        "generating": "Finding five titles...",
+        "error": "The titles could not be generated. Please try again.",
+        "empty": "No titles yet. Describe your premise above.",
+        "result_title": "Five title options",
+        "validation": "Please describe your premise in at least 10 characters.",
+        "language_label": "Title language"
+      },
+      "two_sentence_stories": {
+        "title": "Two-Sentence Horror Stories",
+        "intro": "A two-sentence scare needs a complete setup and an unmistakable turn. These original examples show the shape; use the two-sentence length to write your own.",
+        "items": [
+          "My daughter asked me to check under the bed for monsters. I looked, and she was already there, smiling.",
+          "The hospital called to say my test results were normal. The caller used my mother's voice, and she died last year.",
+          "Every night at 3 a.m. my phone plays a voicemail from my own number. I finally listened, and it was me begging myself not to open the door.",
+          "The new house came with a rule: never answer the basement door after dark. Tonight it knocked in the rhythm of our family's secret code.",
+          "I taught my dog to bark at strangers. He has been barking at the empty chair beside me for an hour.",
+          "The mirror in the hallway shows our room exactly as it is, except for the figure standing behind me. I live alone.",
+          "My grandmother's recipe book has a page for 'the visitor'. The ingredients are already in my kitchen, and I did not buy them.",
+          "The baby monitor picks up a lullaby from the nursery. We do not have a nursery, and the house was empty before us.",
+          "I woke to my partner shaking my shoulder. Across the room, my partner was still asleep, facing the wall.",
+          "The town's missing-person posters update themselves every morning. Today one of them has my face and tomorrow's date.",
+          "My smart speaker keeps answering questions I only thought about asking. Last night it answered the one I never said out loud.",
+          "The funeral home called to confirm my appointment. I have not booked one, but they already have my measurements."
+        ]
+      },
+      "how_to": {
+        "title": "How to Generate a Horror Story with AI",
+        "intro": "The generator works best when you give it a specific pressure point instead of a generic request for 'something scary'.",
+        "steps": [
+          {
+            "title": "Start with one wrong detail",
+            "description": "Write a normal situation, then add a single detail that should not be there. That detail is the engine of the story."
+          },
+          {
+            "title": "Choose the kind of dread",
+            "description": "Pick psychological, supernatural, spooky, or horror mode, then set intensity and ending. The controls change the pacing, not just the adjectives."
+          },
+          {
+            "title": "Give the character a cost",
+            "description": "Name what the protagonist cannot afford to lose. A horror story becomes tense when every escape removes another option."
+          },
+          {
+            "title": "End on the image",
+            "description": "Use the two-sentence or short length when you want a sharp final beat. Keep the last line concrete and let the reader finish the fear."
+          }
+        ]
+      },
+      "audiences": {
+        "title": "Who Uses a Horror Story Generator",
+        "intro": "The page is built for people who need a usable draft, not a lecture about horror theory.",
+        "items": [
+          {
+            "title": "Novelists",
+            "description": "Test a premise, find the turn, and generate a scene that shows whether the idea can carry a longer work."
+          },
+          {
+            "title": "Storytellers",
+            "description": "Prepare a campfire story, a tabletop encounter, or a short reading with a clear setup and payoff."
+          },
+          {
+            "title": "TikTok and YouTube creators",
+            "description": "Draft a two-sentence scare, a narrated short, or a scene beat list before recording."
+          },
+          {
+            "title": "Hobbyists",
+            "description": "Write for fun, try a subgenre you have not used before, or turn a random image into a first draft."
+          }
+        ]
+      },
+      "video_adaptation": {
+        "title": "From Horror Story to Video",
+        "intro": "The generated draft can be used as a script skeleton for narration, storyboards, or a short-form video. It gives you scene beats and visual cues rather than a finished edit.",
+        "capability_notice": "Stories Generator prepares a video-ready script; it does not render a video file.",
+        "items": [
+          "Use the opening image as the first shot and keep the first ten seconds concrete.",
+          "Mark the turn, the reveal, and the final image as separate beats before editing.",
+          "Read the narration aloud and cut any sentence that explains what the image already shows."
+        ],
+        "link": {
+          "label": "Continue in AI Write",
+          "href": "/ai-write"
+        }
+      },
+      "definition": {
+        "title": "What is a Horror Story Generator?",
+        "intro": "A horror story generator is a writing tool that turns a premise into a structured scary story, plot outline, or two-sentence scare. It is a drafting partner, not a replacement for your judgement.",
+        "paragraphs": [
+          "The useful part is not the first sentence. It is the structure: a source of dread, a character under pressure, a fair clue, and a final image. The generator gives you a version of that structure you can edit.",
+          "Use the output as a draft. Check the logic of the reveal, replace generic details with your own observations, and make sure the story does not rely on a twist that the setup did not earn."
+        ]
+      },
+      "faq_heading": "Frequently Asked Questions",
+      "internal_links": [
+        {
+          "label": "AI story generator",
+          "href": "/"
+        },
+        {
+          "label": "Plot generator",
+          "href": "/plot-generator"
+        },
+        {
+          "label": "Story prompt generator",
+          "href": "/story-prompt-generator"
+        },
+        {
+          "label": "Book title generator",
+          "href": "/book-title-generator"
+        },
+        {
+          "label": "AI Write editor",
+          "href": "/ai-write"
+        }
+      ]
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Horror writing, without the blank page",
+      "title": "A first draft that already knows what it is afraid of",
+      "description": "Start with a premise and choose the kind of dread. The generator gives you a complete draft or a sharp two-sentence scare, then lets you keep editing in AI Write.",
+      "items": [
+        {
+          "title": "Genre-specific controls",
+          "description": "Pick horror mode, scare intensity, and ending before you generate."
+        },
+        {
+          "title": "Three useful lengths",
+          "description": "Write a two-sentence scare, a short story, or a full draft."
+        },
+        {
+          "title": "Editable output",
+          "description": "Save the result or continue it in the editor."
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "How it works",
+      "title": "Three steps to a usable horror draft",
+      "description": "The controls are designed to keep the story specific instead of generic.",
+      "items": [
+        {
+          "title": "Describe the wrong detail",
+          "description": "Write the normal situation and the one thing that does not belong."
+        },
+        {
+          "title": "Choose the pressure",
+          "description": "Set mode, intensity, ending, length, and point of view."
+        },
+        {
+          "title": "Generate and revise",
+          "description": "Use the draft as a starting point, then sharpen the reveal and final image."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Why use it",
+      "title": "Built for writers who need a draft, not a prompt library",
+      "description": "Every control maps to a craft decision you can explain and revise.",
+      "items": [
+        {
+          "title": "Specific premises",
+          "description": "The prompt asks for a source of dread, a cost, and a final image."
+        },
+        {
+          "title": "Fair twists",
+          "description": "The mystery and horror contracts ask for clues the reader could have noticed."
+        },
+        {
+          "title": "Useful length control",
+          "description": "Switch from a two-sentence scare to a full draft without changing tools."
+        },
+        {
+          "title": "No sign-up to start",
+          "description": "Open the page, write an idea, and generate a first version."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "feature_section",
+      "label": "Use cases",
+      "title": "One page, several horror workflows",
+      "description": "Use the same generator for a quick scare or a longer drafting session.",
+      "items": [
+        {
+          "title": "Short-form video",
+          "description": "Generate a two-sentence scare or a short narrated piece for a vertical video."
+        },
+        {
+          "title": "Fiction drafting",
+          "description": "Turn a premise into a scene with a clear turn, then continue it in AI Write."
+        },
+        {
+          "title": "Tabletop and campfire",
+          "description": "Create a self-contained horror beat for a session or a live reading."
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Frequently Asked Questions",
+      "description": "Common questions about the horror story generator, the output, and how to use it.",
+      "items": [
+        {
+          "title": "How can I create my own scary story?",
+          "description": "Start with one ordinary situation and one wrong detail. Add a character who cannot simply leave, choose a horror mode and ending, and generate a draft. Then revise the reveal so it follows from the clues you planted."
+        },
+        {
+          "title": "Can you make me a horror story?",
+          "description": "Yes. Enter a premise, choose a length and controls, and the generator writes a draft you can copy, save, or continue in AI Write. You still decide whether the story is good enough to publish."
+        },
+        {
+          "title": "Can ChatGPT write horror stories?",
+          "description": "General chat models can write horror, but this tool is built around horror-specific controls: mode, scare intensity, ending type, and length. Those controls make it easier to get a usable draft instead of a generic response."
+        },
+        {
+          "title": "What is the scariest story ever?",
+          "description": "There is no single answer. Fear depends on the reader and the situation. A useful test is whether the story plants a specific detail early and makes the final image feel inevitable rather than arbitrary."
+        },
+        {
+          "title": "What is the best free horror story generator?",
+          "description": "The best tool is the one that gives you control over the premise, length, and tone, and lets you edit the result. This page is free to start, with no sign-up required for the first generation."
+        },
+        {
+          "title": "Can I make a horror story video from the generated story?",
+          "description": "You can use the draft as a script skeleton for narration, storyboards, or a short video. Stories Generator prepares a video-ready script; it does not render a video file. Continue in AI Write to shape the scenes and narration."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Turn your next nightmare into a first draft",
+      "description": "Start with one wrong detail. Choose the kind of dread. Generate a horror story you can revise.",
+      "buttons": [
+        {
+          "title": "Generate a horror story",
+          "url": "#genre-story-generator",
+          "type": "link"
+        },
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write",
+          "type": "link"
+        }
+      ]
+    }
+  }
+}

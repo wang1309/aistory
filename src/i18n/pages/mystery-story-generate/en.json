@@ -1,0 +1,488 @@
+{
+  "mystery_story_generate": {
+    "metadata": {
+      "title": "Free Mystery Story Generator – AI Mystery Plot Maker",
+      "description": "Generate a mystery plot, clue trail and twist ending in seconds. Free AI mystery story generator — mystery story ideas, titles and prompts, no sign-up."
+    },
+    "ui": {
+      "title": "Free AI Mystery Story Generator",
+      "subtitle": "Give it a setting, a victim and a suspect list — get a full mystery plot, a short story or a two-line hook you can build on.",
+      "trust_line": "Free • No sign-up required • Start instantly",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Mystery Story Generator",
+      "story_idea": "Your mystery idea",
+      "random_button": "Random idea",
+      "ai_model": "AI model",
+      "output_language": "Output language",
+      "advanced_options": "Advanced options",
+      "generate_button": "Generate mystery story",
+      "generating": "Building the clue trail...",
+      "output_title": "Your mystery story",
+      "empty_output": "Your generated mystery will appear here.",
+      "example_label": "Example outputs, not live generations",
+      "copy_button": "Copy",
+      "copied": "Copied",
+      "save_button": "Save",
+      "continue_button": "Continue in AI Write",
+      "word_count": "words"
+    },
+    "placeholders": {
+      "story_idea": "A locked room, three alibis that cannot all be true, and a detective who knew the victim."
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick draft for brainstorming",
+      "standard": "Standard",
+      "standard_description": "Balanced quality and speed",
+      "creative": "Creative",
+      "creative_description": "Richer clues and atmosphere"
+    },
+    "common_fields": {
+      "length": {
+        "label": "Story length",
+        "options": {
+          "hook": "Two-line hook",
+          "short": "Short story",
+          "full_outline": "Full plot outline"
+        }
+      },
+      "tone": {
+        "label": "Tone",
+        "options": {
+          "dark": "Dark",
+          "suspenseful": "Suspenseful",
+          "hopeful": "Hopeful",
+          "neutral": "Balanced",
+          "whimsical": "Whimsical"
+        }
+      },
+      "perspective": {
+        "label": "Point of view",
+        "options": {
+          "first_person": "First person",
+          "third_person_limited": "Third person limited",
+          "omniscient": "Omniscient"
+        }
+      },
+      "audience": {
+        "label": "Audience",
+        "options": {
+          "young_adult": "Young adult",
+          "adult": "Adult",
+          "all_ages": "All ages"
+        }
+      }
+    },
+    "genre_fields": [
+      {
+        "key": "subgenre",
+        "label": "Mystery subgenre",
+        "description": "Choose the kind of case.",
+        "options": {
+          "murder": "Murder mystery",
+          "cozy": "Cozy mystery",
+          "locked_room": "Locked-room mystery",
+          "detective": "Detective story",
+          "noir": "Noir",
+          "psychological": "Psychological mystery"
+        }
+      },
+      {
+        "key": "mysteryIntensity",
+        "label": "Mystery intensity",
+        "description": "How dense should the clue trail be?",
+        "options": {
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High"
+        }
+      },
+      {
+        "key": "includeTwist",
+        "label": "Twist ending",
+        "description": "Ask for a final reveal that re-reads the clues.",
+        "options": {
+          "yes": "Include a twist",
+          "no": "No forced twist"
+        }
+      }
+    ],
+    "random_prompts": [
+      "A locked room, three alibis that cannot all be true, and a detective who knew the victim.",
+      "A vanished map reappears in the hands of the one suspect who never left town.",
+      "A cozy baker finds a customer's diary with tomorrow's obituary inside.",
+      "A noir detective is hired to follow himself.",
+      "A village choir sings a confession that no one remembers making.",
+      "A museum guard discovers a stolen painting replaced by a perfect copy of the empty wall."
+    ],
+    "validation": {
+      "enter_idea": "Please enter a mystery idea first.",
+      "select_model": "Please select an AI model.",
+      "verification_failed": "Verification failed. Please try again."
+    },
+    "success": {
+      "story_generated": "Your mystery story is ready.",
+      "story_copied": "Mystery story copied.",
+      "random_prompt_selected": "Random mystery idea added.",
+      "saved_locally": "Saved in My Stories. Sign in to sync it to your account."
+    },
+    "errors": {
+      "generation_failed": "The mystery story could not be generated. Please try again.",
+      "save_failed": "The story could not be saved. Please try again."
+    },
+    "output": {
+      "title": "Your mystery story",
+      "words": "words",
+      "copy": "Copy",
+      "empty": "No story yet. Add a case and generate your first clue trail."
+    },
+    "completion_guide": {
+      "title": "Your mystery draft is ready",
+      "subtitle": "Save it, generate another case, or continue shaping the reveal in AI Write.",
+      "create_another": "Create another",
+      "share_action": "Save story",
+      "continue_label": "Continue in AI Write",
+      "continue_hint": "Keep the clues fair and make the final solution earned."
+    },
+    "hero_examples": [
+      {
+        "label": "Locked-room clue list",
+        "title": "The Room With No Exit",
+        "text": "Clues: a wet umbrella in a dry room; a clock stopped at 11:40; a dinner set for two; a key on the inside; and a witness who heard nothing."
+      },
+      {
+        "label": "Noir opening",
+        "title": "The Last Client",
+        "text": "She walked into my office with a photograph of a man I had buried ten years ago. She wanted me to find him before he found her."
+      },
+      {
+        "label": "Three-suspect wheel",
+        "title": "The Vanishing Heir",
+        "text": "Suspects: the business partner who inherits everything; the housekeeper who knew the victim's secret; and the fiancé who was already married."
+      }
+    ],
+    "mystery_seo": {
+      "headings": [
+        "Mystery Story Ideas & Plot Outlines",
+        "Mystery Story Prompts by Subgenre",
+        "Murder Mystery Generator",
+        "Mystery Story Titles",
+        "How to Build a Mystery Plot Step by Step",
+        "Clues, Red Herrings and the Twist",
+        "Mystery vs Thriller: Which Generator Do You Need?",
+        "Who Uses a Mystery Story Generator",
+        "What is a Mystery Story Generator?",
+        "Frequently Asked Questions"
+      ],
+      "ideas_and_plots": {
+        "title": "Mystery Story Ideas & Plot Outlines",
+        "intro": "A mystery works when the reader can follow the detective's reasoning and still be surprised by the final solution. Start with a crime, a closed circle of suspects, and one clue that only makes sense at the end.",
+        "twist_title": "Mystery story ideas with a twist",
+        "twist_intro": "These premises give the generator a reveal that changes the meaning of the clues rather than cancelling them.",
+        "items": [
+          {
+            "title": "The witness who was never there",
+            "description": "Every suspect describes the same witness, but the witness died before the crime."
+          },
+          {
+            "title": "The alibi that proves guilt",
+            "description": "The suspect's perfect alibi is the clue that places them at the scene."
+          },
+          {
+            "title": "The victim's own plan",
+            "description": "The murder was staged by the victim to expose someone else, and the detective has to solve a crime that has not happened yet."
+          },
+          {
+            "title": "The confession in the wrong voice",
+            "description": "A recorded confession is real, but the person speaking it was not the killer."
+          }
+        ]
+      },
+      "prompts_by_subgenre": {
+        "title": "Mystery Story Prompts by Subgenre",
+        "intro": "Pick a subgenre to set the reader's expectations. The generator keeps the clue trail fair while changing the atmosphere and the kind of detective.",
+        "items": [
+          {
+            "title": "Murder",
+            "description": "A body, a closed circle, and a solution that must follow from the evidence.",
+            "prompt": "A wealthy recluse is found dead in a room locked from the inside, with three guests who each needed him gone."
+          },
+          {
+            "title": "Cozy",
+            "description": "A low-body-count puzzle with a community at stake.",
+            "prompt": "A village baker finds a customer's diary containing tomorrow's obituary and a recipe for the victim's last meal."
+          },
+          {
+            "title": "Locked-room",
+            "description": "The impossibility is the point; the solution must be physical and fair.",
+            "prompt": "A magician dies on stage inside a sealed cabinet, and the only key is found in the pocket of a spectator."
+          },
+          {
+            "title": "Detective",
+            "description": "A procedural investigation with interviews, evidence, and a wrong arrest.",
+            "prompt": "A detective's only witness is a man who insists he has been dead for three days."
+          },
+          {
+            "title": "Noir",
+            "description": "A compromised investigator, a dangerous client, and a city with its own rules.",
+            "prompt": "A private eye is hired to follow a woman who turns out to be following him."
+          },
+          {
+            "title": "Psychological",
+            "description": "The unreliable mind is part of the evidence.",
+            "prompt": "A therapist realises her patient is confessing to a crime that the therapist remembers committing."
+          }
+        ]
+      },
+      "murder_mystery": {
+        "title": "Murder Mystery Generator",
+        "intro": "Use the murder subgenre when you want a clear crime, a set of suspects, and a solution that can be proved. The generator produces a body, a closed circle, and a clue trail rather than a generic thriller chase.",
+        "href": null,
+        "paragraphs": [
+          "The murderer should be present in the story before the reveal, and the decisive clue should be available to the reader. The generator is instructed to plant evidence, distinguish red herrings from proof, and make the final solution follow from the clues.",
+          "Choose the short length for a complete case, or the full plot outline when you need acts, suspects, and a reveal to revise."
+        ]
+      },
+      "title_generator": {
+        "title": "Mystery Story Titles",
+        "description": "Describe your case and get exactly five title options. The tool is free and does not require an account.",
+        "label": "Your mystery premise",
+        "placeholder": "A detective finds three alibis that cannot all be true.",
+        "button": "Generate 5 titles",
+        "generating": "Finding five titles...",
+        "error": "The titles could not be generated. Please try again.",
+        "empty": "No titles yet. Describe your case above.",
+        "result_title": "Five title options",
+        "validation": "Please describe your premise in at least 10 characters.",
+        "language_label": "Title language"
+      },
+      "how_to": {
+        "title": "How to Build a Mystery Plot Step by Step",
+        "intro": "A mystery plot is a chain of cause and effect. Build it in four moves so the reader can follow the logic and still feel the surprise.",
+        "steps": [
+          {
+            "title": "Crime",
+            "description": "Establish what happened, who was harmed, and why the detective cannot walk away."
+          },
+          {
+            "title": "Clues",
+            "description": "Plant physical and testimonial evidence early. Each clue should eliminate one explanation and open another."
+          },
+          {
+            "title": "Suspects",
+            "description": "Give every suspect a motive, an opportunity, and a lie that makes sense to them."
+          },
+          {
+            "title": "Reveal",
+            "description": "Show how the solution follows from the clues. The final answer should feel inevitable in retrospect, not arbitrary."
+          }
+        ]
+      },
+      "clues": {
+        "title": "Clues, Red Herrings and the Twist",
+        "intro": "A fair mystery distinguishes three things: evidence that proves something, evidence that misleads without cheating, and a twist that changes the meaning of both.",
+        "items": [
+          {
+            "title": "Fair clue",
+            "description": "A detail the reader can see and interpret before the detective explains it."
+          },
+          {
+            "title": "Red herring",
+            "description": "A plausible lead that points to a real secret, just not the one the reader assumed."
+          },
+          {
+            "title": "Twist",
+            "description": "A reveal that re-reads the established evidence instead of introducing a new fact at the last moment."
+          }
+        ]
+      },
+      "comparison": {
+        "title": "Mystery vs Thriller: Which Generator Do You Need?",
+        "intro": "Mystery and thriller overlap, but they promise different reading experiences. Choose mystery when the question is 'who did it and how can we prove it?'",
+        "mystery": "Mystery focuses on the puzzle: clues, suspects, deduction, and a solution the reader can verify.",
+        "thriller": "Thriller focuses on danger and urgency: the protagonist is trying to prevent the next harm rather than explain the last one."
+      },
+      "audiences": {
+        "title": "Who Uses a Mystery Story Generator",
+        "intro": "The page is built for writers and game masters who need a case structure they can revise.",
+        "items": [
+          {
+            "title": "Novelists",
+            "description": "Test a case, a suspect list, and a reveal before committing to a longer draft."
+          },
+          {
+            "title": "D&D and tabletop GMs",
+            "description": "Prepare a self-contained investigation with clues, suspects, and a solution for the table."
+          },
+          {
+            "title": "Teachers",
+            "description": "Create a short mystery for close-reading, inference, and evidence discussions."
+          },
+          {
+            "title": "Short-form creators",
+            "description": "Draft a two-line hook or a compact case for a narrated video."
+          }
+        ]
+      },
+      "definition": {
+        "title": "What is a Mystery Story Generator?",
+        "intro": "A mystery story generator turns a premise into a case: a crime, a set of suspects, a clue trail, and a solution. It is a drafting tool for structure, not a substitute for your own judgement.",
+        "paragraphs": [
+          "The useful output is the chain of evidence. A good mystery gives the reader enough information to suspect the truth before the detective explains it, while keeping the final confirmation satisfying.",
+          "Use the generated draft to test whether the clues are fair. Replace generic details with your own setting, check that every suspect had a real opportunity, and make sure the reveal does not depend on information the reader never had."
+        ]
+      },
+      "faq_heading": "Frequently Asked Questions",
+      "story_ideas": {
+        "href": null
+      },
+      "internal_links": [
+        {
+          "label": "AI story generator",
+          "href": "/"
+        },
+        {
+          "label": "horror story generator",
+          "href": "/horror-story-generator"
+        }
+      ]
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Mystery writing, without the blank page",
+      "title": "A case structure you can actually revise",
+      "description": "Start with a setting, a victim, and a suspect list. The generator builds a clue trail and a solution you can test, then lets you continue in AI Write.",
+      "items": [
+        {
+          "title": "Fair clues",
+          "description": "The prompt asks for evidence the reader could have noticed."
+        },
+        {
+          "title": "Flexible lengths",
+          "description": "Generate a two-line hook, a short story, or a full plot outline."
+        },
+        {
+          "title": "Editable output",
+          "description": "Save the case or continue it in the editor."
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "How it works",
+      "title": "Three steps to a mystery draft",
+      "description": "The controls keep the case specific and the solution testable.",
+      "items": [
+        {
+          "title": "Describe the case",
+          "description": "Name the setting, the victim, and the contradiction at the centre."
+        },
+        {
+          "title": "Choose the subgenre",
+          "description": "Set the kind of mystery, intensity, twist, length, and point of view."
+        },
+        {
+          "title": "Generate and test",
+          "description": "Check whether the clues support the reveal, then revise."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Why use it",
+      "title": "Built for clue logic, not just atmosphere",
+      "description": "Every control maps to a decision a mystery writer has to make.",
+      "items": [
+        {
+          "title": "Suspect-ready premises",
+          "description": "The prompt asks for motive, opportunity, and a lie for each suspect."
+        },
+        {
+          "title": "Fair-play reveals",
+          "description": "The generator is instructed to distinguish red herrings from evidence."
+        },
+        {
+          "title": "Three useful lengths",
+          "description": "Switch from a hook to a full outline without changing tools."
+        },
+        {
+          "title": "No sign-up to start",
+          "description": "Open the page, describe a case, and generate a first version."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "feature_section",
+      "label": "Use cases",
+      "title": "One page, several mystery workflows",
+      "description": "Use the same generator for a quick hook or a full investigation.",
+      "items": [
+        {
+          "title": "Short-form video",
+          "description": "Generate a two-line hook or a compact case for a narrated video."
+        },
+        {
+          "title": "Fiction drafting",
+          "description": "Turn a premise into a scene with a clue trail, then continue it in AI Write."
+        },
+        {
+          "title": "Tabletop sessions",
+          "description": "Create a self-contained investigation for a game night or a classroom."
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Frequently Asked Questions",
+      "description": "Common questions about the mystery story generator, its subgenres, and how to use the output.",
+      "items": [
+        {
+          "title": "Is there a free mystery story generator?",
+          "description": "Yes. This page is free to start, with no sign-up required for the first generation. You can generate a hook, a short story, or a full plot outline."
+        },
+        {
+          "title": "Can AI write a good mystery story?",
+          "description": "It can produce a usable draft, especially when you give it a specific case and a fair clue trail. A good mystery still depends on your judgement: check the logic, replace generic details, and make sure the reveal follows from the evidence."
+        },
+        {
+          "title": "How do I come up with a mystery plot?",
+          "description": "Start with a crime, a closed circle of suspects, and one contradiction. Then decide what the detective can prove, what the reader can suspect, and what the final clue changes. The four-step section above turns that into a plot."
+        },
+        {
+          "title": "Can I generate a fantasy mystery story?",
+          "description": "Yes. Describe the fantasy setting and the rule that makes the case possible, then choose the mystery subgenre. The generator can keep the clue logic while adding magic, politics, or a invented world."
+        },
+        {
+          "title": "Can I generate a romance mystery story?",
+          "description": "Yes. Give the generator a relationship at the centre of the case and decide whether the romance helps or complicates the investigation. The mystery controls still apply."
+        },
+        {
+          "title": "What's the difference between a mystery and a thriller?",
+          "description": "A mystery asks who did it and how it can be proved. A thriller asks whether the protagonist can stop the next harm. Mystery is a puzzle; thriller is a pressure sequence."
+        },
+        {
+          "title": "Can I generate a crime story instead?",
+          "description": "This page is focused on mystery structure. You can choose the murder subgenre for a crime-driven case, but the output is still built around clues, suspects, and a solution rather than a thriller chase."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Build a case your reader can solve",
+      "description": "Start with a contradiction. Choose the kind of mystery. Generate a clue trail you can revise.",
+      "buttons": [
+        {
+          "title": "Generate a mystery story",
+          "url": "#genre-story-generator",
+          "type": "link"
+        },
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write",
+          "type": "link"
+        }
+      ]
+    }
+  }
+}

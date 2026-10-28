@@ -1,0 +1,488 @@
+{
+  "mystery_story_generate": {
+    "metadata": {
+      "title": "Kostenloser Mystery-Geschichten-Generator – KI-Plot-Autor",
+      "description": "Erzeuge in Sekunden einen Mystery-Plot, eine Spur aus Hinweisen und eine Wendung. Kostenloser KI-Mystery-Generator, ohne Anmeldung."
+    },
+    "ui": {
+      "title": "Kostenloser KI-Mystery-Geschichten-Generator",
+      "subtitle": "Gib einen Schauplatz, ein Opfer und eine Liste von Verdächtigen – du bekommst einen vollständigen Mystery-Plot, eine Kurzgeschichte oder einen Zwei-Zeilen-Hook, auf dem du aufbauen kannst.",
+      "trust_line": "Kostenlos • Keine Anmeldung nötig • Sofort starten",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Mystery-Geschichten-Generator",
+      "story_idea": "Deine Mystery-Idee",
+      "random_button": "Zufällige Idee",
+      "ai_model": "KI-Modell",
+      "output_language": "Ausgabesprache",
+      "advanced_options": "Erweiterte Optionen",
+      "generate_button": "Mystery-Geschichte generieren",
+      "generating": "Die Hinweisspur wird gelegt...",
+      "output_title": "Deine Mystery-Geschichte",
+      "empty_output": "Deine generierte Mystery-Geschichte erscheint hier.",
+      "example_label": "Beispielausgaben, keine Live-Generierungen",
+      "copy_button": "Kopieren",
+      "copied": "Kopiert",
+      "save_button": "Speichern",
+      "continue_button": "In AI Write fortsetzen",
+      "word_count": "Wörter"
+    },
+    "placeholders": {
+      "story_idea": "Ein verschlossener Raum, drei Alibis, die nicht alle stimmen können, und ein Detektiv, der das Opfer kannte."
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schneller Entwurf zum Ideensammeln",
+      "standard": "Standard",
+      "standard_description": "Ausgewogene Qualität und Geschwindigkeit",
+      "creative": "Kreativ",
+      "creative_description": "Reichere Hinweise und Atmosphäre"
+    },
+    "common_fields": {
+      "length": {
+        "label": "Geschichtenlänge",
+        "options": {
+          "hook": "Zwei-Zeilen-Hook",
+          "short": "Kurze Geschichte",
+          "full_outline": "Vollständige Plot-Skizze"
+        }
+      },
+      "tone": {
+        "label": "Ton",
+        "options": {
+          "dark": "Dunkel",
+          "suspenseful": "Spannungsgeladen",
+          "hopeful": "Hoffnungsvoll",
+          "neutral": "Ausgewogen",
+          "whimsical": "Verspielt"
+        }
+      },
+      "perspective": {
+        "label": "Erzählperspektive",
+        "options": {
+          "first_person": "Ich-Perspektive",
+          "third_person_limited": "Personale Perspektive",
+          "omniscient": "Allwissend"
+        }
+      },
+      "audience": {
+        "label": "Zielgruppe",
+        "options": {
+          "young_adult": "Junge Erwachsene",
+          "adult": "Erwachsene",
+          "all_ages": "Alle Altersgruppen"
+        }
+      }
+    },
+    "genre_fields": [
+      {
+        "key": "subgenre",
+        "label": "Mystery-Subgenre",
+        "description": "Wähle die Art des Falls.",
+        "options": {
+          "murder": "Mordfall",
+          "cozy": "Cozy Mystery",
+          "locked_room": "Locked-Room-Rätsel",
+          "detective": "Detektivgeschichte",
+          "noir": "Noir",
+          "psychological": "Psychologisches Rätsel"
+        }
+      },
+      {
+        "key": "mysteryIntensity",
+        "label": "Mystery-Intensität",
+        "description": "Wie dicht soll die Hinweisspur sein?",
+        "options": {
+          "low": "Niedrig",
+          "medium": "Mittel",
+          "high": "Hoch"
+        }
+      },
+      {
+        "key": "includeTwist",
+        "label": "Wendung am Ende",
+        "description": "Verlange eine Auflösung, die die Hinweise neu lesen lässt.",
+        "options": {
+          "yes": "Mit Wendung",
+          "no": "Keine erzwungene Wendung"
+        }
+      }
+    ],
+    "random_prompts": [
+      "Ein verschlossener Raum, drei Alibis, die nicht alle stimmen können, und ein Detektiv, der das Opfer kannte.",
+      "Eine verschwundene Karte taucht in den Händen des einzigen Verdächtigen wieder auf, der die Stadt nie verlassen hat.",
+      "Eine Cozy-Bäckerin findet das Tagebuch einer Kundin, in dem die Todesanzeige von morgen steckt.",
+      "Ein Noir-Detektiv wird angeheuert, um sich selbst zu beschatten.",
+      "Ein Dorfchor singt ein Geständnis, an das sich niemand erinnern kann.",
+      "Ein Museumsaufseher entdeckt, dass ein gestohlenes Gemälde durch eine perfekte Kopie der leeren Wand ersetzt wurde."
+    ],
+    "validation": {
+      "enter_idea": "Bitte gib zuerst eine Mystery-Idee ein.",
+      "select_model": "Bitte wähle ein KI-Modell.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte versuche es erneut."
+    },
+    "success": {
+      "story_generated": "Deine Mystery-Geschichte ist fertig.",
+      "story_copied": "Mystery-Geschichte kopiert.",
+      "random_prompt_selected": "Zufällige Mystery-Idee eingefügt.",
+      "saved_locally": "In Meine Stories gespeichert. Melde dich an, um sie mit deinem Konto zu synchronisieren."
+    },
+    "errors": {
+      "generation_failed": "Die Mystery-Geschichte konnte nicht generiert werden. Bitte versuche es erneut.",
+      "save_failed": "Die Geschichte konnte nicht gespeichert werden. Bitte versuche es erneut."
+    },
+    "output": {
+      "title": "Deine Mystery-Geschichte",
+      "words": "Wörter",
+      "copy": "Kopieren",
+      "empty": "Noch keine Geschichte. Beschreibe einen Fall und generiere deine erste Hinweisspur."
+    },
+    "completion_guide": {
+      "title": "Dein Mystery-Entwurf ist fertig",
+      "subtitle": "Speichere ihn, generiere einen weiteren Fall oder forme die Auflösung in AI Write weiter.",
+      "create_another": "Weitere erstellen",
+      "share_action": "Geschichte speichern",
+      "continue_label": "In AI Write fortsetzen",
+      "continue_hint": "Halte die Hinweise fair und lass die Lösung verdient wirken."
+    },
+    "hero_examples": [
+      {
+        "label": "Hinweisliste zum verschlossenen Raum",
+        "title": "Der Raum ohne Ausgang",
+        "text": "Hinweise: ein nasser Regenschirm in einem trockenen Raum; eine Uhr, die um 11:40 stehen geblieben ist; ein Essen für zwei; ein Schlüssel auf der Innenseite; und ein Zeuge, der nichts gehört hat."
+      },
+      {
+        "label": "Noir-Einstieg",
+        "title": "Der letzte Klient",
+        "text": "Sie kam mit einem Foto eines Mannes in mein Büro, den ich vor zehn Jahren begraben hatte. Sie wollte, dass ich ihn finde, bevor er sie findet."
+      },
+      {
+        "label": "Drei Verdächtige",
+        "title": "Der verschwundene Erbe",
+        "text": "Verdächtige: der Geschäftspartner, der alles erbt; die Haushälterin, die das Geheimnis des Opfers kannte; und der Verlobte, der bereits verheiratet war."
+      }
+    ],
+    "mystery_seo": {
+      "headings": [
+        "Mystery-Ideen & Plot-Skizzen",
+        "Mystery-Prompts nach Subgenre",
+        "Mordfall-Generator",
+        "Titel für Mystery-Geschichten",
+        "So baust du einen Mystery-Plot Schritt für Schritt",
+        "Hinweise, falsche Spuren und die Wendung",
+        "Mystery vs. Thriller: Welchen Generator brauchst du?",
+        "Wer einen Mystery-Geschichten-Generator nutzt",
+        "Was ist ein Mystery-Geschichten-Generator?",
+        "Häufig gestellte Fragen"
+      ],
+      "ideas_and_plots": {
+        "title": "Mystery-Ideen & Plot-Skizzen",
+        "intro": "Eine Mystery-Geschichte funktioniert, wenn die Lesenden der Logik des Detektivs folgen können und trotzdem von der Lösung überrascht werden. Beginne mit einem Verbrechen, einem geschlossenen Kreis von Verdächtigen und einem Hinweis, der erst am Ende Sinn ergibt.",
+        "twist_title": "Mystery-Ideen mit einer Wendung",
+        "twist_intro": "Diese Prämissen geben dem Generator eine Auflösung, die die Bedeutung der Hinweise verändert, statt sie zu entwerten.",
+        "items": [
+          {
+            "title": "Der Zeuge, der nie da war",
+            "description": "Jeder Verdächtige beschreibt denselben Zeugen, doch der Zeuge starb vor dem Verbrechen."
+          },
+          {
+            "title": "Das Alibi, das die Schuld beweist",
+            "description": "Das perfekte Alibi des Verdächtigen ist genau der Hinweis, der ihn an den Tatort bringt."
+          },
+          {
+            "title": "Der eigene Plan des Opfers",
+            "description": "Das Opfer hat den Mord selbst inszeniert, um jemand anderen zu entlarven, und der Detektiv muss ein Verbrechen lösen, das noch nicht geschehen ist."
+          },
+          {
+            "title": "Das Geständnis mit der falschen Stimme",
+            "description": "Ein aufgezeichnetes Geständnis ist echt, doch die Person, die spricht, war nicht der Täter."
+          }
+        ]
+      },
+      "prompts_by_subgenre": {
+        "title": "Mystery-Prompts nach Subgenre",
+        "intro": "Wähle ein Subgenre, um die Erwartungen der Lesenden zu setzen. Der Generator hält die Hinweisspur fair, während er Atmosphäre und Art des Detektivs verändert.",
+        "items": [
+          {
+            "title": "Mord",
+            "description": "Eine Leiche, ein geschlossener Kreis und eine Lösung, die aus den Beweisen folgen muss.",
+            "prompt": "Ein wohlhabender Einsiedler wird tot in einem von innen verschlossenen Raum gefunden, mit drei Gästen, die ihn alle loswerden wollten."
+          },
+          {
+            "title": "Cozy",
+            "description": "Ein Rätsel mit niedriger Leichenzahl und einer Gemeinschaft auf dem Spiel.",
+            "prompt": "Eine Dorfbäckerin findet im Tagebuch einer Kundin die Todesanzeige von morgen und ein Rezept für das letzte Essen des Opfers."
+          },
+          {
+            "title": "Locked-Room",
+            "description": "Die Unmöglichkeit ist der Punkt; die Lösung muss physikalisch und fair sein.",
+            "prompt": "Ein Magier stirbt auf der Bühne in einem versiegelten Kabinett, und der einzige Schlüssel wird in der Tasche eines Zuschauers gefunden."
+          },
+          {
+            "title": "Detektiv",
+            "description": "Eine Ermittlung mit Verhören, Beweisen und einer falschen Festnahme.",
+            "prompt": "Der einzige Zeuge eines Detektivs ist ein Mann, der darauf besteht, seit drei Tagen tot zu sein."
+          },
+          {
+            "title": "Noir",
+            "description": "Ein kompromittierter Ermittler, eine gefährliche Klientin und eine Stadt mit eigenen Regeln.",
+            "prompt": "Ein Privatdetektiv wird angeheuert, um einer Frau zu folgen, die sich als diejenige entpuppt, die ihm folgt."
+          },
+          {
+            "title": "Psychologisch",
+            "description": "Der unzuverlässige Verstand ist Teil der Beweise.",
+            "prompt": "Eine Therapeutin erkennt, dass ihr Patient ein Verbrechen gesteht, an das sie sich selbst als Täterin erinnert."
+          }
+        ]
+      },
+      "murder_mystery": {
+        "title": "Mordfall-Generator",
+        "intro": "Nutze das Subgenre Mord, wenn du ein klares Verbrechen, eine Reihe von Verdächtigen und eine beweisbare Lösung willst. Der Generator liefert eine Leiche, einen geschlossenen Kreis und eine Hinweisspur statt einer generischen Thriller-Jagd.",
+        "href": null,
+        "paragraphs": [
+          "Der Täter sollte vor der Auflösung in der Geschichte auftreten, und der entscheidende Hinweis sollte für die Lesenden verfügbar sein. Der Generator wird angewiesen, Beweise zu platzieren, falsche Spuren von Beweisen zu unterscheiden und die Lösung aus den Hinweisen folgen zu lassen.",
+          "Wähle die kurze Länge für einen vollständigen Fall oder die vollständige Plot-Skizze, wenn du Akte, Verdächtige und eine Auflösung zum Überarbeiten brauchst."
+        ]
+      },
+      "title_generator": {
+        "title": "Titel für Mystery-Geschichten",
+        "description": "Beschreibe deinen Fall und erhalte genau fünf Titelvorschläge. Das Tool ist kostenlos und erfordert kein Konto.",
+        "label": "Deine Mystery-Prämisse",
+        "placeholder": "Ein Detektiv findet drei Alibis, die nicht alle stimmen können.",
+        "button": "5 Titel generieren",
+        "generating": "Fünf Titel werden gesucht...",
+        "error": "Die Titel konnten nicht generiert werden. Bitte versuche es erneut.",
+        "empty": "Noch keine Titel. Beschreibe oben deinen Fall.",
+        "result_title": "Fünf Titelvorschläge",
+        "validation": "Bitte beschreibe deine Prämisse mit mindestens 10 Zeichen.",
+        "language_label": "Sprache der Titel"
+      },
+      "how_to": {
+        "title": "So baust du einen Mystery-Plot Schritt für Schritt",
+        "intro": "Ein Mystery-Plot ist eine Kette von Ursache und Wirkung. Baue ihn in vier Schritten, damit die Lesenden der Logik folgen und trotzdem überrascht werden.",
+        "steps": [
+          {
+            "title": "Verbrechen",
+            "description": "Lege fest, was passiert ist, wer geschädigt wurde und warum der Detektiv nicht einfach gehen kann."
+          },
+          {
+            "title": "Hinweise",
+            "description": "Platziere früh materielle und aussagebezogene Beweise. Jeder Hinweis sollte eine Erklärung ausschließen und eine neue öffnen."
+          },
+          {
+            "title": "Verdächtige",
+            "description": "Gib jedem Verdächtigen ein Motiv, eine Gelegenheit und eine Lüge, die für ihn Sinn ergibt."
+          },
+          {
+            "title": "Auflösung",
+            "description": "Zeige, wie die Lösung aus den Hinweisen folgt. Die endgültige Antwort sollte im Rückblick unvermeidlich wirken, nicht beliebig."
+          }
+        ]
+      },
+      "clues": {
+        "title": "Hinweise, falsche Spuren und die Wendung",
+        "intro": "Eine faire Mystery-Geschichte unterscheidet drei Dinge: Beweise, die etwas belegen, Beweise, die irreführen ohne zu betrügen, und eine Wendung, die die Bedeutung beider verändert.",
+        "items": [
+          {
+            "title": "Fairer Hinweis",
+            "description": "Ein Detail, das die Lesenden sehen und deuten können, bevor der Detektiv es erklärt."
+          },
+          {
+            "title": "Falsche Spur",
+            "description": "Eine plausible Fährte, die auf ein echtes Geheimnis zeigt – nur nicht auf das, das die Lesenden vermutet haben."
+          },
+          {
+            "title": "Wendung",
+            "description": "Eine Auflösung, die die etablierten Beweise neu liest, statt im letzten Moment eine neue Tatsache einzuführen."
+          }
+        ]
+      },
+      "comparison": {
+        "title": "Mystery vs. Thriller: Welchen Generator brauchst du?",
+        "intro": "Mystery und Thriller überschneiden sich, versprechen aber unterschiedliche Leseerfahrungen. Wähle Mystery, wenn die Frage lautet: „Wer war es, und wie können wir es beweisen?“",
+        "mystery": "Mystery konzentriert sich auf das Rätsel: Hinweise, Verdächtige, Deduktion und eine Lösung, die die Lesenden überprüfen können.",
+        "thriller": "Thriller konzentriert sich auf Gefahr und Dringlichkeit: Die Hauptfigur versucht, den nächsten Schaden zu verhindern, statt den letzten zu erklären."
+      },
+      "audiences": {
+        "title": "Wer einen Mystery-Geschichten-Generator nutzt",
+        "intro": "Die Seite ist für Schreibende und Spielleitungen gedacht, die eine überarbeitbare Fallstruktur brauchen.",
+        "items": [
+          {
+            "title": "Romanschreibende",
+            "description": "Teste einen Fall, eine Liste von Verdächtigen und eine Auflösung, bevor du dich auf einen längeren Entwurf festlegst."
+          },
+          {
+            "title": "D&D- und Tabletop-Spielleitungen",
+            "description": "Bereite eine in sich geschlossene Ermittlung mit Hinweisen, Verdächtigen und einer Lösung für den Tisch vor."
+          },
+          {
+            "title": "Lehrkräfte",
+            "description": "Erstelle eine kurze Mystery-Geschichte für genaues Lesen, Schlussfolgerungen und Diskussionen über Beweise."
+          },
+          {
+            "title": "Creator für Kurzformate",
+            "description": "Entwirf einen Zwei-Zeilen-Hook oder einen kompakten Fall für ein erzähltes Video."
+          }
+        ]
+      },
+      "definition": {
+        "title": "Was ist ein Mystery-Geschichten-Generator?",
+        "intro": "Ein Mystery-Geschichten-Generator macht aus einer Prämisse einen Fall: ein Verbrechen, eine Reihe von Verdächtigen, eine Hinweisspur und eine Lösung. Er ist ein Werkzeug für die Struktur, kein Ersatz für dein eigenes Urteil.",
+        "paragraphs": [
+          "Das nützliche Ergebnis ist die Beweiskette. Eine gute Mystery-Geschichte gibt den Lesenden genug Informationen, um die Wahrheit zu ahnen, bevor der Detektiv sie erklärt – und lässt die Bestätigung trotzdem befriedigend sein.",
+          "Nutze den generierten Entwurf, um zu prüfen, ob die Hinweise fair sind. Ersetze generische Details durch deinen eigenen Schauplatz, prüfe, ob jeder Verdächtige eine echte Gelegenheit hatte, und stelle sicher, dass die Auflösung nicht von Informationen abhängt, die die Lesenden nie hatten."
+        ]
+      },
+      "faq_heading": "Häufig gestellte Fragen",
+      "story_ideas": {
+        "href": null
+      },
+      "internal_links": [
+        {
+          "label": "KI-Geschichtengenerator",
+          "href": "/"
+        },
+        {
+          "label": "Horrorgeschichten-Generator",
+          "href": "/horror-story-generator"
+        }
+      ]
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Mystery schreiben, ohne leere Seite",
+      "title": "Eine Fallstruktur, die du wirklich überarbeiten kannst",
+      "description": "Starte mit einem Schauplatz, einem Opfer und einer Liste von Verdächtigen. Der Generator baut eine Hinweisspur und eine Lösung, die du prüfen kannst – und du kannst in AI Write weitermachen.",
+      "items": [
+        {
+          "title": "Faire Hinweise",
+          "description": "Der Prompt verlangt Beweise, die die Lesenden hätten bemerken können."
+        },
+        {
+          "title": "Flexible Längen",
+          "description": "Generiere einen Zwei-Zeilen-Hook, eine Kurzgeschichte oder eine vollständige Plot-Skizze."
+        },
+        {
+          "title": "Bearbeitbare Ausgabe",
+          "description": "Speichere den Fall oder arbeite im Editor weiter."
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "So funktioniert es",
+      "title": "In drei Schritten zum Mystery-Entwurf",
+      "description": "Die Regler halten den Fall konkret und die Lösung überprüfbar.",
+      "items": [
+        {
+          "title": "Beschreibe den Fall",
+          "description": "Benenne den Schauplatz, das Opfer und den Widerspruch im Zentrum."
+        },
+        {
+          "title": "Wähle das Subgenre",
+          "description": "Lege Art der Mystery, Intensität, Wendung, Länge und Perspektive fest."
+        },
+        {
+          "title": "Generieren und prüfen",
+          "description": "Prüfe, ob die Hinweise die Auflösung tragen, und überarbeite dann."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Warum nutzen",
+      "title": "Gebaut für Hinweislogik, nicht nur Atmosphäre",
+      "description": "Jeder Regler entspricht einer Entscheidung, die Mystery-Autorinnen und -Autoren treffen müssen.",
+      "items": [
+        {
+          "title": "Prämissen mit Verdächtigen",
+          "description": "Der Prompt verlangt Motiv, Gelegenheit und eine Lüge für jeden Verdächtigen."
+        },
+        {
+          "title": "Fair-Play-Auflösungen",
+          "description": "Der Generator wird angewiesen, falsche Spuren von Beweisen zu unterscheiden."
+        },
+        {
+          "title": "Drei nützliche Längen",
+          "description": "Wechsle vom Hook zur vollständigen Skizze, ohne das Tool zu wechseln."
+        },
+        {
+          "title": "Keine Anmeldung nötig",
+          "description": "Öffne die Seite, beschreibe einen Fall und generiere eine erste Version."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "feature_section",
+      "label": "Anwendungsfälle",
+      "title": "Eine Seite, mehrere Mystery-Workflows",
+      "description": "Nutze denselben Generator für einen schnellen Hook oder eine vollständige Ermittlung.",
+      "items": [
+        {
+          "title": "Kurzvideo",
+          "description": "Generiere einen Zwei-Zeilen-Hook oder einen kompakten Fall für ein erzähltes Video."
+        },
+        {
+          "title": "Romanentwurf",
+          "description": "Mach aus einer Prämisse eine Szene mit Hinweisspur und arbeite in AI Write weiter."
+        },
+        {
+          "title": "Tabletop-Runden",
+          "description": "Erstelle eine in sich geschlossene Ermittlung für einen Spieleabend oder den Unterricht."
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Häufig gestellte Fragen",
+      "description": "Häufige Fragen zum Mystery-Geschichten-Generator, seinen Subgenres und der Nutzung der Ausgabe.",
+      "items": [
+        {
+          "title": "Gibt es einen kostenlosen Mystery-Geschichten-Generator?",
+          "description": "Ja. Diese Seite ist kostenlos startbar, ohne Anmeldung für die erste Generierung. Du kannst einen Hook, eine Kurzgeschichte oder eine vollständige Plot-Skizze generieren."
+        },
+        {
+          "title": "Kann KI eine gute Mystery-Geschichte schreiben?",
+          "description": "Sie kann einen brauchbaren Entwurf liefern, besonders wenn du ihr einen konkreten Fall und eine faire Hinweisspur gibst. Eine gute Mystery hängt trotzdem von deinem Urteil ab: Prüfe die Logik, ersetze generische Details und stelle sicher, dass die Auflösung aus den Beweisen folgt."
+        },
+        {
+          "title": "Wie komme ich auf einen Mystery-Plot?",
+          "description": "Beginne mit einem Verbrechen, einem geschlossenen Kreis von Verdächtigen und einem Widerspruch. Entscheide dann, was der Detektiv beweisen kann, was die Lesenden vermuten können und was der letzte Hinweis verändert. Der Vier-Schritte-Abschnitt oben macht daraus einen Plot."
+        },
+        {
+          "title": "Kann ich eine Fantasy-Mystery-Geschichte generieren?",
+          "description": "Ja. Beschreibe die Fantasy-Welt und die Regel, die den Fall möglich macht, und wähle dann das Mystery-Subgenre. Der Generator kann die Hinweislogik beibehalten und trotzdem Magie, Politik oder eine erfundene Welt hinzufügen."
+        },
+        {
+          "title": "Kann ich eine Romance-Mystery-Geschichte generieren?",
+          "description": "Ja. Gib dem Generator eine Beziehung im Zentrum des Falls und entscheide, ob die Romanze die Ermittlung unterstützt oder verkompliziert. Die Mystery-Regler gelten weiterhin."
+        },
+        {
+          "title": "Was ist der Unterschied zwischen Mystery und Thriller?",
+          "description": "Eine Mystery fragt, wer es war und wie es bewiesen werden kann. Ein Thriller fragt, ob die Hauptfigur den nächsten Schaden verhindern kann. Mystery ist ein Rätsel; Thriller ist eine Abfolge von Druck."
+        },
+        {
+          "title": "Kann ich stattdessen eine Kriminalgeschichte generieren?",
+          "description": "Diese Seite ist auf die Mystery-Struktur ausgerichtet. Du kannst das Subgenre Mord für einen verbrechensgetriebenen Fall wählen, aber die Ausgabe bleibt um Hinweise, Verdächtige und eine Lösung gebaut statt um eine Thriller-Jagd."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Baue einen Fall, den deine Leserschaft lösen kann",
+      "description": "Starte mit einem Widerspruch. Wähle die Art der Mystery. Generiere eine Hinweisspur, die du überarbeiten kannst.",
+      "buttons": [
+        {
+          "title": "Mystery-Geschichte generieren",
+          "url": "#genre-story-generator",
+          "type": "link"
+        },
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write",
+          "type": "link"
+        }
+      ]
+    }
+  }
+}

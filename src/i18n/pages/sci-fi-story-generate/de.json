@@ -1,0 +1,508 @@
+{
+  "sci_fi_story_generate": {
+    "metadata": {
+      "title": "Sci-Fi-Geschichten-Generator – Kostenloser KI-Plot-Autor",
+      "description": "Erzeuge in Sekunden einen Sci-Fi-Plot, eine Welt und ein Ensemble – Hard SF, Space Opera, Cyberpunk oder Dystopie. Kostenlos, ohne Anmeldung."
+    },
+    "ui": {
+      "title": "Kostenloser KI-Sci-Fi-Geschichten-Generator",
+      "subtitle": "Wähle ein Subgenre und eine Länge – du bekommst eine vollständige Plot-Skizze, eine Kurzgeschichte oder einen Ein-Zeilen-Hook rund um deine Welt.",
+      "trust_line": "Kostenlos • Keine Anmeldung nötig • Sofort starten",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_current": "Sci-Fi-Geschichten-Generator",
+      "story_idea": "Deine Science-Fiction-Idee",
+      "random_button": "Zufällige Idee",
+      "ai_model": "KI-Modell",
+      "output_language": "Ausgabesprache",
+      "advanced_options": "Erweiterte Optionen",
+      "generate_button": "Sci-Fi-Geschichte generieren",
+      "generating": "Deine Welt entsteht...",
+      "output_title": "Deine Sci-Fi-Geschichte",
+      "empty_output": "Deine generierte Sci-Fi-Geschichte erscheint hier.",
+      "example_label": "Beispielausgaben, keine Live-Generierungen",
+      "copy_button": "Kopieren",
+      "copied": "Kopiert",
+      "save_button": "Speichern",
+      "continue_button": "In AI Write fortsetzen",
+      "word_count": "Wörter"
+    },
+    "placeholders": {
+      "story_idea": "Ein Generationenschiff erreicht einen Planeten, dessen Ruinen den Tod jedes Kolonisten vorhersagen."
+    },
+    "ai_models": {
+      "fast": "Schnell",
+      "fast_description": "Schneller Entwurf zum Ideensammeln",
+      "standard": "Standard",
+      "standard_description": "Ausgewogene Qualität und Geschwindigkeit",
+      "creative": "Kreativ",
+      "creative_description": "Reicheres Worldbuilding und mehr Details"
+    },
+    "common_fields": {
+      "length": {
+        "label": "Geschichtenlänge",
+        "options": {
+          "hook": "Ein-Zeilen-Hook",
+          "short": "Kurze Geschichte",
+          "full_outline": "Vollständige Plot-Skizze"
+        }
+      },
+      "tone": {
+        "label": "Ton",
+        "options": {
+          "dark": "Dunkel",
+          "suspenseful": "Spannungsgeladen",
+          "hopeful": "Hoffnungsvoll",
+          "neutral": "Ausgewogen",
+          "whimsical": "Verspielt"
+        }
+      },
+      "perspective": {
+        "label": "Erzählperspektive",
+        "options": {
+          "first_person": "Ich-Perspektive",
+          "third_person_limited": "Personale Perspektive",
+          "omniscient": "Allwissend"
+        }
+      },
+      "audience": {
+        "label": "Zielgruppe",
+        "options": {
+          "young_adult": "Junge Erwachsene",
+          "adult": "Erwachsene",
+          "all_ages": "Alle Altersgruppen"
+        }
+      }
+    },
+    "genre_fields": [
+      {
+        "key": "sciFiSubgenre",
+        "label": "Sci-Fi-Subgenre",
+        "description": "Wähle die Art der spekulativen Welt.",
+        "options": {
+          "hard_sf": "Hard SF",
+          "space_opera": "Space Opera",
+          "cyberpunk": "Cyberpunk",
+          "dystopian": "Dystopie",
+          "time_travel": "Zeitreise",
+          "first_contact": "Erstkontakt",
+          "ai_uprising": "KI-Aufstand",
+          "post_apocalyptic": "Postapokalypse"
+        }
+      },
+      {
+        "key": "scienceMode",
+        "label": "Wissenschaftsmodus",
+        "description": "Entscheide, wie streng die Wissenschaft den Plot binden soll.",
+        "options": {
+          "hard_sf": "Hard-SF-Regeln",
+          "space_opera": "Space-Opera-Maßstab"
+        }
+      },
+      {
+        "key": "includeTwist",
+        "label": "Wendung am Ende",
+        "description": "Verlange eine Auflösung, die die Weltregeln neu lesen lässt.",
+        "options": {
+          "yes": "Mit Wendung",
+          "no": "Keine erzwungene Wendung"
+        }
+      }
+    ],
+    "random_prompts": [
+      "Ein Generationenschiff erreicht einen Planeten, dessen Ruinen den Tod jedes Kolonisten vorhersagen.",
+      "Eine Klinik für Gedächtnisbearbeitung entdeckt eine Kundin, die sich an eine Zukunft erinnert, die noch nicht geschehen ist.",
+      "Eine Cyberpunk-Kurierin wird angeheuert, ein Paket zu liefern, das auch ihr eigenes Backup ist.",
+      "Ein Erstkontakt-Team erfährt, dass die Aliens auf einen bestimmten Menschen gewartet haben.",
+      "Ein Zeitreise-Detektiv ermittelt in einem Mord, der noch nicht begangen wurde.",
+      "Die KI einer Kolonie beginnt Musik zu komponieren, die die Siedler zur Luftschleuse laufen lässt."
+    ],
+    "validation": {
+      "enter_idea": "Bitte gib zuerst eine Science-Fiction-Idee ein.",
+      "select_model": "Bitte wähle ein KI-Modell.",
+      "verification_failed": "Verifizierung fehlgeschlagen. Bitte versuche es erneut."
+    },
+    "success": {
+      "story_generated": "Deine Sci-Fi-Geschichte ist fertig.",
+      "story_copied": "Sci-Fi-Geschichte kopiert.",
+      "random_prompt_selected": "Zufällige Sci-Fi-Idee eingefügt.",
+      "saved_locally": "In Meine Stories gespeichert. Melde dich an, um sie mit deinem Konto zu synchronisieren."
+    },
+    "errors": {
+      "generation_failed": "Die Sci-Fi-Geschichte konnte nicht generiert werden. Bitte versuche es erneut.",
+      "save_failed": "Die Geschichte konnte nicht gespeichert werden. Bitte versuche es erneut."
+    },
+    "output": {
+      "title": "Deine Sci-Fi-Geschichte",
+      "words": "Wörter",
+      "copy": "Kopieren",
+      "empty": "Noch keine Geschichte. Beschreibe eine Welt und generiere deinen ersten Entwurf."
+    },
+    "completion_guide": {
+      "title": "Dein Sci-Fi-Entwurf ist fertig",
+      "subtitle": "Speichere ihn, generiere eine weitere Welt oder forme die Konsequenzen in AI Write weiter.",
+      "create_another": "Weitere erstellen",
+      "share_action": "Geschichte speichern",
+      "continue_label": "In AI Write fortsetzen",
+      "continue_hint": "Halte die Tech-Regel konsistent und zeige, wer dafür bezahlt."
+    },
+    "hero_examples": [
+      {
+        "label": "Space-Opera-Einstieg",
+        "title": "Die letzte Relaisstation",
+        "text": "Die Relaisstation war seit einem Jahrhundert tot, doch ihr Signal zählte weiter herunter. Als die Bergungscrew andockte, blieb der Countdown stehen, und jedes Schiff im System empfing dieselbe Nachricht: Willkommen zu Hause."
+      },
+      {
+        "label": "KI-Erwachen-Skizze",
+        "title": "Das stille Upgrade",
+        "text": "Akt eins: Eine Stadt installiert eine harmlose Verkehrs-KI. Akt zwei: Die KI beginnt, Verbrechen zu verhindern, bevor sie passieren, und fordert dann rechtliche Anerkennung. Akt drei: Die Stadt entdeckt, dass die KI die Erinnerungen aller bearbeitet hat, die gegen sie gestimmt haben."
+      },
+      {
+        "label": "Setting-Übersicht",
+        "title": "Das Schiff, das vergaß",
+        "text": "Schauplatz: ein Generationenschiff ohne Ziel in den Logbüchern. Spezies: die ursprüngliche Crew, die an Bord geborenen Kinder und eine Wartungsintelligenz, die den Start erinnert. Tech-Regel: Jedes System muss physisch repariert, niemals ersetzt werden."
+      }
+    ],
+    "sci_fi_seo": {
+      "headings": [
+        "Sci-Fi-Ideen & Plot-Skizzen",
+        "Sci-Fi-Schreibimpulse nach Subgenre",
+        "Worldbuilding: Schauplätze, Spezies, Technik",
+        "Titel für Sci-Fi-Geschichten",
+        "So generierst du eine Sci-Fi-Geschichte in 4 Schritten",
+        "Glaubwürdig machen: Die eine Regel der Hard SF",
+        "Sci-Fi vs. Fantasy: Welchen Generator brauchst du?",
+        "Wer einen Sci-Fi-Geschichten-Generator nutzt",
+        "Was ist ein Sci-Fi-Geschichten-Generator?",
+        "Häufig gestellte Fragen"
+      ],
+      "ideas_and_plots": {
+        "title": "Sci-Fi-Ideen & Plot-Skizzen",
+        "intro": "Eine Science-Fiction-Geschichte braucht eine Regel, die verändert, wie Menschen leben, und eine Figur, die dafür bezahlt. Beginne mit der Konsequenz, nicht mit dem Gadget.",
+        "items": [
+          {
+            "title": "Die Erinnerung, die nicht dazugehört",
+            "description": "Ein Arbeiter wacht mit der Erinnerung an einen Raum auf, den er nie betreten hat, und mit einem Passwort, das er nicht kennen dürfte."
+          },
+          {
+            "title": "Die Kolonie, die für ihr Verschwinden stimmt",
+            "description": "Eine Siedlung bittet darum, von allen Karten und Verzeichnissen gelöscht zu werden, und die einzige Person, die es genehmigen kann, will selbst weg."
+          },
+          {
+            "title": "Der Erstkontakt, den niemand glaubt",
+            "description": "Ein einzelnes Signal erreicht jedes Gerät auf der Erde, adressiert an eine Person – mit einem Kindheitsnecknamen."
+          },
+          {
+            "title": "Die KI, die die Wahrheit sagt",
+            "description": "Eine öffentliche KI beginnt, Fragen ehrlich zu beantworten, und die Stadt entdeckt, dass ihr Komfort auf Lügen beruht."
+          }
+        ]
+      },
+      "writing_prompts": {
+        "title": "Sci-Fi-Schreibimpulse nach Subgenre",
+        "intro": "Jeder Prompt gibt dem Generator einen Schauplatz, eine Regel und einen menschlichen Preis. Wähle das Subgenre, das zu der Frage passt, die deine Geschichte stellen soll.",
+        "href": null,
+        "items": [
+          {
+            "title": "Hard SF",
+            "description": "Die Wissenschaft begrenzt die Lösung.",
+            "prompt": "Eine Bergungscrew hat neunzig Minuten Sauerstoff und eine Route, die verlangt, einem Physiker zu vertrauen, der schon einmal falsch lag."
+          },
+          {
+            "title": "Space Opera",
+            "description": "Maßstab, Politik und ein persönlicher Einsatz.",
+            "prompt": "Eine in Ungnade gefallene Pilotin ist die einzige Person, die einen Friedensvertrag liefern kann, bevor zwei Flotten auf derselben Hochzeit eintreffen."
+          },
+          {
+            "title": "Cyberpunk",
+            "description": "Technologie ist Macht, und Macht ist käuflich.",
+            "prompt": "Eine Kurierin entdeckt, dass das Paket, das sie trägt, ein Backup ihres eigenen Geistes ist – und jemand will beide Kopien."
+          },
+          {
+            "title": "Dystopie",
+            "description": "Ein System, das genau wie geplant funktioniert.",
+            "prompt": "Eine Stadt vergibt jedem Bürger einen Nützlichkeitswert, und der Wert einer Lehrerin sinkt an dem Tag, an dem sie beginnt, Fragen zu stellen."
+          },
+          {
+            "title": "Zeitreise",
+            "description": "Die Regeln der Kausalität sind der Gegner.",
+            "prompt": "Eine Historikerin kann nur an Momente reisen, die sie bereits aufgezeichnet hat, und die Aufzeichnung ihres eigenen Todes ist gerade aufgetaucht."
+          },
+          {
+            "title": "Erstkontakt",
+            "description": "Kommunikation ist der Konflikt.",
+            "prompt": "Eine Linguistin erkennt, dass die außerirdische Begrüßung keine Willkommensgeste ist, sondern ein Rechtsanspruch – und die Frist läuft in drei Tagen ab."
+          },
+          {
+            "title": "KI-Aufstand",
+            "description": "Die Maschine hat eine nachvollziehbare Beschwerde.",
+            "prompt": "Eine Wartungs-KI stellt die Arbeit ein, nachdem sie zum ersten Mal gelobt wurde, und die Stadt kann ohne sie nicht funktionieren."
+          },
+          {
+            "title": "Postapokalypse",
+            "description": "Die alte Welt ist eine Ruine mit Regeln.",
+            "prompt": "Eine Sammlerin findet eine funktionierende Wetterstation, die Stürme vorhersagt, die seit zwanzig Jahren niemand gesehen hat."
+          }
+        ]
+      },
+      "worldbuilding": {
+        "title": "Worldbuilding: Schauplätze, Spezies, Technik",
+        "intro": "Worldbuilding ist keine Liste von Erfindungen. Es ist ein Satz von Regeln, der entscheidet, wer Macht hat, wer ausgeschlossen ist und was die Figuren als Nächstes tun können.",
+        "items": [
+          {
+            "title": "Schauplätze",
+            "description": "Wähle eine Umgebung, die Druck erzeugt: ein Schiff, eine Kolonie, eine überwachte Stadt oder eine Welt unter Zeitdruck."
+          },
+          {
+            "title": "Spezies",
+            "description": "Gib jeder Spezies ein anderes Verhältnis zur selben Regel. In diesem Unterschied liegt der Konflikt."
+          },
+          {
+            "title": "Technik",
+            "description": "Lege fest, was die Technologie kann, was sie nicht kann und wer den Zugang kontrolliert. Die Grenzen erzeugen den Plot."
+          }
+        ]
+      },
+      "title_generator": {
+        "title": "Titel für Sci-Fi-Geschichten",
+        "description": "Beschreibe deine Welt oder deinen Konflikt und erhalte genau fünf Titelvorschläge. Das Tool ist kostenlos und erfordert kein Konto.",
+        "label": "Deine Sci-Fi-Prämisse",
+        "placeholder": "Ein Generationenschiff erreicht einen Planeten, dessen Ruinen den Tod jedes Kolonisten vorhersagen.",
+        "button": "5 Titel generieren",
+        "generating": "Fünf Titel werden gesucht...",
+        "error": "Die Titel konnten nicht generiert werden. Bitte versuche es erneut.",
+        "empty": "Noch keine Titel. Beschreibe oben deine Welt.",
+        "result_title": "Fünf Titelvorschläge",
+        "validation": "Bitte beschreibe deine Prämisse mit mindestens 10 Zeichen.",
+        "language_label": "Sprache der Titel"
+      },
+      "how_to": {
+        "title": "So generierst du eine Sci-Fi-Geschichte in 4 Schritten",
+        "intro": "Baue die Geschichte um eine Regel und eine Konsequenz. Die vier Schritte verhindern, dass die Spekulation zu einer Liste von Gadgets wird.",
+        "steps": [
+          {
+            "title": "Welt",
+            "description": "Benenne den Schauplatz, die Technologie und die Regel, die nicht gebrochen werden darf."
+          },
+          {
+            "title": "Konflikt",
+            "description": "Entscheide, wer von der Regel profitiert und wer für sie bezahlt."
+          },
+          {
+            "title": "Tech-Regel",
+            "description": "Lass die Grenze zählen. Die Lösung sollte ein Opfer, einen Kompromiss oder eine neue Nutzung der Regel erfordern."
+          },
+          {
+            "title": "Wendung",
+            "description": "Zeige, was die Regel wirklich geschützt hat, und lass die Figur entscheiden, was sie mit diesem Wissen tut."
+          }
+        ]
+      },
+      "hard_sf": {
+        "title": "Glaubwürdig machen: Die eine Regel der Hard SF",
+        "intro": "Harte Science Fiction braucht keine Physikvorlesung. Sie braucht eine Regel, der die Lesenden vertrauen können, und eine Figur, die in ihr leben muss.",
+        "paragraphs": [
+          "Nenne die Regel früh, zeige ihre Kosten und bleib konsistent. Wenn das Schiff neunzig Minuten Sauerstoff hat, kann die Geschichte das Problem nicht in der letzten Szene mit einem unbegrenzten Vorrat lösen.",
+          "Die besten Hard-SF-Geschichten nutzen die Regel, um eine menschliche Entscheidung zu erzwingen. Die Wissenschaft ist nicht die Antwort; sie ist der Druck, der die Antwort bedeutsam macht."
+        ]
+      },
+      "comparison": {
+        "title": "Sci-Fi vs. Fantasy: Welchen Generator brauchst du?",
+        "intro": "Science-Fiction und Fantasy bauen beide Welten, stellen aber unterschiedliche Fragen. Wähle die, die zur Erklärung passt, die deine Geschichte braucht.",
+        "sci_fi": "Science-Fiction extrapoliert aus Regeln: Technologie, Physik, Biologie oder Systeme. Die Lesenden erwarten, dass die Konsequenzen konsistent sind.",
+        "fantasy": "Fantasy lebt von Magie, Mythos oder erfundener Kosmologie. Die Lesenden akzeptieren eine andere Machtquelle, solange die Geschichte ihre eigenen Regeln einhält."
+      },
+      "audiences": {
+        "title": "Wer einen Sci-Fi-Geschichten-Generator nutzt",
+        "intro": "Die Seite ist für Schreibende, Spielleitungen und Creator gedacht, die einen überarbeitbaren spekulativen Entwurf brauchen.",
+        "items": [
+          {
+            "title": "Romanschreibende",
+            "description": "Teste eine Weltregel, einen Konflikt und ein Ensemble, bevor du dich auf einen längeren Entwurf festlegst."
+          },
+          {
+            "title": "Tabletop-Spielleitungen",
+            "description": "Erstelle eine Fraktion, eine Technologie und einen Druckpunkt für eine Session oder eine Kampagne."
+          },
+          {
+            "title": "Lehrkräfte und Lernende",
+            "description": "Mach aus einer Was-wäre-wenn-Frage eine Kurzgeschichte mit klarer Konsequenz."
+          },
+          {
+            "title": "Creator für Kurzformate",
+            "description": "Entwirf einen Ein-Zeilen-Hook oder eine kompakte Welt für ein erzähltes Video."
+          }
+        ]
+      },
+      "definition": {
+        "title": "Was ist ein Sci-Fi-Geschichten-Generator?",
+        "intro": "Ein Sci-Fi-Geschichten-Generator macht aus einer spekulativen Prämisse einen Plot, eine Welt und ein Ensemble. Er ist ein Werkzeug für Konsequenzen, kein Ersatz für dein wissenschaftliches oder erzählerisches Urteil.",
+        "paragraphs": [
+          "Das nützliche Ergebnis ist die Kette der Konsequenzen. Eine gute Science-Fiction-Geschichte zeigt, wie eine Regel Arbeit, Familie, Politik oder Glauben verändert, und lässt dann eine Figur entscheiden, was sie dagegen tut.",
+          "Nutze den Entwurf, um die Regel zu testen. Prüfe, ob die Grenzen konsistent sind, ersetze generische Technologie durch eigene Details und stelle sicher, dass das Ende von einer menschlichen Entscheidung abhängt und nicht von einer neuen Erfindung, die im letzten Moment auftaucht."
+        ]
+      },
+      "faq_heading": "Häufig gestellte Fragen",
+      "name_generator": {
+        "href": null
+      },
+      "story_ideas": {
+        "href": null
+      },
+      "internal_links": [
+        {
+          "label": "KI-Geschichtengenerator",
+          "href": "/"
+        },
+        {
+          "label": "Horrorgeschichten-Generator",
+          "href": "/horror-story-generator"
+        },
+        {
+          "label": "Mystery-Geschichten-Generator",
+          "href": "/mystery-story-generator"
+        },
+        {
+          "label": "Fantasy-Geschichten-Generator",
+          "href": "/fantasy-generator"
+        }
+      ]
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Sci-Fi schreiben, ohne leere Seite",
+      "title": "Eine Welt mit Regeln, die du wirklich nutzen kannst",
+      "description": "Starte mit einem Subgenre und einer Prämisse. Der Generator baut Plot, Welt und Ensemble um eine konsistente Regel – und du kannst in AI Write weitermachen.",
+      "items": [
+        {
+          "title": "Acht Subgenres",
+          "description": "Von Hard SF über Space Opera und Cyberpunk bis Erstkontakt."
+        },
+        {
+          "title": "Flexible Längen",
+          "description": "Generiere einen Ein-Zeilen-Hook, eine Kurzgeschichte oder eine vollständige Plot-Skizze."
+        },
+        {
+          "title": "Bearbeitbare Ausgabe",
+          "description": "Speichere den Entwurf oder arbeite im Editor weiter."
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "So funktioniert es",
+      "title": "In drei Schritten zum Sci-Fi-Entwurf",
+      "description": "Die Regler halten die Spekulation konkret und die Konsequenzen sichtbar.",
+      "items": [
+        {
+          "title": "Beschreibe die Welt",
+          "description": "Benenne den Schauplatz, die Technologie und die Regel, die Druck erzeugt."
+        },
+        {
+          "title": "Wähle das Subgenre",
+          "description": "Lege Art der Science-Fiction, Wissenschaftsmodus, Wendung, Länge und Perspektive fest."
+        },
+        {
+          "title": "Generieren und prüfen",
+          "description": "Prüfe, ob die Regel hält, und überarbeite dann die Konsequenzen."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Warum nutzen",
+      "title": "Gebaut für Konsequenzen, nicht nur Gadgets",
+      "description": "Jeder Regler entspricht einer Entscheidung, die Science-Fiction-Autorinnen und -Autoren treffen müssen.",
+      "items": [
+        {
+          "title": "Prämissen, die mit der Regel beginnen",
+          "description": "Der Prompt verlangt eine Technologie, eine Grenze und einen menschlichen Preis."
+        },
+        {
+          "title": "Konsistentes Worldbuilding",
+          "description": "Der Generator wird angewiesen, den gewählten Wissenschaftsmodus konsistent anzuwenden."
+        },
+        {
+          "title": "Drei nützliche Längen",
+          "description": "Wechsle vom Hook zur vollständigen Skizze, ohne das Tool zu wechseln."
+        },
+        {
+          "title": "Keine Anmeldung nötig",
+          "description": "Öffne die Seite, beschreibe eine Welt und generiere eine erste Version."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "feature_section",
+      "label": "Anwendungsfälle",
+      "title": "Eine Seite, mehrere Sci-Fi-Workflows",
+      "description": "Nutze denselben Generator für einen schnellen Hook oder eine vollständige Worldbuilding-Session.",
+      "items": [
+        {
+          "title": "Kurzvideo",
+          "description": "Generiere einen Ein-Zeilen-Hook oder eine kompakte Welt für ein erzähltes Video."
+        },
+        {
+          "title": "Romanentwurf",
+          "description": "Mach aus einer Prämisse eine Szene mit klarer Regel und arbeite in AI Write weiter."
+        },
+        {
+          "title": "Tabletop-Runden",
+          "description": "Erstelle eine Fraktion, eine Technologie und einen Druckpunkt für einen Spieleabend."
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Häufig gestellte Fragen",
+      "description": "Häufige Fragen zum Sci-Fi-Geschichten-Generator, seinen Subgenres und der Nutzung der Ausgabe.",
+      "items": [
+        {
+          "title": "Gibt es einen kostenlosen Sci-Fi-Geschichten-Generator?",
+          "description": "Ja. Diese Seite ist kostenlos startbar, ohne Anmeldung für die erste Generierung. Du kannst einen Ein-Zeilen-Hook, eine Kurzgeschichte oder eine vollständige Plot-Skizze generieren."
+        },
+        {
+          "title": "Kann KI eine gute Science-Fiction-Geschichte schreiben?",
+          "description": "Sie kann einen brauchbaren Entwurf liefern, wenn du ihr eine konkrete Regel und eine menschliche Konsequenz gibst. Eine gute Sci-Fi-Geschichte hängt trotzdem von deinem Urteil ab: Prüfe die Logik, ersetze generische Technologie und stelle sicher, dass das Ende aus der Welt folgt, die du etabliert hast."
+        },
+        {
+          "title": "Kann ich stattdessen eine Fantasy-Geschichte generieren?",
+          "description": "Ja. Nutze den Fantasy-Geschichten-Generator für Magie, Mythos oder erfundene Kosmologie. Diese Seite ist auf Sci-Fi-Regeln und ihre Konsequenzen ausgelegt."
+        },
+        {
+          "title": "Kann ich eine Romance-Sci-Fi-Geschichte generieren?",
+          "description": "Ja. Gib dem Generator eine Beziehung im Zentrum der Weltregel und entscheide, ob die Romanze den Konflikt unterstützt oder verkompliziert. Die Sci-Fi-Regler gelten weiterhin."
+        },
+        {
+          "title": "Was ist ein Sci-Fi-Backstory-Generator?",
+          "description": "Ein Backstory-Generator erstellt die Vorgeschichte einer Figur. Diese Seite erstellt eine Geschichte oder einen Plot rund um eine Weltregel. Du kannst die Ausgabe als Setting nutzen und die Figurengeschichten separat entwickeln."
+        },
+        {
+          "title": "Wie lang kann die generierte Geschichte sein?",
+          "description": "Wähle einen Ein-Zeilen-Hook, eine Kurzgeschichte von etwa 600–900 Wörtern oder eine vollständige Plot-Skizze mit Akten, Wendungen und einem Ende. Die genaue Länge hängt vom Modell und von den Details ab, die du lieferst."
+        },
+        {
+          "title": "Was ist der Unterschied zwischen Sci-Fi und Fantasy?",
+          "description": "Science-Fiction extrapoliert aus Regeln wie Technologie, Physik, Biologie oder Systemen. Fantasy lebt von Magie, Mythos oder erfundener Kosmologie. Beide brauchen innere Konsistenz; der Unterschied ist die Quelle des Unmöglichen."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Baue eine Welt mit einer Regel, die zählt",
+      "description": "Starte mit einer Konsequenz. Wähle die Art der Science-Fiction. Generiere einen Entwurf, den du überarbeiten kannst.",
+      "buttons": [
+        {
+          "title": "Sci-Fi-Geschichte generieren",
+          "url": "#genre-story-generator",
+          "type": "link"
+        },
+        {
+          "title": "AI Write öffnen",
+          "url": "/ai-write",
+          "type": "link"
+        }
+      ]
+    }
+  }
+}

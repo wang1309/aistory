@@ -1,0 +1,528 @@
+{
+  "adventure_story_generate": {
+    "metadata": {
+      "title": "Adventure Story Generator – Free AI Adventure Plot Maker",
+      "description": "Generate an adventure story, quest or plot in seconds — pirates, lost worlds, space, or a branching outline. Free AI adventure story generator, no sign-up."
+    },
+    "ui": {
+      "title": "Free AI Adventure Story Generator",
+      "subtitle": "Pick a setting and a length — get a full adventure plot, a short story, or a branching outline you can read right here.",
+      "trust_line": "Free • No sign-up • Start instantly",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Adventure Story Generator",
+      "story_idea": "Your adventure idea",
+      "random_button": "Random idea",
+      "ai_model": "AI model",
+      "output_language": "Output language",
+      "advanced_options": "Advanced options",
+      "generate_button": "Generate adventure story",
+      "generating": "Charting the route...",
+      "output_title": "Your adventure story",
+      "empty_output": "Your generated adventure will appear here.",
+      "example_label": "Example outputs, not live generations",
+      "copy_button": "Copy",
+      "copied": "Copied",
+      "save_button": "Save",
+      "continue_button": "Continue in AI Write",
+      "word_count": "words",
+      "branching_hint": "This is a static branching outline: read the scene and the numbered choices, then use them as a plan. It is not a clickable game."
+    },
+    "placeholders": {
+      "story_idea": "A pirate captain races through a drowned city for a map to a lost island."
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick draft for brainstorming",
+      "standard": "Standard",
+      "standard_description": "Balanced quality and speed",
+      "creative": "Creative",
+      "creative_description": "Richer settings and set pieces"
+    },
+    "common_fields": {
+      "length": {
+        "label": "Story length",
+        "options": {
+          "hook": "One-line hook",
+          "short": "Short story",
+          "full_outline": "Full plot outline",
+          "branching_path": "Branching outline"
+        }
+      },
+      "tone": {
+        "label": "Tone",
+        "options": {
+          "dark": "Dark",
+          "suspenseful": "Suspenseful",
+          "hopeful": "Hopeful",
+          "neutral": "Balanced",
+          "whimsical": "Whimsical"
+        }
+      },
+      "perspective": {
+        "label": "Point of view",
+        "options": {
+          "first_person": "First person",
+          "third_person_limited": "Third person limited",
+          "omniscient": "Omniscient"
+        }
+      },
+      "audience": {
+        "label": "Audience",
+        "options": {
+          "young_adult": "Young adult",
+          "adult": "Adult",
+          "all_ages": "All ages"
+        }
+      }
+    },
+    "genre_fields": [
+      {
+        "key": "adventureSetting",
+        "label": "Adventure setting",
+        "description": "Choose the world your protagonist has to cross.",
+        "options": {
+          "pirate": "Pirate seas",
+          "lost_world": "Lost world",
+          "space": "Space frontier",
+          "fantasy_kingdom": "Fantasy kingdom",
+          "survival": "Survival wilderness",
+          "mystery_quest": "Mystery quest"
+        }
+      }
+    ],
+    "random_prompts": [
+      "A pirate captain races through a drowned city for a map to a lost island.",
+      "A cartographer finds a mountain range that only appears on maps drawn at night.",
+      "A salvage crew boards a generation ship whose crew vanished mid-meal.",
+      "A royal courier must cross a kingdom where every bridge asks a riddle.",
+      "A stranded climber finds a warm cabin with a fire and no footprints.",
+      "A guide is hired to lead a rival expedition to a temple that moves between valleys."
+    ],
+    "validation": {
+      "enter_idea": "Please enter an adventure idea first.",
+      "select_model": "Please select an AI model.",
+      "verification_failed": "Verification failed. Please try again."
+    },
+    "success": {
+      "story_generated": "Your adventure story is ready.",
+      "story_copied": "Adventure story copied.",
+      "random_prompt_selected": "Random adventure idea added.",
+      "saved_locally": "Saved in My Stories. Sign in to sync it to your account."
+    },
+    "errors": {
+      "generation_failed": "The adventure story could not be generated. Please try again.",
+      "save_failed": "The story could not be saved. Please try again."
+    },
+    "output": {
+      "title": "Your adventure story",
+      "words": "words",
+      "copy": "Copy",
+      "empty": "No story yet. Add a setting and generate your first route."
+    },
+    "completion_guide": {
+      "title": "Your adventure draft is ready",
+      "subtitle": "Save it, generate another route, or continue shaping the journey in AI Write.",
+      "create_another": "Create another",
+      "share_action": "Save story",
+      "continue_label": "Continue in AI Write",
+      "continue_hint": "Keep the goal concrete and make every obstacle cost something."
+    },
+    "hero_examples": [
+      {
+        "label": "Pirate-treasure opening",
+        "title": "The Drowned Map",
+        "text": "The map was tattooed on the dead captain's back, and the ink only appeared when the tide came in. By sunrise, three crews knew the secret, and one of them had already cut the body loose."
+      },
+      {
+        "label": "Ruins three-act outline",
+        "title": "The Moving Temple",
+        "text": "Act one: a guide leads a rival expedition to a ruin that appears only at dusk. Act two: the temple shifts between valleys, and the crew discovers the map is a living thing. Act three: the guide must choose between the treasure and the village the temple is heading toward."
+      },
+      {
+        "label": "Branching scene",
+        "title": "The Sea Gate",
+        "text": "Scene: The sea gate opens beneath the drowned city, and the current pulls the boat toward a corridor of black water.\nChoices:\n1. Sail inside and trust the current.\n2. Dive below and look for the gate's mechanism.\n3. Turn back before the tide closes the entrance."
+      }
+    ],
+    "adventure_seo": {
+      "headings": [
+        "Adventure Story Ideas & Plots",
+        "Adventure Writing Prompts by Setting",
+        "Choose Your Own Adventure",
+        "Branching Story Outline",
+        "Adventure Story Titles",
+        "From Adventure to Tabletop",
+        "How to Generate an Adventure Story in 4 Steps",
+        "What Makes an Adventure Story Work",
+        "Adventure vs Fantasy: Which Generator Do You Need?",
+        "Who Uses an Adventure Story Generator",
+        "What is an Adventure Story Generator?",
+        "Frequently Asked Questions"
+      ],
+      "ideas_and_plots": {
+        "title": "Adventure Story Ideas & Plots",
+        "intro": "An adventure needs a destination, a cost, and an opposing force. Start with a goal the protagonist cannot reach safely, then make every route more expensive.",
+        "twist_title": "Adventure story ideas with a twist",
+        "twist_intro": "These premises give the generator a turn that changes what the journey was really about.",
+        "items": [
+          {
+            "title": "The map that is alive",
+            "description": "The treasure map changes every night, and the route it draws is heading toward the protagonist's home."
+          },
+          {
+            "title": "The guide who is the treasure",
+            "description": "The expedition is hired to protect a guide who turns out to be the only thing the rivals actually want."
+          },
+          {
+            "title": "The rescue that is a trap",
+            "description": "A missing crew sends a distress signal, but the rescue party arrives to find the message was recorded years ago."
+          },
+          {
+            "title": "The shortcut with a price",
+            "description": "A supposedly safe passage saves a week but requires the party to leave something behind at every gate."
+          }
+        ]
+      },
+      "writing_prompts": {
+        "title": "Adventure Writing Prompts by Setting",
+        "intro": "Pick a setting and give the party a concrete goal. Each prompt below includes a destination, a danger, and a reason to keep moving.",
+        "items": [
+          {
+            "title": "Pirate seas",
+            "description": "A race across a drowned city.",
+            "prompt": "A pirate captain races a rival crew through a drowned city for a map to an island that appears once a year."
+          },
+          {
+            "title": "Lost world",
+            "description": "A ruin that should not exist.",
+            "prompt": "An explorer finds a temple whose carvings show her expedition arriving, but the final panel is missing."
+          },
+          {
+            "title": "Space",
+            "description": "A frontier with a deadline.",
+            "prompt": "A salvage crew has six hours to strip a derelict ship before its orbit decays into a inhabited moon."
+          },
+          {
+            "title": "Fantasy kingdom",
+            "description": "A journey through hostile politics.",
+            "prompt": "A courier must cross a kingdom where every bridge demands a riddle and the answers are state secrets."
+          },
+          {
+            "title": "Survival",
+            "description": "The environment is the antagonist.",
+            "prompt": "A climber finds a warm cabin above the snowline, with a fire burning and no footprints outside."
+          },
+          {
+            "title": "Mystery quest",
+            "description": "The destination keeps changing.",
+            "prompt": "A guide leads a rival expedition to a temple that moves between valleys, and the map is written in the guide's own hand."
+          }
+        ]
+      },
+      "choose_your_own": {
+        "title": "Choose Your Own Adventure",
+        "intro": "Choose the branching outline length when you want the shape of a choose-your-own-adventure story without building an interactive app. The generator returns one scene and two or three numbered choices, each with a distinct immediate consequence.",
+        "href": null,
+        "paragraphs": [
+          "Use the outline as a planning document. You can expand one branch into a full story, use the choices as a tabletop encounter, or turn each option into a separate scene.",
+          "The output is static text, not a clickable game. It does not track state, combat, inventory, or multiple players."
+        ],
+        "example": "Scene: The sea gate opens beneath the drowned city.\nChoices:\n1. Sail inside and trust the current.\n2. Dive below and search for the gate's mechanism.\n3. Turn back before the tide closes the entrance."
+      },
+      "branching_outline": {
+        "title": "Branching Story Outline",
+        "intro": "A branching outline is useful when you need options rather than a single path. It keeps the scene concrete and makes each choice change the next problem.",
+        "steps": [
+          {
+            "title": "Set the scene",
+            "description": "Show where the protagonist is, what they want, and what is immediately in the way."
+          },
+          {
+            "title": "Offer two or three choices",
+            "description": "Each choice should lead to a different consequence, not a different wording of the same action."
+          },
+          {
+            "title": "Pick a branch to expand",
+            "description": "Turn your favourite choice into the next scene, or continue the outline in AI Write."
+          }
+        ]
+      },
+      "title_generator": {
+        "title": "Adventure Story Titles",
+        "description": "Describe your journey and get exactly five title options. The tool is free and does not require an account.",
+        "label": "Your adventure premise",
+        "placeholder": "Pirates cross a drowned city to reach a buried observatory.",
+        "button": "Generate 5 titles",
+        "generating": "Finding five titles...",
+        "error": "The titles could not be generated. Please try again.",
+        "empty": "No titles yet. Describe your journey above.",
+        "result_title": "Five title options",
+        "validation": "Please describe your premise in at least 10 characters.",
+        "language_label": "Title language"
+      },
+      "tabletop": {
+        "title": "From Adventure to Tabletop",
+        "intro": "The output can be adapted for a game master who needs a hook, a location, and an encounter. It is a starting point, not a campaign rules engine.",
+        "items": [
+          {
+            "title": "Hooks",
+            "description": "Use the opening scene as the reason the party is already in motion."
+          },
+          {
+            "title": "Locations",
+            "description": "Turn the setting and obstacles into a small map with two or three points of interest."
+          },
+          {
+            "title": "Encounters",
+            "description": "Use the opposing force and the cost of each route to build a non-combat challenge."
+          }
+        ]
+      },
+      "how_to": {
+        "title": "How to Generate an Adventure Story in 4 Steps",
+        "intro": "Adventure is a chain of escalating costs. The four steps keep the journey from becoming a list of places.",
+        "steps": [
+          {
+            "title": "Setting",
+            "description": "Choose the world and the rule that makes travel dangerous."
+          },
+          {
+            "title": "Inciting incident",
+            "description": "Give the protagonist a concrete goal and a reason they cannot wait."
+          },
+          {
+            "title": "Escalating obstacles",
+            "description": "Make each route cost more than the last. The opposing force should adapt."
+          },
+          {
+            "title": "Payoff",
+            "description": "Let the destination matter. The final choice should reveal what the journey was really about."
+          }
+        ]
+      },
+      "what_works": {
+        "title": "What Makes an Adventure Story Work",
+        "intro": "Adventure is not just movement. It is a series of choices that become more expensive.",
+        "items": [
+          {
+            "title": "Escalating conflict",
+            "description": "Each obstacle should remove an option or raise the price of the next one."
+          },
+          {
+            "title": "Cost",
+            "description": "The protagonist should lose time, safety, trust, or a piece of the plan at every stage."
+          },
+          {
+            "title": "Maps",
+            "description": "A map is useful when it creates a decision, not when it merely describes the route."
+          },
+          {
+            "title": "Goals",
+            "description": "The destination should be specific enough that the reader can tell whether the protagonist succeeded."
+          }
+        ]
+      },
+      "comparison": {
+        "title": "Adventure vs Fantasy: Which Generator Do You Need?",
+        "intro": "Adventure and fantasy overlap, but they promise different stories. Choose adventure when the journey and its costs are the point.",
+        "adventure": "Adventure focuses on a goal, a route, escalating obstacles, and a payoff. The world can be any genre.",
+        "fantasy": "Fantasy focuses on a world with magic or mythic rules. The journey may be part of it, but the fantasy rule is the engine."
+      },
+      "audiences": {
+        "title": "Who Uses an Adventure Story Generator",
+        "intro": "The page is built for writers, game masters, teachers, and interactive-fiction hobbyists who need a route they can revise.",
+        "items": [
+          {
+            "title": "Novelists",
+            "description": "Test a journey, a cast, and a set of escalating obstacles before committing to a longer draft."
+          },
+          {
+            "title": "Tabletop GMs",
+            "description": "Create a hook, a location, and an encounter for a session without building a full campaign."
+          },
+          {
+            "title": "Teachers and students",
+            "description": "Use the four-step structure to plan a story with a clear goal and payoff."
+          },
+          {
+            "title": "Interactive-fiction hobbyists",
+            "description": "Generate a static branching outline you can expand into scenes or a larger choice-based story."
+          }
+        ]
+      },
+      "definition": {
+        "title": "What is an Adventure Story Generator?",
+        "intro": "An adventure story generator turns a setting and a premise into a plot, a short story, or a branching outline. It is a drafting tool for journeys, not a game engine.",
+        "paragraphs": [
+          "The useful output is the chain of choices. A good adventure gives the protagonist a concrete goal, makes every route cost something, and ends with a payoff that changes what the journey meant.",
+          "Use the draft to test the structure. Check that the obstacles escalate, replace generic locations with your own details, and make sure the ending depends on a choice rather than a coincidence."
+        ]
+      },
+      "faq_heading": "Frequently Asked Questions",
+      "dnd_campaign": {
+        "href": null
+      },
+      "superhero": {
+        "href": null
+      },
+      "story_ideas": {
+        "href": null
+      },
+      "internal_links": [
+        {
+          "label": "AI story generator",
+          "href": "/"
+        },
+        {
+          "label": "horror story generator",
+          "href": "/horror-story-generator"
+        },
+        {
+          "label": "mystery story generator",
+          "href": "/mystery-story-generator"
+        },
+        {
+          "label": "sci-fi story generator",
+          "href": "/sci-fi-story-generator"
+        },
+        {
+          "label": "fantasy story generator",
+          "href": "/fantasy-generator"
+        }
+      ]
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Adventure writing, without the blank page",
+      "title": "A route with a goal, a cost, and a payoff",
+      "description": "Start with a setting and a premise. The generator builds a journey, a set of escalating obstacles, and a branching outline you can revise.",
+      "items": [
+        {
+          "title": "Six settings",
+          "description": "Pirate seas, lost worlds, space, fantasy kingdoms, survival, and mystery quests."
+        },
+        {
+          "title": "Four output shapes",
+          "description": "Generate a hook, a short story, a full plot, or a static branching outline."
+        },
+        {
+          "title": "Editable output",
+          "description": "Save the route or continue it in the editor."
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "How it works",
+      "title": "Three steps to an adventure draft",
+      "description": "The controls keep the journey specific and the obstacles escalating.",
+      "items": [
+        {
+          "title": "Describe the journey",
+          "description": "Name the setting, the goal, and the force that opposes it."
+        },
+        {
+          "title": "Choose the shape",
+          "description": "Set the output length, tone, perspective, and audience."
+        },
+        {
+          "title": "Generate and revise",
+          "description": "Check that each obstacle costs something, then expand your favourite branch."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Why use it",
+      "title": "Built for journeys, not just scenery",
+      "description": "Every control maps to a decision an adventure writer has to make.",
+      "items": [
+        {
+          "title": "Goal-first premises",
+          "description": "The prompt asks for a concrete goal, an opposing force, and a payoff."
+        },
+        {
+          "title": "Escalating obstacles",
+          "description": "The generator is instructed to make each route cost more than the last."
+        },
+        {
+          "title": "Static branching outlines",
+          "description": "Get a scene and two or three meaningful choices without a game engine."
+        },
+        {
+          "title": "No sign-up to start",
+          "description": "Open the page, describe a journey, and generate a first version."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "feature_section",
+      "label": "Use cases",
+      "title": "One page, several adventure workflows",
+      "description": "Use the same generator for a quick hook or a full route.",
+      "items": [
+        {
+          "title": "Short-form video",
+          "description": "Generate a one-line hook or a compact route for a narrated video."
+        },
+        {
+          "title": "Fiction drafting",
+          "description": "Turn a premise into a scene with a concrete goal, then continue it in AI Write."
+        },
+        {
+          "title": "Tabletop sessions",
+          "description": "Create a hook, a location, and an encounter for a game night."
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Frequently Asked Questions",
+      "description": "Common questions about the adventure story generator, the branching outline, and how to use the output.",
+      "items": [
+        {
+          "title": "Is there a free adventure story generator?",
+          "description": "Yes. This page is free to start, with no sign-up required for the first generation. You can generate a one-line hook, a short story, a full plot, or a static branching outline."
+        },
+        {
+          "title": "Can I use it online without installing anything?",
+          "description": "Yes. The generator runs in the browser. You do not need to install an app or create an account to start your first generation."
+        },
+        {
+          "title": "Can I play the story as a game?",
+          "description": "No. The branching outline is static text: one scene and two or three numbered choices. It is a planning document, not an interactive game with state, combat, or inventory."
+        },
+        {
+          "title": "Can I make a text-based adventure RPG?",
+          "description": "You can generate scenes and choices that could become part of a text-based RPG, but this page is not a rules engine. It does not track stats, items, or player state."
+        },
+        {
+          "title": "Can I generate a DnD adventure or campaign?",
+          "description": "You can use the output as a hook, a location, or an encounter for a tabletop session. It is not a full campaign generator, and it does not include stat blocks or rules."
+        },
+        {
+          "title": "Can teachers use it with students?",
+          "description": "Yes. The four-step structure (setting, inciting incident, escalating obstacles, payoff) works as a classroom planning exercise. Review the generated content before sharing it with students."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Give your next journey a goal and a cost",
+      "description": "Start with a setting. Choose the shape. Generate an adventure you can revise.",
+      "buttons": [
+        {
+          "title": "Generate an adventure story",
+          "url": "#genre-story-generator",
+          "type": "link"
+        },
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write",
+          "type": "link"
+        }
+      ]
+    }
+  }
+}

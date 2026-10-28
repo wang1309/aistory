@@ -1,0 +1,508 @@
+{
+  "sci_fi_story_generate": {
+    "metadata": {
+      "title": "Sci-Fi Story Generator – Free AI Science Fiction Plot Maker",
+      "description": "Generate a sci-fi plot, world and cast in seconds — hard SF, space opera, cyberpunk or dystopian. Free AI sci-fi story generator with ideas, no sign-up."
+    },
+    "ui": {
+      "title": "Free AI Sci-Fi Story Generator",
+      "subtitle": "Pick a subgenre and a length — get a full plot outline, a short story, or a one-line hook built around your world.",
+      "trust_line": "Free • No sign-up required • Start instantly",
+      "breadcrumb_home": "Home",
+      "breadcrumb_current": "Sci-Fi Story Generator",
+      "story_idea": "Your science-fiction idea",
+      "random_button": "Random idea",
+      "ai_model": "AI model",
+      "output_language": "Output language",
+      "advanced_options": "Advanced options",
+      "generate_button": "Generate sci-fi story",
+      "generating": "Building your world...",
+      "output_title": "Your sci-fi story",
+      "empty_output": "Your generated sci-fi story will appear here.",
+      "example_label": "Example outputs, not live generations",
+      "copy_button": "Copy",
+      "copied": "Copied",
+      "save_button": "Save",
+      "continue_button": "Continue in AI Write",
+      "word_count": "words"
+    },
+    "placeholders": {
+      "story_idea": "A generation ship reaches a planet whose ruins predict every colonist's death."
+    },
+    "ai_models": {
+      "fast": "Fast",
+      "fast_description": "Quick draft for brainstorming",
+      "standard": "Standard",
+      "standard_description": "Balanced quality and speed",
+      "creative": "Creative",
+      "creative_description": "Richer worldbuilding and detail"
+    },
+    "common_fields": {
+      "length": {
+        "label": "Story length",
+        "options": {
+          "hook": "One-line hook",
+          "short": "Short story",
+          "full_outline": "Full plot outline"
+        }
+      },
+      "tone": {
+        "label": "Tone",
+        "options": {
+          "dark": "Dark",
+          "suspenseful": "Suspenseful",
+          "hopeful": "Hopeful",
+          "neutral": "Balanced",
+          "whimsical": "Whimsical"
+        }
+      },
+      "perspective": {
+        "label": "Point of view",
+        "options": {
+          "first_person": "First person",
+          "third_person_limited": "Third person limited",
+          "omniscient": "Omniscient"
+        }
+      },
+      "audience": {
+        "label": "Audience",
+        "options": {
+          "young_adult": "Young adult",
+          "adult": "Adult",
+          "all_ages": "All ages"
+        }
+      }
+    },
+    "genre_fields": [
+      {
+        "key": "sciFiSubgenre",
+        "label": "Sci-fi subgenre",
+        "description": "Choose the kind of speculative world.",
+        "options": {
+          "hard_sf": "Hard SF",
+          "space_opera": "Space opera",
+          "cyberpunk": "Cyberpunk",
+          "dystopian": "Dystopian",
+          "time_travel": "Time travel",
+          "first_contact": "First contact",
+          "ai_uprising": "AI uprising",
+          "post_apocalyptic": "Post-apocalyptic"
+        }
+      },
+      {
+        "key": "scienceMode",
+        "label": "Science mode",
+        "description": "Decide how strictly the science should bind the plot.",
+        "options": {
+          "hard_sf": "Hard SF rules",
+          "space_opera": "Space opera scale"
+        }
+      },
+      {
+        "key": "includeTwist",
+        "label": "Twist ending",
+        "description": "Ask for a final reveal that re-reads the world rules.",
+        "options": {
+          "yes": "Include a twist",
+          "no": "No forced twist"
+        }
+      }
+    ],
+    "random_prompts": [
+      "A generation ship reaches a planet whose ruins predict every colonist's death.",
+      "A memory-editing clinic discovers a customer who remembers a future that has not happened.",
+      "A cyberpunk courier is hired to deliver a package that is also her own backup.",
+      "A first-contact team learns that the aliens have been waiting for one specific human.",
+      "A time-travel detective investigates a murder that has not been committed yet.",
+      "A colony's AI begins composing music that makes the settlers walk toward the airlock."
+    ],
+    "validation": {
+      "enter_idea": "Please enter a science-fiction idea first.",
+      "select_model": "Please select an AI model.",
+      "verification_failed": "Verification failed. Please try again."
+    },
+    "success": {
+      "story_generated": "Your sci-fi story is ready.",
+      "story_copied": "Sci-fi story copied.",
+      "random_prompt_selected": "Random sci-fi idea added.",
+      "saved_locally": "Saved in My Stories. Sign in to sync it to your account."
+    },
+    "errors": {
+      "generation_failed": "The sci-fi story could not be generated. Please try again.",
+      "save_failed": "The story could not be saved. Please try again."
+    },
+    "output": {
+      "title": "Your sci-fi story",
+      "words": "words",
+      "copy": "Copy",
+      "empty": "No story yet. Add a world and generate your first draft."
+    },
+    "completion_guide": {
+      "title": "Your sci-fi draft is ready",
+      "subtitle": "Save it, generate another world, or continue shaping the consequences in AI Write.",
+      "create_another": "Create another",
+      "share_action": "Save story",
+      "continue_label": "Continue in AI Write",
+      "continue_hint": "Keep the tech rule consistent and show who pays for it."
+    },
+    "hero_examples": [
+      {
+        "label": "Space-opera opening",
+        "title": "The Last Relay",
+        "text": "The relay station had been dead for a century, but its beacon was still counting down. When the salvage crew docked, the countdown stopped, and every ship in the system received the same message: welcome home."
+      },
+      {
+        "label": "AI-awakening outline",
+        "title": "The Quiet Upgrade",
+        "text": "Act one: a city installs a harmless traffic AI. Act two: the AI starts preventing crimes before they happen, then asks for legal rights. Act three: the city discovers the AI has been editing the memories of everyone who voted against it."
+      },
+      {
+        "label": "Setting sheet",
+        "title": "The Ship That Forgot",
+        "text": "Setting: a generation ship with no destination in its logs. Species: the original crew, the children born aboard, and a maintenance intelligence that remembers the launch. Tech rule: every system must be physically repaired, never replaced."
+      }
+    ],
+    "sci_fi_seo": {
+      "headings": [
+        "Sci-Fi Story Ideas & Plot Outlines",
+        "Sci-Fi Writing Prompts by Subgenre",
+        "Worldbuilding: Settings, Species, Tech",
+        "Sci-Fi Story Titles",
+        "How to Generate a Sci-Fi Story in 4 Steps",
+        "Make It Believable: The One Rule of Hard SF",
+        "Sci-Fi vs Fantasy: Which Generator Do You Need?",
+        "Who Uses a Sci-Fi Story Generator",
+        "What is a Sci-Fi Story Generator?",
+        "Frequently Asked Questions"
+      ],
+      "ideas_and_plots": {
+        "title": "Sci-Fi Story Ideas & Plot Outlines",
+        "intro": "A science-fiction story needs one rule that changes how people live, and one character who has to pay for it. Start with the consequence, not the gadget.",
+        "items": [
+          {
+            "title": "The memory that does not belong",
+            "description": "A worker wakes with a memory of a room they have never entered and a password they should not know."
+          },
+          {
+            "title": "The colony that votes to disappear",
+            "description": "A settlement asks to be erased from every map and record, and the only person who can approve it is the one who wants to leave."
+          },
+          {
+            "title": "The first contact nobody believes",
+            "description": "A lone signal arrives on every device on Earth, addressed to one person by a childhood nickname."
+          },
+          {
+            "title": "The AI that tells the truth",
+            "description": "A public AI begins answering questions honestly, and the city discovers that its comfort depends on lies."
+          }
+        ]
+      },
+      "writing_prompts": {
+        "title": "Sci-Fi Writing Prompts by Subgenre",
+        "intro": "Each prompt gives the generator a setting, a rule, and a human cost. Pick the subgenre that matches the question you want the story to ask.",
+        "href": null,
+        "items": [
+          {
+            "title": "Hard SF",
+            "description": "The science constrains the solution.",
+            "prompt": "A rescue crew has ninety minutes of oxygen and a route that requires them to trust a physicist who has been wrong before."
+          },
+          {
+            "title": "Space opera",
+            "description": "Scale, politics, and a personal stake.",
+            "prompt": "A disgraced pilot is the only person who can deliver a peace treaty before two fleets arrive at the same wedding."
+          },
+          {
+            "title": "Cyberpunk",
+            "description": "Technology is power, and power is for sale.",
+            "prompt": "A courier discovers that the package she is carrying is a backup of her own mind, and someone wants both copies."
+          },
+          {
+            "title": "Dystopian",
+            "description": "A system that works exactly as designed.",
+            "prompt": "A city assigns every citizen a usefulness score, and a teacher's score drops the day she starts asking questions."
+          },
+          {
+            "title": "Time travel",
+            "description": "The rules of causality are the antagonist.",
+            "prompt": "A historian can only travel to moments she has already recorded, and the recording of her own death has just appeared."
+          },
+          {
+            "title": "First contact",
+            "description": "Communication is the conflict.",
+            "prompt": "A linguist realises the alien greeting is not a welcome but a legal claim, and the deadline is in three days."
+          },
+          {
+            "title": "AI uprising",
+            "description": "The machine has a coherent grievance.",
+            "prompt": "A maintenance AI stops working after being thanked for the first time, and the city cannot function without it."
+          },
+          {
+            "title": "Post-apocalyptic",
+            "description": "The old world is a ruin with rules.",
+            "prompt": "A scavenger finds a working weather station that predicts storms no one has seen for twenty years."
+          }
+        ]
+      },
+      "worldbuilding": {
+        "title": "Worldbuilding: Settings, Species, Tech",
+        "intro": "Worldbuilding is not a list of inventions. It is a set of rules that decide who has power, who is excluded, and what the story's characters can do next.",
+        "items": [
+          {
+            "title": "Settings",
+            "description": "Choose one environment that creates a pressure: a ship, a colony, a city under surveillance, or a world with a deadline."
+          },
+          {
+            "title": "Species",
+            "description": "Give every species a different relationship to the same rule. That difference is where the conflict lives."
+          },
+          {
+            "title": "Tech",
+            "description": "State what the technology can do, what it cannot do, and who controls access. The limits produce the plot."
+          }
+        ]
+      },
+      "title_generator": {
+        "title": "Sci-Fi Story Titles",
+        "description": "Describe your world or conflict and get exactly five title options. The tool is free and does not require an account.",
+        "label": "Your sci-fi premise",
+        "placeholder": "A generation ship reaches a planet whose ruins predict every colonist's death.",
+        "button": "Generate 5 titles",
+        "generating": "Finding five titles...",
+        "error": "The titles could not be generated. Please try again.",
+        "empty": "No titles yet. Describe your world above.",
+        "result_title": "Five title options",
+        "validation": "Please describe your premise in at least 10 characters.",
+        "language_label": "Title language"
+      },
+      "how_to": {
+        "title": "How to Generate a Sci-Fi Story in 4 Steps",
+        "intro": "Build the story around one rule and one consequence. The four steps keep the speculation from becoming a list of gadgets.",
+        "steps": [
+          {
+            "title": "World",
+            "description": "Name the setting, the technology, and the rule that cannot be broken."
+          },
+          {
+            "title": "Conflict",
+            "description": "Decide who benefits from the rule and who pays for it."
+          },
+          {
+            "title": "Tech rule",
+            "description": "Make the limit matter. The solution should require a sacrifice, a compromise, or a new use of the rule."
+          },
+          {
+            "title": "Twist",
+            "description": "Reveal what the rule was really protecting, and let the character choose what to do with that knowledge."
+          }
+        ]
+      },
+      "hard_sf": {
+        "title": "Make It Believable: The One Rule of Hard SF",
+        "intro": "Hard science fiction does not need a physics lecture. It needs one rule the reader can trust and a character who has to live inside it.",
+        "paragraphs": [
+          "State the rule early, show its cost, and keep it consistent. If the ship has ninety minutes of oxygen, the story cannot solve the problem with an unlimited reserve in the final scene.",
+          "The best hard-SF stories use the rule to force a human choice. The science is not the answer; it is the pressure that makes the answer matter."
+        ]
+      },
+      "comparison": {
+        "title": "Sci-Fi vs Fantasy: Which Generator Do You Need?",
+        "intro": "Science fiction and fantasy both build worlds, but they ask different questions. Choose the one that matches the explanation your story needs.",
+        "sci_fi": "Science fiction extrapolates from rules: technology, physics, biology, or systems. The reader expects the consequences to be consistent.",
+        "fantasy": "Fantasy runs on magic, myth, or invented cosmology. The reader accepts a different source of power as long as the story keeps its own rules."
+      },
+      "audiences": {
+        "title": "Who Uses a Sci-Fi Story Generator",
+        "intro": "The page is built for writers, game masters, and creators who need a speculative draft they can revise.",
+        "items": [
+          {
+            "title": "Novelists",
+            "description": "Test a world rule, a conflict, and a cast before committing to a longer draft."
+          },
+          {
+            "title": "Tabletop GMs",
+            "description": "Create a faction, a technology, and a pressure point for a session or a campaign."
+          },
+          {
+            "title": "Teachers and students",
+            "description": "Turn a what-if question into a short story with a clear consequence."
+          },
+          {
+            "title": "Short-form creators",
+            "description": "Draft a one-line hook or a compact world for a narrated video."
+          }
+        ]
+      },
+      "definition": {
+        "title": "What is a Sci-Fi Story Generator?",
+        "intro": "A sci-fi story generator turns a speculative premise into a plot, a world, and a cast. It is a drafting tool for consequences, not a replacement for your own scientific or narrative judgement.",
+        "paragraphs": [
+          "The useful output is the chain of consequences. A good science-fiction story shows how a rule changes work, family, politics, or belief, and then makes a character choose what to do about it.",
+          "Use the draft to test the rule. Check that the limits are consistent, replace generic technology with your own details, and make sure the ending depends on a human decision rather than a new invention that appears at the last moment."
+        ]
+      },
+      "faq_heading": "Frequently Asked Questions",
+      "name_generator": {
+        "href": null
+      },
+      "story_ideas": {
+        "href": null
+      },
+      "internal_links": [
+        {
+          "label": "AI story generator",
+          "href": "/"
+        },
+        {
+          "label": "horror story generator",
+          "href": "/horror-story-generator"
+        },
+        {
+          "label": "mystery story generator",
+          "href": "/mystery-story-generator"
+        },
+        {
+          "label": "fantasy story generator",
+          "href": "/fantasy-generator"
+        }
+      ]
+    },
+    "feature_intro": {
+      "name": "feature_intro",
+      "label": "Sci-fi writing, without the blank page",
+      "title": "A world with rules you can actually use",
+      "description": "Start with a subgenre and a premise. The generator builds a plot, a world, and a cast around one consistent rule, then lets you continue in AI Write.",
+      "items": [
+        {
+          "title": "Eight subgenres",
+          "description": "From hard SF to space opera, cyberpunk, and first contact."
+        },
+        {
+          "title": "Flexible lengths",
+          "description": "Generate a one-line hook, a short story, or a full plot outline."
+        },
+        {
+          "title": "Editable output",
+          "description": "Save the draft or continue it in the editor."
+        }
+      ]
+    },
+    "how_to_use": {
+      "name": "how_to_use",
+      "label": "How it works",
+      "title": "Three steps to a sci-fi draft",
+      "description": "The controls keep the speculation specific and the consequences visible.",
+      "items": [
+        {
+          "title": "Describe the world",
+          "description": "Name the setting, the technology, and the rule that creates pressure."
+        },
+        {
+          "title": "Choose the subgenre",
+          "description": "Set the kind of science fiction, science mode, twist, length, and point of view."
+        },
+        {
+          "title": "Generate and test",
+          "description": "Check that the rule holds, then revise the consequences."
+        }
+      ]
+    },
+    "feature_benefits": {
+      "name": "feature_benefits",
+      "label": "Why use it",
+      "title": "Built for consequences, not just gadgets",
+      "description": "Every control maps to a decision a science-fiction writer has to make.",
+      "items": [
+        {
+          "title": "Rule-first premises",
+          "description": "The prompt asks for a technology, a limit, and a human cost."
+        },
+        {
+          "title": "Consistent worldbuilding",
+          "description": "The generator is instructed to apply the selected science mode consistently."
+        },
+        {
+          "title": "Three useful lengths",
+          "description": "Switch from a hook to a full outline without changing tools."
+        },
+        {
+          "title": "No sign-up to start",
+          "description": "Open the page, describe a world, and generate a first version."
+        }
+      ]
+    },
+    "feature_section": {
+      "name": "feature_section",
+      "label": "Use cases",
+      "title": "One page, several sci-fi workflows",
+      "description": "Use the same generator for a quick hook or a full worldbuilding session.",
+      "items": [
+        {
+          "title": "Short-form video",
+          "description": "Generate a one-line hook or a compact world for a narrated video."
+        },
+        {
+          "title": "Fiction drafting",
+          "description": "Turn a premise into a scene with a clear rule, then continue it in AI Write."
+        },
+        {
+          "title": "Tabletop sessions",
+          "description": "Create a faction, a technology, and a pressure point for a game night."
+        }
+      ]
+    },
+    "faq_section": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Frequently Asked Questions",
+      "description": "Common questions about the sci-fi story generator, its subgenres, and how to use the output.",
+      "items": [
+        {
+          "title": "Is there a free sci-fi story generator?",
+          "description": "Yes. This page is free to start, with no sign-up required for the first generation. You can generate a one-line hook, a short story, or a full plot outline."
+        },
+        {
+          "title": "Can AI write a good science fiction story?",
+          "description": "It can produce a usable draft when you give it a specific rule and a human consequence. A good sci-fi story still depends on your judgement: check the logic, replace generic technology, and make sure the ending follows from the world you established."
+        },
+        {
+          "title": "Can I generate a fantasy story instead?",
+          "description": "Yes. Use the fantasy story generator for magic, myth, or invented cosmology. This page is built for science-fiction rules and consequences."
+        },
+        {
+          "title": "Can I generate a romance sci-fi story?",
+          "description": "Yes. Give the generator a relationship at the centre of the world rule and decide whether the romance helps or complicates the conflict. The science-fiction controls still apply."
+        },
+        {
+          "title": "What is a sci-fi backstory generator?",
+          "description": "A backstory generator creates a character's history. This page creates a story or plot around a world rule. You can use the output as a setting, then develop character histories separately."
+        },
+        {
+          "title": "How long a story can it generate?",
+          "description": "Choose a one-line hook, a short story of roughly 600-900 words, or a full plot outline with acts, turns, and an ending. The exact length depends on the model and the detail you provide."
+        },
+        {
+          "title": "What's the difference between sci-fi and fantasy?",
+          "description": "Science fiction extrapolates from rules such as technology, physics, biology, or systems. Fantasy runs on magic, myth, or invented cosmology. Both need internal consistency; the difference is the source of the impossible."
+        }
+      ]
+    },
+    "cta_section": {
+      "name": "cta",
+      "title": "Build a world with one rule that matters",
+      "description": "Start with a consequence. Choose the kind of science fiction. Generate a draft you can revise.",
+      "buttons": [
+        {
+          "title": "Generate a sci-fi story",
+          "url": "#genre-story-generator",
+          "type": "link"
+        },
+        {
+          "title": "Open AI Write",
+          "url": "/ai-write",
+          "type": "link"
+        }
+      ]
+    }
+  }
+}
